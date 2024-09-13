@@ -11,18 +11,9 @@ shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 shader_parameter/distortion_speed = 2.0
 shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
 shader_parameter/wave_speed = 2.0
-shader_parameter/wave_amplitude = 0.5
-shader_parameter/wave_frequency = 1.5
-shader_parameter/time_offset = 0.0
-shader_parameter/water_size = Vector2(128, 128)
-shader_parameter/water_transparency = 0.8
-shader_parameter/water_depth_factor = 0.1
-shader_parameter/foam_width = 0.5
-shader_parameter/foam_edge_softness = 0.05
-shader_parameter/foam_smoothness = 0.03
-shader_parameter/foam_distortion_speed = 0.5
-shader_parameter/foam_distortion_amount = 0.1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3hfxb"]
 _surfaces = [{
@@ -59,5 +50,5 @@ shadow_mesh = SubResource("ArrayMesh_3hfxb")
 [node name="ThirdHouse" instance=ExtResource("1_1icla")]
 
 [node name="water" parent="." index="34"]
-transform = Transform3D(4.73795, 0, 0, 0, 3.15243, 0, 0, 0, 3.15243, -0.036468, -0.26225, 15.9503)
+transform = Transform3D(4.18699, 0, 0, 0, 1.35087, 0, 0, 0, 2.9433, -0.036468, -0.699975, 15.9503)
 mesh = SubResource("ArrayMesh_m15n5")
