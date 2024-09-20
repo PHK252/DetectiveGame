@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=11 format=3 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="PackedScene" uid="uid://brd00bwvt7gv" path="res://StartingOffice.glb" id="1_mugy7"]
 [ext_resource type="Shader" path="res://starting_office.gdshader" id="2_t6q04"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_dw7wc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_70qgt"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_lp7en"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xm7rt"]
 render_priority = 0
@@ -47,8 +50,35 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4l5bt")
 
+[sub_resource type="Resource" id="Resource_l2agy"]
+script = ExtResource("4_70qgt")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_sfsn6"]
+script = ExtResource("5_lp7en")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
 [node name="StartingOffice" instance=ExtResource("1_mugy7")]
 
 [node name="Flooring" parent="." index="54"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.27691, 0, 0, -0.556606)
 mesh = SubResource("ArrayMesh_q5psr")
+
+[node name="Camera3D" type="Camera3D" parent="." index="59"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92437, 0)
+
+[node name="PhantomCamera3D" type="Node3D" parent="." index="60"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60428, 0)
+script = ExtResource("3_dw7wc")
+tween_resource = SubResource("Resource_l2agy")
+camera_3d_resource = SubResource("Resource_sfsn6")
