@@ -981,6 +981,9 @@ func get_tween_skip() -> bool:
 	return _tween_skip
 
 
+
+
+
 ## Assigns the [param PhantomCamera3D] to a new [PhantomCameraHost].[br]
 ## [b][color=yellow]Important:[/color][/b] This is currently restricted to
 ## plugin internals. Proper support will be added in issue #26.
@@ -1569,6 +1572,8 @@ func get_v_offset() -> float:
 func set_projection(value: int) -> void:
 	camera_3d_resource.projection = value
 	if _is_active: get_pcam_host_owner().camera_3d.projection = value
+
+
 
 ## Gets the [member Camera3D.projection] value assigned to the [param Camera3DResource].
 func get_projection() -> int:

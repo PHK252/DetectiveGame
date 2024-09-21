@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=12 format=3 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="PackedScene" uid="uid://brd00bwvt7gv" path="res://StartingOffice.glb" id="1_mugy7"]
 [ext_resource type="Shader" path="res://starting_office.gdshader" id="2_t6q04"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_0ysif"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_dw7wc"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_70qgt"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_lp7en"]
@@ -61,12 +62,12 @@ script = ExtResource("5_lp7en")
 cull_mask = 1048575
 h_offset = 0.0
 v_offset = 0.0
-projection = 0
+projection = 1
 fov = 75.0
-size = 1.0
+size = 2.28
 frustum_offset = Vector2(0, 0)
-near = 0.05
-far = 4000.0
+near = 0.001
+far = 4001.17
 
 [node name="StartingOffice" instance=ExtResource("1_mugy7")]
 
@@ -75,10 +76,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.27691, 0, 0, -0.556606)
 mesh = SubResource("ArrayMesh_q5psr")
 
 [node name="Camera3D" type="Camera3D" parent="." index="59"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92437, 0)
+transform = Transform3D(-1.00998, -0.000338843, -0.00571247, -0.00456994, 0.654585, 0.769154, 0.00344423, 0.769167, -0.654576, -0.08, 2.683, -0.598)
+projection = 1
+size = 2.28
+near = 0.001
+far = 4001.17
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" index="0"]
+script = ExtResource("3_0ysif")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." index="60"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60428, 0)
+transform = Transform3D(-1.00998, -0.000338843, -0.00571247, -0.00456994, 0.654585, 0.769154, 0.00344423, 0.769167, -0.654576, -0.08, 2.683, -0.598)
 script = ExtResource("3_dw7wc")
 tween_resource = SubResource("Resource_l2agy")
 camera_3d_resource = SubResource("Resource_sfsn6")

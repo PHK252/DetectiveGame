@@ -24,7 +24,6 @@ signal update_editor_viewfinder
 
 #endregion
 
-
 #region Variables
 
 enum InterpolationMode {
