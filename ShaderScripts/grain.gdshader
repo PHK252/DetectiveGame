@@ -6,6 +6,7 @@
 */
 shader_type spatial;
 // render_mode;
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
 
 uniform vec4 light_color : source_color = vec4( 0.9529411764705882, 0.8588235294117647, 0.7490196078431373, 1.0 );
 uniform vec4 dark_color : source_color = vec4( 0.7490196078431373, 0.6196078431372549, 0.49019607843137253, 1.0 );
@@ -14,9 +15,24 @@ uniform float ring_scale = 4.4;
 uniform float wave_scale = 8.454;
 uniform float random_scale = 4.6;
 uniform float noise_scale = 0.03;
+uniform sampler2D color_gradient;
+uniform sampler2D fresnel_gradient;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
 
 vec2 random( vec2 pos )
-{ 
+{
 	return fract(
 		sin(
 			vec2(
@@ -44,6 +60,7 @@ float value_noise( vec2 pos )
 
 void fragment( )
 {
+	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
 	vec2 shift_uv = UV;
 	shift_uv.x += value_noise( UV * random_scale );
 	float x = shift_uv.x + sin( shift_uv.y * wave_scale );
@@ -53,3 +70,10 @@ void fragment( )
 	ALPHA = mix( light_color, dark_color, f ).a;
 }
 
+void light() {
+	float dotproduct = clamp(dot(NORMAL, LIGHT), -0.9, 0.9);
+	float sample = clamp((dotproduct + 1.0) * ATTENUATION / 2.1, 0.05, 0.95);
+	vec4 shaded = texture(color_gradient, vec2(sample, 0.0));
+	DIFFUSE_LIGHT += clamp((shaded.rgb * LIGHT_COLOR), 0.0, 1.0);
+	//DIFFUSE_LIGHT += (shaded.rgb * LIGHT_COLOR);
+}
