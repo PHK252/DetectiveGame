@@ -9,7 +9,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
+	if Input.is_action_just_pressed("Quit"):
+		get_tree().quit()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("Right", "Left", "Back", "Forward")
@@ -26,8 +28,3 @@ func _physics_process(delta: float) -> void:
 	anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 
 	move_and_slide()
-	
-
-	
-		
-		
