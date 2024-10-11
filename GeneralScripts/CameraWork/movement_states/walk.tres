@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MovementState" load_steps=2 format=3 uid="uid://boil3f15q3bbo"]
+
+[ext_resource type="Script" path="res://GeneralScripts/CameraWork/statesystem.gd" id="1_wj347"]
+
+[resource]
+script = ExtResource("1_wj347")
+id = 1
+movement_speed = 3.0
+acceleration = 7.0
+animation_speed = 1.15
