@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var armature = %DetectiveT7
 @onready var anim_tree = $AnimationTree
-const SPEED = 2
+const SPEED = 1.15
 const LERP_VAL = .15
 
 func _physics_process(delta: float) -> void:
