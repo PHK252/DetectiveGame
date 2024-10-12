@@ -22,13 +22,15 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Dalton": "res://Misc/Dalton.dch",
+"Dalton": "res://Dialogic Characters/Dalton.dch",
+"Theo": "res://Dialogic Characters/Theo.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"Day 1 Office timeline": "res://StartingOffice/Day 1 Office timeline.dtl",
 "Office": "res://Misc/Office.dtl"
 }
-layout/style_list=["res://Text Bubble.tres"]
+layout/style_list=[]
 layout/default_style="res://Text Bubble.tres"
 
 [editor_plugins]
