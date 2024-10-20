@@ -157,14 +157,16 @@ func bubble_apply_overrides(bubble:TextBubble) -> void:
 		choice_theme = Theme.new()
 		var base_style := StyleBoxFlat.new()
 		base_style.draw_center = false
-		base_style.border_width_bottom = 2
-		base_style.border_color = choices_text_color
+		base_style.border_width_bottom = 0
+		base_style.border_color = box_modulate
+		base_style.border_width_top = 10
+		
 		choice_theme.set_stylebox(&'normal', &'Button', base_style)
 		var focus_style := (base_style.duplicate() as StyleBoxFlat)
-		focus_style.border_color = choices_text_color_focus
+		focus_style.border_color = box_modulate
 		choice_theme.set_stylebox(&'focus', &'Button', focus_style)
 		var hover_style := (base_style.duplicate() as StyleBoxFlat)
-		hover_style.border_color = choices_text_color_hover
+		hover_style.border_color = box_modulate
 		choice_theme.set_stylebox(&'hover', &'Button', hover_style)
 		var disabled_style := (base_style.duplicate() as StyleBoxFlat)
 		disabled_style.border_color = choices_text_color_disabled

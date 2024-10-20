@@ -15,3 +15,16 @@ void fragment() {
 	float rounded_box = length(max(abs(deformed_UV*(box_size+vec2(box_padding))-vec2(0.5)*(box_size+vec2(box_padding)))+adjusted_radius-vec2(0.5)*box_size,0))-adjusted_radius;
 	COLOR.a = min(smoothstep(0.0, -1, rounded_box), COLOR.a);
 }
+
+//shader_type canvas_item;
+//
+//uniform int amount = 40;
+//
+//void fragment()
+//{
+	//vec2 grid_uv = round(UV * float(amount)) / float(amount);
+	//
+	//vec4 text = texture(TEXTURE, grid_uv);
+	//
+	//COLOR = text;
+//}
