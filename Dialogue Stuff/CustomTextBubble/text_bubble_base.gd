@@ -40,7 +40,7 @@ func register_character(character:Variant, node:Node):
 
 
 func _get_persistent_info() -> Dictionary:
-	return {"textbubble_registers": registered_characters}
+	return {"                                    ": registered_characters}
 
 
 func _load_persistent_info(info: Dictionary) -> void:
