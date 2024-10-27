@@ -144,7 +144,7 @@ float fresnel(float amount, vec3 normal, vec3 view)
 void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
 	ALBEDO = albedo.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
-	
+
 	vec2 base_uv = UV;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
@@ -1006,14 +1006,12 @@ extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_pk1ti")
 skeleton = NodePath("../../..")
 
-[node name="PhantomCamera3D" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
+[node name="PhantomCamera3D" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_path")]
 transform = Transform3D(-1.00641, 0.0112864, -0.00641932, -2.0341e-07, 0.499733, 0.876755, 0.0129427, 0.877634, -0.49915, 0.0528331, 2.89848, -2.92051)
 script = ExtResource("3_gj8k4")
 follow_mode = 4
-follow_target = NodePath("")
 follow_path = NodePath("../Paths/CamPath")
 look_at_mode = 2
-look_at_target = NodePath("")
 tween_resource = SubResource("Resource_6je1w")
 camera_3d_resource = SubResource("Resource_swx74")
 follow_damping = true

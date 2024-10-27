@@ -34,7 +34,7 @@ float fresnel(float amount, vec3 normal, vec3 view)
 void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
 	ALBEDO = albedo.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
-	
+
 	vec2 base_uv = UV;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);

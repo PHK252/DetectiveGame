@@ -537,14 +537,12 @@ extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_bm23y")
 skeleton = NodePath("../../..")
 
-[node name="PhantomCamera3D" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
+[node name="PhantomCamera3D" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_path")]
 transform = Transform3D(-1.0065, -0.00181463, 0.001626, -1.44766e-07, 0.674463, 0.750982, -0.00242927, 0.751796, -0.673729, 0.0528331, 2.89848, -2.92051)
 script = ExtResource("3_r36w6")
 follow_mode = 4
-follow_target = NodePath("")
 follow_path = NodePath("../Paths/CamPath")
 look_at_mode = 2
-look_at_target = NodePath("")
 tween_resource = SubResource("Resource_pey7g")
 camera_3d_resource = SubResource("Resource_7nwko")
 follow_damping = true
