@@ -1,10 +1,18 @@
 extends MeshInstance3D
 
+@onready var map  = $MapUI
+@onready var button  = $"SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/firsthouse_button"
+
 var is_open: bool = false
-
+	
+	
 func open() -> void:
-	pass
-
+	print("Opening map UI")
+	map.visible = !map.visible
+	
+func change_scene() -> void:
+	print("scenechanged")
+	
 func add_highlight() -> void:
 	pass
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=216 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -21,6 +21,7 @@
 [ext_resource type="Shader" path="res://ShaderScripts/grain.gdshader" id="17_8qyxv"]
 [ext_resource type="PackedScene" uid="uid://d1p7a1g58vmah" path="res://GeneralScripts/interaction/Interactable.tscn" id="17_rbnfb"]
 [ext_resource type="Script" path="res://StartingOffice/map.gd" id="17_yvedm"]
+[ext_resource type="Script" path="res://StartingOffice/scenechange.gd" id="18_e4s53"]
 [ext_resource type="Shader" path="res://ShaderScripts/environmentpalette.gdshader" id="18_i4am7"]
 [ext_resource type="Shader" path="res://ShaderScripts/pixel.gdshader" id="18_rugna"]
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/dalton.gd" id="21_fgkip"]
@@ -2578,7 +2579,7 @@ volumetric_fog_length = 45.52
 volumetric_fog_detail_spread = 2.7991
 volumetric_fog_ambient_inject = 0.21
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o732i"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rh8sh"]
 size = Vector3(0.991333, 2.15057, 0.426758)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaf5s"]
@@ -3040,6 +3041,39 @@ mesh = SubResource("ArrayMesh_krh22")
 skeleton = NodePath("")
 script = ExtResource("17_yvedm")
 
+[node name="MapUI" type="TextureRect" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001"]
+visible = false
+top_level = true
+offset_right = 255.0
+offset_bottom = 340.0
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("11_7m8nc")
+script = ExtResource("18_e4s53")
+
+[node name="firsthouse_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
+layout_mode = 0
+offset_left = 11.9617
+offset_top = 181.818
+offset_right = 19.9617
+offset_bottom = 189.818
+scale = Vector2(6.7, 6.7)
+
+[node name="secondhouse_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
+layout_mode = 0
+offset_left = 148.325
+offset_top = 272.249
+offset_right = 156.325
+offset_bottom = 280.249
+scale = Vector2(6.7, 6.7)
+
+[node name="thirdhouse_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
+layout_mode = 0
+offset_left = 100.957
+offset_top = 121.053
+offset_right = 108.957
+offset_bottom = 129.053
+scale = Vector2(6.7, 6.7)
+
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" instance=ExtResource("17_rbnfb")]
 
 [node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" index="0"]
@@ -3278,12 +3312,11 @@ spot_angle_attenuation = 0.378929
 collision_mask = 6
 script = ExtResource("21_fgkip")
 
-[node name="PlayerInteractor" parent="Dalton/CharacterBody3D" node_paths=PackedStringArray("player") instance=ExtResource("26_jet1p")]
-player = NodePath("..")
+[node name="PlayerInteractor" parent="Dalton/CharacterBody3D" instance=ExtResource("26_jet1p")]
 
 [node name="CollisionShape3D" parent="Dalton/CharacterBody3D/PlayerInteractor" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043335, 0.575287, 0.0483398)
-shape = SubResource("BoxShape3D_o732i")
+shape = SubResource("BoxShape3D_rh8sh")
 
 [node name="Marker2D" type="Marker2D" parent="Dalton/CharacterBody3D"]
 position = Vector2(1083, 659)
@@ -3292,59 +3325,59 @@ position = Vector2(1083, 659)
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(1.3044e-09, -5.39206e-08, -2.96983)
+bones/1/position = Vector3(3.44129e-09, -5.39206e-08, -3.01872)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.00627932, 0.350511, 0.861101, -0.36825)
+bones/3/rotation = Quaternion(0.0204203, 0.311592, 0.878283, -0.362095)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.292957, 0.030951, -0.0382389, 0.954859)
+bones/4/rotation = Quaternion(-0.213209, 0.0901607, -0.0381411, 0.97209)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.528286, -0.0592453, 0.0774708, 0.843447)
+bones/5/rotation = Quaternion(0.491999, -0.112057, 0.103709, 0.857102)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.00627929, 0.350511, 0.861101, 0.36825)
-bones/9/rotation = Quaternion(-0.292957, -0.030951, 0.0382389, 0.954859)
+bones/8/rotation = Quaternion(-0.0204203, 0.311592, 0.878283, 0.362095)
+bones/9/rotation = Quaternion(-0.21321, -0.0901607, 0.0381411, 0.97209)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.528286, 0.0592454, -0.0774708, 0.843447)
+bones/10/rotation = Quaternion(0.491999, 0.112057, -0.103709, 0.857102)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(1.3044e-09, 2.96983, -2.83509e-07)
+bones/12/position = Vector3(3.44129e-09, 3.01872, -2.53495e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
 bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.077256, 1.13695e-07, -1.16493e-08, 0.997011)
-bones/16/rotation = Quaternion(0.020783, 8.88312e-09, 8.08645e-09, 0.999784)
+bones/15/rotation = Quaternion(-0.0860316, 1.14325e-07, -1.12345e-08, 0.996292)
+bones/16/rotation = Quaternion(0.0396208, 9.20697e-09, 8.10104e-09, 0.999215)
 bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0540854, 0.00240118, -0.0102082, 0.998481)
+bones/18/rotation = Quaternion(0.0172104, -0.0101082, -0.00963232, 0.999754)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0540854, -0.00240118, 0.0102082, 0.998481)
+bones/20/rotation = Quaternion(0.0172104, 0.0101082, 0.00963234, 0.999754)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.263229, -0.148282, -0.387965, 0.87075)
+bones/22/rotation = Quaternion(-0.255221, -0.149077, -0.405317, 0.865076)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00363006, -0.000437763, -0.333109, 0.942881)
+bones/23/rotation = Quaternion(-0.00306814, -0.000445505, -0.281544, 0.959544)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.263229, 0.148282, 0.387964, 0.87075)
+bones/26/rotation = Quaternion(-0.255221, 0.149077, 0.405317, 0.865076)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00363025, 0.000437797, 0.333111, 0.942881)
+bones/27/rotation = Quaternion(-0.0030683, 0.000445517, 0.281545, 0.959543)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/28/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.957865, 2.18384, -0.0311821)
-bones/33/position = Vector3(1.3044e-09, 2.96983, -1.13525e-07)
+bones/31/position = Vector3(0.99041, 2.1931, -0.0311821)
+bones/33/position = Vector3(3.44129e-09, 3.01872, -1.13525e-07)
 bones/35/rotation = Quaternion(0.0106232, 0.707027, 0.707027, 0.0106232)
-bones/36/position = Vector3(-0.957865, 2.18384, -0.0311821)
+bones/36/position = Vector3(-0.99041, 2.1931, -0.0311821)
 
 [node name="detective" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_aih6b")
@@ -3360,6 +3393,11 @@ tree_root = SubResource("AnimationNodeBlendTree_xg73w")
 anim_player = NodePath("../DetectiveT7/AnimationPlayer")
 parameters/BlendSpace1D/blend_position = 0.0
 
+[node name="UI" type="Node" parent="."]
+
+[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/firsthouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_firsthouse_button_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/secondhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_secondhouse_button_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/thirdhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_thirdhouse_button_pressed"]
 [connection signal="focused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_focused"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_interacted"]
 [connection signal="unfocused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_unfocused"]
