@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cp0jkmt30p6sx"]
+
+[ext_resource type="Shader" path="res://ShaderScripts/grain.gdshader" id="1_pabe1"]
+[ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_2spl7"]
+[ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_tahac"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pabe1")
+shader_parameter/albedo = null
+shader_parameter/light_color = Color(0.952941, 0.858824, 0.74902, 1)
+shader_parameter/dark_color = Color(0.74902, 0.619608, 0.490196, 1)
+shader_parameter/ring_scale = 4.4
+shader_parameter/wave_scale = 8.564
+shader_parameter/random_scale = 4.55
+shader_parameter/noise_scale = 0.55
+shader_parameter/color_gradient = ExtResource("2_2spl7")
+shader_parameter/fresnel_gradient = ExtResource("3_tahac")
