@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=258 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
 [ext_resource type="PackedScene" uid="uid://vcxeo4e2gndm" path="res://FirstHouse/FirstHouseUpdated.glb" id="1_t7mpi"]
@@ -51,6 +51,13 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve3D" id="Curve3D_5fejm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0114722, 0.00924039, 0.0167472, 0, 0, 0, 0, 0, 0, -0.0563798, -0.0162716, 0.910578),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bvypm"]
 render_priority = 0
 shader = ExtResource("2_fbsf6")
@@ -77,7 +84,7 @@ script = ExtResource("5_momqu")
 cull_mask = 1048575
 h_offset = 0.22
 v_offset = 1.0
-projection = 0
+projection = 1
 fov = 87.0
 size = 3.53
 frustum_offset = Vector2(0, 0)
@@ -93,11 +100,65 @@ ease = 2
 [sub_resource type="Resource" id="Resource_mqmls"]
 script = ExtResource("5_momqu")
 cull_mask = 1048575
-h_offset = 0.0
-v_offset = 0.0
-projection = 0
+h_offset = 0.72
+v_offset = 1.0
+projection = 1
 fov = 75.0
-size = 1.0
+size = 2.13
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_bxbx0"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_lidhj"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.04
+v_offset = 0.06
+projection = 1
+fov = 84.9
+size = 2.596
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_lp1qp"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_e64gf"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.62
+v_offset = 0.0
+projection = 1
+fov = 75.0
+size = 2.596
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_a8tiw"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_5xxw7"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.04
+projection = 1
+fov = 75.0
+size = 1.532
 frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
@@ -3692,15 +3753,17 @@ curve = SubResource("Curve3D_kkqqy")
 transform = Transform3D(0.768661, 0, 0, 0, 0.999162, 0.0237558, 0, -0.040934, 0.579859, -1.39027, 3.28026, -3.51056)
 curve = SubResource("Curve3D_tdxtl")
 
+[node name="hallpath" type="Path3D" parent="SubViewportContainer/SubViewport/CameraSystem/Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41137, 1.34846, 3.47747)
+curve = SubResource("Curve3D_5fejm")
+
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-1.22505, 0.0368442, -0.0369522, -1.14194e-09, 0.872028, 0.86826, 0.0519946, 0.868088, -0.870632, 0.11973, 3.28026, -3.36056)
-h_offset = 0.22
+transform = Transform3D(-0.0329057, -0.754871, 0.654975, 8.94042e-08, 0.655308, 0.755304, -0.999427, 0.0248539, -0.0215648, 3.35499, 1.33219, 4.38805)
+h_offset = 0.72
 v_offset = 1.0
+projection = 1
 current = true
-fov = 87.0
-size = 3.53
-near = 0.001
-far = 4007.19
+size = 2.13
 
 [node name="PhantomCameraHost" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem/Camera3D"]
 script = ExtResource("1_jaeu8")
@@ -3712,9 +3775,10 @@ extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_pk1ti")
 skeleton = NodePath("../../..")
 
-[node name="PhantomCamera3D" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
+[node name="livingroom" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
 transform = Transform3D(-1.22505, 0.0368442, -0.0369522, -1.14194e-09, 0.872028, 0.86826, 0.0519946, 0.868088, -0.870632, 0.11973, 3.28026, -3.36056)
 script = ExtResource("3_gj8k4")
+priority = 3
 follow_mode = 4
 follow_target = NodePath("../../../../Characters/Dalton")
 follow_path = NodePath("../Paths/Pathlivingroom")
@@ -3728,11 +3792,41 @@ look_at_offset = Vector3(-0.17, -0.74, -1.54)
 look_at_damping = true
 look_at_damping_value = 0.35
 
-[node name="PhantomCamera3D2" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91889, 0, 6.64371)
+[node name="hall" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
+transform = Transform3D(-0.0329057, -0.754871, 0.654975, 8.94042e-08, 0.655308, 0.755304, -0.999427, 0.0248539, -0.0215648, 3.35499, 1.33219, 4.38805)
 script = ExtResource("3_gj8k4")
+priority = 4
+follow_mode = 4
+follow_target = NodePath("../../../../Characters/Dalton")
+follow_path = NodePath("../Paths/hallpath")
+look_at_mode = 2
+look_at_target = NodePath("../../../../Characters/Dalton")
 tween_resource = SubResource("Resource_if2me")
 camera_3d_resource = SubResource("Resource_mqmls")
+follow_damping = true
+look_at_offset = Vector3(0.13, 0.35, -0.32)
+look_at_damping = true
+look_at_damping_value = 0.331
+
+[node name="closetlook" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(0.697165, 0.335464, -0.633581, 0, 0.883766, 0.46793, 0.716911, -0.326224, 0.616131, -0.358, 1.879, -0.017)
+script = ExtResource("3_gj8k4")
+priority = 2
+tween_resource = SubResource("Resource_bxbx0")
+camera_3d_resource = SubResource("Resource_lidhj")
+
+[node name="bookshelflook" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(-0.178802, -0.211275, 0.960933, 0, 0.976672, 0.214735, -0.983885, 0.0383952, -0.174631, 2.02718, 1.61246, -0.272477)
+script = ExtResource("3_gj8k4")
+priority = 1
+tween_resource = SubResource("Resource_lp1qp")
+camera_3d_resource = SubResource("Resource_e64gf")
+
+[node name="kitchen" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(-0.999854, 0.0029964, 0.0168389, 0.0107161, 0.877081, 0.480224, -0.0133301, 0.480334, -0.876985, -1.67274, 4.9703, -2.94996)
+script = ExtResource("3_gj8k4")
+tween_resource = SubResource("Resource_a8tiw")
+camera_3d_resource = SubResource("Resource_5xxw7")
 
 [node name="FirstHouseUpdated" parent="SubViewportContainer" instance=ExtResource("1_t7mpi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004475, 0, -0.718526)
