@@ -1,7 +1,8 @@
 extends Interactor
 
 @export var player: CharacterBody3D
-
+@onready var highlight = $CollisionShape3D/Alert
+@onready var animplay = $CollisionShape3D/AnimationPlayer
 var cached_closest: Interactable
 
 func _ready() -> void:
@@ -12,9 +13,12 @@ func _physics_process(_delta: float) -> void:
 	if new_closest != cached_closest:
 		if is_instance_valid(cached_closest):
 			unfocus(cached_closest)
+			highlight.hide()
+			animplay.play("RESET")
 		if new_closest:
 			focus(new_closest)
-
+			highlight.show()
+			animplay.play("Alert_Animation")
 		cached_closest = new_closest
 
 func _input(event: InputEvent) -> void:

@@ -77,7 +77,7 @@ script = ExtResource("5_momqu")
 cull_mask = 1048575
 h_offset = 0.22
 v_offset = 1.0
-projection = 1
+projection = 0
 fov = 87.0
 size = 3.53
 frustum_offset = Vector2(0, 0)
@@ -3693,10 +3693,9 @@ transform = Transform3D(0.768661, 0, 0, 0, 0.999162, 0.0237558, 0, -0.040934, 0.
 curve = SubResource("Curve3D_tdxtl")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-1.22505, 0.0368442, -0.0369522, -1.14194e-09, 0.872028, 0.86826, 0.0519946, 0.868088, -0.870632, 0.119727, 3.28026, -3.36056)
+transform = Transform3D(-1.22505, 0.0368442, -0.0369522, -1.14194e-09, 0.872028, 0.86826, 0.0519946, 0.868088, -0.870632, 0.11973, 3.28026, -3.36056)
 h_offset = 0.22
 v_offset = 1.0
-projection = 1
 current = true
 fov = 87.0
 size = 3.53
@@ -3714,7 +3713,7 @@ mesh = SubResource("QuadMesh_pk1ti")
 skeleton = NodePath("../../..")
 
 [node name="PhantomCamera3D" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
-transform = Transform3D(-1.22505, 0.0368442, -0.0369522, -1.14194e-09, 0.872028, 0.86826, 0.0519946, 0.868088, -0.870632, 0.119727, 3.28026, -3.36056)
+transform = Transform3D(-1.22505, 0.0368442, -0.0369522, -1.14194e-09, 0.872028, 0.86826, 0.0519946, 0.868088, -0.870632, 0.11973, 3.28026, -3.36056)
 script = ExtResource("3_gj8k4")
 follow_mode = 4
 follow_target = NodePath("../../../../Characters/Dalton")

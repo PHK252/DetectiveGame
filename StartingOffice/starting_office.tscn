@@ -1,4 +1,4 @@
-[gd_scene load_steps=216 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=215 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -1388,44 +1388,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fghxv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lm4r"]
-resource_name = "CaseFile"
-cull_mode = 2
-albedo_texture = ExtResource("10_1d1wp")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_dtfte"]
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
-"format": 34896613377,
-"index_count": 6,
-"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
-"name": "CaseFile",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAAP7/AAD//wAA/v8AAAAAAAAAAAAA//8AAAAAAAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_in3td"]
-resource_name = "StartingOffice_Plane_004"
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
-"attribute_data": PackedByteArray("//+Jf+CAZoBp/yL/vYD//w=="),
-"format": 34896613399,
-"index_count": 6,
-"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
-"material": SubResource("StandardMaterial3D_4lm4r"),
-"name": "CaseFile",
-"primitive": 3,
-"uv_scale": Vector4(2.00472, 2.00461, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAAP7/zf///wAA/v/N/wAAAAAAAM3///8AAAAAzf8awDcAGsA3ABrANwAawDcA")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_dtfte")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2dbr"]
 resource_name = "map"
 transparency = 2
@@ -1468,7 +1430,45 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ut7is")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iwf58"]
-size = Vector3(0.688232, 1, 0.465088)
+size = Vector3(0.651855, 1, 0.362122)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lm4r"]
+resource_name = "CaseFile"
+cull_mode = 2
+albedo_texture = ExtResource("10_1d1wp")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dtfte"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"name": "CaseFile",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP7/AAD//wAA/v8AAAAAAAAAAAAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_in3td"]
+resource_name = "StartingOffice_Plane_004"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"attribute_data": PackedByteArray("//+Jf+CAZoBp/yL/vYD//w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"material": SubResource("StandardMaterial3D_4lm4r"),
+"name": "CaseFile",
+"primitive": 3,
+"uv_scale": Vector4(2.00472, 2.00461, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP7/zf///wAA/v/N/wAAAAAAAM3///8AAAAAzf8awDcAGsA3ABrANwAawDcA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dtfte")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6u8x"]
 resource_name = "Picture1"
@@ -2579,9 +2579,6 @@ volumetric_fog_length = 45.52
 volumetric_fog_detail_spread = 2.7991
 volumetric_fog_ambient_inject = 0.21
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rh8sh"]
-size = Vector3(0.991333, 2.15057, 0.426758)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaf5s"]
 resource_name = "Fox"
 render_priority = 0
@@ -3030,11 +3027,6 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_xbjvr")
 skeleton = NodePath("")
 
-[node name="Exposition" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
-transform = Transform3D(0.163557, 0.00446792, 0.00416249, -0.00408914, 0.020184, 0.189186, 0.0039595, -0.163714, 0.0234381, 1.77291, 0.744935, 1.51897)
-mesh = SubResource("ArrayMesh_in3td")
-skeleton = NodePath("")
-
 [node name="corkboard_001" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00353871)
 mesh = SubResource("ArrayMesh_krh22")
@@ -3077,8 +3069,20 @@ scale = Vector2(6.7, 6.7)
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" instance=ExtResource("17_rbnfb")]
 
 [node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43083, 1.33308, 1.32174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44902, 1.33308, 1.37322)
 shape = SubResource("BoxShape3D_iwf58")
+
+[node name="Corkboard_002" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" instance=ExtResource("17_rbnfb")]
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54932, 1.37631, 1.18642)
+
+[node name="Exposition" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
+transform = Transform3D(0.163557, 0.00446792, 0.00416249, -0.00408914, 0.020184, 0.189186, 0.0039595, -0.163714, 0.0234381, 1.77291, 0.744935, 1.51897)
+mesh = SubResource("ArrayMesh_in3td")
+skeleton = NodePath("")
 
 [node name="JokePaper" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 transform = Transform3D(0.0916691, 0.00250414, 0.00233296, -0.00200453, 5.41334e-05, 0.106844, 0.00248177, -0.0924515, 0.000125749, 1.29931, 1.07016, 1.53722)
@@ -3315,8 +3319,11 @@ script = ExtResource("21_fgkip")
 [node name="PlayerInteractor" parent="Dalton/CharacterBody3D" instance=ExtResource("26_jet1p")]
 
 [node name="CollisionShape3D" parent="Dalton/CharacterBody3D/PlayerInteractor" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043335, 0.575287, 0.0483398)
-shape = SubResource("BoxShape3D_rh8sh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00904569, 0.810296, -0.0230247)
+
+[node name="Alert" parent="Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.223, 0)
+visible = false
 
 [node name="Marker2D" type="Marker2D" parent="Dalton/CharacterBody3D"]
 position = Vector2(1083, 659)
@@ -3325,59 +3332,59 @@ position = Vector2(1083, 659)
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(-9.57247e-10, -5.75171e-08, -3.00037)
+bones/1/position = Vector3(-2.65255e-09, -5.75171e-08, -2.96159)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.0145326, 0.327733, 0.871499, -0.364513)
+bones/3/rotation = Quaternion(0.0042834, 0.356054, 0.858414, -0.369232)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.246157, 0.0676919, -0.0395183, 0.966055)
+bones/4/rotation = Quaternion(-0.304382, 0.0211959, -0.0372712, 0.951585)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.507028, -0.092062, 0.0943886, 0.851785)
+bones/5/rotation = Quaternion(0.533427, -0.0504866, 0.0726596, 0.841206)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.0145325, 0.327733, 0.871499, 0.364513)
-bones/9/rotation = Quaternion(-0.246157, -0.0676919, 0.0395183, 0.966055)
+bones/8/rotation = Quaternion(-0.00428337, 0.356054, 0.858414, 0.369232)
+bones/9/rotation = Quaternion(-0.304382, -0.0211959, 0.0372712, 0.951584)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.507028, 0.092062, -0.0943885, 0.851785)
+bones/10/rotation = Quaternion(0.533427, 0.0504866, -0.0726596, 0.841206)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-9.57247e-10, 3.00037, -3.38712e-07)
+bones/12/position = Vector3(-2.65255e-09, 2.96159, -2.39134e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
 bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.0828313, 1.1549e-07, -1.31871e-08, 0.996564)
-bones/16/rotation = Quaternion(0.0325523, 4.11523e-09, 1.27866e-08, 0.99947)
+bones/15/rotation = Quaternion(-0.0757502, 1.1537e-07, -1.40254e-08, 0.997127)
+bones/16/rotation = Quaternion(0.0176046, 3.85763e-09, 1.27744e-08, 0.999845)
 bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0310525, -0.00541527, -0.00985017, 0.999455)
+bones/18/rotation = Quaternion(0.060299, 0.00451145, -0.0103039, 0.998117)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0310525, 0.00541527, 0.00985018, 0.999455)
+bones/20/rotation = Quaternion(0.060299, -0.00451145, 0.0103039, 0.998117)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.258272, -0.148711, -0.398324, 0.867478)
+bones/22/rotation = Quaternion(-0.264552, -0.148187, -0.385383, 0.871512)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00329183, -0.000442592, -0.30207, 0.95328)
+bones/23/rotation = Quaternion(-0.00371565, -0.000436509, -0.340963, 0.940069)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.258272, 0.148711, 0.398324, 0.867478)
+bones/26/rotation = Quaternion(-0.264552, 0.148187, 0.385383, 0.871512)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00329201, 0.000442643, 0.302071, 0.95328)
+bones/27/rotation = Quaternion(-0.00371589, 0.000436473, 0.340965, 0.940069)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/28/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.978195, 2.18963, -0.0311821)
-bones/33/position = Vector3(-9.57247e-10, 3.00037, -1.17122e-07)
+bones/31/position = Vector3(0.952376, 2.18228, -0.0311821)
+bones/33/position = Vector3(-2.65255e-09, 2.96159, -1.17122e-07)
 bones/35/rotation = Quaternion(0.0106232, 0.707027, 0.707027, 0.0106232)
-bones/36/position = Vector3(-0.978195, 2.18963, -0.0311821)
+bones/36/position = Vector3(-0.952376, 2.18228, -0.0311821)
 
 [node name="detective" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_aih6b")
@@ -3398,9 +3405,13 @@ parameters/BlendSpace1D/blend_position = 0.0
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/firsthouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_firsthouse_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/secondhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_secondhouse_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/thirdhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_thirdhouse_button_pressed"]
+[connection signal="focused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_focused"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_interacted"]
+[connection signal="unfocused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_unfocused"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable"]
+[editable path="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable"]
 [editable path="SubViewportContainer/SubViewport/lamp"]
 [editable path="Dalton/CharacterBody3D/PlayerInteractor"]
 [editable path="Dalton/CharacterBody3D/DetectiveT7"]
