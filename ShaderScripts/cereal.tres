@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bhph0h7gi5hhc"]
+
+[ext_resource type="Shader" uid="uid://dmnp3nn16ok6d" path="res://ShaderScripts/cerealK.tres" id="1_dmhd4"]
+[ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_0bmmj"]
+[ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_3rfsd"]
+[ext_resource type="Texture2D" uid="uid://b4qpdenf20cq0" path="res://FirstHouse/FirstHouseUpdated_cerealmap.png" id="4_jov1o"]
+
+[resource]
+resource_name = "Cereal"
+render_priority = 0
+shader = ExtResource("1_dmhd4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_jov1o")
+shader_parameter/color_gradient = ExtResource("2_0bmmj")
+shader_parameter/fresnel_gradient = ExtResource("3_3rfsd")

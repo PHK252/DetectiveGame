@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b8h6xqtqfgr5c"]
+
+[ext_resource type="Shader" uid="uid://b61rf48j4iwd8" path="res://ShaderScripts/chips.tres" id="1_8bwhm"]
+[ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_gdodg"]
+[ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_u1n8w"]
+[ext_resource type="Texture2D" uid="uid://nx3ygxr1j2ft" path="res://FirstHouse/FirstHouseUpdated_ruffles.png" id="4_foptr"]
+
+[resource]
+resource_name = "plasticbag2"
+render_priority = 0
+shader = ExtResource("1_8bwhm")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_foptr")
+shader_parameter/color_gradient = ExtResource("2_gdodg")
+shader_parameter/fresnel_gradient = ExtResource("3_u1n8w")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=216 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bg3dk0cie3p3t" path="res://StartingOffice/lamp_EnvironmentPalette.png" id="22_d2453"]
 [ext_resource type="Shader" path="res://ShaderScripts/Dalton.gdshader" id="22_t8sq5"]
 [ext_resource type="Texture2D" uid="uid://d2id6h4mxag3v" path="res://CharacterStuff/Dalton/DetectiveT7_Fox1.png" id="24_en0x6"]
+[ext_resource type="Shader" uid="uid://nav80wtg76hi" path="res://ShaderScripts/plank.tres" id="25_jbtrc"]
 [ext_resource type="PackedScene" uid="uid://065g7k1ysem6" path="res://GeneralScripts/interaction/PlayerInteractor.tscn" id="26_jet1p"]
 
 [sub_resource type="Curve3D" id="Curve3D_acv4t"]
@@ -2335,11 +2336,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6jap5")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl03n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gq2s2"]
 resource_name = "corkboard"
-cull_mode = 2
-albedo_texture = ExtResource("9_7mukp")
-texture_filter = 2
+render_priority = 0
+shader = ExtResource("25_jbtrc")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("9_7mukp")
+shader_parameter/color_gradient = ExtResource("7_pxrpe")
+shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nu4i7"]
 _surfaces = [{
@@ -2363,7 +2376,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 30,
 "index_data": PackedByteArray("BQALAAYABQAKAAsACgAJAAsACgAIAAkACAACAAkACAABAAIABAAIAAoABAAAAAgACwADAAcACwAJAAMA"),
-"material": SubResource("StandardMaterial3D_bl03n"),
+"material": SubResource("ShaderMaterial_gq2s2"),
 "name": "corkboard",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -3312,59 +3325,59 @@ position = Vector2(1083, 659)
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(-2.18047e-09, -5.75171e-08, -2.97239)
+bones/1/position = Vector3(-3.04903e-09, -5.75171e-08, -2.95252)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.00691129, 0.34876, 0.861936, -0.367948)
+bones/3/rotation = Quaternion(0.00218676, 0.361892, 0.855516, -0.370299)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.28935, 0.0339947, -0.0384756, 0.955845)
+bones/4/rotation = Quaternion(-0.316426, 0.0105418, -0.0359663, 0.947877)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.526655, -0.0619719, 0.0789364, 0.844135)
+bones/5/rotation = Quaternion(0.538821, -0.0408958, 0.0672755, 0.838733)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.00691128, 0.34876, 0.861936, 0.367948)
-bones/9/rotation = Quaternion(-0.28935, -0.0339947, 0.0384756, 0.955845)
+bones/8/rotation = Quaternion(-0.00218673, 0.361892, 0.855516, 0.370299)
+bones/9/rotation = Quaternion(-0.316426, -0.0105418, 0.0359662, 0.947877)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.526655, 0.061972, -0.0789364, 0.844135)
+bones/10/rotation = Quaternion(0.538821, 0.0408958, -0.0672756, 0.838733)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-2.18047e-09, 2.97239, -2.14396e-07)
+bones/12/position = Vector3(-3.04903e-09, 2.95252, -2.39425e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
 bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.0777224, 1.15404e-07, -1.3792e-08, 0.996975)
-bones/16/rotation = Quaternion(0.0217674, 3.92945e-09, 1.27781e-08, 0.999763)
+bones/15/rotation = Quaternion(-0.0740936, 1.15341e-07, -1.42213e-08, 0.997251)
+bones/16/rotation = Quaternion(0.0141083, 3.79726e-09, 1.27711e-08, 0.999901)
 bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0521599, 0.0017474, -0.0101785, 0.998585)
+bones/18/rotation = Quaternion(0.0671296, 0.00683209, -0.0104085, 0.997667)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0521599, -0.0017474, 0.0101785, 0.998585)
+bones/20/rotation = Quaternion(0.0671296, -0.00683209, 0.0104086, 0.997667)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.262818, -0.148313, -0.388787, 0.870502)
+bones/22/rotation = Quaternion(-0.266001, -0.14809, -0.382631, 0.872299)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00360296, -0.00043822, -0.330623, 0.943756)
+bones/23/rotation = Quaternion(-0.00380748, -0.000435022, -0.349388, 0.93697)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.262818, 0.148313, 0.388787, 0.870502)
+bones/26/rotation = Quaternion(-0.266002, 0.14809, 0.38263, 0.8723)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00360317, 0.000438192, 0.330624, 0.943756)
+bones/27/rotation = Quaternion(-0.00380769, 0.000435038, 0.349389, 0.93697)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/28/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.959565, 2.18433, -0.0311821)
-bones/33/position = Vector3(-2.18047e-09, 2.97239, -1.17122e-07)
+bones/31/position = Vector3(0.946337, 2.18056, -0.0311821)
+bones/33/position = Vector3(-3.04903e-09, 2.95252, -1.17122e-07)
 bones/35/rotation = Quaternion(0.0106232, 0.707027, 0.707027, 0.0106232)
-bones/36/position = Vector3(-0.959565, 2.18433, -0.0311821)
+bones/36/position = Vector3(-0.946337, 2.18056, -0.0311821)
 
 [node name="detective" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_aih6b")

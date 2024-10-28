@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c1ok0t0qpkwp4"]
+
+[ext_resource type="Shader" uid="uid://cx2353xdcrjyc" path="res://ShaderScripts/pillow.tres" id="1_ki0sf"]
+[ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_ig5h6"]
+[ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_8v4cb"]
+
+[resource]
+resource_name = "Pillow"
+render_priority = 0
+shader = ExtResource("1_ki0sf")
+shader_parameter/albedo = Color(0.925559, 0.556852, 0.458808, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.329545
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = ExtResource("2_ig5h6")
+shader_parameter/fresnel_gradient = ExtResource("3_8v4cb")
