@@ -18,6 +18,8 @@ config/icon="res://Misc/icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+SaveLoad="*res://GeneralScripts/Save System/Save_Load.gd"
+GlobalVars="*res://GeneralScripts/Global Variables/GlobalVars.gd"
 
 [dialogic]
 
@@ -35,7 +37,15 @@ directories/dtl_directory={
 }
 layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres"]
 layout/default_style="res://Dialogue Stuff/Text_Bubble.tres"
-variables={}
+variables={
+"Character Aff Points": {
+"Juniper": 0,
+"Micah": 0,
+"Quincy": 0,
+"Skylar": 0,
+"Theo": 0
+}
+}
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
