@@ -3758,7 +3758,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41137, 1.34846, 3.47747)
 curve = SubResource("Curve3D_5fejm")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-0.0329057, -0.754871, 0.654975, 8.94042e-08, 0.655308, 0.755304, -0.999427, 0.0248539, -0.0215648, 3.35499, 1.33219, 4.38805)
+transform = Transform3D(-0.0328927, -0.754745, 0.65512, 2.98014e-08, 0.655454, 0.755178, -0.999427, 0.0248399, -0.021561, 3.35499, 1.33219, 4.38805)
 h_offset = 0.72
 v_offset = 1.0
 projection = 1
@@ -3793,7 +3793,7 @@ look_at_damping = true
 look_at_damping_value = 0.35
 
 [node name="hall" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
-transform = Transform3D(-0.0329057, -0.754871, 0.654975, 8.94042e-08, 0.655308, 0.755304, -0.999427, 0.0248539, -0.0215648, 3.35499, 1.33219, 4.38805)
+transform = Transform3D(-0.0328927, -0.754745, 0.65512, 2.98014e-08, 0.655454, 0.755178, -0.999427, 0.0248399, -0.021561, 3.35499, 1.33219, 4.38805)
 script = ExtResource("3_gj8k4")
 priority = 4
 follow_mode = 4

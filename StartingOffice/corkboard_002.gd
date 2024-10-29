@@ -4,6 +4,7 @@ extends MeshInstance3D
 @onready var cam_anim = $"../../CameraSystem/Corkboard cam/AnimationPlayer"
 @onready var main_cam = $"../../CameraSystem/PhantomCamera3D"
 @onready var player = $"../../../../Dalton/CharacterBody3D"
+@onready var team_pic = $"../../../../UI/TeamPic"
 @onready var mouse_pos = Vector2(0,0)
 #@onready var current_rot = Vector3(-3, 179.1, .4)
 #signal up
@@ -19,7 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
-	if mouse_pos.y >= 137:
+	if mouse_pos.y >= 160:
 		cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
 	elif mouse_pos.y < 50:
 		cork_cam.set_rotation_degrees(Vector3(4, 176.6, .4))
@@ -32,13 +33,19 @@ func _process(delta):
 		main_cam.priority = 1
 		await get_tree().create_timer(.03).timeout
 		player.show()
+		player.start_player()
+		
+		team_pic.hide()
 	
 
 func _on_interactable_interacted(interactor):
 	cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
 	cork_cam.priority = 1
 	main_cam.priority = 0
+	player.stop_player()
 	player.hide()
+	
+	team_pic.show()
 	
 
 
@@ -46,8 +53,7 @@ func _on_corkboard_cam_became_active():
 	cam_anim.play("Cam_idle")
 
 func _on_interactable_focused(interactor):
-	#await get_tree().create_timer(5).timeout
-	#player.stop_player()
+	#await get_tree().create_timer(3).timeout
 	pass
 #An failed attempt at rotation tweening
 

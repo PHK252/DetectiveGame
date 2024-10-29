@@ -1,4 +1,4 @@
-[gd_scene load_steps=224 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=223 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -26,6 +26,7 @@
 [ext_resource type="Shader" path="res://ShaderScripts/pixel.gdshader" id="18_rugna"]
 [ext_resource type="Script" path="res://StartingOffice/corkboard_002.gd" id="19_efoaq"]
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/dalton.gd" id="21_fgkip"]
+[ext_resource type="Script" path="res://StartingOffice/Case_File.gd" id="21_v8rqp"]
 [ext_resource type="PackedScene" uid="uid://dy2ngrst3vkxs" path="res://StartingOffice/lamp.glb" id="21_wyk6p"]
 [ext_resource type="PackedScene" uid="uid://cvikq72b5npua" path="res://CharacterStuff/Dalton/DetectiveT7.glb" id="22_al7j8"]
 [ext_resource type="Texture2D" uid="uid://bg3dk0cie3p3t" path="res://StartingOffice/lamp_EnvironmentPalette.png" id="22_d2453"]
@@ -33,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://d2id6h4mxag3v" path="res://CharacterStuff/Dalton/DetectiveT7_Fox1.png" id="24_en0x6"]
 [ext_resource type="Shader" uid="uid://nav80wtg76hi" path="res://ShaderScripts/plank.tres" id="25_jbtrc"]
 [ext_resource type="PackedScene" uid="uid://065g7k1ysem6" path="res://GeneralScripts/interaction/PlayerInteractor.tscn" id="26_jet1p"]
-[ext_resource type="Script" path="res://StartingOffice/team_pic.gd" id="34_4bfs2"]
 
 [sub_resource type="Curve3D" id="Curve3D_acv4t"]
 bake_interval = 1.0
@@ -1527,26 +1527,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dtfte")
 
-[sub_resource type="GDScript" id="GDScript_d1as2"]
-script/source = "extends MeshInstance3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-
-func _on_input_event(camera, event, event_position, normal, shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			print(\"Cicked!\")
-"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btf06"]
+size = Vector2(28.695, 16)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6u8x"]
 resource_name = "Picture1"
@@ -2835,9 +2817,6 @@ nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_l8ckr")
 nodes/BlendSpace1D/position = Vector2(30, 130)
 node_connections = [&"output", 0, &"BlendSpace1D"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hutym"]
-size = Vector2(425.25, 274.25)
-
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.474792, 1.68375, 0)
 script = ExtResource("1_aawn4")
@@ -3177,7 +3156,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56683, 1.37631, 1.44586)
 transform = Transform3D(0.163557, 0.00446792, 0.00416249, -0.00408914, 0.020184, 0.189186, 0.0039595, -0.163714, 0.0234381, 1.77291, 0.744935, 1.51897)
 mesh = SubResource("ArrayMesh_in3td")
 skeleton = NodePath("")
-script = SubResource("GDScript_d1as2")
+script = ExtResource("21_v8rqp")
+
+[node name="Area2D" type="Area2D" parent="SubViewportContainer/SubViewport/StartingOffice/Exposition"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/StartingOffice/Exposition/Area2D"]
+position = Vector2(8.3475, 69)
+shape = SubResource("RectangleShape2D_btf06")
 
 [node name="JokePaper" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 transform = Transform3D(0.0916691, 0.00250414, 0.00233296, -0.00200453, 5.41334e-05, 0.106844, 0.00248177, -0.0924515, 0.000125749, 1.29931, 1.07016, 1.53722)
@@ -3427,59 +3412,59 @@ position = Vector2(1083, 659)
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(-9.69143e-10, -5.75171e-08, -3.0001)
+bones/1/position = Vector3(-8.13861e-10, -5.75171e-08, -3.00365)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.0144523, 0.327953, 0.871403, -0.364547)
+bones/3/rotation = Quaternion(0.0155, 0.32507, 0.872653, -0.364096)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.24661, 0.067361, -0.0395237, 0.965963)
+bones/4/rotation = Quaternion(-0.240699, 0.071679, -0.0394526, 0.967145)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.507235, -0.0917672, 0.0942444, 0.85171)
+bones/5/rotation = Quaternion(0.504533, -0.0956138, 0.0961245, 0.852681)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.0144523, 0.327953, 0.871403, 0.364547)
-bones/9/rotation = Quaternion(-0.24661, -0.067361, 0.0395237, 0.965963)
+bones/8/rotation = Quaternion(-0.0155, 0.32507, 0.872653, 0.364096)
+bones/9/rotation = Quaternion(-0.240699, -0.071679, 0.0394526, 0.967145)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.507235, 0.0917672, -0.0942444, 0.85171)
+bones/10/rotation = Quaternion(0.504533, 0.0956139, -0.0961245, 0.852681)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-9.69144e-10, 3.0001, -3.37766e-07)
+bones/12/position = Vector3(-8.13861e-10, 3.00365, -3.50111e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
 bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.0827816, 1.15489e-07, -1.3193e-08, 0.996568)
-bones/16/rotation = Quaternion(0.0324474, 4.11343e-09, 1.27865e-08, 0.999473)
+bones/15/rotation = Quaternion(-0.08343, 1.155e-07, -1.31162e-08, 0.996514)
+bones/16/rotation = Quaternion(0.0338162, 4.13698e-09, 1.27875e-08, 0.999428)
 bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0312579, -0.00534563, -0.00985338, 0.999449)
+bones/18/rotation = Quaternion(0.0285775, -0.00625465, -0.00981136, 0.999524)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0312579, 0.00534562, 0.0098534, 0.999449)
+bones/20/rotation = Quaternion(0.0285775, 0.00625464, 0.00981138, 0.999524)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.258317, -0.148707, -0.398226, 0.867511)
+bones/22/rotation = Quaternion(-0.257732, -0.148767, -0.399511, 0.867083)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00329501, -0.000442548, -0.302362, 0.953187)
+bones/23/rotation = Quaternion(-0.00325349, -0.000443125, -0.298551, 0.954388)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.258317, 0.148707, 0.398226, 0.867511)
+bones/26/rotation = Quaternion(-0.257733, 0.148767, 0.399511, 0.867083)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00329518, 0.000442601, 0.302363, 0.953187)
+bones/27/rotation = Quaternion(-0.00325366, 0.00044314, 0.298552, 0.954388)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/28/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.978014, 2.18958, -0.0311821)
-bones/33/position = Vector3(-9.69144e-10, 3.0001, -1.17122e-07)
+bones/31/position = Vector3(0.980379, 2.19025, -0.0311821)
+bones/33/position = Vector3(-8.13861e-10, 3.00365, -1.17122e-07)
 bones/35/rotation = Quaternion(0.0106232, 0.707027, 0.707027, 0.0106232)
-bones/36/position = Vector3(-0.978014, 2.18958, -0.0311821)
+bones/36/position = Vector3(-0.980379, 2.19025, -0.0311821)
 
 [node name="detective" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_aih6b")
@@ -3497,14 +3482,6 @@ parameters/BlendSpace1D/blend_position = 0.0
 
 [node name="UI" type="Node" parent="."]
 
-[node name="TeamPic" type="Area2D" parent="UI"]
-visible = false
-script = ExtResource("34_4bfs2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/TeamPic"]
-position = Vector2(755.375, 592.875)
-shape = SubResource("RectangleShape2D_hutym")
-
 [connection signal="became_active" from="SubViewportContainer/SubViewport/CameraSystem/Corkboard cam" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_corkboard_cam_became_active"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/firsthouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_firsthouse_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/secondhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_secondhouse_button_pressed"]
@@ -3514,7 +3491,7 @@ shape = SubResource("RectangleShape2D_hutym")
 [connection signal="unfocused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_unfocused"]
 [connection signal="focused" from="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_interactable_focused"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_interactable_interacted"]
-[connection signal="input_event" from="UI/TeamPic" to="UI/TeamPic" method="_on_input_event"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/StartingOffice/Exposition/Area2D" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_area_2d_input_event"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable"]
