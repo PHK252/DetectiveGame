@@ -3,7 +3,6 @@ extends Node
 #Global
 #subject to lengthen
 
-@onready var player_move = true
 @onready var first_house = ""
 #not quite sure if we need this one
 #@onready var second_house = ""
