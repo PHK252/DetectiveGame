@@ -5,6 +5,10 @@ extends MeshInstance3D
 @onready var main_cam = $"../../CameraSystem/PhantomCamera3D"
 @onready var player = $"../../../../Dalton/CharacterBody3D"
 @onready var team_pic = $"../../../../UI/TeamPic"
+@onready var partner_pic = $"../../../../UI/PartnerPic"
+@onready var news = $"../../../../UI/News"
+@onready var contact = $"../../../../UI/Contact"
+@onready var missing = $"../../../../UI/Missing Persons"
 @onready var mouse_pos = Vector2(0,0)
 #@onready var current_rot = Vector3(-3, 179.1, .4)
 #signal up
@@ -20,22 +24,43 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
-	if mouse_pos.y >= 160:
-		cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
-	elif mouse_pos.y < 50:
-		cork_cam.set_rotation_degrees(Vector3(4, 176.6, .4))
+	if GlobalVars.in_look_screen == false:
+		if mouse_pos.y >= 170:
+			cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
+		elif mouse_pos.y < 12:
+			cork_cam.set_rotation_degrees(Vector3(4, 176.6, .4))
+		else:
+			cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
+		pass
 	else:
 		cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
-	pass
-	
-	if Input.is_action_just_pressed("Exit"):
-		cork_cam.priority = 0
-		main_cam.priority = 1
-		await get_tree().create_timer(.03).timeout
-		player.show()
-		player.start_player()
 		
+	if GlobalVars.in_look_screen == false:
+		if Input.is_action_just_pressed("Exit"):
+			cork_cam.priority = 0
+			main_cam.priority = 1
+			await get_tree().create_timer(.03).timeout
+			player.show()
+			player.start_player()
+			
+			team_pic.hide()
+			partner_pic.hide()
+			news.hide()
+			contact.hide()
+			missing.hide()
+	
+	if GlobalVars.in_look_screen == true:
 		team_pic.hide()
+		partner_pic.hide()
+		news.hide()
+		contact.hide()
+		missing.hide()
+	elif GlobalVars.in_look_screen == false and cork_cam.priority == 1:
+		team_pic.show()
+		partner_pic.show()
+		news.show()
+		contact.show()
+		missing.show()
 	
 
 func _on_interactable_interacted(interactor):
@@ -46,6 +71,10 @@ func _on_interactable_interacted(interactor):
 	player.hide()
 	
 	team_pic.show()
+	partner_pic.show()
+	news.show()
+	contact.show()
+	missing.show()
 	
 
 

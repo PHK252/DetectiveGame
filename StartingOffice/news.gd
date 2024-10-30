@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var object = $"."
-@onready var look = $"../TeamPic Look"
+@onready var look = $"../Partner Look"
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
@@ -10,4 +10,4 @@ func _on_input_event(viewport, event, shape_idx):
 				object.hide()
 				look.show()
 				GlobalVars.in_look_screen = true
-				print("team")
+				print("news")
