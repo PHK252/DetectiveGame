@@ -4,6 +4,7 @@ extends Node
 #subject to lengthen
 @onready var player_move = true
 @onready var in_look_screen = false
+@onready var in_dialogue = false
 @onready var first_house = ""
 #not quite sure if we need this one
 #@onready var second_house = ""

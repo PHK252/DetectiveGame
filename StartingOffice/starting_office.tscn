@@ -1,4 +1,4 @@
-[gd_scene load_steps=232 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=238 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -15,6 +15,7 @@
 [ext_resource type="Shader" path="res://ShaderScripts/corkboard.gdshader" id="10_b4rtr"]
 [ext_resource type="Texture2D" uid="uid://dard27ubxisto" path="res://StartingOffice/StartingOffice_Map.png" id="11_7m8nc"]
 [ext_resource type="Texture2D" uid="uid://cgootv0oh0ocv" path="res://StartingOffice/StartingOffice_Picture1.png" id="12_k4guc"]
+[ext_resource type="Script" path="res://StartingOffice/doughnut_box.gd" id="13_hff4c"]
 [ext_resource type="Texture2D" uid="uid://kpw8bm4kvivb" path="res://StartingOffice/StartingOffice_Newspaper2.png" id="13_pvce0"]
 [ext_resource type="Texture2D" uid="uid://c3j8x2i1wetq" path="res://StartingOffice/StartingOffice_Newspaper1.png" id="14_rpyof"]
 [ext_resource type="Texture2D" uid="uid://bye2qfgq68sus" path="res://StartingOffice/StartingOffice_Picture2.png" id="15_eiup2"]
@@ -25,6 +26,7 @@
 [ext_resource type="Shader" path="res://ShaderScripts/environmentpalette.gdshader" id="18_i4am7"]
 [ext_resource type="Shader" path="res://ShaderScripts/pixel.gdshader" id="18_rugna"]
 [ext_resource type="Script" path="res://StartingOffice/corkboard_002.gd" id="19_efoaq"]
+[ext_resource type="Script" path="res://StartingOffice/Case_File.gd" id="21_2ww2x"]
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/dalton.gd" id="21_fgkip"]
 [ext_resource type="PackedScene" uid="uid://dy2ngrst3vkxs" path="res://StartingOffice/lamp.glb" id="21_wyk6p"]
 [ext_resource type="PackedScene" uid="uid://cvikq72b5npua" path="res://CharacterStuff/Dalton/DetectiveT7.glb" id="22_al7j8"]
@@ -37,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://22d8wsirr1dd" path="res://UI/Object_Look.tscn" id="35_id4dn"]
 [ext_resource type="Script" path="res://StartingOffice/partner_pic.gd" id="35_whdai"]
 [ext_resource type="Script" path="res://StartingOffice/news.gd" id="36_p4hl6"]
+[ext_resource type="Texture2D" uid="uid://bmpq40j8301kl" path="res://GeneralScripts/interaction/Alert alt small.png" id="37_bdufp"]
 [ext_resource type="Script" path="res://StartingOffice/contact.gd" id="37_q038v"]
 [ext_resource type="Script" path="res://StartingOffice/missing_persons.gd" id="38_47f4o"]
 
@@ -418,6 +421,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cjuls")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4pphc"]
+size = Vector3(0.614035, 0.477051, 0.749432)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y516g"]
 resource_name = "EnvironmentPalette"
@@ -1492,7 +1498,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ut7is")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iwf58"]
-size = Vector3(0.616455, 1.03723, 0.161087)
+size = Vector3(0.599823, 1.09958, 0.255348)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_roawh"]
+size = Vector3(0.973797, 1.10522, 0.224426)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lm4r"]
 resource_name = "CaseFile"
@@ -1531,6 +1540,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dtfte")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fbuir"]
+size = Vector3(2.51348, 1.2937, 2.24632)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6u8x"]
 resource_name = "Picture1"
@@ -2641,6 +2653,21 @@ volumetric_fog_length = 45.52
 volumetric_fog_detail_spread = 2.7991
 volumetric_fog_ambient_inject = 0.21
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hutym"]
+size = Vector2(425.25, 274.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6kdm"]
+size = Vector2(196.5, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcvup"]
+size = Vector2(352, 484)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbbtk"]
+size = Vector2(306.689, 353.575)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b17k"]
+size = Vector2(439, 322.5)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaf5s"]
 resource_name = "Fox"
 render_priority = 0
@@ -2819,21 +2846,6 @@ nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_l8ckr")
 nodes/BlendSpace1D/position = Vector2(30, 130)
 node_connections = [&"output", 0, &"BlendSpace1D"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hutym"]
-size = Vector2(425.25, 274.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6kdm"]
-size = Vector2(196.5, 220)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcvup"]
-size = Vector2(352, 484)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbbtk"]
-size = Vector2(306.689, 353.575)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b17k"]
-size = Vector2(439, 322.5)
-
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.474792, 1.68375, 0)
 script = ExtResource("1_aawn4")
@@ -2884,6 +2896,7 @@ skeleton = NodePath("../../..")
 [node name="PhantomCamera3D" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
 transform = Transform3D(-1.00627, -0.0144074, 0.0134474, -9.37338e-10, 0.689554, 0.73718, -0.0196489, 0.737841, -0.688674, 0.24593, 2.26218, -0.95404)
 script = ExtResource("3_ut7aw")
+priority = 1
 follow_mode = 4
 follow_target = NodePath("../../../../Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D/detective")
 follow_path = NodePath("../Paths/CamPath")
@@ -2959,6 +2972,13 @@ skeleton = NodePath("")
 [node name="DoughnutBox" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 mesh = SubResource("ArrayMesh_0m6vm")
 skeleton = NodePath("")
+script = ExtResource("13_hff4c")
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox" instance=ExtResource("17_rbnfb")]
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox/Interactable" index="0"]
+transform = Transform3D(0.963519, 0, 0.267642, 0, 1, 0, -0.267642, 0, 0.963519, 0.4112, 0.842704, 1.04313)
+shape = SubResource("BoxShape3D_4pphc")
 
 [node name="SmallCabinet" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 mesh = SubResource("ArrayMesh_wljwe")
@@ -3159,7 +3179,7 @@ scale = Vector2(6.7, 6.7)
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" instance=ExtResource("17_rbnfb")]
 
 [node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46672, 1.3517, 1.47374)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43661, 1.33499, 1.42661)
 shape = SubResource("BoxShape3D_iwf58")
 
 [node name="Corkboard_002" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
@@ -3168,12 +3188,20 @@ script = ExtResource("19_efoaq")
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" instance=ExtResource("17_rbnfb")]
 
 [node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52243, 1.37631, 1.39643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57622, 1.32345, 1.42435)
+shape = SubResource("BoxShape3D_roawh")
 
 [node name="Exposition" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 transform = Transform3D(0.150422, 0, 0.075116, 0, 0.165014, 0, -0.0644709, 0, 0.175259, -0.322197, 0.65215, 0.964559)
 mesh = SubResource("ArrayMesh_in3td")
 skeleton = NodePath("")
+script = ExtResource("21_2ww2x")
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/Exposition" instance=ExtResource("17_rbnfb")]
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/StartingOffice/Exposition/Interactable" index="0"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 0, 0, 1, -0.155149, -0.147095, -0.350378)
+shape = SubResource("BoxShape3D_fbuir")
 
 [node name="JokePaper" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 transform = Transform3D(0.0916691, 0.00250414, 0.00233296, -0.00200453, 5.41334e-05, 0.106844, 0.00248177, -0.0924515, 0.000125749, 1.29931, 1.13842, 1.53722)
@@ -3296,6 +3324,11 @@ transform = Transform3D(0.0104169, 0.000738717, 0.00107946, 0.00100958, 0.000968
 mesh = SubResource("ArrayMesh_h1fma")
 skeleton = NodePath("")
 
+[node name="Sprite3D" type="Sprite3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.83902, 1.4378, 1.47676)
+visible = false
+texture = ExtResource("37_bdufp")
+
 [node name="DoorFrame" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
 mesh = SubResource("ArrayMesh_2q8x5")
 skeleton = NodePath("")
@@ -3402,96 +3435,6 @@ spot_attenuation = -3.42
 spot_angle = 57.0
 spot_angle_attenuation = 0.378929
 
-[node name="Dalton" type="Node" parent="."]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Dalton"]
-collision_mask = 6
-script = ExtResource("21_fgkip")
-
-[node name="PlayerInteractor" parent="Dalton/CharacterBody3D" instance=ExtResource("26_jet1p")]
-
-[node name="CollisionShape3D" parent="Dalton/CharacterBody3D/PlayerInteractor" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00904569, 0.810296, -0.0230247)
-
-[node name="Alert" parent="Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.223, 0)
-visible = false
-
-[node name="Marker2D" type="Marker2D" parent="Dalton/CharacterBody3D"]
-position = Vector2(1083, 659)
-
-[node name="DetectiveT7" parent="Dalton/CharacterBody3D" instance=ExtResource("22_al7j8")]
-unique_name_in_owner = true
-
-[node name="Skeleton3D" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(2.88521e-09, -5.39206e-08, -3.006)
-bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.0162535, 0.323008, 0.873532, -0.36379)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.236495, 0.074555, -0.0392866, 0.967971)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.502623, -0.0981717, 0.0973223, 0.853382)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.0162534, 0.323008, 0.873532, 0.363789)
-bones/9/rotation = Quaternion(-0.236495, -0.074555, 0.0392866, 0.967971)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.502623, 0.0981717, -0.0973223, 0.853382)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(2.88521e-09, 3.006, -2.06245e-07)
-bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
-bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.0838582, 1.13806e-07, -1.08676e-08, 0.996478)
-bones/16/rotation = Quaternion(0.0347202, 9.12301e-09, 8.09751e-09, 0.999397)
-bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
-bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0268074, -0.00685486, -0.00978356, 0.999569)
-bones/18/scale = Vector3(1, 1, 1)
-bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
-bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0268074, 0.00685486, 0.00978358, 0.999569)
-bones/20/scale = Vector3(1, 1, 1)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.25734, -0.148819, -0.400423, 0.86677)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.0032245, -0.000443513, -0.295895, 0.955215)
-bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
-bones/24/scale = Vector3(1, 1, 1)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.25734, 0.148819, 0.400423, 0.86677)
-bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00322471, 0.000443509, 0.295895, 0.955215)
-bones/27/scale = Vector3(1, 1, 1)
-bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
-bones/28/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.981941, 2.19069, -0.0311821)
-bones/33/position = Vector3(2.88521e-09, 3.006, -1.13525e-07)
-bones/35/rotation = Quaternion(0.0106232, 0.707027, 0.707027, 0.0106232)
-bones/36/position = Vector3(-0.981941, 2.19069, -0.0311821)
-
-[node name="detective" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D" index="0"]
-mesh = SubResource("ArrayMesh_aih6b")
-skin = SubResource("Skin_yn1rx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dalton/CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0168054, 0.77996, -0.0376161)
-shape = SubResource("CapsuleShape3D_ayon3")
-
-[node name="AnimationTree" type="AnimationTree" parent="Dalton/CharacterBody3D"]
-root_node = NodePath("%DetectiveT7")
-tree_root = SubResource("AnimationNodeBlendTree_xg73w")
-anim_player = NodePath("../DetectiveT7/AnimationPlayer")
-parameters/BlendSpace1D/blend_position = 0.0
-
 [node name="UI" type="Node" parent="."]
 
 [node name="TeamPic" type="Area2D" parent="UI"]
@@ -3525,10 +3468,10 @@ script = ExtResource("37_q038v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Contact"]
 position = Vector2(1020.35, 935.403)
 rotation = -0.132099
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tbbtk")
 
 [node name="Missing Persons" type="Area2D" parent="UI"]
+visible = false
 script = ExtResource("38_47f4o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Missing Persons"]
@@ -3550,7 +3493,101 @@ visible = false
 [node name="Missing Look" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
+[node name="Case Look" parent="UI" instance=ExtResource("35_id4dn")]
+visible = false
+
+[node name="Dalton" type="Node" parent="."]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Dalton"]
+collision_mask = 6
+script = ExtResource("21_fgkip")
+
+[node name="PlayerInteractor" parent="Dalton/CharacterBody3D" instance=ExtResource("26_jet1p")]
+
+[node name="CollisionShape3D" parent="Dalton/CharacterBody3D/PlayerInteractor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02714, 0.841295, -0.0131378)
+
+[node name="Alert" parent="Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.223, 0)
+visible = false
+
+[node name="Marker2D" type="Marker2D" parent="Dalton/CharacterBody3D"]
+position = Vector2(1083, 659)
+
+[node name="DetectiveT7" parent="Dalton/CharacterBody3D" instance=ExtResource("22_al7j8")]
+unique_name_in_owner = true
+
+[node name="Skeleton3D" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
+bones/1/position = Vector3(5.25441e-11, -5.39206e-08, -2.94119)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.000299533, 0.368842, 0.85197, -0.371622)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.330772, -0.00262542, -0.0339813, 0.943095)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.545199, -0.0289988, 0.0604205, 0.835623)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.000299569, 0.368842, 0.85197, 0.371622)
+bones/9/rotation = Quaternion(-0.330772, 0.00262542, 0.0339813, 0.943095)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.545199, 0.0289988, -0.0604205, 0.835623)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(5.25441e-11, 2.94119, -3.06584e-07)
+bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
+bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
+bones/15/rotation = Quaternion(-0.0724524, 1.13612e-07, -1.22175e-08, 0.997372)
+bones/16/rotation = Quaternion(0.00982423, 8.69335e-09, 8.07665e-09, 0.999952)
+bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.0756485, 0.00972745, -0.0105384, 0.997031)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(0.0756485, -0.00972745, 0.0105384, 0.997031)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.267767, -0.147986, -0.379405, 0.873185)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(-0.00391813, -0.000433256, -0.359543, 0.93312)
+bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(-0.267767, 0.147986, 0.379405, 0.873185)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(-0.00391834, 0.000433236, 0.359544, 0.93312)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
+bones/28/scale = Vector3(1, 1, 1)
+bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
+bones/31/position = Vector3(0.9388, 2.17842, -0.0311821)
+bones/33/position = Vector3(5.25441e-11, 2.94119, -1.13525e-07)
+bones/35/rotation = Quaternion(0.0106232, 0.707027, 0.707027, 0.0106232)
+bones/36/position = Vector3(-0.9388, 2.17842, -0.0311821)
+
+[node name="detective" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D" index="0"]
+mesh = SubResource("ArrayMesh_aih6b")
+skin = SubResource("Skin_yn1rx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dalton/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0168054, 0.77996, -0.0376161)
+shape = SubResource("CapsuleShape3D_ayon3")
+
+[node name="AnimationTree" type="AnimationTree" parent="Dalton/CharacterBody3D"]
+root_node = NodePath("%DetectiveT7")
+tree_root = SubResource("AnimationNodeBlendTree_xg73w")
+anim_player = NodePath("../DetectiveT7/AnimationPlayer")
+parameters/BlendSpace1D/blend_position = 0.0
+
 [connection signal="became_active" from="SubViewportContainer/SubViewport/CameraSystem/Corkboard cam" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_corkboard_cam_became_active"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox" method="_on_interactable_interacted"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/firsthouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_firsthouse_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/secondhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_secondhouse_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/thirdhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_thirdhouse_button_pressed"]
@@ -3559,17 +3596,22 @@ visible = false
 [connection signal="unfocused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_unfocused"]
 [connection signal="focused" from="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_interactable_focused"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/Exposition/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_interactable_interacted"]
 [connection signal="input_event" from="UI/TeamPic" to="UI/TeamPic" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/TeamPic" to="UI/TeamPic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/TeamPic" to="UI/TeamPic" method="_on_mouse_exited"]
 [connection signal="input_event" from="UI/PartnerPic" to="UI/PartnerPic" method="_on_input_event"]
 [connection signal="input_event" from="UI/News" to="UI/News" method="_on_input_event"]
 [connection signal="input_event" from="UI/Contact" to="UI/Contact" method="_on_input_event"]
 [connection signal="input_event" from="UI/Missing Persons" to="UI/Missing Persons" method="_on_input_event"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]
+[editable path="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox/Interactable"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable"]
+[editable path="SubViewportContainer/SubViewport/StartingOffice/Exposition/Interactable"]
 [editable path="SubViewportContainer/SubViewport/lamp"]
-[editable path="Dalton/CharacterBody3D/PlayerInteractor"]
-[editable path="Dalton/CharacterBody3D/DetectiveT7"]
 [editable path="UI/TeamPic Look"]
 [editable path="UI/Partner Look"]
+[editable path="Dalton/CharacterBody3D/PlayerInteractor"]
+[editable path="Dalton/CharacterBody3D/DetectiveT7"]
