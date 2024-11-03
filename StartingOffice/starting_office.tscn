@@ -2874,8 +2874,14 @@ transform = Transform3D(0.768661, 0, 0, 0, 1, 0, 0, 0, 0.580345, -1.04407, 2.262
 curve = SubResource("Curve3D_acv4t")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-0.998237, 0.0038652, 0.059225, 0.00697169, 0.998605, 0.052336, -0.0589401, 0.0526566, -0.996872, 1.694, 1.39, 0.918)
+transform = Transform3D(-1.00627, -0.0144074, 0.0134474, -9.37338e-10, 0.689554, 0.73718, -0.0196489, 0.737841, -0.688674, 0.24593, 2.26218, -0.95404)
+h_offset = 0.23
+v_offset = 0.5
+projection = 1
 current = true
+size = 2.2
+near = 0.001
+far = 4007.19
 
 [node name="PhantomCameraHost" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem/Camera3D"]
 script = ExtResource("2_k4f1r")
@@ -3433,6 +3439,7 @@ spot_angle_attenuation = 0.378929
 [node name="UI" type="Node" parent="."]
 
 [node name="TeamPic" type="Area2D" parent="UI"]
+visible = false
 script = ExtResource("34_4bfs2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/TeamPic"]
@@ -3472,22 +3479,28 @@ script = ExtResource("38_47f4o")
 position = Vector2(793.5, 238.25)
 shape = SubResource("RectangleShape2D_3b17k")
 
-[node name="TeamPic Look" parent="UI" instance=ExtResource("35_id4dn")]
+[node name="Partner Look" parent="UI" instance=ExtResource("35_id4dn")]
+layer = 0
 visible = false
 
-[node name="Partner Look" parent="UI" instance=ExtResource("35_id4dn")]
+[node name="TeamPic Look" parent="UI" instance=ExtResource("35_id4dn")]
+layer = 0
 visible = false
 
 [node name="News Look" parent="UI" instance=ExtResource("35_id4dn")]
+layer = 0
 visible = false
 
 [node name="Contact Look" parent="UI" instance=ExtResource("35_id4dn")]
+layer = 0
 visible = false
 
 [node name="Missing Look" parent="UI" instance=ExtResource("35_id4dn")]
+layer = 0
 visible = false
 
 [node name="Case Look" parent="UI" instance=ExtResource("35_id4dn")]
+layer = 0
 visible = false
 
 [node name="Dalton" type="Node" parent="."]
@@ -3512,59 +3525,59 @@ position = Vector2(1083, 659)
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(1.64624e-09, -5.58378e-08, -3.02151)
+bones/1/position = Vector3(-3.24617e-09, -5.75171e-08, -2.94801)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.0214041, 0.308901, 0.879369, -0.361707)
+bones/3/rotation = Quaternion(0.00118099, 0.364701, 0.854095, -0.370827)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.207739, 0.0936064, -0.0377516, 0.972963)
+bones/4/rotation = Quaternion(-0.322223, 0.00528115, -0.0352165, 0.945994)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.489507, -0.115123, 0.105059, 0.857958)
+bones/5/rotation = Quaternion(0.541405, -0.0361481, 0.0645604, 0.8375)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.0214041, 0.308901, 0.879369, 0.361707)
-bones/9/rotation = Quaternion(-0.207739, -0.0936064, 0.0377516, 0.972963)
+bones/8/rotation = Quaternion(-0.00118094, 0.364701, 0.854095, 0.370827)
+bones/9/rotation = Quaternion(-0.322223, -0.00528115, 0.0352165, 0.945994)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.489507, 0.115123, -0.105059, 0.857958)
+bones/10/rotation = Quaternion(0.541405, 0.0361481, -0.0645604, 0.8375)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(1.64624e-09, 3.02151, -2.65704e-07)
+bones/12/position = Vector3(-3.24617e-09, 2.94801, -2.18599e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
 bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.086568, 1.15154e-07, -1.22312e-08, 0.996246)
-bones/16/rotation = Quaternion(0.040389, 7.89537e-09, 9.35172e-09, 0.999184)
+bones/15/rotation = Quaternion(-0.0732698, 1.15327e-07, -1.43187e-08, 0.997312)
+bones/16/rotation = Quaternion(0.0123698, 3.76722e-09, 1.27695e-08, 0.999924)
 bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0151021, -0.0108227, -0.00959895, 0.999781)
+bones/18/rotation = Quaternion(0.070524, 0.00798561, -0.0104604, 0.997423)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0151021, 0.0108227, 0.00959897, 0.999781)
+bones/20/rotation = Quaternion(0.070524, -0.00798561, 0.0104604, 0.997423)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.254886, -0.149121, -0.406109, 0.864795)
+bones/22/rotation = Quaternion(-0.266718, -0.148047, -0.381307, 0.872667)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00303264, -0.000445932, -0.278288, 0.960493)
+bones/23/rotation = Quaternion(-0.00385193, -0.000434323, -0.35347, 0.935438)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.254886, 0.149121, 0.406109, 0.864796)
+bones/26/rotation = Quaternion(-0.266719, 0.148047, 0.381307, 0.872667)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00303283, 0.000445984, 0.278289, 0.960492)
+bones/27/rotation = Quaternion(-0.00385215, 0.000434319, 0.353471, 0.935438)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/28/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.99227, 2.19363, -0.0311821)
-bones/33/position = Vector3(1.64624e-09, 3.02151, -1.15442e-07)
+bones/31/position = Vector3(0.943335, 2.17971, -0.0311821)
+bones/33/position = Vector3(-3.24617e-09, 2.94801, -1.17122e-07)
 bones/35/rotation = Quaternion(0.0106232, 0.707027, 0.707027, 0.0106232)
-bones/36/position = Vector3(-0.99227, 2.19363, -0.0311821)
+bones/36/position = Vector3(-0.943335, 2.17971, -0.0311821)
 
 [node name="detective" parent="Dalton/CharacterBody3D/DetectiveT7/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_aih6b")
@@ -3598,6 +3611,7 @@ parameters/BlendSpace1D/blend_position = 0.0
 [connection signal="input_event" from="UI/News" to="UI/News" method="_on_input_event"]
 [connection signal="input_event" from="UI/Contact" to="UI/Contact" method="_on_input_event"]
 [connection signal="input_event" from="UI/Missing Persons" to="UI/Missing Persons" method="_on_input_event"]
+[connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox/Interactable"]
@@ -3605,7 +3619,8 @@ parameters/BlendSpace1D/blend_position = 0.0
 [editable path="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/Exposition/Interactable"]
 [editable path="SubViewportContainer/SubViewport/lamp"]
-[editable path="UI/TeamPic Look"]
 [editable path="UI/Partner Look"]
+[editable path="UI/TeamPic Look"]
+[editable path="UI/Case Look"]
 [editable path="Dalton/CharacterBody3D/PlayerInteractor"]
 [editable path="Dalton/CharacterBody3D/DetectiveT7"]

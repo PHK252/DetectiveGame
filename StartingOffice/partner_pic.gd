@@ -10,4 +10,13 @@ func _on_input_event(viewport, event, shape_idx):
 				object.hide()
 				look.show()
 				GlobalVars.in_look_screen = true
-				print("partner")
+				GlobalVars.clicked_partner = GlobalVars.clicked_partner + 1
+				if GlobalVars.viewed_partner == false and GlobalVars.clicked_partner == 1:
+					Dialogic.timeline_ended.connect(_on_timeline_ended)
+					Dialogic.start("Office_Partner_Picture")
+					GlobalVars.viewed_partner == true
+				
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
+	

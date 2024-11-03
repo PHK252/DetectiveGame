@@ -11,7 +11,15 @@ func _on_input_event(viewport, event, shape_idx):
 				$"../../SubViewportContainer/SubViewport/StartingOffice/Sprite3D".hide()
 				look.show()
 				GlobalVars.in_look_screen = true
-				print("team")
+				GlobalVars.clicked_team = GlobalVars.clicked_team + 1
+				if GlobalVars.viewed_team == false and GlobalVars.clicked_team == 1:
+					Dialogic.timeline_ended.connect(_on_timeline_ended)
+					Dialogic.start("Office_Team_Picture")
+					GlobalVars.viewed_team == true
+				
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
 
 
 
