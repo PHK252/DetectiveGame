@@ -28,13 +28,13 @@ func _physics_process(delta: float) -> void:
 			velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
 		
 		
-		var pos = global_transform.origin
-		var marker_pos = camera.unproject_position(pos)
-		marker_pos = marker_pos * 6
-		marker_pos.x = marker_pos.x + 90
-		marker_pos.y = marker_pos.y - 550
+		#var pos = global_transform.origin
+		#var marker_pos = camera.unproject_position(pos)
+		#marker_pos = marker_pos * 6
+		#marker_pos.x = marker_pos.x + 90
+		#marker_pos.y = marker_pos.y - 550
 		#print(marker_pos)
-		marker.position = marker_pos
+		#marker.position = marker_pos
 
 		
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)

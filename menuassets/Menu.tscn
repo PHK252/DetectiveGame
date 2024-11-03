@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3h5qg8uq6287"]
 
-[ext_resource type="VideoStream" path="res://menuassets/load.ogv" id="1_64fg8"]
 [ext_resource type="Script" path="res://menuassets/mainmenu.gd" id="1_nw0ck"]
+[ext_resource type="VideoStream" path="res://menuassets/start.ogv" id="2_6a5pg"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -13,13 +13,14 @@ grow_vertical = 2
 script = ExtResource("1_nw0ck")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("1_64fg8")
+stream = ExtResource("2_6a5pg")
 autoplay = true
 expand = true
 loop = true
