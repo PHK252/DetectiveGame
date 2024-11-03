@@ -11,12 +11,19 @@ func _on_input_event(viewport, event, shape_idx):
 				look.show()
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_contact = GlobalVars.clicked_contact + 1
-				if GlobalVars.viewed_contact == false and GlobalVars.clicked_contact == 1:
-					Dialogic.timeline_ended.connect(_on_timeline_ended)
-					Dialogic.start("Office_contact_ad")
-					GlobalVars.viewed_contact == true
+
 				
+
+
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	
+
+
+func _on_exit_pressed():
+	if GlobalVars.viewed_contact == false and GlobalVars.clicked_contact == 1:
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.start("Office_contact_ad")
+		GlobalVars.viewed_contact == true

@@ -24,7 +24,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
-	if GlobalVars.in_look_screen == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 170:
 			cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
 		elif mouse_pos.y < 12:
@@ -35,7 +35,7 @@ func _process(delta):
 	else:
 		cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
 		
-	if GlobalVars.in_look_screen == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if Input.is_action_just_pressed("Exit"):
 			cork_cam.priority = 0
 			main_cam.priority = 1
@@ -61,9 +61,6 @@ func _process(delta):
 		news.show()
 		contact.show()
 		missing.show()
-	
-
-		
 	
 
 func _on_interactable_interacted(interactor):
