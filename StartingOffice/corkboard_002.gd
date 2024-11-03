@@ -63,6 +63,9 @@ func _process(delta):
 		missing.show()
 	
 
+		
+	
+
 func _on_interactable_interacted(interactor):
 	cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
 	cork_cam.priority = 1

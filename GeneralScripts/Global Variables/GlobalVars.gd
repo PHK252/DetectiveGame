@@ -5,6 +5,8 @@ extends Node
 @onready var player_move = true
 @onready var in_look_screen = false
 @onready var in_dialogue = false
+@onready var clicked_contact = 0
+@onready var viewed_contact = false
 @onready var first_house = ""
 #not quite sure if we need this one
 #@onready var second_house = ""
