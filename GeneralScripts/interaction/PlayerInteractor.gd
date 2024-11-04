@@ -18,7 +18,10 @@ func _physics_process(_delta: float) -> void:
 		if new_closest:
 			focus(new_closest)
 			highlight.show()
-			animplay.play("Alert_Animation")
+			if GlobalVars.current_level == "Office":
+				animplay.play("Alert_Animation_Office")
+			elif GlobalVars.current_level == "Micah":
+				animplay.play("Alert_Animation_Micah")
 		cached_closest = new_closest
 
 func _input(event: InputEvent) -> void:

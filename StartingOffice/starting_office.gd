@@ -12,6 +12,8 @@ func _ready():
 	news.hide()
 	contact.hide()
 	missing.hide()
+	GlobalVars.current_level = "Office"
+	
 	#$"UI/TeamPic Look".hide()
 	#var layout = Dialogic.start("Office_contact_ad")
 	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), $Dalton/CharacterBody3D/Marker2D)

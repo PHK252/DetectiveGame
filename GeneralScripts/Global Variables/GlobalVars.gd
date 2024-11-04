@@ -21,3 +21,4 @@ extends Node
 #@onready var second_house = ""
 @onready var has_secret = false
 @onready var has_contact = false
+@onready var current_level = ""

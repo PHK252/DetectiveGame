@@ -6,7 +6,7 @@ Dalton: Is anybody home?
 Dalton: XPD!
 [wait time="3.0"]
 Dalton: ...
-- Knock Again?
+- Knock Again.
 	# #Knock knock
 	Dalton: Hello?
 	Dalton: We are here to investigate a possible break in that happened last night.
@@ -23,14 +23,14 @@ Dalton: ...
 	Theo: Chill!
 	Theo: They're coming.
 	[wait time="2.0"]
-	jump Micah_questions/
+	jump Micah Open
 - Wait.
 	label Wait
 	[wait time="4.0"]
 	Dalton: ...
 	Theo: ...
 	Dalton: ...
-	- Knock Again?
+	- Knock Again.
 		set {Character Aff Points.Micah} += 1
 		# #Knock
 		Dalton: XPD!
@@ -39,6 +39,17 @@ Dalton: ...
 		# #Faint footsteps can be heard through the door
 		Theo: Someone’s not having a good day.
 		Dalton: Shh.
-		jump Micah_questions/
-	- Wait
+		jump Micah Open
+	- Wait.
 		jump Wait
+
+label Micah Open
+Micah: ...
+Micah: Hello?
+Dalton: ...
+- Hello. We have a warrant to search your property.
+	jump Warrant/
+- Good morning. Are you Micah Procyon?
+	jump Good_morning/
+- Have Theo answer. | [if {Character Aff Points.Micah} == 1] [else="hide"]
+	jump Theo_answer/
