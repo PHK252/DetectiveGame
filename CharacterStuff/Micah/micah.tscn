@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2ffunqvkd7nk"]
+[gd_scene load_steps=5 format=3 uid="uid://c2ffunqvkd7nk"]
 
 [ext_resource type="Script" path="res://NPC.gd" id="1_6e8qf"]
 [ext_resource type="PackedScene" uid="uid://k827mw06vo05" path="res://CharacterStuff/Micah/Micah.glb" id="2_8vpec"]
@@ -7,58 +7,76 @@
 radius = 0.270894
 height = 1.67631
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8u1i"]
+size = Vector3(1.45355, 1.64893, 1.40466)
+
 [node name="Micah" type="Node3D"]
 
-[node name="MicahBody" type="CharacterBody3D" parent="."]
+[node name="MicahBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("ap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05559, 0, 0.0870383)
 script = ExtResource("1_6e8qf")
+ap = NodePath("Micah/AnimationPlayer")
 
 [node name="Micah" parent="MicahBody" instance=ExtResource("2_8vpec")]
+unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="MicahBody/Micah/micahArmature" index="0"]
 bones/1/position = Vector3(8.88178e-16, -8.50578e-08, -1.95072)
-bones/1/rotation = Quaternion(-5.33851e-08, 0.707107, 0.707107, -5.33851e-08)
+bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/3/rotation = Quaternion(-0.115718, 0.00729823, 0.923663, -0.365245)
 bones/4/rotation = Quaternion(-0.351057, 0.000236385, -0.0232732, 0.936065)
 bones/6/rotation = Quaternion(0.664249, 0.00454976, -0.00731925, 0.747462)
+bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
 bones/8/rotation = Quaternion(0.115849, 0.00724432, 0.923666, 0.365195)
 bones/9/rotation = Quaternion(-0.351057, -0.000236383, 0.0232732, 0.936065)
 bones/11/rotation = Quaternion(0.664249, -0.00454976, 0.00731925, 0.747461)
 bones/12/position = Vector3(8.88178e-16, -1.753e-07, -1.95072)
-bones/12/rotation = Quaternion(-0.58471, -7.54502e-17, -7.54502e-17, 0.811242)
+bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
 bones/14/rotation = Quaternion(-0.17473, -2.64677e-10, -6.79449e-11, 0.984616)
 bones/16/rotation = Quaternion(1.05706e-08, -5.26922e-17, -4.14599e-16, 1)
 bones/17/rotation = Quaternion(-0.112311, -0.0276212, -0.694798, 0.709844)
 bones/18/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
-bones/19/rotation = Quaternion(0.0270153, -0.000167369, -0.000659108, 0.999635)
-bones/20/rotation = Quaternion(-0.0262147, -0.000682073, -0.0657145, 0.997494)
+bones/19/rotation = Quaternion(0.0270153, -0.000167356, -0.0006591, 0.999635)
+bones/20/rotation = Quaternion(-0.0262147, -0.000682082, -0.0657145, 0.997494)
 bones/21/rotation = Quaternion(-0.112311, 0.0276212, 0.694798, 0.709844)
 bones/22/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
-bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659108, 0.999635)
-bones/24/rotation = Quaternion(-0.0262147, 0.000682073, 0.0657145, 0.997494)
+bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659107, 0.999635)
+bones/24/rotation = Quaternion(-0.0262147, 0.000682075, 0.0657145, 0.997494)
 bones/26/position = Vector3(0.248814, -0.086704, -0.109932)
 bones/28/position = Vector3(-3.10862e-15, -1.1486e-07, -1.95072)
-bones/28/rotation = Quaternion(-0.707107, 0, 0.707107, -1.25607e-15)
-bones/31/rotation = Quaternion(-0.115718, 0.00729823, 0.923662, -0.365245)
+bones/28/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
+bones/31/rotation = Quaternion(-0.115718, 0.00729824, 0.923662, -0.365245)
 bones/32/rotation = Quaternion(-0.351057, 0.000236384, -0.0232732, 0.936065)
 bones/34/rotation = Quaternion(0.664249, 0.00454976, -0.00731925, 0.747462)
+bones/35/rotation = Quaternion(0.0416395, -0.145342, 0.924825, -0.349057)
 bones/36/rotation = Quaternion(0.115849, 0.00724438, 0.923666, 0.365195)
 bones/37/rotation = Quaternion(-0.351057, -0.000236383, 0.0232732, 0.936065)
-bones/39/rotation = Quaternion(0.664249, -0.00454976, 0.00731925, 0.747461)
+bones/39/rotation = Quaternion(0.664249, -0.00454976, 0.00731925, 0.747462)
+bones/40/rotation = Quaternion(-0.573635, -0.413453, 0.573635, -0.413453)
 bones/42/rotation = Quaternion(-0.17473, -2.64677e-10, -6.79454e-11, 0.984616)
 bones/44/rotation = Quaternion(9.63927e-09, -1.02814e-18, 2.92269e-17, 1)
 bones/45/rotation = Quaternion(-0.112311, -0.0276212, -0.694798, 0.709844)
 bones/46/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
-bones/47/rotation = Quaternion(0.0270153, -0.000167362, -0.000659108, 0.999635)
+bones/47/rotation = Quaternion(0.0270153, -0.000167364, -0.000659096, 0.999635)
+bones/48/rotation = Quaternion(-0.0262147, -0.000682096, -0.0657145, 0.997494)
 bones/49/rotation = Quaternion(-0.112311, 0.0276212, 0.694798, 0.709844)
 bones/50/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
-bones/51/rotation = Quaternion(0.0270152, 0.000167362, 0.000659107, 0.999635)
-bones/52/rotation = Quaternion(-0.0262147, 0.000682066, 0.0657145, 0.997494)
+bones/51/rotation = Quaternion(0.0270152, 0.000167364, 0.000659095, 0.999635)
+bones/52/rotation = Quaternion(-0.0262147, 0.000682103, 0.0657145, 0.997494)
 bones/53/position = Vector3(-0.248814, -0.0867041, -0.109932)
 bones/53/rotation = Quaternion(-0.00589136, 4.24325e-08, 0.999983, -1.08131e-10)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MicahBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.885348, 0)
 shape = SubResource("CapsuleShape3D_bs428")
+
+[node name="InteractArea" type="Area3D" parent="MicahBody"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MicahBody/InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0172424, 0.798584, -0.0271606)
+shape = SubResource("BoxShape3D_i8u1i")
+
+[connection signal="body_entered" from="MicahBody/InteractArea" to="MicahBody" method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="MicahBody/InteractArea" to="MicahBody" method="_on_interact_area_body_exited"]
 
 [editable path="MicahBody/Micah"]

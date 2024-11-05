@@ -9,7 +9,11 @@ extends CharacterBody3D
 const SPEED = 1.15
 const LERP_VAL = .15
 
+func _ready() -> void:
+	add_to_group("player")
+
 func _physics_process(delta: float) -> void:
+	GlobalVars.player_pos = global_position
 	# Add the gravity.
 	if GlobalVars.player_move == true:
 		if not is_on_floor():

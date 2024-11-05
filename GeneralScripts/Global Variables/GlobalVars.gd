@@ -22,3 +22,4 @@ extends Node
 @onready var has_secret = false
 @onready var has_contact = false
 @onready var current_level = ""
+var player_pos
