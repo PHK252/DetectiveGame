@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var animation_tree : AnimationTree = $bonedoor/AnimationDoor
+@export var collision : CollisionShape3D
 
 var is_open: bool = false
 
@@ -16,9 +17,10 @@ func open() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if not is_open:
 		$Interactable.queue_free()
 		open()
+		collision.disabled = true
+		is_open = true
 	
