@@ -1,4 +1,4 @@
-[gd_scene load_steps=315 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=316 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://dl3nfrvr0urwl" path="res://FirstHouse/FirstHouseUpdated_lays.png" id="31_3wao7"]
 [ext_resource type="Script" path="res://GeneralScripts/interaction/OpenDoor.gd" id="31_cx2le"]
 [ext_resource type="PackedScene" uid="uid://c2ffunqvkd7nk" path="res://CharacterStuff/Micah/micah.tscn" id="41_8l10i"]
+[ext_resource type="PackedScene" uid="uid://la842f74mxcx" path="res://FirstHouse/closet.glb" id="42_3fi1f"]
 
 [sub_resource type="Curve3D" id="Curve3D_tdxtl"]
 bake_interval = 1.0
@@ -4300,6 +4301,7 @@ transform = Transform3D(1, -1.1595e-07, -4.56348e-08, 6.84522e-08, 1, -9.68575e-
 shape = SubResource("BoxShape3D_4jded")
 
 [node name="Wardrobe" parent="SubViewportContainer/FirstHouseUpdated" index="44"]
+visible = false
 mesh = SubResource("ArrayMesh_xvnna")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/FirstHouseUpdated/Wardrobe" index="0"]
@@ -4663,6 +4665,12 @@ shape = SubResource("BoxShape3D_q2gun")
 [node name="Cube_001" parent="SubViewportContainer/FirstHouseUpdated/replacewindow" index="1"]
 mesh = SubResource("ArrayMesh_gukwe")
 
+[node name="closet" parent="." instance=ExtResource("42_3fi1f")]
+transform = Transform3D(-0.998165, 0, -0.0605607, 0, 1, 0, 0.0605607, 0, -0.998165, -0.0457435, -0.100918, -0.838124)
+
+[node name="Skeleton3D" parent="closet/ClosetRight" index="0"]
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+
 [node name="Characters" type="Node" parent="."]
 
 [node name="Dalton" parent="Characters" instance=ExtResource("2_v5k46")]
@@ -4681,35 +4689,35 @@ texture = SubResource("CompressedTexture2D_feshg")
 position = Vector2(429, 605)
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(-3.78304e-11, -5.75171e-08, -3.0214)
+bones/1/position = Vector3(-2.51566e-09, -5.75171e-08, -2.96472)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.0213649, 0.309009, 0.879326, -0.361722)
-bones/4/rotation = Quaternion(-0.207957, 0.093471, -0.0377688, 0.972929)
-bones/5/rotation = Quaternion(0.489606, -0.115002, 0.105007, 0.857924)
+bones/3/rotation = Quaternion(0.00502646, 0.353988, 0.859423, -0.368861)
+bones/4/rotation = Quaternion(-0.300121, 0.0248924, -0.0376679, 0.952832)
+bones/5/rotation = Quaternion(0.531511, -0.0538082, 0.0744977, 0.842052)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0213648, 0.309009, 0.879326, 0.361722)
-bones/9/rotation = Quaternion(-0.207957, -0.093471, 0.0377688, 0.972929)
-bones/10/rotation = Quaternion(0.489606, 0.115002, -0.105007, 0.857924)
+bones/8/rotation = Quaternion(-0.00502645, 0.353988, 0.859423, 0.368861)
+bones/9/rotation = Quaternion(-0.300121, -0.0248924, 0.0376679, 0.952832)
+bones/10/rotation = Quaternion(0.53151, 0.0538082, -0.0744977, 0.842052)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-3.78304e-11, 3.0214, -2.36653e-07)
+bones/12/position = Vector3(-2.51566e-09, 2.96472, -2.51376e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
-bones/15/rotation = Quaternion(-0.0865289, 1.15551e-07, -1.27489e-08, 0.996249)
-bones/16/rotation = Quaternion(0.040438, 5.18376e-09, 1.19115e-08, 0.999182)
-bones/18/rotation = Quaternion(0.0151847, -0.0107947, -0.00960026, 0.99978)
-bones/20/rotation = Quaternion(0.0151848, 0.0107947, 0.00960028, 0.99978)
+bones/15/rotation = Quaternion(-0.076322, 1.1538e-07, -1.39577e-08, 0.997083)
+bones/16/rotation = Quaternion(0.0188116, 3.87846e-09, 1.27755e-08, 0.999823)
+bones/18/rotation = Quaternion(0.0579396, 0.00371007, -0.0102676, 0.99826)
+bones/20/rotation = Quaternion(0.0579396, -0.00371008, 0.0102676, 0.99826)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.254864, -0.149124, -0.406161, 0.864777)
-bones/23/rotation = Quaternion(-0.00303406, -0.000445902, -0.278417, 0.960455)
+bones/22/rotation = Quaternion(-0.264049, -0.148225, -0.386364, 0.871224)
+bones/23/rotation = Quaternion(-0.00368317, -0.000437009, -0.337983, 0.941145)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.254865, 0.149124, 0.40616, 0.864778)
-bones/27/rotation = Quaternion(-0.00303426, 0.000445963, 0.27842, 0.960455)
+bones/26/rotation = Quaternion(-0.264049, 0.148225, 0.386363, 0.871224)
+bones/27/rotation = Quaternion(-0.00368339, 0.000436978, 0.337984, 0.941145)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.992198, 2.19361, -0.0311821)
-bones/33/position = Vector3(-3.78304e-11, 3.0214, -1.17122e-07)
-bones/36/position = Vector3(-0.992198, 2.19361, -0.0311821)
+bones/31/position = Vector3(0.95446, 2.18288, -0.0311821)
+bones/33/position = Vector3(-2.51566e-09, 2.96472, -1.17122e-07)
+bones/36/position = Vector3(-0.95446, 2.18288, -0.0311821)
 
 [node name="MicahPath" type="Node" parent="Characters"]
 
@@ -4816,6 +4824,7 @@ light_volumetric_fog_energy = 16.317
 [editable path="SubViewportContainer/FirstHouseUpdated/door"]
 [editable path="SubViewportContainer/FirstHouseUpdated/door/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/replacewindow"]
+[editable path="closet"]
 [editable path="Characters/Dalton"]
 [editable path="Characters/Dalton/CharacterBody3D/PlayerInteractor"]
 [editable path="Characters/Dalton/CharacterBody3D/DetectiveT7"]
