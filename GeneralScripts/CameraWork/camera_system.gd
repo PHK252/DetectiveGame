@@ -51,20 +51,25 @@ func _process(delta: float) -> void:
 
 
 func _on_hall_area_body_entered(body: Node3D) -> void:
-	cam1_on()
+	if body.is_in_group("player"):
+		cam1_on()
 
 
 func _on_main_area_body_entered(body: Node3D) -> void:
-	cam2_on()
+	if body.is_in_group("player"):
+		cam2_on()
 
 
 func _on_poster_area_body_entered(body: Node3D) -> void:
-	cam3_on()
+	if body.is_in_group("player"):
+		cam3_on()
 
 
 func _on_window_area_body_entered(body: Node3D) -> void:
-	cam4_on()
+	if body.is_in_group("player"):
+		cam4_on()
 
 
 func _on_kitchen_area_body_entered(body: Node3D) -> void:
-	cam5_on()
+	if body.is_in_group("player"):
+		cam5_on()
