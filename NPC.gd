@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var ap : AnimationPlayer
 @export var player : Node3D
-@onready var armature = %Micah
+@export var armature = Node3D
 @export var path : PathFollow3D
 
 enum {
@@ -13,7 +13,7 @@ enum {
 var state = IDLE
 var see_player = false
 var at_door = false
-const SPEED = 0.2
+const SPEED = 0.4
 const LERP_VAL = .15
 var rotation_speed = 70
 
@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if state == WALK:
-		#rotation y to 106 degrees
 		path.progress += SPEED * delta
 		
 
@@ -34,10 +33,18 @@ func look():
 	#look_at(GlobalVars.player_position)
 
 func _process(delta):
+	if state == WALK:
+		var flipped_basis = path.global_transform.basis
+		flipped_basis.x = -flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
+		flipped_basis.z = -flipped_basis.z  # Flip the Z basis vector to mirror rotation on the Y-axis
+
+	# Apply the flipped basis to the NPC
+		global_transform.basis = flipped_basis
+	
 	if see_player and Input.is_action_just_pressed("interact"):
 		print("interacted")
 		state = IDLE
-		#rotation y to 0
+
 		# Get the target direction to the player position
 		var target_position = Vector3(GlobalVars.player_pos.x, global_transform.origin.y, GlobalVars.player_pos.z)
 		var target_direction = (target_position - global_transform.origin).normalized()
