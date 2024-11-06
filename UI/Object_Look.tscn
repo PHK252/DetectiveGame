@@ -20,17 +20,31 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_l20xi")
 
 [node name="Object front" type="TextureRect" parent="."]
-offset_left = 655.0
-offset_top = 116.0
-offset_right = 1256.0
-offset_bottom = 989.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -436.5
+offset_right = 300.5
+offset_bottom = 436.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_y0pbs")
 
 [node name="Object Back" type="TextureRect" parent="."]
-offset_left = 655.0
-offset_top = 116.0
-offset_right = 1256.0
-offset_bottom = 989.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -436.5
+offset_right = 300.5
+offset_bottom = 436.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_fr0eo")
 
 [node name="Exit" type="TextureButton" parent="."]

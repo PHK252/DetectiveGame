@@ -10,6 +10,7 @@ func _on_input_event(viewport, event, shape_idx):
 				object.hide()
 				$"../../SubViewportContainer/SubViewport/StartingOffice/Sprite3D".hide()
 				look.show()
+				GlobalVars.viewing = "team"
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_team = GlobalVars.clicked_team + 1
 
@@ -24,7 +25,16 @@ func _on_exit_pressed():
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_Team_Picture")
 		GlobalVars.viewed_team == true
+		GlobalVars.viewing = ""
 
+func _process(delta):
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "team":
+		if GlobalVars.viewed_team == false and GlobalVars.clicked_team == 1:
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.start("Office_Team_Picture")
+			GlobalVars.viewed_team == true
+			GlobalVars.viewing = ""
 
 
 func _on_mouse_entered():

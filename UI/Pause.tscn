@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnu1071bx7xsa"]
+
+[ext_resource type="Texture2D" uid="uid://sr60ubjrdhtv" path="res://UI/Assets/Pause/Pause Board.png" id="1_3uscu"]
+[ext_resource type="Script" path="res://UI/pause.gd" id="1_k7vu6"]
+[ext_resource type="Texture2D" uid="uid://bvut6op7bp6sb" path="res://UI/Assets/Pause/Pause Exit normal.png" id="2_cteeb"]
+[ext_resource type="Texture2D" uid="uid://b37trk6c6htp1" path="res://UI/Assets/Pause/Pause Exit Hover.png" id="3_vo0pj"]
+[ext_resource type="Texture2D" uid="uid://dth7vdyyxqumo" path="res://UI/Assets/Pause/Pause Resume Normal.png" id="4_dsaye"]
+[ext_resource type="Texture2D" uid="uid://b6wvk746n6a2t" path="res://UI/Assets/Pause/Pause Resume Hover.png" id="5_bw8kg"]
+[ext_resource type="Texture2D" uid="uid://ck1n3ba7y1l5q" path="res://UI/Assets/Pause/Pause Options Normal.png" id="6_o0xu1"]
+[ext_resource type="Texture2D" uid="uid://b8t8yeic6umjt" path="res://UI/Assets/Pause/Pause Options Hover.png" id="7_bijro"]
+[ext_resource type="Texture2D" uid="uid://dxqgdlv0n2m73" path="res://UI/Assets/Pause/Pause Controls Normal.png" id="8_0x76i"]
+[ext_resource type="Texture2D" uid="uid://bflkhugw1y1tj" path="res://UI/Assets/Pause/Pause Controls Hover.png" id="9_2vd2r"]
+[ext_resource type="Texture2D" uid="uid://b33xrbhgkm0np" path="res://UI/Assets/Pause/Pause Save Normal.png" id="10_2oh83"]
+[ext_resource type="Texture2D" uid="uid://bjv7hdfr8700v" path="res://UI/Assets/Pause/Pause Save Hover.png" id="11_8p67n"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_k7vu6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3uscu")
+
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = 215.0
+offset_top = 100.0
+offset_right = 350.0
+offset_bottom = 260.0
+texture_normal = ExtResource("2_cteeb")
+texture_pressed = ExtResource("3_vo0pj")
+texture_hover = ExtResource("3_vo0pj")
+
+[node name="Resume" type="TextureButton" parent="."]
+offset_left = 755.0
+offset_top = 160.0
+offset_right = 1095.0
+offset_bottom = 315.0
+texture_normal = ExtResource("4_dsaye")
+texture_pressed = ExtResource("5_bw8kg")
+texture_hover = ExtResource("5_bw8kg")
+
+[node name="Options" type="TextureButton" parent="."]
+offset_left = 755.0
+offset_top = 360.0
+offset_right = 1095.0
+offset_bottom = 515.0
+texture_normal = ExtResource("6_o0xu1")
+texture_pressed = ExtResource("7_bijro")
+texture_hover = ExtResource("7_bijro")
+
+[node name="Controls" type="TextureButton" parent="."]
+offset_left = 755.0
+offset_top = 560.0
+offset_right = 1095.0
+offset_bottom = 715.0
+texture_normal = ExtResource("8_0x76i")
+texture_pressed = ExtResource("9_2vd2r")
+texture_hover = ExtResource("9_2vd2r")
+
+[node name="Save" type="TextureButton" parent="."]
+offset_left = 755.0
+offset_top = 760.0
+offset_right = 1095.0
+offset_bottom = 915.0
+texture_normal = ExtResource("10_2oh83")
+texture_pressed = ExtResource("11_8p67n")
+texture_hover = ExtResource("11_8p67n")
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
