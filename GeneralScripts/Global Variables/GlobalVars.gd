@@ -16,6 +16,7 @@ extends Node
 @onready var viewed_news = false
 @onready var viewed_team = false
 @onready var viewed_missing = false
+@onready var viewing = ""
 @onready var first_house = ""
 #not quite sure if we need this one
 #@onready var second_house = ""
