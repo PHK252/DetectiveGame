@@ -4,10 +4,12 @@ extends CharacterBody3D
 @export var player : Node3D
 @export var armature = Node3D
 @export var path : PathFollow3D
+@export var WaitTimer : Timer
 
 enum {
 	IDLE, 
-	WALK
+	WALK,
+	WAIT
 }
 
 var state = IDLE
@@ -17,6 +19,9 @@ const SPEED = 0.4
 const LERP_VAL = .15
 var rotation_speed = 70
 
+func _ready() -> void:
+	state = IDLE
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -24,13 +29,9 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
-	if state == WALK:
-		path.progress += SPEED * delta
+	#if state == WALK:
 		
-
-func look():
-	pass
-	#look_at(GlobalVars.player_position)
+		
 
 func _process(delta):
 	if state == WALK:
@@ -65,7 +66,21 @@ func _process(delta):
 			ap.play("IdleSkylar")
 		WALK:
 			ap.play("WalkingSkylar")
+			path.progress += SPEED * delta		
+		WAIT:
+			ap.play("IdleSkylar")
+			await get_tree().create_timer(8).timeout
+			state = WALK
 
+func set_random_rotation() -> void:
+	# Set a random rotation on the Y-axis while waiting
+	# Generate a random angle between -90 and 90 degrees in radians
+	var random_angle = randf_range(-PI / 2, PI / 2)  # Random angle in radians within -90 to 90 degrees
+	
+	# Apply the random rotation on the Y-axis
+	var new_basis = global_transform.basis
+	new_basis = Basis(Vector3.UP, random_angle) * new_basis  # Apply the limited random Y rotation
+	global_transform.basis = new_basis
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -77,3 +92,9 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 		print("left")
 		state = WALK
 		see_player = false
+
+
+func _on_wait_timer_timeout() -> void:
+	if state == WALK:
+		set_random_rotation()
+		state = WAIT
