@@ -1,0 +1,13 @@
+Dalton: Did you overheard or see anything suspicious happen during your shift?
+Micah: Uh..
+Micah: No..?
+Micah: It was pretty normal.
+Micah: J-just the normal amount of weird you get from working the night shift at a convenience store.
+Micah: Conspiracies about our tap water and such...
+set {Asked Questions.Micah_Asked_Night_Sus} = true
+if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:
+	jump Good_morning/Questions
+elif {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true: 
+	jump Good_morning/Questions
+else:
+	jump Morning_night/Questions

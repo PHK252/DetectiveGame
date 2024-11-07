@@ -1,0 +1,16 @@
+if {Character Aff Points.Micah} == 2
+	set {Asked Questions.Micah_Morning_enough_Theo} = true
+
+Dalton: What were you doing last night?
+Micah: I…
+Micah: Uhh… I had a quick snack at the Deli across the street and then...
+Micah: Um… I went to start my shift at the [Insert Convenient Store Name here].
+label Questions
+Dalton: ...
+- What time did you come back from your shift?
+	jump Morning_night_time/
+- Did anything suspicious happen during your shift?
+	jump Morning_night_sus/
+- Have Theo ask a question. | [if {Character Aff Points.Micah} == 2] [else="hide"]
+	set {Asked Questions.Micah_Morning_enough_Theo} = true
+	jump Theo_answer_morning/

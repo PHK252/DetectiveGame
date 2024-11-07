@@ -34,20 +34,34 @@ directories/dtl_directory={
 "Day 1 Office timeline": "res://Dialogue Stuff/Timelines/Office/Day 1 Office timeline.dtl",
 "Enter_house": "res://Dialogue Stuff/Timelines/Micah/Enter_house.dtl",
 "Good_morning": "res://Dialogue Stuff/Timelines/Micah/Good_morning.dtl",
+"Morning_Property": "res://Dialogue Stuff/Timelines/Micah/Morning_Property.dtl",
+"Morning_home": "res://Dialogue Stuff/Timelines/Micah/Morning_home.dtl",
+"Morning_night": "res://Dialogue Stuff/Timelines/Micah/Morning_night.dtl",
+"Morning_night_sus": "res://Dialogue Stuff/Timelines/Micah/Morning_night_sus.dtl",
+"Morning_night_time": "res://Dialogue Stuff/Timelines/Micah/Morning_night_time.dtl",
 "Office": "res://Misc/Office.dtl",
 "Office_Donuts": "res://Dialogue Stuff/Timelines/Office/Office_Donuts.dtl",
 "Office_Partner_Picture": "res://Dialogue Stuff/CustomTextBubble/Office_Partner_Picture.dtl",
 "Office_Team_Picture": "res://Dialogue Stuff/Timelines/Office/Office_Team_Picture.dtl",
 "Office_contact_ad": "res://Dialogue Stuff/Timelines/Office/Office_contact_ad.dtl",
 "Theo_answer": "res://Dialogue Stuff/Timelines/Micah/Theo_answer.dtl",
+"Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
 "Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl"
 }
 layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres", "res://Dialogue Stuff/Thoughts.tres"]
 layout/default_style="res://Dialogue Stuff/Text_Bubble.tres"
 variables={
+"Asked Questions": {
+"Micah_Asked_Night_Sus": true,
+"Micah_Asked_Night_Time": true,
+"Micah_Asked_Property": false,
+"Micah_Asked_Theo_Question": false,
+"Micah_Asked_home": false,
+"Micah_Morning_enough_Theo": true
+},
 "Character Aff Points": {
 "Juniper": 0,
-"Micah": 0,
+"Micah": 1,
 "Quincy": 0,
 "Skylar": 0,
 "Theo": 0

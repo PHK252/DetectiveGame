@@ -1,0 +1,28 @@
+set {Character Aff Points.Micah} += 1
+set {Character Aff Points.Theo} += 1
+
+Dalton: Go on, Theo.
+Theo: Oh!
+Theo: Which Deli did you go to?
+Dalton: Theo, what?
+Micah: Uhh… [Insert Deli Name Here]
+Theo: Dude, I love that place.
+Theo: Their pastrami sandwiches are amazing!!
+Micah: Yeah! That’s my go to.
+Micah: The owner also gives me a discount since I go there so often.
+Theo: Damn, lucky you.
+Theo: I’d die for one of those sandwiches right now…
+Dalton: Theo, what are you doing?
+Theo: Oh! Sorry...
+Theo: I haven’t had breakfast yet.
+Dalton: Not the time...
+Dalton: ...
+Dalton: We can stop by to get food after this.
+Theo: Yah!!
+set {Asked Questions.Micah_Asked_Theo_Question} = true
+if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:
+	jump Good_morning/Questions
+elif {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true:
+	jump Good_morning/Questions
+else:
+	jump Morning_night/Questions
