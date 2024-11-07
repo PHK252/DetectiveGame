@@ -9,9 +9,9 @@ func _ready() -> void:
 func activate_camera(cam_index: int) -> void:
 		for i in range(cameras.size()):
 			if i == cam_index:
-				cameras[i].set_priority(4)  # Highest priority for the active camera
+				cameras[i].set_priority(12)  # Highest priority for the active camera
 			else:
-				cameras[i].set_priority(3 - i)  # Set decreasing priority for other cameras
+				cameras[i].set_priority(11 - i)  # Set decreasing priority for other cameras
 
 
 func _on_hall_area_body_entered(body: Node3D) -> void:
@@ -52,3 +52,58 @@ func _on_book_area_body_entered(body: Node3D) -> void:
 func _on_wurli_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(2)  # Third camera
+
+
+func _on_door_a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(0)  # First camera
+
+
+func _on_living_a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(1)  # Second camera
+
+
+func _on_fam_paint_a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(2)  # Third camera
+
+
+func _on_outside_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(3)  # Fourth camera
+
+
+func _on_upstairs_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(4)  # Fourth camera
+
+
+func _on_u_1a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(5)  # Fourth camera
+
+
+func _on_u_2a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(6)  # Fourth camera
+
+
+func _on_secret_hall_a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(7)  # Fourth camera
+
+
+func _on_secret_a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(8)  # Fourth camera
+
+
+func _on_office_a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(9)  # Fourth camera
+
+
+func _on_downstairs_a_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(10)  # Fourth camera
