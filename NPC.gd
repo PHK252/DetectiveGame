@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var armature = Node3D
 @export var path : PathFollow3D
 @export var WaitTimer : Timer
+@export var NPC : String
 
 enum {
 	IDLE, 
@@ -63,12 +64,35 @@ func _process(delta):
 	
 	match state:
 		IDLE:
-			ap.play("IdleSkylar")
+			if NPC == "Micah" or NPC == "Skylar":
+				ap.play("IdleSkylar")
+				
+			if NPC == "Juniper":
+				ap.play("IdleJuniper")
+				
+			if NPC == "Quincy":
+				ap.play("Idle")
 		WALK:
-			ap.play("WalkingSkylar")
+			if NPC == "Micah" or NPC == "Skylar":
+				ap.play("WalkingSkylar")
+			
+			if NPC == "Juniper":
+				ap.play("WalkingJuniper")
+				
+			if NPC == "Quincy":
+				ap.play("Walk")
+			
 			path.progress += SPEED * delta		
 		WAIT:
-			ap.play("IdleSkylar")
+			if NPC == "Micah" or NPC == "Skylar":
+				ap.play("IdleSkylar")
+			
+			if NPC == "Juniper":
+				ap.play("IdleJuniper")
+				
+			if NPC == "Quincy":
+				ap.play("Idle")
+			
 			await get_tree().create_timer(8).timeout
 			state = WALK
 
