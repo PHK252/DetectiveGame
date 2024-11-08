@@ -1,7 +1,6 @@
 extends MeshInstance3D
 
 @onready var map  = $MapUI
-@onready var button  = $"SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/firsthouse_button"
 
 var is_open: bool = false
 	

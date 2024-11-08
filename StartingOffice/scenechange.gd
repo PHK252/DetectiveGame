@@ -13,14 +13,19 @@ func _process(delta: float) -> void:
 
 func _on_firsthouse_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://FirstHouse/first_house.tscn")
-	pass # Replace with function body.
 
 
 func _on_secondhouse_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://SecondHouse/second_house.tscn")
-	pass # Replace with function body.
 
 
 func _on_thirdhouse_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://ThirdHouse/third_house.tscn")
-	pass # Replace with function body.
+
+
+func _on_office_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
+
+
+func _on_secret_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://SecretLocation/secret_location.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=316 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=319 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -40,6 +40,8 @@
 [ext_resource type="PackedScene" uid="uid://d1p7a1g58vmah" path="res://GeneralScripts/interaction/Interactable.tscn" id="31_3mnbx"]
 [ext_resource type="Texture2D" uid="uid://dl3nfrvr0urwl" path="res://FirstHouse/FirstHouseUpdated_lays.png" id="31_3wao7"]
 [ext_resource type="Script" path="res://GeneralScripts/interaction/OpenDoor.gd" id="31_cx2le"]
+[ext_resource type="Script" path="res://StartingOffice/map.gd" id="34_mw70x"]
+[ext_resource type="PackedScene" uid="uid://crgv83s0k1fwv" path="res://map_ui.tscn" id="35_6wbhd"]
 [ext_resource type="PackedScene" uid="uid://c2ffunqvkd7nk" path="res://CharacterStuff/Micah/micah.tscn" id="41_8l10i"]
 [ext_resource type="PackedScene" uid="uid://la842f74mxcx" path="res://FirstHouse/closet.glb" id="42_3fi1f"]
 
@@ -2324,6 +2326,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_owsih")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jhknd"]
+size = Vector3(1.61406, 2.08173, 6.2645)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_q66as"]
 _surfaces = [{
 "aabb": AABB(-1.08302, -1.084, -1.08302, 4.48547, 2.16702, 2.16604),
@@ -3951,7 +3956,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74127, 1.53307, -5.46766)
 curve = SubResource("Curve3D_5fejm")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(0.0703252, -0.723731, 0.686347, 8.9401e-08, 0.688, 0.725581, -0.997457, -0.0510262, 0.0483906, -1.75274, 1.54231, -5.45091)
+transform = Transform3D(0.0703254, -0.723688, 0.686392, 1.19201e-07, 0.688045, 0.725538, -0.997457, -0.0510234, 0.048394, -1.75274, 1.54231, -5.45091)
 v_offset = 0.71
 projection = 1
 current = true
@@ -3987,7 +3992,7 @@ look_at_damping = true
 look_at_damping_value = 0.35
 
 [node name="hall" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
-transform = Transform3D(0.0703252, -0.723731, 0.686347, 8.9401e-08, 0.688, 0.725581, -0.997457, -0.0510262, 0.0483906, -1.75274, 1.54231, -5.45091)
+transform = Transform3D(0.0703254, -0.723688, 0.686392, 1.19201e-07, 0.688045, 0.725538, -0.997457, -0.0510234, 0.048394, -1.75274, 1.54231, -5.45091)
 script = ExtResource("3_gj8k4")
 priority = 4
 follow_mode = 4
@@ -4380,6 +4385,17 @@ mesh = SubResource("ArrayMesh_gmd6c")
 
 [node name="Cube_006" parent="SubViewportContainer/FirstHouseUpdated" index="63"]
 mesh = SubResource("ArrayMesh_6oimy")
+script = ExtResource("34_mw70x")
+
+[node name="MapUI" parent="SubViewportContainer/FirstHouseUpdated/Cube_006" index="0" instance=ExtResource("35_6wbhd")]
+visible = false
+scale = Vector2(0.21, 0.21)
+
+[node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/Cube_006" index="1" instance=ExtResource("31_3mnbx")]
+
+[node name="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable" index="0"]
+transform = Transform3D(1, 0, -1.16415e-10, 0, 0.999955, 0, 7.45058e-08, 0, 1, 0.0252872, -0.125152, 2.44105)
+shape = SubResource("BoxShape3D_jhknd")
 
 [node name="Cylinder_002" parent="SubViewportContainer/FirstHouseUpdated" index="67"]
 transform = Transform3D(0.258248, 0, -2.32831e-10, 0, 0.0158841, 0, 2.32831e-10, 0, 0.258248, 2.51929, 4.90663, 3.72679)
@@ -4690,35 +4706,25 @@ texture = SubResource("CompressedTexture2D_feshg")
 position = Vector2(429, 605)
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(1.5817e-09, -5.39206e-08, -2.97618)
-bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.00787724, 0.346087, 0.863198, -0.367492)
-bones/4/rotation = Quaternion(-0.283849, 0.0385168, -0.0387909, 0.95731)
-bones/5/rotation = Quaternion(0.524169, -0.0660207, 0.0810978, 0.84517)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0078772, 0.346087, 0.863198, 0.367492)
-bones/9/rotation = Quaternion(-0.283849, -0.0385168, 0.0387909, 0.95731)
-bones/10/rotation = Quaternion(0.524169, 0.0660207, -0.0810978, 0.84517)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(1.5817e-09, 2.97618, -2.91409e-07)
-bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
-bones/15/rotation = Quaternion(-0.0784144, 1.13715e-07, -1.15122e-08, 0.996921)
-bones/16/rotation = Quaternion(0.0232282, 8.92533e-09, 8.0885e-09, 0.99973)
-bones/18/rotation = Quaternion(0.0493026, 0.00077733, -0.0101343, 0.998732)
-bones/20/rotation = Quaternion(0.0493027, -0.00077733, 0.0101343, 0.998732)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.262208, -0.148359, -0.390012, 0.870131)
-bones/23/rotation = Quaternion(-0.00356259, -0.000438768, -0.32692, 0.945045)
-bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.262208, 0.148359, 0.390012, 0.870131)
-bones/27/rotation = Quaternion(-0.00356279, 0.000438793, 0.32692, 0.945045)
-bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
-bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.962088, 2.18505, -0.0311821)
-bones/33/position = Vector3(1.5817e-09, 2.97618, -1.13525e-07)
-bones/36/position = Vector3(-0.962088, 2.18505, -0.0311821)
+bones/1/position = Vector3(1.96892e-09, -5.39206e-08, -2.98503)
+bones/3/rotation = Quaternion(0.0101989, 0.33967, 0.866174, -0.366419)
+bones/4/rotation = Quaternion(-0.270648, 0.0491357, -0.0393416, 0.960618)
+bones/5/rotation = Quaternion(0.518181, -0.0755145, 0.0860759, 0.847571)
+bones/8/rotation = Quaternion(-0.0101988, 0.33967, 0.866174, 0.366419)
+bones/9/rotation = Quaternion(-0.270648, -0.0491357, 0.0393416, 0.960618)
+bones/10/rotation = Quaternion(0.518181, 0.0755145, -0.0860758, 0.847571)
+bones/12/position = Vector3(1.96892e-09, 2.98503, -2.80074e-07)
+bones/15/rotation = Quaternion(-0.0800318, 1.13743e-07, -1.13208e-08, 0.996792)
+bones/16/rotation = Quaternion(0.0266425, 8.98418e-09, 8.09129e-09, 0.999645)
+bones/18/rotation = Quaternion(0.0426219, -0.00149024, -0.0100307, 0.99904)
+bones/20/rotation = Quaternion(0.042622, 0.00149024, 0.0100307, 0.99904)
+bones/22/rotation = Quaternion(-0.260777, -0.148474, -0.392947, 0.86922)
+bones/23/rotation = Quaternion(-0.0034663, -0.000440181, -0.318084, 0.948056)
+bones/26/rotation = Quaternion(-0.260777, 0.148474, 0.392947, 0.86922)
+bones/27/rotation = Quaternion(-0.00346651, 0.000440189, 0.318085, 0.948056)
+bones/31/position = Vector3(0.967986, 2.18672, -0.0311821)
+bones/33/position = Vector3(1.96892e-09, 2.98503, -1.13525e-07)
+bones/36/position = Vector3(-0.967986, 2.18672, -0.0311821)
 
 [node name="MicahPath" type="Node" parent="Characters"]
 
@@ -4823,6 +4829,7 @@ autostart = true
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/PosterArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_poster_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/WindowArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_window_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/KitchenArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_kitchen_area_body_entered"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable" to="SubViewportContainer/FirstHouseUpdated/Cube_006" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/door/Interactable" to="SubViewportContainer/FirstHouseUpdated/door" method="_on_interactable_interacted"]
 [connection signal="timeout" from="Timers/WaitTimer" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_wait_timer_timeout"]
 
@@ -4832,6 +4839,7 @@ autostart = true
 [editable path="SubViewportContainer/FirstHouseUpdated/case/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/Wardrobe/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/cabinetz/Interactable"]
+[editable path="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/Bookshelf/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/door"]
 [editable path="SubViewportContainer/FirstHouseUpdated/door/Interactable"]

@@ -107,3 +107,13 @@ func _on_office_a_body_entered(body: Node3D) -> void:
 func _on_downstairs_a_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(10)  # Fourth camera
+
+
+func _on_outside_sc_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(0)  # First camera
+
+
+func _on_inside_sc_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(1)  # First camera

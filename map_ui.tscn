@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://crgv83s0k1fwv"]
+
+[ext_resource type="Texture2D" uid="uid://dard27ubxisto" path="res://StartingOffice/StartingOffice_Map.png" id="1_i4xuq"]
+[ext_resource type="Script" path="res://StartingOffice/scenechange.gd" id="2_dmbct"]
+
+[node name="MapUI" type="TextureRect"]
+top_level = true
+offset_right = 1469.0
+offset_bottom = 1976.0
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_i4xuq")
+script = ExtResource("2_dmbct")
+
+[node name="firsthouse_button" type="Button" parent="."]
+modulate = Color(0.988235, 0.992157, 1, 0)
+layout_mode = 0
+offset_left = 772.414
+offset_top = 1575.86
+offset_right = 851.414
+offset_bottom = 1620.86
+scale = Vector2(6.7, 6.7)
+
+[node name="secondhouse_button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.00392157)
+layout_mode = 0
+offset_left = 69.0
+offset_top = 1045.0
+offset_right = 116.0
+offset_bottom = 1091.0
+scale = Vector2(6.7, 6.7)
+
+[node name="thirdhouse_button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.0156863)
+layout_mode = 0
+offset_left = 855.0
+offset_top = 93.0
+offset_right = 936.0
+offset_bottom = 130.0
+scale = Vector2(6.7, 6.7)
+
+[node name="secret_button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.0117647)
+layout_mode = 0
+offset_left = 79.3103
+offset_top = 75.8621
+offset_right = 358.31
+offset_bottom = 396.862
+
+[node name="office_button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.0196078)
+layout_mode = 0
+offset_left = 451.724
+offset_top = 572.414
+offset_right = 972.724
+offset_bottom = 1075.41
+
+[connection signal="pressed" from="firsthouse_button" to="." method="_on_firsthouse_button_pressed"]
+[connection signal="pressed" from="secondhouse_button" to="." method="_on_secondhouse_button_pressed"]
+[connection signal="pressed" from="thirdhouse_button" to="." method="_on_thirdhouse_button_pressed"]
+[connection signal="pressed" from="secret_button" to="." method="_on_secret_button_pressed"]
+[connection signal="pressed" from="office_button" to="." method="_on_office_button_pressed"]
