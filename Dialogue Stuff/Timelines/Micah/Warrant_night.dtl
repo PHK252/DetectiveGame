@@ -1,0 +1,11 @@
+Dalton: What were you doing last night?
+Micah: I...
+Micah: Uh...
+Micah: I went to start my shift at the [Insert Convenient Store Name here].
+set {Asked Questions.Micah_Asked_Night} = true
+label Questions
+Dalton: ...
+- What time did you come back from your shift?
+	jump Warrant_night_time/
+- Did anything suspicious happen during your shift?
+	jump Warrant_night_sus/

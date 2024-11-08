@@ -34,6 +34,13 @@ directories/dtl_directory={
 "Day 1 Office timeline": "res://Dialogue Stuff/Timelines/Office/Day 1 Office timeline.dtl",
 "Enter_house": "res://Dialogue Stuff/Timelines/Micah/Enter_house.dtl",
 "Good_morning": "res://Dialogue Stuff/Timelines/Micah/Good_morning.dtl",
+"Micah_ask_enter": "res://Dialogue Stuff/Timelines/Micah/Micah_ask_enter.dtl",
+"Micah_case_ask": "res://Dialogue Stuff/Timelines/Micah/Micah_case_ask.dtl",
+"Micah_closet_ask": "res://Dialogue Stuff/Timelines/Micah/Micah_closet_ask.dtl",
+"Micah_closet_note": "res://Dialogue Stuff/Timelines/Micah/Micah_closet_note.dtl",
+"Micah_closet_note_thoughts": "res://Dialogue Stuff/Timelines/Micah/Micah_closet_note_thoughts.dtl",
+"Micah_pic_ask": "res://Dialogue Stuff/Timelines/Micah/Micah_pic_ask.dtl",
+"Micah_pic_fall": "res://Dialogue Stuff/Timelines/Micah/Micah_pic_fall.dtl",
 "Morning_Property": "res://Dialogue Stuff/Timelines/Micah/Morning_Property.dtl",
 "Morning_home": "res://Dialogue Stuff/Timelines/Micah/Morning_home.dtl",
 "Morning_night": "res://Dialogue Stuff/Timelines/Micah/Morning_night.dtl",
@@ -46,22 +53,29 @@ directories/dtl_directory={
 "Office_contact_ad": "res://Dialogue Stuff/Timelines/Office/Office_contact_ad.dtl",
 "Theo_answer": "res://Dialogue Stuff/Timelines/Micah/Theo_answer.dtl",
 "Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
-"Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl"
+"Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl",
+"Warrant_home": "res://Dialogue Stuff/Timelines/Micah/Warrant_home.dtl",
+"Warrant_night": "res://Dialogue Stuff/Timelines/Micah/Warrant_night.dtl",
+"Warrant_night_sus": "res://Dialogue Stuff/Timelines/Micah/Warrant_night_sus.dtl",
+"Warrant_night_time": "res://Dialogue Stuff/Timelines/Micah/Warrant_night_time.dtl",
+"Warrant_property": "res://Dialogue Stuff/Timelines/Micah/Warrant_property.dtl"
 }
 layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres", "res://Dialogue Stuff/Thoughts.tres"]
 layout/default_style="res://Dialogue Stuff/Text_Bubble.tres"
 variables={
 "Asked Questions": {
-"Micah_Asked_Night_Sus": true,
-"Micah_Asked_Night_Time": true,
+"Micah_Asked_Night": false,
+"Micah_Asked_Night_Sus": false,
+"Micah_Asked_Night_Time": false,
 "Micah_Asked_Property": false,
 "Micah_Asked_Theo_Question": false,
 "Micah_Asked_home": false,
-"Micah_Morning_enough_Theo": true
+"Micah_Morning_enough_Theo": false,
+"Micah_Theo_enter": false
 },
 "Character Aff Points": {
 "Juniper": 0,
-"Micah": 1,
+"Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
 "Theo": 0

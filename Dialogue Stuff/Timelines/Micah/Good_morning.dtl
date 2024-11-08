@@ -6,7 +6,6 @@ Micah: Y-yeah?
 Dalton: My name is Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
 Micah: Hi?
 Theo: Hello!
-Dalton: We got a call from your neighbor saying that they saw some suspicious activity around your apartment at around _a.m.
 Dalton: We have reason to believe that your house is part of a string of break-ins that happened last night.
 Dalton: Can we ask you a few questions?
 Micah: S-sure…
@@ -18,3 +17,5 @@ Dalton: ...
 	jump Morning_Property/
 - Can you think of anyone who would want to enter your home?
 	jump Morning_home/
+- Ask to enter Micah's apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
+	jump Micah_ask_enter/

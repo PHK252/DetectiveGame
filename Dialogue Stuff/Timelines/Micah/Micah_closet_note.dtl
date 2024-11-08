@@ -1,0 +1,31 @@
+if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == false:
+	Dalton: Do you know who wrote this note?
+	Micah: Huh? 
+	Dalton: Oh, my dad must've left it when he gave the toolbox to me...
+	Micah: heh...
+	Dalton: ...
+	Micah:Hmph. 
+
+if {Character Aff Points.Micah} >= 1 and {Asked Questions.Micah_Theo_enter} == false:
+	Dalton: It seems like someone stole your hammer. 
+	Micah: What? 
+	Dalton: Read this. 
+	Micah: Oh.
+	Micah: That's fine. 
+	Micah: I don't use it anyway. 
+	Dalton: Do you know who might have left the note?
+	Dalton: Or needed a hammer?
+	Micah: I...
+	Micah: I don't know...
+	
+if {Asked Questions.Micah_Theo_enter} == true:
+	Dalton: It seems like someone stole your hammer. 
+	Micah: What? 
+	Dalton: Read this. 
+	Micah: Oh.
+	Micah: That's fine. 
+	Micah: I don't use it anyway. 
+	Dalton: Do you know who might have left the note?
+	Dalton: Or needed a hammer?
+	Micah: I...
+	Micah: I need time to think...

@@ -1,0 +1,9 @@
+Dalton: Did you overheard or see anything suspicious happen during your shift?
+Micah: Uh... 
+Micah: No... 
+Micah: It was pretty normal. 
+set {Asked Questions.Micah_Asked_Night_Sus} = true
+if {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true:
+	jump Warrant/Questions
+else:
+	jump Warrant_night/Questions

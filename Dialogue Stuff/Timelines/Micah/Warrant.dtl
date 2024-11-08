@@ -1,12 +1,16 @@
 set {Character Aff Points.Micah} = 0
 Dalton: Am I talking to a Micah Procyon?
 Micah: ...y-yeah?
-Dalton: Hello. I’m Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus. 
-Dalton: We are here to investigate a series of break-ins that happened last night. 
-Dalton: We have a warrant to search your property, but I would first like to ask you a few questions... 
+Dalton: Hello. I’m Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
+Dalton: We are here to investigate a series of break-ins that happened last night.
+Dalton: We have a warrant to search your property, but I would first like to ask you a few questions.
+label Questions
+Dalton: ...
 - What were you doing last night?
-	jump
+	jump Warrant_night/
 - Did you notice any changes in your property?
-	jump
+	jump Warrant_property/
 - Can you think of anyone who would want to enter your home?
-	jump
+	jump Warrant_home/
+- Ask to enter Micah's apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
+	jump Micah_ask_enter/
