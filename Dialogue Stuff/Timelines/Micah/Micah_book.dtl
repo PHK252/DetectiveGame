@@ -1,0 +1,43 @@
+if {Character Aff Points.Micah} <= 1:
+	Dalton: Have you read this book?
+	Micah: Huh?
+	Micah: Oh.
+	Micah: I skimmed it a while back.
+	Micah: Don't remeber much though.
+	Dalton: ...
+	- Did you write this note?
+		Dalton: Did you write this note?
+		Micah: What note?
+		Dalton: The one on the bookmark?
+		Micah: Bookmark?
+		Dalton: ...
+		Dalton: So no.
+		Micah: ...
+		Micah: Nope.
+	- Do you know what this means?
+		Dalton: Do you know what this means?
+		Micah: ...
+		Micah: No...
+		Micah: Why is that there?
+		Dalton: I was hoping you would know. 
+
+if {Character Aff Points.Micah} >= 1:
+	Dalton: Have you read this book?
+	Micah: I read it when I was a kid.
+	Micah: I think a friend gave it to me. 
+	Micah: Don't remeber much though.
+	- Did you write this note?
+		Dalton: Did you write this note?
+		Micah: Huh?
+		Micah: ...
+		Micah: I don't think so.
+		Micah: If I did, I don't remember.
+	- Do you know what this means?
+		Dalton: Do you know that this means?
+		Micah: ...
+		Micah: No?
+		Micah: Where did you find that?
+		Dalton: It was in this book.
+		Micah: Oh... 
+		Micah: Weird. 
+		Micah: I haven't touch that book in ages.

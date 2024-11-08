@@ -1,4 +1,4 @@
-[gd_scene load_steps=319 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=329 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -154,6 +154,96 @@ transition = 0
 ease = 2
 
 [sub_resource type="Resource" id="Resource_ejo1w"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_2ystm"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_op2yn"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_yhx1f"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_fbq3w"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_vis25"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_pxry7"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_8vgo4"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_2j15o"]
+script = ExtResource("5_momqu")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_hnewi"]
+script = ExtResource("4_d1ue7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_13rdq"]
 script = ExtResource("5_momqu")
 cull_mask = 1048575
 h_offset = 0.0
@@ -3956,12 +4046,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74127, 1.53307, -5.46766)
 curve = SubResource("Curve3D_5fejm")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(0.0703254, -0.723688, 0.686392, 1.19201e-07, 0.688045, 0.725538, -0.997457, -0.0510234, 0.048394, -1.75274, 1.54231, -5.45091)
-v_offset = 0.71
-projection = 1
+transform = Transform3D(0.75487, 0, 0.655875, 0, 1, 0, -0.655875, 0, 0.75487, 1.5924, 1.44645, -4.84436)
 current = true
-size = 2.13
-near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem/Camera3D"]
 script = ExtResource("1_jaeu8")
@@ -4028,6 +4114,38 @@ transform = Transform3D(1, 0, 0, 0, 0.871616, 0.490189, 0, -0.490189, 0.871616, 
 script = ExtResource("3_gj8k4")
 tween_resource = SubResource("Resource_ph1cv")
 camera_3d_resource = SubResource("Resource_ejo1w")
+
+[node name="Closet close up" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(-0.0685339, -0.0603977, 0.995819, 0.0245529, 0.997761, 0.0622054, -0.997347, 0.0287135, -0.0668975, -1.7984, 1.18287, -0.444803)
+script = ExtResource("3_gj8k4")
+tween_resource = SubResource("Resource_2ystm")
+camera_3d_resource = SubResource("Resource_op2yn")
+
+[node name="Picture" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(-0.999339, 0, 0.0363472, 0.021223, 0.811829, 0.58351, -0.0295077, 0.583896, -0.811292, -0.728889, 1.0643, 0.832614)
+script = ExtResource("3_gj8k4")
+tween_resource = SubResource("Resource_yhx1f")
+camera_3d_resource = SubResource("Resource_fbq3w")
+
+[node name="Bookshelf Close" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(-4.31395e-08, 0.161225, -0.986918, 7.04736e-09, 0.986918, 0.161225, 1, 0, -4.37114e-08, 2, 1.18728, -0.82934)
+script = ExtResource("3_gj8k4")
+tween_resource = SubResource("Resource_vis25")
+camera_3d_resource = SubResource("Resource_pxry7")
+
+[node name="Fridge" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(0.0428954, 0.262661, -0.963934, -0.0116769, 0.964888, 0.262401, 0.999011, 0, 0.0444563, 1.6821, 1.20871, -2.966)
+script = ExtResource("3_gj8k4")
+priority = 13
+tween_resource = SubResource("Resource_8vgo4")
+camera_3d_resource = SubResource("Resource_2j15o")
+
+[node name="Cabinet" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(0.75487, 0, 0.655875, 0, 1, 0, -0.655875, 0, 0.75487, 1.5924, 1.44645, -4.84436)
+script = ExtResource("3_gj8k4")
+priority = 13
+tween_resource = SubResource("Resource_hnewi")
+camera_3d_resource = SubResource("Resource_13rdq")
 
 [node name="CamAreas" type="Node" parent="SubViewportContainer/SubViewport"]
 
@@ -4539,6 +4657,9 @@ shape = SubResource("ConcavePolygonShape3D_v4c2b")
 [node name="detectivesherlock" parent="SubViewportContainer/FirstHouseUpdated" index="149"]
 mesh = SubResource("ArrayMesh_2l6cf")
 
+[node name="bookmark" parent="SubViewportContainer/FirstHouseUpdated" index="173"]
+transform = Transform3D(-0.0107445, -1.16415e-10, 0, 0, -0.0059709, 0.0779882, 0, -0.0779882, -0.0059709, -2.78732, 0.899919, 0.275437)
+
 [node name="toolbox" parent="SubViewportContainer/FirstHouseUpdated" index="174"]
 mesh = SubResource("ArrayMesh_m2lta")
 
@@ -4706,25 +4827,35 @@ texture = SubResource("CompressedTexture2D_feshg")
 position = Vector2(429, 605)
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(1.96892e-09, -5.39206e-08, -2.98503)
-bones/3/rotation = Quaternion(0.0101989, 0.33967, 0.866174, -0.366419)
-bones/4/rotation = Quaternion(-0.270648, 0.0491357, -0.0393416, 0.960618)
-bones/5/rotation = Quaternion(0.518181, -0.0755145, 0.0860759, 0.847571)
-bones/8/rotation = Quaternion(-0.0101988, 0.33967, 0.866174, 0.366419)
-bones/9/rotation = Quaternion(-0.270648, -0.0491357, 0.0393416, 0.960618)
-bones/10/rotation = Quaternion(0.518181, 0.0755145, -0.0860758, 0.847571)
-bones/12/position = Vector3(1.96892e-09, 2.98503, -2.80074e-07)
-bones/15/rotation = Quaternion(-0.0800318, 1.13743e-07, -1.13208e-08, 0.996792)
-bones/16/rotation = Quaternion(0.0266425, 8.98418e-09, 8.09129e-09, 0.999645)
-bones/18/rotation = Quaternion(0.0426219, -0.00149024, -0.0100307, 0.99904)
-bones/20/rotation = Quaternion(0.042622, 0.00149024, 0.0100307, 0.99904)
-bones/22/rotation = Quaternion(-0.260777, -0.148474, -0.392947, 0.86922)
-bones/23/rotation = Quaternion(-0.0034663, -0.000440181, -0.318084, 0.948056)
-bones/26/rotation = Quaternion(-0.260777, 0.148474, 0.392947, 0.86922)
-bones/27/rotation = Quaternion(-0.00346651, 0.000440189, 0.318085, 0.948056)
-bones/31/position = Vector3(0.967986, 2.18672, -0.0311821)
-bones/33/position = Vector3(1.96892e-09, 2.98503, -1.13525e-07)
-bones/36/position = Vector3(-0.967986, 2.18672, -0.0311821)
+bones/1/position = Vector3(-3.35503e-10, -5.75171e-08, -3.01459)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.0190134, 0.315442, 0.876707, -0.362657)
+bones/4/rotation = Quaternion(-0.221049, 0.0850863, -0.0386268, 0.970776)
+bones/5/rotation = Quaternion(0.495573, -0.107543, 0.101683, 0.855864)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0190133, 0.315442, 0.876707, 0.362657)
+bones/9/rotation = Quaternion(-0.221049, -0.0850863, 0.0386268, 0.970776)
+bones/10/rotation = Quaternion(0.495573, 0.107543, -0.101683, 0.855864)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(-3.35503e-10, 3.01459, -2.633e-07)
+bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
+bones/15/rotation = Quaternion(-0.0854272, 1.15533e-07, -1.28795e-08, 0.996345)
+bones/16/rotation = Quaternion(0.0380322, 4.20947e-09, 1.27904e-08, 0.999277)
+bones/18/rotation = Quaternion(0.0203215, -0.00905375, -0.00968146, 0.999706)
+bones/20/rotation = Quaternion(0.0203215, 0.00905375, 0.00968146, 0.999706)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.25591, -0.14899, -0.403701, 0.865643)
+bones/23/rotation = Quaternion(-0.00311962, -0.000444884, -0.286271, 0.958144)
+bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.255911, 0.14899, 0.4037, 0.865643)
+bones/27/rotation = Quaternion(-0.00311984, 0.000444863, 0.286272, 0.958143)
+bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
+bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
+bones/31/position = Vector3(0.987664, 2.19232, -0.0311821)
+bones/33/position = Vector3(-3.35503e-10, 3.01459, -1.17122e-07)
+bones/36/position = Vector3(-0.987664, 2.19232, -0.0311821)
 
 [node name="MicahPath" type="Node" parent="Characters"]
 

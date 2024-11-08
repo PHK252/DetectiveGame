@@ -1,0 +1,54 @@
+Dalton: ...
+- Show Micah a picture of Juniper.
+	if {Character Aff Points.Micah} <= 1:
+		Dalton: ... 
+		- Do you recognize her?
+			Dalton: Do you recognize her?
+			Micah: ...
+			Micah: She looks... 
+			Micah: familar?
+			Dalton: So you've seen her before.
+			Micah: ... I think?
+			Dalton: Do you remember where?
+			Micah: ... 
+			Micah: Around?
+			Dalton: ...
+			Micah: ...
+			Dalton: Hmmph. 
+		- Do you know anybody who would have a reason to target her?
+			Dalton: Do you know anybody who would have a reason to target her?
+			Micah: I don't...
+			Micah: ...know her? 
+			Dalton: Hmph.
+	if {Character Aff Points.Micah} <= 1:
+		Dalton: ... 
+		- Do you recognize her?
+			Dalton: Do you recognize her?
+			Micah: ...
+			Micah: Hmm...
+			Micah: I think so?
+			Micah: Doesn't she run a cafe near mid-town?
+			Micah: I think I went there a few times with a friend.
+			Dalton: Hmph.
+		- Do you know anybody who would have a reason to target her?
+			Micah: I don't know her enough to know that. 
+- Show Micah a picture of Quincy.
+	if {Character Aff Points.Micah} <= 1:
+		- Do you recognize him?
+			Dalton: Do you recognize him?
+			Micah: ...
+			Micah: He's the mayor... 
+			Micah: Right?
+			Dalton: Yes. 
+		- Do you know anybody who would target him?
+			Dalton: Do you know anybody who would target him?
+			Micah: Not specially... no.
+	if {Character Aff Points.Micah} <= 1:
+		Dalton: Do you recognize him?
+		Micah: Isn't he the mayor?
+		Dalton: Yes.
+		Dalton: Do you know anybody who would target him?
+		Micah: I mean... 
+		Micah: He's not the greatest person... 
+		Micah: So... 
+		Micah: I don't know.
