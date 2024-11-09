@@ -1,4 +1,4 @@
-[gd_scene load_steps=344 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=353 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -40,9 +40,11 @@
 [ext_resource type="Material" uid="uid://b8h6xqtqfgr5c" path="res://ShaderScripts/chipsblue.tres" id="30_vdo6b"]
 [ext_resource type="PackedScene" uid="uid://d1p7a1g58vmah" path="res://GeneralScripts/interaction/Interactable.tscn" id="31_3mnbx"]
 [ext_resource type="Texture2D" uid="uid://dl3nfrvr0urwl" path="res://FirstHouse/FirstHouseUpdated_lays.png" id="31_3wao7"]
+[ext_resource type="Script" path="res://FirstHouse/Pic_fall_interact.gd" id="31_173dr"]
 [ext_resource type="Script" path="res://GeneralScripts/interaction/OpenDoor.gd" id="31_cx2le"]
 [ext_resource type="Script" path="res://StartingOffice/map.gd" id="34_mw70x"]
 [ext_resource type="PackedScene" uid="uid://crgv83s0k1fwv" path="res://map_ui.tscn" id="35_6wbhd"]
+[ext_resource type="Script" path="res://FirstHouse/bookshelf_interact.gd" id="38_ksu7f"]
 [ext_resource type="PackedScene" uid="uid://c2ffunqvkd7nk" path="res://CharacterStuff/Micah/micah.tscn" id="41_8l10i"]
 [ext_resource type="PackedScene" uid="uid://la842f74mxcx" path="res://FirstHouse/closet.glb" id="42_3fi1f"]
 [ext_resource type="Script" path="res://FirstHouse/closet_interaction.gd" id="43_xpxa8"]
@@ -226,7 +228,7 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_yhx1f"]
 script = ExtResource("4_d1ue7")
-duration = 1.0
+duration = 0.0
 transition = 0
 ease = 2
 
@@ -242,9 +244,46 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
+[sub_resource type="Animation" id="Animation_rpgpg"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.728889, 1.44477, 0.972299), Vector3(-0.729, 1.465, 0.972)]
+}
+
+[sub_resource type="Animation" id="Animation_4804c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.728889, 1.44477, 0.972299)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_scwej"]
+_data = {
+"Cam_Idle": SubResource("Animation_rpgpg"),
+"RESET": SubResource("Animation_4804c")
+}
+
 [sub_resource type="Resource" id="Resource_vis25"]
 script = ExtResource("4_d1ue7")
-duration = 1.0
+duration = 0.0
 transition = 0
 ease = 2
 
@@ -259,6 +298,43 @@ size = 1.0
 frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
+
+[sub_resource type="Animation" id="Animation_ha2fy"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 1.18728, -0.82934), Vector3(2, 1.207, -0.829)]
+}
+
+[sub_resource type="Animation" id="Animation_xh23y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 1.18728, -0.82934)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_66r0k"]
+_data = {
+"Cam_Idle": SubResource("Animation_ha2fy"),
+"RESET": SubResource("Animation_xh23y")
+}
 
 [sub_resource type="Resource" id="Resource_8vgo4"]
 script = ExtResource("4_d1ue7")
@@ -1850,6 +1926,9 @@ data = PackedVector3Array(0, -0.7385, -1.0102, 0.1951, -0.2202, -0.9332, 0, -0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53nie"]
 size = Vector3(3.68886, 7.16357, 32.7637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chigc"]
+size = Vector2(116.83, 121.256)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4jded"]
 size = Vector3(2.17277, 2.19104, 3.1108)
@@ -4197,16 +4276,27 @@ libraries = {
 }
 
 [node name="Picture" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-0.999339, 0, 0.0363472, 0.021223, 0.811829, 0.58351, -0.0295077, 0.583896, -0.811292, -0.728889, 1.0643, 0.832614)
+transform = Transform3D(-0.999342, 0.000226982, 0.0362526, 0.0157654, 0.903198, 0.428935, -0.0326459, 0.429225, -0.902608, -0.728889, 1.44477, 0.972299)
 script = ExtResource("3_gj8k4")
 tween_resource = SubResource("Resource_yhx1f")
+tween_on_load = false
 camera_3d_resource = SubResource("Resource_fbq3w")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/Picture"]
+libraries = {
+"": SubResource("AnimationLibrary_scwej")
+}
+
 [node name="Bookshelf Close" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-4.31395e-08, 0.161225, -0.986918, 7.04736e-09, 0.986918, 0.161225, 1, 0, -4.37114e-08, 2, 1.18728, -0.82934)
+transform = Transform3D(-4.37114e-08, 0.377841, -0.925871, 0, 0.925871, 0.377841, 1, 1.65159e-08, -4.04711e-08, 2, 1.18728, -0.82934)
 script = ExtResource("3_gj8k4")
 tween_resource = SubResource("Resource_vis25")
 camera_3d_resource = SubResource("Resource_pxry7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/Bookshelf Close"]
+libraries = {
+"": SubResource("AnimationLibrary_66r0k")
+}
 
 [node name="Fridge" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(0.0428954, 0.262661, -0.963934, -0.0116769, 0.964888, 0.262401, 0.999011, 0, 0.0444563, 1.6821, 1.20871, -2.966)
@@ -4519,14 +4609,25 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/TrashBags_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_q3nh0")
 
-[node name="PictureFrameFriend" parent="SubViewportContainer/FirstHouseUpdated" index="42"]
+[node name="Interact" type="Node3D" parent="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend" index="0"]
+transform = Transform3D(1, 3.72529e-09, 0, 0, 1, -1.86265e-09, 0, -4.76837e-07, 1, 9.53674e-07, 0, 7.62939e-06)
 script = ExtResource("30_cy676")
 
-[node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend" index="0" instance=ExtResource("31_3mnbx")]
+[node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact" instance=ExtResource("31_3mnbx")]
+transform = Transform3D(1, 3.72529e-09, 0, 0, 1, 0, 0, 2.38419e-07, 1, -9.53674e-07, 0, 0)
 
-[node name="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interactable" index="0"]
+[node name="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact/Interactable" index="0"]
 transform = Transform3D(1, 5.96046e-08, 0, 0, 1, -1.86265e-09, 0, 0, 1, -0.0482035, -2.20477, 12.6455)
 shape = SubResource("BoxShape3D_53nie")
+
+[node name="Pic fall Interact" type="Area2D" parent="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend" index="1"]
+visible = false
+script = ExtResource("31_173dr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact"]
+position = Vector2(901, 814)
+rotation = -0.108141
+shape = SubResource("RectangleShape2D_chigc")
 
 [node name="case" parent="SubViewportContainer/FirstHouseUpdated" index="43"]
 transform = Transform3D(0.198843, -0.00104749, -0.00406543, 0.00289339, 0.1377, 0.00627356, 0.0131557, -0.0144525, 0.0600675, -1.07451, 0.177735, -1.8676)
@@ -4757,9 +4858,14 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jckln")
 
-[node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf" index="1" instance=ExtResource("31_3mnbx")]
+[node name="Bookshelf interact" type="Node3D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("38_ksu7f")
 
-[node name="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/Interactable" index="0"]
+[node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact" instance=ExtResource("31_3mnbx")]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Interactable" index="0"]
 transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 0.492548, -0.0845643, -0.0215523)
 shape = SubResource("BoxShape3D_p4hxp")
 
@@ -4963,35 +5069,35 @@ texture = SubResource("CompressedTexture2D_feshg")
 position = Vector2(429, 605)
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(2.98382e-10, -5.39206e-08, -2.94682)
+bones/1/position = Vector3(-3.35194e-09, -5.75171e-08, -2.94559)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.00091682, 0.365438, 0.85372, -0.370966)
-bones/4/rotation = Quaternion(-0.323744, 0.00389614, -0.035015, 0.945488)
-bones/5/rotation = Quaternion(0.542081, -0.0348975, 0.0638431, 0.837171)
+bones/3/rotation = Quaternion(0.000646963, 0.366192, 0.853335, -0.37111)
+bones/4/rotation = Quaternion(-0.325301, 0.00246467, -0.0347988, 0.944967)
+bones/5/rotation = Quaternion(0.542773, -0.0336041, 0.0630977, 0.836832)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.000916783, 0.365438, 0.85372, 0.370966)
-bones/9/rotation = Quaternion(-0.323744, -0.00389614, 0.035015, 0.945489)
-bones/10/rotation = Quaternion(0.542081, 0.0348975, -0.0638431, 0.837171)
+bones/8/rotation = Quaternion(-0.000646953, 0.366192, 0.853335, 0.37111)
+bones/9/rotation = Quaternion(-0.325301, -0.00246467, 0.0347987, 0.944967)
+bones/10/rotation = Quaternion(0.542773, 0.0336041, -0.0630977, 0.836832)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(2.98382e-10, 2.94682, -2.15247e-07)
+bones/12/position = Vector3(-3.35194e-09, 2.94559, -2.00203e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
-bones/15/rotation = Quaternion(-0.0730527, 1.13622e-07, -1.21465e-08, 0.997328)
-bones/16/rotation = Quaternion(0.0119117, 8.72958e-09, 8.07858e-09, 0.999929)
-bones/18/rotation = Quaternion(0.0714184, 0.00828959, -0.010474, 0.997357)
-bones/20/rotation = Quaternion(0.0714184, -0.00828959, 0.010474, 0.997357)
+bones/15/rotation = Quaternion(-0.0728278, 1.15319e-07, -1.4371e-08, 0.997345)
+bones/16/rotation = Quaternion(0.0114372, 3.7511e-09, 1.27685e-08, 0.999935)
+bones/18/rotation = Quaternion(0.0723445, 0.00860435, -0.0104881, 0.997287)
+bones/20/rotation = Quaternion(0.0723445, -0.00860435, 0.0104881, 0.997287)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.266907, -0.148036, -0.38096, 0.872763)
-bones/23/rotation = Quaternion(-0.00386361, -0.000434115, -0.354541, 0.935032)
+bones/22/rotation = Quaternion(-0.267103, -0.148024, -0.380603, 0.872861)
+bones/23/rotation = Quaternion(-0.00387562, -0.000433962, -0.355645, 0.934613)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.266908, 0.148035, 0.38096, 0.872763)
-bones/27/rotation = Quaternion(-0.00386382, 0.000434118, 0.354542, 0.935032)
+bones/26/rotation = Quaternion(-0.267103, 0.148024, 0.380603, 0.872861)
+bones/27/rotation = Quaternion(-0.00387586, 0.000433927, 0.355646, 0.934613)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.942544, 2.17948, -0.0311821)
-bones/33/position = Vector3(2.98382e-10, 2.94682, -1.13525e-07)
-bones/36/position = Vector3(-0.942544, 2.17948, -0.0311821)
+bones/31/position = Vector3(0.941724, 2.17925, -0.0311821)
+bones/33/position = Vector3(-3.35194e-09, 2.94559, -1.17122e-07)
+bones/36/position = Vector3(-0.941724, 2.17925, -0.0311821)
 
 [node name="MicahPath" type="Node" parent="Characters"]
 
@@ -5064,8 +5170,10 @@ autostart = true
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/PosterArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_poster_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/WindowArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_window_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/KitchenArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_kitchen_area_body_entered"]
-[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interactable" to="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact" method="_on_interactable_interacted"]
+[connection signal="input_event" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact" to="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact" method="_on_input_event"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable" to="SubViewportContainer/FirstHouseUpdated/Cube_006" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/door/Interactable" to="SubViewportContainer/FirstHouseUpdated/door" method="_on_interactable_interacted"]
 [connection signal="interacted" from="closet/Wardrobe/Interactable" to="closet" method="_on_interactable_interacted"]
 [connection signal="unfocused" from="closet/Wardrobe/Interactable" to="closet" method="_on_interactable_unfocused"]
@@ -5075,12 +5183,12 @@ autostart = true
 
 [editable path="SubViewportContainer/FirstHouseUpdated"]
 [editable path="SubViewportContainer/FirstHouseUpdated/fridge_001/Interactable"]
-[editable path="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interactable"]
+[editable path="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/case/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/Wardrobe/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/cabinetz/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable"]
-[editable path="SubViewportContainer/FirstHouseUpdated/Bookshelf/Interactable"]
+[editable path="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/door"]
 [editable path="SubViewportContainer/FirstHouseUpdated/door/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/replacewindow"]

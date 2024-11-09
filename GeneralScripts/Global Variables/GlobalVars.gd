@@ -18,8 +18,11 @@ extends Node
 @onready var viewed_team = false
 @onready var viewed_missing = false
 @onready var viewed_tool_note = false
+@onready var pic_fell = false
+@onready var in_interaction = ""
 @onready var viewing = ""
 @onready var first_house = ""
+
 #not quite sure if we need this one
 #@onready var second_house = ""
 @onready var has_secret = false

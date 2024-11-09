@@ -28,16 +28,18 @@ func _process(delta):
 	else:
 		closet_cam.set_rotation_degrees(Vector3(-25, 93.8, 1.4))
 
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "closet":
 		if Input.is_action_just_pressed("Exit"):
+				main_cam.set_tween_duration(0)
 				closet_cam.priority = 0
 				main_cam.priority = 12
 				await get_tree().create_timer(.03).timeout
 				cam_anim.play("RESET")
 				player.show()
 				player.start_player()
-				
+				GlobalVars.in_interaction = ""
 				note_interaction.hide()
+				main_cam.set_tween_duration(1)
 	
 	if GlobalVars.in_look_screen == true:
 		note_interaction.hide()
@@ -45,8 +47,10 @@ func _process(delta):
 		note_interaction.show()
 
 func _on_interactable_interacted(interactor):
+	
 	#doors don't work quite right yet
 	if closet_open == false:
+		player.stop_player()
 		closet_anim.play("ClosetLOpen")
 		await closet_anim.animation_finished
 		closet_anim.play("ClosetOpenR")
@@ -56,11 +60,11 @@ func _on_interactable_interacted(interactor):
 		await get_tree().create_timer(3).timeout
 	
 	# connect signal to switch cams
+	GlobalVars.in_interaction = "closet"
 	closet_cam.priority = 15
 	main_cam.priority = 0 
 	note_interaction.show()
 	cam_anim.play("Cam_Idle")
-	player.stop_player()
 	player.hide()
 
 #
