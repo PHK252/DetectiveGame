@@ -23,7 +23,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	mouse_pos = get_viewport().get_mouse_position()
+	mouse_pos = get_viewport().get_mouse_position() 
+	print(mouse_pos)
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 170:
 			cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
