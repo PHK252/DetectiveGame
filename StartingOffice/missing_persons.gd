@@ -16,3 +16,7 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_exit_pressed():
 	GlobalVars.viewing = ""
+
+func _process(delta):
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "missing":
+		GlobalVars.viewing = ""

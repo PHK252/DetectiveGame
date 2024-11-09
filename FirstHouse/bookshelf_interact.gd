@@ -5,6 +5,7 @@ extends Node3D
 @onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../../SubViewport/CameraSystem/Bookshelf Close/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
+@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,15 +16,16 @@ func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	#print(mouse_pos) 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
-		if mouse_pos.y >= 700:
+		if mouse_pos.y >= 850:
 			book_cam.set_rotation_degrees(Vector3(-25.3, -90, 0))
-		elif mouse_pos.y < 120:
-			book_cam.set_rotation_degrees(Vector3(10, -90, 0))
+		elif mouse_pos.y < 320:
+			book_cam.set_rotation_degrees(Vector3(5, -90, 0))
 		else:
 			book_cam.set_rotation_degrees(Vector3(-9.3, -90, 0))
 				#pass
 	else:
 		book_cam.set_rotation_degrees(Vector3(-9.3, -90, 0))
+	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "book":
 		if Input.is_action_just_pressed("Exit"):
 			main_cam.set_tween_duration(0)
@@ -35,16 +37,21 @@ func _process(delta):
 			player.start_player()
 			main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
-			#pic_fall.hide()
+			bookmark_interact.hide()
+			
+			#activate dialogue
 
-
+	if GlobalVars.in_look_screen == true:
+		bookmark_interact.hide()
+	elif GlobalVars.in_look_screen == false and book_cam.priority == 15:
+		bookmark_interact.show()
 
 
 func _on_interactable_interacted(interactor):
 	GlobalVars.in_interaction = "book"
 	book_cam.priority = 15
 	main_cam.priority = 0 
-	#note_interaction.show()
+	bookmark_interact.show()
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()

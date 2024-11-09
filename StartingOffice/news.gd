@@ -11,9 +11,12 @@ func _on_input_event(viewport, event, shape_idx):
 				look.show()
 				GlobalVars.in_look_screen = true
 				GlobalVars.viewing = "news"
-				print("news")
-
+				
 
 
 func _on_exit_pressed():
 	GlobalVars.viewing = ""
+
+func _process(delta):
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "news":
+		GlobalVars.viewing = ""
