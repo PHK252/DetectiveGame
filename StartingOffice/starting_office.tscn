@@ -1,4 +1,4 @@
-[gd_scene load_steps=226 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=227 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bmpq40j8301kl" path="res://GeneralScripts/interaction/Alert alt small.png" id="37_bdufp"]
 [ext_resource type="Script" path="res://StartingOffice/contact.gd" id="37_q038v"]
 [ext_resource type="Script" path="res://StartingOffice/missing_persons.gd" id="38_47f4o"]
+[ext_resource type="Script" path="res://StartingOffice/dalton_marker_office.gd" id="38_77grr"]
 [ext_resource type="PackedScene" uid="uid://bqvssux5m1c" path="res://CharacterStuff/Dalton/Dalton.tscn" id="38_yedfk"]
 
 [sub_resource type="Curve3D" id="Curve3D_acv4t"]
@@ -3338,6 +3339,9 @@ visible = false
 layer = 0
 visible = false
 
+[node name="Dalton\'s Marker" type="Marker2D" parent="UI"]
+script = ExtResource("38_77grr")
+
 [node name="Characters" type="Node" parent="."]
 
 [node name="Dalton" parent="Characters" instance=ExtResource("38_yedfk")]
@@ -3346,26 +3350,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207753, -0.0366151, -0.0678
 [node name="CharacterBody3D" parent="Characters/Dalton" index="0" node_paths=PackedStringArray("camera")]
 camera = NodePath("../../../SubViewportContainer/SubViewport/CameraSystem/Camera3D")
 
+[node name="PlayerInteractor" parent="Characters/Dalton/CharacterBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541894, 0)
+
+[node name="Alert" parent="Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
+visible = false
+
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(-4.31434e-10, -5.75171e-08, -3.0124)
-bones/3/rotation = Quaternion(0.0182865, 0.317432, 0.875883, -0.36295)
-bones/4/rotation = Quaternion(-0.225105, 0.0823896, -0.0388474, 0.970067)
-bones/5/rotation = Quaternion(0.497423, -0.105144, 0.10059, 0.855217)
-bones/8/rotation = Quaternion(-0.0182865, 0.317432, 0.875883, 0.36295)
-bones/9/rotation = Quaternion(-0.225105, -0.0823896, 0.0388474, 0.970067)
-bones/10/rotation = Quaternion(0.497423, 0.105144, -0.10059, 0.855217)
-bones/12/position = Vector3(-4.31434e-10, 3.0124, -2.487e-07)
-bones/15/rotation = Quaternion(-0.0850267, 1.15526e-07, -1.2927e-08, 0.996379)
-bones/16/rotation = Quaternion(0.0371868, 4.19495e-09, 1.27898e-08, 0.999308)
-bones/18/rotation = Quaternion(0.021977, -0.00849255, -0.00970756, 0.999675)
-bones/20/rotation = Quaternion(0.021977, 0.00849255, 0.00970757, 0.999675)
-bones/22/rotation = Quaternion(-0.256276, -0.148945, -0.402852, 0.865938)
-bones/23/rotation = Quaternion(-0.0031467, -0.000444535, -0.288756, 0.957397)
-bones/26/rotation = Quaternion(-0.256276, 0.148945, 0.402851, 0.865938)
-bones/27/rotation = Quaternion(-0.00314692, 0.00044451, 0.288758, 0.957397)
-bones/31/position = Vector3(0.986203, 2.19191, -0.0311821)
-bones/33/position = Vector3(-4.31434e-10, 3.0124, -1.17122e-07)
-bones/36/position = Vector3(-0.986203, 2.19191, -0.0311821)
+bones/1/position = Vector3(3.44417e-09, -5.39206e-08, -3.01878)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.0204435, 0.311528, 0.878308, -0.362086)
+bones/4/rotation = Quaternion(-0.213081, 0.0902421, -0.0381322, 0.972111)
+bones/5/rotation = Quaternion(0.491941, -0.112129, 0.103741, 0.857123)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0204435, 0.311528, 0.878308, 0.362086)
+bones/9/rotation = Quaternion(-0.213081, -0.0902421, 0.0381322, 0.972111)
+bones/10/rotation = Quaternion(0.491941, 0.112129, -0.103741, 0.857123)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(3.44417e-09, 3.01878, -2.5432e-07)
+bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
+bones/15/rotation = Quaternion(-0.0860398, 1.14338e-07, -1.12498e-08, 0.996292)
+bones/16/rotation = Quaternion(0.0396462, 9.2074e-09, 8.10106e-09, 0.999214)
+bones/18/rotation = Quaternion(0.0171606, -0.0101251, -0.00963153, 0.999755)
+bones/20/rotation = Quaternion(0.0171606, 0.0101251, 0.00963156, 0.999755)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.25521, -0.149079, -0.405344, 0.865067)
+bones/23/rotation = Quaternion(-0.00306731, -0.000445516, -0.281467, 0.959566)
+bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.25521, 0.149079, 0.405343, 0.865067)
+bones/27/rotation = Quaternion(-0.00306747, 0.000445527, 0.281468, 0.959566)
+bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
+bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
+bones/31/position = Vector3(0.990453, 2.19312, -0.0311821)
+bones/33/position = Vector3(3.44417e-09, 3.01878, -1.13525e-07)
+bones/36/position = Vector3(-0.990453, 2.19312, -0.0311821)
 
 [connection signal="became_active" from="SubViewportContainer/SubViewport/CameraSystem/Corkboard cam" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_corkboard_cam_became_active"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox" method="_on_interactable_interacted"]
@@ -3407,4 +3427,5 @@ bones/36/position = Vector3(-0.986203, 2.19191, -0.0311821)
 [editable path="UI/Missing Look"]
 [editable path="UI/Case Look"]
 [editable path="Characters/Dalton"]
+[editable path="Characters/Dalton/CharacterBody3D/PlayerInteractor"]
 [editable path="Characters/Dalton/CharacterBody3D/DetectiveT7"]

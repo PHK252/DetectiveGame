@@ -20,6 +20,7 @@ func _physics_process(_delta: float) -> void:
 			highlight.show()
 			if GlobalVars.current_level == "Office":
 				animplay.play("Alert_Animation_Office")
+				#print("office_interact")
 			elif GlobalVars.current_level == "Micah":
 				animplay.play("Alert_Animation_Micah")
 		cached_closest = new_closest

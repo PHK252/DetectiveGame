@@ -7,6 +7,9 @@ extends Node3D
 
 @onready var tool_look = $UI/Tool_note
 @onready var bookmark_look = $UI/Bookmark
+
+@onready var Dalton_marker = $UI/Dalton_marker
+@onready var Micah_marker = $UI/Micah_marker
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.current_level = "Micah"
@@ -15,9 +18,14 @@ func _ready():
 	bookmark_interact.hide()
 	tool_look.hide()
 	bookmark_look.hide()
-
+	
+	#var layout = Dialogic.start("Office_Donuts")
+	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
 			get_tree().quit()
+	
+	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)

@@ -3,7 +3,7 @@ extends MeshInstance3D
 @onready var cork_cam = $"../../CameraSystem/Corkboard cam"
 @onready var cam_anim = $"../../CameraSystem/Corkboard cam/AnimationPlayer"
 @onready var main_cam = $"../../CameraSystem/PhantomCamera3D"
-@onready var player = $"../../../../Dalton/CharacterBody3D"
+@onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
 @onready var team_pic = $"../../../../UI/TeamPic"
 @onready var partner_pic = $"../../../../UI/PartnerPic"
 @onready var news = $"../../../../UI/News"
@@ -24,7 +24,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position() 
-	print(mouse_pos)
+	#print(mouse_pos)
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 170:
 			cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
