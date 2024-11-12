@@ -1,7 +1,8 @@
 extends Area2D
 
 @onready var object = $"."
-@onready var look = $"../Partner Look"
+@onready var look = $"../News Look"
+@onready var alert = $"../NewsHover"
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
@@ -9,6 +10,7 @@ func _on_input_event(viewport, event, shape_idx):
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				object.hide()
 				look.show()
+				alert.hide()
 				GlobalVars.in_look_screen = true
 				GlobalVars.viewing = "news"
 				
@@ -20,3 +22,10 @@ func _on_exit_pressed():
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "news":
 		GlobalVars.viewing = ""
+
+func _on_mouse_entered():
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+		alert.show()
+
+func _on_mouse_exited():
+	alert.hide()

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmqk827kfrbj3" path="res://GeneralScripts/interaction/Interactor.tscn" id="1_2wugu"]
 [ext_resource type="Script" path="res://GeneralScripts/interaction/PlayerInteractor.gd" id="2_y2xxv"]
-[ext_resource type="Texture2D" uid="uid://bmpq40j8301kl" path="res://GeneralScripts/interaction/Alert alt small.png" id="3_6wm2k"]
+[ext_resource type="Texture2D" uid="uid://ddvuehuass2ej" path="res://UI/Assets/Interactions/Orange alert small.png" id="3_xn67x"]
 
 [sub_resource type="Animation" id="Animation_jhdpj"]
 resource_name = "Alert_Animation_Micah"
@@ -63,7 +63,7 @@ script = ExtResource("2_y2xxv")
 
 [node name="Alert" type="Sprite3D" parent="CollisionShape3D" index="0"]
 offset = Vector2(0, 135)
-texture = ExtResource("3_6wm2k")
+texture = ExtResource("3_xn67x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape3D" index="1"]
 root_node = NodePath("../..")

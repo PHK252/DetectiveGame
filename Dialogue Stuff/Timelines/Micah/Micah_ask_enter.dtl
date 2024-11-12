@@ -3,6 +3,7 @@ Dalton: Is it okay for us to enter and take a look around?
 Micah: Uhh...
 Micah: I...
 Micah: I don't...
+[wait time="0.3"]
 Dalton: ...
 - Reassure Micah.
 	Dalton: If you're not ready today, we can come back tommorow if you'd like. 
@@ -28,7 +29,7 @@ Dalton: ...
 	{Character Aff Points.Micah}
 	{Character Aff Points.Theo}
 	#enter
-- Have Theo talk to Micah. | [if {Character Aff Points.Micah} >= 3 and {Character Aff Points.Theo} >= 1]
+- Have Theo talk to Micah. | [if {Character Aff Points.Micah} >= 2 and {Character Aff Points.Theo} >= 1]
 	set {Character Aff Points.Micah} += 1
 	set {Character Aff Points.Theo} += 1
 	Theo: It's only going to take 15 minutes tops, and then you can go back to sleep. 

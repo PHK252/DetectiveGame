@@ -7,6 +7,7 @@ Micah: Uhh... I had a quick snack at the Deli across the street and then...
 Micah: Um... I went to start my shift at the [Insert Convenient Store Name here].
 set {Asked Questions.Micah_Asked_Night} = true
 label Questions
+[wait time="0.3"]
 Dalton: ...
 - What time did you come back from your shift?
 	jump Morning_night_time/
