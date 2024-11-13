@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3h5qg8uq6287"]
 
 [ext_resource type="Script" path="res://menuassets/mainmenu.gd" id="1_nw0ck"]
-[ext_resource type="VideoStream" path="res://menuassets/start.ogv" id="2_6a5pg"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_ulf4x"]
+file = "res://menuassets/load.ogv"
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -20,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_6a5pg")
+stream = SubResource("VideoStreamTheora_ulf4x")
 autoplay = true
 expand = true
 loop = true

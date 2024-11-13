@@ -29,3 +29,4 @@ extends Node
 @onready var has_contact = false
 @onready var current_level = ""
 var player_pos
+var first_house_path = "res://FirstHouse/first_house.tscn"

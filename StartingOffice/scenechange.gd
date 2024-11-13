@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_firsthouse_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://FirstHouse/first_house.tscn")
+	LoadManager.load_scene(GlobalVars.first_house_path)
+	#get_tree().change_scene_to_file("res://FirstHouse/first_house.tscn")
 
 
 func _on_secondhouse_button_pressed() -> void:
