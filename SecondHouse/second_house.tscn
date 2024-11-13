@@ -1499,32 +1499,44 @@ _data = {
 point_count = 13
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hscfb"]
-energy_multiplier = 0.51
+sky_top_color = Color(0.808108, 0.805202, 0.815056, 1)
+sky_horizon_color = Color(0.740651, 0.748493, 0.760877, 1)
+sky_curve = 0.197926
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0.14005, 0.10634, 0.0694864, 1)
+ground_horizon_color = Color(0.691431, 0.603975, 0.580125, 1)
+ground_curve = 0.034822
+sun_angle_max = 57.92
+energy_multiplier = 0.1
 
 [sub_resource type="Sky" id="Sky_c16lh"]
 sky_material = SubResource("ProceduralSkyMaterial_hscfb")
 
 [sub_resource type="Environment" id="Environment_8mbkn"]
 background_mode = 2
-background_energy_multiplier = 1.54
+background_energy_multiplier = 6.06
 sky = SubResource("Sky_c16lh")
-sky_custom_fov = 87.3
-ambient_light_color = Color(0.558449, 0.534953, 0.512138, 1)
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.49
+sky_custom_fov = 83.7
+ambient_light_color = Color(0.907318, 0.79381, 0.651603, 1)
+ambient_light_sky_contribution = 0.18
+ambient_light_energy = 0.18
 tonemap_mode = 2
+tonemap_exposure = 0.88
 glow_enabled = true
 glow_intensity = 0.86
-glow_strength = 0.68
-glow_bloom = 0.36
+glow_strength = 1.21
+glow_bloom = 0.04
 glow_hdr_threshold = 0.75
 glow_hdr_luminance_cap = 13.85
-fog_light_color = Color(0.384694, 0.416805, 0.467277, 1)
-fog_light_energy = 1.99
-fog_density = 0.006
+fog_enabled = true
+fog_light_color = Color(0.639008, 0.627494, 0.596313, 1)
+fog_light_energy = 3.16
+fog_sun_scatter = 0.02
+fog_density = 0.0023
+fog_sky_affect = 0.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0.4883, 0.427685, 0.127904, 1)
+volumetric_fog_density = 0.1318
+volumetric_fog_albedo = Color(0.935816, 0.883828, 0.831033, 1)
 volumetric_fog_emission = Color(0.794121, 0.794121, 0.794121, 1)
 volumetric_fog_emission_energy = 0.0
 volumetric_fog_gi_inject = 0.44
@@ -1532,6 +1544,7 @@ volumetric_fog_anisotropy = 0.0
 volumetric_fog_length = 45.52
 volumetric_fog_detail_spread = 2.7991
 volumetric_fog_ambient_inject = 0.21
+volumetric_fog_sky_affect = 0.468
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_plu2d"]
 _surfaces = [{
@@ -1998,25 +2011,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.276351, 0, 0.0947098)
 camera = NodePath("../../../SubViewportContainer/SubViewport/CameraSystem/Camera3D")
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(5.02335e-10, -5.39206e-08, -2.95148)
-bones/3/rotation = Quaternion(0.00195372, 0.362543, 0.855189, -0.37042)
-bones/4/rotation = Quaternion(-0.317768, 0.00933432, -0.0358019, 0.947447)
-bones/5/rotation = Quaternion(0.539419, -0.0398068, 0.0666564, 0.83845)
-bones/8/rotation = Quaternion(-0.00195369, 0.362543, 0.855189, 0.37042)
-bones/9/rotation = Quaternion(-0.317768, -0.00933433, 0.0358018, 0.947447)
-bones/10/rotation = Quaternion(0.539419, 0.0398069, -0.0666564, 0.838451)
-bones/12/position = Vector3(5.02335e-10, 2.95148, -2.33243e-07)
-bones/15/rotation = Quaternion(-0.0739049, 1.13637e-07, -1.20458e-08, 0.997265)
-bones/16/rotation = Quaternion(0.0137102, 8.76076e-09, 8.08022e-09, 0.999906)
-bones/18/rotation = Quaternion(0.0679072, 0.0070963, -0.0104204, 0.997612)
-bones/20/rotation = Quaternion(0.0679071, -0.0070963, 0.0104204, 0.997612)
-bones/22/rotation = Quaternion(-0.266166, -0.14808, -0.382325, 0.872385)
-bones/23/rotation = Quaternion(-0.00381772, -0.000434859, -0.350329, 0.936619)
-bones/26/rotation = Quaternion(-0.266166, 0.14808, 0.382324, 0.872385)
-bones/27/rotation = Quaternion(-0.00381793, 0.000434862, 0.350331, 0.936618)
-bones/31/position = Vector3(0.94565, 2.18037, -0.0311821)
-bones/33/position = Vector3(5.02335e-10, 2.95148, -1.13525e-07)
-bones/36/position = Vector3(-0.94565, 2.18037, -0.0311821)
+bones/1/position = Vector3(9.95998e-10, -5.39206e-08, -2.96278)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.00456469, 0.355271, 0.858798, -0.36909)
+bones/4/rotation = Quaternion(-0.302767, 0.0225975, -0.0374305, 0.952061)
+bones/5/rotation = Quaternion(0.532702, -0.051747, 0.0733615, 0.841528)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.00456464, 0.355271, 0.858798, 0.36909)
+bones/9/rotation = Quaternion(-0.302767, -0.0225975, 0.0374305, 0.952061)
+bones/10/rotation = Quaternion(0.532702, 0.051747, -0.0733615, 0.841528)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(9.95998e-10, 2.96278, -1.90599e-07)
+bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
+bones/15/rotation = Quaternion(-0.0759676, 1.13673e-07, -1.18018e-08, 0.99711)
+bones/16/rotation = Quaternion(0.0180634, 8.83613e-09, 8.08411e-09, 0.999837)
+bones/18/rotation = Quaternion(0.0594022, 0.00420685, -0.0102901, 0.998172)
+bones/20/rotation = Quaternion(0.0594022, -0.00420685, 0.0102901, 0.998172)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.264363, -0.148196, -0.385736, 0.871411)
+bones/23/rotation = Quaternion(-0.0037038, -0.000436635, -0.339873, 0.940464)
+bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.264364, 0.148196, 0.385737, 0.871411)
+bones/27/rotation = Quaternion(-0.00370396, 0.00043666, 0.339873, 0.940464)
+bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
+bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
+bones/31/position = Vector3(0.953168, 2.18251, -0.0311821)
+bones/33/position = Vector3(9.95998e-10, 2.96278, -1.13525e-07)
+bones/36/position = Vector3(-0.953168, 2.18251, -0.0311821)
 
 [node name="JuniperPath3D" type="Path3D" parent="Characters"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0707401, 0)
