@@ -1,4 +1,5 @@
 if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == false:
+	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton: Is this yours?
 	Micah: Ah...
 	Micah: Yes...
@@ -20,19 +21,26 @@ if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == f
 	Micah: ...
 	Dalton: Hmph.
 	Dalton: Tsk...
-	[end_timeline]
+	[wait time="0.3"]
+	label choices
+	Dalton: ...
+	- Inspect case.
+		[signal arg="look_case"]
+	-  Keep looking around Micah's house.
+		[end_timeline]
 
 if {Character Aff Points.Micah} >= 1 and {Asked Questions.Micah_Theo_enter} == false:
+	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton: Is this yours?
-	Micah: Ah... 
-	Micah: No... 
+	Micah: Ah...
+	Micah: No...
 	Micah: It appeared this morning.
 	Dalton: This morning?
 	Micah: Yeah...
 	Dalton: But you said that nothing changed-
 	Micah: I'm tired, man!
 	[wait time="1.0"]
-	Micah: ... 
+	Micah: ...
 	Dalton: ...
 	Micah: sorry.
 	Dalton: Hmph.
@@ -44,16 +52,30 @@ if {Character Aff Points.Micah} >= 1 and {Asked Questions.Micah_Theo_enter} == f
 	Micah: I just woke up.
 	Dalton: Hmph...
 	Dalton: I see.
-	[end_timeline]
+	[wait time="0.3"]
+	label choices
+	Dalton: ...
+	- Inspect case.
+		[signal arg="look_case"]
+	-  Keep looking around Micah's house.
+		[end_timeline]
 
 if {Asked Questions.Micah_Theo_enter} == true:
+	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton: Is this the case you were talking about?
 	Micah: Yeah.
 	Dalton: Do you know how might have left this?
 	Micah: Not really...
 	Dalton: Do you know any possible six digit codes they might have used?
-	Micah: No.. 
+	Micah: No..
 	Micah: Not on the top of my head.
-	Theo: Well... 
+	Theo: Well...
 	Theo: Time to do some dectctive work, sir Dalton.
 	Dalton: Hmmph.
+	[wait time="0.3"]
+	label choices
+	Dalton: ...
+	- Inspect case.
+		[signal arg="look_case"]
+	-  Keep looking around Micah's house.
+		[end_timeline]

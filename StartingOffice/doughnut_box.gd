@@ -15,4 +15,4 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	player.start_player()
 	GlobalVars.in_dialogue = false
-	print("dialogic timeline ended")
+	#print("dialogic timeline ended")

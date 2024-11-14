@@ -26,7 +26,7 @@ func _on_exit_pressed():
 		#GlobalVars.in_dialogue = true
 		#Dialogic.timeline_ended.connect(_on_timeline_ended)
 		#Dialogic.start("Micah_closet_note_thoughts")
-		#GlobalVars.viewed_tool_note == true
+		#GlobalVars.viewed_tool_note = true
 	GlobalVars.viewing = ""
 
 
@@ -41,5 +41,5 @@ func _process(delta):
 			#GlobalVars.in_dialogue = true
 			#Dialogic.timeline_ended.connect(_on_timeline_ended)
 			#Dialogic.start("Micah_closet_note_thoughts")
-			#GlobalVars.viewed_tool_note == true
+			#GlobalVars.viewed_tool_note = true
 	

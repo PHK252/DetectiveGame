@@ -1,4 +1,4 @@
-[gd_scene load_steps=381 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=382 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://dl3nfrvr0urwl" path="res://FirstHouse/FirstHouseUpdated_lays.png" id="31_3wao7"]
 [ext_resource type="Script" path="res://FirstHouse/Pic_fall_interact.gd" id="31_173dr"]
 [ext_resource type="Script" path="res://GeneralScripts/interaction/OpenDoor.gd" id="31_cx2le"]
+[ext_resource type="Script" path="res://FirstHouse/case_interact.gd" id="33_km2aj"]
 [ext_resource type="Script" path="res://FirstHouse/cab_interact.gd" id="33_octh5"]
 [ext_resource type="Script" path="res://StartingOffice/map.gd" id="34_mw70x"]
 [ext_resource type="PackedScene" uid="uid://crgv83s0k1fwv" path="res://map_ui.tscn" id="35_6wbhd"]
@@ -4288,7 +4289,7 @@ bind/1/bone = -1
 bind/1/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 2.50805, 2.27619, -1.35372)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omocx"]
-size = Vector3(3.87817, 1.88889, 1.98026)
+size = Vector3(4.3092, 1.88889, 1.28378)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08jig"]
 size = Vector2(316, 176)
@@ -4864,9 +4865,14 @@ shape = SubResource("RectangleShape2D_chigc")
 [node name="case" parent="SubViewportContainer/FirstHouseUpdated" index="43"]
 transform = Transform3D(0.198843, -0.00104749, -0.00406543, 0.00289339, 0.1377, 0.00627356, 0.0131557, -0.0144525, 0.0600675, -1.07451, 0.177735, -1.8676)
 
-[node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/case" index="0" instance=ExtResource("31_3mnbx")]
+[node name="Interact" type="Node3D" parent="SubViewportContainer/FirstHouseUpdated/case" index="0"]
+transform = Transform3D(1, 2.32831e-10, 0, 0, 1, -3.72529e-09, 0, 0, 1, 0, 0, 0)
+script = ExtResource("33_km2aj")
 
-[node name="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/case/Interactable" index="0"]
+[node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/case/Interact" instance=ExtResource("31_3mnbx")]
+transform = Transform3D(1, -1.16415e-09, 0, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/case/Interact/Interactable" index="0"]
 transform = Transform3D(1, -1.1595e-07, -4.56348e-08, 6.84522e-08, 1, -9.68575e-08, 3.57628e-07, -2.563e-06, 1, -0.0141196, 0.191101, 0.273283)
 shape = SubResource("BoxShape3D_4jded")
 
@@ -5288,7 +5294,7 @@ script = ExtResource("43_xpxa8")
 [node name="Interactable" parent="closet/Wardrobe" index="0" instance=ExtResource("31_3mnbx")]
 
 [node name="CollisionShape3D" parent="closet/Wardrobe/Interactable" index="0"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 6.70552e-08, 0, 1, -0.980431, 0.0957182, -0.0300696)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 6.70552e-08, 0, 1, -1.19594, 0.0957182, 0.0343626)
 shape = SubResource("BoxShape3D_omocx")
 
 [node name="ClosetRight" parent="closet" index="1"]
@@ -5314,7 +5320,6 @@ transform = Transform3D(0.99998, 0, 0.00621351, 0, 1, 0, -0.00621351, 0, 0.99998
 
 [node name="Skeleton3D" parent="closet/newcloset_animated/ClosetLeft" index="0"]
 bones/0/rotation = Quaternion(0, 0, 0, 1)
-bones/1/rotation = Quaternion(1, 0, 0, -7.94663e-09)
 
 [node name="NewWardrobe" parent="closet/newcloset_animated/ClosetLeft/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_i28ou")
@@ -5357,35 +5362,35 @@ visible = false
 position = Vector2(1078, 450)
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(3.17105e-09, -5.39206e-08, -3.01254)
+bones/1/position = Vector3(1.04068e-09, -5.39206e-08, -2.9638)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.0183382, 0.317292, 0.87594, -0.362931)
-bones/4/rotation = Quaternion(-0.224822, 0.0825606, -0.0388195, 0.97012)
-bones/5/rotation = Quaternion(0.497296, -0.105295, 0.100653, 0.855265)
+bones/3/rotation = Quaternion(0.0048131, 0.354582, 0.859133, -0.368969)
+bones/4/rotation = Quaternion(-0.301349, 0.023808, -0.037548, 0.952477)
+bones/5/rotation = Quaternion(0.532065, -0.0528337, 0.0739573, 0.841811)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0183382, 0.317292, 0.87594, 0.362931)
-bones/9/rotation = Quaternion(-0.224822, -0.0825607, 0.0388195, 0.97012)
-bones/10/rotation = Quaternion(0.497296, 0.105295, -0.100653, 0.855265)
+bones/8/rotation = Quaternion(-0.00481306, 0.354582, 0.859133, 0.368969)
+bones/9/rotation = Quaternion(-0.301349, -0.023808, 0.037548, 0.952477)
+bones/10/rotation = Quaternion(0.532065, 0.0528337, -0.0739573, 0.841811)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(3.17105e-09, 3.01254, -2.28756e-07)
+bones/12/position = Vector3(1.04068e-09, 2.9638, -2.04059e-07)
 bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
-bones/15/rotation = Quaternion(-0.0850516, 1.13826e-07, -1.07262e-08, 0.996377)
-bones/16/rotation = Quaternion(0.0372395, 9.16619e-09, 8.09936e-09, 0.999306)
-bones/18/rotation = Quaternion(0.021874, -0.00852748, -0.00970594, 0.999677)
-bones/20/rotation = Quaternion(0.021874, 0.00852748, 0.00970596, 0.999677)
+bones/15/rotation = Quaternion(-0.0761542, 1.13676e-07, -1.17797e-08, 0.997096)
+bones/16/rotation = Quaternion(0.0184574, 8.84294e-09, 8.08446e-09, 0.99983)
+bones/18/rotation = Quaternion(0.058632, 0.00394526, -0.0102783, 0.998219)
+bones/20/rotation = Quaternion(0.058632, -0.00394526, 0.0102783, 0.998219)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.256253, -0.148949, -0.40291, 0.865917)
-bones/23/rotation = Quaternion(-0.00314493, -0.000444544, -0.288592, 0.957447)
+bones/22/rotation = Quaternion(-0.264199, -0.148209, -0.386059, 0.871316)
+bones/23/rotation = Quaternion(-0.00369313, -0.000436801, -0.338895, 0.940817)
 bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.256253, 0.148949, 0.402909, 0.865917)
-bones/27/rotation = Quaternion(-0.00314512, 0.000444549, 0.288592, 0.957447)
+bones/26/rotation = Quaternion(-0.264199, 0.148209, 0.386059, 0.871316)
+bones/27/rotation = Quaternion(-0.00369329, 0.000436828, 0.338895, 0.940817)
 bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
 bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.986294, 2.19193, -0.0311821)
-bones/33/position = Vector3(3.17105e-09, 3.01254, -1.13525e-07)
-bones/36/position = Vector3(-0.986294, 2.19193, -0.0311821)
+bones/31/position = Vector3(0.953848, 2.1827, -0.0311821)
+bones/33/position = Vector3(1.04068e-09, 2.9638, -1.13525e-07)
+bones/36/position = Vector3(-0.953848, 2.1827, -0.0311821)
 
 [node name="MicahPath" type="Node" parent="Characters"]
 
@@ -5461,6 +5466,7 @@ autostart = true
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/fridge_001/Fridge_interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/fridge_001/Fridge_interact" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact" method="_on_interactable_interacted"]
 [connection signal="input_event" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact" to="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact" method="_on_input_event"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/case/Interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/case/Interact" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/cabinetz/Cab Interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/cabinetz/Cab Interact" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable" to="SubViewportContainer/FirstHouseUpdated/Cube_006" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact" method="_on_interactable_interacted"]
@@ -5476,7 +5482,7 @@ autostart = true
 [editable path="SubViewportContainer/FirstHouseUpdated"]
 [editable path="SubViewportContainer/FirstHouseUpdated/fridge_001/Fridge_interact/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact/Interactable"]
-[editable path="SubViewportContainer/FirstHouseUpdated/case/Interactable"]
+[editable path="SubViewportContainer/FirstHouseUpdated/case/Interact/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/Wardrobe/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/cabinetz/Cab Interact/Interactable"]
 [editable path="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable"]

@@ -29,7 +29,6 @@ func _process(delta):
 		closet_cam.set_rotation_degrees(Vector3(-25, 93.8, 1.4))
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "closet":
-		print(GlobalVars.viewed_tool_note)
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_tool_note == true and GlobalVars.closet_dialogue == false:
 			main_cam.set_tween_duration(0)
 			closet_cam.priority = 0
@@ -63,34 +62,38 @@ func _process(delta):
 		note_interaction.show()
 
 func _on_interactable_interacted(interactor):
+	main_cam.priority = 12
 	var tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
-	print(tool_asked)
-	if closet_open == false and tool_asked == false:
-		player.stop_player()
-		closet_anim.play("NewClosetOpen")
-		await closet_anim.animation_finished
-		closet_open = true
-		#Dialogue start
-		var closet_dialogue = Dialogic.start("Micah_closet_ask")
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		Dialogic.signal_event.connect(closetLook)
-		closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-		closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		#await get_tree().create_timer(3).timeout
-	elif closet_open == true and tool_asked == false:
-		player.stop_player()
-		var closet_dialogue = Dialogic.start("Micah_closet_ask", "choices")
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		Dialogic.signal_event.connect(closetLook)
-		closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-		closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-	elif closet_open == true and tool_asked == true:
-		player.stop_player()
-		var closet_dialogue = Dialogic.start("Micah_closet_ask", "tool choices")
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		Dialogic.signal_event.connect(closetLook)
-		closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-		closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+	if GlobalVars.in_dialogue == false:
+		if closet_open == false and tool_asked == false:
+			GlobalVars.in_dialogue = true
+			player.stop_player()
+			closet_anim.play("NewClosetOpen")
+			await closet_anim.animation_finished
+			closet_open = true
+			#Dialogue start
+			var closet_dialogue = Dialogic.start("Micah_closet_ask")
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.signal_event.connect(closetLook)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			#await get_tree().create_timer(3).timeout
+		elif closet_open == true and tool_asked == false:
+			GlobalVars.in_dialogue = true
+			player.stop_player()
+			var closet_dialogue = Dialogic.start("Micah_closet_ask", "choices")
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.signal_event.connect(closetLook)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+		elif closet_open == true and tool_asked == true:
+			GlobalVars.in_dialogue = true
+			player.stop_player()
+			var closet_dialogue = Dialogic.start("Micah_closet_ask", "tool choices")
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.signal_event.connect(closetLook)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

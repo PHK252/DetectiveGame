@@ -24,7 +24,7 @@ func _process(delta):
 			pic_cam.set_rotation_degrees(Vector3(-25.4, 177.7, 1))
 				#pass
 	else:
-		pic_cam.set_rotation_degrees(Vector3(-25, 93.8, 1.4))
+		pic_cam.set_rotation_degrees(Vector3(-25.4, 177.7, 1))
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "picture":
 		if Input.is_action_just_pressed("Exit"):
@@ -42,14 +42,15 @@ func _process(delta):
 
 
 func _on_interactable_interacted(interactor):
-	GlobalVars.in_interaction = "picture"
-	pic_cam.priority = 15
-	main_cam.priority = 0
-	cam_anim.play("Cam_Idle")
-	player.hide()
-	player.stop_player()
-	if GlobalVars.pic_fell == false:
-		pic_fall.show()
+	if GlobalVars.in_dialogue == false:
+		GlobalVars.in_interaction = "picture"
+		pic_cam.priority = 15
+		main_cam.priority = 0
+		cam_anim.play("Cam_Idle")
+		player.hide()
+		player.stop_player()
+		if GlobalVars.pic_fell == false:
+			pic_fall.show()
 	
 	
 	
