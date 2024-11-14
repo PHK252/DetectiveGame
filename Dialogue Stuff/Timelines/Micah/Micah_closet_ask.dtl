@@ -1,25 +1,29 @@
 # #third person cam still
 Dalton: Do you notice anything different about your closet?
 Micah: No...
-Micah: I mean a few hoodies could go missing and I wouldn't notice.
+Micah: But also...
+Micah: A few hoodies could go missing and I wouldn't notice.
 Dalton: I see.
 [wait time="0.3"]
+label choices
 Dalton: ...
 - Ask about toolbox.
+	set {Asked Questions.Micah_Closet_Asked} = true
 	Dalton: Do you usually keep a toolbox in your closet?
 	Theo: Hey, don't judge a raccoon's toolbox placement.
 	Micah: It's fine...
-	Micah: I just keep it there so it's out of the way. 
-	Micah: I don't really use it. 
+	Micah: I just keep it there so it's out of the way.
+	Micah: I don't really use it though...
 	Dalton: Did you use it recently?
 	Micah: No?
 	Dalton: Why is it open then?
 	Micah: Huh?
+	label tool choices
 	[wait time="0.3"]
 	Dalton: ...
-	- Take a closer look at the toolbox. 
-		# #first person cam
-	- Keep looking around Micah's house. 
+	- Take a closer look at the toolbox.
+		[signal arg="look"]
+	- Keep looking around Micah's house.
 		[end_timeline]
 - Keep looking around Micah's house.
 	[end_timeline]

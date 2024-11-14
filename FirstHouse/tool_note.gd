@@ -20,10 +20,11 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_exit_pressed():
 	if GlobalVars.viewed_tool_note == false and GlobalVars.clicked_tool_note == 1:
+		print("hello")
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Micah_closet_note_thoughts")
-		GlobalVars.viewed_tool_note == true
+		GlobalVars.viewed_tool_note = true
 		GlobalVars.viewing = ""
 
 
@@ -37,5 +38,5 @@ func _process(delta):
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Micah_closet_note_thoughts")
-			GlobalVars.viewed_tool_note == true
+			GlobalVars.viewed_tool_note = true
 			GlobalVars.viewing = ""
