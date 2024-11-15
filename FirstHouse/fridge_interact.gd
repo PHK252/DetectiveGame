@@ -25,7 +25,7 @@ func _process(delta):
 		fridge_cam.set_rotation_degrees(Vector3(-20.1, -87.1, -1.3))
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "fridge":
-		if c
+		if Input.is_action_just_pressed("Exit"):
 			main_cam.set_tween_duration(0)
 			fridge_cam.priority = 0
 			main_cam.priority = 12
