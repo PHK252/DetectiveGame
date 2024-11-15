@@ -1,0 +1,135 @@
+[gd_scene load_steps=20 format=3 uid="uid://ectnv6dstuhg"]
+
+[ext_resource type="Script" path="res://UI/Lock_Number_change.gd" id="1_foqkb"]
+[ext_resource type="Texture2D" uid="uid://cgldbao7t3snt" path="res://UI/Assets/Micah case/Case3.png" id="2_d8yj6"]
+[ext_resource type="Texture2D" uid="uid://kirir1smuwvi" path="res://UI/Assets/Micah case/Case4.png" id="3_mbx56"]
+[ext_resource type="Texture2D" uid="uid://din3sm68huue7" path="res://UI/Assets/Micah case/Case5.png" id="4_s5enk"]
+[ext_resource type="Texture2D" uid="uid://dkobe1pn0v36" path="res://UI/Assets/Micah case/Case6.png" id="5_j7pbm"]
+[ext_resource type="Texture2D" uid="uid://cga7msyfj3u50" path="res://UI/Assets/Micah case/Case7.png" id="6_ne7sd"]
+[ext_resource type="Texture2D" uid="uid://cwgspf7xxcpn3" path="res://UI/Assets/Micah case/Case8.png" id="7_lryq7"]
+[ext_resource type="Texture2D" uid="uid://b2vljg3p7c4nq" path="res://UI/Assets/Micah case/Case9.png" id="8_lx5j0"]
+[ext_resource type="Texture2D" uid="uid://dt88akq8v3pef" path="res://UI/Assets/Micah case/Case Arrow Up active.png" id="9_rqmqh"]
+[ext_resource type="Texture2D" uid="uid://3n40s1ve2fvk" path="res://UI/Assets/Micah case/Case Arrow Up inactive.png" id="11_tcpv0"]
+[ext_resource type="Texture2D" uid="uid://bv6shnd0toig3" path="res://UI/Assets/Micah case/Case Arrow Down active.png" id="12_2tgmk"]
+[ext_resource type="Texture2D" uid="uid://dkbujski12d3u" path="res://UI/Assets/Micah case/Case Arrow Down inactive.png" id="14_jthfh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x6on4"]
+load_path = "res://.godot/imported/Case0.png-717489bb275d1f98ae94354208b90701.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eufcx"]
+load_path = "res://.godot/imported/Case1.png-992927e7c4c335726b53048c237a0298.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kdqdd"]
+load_path = "res://.godot/imported/Case2.png-3a8eee2705e59c14673bd0c8bc31528f.ctex"
+
+[sub_resource type="InputEventAction" id="InputEventAction_gr840"]
+action = &"Up"
+
+[sub_resource type="Shortcut" id="Shortcut_f86hc"]
+events = [SubResource("InputEventAction_gr840")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_qiod5"]
+action = &"Down"
+
+[sub_resource type="Shortcut" id="Shortcut_erwu8"]
+events = [SubResource("InputEventAction_qiod5")]
+
+[node name="Pos" type="Node"]
+script = ExtResource("1_foqkb")
+
+[node name="0" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = SubResource("CompressedTexture2D_x6on4")
+
+[node name="1" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = SubResource("CompressedTexture2D_eufcx")
+
+[node name="2" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = SubResource("CompressedTexture2D_kdqdd")
+
+[node name="3" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = ExtResource("2_d8yj6")
+
+[node name="4" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = ExtResource("3_mbx56")
+
+[node name="5" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = ExtResource("4_s5enk")
+
+[node name="6" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = ExtResource("5_j7pbm")
+
+[node name="7" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = ExtResource("6_ne7sd")
+
+[node name="8" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = ExtResource("7_lryq7")
+
+[node name="9" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 204.0
+texture = ExtResource("8_lx5j0")
+
+[node name="Up" type="TextureButton" parent="."]
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 137.0
+offset_bottom = 88.0
+shortcut = SubResource("Shortcut_f86hc")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("11_tcpv0")
+texture_pressed = ExtResource("9_rqmqh")
+texture_hover = ExtResource("9_rqmqh")
+texture_disabled = ExtResource("11_tcpv0")
+
+[node name="Down" type="TextureButton" parent="."]
+offset_left = 72.0
+offset_top = 208.0
+offset_right = 137.0
+offset_bottom = 248.0
+shortcut = SubResource("Shortcut_erwu8")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("14_jthfh")
+texture_pressed = ExtResource("12_2tgmk")
+texture_hover = ExtResource("12_2tgmk")
+texture_disabled = ExtResource("14_jthfh")
+
+[connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="Down" to="." method="_on_down_pressed"]
