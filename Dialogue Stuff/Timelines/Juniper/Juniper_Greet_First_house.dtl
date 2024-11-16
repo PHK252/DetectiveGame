@@ -1,0 +1,48 @@
+if {Character Aff Points.Theo} > 0:
+	set {Character Aff Points.Juniper} += 1
+	set {Character Aff Points.Theo} += 1
+	Juniper: Hello?
+	Dalton: Hello.
+	Dalton: Are you Juniper Hartley?
+	Juniper: Yes, Officer!
+	Dalton: ...? 
+	Dalton: You called in this morning to report a break-in, is that correct?
+	Juniper: Yes, Officer!
+	Dalton: ... 
+	Dalton: There's no need for such strict formalities, Ms. Hartley.
+	Juniper: Oh... 
+	Juniper: Sorry...
+	Theo: Hehe... 
+	Theo: He just doesn't like being called "Officer" because he's a dectecti-
+	Dalton: Shut!
+	Juniper: Tehe...
+	Dalton: Ahem.
+	Dalton: I seem that the break-in you reported this morning is part of series of break-ins that happened last night.
+	Dalton: We would like to come in and take a look at around and ask you a few questions.
+	Dalton:  Is that alright with you?
+	Juniper: Of course!
+	Juniper: Come on in!
+else:
+	set {Character Aff Points.Juniper} += 1
+	set {Character Aff Points.Theo} += 1
+	Juniper: Hello?
+	Dalton: Hello. 
+	Dalton: Are you Juniper Hartley?
+	Juniper: Yes, Officer!
+	Dalton: ...? 
+	Dalton: You called in this morning to report a break-in, is that correct?
+	Juniper: Yes, Officer!
+	Dalton: ...
+	Dalton: There's no need for such strict formalities, Ms. Hartley.
+	Juniper: Oh... 
+	Juniper: Sorry...
+	Theo: You never tell me that...
+	Dalton: It's cause you're never formal, Dectective Theo Lycus.
+	Juniper: Pfft...
+	Dalton: Ahem.
+	Dalton: I seem that the break-in you reported this morning is part of series of break-ins that happened last night. 
+	Dalton: We would like to come in and take a look at around and ask you a few questions. 
+	Dalton: Is that alright with you?
+	Juniper: Of course!
+	Juniper: Come on in!
+	# #signal Juniper Enter House and door

@@ -1,0 +1,22 @@
+if {Global.went_to_Micah} == false and {Global.went_to_Juniper} == false:
+	set {Global.first_house} = "Juniper"
+	set {Global.went_to_Juniper} = true
+else:
+	set {Global.went_to_Juniper} = true
+# #Knock knock
+Dalton: ...
+- Hello! Is anybody home? XPD!
+	# #After a few seconds, you hear muffled hoove-steps(?)...
+	Juniper: Yes!
+	Juniper: Coming!
+	if {Global.first_house} == "Juniper":
+		jump Juniper_Greet_First_house/
+	else:
+		jump Juniper_Greet_Second_house/
+- XPD! We're here to investigate a reported break in at this property!
+	After a few seconds, you hear muffled hoove-steps(?)...
+	Juniper: Coming!
+	if {Global.first_house} == "Juniper":
+		jump Juniper_Greet_First_house/
+	else:
+		jump Juniper_Greet_Second_house/

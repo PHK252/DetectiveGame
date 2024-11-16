@@ -1,0 +1,47 @@
+Dalton: I'm sorry about the wait, ma'am...
+Dalton: Since your report is linked to a larger scale case, we had to investigate other leads first.
+Juniper: Hmmp...
+Juniper: The XPD couldn't send anyone else here? Y'all understaffed or something?
+Dalton: ...
+Dalton: Yeah...
+Juniper: ...
+Juniper: oh.
+Juniper: But still...
+Juniper: It's dangerous out here.
+Juniper: What if someone tries break-in again?
+Juniper: It'll be so easy with a broken window.
+Juniper: What if it was targeted attack?
+Juniper: Am I going to be the next person to go?
+Juniper: Gosh, I still have so much to do!
+Juniper: I don't wanna go yet!
+Juniper: Oh gosh! What if they are trying to steal-
+Dalton: Ma'am?
+Juniper: Hmm?
+Dalton: ...
+- Calm Down
+	set {Character Aff Points.Juniper} -= 1
+	set {Character Aff Points.Theo} -= 1
+	Dalton: Can you calm down?
+	Juniper: Excuse me!?
+	Juniper: This is a matter of my safety and you tell me to calm down!?
+	Theo: Huuuuuph...
+	Dalton: what?
+	Theo: I'm sorry for my partner's...
+	Theo: ...attitude.
+	Theo: We are truly here to help.
+	Theo: Would you like to talk more inside?
+	Juniper: I guess...
+	Theo: Thanks...
+	# #signal Juniper Enter House
+	# #jump Juniper Low 
+- Talk inside
+	Dalton: Shall we take this conversation inside?
+	Juniper: Oh!
+	Juniper: Yes!
+	Juniper: Gosh!
+	Juniper: I didn't mean to have y'all standing around like that!
+	Juniper: Come inside.
+	Dalton: Thank you.
+	Theo: Thanks, ma'am
+	# #signal Juniper Enter House
+	# #jump Juniper Low
