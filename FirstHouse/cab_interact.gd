@@ -7,6 +7,7 @@ extends Node3D
 @onready var mouse_pos = Vector2(0,0) 
 @onready var cab_open = true
 @export var anim_tree = AnimationTree
+@export var anim_bags = AnimationTree
 @onready var is_looking = false
 @onready var clickable = false
 @onready var bag_group = get_tree().get_nodes_in_group("plastic_bags")
@@ -19,7 +20,8 @@ func _ready():
 		for member in bag_group:
 			member.show()
 		anim_tree["parameters/conditions/cab_opened"] = true
-		anim_tree["parameters/conditions/looping"] = true
+		anim_bags["parameters/conditions/is_falling"] = true
+		anim_bags["parameters/conditions/is_looping"] = true
 	else:
 		pass
 		#anim_tree["parameters/conditions/cab_closed"] = true
@@ -83,8 +85,8 @@ func close_cabinet():
 	for member in bag_group:
 		member.hide()
 	
-	anim_tree["parameters/conditions/looping"] = false
-	anim_tree["parameters/conditions/stop_fall"] = true
+	anim_bags["parameters/conditions/is_looping"] = false
+	anim_bags["parameters/conditions/finish"] = true
 	anim_tree["parameters/conditions/cab_closed_action"] = true
 	clickable = false
 	
