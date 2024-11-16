@@ -5,12 +5,28 @@ extends Node3D
 @onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../../SubViewport/CameraSystem/Cabinet/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
-@onready var cab_open = false
+@onready var cab_open = true
+@export var anim_tree = AnimationTree
+@onready var is_looking = false
+@onready var clickable = false
+@onready var bag_group = get_tree().get_nodes_in_group("plastic_bags")
+
 #@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	
+	if cab_open == true:
+		for member in bag_group:
+			member.show()
+		anim_tree["parameters/conditions/cab_opened"] = true
+		anim_tree["parameters/conditions/looping"] = true
+	else:
+		pass
+		#anim_tree["parameters/conditions/cab_closed"] = true
 
+	#if first time loaded then cabinet open true, if cab open true then play 
+	# open state cab +looping animation of bags falling, if mouse clicked (interact)
+	#then go to default bag fall animation + close cabinet
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,14 +54,18 @@ func _process(delta):
 			#bookmark_interact.hide()
 			
 			#activate dialogue
-#
+		
+		
 	#if GlobalVars.in_look_screen == true:
 		#bookmark_interact.hide()
 	#elif GlobalVars.in_look_screen == false and fridge_cam.priority == 15:
 		#bookmark_interact.show()
+	if clickable and Input.is_action_just_pressed("mouse_click"):
+		close_cabinet()
 
 
 func _on_interactable_interacted(interactor):
+	is_looking = true
 	GlobalVars.in_interaction = "cab"
 	cab_cam.priority = 15
 	main_cam.priority = 0 
@@ -53,7 +73,18 @@ func _on_interactable_interacted(interactor):
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()
-	if cab_open == false:
+	if cab_open == true:
 		#play animation
 		#fridge_open = true
-		pass
+		clickable = true
+		
+func close_cabinet():
+	
+	for member in bag_group:
+		member.hide()
+	
+	anim_tree["parameters/conditions/looping"] = false
+	anim_tree["parameters/conditions/stop_fall"] = true
+	anim_tree["parameters/conditions/cab_closed_action"] = true
+	clickable = false
+	
