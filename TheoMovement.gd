@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 @export var anim_tree: AnimationTree
-@export var anim_notes: AnimationTree
 @export var player: Node3D
 @export var armature: Node3D
 @export var nav: NavigationAgent3D
@@ -54,11 +53,9 @@ func _process_idle_state(distance_to_target: float) -> void:
 	if velocity.length() <= MIN_STOP_THRESHOLD:
 		idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 		anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
-		anim_notes.set("parameters/BlendSpace1D/blend_position", idle_blend)
 	else:
 		# Ensure blend position matches slight movement
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
-		anim_notes.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
 
 	if distance_to_target > FOLLOW_DISTANCE:
 		print("Switching to FOLLOW state")
@@ -68,7 +65,6 @@ func _process_idle_state(distance_to_target: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			print("interacted")
 			anim_tree["parameters/Blend2/blend_amount"] = 1
-			anim_notes["parameters/Blend2/blend_amount"] = 1
 
 # Handles behavior when NPC is in the FOLLOW state
 func _process_follow_state(distance_to_target: float) -> void:
@@ -87,7 +83,6 @@ func _process_follow_state(distance_to_target: float) -> void:
 		var direction = (next_point - global_transform.origin).normalized()
 		velocity = direction * speed
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
-		anim_notes.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
