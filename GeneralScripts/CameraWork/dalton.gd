@@ -9,6 +9,8 @@ const LERP_VAL = .15
 const MAX_STEP_HEIGHT = 1.2
 var _snapped_to_stairs_last_frame := false
 var _last_frame_was_on_floor = -INF
+signal moving
+signal stopped
 
 func _ready() -> void:
 	add_to_group("player")
@@ -19,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	GlobalVars.player_pos = global_position
 	# Add the gravity.
 	if GlobalVars.player_move == true:
+		emit_signal("moving")
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 		# Get the input direction and handle the movement/deceleration.
@@ -48,6 +51,7 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 			_snap_down_to_stairs_check()
 	else:
+		emit_signal("stopped")
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 
 func stop_player():
