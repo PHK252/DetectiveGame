@@ -15,6 +15,7 @@ const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationar
 var idle_blend = 0.0
 var state = IDLE  # Current state of the NPC
 var see_player = false
+var is_navigating = true
 
 enum {
 	IDLE, 
@@ -23,6 +24,7 @@ enum {
 }
 
 func _ready() -> void:
+	add_to_group("theo")
 	# Initialize the navigation target to the player's position
 	nav.target_position = player.global_transform.origin
 
@@ -43,7 +45,8 @@ func _physics_process(delta: float) -> void:
 			
 
 	# Apply movement and rotation
-	move_and_slide()
+	if is_navigating:
+		move_and_slide()
 	if velocity.length() > MIN_STOP_THRESHOLD:
 		_rotate_towards_velocity()
 
@@ -65,6 +68,18 @@ func _process_idle_state(distance_to_target: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			print("interacted")
 			anim_tree["parameters/Blend2/blend_amount"] = 1
+			is_navigating = false
+			await get_tree().create_timer(10).timeout
+			is_navigating = true
+			print("stopped interacting")
+			anim_tree["parameters/Blend2/blend_amount"] = 0
+			see_player = false
+		if Input.is_action_just_pressed("Exit"):
+			is_navigating = true
+			print("stopped interacting")
+			anim_tree["parameters/Blend2/blend_amount"] = 0
+			see_player = false
+		
 
 # Handles behavior when NPC is in the FOLLOW state
 func _process_follow_state(distance_to_target: float) -> void:
@@ -89,7 +104,6 @@ func _on_interact_area_body_entered(body: Node3D) -> void:
 		print("waiting for interact")
 		see_player = true
 		state = IDLE
-	#if body is in group player and input interact pressed, state = idle
 
 func _on_interact_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -98,4 +112,15 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 
 # Smoothly rotate the armature to face the movement direction
 func _rotate_towards_velocity() -> void:
-	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
+	if is_navigating:
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
+
+func _on_interact_area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("int_area"):
+		print("theo investigating")
+		anim_tree["parameters/Blend2/blend_amount"] = 1
+		is_navigating = false
+		await get_tree().create_timer(10).timeout
+		is_navigating = true
+		print("stopped interacting")
+		anim_tree["parameters/Blend2/blend_amount"] = 0
