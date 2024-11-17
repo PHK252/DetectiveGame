@@ -77,6 +77,6 @@ bones/1/scale = Vector3(1, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000610352, 0.802134, 0.0532837)
 shape = SubResource("BoxShape3D_a8r42")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 
 [editable path="CharacterBody3D/Theo"]
