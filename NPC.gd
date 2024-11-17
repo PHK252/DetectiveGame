@@ -6,11 +6,12 @@ extends CharacterBody3D
 @export var path : PathFollow3D
 @export var WaitTimer : Timer
 @export var NPC : String
+@onready var object_interaction = false
 
 enum {
 	IDLE, 
 	WALK,
-	WAIT
+	WAIT,
 }
 
 var state = IDLE
@@ -43,7 +44,7 @@ func _process(delta):
 	# Apply the flipped basis to the NPC
 		global_transform.basis = flipped_basis
 	
-	if see_player and Input.is_action_just_pressed("interact"):
+	if see_player and Input.is_action_just_pressed("interact") or object_interaction:
 		print("interacted")
 		state = IDLE
 
@@ -59,6 +60,12 @@ func _process(delta):
 
 		# Update the NPC's rotation to face the interpolated direction
 		look_at(global_transform.origin + smooth_direction, Vector3.UP)
+		
+		if Input.is_action_just_pressed("Exit"):
+			#add dialogic signal here to control stop looking
+			object_interaction = false
+			state = WALK
+
 	#if see player true then look at player
 	#check player position player.globalposition
 	
@@ -122,3 +129,12 @@ func _on_wait_timer_timeout() -> void:
 	if state == WALK:
 		set_random_rotation()
 		state = WAIT
+
+
+func _on_interactable_interacted(interactor: Interactor) -> void:
+	object_interaction = true
+
+
+func _on_interactable_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		object_interaction = false

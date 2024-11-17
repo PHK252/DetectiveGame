@@ -5558,35 +5558,25 @@ visible = false
 position = Vector2(1078, 450)
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(3.3726e-09, -5.39206e-08, -3.01715)
-bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.0198696, 0.313097, 0.87767, -0.362312)
-bones/4/rotation = Quaternion(-0.21627, 0.0882236, -0.0383517, 0.971583)
-bones/5/rotation = Quaternion(0.493392, -0.110334, 0.102947, 0.856617)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0198696, 0.313097, 0.87767, 0.362312)
-bones/9/rotation = Quaternion(-0.21627, -0.0882236, 0.0383517, 0.971583)
-bones/10/rotation = Quaternion(0.493392, 0.110334, -0.102947, 0.856617)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(3.3726e-09, 3.01715, -2.33877e-07)
-bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
-bones/15/rotation = Quaternion(-0.0858364, 1.14023e-07, -1.08719e-08, 0.996309)
-bones/16/rotation = Quaternion(0.0390156, 9.19661e-09, 8.10062e-09, 0.999239)
-bones/18/rotation = Quaternion(0.0183957, -0.00970649, -0.00965106, 0.999737)
-bones/20/rotation = Quaternion(0.0183957, 0.00970649, 0.00965108, 0.999737)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.255484, -0.149042, -0.404693, 0.865296)
-bones/23/rotation = Quaternion(-0.00308798, -0.000445262, -0.283363, 0.959008)
-bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.255485, 0.149042, 0.404693, 0.865296)
-bones/27/rotation = Quaternion(-0.00308814, 0.000445283, 0.283365, 0.959007)
-bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
-bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.989363, 2.19281, -0.0311821)
-bones/33/position = Vector3(3.3726e-09, 3.01715, -1.13525e-07)
-bones/36/position = Vector3(-0.989363, 2.19281, -0.0311821)
+bones/1/position = Vector3(-4.05317e-10, -5.75171e-08, -3.013)
+bones/3/rotation = Quaternion(0.0184844, 0.31689, 0.876107, -0.36287)
+bones/4/rotation = Quaternion(-0.224001, 0.083124, -0.0387874, 0.970263)
+bones/5/rotation = Quaternion(0.49692, -0.105797, 0.100888, 0.855394)
+bones/8/rotation = Quaternion(-0.0184844, 0.31689, 0.876107, 0.36287)
+bones/9/rotation = Quaternion(-0.224001, -0.083124, 0.0387874, 0.970263)
+bones/10/rotation = Quaternion(0.49692, 0.105797, -0.100888, 0.855394)
+bones/12/position = Vector3(-4.05318e-10, 3.013, -2.52675e-07)
+bones/15/rotation = Quaternion(-0.0851357, 1.15528e-07, -1.29141e-08, 0.996369)
+bones/16/rotation = Quaternion(0.037417, 4.1989e-09, 1.279e-08, 0.9993)
+bones/18/rotation = Quaternion(0.0215263, -0.00864534, -0.00970046, 0.999684)
+bones/20/rotation = Quaternion(0.0215263, 0.00864534, 0.00970046, 0.999684)
+bones/22/rotation = Quaternion(-0.256176, -0.148957, -0.403083, 0.865858)
+bones/23/rotation = Quaternion(-0.00313934, -0.000444631, -0.28808, 0.957601)
+bones/26/rotation = Quaternion(-0.256177, 0.148957, 0.403082, 0.865858)
+bones/27/rotation = Quaternion(-0.00313956, 0.000444606, 0.288082, 0.957601)
+bones/31/position = Vector3(0.986601, 2.19202, -0.0311821)
+bones/33/position = Vector3(-4.05317e-10, 3.013, -1.17122e-07)
+bones/36/position = Vector3(-0.986601, 2.19202, -0.0311821)
 
 [node name="MicahPath" type="Node" parent="Characters"]
 
@@ -5737,16 +5727,24 @@ autostart = true
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/KitchenArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_kitchen_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/doorcamarea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_doorcamarea_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/exitcamarea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_exitcamarea_body_entered"]
+[connection signal="body_exited" from="SubViewportContainer/FirstHouseUpdated/fridge_001/Fridge_interact/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_body_exited"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/fridge_001/Fridge_interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/fridge_001/Fridge_interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/fridge_001/Fridge_interact/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Interact/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="input_event" from="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact" to="SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact" method="_on_input_event"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/case/Interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/case/Interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/case/Interact/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/cabinetz/Cab Interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/cabinetz/Cab Interact" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Cube_006/Interactable" to="SubViewportContainer/FirstHouseUpdated/Cube_006" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Interactable" to="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="input_event" from="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Bookmark_interact" to="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Bookmark_interact" method="_on_input_event"]
+[connection signal="body_exited" from="SubViewportContainer/FirstHouseUpdated/door/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_body_exited"]
 [connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/door/Interactable" to="SubViewportContainer/FirstHouseUpdated/door" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/FirstHouseUpdated/door/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="interacted" from="closet/Wardrobe/Interactable" to="closet" method="_on_interactable_interacted"]
+[connection signal="interacted" from="closet/Wardrobe/Interactable" to="Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="unfocused" from="closet/Wardrobe/Interactable" to="closet" method="_on_interactable_unfocused"]
 [connection signal="input_event" from="closet/Note" to="closet/Note" method="_on_input_event"]
 [connection signal="pressed" from="UI/Tool_note/Exit" to="closet/Note" method="_on_exit_pressed"]
