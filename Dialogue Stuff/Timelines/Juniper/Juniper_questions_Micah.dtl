@@ -1,0 +1,59 @@
+if {Character Aff Points.Juniper} <= 0:
+	Dalton: Do you know him?
+	Juniper: Who is this?
+	Dalton: I was hoping you would tell me.
+	
+	if {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == true:
+		Juniper: No.
+		Juniper: I don't know him.
+		Dalton: He mentioned that he recognized you... 
+		Dalton: He said he visited to your cafe a few times.
+		Juniper: What are you trying to say?
+		Dalton: I'm just telling you what I know.
+		Juniper: Well, I'm no liar.
+		Juniper: I don't know him...
+		Juniper: It's not like I keep tabs with all my costumers.
+		Dalton: Hmph.
+	elif {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == false:
+		Juniper: No.
+		Juniper: I don't know him.
+		Dalton: He said you recognized you from...
+		Dalton: "around"...?
+		Juniper: Huh? 
+		Juniper: Tsk.
+		Juniper: You dectectives and your vagueries.
+		Juniper: He probably mistook me for somebody else.
+		Juniper: I've never seen him ever in my life...
+	elif {Global.first_house} == "Juniper":
+		Juniper: No
+		Juniper: I don't know him.
+else:
+	Dalton: Do you know him?
+	Juniper: ... 
+	Juniper: No? 
+	Juniper: Who is it?
+	Dalton: He is one of the other victims whose house was broken into last night.
+	if {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == true:
+		Dalton: He mentioned that he recognized you... 
+		Dalton: He said he visited to your cafe a few times.
+		Juniper: ...
+		Juniper: That's possible, but I'm not one to keep track of my customers' faces.
+		Juniper: I'm sorry...
+		Dalton: Oh... 
+		Dalton: ...it's fine.
+	elif {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == false:
+		Dalton: He said you recognized you from...
+		Dalton: ..."around".
+		Juniper: Huh?
+		Dalton: His words, not mine.
+		Juniper: Hmm... 
+		Juniper: I mean it's possible that he came to the Cafe... 
+		Juniper: Or maybe we crossed paths on the street one day... 
+		Juniper: But no I don't know him personally.
+		Dalton: Hmph.
+	elif {Global.first_house} == "Juniper":
+		Juniper: Oh...
+		Juniper: I don't know who that is... 
+		Juniper: I'm sorry...
+		Dalton: Hmmph...
+		Dalton: It's fine...

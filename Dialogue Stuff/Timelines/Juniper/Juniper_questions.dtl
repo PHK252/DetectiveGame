@@ -1,0 +1,32 @@
+if {Character Aff Points.Juniper} <= 0:
+	Dalton: Can I ask you a few questions?
+	Juniper: Sure... 
+	Juniper: Make it quick.
+	Dalton: ...
+		- Were you here when the break-in happened?
+			jump Juniper_questions_time/
+		- Anything missing?
+			jump Juniper_questions_missing/
+		- Do you know of anyone who would want to break-in?
+			jump Juniper_questions_who/
+		- Connection to other victims
+			- Ask about Quincy 
+				jump Juniper_questions_quincy/
+			- Ask about Micah
+				jump Juniper_questions_Micah/
+else: 
+	Dalton: Can I ask you a few questions?
+	Juniper: Of course! 
+	Juniper: Ask away!
+	Dalton: ...
+		- Were you here when the break-in happened?
+			jump Juniper_questions_time/
+		- Anything missing?
+			jump Juniper_questions_missing/
+		- Do you know of anyone who would want to break-in?
+			jump Juniper_questions_who/
+		- Connection to other victims
+			- Ask about Quincy 
+				jump Juniper_questions_quincy/
+			- Ask about Micah
+				jump Juniper_questions_Micah/
