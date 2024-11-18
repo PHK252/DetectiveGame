@@ -69,7 +69,7 @@ func _process_idle_state(distance_to_target: float) -> void:
 			print("interacted with theo")
 			#anim_tree["parameters/Blend2/blend_amount"] = 1
 			is_navigating = false
-			await get_tree().create_timer(10).timeout
+			#await get_tree().create_timer(10).timeout
 			is_navigating = true
 			print("stopped interacting")
 			anim_tree["parameters/Blend2/blend_amount"] = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=4 uid="uid://cwr2lvisdm7bi"]
+[gd_scene load_steps=135 format=4 uid="uid://cwr2lvisdm7bi"]
 
 [ext_resource type="PackedScene" uid="uid://bf7hxnp0di86k" path="res://SecondHouse/SecondHouseUpdate.glb" id="1_d2565"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_ed02g"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dwlyju8qnkbxm" path="res://SecondHouse/fixedkeys.glb" id="22_bx8ux"]
 [ext_resource type="PackedScene" uid="uid://dugdr1exd8m8i" path="res://CharacterStuff/Juniper/Juniper.tscn" id="23_72tie"]
 [ext_resource type="PackedScene" uid="uid://c0oqxtjfvwxeg" path="res://SecondHouse/2ndHouseBackground.glb" id="24_w8r3y"]
+[ext_resource type="PackedScene" uid="uid://g515kqc781aa" path="res://CharacterStuff/Theo/theo.tscn" id="25_keeut"]
 
 [sub_resource type="Curve3D" id="Curve3D_qvxdk"]
 bake_interval = 1.0
@@ -1612,6 +1613,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7oybj")
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_13i1q"]
+vertices = PackedVector3Array(2.10354, 0.2, -1.44072, 1.50354, 0.2, -1.44072, 1.60354, 0.2, -0.540723, 2.10354, 0.2, -0.340723, -1.29646, 0.2, 0.859277, -1.49646, 0.2, 0.659277, -1.79646, 0.2, 1.65928, 0.603537, 0.2, 0.659277, 0.603537, 0.2, -0.240723, -0.0964632, 0.2, -0.240723, -0.0964632, 0.2, 0.659277, -0.296463, 0.2, 0.859277, 0.803537, 0.2, 0.859277, 2.20354, 0.2, 1.65928, -1.49646, 0.2, -0.340723, -1.29646, 0.2, -1.44072, -1.79646, 0.2, -1.44072, 2.10354, 0.2, 0.659277, 1.90354, 0.2, 0.859277)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(10, 9, 7), PackedInt32Array(7, 9, 8), PackedInt32Array(11, 6, 4), PackedInt32Array(10, 7, 11), PackedInt32Array(11, 7, 12), PackedInt32Array(12, 13, 11), PackedInt32Array(11, 13, 6), PackedInt32Array(16, 15, 14), PackedInt32Array(13, 3, 0), PackedInt32Array(13, 17, 3), PackedInt32Array(18, 17, 13), PackedInt32Array(12, 18, 13), PackedInt32Array(5, 6, 14), PackedInt32Array(14, 6, 16)]
+cell_size = 0.1
+cell_height = 0.1
+agent_height = 1.75
+agent_radius = 0.28
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mswx2"]
+size = Vector3(1.20801, 1.83887, 1.3772)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2wly"]
+size = Vector3(0.341797, 1, 1.14856)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sov74"]
+size = Vector3(1.25476, 1.65027, 0.532166)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mxt67"]
+size = Vector3(1.27405, 1.79248, 0.240112)
+
 [node name="Main" type="Node3D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -2010,6 +2031,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.276351, 0, 0.0947098)
 [node name="CharacterBody3D" parent="Characters/Dalton" index="0" node_paths=PackedStringArray("camera")]
 camera = NodePath("../../../SubViewportContainer/SubViewport/CameraSystem/Camera3D")
 
+[node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonJog2/DetectiveRig" index="0"]
+bones/1/position = Vector3(1.8484e-09, -5.39206e-08, -2.98228)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.00945965, 0.34171, 0.865237, -0.366756)
+bones/4/rotation = Quaternion(-0.274842, 0.0458217, -0.0392074, 0.959596)
+bones/5/rotation = Quaternion(0.520085, -0.0725541, 0.0845408, 0.846818)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935923)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.00945961, 0.34171, 0.865237, 0.366756)
+bones/9/rotation = Quaternion(-0.274842, -0.0458217, 0.0392074, 0.959596)
+bones/10/rotation = Quaternion(0.520085, 0.0725542, -0.0845408, 0.846818)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935923)
+bones/12/position = Vector3(1.8484e-09, -2.68312e-07, -2.98228)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0795284, 1.13734e-07, -1.13804e-08, 0.996833)
+bones/16/rotation = Quaternion(0.0255799, 8.96588e-09, 8.09043e-09, 0.999673)
+bones/18/rotation = Quaternion(0.0447014, -0.000784499, -0.010063, 0.998949)
+bones/20/rotation = Quaternion(0.0447014, 0.0007845, 0.010063, 0.998949)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.261223, -0.148436, -0.392019, 0.869511)
+bones/23/rotation = Quaternion(-0.00349665, -0.000439723, -0.320869, 0.947117)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.261224, 0.148436, 0.392019, 0.869511)
+bones/27/rotation = Quaternion(-0.00349683, 0.000439722, 0.32087, 0.947117)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65473e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.96615, -0.0311821, -2.1862)
+bones/33/position = Vector3(1.8484e-09, -1.13525e-07, -2.98228)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/36/position = Vector3(-0.96615, -0.0311821, -2.1862)
+
 [node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="3"]
 parameters/Blend3/blend_amount = 0
 
@@ -2074,6 +2131,40 @@ bones/54/rotation = Quaternion(0.0634636, -0.000281972, 0.0247111, 0.997678)
 bones/56/position = Vector3(0.288407, -0.145298, -0.0447009)
 bones/57/position = Vector3(-0.288407, -0.145298, -0.0447009)
 
+[node name="Main" parent="Characters" instance=ExtResource("25_keeut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0049606, 0.00258792, 1.10023)
+
+[node name="CharacterBody3D" parent="Characters/Main" index="0" node_paths=PackedStringArray("anim_tree", "player", "armature", "nav")]
+collision_layer = 4
+collision_mask = 7
+anim_tree = NodePath("AnimationTree")
+player = NodePath("../../Dalton/CharacterBody3D")
+armature = NodePath("TheoFixedAnimations")
+nav = NodePath("NavigationAgent3D")
+
+[node name="Skeleton3D" parent="Characters/Main/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
+bones/1/position = Vector3(1.8484e-09, -5.39206e-08, -2.98228)
+bones/3/rotation = Quaternion(0.00945963, 0.34171, 0.865237, -0.366756)
+bones/4/rotation = Quaternion(-0.274842, 0.0458217, -0.0392074, 0.959596)
+bones/5/rotation = Quaternion(0.520085, -0.0725542, 0.0845409, 0.846818)
+bones/8/rotation = Quaternion(-0.00945958, 0.34171, 0.865237, 0.366756)
+bones/9/rotation = Quaternion(-0.274842, -0.0458217, 0.0392074, 0.959596)
+bones/10/rotation = Quaternion(0.520085, 0.0725542, -0.0845409, 0.846818)
+bones/12/position = Vector3(1.8484e-09, -3.10949e-07, -2.98228)
+bones/15/rotation = Quaternion(-0.0795284, 1.13734e-07, -1.13804e-08, 0.996833)
+bones/16/rotation = Quaternion(0.0255799, 8.96588e-09, 8.09044e-09, 0.999673)
+bones/17/rotation = Quaternion(0.46881, 0.0749653, -0.138969, 0.869071)
+bones/18/rotation = Quaternion(0.0447014, -0.000784498, -0.010063, 0.998949)
+bones/19/rotation = Quaternion(0.494704, -0.0791062, 0.136655, 0.854597)
+bones/20/rotation = Quaternion(0.0447014, 0.000784501, 0.010063, 0.998949)
+bones/22/rotation = Quaternion(-0.261224, -0.148436, -0.392019, 0.869512)
+bones/23/rotation = Quaternion(-0.00349669, -0.000439725, -0.32087, 0.947117)
+bones/26/rotation = Quaternion(-0.261224, 0.148436, 0.392018, 0.869512)
+bones/27/rotation = Quaternion(-0.00349685, 0.000439768, 0.320871, 0.947116)
+bones/31/position = Vector3(0.96615, -0.0311821, -2.1862)
+bones/33/position = Vector3(1.8484e-09, -1.13525e-07, -2.98228)
+bones/36/position = Vector3(-0.96615, -0.0311821, -2.1862)
+
 [node name="Lighting" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
@@ -2128,6 +2219,68 @@ mesh = SubResource("ArrayMesh_2626p")
 [node name="leaves_002" parent="2ndHouseBackground" index="3"]
 mesh = SubResource("ArrayMesh_dwxvv")
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0206481, 0)
+navigation_mesh = SubResource("NavigationMesh_13i1q")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0022583, -0.22467, -1.51282)
+size = Vector3(4.0824, 0.550659, 0.455811)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57657, -0.22467, -1.00372)
+size = Vector3(0.933777, 0.550659, 1.474)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85188, -0.22467, -1.00372)
+size = Vector3(0.933777, 0.550659, 1.474)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185176, -0.22467, 1.28725)
+size = Vector3(4.26718, 0.550659, 1.32587)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6949, -0.22467, 0.825993)
+size = Vector3(0.803123, 0.550659, 2.24838)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16964, -0.22467, 0.495998)
+size = Vector3(0.666332, 0.550659, 2.90837)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.229682, -0.22467, 0.742887)
+size = Vector3(1.23836, 0.550659, 2.41459)
+
+[node name="TheoAreas" type="Node" parent="."]
+
+[node name="Area3D" type="Area3D" parent="TheoAreas" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25463)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheoAreas/Area3D" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.104004, 0.419434, -0.188599)
+shape = SubResource("BoxShape3D_mswx2")
+
+[node name="Area3D2" type="Area3D" parent="TheoAreas" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.793538)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheoAreas/Area3D2" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329102, 0, 0.00933838)
+shape = SubResource("BoxShape3D_l2wly")
+
+[node name="Area3D3" type="Area3D" parent="TheoAreas" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49865, 0, -1.52923)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheoAreas/Area3D3" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12738, 0.325134, 0.386873)
+shape = SubResource("BoxShape3D_sov74")
+
+[node name="Area3D4" type="Area3D" parent="TheoAreas" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0854, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheoAreas/Area3D4" groups=["int_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137024, 0.39624, 0.706076)
+shape = SubResource("BoxShape3D_mxt67")
+
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/DoorArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_door_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/BookArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_book_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/WurliArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_wurli_area_body_entered"]
@@ -2147,4 +2300,6 @@ mesh = SubResource("ArrayMesh_dwxvv")
 [editable path="Characters/Dalton/CharacterBody3D/DaltonJog2"]
 [editable path="Characters/JuniperPath3D/JuniperPathFollow3D/Main"]
 [editable path="Characters/JuniperPath3D/JuniperPathFollow3D/Main/CharacterBody3D/Juniper1"]
+[editable path="Characters/Main"]
+[editable path="Characters/Main/CharacterBody3D/TheoFixedAnimations"]
 [editable path="2ndHouseBackground"]
