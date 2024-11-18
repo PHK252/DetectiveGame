@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export var ap : AnimationPlayer
+@export var anim_tree : AnimationTree
 @export var player : Node3D
 @export var armature = Node3D
 @export var path : PathFollow3D
@@ -72,7 +73,8 @@ func _process(delta):
 	match state:
 		IDLE:
 			if NPC == "Micah" or NPC == "Skylar":
-				ap.play("IdleSkylar")
+				#ap.play("IdleSkylar")
+				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 				
 			if NPC == "Juniper":
 				ap.play("IdleJuniper")
@@ -81,7 +83,8 @@ func _process(delta):
 				ap.play("Idle")
 		WALK:
 			if NPC == "Micah" or NPC == "Skylar":
-				ap.play("WalkingSkylar")
+				#ap.play("WalkingSkylar")
+				anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
 			
 			if NPC == "Juniper":
 				ap.play("WalkingJuniper")
@@ -92,7 +95,8 @@ func _process(delta):
 			path.progress += SPEED * delta		
 		WAIT:
 			if NPC == "Micah" or NPC == "Skylar":
-				ap.play("IdleSkylar")
+				#ap.play("IdleSkylar")
+				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 			
 			if NPC == "Juniper":
 				ap.play("IdleJuniper")
