@@ -66,8 +66,8 @@ func _process_idle_state(distance_to_target: float) -> void:
 		
 	if see_player:
 		if Input.is_action_just_pressed("interact"):
-			print("interacted")
-			anim_tree["parameters/Blend2/blend_amount"] = 1
+			print("interacted with theo")
+			#anim_tree["parameters/Blend2/blend_amount"] = 1
 			is_navigating = false
 			await get_tree().create_timer(10).timeout
 			is_navigating = true

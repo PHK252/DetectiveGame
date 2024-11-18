@@ -2010,37 +2010,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.276351, 0, 0.0947098)
 [node name="CharacterBody3D" parent="Characters/Dalton" index="0" node_paths=PackedStringArray("camera")]
 camera = NodePath("../../../SubViewportContainer/SubViewport/CameraSystem/Camera3D")
 
-[node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(2.86319e-10, -5.39206e-08, -2.94654)
-bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.000855503, 0.365609, 0.853633, -0.370999)
-bones/4/rotation = Quaternion(-0.324097, 0.00357448, -0.0349684, 0.945371)
-bones/5/rotation = Quaternion(0.542238, -0.0346071, 0.0636767, 0.837094)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935923)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.000855469, 0.365609, 0.853633, 0.370999)
-bones/9/rotation = Quaternion(-0.324097, -0.00357448, 0.0349684, 0.945371)
-bones/10/rotation = Quaternion(0.542238, 0.0346071, -0.0636767, 0.837094)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(2.86319e-10, 2.94654, -2.14183e-07)
-bones/12/rotation = Quaternion(0.305177, -3.03048e-08, 5.89247e-08, 0.952296)
-bones/15/rotation = Quaternion(-0.0730023, 1.13621e-07, -1.21525e-08, 0.997332)
-bones/16/rotation = Quaternion(0.0118053, 8.72773e-09, 8.07848e-09, 0.99993)
-bones/18/rotation = Quaternion(0.071626, 0.00836016, -0.0104772, 0.997342)
-bones/20/rotation = Quaternion(0.071626, -0.00836016, 0.0104772, 0.997342)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.266951, -0.148033, -0.38088, 0.872785)
-bones/23/rotation = Quaternion(-0.00386631, -0.000434069, -0.35479, 0.934938)
-bones/24/rotation = Quaternion(0.0187947, 0.00442635, -0.00950234, 0.999768)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.266951, 0.148033, 0.380879, 0.872785)
-bones/27/rotation = Quaternion(-0.00386653, 0.000434074, 0.354791, 0.934938)
-bones/28/rotation = Quaternion(0.0187947, -0.00442641, 0.00950234, 0.999768)
-bones/30/rotation = Quaternion(-0.0106232, 0.707027, 0.707027, -0.0106232)
-bones/31/position = Vector3(0.94236, 2.17943, -0.0311821)
-bones/33/position = Vector3(2.86319e-10, 2.94654, -1.13525e-07)
-bones/36/position = Vector3(-0.94236, 2.17943, -0.0311821)
-
 [node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="3"]
 parameters/Blend3/blend_amount = 0
 
@@ -2175,7 +2144,7 @@ mesh = SubResource("ArrayMesh_dwxvv")
 [editable path="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/Interactable"]
 [editable path="SubViewportContainer/SubViewport/SecondHouseUpdate/fixedkeys"]
 [editable path="Characters/Dalton"]
-[editable path="Characters/Dalton/CharacterBody3D/DetectiveT7"]
+[editable path="Characters/Dalton/CharacterBody3D/DaltonJog2"]
 [editable path="Characters/JuniperPath3D/JuniperPathFollow3D/Main"]
 [editable path="Characters/JuniperPath3D/JuniperPathFollow3D/Main/CharacterBody3D/Juniper1"]
 [editable path="2ndHouseBackground"]

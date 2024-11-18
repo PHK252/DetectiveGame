@@ -243,7 +243,7 @@ radius = 0.267929
 height = 1.75171
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a8r42"]
-size = Vector3(1.07983, 1.58997, 1.10657)
+size = Vector3(0.786559, 1.58997, 0.460236)
 
 [node name="Main" type="Node3D"]
 
@@ -317,9 +317,13 @@ shape = SubResource("CapsuleShape3D_k6f53")
 [node name="InteractArea" type="Area3D" parent="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/InteractArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000610352, 0.802134, 0.0532837)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0526433, 0.802134, 0.0917203)
 shape = SubResource("BoxShape3D_a8r42")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+
+[connection signal="area_entered" from="CharacterBody3D/InteractArea" to="CharacterBody3D" method="_on_interact_area_area_entered"]
+[connection signal="body_entered" from="CharacterBody3D/InteractArea" to="CharacterBody3D" method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="CharacterBody3D/InteractArea" to="CharacterBody3D" method="_on_interact_area_body_exited"]
 
 [editable path="CharacterBody3D/TheoFixedAnimations"]

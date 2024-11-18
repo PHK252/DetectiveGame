@@ -176,16 +176,16 @@ animation = &"Jog"
 
 [sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_wxn5m"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3qvv6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w1ito"]
 animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4snsx"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jk7j8"]
 animation = &"Walk"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_l8ckr"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_3qvv6")
+blend_point_0/node = SubResource("AnimationNodeAnimation_w1ito")
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_4snsx")
+blend_point_1/node = SubResource("AnimationNodeAnimation_jk7j8")
 blend_point_1/pos = 1.0
 min_space = 0.0
 
@@ -270,7 +270,6 @@ bones/30/rotation = Quaternion(-1.65473e-24, 0.999887, 0, -0.0150235)
 bones/31/position = Vector3(0.972291, -0.0311821, -2.18795)
 bones/31/rotation = Quaternion(0.805456, 2.20541e-15, 0.592656, 1.65405e-15)
 bones/32/rotation = Quaternion(-1.07907e-15, -0.823096, 1.07907e-15, 0.567902)
-bones/32/scale = Vector3(1, 1, 1)
 bones/33/position = Vector3(-1.34493e-09, -1.17122e-07, -2.9915)
 bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
@@ -280,7 +279,6 @@ bones/35/rotation = Quaternion(-1.65455e-24, 0.999887, -1.77656e-15, 0.0150235)
 bones/36/position = Vector3(-0.972291, -0.0311821, -2.18795)
 bones/36/rotation = Quaternion(0.805456, -2.20541e-15, -0.592656, 1.65405e-15)
 bones/37/rotation = Quaternion(-1.07907e-15, 0.823096, -1.07907e-15, 0.567902)
-bones/37/scale = Vector3(1, 1, 1)
 
 [node name="detective" parent="CharacterBody3D/DaltonJog2/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_firge")
