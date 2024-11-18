@@ -3377,26 +3377,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541894, 0)
 [node name="Alert" parent="Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
 visible = false
 
-[node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DetectiveT7/DetectiveRig" index="0"]
-bones/1/position = Vector3(-1.18841e-09, -5.75171e-08, -2.99508)
-bones/3/rotation = Quaternion(0.0129731, 0.332018, 0.869622, -0.365178)
-bones/4/rotation = Quaternion(-0.25493, 0.0612577, -0.039619, 0.964204)
-bones/5/rotation = Quaternion(0.511025, -0.0863313, 0.0915843, 0.850302)
-bones/8/rotation = Quaternion(-0.0129731, 0.332018, 0.869621, 0.365177)
-bones/9/rotation = Quaternion(-0.25493, -0.0612577, 0.039619, 0.964204)
-bones/10/rotation = Quaternion(0.511025, 0.0863317, -0.0915848, 0.850301)
-bones/12/position = Vector3(-1.18841e-09, 2.99508, -3.20387e-07)
-bones/15/rotation = Quaternion(-0.0818659, 1.15474e-07, -1.33015e-08, 0.996643)
-bones/16/rotation = Quaternion(0.0305145, 4.08015e-09, 1.27851e-08, 0.999534)
-bones/18/rotation = Quaternion(0.0350424, -0.00406195, -0.00991259, 0.999328)
-bones/20/rotation = Quaternion(0.0350424, 0.00406195, 0.0099126, 0.999328)
-bones/22/rotation = Quaternion(-0.259141, -0.148621, -0.39641, 0.868111)
-bones/23/rotation = Quaternion(-0.00335353, -0.000441722, -0.307735, 0.951466)
-bones/26/rotation = Quaternion(-0.259141, 0.148621, 0.39641, 0.868111)
-bones/27/rotation = Quaternion(-0.00335371, 0.000441824, 0.307735, 0.951466)
-bones/31/position = Vector3(0.974674, 2.18863, -0.0311821)
-bones/33/position = Vector3(-1.18841e-09, 2.99508, -1.17122e-07)
-bones/36/position = Vector3(-0.974674, 2.18863, -0.0311821)
+[node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonJog2/DetectiveRig" index="0"]
+bones/1/position = Vector3(-9.87402e-11, -5.75171e-08, -3.02001)
+bones/3/rotation = Quaternion(0.0208721, 0.310356, 0.878783, -0.361917)
+bones/4/rotation = Quaternion(-0.210696, 0.0917532, -0.0379664, 0.972495)
+bones/5/rotation = Quaternion(0.490854, -0.113474, 0.104335, 0.857497)
+bones/8/rotation = Quaternion(-0.0208721, 0.310356, 0.878783, 0.361917)
+bones/9/rotation = Quaternion(-0.210696, -0.0917532, 0.0379664, 0.972495)
+bones/10/rotation = Quaternion(0.490854, 0.113474, -0.104336, 0.857497)
+bones/12/position = Vector3(-9.87402e-11, -2.43979e-07, -3.02001)
+bones/15/rotation = Quaternion(-0.0856025, 1.14747e-07, -1.18392e-08, 0.996329)
+bones/16/rotation = Quaternion(0.0399143, 4.77086e-09, 1.22923e-08, 0.999203)
+bones/18/rotation = Quaternion(0.0162358, -0.0104385, -0.0096169, 0.999767)
+bones/20/rotation = Quaternion(0.0162358, 0.0104385, 0.00961691, 0.999767)
+bones/22/rotation = Quaternion(-0.255093, -0.149094, -0.405619, 0.864969)
+bones/23/rotation = Quaternion(-0.00305178, -0.000445715, -0.280043, 0.959983)
+bones/26/rotation = Quaternion(-0.255093, 0.149094, 0.405618, 0.86497)
+bones/27/rotation = Quaternion(-0.00305196, 0.000445715, 0.280045, 0.959982)
+bones/31/position = Vector3(0.99127, -0.0311821, -2.19335)
+bones/33/position = Vector3(-9.87402e-11, -1.17122e-07, -3.02001)
+bones/36/position = Vector3(-0.99127, -0.0311821, -2.19335)
+
+[node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="3"]
+parameters/Blend3/blend_amount = 0
 
 [connection signal="became_active" from="SubViewportContainer/SubViewport/CameraSystem/Corkboard cam" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_corkboard_cam_became_active"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox" method="_on_interactable_interacted"]
@@ -3447,4 +3450,4 @@ bones/36/position = Vector3(-0.974674, 2.18863, -0.0311821)
 [editable path="UI/Case Look"]
 [editable path="Characters/Dalton"]
 [editable path="Characters/Dalton/CharacterBody3D/PlayerInteractor"]
-[editable path="Characters/Dalton/CharacterBody3D/DetectiveT7"]
+[editable path="Characters/Dalton/CharacterBody3D/DaltonJog2"]

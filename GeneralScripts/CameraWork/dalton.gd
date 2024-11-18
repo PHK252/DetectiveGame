@@ -1,10 +1,12 @@
 extends CharacterBody3D
 
-@onready var armature = %DetectiveT7
+@onready var armature = %DaltonJog2
 @onready var anim_tree = $AnimationTree
 @export var camera = Camera3D
-const SPEED = 1.15
+var SPEED = 1.15
 const LERP_VAL = .15
+var jogcheck = false
+var idle_timer_active: bool = false
 
 const MAX_STEP_HEIGHT = 1.2
 var _snapped_to_stairs_last_frame := false
@@ -22,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if GlobalVars.player_move == true:
 		emit_signal("moving")
+		
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 		# Get the input direction and handle the movement/deceleration.
@@ -38,14 +41,36 @@ func _physics_process(delta: float) -> void:
 
 			# Smoothly rotate the armature to face the movement direction
 			armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
+			jogcheck = true
+			idle_timer_active = false
+			if anim_tree["parameters/Blend3/blend_amount"] < 0:
+				anim_tree["parameters/Blend3/blend_amount"] = 0
 		else:
 			velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 			velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
-		
-
+			jogcheck = false
+			if not idle_timer_active:  # Start timer only if not already active
+				idle_timer_active = true
+				print("Starting idle timer")
+				await get_tree().create_timer(8).timeout
+				if velocity.length() == 0:  # Verify idle condition
+					print("Entering thinking state")
+					anim_tree["parameters/Blend3/blend_amount"] = -1
+					await get_tree().create_timer(9.167).timeout
+					anim_tree["parameters/Blend3/blend_amount"] = 0
+				idle_timer_active = false  # Reset for next idle check
+			
 		
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
-
+		
+		if Input.is_action_pressed("jog") and jogcheck:
+			anim_tree["parameters/Blend3/blend_amount"] = 1
+			SPEED = 2.2
+		elif Input.is_action_just_released("jog"):
+			anim_tree["parameters/Blend3/blend_amount"] = 0
+			SPEED = 1.15
+			
+			
 		if not _snap_up_stairs_check(delta):
 			
 			move_and_slide()
