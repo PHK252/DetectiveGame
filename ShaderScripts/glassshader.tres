@@ -1,0 +1,50 @@
+[gd_resource type="Shader" format=3 uid="uid://cihvuq4tavxd3"]
+
+[resource]
+code = "shader_type spatial;
+
+uniform float transparency : hint_range(0.0, 1.0) = 0.3;
+uniform vec3 toon_color : source_color = vec3(0.8, 0.9, 1.0);
+uniform float toon_threshold : hint_range(0.0, 1.0) = 0.5;
+uniform float outline_width : hint_range(0.0, 10.0) = 2.0;
+uniform float fresnel_power : hint_range(0.0, 10.0) = 3.0;
+
+void fragment() {
+    // Base color of the glass
+    vec3 base_color = toon_color;
+
+    // Light direction
+    vec3 light_dir = normalize(vec3(0.5, 1.0, -0.5));  // Adjust as needed for lighting
+    float NdotL = max(dot(NORMAL, light_dir), 0.0);
+
+    // Toon shading effect
+    float toon_step = step(toon_threshold, NdotL);
+    vec3 toon_shade = base_color * toon_step;
+
+    // Fresnel effect for glass edges
+    float fresnel = pow(1.0 - max(dot(NORMAL, normalize(VIEW)), 0.0), fresnel_power);
+    
+    // Combine toon shade with fresnel to give a glassy edge effect
+    vec3 final_color = mix(toon_shade, base_color * fresnel, fresnel);
+
+    // Transparency for glass effect
+    ALBEDO = final_color;
+    ALPHA = transparency;
+}
+
+void light() {
+    vec3 light_dir = normalize(LIGHT);
+
+    // Basic toon lighting in the light pass
+    float NdotL = max(dot(NORMAL, light_dir), 0.0);
+    float toon_step = step(toon_threshold, NdotL);
+    
+    // Output the toon lighting as light pass color
+    vec3 light_color = LIGHT_COLOR.rgb * toon_step;
+    vec3 specular_color = vec3(1.0) * step(0.5, NdotL);  // Simple high-contrast specular
+
+    // Final light color
+    DIFFUSE_LIGHT += light_color;
+    SPECULAR_LIGHT += specular_color;
+}
+"
