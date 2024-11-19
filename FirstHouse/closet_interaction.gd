@@ -8,6 +8,8 @@ extends Node3D
 @onready var cam_anim = $"../SubViewportContainer/SubViewport/CameraSystem/Closet close up/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0)
 @onready var closet_open = false
+@export var collision : CollisionShape3D
+@export var collision2 : CollisionShape3D
 
 @onready var dalton_maker = $"../UI/Dalton_marker"
 @onready var micah_marker = $"../UI/Micah_marker"
@@ -63,6 +65,8 @@ func _process(delta):
 		note_interaction.show()
 
 func _on_interactable_interacted(interactor):
+	collision.disabled = false
+	collision2.disabled = false
 	main_cam.priority = 12
 	var tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
 	if GlobalVars.in_dialogue == false:
