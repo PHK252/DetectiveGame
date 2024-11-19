@@ -11,6 +11,7 @@ extends Node3D
 
 @onready var dalton_maker = $"../UI/Dalton_marker"
 @onready var micah_marker = $"../UI/Micah_marker"
+@onready var theo_marker = $"../UI/Theo_marker"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -77,6 +78,7 @@ func _on_interactable_interacted(interactor):
 			Dialogic.signal_event.connect(closetLook)
 			closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			#await get_tree().create_timer(3).timeout
 		elif closet_open == true and tool_asked == false:
 			GlobalVars.in_dialogue = true
@@ -86,6 +88,7 @@ func _on_interactable_interacted(interactor):
 			Dialogic.signal_event.connect(closetLook)
 			closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		elif closet_open == true and tool_asked == true:
 			GlobalVars.in_dialogue = true
 			player.stop_player()
@@ -94,6 +97,7 @@ func _on_interactable_interacted(interactor):
 			Dialogic.signal_event.connect(closetLook)
 			closet_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			closet_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			closet_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
