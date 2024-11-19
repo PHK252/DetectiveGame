@@ -18,12 +18,16 @@ enum {
 var state = IDLE
 var see_player = false
 var at_door = false
-const SPEED = 0.4
-const LERP_VAL = .15
+var SPEED = 0.4
+var LERP_VAL = .15
 var rotation_speed = 70
 
 func _ready() -> void:
 	state = IDLE
+	if NPC == "Theo":
+		SPEED = 1
+		LERP_VAL = .4
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -39,8 +43,12 @@ func _physics_process(delta: float) -> void:
 func _process(delta):
 	if state == WALK:
 		var flipped_basis = path.global_transform.basis
-		flipped_basis.x = -flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
-		flipped_basis.z = -flipped_basis.z  # Flip the Z basis vector to mirror rotation on the Y-axis
+		if NPC != "Theo":
+			flipped_basis.x = -flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
+			flipped_basis.z = -flipped_basis.z  # Flip the Z basis vector to mirror rotation on the Y-axis
+		else:
+			flipped_basis.x = flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
+			flipped_basis.z = flipped_basis.z
 
 	# Apply the flipped basis to the NPC
 		global_transform.basis = flipped_basis
@@ -81,6 +89,9 @@ func _process(delta):
 				
 			if NPC == "Quincy":
 				ap.play("Idle")
+				
+			if NPC == "Theo":
+				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 		WALK:
 			if NPC == "Micah" or NPC == "Skylar":
 				#ap.play("WalkingSkylar")
@@ -91,6 +102,9 @@ func _process(delta):
 				
 			if NPC == "Quincy":
 				ap.play("Walk")
+				
+			if NPC == "Theo":
+				anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
 			
 			path.progress += SPEED * delta		
 		WAIT:
@@ -103,6 +117,9 @@ func _process(delta):
 				
 			if NPC == "Quincy":
 				ap.play("Idle")
+				
+			if NPC == "Theo":
+				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 			
 			await get_tree().create_timer(8).timeout
 			state = WALK
