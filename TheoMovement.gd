@@ -7,7 +7,7 @@ extends CharacterBody3D
 
 const speed = 1.15
 const LERP_VAL = 0.15
-const STOPPING_DISTANCE = 0.8  # Distance at which we stop following
+const STOPPING_DISTANCE = 1  # Distance at which we stop following
 const FOLLOW_DISTANCE = 1.2  # Distance at which we resume following (hysteresis buffer)
 const STOPPING_BUFFER = 0.2  # Small buffer to prevent jittering
 const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary

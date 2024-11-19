@@ -5,7 +5,7 @@ extends Node3D
 @onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../../SubViewport/CameraSystem/Cabinet/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
-@onready var cab_open = true
+@onready var cab_open = false
 @export var anim_tree = AnimationTree
 @export var anim_bags = AnimationTree
 @onready var is_looking = false
@@ -16,12 +16,12 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	if cab_open == true:
+	if cab_open == false:
 		for member in bag_group:
-			member.show()
-		anim_tree["parameters/conditions/cab_opened"] = true
-		anim_bags["parameters/conditions/is_falling"] = true
-		anim_bags["parameters/conditions/is_looping"] = true
+			member.hide()
+		anim_tree["parameters/conditions/cab_closed"] = true
+		anim_bags["parameters/conditions/is_falling"] = false
+		anim_bags["parameters/conditions/is_looping"] = false
 	else:
 		pass
 		#anim_tree["parameters/conditions/cab_closed"] = true
@@ -63,6 +63,10 @@ func _process(delta):
 	#elif GlobalVars.in_look_screen == false and fridge_cam.priority == 15:
 		#bookmark_interact.show()
 	if clickable and Input.is_action_just_pressed("mouse_click"):
+		if cab_open == false:
+			open_cabinet()
+			
+	if cab_open == true and Input.is_action_just_pressed("mouse_click"):
 		close_cabinet()
 
 
@@ -75,7 +79,7 @@ func _on_interactable_interacted(interactor):
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()
-	if cab_open == true:
+	if cab_open == false:
 		#play animation
 		#fridge_open = true
 		clickable = true
@@ -89,4 +93,16 @@ func close_cabinet():
 	anim_bags["parameters/conditions/finish"] = true
 	anim_tree["parameters/conditions/cab_closed_action"] = true
 	clickable = false
+	
+func open_cabinet():
+	
+	anim_bags["parameters/conditions/is_falling"] = true
+	anim_bags["parameters/conditions/is_looping"] = true
+	anim_bags["parameters/conditions/finish"] = false
+	anim_tree["parameters/conditions/cabinet_opened"] = true
+	await get_tree().create_timer(2.5).timeout
+	for member in bag_group:
+		member.show()
+	clickable = true
+	cab_open = true
 	
