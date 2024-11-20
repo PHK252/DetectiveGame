@@ -19,7 +19,9 @@ extends Node
 @onready var viewed_team = false
 @onready var viewed_missing = false
 @onready var viewed_tool_note = false
+@onready var viewed_Micah_bookmark = false
 @onready var pic_fell = false
+@onready var Micah_in_case = false
 @onready var in_interaction = ""
 @onready var viewing = ""
 @onready var first_house = ""

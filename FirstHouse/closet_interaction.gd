@@ -32,7 +32,9 @@ func _process(delta):
 		closet_cam.set_rotation_degrees(Vector3(-25, 93.8, 1.4))
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "closet":
+		#print(GlobalVars.viewing)
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_tool_note == true and GlobalVars.closet_dialogue == false:
+			print("enter")
 			main_cam.set_tween_duration(0)
 			closet_cam.priority = 0
 			main_cam.priority = 12
@@ -46,8 +48,9 @@ func _process(delta):
 			GlobalVars.in_interaction = ""
 			GlobalVars.closet_dialogue = true
 			note_interaction.hide()
-			main_cam.set_tween_duration(1)
-		elif Input.is_action_just_pressed("Exit"): 
+			#main_cam.set_tween_duration(1)
+		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "": 
+			print("entered here")
 			main_cam.set_tween_duration(0)
 			closet_cam.priority = 0
 			main_cam.priority = 12
@@ -57,7 +60,7 @@ func _process(delta):
 			player.start_player()
 			GlobalVars.in_interaction = ""
 			note_interaction.hide()
-			main_cam.set_tween_duration(1)
+			#main_cam.set_tween_duration(1)
 	
 	if GlobalVars.in_look_screen == true:
 		note_interaction.hide()
@@ -107,6 +110,7 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
+	#print("enter")
 #
 func closetLook(argument: String):
 	if argument == "look":
@@ -116,7 +120,6 @@ func closetLook(argument: String):
 		main_cam.priority = 0 
 		note_interaction.show()
 		cam_anim.play("Cam_Idle")
-		player.hide()
-	#if argument == "exit":
+		player.hide()	#if argument == "exit":
 		#print("sign nn")
 		#player.start_player()

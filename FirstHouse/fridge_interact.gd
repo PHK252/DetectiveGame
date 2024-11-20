@@ -33,7 +33,7 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
-			main_cam.set_tween_duration(1)
+			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 			#bookmark_interact.hide()
 			

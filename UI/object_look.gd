@@ -8,7 +8,7 @@ extends CanvasLayer
 func _ready():
 	back.hide()
 
-func _process(delta):
+func _input(event):
 	if Input.is_action_just_pressed("Exit"):
 		$".".hide()
 		GlobalVars.in_look_screen = false

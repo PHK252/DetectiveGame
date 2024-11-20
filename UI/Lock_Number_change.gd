@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var num0 = $"0"
 @onready var num1 = $"1"
@@ -16,6 +16,7 @@ extends Node
 
 
 func _ready():
+	#$".".hide()
 	numChange()
 
 func _on_up_pressed():

@@ -10,23 +10,32 @@ extends CanvasLayer
 @onready var posClick = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$".".hide()
 	posChange()
 
 
 func _input(event):
-	if Input.is_action_just_pressed("case_right"):
-		if posClick < 5:
-			posClick = posClick + 1 
-		else:
-			posClick = 0
-		posChange()
-	
-	if Input.is_action_just_pressed("case_left"):
-		if posClick > 0:
-			posClick = posClick - 1
-		else:
-			posClick = 5
-		posChange()
+	if GlobalVars.Micah_in_case == true:
+		if Input.is_action_just_pressed("case_right"):
+			if posClick < 5:
+				posClick = posClick + 1 
+			else:
+				posClick = 0
+			posChange()
+		
+		if Input.is_action_just_pressed("case_left"):
+			if posClick > 0:
+				posClick = posClick - 1
+			else:
+				posClick = 5
+			posChange()
+	if Input.is_action_just_pressed("Exit"):
+		$".".hide()
+
+
+func _on_exit_pressed():
+	$".".hide()
+
 
 func posChange():
 	if posClick == 0:

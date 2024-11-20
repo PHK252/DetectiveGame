@@ -28,6 +28,7 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "book":
 		if Input.is_action_just_pressed("Exit"):
+			print("enter")
 			main_cam.set_tween_duration(0)
 			book_cam.priority = 0
 			main_cam.priority = 12
@@ -35,7 +36,7 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
-			main_cam.set_tween_duration(1)
+			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 			bookmark_interact.hide()
 			

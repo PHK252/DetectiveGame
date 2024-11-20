@@ -60,9 +60,9 @@ position = Vector2(10.6066, 9.1924)
 apply_overrides_on_ready = true
 
 [node name="TextBubbleLayer" parent="." instance=ExtResource("4_ts4i0")]
-text_size = 50
+text_size = 40
 text_color = Color(1, 1, 1, 1)
-normal_font = "res://Dialogue Stuff/Fonts/Pixel Font V1.ttf"
+normal_font = "res://Dialogue Stuff/Fonts/Pixel Font V2.ttf"
 text_max_width = 400
 box_modulate = Color(0, 0, 0, 1)
 box_padding = Vector2(5, 15)
@@ -71,8 +71,8 @@ box_wobble_speed = 0.1
 box_wobble_amount = 0.0
 box_wobble_detail = 0.0
 name_label_enabled = false
-choices_text_size = 50
-choices_text_font = "res://Dialogue Stuff/Fonts/Pixel Font V1.ttf"
+choices_text_size = 40
+choices_text_font = "res://Dialogue Stuff/Fonts/Pixel Font V2.ttf"
 choices_text_color = Color(1, 1, 1, 1)
 choices_text_color_hover = Color(0.360302, 0.510407, 0.830432, 1)
 choices_text_color_focus = Color(0.360784, 0.509804, 0.831373, 1)

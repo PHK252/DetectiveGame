@@ -34,7 +34,7 @@ action = &"Down"
 [sub_resource type="Shortcut" id="Shortcut_erwu8"]
 events = [SubResource("InputEventAction_qiod5")]
 
-[node name="Pos" type="Node"]
+[node name="Pos" type="Node2D"]
 script = ExtResource("1_foqkb")
 
 [node name="0" type="TextureRect" parent="."]
