@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var armature = %DaltonJog2
+@onready var armature = %DaltonStepBack
 @onready var anim_tree = $AnimationTree
 @export var camera = Camera3D
 var SPEED = 1.15
@@ -13,6 +13,12 @@ var _snapped_to_stairs_last_frame := false
 var _last_frame_was_on_floor = -INF
 signal moving
 signal stopped
+var move_back = false
+
+var move_back_in_progress = false
+var move_back_start_position = Vector3()
+var move_back_target_position = Vector3()
+var move_back_progress = 0.0  # Tracks the progress of the lerp
 
 func _ready() -> void:
 	add_to_group("player")
@@ -21,12 +27,23 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames() 
 	
 	GlobalVars.player_pos = global_position
+	
+	
+	if move_back_in_progress:
+		move_back_progress += delta * 3.0  # Adjust multiplier for speed
+		if move_back_progress >= 1.0:
+			move_back_progress = 1.0
+			move_back_in_progress = false
+		
+		# Smoothly interpolate position
+		global_position = move_back_start_position.lerp(move_back_target_position, move_back_progress)
 	# Add the gravity.
 	if GlobalVars.player_move == true:
 		emit_signal("moving")
 		
 		if not is_on_floor():
 			velocity += get_gravity() * delta
+			
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir := Input.get_vector("Right", "Left", "Back", "Forward")
@@ -69,8 +86,10 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_released("jog"):
 			anim_tree["parameters/Blend3/blend_amount"] = 0
 			SPEED = 1.15
-			
-			
+		
+		if move_back == true and not move_back_in_progress:
+			start_move_back()
+		
 		if not _snap_up_stairs_check(delta):
 			
 			move_and_slide()
@@ -140,3 +159,21 @@ func _snap_up_stairs_check(delta) -> bool:
 	return false
 			
 		
+func start_move_back():
+	# Initialize lerp for move back
+	print("movedback")
+	var move_distance = 0.2  # Adjust as needed
+	move_back_start_position = global_position
+	move_back_target_position = global_position + Vector3(move_distance, 0, 0)  # Adjust for X-axis movement in 3D
+	move_back_progress = 0.0
+	anim_tree.set("parameters/OneShot/request", true)
+	await get_tree().create_timer(0.45).timeout
+	move_back_in_progress = true
+
+	move_back = false
+
+func _on_closet_stepback() -> void:
+	move_back = true
+	
+	
+	

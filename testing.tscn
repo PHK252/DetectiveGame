@@ -314,6 +314,9 @@ bones/36/position = Vector3(-0.992216, -0.0311821, -2.19362)
 
 [node name="AnimationTree" parent="Dalton/CharacterBody3D" index="3"]
 parameters/Blend3/blend_amount = 0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 
 [connection signal="moving" from="Dalton/CharacterBody3D" to="Node/Main/CharacterBody3D" method="_on_character_body_3d_moving"]
 [connection signal="stopped" from="Dalton/CharacterBody3D" to="Node/Main/CharacterBody3D" method="_on_character_body_3d_stopped"]

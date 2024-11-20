@@ -14,6 +14,7 @@ extends Node3D
 @onready var dalton_maker = $"../UI/Dalton_marker"
 @onready var micah_marker = $"../UI/Micah_marker"
 @onready var theo_marker = $"../UI/Theo_marker"
+signal stepback
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,6 +69,8 @@ func _process(delta):
 		note_interaction.show()
 
 func _on_interactable_interacted(interactor):
+	emit_signal("stepback")
+	await get_tree().create_timer(2).timeout
 	collision.disabled = false
 	collision2.disabled = false
 	main_cam.priority = 12
