@@ -33,7 +33,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
-	#print(mouse_pos) 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 550:
 			cab_cam.set_rotation_degrees(Vector3(-27.5, 35.6, -1.3))
@@ -65,10 +64,22 @@ func _process(delta):
 	if clickable and Input.is_action_just_pressed("mouse_click"):
 		if cab_open == false:
 			open_cabinet()
+			await get_tree().create_timer(3.5).timeout
+			GlobalVars.in_dialogue = true
+			var cab_thoughts = Dialogic.start("Micah_cabinet_thoughts")
+			Dialogic.timeline_ended.connect(_on_thoughts_ended)
+			#book_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			#book_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			
-	if cab_open == true and Input.is_action_just_pressed("mouse_click"):
-		close_cabinet()
+	#if cab_open == true and Input.is_action_just_pressed("mouse_click"):
+		#close_cabinet()
 
+func _on_thoughts_ended():
+	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
+	GlobalVars.in_dialogue = false
+	await get_tree().create_timer(1.5).timeout
+	close_cabinet()
+	#player.start_player()
 
 func _on_interactable_interacted(interactor):
 	is_looking = true
@@ -92,10 +103,11 @@ func close_cabinet():
 	anim_bags["parameters/conditions/is_looping"] = false
 	anim_bags["parameters/conditions/finish"] = true
 	anim_tree["parameters/conditions/cab_closed_action"] = true
+	await get_tree().create_timer(2.5).timeout
 	clickable = false
+	cab_open = false
 	
 func open_cabinet():
-	
 	anim_bags["parameters/conditions/is_falling"] = true
 	anim_bags["parameters/conditions/is_looping"] = true
 	anim_bags["parameters/conditions/finish"] = false

@@ -3443,11 +3443,8 @@ bones/31/position = Vector3(0.938287, -0.0311821, -2.17827)
 bones/33/position = Vector3(1.88683e-11, -1.13525e-07, -2.94042)
 bones/36/position = Vector3(-0.938287, -0.0311821, -2.17827)
 
-[node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="3"]
+[node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="4"]
 parameters/Blend3/blend_amount = 0
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
 
 [node name="Path3D" type="Path3D" parent="Characters"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2567, 0, -0.516303)
@@ -3575,5 +3572,6 @@ parameters/BlendSpace1D/blend_position = -0.0317848
 [editable path="UI/Case Look"]
 [editable path="Characters/Dalton"]
 [editable path="Characters/Dalton/CharacterBody3D/PlayerInteractor"]
+[editable path="Characters/Dalton/CharacterBody3D/DaltonStepBack"]
 [editable path="Characters/Dalton/CharacterBody3D/DaltonJog2"]
 [editable path="Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations"]

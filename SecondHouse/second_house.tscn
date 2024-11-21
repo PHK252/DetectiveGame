@@ -2052,11 +2052,8 @@ bones/31/position = Vector3(0.991699, -0.0311821, -2.19347)
 bones/33/position = Vector3(-7.05554e-11, -1.17122e-07, -3.02066)
 bones/36/position = Vector3(-0.991699, -0.0311821, -2.19347)
 
-[node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="3"]
+[node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="4"]
 parameters/Blend3/blend_amount = 0
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
 
 [node name="JuniperPath3D" type="Path3D" parent="Characters"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0707401, 0)
@@ -2285,6 +2282,7 @@ shape = SubResource("BoxShape3D_mxt67")
 [editable path="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/Interactable"]
 [editable path="SubViewportContainer/SubViewport/SecondHouseUpdate/fixedkeys"]
 [editable path="Characters/Dalton"]
+[editable path="Characters/Dalton/CharacterBody3D/DaltonStepBack"]
 [editable path="Characters/Dalton/CharacterBody3D/DaltonJog2"]
 [editable path="Characters/JuniperPath3D/JuniperPathFollow3D/Main"]
 [editable path="Characters/JuniperPath3D/JuniperPathFollow3D/Main/CharacterBody3D/Juniper1"]

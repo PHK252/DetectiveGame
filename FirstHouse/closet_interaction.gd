@@ -34,7 +34,7 @@ func _process(delta):
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "closet":
 		#print(GlobalVars.viewing)
-		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_tool_note == true and GlobalVars.closet_dialogue == false:
+		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_tool_note == true and GlobalVars.closet_dialogue == false and GlobalVars.viewing == "":
 			print("enter")
 			main_cam.set_tween_duration(0)
 			closet_cam.priority = 0
@@ -69,11 +69,14 @@ func _process(delta):
 		note_interaction.show()
 
 func _on_interactable_interacted(interactor):
-	emit_signal("stepback")
-	await get_tree().create_timer(2).timeout
+	
 	collision.disabled = false
 	collision2.disabled = false
 	main_cam.priority = 12
+	if closet_open == false: 
+		emit_signal("stepback")
+		await get_tree().create_timer(2).timeout
+	
 	var tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
 	if GlobalVars.in_dialogue == false:
 		if closet_open == false and tool_asked == false:

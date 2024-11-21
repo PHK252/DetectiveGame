@@ -23,35 +23,39 @@ func _on_input_event(viewport, event, shape_idx):
 				look.show()
 				GlobalVars.viewing = "bookmark"
 				GlobalVars.in_look_screen = true
-				#GlobalVars.clicked_tool_note = GlobalVars.clicked_tool_note + 1
+				GlobalVars.clicked_book_note = GlobalVars.clicked_book_note + 1
 
 	
 
 func _on_exit_pressed():
-	#if GlobalVars.viewed_Micah_bookmark == false and GlobalVars.clicked_tool_note == 1:
-	bookmark.show()
-		#GlobalVars.in_dialogue = true
-		#Dialogic.timeline_ended.connect(_on_timeline_ended)
-		#Dialogic.start("Micah_closet_note_thoughts")
-	GlobalVars.viewed_Micah_bookmark = true
-	
-	GlobalVars.viewing = ""
-	GlobalVars.in_look_screen = false
+	if GlobalVars.viewed_Micah_bookmark == false and GlobalVars.clicked_book_note == 1:
+		bookmark.show()
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.start("Micah_Bookmark_note_thoughts")
+		GlobalVars.viewed_Micah_bookmark = true
+		GlobalVars.viewing = ""
+	else:
+		bookmark.show()
+		GlobalVars.viewing = ""
 
 
-#func _on_timeline_ended():
-	#Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-	#GlobalVars.in_dialogue = false
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "bookmark":
-		bookmark.show()
-		GlobalVars.viewing = ""
-		GlobalVars.in_look_screen = false
-		GlobalVars.viewed_Micah_bookmark = true
-	#if GlobalVars.viewed_tool_note == false and GlobalVars.clicked_tool_note == 1:
-			#GlobalVars.in_dialogue = true
-			#Dialogic.timeline_ended.connect(_on_timeline_ended)
-			#Dialogic.start("Micah_closet_note_thoughts")
-			#GlobalVars.viewed_tool_note = true
+		if GlobalVars.viewed_Micah_bookmark == false and GlobalVars.clicked_book_note == 1:
+			bookmark.show()
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.start("Micah_Bookmark_note_thoughts")
+			GlobalVars.viewed_Micah_bookmark = true
+			GlobalVars.viewing = "" 
+		else:
+			bookmark.show()
+			await get_tree().create_timer(.3).timeout
+			GlobalVars.viewing = ""
+	
 	
