@@ -1,8 +1,12 @@
 Dalton: ...
 - Show Micah a picture of Juniper.
+	label juniper qs
+	set {Asked Questions.Micah_asked_juniper} = true
 	if {Character Aff Points.Micah} <= 1:
+		[wait time="0.3"]
 		Dalton: ... 
 		- Do you recognize her?
+			set {Asked Questions.Micah_Juniper_Q1} = true
 			Dalton: Do you recognize her?
 			Micah: ...
 			Micah: She looks... 
@@ -14,15 +18,30 @@ Dalton: ...
 			Micah: Around?
 			Dalton: ...
 			Micah: ...
-			Dalton: Hmmph. 
+			Dalton: Hmmph.
+			if {Asked Questions.Micah_Juniper_Q2} == false:
+				jump juniper qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
 		- Do you know anybody who would have a reason to target her?
+			set {Asked Questions.Micah_Juniper_Q2} = true
 			Dalton: Do you know anybody who would have a reason to target her?
 			Micah: I don't...
 			Micah: ...know her? 
 			Dalton: Hmph.
-	if {Character Aff Points.Micah} <= 1:
+			if {Asked Questions.Micah_Juniper_Q1} == false:
+				jump juniper qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
+	elif {Character Aff Points.Micah} > 1:
+		[wait time="0.3"]
 		Dalton: ... 
 		- Do you recognize her?
+			set {Asked Questions.Micah_Juniper_Q1} = true
 			Dalton: Do you recognize her?
 			Micah: ...
 			Micah: Hmm...
@@ -31,25 +50,73 @@ Dalton: ...
 			Micah: I think I went there a few times with a friend.
 			Dalton: Hmph.
 			set {Asked Questions.Micah_know_Juniper} = true
+			if {Asked Questions.Micah_Juniper_Q2} == false:
+				jump juniper qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
 		- Do you know anybody who would have a reason to target her?
+			set {Asked Questions.Micah_Juniper_Q2} = true
 			Micah: I don't know her enough to know that. 
+			if {Asked Questions.Micah_Juniper_Q1} == false:
+				jump juniper qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
 - Show Micah a picture of Quincy.
+	label quincy qs
 	if {Character Aff Points.Micah} <= 1:
+		[wait time="0.3"]
+		Dalton: ... 
 		- Do you recognize him?
+			set {Asked Questions.Micah_Quincy_Q1} = true
 			Dalton: Do you recognize him?
 			Micah: ...
 			Micah: He's the mayor... 
 			Micah: Right?
 			Dalton: Yes. 
+			if {Asked Questions.Micah_Quincy_Q2} == false:
+				jump quincy qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
 		- Do you know anybody who would target him?
+			set {Asked Questions.Micah_Quincy_Q2} = true
 			Dalton: Do you know anybody who would target him?
-			Micah: Not specially... no.
-	if {Character Aff Points.Micah} <= 1:
-		Dalton: Do you recognize him?
-		Micah: Isn't he the mayor?
-		Dalton: Yes.
-		Dalton: Do you know anybody who would target him?
-		Micah: I mean... 
-		Micah: He's not the greatest person... 
-		Micah: So... 
-		Micah: I don't know.
+			Micah: Not specifically... no.
+			if {Asked Questions.Micah_Quincy_Q1} == false:
+				jump quincy qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
+	if {Character Aff Points.Micah} > 1:
+		[wait time="0.3"]
+		Dalton: ... 
+		- Do you recognize him?
+			set {Asked Questions.Micah_Quincy_Q1} = true
+			Dalton: Do you recognize him?
+			Micah: Isn't he the mayor?
+			Dalton: Yes.
+			if {Asked Questions.Micah_Quincy_Q2} == false:
+				jump quincy qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
+		- Do you know anybody who would target him?
+			set {Asked Questions.Micah_Quincy_Q2} = true
+			Dalton: Do you know anybody who would want to target him?
+			Micah: I mean... 
+			Micah: He's not the greatest person... 
+			Micah: So... 
+			Micah: I don't know.
+			if {Asked Questions.Micah_Quincy_Q1} == false:
+				jump quincy qs
+			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				[end_timeline]
+			else:
+				jump 
