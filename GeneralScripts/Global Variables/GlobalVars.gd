@@ -12,6 +12,7 @@ extends Node
 @onready var clicked_missing = 0
 @onready var clicked_tool_note = 0
 @onready var clicked_book_note = 0
+@onready var clicked_cab = 0
 @onready var viewed_case_file = 0
 
 @onready var closet_dialogue = false
@@ -23,6 +24,7 @@ extends Node
 @onready var viewed_missing = false
 @onready var viewed_tool_note = false
 @onready var viewed_Micah_bookmark = false
+@onready var opened_cab = false
 @onready var pic_fell = false
 @onready var Micah_in_case = false
 @onready var in_interaction = ""

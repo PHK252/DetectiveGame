@@ -12,6 +12,9 @@ extends Node3D
 @onready var clickable = false
 @onready var bag_group = get_tree().get_nodes_in_group("plastic_bags")
 
+
+@onready var dalton_maker = $"../../../../UI/Dalton_marker"
+@onready var micah_marker = $"../../../../UI/Micah_marker"
 #@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,8 +44,43 @@ func _process(delta):
 	else:
 		cab_cam.set_rotation_degrees(Vector3(-1.8, 35.6, -1.3))
 	
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cab":
-		if Input.is_action_just_pressed("Exit"):
+	#var dialogue_pick = Dialogic.VAR.get_variable("Asked Questions.Micah_cab")
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cab" and clickable == false:
+		#print("whjat")
+		if Input.is_action_just_pressed("Exit") and GlobalVars.clicked_cab == 1 and GlobalVars.opened_cab == true:
+			print("first")
+			GlobalVars.in_dialogue = true
+			cab_cam.priority = 0
+			main_cam.priority = 12
+			await get_tree().create_timer(.03).timeout
+			cam_anim.play("RESET")
+			player.show()
+			#player.start_player()
+			GlobalVars.in_interaction = ""
+			var cab_dialogue = Dialogic.start("Micah_cabinet")
+			Dialogic.VAR.get("Asked Questions").Micah_cab = 1
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			#GlobalVars.opened_cab = false
+		elif Input.is_action_just_pressed("Exit") and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true:
+			print("subs")
+			pick_dialogue()
+			main_cam.set_tween_duration(0)
+			cab_cam.priority = 0
+			main_cam.priority = 12
+			await get_tree().create_timer(.03).timeout
+			cam_anim.play("RESET")
+			player.show()
+			#player.start_player()
+			GlobalVars.in_interaction = ""
+			var cab_dialogue = Dialogic.start("Micah_cabinet")
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+		elif Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false:
+			print("no click")
 			main_cam.set_tween_duration(0)
 			cab_cam.priority = 0
 			main_cam.priority = 12
@@ -52,9 +90,6 @@ func _process(delta):
 			player.start_player()
 			main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
-			#bookmark_interact.hide()
-			
-			#activate dialogue
 		
 		
 	#if GlobalVars.in_look_screen == true:
@@ -66,13 +101,30 @@ func _process(delta):
 			open_cabinet()
 			await get_tree().create_timer(3.5).timeout
 			GlobalVars.in_dialogue = true
-			var cab_thoughts = Dialogic.start("Micah_cabinet_thoughts")
+			Dialogic.start("Micah_cabinet_thoughts")
 			Dialogic.timeline_ended.connect(_on_thoughts_ended)
 			#book_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			#book_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			
 	#if cab_open == true and Input.is_action_just_pressed("mouse_click"):
 		#close_cabinet()
+		
+		
+func _on_timeline_ended():
+	print("end")
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
+	player.start_player()
+	GlobalVars.opened_cab = false
+	
+func pick_dialogue():
+	var rng = RandomNumberGenerator.new()
+	var random = rng.randf_range(0.0, 10.0)
+	var num = int(random)
+	if num % 2 == 1:
+		Dialogic.VAR.get("Asked Questions").Micah_cab = 2
+	else:
+		Dialogic.VAR.get("Asked Questions").Micah_cab = 3
 
 func _on_thoughts_ended():
 	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
@@ -82,6 +134,7 @@ func _on_thoughts_ended():
 	#player.start_player()
 
 func _on_interactable_interacted(interactor):
+	print(GlobalVars.clicked_cab)
 	is_looking = true
 	GlobalVars.in_interaction = "cab"
 	cab_cam.priority = 15
@@ -108,6 +161,8 @@ func close_cabinet():
 	cab_open = false
 	
 func open_cabinet():
+	GlobalVars.clicked_cab += 1 
+	GlobalVars.opened_cab = true
 	anim_bags["parameters/conditions/is_falling"] = true
 	anim_bags["parameters/conditions/is_looping"] = true
 	anim_bags["parameters/conditions/finish"] = false
