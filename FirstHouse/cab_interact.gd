@@ -159,12 +159,13 @@ func close_cabinet():
 	for member in bag_group:
 		member.hide()
 	
+	anim_bags["parameters/conditions/restart"] = false
+	anim_tree["parameters/conditions/restart"] = false
+	
 	anim_bags["parameters/conditions/is_looping"] = false
 	anim_bags["parameters/conditions/finish"] = true
-	anim_bags["parameters/conditions/restart"] = true
 	anim_tree["parameters/conditions/cab_closed_action"] = true
 	anim_tree["parameters/conditions/cabinet_opened"] = false
-	anim_tree["parameters/conditions/restart"] = true
 	await get_tree().create_timer(1.0).timeout
 	clickable = false
 	cab_open = false
@@ -172,13 +173,14 @@ func close_cabinet():
 func open_cabinet():
 	GlobalVars.clicked_cab += 1 
 	GlobalVars.opened_cab = true
+	anim_bags["parameters/conditions/restart"] = true
 	anim_bags["parameters/conditions/is_falling"] = true
-	anim_bags["parameters/conditions/is_looping"] = true
 	anim_bags["parameters/conditions/finish"] = false
-	anim_bags["parameters/conditions/restart"] = false
+	anim_bags["parameters/conditions/is_looping"] = true
+
+	anim_tree["parameters/conditions/restart"] = true
 	anim_tree["parameters/conditions/cabinet_opened"] = true
 	anim_tree["parameters/conditions/cab_closed_action"] = false
-	anim_tree["parameters/conditions/restart"] = false
 	await get_tree().create_timer(2.5).timeout
 	for member in bag_group:
 		member.show()
