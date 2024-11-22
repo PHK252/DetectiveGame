@@ -5,8 +5,8 @@ extends Node3D
 @onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
 #@onready var note_interaction = $Note
 @onready var cam_anim = $"../../../SubViewport/CameraSystem/Case/AnimationPlayer"
-#@onready var mouse_pos = Vector2(0,0)
-#@onready var in_case = false
+@onready var case = $".."
+@onready var casetop = $"../../casebone"
 @onready var UI = $"../../../../UI/Case UI"
 @onready var dalton_maker = $"../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../UI/Micah_marker"
@@ -54,6 +54,8 @@ func _on_timeline_ended():
 func caseUI(argument: String):
 	if argument == "look_case":
 		player.hide()
+		case.hide()
+		casetop.hide()
 		GlobalVars.Micah_in_case = true
 		player.stop_player()
 		GlobalVars.in_interaction = "case"

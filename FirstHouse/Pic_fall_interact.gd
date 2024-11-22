@@ -17,21 +17,17 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			print("weeeeeeee") 
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			pic_cam.set_rotation_degrees(Vector3(-45.4, 177.7, 1))
+			GlobalVars.in_look_screen = true
 			pic_fall_anim.play("PicFalling")
 			await pic_fall_anim.animation_finished
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			#Exit to third person for dialogue
 			GlobalVars.pic_fell = true
-			#main_cam.set_tween_duration(0)
+			await get_tree().create_timer(1.5).timeout
+			GlobalVars.in_look_screen = false
 			pic_cam.priority = 0
 			main_cam.priority = 12
-			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
-			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 			pic_fall.hide()
 			if GlobalVars.in_dialogue == false:

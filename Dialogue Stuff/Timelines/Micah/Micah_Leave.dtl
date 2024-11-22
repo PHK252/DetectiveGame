@@ -7,8 +7,9 @@ if {Character Aff Points.Micah} <= 1:
 	Dalton: We are leaving. 
 	Theo: Bye!!
 	Micah: bye... 
-
-if {Character Aff Points.Micah} >= 1 and {Character Aff Points.Micah} < 3:
+	[signal arg="open_door"]
+	[end_timeline]
+elif {Character Aff Points.Micah} >= 1 and {Character Aff Points.Micah} < 3:
 	Dalton: I think we're done with our search. 
 	Dalton: If you think of anything that may contribute to the case, please call us or report it to the station. 
 	Theo: Thank you for letting us in.
@@ -19,8 +20,9 @@ if {Character Aff Points.Micah} >= 1 and {Character Aff Points.Micah} < 3:
 	Dalton: Thanks.
 	Theo: Bye!!
 	Micah: Bye!
-
-if {Character Aff Points.Micah} < 3 or {Asked Questions.Micah_Theo_enter} == true:
+	[signal arg="open_door"]
+	[end_timeline]
+elif {Character Aff Points.Micah} < 3 or {Asked Questions.Micah_Theo_enter} == true:
 	Dalton: I think we're done with our search. 
 	Dalton: If you think of anything that may contribute to the case, please call us or report it to the station. 
 	Theo: Thank you for letting us in.
@@ -52,3 +54,5 @@ if {Character Aff Points.Micah} < 3 or {Asked Questions.Micah_Theo_enter} == tru
 	Dalton: Bye.
 	Micah: Yeah... 
 	Micah: Bye!
+	[signal arg="open_door"]
+	[end_timeline]

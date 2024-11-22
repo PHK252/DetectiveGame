@@ -28,7 +28,7 @@ func _process(delta):
 			pic_cam.set_rotation_degrees(Vector3(-25.4, 177.7, 1))
 				#pass
 	else:
-		pic_cam.set_rotation_degrees(Vector3(-25.4, 177.7, 1))
+		pic_cam.set_rotation_degrees(Vector3(-45.4, 177.7, 1))
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "picture":
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "" and GlobalVars.Micah_pic_dialogue == false and GlobalVars.pic_fell == true:
@@ -40,7 +40,7 @@ func _process(delta):
 			player.show()
 			#player.start_player()
 			GlobalVars.in_dialogue = true
-			#main_cam.set_tween_duration(1)
+			GlobalVars.Micah_pic_dialogue = true
 			GlobalVars.in_interaction = ""
 			pic_fall.hide()
 			pic_look.hide()
