@@ -11,7 +11,7 @@ extends Node3D
 @onready var is_looking = false
 @onready var clickable = false
 @onready var bag_group = get_tree().get_nodes_in_group("plastic_bags")
-
+@onready var cab_area = $Cab
 
 @onready var dalton_maker = $"../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../UI/Micah_marker"
@@ -96,6 +96,14 @@ func _process(delta):
 		#bookmark_interact.hide()
 	#elif GlobalVars.in_look_screen == false and fridge_cam.priority == 15:
 		#bookmark_interact.show()
+	
+			#book_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			#book_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			
+	#if cab_open == true and Input.is_action_just_pressed("mouse_click"):
+		#close_cabinet()
+	
+func _on_cab_input_event(viewport, event, shape_idx):
 	if clickable and Input.is_action_just_pressed("mouse_click"):
 		if cab_open == false and GlobalVars.clicked_cab == 0:
 			open_cabinet()
@@ -105,15 +113,10 @@ func _process(delta):
 			Dialogic.timeline_ended.connect(_on_thoughts_ended)
 		elif cab_open == false:
 			open_cabinet()
-			await get_tree().create_timer(5.0).timeout
+			await get_tree().create_timer(7.5).timeout
 			close_cabinet()
 			
-			#book_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-			#book_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-			
-	#if cab_open == true and Input.is_action_just_pressed("mouse_click"):
-		#close_cabinet()
-		
+	
 		
 func _on_timeline_ended():
 	#print("end")
@@ -141,6 +144,7 @@ func _on_thoughts_ended():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false:
+		cab_area.show()
 		is_looking = true
 		GlobalVars.in_interaction = "cab"
 		cab_cam.priority = 15
@@ -169,6 +173,7 @@ func close_cabinet():
 	await get_tree().create_timer(1.0).timeout
 	clickable = false
 	cab_open = false
+	cab_area.hide()
 	
 func open_cabinet():
 	GlobalVars.clicked_cab += 1 

@@ -14,8 +14,10 @@ extends Node
 @onready var clicked_book_note = 0
 @onready var clicked_cab = 0
 @onready var viewed_case_file = 0
+@onready var clicked_Micah_pic = 0
 
 @onready var closet_dialogue = false
+@onready var Micah_pic_dialogue = false
 @onready var book_dialogue = false
 @onready var viewed_contact = false
 @onready var viewed_partner = false

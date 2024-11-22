@@ -2,9 +2,10 @@ extends Node3D
 
 
 @onready var note_interaction = $closet/Note
-@onready var pic_fall_interact = $"SubViewportContainer/FirstHouseUpdated/PictureFrameFriend/Pic fall Interact"
+@onready var pic_fall_interact = $"SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend/Pic fall Interact"
+@onready var pic_look_interact = $"SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend/Picture Look"
 @onready var bookmark_interact = $"SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Bookmark_interact"
-
+@onready var cab_interact = $"SubViewportContainer/FirstHouseUpdated/cabinetz/Cab Interact/Cab"
 @onready var tool_look = $UI/Tool_note
 @onready var bookmark_look = $UI/Bookmark
 
@@ -18,7 +19,8 @@ func _ready():
 	bookmark_interact.hide()
 	tool_look.hide()
 	bookmark_look.hide()
-	
+	cab_interact.hide()
+	pic_look_interact.hide()
 	#var layout = Dialogic.start("Office_Donuts")
 	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
 	
