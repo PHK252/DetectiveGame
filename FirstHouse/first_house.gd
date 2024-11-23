@@ -8,6 +8,7 @@ extends Node3D
 @onready var cab_interact = $"SubViewportContainer/FirstHouseUpdated/cabinetz/Cab Interact/Cab"
 @onready var tool_look = $UI/Tool_note
 @onready var bookmark_look = $UI/Bookmark
+@onready var tool_anim = $NewToolBoxTop/AnimationPlayer
 
 @onready var Dalton_marker = $UI/Dalton_marker
 @onready var Micah_marker = $UI/Micah_marker
@@ -21,6 +22,7 @@ func _ready():
 	bookmark_look.hide()
 	cab_interact.hide()
 	pic_look_interact.hide()
+	tool_anim.play("NEWToolOpen")
 	#var layout = Dialogic.start("Office_Donuts")
 	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
 	
