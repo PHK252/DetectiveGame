@@ -23,6 +23,8 @@ func _physics_process(_delta: float) -> void:
 				#print("office_interact")
 			elif GlobalVars.current_level == "Micah":
 				animplay.play("Alert_Animation_Micah")
+			elif GlobalVars.current_level == "Juniper":
+				animplay.play("Alert_Animation_Juniper")
 		cached_closest = new_closest
 
 func _input(event: InputEvent) -> void:

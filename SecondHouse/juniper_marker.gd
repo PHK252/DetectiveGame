@@ -5,10 +5,14 @@ extends Marker2D
 @onready var marker = $"."
 @onready var cam = $"../../SubViewportContainer/SubViewport/CameraSystem/Camera3D"
 @onready var juniper = $"../../Characters/JuniperPath3D/JuniperPathFollow3D/Main/CharacterBody3D"
+@onready var book_cam = $"../../SubViewportContainer/SubViewport/CameraSystem/CamBooks"
 
 
 func _process(delta):
-	positionMarker(6, 90, 550)
+	if book_cam.is_active() == true:
+		positionMarker(6, 0, 360)
+	else:
+		positionMarker(6, 90, 550)
 
 func positionMarker(mult : int, x : int, y : int):
 	var pos = juniper.global_transform.origin

@@ -10,8 +10,6 @@ extends Node3D
 @onready var bookmark_look = $UI/Bookmark
 @onready var tool_anim = $NewToolBoxTop/AnimationPlayer
 
-@onready var Dalton_marker = $UI/Dalton_marker
-@onready var Micah_marker = $UI/Micah_marker
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.current_level = "Micah"

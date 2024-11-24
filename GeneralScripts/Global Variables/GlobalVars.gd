@@ -30,6 +30,8 @@ extends Node
 @onready var viewed_Micah_fridge = false
 
 @onready var viewed_Juniper_house_pic = false
+@onready var viewed_Juniper_cafe_pic = false
+@onready var viewed_Juniper_window = false
 @onready var opened_cab = false
 @onready var pic_fell = false
 @onready var Micah_in_case = false
