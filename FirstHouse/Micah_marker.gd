@@ -5,7 +5,7 @@ extends Marker2D
 @onready var marker = $"."
 @onready var cam = $"../../SubViewportContainer/SubViewport/CameraSystem/Camera3D"
 @onready var micah = $"../../Characters/MicahPath/MicahPath3D/PathFollow3D/Micah/MicahBody"
-
+@onready var kitchen = $"../../SubViewportContainer/SubViewport/CameraSystem/Kitchen"
 @onready var live_cam = $"../../SubViewportContainer/SubViewport/CameraSystem/livingroom"
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +15,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if live_cam.is_active() == true:
+		positionMarker(6, 60, 400)
+	elif kitchen.is_active() == true:
 		positionMarker(6, 60, 400)
 	else:
 		positionMarker(6, 90, 550)

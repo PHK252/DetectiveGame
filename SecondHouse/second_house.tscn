@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=4 uid="uid://cwr2lvisdm7bi"]
+[gd_scene load_steps=170 format=4 uid="uid://cwr2lvisdm7bi"]
 
 [ext_resource type="PackedScene" uid="uid://bf7hxnp0di86k" path="res://SecondHouse/SecondHouseUpdate.glb" id="1_d2565"]
 [ext_resource type="Script" path="res://SecondHouse/second_house.gd" id="1_dkcdt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_ul3qm"]
 [ext_resource type="Material" uid="uid://cgwa84pvtb52t" path="res://ShaderScripts/environment.tres" id="7_8s221"]
 [ext_resource type="Material" uid="uid://cp0jkmt30p6sx" path="res://ShaderScripts/wood.tres" id="7_o52ck"]
+[ext_resource type="Script" path="res://SecondHouse/house_interact.gd" id="8_ejjv7"]
 [ext_resource type="Script" path="res://StartingOffice/map.gd" id="9_g5gr0"]
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="9_hdrrg"]
 [ext_resource type="Material" uid="uid://d8jtayeghegx" path="res://ShaderScripts/leaves2.tres" id="9_i0jh3"]
@@ -26,7 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://dwlyju8qnkbxm" path="res://SecondHouse/fixedkeys.glb" id="22_bx8ux"]
 [ext_resource type="PackedScene" uid="uid://dugdr1exd8m8i" path="res://CharacterStuff/Juniper/Juniper.tscn" id="23_72tie"]
 [ext_resource type="PackedScene" uid="uid://c0oqxtjfvwxeg" path="res://SecondHouse/2ndHouseBackground.glb" id="24_w8r3y"]
+[ext_resource type="Script" path="res://SecondHouse/dalton_marker_Juniper_house.gd" id="25_53jed"]
 [ext_resource type="PackedScene" uid="uid://g515kqc781aa" path="res://CharacterStuff/Theo/theo.tscn" id="25_keeut"]
+[ext_resource type="Script" path="res://SecondHouse/juniper_marker.gd" id="26_unw5d"]
+[ext_resource type="Script" path="res://SecondHouse/theo_marker_juniper_marker.gd" id="27_ig7e2"]
 
 [sub_resource type="Curve3D" id="Curve3D_qvxdk"]
 bake_interval = 1.0
@@ -162,6 +166,43 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
+[sub_resource type="Animation" id="Animation_2r8yf"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.289731, 1.32145, -1.62291), Vector3(0.29, 1.341, -1.623)]
+}
+
+[sub_resource type="Animation" id="Animation_84bv5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.289731, 1.32145, -1.62291)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1a8pq"]
+_data = {
+"Cam_Idle": SubResource("Animation_2r8yf"),
+"RESET": SubResource("Animation_84bv5")
+}
+
 [sub_resource type="Resource" id="Resource_fgkv8"]
 script = ExtResource("4_8hl4b")
 duration = 1.0
@@ -179,6 +220,43 @@ size = 1.0
 frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
+
+[sub_resource type="Animation" id="Animation_bq6vq"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.492464, 1.38493, -0.34222), Vector3(0.492, 1.405, -0.342)]
+}
+
+[sub_resource type="Animation" id="Animation_4kybx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.492464, 1.38493, -0.34222)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pydpv"]
+_data = {
+"Cam_Idle": SubResource("Animation_bq6vq"),
+"RESET": SubResource("Animation_4kybx")
+}
 
 [sub_resource type="Resource" id="Resource_ijn5x"]
 script = ExtResource("4_8hl4b")
@@ -198,6 +276,43 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
+[sub_resource type="Animation" id="Animation_irmbl"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.90061, 1.25125, 0.158753), Vector3(1.901, 1.271, 0.159)]
+}
+
+[sub_resource type="Animation" id="Animation_4grly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.90061, 1.25125, 0.158753)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kpf5r"]
+_data = {
+"Cam_Idle": SubResource("Animation_irmbl"),
+"RESET": SubResource("Animation_4grly")
+}
+
 [sub_resource type="Resource" id="Resource_a23r4"]
 script = ExtResource("4_8hl4b")
 duration = 1.0
@@ -216,6 +331,43 @@ frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
 
+[sub_resource type="Animation" id="Animation_haj2a"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.13182, 1.62363, 0.422972), Vector3(-2.132, 1.644, 0.423)]
+}
+
+[sub_resource type="Animation" id="Animation_foxu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.13182, 1.62363, 0.422972)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ha7n7"]
+_data = {
+"Cam_Idle": SubResource("Animation_haj2a"),
+"RESET": SubResource("Animation_foxu8")
+}
+
 [sub_resource type="Resource" id="Resource_ba01j"]
 script = ExtResource("4_8hl4b")
 duration = 1.0
@@ -233,6 +385,43 @@ size = 1.0
 frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
+
+[sub_resource type="Animation" id="Animation_eydgk"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.160329, 1.4957, 1.27013), Vector3(0.16, 1.516, 1.27)]
+}
+
+[sub_resource type="Animation" id="Animation_kyb4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.160329, 1.4957, 1.27013)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ed8r"]
+_data = {
+"Cam_Idle": SubResource("Animation_eydgk"),
+"RESET": SubResource("Animation_kyb4f")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5reoy"]
 size = Vector3(5.46057, 2.20215, 0.746597)
@@ -1779,8 +1968,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10527, 0.066215)
 curve = SubResource("Curve3D_vqh5s")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-1, 0, -8.74228e-08, -1.35282e-08, 0.987954, 0.154745, 8.63697e-08, 0.154745, -0.987954, 0.160329, 1.4957, 1.27013)
+transform = Transform3D(0.999634, -0.00962843, 0.0198438, 0, 0.899673, 0.436532, -0.0220539, -0.436426, 0.899455, 0.257042, 2.10527, 1.43682)
+projection = 1
 current = true
+size = 2.403
 
 [node name="PhantomCameraHost" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem/Camera3D"]
 script = ExtResource("1_ed02g")
@@ -1857,11 +2048,21 @@ script = ExtResource("3_r36w6")
 tween_resource = SubResource("Resource_fsb54")
 camera_3d_resource = SubResource("Resource_u7gq3")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/CaseCam"]
+libraries = {
+"": SubResource("AnimationLibrary_1a8pq")
+}
+
 [node name="ResumeCam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(1, 0, 0, 0, 0.651966, 0.758248, 0, -0.758248, 0.651966, 0.492464, 1.38493, -0.34222)
 script = ExtResource("3_r36w6")
 tween_resource = SubResource("Resource_fgkv8")
 camera_3d_resource = SubResource("Resource_yu70o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/ResumeCam"]
+libraries = {
+"": SubResource("AnimationLibrary_pydpv")
+}
 
 [node name="BookCam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.90061, 1.25125, 0.158753)
@@ -1869,18 +2070,32 @@ script = ExtResource("3_r36w6")
 tween_resource = SubResource("Resource_ijn5x")
 camera_3d_resource = SubResource("Resource_fy1mk")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/BookCam"]
+libraries = {
+"": SubResource("AnimationLibrary_kpf5r")
+}
+
 [node name="CafeCam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.13182, 1.62363, 0.422972)
 script = ExtResource("3_r36w6")
 tween_resource = SubResource("Resource_a23r4")
 camera_3d_resource = SubResource("Resource_827c4")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/CafeCam"]
+libraries = {
+"": SubResource("AnimationLibrary_ha7n7")
+}
+
 [node name="HouseCam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(-1, 0, -8.74228e-08, -1.35282e-08, 0.987954, 0.154745, 8.63697e-08, 0.154745, -0.987954, 0.160329, 1.4957, 1.27013)
+transform = Transform3D(-1, -1.36759e-08, 8.63464e-08, 0, 0.987688, 0.156434, -8.74228e-08, 0.156434, -0.987688, 0.160329, 1.4957, 1.27013)
 script = ExtResource("3_r36w6")
-priority = 20
 tween_resource = SubResource("Resource_ba01j")
 camera_3d_resource = SubResource("Resource_5h6aw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/HouseCam"]
+libraries = {
+"": SubResource("AnimationLibrary_5ed8r")
+}
 
 [node name="CamAreas" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem"]
 
@@ -1910,9 +2125,12 @@ shape = SubResource("BoxShape3D_ex4hk")
 
 [node name="InteractionAreas" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem"]
 
-[node name="HousePic" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas" instance=ExtResource("12_mj6di")]
+[node name="House interact" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas"]
+script = ExtResource("8_ejjv7")
 
-[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/HousePic" index="0"]
+[node name="HousePic" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact" instance=ExtResource("12_mj6di")]
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/HousePic" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141622, 0.936489, 2.0957)
 shape = SubResource("BoxShape3D_35hlf")
 
@@ -2212,6 +2430,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164908, 0.00219786, -0.00
 [node name="keys" parent="SubViewportContainer/SubViewport/SecondHouseUpdate/fixedkeys" index="0"]
 mesh = SubResource("ArrayMesh_c2b1q")
 
+[node name="UI" type="Node" parent="."]
+
+[node name="Dalton Marker" type="Marker2D" parent="UI"]
+script = ExtResource("25_53jed")
+
+[node name="Juniper Marker" type="Marker2D" parent="UI"]
+script = ExtResource("26_unw5d")
+
+[node name="Theo Marker" type="Marker2D" parent="UI"]
+script = ExtResource("27_ig7e2")
+
 [node name="Characters" type="Node" parent="."]
 
 [node name="Dalton" parent="Characters" instance=ExtResource("12_sg0fk")]
@@ -2221,40 +2450,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.276351, 0, 0.0947098)
 camera = NodePath("../../../SubViewportContainer/SubViewport/CameraSystem/Camera3D")
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-3.06322e-09, -5.75171e-08, -2.95219)
+bones/1/position = Vector3(4.84558e-10, -5.39206e-08, -2.95108)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.00211786, 0.362086, 0.855417, -0.370338)
-bones/4/rotation = Quaternion(-0.316829, 0.0101668, -0.035903, 0.947748)
-bones/5/rotation = Quaternion(0.539001, -0.0405563, 0.0670769, 0.83865)
+bones/3/rotation = Quaternion(0.00186326, 0.362795, 0.855061, -0.370468)
+bones/4/rotation = Quaternion(-0.31829, 0.00886032, -0.0357334, 0.947278)
+bones/5/rotation = Quaternion(0.539652, -0.039379, 0.0664113, 0.83834)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935923)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.00211783, 0.362086, 0.855417, 0.370338)
-bones/9/rotation = Quaternion(-0.316829, -0.0101668, 0.035903, 0.947748)
-bones/10/rotation = Quaternion(0.539001, 0.0405564, -0.0670769, 0.83865)
+bones/8/rotation = Quaternion(-0.00186324, 0.362795, 0.855061, 0.370468)
+bones/9/rotation = Quaternion(-0.31829, -0.00886032, 0.0357334, 0.947278)
+bones/10/rotation = Quaternion(0.539652, 0.0393791, -0.0664113, 0.83834)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935923)
-bones/12/position = Vector3(-3.06322e-09, -2.33288e-07, -2.95219)
+bones/12/position = Vector3(4.84558e-10, -2.31674e-07, -2.95108)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0740343, 1.1534e-07, -1.42283e-08, 0.997256)
-bones/16/rotation = Quaternion(0.0139831, 3.79509e-09, 1.2771e-08, 0.999902)
-bones/18/rotation = Quaternion(0.067374, 0.00691513, -0.0104123, 0.997649)
-bones/20/rotation = Quaternion(0.067374, -0.00691513, 0.0104123, 0.997649)
+bones/15/rotation = Quaternion(-0.0738306, 1.13636e-07, -1.20545e-08, 0.997271)
+bones/16/rotation = Quaternion(0.0135534, 8.75804e-09, 8.08008e-09, 0.999908)
+bones/18/rotation = Quaternion(0.0682133, 0.00720032, -0.0104251, 0.99759)
+bones/20/rotation = Quaternion(0.0682133, -0.00720032, 0.0104251, 0.99759)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.266053, -0.148087, -0.382539, 0.872324)
-bones/23/rotation = Quaternion(-0.00381061, -0.000434963, -0.349675, 0.936863)
+bones/22/rotation = Quaternion(-0.266231, -0.148076, -0.382206, 0.872418)
+bones/23/rotation = Quaternion(-0.00382172, -0.000434807, -0.350697, 0.936481)
 bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.266053, 0.148087, 0.382539, 0.872324)
-bones/27/rotation = Quaternion(-0.00381079, 0.000434974, 0.349675, 0.936863)
+bones/26/rotation = Quaternion(-0.266231, 0.148076, 0.382206, 0.872418)
+bones/27/rotation = Quaternion(-0.00382193, 0.000434784, 0.350698, 0.936481)
 bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
 bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/30/rotation = Quaternion(-1.65473e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.946121, -0.0311821, -2.1805)
-bones/33/position = Vector3(-3.06322e-09, -1.17122e-07, -2.95219)
+bones/31/position = Vector3(0.945379, -0.0311821, -2.18029)
+bones/33/position = Vector3(4.84558e-10, -1.13525e-07, -2.95108)
 bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
-bones/36/position = Vector3(-0.946121, -0.0311821, -2.1805)
+bones/36/position = Vector3(-0.945379, -0.0311821, -2.18029)
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonJog2/DetectiveRig" index="0"]
 bones/1/position = Vector3(-7.05554e-11, -5.75171e-08, -3.02066)
@@ -2353,42 +2582,42 @@ armature = NodePath("TheoFixedAnimations")
 nav = NodePath("NavigationAgent3D")
 
 [node name="Skeleton3D" parent="Characters/Main/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(-3.06322e-09, -5.75171e-08, -2.95219)
+bones/1/position = Vector3(4.84558e-10, -5.39206e-08, -2.95108)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.00211776, 0.362086, 0.855417, -0.370338)
-bones/4/rotation = Quaternion(-0.316829, 0.0101668, -0.035903, 0.947748)
-bones/5/rotation = Quaternion(0.539001, -0.0405564, 0.0670769, 0.83865)
+bones/3/rotation = Quaternion(0.00186319, 0.362795, 0.855061, -0.370468)
+bones/4/rotation = Quaternion(-0.31829, 0.00886031, -0.0357334, 0.947278)
+bones/5/rotation = Quaternion(0.539652, -0.0393791, 0.0664114, 0.83834)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.00211774, 0.362086, 0.855417, 0.370338)
-bones/9/rotation = Quaternion(-0.316829, -0.0101668, 0.035903, 0.947748)
-bones/10/rotation = Quaternion(0.539001, 0.0405564, -0.0670769, 0.83865)
+bones/8/rotation = Quaternion(-0.00186318, 0.362795, 0.855061, 0.370468)
+bones/9/rotation = Quaternion(-0.31829, -0.00886032, 0.0357334, 0.947278)
+bones/10/rotation = Quaternion(0.539652, 0.0393791, -0.0664114, 0.83834)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-3.06322e-09, -2.12239e-07, -2.95219)
+bones/12/position = Vector3(4.84558e-10, -2.72652e-07, -2.95108)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0740343, 1.1534e-07, -1.42283e-08, 0.997256)
-bones/16/rotation = Quaternion(0.0139831, 3.79509e-09, 1.2771e-08, 0.999902)
+bones/15/rotation = Quaternion(-0.0738306, 1.13636e-07, -1.20545e-08, 0.997271)
+bones/16/rotation = Quaternion(0.0135534, 8.75805e-09, 8.0801e-09, 0.999908)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.494681, 0.0791022, -0.136657, 0.85461)
-bones/18/rotation = Quaternion(0.067374, 0.00691513, -0.0104123, 0.997649)
+bones/17/rotation = Quaternion(0.49563, 0.0792541, -0.136569, 0.85406)
+bones/18/rotation = Quaternion(0.0682132, 0.00720032, -0.0104251, 0.99759)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.538997, -0.0861889, 0.132302, 0.827375)
-bones/20/rotation = Quaternion(0.067374, -0.00691513, 0.0104123, 0.997649)
+bones/19/rotation = Quaternion(0.540608, -0.0864466, 0.132134, 0.826323)
+bones/20/rotation = Quaternion(0.0682132, -0.00720032, 0.0104251, 0.99759)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.266053, -0.148087, -0.382539, 0.872324)
-bones/23/rotation = Quaternion(-0.0038106, -0.000434989, -0.349674, 0.936864)
+bones/22/rotation = Quaternion(-0.26623, -0.148076, -0.382206, 0.872418)
+bones/23/rotation = Quaternion(-0.00382173, -0.000434817, -0.350697, 0.936481)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.266053, 0.148087, 0.382539, 0.872324)
-bones/27/rotation = Quaternion(-0.00381081, 0.000435004, 0.349676, 0.936863)
+bones/26/rotation = Quaternion(-0.266231, 0.148076, 0.382206, 0.872418)
+bones/27/rotation = Quaternion(-0.00382191, 0.000434829, 0.350697, 0.936481)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.946121, -0.0311821, -2.1805)
-bones/33/position = Vector3(-3.06322e-09, -1.17122e-07, -2.95219)
+bones/31/position = Vector3(0.945379, -0.0311821, -2.18029)
+bones/33/position = Vector3(4.84558e-10, -1.13525e-07, -2.95108)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.946121, -0.0311821, -2.1805)
+bones/36/position = Vector3(-0.945379, -0.0311821, -2.18029)
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -2513,6 +2742,7 @@ shape = SubResource("BoxShape3D_mxt67")
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/BookArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_book_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/WurliArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_wurli_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/WindowArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_window_area_body_entered"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/HousePic" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact" method="_on_house_pic_interacted"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/MapUI/firsthouse_button" to="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/MapUI" method="_on_firsthouse_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/MapUI/secondhouse_button" to="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/MapUI" method="_on_secondhouse_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/MapUI/thirdhouse_button" to="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/MapUI" method="_on_thirdhouse_button_pressed"]
@@ -2521,7 +2751,7 @@ shape = SubResource("BoxShape3D_mxt67")
 [connection signal="interacted" from="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/Interactable" to="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame" method="_on_interactable_interacted"]
 [connection signal="timeout" from="Timers/WaitTimer" to="Characters/JuniperPath3D/JuniperPathFollow3D/Main/CharacterBody3D" method="_on_wait_timer_timeout"]
 
-[editable path="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/HousePic"]
+[editable path="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/HousePic"]
 [editable path="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/CafePic"]
 [editable path="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Bookshelf"]
 [editable path="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resumes"]

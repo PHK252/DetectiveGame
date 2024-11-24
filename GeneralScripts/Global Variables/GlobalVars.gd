@@ -28,6 +28,8 @@ extends Node
 @onready var viewed_Micah_bookmark = false
 @onready var viewed_Micah_pic = false
 @onready var viewed_Micah_fridge = false
+
+@onready var viewed_Juniper_house_pic = false
 @onready var opened_cab = false
 @onready var pic_fell = false
 @onready var Micah_in_case = false
