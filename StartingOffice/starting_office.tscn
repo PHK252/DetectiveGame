@@ -3419,9 +3419,6 @@ camera = NodePath("../../../SubViewportContainer/SubViewport/CameraSystem/Camera
 [node name="PlayerInteractor" parent="Characters/Dalton/CharacterBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541894, 0)
 
-[node name="Alert" parent="Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
-visible = false
-
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonJog2/DetectiveRig" index="0"]
 bones/1/position = Vector3(1.88683e-11, -5.39206e-08, -2.94042)
 bones/3/rotation = Quaternion(-0.000463521, 0.369302, 0.851732, -0.371711)

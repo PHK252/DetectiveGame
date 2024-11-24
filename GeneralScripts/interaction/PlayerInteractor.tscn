@@ -4,6 +4,22 @@
 [ext_resource type="Script" path="res://GeneralScripts/interaction/PlayerInteractor.gd" id="2_y2xxv"]
 [ext_resource type="Texture2D" uid="uid://ddvuehuass2ej" path="res://UI/Assets/Interactions/Orange alert small.png" id="3_xn67x"]
 
+[sub_resource type="Animation" id="Animation_grhe5"]
+resource_name = "Alert_Animation_Juniper"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D/Alert:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, 95)]
+}
+
 [sub_resource type="Animation" id="Animation_jhdpj"]
 resource_name = "Alert_Animation_Micah"
 loop_mode = 1
@@ -49,22 +65,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 135)]
-}
-
-[sub_resource type="Animation" id="Animation_grhe5"]
-resource_name = "Alert_Animation_Juniper"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D/Alert:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 100), Vector2(0, 95)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v8m8l"]
