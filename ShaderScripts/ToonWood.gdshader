@@ -12,7 +12,7 @@ uniform sampler2D color_gradient;
 uniform sampler2D fresnel_gradient;
 
 vec2 random( vec2 pos )
-{ 
+{
 	return fract(
 		sin(
 			vec2(
