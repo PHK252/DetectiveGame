@@ -208,9 +208,6 @@ collision_mask = 7
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/closet/Wardrobe/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_npq4k")
 
-[node name="Skeleton3D" parent="NavigationRegion3D/closet/ClosetLeft" index="0"]
-bones/0/rotation = Quaternion(0, 0, 0, 1)
-
 [node name="Interactable" parent="NavigationRegion3D/closet" groups=["int_area"] instance=ExtResource("2_eo02l")]
 collision_mask = 7
 
@@ -291,28 +288,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34593, -0.0743519, 0.56024
 [node name="CharacterBody3D" parent="Dalton" index="0" node_paths=PackedStringArray("camera")]
 camera = NodePath("../../Camera3D")
 
-[node name="Skeleton3D" parent="Dalton/CharacterBody3D/DaltonJog2/DetectiveRig" index="0"]
-bones/1/position = Vector3(-2.34321e-11, -5.75046e-08, -3.02145)
-bones/3/rotation = Quaternion(0.02138, 0.308967, 0.879343, -0.361716)
-bones/4/rotation = Quaternion(-0.207872, 0.093524, -0.0377624, 0.972942)
-bones/5/rotation = Quaternion(0.489567, -0.115049, 0.105028, 0.857937)
-bones/8/rotation = Quaternion(-0.0213799, 0.308967, 0.879343, 0.361716)
-bones/9/rotation = Quaternion(-0.207872, -0.093524, 0.0377623, 0.972942)
-bones/10/rotation = Quaternion(0.489567, 0.115049, -0.105027, 0.857937)
-bones/12/position = Vector3(-2.34321e-11, -2.37775e-07, -3.02145)
-bones/15/rotation = Quaternion(-0.0858447, 1.14513e-07, -1.15037e-08, 0.996309)
-bones/16/rotation = Quaternion(0.0400316, 5.92939e-09, 1.1201e-08, 0.999198)
-bones/18/rotation = Quaternion(0.0151524, -0.0108056, -0.00959974, 0.999781)
-bones/20/rotation = Quaternion(0.0151524, 0.0108056, 0.00959976, 0.999781)
-bones/22/rotation = Quaternion(-0.255042, -0.149101, -0.40574, 0.864926)
-bones/23/rotation = Quaternion(-0.00303351, -0.000445927, -0.278367, 0.96047)
-bones/26/rotation = Quaternion(-0.255042, 0.1491, 0.40574, 0.864927)
-bones/27/rotation = Quaternion(-0.0030337, 0.000445954, 0.278369, 0.960469)
-bones/31/position = Vector3(0.992216, -0.0311821, -2.19362)
-bones/33/position = Vector3(-2.34321e-11, -1.17109e-07, -3.02145)
-bones/36/position = Vector3(-0.992216, -0.0311821, -2.19362)
-
-[node name="AnimationTree" parent="Dalton/CharacterBody3D" index="4"]
+[node name="AnimationTree" parent="Dalton/CharacterBody3D" index="3"]
 parameters/Blend3/blend_amount = 0
 
 [connection signal="moving" from="Dalton/CharacterBody3D" to="Node/Main/CharacterBody3D" method="_on_character_body_3d_moving"]
@@ -325,4 +301,3 @@ parameters/Blend3/blend_amount = 0
 [editable path="Node/Main/CharacterBody3D/TheoFixedAnimations"]
 [editable path="Dalton"]
 [editable path="Dalton/CharacterBody3D/DaltonStepBack"]
-[editable path="Dalton/CharacterBody3D/DaltonJog2"]
