@@ -32,6 +32,9 @@ extends Node
 @onready var viewed_Juniper_house_pic = false
 @onready var viewed_Juniper_cafe_pic = false
 @onready var viewed_Juniper_window = false
+@onready var viewed_Juniper_Bookmark = false
+@onready var clicked_bookmark_Juniper = 0
+@onready var book_dialogue_Juniper = false
 @onready var opened_cab = false
 @onready var pic_fell = false
 @onready var Micah_in_case = false

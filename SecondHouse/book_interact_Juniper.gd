@@ -31,7 +31,7 @@ func _process(delta):
 		book_cam.set_rotation_degrees(Vector3(-20, -90, 0))
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "book":
-		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_Micah_bookmark == true and GlobalVars.book_dialogue == false and GlobalVars.viewing == "":
+		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_Juniper_Bookmark == true and GlobalVars.book_dialogue_Juniper == false and GlobalVars.viewing == "":
 			#print("enter dialogue")
 			book_cam.priority = 0
 			main_cam.priority = 12
@@ -41,10 +41,10 @@ func _process(delta):
 			var book_dialogue = Dialogic.start("Juniper_Book")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			book_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-			book_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), juniper_marker)
+			book_dialogue.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 			book_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			GlobalVars.in_interaction = ""
-			GlobalVars.book_dialogue = true
+			GlobalVars.book_dialogue_Juniper = true
 			bookmark_interact.hide()
 			#main_cam.set_tween_duration(1)
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":

@@ -1,9 +1,9 @@
 extends Area2D
 
 @onready var object = $"."
-@onready var bookmark = $"../../../bookmark"
-@onready var look = $"../../../../../UI/Bookmark"
-@onready var anim = $"../../../bookmark/AnimationPlayer"
+@onready var bookmark = $SubViewportContainer/SubViewport/SecondHouseUpdate/bookmark
+@onready var look = $UI/BookmarkLook
+@onready var anim = $"SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact/AnimationPlayer"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,7 +14,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				anim.play("Bookmark_pull")
+				anim.play("Bookmark_Anim")
 				await anim.animation_finished
 				await get_tree().create_timer(.5).timeout
 				bookmark.hide()
