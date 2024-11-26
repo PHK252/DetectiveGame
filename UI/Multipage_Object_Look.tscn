@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://djpr0pth7a2wb"]
+[gd_scene load_steps=13 format=3 uid="uid://djpr0pth7a2wb"]
 
 [ext_resource type="Texture2D" uid="uid://pwj8f5cia20w" path="res://New Pixel Assets/Juniper's House/Jun Tour Poster.png" id="1_l4tht"]
 [ext_resource type="Texture2D" uid="uid://bujsccvys4d24" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Brown.png" id="1_s7gga"]
 [ext_resource type="Texture2D" uid="uid://rl0a0561d2d8" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Blue.png" id="2_afs6b"]
 [ext_resource type="Texture2D" uid="uid://bw3poa3xy21a3" path="res://New Pixel Assets/Juniper's House/Jun Resume.png" id="3_ba42s"]
 [ext_resource type="Texture2D" uid="uid://bpg3nbb0gfbp" path="res://New Pixel Assets/Juniper's House/Jun Park Poster.png" id="4_knxsk"]
+[ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="6_hqu6d"]
+[ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="7_qbtwb"]
+[ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="8_hq3jw"]
+[ext_resource type="Texture2D" uid="uid://dh3wkjqenruvw" path="res://UI/Assets/Interactions/Page orange normal.png" id="9_bs7yr"]
+[ext_resource type="Texture2D" uid="uid://1ubdshr14ct3" path="res://UI/Assets/Interactions/Page orange hovered.png" id="10_cbq6t"]
+[ext_resource type="Texture2D" uid="uid://s2fhonvjkl7y" path="res://UI/Assets/Interactions/Page orange disabled.png" id="11_gultu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gc5uo"]
 
@@ -20,28 +26,54 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_gc5uo")
 
 [node name="TextureRect5" type="TextureRect" parent="."]
-offset_left = 710.0
-offset_top = 116.5
-offset_right = 750.0
-offset_bottom = 156.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(50, 75)
 texture = ExtResource("1_s7gga")
 
 [node name="TextureRect4" type="TextureRect" parent="."]
-offset_left = 710.0
-offset_top = 116.5
-offset_right = 750.0
-offset_bottom = 156.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(50, 75)
 texture = ExtResource("2_afs6b")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
-offset_left = 710.0
-offset_top = 116.5
-offset_right = 750.0
-offset_bottom = 156.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(50, 75)
 texture = ExtResource("3_ba42s")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,7 +90,6 @@ pivot_offset = Vector2(50, 80)
 texture = ExtResource("4_knxsk")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -73,3 +104,48 @@ grow_vertical = 2
 scale = Vector2(5, 5)
 pivot_offset = Vector2(50, 85)
 texture = ExtResource("1_l4tht")
+
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = 52.0
+offset_top = 31.0
+offset_right = 152.0
+offset_bottom = 131.0
+texture_normal = ExtResource("6_hqu6d")
+texture_pressed = ExtResource("7_qbtwb")
+texture_hover = ExtResource("7_qbtwb")
+texture_disabled = ExtResource("8_hq3jw")
+
+[node name="Back" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.0
+offset_top = -50.0
+offset_right = -344.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("9_bs7yr")
+texture_pressed = ExtResource("10_cbq6t")
+texture_hover = ExtResource("10_cbq6t")
+texture_disabled = ExtResource("11_gultu")
+
+[node name="Forward" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 345.0
+offset_top = -50.0
+offset_right = 445.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("9_bs7yr")
+texture_pressed = ExtResource("10_cbq6t")
+texture_hover = ExtResource("10_cbq6t")
+texture_disabled = ExtResource("11_gultu")
+flip_h = true
