@@ -62,4 +62,4 @@ Dalton: ...
 - Good morning. Are you Micah Procyon?
 	jump Good_morning/
 - Have Theo answer. | [if {Character Aff Points.Micah} == 1] [else="hide"]
-	jump Theo_answer/
+	jump Micah_Theo_Answer/

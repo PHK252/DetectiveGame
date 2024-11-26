@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://djpr0pth7a2wb"]
+[gd_scene load_steps=14 format=3 uid="uid://djpr0pth7a2wb"]
 
 [ext_resource type="Texture2D" uid="uid://pwj8f5cia20w" path="res://New Pixel Assets/Juniper's House/Jun Tour Poster.png" id="1_l4tht"]
 [ext_resource type="Texture2D" uid="uid://bujsccvys4d24" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Brown.png" id="1_s7gga"]
+[ext_resource type="Script" path="res://UI/multipage_object_look.gd" id="1_y328m"]
 [ext_resource type="Texture2D" uid="uid://rl0a0561d2d8" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Blue.png" id="2_afs6b"]
 [ext_resource type="Texture2D" uid="uid://bw3poa3xy21a3" path="res://New Pixel Assets/Juniper's House/Jun Resume.png" id="3_ba42s"]
 [ext_resource type="Texture2D" uid="uid://bpg3nbb0gfbp" path="res://New Pixel Assets/Juniper's House/Jun Park Poster.png" id="4_knxsk"]
@@ -15,6 +16,8 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_gc5uo"]
 
 [node name="MultiPage" type="CanvasLayer"]
+script = ExtResource("1_y328m")
+pageCount = 3
 
 [node name="Background2" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
@@ -25,7 +28,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_gc5uo")
 
-[node name="TextureRect5" type="TextureRect" parent="."]
+[node name="Page5" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -41,7 +45,8 @@ scale = Vector2(5, 5)
 pivot_offset = Vector2(50, 75)
 texture = ExtResource("1_s7gga")
 
-[node name="TextureRect4" type="TextureRect" parent="."]
+[node name="Page4" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -57,7 +62,8 @@ scale = Vector2(5, 5)
 pivot_offset = Vector2(50, 75)
 texture = ExtResource("2_afs6b")
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="Page3" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -73,7 +79,8 @@ scale = Vector2(5, 5)
 pivot_offset = Vector2(50, 75)
 texture = ExtResource("3_ba42s")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Page2" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -89,7 +96,8 @@ scale = Vector2(5, 5)
 pivot_offset = Vector2(50, 80)
 texture = ExtResource("4_knxsk")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Page1" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -149,3 +157,7 @@ texture_pressed = ExtResource("10_cbq6t")
 texture_hover = ExtResource("10_cbq6t")
 texture_disabled = ExtResource("11_gultu")
 flip_h = true
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Forward" to="." method="_on_forward_pressed"]
