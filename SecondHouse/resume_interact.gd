@@ -1,15 +1,15 @@
 extends Node3D
 
-@onready var book_cam = $"../../BookCam"
-@onready var main_cam = $"../../CamBooks"
+@onready var resume_cam = $"../../ResumeCam"
+@onready var main_cam = $"../../CamWindows"
 @onready var player = $"../../../../../Characters/Dalton/CharacterBody3D"
-@onready var cam_anim = $"../../BookCam/AnimationPlayer"
+@onready var cam_anim = $"../../ResumeCam/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
-@onready var bookmark_interact = $"../../../../../UI/Bookmark"
+@onready var resume_interact = $"../../../../../UI/Resume"
 
 @onready var dalton_maker = $"../../../../../UI/Dalton Marker"
 @onready var juniper_marker = $"../../../../../UI/Juniper Marker"
-@onready var theo_marker = $"../../../../../UI/Theo Marker"
+#@onready var theo_marker = $"../../../../../UI/Theo Marker"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,49 +22,46 @@ func _process(delta):
 	#print(mouse_pos) 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 130:
-			book_cam.set_rotation_degrees(Vector3(-20, -90, 0))
+			resume_cam.set_rotation_degrees(Vector3(-60, 0, 0))
 		elif mouse_pos.y < 65:
-			book_cam.set_rotation_degrees(Vector3(8, -90, 0))
+			resume_cam.set_rotation_degrees(Vector3(-40, 0, 0))
 		else:
-			book_cam.set_rotation_degrees(Vector3(0, -90, 0))
+			resume_cam.set_rotation_degrees(Vector3(-50, 0, 0))
 	else:
-		book_cam.set_rotation_degrees(Vector3(-20, -90, 0))
+		resume_cam.set_rotation_degrees(Vector3(-50, 0, 0))
 	
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "book":
-		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_Juniper_Bookmark == true and GlobalVars.book_dialogue_Juniper == false and GlobalVars.viewing == "":
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "resume":
+		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_Juniper_resume == true and GlobalVars.resume_dialogue_Juniper == false and GlobalVars.viewing == "":
 			GlobalVars.in_dialogue = true
-			book_cam.priority = 0
+			resume_cam.priority = 0
 			main_cam.priority = 12
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
-			var book_dialogue = Dialogic.start("Juniper_Book")
+			var case_dialogue = Dialogic.start("Juniper_Resumes")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			book_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-			book_dialogue.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
-			book_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			case_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+			case_dialogue.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 			GlobalVars.in_interaction = ""
-			GlobalVars.book_dialogue_Juniper = true
-			bookmark_interact.hide()
-			#main_cam.set_tween_duration(1)
+			GlobalVars.case_dialogue_Juniper = true
+			resume_interact.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
-			print("enter")
-			book_cam.priority = 0
+			#print("enter")
+			resume_cam.priority = 0
 			main_cam.priority = 12
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
-			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
-			bookmark_interact.hide()
+			resume_interact.hide()
 			
 			#activate dialogue
 
 	if GlobalVars.in_look_screen == true:
-		bookmark_interact.hide()
-	elif GlobalVars.in_look_screen == false and book_cam.priority == 15:
-		bookmark_interact.show()
+		resume_interact.hide()
+	elif GlobalVars.in_look_screen == false and resume_cam.priority == 15:
+		resume_interact.show()
 
 
 func _on_timeline_ended():
@@ -76,10 +73,10 @@ func _on_timeline_ended():
 
 func _on_bookshelf_interacted(interactor):
 	if GlobalVars.in_look_screen == false:
-		GlobalVars.in_interaction = "book"
-		book_cam.priority = 15
+		GlobalVars.in_interaction = "resume"
+		resume_cam.priority = 15
 		main_cam.priority = 0 
-		bookmark_interact.show()
+		resume_interact.show()
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()

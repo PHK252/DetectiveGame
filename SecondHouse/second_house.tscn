@@ -1,4 +1,4 @@
-[gd_scene load_steps=196 format=4 uid="uid://cwr2lvisdm7bi"]
+[gd_scene load_steps=204 format=4 uid="uid://cwr2lvisdm7bi"]
 
 [ext_resource type="PackedScene" uid="uid://bf7hxnp0di86k" path="res://SecondHouse/SecondHouseUpdate.glb" id="1_d2565"]
 [ext_resource type="Script" path="res://SecondHouse/second_house.gd" id="1_dkcdt"]
@@ -21,8 +21,10 @@
 [ext_resource type="Script" path="res://StartingOffice/scenechange.gd" id="11_rgq1g"]
 [ext_resource type="Texture2D" uid="uid://cxo6xa0svxqph" path="res://SecondHouse/SecondHouseUpdate_coolrug.jpg" id="11_rpeh5"]
 [ext_resource type="Script" path="res://SecondHouse/window_look.gd" id="11_x8bls"]
+[ext_resource type="Script" path="res://SecondHouse/case_interact_juniper.gd" id="12_6owo5"]
 [ext_resource type="Texture2D" uid="uid://mb466qpbyg8p" path="res://SecondHouse/SecondHouseUpdate_Jun Park Poster.png" id="12_ktnry"]
 [ext_resource type="PackedScene" uid="uid://d1p7a1g58vmah" path="res://GeneralScripts/interaction/Interactable.tscn" id="12_mj6di"]
+[ext_resource type="Script" path="res://SecondHouse/resume_interact.gd" id="12_mxhqb"]
 [ext_resource type="PackedScene" uid="uid://bqvssux5m1c" path="res://CharacterStuff/Dalton/Dalton.tscn" id="12_sg0fk"]
 [ext_resource type="Texture2D" uid="uid://c1vjuhei7noku" path="res://SecondHouse/SecondHouseUpdate_Jun Tour Poster.png" id="13_o36ry"]
 [ext_resource type="Texture2D" uid="uid://gq78mjlqnvmg" path="res://SecondHouse/SecondHouseUpdate_Jun Tea Poster.png" id="14_fn6yn"]
@@ -37,7 +39,11 @@
 [ext_resource type="Script" path="res://CharacterStuff/Dalton/alert direction Juniper.gd" id="29_418nn"]
 [ext_resource type="Script" path="res://SecondHouse/bookmark.gd" id="31_ius75"]
 [ext_resource type="PackedScene" uid="uid://22d8wsirr1dd" path="res://UI/Object_Look.tscn" id="32_a2uh8"]
+[ext_resource type="Script" path="res://SecondHouse/case_shape.gd" id="34_naque"]
+[ext_resource type="PackedScene" uid="uid://d20gyimd1igid" path="res://UI/Juniper_Case.tscn" id="35_rx0wp"]
+[ext_resource type="PackedScene" uid="uid://djpr0pth7a2wb" path="res://UI/Multipage_Object_Look.tscn" id="36_5f7ox"]
 [ext_resource type="PackedScene" uid="uid://cpv4qukow4new" path="res://SecondHouse/woodtryagain25.glb" id="38_01gf4"]
+[ext_resource type="Script" path="res://SecondHouse/resume.gd" id="38_48khx"]
 [ext_resource type="Shader" path="res://ShaderScripts/ToonWood.gdshader" id="40_q11gp"]
 
 [sub_resource type="Curve3D" id="Curve3D_qvxdk"]
@@ -1941,6 +1947,12 @@ shadow_mesh = SubResource("ArrayMesh_uq3fq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7d6qf"]
 size = Vector2(228.066, 86.8715)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfscf"]
+size = Vector2(399.567, 234.93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqod6"]
+size = Vector2(114.264, 163.473)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ck5go"]
 size = Vector3(0.370407, 1.59755, 0.423828)
 
@@ -2174,10 +2186,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10527, 0.066215)
 curve = SubResource("Curve3D_vqh5s")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(0.999634, -0.00962843, 0.0198438, 0, 0.899673, 0.436532, -0.0220539, -0.436426, 0.899455, 0.257042, 2.10527, 1.43682)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0.492464, 1.38493, -0.34222)
 current = true
-size = 2.403
 
 [node name="PhantomCameraHost" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem/Camera3D"]
 script = ExtResource("1_ed02g")
@@ -2249,7 +2259,7 @@ camera_3d_resource = SubResource("Resource_r60sa")
 look_at_offset = Vector3(0, 0.08, 0)
 
 [node name="CaseCam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(1, 0, 0, 0, 0.12857, 0.991701, 0, -0.991701, 0.12857, 0.289731, 1.32145, -1.62291)
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0.289731, 1.32145, -1.62291)
 script = ExtResource("3_r36w6")
 tween_resource = SubResource("Resource_fsb54")
 camera_3d_resource = SubResource("Resource_u7gq3")
@@ -2260,8 +2270,9 @@ libraries = {
 }
 
 [node name="ResumeCam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(1, 0, 0, 0, 0.651966, 0.758248, 0, -0.758248, 0.651966, 0.492464, 1.38493, -0.34222)
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0.492464, 1.38493, -0.34222)
 script = ExtResource("3_r36w6")
+priority = 20
 tween_resource = SubResource("Resource_fgkv8")
 camera_3d_resource = SubResource("Resource_yu70o")
 
@@ -2375,6 +2386,7 @@ libraries = {
 }
 
 [node name="Resume Interact" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas"]
+script = ExtResource("12_mxhqb")
 
 [node name="Resumes" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" instance=ExtResource("12_mj6di")]
 
@@ -2383,6 +2395,7 @@ transform = Transform3D(-0.0288638, 0, -0.999583, 0, 1, 0, 0.999583, 0, -0.02886
 shape = SubResource("BoxShape3D_g22gq")
 
 [node name="Case Interact" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas"]
+script = ExtResource("12_6owo5")
 
 [node name="Case" parent="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Case Interact" instance=ExtResource("12_mj6di")]
 
@@ -2639,7 +2652,7 @@ mesh = SubResource("ArrayMesh_08qxc")
 transform = Transform3D(-0.072461, 0.021252, 0.000349838, 0.0030855, 0.0319193, 0.0255621, 0.00967994, 0.148911, -0.00552918, 2.60138, 0.72448, -0.322615)
 
 [node name="letter" parent="SubViewportContainer/SubViewport/SecondHouseUpdate" index="96"]
-transform = Transform3D(0.04956, 0, 0.0306899, 0, 0.0466803, 0, -0.0432424, 0, 0.0351735, -0.737059, 0.574672, -2.0495)
+transform = Transform3D(0.04956, 0, 0.0306899, 0, 0.0466803, 0, -0.0432424, 0, 0.0351735, -0.737059, 0.579832, -2.0495)
 
 [node name="bill" parent="SubViewportContainer/SubViewport/SecondHouseUpdate" index="97"]
 transform = Transform3D(0.0365689, 0, 0.0184668, 0, 0.0280885, 0, -0.0319074, 0, 0.0211647, -0.665926, 0.578443, -2.11867)
@@ -2702,6 +2715,31 @@ shape = SubResource("RectangleShape2D_7d6qf")
 [node name="BookmarkLook" parent="UI" instance=ExtResource("32_a2uh8")]
 visible = false
 
+[node name="Case" type="Area2D" parent="UI"]
+visible = false
+script = ExtResource("34_naque")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Case"]
+position = Vector2(973.287, 515.639)
+rotation = -0.698132
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_cfscf")
+
+[node name="Case UI" parent="UI" instance=ExtResource("35_rx0wp")]
+visible = false
+
+[node name="MultiPage" parent="UI" instance=ExtResource("36_5f7ox")]
+visible = false
+
+[node name="Resume" type="Area2D" parent="UI"]
+visible = false
+script = ExtResource("38_48khx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Resume"]
+position = Vector2(1015.17, 748.222)
+rotation = 0.951204
+shape = SubResource("RectangleShape2D_gqod6")
+
 [node name="Characters" type="Node" parent="."]
 
 [node name="Dalton" parent="Characters" instance=ExtResource("12_sg0fk")]
@@ -2716,40 +2754,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216599, 0.839067, 0)
 shape = SubResource("BoxShape3D_ck5go")
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-6.3383e-11, -5.75171e-08, -3.02082)
+bones/1/position = Vector3(3.42361e-09, -5.39206e-08, -3.01831)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.0211581, 0.309574, 0.879098, -0.361804)
-bones/4/rotation = Quaternion(-0.209106, 0.0927505, -0.0378516, 0.972748)
-bones/5/rotation = Quaternion(0.49013, -0.114361, 0.104725, 0.857745)
+bones/3/rotation = Quaternion(0.0202785, 0.311979, 0.878125, -0.362151)
+bones/4/rotation = Quaternion(-0.213998, 0.0896624, -0.0381954, 0.97196)
+bones/5/rotation = Quaternion(0.492358, -0.111614, 0.103513, 0.856978)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935923)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0211581, 0.309574, 0.879099, 0.361804)
-bones/9/rotation = Quaternion(-0.209106, -0.0927505, 0.0378516, 0.972748)
-bones/10/rotation = Quaternion(0.49013, 0.114361, -0.104725, 0.857745)
+bones/8/rotation = Quaternion(-0.0202785, 0.311979, 0.878125, 0.362151)
+bones/9/rotation = Quaternion(-0.213998, -0.0896624, 0.0381954, 0.97196)
+bones/10/rotation = Quaternion(0.492358, 0.111614, -0.103513, 0.856978)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935923)
-bones/12/position = Vector3(-6.3383e-11, -2.40243e-07, -3.02082)
+bones/12/position = Vector3(3.42362e-09, -2.48448e-07, -3.01831)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0857363, 1.14618e-07, -1.16538e-08, 0.996318)
-bones/16/rotation = Quaternion(0.0399791, 5.41095e-09, 1.16894e-08, 0.999201)
-bones/18/rotation = Quaternion(0.0156257, -0.0106453, -0.00960724, 0.999775)
-bones/20/rotation = Quaternion(0.0156257, 0.0106453, 0.00960726, 0.999775)
+bones/15/rotation = Quaternion(-0.0860243, 1.13842e-07, -1.06109e-08, 0.996293)
+bones/16/rotation = Quaternion(0.0394651, 9.2043e-09, 8.10093e-09, 0.999221)
+bones/18/rotation = Quaternion(0.0175154, -0.0100048, -0.00963714, 0.99975)
+bones/20/rotation = Quaternion(0.0175154, 0.0100048, 0.00963717, 0.99975)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.255064, -0.149098, -0.405686, 0.864946)
-bones/23/rotation = Quaternion(-0.0030415, -0.000445834, -0.279099, 0.960257)
+bones/22/rotation = Quaternion(-0.255288, -0.149068, -0.405157, 0.865133)
+bones/23/rotation = Quaternion(-0.00307324, -0.000445453, -0.282012, 0.959406)
 bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.255065, 0.149097, 0.405685, 0.864946)
-bones/27/rotation = Quaternion(-0.00304168, 0.000445851, 0.279102, 0.960257)
+bones/26/rotation = Quaternion(-0.255289, 0.149068, 0.405156, 0.865133)
+bones/27/rotation = Quaternion(-0.00307341, 0.000445437, 0.282013, 0.959406)
 bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
 bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/30/rotation = Quaternion(-1.65473e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.991808, -0.0311821, -2.1935)
-bones/33/position = Vector3(-6.3383e-11, -1.17122e-07, -3.02082)
+bones/31/position = Vector3(0.99014, -0.0311821, -2.19303)
+bones/33/position = Vector3(3.42361e-09, -1.13525e-07, -3.01831)
 bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
-bones/36/position = Vector3(-0.991808, -0.0311821, -2.1935)
+bones/36/position = Vector3(-0.99014, -0.0311821, -2.19303)
 
 [node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="3"]
 parameters/Blend3/blend_amount = 0
@@ -2828,42 +2866,42 @@ armature = NodePath("TheoFixedAnimations")
 nav = NodePath("NavigationAgent3D")
 
 [node name="Skeleton3D" parent="Characters/Main/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(-6.3383e-11, -5.75171e-08, -3.02082)
+bones/1/position = Vector3(3.42361e-09, -5.39206e-08, -3.01831)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.021158, 0.309574, 0.879098, -0.361804)
-bones/4/rotation = Quaternion(-0.209106, 0.0927505, -0.0378516, 0.972748)
-bones/5/rotation = Quaternion(0.49013, -0.114361, 0.104725, 0.857745)
+bones/3/rotation = Quaternion(0.0202785, 0.311979, 0.878125, -0.362151)
+bones/4/rotation = Quaternion(-0.213998, 0.0896625, -0.0381954, 0.97196)
+bones/5/rotation = Quaternion(0.492358, -0.111614, 0.103513, 0.856978)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.021158, 0.309574, 0.879099, 0.361804)
-bones/9/rotation = Quaternion(-0.209106, -0.0927505, 0.0378516, 0.972748)
-bones/10/rotation = Quaternion(0.49013, 0.114361, -0.104725, 0.857745)
+bones/8/rotation = Quaternion(-0.0202785, 0.311979, 0.878125, 0.362151)
+bones/9/rotation = Quaternion(-0.213998, -0.0896625, 0.0381954, 0.97196)
+bones/10/rotation = Quaternion(0.492358, 0.111614, -0.103513, 0.856978)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-6.3383e-11, -2.81441e-07, -3.02082)
+bones/12/position = Vector3(3.42361e-09, -2.91289e-07, -3.01831)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0857363, 1.14618e-07, -1.16539e-08, 0.996318)
-bones/16/rotation = Quaternion(0.0399791, 5.41095e-09, 1.16894e-08, 0.999201)
+bones/15/rotation = Quaternion(-0.0860243, 1.13842e-07, -1.06109e-08, 0.996293)
+bones/16/rotation = Quaternion(0.0394651, 9.2043e-09, 8.10093e-09, 0.999221)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.435063, 0.069569, -0.141748, 0.886447)
-bones/18/rotation = Quaternion(0.0156256, -0.0106453, -0.00960725, 0.999775)
+bones/17/rotation = Quaternion(0.437275, 0.0699227, -0.141574, 0.885358)
+bones/18/rotation = Quaternion(0.0175154, -0.0100049, -0.00963716, 0.99975)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.436023, -0.0697228, 0.141672, 0.885975)
-bones/20/rotation = Quaternion(0.0156257, 0.0106453, 0.00960725, 0.999775)
+bones/19/rotation = Quaternion(0.43989, -0.0703411, 0.141366, 0.884062)
+bones/20/rotation = Quaternion(0.0175154, 0.0100048, 0.00963715, 0.99975)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.255065, -0.149097, -0.405686, 0.864946)
-bones/23/rotation = Quaternion(-0.0030415, -0.000445857, -0.2791, 0.960257)
+bones/22/rotation = Quaternion(-0.255288, -0.149068, -0.405156, 0.865133)
+bones/23/rotation = Quaternion(-0.00307326, -0.000445453, -0.282012, 0.959406)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.255065, 0.149097, 0.405686, 0.864946)
-bones/27/rotation = Quaternion(-0.00304166, 0.000445832, 0.279101, 0.960257)
+bones/26/rotation = Quaternion(-0.255289, 0.149068, 0.405156, 0.865133)
+bones/27/rotation = Quaternion(-0.00307344, 0.00044549, 0.282013, 0.959406)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.991808, -0.0311821, -2.1935)
-bones/33/position = Vector3(-6.3383e-11, -1.17122e-07, -3.02082)
+bones/31/position = Vector3(0.99014, -0.0311821, -2.19303)
+bones/33/position = Vector3(3.42361e-09, -1.13525e-07, -3.01831)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.991808, -0.0311821, -2.1935)
+bones/36/position = Vector3(-0.99014, -0.0311821, -2.19303)
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -3024,6 +3062,8 @@ shape = SubResource("BoxShape3D_bftbu")
 [editable path="SubViewportContainer/SubViewport/SecondHouseUpdate/DoorFrame/Interactable"]
 [editable path="SubViewportContainer/SubViewport/SecondHouseUpdate/fixedkeys"]
 [editable path="UI/BookmarkLook"]
+[editable path="UI/Case UI"]
+[editable path="UI/MultiPage"]
 [editable path="Characters/Dalton"]
 [editable path="Characters/Dalton/CharacterBody3D/PlayerInteractor"]
 [editable path="Characters/Dalton/CharacterBody3D/DaltonStepBack"]

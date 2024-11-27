@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d20gyimd1igid"]
+[gd_scene load_steps=70 format=3 uid="uid://d20gyimd1igid"]
 
+[ext_resource type="Script" path="res://UI/juniper_case.gd" id="1_ki4mg"]
 [ext_resource type="Texture2D" uid="uid://nof1cgm8yj12" path="res://UI/Assets/Juniper Case/Juniper_case.png" id="1_mytjr"]
 [ext_resource type="Texture2D" uid="uid://djsgyqrrljk18" path="res://UI/Assets/Juniper Case/Juniper_case_UI_mockup.png" id="2_kptl3"]
 [ext_resource type="Texture2D" uid="uid://qockmtfnijcy" path="res://UI/Assets/Juniper Case/Juniper_case_textbox.png" id="3_rli8t"]
@@ -8,10 +9,186 @@
 [ext_resource type="Texture2D" uid="uid://w2b627g0swtc" path="res://UI/Assets/Juniper Case/Juniper_case_1_normal.png" id="6_3n7vw"]
 [ext_resource type="Texture2D" uid="uid://f2ao0615wo4e" path="res://UI/Assets/Juniper Case/Juniper_case_1_pressed.png" id="7_1u48g"]
 [ext_resource type="Texture2D" uid="uid://b857p2qt7fhpl" path="res://UI/Assets/Juniper Case/Juniper_case_2_normal.png" id="8_8qmii"]
+[ext_resource type="Texture2D" uid="uid://k7pncxilta72" path="res://UI/Assets/Juniper Case/Juniper_case_2_pressed.png" id="10_8tctl"]
+[ext_resource type="Texture2D" uid="uid://c3n8lwfsgy32k" path="res://UI/Assets/Juniper Case/Juniper_case_3_normal.png" id="10_pabtp"]
+[ext_resource type="Texture2D" uid="uid://cgijj131yni6d" path="res://UI/Assets/Juniper Case/Juniper_case_3_pressed.png" id="11_k1ts0"]
+[ext_resource type="Texture2D" uid="uid://byd7fxtxdb76x" path="res://UI/Assets/Juniper Case/Juniper_case_4_normal.png" id="12_vk60l"]
+[ext_resource type="Texture2D" uid="uid://qh8j0ry2fedn" path="res://UI/Assets/Juniper Case/Juniper_case_4_pressed.png" id="13_32epy"]
+[ext_resource type="Texture2D" uid="uid://bo6ev1xnk5yt6" path="res://UI/Assets/Juniper Case/Juniper_case_5_normal.png" id="14_80bfi"]
+[ext_resource type="Texture2D" uid="uid://dneuxhl28xmdm" path="res://UI/Assets/Juniper Case/Juniper_case_5_pressed.png" id="15_gxqhf"]
+[ext_resource type="Texture2D" uid="uid://si5bjtfftkbn" path="res://UI/Assets/Juniper Case/Juniper_case_6_normal.png" id="16_7tvls"]
+[ext_resource type="Texture2D" uid="uid://cyix8j788f4va" path="res://UI/Assets/Juniper Case/Juniper_case_6_pressed.png" id="17_it7lq"]
+[ext_resource type="Texture2D" uid="uid://dp7g1ywh0ifj0" path="res://UI/Assets/Juniper Case/Juniper_case_7_normal.png" id="18_eaeis"]
+[ext_resource type="Texture2D" uid="uid://r0ga05muek1p" path="res://UI/Assets/Juniper Case/Juniper_case_7_pressed.png" id="19_srdlk"]
+[ext_resource type="Texture2D" uid="uid://bink3ldouvj7t" path="res://UI/Assets/Juniper Case/Juniper_case_8_normal.png" id="20_2wq7q"]
+[ext_resource type="Texture2D" uid="uid://w7rvoisd3rya" path="res://UI/Assets/Juniper Case/Juniper_case_8_pressed.png" id="21_bjoyv"]
+[ext_resource type="Texture2D" uid="uid://d3x5v04vs6k17" path="res://UI/Assets/Juniper Case/Juniper_case_9_normal.png" id="22_low1a"]
+[ext_resource type="Texture2D" uid="uid://4656snmo6j7w" path="res://UI/Assets/Juniper Case/Juniper_case_9_pressed.png" id="23_vgc6f"]
+[ext_resource type="Texture2D" uid="uid://3e3fc4agygdk" path="res://UI/Assets/Juniper Case/Juniper_case_x_normal.png" id="24_65ub8"]
+[ext_resource type="Texture2D" uid="uid://0gxt40haqccs" path="res://UI/Assets/Juniper Case/Juniper_case_x_pressed.png" id="25_wkpow"]
+[ext_resource type="Texture2D" uid="uid://cdp8t5u723g5c" path="res://UI/Assets/Juniper Case/Juniper_case_enter_normal.png" id="26_4vuig"]
+[ext_resource type="Texture2D" uid="uid://csr6u6qw2hhrt" path="res://UI/Assets/Juniper Case/Juniper_case_enter_pressed.png" id="27_ebec4"]
+[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="28_rwd5p"]
+[ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="30_bubuc"]
+[ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="31_fgvgu"]
+[ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="32_i68tx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xxd5l"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_5l50q"]
+device = -1
+keycode = 48
+unicode = 48
+
+[sub_resource type="InputEventKey" id="InputEventKey_jeybh"]
+device = -1
+keycode = 4194438
+unicode = 48
+
+[sub_resource type="Shortcut" id="Shortcut_46f78"]
+events = [SubResource("InputEventKey_5l50q"), SubResource("InputEventKey_jeybh")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_geedv"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_3d7oh"]
+device = -1
+keycode = 4194439
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_c7iby"]
+events = [SubResource("InputEventKey_geedv"), SubResource("InputEventKey_3d7oh")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tgrab"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="InputEventKey" id="InputEventKey_lf2l6"]
+device = -1
+keycode = 4194440
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_nmbv3"]
+events = [SubResource("InputEventKey_tgrab"), SubResource("InputEventKey_lf2l6")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_834eb"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="InputEventKey" id="InputEventKey_81uit"]
+device = -1
+keycode = 4194441
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_buy6h"]
+events = [SubResource("InputEventKey_834eb"), SubResource("InputEventKey_81uit")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4bh7m"]
+device = -1
+keycode = 52
+unicode = 52
+
+[sub_resource type="InputEventKey" id="InputEventKey_08hpi"]
+device = -1
+keycode = 4194442
+unicode = 52
+
+[sub_resource type="Shortcut" id="Shortcut_0vfey"]
+events = [SubResource("InputEventKey_4bh7m"), SubResource("InputEventKey_08hpi")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_s4ed0"]
+device = -1
+keycode = 53
+unicode = 53
+
+[sub_resource type="InputEventKey" id="InputEventKey_q4isq"]
+device = -1
+keycode = 4194443
+unicode = 53
+
+[sub_resource type="Shortcut" id="Shortcut_xdtcy"]
+events = [SubResource("InputEventKey_s4ed0"), SubResource("InputEventKey_q4isq")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_lg77e"]
+device = -1
+keycode = 54
+unicode = 54
+
+[sub_resource type="InputEventKey" id="InputEventKey_2y1wn"]
+device = -1
+keycode = 4194444
+unicode = 54
+
+[sub_resource type="Shortcut" id="Shortcut_oh4i5"]
+events = [SubResource("InputEventKey_lg77e"), SubResource("InputEventKey_2y1wn")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_enh3g"]
+device = -1
+keycode = 55
+unicode = 55
+
+[sub_resource type="InputEventKey" id="InputEventKey_6dio6"]
+device = -1
+keycode = 4194445
+unicode = 55
+
+[sub_resource type="Shortcut" id="Shortcut_gk4fq"]
+events = [SubResource("InputEventKey_enh3g"), SubResource("InputEventKey_6dio6")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_gceg8"]
+device = -1
+keycode = 56
+unicode = 56
+
+[sub_resource type="InputEventKey" id="InputEventKey_svjwx"]
+device = -1
+keycode = 4194446
+unicode = 56
+
+[sub_resource type="Shortcut" id="Shortcut_igfhn"]
+events = [SubResource("InputEventKey_gceg8"), SubResource("InputEventKey_svjwx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_qd8wb"]
+device = -1
+keycode = 57
+unicode = 57
+
+[sub_resource type="InputEventKey" id="InputEventKey_kdlkr"]
+device = -1
+keycode = 4194447
+unicode = 57
+
+[sub_resource type="Shortcut" id="Shortcut_67o1n"]
+events = [SubResource("InputEventKey_qd8wb"), SubResource("InputEventKey_kdlkr")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ucp15"]
+device = -1
+keycode = 4194308
+
+[sub_resource type="InputEventKey" id="InputEventKey_w1grg"]
+device = -1
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_ey2jk"]
+events = [SubResource("InputEventKey_ucp15"), SubResource("InputEventKey_w1grg")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_63fle"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_hlg01"]
+device = -1
+keycode = 4194310
+
+[sub_resource type="Shortcut" id="Shortcut_3kph5"]
+events = [SubResource("InputEventKey_63fle"), SubResource("InputEventKey_hlg01")]
+
 [node name="Case UI" type="CanvasLayer"]
+script = ExtResource("1_ki4mg")
 
 [node name="Background2" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
@@ -42,29 +219,167 @@ offset_right = 740.0
 offset_bottom = 350.0
 texture = ExtResource("3_rli8t")
 
-[node name="0" type="TextureButton" parent="."]
+[node name="Zero" type="TextureButton" parent="."]
 offset_left = 445.0
 offset_top = 370.0
 offset_right = 500.0
 offset_bottom = 425.0
+shortcut = SubResource("Shortcut_46f78")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("4_nvduj")
 texture_pressed = ExtResource("5_shlga")
 texture_hover = ExtResource("4_nvduj")
 
-[node name="1" type="TextureButton" parent="."]
+[node name="One" type="TextureButton" parent="."]
 offset_left = 515.0
 offset_top = 370.0
 offset_right = 570.0
 offset_bottom = 425.0
+shortcut = SubResource("Shortcut_c7iby")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("6_3n7vw")
 texture_pressed = ExtResource("7_1u48g")
 texture_hover = ExtResource("6_3n7vw")
 
-[node name="2" type="TextureButton" parent="."]
+[node name="Two" type="TextureButton" parent="."]
 offset_left = 585.0
 offset_top = 370.0
 offset_right = 640.0
 offset_bottom = 425.0
+shortcut = SubResource("Shortcut_nmbv3")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("8_8qmii")
-texture_pressed = ExtResource("7_1u48g")
+texture_pressed = ExtResource("10_8tctl")
 texture_hover = ExtResource("8_8qmii")
+
+[node name="Three" type="TextureButton" parent="."]
+offset_left = 655.0
+offset_top = 370.0
+offset_right = 710.0
+offset_bottom = 425.0
+shortcut = SubResource("Shortcut_buy6h")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("10_pabtp")
+texture_pressed = ExtResource("11_k1ts0")
+texture_hover = ExtResource("10_pabtp")
+
+[node name="Four" type="TextureButton" parent="."]
+offset_left = 445.0
+offset_top = 440.0
+offset_right = 500.0
+offset_bottom = 495.0
+shortcut = SubResource("Shortcut_0vfey")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("12_vk60l")
+texture_pressed = ExtResource("13_32epy")
+texture_hover = ExtResource("12_vk60l")
+
+[node name="Five" type="TextureButton" parent="."]
+offset_left = 515.0
+offset_top = 440.0
+offset_right = 570.0
+offset_bottom = 495.0
+shortcut = SubResource("Shortcut_xdtcy")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("14_80bfi")
+texture_pressed = ExtResource("15_gxqhf")
+texture_hover = ExtResource("14_80bfi")
+
+[node name="Six" type="TextureButton" parent="."]
+offset_left = 585.0
+offset_top = 440.0
+offset_right = 640.0
+offset_bottom = 495.0
+shortcut = SubResource("Shortcut_oh4i5")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("16_7tvls")
+texture_pressed = ExtResource("17_it7lq")
+texture_hover = ExtResource("16_7tvls")
+
+[node name="Seven" type="TextureButton" parent="."]
+offset_left = 655.0
+offset_top = 440.0
+offset_right = 710.0
+offset_bottom = 495.0
+shortcut = SubResource("Shortcut_gk4fq")
+texture_normal = ExtResource("18_eaeis")
+texture_pressed = ExtResource("19_srdlk")
+texture_hover = ExtResource("18_eaeis")
+
+[node name="Eight" type="TextureButton" parent="."]
+offset_left = 445.0
+offset_top = 510.0
+offset_right = 500.0
+offset_bottom = 565.0
+shortcut = SubResource("Shortcut_igfhn")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("20_2wq7q")
+texture_pressed = ExtResource("21_bjoyv")
+texture_hover = ExtResource("20_2wq7q")
+
+[node name="Nine" type="TextureButton" parent="."]
+offset_left = 515.0
+offset_top = 510.0
+offset_right = 570.0
+offset_bottom = 565.0
+shortcut = SubResource("Shortcut_67o1n")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("22_low1a")
+texture_pressed = ExtResource("23_vgc6f")
+texture_hover = ExtResource("22_low1a")
+
+[node name="x" type="TextureButton" parent="."]
+offset_left = 585.0
+offset_top = 510.0
+offset_right = 640.0
+offset_bottom = 565.0
+shortcut = SubResource("Shortcut_ey2jk")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("24_65ub8")
+texture_pressed = ExtResource("25_wkpow")
+texture_hover = ExtResource("24_65ub8")
+
+[node name="Enter" type="TextureButton" parent="."]
+offset_left = 655.0
+offset_top = 510.0
+offset_right = 710.0
+offset_bottom = 565.0
+shortcut = SubResource("Shortcut_3kph5")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("26_4vuig")
+texture_pressed = ExtResource("27_ebec4")
+texture_hover = ExtResource("26_4vuig")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 431.0
+offset_top = 286.0
+offset_right = 724.0
+offset_bottom = 336.0
+theme_override_colors/font_color = Color(0.294118, 0.352941, 0.282353, 1)
+theme_override_fonts/font = ExtResource("28_rwd5p")
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = 51.0
+offset_top = 32.0
+offset_right = 151.0
+offset_bottom = 132.0
+texture_normal = ExtResource("30_bubuc")
+texture_pressed = ExtResource("31_fgvgu")
+texture_hover = ExtResource("31_fgvgu")
+texture_disabled = ExtResource("32_i68tx")
+
+[connection signal="pressed" from="Zero" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="One" to="." method="_on_one_pressed"]
+[connection signal="pressed" from="Two" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="Three" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="Four" to="." method="_on_four_pressed"]
+[connection signal="pressed" from="Five" to="." method="_on_five_pressed"]
+[connection signal="pressed" from="Six" to="." method="_on_six_pressed"]
+[connection signal="pressed" from="Seven" to="." method="_on_seven_pressed"]
+[connection signal="pressed" from="Eight" to="." method="_on_eight_pressed"]
+[connection signal="pressed" from="Nine" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="x" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="Enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
