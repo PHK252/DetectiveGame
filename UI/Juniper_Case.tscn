@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://d20gyimd1igid"]
+
+[ext_resource type="Texture2D" uid="uid://nof1cgm8yj12" path="res://UI/Assets/Juniper Case/Juniper_case.png" id="1_mytjr"]
+[ext_resource type="Texture2D" uid="uid://djsgyqrrljk18" path="res://UI/Assets/Juniper Case/Juniper_case_UI_mockup.png" id="2_kptl3"]
+[ext_resource type="Texture2D" uid="uid://qockmtfnijcy" path="res://UI/Assets/Juniper Case/Juniper_case_textbox.png" id="3_rli8t"]
+[ext_resource type="Texture2D" uid="uid://mna0dqurhv8k" path="res://UI/Assets/Juniper Case/Juniper_case_0_normal.png" id="4_nvduj"]
+[ext_resource type="Texture2D" uid="uid://bnwfyu83uvtji" path="res://UI/Assets/Juniper Case/Juniper_case_0_pressed.png" id="5_shlga"]
+[ext_resource type="Texture2D" uid="uid://w2b627g0swtc" path="res://UI/Assets/Juniper Case/Juniper_case_1_normal.png" id="6_3n7vw"]
+[ext_resource type="Texture2D" uid="uid://f2ao0615wo4e" path="res://UI/Assets/Juniper Case/Juniper_case_1_pressed.png" id="7_1u48g"]
+[ext_resource type="Texture2D" uid="uid://b857p2qt7fhpl" path="res://UI/Assets/Juniper Case/Juniper_case_2_normal.png" id="8_8qmii"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xxd5l"]
+
+[node name="Case UI" type="CanvasLayer"]
+
+[node name="Background2" type="TextureRect" parent="."]
+modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_xxd5l")
+
+[node name="Case" type="TextureRect" parent="."]
+offset_left = 375.0
+offset_top = 175.0
+offset_right = 1545.0
+offset_bottom = 890.0
+texture = ExtResource("1_mytjr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.243137)
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_kptl3")
+
+[node name="TextBox" type="TextureRect" parent="."]
+offset_left = 415.0
+offset_top = 285.0
+offset_right = 740.0
+offset_bottom = 350.0
+texture = ExtResource("3_rli8t")
+
+[node name="0" type="TextureButton" parent="."]
+offset_left = 445.0
+offset_top = 370.0
+offset_right = 500.0
+offset_bottom = 425.0
+texture_normal = ExtResource("4_nvduj")
+texture_pressed = ExtResource("5_shlga")
+texture_hover = ExtResource("4_nvduj")
+
+[node name="1" type="TextureButton" parent="."]
+offset_left = 515.0
+offset_top = 370.0
+offset_right = 570.0
+offset_bottom = 425.0
+texture_normal = ExtResource("6_3n7vw")
+texture_pressed = ExtResource("7_1u48g")
+texture_hover = ExtResource("6_3n7vw")
+
+[node name="2" type="TextureButton" parent="."]
+offset_left = 585.0
+offset_top = 370.0
+offset_right = 640.0
+offset_bottom = 425.0
+texture_normal = ExtResource("8_8qmii")
+texture_pressed = ExtResource("7_1u48g")
+texture_hover = ExtResource("8_8qmii")

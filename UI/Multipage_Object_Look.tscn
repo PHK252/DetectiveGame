@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://djpr0pth7a2wb"]
+[gd_scene load_steps=18 format=3 uid="uid://djpr0pth7a2wb"]
 
 [ext_resource type="Texture2D" uid="uid://pwj8f5cia20w" path="res://New Pixel Assets/Juniper's House/Jun Tour Poster.png" id="1_l4tht"]
 [ext_resource type="Texture2D" uid="uid://bujsccvys4d24" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Brown.png" id="1_s7gga"]
@@ -10,14 +10,25 @@
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="7_qbtwb"]
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="8_hq3jw"]
 [ext_resource type="Texture2D" uid="uid://dh3wkjqenruvw" path="res://UI/Assets/Interactions/Page orange normal.png" id="9_bs7yr"]
-[ext_resource type="Texture2D" uid="uid://1ubdshr14ct3" path="res://UI/Assets/Interactions/Page orange hovered.png" id="10_cbq6t"]
+[ext_resource type="Texture2D" uid="uid://chbyulo4lhjyf" path="res://UI/Assets/Interactions/Page orange hover.png" id="11_dbl1n"]
 [ext_resource type="Texture2D" uid="uid://s2fhonvjkl7y" path="res://UI/Assets/Interactions/Page orange disabled.png" id="11_gultu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gc5uo"]
 
+[sub_resource type="InputEventAction" id="InputEventAction_utu1q"]
+action = &"Left"
+
+[sub_resource type="Shortcut" id="Shortcut_ibqpn"]
+events = [SubResource("InputEventAction_utu1q")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_w76wr"]
+action = &"Right"
+
+[sub_resource type="Shortcut" id="Shortcut_0gwek"]
+events = [SubResource("InputEventAction_w76wr")]
+
 [node name="MultiPage" type="CanvasLayer"]
 script = ExtResource("1_y328m")
-pageCount = 3
 
 [node name="Background2" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
@@ -135,9 +146,10 @@ offset_right = -344.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+shortcut = SubResource("Shortcut_ibqpn")
 texture_normal = ExtResource("9_bs7yr")
-texture_pressed = ExtResource("10_cbq6t")
-texture_hover = ExtResource("10_cbq6t")
+texture_pressed = ExtResource("11_dbl1n")
+texture_hover = ExtResource("11_dbl1n")
 texture_disabled = ExtResource("11_gultu")
 
 [node name="Forward" type="TextureButton" parent="."]
@@ -152,9 +164,11 @@ offset_right = 445.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+shortcut = SubResource("Shortcut_0gwek")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("9_bs7yr")
-texture_pressed = ExtResource("10_cbq6t")
-texture_hover = ExtResource("10_cbq6t")
+texture_pressed = ExtResource("11_dbl1n")
+texture_hover = ExtResource("11_dbl1n")
 texture_disabled = ExtResource("11_gultu")
 flip_h = true
 
