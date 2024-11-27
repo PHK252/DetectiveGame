@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var case_cam = $"../../CafeCam"
+@onready var case_cam = $"../../CaseCam"
 @onready var main_cam = $"../../CamWindows"
 @onready var player = $"../../../../../Characters/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../CaseCam/AnimationPlayer"
@@ -23,7 +23,7 @@ func _process(delta):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 130:
 			case_cam.set_rotation_degrees(Vector3(-90, 0, 0))
-		elif mouse_pos.y < 65:
+		elif mouse_pos.y < 45:
 			case_cam.set_rotation_degrees(Vector3(-70, 0, 0))
 		else:
 			case_cam.set_rotation_degrees(Vector3(-80, 0, 0))
@@ -69,9 +69,7 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 
-
-
-func _on_bookshelf_interacted(interactor):
+func _on_case_interacted(interactor):
 	if GlobalVars.in_look_screen == false:
 		GlobalVars.in_interaction = "case"
 		case_cam.priority = 15

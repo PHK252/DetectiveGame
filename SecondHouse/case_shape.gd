@@ -7,11 +7,6 @@ extends Area2D
 @onready var letter = $"../../SubViewportContainer/SubViewport/SecondHouseUpdate/letter"
 @onready var bill =  $"../../SubViewportContainer/SubViewport/SecondHouseUpdate/bill"
 @onready var look = $"../Case UI"
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
@@ -50,13 +45,14 @@ func _on_exit_pressed():
 
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "bookmark":
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "case":
 		if GlobalVars.viewed_Juniper_case == false and GlobalVars.clicked_case_Juniper == 1:
 			case_top.show()
 			case_bottom.show()
 			apron.show()
 			letter.show()
 			bill.show()
+			await get_tree().create_timer(.3).timeout
 			GlobalVars.viewed_Juniper_case = true
 			GlobalVars.viewing = "" 
 		else:

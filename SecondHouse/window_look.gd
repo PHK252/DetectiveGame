@@ -51,5 +51,6 @@ func _on_interactable_interacted(interactor):
 		player.hide()
 		player.stop_player()
 		if GlobalVars.viewed_Juniper_window == false:
+			GlobalVars.in_dialogue = true
 			Dialogic.start("Juniper_Window_Thoughts")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)

@@ -21,7 +21,7 @@ func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	#print(mouse_pos) 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
-		if mouse_pos.y >= 130:
+		if mouse_pos.y >= 150:
 			resume_cam.set_rotation_degrees(Vector3(-60, 0, 0))
 		elif mouse_pos.y < 65:
 			resume_cam.set_rotation_degrees(Vector3(-40, 0, 0))
@@ -70,8 +70,7 @@ func _on_timeline_ended():
 	player.start_player()
 
 
-
-func _on_bookshelf_interacted(interactor):
+func _on_resumes_interacted(interactor):
 	if GlobalVars.in_look_screen == false:
 		GlobalVars.in_interaction = "resume"
 		resume_cam.priority = 15
