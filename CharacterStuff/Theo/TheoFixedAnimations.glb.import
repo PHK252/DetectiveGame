@@ -7229,6 +7229,17 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"Environment": {
+"use_external/enabled": true,
+"use_external/path": "res://ShaderScripts/environment.tres"
+}
+},
+"nodes": {
+"PATH:dogrig/Skeleton3D": {
+"rest_pose/external_animation_library": null
+}
 }
 }
 gltf/naming_version=1
