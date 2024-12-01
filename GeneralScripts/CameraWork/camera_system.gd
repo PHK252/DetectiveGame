@@ -127,3 +127,18 @@ func _on_doorcamarea_body_entered(body: Node3D) -> void:
 func _on_exitcamarea_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(6)  # First camera
+
+
+func _on_forest_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(4)
+
+
+func _on_open_door_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(5)
+
+
+func _on_waterfall_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(6)
