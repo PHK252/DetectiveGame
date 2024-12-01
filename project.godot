@@ -14,6 +14,15 @@ config/name="DetectiveGame"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Misc/icon.svg"
 
+[audio]
+
+manager/sound/bus="Sound"
+manager/sound/pool_1D_size=16
+manager/sound/pool_2D_size=16
+manager/sound/pool_3D_size=16
+manager/sound/max_polyphony=32
+manager/music/bus="Music"
+
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
@@ -21,6 +30,8 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SaveLoad="*res://GeneralScripts/Save System/Save_Load.gd"
 GlobalVars="*res://GeneralScripts/Global Variables/GlobalVars.gd"
 LoadManager="*res://Autoloads/load_manager.gd"
+SoundManager="*res://addons/resonate/sound_manager/sound_manager.gd"
+MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
 
 [dialogic]
 
@@ -166,7 +177,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resonate/plugin.cfg")
 
 [global_group]
 

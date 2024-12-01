@@ -64,7 +64,7 @@ float circ(vec2 pos, vec2 c, float s) {
 
 float waterlayer(vec2 uv) {
     uv = mod(uv, 1.0); // Clamp UV coordinates to [0..1]
-    
+
     float ret = 1.0;
     // Add circle patterns to the water layer
     ret += circ(uv, vec2(0.37378, 0.277169), 0.0268181);
@@ -135,7 +135,7 @@ float waterlayer(vec2 uv) {
     ret += circ(uv, vec2(0.408806, 0.894771), 0.0243923);
     ret += circ(uv, vec2(0.143579, 0.85138), 0.00418529);
     ret += circ(uv, vec2(0.0902811, 0.181775), 0.00523);
-	
+
 	return ret;
 }
 
