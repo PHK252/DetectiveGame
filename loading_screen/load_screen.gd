@@ -15,3 +15,6 @@ func _start_outro_animation() -> void:
 	animationPlayer.play("end_load")
 	await Signal(animationPlayer, "animation_finished")
 	self.queue_free()
+
+func _ready():
+	$AnimationPlayer2.play("Day_anim")
