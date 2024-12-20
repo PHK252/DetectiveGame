@@ -56,3 +56,4 @@ extends Node
 @onready var current_level = ""
 var player_pos
 var first_house_path = "res://FirstHouse/first_house.tscn"
+var cam_changed = false

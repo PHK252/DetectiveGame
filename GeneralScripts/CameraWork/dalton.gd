@@ -47,43 +47,47 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir := Input.get_vector("Right", "Left", "Back", "Forward")
-		if input_dir != Vector2.ZERO:
-			# Rotate input direction based on the camera's orientation
-			var camera_basis = camera.transform.basis
-			var rotated_dir = (camera_basis.x * input_dir.x + camera_basis.z * input_dir.y).normalized()
-			
-			# Set movement direction and apply smooth movement
-			velocity.x = lerp(velocity.x, -rotated_dir.x * SPEED, LERP_VAL)
-			velocity.z = lerp(velocity.z, -rotated_dir.z * SPEED, LERP_VAL)
+		if GlobalVars.cam_changed == false:
+			if input_dir != Vector2.ZERO:
+				# Rotate input direction based on the camera's orientation
+				var camera_basis = camera.transform.basis
+				var rotated_dir = (camera_basis.x * input_dir.x + camera_basis.z * input_dir.y).normalized()
+				
+				#if GlobalVars.cam_changed == true:
+				
+				# Set movement direction and apply smooth movement
+				velocity.x = lerp(velocity.x, -rotated_dir.x * SPEED, LERP_VAL)
+				velocity.z = lerp(velocity.z, -rotated_dir.z * SPEED, LERP_VAL)
+				
 
-			# Smoothly rotate the armature to face the movement direction
-			armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
-			jogcheck = true
-			idle_timer_active = false
-			if anim_tree["parameters/Blend3/blend_amount"] < 0:
-				anim_tree["parameters/Blend3/blend_amount"] = 0
-		else:
-			velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
-			velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
-			jogcheck = false
-			if not idle_timer_active:  # Start timer only if not already active
-				idle_timer_active = true
-				print("Starting idle timer")
-				await get_tree().create_timer(8).timeout
-				if velocity.length() == 0:  # Verify idle condition
-					print("Entering thinking state")
-					anim_tree["parameters/Blend3/blend_amount"] = -1
-					await get_tree().create_timer(9.167).timeout
+				# Smoothly rotate the armature to face the movement direction
+				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
+				jogcheck = true
+				idle_timer_active = false
+				if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					anim_tree["parameters/Blend3/blend_amount"] = 0
-				idle_timer_active = false  # Reset for next idle check
+					
+			else:
+				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
+				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
+				jogcheck = false
+				if not idle_timer_active:  # Start timer only if not already active
+					idle_timer_active = true
+					print("Starting idle timer")
+					await get_tree().create_timer(8).timeout
+					if velocity.length() == 0:  # Verify idle condition
+						print("Entering thinking state")
+						anim_tree["parameters/Blend3/blend_amount"] = -1
+						await get_tree().create_timer(9.167).timeout
+						anim_tree["parameters/Blend3/blend_amount"] = 0
+					idle_timer_active = false  # Reset for next idle check
 			
-		
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		
 		if Input.is_action_pressed("jog") and jogcheck:
 			anim_tree["parameters/Blend3/blend_amount"] = 1
 			SPEED = 2.2
-		elif Input.is_action_just_released("jog"):
+		elif Input.is_action_just_released("jog") or jogcheck == false:
 			anim_tree["parameters/Blend3/blend_amount"] = 0
 			SPEED = 1.15
 		
