@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://coi3wnw75drw1"]
+
+[ext_resource type="Script" path="res://UI/Phone_UI.gd" id="1_eli2p"]
+[ext_resource type="Texture2D" uid="uid://8umrcqaury02" path="res://UI/Assets/Phone/Phone Frame.png" id="1_nmehv"]
+[ext_resource type="Texture2D" uid="uid://t7mlqhm8eq8m" path="res://UI/Assets/Phone/Phone Home Back.png" id="2_6x7hd"]
+[ext_resource type="Texture2D" uid="uid://cgbm5nwm0tdyn" path="res://UI/Assets/Phone/Phone Gallery.png" id="3_0wf5f"]
+[ext_resource type="Texture2D" uid="uid://2a23vevt776b" path="res://UI/Assets/Phone/Phone Home Button.png" id="3_8li6k"]
+[ext_resource type="Texture2D" uid="uid://dwd2awy3y3v54" path="res://UI/Assets/Phone/Phone Call Numbers.png" id="4_7l10p"]
+[ext_resource type="Texture2D" uid="uid://c8jsayjk1s2gk" path="res://UI/Assets/Phone/Phone Home Button Hovered.png" id="4_qpdu0"]
+[ext_resource type="Texture2D" uid="uid://cph0740e5qybe" path="res://UI/Assets/Phone/Phone Notes.png" id="5_qrdhb"]
+[ext_resource type="Texture2D" uid="uid://maig2f6eownt" path="res://UI/Assets/Phone/Button.png" id="8_mgu5u"]
+[ext_resource type="Texture2D" uid="uid://xeu6o4sq4ykh" path="res://UI/Assets/Phone/Phone Home Gallery.png" id="9_gd2ov"]
+[ext_resource type="Texture2D" uid="uid://8okokxj1eh10" path="res://UI/Assets/Phone/Phone Home Gallery Hovered.png" id="10_ql2tr"]
+[ext_resource type="Texture2D" uid="uid://f4posibedech" path="res://UI/Assets/Phone/Phone Home Notes.png" id="11_xbv8w"]
+[ext_resource type="Texture2D" uid="uid://bpblysgb0lvjr" path="res://UI/Assets/Phone/Phone Home Notes Button Hovered.png" id="12_8xya1"]
+[ext_resource type="Texture2D" uid="uid://df0mmtrgrqum0" path="res://UI/Assets/Phone/Phone Home Phone.png" id="13_kofpj"]
+[ext_resource type="Texture2D" uid="uid://d2xp6oiv5h45o" path="res://UI/Assets/Phone/Phone Home Phone Button Hovered.png" id="14_ul4xi"]
+
+[node name="Phone UI" type="Node2D"]
+script = ExtResource("1_eli2p")
+
+[node name="PhoneFrame" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_nmehv")
+
+[node name="PhoneHomeBack" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_6x7hd")
+
+[node name="PhoneGallery" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_0wf5f")
+
+[node name="PhoneCallNumbers" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_7l10p")
+
+[node name="PhoneNotes" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_qrdhb")
+
+[node name="Button" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.372549)
+position = Vector2(960, 540)
+texture = ExtResource("8_mgu5u")
+
+[node name="Home" type="TextureButton" parent="."]
+offset_left = 935.0
+offset_top = 890.0
+offset_right = 985.0
+offset_bottom = 935.0
+texture_normal = ExtResource("3_8li6k")
+texture_pressed = ExtResource("4_qpdu0")
+texture_hover = ExtResource("4_qpdu0")
+
+[node name="Gallery" type="TextureButton" parent="."]
+offset_left = 1045.0
+offset_top = 760.0
+offset_right = 1145.0
+offset_bottom = 860.0
+texture_normal = ExtResource("9_gd2ov")
+texture_pressed = ExtResource("10_ql2tr")
+texture_hover = ExtResource("10_ql2tr")
+
+[node name="Notes" type="TextureButton" parent="."]
+offset_left = 910.0
+offset_top = 760.0
+offset_right = 1010.0
+offset_bottom = 860.0
+texture_normal = ExtResource("11_xbv8w")
+texture_pressed = ExtResource("12_8xya1")
+texture_hover = ExtResource("12_8xya1")
+
+[node name="Phone" type="TextureButton" parent="."]
+offset_left = 775.0
+offset_top = 760.0
+offset_right = 875.0
+offset_bottom = 860.0
+texture_normal = ExtResource("13_kofpj")
+texture_pressed = ExtResource("14_ul4xi")
+texture_hover = ExtResource("14_ul4xi")
+
+[connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="Gallery" to="." method="_on_gallery_pressed"]
+[connection signal="pressed" from="Notes" to="." method="_on_notes_pressed"]
+[connection signal="pressed" from="Phone" to="." method="_on_phone_pressed"]

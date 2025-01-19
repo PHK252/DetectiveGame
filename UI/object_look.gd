@@ -12,6 +12,8 @@ func _input(event):
 	if Input.is_action_just_pressed("Exit"):
 		$".".hide()
 		GlobalVars.in_look_screen = false
+		await get_tree().create_timer(.3).timeout
+		GlobalVars.viewing = ""
 
 func _on_object_front_gui_input(event):
 	if event is InputEventMouseButton:

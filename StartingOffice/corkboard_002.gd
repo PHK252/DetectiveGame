@@ -36,9 +36,9 @@ func _process(delta):
 	else:
 		cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
 		
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.viewing == "":
 		if Input.is_action_just_pressed("Exit"):
-			print("scene enter")
+			#print("scene enter")
 			cork_cam.priority = 0
 			main_cam.priority = 1
 			await get_tree().create_timer(.03).timeout
