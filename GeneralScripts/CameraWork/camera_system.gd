@@ -142,3 +142,8 @@ func _on_open_door_area_body_entered(body: Node3D) -> void:
 func _on_waterfall_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(6)
+
+
+func _on_kitchen_area_jun_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(7)
