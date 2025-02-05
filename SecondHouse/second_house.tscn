@@ -1,4 +1,4 @@
-[gd_scene load_steps=279 format=4 uid="uid://cwr2lvisdm7bi"]
+[gd_scene load_steps=281 format=4 uid="uid://cwr2lvisdm7bi"]
 
 [ext_resource type="PackedScene" uid="uid://bf7hxnp0di86k" path="res://SecondHouse/SecondHouseUpdate.glb" id="1_d2565"]
 [ext_resource type="Script" path="res://SecondHouse/second_house.gd" id="1_dkcdt"]
@@ -2720,47 +2720,65 @@ bind/37/name = &"PoleArm.R"
 bind/37/bone = -1
 bind/37/pose = Transform3D(-1.25551, 3.30656, -2.49638e-07, 0, 2.67028e-07, 3.53689, 3.30656, 1.25551, -9.47882e-08, -4.88024, -0.889777, 0.170899)
 
+[sub_resource type="Gradient" id="Gradient_7dlnl"]
+offsets = PackedFloat32Array(0, 0.133333, 0.903448, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.1584, 0.1656, 0.18, 1, 0.9, 0.8532, 0.783, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p3bum"]
+gradient = SubResource("Gradient_7dlnl")
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j1atp"]
 sky_top_color = Color(0.491301, 0.563475, 0.663951, 1)
 sky_curve = 0.0989631
 sky_energy_multiplier = 1.88
-sun_angle_max = 22.38
+ground_curve = 0.0459479
+sun_angle_max = 125.24
 
 [sub_resource type="Sky" id="Sky_c16lh"]
 sky_material = SubResource("ProceduralSkyMaterial_j1atp")
 
 [sub_resource type="Environment" id="Environment_8mbkn"]
 background_mode = 2
-background_energy_multiplier = 0.09
 sky = SubResource("Sky_c16lh")
-sky_custom_fov = 46.5
+sky_custom_fov = 91.3
 ambient_light_color = Color(0.907318, 0.79381, 0.651603, 1)
-ambient_light_sky_contribution = 0.18
-ambient_light_energy = 0.18
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 1.35
+reflected_light_source = 1
 tonemap_mode = 2
+tonemap_exposure = 0.29
+ssao_enabled = true
+ssao_intensity = 2.41
+ssil_enabled = true
 glow_enabled = true
 glow_intensity = 0.86
 glow_strength = 1.21
-glow_bloom = 0.04
+glow_bloom = 0.27
 glow_hdr_threshold = 0.75
 glow_hdr_luminance_cap = 13.85
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.742777, 0.732916, 0.706165, 1)
-fog_light_energy = 1.09
-fog_density = 1.0
-fog_sky_affect = 0.055
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0178
-volumetric_fog_albedo = Color(0.712411, 0.583557, 0.447853, 1)
-volumetric_fog_emission = Color(0.666928, 0.673116, 0.663891, 1)
-volumetric_fog_emission_energy = 0.5
+fog_light_color = Color(0.641574, 0.777126, 0.634233, 1)
+fog_light_energy = 5.59
+fog_sun_scatter = 0.42
+fog_density = 0.1007
+fog_aerial_perspective = 0.978
+fog_sky_affect = 0.95
+fog_depth_curve = 2.29739
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.856188, 0.758135, 0.611743, 1)
+volumetric_fog_emission = Color(1, 1, 1, 1)
+volumetric_fog_emission_energy = 0.0
 volumetric_fog_gi_inject = 0.44
 volumetric_fog_anisotropy = 0.0
 volumetric_fog_length = 45.52
 volumetric_fog_detail_spread = 2.7991
 volumetric_fog_ambient_inject = 0.21
 volumetric_fog_sky_affect = 0.468
+adjustment_enabled = true
+adjustment_contrast = 0.68
+adjustment_saturation = 1.91
+adjustment_color_correction = SubResource("GradientTexture1D_p3bum")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_13i1q"]
 vertices = PackedVector3Array(2.10354, 0.2, -1.44072, 1.50354, 0.2, -1.44072, 1.60354, 0.2, -0.540723, 2.10354, 0.2, -0.340723, -1.29646, 0.2, 0.859277, -1.49646, 0.2, 0.659277, -1.79646, 0.2, 1.65928, 0.603537, 0.2, 0.659277, 0.603537, 0.2, -0.240723, -0.0964632, 0.2, -0.240723, -0.0964632, 0.2, 0.659277, -0.296463, 0.2, 0.859277, 0.803537, 0.2, 0.859277, 2.20354, 0.2, 1.65928, -1.49646, 0.2, -0.340723, -1.29646, 0.2, -1.44072, -1.79646, 0.2, -1.44072, 2.10354, 0.2, 0.659277, 1.90354, 0.2, 0.859277)
@@ -3073,7 +3091,7 @@ tween_resource = SubResource("Resource_mmtty")
 camera_3d_resource = SubResource("Resource_8ihpc")
 
 [node name="KitchenCam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
-transform = Transform3D(0.988379, 0.0763035, -0.130985, 0, 0.864058, 0.503341, 0.151584, -0.497525, 0.854069, 5.15629, 2.08539, 1.7761)
+transform = Transform3D(0.988379, 0.0763035, -0.130985, 7.4501e-09, 0.864058, 0.503341, 0.151584, -0.497525, 0.854069, 5.15629, 2.08539, 1.77611)
 script = ExtResource("3_r36w6")
 follow_mode = 4
 follow_target = NodePath("../../../../Characters/Dalton")
@@ -3658,25 +3676,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216599, 0.839067, 0)
 shape = SubResource("BoxShape3D_ck5go")
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-2.30755e-09, -5.75171e-08, -2.96948)
-bones/3/rotation = Quaternion(0.00618516, 0.350772, 0.860976, -0.368295)
-bones/4/rotation = Quaternion(-0.293492, 0.0305349, -0.0381982, 0.95471)
-bones/5/rotation = Quaternion(0.528524, -0.0588716, 0.0772645, 0.843343)
-bones/8/rotation = Quaternion(-0.00618514, 0.350772, 0.860976, 0.368295)
-bones/9/rotation = Quaternion(-0.293492, -0.0305349, 0.0381982, 0.95471)
-bones/10/rotation = Quaternion(0.528524, 0.0588716, -0.0772645, 0.843343)
-bones/12/position = Vector3(-2.30755e-09, -2.40155e-07, -2.96948)
-bones/15/rotation = Quaternion(-0.0771915, 1.15395e-07, -1.38548e-08, 0.997016)
-bones/16/rotation = Quaternion(0.0206468, 3.91012e-09, 1.27771e-08, 0.999787)
-bones/18/rotation = Quaternion(0.0543515, 0.00249156, -0.0102123, 0.998467)
-bones/20/rotation = Quaternion(0.0543515, -0.00249156, 0.0102123, 0.998467)
-bones/22/rotation = Quaternion(-0.263284, -0.148281, -0.387865, 0.870778)
-bones/23/rotation = Quaternion(-0.00363349, -0.000437757, -0.333424, 0.94277)
-bones/26/rotation = Quaternion(-0.263285, 0.148281, 0.387864, 0.870779)
-bones/27/rotation = Quaternion(-0.0036337, 0.000437724, 0.333425, 0.94277)
-bones/31/position = Vector3(0.95763, -0.0311821, -2.18378)
-bones/33/position = Vector3(-2.30755e-09, -1.17122e-07, -2.96948)
-bones/36/position = Vector3(-0.95763, -0.0311821, -2.18378)
+bones/1/position = Vector3(3.05699e-09, -5.39206e-08, -3.00993)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.017504, 0.319581, 0.874982, -0.363276)
+bones/4/rotation = Quaternion(-0.229497, 0.0793668, -0.0390125, 0.969283)
+bones/5/rotation = Quaternion(0.499432, -0.102453, 0.0993273, 0.854521)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935923)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0175039, 0.31958, 0.874982, 0.363276)
+bones/9/rotation = Quaternion(-0.229497, -0.0793668, 0.0390125, 0.969283)
+bones/10/rotation = Quaternion(0.499432, 0.102453, -0.0993274, 0.854521)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935923)
+bones/12/position = Vector3(3.05699e-09, -2.21259e-07, -3.00993)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0845754, 1.13818e-07, -1.07826e-08, 0.996417)
+bones/16/rotation = Quaternion(0.0362342, 9.14896e-09, 8.09863e-09, 0.999343)
+bones/18/rotation = Quaternion(0.0238426, -0.00786009, -0.00973694, 0.999637)
+bones/20/rotation = Quaternion(0.0238426, 0.00786009, 0.00973696, 0.999637)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.256687, -0.148897, -0.401916, 0.866259)
+bones/23/rotation = Quaternion(-0.00317673, -0.000444129, -0.29151, 0.956562)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.256687, 0.148897, 0.401916, 0.866259)
+bones/27/rotation = Quaternion(-0.00317693, 0.00044411, 0.291511, 0.956562)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65473e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.984557, -0.0311821, -2.19144)
+bones/33/position = Vector3(3.05699e-09, -1.13525e-07, -3.00993)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/36/position = Vector3(-0.984557, -0.0311821, -2.19144)
 
 [node name="AnimationTree" parent="Characters/Dalton/CharacterBody3D" index="3"]
 parameters/Blend3/blend_amount = 0
@@ -3771,27 +3804,42 @@ nav = NodePath("NavigationAgent3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Characters/Main/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(-2.30755e-09, -5.75171e-08, -2.96948)
-bones/3/rotation = Quaternion(0.00618508, 0.350772, 0.860976, -0.368295)
-bones/4/rotation = Quaternion(-0.293492, 0.0305349, -0.0381982, 0.95471)
-bones/5/rotation = Quaternion(0.528524, -0.0588716, 0.0772645, 0.843343)
-bones/8/rotation = Quaternion(-0.00618507, 0.350772, 0.860976, 0.368295)
-bones/9/rotation = Quaternion(-0.293492, -0.0305349, 0.0381982, 0.95471)
-bones/10/rotation = Quaternion(0.528524, 0.0588716, -0.0772645, 0.843343)
-bones/12/position = Vector3(-2.30755e-09, -2.05955e-07, -2.96948)
-bones/15/rotation = Quaternion(-0.0771915, 1.15395e-07, -1.38549e-08, 0.997016)
-bones/16/rotation = Quaternion(0.0206468, 3.91012e-09, 1.27771e-08, 0.999787)
-bones/17/rotation = Quaternion(0.479871, 0.076734, -0.138001, 0.863013)
-bones/18/rotation = Quaternion(0.0543515, 0.00249155, -0.0102123, 0.998467)
-bones/19/rotation = Quaternion(0.513734, -0.0821492, 0.134847, 0.843294)
-bones/20/rotation = Quaternion(0.0543515, -0.00249155, 0.0102123, 0.998467)
-bones/22/rotation = Quaternion(-0.263284, -0.148281, -0.387865, 0.870778)
-bones/23/rotation = Quaternion(-0.00363347, -0.00043776, -0.333423, 0.94277)
-bones/26/rotation = Quaternion(-0.263284, 0.148281, 0.387865, 0.870778)
-bones/27/rotation = Quaternion(-0.00363369, 0.000437723, 0.333424, 0.94277)
-bones/31/position = Vector3(0.95763, -0.0311821, -2.18378)
-bones/33/position = Vector3(-2.30755e-09, -1.17122e-07, -2.96948)
-bones/36/position = Vector3(-0.95763, -0.0311821, -2.18378)
+bones/1/position = Vector3(3.05699e-09, -5.39206e-08, -3.00993)
+bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
+bones/3/rotation = Quaternion(0.0175039, 0.31958, 0.874982, -0.363276)
+bones/4/rotation = Quaternion(-0.229497, 0.0793668, -0.0390125, 0.969283)
+bones/5/rotation = Quaternion(0.499432, -0.102453, 0.0993274, 0.85452)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0175039, 0.319581, 0.874982, 0.363276)
+bones/9/rotation = Quaternion(-0.229497, -0.0793668, 0.0390125, 0.969283)
+bones/10/rotation = Quaternion(0.499432, 0.102453, -0.0993274, 0.854521)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(3.05699e-09, -2.62714e-07, -3.00993)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0845754, 1.13818e-07, -1.07826e-08, 0.996417)
+bones/16/rotation = Quaternion(0.0362342, 9.14897e-09, 8.09863e-09, 0.999343)
+bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
+bones/17/rotation = Quaternion(0.444662, 0.071104, -0.140984, 0.881671)
+bones/18/rotation = Quaternion(0.0238426, -0.00786009, -0.00973697, 0.999637)
+bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
+bones/19/rotation = Quaternion(0.452789, -0.0724038, 0.140321, 0.877525)
+bones/20/rotation = Quaternion(0.0238426, 0.00786009, 0.00973697, 0.999637)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.256687, -0.148897, -0.401917, 0.866259)
+bones/23/rotation = Quaternion(-0.00317673, -0.000444115, -0.29151, 0.956562)
+bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.256687, 0.148897, 0.401916, 0.866259)
+bones/27/rotation = Quaternion(-0.00317693, 0.000444147, 0.291511, 0.956562)
+bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
+bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.984557, -0.0311821, -2.19144)
+bones/33/position = Vector3(3.05699e-09, -1.13525e-07, -3.00993)
+bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
+bones/36/position = Vector3(-0.984557, -0.0311821, -2.19144)
 
 [node name="DoggyPartner" parent="Characters/Main/CharacterBody3D/TheoFixedAnimations/dogrig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_m74ab")
@@ -3812,6 +3860,7 @@ light_size = 0.024
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting/lightright"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.38559)
+visible = false
 light_color = Color(0.885851, 0.854734, 0.723373, 1)
 light_energy = 0.14
 omni_range = 5.347
@@ -3831,19 +3880,24 @@ light_indirect_energy = 1.989
 light_volumetric_fog_energy = 16.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.55293, 0)
+transform = Transform3D(-0.800733, -0.0440358, 0.597401, 0.178489, 0.934453, 0.308121, -0.571812, 0.353352, -0.740387, 8.60115, 12.1131, -14.948)
 light_color = Color(0.802659, 0.696353, 0.523109, 1)
-light_energy = 0.097
-light_volumetric_fog_energy = 1.55
+light_energy = 4.196
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+shadow_opacity = 0.5
 
 [node name="LightOutside" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41971, 1.45896, 0.726246)
+visible = false
 
 [node name="LightOutside2" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41971, 1.45896, 2.77281)
+visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting/LightOutside2"]
 transform = Transform3D(0.0150791, 0, 0.999886, 0, 1, 0, -0.999886, 0, 0.0150791, 0, 0, -1.02007)
+visible = false
 light_volumetric_fog_energy = 4.769
 spot_range = 9.496
 spot_attenuation = 0.57
@@ -3852,6 +3906,7 @@ spot_angle_attenuation = 0.378929
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7245, 0.208467, -3.33901)
+visible = false
 light_color = Color(0.923644, 0.809793, 0.652138, 1)
 light_energy = 0.789
 light_indirect_energy = 2.31
