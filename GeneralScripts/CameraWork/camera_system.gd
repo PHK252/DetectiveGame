@@ -9,9 +9,9 @@ func _ready() -> void:
 func activate_camera(cam_index: int) -> void:
 		for i in range(cameras.size()):
 			if i == cam_index:
-				cameras[i].set_priority(12)  # Highest priority for the active camera
+				cameras[i].set_priority(21)  # Highest priority for the active camera
 			else:
-				cameras[i].set_priority(11 - i)  # Set decreasing priority for other cameras
+				cameras[i].set_priority(20 - i)  # Set decreasing priority for other cameras
 
 
 func _on_hall_area_body_entered(body: Node3D) -> void:
@@ -101,7 +101,7 @@ func _on_secret_a_body_entered(body: Node3D) -> void:
 
 func _on_office_a_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		activate_camera(9)  # Fourth camera
+		activate_camera(13)  # Fourth camera
 
 
 func _on_downstairs_a_body_entered(body: Node3D) -> void:
@@ -152,3 +152,43 @@ func _on_kitchen_area_jun_body_entered(body: Node3D) -> void:
 func _on_outside_snow_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(11)
+
+
+func _on_living_b_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(18)
+
+
+func _on_office_area_q_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(9)
+
+
+func _on_bathroom_q_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(14)
+
+
+func _on_main_master_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(15)
+
+
+func _on_master_closet_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(16)
+
+
+func _on_master_notebook_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(17)
+
+
+func _on_ski_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(12)
+
+
+func _on_patio_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(19)
