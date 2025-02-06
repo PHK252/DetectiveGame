@@ -34,7 +34,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "" and GlobalVars.Micah_pic_dialogue == false and GlobalVars.pic_fell == true:
 			GlobalVars.Micah_pic_dialogue == true
 			pic_cam.priority = 0
-			main_cam.priority = 12
+			main_cam.priority = 24
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -50,7 +50,7 @@ func _process(delta):
 			pic_Dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "": 
 			pic_cam.priority = 0
-			main_cam.priority = 12
+			main_cam.priority = 24
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -67,7 +67,7 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false:
 		GlobalVars.in_interaction = "picture"
-		pic_cam.priority = 15
+		pic_cam.priority = 24
 		main_cam.priority = 0
 		cam_anim.play("Cam_Idle")
 		player.hide()

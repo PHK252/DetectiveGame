@@ -192,3 +192,8 @@ func _on_ski_area_body_entered(body: Node3D) -> void:
 func _on_patio_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(19)
+
+
+func _on_kitchen_door_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(8)

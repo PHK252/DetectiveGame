@@ -24,7 +24,7 @@ func _on_input_event(viewport, event, shape_idx):
 			await get_tree().create_timer(1.5).timeout
 			GlobalVars.in_look_screen = false
 			pic_cam.priority = 0
-			main_cam.priority = 12
+			main_cam.priority = 24
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()

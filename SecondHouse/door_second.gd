@@ -18,6 +18,12 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
+	
+func close() -> void:
+	#print("Opening")
+	animation_tree["parameters/conditions/is_closed"] = true
+	animation_tree["parameters/conditions/is_opened"] = false
+	is_open = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,11 +55,19 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		#layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 		#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		pass
+	
 	elif is_open == false and GlobalVars.in_dialogue == false:
 		#print("open")
 		#$Interactable.queue_free()
 		open()
 		collision.disabled = true
+		return
+		
+	if is_open == true: 
+		close()
+		collision.disabled = false
+	
+	
 
 #game code
 #__________________

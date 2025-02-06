@@ -38,7 +38,7 @@ func _process(delta):
 			print("enter")
 			main_cam.set_tween_duration(0)
 			closet_cam.priority = 0
-			main_cam.priority = 12
+			main_cam.priority = 24
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -54,7 +54,7 @@ func _process(delta):
 			print("entered here")
 			main_cam.set_tween_duration(0)
 			closet_cam.priority = 0
-			main_cam.priority = 12
+			main_cam.priority = 24
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -72,7 +72,7 @@ func _on_interactable_interacted(interactor):
 	
 	collision.disabled = false
 	collision2.disabled = false
-	main_cam.priority = 12
+	main_cam.priority = 24
 	if closet_open == false: 
 		emit_signal("stepback")
 		await get_tree().create_timer(2).timeout
@@ -122,7 +122,7 @@ func closetLook(argument: String):
 	if argument == "look":
 		# connect signal to switch cams
 		GlobalVars.in_interaction = "closet"
-		closet_cam.priority = 15
+		closet_cam.priority = 24
 		main_cam.priority = 0 
 		note_interaction.show()
 		cam_anim.play("Cam_Idle")

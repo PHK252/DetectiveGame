@@ -35,7 +35,7 @@ func _process(delta):
 			print("enter dialogue")
 			main_cam.set_tween_duration(0)
 			book_cam.priority = 0
-			main_cam.priority = 12
+			main_cam.priority = 24
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -51,7 +51,7 @@ func _process(delta):
 			print("enter")
 			main_cam.set_tween_duration(0)
 			book_cam.priority = 0
-			main_cam.priority = 12
+			main_cam.priority = 24
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -75,7 +75,7 @@ func _on_timeline_ended():
 
 func _on_interactable_interacted(interactor):
 	GlobalVars.in_interaction = "book"
-	book_cam.priority = 15
+	book_cam.priority = 24
 	main_cam.priority = 0 
 	bookmark_interact.show()
 	cam_anim.play("Cam_Idle")
