@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3511hh4gwxji"]
+
+[ext_resource type="Shader" uid="uid://cihvuq4tavxd3" path="res://ShaderScripts/glassshader.tres" id="1_bwntc"]
+
+[resource]
+resource_name = "W"
+render_priority = 0
+shader = ExtResource("1_bwntc")
+shader_parameter/transparency = 0.3
+shader_parameter/toon_color = Color(0.8, 0.9, 1, 1)
+shader_parameter/toon_threshold = 0.5
+shader_parameter/outline_width = 2.0
+shader_parameter/fresnel_power = 3.0
