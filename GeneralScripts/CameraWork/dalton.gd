@@ -78,8 +78,11 @@ func _physics_process(delta: float) -> void:
 					if velocity.length() == 0:  # Verify idle condition
 						print("Entering thinking state")
 						anim_tree["parameters/Blend3/blend_amount"] = -1
+						print("blend success")
 						await get_tree().create_timer(9.167).timeout
+						print("timerfinished")
 						anim_tree["parameters/Blend3/blend_amount"] = 0
+						print("donethinking")
 					idle_timer_active = false  # Reset for next idle check
 			
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
@@ -87,7 +90,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("jog") and jogcheck:
 			anim_tree["parameters/Blend3/blend_amount"] = 1
 			SPEED = 2.2
-		elif Input.is_action_just_released("jog") or jogcheck == false:
+		elif Input.is_action_just_released("jog") or jogcheck == false and anim_tree["parameters/Blend3/blend_amount"] != -1:
 			anim_tree["parameters/Blend3/blend_amount"] = 0
 			SPEED = 1.15
 		
