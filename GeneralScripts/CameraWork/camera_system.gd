@@ -1,12 +1,14 @@
 extends Node
 
 @export var cameras: Array[Node3D]
+signal camera_changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 func activate_camera(cam_index: int) -> void:
+		emit_signal("camera_changed")
 		for i in range(cameras.size()):
 			if i == cam_index:
 				cameras[i].set_priority(21)  # Highest priority for the active camera

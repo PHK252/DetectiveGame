@@ -54,7 +54,6 @@ func _process(delta):
 		global_transform.basis = flipped_basis
 	
 	if see_player and Input.is_action_just_pressed("interact") or object_interaction:
-		print("interacted")
 		state = IDLE
 
 		# Get the target direction to the player position

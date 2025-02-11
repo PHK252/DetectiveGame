@@ -66,14 +66,12 @@ func _process(delta):
 	
 	match state:
 		IDLE:
-			print("Tidle")
 			anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 			stop_walk = true
 		WALK:
 			anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
 			if path.progress_ratio < 1:
 				if stop_walk == false: 
-					print("Twalking")
 					path.progress_ratio += speed * delta
 					if path.progress_ratio == 1 or path.progress > 1.6:
 						print("checked for stop")

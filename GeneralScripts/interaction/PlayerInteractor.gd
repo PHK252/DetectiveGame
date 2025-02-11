@@ -4,6 +4,7 @@ extends Interactor
 @onready var highlight = $CollisionShape3D/Alert
 @onready var animplay = $CollisionShape3D/AnimationPlayer
 var cached_closest: Interactable
+signal interacted_now
 
 func _ready() -> void:
 	controller = player
@@ -31,6 +32,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		if is_instance_valid(cached_closest):
 			interact(cached_closest)
+			emit_signal("interacted_now")
 
 func _on_area_exited(area: Interactable) -> void:
 	if cached_closest == area:

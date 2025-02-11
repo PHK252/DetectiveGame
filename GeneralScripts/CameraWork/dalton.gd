@@ -19,6 +19,9 @@ var move_back_in_progress = false
 var move_back_start_position = Vector3()
 var move_back_target_position = Vector3()
 var move_back_progress = 0.0  # Tracks the progress of the lerp
+var cam_rotation = false
+var interaction = false
+
 
 func _ready() -> void:
 	add_to_group("player")
@@ -47,18 +50,17 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir := Input.get_vector("Right", "Left", "Back", "Forward")
+		
 		if GlobalVars.cam_changed == false:
 			if input_dir != Vector2.ZERO:
 				# Rotate input direction based on the camera's orientation
 				var camera_basis = camera.transform.basis
 				var rotated_dir = (camera_basis.x * input_dir.x + camera_basis.z * input_dir.y).normalized()
-				
 				#if GlobalVars.cam_changed == true:
 				
 				# Set movement direction and apply smooth movement
 				velocity.x = lerp(velocity.x, -rotated_dir.x * SPEED, LERP_VAL)
 				velocity.z = lerp(velocity.z, -rotated_dir.z * SPEED, LERP_VAL)
-				
 
 				# Smoothly rotate the armature to face the movement direction
 				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
@@ -66,7 +68,6 @@ func _physics_process(delta: float) -> void:
 				idle_timer_active = false
 				if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					anim_tree["parameters/Blend3/blend_amount"] = 0
-					
 			else:
 				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
@@ -87,7 +88,7 @@ func _physics_process(delta: float) -> void:
 			
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		
-		if Input.is_action_pressed("jog") and jogcheck:
+		if Input.is_action_pressed("jog") and jogcheck and interaction == false:
 			anim_tree["parameters/Blend3/blend_amount"] = 1
 			SPEED = 2.2
 		elif Input.is_action_just_released("jog") or jogcheck == false and anim_tree["parameters/Blend3/blend_amount"] != -1:
@@ -182,5 +183,11 @@ func start_move_back():
 func _on_closet_stepback() -> void:
 	move_back = true
 	
-	
-	
+func _on_camera_system_camera_changed() -> void:
+	cam_rotation = true
+
+
+func _on_player_interactor_interacted_now() -> void:
+	interaction = true
+	await get_tree().create_timer(0.45).timeout
+	interaction = false
