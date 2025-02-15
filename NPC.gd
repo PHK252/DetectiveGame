@@ -1,160 +1,120 @@
 extends CharacterBody3D
 
-@export var ap : AnimationPlayer
 @export var anim_tree : AnimationTree
-@export var player : Node3D
-@export var armature = Node3D
-@export var path : PathFollow3D
-@export var WaitTimer : Timer
+@export var player : CharacterBody3D
+@export var armature = CharacterBody3D
+#@export var WaitTimer : Timer
 @export var NPC : String
 @onready var object_interaction = false
+@export var nav: NavigationAgent3D
+@export var target: Marker3D
+
+const STOPPING_DISTANCE = 1.0  # Distance at which we stop following
+const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
+const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
+#const FOLLOW_DISTANCE = 1.2 
+
+var idle_blend = 0.0
+var is_navigating = false
+var targ_reach = false
+var accel = 8
 
 enum {
 	IDLE, 
-	WALK,
-	WAIT,
+	FOLLOW,
+	WANDER,
+	CAUGHT,
+	FIXING
 }
 
 var state = IDLE
 var see_player = false
 var at_door = false
-var SPEED = 0.4
+var SPEED = 1.15
 var LERP_VAL = .15
 var rotation_speed = 70
 
 func _ready() -> void:
 	state = IDLE
-	if NPC == "Theo":
-		SPEED = 1
-		LERP_VAL = .4
 	
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		
-	move_and_slide()
-	
-	#if state == WALK:
-		
-		
-
-func _process(delta):
-	if state == WALK:
-		var flipped_basis = path.global_transform.basis
-		if NPC != "Theo":
-			flipped_basis.x = -flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
-			flipped_basis.z = -flipped_basis.z  # Flip the Z basis vector to mirror rotation on the Y-axis
-		else:
-			flipped_basis.x = flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
-			flipped_basis.z = flipped_basis.z
-
-	# Apply the flipped basis to the NPC
-		global_transform.basis = flipped_basis
-	
-	if see_player and Input.is_action_just_pressed("interact") or object_interaction:
-		state = IDLE
-
-		# Get the target direction to the player position
-		var target_position = Vector3(GlobalVars.player_pos.x, global_transform.origin.y, GlobalVars.player_pos.z)
-		var target_direction = (target_position - global_transform.origin).normalized()
-	
-		target_direction = -target_direction
-		# Get the current direction the NPC is facing
-		var current_direction = -global_transform.basis.z  # Use -Z as the forward direction in Godot
-		# Interpolate between the current and target direction smoothly
-		var smooth_direction = current_direction.slerp(target_direction, rotation_speed * delta)
-
-		# Update the NPC's rotation to face the interpolated direction
-		look_at(global_transform.origin + smooth_direction, Vector3.UP)
-		
-		if Input.is_action_just_pressed("Exit"):
-			#add dialogic signal here to control stop looking
-			object_interaction = false
-			state = WALK
-
-	#if see player true then look at player
-	#check player position player.globalposition
-	
+func _process(delta: float) -> void:
+	var distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	match state:
 		IDLE:
-			if NPC == "Micah" or NPC == "Skylar":
-				#ap.play("IdleSkylar")
-				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
-				
-			if NPC == "Juniper":
-				ap.play("IdleJuniper")
-				
-			if NPC == "Quincy":
-				ap.play("Idle")
-				
-			if NPC == "Theo":
-				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
-		WALK:
-			if NPC == "Micah" or NPC == "Skylar":
-				#ap.play("WalkingSkylar")
-				anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
-			
-			if NPC == "Juniper":
-				ap.play("WalkingJuniper")
-				
-			if NPC == "Quincy":
-				ap.play("Walk")
-				
-			if NPC == "Theo":
-				anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
-			
-			path.progress += SPEED * delta		
-		WAIT:
-			if NPC == "Micah" or NPC == "Skylar":
-				#ap.play("IdleSkylar")
-				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
-			
-			if NPC == "Juniper":
-				ap.play("IdleJuniper")
-				
-			if NPC == "Quincy":
-				ap.play("Idle")
-				
-			if NPC == "Theo":
-				anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
-			
-			await get_tree().create_timer(8).timeout
-			state = WALK
-
-func set_random_rotation() -> void:
-	# Set a random rotation on the Y-axis while waiting
-	# Generate a random angle between -90 and 90 degrees in radians
-	var random_angle = randf_range(-PI / 2, PI / 2)  # Random angle in radians within -90 to 90 degrees
+			_process_idle_state(distance_to_target, delta)
+		FOLLOW:
+			_process_follow_state(distance_to_target)
 	
-	# Apply the random rotation on the Y-axis
-	var new_basis = global_transform.basis
-	new_basis = Basis(Vector3.UP, random_angle) * new_basis  # Apply the limited random Y rotation
-	global_transform.basis = new_basis
+func _physics_process(delta: float) -> void:
 
-func _on_interact_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		see_player = true
-	#if body is in group player and input interact pressed, state = idle
+	if is_navigating:
+		var direction = Vector3()
+		nav.target_position = player.global_position
+		direction = nav.get_next_path_position() - global_position
+		direction = direction.normalized()
+		#direction.y = 0
+		velocity = velocity.lerp(direction * SPEED, accel * delta)
+		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
+		nav.set_velocity(velocity)
 
-func _on_interact_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		print("left")
-		state = WALK
-		see_player = false
+	if velocity.length() > MIN_STOP_THRESHOLD:
+		_rotate_towards_velocity()
 
+func _process_idle_state(distance_to_target: float, delta: float) -> void:
+	#print("idle")
+	# Prevent old path issues
+	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
+	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
+	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 
-func _on_wait_timer_timeout() -> void:
-	if state == WALK:
-		set_random_rotation()
-		state = WAIT
+	#if idle for await timer 4 seconds and num == 1, 2, 3 prob
+	#casual
+	#yawn anim
+	#scratch butt anim
+	#looking ani
+	
+	#marker3D options
+	#active marker index from dialogic signal
+	
+	# play animation 1: put tool in
+	# play anim 2: look at photo
+	# anim 3: look out window
+	# if 4 go to sitting state
+	
+	#marker 3D at couch, sit method, restart nav upon int
+	
 
+	#if velocity.length() <= MIN_STOP_THRESHOLD:
+		#idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
+		#anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+	#else:
+		# Ensure blend position matches slight movement
+		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed
+	
+func _process_follow_state(distance_to_target: float) -> void:
+	# Follow the target
+	# Stop following if within stopping distance
+	if distance_to_target <= STOPPING_DISTANCE:
+			is_navigating = false
+			state = IDLE
 
+func _process_wander_state(distance_to_target: float) -> void:
+	return
+	
+func _process_fixing_state(distance_to_target: float) -> void:
+	return
+	
+func _process_caught_state(distance_to_target: float) -> void:
+	return
+		
+func _rotate_towards_velocity() -> void:
+	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
+		
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	object_interaction = true
+	is_navigating = true
+	state = FOLLOW
 
-
-func _on_interactable_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		object_interaction = false
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity = velocity.move_toward(safe_velocity, 0.25)
+	if is_navigating:
+		move_and_slide()

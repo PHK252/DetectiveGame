@@ -5,10 +5,10 @@ extends CharacterBody3D
 @export var armature: Node3D
 @export var nav: NavigationAgent3D
 
-const speed = 1.15
+const speed = 0.85
 const LERP_VAL = 0.15
-const STOPPING_DISTANCE = 2  # Distance at which we stop following
-const FOLLOW_DISTANCE = 2.2  # Distance at which we resume following (hysteresis buffer)
+const STOPPING_DISTANCE = 1.0  # Distance at which we stop following
+const FOLLOW_DISTANCE = 1.2 # Distance at which we resume following (hysteresis buffer)
 const STOPPING_BUFFER = 0.2  # Small buffer to prevent jittering
 const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
 
@@ -43,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		FOLLOW:
 			_process_follow_state(distance_to_target)
 			
-
 	# Apply movement and rotation
 	if is_navigating:
 		move_and_slide()
@@ -56,13 +55,14 @@ func _process_idle_state(distance_to_target: float) -> void:
 	if velocity.length() <= MIN_STOP_THRESHOLD:
 		idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 		anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
-	else:
+	#else:
 		# Ensure blend position matches slight movement
-		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
 
 	if distance_to_target > FOLLOW_DISTANCE:
 		print("Switching to FOLLOW state")
 		state = FOLLOW
+		return
 		
 	if see_player:
 		if Input.is_action_just_pressed("interact"):
@@ -87,17 +87,25 @@ func _process_follow_state(distance_to_target: float) -> void:
 	nav.target_position = player.global_transform.origin
 
 	# Stop following if within stopping distance
-	if distance_to_target <= STOPPING_DISTANCE:
+	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE:
 		print("Switching to IDLE state")
-		state = IDLE
-		return
+		velocity = velocity.lerp(Vector3.ZERO, 0.2)  # 0.2 controls smoothness
+
+	# Ensure NPC fully stops when velocity is low enough
+		if velocity.length() < 0.05:  # Threshold to stop movement
+			velocity = velocity.lerp(Vector3.ZERO, 0.2)
+			move_and_slide()
+			state = IDLE
+			return
 
 	# Follow the target
 	if not nav.is_navigation_finished():
 		var next_point = nav.get_next_path_position()
-		var direction = (next_point - global_transform.origin).normalized()
-		velocity = direction * speed
+		var direction = (next_point - armature.global_transform.origin).normalized()
+		direction.y = 0
+		var velocity = direction * speed 
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+		nav.set_velocity(velocity)
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -124,3 +132,9 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 		is_navigating = true
 		print("stopped interacting")
 		anim_tree["parameters/Blend2/blend_amount"] = 0
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity = velocity.move_toward(safe_velocity, 0.25)
+	if is_navigating:
+		move_and_slide()
