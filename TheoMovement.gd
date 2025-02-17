@@ -30,8 +30,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Ensure NPC gets gravity applied if not on the floor
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
 
 	# Calculate distance to the target
 	var distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
@@ -44,8 +44,8 @@ func _physics_process(delta: float) -> void:
 			_process_follow_state(distance_to_target)
 			
 	# Apply movement and rotation
-	if is_navigating:
-		move_and_slide()
+	#if is_navigating:
+		#move_and_slide()
 	if velocity.length() > MIN_STOP_THRESHOLD:
 		_rotate_towards_velocity()
 
