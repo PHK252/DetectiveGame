@@ -8,8 +8,18 @@ extends CharacterBody3D
 @onready var object_interaction = false
 @export var nav: NavigationAgent3D
 @export var target: Marker3D
+@export var one_shots: Array[String]
+var rng = RandomNumberGenerator.new()
+@export var cooldown: Timer
+@export var wander_timer: Timer
+var cooldown_bool = false
+signal collision_danger
+signal collision_safe
+@export var Beer_Static: Node3D
+@export var Beer_Anim: Node3D
 
-const STOPPING_DISTANCE = 1.0  # Distance at which we stop following
+
+var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
 const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
 #const FOLLOW_DISTANCE = 1.2 
@@ -17,39 +27,62 @@ const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationar
 var idle_blend = 0.0
 var is_navigating = false
 var targ_reach = false
-var accel = 8
+var accel = 10
+@export var marker_positions: Array[Node3D]
+var wander_choice = 0
 
 enum {
 	IDLE, 
 	FOLLOW,
 	WANDER,
-	CAUGHT,
-	FIXING
+	SITTING
 }
 
 var state = IDLE
 var see_player = false
 var at_door = false
 var SPEED = 1.15
-var LERP_VAL = .15
-var rotation_speed = 70
+var LERP_VAL = 0.1
+var rotation_speed = 100
+var is_wandering = false
+var distance_to_target
+var wander_rotate = false
+
 
 func _ready() -> void:
 	state = IDLE
+	var target_position = player.global_position
+	var target_direction = (target_position - global_transform.origin).normalized()
+	look_at(global_transform.origin + -target_direction, Vector3.UP)
+	wander_timer.start()
+	#await get_tree().create_timer(10).timeout
+	#anim_tree.set("parameters/Yawn/request", true)
 	
 func _process(delta: float) -> void:
-	var distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
+
+	if not is_wandering:
+		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
+	else:
+		distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
+
 	match state:
 		IDLE:
 			_process_idle_state(distance_to_target, delta)
 		FOLLOW:
 			_process_follow_state(distance_to_target)
+		WANDER:
+			_process_wander_state(distance_to_target, wander_choice)
+			
 	
 func _physics_process(delta: float) -> void:
 
 	if is_navigating:
 		var direction = Vector3()
-		nav.target_position = player.global_position
+		if not is_wandering:
+			STOPPING_DISTANCE = 1.0
+			nav.target_position = player.global_position
+		else:
+			STOPPING_DISTANCE = 0.4
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
 		#direction.y = 0
@@ -57,64 +90,108 @@ func _physics_process(delta: float) -> void:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		nav.set_velocity(velocity)
 
-	if velocity.length() > MIN_STOP_THRESHOLD:
+	if velocity.length() > MIN_STOP_THRESHOLD and wander_rotate == false:
 		_rotate_towards_velocity()
+	else:
+		_rotate_towards_object(wander_choice)
 
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
-	#print("idle")
+	print("idle")
 	# Prevent old path issues
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 
-	#if idle for await timer 4 seconds and num == 1, 2, 3 prob
-	#casual
-	#yawn anim
-	#scratch butt anim
-	#looking ani
-	
-	#marker3D options
-	#active marker index from dialogic signal
-	
-	# play animation 1: put tool in
-	# play anim 2: look at photo
-	# anim 3: look out window
-	# if 4 go to sitting state
-	
-	#marker 3D at couch, sit method, restart nav upon int
-	
-
-	#if velocity.length() <= MIN_STOP_THRESHOLD:
-		#idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
-		#anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
-	#else:
-		# Ensure blend position matches slight movement
-		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed
-	
 func _process_follow_state(distance_to_target: float) -> void:
-	# Follow the target
-	# Stop following if within stopping distance
 	if distance_to_target <= STOPPING_DISTANCE:
+			#emit_signal("collision_safe")
 			is_navigating = false
+			cooldown_bool = true
+			cooldown.start()
+			wander_timer.start()
 			state = IDLE
 
-func _process_wander_state(distance_to_target: float) -> void:
-	return
+func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
+	anim_tree.set("parameters/Yawn/request", 2)
+	anim_tree.set("parameters/Scratch/request", 2)
+	print("wandering")
+	var current_anim = one_shots[wander_choice]
+
+	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
+		print("gotthere")
+		if current_anim == "Basketball":
+			wander_rotate = true
+			armature.rotation.y = lerp(armature.rotation.y, 0.0, 0.1)
+			#Beer_Static.visible = false
+			#Beer_Anim.visible = true
+		if current_anim == "DrinkBeer":
+			wander_rotate = true
+			armature.rotation.y = lerp(armature.rotation.y, -90.0, 0.1)
+		anim_tree.set("parameters/" + current_anim + "/request", true)
+		is_navigating = false 
+		cooldown_bool = true
+		cooldown.start()
+		wander_timer.start()
+		state = IDLE
 	
-func _process_fixing_state(distance_to_target: float) -> void:
-	return
-	
-func _process_caught_state(distance_to_target: float) -> void:
-	return
-		
 func _rotate_towards_velocity() -> void:
 	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
 		
+func _rotate_towards_object(wander_choice) -> void:
+	if wander_choice == 0:
+		armature.rotation.y = lerp_angle(armature.rotation.y, -90.0, 0.1)
+	elif wander_choice == 1:
+		armature.rotation.y = lerp_angle(armature.rotation.y, 0.0, 0.1)
+		
 func _on_interactable_interacted(interactor: Interactor) -> void:
+	wander_rotate = false
+	#emit_signal("collision_danger")
+	var current_anim = one_shots[wander_choice]
+	anim_tree.set("parameters/Yawn/request", 2)
+	anim_tree.set("parameters/Scratch/request", 2)
+	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	#set all one shots to abort
 	is_navigating = true
+	is_wandering = false
 	state = FOLLOW
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)
 	if is_navigating:
 		move_and_slide()
+
+func _on_interact_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		#emit_signal("collision_danger")
+		see_player = true
+
+func _on_interact_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		#emit_signal("collision_safe")
+		see_player = false
+
+func _on_timer_timeout() -> void:
+	print(cooldown_bool)
+	var choice = rng.randi_range(-10, 10)
+	wander_choice = rng.randi_range(0, 1)
+	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
+		wander_rotate = false
+		
+		if choice > 0:
+			anim_tree.set("parameters/Yawn/request", true)
+			await get_tree().create_timer(9).timeout
+			nav.target_position = marker_positions[wander_choice].global_position
+			is_navigating = true
+			is_wandering = true
+			state = WANDER
+		else:
+			anim_tree.set("parameters/Scratch/request", true)
+			await get_tree().create_timer(5).timeout
+			nav.target_position = marker_positions[wander_choice].global_position
+			is_navigating = true
+			is_wandering = true
+			state = WANDER
+		
+func _on_cooldown_timeout() -> void:
+	print("timeout")
+	cooldown_bool = false

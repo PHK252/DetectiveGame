@@ -1,8 +1,9 @@
 extends CharacterBody3D
 
-@onready var armature = %DaltonStepBack
+@export var armature = Node3D
 @onready var anim_tree = $AnimationTree
 @export var camera = Camera3D
+@export var idle_time: Timer
 var SPEED = 1.15
 const LERP_VAL = .15
 var jogcheck = false
@@ -14,6 +15,7 @@ var _last_frame_was_on_floor = -INF
 signal moving
 signal stopped
 var move_back = false
+var is_interacting = false
 
 var move_back_in_progress = false
 var move_back_start_position = Vector3()
@@ -21,6 +23,8 @@ var move_back_target_position = Vector3()
 var move_back_progress = 0.0  # Tracks the progress of the lerp
 var cam_rotation = false
 var interaction = false
+var in_control = true
+var control_area = false
 
 
 func _ready() -> void:
@@ -49,10 +53,17 @@ func _physics_process(delta: float) -> void:
 			
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
-		var input_dir := Input.get_vector("Right", "Left", "Back", "Forward")
+		var input_dir 
+		
+		if in_control:
+			input_dir = Input.get_vector("Right", "Left", "Back", "Forward")
+		else:
+			input_dir = Vector2.ZERO
+			
 		
 		if GlobalVars.cam_changed == false:
 			if input_dir != Vector2.ZERO:
+				anim_tree.set("parameters/Thinking/request", 2)
 				# Rotate input direction based on the camera's orientation
 				var camera_basis = camera.transform.basis
 				var rotated_dir = (camera_basis.x * input_dir.x + camera_basis.z * input_dir.y).normalized()
@@ -66,33 +77,38 @@ func _physics_process(delta: float) -> void:
 				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
 				jogcheck = true
 				idle_timer_active = false
-				if anim_tree["parameters/Blend3/blend_amount"] < 0:
-					anim_tree["parameters/Blend3/blend_amount"] = 0
+				#if anim_tree["parameters/Blend3/blend_amount"] < 0:
+					#anim_tree["parameters/Blend3/blend_amount"] = 0
 			else:
 				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
 				jogcheck = false
-				if not idle_timer_active:  # Start timer only if not already active
-					idle_timer_active = true
-					print("Starting idle timer")
-					await get_tree().create_timer(8).timeout
-					if velocity.length() == 0:  # Verify idle condition
-						print("Entering thinking state")
-						anim_tree["parameters/Blend3/blend_amount"] = -1
-						print("blend success")
-						await get_tree().create_timer(9.167).timeout
-						print("timerfinished")
-						anim_tree["parameters/Blend3/blend_amount"] = 0
-						print("donethinking")
-					idle_timer_active = false  # Reset for next idle check
+				#idle_time.start()
+				#if not idle_timer_active:  # Start timer only if not already active
+					#anim_tree.set("parameters/Thinking/request", 2)
+					#idle_timer_active = true
+					#print("Starting idle timer")
+					#await get_tree().create_timer(8).timeout
+					#if velocity.length() == 0:  # Verify idle condition
+						#print("Entering thinking state")
+						#anim_tree.set("parameters/Thinking/request", true)
+						#anim_tree["parameters/Blend3/blend_amount"] = -1
+						#print("timerfinished")
+						#anim_tree["parameters/Blend3/blend_amount"] = 0
+						#print("donethinking")
+					#await get_tree().create_timer(12).timeout
+					#idle_timer_active = false  # Reset for next idle check
 			
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		
-		if Input.is_action_pressed("jog") and jogcheck and interaction == false:
-			anim_tree["parameters/Blend3/blend_amount"] = 1
+		if Input.is_action_pressed("jog") and jogcheck and interaction == false and is_interacting == false:
+			idle_timer_active = false
+			anim_tree.set("parameters/Thinking/request", 2)
+			anim_tree["parameters/Blend2/blend_amount"] = 1
 			SPEED = 2.2
-		elif Input.is_action_just_released("jog") or jogcheck == false and anim_tree["parameters/Blend3/blend_amount"] != -1:
-			anim_tree["parameters/Blend3/blend_amount"] = 0
+		elif Input.is_action_just_released("jog") or jogcheck == false or interaction == true or is_interacting == true:
+			#anim_tree.set("parameters/Thinking/request", 2)
+			anim_tree["parameters/Blend2/blend_amount"] = 0
 			SPEED = 1.15
 		
 		if move_back == true and not move_back_in_progress:
@@ -107,9 +123,11 @@ func _physics_process(delta: float) -> void:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 
 func stop_player():
+	anim_tree["parameters/Blend2/blend_amount"] = 0
 	GlobalVars.player_move = false
 
 func start_player():
+	is_interacting = false
 	GlobalVars.player_move = true
 	
 func is_surface_too_steep(normal : Vector3) -> bool:
@@ -177,8 +195,8 @@ func start_move_back():
 	anim_tree.set("parameters/OneShot/request", true)
 	await get_tree().create_timer(0.45).timeout
 	move_back_in_progress = true
-
 	move_back = false
+	is_interacting = true
 
 func _on_closet_stepback() -> void:
 	move_back = true
@@ -186,8 +204,39 @@ func _on_closet_stepback() -> void:
 func _on_camera_system_camera_changed() -> void:
 	cam_rotation = true
 
-
 func _on_player_interactor_interacted_now() -> void:
 	interaction = true
 	await get_tree().create_timer(0.45).timeout
 	interaction = false
+
+func _on_idle_time_timeout() -> void:
+	print("timeforthink")
+	if velocity.length() == 0:  # Verify idle condition
+		print("Entering thinking state")
+		anim_tree.set("parameters/Thinking/request", true)
+
+#func _on_door_point_body_exited(body: Node3D) -> void:
+	#if body.is_in_group("player"):
+		#in_control = false
+		#await get_tree().create_timer(0.5).timeout
+		#in_control = true
+
+func _on_doorcamarea_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and control_area:
+		in_control = false
+		await get_tree().create_timer(0.5).timeout
+		in_control = true
+
+func _on_main_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and control_area:
+		in_control = false
+		await get_tree().create_timer(0.5).timeout
+		in_control = true
+
+func _on_door_point_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		control_area = true
+
+func _on_door_point_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		control_area = false

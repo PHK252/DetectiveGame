@@ -16,6 +16,7 @@ var idle_blend = 0.0
 var state = IDLE  # Current state of the NPC
 var see_player = false
 var is_navigating = true
+var in_kitchen = false
 
 enum {
 	IDLE, 
@@ -32,7 +33,6 @@ func _physics_process(delta: float) -> void:
 	# Ensure NPC gets gravity applied if not on the floor
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
-
 	# Calculate distance to the target
 	var distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
 
@@ -52,17 +52,22 @@ func _physics_process(delta: float) -> void:
 # Handles behavior when NPC is in the IDLE state
 func _process_idle_state(distance_to_target: float) -> void:
 	# Transition to idle animation only if NPC is stationary
-	if velocity.length() <= MIN_STOP_THRESHOLD:
-		idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
-		anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+	#print("idling")
+	velocity = velocity.lerp(Vector3.ZERO, 0.0)
+	idle_blend = lerp(idle_blend, 0.0, 0.0)
+	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 	#else:
 		# Ensure blend position matches slight movement
 		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
 
-	if distance_to_target > FOLLOW_DISTANCE:
+	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating) and in_kitchen == false):
 		print("Switching to FOLLOW state")
 		state = FOLLOW
 		return
+		
+	#if Input.is_action_just_pressed("Exit"):
+		#is_navigating = true
+		#state = FOLLOW
 		
 	if see_player:
 		if Input.is_action_just_pressed("interact"):
@@ -83,29 +88,37 @@ func _process_idle_state(distance_to_target: float) -> void:
 
 # Handles behavior when NPC is in the FOLLOW state
 func _process_follow_state(distance_to_target: float) -> void:
+	#print("following")
 	# Update navigation target dynamically
 	nav.target_position = player.global_transform.origin
 
 	# Stop following if within stopping distance
-	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE:
-		print("Switching to IDLE state")
-		velocity = velocity.lerp(Vector3.ZERO, 0.2)  # 0.2 controls smoothness
-
+	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
+		velocity = velocity.lerp(Vector3.ZERO, 0.2)
+		state = IDLE
+		return
+		#state = IDLE
+		#print("Switching to IDLE state")
+		#velocity = velocity.lerp(Vector3.ZERO, 0.2) # 0.2 controls smoothness
 	# Ensure NPC fully stops when velocity is low enough
-		if velocity.length() < 0.05:  # Threshold to stop movement
-			velocity = velocity.lerp(Vector3.ZERO, 0.2)
-			move_and_slide()
-			state = IDLE
-			return
+		#if velocity.length() < 0.05:  # Threshold to stop movement
+			#velocity = velocity.lerp(Vector3.ZERO, 0.2)
+			#state = IDLE
+			#return
+			
 
 	# Follow the target
 	if not nav.is_navigation_finished():
 		var next_point = nav.get_next_path_position()
 		var direction = (next_point - armature.global_transform.origin).normalized()
-		direction.y = 0
+		#direction.y = 0
 		var velocity = direction * speed 
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
 		nav.set_velocity(velocity)
+		if is_navigating == false:
+			state = IDLE
+	else:
+		state = IDLE
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -129,12 +142,41 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 		anim_tree["parameters/Blend2/blend_amount"] = 1
 		is_navigating = false
 		await get_tree().create_timer(10).timeout
-		is_navigating = true
+		if in_kitchen == false:
+			is_navigating = true
 		print("stopped interacting")
 		anim_tree["parameters/Blend2/blend_amount"] = 0
-
+	#if area.is_in_group("NPC"):
+		#is_navigating = false
+		#state = IDLE
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)
 	if is_navigating:
 		move_and_slide()
+
+#func _on_interact_area_area_exited(area: Area3D) -> void:
+	#if area.is_in_group("NPC"):
+		#if anim_tree["parameters/Blend2/blend_amount"] != 1:
+			#is_navigating = true
+			#state = FOLLOW
+
+func _on_k_control_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		in_kitchen = true
+		is_navigating = false
+		state = IDLE
+
+func _on_k_control_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		in_kitchen = false
+		is_navigating = true
+		state = FOLLOW
+
+#func _on_micah_body_collision_danger() -> void:
+	#is_navigating = false
+	#state = IDLE
+
+#func _on_micah_body_collision_safe() -> void:
+	#is_navigating = true
+	#state = FOLLOW
