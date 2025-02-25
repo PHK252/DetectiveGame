@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export var anim_tree : AnimationTree
+@export var anim_player : AnimationPlayer
 @export var player : CharacterBody3D
 @export var armature = CharacterBody3D
 #@export var WaitTimer : Timer
@@ -50,6 +51,7 @@ var wander_rotate = false
 
 
 func _ready() -> void:
+	anim_player.play("basketball_default")
 	state = IDLE
 	var target_position = player.global_position
 	var target_direction = (target_position - global_transform.origin).normalized()
@@ -82,7 +84,7 @@ func _physics_process(delta: float) -> void:
 			STOPPING_DISTANCE = 1.0
 			nav.target_position = player.global_position
 		else:
-			STOPPING_DISTANCE = 0.4
+			STOPPING_DISTANCE = 0.0
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
 		#direction.y = 0
@@ -90,7 +92,7 @@ func _physics_process(delta: float) -> void:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		nav.set_velocity(velocity)
 
-	if velocity.length() > MIN_STOP_THRESHOLD and wander_rotate == false:
+	if velocity.length() > MIN_STOP_THRESHOLD or wander_rotate == false:
 		_rotate_towards_velocity()
 	else:
 		_rotate_towards_object(wander_choice)
@@ -122,11 +124,13 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		if current_anim == "Basketball":
 			wander_rotate = true
 			armature.rotation.y = lerp(armature.rotation.y, 0.0, 0.1)
+			anim_player.play("basketball")
 			#Beer_Static.visible = false
 			#Beer_Anim.visible = true
 		if current_anim == "DrinkBeer":
 			wander_rotate = true
 			armature.rotation.y = lerp(armature.rotation.y, -90.0, 0.1)
+			_beer_visible()
 		anim_tree.set("parameters/" + current_anim + "/request", true)
 		is_navigating = false 
 		cooldown_bool = true
@@ -137,11 +141,21 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 func _rotate_towards_velocity() -> void:
 	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
 		
+func _beer_visible():
+	await get_tree().create_timer(2.5).timeout
+	Beer_Static.visible = false
+	Beer_Anim.visible = true
+	await get_tree().create_timer(5.8).timeout
+	Beer_Static.visible = true
+	Beer_Anim.visible = false
+	
 func _rotate_towards_object(wander_choice) -> void:
 	if wander_choice == 0:
-		armature.rotation.y = lerp_angle(armature.rotation.y, -90.0, 0.1)
+		armature.rotation.y = -90
+		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y - PI, TAU) - PI, atan2(-1, 0), 0.05)
 	elif wander_choice == 1:
-		armature.rotation.y = lerp_angle(armature.rotation.y, 0.0, 0.1)
+		armature.rotation.y = 0
+		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y + PI, TAU) - PI, atan2(0, 1), 0.05)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
