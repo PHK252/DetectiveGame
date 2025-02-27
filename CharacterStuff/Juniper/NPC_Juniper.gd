@@ -16,7 +16,10 @@ var cooldown_bool = false
 signal collision_danger
 signal collision_safe
 @export var Coffee_Static: Node3D
+@export var FirePlace: Node3D
+@export var BookShelf: Node3D
 @export var Coffee_Anim: Node3D
+var outside_player = false
 
 
 var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
@@ -93,12 +96,6 @@ func _physics_process(delta: float) -> void:
 		look_at(global_transform.origin + -direction, Vector3.UP)
 		nav.set_velocity(velocity)
 
-	if velocity.length() > MIN_STOP_THRESHOLD or wander_rotate == false:
-		pass
-		#_rotate_towards_velocity()
-	else:
-		_rotate_towards_object(wander_choice)
-
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	# Prevent old path issues
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
@@ -113,6 +110,9 @@ func _process_follow_state(distance_to_target: float) -> void:
 			cooldown.start()
 			wander_timer.start()
 			state = IDLE
+	
+	if outside_player:
+		state = IDLE
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
 	#print("wandering")
@@ -125,6 +125,7 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		if current_anim == "Coffee":
 			wander_rotate = true
 			_beer_visible()
+		_rotate_towards_object(wander_choice)
 		anim_tree.set("parameters/" + current_anim + "/request", true)
 		is_navigating = false 
 		cooldown_bool = true
@@ -145,10 +146,21 @@ func _beer_visible():
 	
 func _rotate_towards_object(wander_choice) -> void:
 	if wander_choice == 0:
-		armature.rotation.y = -90
+		var obj_direction = FirePlace.global_position - global_position
+		obj_direction = obj_direction.normalized()
+		obj_direction.y = 0
+		look_at(global_transform.origin + -obj_direction, Vector3.UP)
 		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y - PI, TAU) - PI, atan2(-1, 0), 0.05)
 	elif wander_choice == 1:
-		armature.rotation.y = 0
+		var obj_direction = Coffee_Static.global_position - global_position
+		obj_direction = obj_direction.normalized()
+		obj_direction.y = 0
+		look_at(global_transform.origin + -obj_direction, Vector3.UP) 
+	elif wander_choice == 2:
+		var obj_direction = BookShelf.global_position - global_position
+		obj_direction = obj_direction.normalized()
+		obj_direction.y = 0
+		look_at(global_transform.origin + -obj_direction, Vector3.UP)
 		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y + PI, TAU) - PI, atan2(0, 1), 0.05)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
@@ -183,10 +195,7 @@ func _on_cooldown_timeout() -> void:
 func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
-	wander_choice = rng.randi_range(0, 1)
-	if wander_choice == 1:
-		print("setTrue")
-		GlobalVars.ghost_open = true
+	wander_choice = rng.randi_range(0, 2)
 	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
 		wander_rotate = false
 		#if choice > 0:
@@ -245,3 +254,9 @@ func _on_case_interacted(interactor: Interactor) -> void:
 	is_wandering = false
 	state = FOLLOW
 	
+
+func _on_door_point_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		outside_player = true
+		await get_tree().create_timer(1).timeout
+		outside_player = false

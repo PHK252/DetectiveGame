@@ -30,6 +30,8 @@ func _ready() -> void:
 	nav.target_position = player.global_transform.origin
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+			velocity += get_gravity() * delta
 	# Ensure NPC gets gravity applied if not on the floor
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
@@ -154,7 +156,6 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)
 	if is_navigating:
 		move_and_slide()
-
 #func _on_interact_area_area_exited(area: Area3D) -> void:
 	#if area.is_in_group("NPC"):
 		#if anim_tree["parameters/Blend2/blend_amount"] != 1:
