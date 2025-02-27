@@ -20,16 +20,16 @@ animation = &"BasketballSkylar"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7ld0u"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eolel"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1mj7b"]
 animation = &"IdleSkylar"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yu5n2"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ci3c8"]
 animation = &"WalkingSkylar"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_vhsml"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_eolel")
+blend_point_0/node = SubResource("AnimationNodeAnimation_1mj7b")
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_yu5n2")
+blend_point_1/node = SubResource("AnimationNodeAnimation_ci3c8")
 blend_point_1/pos = 1.0
 min_space = 0.0
 
@@ -42,7 +42,7 @@ min_space = 0.0
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_tulgb"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0nrht"]
-graph_offset = Vector2(297.24, -25.5627)
+graph_offset = Vector2(999.96, 18.5973)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_sf7fg")
 nodes/Animation/position = Vector2(280, 210)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_c07kq")
@@ -84,31 +84,31 @@ script = ExtResource("1_6e8qf")
 [node name="micahExtraAnims" parent="MicahBody" instance=ExtResource("2_nrh3r")]
 
 [node name="Skeleton3D" parent="MicahBody/micahExtraAnims/micahArmature" index="0"]
-bones/1/position = Vector3(1.10652e-09, -8.50578e-08, -1.97604)
+bones/1/position = Vector3(2.08461e-09, -8.50578e-08, -1.99841)
 bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
-bones/3/rotation = Quaternion(-0.107442, -0.0148046, 0.924295, -0.365946)
-bones/4/rotation = Quaternion(-0.307906, 0.000240205, -0.0204125, 0.951198)
-bones/6/rotation = Quaternion(0.637895, 0.00480118, -0.00715686, 0.770076)
+bones/3/rotation = Quaternion(-0.0989219, -0.0372727, 0.924376, -0.366543)
+bones/4/rotation = Quaternion(-0.263357, 0.000243578, -0.0174591, 0.96454)
+bones/6/rotation = Quaternion(0.613949, 0.00501868, -0.00700607, 0.789299)
 bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
-bones/8/rotation = Quaternion(0.10758, -0.0148616, 0.924297, 0.365897)
-bones/9/rotation = Quaternion(-0.307906, -0.000240206, 0.0204125, 0.951198)
-bones/11/rotation = Quaternion(0.637895, -0.00480118, 0.00715686, 0.770076)
-bones/12/position = Vector3(1.10652e-09, -1.71474e-07, -1.97604)
+bones/8/rotation = Quaternion(0.0990674, -0.0373323, 0.924377, 0.366495)
+bones/9/rotation = Quaternion(-0.263357, -0.000243577, 0.0174591, 0.96454)
+bones/11/rotation = Quaternion(0.613949, -0.00501868, 0.00700607, 0.789299)
+bones/12/position = Vector3(2.08461e-09, -1.5926e-07, -1.99841)
 bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
-bones/14/rotation = Quaternion(-0.180488, -2.64683e-10, -6.79469e-11, 0.983577)
-bones/16/rotation = Quaternion(-0.00654901, -9.24276e-18, 2.832e-16, 0.999979)
-bones/17/rotation = Quaternion(-0.111456, -0.0291934, -0.688935, 0.715607)
+bones/14/rotation = Quaternion(-0.185412, -2.6468e-10, -6.79461e-11, 0.982661)
+bones/16/rotation = Quaternion(-0.0123339, 1.60949e-18, -2.19461e-16, 0.999924)
+bones/17/rotation = Quaternion(-0.110693, -0.0305824, -0.683708, 0.720663)
 bones/18/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
 bones/19/rotation = Quaternion(0.0270153, -0.000167356, -0.0006591, 0.999635)
 bones/20/rotation = Quaternion(-0.0262147, -0.000682082, -0.0657145, 0.997494)
-bones/21/rotation = Quaternion(-0.111456, 0.0291934, 0.688935, 0.715607)
+bones/21/rotation = Quaternion(-0.110693, 0.0305824, 0.683708, 0.720663)
 bones/22/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
 bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659107, 0.999635)
 bones/24/rotation = Quaternion(-0.0262147, 0.000682075, 0.0657145, 0.997494)
 bones/25/position = Vector3(-0.248814, -0.0867041, -0.109932)
 bones/25/rotation = Quaternion(-0.00589136, 4.24325e-08, 0.999983, -1.08131e-10)
 bones/27/position = Vector3(0.248814, -0.086704, -0.109932)
-bones/29/position = Vector3(1.10652e-09, -1.1486e-07, -1.97604)
+bones/29/position = Vector3(2.08461e-09, -1.1486e-07, -1.99841)
 bones/29/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="MicahBody/micahExtraAnims"]

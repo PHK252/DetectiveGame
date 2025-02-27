@@ -123,13 +123,11 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		print("gotthere")
 		if current_anim == "Basketball":
 			wander_rotate = true
-			armature.rotation.y = lerp(armature.rotation.y, 0.0, 0.1)
 			anim_player.play("basketball")
 			#Beer_Static.visible = false
 			#Beer_Anim.visible = true
 		if current_anim == "DrinkBeer":
 			wander_rotate = true
-			armature.rotation.y = lerp(armature.rotation.y, -90.0, 0.1)
 			_beer_visible()
 		anim_tree.set("parameters/" + current_anim + "/request", true)
 		is_navigating = false 

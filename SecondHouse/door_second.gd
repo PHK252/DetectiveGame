@@ -92,3 +92,10 @@ func _on_interactable_unfocused(interactor):
 		is_open = false
 		entered = true
 		collision.disabled = false
+		
+func _on_kitchen_point_body_entered(body: CharacterBody3D) -> void:
+	if body.is_in_group("player"):
+		print("entered")
+		if GlobalVars.ghost_open and is_open == false:
+			open()
+			GlobalVars.ghost_open = false

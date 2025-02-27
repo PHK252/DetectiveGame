@@ -240,3 +240,4 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 func _on_door_point_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		control_area = false
+		

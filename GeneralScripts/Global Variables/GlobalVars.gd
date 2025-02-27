@@ -58,3 +58,4 @@ var player_pos
 var first_house_path = "res://FirstHouse/first_house.tscn"
 var cam_changed = false
 var clue_progress = 1
+var ghost_open = false
