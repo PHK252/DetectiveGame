@@ -240,6 +240,28 @@ one_shot = true
 [node name="AnimationTree" parent="Dalton/CharacterBody3D" index="3"]
 root_node = NodePath("../DaltonStepBack")
 parameters/Blend2/blend_amount = 0
+parameters/CellPhone/active = false
+parameters/CellPhone/internal_active = false
+parameters/CellPhone/request = 0
+parameters/Doughnut/active = false
+parameters/Doughnut/internal_active = false
+parameters/Doughnut/request = 0
+parameters/Inspect/active = false
+parameters/Inspect/internal_active = false
+parameters/Inspect/request = 0
+parameters/Knock/active = false
+parameters/Knock/internal_active = false
+parameters/Knock/request = 0
+parameters/SitNoWine/blend_amount = 0
+parameters/SitOutIn/blend_amount = 0
+parameters/Sleep/blend_amount = 0
+parameters/Sneeze/active = false
+parameters/Sneeze/internal_active = false
+parameters/Sneeze/request = 0
+parameters/StuffToilet/active = false
+parameters/StuffToilet/internal_active = false
+parameters/StuffToilet/request = 0
+parameters/WineDrink/blend_amount = 0
 
 [node name="Interactions" type="Node" parent="."]
 
@@ -341,6 +363,21 @@ radius = 0.25
 neighbor_distance = 2.0
 max_neighbors = 2
 time_horizon_agents = 0.5
+
+[node name="AnimationTree" parent="Main/CharacterBody3D" index="4"]
+parameters/Blend3/blend_amount = 0
+parameters/Frustrated/active = false
+parameters/Frustrated/internal_active = false
+parameters/Frustrated/request = 0
+parameters/Nod/active = false
+parameters/Nod/internal_active = false
+parameters/Nod/request = 0
+parameters/NoteAlt/active = false
+parameters/NoteAlt/internal_active = false
+parameters/NoteAlt/request = 0
+parameters/Scratch/active = false
+parameters/Scratch/internal_active = false
+parameters/Scratch/request = 0
 
 [connection signal="interacted" from="Interactions/CSGBox3D/Interactable" to="Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="interacted" from="Interactions/CSGBox3D2/Interactable" to="Micah/MicahBody" method="_on_interactable_interacted"]
