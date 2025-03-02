@@ -203,7 +203,6 @@ idle_time = NodePath("DaltonStepBack/Timer")
 
 [node name="DaltonStepBack" parent="Dalton/CharacterBody3D" index="1"]
 unique_name_in_owner = false
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DetectiveRig" parent="Dalton/CharacterBody3D/DaltonStepBack" index="0"]
 transform = Transform3D(0.263907, 0, 0, 0, -1.15357e-08, -0.263907, 0, 0.263907, -1.15357e-08, 0, 0, 0)
@@ -240,27 +239,9 @@ one_shot = true
 [node name="AnimationTree" parent="Dalton/CharacterBody3D" index="3"]
 root_node = NodePath("../DaltonStepBack")
 parameters/Blend2/blend_amount = 0
-parameters/CellPhone/active = false
-parameters/CellPhone/internal_active = false
-parameters/CellPhone/request = 0
-parameters/Doughnut/active = false
-parameters/Doughnut/internal_active = false
-parameters/Doughnut/request = 0
-parameters/Inspect/active = false
-parameters/Inspect/internal_active = false
-parameters/Inspect/request = 0
-parameters/Knock/active = false
-parameters/Knock/internal_active = false
-parameters/Knock/request = 0
 parameters/SitNoWine/blend_amount = 0
 parameters/SitOutIn/blend_amount = 0
 parameters/Sleep/blend_amount = 0
-parameters/Sneeze/active = false
-parameters/Sneeze/internal_active = false
-parameters/Sneeze/request = 0
-parameters/StuffToilet/active = false
-parameters/StuffToilet/internal_active = false
-parameters/StuffToilet/request = 0
 parameters/WineDrink/blend_amount = 0
 
 [node name="Interactions" type="Node" parent="."]
@@ -325,36 +306,12 @@ avoidance_enabled = true
 [node name="Main" parent="." instance=ExtResource("2_u2sni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2864, -0.120999, 1.48368)
 
-[node name="CharacterBody3D" parent="Main" index="0" node_paths=PackedStringArray("anim_tree", "player", "armature", "nav")]
+[node name="CharacterBody3D" parent="Main" index="0" node_paths=PackedStringArray("anim_tree", "player", "nav")]
 collision_layer = 4
 collision_mask = 7
 anim_tree = NodePath("AnimationTree")
 player = NodePath("../../Dalton/CharacterBody3D")
-armature = NodePath("TheoFixedAnimations/dogrig")
 nav = NodePath("NavigationAgent3D")
-
-[node name="Skeleton3D" parent="Main/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(1.60728e-09, -5.39206e-08, -2.97676)
-bones/3/rotation = Quaternion(0.00803385, 0.345655, 0.8634, -0.367422)
-bones/4/rotation = Quaternion(-0.282964, 0.0392209, -0.0388204, 0.957542)
-bones/5/rotation = Quaternion(0.523769, -0.0666498, 0.0814246, 0.845336)
-bones/8/rotation = Quaternion(-0.00803382, 0.345655, 0.8634, 0.367422)
-bones/9/rotation = Quaternion(-0.282964, -0.0392209, 0.0388203, 0.957542)
-bones/10/rotation = Quaternion(0.523769, 0.0666498, -0.0814246, 0.845336)
-bones/12/position = Vector3(1.60728e-09, -3.0742e-07, -2.97676)
-bones/15/rotation = Quaternion(-0.0785213, 1.13717e-07, -1.14996e-08, 0.996912)
-bones/16/rotation = Quaternion(0.0234538, 8.92923e-09, 8.0887e-09, 0.999725)
-bones/17/rotation = Quaternion(0.473587, 0.0757291, -0.138555, 0.866478)
-bones/18/rotation = Quaternion(0.0488613, 0.000627504, -0.0101275, 0.998754)
-bones/19/rotation = Quaternion(0.502937, -0.0804228, 0.135884, 0.849777)
-bones/20/rotation = Quaternion(0.0488613, -0.000627512, 0.0101275, 0.998754)
-bones/22/rotation = Quaternion(-0.262114, -0.148367, -0.390209, 0.87007)
-bones/23/rotation = Quaternion(-0.00355619, -0.000438865, -0.326331, 0.945249)
-bones/26/rotation = Quaternion(-0.262114, 0.148367, 0.390208, 0.87007)
-bones/27/rotation = Quaternion(-0.00355638, 0.000438896, 0.326332, 0.945248)
-bones/31/position = Vector3(0.962478, -0.0311821, -2.18516)
-bones/33/position = Vector3(1.60728e-09, -1.13525e-07, -2.97676)
-bones/36/position = Vector3(-0.962478, -0.0311821, -2.18516)
 
 [node name="NavigationAgent3D" parent="Main/CharacterBody3D" index="3"]
 avoidance_enabled = true
@@ -366,18 +323,6 @@ time_horizon_agents = 0.5
 
 [node name="AnimationTree" parent="Main/CharacterBody3D" index="4"]
 parameters/Blend3/blend_amount = 0
-parameters/Frustrated/active = false
-parameters/Frustrated/internal_active = false
-parameters/Frustrated/request = 0
-parameters/Nod/active = false
-parameters/Nod/internal_active = false
-parameters/Nod/request = 0
-parameters/NoteAlt/active = false
-parameters/NoteAlt/internal_active = false
-parameters/NoteAlt/request = 0
-parameters/Scratch/active = false
-parameters/Scratch/internal_active = false
-parameters/Scratch/request = 0
 
 [connection signal="interacted" from="Interactions/CSGBox3D/Interactable" to="Micah/MicahBody" method="_on_interactable_interacted"]
 [connection signal="interacted" from="Interactions/CSGBox3D2/Interactable" to="Micah/MicahBody" method="_on_interactable_interacted"]
@@ -390,4 +335,4 @@ parameters/Scratch/request = 0
 [editable path="Micah"]
 [editable path="Micah/MicahBody/micahExtraAnims"]
 [editable path="Main"]
-[editable path="Main/CharacterBody3D/TheoFixedAnimations"]
+[editable path="Main/CharacterBody3D/DoggyPartner2"]

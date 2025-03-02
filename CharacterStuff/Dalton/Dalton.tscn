@@ -160,7 +160,6 @@ script = ExtResource("1_e0ucr")
 
 [node name="DaltonStepBack" parent="CharacterBody3D" instance=ExtResource("3_ga6s4")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
 bones/0/rotation = Quaternion(0, 0, 0, 1)
