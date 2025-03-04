@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=4 uid="uid://ciu4t5hvqk2vs"]
 
-[ext_resource type="Script" path="res://NPC.gd" id="1_45yl0"]
+[ext_resource type="Script" path="res://ThirdHouse/QuincyNPC.gd" id="1_wmly3"]
 [ext_resource type="PackedScene" uid="uid://bfymhot7wrfyx" path="res://CharacterStuff/Quincy/QuincyAnims.glb" id="2_whut4"]
 [ext_resource type="Material" uid="uid://gi0pm6tfwqw1" path="res://ShaderScripts/Quincy.tres" id="3_y2stl"]
 [ext_resource type="PackedScene" uid="uid://dyabqs4jkq20b" path="res://CharacterStuff/Quincy/lighter.glb" id="5_4lvtb"]
@@ -258,104 +258,112 @@ size = Vector3(1.17087, 1.75531, 1.14941)
 
 [node name="Main" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-script = ExtResource("1_45yl0")
+[node name="Quincy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("packofcigs", "cig", "lighter", "tail_anim", "cig_anim", "quincy_tree", "armature", "distraction_timer")]
+script = ExtResource("1_wmly3")
+packofcigs = NodePath("QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack")
+cig = NodePath("QuincyAnims/quincyrig/Skeleton3D/CigAttachment/Cig")
+lighter = NodePath("QuincyAnims/quincyrig/Skeleton3D/LighterAttachment/lighter2")
+tail_anim = NodePath("QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ/AnimationTree")
+cig_anim = NodePath("QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack/AnimationPlayer")
+quincy_tree = NodePath("QuincyAnims/AnimationTree")
+armature = NodePath("QuincyAnims/quincyrig")
+distraction_timer = NodePath("DistractionTime")
 
-[node name="QuincyAnims" parent="CharacterBody3D" instance=ExtResource("2_whut4")]
+[node name="QuincyAnims" parent="Quincy" instance=ExtResource("2_whut4")]
 
-[node name="Skeleton3D" parent="CharacterBody3D/QuincyAnims/quincyrig" index="0"]
-bones/1/position = Vector3(-2.18605e-10, -5.75183e-08, -3.01727)
-bones/1/rotation = Quaternion(5.40623e-09, 0.708381, 0.70583, -5.25628e-09)
-bones/3/rotation = Quaternion(0.0210068, 0.309838, 0.878827, -0.362247)
-bones/4/rotation = Quaternion(-0.216307, 0.0883695, -0.0383769, 0.97156)
-bones/5/rotation = Quaternion(0.493811, -0.110464, 0.103039, 0.856348)
+[node name="Skeleton3D" parent="Quincy/QuincyAnims/quincyrig" index="0"]
+bones/1/position = Vector3(-2.02629e-10, -5.75183e-08, -3.01763)
+bones/1/rotation = Quaternion(5.4066e-09, 0.708387, 0.705824, -5.25592e-09)
+bones/3/rotation = Quaternion(0.0211381, 0.309478, 0.878971, -0.362196)
+bones/4/rotation = Quaternion(-0.215607, 0.0888195, -0.0383315, 0.971677)
+bones/5/rotation = Quaternion(0.493493, -0.110864, 0.103217, 0.856458)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0210067, 0.309838, 0.878826, 0.362247)
-bones/9/rotation = Quaternion(-0.216307, -0.0883695, 0.0383769, 0.97156)
-bones/10/rotation = Quaternion(0.493811, 0.110464, -0.103039, 0.856348)
+bones/8/rotation = Quaternion(-0.0211381, 0.309478, 0.878971, 0.362196)
+bones/9/rotation = Quaternion(-0.215607, -0.0888195, 0.0383315, 0.971677)
+bones/10/rotation = Quaternion(0.493493, 0.110864, -0.103217, 0.856458)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935922)
-bones/12/position = Vector3(-2.18605e-10, -1.99923e-07, -3.01727)
-bones/12/rotation = Quaternion(-0.459184, 2.05163e-08, 6.29112e-08, 0.888341)
-bones/15/rotation = Quaternion(-0.099052, 1.17685e-07, -1.00629e-08, 0.995082)
-bones/16/rotation = Quaternion(0.0154308, 7.76892e-09, 1.25007e-08, 0.999881)
-bones/18/rotation = Quaternion(0.0183041, -0.00973751, -0.00964963, 0.999739)
-bones/20/rotation = Quaternion(0.0183042, 0.00973751, 0.00964962, 0.999739)
+bones/12/position = Vector3(-2.02629e-10, -2.01405e-07, -3.01763)
+bones/12/rotation = Quaternion(-0.459192, 2.05176e-08, 6.29103e-08, 0.888337)
+bones/15/rotation = Quaternion(-0.0991807, 1.17687e-07, -1.00476e-08, 0.99507)
+bones/16/rotation = Quaternion(0.0154461, 7.7883e-09, 1.2418e-08, 0.999881)
+bones/18/rotation = Quaternion(0.0180285, -0.00983094, -0.00964527, 0.999743)
+bones/20/rotation = Quaternion(0.0180285, 0.00983094, 0.00964526, 0.999743)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.249455, -0.13687, -0.387883, 0.87669)
-bones/23/rotation = Quaternion(-0.00322775, -0.000443398, -0.296192, 0.955123)
+bones/22/rotation = Quaternion(-0.249368, -0.136816, -0.387946, 0.876695)
+bones/23/rotation = Quaternion(-0.00322391, -0.000443451, -0.295841, 0.955232)
 bones/24/rotation = Quaternion(0.0187947, 0.00442638, -0.00950232, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.246849, 0.139225, 0.387745, 0.877118)
-bones/27/rotation = Quaternion(-0.00321757, 0.000443589, 0.295241, 0.955417)
+bones/26/rotation = Quaternion(-0.246749, 0.139181, 0.38781, 0.877124)
+bones/27/rotation = Quaternion(-0.00321362, 0.000443643, 0.294878, 0.955529)
 bones/28/rotation = Quaternion(0.0187947, -0.00442637, 0.00950232, 0.999768)
 bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, 0, 0.999862, -5.55111e-17)
 bones/30/rotation = Quaternion(-2.48182e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(1.03943, -0.0384472, -2.20443)
-bones/33/position = Vector3(-2.18605e-10, -1.17122e-07, -3.01727)
-bones/33/rotation = Quaternion(-0.707105, 0.00148416, 0.707105, -0.00148421)
+bones/31/position = Vector3(1.03991, -0.0384816, -2.20456)
+bones/33/position = Vector3(-2.02629e-10, -1.17122e-07, -3.01763)
+bones/33/rotation = Quaternion(-0.707105, 0.0014911, 0.707105, -0.00149116)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, 0, 0.999862, 5.55111e-17)
-bones/36/position = Vector3(-1.05135, -0.0276514, -2.20613)
+bones/36/position = Vector3(-1.05189, -0.0276347, -2.20626)
 
-[node name="quincy" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D" index="0"]
+[node name="quincy" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_tilqc")
 skin = SubResource("Skin_6vonc")
 
-[node name="TailAttachment" type="BoneAttachment3D" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D" index="1"]
-transform = Transform3D(1, -1.30615e-07, -2.13248e-08, 9.29317e-08, 0.578299, 0.815825, -9.42266e-08, -0.815825, 0.578299, -2.18605e-10, -1.99923e-07, -3.01727)
+[node name="TailAttachment" type="BoneAttachment3D" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D" index="1"]
+transform = Transform3D(1, -1.30614e-07, -2.13227e-08, 9.2928e-08, 0.578285, 0.815835, -9.42289e-08, -0.815835, 0.578285, -2.02629e-10, -2.01405e-07, -3.01763)
 bone_name = "DEF_Spine_01"
 bone_idx = 12
 
-[node name="tailQ" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/TailAttachment" instance=ExtResource("6_anl1g")]
+[node name="tailQ" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/TailAttachment" instance=ExtResource("6_anl1g")]
 transform = Transform3D(3.46275, 1.08725e-07, 3.19103e-08, 4.25419e-09, 0.849732, -3.35688, -1.13231e-07, 3.35688, 0.849732, -2.76706e-07, -1.6956, -2.59655)
 
-[node name="QuincyTail" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ" index="0"]
+[node name="QuincyTail" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ" index="0"]
 transform = Transform3D(0.128734, 0, 0, 0, -5.62715e-09, -0.128734, 0, 0.128734, -5.62715e-09, 0.00371364, 0.760304, -0.145233)
 
-[node name="Skeleton3D" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ/QuincyTail" index="0"]
+[node name="Skeleton3D" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ/QuincyTail" index="0"]
 bones/0/rotation = Quaternion(0.0367603, 0.00289238, -0.00525729, 0.999306)
-bones/1/rotation = Quaternion(-0.160385, 0.00960191, -0.0846118, 0.983375)
+bones/1/rotation = Quaternion(-0.155892, 0.0134805, -0.105184, 0.982065)
 bones/2/rotation = Quaternion(-0.0324854, -0.00840287, 0.100727, 0.994348)
 bones/3/rotation = Quaternion(0.328977, -0.104131, 0.00984383, 0.938528)
 bones/4/rotation = Quaternion(0.192826, -0.0654902, 0.0478505, 0.977875)
 bones/5/rotation = Quaternion(0.0204284, 0.00139657, 0.0583011, 0.998089)
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ"]
+[node name="AnimationTree" type="AnimationTree" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ"]
 tree_root = SubResource("AnimationNodeStateMachine_y3lq3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/curl = false
 parameters/conditions/walk = false
 
-[node name="LighterAttachment" type="BoneAttachment3D" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D" index="2"]
-transform = Transform3D(-0.650989, -0.0156269, 0.758926, 0.721575, 0.297664, 0.62508, -0.235673, 0.954542, -0.1825, 1.03943, -0.0406901, -2.2045)
+[node name="LighterAttachment" type="BoneAttachment3D" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D" index="2"]
+transform = Transform3D(-0.65118, -0.0152459, 0.75877, 0.721547, 0.297455, 0.625212, -0.235232, 0.954614, -0.182696, 1.03991, -0.0407353, -2.20462)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
-[node name="lighter2" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/LighterAttachment" instance=ExtResource("5_4lvtb")]
+[node name="lighter2" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/LighterAttachment" instance=ExtResource("5_4lvtb")]
 transform = Transform3D(1.22945, 2.28626, -2.29175, -3.12791, 1.47046, -0.211097, 0.833814, 2.1451, 2.58727, -0.0194002, 0.26907, 0.0640883)
 
-[node name="CigAttachment" type="BoneAttachment3D" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D" index="3"]
-transform = Transform3D(-0.652677, 0.010183, -0.757567, -0.720386, 0.301332, 0.624694, 0.23464, 0.953465, -0.189337, -1.05135, -0.0298897, -2.20617)
+[node name="CigAttachment" type="BoneAttachment3D" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D" index="3"]
+transform = Transform3D(-0.652874, 0.00977223, -0.757404, -0.720356, 0.301135, 0.624824, 0.234187, 0.953531, -0.189564, -1.05189, -0.0298835, -2.20629)
 bone_name = "DEF_Hand.R"
 bone_idx = 28
 
-[node name="Cig" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/CigAttachment" instance=ExtResource("6_0vk76")]
+[node name="Cig" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/CigAttachment" instance=ExtResource("6_0vk76")]
 transform = Transform3D(2.53741, -1.1276, -2.06899, 2.22648, 2.1427, 1.56278, 0.771357, -2.47548, 2.29513, 0.0253613, 0.237815, -0.0421755)
 
-[node name="CigPackAttachment" type="BoneAttachment3D" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D" index="4"]
-transform = Transform3D(-0.650989, -0.0156269, 0.758926, 0.721575, 0.297664, 0.62508, -0.235673, 0.954542, -0.1825, 1.03943, -0.0406901, -2.2045)
+[node name="CigPackAttachment" type="BoneAttachment3D" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D" index="4"]
+transform = Transform3D(-0.65118, -0.0152459, 0.75877, 0.721547, 0.297455, 0.625212, -0.235232, 0.954614, -0.182696, 1.03991, -0.0407353, -2.20462)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
-[node name="CigPack" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment" instance=ExtResource("7_4j75a")]
+[node name="CigPack" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment" instance=ExtResource("7_4j75a")]
 transform = Transform3D(-1.60056, 2.12137, 2.22006, 3.06825, 1.20384, 1.06173, -0.121367, 2.45789, -2.43613, -0.117156, 0.180321, -0.140951)
 
-[node name="Skeleton3D" parent="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack/cigOpen" index="1"]
+[node name="Skeleton3D" parent="Quincy/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack/cigOpen" index="1"]
 bones/0/rotation = Quaternion(-7.12247e-08, 8.74914e-18, -1.40529e-17, 1)
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterBody3D/QuincyAnims"]
+[node name="AnimationTree" type="AnimationTree" parent="Quincy/QuincyAnims"]
 tree_root = SubResource("AnimationNodeBlendTree_oqluu")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Blend3/blend_amount = 0.0
@@ -373,19 +381,23 @@ parameters/Wine/active = false
 parameters/Wine/internal_active = false
 parameters/Wine/request = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quincy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.827, 0)
 shape = SubResource("CapsuleShape3D_2ii1r")
 
-[node name="InteractArea" type="Area3D" parent="CharacterBody3D"]
+[node name="InteractArea" type="Area3D" parent="Quincy"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/InteractArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quincy/InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0277863, 0.941192, 0.074707)
 shape = SubResource("BoxShape3D_0bwqh")
 
-[connection signal="body_entered" from="CharacterBody3D/InteractArea" to="CharacterBody3D" method="_on_interact_area_body_entered"]
-[connection signal="body_exited" from="CharacterBody3D/InteractArea" to="CharacterBody3D" method="_on_interact_area_body_exited"]
+[node name="DistractionTime" type="Timer" parent="Quincy"]
+wait_time = 15.0
+one_shot = true
 
-[editable path="CharacterBody3D/QuincyAnims"]
-[editable path="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ"]
-[editable path="CharacterBody3D/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack"]
+[connection signal="body_entered" from="Quincy/InteractArea" to="Quincy" method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="Quincy/InteractArea" to="Quincy" method="_on_interact_area_body_exited"]
+
+[editable path="Quincy/QuincyAnims"]
+[editable path="Quincy/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ"]
+[editable path="Quincy/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack"]

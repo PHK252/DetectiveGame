@@ -241,3 +241,21 @@ func _on_door_point_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		control_area = false
 		
+
+func _on_sitting_ppl_dalton_invisible() -> void:
+	armature.visible = false
+	in_control = false
+
+func _on_sitting_ppl_dalton_visible() -> void:
+	armature.visible = true
+	in_control = true
+
+
+func _on_detective_anims_dalton_invisible() -> void:
+	armature.visible = false
+	in_control = false
+
+
+func _on_detective_anims_dalton_visible() -> void:
+	armature.visible = true
+	in_control = true

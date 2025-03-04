@@ -5,6 +5,9 @@ extends CharacterBody3D
 @export var armature: Node3D
 @export var nav: NavigationAgent3D
 @export var marker_list: Array[Node3D]
+@export var cooldownTime: Timer
+@export var InvestigateTime: Timer
+var animation_choice = 0
 
 const speed = 0.85
 const LERP_VAL = 0.15
@@ -24,6 +27,7 @@ var is_investigating = false
 var going_to_bar = false
 var distance_to_target
 signal TheoSit 
+var cooldown = false
 
 enum {
 	IDLE, 
@@ -58,11 +62,19 @@ func _physics_process(delta: float) -> void:
 		_rotate_towards_velocity()
 
 func _process_investigate_state(distance_to_target) -> void:
+	
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
 		if going_to_bar:
 			armature.visible = false
 			emit_signal("TheoSit")
+		if not going_to_bar and animation_choice >= 3:
+			anim_tree.set("parameters/NoteAlt/request", true)
+		if not going_to_bar and animation_choice <= 2:
+			anim_tree.set("parameters/Scratch/request", true)
 		velocity = velocity.lerp(Vector3.ZERO, 0.2)
+		cooldown = true
+		cooldownTime.start()
+		InvestigateTime.start()
 		state = IDLE
 		return
 			
@@ -202,13 +214,21 @@ func _on_k_control_body_exited(body: Node3D) -> void:
 	#state = FOLLOW
 
 func _on_theo_wander_body_entered(body: Node3D) -> void:
+	animation_choice = rng.randi_range(0, 10)
 	is_investigating = true
+	nav.target_position = marker_list[investigate_choice].global_position
+	is_navigating = true
+	STOPPING_DISTANCE = 0.0
+	state = INVESTIGATE
 
 func _on_investigate_timer_timeout() -> void:
 	var choice = rng.randi_range(-10, 10)
 	investigate_choice = rng.randi_range(0, 2)
-	if is_investigating == true:
+	animation_choice = rng.randi_range(0, 10)
+	if is_investigating == true and cooldown == false:
 		nav.target_position = marker_list[investigate_choice].global_position
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_tree.set("parameters/NoteAlt/request", 2)
 		is_navigating = true
 		STOPPING_DISTANCE = 0.0
 		state = INVESTIGATE
@@ -223,3 +243,7 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 		nav.target_position = marker_list[investigate_choice].global_position
 		STOPPING_DISTANCE = 0.0
 		state = INVESTIGATE
+		
+
+func _on_cool_down_timer_timeout() -> void:
+	cooldown = false
