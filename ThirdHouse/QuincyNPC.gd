@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var packofcigs: Node3D
 @export var cig: Node3D
 @export var lighter: Node3D
+@export var smoke: GPUParticles3D
+@export var smoke_release: GPUParticles3D
 
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
@@ -54,6 +56,7 @@ func _ready() -> void:
 	cig.visible = false
 	lighter.visible = false
 	wineAnim.visible = false
+	smoke.emitting = false 
 	
 func _process(delta: float) -> void:
 	if is_distracted == false:
@@ -126,6 +129,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	
 	if ((distance_to_target > FOLLOW_DISTANCE) and is_navigating and not is_distracted):
 		print("Switching to FOLLOW state")
+		quincy_tree.set("parameters/Smoking/request", 2)
 		state = FOLLOW
 		return
 	
@@ -191,3 +195,24 @@ func _on_quincy_one_shot_timer_timeout() -> void:
 		await get_tree().create_timer(4.0).timeout
 		wineStatic.visible = true
 		wineAnim.visible = false
+
+func _on_smoke_time_timeout() -> void:
+	if state == IDLE and is_distracted == false:
+		is_navigating = false
+		quincy_tree.set("parameters/Smoking/request", true)
+		await get_tree().create_timer(2.2).timeout
+		packofcigs.visible = true
+		await get_tree().create_timer(1.7).timeout
+		cig.visible = true
+		await get_tree().create_timer(1.7).timeout
+		packofcigs.visible = false
+		lighter.visible = true
+		await get_tree().create_timer(1.2).timeout
+		smoke.emitting = true
+		await get_tree().create_timer(1.5).timeout
+		smoke_release.emitting = true
+		smoke.emitting = false
+		packofcigs.visible = false
+		lighter.visible = false
+		cig.visible = false
+		is_navigating = true
