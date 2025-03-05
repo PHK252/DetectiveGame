@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var lighter: Node3D
 @export var smoke: GPUParticles3D
 @export var smoke_release: GPUParticles3D
+@export var phone: Node3D
 
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
@@ -41,6 +42,10 @@ var distraction_rotate = false
 var wine_fall = false
 var catch_possibility = false
 var is_drinking = false
+var snowmobile_distraction = false
+var bathroom_distraction = false
+var poolTable = false
+var poolPos
 
 enum {
 	IDLE, 
@@ -57,6 +62,7 @@ func _ready() -> void:
 	lighter.visible = false
 	wineAnim.visible = false
 	smoke.emitting = false 
+	phone.visible = false
 	
 func _process(delta: float) -> void:
 	if is_distracted == false:
@@ -126,7 +132,20 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 		
 	if wander_choice == 1: 
 		quincy_tree.set("parameters/Blend3/blend_amount", 1)
+		
+	if wander_choice == 4:
+		quincy_tree.set("parameters/Blend3/blend_amount", -1)
+		
+	if wander_choice == 5:
+		is_navigating = false
+		var snow_pos = (marker_positions[6].global_position - global_transform.origin).normalized()
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(snow_pos.x, snow_pos.z), LERP_VAL)
 	
+	if poolTable:
+		is_navigating = false
+		poolPos = (marker_positions[7].global_position - global_transform.origin).normalized()
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(poolPos.x, poolPos.z), LERP_VAL)
+		
 	if ((distance_to_target > FOLLOW_DISTANCE) and is_navigating and not is_distracted):
 		print("Switching to FOLLOW state")
 		quincy_tree.set("parameters/Smoking/request", 2)
@@ -136,6 +155,9 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 func _process_follow_state(distance_to_target: float) -> void:
 	#print("q_follow")
 	#print(distance_to_target)
+	if poolTable:
+		state = IDLE
+	
 	if distance_to_target <= STOPPING_DISTANCE:
 			catch_possibility = false
 			#emit_signal("collision_safe")
@@ -143,6 +165,9 @@ func _process_follow_state(distance_to_target: float) -> void:
 			#cooldown_bool = true
 			#cooldown.start()
 			#wander_timer.start()
+			if snowmobile_distraction:
+				quincy_tree.set("parameters/Call/request", true)
+				phone.visible = true
 			state = IDLE
 
 func _on_theo_wander_body_entered(body: Node3D) -> void:
@@ -185,6 +210,22 @@ func _on_distraction_time_timeout() -> void:
 		is_distracted = false
 		is_navigating = true
 		state = FOLLOW
+	
+	if wander_choice == 4:
+		quincy_tree.set("parameters/Blend3/blend_amount", 0)
+		wander_choice = 10
+		is_distracted = false
+		is_navigating = true
+		bathroom_distraction = false
+		state = FOLLOW
+		
+	if wander_choice == 5:
+		phone.visible = false
+		quincy_tree.set("parameters/Call/request", 2)
+		snowmobile_distraction = false
+		is_distracted = false
+		is_navigating = true
+		state = FOLLOW
 		
 func _on_quincy_one_shot_timer_timeout() -> void:
 	if is_drinking:
@@ -216,3 +257,48 @@ func _on_smoke_time_timeout() -> void:
 		lighter.visible = false
 		cig.visible = false
 		is_navigating = true
+
+func _on_bathroom_q_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if bathroom_distraction == false:
+			is_distracted = true
+			is_navigating = true
+			wander_choice = 3
+			nav.target_position = marker_positions[3].global_position
+			state = FOLLOW
+
+func _on_bathroom_q_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if bathroom_distraction == false:
+			is_distracted = false
+			is_navigating = true
+			state = FOLLOW
+		
+		if bathroom_distraction == true:
+			is_navigating = true
+			wander_choice = 4
+			nav.target_position = marker_positions[4].global_position
+			state = FOLLOW
+			distraction_timer.start()
+
+func _on_toilet_stuff_distraction() -> void:
+	bathroom_distraction = true
+
+func _on_snowmobile_distraction() -> void:
+	snowmobile_distraction = true
+	is_distracted = true
+	wander_choice = 5
+	nav.target_position = marker_positions[5].global_position
+	state = FOLLOW
+	distraction_timer.start()
+
+func _on_pool_table_stop_body_entered(body: Node3D) -> void:
+	if body.name == "Quincy":
+		poolTable = true 
+		is_navigating = false
+		is_distracted = true
+		quincy_tree.set("parameters/Pool/request", true)
+		await get_tree().create_timer(15).timeout
+		is_distracted = false
+		is_navigating = true 
+		poolTable = false

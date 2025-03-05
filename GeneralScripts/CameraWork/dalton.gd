@@ -267,3 +267,21 @@ func _on_doughnut_001_time_to_eat() -> void:
 	in_control = false
 	await get_tree().create_timer(7).timeout
 	in_control = true
+
+func _on_toilet_stuff_distraction() -> void:
+	anim_tree.set("parameters/StuffToilet/request", true)
+	in_control = false
+	await get_tree().create_timer(7).timeout
+	in_control = true
+
+func _on_snowmobile_distraction() -> void:
+	anim_tree.set("parameters/Inspect/request", true)
+	in_control = false
+	await get_tree().create_timer(7).timeout
+	in_control = true
+
+func _on_phone_call_phone_call() -> void:
+	anim_tree.set("parameters/CellPhone/request", true)
+	in_control = false
+	await get_tree().create_timer(7).timeout
+	in_control = true
