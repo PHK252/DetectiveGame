@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var marker_list: Array[Node3D]
 @export var cooldownTime: Timer
 @export var InvestigateTime: Timer
+@export var wine_area_control: CollisionShape3D
+@export var wAcontrol2: Area3D
 var animation_choice = 0
 
 const speed = 0.85
@@ -27,6 +29,7 @@ var is_investigating = false
 var going_to_bar = false
 var distance_to_target
 signal TheoSit 
+signal TheoStand
 var cooldown = false
 
 enum {
@@ -62,7 +65,6 @@ func _physics_process(delta: float) -> void:
 		_rotate_towards_velocity()
 
 func _process_investigate_state(distance_to_target) -> void:
-	
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
 		if going_to_bar:
 			armature.visible = false
@@ -92,8 +94,17 @@ func _process_investigate_state(distance_to_target) -> void:
 		state = IDLE
 
 func _process_sitting_state() -> void:
-	pass
-
+	wine_area_control.disabled = true
+	wAcontrol2.monitoring = false
+	
+	if Input.is_action_pressed("meeting_done"):
+		going_to_bar = false
+		armature.visible = true
+		is_investigating = true
+		investigate_choice = 0
+		emit_signal("TheoStand")
+		state = IDLE
+		
 # Handles behavior when NPC is in the IDLE state
 func _process_idle_state(distance_to_target: float) -> void:
 	# Transition to idle animation only if NPC is stationary
@@ -104,6 +115,8 @@ func _process_idle_state(distance_to_target: float) -> void:
 	#else:
 		# Ensure blend position matches slight movement
 		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+	if going_to_bar:
+		state = SITTING
 
 	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false):
 		print("Switching to FOLLOW state")
@@ -156,7 +169,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 		state = IDLE
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and is_investigating == false:
 		print("waiting for interact")
 		see_player = true
 		state = IDLE
@@ -225,7 +238,7 @@ func _on_investigate_timer_timeout() -> void:
 	var choice = rng.randi_range(-10, 10)
 	investigate_choice = rng.randi_range(0, 2)
 	animation_choice = rng.randi_range(0, 10)
-	if is_investigating == true and cooldown == false:
+	if is_investigating == true and cooldown == false and going_to_bar == false:
 		nav.target_position = marker_list[investigate_choice].global_position
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -234,6 +247,7 @@ func _on_investigate_timer_timeout() -> void:
 		state = INVESTIGATE
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
+	print("entered")
 	if body.is_in_group("player"):
 		print("wine_time")
 		is_investigating = false

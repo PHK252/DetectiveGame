@@ -29,6 +29,7 @@ var control_area = false
 
 func _ready() -> void:
 	add_to_group("player")
+	#doughnut.visible = false
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames() 
@@ -258,4 +259,11 @@ func _on_detective_anims_dalton_invisible() -> void:
 
 func _on_detective_anims_dalton_visible() -> void:
 	armature.visible = true
+	in_control = true
+
+
+func _on_doughnut_001_time_to_eat() -> void:
+	anim_tree.set("parameters/Doughnut/request", true)
+	in_control = false
+	await get_tree().create_timer(7).timeout
 	in_control = true

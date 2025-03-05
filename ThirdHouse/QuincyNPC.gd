@@ -5,6 +5,10 @@ extends CharacterBody3D
 @export var cig: Node3D
 @export var lighter: Node3D
 
+@export var wineStatic: Node3D
+@export var wineAnim: Node3D
+@export var winepoint: Marker3D
+
 #Animation Controls
 @export var tail_anim: AnimationTree
 @export var cig_anim: AnimationPlayer
@@ -34,6 +38,7 @@ var is_distracted = false
 var distraction_rotate = false
 var wine_fall = false
 var catch_possibility = false
+var is_drinking = false
 
 enum {
 	IDLE, 
@@ -48,6 +53,7 @@ func _ready() -> void:
 	packofcigs.visible = false
 	cig.visible = false
 	lighter.visible = false
+	wineAnim.visible = false
 	
 func _process(delta: float) -> void:
 	if is_distracted == false:
@@ -97,7 +103,24 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	quincy_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
-	
+	#if Input.is_action_just_pressed("meeting_done"):
+	if wander_choice == 2:
+		is_navigating = false
+		var playPos = (winepoint.global_position - global_transform.origin).normalized()
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(playPos.x, playPos.z), LERP_VAL)
+		is_drinking = true
+		#quincy_tree.set("parameters/Blend3/blend_amount", 1)
+		
+		if Input.is_action_just_pressed("meeting_done"):
+			quincy_tree.set("parameters/Wine/request", 2)
+			is_drinking = false
+			is_distracted = true
+			is_navigating = true
+			wander_choice = 0
+			nav.target_position = marker_positions[0].global_position
+			state = FOLLOW
+			
+		
 	if wander_choice == 1: 
 		quincy_tree.set("parameters/Blend3/blend_amount", 1)
 	
@@ -127,8 +150,8 @@ func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
 		if wine_fall == false: 
 			is_distracted = true
 			is_navigating = true
-			wander_choice = 0
-			nav.target_position = marker_positions[0].global_position
+			wander_choice = 2
+			nav.target_position = marker_positions[2].global_position
 			state = FOLLOW
 		
 		if wine_fall == true:
@@ -157,3 +180,14 @@ func _on_distraction_time_timeout() -> void:
 		wander_choice = 10
 		is_distracted = false
 		is_navigating = true
+		state = FOLLOW
+		
+func _on_quincy_one_shot_timer_timeout() -> void:
+	if is_drinking:
+		quincy_tree.set("parameters/Wine/request", true)
+		await get_tree().create_timer(2.2).timeout
+		wineStatic.visible = false
+		wineAnim.visible = true
+		await get_tree().create_timer(4.0).timeout
+		wineStatic.visible = true
+		wineAnim.visible = false
