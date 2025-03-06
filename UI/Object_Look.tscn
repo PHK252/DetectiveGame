@@ -31,20 +31,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_l20xi")
 
-[node name="Object front" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.5
-offset_top = -436.5
-offset_right = 300.5
-offset_bottom = 436.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_y0pbs")
-
 [node name="Object Back" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,6 +45,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_fr0eo")
 
+[node name="Object front" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -436.5
+offset_right = 300.5
+offset_bottom = 436.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y0pbs")
+
 [node name="Exit" type="TextureButton" parent="."]
 offset_left = 52.0
 offset_top = 31.0
@@ -69,6 +69,6 @@ texture_pressed = ExtResource("5_pmhv8")
 texture_hover = ExtResource("5_pmhv8")
 texture_disabled = ExtResource("6_ab2j5")
 
-[connection signal="gui_input" from="Object front" to="." method="_on_object_front_gui_input"]
 [connection signal="gui_input" from="Object Back" to="." method="_on_object_back_gui_input"]
+[connection signal="gui_input" from="Object front" to="." method="_on_object_front_gui_input"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,129 @@
+[gd_scene load_steps=23 format=3 uid="uid://cwe7ysx8hp5yv"]
+
+[ext_resource type="Texture2D" uid="uid://d1icjoucb81f5" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 1@2x.png" id="1_ywwcj"]
+[ext_resource type="Texture2D" uid="uid://ff88mlkrx3b5" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 2@2x.png" id="2_lt4x2"]
+[ext_resource type="Texture2D" uid="uid://ddomsoqa52774" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 3@2x.png" id="3_f1hbc"]
+[ext_resource type="Texture2D" uid="uid://dbkha7noenkeh" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 4@2x.png" id="4_10sf6"]
+[ext_resource type="Texture2D" uid="uid://bb4h7r2phha7p" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 5@2x.png" id="5_y4het"]
+[ext_resource type="Texture2D" uid="uid://bw3h3uu0f5psg" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 6@2x.png" id="6_whm0j"]
+[ext_resource type="Texture2D" uid="uid://dxo2nvvhdtlyi" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 7@2x.png" id="7_5bdl4"]
+[ext_resource type="Texture2D" uid="uid://cdfibs20o38hh" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 8@2x.png" id="8_i1j23"]
+[ext_resource type="Texture2D" uid="uid://dm3g4h8efyg7r" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 9@2x.png" id="9_cggki"]
+[ext_resource type="Texture2D" uid="uid://bm7nffiqpuq5r" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 1@2x.png" id="10_ow85v"]
+[ext_resource type="Texture2D" uid="uid://c5d1ijm76thh0" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 2@2x.png" id="11_dkhtj"]
+[ext_resource type="Texture2D" uid="uid://ch1aaubx5fqmj" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 3@2x.png" id="12_nwfva"]
+[ext_resource type="Texture2D" uid="uid://j0oyej3vktwo" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 4@2x.png" id="13_rr1et"]
+[ext_resource type="Texture2D" uid="uid://em76mdumc6dy" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 5@2x.png" id="14_x7pt8"]
+[ext_resource type="Texture2D" uid="uid://dpfrde2m1gyge" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 6@2x.png" id="15_7drla"]
+[ext_resource type="Texture2D" uid="uid://cubmfv5bwv7s3" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 7@2x.png" id="16_ety1m"]
+[ext_resource type="Texture2D" uid="uid://ctc6qi75i75l3" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 8@2x.png" id="17_egrqx"]
+[ext_resource type="Texture2D" uid="uid://c5a25rdqahwr" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 9@2x.png" id="18_lmtjt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h61mm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ywwcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lt4x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f1hbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_10sf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y4het")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_whm0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5bdl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i1j23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cggki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ow85v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dkhtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nwfva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rr1et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x7pt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7drla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ety1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_egrqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lmtjt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_t62c1"]
+resource_name = "Flip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Third Page:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_lxo4h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Third Page:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xogr8"]
+_data = {
+"Flip": SubResource("Animation_t62c1"),
+"RESET": SubResource("Animation_lxo4h")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Third Page" type="AnimatedSprite2D" parent="."]
+position = Vector2(920, 542)
+sprite_frames = SubResource("SpriteFrames_h61mm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xogr8")
+}
