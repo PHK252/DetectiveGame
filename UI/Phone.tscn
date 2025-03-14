@@ -1,10 +1,10 @@
-[gd_scene load_steps=51 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=97 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
 [ext_resource type="Texture2D" uid="uid://cc6wybn7bpq34" path="res://UI/Assets/Phone/Updated/Home/Phone Home Back.png" id="3_ck7hi"]
 [ext_resource type="Texture2D" uid="uid://5boh6gi250xg" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Back.png" id="4_4e2o3"]
-[ext_resource type="Texture2D" uid="uid://dvb1e2gm1fey0" path="res://UI/Assets/Phone/Updated/Phone Call Back.png" id="5_rujx7"]
+[ext_resource type="Texture2D" uid="uid://dvb1e2gm1fey0" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Back.png" id="5_rujx7"]
 [ext_resource type="Texture2D" uid="uid://d1e7385nd1s3t" path="res://UI/Assets/Phone/Updated/Home/Phone Notes Back.png" id="6_avvcg"]
 [ext_resource type="Texture2D" uid="uid://bhatiwt8hi0fg" path="res://UI/Assets/Phone/Updated/Home/Phone Frame Outline.png" id="7_7ga0b"]
 [ext_resource type="Texture2D" uid="uid://bn0rsbg0bqe75" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Outline.png" id="7_wibdo"]
@@ -49,14 +49,156 @@
 [ext_resource type="Texture2D" uid="uid://boy6dosj0rbiw" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Left Hovered.png" id="41_6rj6l"]
 [ext_resource type="Texture2D" uid="uid://cpp223s5wf56g" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Right.png" id="42_p2812"]
 [ext_resource type="Texture2D" uid="uid://bik7uq8xvmh4u" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Right Hovered.png" id="43_g4h4a"]
+[ext_resource type="Texture2D" uid="uid://bc1c6ey4l5hh6" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Outline.png" id="45_0pifn"]
+[ext_resource type="Texture2D" uid="uid://ckskllrp26bg4" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Batteries.png" id="46_q2t4u"]
+[ext_resource type="Texture2D" uid="uid://dwkben2v4thrv" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Num Space.png" id="47_hk3kd"]
+[ext_resource type="Texture2D" uid="uid://b1cyevfew5i7w" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 0 Normal.png" id="48_507lu"]
+[ext_resource type="Texture2D" uid="uid://cepfbxbtoi2sx" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 0 Hovered.png" id="49_qpdx7"]
+[ext_resource type="Texture2D" uid="uid://c0cenirsjvrdb" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 1 Normal.png" id="50_v1e0u"]
+[ext_resource type="Texture2D" uid="uid://pkqspyv2dlfl" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 1 Hovered.png" id="51_tbcqo"]
+[ext_resource type="Texture2D" uid="uid://c1l6jtir4pev5" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 2 Normal.png" id="52_0iu06"]
+[ext_resource type="Texture2D" uid="uid://dsf1ibig01noi" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 2 Hovered.png" id="53_hxh6i"]
+[ext_resource type="Texture2D" uid="uid://28g7yhtt2w04" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 3 Normal.png" id="54_hrvra"]
+[ext_resource type="Texture2D" uid="uid://dl80ybcoj1b4s" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 3 Hovered.png" id="55_qsevn"]
+[ext_resource type="Texture2D" uid="uid://cg28di8y58fvg" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 4 Normal.png" id="56_phjvb"]
+[ext_resource type="Texture2D" uid="uid://tch51w3ig1ip" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 4 Hovered.png" id="57_slji0"]
+[ext_resource type="Texture2D" uid="uid://d3j1k7lnnsa0b" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 5 Normal.png" id="58_j3ayc"]
+[ext_resource type="Texture2D" uid="uid://dyskq12iytvby" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 5 Hovered.png" id="59_k6odx"]
+[ext_resource type="Texture2D" uid="uid://ccim0mga3uye0" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 6 Normal.png" id="60_xwsin"]
+[ext_resource type="Texture2D" uid="uid://btsefsku2jeua" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 6 Hovered.png" id="61_16t74"]
+[ext_resource type="Texture2D" uid="uid://d1nalddmp744l" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 7 Normal.png" id="62_eh6qy"]
+[ext_resource type="Texture2D" uid="uid://gbs181relasb" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 7 Hovered.png" id="63_4pimk"]
+[ext_resource type="Texture2D" uid="uid://burtxno6w525y" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 8 Normal.png" id="64_pc4le"]
+[ext_resource type="Texture2D" uid="uid://d3gqjq3hdeoht" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 8 Hovered.png" id="65_v7q4c"]
+[ext_resource type="Texture2D" uid="uid://bkcov62p512rx" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 9 Normal.png" id="66_v2j7b"]
+[ext_resource type="Texture2D" uid="uid://cufutsm18gd72" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 9 Hovered.png" id="67_eewx8"]
+[ext_resource type="Texture2D" uid="uid://gcr3pv1htkmf" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Star Normal.png" id="68_grpen"]
+[ext_resource type="Texture2D" uid="uid://b6sp7ai2j4tkv" path="res://UI/Assets/Phone/Updated/Phone/Phone Call star Hovered.png" id="69_n7hm3"]
+[ext_resource type="Texture2D" uid="uid://cuc464k60ixg4" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Pound Normal.png" id="70_4dfp8"]
+[ext_resource type="Texture2D" uid="uid://bmwvsjvbaw60o" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Pound Hovered.png" id="71_7m02x"]
+[ext_resource type="Texture2D" uid="uid://b3dqv3qdrrjxu" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Call Normal.png" id="72_gahas"]
+[ext_resource type="Texture2D" uid="uid://c1hc6g0a82y2h" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Call Hovered.png" id="73_4rf4d"]
+[ext_resource type="Texture2D" uid="uid://dvpdillp0ix6n" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Deleted Normal.png" id="74_hf2we"]
+[ext_resource type="Texture2D" uid="uid://crb0sr5woe2r6" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Deleted Hovered.png" id="75_11vpp"]
+[ext_resource type="Texture2D" uid="uid://bni63ww3ejg84" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Incoming Outline.png" id="76_v5ubb"]
+[ext_resource type="Texture2D" uid="uid://ducwt8qxooj2c" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Profile.png" id="77_r3y0d"]
+[ext_resource type="Texture2D" uid="uid://c3qm4kn64ixf8" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Accept Normal.png" id="78_uh34o"]
+[ext_resource type="Texture2D" uid="uid://c1s4uhldeyv4j" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Accept Hovered.png" id="79_5o0rd"]
+[ext_resource type="Texture2D" uid="uid://drrkanq0m8ax7" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Decline Normal.png" id="80_q0w6v"]
+[ext_resource type="Texture2D" uid="uid://357ohknm3uyu" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Decline Hovered.png" id="81_yuymp"]
+[ext_resource type="Texture2D" uid="uid://du4jgnqjl1ygi" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim1.png" id="82_j6dmg"]
+[ext_resource type="Texture2D" uid="uid://cnpra4xqpcd2b" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim2.png" id="83_w3bvj"]
+[ext_resource type="Texture2D" uid="uid://d4nt8urd7hwhw" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim3.png" id="84_7dtax"]
+[ext_resource type="Texture2D" uid="uid://0m28j84dbbn8" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim4.png" id="85_rd8x5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_1sacn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("82_j6dmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_w3bvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_7dtax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_rd8x5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yoxuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("82_j6dmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_w3bvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_7dtax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_rd8x5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_tvpwm"]
+resource_name = "Call"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AcceptAnim:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeclineAnim:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ud7wl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AcceptAnim:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeclineAnim:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4eqew"]
+_data = {
+"Call": SubResource("Animation_tvpwm"),
+"RESET": SubResource("Animation_ud7wl")
+}
+
 [node name="Phone UI" type="Node2D"]
 script = ExtResource("1_eli2p")
-metadata/_edit_horizontal_guides_ = [379.0, 702.0, 540.0, 168.0, 234.0, 846.0]
-metadata/_edit_vertical_guides_ = [750.0, 1170.0]
 
 [node name="HomeScreen" type="CanvasLayer" parent="."]
 
@@ -100,7 +242,6 @@ texture_pressed = ExtResource("15_4x8ww")
 texture_hover = ExtResource("15_4x8ww")
 
 [node name="GalleryScreen" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PhoneGallery" type="Sprite2D" parent="GalleryScreen"]
 position = Vector2(960, 513)
@@ -316,6 +457,197 @@ position = Vector2(763, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="PhoneScreen" type="CanvasLayer" parent="."]
+
+[node name="PhoneCallBack" type="Sprite2D" parent="PhoneScreen"]
+position = Vector2(960, 513)
+texture = ExtResource("5_rujx7")
+
+[node name="PhoneCallBackOutline" type="Sprite2D" parent="PhoneScreen"]
+visible = false
+modulate = Color(1, 1, 1, 0.847059)
+position = Vector2(960, 513)
+texture = ExtResource("45_0pifn")
+
+[node name="PhoneBar" type="Sprite2D" parent="PhoneScreen"]
+position = Vector2(960, 96)
+texture = ExtResource("16_vgsq4")
+
+[node name="PhoneHomeBattery" type="Sprite2D" parent="PhoneScreen"]
+position = Vector2(1161, 96)
+texture = ExtResource("46_q2t4u")
+
+[node name="PhoneNum" type="CanvasLayer" parent="PhoneScreen"]
+visible = false
+
+[node name="PhoneCallNumSpace2" type="Sprite2D" parent="PhoneScreen/PhoneNum"]
+position = Vector2(960, 247)
+texture = ExtResource("47_hk3kd")
+
+[node name="0" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 912.0
+offset_top = 660.0
+offset_right = 1008.0
+offset_bottom = 756.0
+texture_normal = ExtResource("48_507lu")
+texture_pressed = ExtResource("49_qpdx7")
+texture_hover = ExtResource("49_qpdx7")
+
+[node name="1" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 798.0
+offset_top = 318.0
+offset_right = 894.0
+offset_bottom = 414.0
+texture_normal = ExtResource("50_v1e0u")
+texture_pressed = ExtResource("51_tbcqo")
+texture_hover = ExtResource("51_tbcqo")
+
+[node name="2" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 912.0
+offset_top = 318.0
+offset_right = 1008.0
+offset_bottom = 414.0
+texture_normal = ExtResource("52_0iu06")
+texture_pressed = ExtResource("53_hxh6i")
+texture_hover = ExtResource("53_hxh6i")
+
+[node name="3" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 1026.0
+offset_top = 318.0
+offset_right = 1122.0
+offset_bottom = 414.0
+texture_normal = ExtResource("54_hrvra")
+texture_pressed = ExtResource("55_qsevn")
+texture_hover = ExtResource("55_qsevn")
+
+[node name="4" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 798.0
+offset_top = 432.0
+offset_right = 894.0
+offset_bottom = 528.0
+texture_normal = ExtResource("56_phjvb")
+texture_pressed = ExtResource("57_slji0")
+texture_hover = ExtResource("57_slji0")
+
+[node name="5" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 912.0
+offset_top = 432.0
+offset_right = 1008.0
+offset_bottom = 528.0
+texture_normal = ExtResource("58_j3ayc")
+texture_pressed = ExtResource("59_k6odx")
+texture_hover = ExtResource("59_k6odx")
+
+[node name="6" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 1026.0
+offset_top = 432.0
+offset_right = 1122.0
+offset_bottom = 528.0
+texture_normal = ExtResource("60_xwsin")
+texture_pressed = ExtResource("61_16t74")
+texture_hover = ExtResource("61_16t74")
+
+[node name="7" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 798.0
+offset_top = 546.0
+offset_right = 894.0
+offset_bottom = 642.0
+texture_normal = ExtResource("62_eh6qy")
+texture_pressed = ExtResource("63_4pimk")
+texture_hover = ExtResource("63_4pimk")
+
+[node name="8" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 912.0
+offset_top = 546.0
+offset_right = 1008.0
+offset_bottom = 642.0
+texture_normal = ExtResource("64_pc4le")
+texture_pressed = ExtResource("65_v7q4c")
+texture_hover = ExtResource("65_v7q4c")
+
+[node name="9" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 1026.0
+offset_top = 546.0
+offset_right = 1122.0
+offset_bottom = 642.0
+texture_normal = ExtResource("66_v2j7b")
+texture_pressed = ExtResource("67_eewx8")
+texture_hover = ExtResource("67_eewx8")
+
+[node name="Star" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 798.0
+offset_top = 660.0
+offset_right = 894.0
+offset_bottom = 756.0
+texture_normal = ExtResource("68_grpen")
+texture_pressed = ExtResource("69_n7hm3")
+
+[node name="Pound" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 1026.0
+offset_top = 660.0
+offset_right = 1122.0
+offset_bottom = 756.0
+texture_normal = ExtResource("70_4dfp8")
+texture_pressed = ExtResource("71_7m02x")
+
+[node name="Call" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 906.0
+offset_top = 798.0
+offset_right = 1014.0
+offset_bottom = 906.0
+texture_normal = ExtResource("72_gahas")
+texture_pressed = ExtResource("73_4rf4d")
+texture_hover = ExtResource("73_4rf4d")
+
+[node name="Delete" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+offset_left = 1050.0
+offset_top = 834.0
+offset_right = 1104.0
+offset_bottom = 864.0
+texture_normal = ExtResource("74_hf2we")
+texture_pressed = ExtResource("75_11vpp")
+
+[node name="PhoneCall" type="CanvasLayer" parent="PhoneScreen"]
+
+[node name="PhoneCallBack" type="Sprite2D" parent="PhoneScreen/PhoneCall"]
+visible = false
+modulate = Color(1, 1, 1, 0.568627)
+position = Vector2(960, 513)
+texture = ExtResource("76_v5ubb")
+
+[node name="PhoneCallProfile" type="Sprite2D" parent="PhoneScreen/PhoneCall"]
+position = Vector2(960, 390)
+texture = ExtResource("77_r3y0d")
+
+[node name="Accept" type="TextureButton" parent="PhoneScreen/PhoneCall"]
+offset_left = 786.0
+offset_top = 720.0
+offset_right = 894.0
+offset_bottom = 828.0
+texture_normal = ExtResource("78_uh34o")
+texture_pressed = ExtResource("79_5o0rd")
+texture_hover = ExtResource("79_5o0rd")
+
+[node name="Decline" type="TextureButton" parent="PhoneScreen/PhoneCall"]
+offset_left = 1026.0
+offset_top = 720.0
+offset_right = 1134.0
+offset_bottom = 828.0
+texture_normal = ExtResource("80_q0w6v")
+texture_pressed = ExtResource("81_yuymp")
+texture_hover = ExtResource("81_yuymp")
+
+[node name="AcceptAnim" type="AnimatedSprite2D" parent="PhoneScreen/PhoneCall"]
+position = Vector2(840, 774)
+sprite_frames = SubResource("SpriteFrames_1sacn")
+
+[node name="DeclineAnim" type="AnimatedSprite2D" parent="PhoneScreen/PhoneCall"]
+position = Vector2(1080, 774)
+sprite_frames = SubResource("SpriteFrames_yoxuf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneScreen/PhoneCall"]
+libraries = {
+"": SubResource("AnimationLibrary_4eqew")
+}
 
 [node name="NotesScreen" type="CanvasLayer" parent="."]
 
