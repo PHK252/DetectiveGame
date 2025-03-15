@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://50vyga4jrdyo"]
+[gd_scene load_steps=99 format=3 uid="uid://50vyga4jrdyo"]
 
 [ext_resource type="Script" path="res://UI/computer_ui.gd" id="1_f0ejt"]
 [ext_resource type="Texture2D" uid="uid://2p5t8lxiacwk" path="res://UI/Assets/Computer/Computer Login Background.png" id="1_kyt61"]
@@ -31,6 +31,166 @@
 [ext_resource type="Texture2D" uid="uid://duthx5rbrucey" path="res://UI/Assets/Computer/Computer Home Dropdown Mid Hovered.png" id="26_plkja"]
 [ext_resource type="Texture2D" uid="uid://de0pvk4tr1bdg" path="res://UI/Assets/Computer/Computer Home Dropdown Bottom Normal.png" id="27_xv5u6"]
 [ext_resource type="Texture2D" uid="uid://cqmnt7gstgvuf" path="res://UI/Assets/Computer/Computer Home Dropdown Bottom Hovered.png" id="28_xsnxk"]
+[ext_resource type="Texture2D" uid="uid://b73haqe1x26gc" path="res://UI/Assets/Computer/Mail/Computer Mail Background.png" id="30_7ts5t"]
+[ext_resource type="Texture2D" uid="uid://bnilsuqqjitxw" path="res://UI/Assets/Computer/Mail/Computer Mail Bar.png" id="31_toqvd"]
+[ext_resource type="Texture2D" uid="uid://c4lck8abonxfm" path="res://UI/Assets/Computer/Mail/Computer Mail Logo.png" id="33_ro1dv"]
+[ext_resource type="Texture2D" uid="uid://bqswn06l714ds" path="res://UI/Assets/Computer/Mail/Computer Mail Ecit Normal.png" id="34_d800q"]
+[ext_resource type="Texture2D" uid="uid://bis3kmblb706y" path="res://UI/Assets/Computer/Mail/Computer Mail Ecit Hovered.png" id="35_mu7qj"]
+[ext_resource type="Texture2D" uid="uid://cd7y5jqkck2if" path="res://UI/Assets/Computer/Mail/Computer Mail Write Message.png" id="36_042wk"]
+[ext_resource type="Texture2D" uid="uid://bixfohf8uquck" path="res://UI/Assets/Computer/Mail/Computer Mail Write Message Hovered.png" id="37_ucggw"]
+[ext_resource type="Texture2D" uid="uid://bwaivca3pwc2e" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Top Normal.png" id="38_vg6mb"]
+[ext_resource type="Texture2D" uid="uid://b2a0kin27tgq2" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Top Hovered.png" id="39_1244i"]
+[ext_resource type="Texture2D" uid="uid://bgo5mehrvogha" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Middle Normal.png" id="40_3jpml"]
+[ext_resource type="Texture2D" uid="uid://c4uxdbdb0kwcv" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Middle Hovered.png" id="41_223ni"]
+[ext_resource type="Texture2D" uid="uid://cfxo2ykfbrl0f" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Middle Read Normal.png" id="42_nyipf"]
+[ext_resource type="Texture2D" uid="uid://o2sh1s6jujxw" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Middle Read Hovered.png" id="43_bcgys"]
+[ext_resource type="Texture2D" uid="uid://gkyjunr1g3id" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Bot Read Normal.png" id="44_fsf2l"]
+[ext_resource type="Texture2D" uid="uid://cchgcrk0p5dps" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Bot Read Hovered.png" id="45_aepyp"]
+[ext_resource type="Texture2D" uid="uid://oen65wqaxjp6" path="res://UI/Assets/Computer/Mail/Computer Mail Read Box.png" id="46_no2fg"]
+[ext_resource type="Texture2D" uid="uid://dha6wtnupe0jb" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Recipient.png" id="46_w37nm"]
+[ext_resource type="Texture2D" uid="uid://cxetno2tcmos1" path="res://UI/Assets/Computer/Mail/Computer Mail Read PP.png" id="47_74jih"]
+[ext_resource type="Texture2D" uid="uid://d34hp0pj4ui6f" path="res://UI/Assets/Computer/Mail/Computer Mail Read Back Normal.png" id="49_xwv5o"]
+[ext_resource type="Texture2D" uid="uid://dggj7ophepsp7" path="res://UI/Assets/Computer/Mail/Computer Mail Read Back Hovered.png" id="50_beyvh"]
+[ext_resource type="Texture2D" uid="uid://k4bv206y4eya" path="res://UI/Assets/Computer/Mail/Computer Mail Read Forward Normal.png" id="51_hasvy"]
+[ext_resource type="Texture2D" uid="uid://d3aajegqaldak" path="res://UI/Assets/Computer/Mail/Computer Mail Read Forward Hovered.png" id="52_edm4b"]
+[ext_resource type="Texture2D" uid="uid://oxrtg4uduh7m" path="res://UI/Assets/Computer/Mail/Computer Mail Read Lock Normal.png" id="53_jd3vo"]
+[ext_resource type="Texture2D" uid="uid://cl6wdr5qb4ny0" path="res://UI/Assets/Computer/Mail/Computer Mail Read Lock Hovered.png" id="54_8vot0"]
+[ext_resource type="Texture2D" uid="uid://dmhplbfoq3xie" path="res://UI/Assets/Computer/Mail/Computer Mail Read Delete Normal.png" id="55_blij4"]
+[ext_resource type="Texture2D" uid="uid://8ugy0p4n2eot" path="res://UI/Assets/Computer/Mail/Computer Mail Read Delete Hovered.png" id="56_3nb3g"]
+[ext_resource type="Texture2D" uid="uid://b2j4ffe73imqx" path="res://UI/Assets/Computer/Mail/Computer Mail Read Download Normal.png" id="57_47k81"]
+[ext_resource type="Texture2D" uid="uid://csnxyqy51hb1d" path="res://UI/Assets/Computer/Mail/Computer Mail Read Download Hovered.png" id="58_eisv5"]
+[ext_resource type="Texture2D" uid="uid://c3h55afeu1mqq" path="res://UI/Assets/Computer/Mail/Computer Mail New Window Background.png" id="60_rkk8e"]
+[ext_resource type="Texture2D" uid="uid://gmcsweeaasjc" path="res://UI/Assets/Computer/Mail/Computer Mail New Message Box.png" id="61_2kr2j"]
+[ext_resource type="Texture2D" uid="uid://dq7nc1j7a4can" path="res://UI/Assets/Computer/Mail/Computer Mail New Message.png" id="62_4q0q3"]
+[ext_resource type="Texture2D" uid="uid://0qo7ndev5ktl" path="res://UI/Assets/Computer/Mail/Computer Mail New Message Exit Normal.png" id="63_k26ue"]
+[ext_resource type="Texture2D" uid="uid://co22611ejn4ot" path="res://UI/Assets/Computer/Mail/Computer Mail New Message Exit Hovered.png" id="64_b4nmn"]
+[ext_resource type="Texture2D" uid="uid://c06cua0edgfy" path="res://UI/Assets/Computer/Mail/Computer Mail New Message Send Normal.png" id="65_apaee"]
+[ext_resource type="Texture2D" uid="uid://dsnk77ao2xidb" path="res://UI/Assets/Computer/Mail/Computer Mail New Message Send Hovered.png" id="66_3fope"]
+[ext_resource type="Texture2D" uid="uid://d0ul3xnrflf1r" path="res://UI/Assets/Computer/Mail/Computer Mail New Message Delete Normal.png" id="67_0d57v"]
+[ext_resource type="Texture2D" uid="uid://7gio07yuid2p" path="res://UI/Assets/Computer/Mail/Computer Mail New Message Delete Hovered.png" id="68_21br3"]
+[ext_resource type="Texture2D" uid="uid://cgenev65dsssr" path="res://UI/Assets/Computer/Mail/Computer Mail Error Box.png" id="69_rxu2g"]
+[ext_resource type="Texture2D" uid="uid://bkf7qviujhfdp" path="res://UI/Assets/Computer/Mail/Computer Mail Error.png" id="70_qk0rh"]
+[ext_resource type="Texture2D" uid="uid://4n357sov7bi7" path="res://UI/Assets/Computer/Mail/Computer Mail Error Error Icon.png" id="71_8mcwh"]
+[ext_resource type="Texture2D" uid="uid://68ijx0n3bs3k" path="res://UI/Assets/Computer/Mail/Computer Mail Error Exit Normal.png" id="72_jmu2l"]
+[ext_resource type="Texture2D" uid="uid://c5prc5dnbmv84" path="res://UI/Assets/Computer/Mail/Computer Mail Error Exit Hovered.png" id="73_7jepk"]
+[ext_resource type="Texture2D" uid="uid://bwggedohno0q7" path="res://UI/Assets/Computer/Mail/Computer Mail Error Confirm Normal.png" id="74_reckf"]
+[ext_resource type="Texture2D" uid="uid://ukhnrl2crwfb" path="res://UI/Assets/Computer/Mail/Computer Mail Error Confirm Hovered.png" id="75_fvigi"]
+[ext_resource type="Texture2D" uid="uid://dq2p0gcgo4u8o" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Window.png" id="76_ck5k0"]
+[ext_resource type="Texture2D" uid="uid://j2ww7fjwgqm2" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID.png" id="77_3gdup"]
+[ext_resource type="Texture2D" uid="uid://cqaxdgqait6bf" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim1.png" id="78_vq3fq"]
+[ext_resource type="Texture2D" uid="uid://bdtl1gb5rsm4w" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim2.png" id="79_k27uj"]
+[ext_resource type="Texture2D" uid="uid://bgjnberp48psj" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim3.png" id="80_if6xy"]
+[ext_resource type="Texture2D" uid="uid://bit2sd630r0ti" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim4.png" id="81_rd12m"]
+[ext_resource type="Texture2D" uid="uid://dcygljvrs7hx8" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim5.png" id="82_1rlxp"]
+[ext_resource type="Texture2D" uid="uid://b4bgiluesqhef" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim6.png" id="83_iqsgd"]
+[ext_resource type="Texture2D" uid="uid://c8xktlulxnj2c" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim7.png" id="84_h2kqm"]
+[ext_resource type="Texture2D" uid="uid://c500iq8sc11ax" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim8.png" id="85_71il8"]
+[ext_resource type="Texture2D" uid="uid://cgtpd6ntvxrgg" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim9.png" id="86_40bhb"]
+[ext_resource type="Texture2D" uid="uid://cmje6p8wjym4p" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim10.png" id="87_y667q"]
+[ext_resource type="Texture2D" uid="uid://bw7nch2e6wota" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim11.png" id="88_j3hys"]
+[ext_resource type="Texture2D" uid="uid://bv7yaycf2brjx" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim12.png" id="89_sb6vf"]
+[ext_resource type="Texture2D" uid="uid://bs21d1p73umyh" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim13.png" id="90_2fhyy"]
+[ext_resource type="Texture2D" uid="uid://cnrvipedymrd7" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim14.png" id="91_affhy"]
+[ext_resource type="Texture2D" uid="uid://26kigepu2yuh" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim15.png" id="92_wc7pp"]
+[ext_resource type="Texture2D" uid="uid://byi3d4fdb4lop" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim16.png" id="93_t68nd"]
+[ext_resource type="Texture2D" uid="uid://d2iph1yghunj5" path="res://UI/Assets/Computer/Mail/Computer Mail Face ID Anim17.png" id="94_0hpdp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0n1dt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("78_vq3fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_k27uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_if6xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_rd12m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_1rlxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_iqsgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_h2kqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_71il8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_40bhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_y667q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_j3hys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_sb6vf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_2fhyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_affhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_wc7pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_t68nd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_0hpdp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_rmg78"]
+resource_name = "Face-ID"
+length = 3.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceID:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 15, 14, 13, 12, 11, 11, 12, 13, 14, 15, 16, 15, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_melli"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceID:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbsdl"]
+_data = {
+"Face-ID": SubResource("Animation_rmg78"),
+"RESET": SubResource("Animation_melli")
+}
 
 [node name="ComputerUI" type="Node2D"]
 script = ExtResource("1_f0ejt")
@@ -102,6 +262,7 @@ texture_pressed = ExtResource("14_l311m")
 texture_hover = ExtResource("14_l311m")
 
 [node name="Home" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ComputerHomeBackground" type="Sprite2D" parent="Home"]
 texture = ExtResource("15_gk112")
@@ -140,6 +301,7 @@ texture_pressed = ExtResource("22_kq6sd")
 texture_hover = ExtResource("22_kq6sd")
 
 [node name="Dropdown" type="CanvasLayer" parent="Home"]
+visible = false
 
 [node name="Dropdown1" type="TextureButton" parent="Home/Dropdown"]
 offset_left = 10.0
@@ -186,14 +348,262 @@ texture_normal = ExtResource("27_xv5u6")
 texture_pressed = ExtResource("28_xsnxk")
 texture_hover = ExtResource("28_xsnxk")
 
-[node name="ComputerUiMailInboxOutline" type="Sprite2D" parent="."]
+[node name="Mail" type="CanvasLayer" parent="."]
+
+[node name="ComputerMailBackground" type="Sprite2D" parent="Mail"]
+texture = ExtResource("30_7ts5t")
+centered = false
+
+[node name="ComputerMailBar" type="Sprite2D" parent="Mail"]
+texture = ExtResource("31_toqvd")
+centered = false
+
+[node name="ComputerUiMailInboxOutline" type="Sprite2D" parent="Mail"]
 visible = false
+modulate = Color(1, 1, 1, 0.513726)
 texture = ExtResource("16_12xh7")
 centered = false
 
-[node name="ComputerUiMailReadOutline" type="Sprite2D" parent="."]
+[node name="ComputerMailLogo" type="Sprite2D" parent="Mail"]
+position = Vector2(415, 183)
+texture = ExtResource("33_ro1dv")
+
+[node name="Exit" type="TextureButton" parent="Mail"]
+offset_left = 1850.0
+offset_top = 25.0
+offset_right = 1875.0
+offset_bottom = 50.0
+texture_normal = ExtResource("34_d800q")
+texture_pressed = ExtResource("35_mu7qj")
+texture_hover = ExtResource("35_mu7qj")
+
+[node name="NewMessage" type="TextureButton" parent="Mail"]
+offset_left = 1630.0
+offset_top = 125.0
+offset_right = 1805.0
+offset_bottom = 245.0
+texture_normal = ExtResource("36_042wk")
+texture_pressed = ExtResource("37_ucggw")
+texture_hover = ExtResource("37_ucggw")
+
+[node name="ComputerMailInboxRecipient" type="Sprite2D" parent="Mail"]
+position = Vector2(1517, 325)
+texture = ExtResource("46_w37nm")
+
+[node name="Inbox" type="CanvasLayer" parent="Mail"]
+
+[node name="Message1" type="TextureButton" parent="Mail/Inbox"]
+offset_left = 125.0
+offset_top = 355.0
+offset_right = 1795.0
+offset_bottom = 490.0
+texture_normal = ExtResource("38_vg6mb")
+texture_pressed = ExtResource("39_1244i")
+texture_hover = ExtResource("39_1244i")
+
+[node name="Message2" type="TextureButton" parent="Mail/Inbox"]
+offset_left = 125.0
+offset_top = 490.0
+offset_right = 1795.0
+offset_bottom = 625.0
+texture_normal = ExtResource("40_3jpml")
+texture_pressed = ExtResource("41_223ni")
+texture_hover = ExtResource("41_223ni")
+
+[node name="Message3" type="TextureButton" parent="Mail/Inbox"]
+offset_left = 125.0
+offset_top = 625.0
+offset_right = 1795.0
+offset_bottom = 760.0
+texture_normal = ExtResource("40_3jpml")
+texture_pressed = ExtResource("41_223ni")
+texture_hover = ExtResource("41_223ni")
+
+[node name="Message4" type="TextureButton" parent="Mail/Inbox"]
+offset_left = 125.0
+offset_top = 760.0
+offset_right = 1795.0
+offset_bottom = 895.0
+texture_normal = ExtResource("42_nyipf")
+texture_pressed = ExtResource("43_bcgys")
+texture_hover = ExtResource("43_bcgys")
+
+[node name="Message5" type="TextureButton" parent="Mail/Inbox"]
+offset_left = 125.0
+offset_top = 895.0
+offset_right = 1795.0
+offset_bottom = 1025.0
+texture_normal = ExtResource("44_fsf2l")
+texture_pressed = ExtResource("45_aepyp")
+texture_hover = ExtResource("45_aepyp")
+
+[node name="Read" type="CanvasLayer" parent="Mail"]
 visible = false
+
+[node name="ComputerMailReadBox" type="Sprite2D" parent="Mail/Read"]
+position = Vector2(960, 690)
+texture = ExtResource("46_no2fg")
+
+[node name="ComputerMailReadPp" type="Sprite2D" parent="Mail/Read"]
+position = Vector2(235, 545)
+texture = ExtResource("47_74jih")
+
+[node name="ComputerUiMailReadOutline" type="Sprite2D" parent="Mail/Read"]
+visible = false
+modulate = Color(1, 1, 1, 0.635294)
 texture = ExtResource("17_mv7us")
 centered = false
+
+[node name="Back" type="TextureButton" parent="Mail/Read"]
+offset_left = 155.0
+offset_top = 375.0
+offset_right = 235.0
+offset_bottom = 420.0
+texture_normal = ExtResource("49_xwv5o")
+texture_pressed = ExtResource("50_beyvh")
+texture_hover = ExtResource("50_beyvh")
+
+[node name="Forward" type="TextureButton" parent="Mail/Read"]
+offset_left = 1405.0
+offset_top = 380.0
+offset_right = 1445.0
+offset_bottom = 420.0
+texture_normal = ExtResource("51_hasvy")
+texture_pressed = ExtResource("52_edm4b")
+texture_hover = ExtResource("52_edm4b")
+
+[node name="Lock" type="TextureButton" parent="Mail/Read"]
+offset_left = 1505.0
+offset_top = 380.0
+offset_right = 1545.0
+offset_bottom = 420.0
+texture_normal = ExtResource("53_jd3vo")
+texture_pressed = ExtResource("54_8vot0")
+texture_hover = ExtResource("54_8vot0")
+
+[node name="Delete" type="TextureButton" parent="Mail/Read"]
+offset_left = 1600.0
+offset_top = 380.0
+offset_right = 1645.0
+offset_bottom = 420.0
+texture_normal = ExtResource("55_blij4")
+texture_pressed = ExtResource("56_3nb3g")
+texture_hover = ExtResource("56_3nb3g")
+
+[node name="Download" type="TextureButton" parent="Mail/Read"]
+offset_left = 1705.0
+offset_top = 380.0
+offset_right = 1750.0
+offset_bottom = 420.0
+texture_normal = ExtResource("57_47k81")
+texture_pressed = ExtResource("58_eisv5")
+texture_hover = ExtResource("58_eisv5")
+
+[node name="New Message" type="CanvasLayer" parent="Mail"]
+visible = false
+
+[node name="ComputerMailNewWindowBackground" type="Sprite2D" parent="Mail/New Message"]
+texture = ExtResource("60_rkk8e")
+centered = false
+
+[node name="ComputerMailNewMessageBox" type="Sprite2D" parent="Mail/New Message"]
+position = Vector2(960, 555)
+texture = ExtResource("61_2kr2j")
+
+[node name="ComputerMailNewMessage" type="Sprite2D" parent="Mail/New Message"]
+visible = false
+modulate = Color(1, 1, 1, 0.67451)
+texture = ExtResource("62_4q0q3")
+centered = false
+
+[node name="Exit" type="TextureButton" parent="Mail/New Message"]
+offset_left = 1565.0
+offset_top = 250.0
+offset_right = 1590.0
+offset_bottom = 275.0
+texture_normal = ExtResource("63_k26ue")
+texture_pressed = ExtResource("64_b4nmn")
+texture_hover = ExtResource("64_b4nmn")
+
+[node name="Send" type="TextureButton" parent="Mail/New Message"]
+offset_left = 345.0
+offset_top = 810.0
+offset_right = 400.0
+offset_bottom = 855.0
+texture_normal = ExtResource("65_apaee")
+texture_pressed = ExtResource("66_3fope")
+texture_hover = ExtResource("66_3fope")
+
+[node name="Delete" type="TextureButton" parent="Mail/New Message"]
+offset_left = 1540.0
+offset_top = 825.0
+offset_right = 1585.0
+offset_bottom = 865.0
+texture_normal = ExtResource("67_0d57v")
+texture_pressed = ExtResource("68_21br3")
+texture_hover = ExtResource("68_21br3")
+
+[node name="Error" type="CanvasLayer" parent="Mail"]
+visible = false
+
+[node name="ComputerMailNewWindowBackground" type="Sprite2D" parent="Mail/Error"]
+texture = ExtResource("60_rkk8e")
+centered = false
+
+[node name="ComputerMailErrorBox" type="Sprite2D" parent="Mail/Error"]
+position = Vector2(960, 540)
+texture = ExtResource("69_rxu2g")
+
+[node name="ComputerMailError" type="Sprite2D" parent="Mail/Error"]
+visible = false
+modulate = Color(1, 1, 1, 0.592157)
+texture = ExtResource("70_qk0rh")
+centered = false
+
+[node name="ComputerMailErrorErrorIcon" type="Sprite2D" parent="Mail/Error"]
+position = Vector2(700, 455)
+texture = ExtResource("71_8mcwh")
+
+[node name="Exit" type="TextureButton" parent="Mail/Error"]
+offset_left = 1290.0
+offset_top = 355.0
+offset_right = 1305.0
+offset_bottom = 370.0
+texture_normal = ExtResource("72_jmu2l")
+texture_pressed = ExtResource("73_7jepk")
+texture_hover = ExtResource("73_7jepk")
+
+[node name="Confirm" type="TextureButton" parent="Mail/Error"]
+offset_left = 865.0
+offset_top = 660.0
+offset_right = 1055.0
+offset_bottom = 715.0
+texture_normal = ExtResource("74_reckf")
+texture_pressed = ExtResource("75_fvigi")
+texture_hover = ExtResource("75_fvigi")
+
+[node name="Face ID" type="CanvasLayer" parent="Mail"]
+
+[node name="ComputerMailNewWindowBackground2" type="Sprite2D" parent="Mail/Face ID"]
+texture = ExtResource("60_rkk8e")
+centered = false
+
+[node name="ComputerMailFaceIdWindow" type="Sprite2D" parent="Mail/Face ID"]
+position = Vector2(960, 540)
+texture = ExtResource("76_ck5k0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mail/Face ID"]
+modulate = Color(1, 1, 1, 0.376471)
+texture = ExtResource("77_3gdup")
+centered = false
+
+[node name="FaceID" type="AnimatedSprite2D" parent="Mail/Face ID"]
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_0n1dt")
+
+[node name="FaceID Anim" type="AnimationPlayer" parent="Mail/Face ID"]
+libraries = {
+"": SubResource("AnimationLibrary_gbsdl")
+}
 
 [connection signal="toggled" from="Home/Icon" to="." method="_on_icon_toggled"]
