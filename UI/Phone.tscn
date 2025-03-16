@@ -1,12 +1,10 @@
-[gd_scene load_steps=97 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=95 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
 [ext_resource type="Texture2D" uid="uid://cc6wybn7bpq34" path="res://UI/Assets/Phone/Updated/Home/Phone Home Back.png" id="3_ck7hi"]
 [ext_resource type="Texture2D" uid="uid://5boh6gi250xg" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Back.png" id="4_4e2o3"]
 [ext_resource type="Texture2D" uid="uid://dvb1e2gm1fey0" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Back.png" id="5_rujx7"]
-[ext_resource type="Texture2D" uid="uid://d1e7385nd1s3t" path="res://UI/Assets/Phone/Updated/Home/Phone Notes Back.png" id="6_avvcg"]
-[ext_resource type="Texture2D" uid="uid://bhatiwt8hi0fg" path="res://UI/Assets/Phone/Updated/Home/Phone Frame Outline.png" id="7_7ga0b"]
 [ext_resource type="Texture2D" uid="uid://bn0rsbg0bqe75" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Outline.png" id="7_wibdo"]
 [ext_resource type="Texture2D" uid="uid://m5w6r4giq7dt" path="res://UI/Assets/Phone/Updated/Home/Phone Home Button Normal.png" id="8_wrr1c"]
 [ext_resource type="Texture2D" uid="uid://6f278amj4spa" path="res://UI/Assets/Phone/Updated/Home/Phone Home Button Hovered.png" id="9_valq1"]
@@ -200,7 +198,11 @@ _data = {
 [node name="Phone UI" type="Node2D"]
 script = ExtResource("1_eli2p")
 
-[node name="HomeScreen" type="CanvasLayer" parent="."]
+[node name="HomeScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PhoneHomeBack" type="Sprite2D" parent="HomeScreen"]
 position = Vector2(960, 513)
@@ -219,6 +221,7 @@ offset_left = 1068.0
 offset_top = 810.0
 offset_right = 1176.0
 offset_bottom = 918.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("10_pvk2c")
 texture_pressed = ExtResource("11_ao5dl")
 texture_hover = ExtResource("11_ao5dl")
@@ -228,6 +231,7 @@ offset_left = 906.0
 offset_top = 810.0
 offset_right = 1014.0
 offset_bottom = 918.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("12_k8qp8")
 texture_pressed = ExtResource("13_ckxde")
 texture_hover = ExtResource("13_ckxde")
@@ -237,17 +241,36 @@ offset_left = 744.0
 offset_top = 810.0
 offset_right = 852.0
 offset_bottom = 918.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("14_yny11")
 texture_pressed = ExtResource("15_4x8ww")
 texture_hover = ExtResource("15_4x8ww")
 
-[node name="GalleryScreen" type="CanvasLayer" parent="."]
+[node name="Time" type="RichTextLabel" parent="HomeScreen"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 74.0
+offset_right = 872.0
+offset_bottom = 133.0
+theme_override_colors/default_color = Color(0.780392, 0.85098, 0.890196, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 45
+text = "XX:XX"
+fit_content = true
+scroll_active = false
+
+[node name="GalleryScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PhoneGallery" type="Sprite2D" parent="GalleryScreen"]
 position = Vector2(960, 513)
 texture = ExtResource("11_iukwx")
 
 [node name="PhoneBar" type="Sprite2D" parent="GalleryScreen"]
+visible = false
 position = Vector2(960, 96)
 texture = ExtResource("16_vgsq4")
 
@@ -255,14 +278,27 @@ texture = ExtResource("16_vgsq4")
 position = Vector2(1161, 96)
 texture = ExtResource("12_qpmkw")
 
+[node name="Time" type="RichTextLabel" parent="GalleryScreen"]
+offset_left = 732.0
+offset_top = 74.0
+offset_right = 872.0
+offset_bottom = 133.0
+theme_override_colors/default_color = Color(0.6, 0.568627, 0.682353, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 45
+text = "XX:XX"
+fit_content = true
+scroll_active = false
+
 [node name="GalleryOutline" type="Sprite2D" parent="GalleryScreen"]
 visible = false
 modulate = Color(1, 1, 1, 0.47451)
 position = Vector2(960, 513)
 texture = ExtResource("7_wibdo")
 
-[node name="GalleryList" type="CanvasLayer" parent="GalleryScreen"]
+[node name="GalleryList" type="Control" parent="GalleryScreen"]
 visible = false
+anchors_preset = 0
 
 [node name="Gallery Title" type="RichTextLabel" parent="GalleryScreen/GalleryList"]
 offset_left = 730.0
@@ -293,6 +329,7 @@ offset_left = 732.0
 offset_top = 333.0
 offset_right = 840.0
 offset_bottom = 441.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("19_ab3eh")
 texture_pressed = ExtResource("20_wkkr4")
 texture_hover = ExtResource("20_wkkr4")
@@ -302,6 +339,7 @@ offset_left = 846.0
 offset_top = 333.0
 offset_right = 954.0
 offset_bottom = 441.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("21_f6le3")
 texture_pressed = ExtResource("22_xqb3a")
 texture_hover = ExtResource("22_xqb3a")
@@ -311,6 +349,7 @@ offset_left = 960.0
 offset_top = 333.0
 offset_right = 1068.0
 offset_bottom = 441.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("23_gkgmt")
 texture_pressed = ExtResource("24_ybx83")
 texture_hover = ExtResource("24_ybx83")
@@ -320,6 +359,7 @@ offset_left = 1074.0
 offset_top = 333.0
 offset_right = 1182.0
 offset_bottom = 441.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_jfxx1")
 texture_pressed = ExtResource("26_a4e7i")
 texture_hover = ExtResource("26_a4e7i")
@@ -329,6 +369,7 @@ offset_left = 732.0
 offset_top = 447.0
 offset_right = 840.0
 offset_bottom = 555.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("27_ruefl")
 texture_pressed = ExtResource("28_qan61")
 texture_hover = ExtResource("28_qan61")
@@ -338,6 +379,7 @@ offset_left = 846.0
 offset_top = 447.0
 offset_right = 954.0
 offset_bottom = 555.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("29_vnvpy")
 texture_pressed = ExtResource("30_uue8b")
 texture_hover = ExtResource("30_uue8b")
@@ -347,116 +389,136 @@ offset_left = 960.0
 offset_top = 447.0
 offset_right = 1068.0
 offset_bottom = 555.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("31_k6abh")
 texture_pressed = ExtResource("32_i7ff1")
 texture_hover = ExtResource("32_i7ff1")
 
-[node name="Close Pic1" type="CanvasLayer" parent="GalleryScreen"]
-visible = false
+[node name="ClosePics" type="Control" parent="GalleryScreen"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="PhoneGalleryCloseOutline" type="Sprite2D" parent="GalleryScreen/Close Pic1"]
+[node name="Close Pic1" type="Control" parent="GalleryScreen/ClosePics"]
+visible = false
+anchors_preset = 0
+
+[node name="PhoneGalleryCloseOutline" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic1"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.576471)
 position = Vector2(960, 513)
 texture = ExtResource("29_heq63")
 
-[node name="PhoneGalleryPic1Close" type="Sprite2D" parent="GalleryScreen/Close Pic1"]
+[node name="PhoneGalleryPic1Close" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic1"]
 position = Vector2(960, 540)
 texture = ExtResource("30_xqgcs")
 
-[node name="Close Pic2" type="CanvasLayer" parent="GalleryScreen"]
+[node name="Close Pic2" type="Control" parent="GalleryScreen/ClosePics"]
 visible = false
+anchors_preset = 0
 
-[node name="PhoneGalleryPic2Close" type="Sprite2D" parent="GalleryScreen/Close Pic2"]
+[node name="PhoneGalleryPic2Close" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic2"]
 position = Vector2(960, 540)
 texture = ExtResource("31_76gf4")
 
-[node name="PhoneGalleryCloseOutline" type="Sprite2D" parent="GalleryScreen/Close Pic2"]
+[node name="PhoneGalleryCloseOutline" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic2"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.576471)
 position = Vector2(960, 513)
 texture = ExtResource("32_5mtfw")
 
-[node name="Close Pic3" type="CanvasLayer" parent="GalleryScreen"]
+[node name="Close Pic3" type="Control" parent="GalleryScreen/ClosePics"]
 visible = false
+anchors_preset = 0
 
-[node name="PhoneGalleryPic3Close" type="Sprite2D" parent="GalleryScreen/Close Pic3"]
+[node name="PhoneGalleryPic3Close" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic3"]
 position = Vector2(960, 540)
 texture = ExtResource("33_id5bc")
 
-[node name="Close Pic4" type="CanvasLayer" parent="GalleryScreen"]
+[node name="Close Pic4" type="Control" parent="GalleryScreen/ClosePics"]
 visible = false
+anchors_preset = 0
 
-[node name="PhoneGalleryPic4Close" type="Sprite2D" parent="GalleryScreen/Close Pic4"]
+[node name="PhoneGalleryPic4Close" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic4"]
 position = Vector2(960, 540)
 texture = ExtResource("34_cyrp2")
 
-[node name="Close Pic5" type="CanvasLayer" parent="GalleryScreen"]
+[node name="Close Pic5" type="Control" parent="GalleryScreen/ClosePics"]
 visible = false
+anchors_preset = 0
 
-[node name="PhoneGalleryPic5Close" type="Sprite2D" parent="GalleryScreen/Close Pic5"]
+[node name="PhoneGalleryPic5Close" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic5"]
 position = Vector2(960, 540)
 texture = ExtResource("35_bnjvo")
 
-[node name="Close Pic6" type="CanvasLayer" parent="GalleryScreen"]
+[node name="Close Pic6" type="Control" parent="GalleryScreen/ClosePics"]
 visible = false
+anchors_preset = 0
 
-[node name="PhoneGalleryPic6Close" type="Sprite2D" parent="GalleryScreen/Close Pic6"]
+[node name="PhoneGalleryPic6Close" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic6"]
 position = Vector2(960, 540)
 texture = ExtResource("36_36vd6")
 
-[node name="Close Pic7" type="CanvasLayer" parent="GalleryScreen"]
+[node name="Close Pic7" type="Control" parent="GalleryScreen/ClosePics"]
 visible = false
+anchors_preset = 0
 
-[node name="PhoneGalleryPic7Close" type="Sprite2D" parent="GalleryScreen/Close Pic7"]
+[node name="PhoneGalleryPic7Close" type="Sprite2D" parent="GalleryScreen/ClosePics/Close Pic7"]
 position = Vector2(960, 540)
 texture = ExtResource("37_e75gw")
 
-[node name="Buttons" type="CanvasLayer" parent="GalleryScreen"]
-visible = false
+[node name="Buttons" type="Control" parent="GalleryScreen/ClosePics"]
+anchors_preset = 0
 
-[node name="Back" type="TextureButton" parent="GalleryScreen/Buttons"]
+[node name="Back" type="TextureButton" parent="GalleryScreen/ClosePics/Buttons"]
 offset_left = 733.0
 offset_top = 153.0
 offset_right = 773.0
 offset_bottom = 193.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_4e2o3")
 texture_pressed = ExtResource("39_3iyxu")
 texture_hover = ExtResource("39_3iyxu")
 
-[node name="Left" type="TextureButton" parent="GalleryScreen/Buttons"]
+[node name="Left" type="TextureButton" parent="GalleryScreen/ClosePics/Buttons"]
+visible = false
 offset_left = 732.0
 offset_top = 525.0
 offset_right = 750.0
 offset_bottom = 555.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("40_4djfq")
 texture_pressed = ExtResource("41_6rj6l")
 texture_hover = ExtResource("41_6rj6l")
 
-[node name="Right" type="TextureButton" parent="GalleryScreen/Buttons"]
+[node name="Right" type="TextureButton" parent="GalleryScreen/ClosePics/Buttons"]
+visible = false
 offset_left = 1170.0
 offset_top = 525.0
 offset_right = 1188.0
 offset_bottom = 555.0
-toggle_mode = true
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("42_p2812")
 texture_pressed = ExtResource("43_g4h4a")
 texture_hover = ExtResource("43_g4h4a")
 
-[node name="RightHover" type="Area2D" parent="GalleryScreen/Buttons"]
-visible = false
+[node name="RightHover" type="Area2D" parent="GalleryScreen/ClosePics/Buttons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/Buttons/RightHover"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/ClosePics/Buttons/RightHover"]
 position = Vector2(1157, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
-[node name="LeftHover" type="Area2D" parent="GalleryScreen/Buttons"]
-visible = false
+[node name="LeftHover" type="Area2D" parent="GalleryScreen/ClosePics/Buttons"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/Buttons/LeftHover"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/ClosePics/Buttons/LeftHover"]
 position = Vector2(763, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
-[node name="PhoneScreen" type="CanvasLayer" parent="."]
+[node name="PhoneScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PhoneCallBack" type="Sprite2D" parent="PhoneScreen"]
 position = Vector2(960, 513)
@@ -469,6 +531,7 @@ position = Vector2(960, 513)
 texture = ExtResource("45_0pifn")
 
 [node name="PhoneBar" type="Sprite2D" parent="PhoneScreen"]
+visible = false
 position = Vector2(960, 96)
 texture = ExtResource("16_vgsq4")
 
@@ -476,99 +539,120 @@ texture = ExtResource("16_vgsq4")
 position = Vector2(1161, 96)
 texture = ExtResource("46_q2t4u")
 
-[node name="PhoneNum" type="CanvasLayer" parent="PhoneScreen"]
-visible = false
+[node name="PhoneNum" type="Control" parent="PhoneScreen"]
+anchors_preset = 0
 
 [node name="PhoneCallNumSpace2" type="Sprite2D" parent="PhoneScreen/PhoneNum"]
 position = Vector2(960, 247)
 texture = ExtResource("47_hk3kd")
 
-[node name="0" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="NumInput" type="Label" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
+offset_left = 711.0
+offset_top = 205.0
+offset_right = 1209.0
+offset_bottom = 314.0
+theme_override_colors/font_color = Color(0.321569, 0.415686, 0.447059, 1)
+theme_override_fonts/font = ExtResource("14_vsnqy")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+
+[node name="zero" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 912.0
 offset_top = 660.0
 offset_right = 1008.0
 offset_bottom = 756.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("48_507lu")
 texture_pressed = ExtResource("49_qpdx7")
 texture_hover = ExtResource("49_qpdx7")
 
-[node name="1" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="one" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 798.0
 offset_top = 318.0
 offset_right = 894.0
 offset_bottom = 414.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("50_v1e0u")
 texture_pressed = ExtResource("51_tbcqo")
 texture_hover = ExtResource("51_tbcqo")
 
-[node name="2" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="two" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 912.0
 offset_top = 318.0
 offset_right = 1008.0
 offset_bottom = 414.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("52_0iu06")
 texture_pressed = ExtResource("53_hxh6i")
 texture_hover = ExtResource("53_hxh6i")
 
-[node name="3" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="three" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 1026.0
 offset_top = 318.0
 offset_right = 1122.0
 offset_bottom = 414.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("54_hrvra")
 texture_pressed = ExtResource("55_qsevn")
 texture_hover = ExtResource("55_qsevn")
 
-[node name="4" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="four" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 798.0
 offset_top = 432.0
 offset_right = 894.0
 offset_bottom = 528.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("56_phjvb")
 texture_pressed = ExtResource("57_slji0")
 texture_hover = ExtResource("57_slji0")
 
-[node name="5" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="five" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 912.0
 offset_top = 432.0
 offset_right = 1008.0
 offset_bottom = 528.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("58_j3ayc")
 texture_pressed = ExtResource("59_k6odx")
 texture_hover = ExtResource("59_k6odx")
 
-[node name="6" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="six" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 1026.0
 offset_top = 432.0
 offset_right = 1122.0
 offset_bottom = 528.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("60_xwsin")
 texture_pressed = ExtResource("61_16t74")
 texture_hover = ExtResource("61_16t74")
 
-[node name="7" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="seven" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 798.0
 offset_top = 546.0
 offset_right = 894.0
 offset_bottom = 642.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("62_eh6qy")
 texture_pressed = ExtResource("63_4pimk")
 texture_hover = ExtResource("63_4pimk")
 
-[node name="8" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="eight" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 912.0
 offset_top = 546.0
 offset_right = 1008.0
 offset_bottom = 642.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("64_pc4le")
 texture_pressed = ExtResource("65_v7q4c")
 texture_hover = ExtResource("65_v7q4c")
 
-[node name="9" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+[node name="nine" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 1026.0
 offset_top = 546.0
 offset_right = 1122.0
 offset_bottom = 642.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("66_v2j7b")
 texture_pressed = ExtResource("67_eewx8")
 texture_hover = ExtResource("67_eewx8")
@@ -578,22 +662,27 @@ offset_left = 798.0
 offset_top = 660.0
 offset_right = 894.0
 offset_bottom = 756.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("68_grpen")
 texture_pressed = ExtResource("69_n7hm3")
+texture_hover = ExtResource("69_n7hm3")
 
 [node name="Pound" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 1026.0
 offset_top = 660.0
 offset_right = 1122.0
 offset_bottom = 756.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("70_4dfp8")
 texture_pressed = ExtResource("71_7m02x")
+texture_hover = ExtResource("71_7m02x")
 
 [node name="Call" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 offset_left = 906.0
 offset_top = 798.0
 offset_right = 1014.0
 offset_bottom = 906.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("72_gahas")
 texture_pressed = ExtResource("73_4rf4d")
 texture_hover = ExtResource("73_4rf4d")
@@ -603,10 +692,14 @@ offset_left = 1050.0
 offset_top = 834.0
 offset_right = 1104.0
 offset_bottom = 864.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("74_hf2we")
 texture_pressed = ExtResource("75_11vpp")
+texture_hover = ExtResource("75_11vpp")
 
-[node name="PhoneCall" type="CanvasLayer" parent="PhoneScreen"]
+[node name="PhoneCall" type="Control" parent="PhoneScreen"]
+visible = false
+anchors_preset = 0
 
 [node name="PhoneCallBack" type="Sprite2D" parent="PhoneScreen/PhoneCall"]
 visible = false
@@ -623,18 +716,22 @@ offset_left = 786.0
 offset_top = 720.0
 offset_right = 894.0
 offset_bottom = 828.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("78_uh34o")
 texture_pressed = ExtResource("79_5o0rd")
 texture_hover = ExtResource("79_5o0rd")
+metadata/_edit_use_anchors_ = true
 
 [node name="Decline" type="TextureButton" parent="PhoneScreen/PhoneCall"]
 offset_left = 1026.0
 offset_top = 720.0
 offset_right = 1134.0
 offset_bottom = 828.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("80_q0w6v")
 texture_pressed = ExtResource("81_yuymp")
 texture_hover = ExtResource("81_yuymp")
+metadata/_edit_use_anchors_ = true
 
 [node name="AcceptAnim" type="AnimatedSprite2D" parent="PhoneScreen/PhoneCall"]
 position = Vector2(840, 774)
@@ -649,23 +746,21 @@ libraries = {
 "": SubResource("AnimationLibrary_4eqew")
 }
 
-[node name="NotesScreen" type="CanvasLayer" parent="."]
+[node name="Time" type="RichTextLabel" parent="PhoneScreen"]
+offset_left = 732.0
+offset_top = 74.0
+offset_right = 872.0
+offset_bottom = 133.0
+theme_override_colors/default_color = Color(0.321569, 0.415686, 0.447059, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 45
+text = "XX:XX"
+fit_content = true
+scroll_active = false
 
-[node name="PhoneCallNumbers" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 513)
-texture = ExtResource("5_rujx7")
-
-[node name="PhoneNotes" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 513)
-texture = ExtResource("6_avvcg")
-
-[node name="Button" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.372549)
-position = Vector2(960, 540)
-texture = ExtResource("7_7ga0b")
+[node name="NotesScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="PhoneFrame" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -676,6 +771,7 @@ offset_left = 936.0
 offset_top = 966.0
 offset_right = 986.0
 offset_bottom = 1011.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_wrr1c")
 texture_pressed = ExtResource("9_valq1")
 texture_hover = ExtResource("9_valq1")
@@ -683,4 +779,30 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="pressed" from="HomeScreen/Gallery" to="." method="_on_gallery_pressed"]
 [connection signal="pressed" from="HomeScreen/Notes" to="." method="_on_notes_pressed"]
 [connection signal="pressed" from="HomeScreen/Phone" to="." method="_on_phone_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic1" to="." method="_on_pic_1_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic2" to="." method="_on_pic_2_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic3" to="." method="_on_pic_3_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic4" to="." method="_on_pic_4_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic5" to="." method="_on_pic_5_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic6" to="." method="_on_pic_6_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic7" to="." method="_on_pic_7_pressed"]
+[connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Right" to="." method="_on_right_pressed"]
+[connection signal="mouse_entered" from="GalleryScreen/ClosePics/Buttons/RightHover" to="." method="_on_right_hover_mouse_entered"]
+[connection signal="mouse_exited" from="GalleryScreen/ClosePics/Buttons/RightHover" to="." method="_on_right_hover_mouse_exited"]
+[connection signal="mouse_entered" from="GalleryScreen/ClosePics/Buttons/LeftHover" to="." method="_on_left_hover_mouse_entered"]
+[connection signal="mouse_exited" from="GalleryScreen/ClosePics/Buttons/LeftHover" to="." method="_on_left_hover_mouse_exited"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/zero" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/one" to="." method="_on_one_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/two" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/three" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/four" to="." method="_on_four_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/five" to="." method="_on_five_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/six" to="." method="_on_six_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/seven" to="." method="_on_seven_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/eight" to="." method="_on_eight_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/nine" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Call" to="." method="_on_call_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]

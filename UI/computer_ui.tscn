@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://50vyga4jrdyo"]
+[gd_scene load_steps=100 format=3 uid="uid://50vyga4jrdyo"]
 
 [ext_resource type="Script" path="res://UI/computer_ui.gd" id="1_f0ejt"]
 [ext_resource type="Texture2D" uid="uid://2p5t8lxiacwk" path="res://UI/Assets/Computer/Computer Login Background.png" id="1_kyt61"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dker7aukv5n5" path="res://UI/Assets/Computer/Computer Home Background.png" id="15_gk112"]
 [ext_resource type="Texture2D" uid="uid://cssp1xxsc16o4" path="res://UI/Assets/Computer/Computer UI Home Outline.png" id="15_mowvd"]
 [ext_resource type="Texture2D" uid="uid://b77tsc1oled3y" path="res://UI/Assets/Computer/Computer Home Bar.png" id="16_1goxs"]
+[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="16_7xr3t"]
 [ext_resource type="Texture2D" uid="uid://7m76sb1x6g0c" path="res://UI/Assets/Computer/Computer UI Mail Inbox Outline.png" id="16_12xh7"]
 [ext_resource type="Texture2D" uid="uid://d2a5ncvfdqpe5" path="res://UI/Assets/Computer/Computer UI Mail Read Outline.png" id="17_mv7us"]
 [ext_resource type="Texture2D" uid="uid://dds1rmjjiq8c" path="res://UI/Assets/Computer/Computer Home Post it.png" id="18_nsri6"]
@@ -195,8 +196,13 @@ _data = {
 [node name="ComputerUI" type="Node2D"]
 script = ExtResource("1_f0ejt")
 
-[node name="Login" type="CanvasLayer" parent="."]
-visible = false
+[node name="Login" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="ComputerLoginBackground" type="Sprite2D" parent="Login"]
 texture = ExtResource("1_kyt61")
@@ -217,52 +223,80 @@ position = Vector2(960, 660)
 texture = ExtResource("4_l8wl1")
 
 [node name="Enter" type="TextureButton" parent="Login"]
+layout_mode = 0
 offset_left = 580.0
 offset_top = 625.0
 offset_right = 655.0
 offset_bottom = 700.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_x1bqo")
 texture_pressed = ExtResource("6_f1k30")
 texture_hover = ExtResource("6_f1k30")
+texture_disabled = ExtResource("5_x1bqo")
 
 [node name="Hint" type="TextureButton" parent="Login"]
+layout_mode = 0
 offset_left = 1155.0
 offset_top = 635.0
 offset_right = 1205.0
 offset_bottom = 685.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_36obf")
 texture_pressed = ExtResource("8_2svw0")
 texture_hover = ExtResource("8_2svw0")
 
 [node name="Sleep" type="TextureButton" parent="Login"]
+layout_mode = 0
 offset_left = 735.0
 offset_top = 875.0
 offset_right = 845.0
 offset_bottom = 985.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("9_fotw7")
 texture_pressed = ExtResource("10_pxn5j")
 texture_hover = ExtResource("10_pxn5j")
 
 [node name="Restart" type="TextureButton" parent="Login"]
+layout_mode = 0
 offset_left = 905.0
 offset_top = 875.0
 offset_right = 1015.0
 offset_bottom = 985.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("11_ce3ie")
 texture_pressed = ExtResource("12_t8ohp")
 texture_hover = ExtResource("12_t8ohp")
 
 [node name="Shutdown" type="TextureButton" parent="Login"]
+layout_mode = 0
 offset_left = 1075.0
 offset_top = 875.0
 offset_right = 1185.0
 offset_bottom = 985.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("13_4ujnc")
 texture_pressed = ExtResource("14_l311m")
 texture_hover = ExtResource("14_l311m")
 
-[node name="Home" type="CanvasLayer" parent="."]
+[node name="HintText" type="RichTextLabel" parent="Login"]
 visible = false
+layout_mode = 0
+offset_left = 745.0
+offset_top = 718.0
+offset_right = 1185.0
+offset_bottom = 778.0
+pivot_offset = Vector2(220, 30)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 50
+text = "Your proudest achievement "
+scroll_active = false
+
+[node name="Home" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ComputerHomeBackground" type="Sprite2D" parent="Home"]
 texture = ExtResource("15_gk112")
@@ -283,18 +317,22 @@ position = Vector2(1540, 555)
 texture = ExtResource("18_nsri6")
 
 [node name="Mail" type="TextureButton" parent="Home"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 865.0
 offset_right = 205.0
 offset_bottom = 1000.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("19_5kwn3")
 texture_pressed = ExtResource("20_ci22u")
 texture_hover = ExtResource("20_ci22u")
 
 [node name="Icon" type="TextureButton" parent="Home"]
+layout_mode = 0
 offset_left = 10.0
 offset_right = 60.0
 offset_bottom = 35.0
+mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("21_tm4ku")
 texture_pressed = ExtResource("22_kq6sd")
@@ -308,6 +346,7 @@ offset_left = 10.0
 offset_top = 35.0
 offset_right = 190.0
 offset_bottom = 65.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("23_jwgms")
 texture_pressed = ExtResource("24_nsuay")
 texture_hover = ExtResource("24_nsuay")
@@ -317,6 +356,7 @@ offset_left = 10.0
 offset_top = 65.0
 offset_right = 190.0
 offset_bottom = 95.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_57383")
 texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
@@ -326,6 +366,7 @@ offset_left = 10.0
 offset_top = 95.0
 offset_right = 190.0
 offset_bottom = 125.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_57383")
 texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
@@ -335,6 +376,7 @@ offset_left = 10.0
 offset_top = 125.0
 offset_right = 190.0
 offset_bottom = 155.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_57383")
 texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
@@ -344,11 +386,17 @@ offset_left = 10.0
 offset_top = 155.0
 offset_right = 190.0
 offset_bottom = 195.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("27_xv5u6")
 texture_pressed = ExtResource("28_xsnxk")
 texture_hover = ExtResource("28_xsnxk")
 
-[node name="Mail" type="CanvasLayer" parent="."]
+[node name="Mail" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ComputerMailBackground" type="Sprite2D" parent="Mail"]
 texture = ExtResource("30_7ts5t")
@@ -368,20 +416,24 @@ centered = false
 position = Vector2(415, 183)
 texture = ExtResource("33_ro1dv")
 
-[node name="Exit" type="TextureButton" parent="Mail"]
+[node name="Mail exit" type="TextureButton" parent="Mail"]
+layout_mode = 0
 offset_left = 1850.0
 offset_top = 25.0
 offset_right = 1875.0
 offset_bottom = 50.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("34_d800q")
 texture_pressed = ExtResource("35_mu7qj")
 texture_hover = ExtResource("35_mu7qj")
 
 [node name="NewMessage" type="TextureButton" parent="Mail"]
+layout_mode = 0
 offset_left = 1630.0
 offset_top = 125.0
 offset_right = 1805.0
 offset_bottom = 245.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("36_042wk")
 texture_pressed = ExtResource("37_ucggw")
 texture_hover = ExtResource("37_ucggw")
@@ -390,9 +442,13 @@ texture_hover = ExtResource("37_ucggw")
 position = Vector2(1517, 325)
 texture = ExtResource("46_w37nm")
 
-[node name="Inbox" type="CanvasLayer" parent="Mail"]
+[node name="Inbox" type="Control" parent="Mail"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Message1" type="TextureButton" parent="Mail/Inbox"]
+layout_mode = 0
 offset_left = 125.0
 offset_top = 355.0
 offset_right = 1795.0
@@ -402,6 +458,7 @@ texture_pressed = ExtResource("39_1244i")
 texture_hover = ExtResource("39_1244i")
 
 [node name="Message2" type="TextureButton" parent="Mail/Inbox"]
+layout_mode = 0
 offset_left = 125.0
 offset_top = 490.0
 offset_right = 1795.0
@@ -411,6 +468,7 @@ texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
 
 [node name="Message3" type="TextureButton" parent="Mail/Inbox"]
+layout_mode = 0
 offset_left = 125.0
 offset_top = 625.0
 offset_right = 1795.0
@@ -420,6 +478,7 @@ texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
 
 [node name="Message4" type="TextureButton" parent="Mail/Inbox"]
+layout_mode = 0
 offset_left = 125.0
 offset_top = 760.0
 offset_right = 1795.0
@@ -429,6 +488,7 @@ texture_pressed = ExtResource("43_bcgys")
 texture_hover = ExtResource("43_bcgys")
 
 [node name="Message5" type="TextureButton" parent="Mail/Inbox"]
+layout_mode = 0
 offset_left = 125.0
 offset_top = 895.0
 offset_right = 1795.0
@@ -437,8 +497,10 @@ texture_normal = ExtResource("44_fsf2l")
 texture_pressed = ExtResource("45_aepyp")
 texture_hover = ExtResource("45_aepyp")
 
-[node name="Read" type="CanvasLayer" parent="Mail"]
-visible = false
+[node name="Read" type="Control" parent="Mail"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ComputerMailReadBox" type="Sprite2D" parent="Mail/Read"]
 position = Vector2(960, 690)
@@ -455,52 +517,61 @@ texture = ExtResource("17_mv7us")
 centered = false
 
 [node name="Back" type="TextureButton" parent="Mail/Read"]
+layout_mode = 0
 offset_left = 155.0
 offset_top = 375.0
 offset_right = 235.0
 offset_bottom = 420.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("49_xwv5o")
 texture_pressed = ExtResource("50_beyvh")
 texture_hover = ExtResource("50_beyvh")
 
 [node name="Forward" type="TextureButton" parent="Mail/Read"]
+layout_mode = 0
 offset_left = 1405.0
 offset_top = 380.0
 offset_right = 1445.0
 offset_bottom = 420.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("51_hasvy")
 texture_pressed = ExtResource("52_edm4b")
 texture_hover = ExtResource("52_edm4b")
 
 [node name="Lock" type="TextureButton" parent="Mail/Read"]
+layout_mode = 0
 offset_left = 1505.0
 offset_top = 380.0
 offset_right = 1545.0
 offset_bottom = 420.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("53_jd3vo")
 texture_pressed = ExtResource("54_8vot0")
 texture_hover = ExtResource("54_8vot0")
 
-[node name="Delete" type="TextureButton" parent="Mail/Read"]
+[node name="Mail Delete" type="TextureButton" parent="Mail/Read"]
+layout_mode = 0
 offset_left = 1600.0
 offset_top = 380.0
 offset_right = 1645.0
 offset_bottom = 420.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("55_blij4")
 texture_pressed = ExtResource("56_3nb3g")
 texture_hover = ExtResource("56_3nb3g")
 
 [node name="Download" type="TextureButton" parent="Mail/Read"]
+layout_mode = 0
 offset_left = 1705.0
 offset_top = 380.0
 offset_right = 1750.0
 offset_bottom = 420.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("57_47k81")
 texture_pressed = ExtResource("58_eisv5")
 texture_hover = ExtResource("58_eisv5")
 
 [node name="New Message" type="CanvasLayer" parent="Mail"]
-visible = false
 
 [node name="ComputerMailNewWindowBackground" type="Sprite2D" parent="Mail/New Message"]
 texture = ExtResource("60_rkk8e")
@@ -544,7 +615,7 @@ texture_pressed = ExtResource("68_21br3")
 texture_hover = ExtResource("68_21br3")
 
 [node name="Error" type="CanvasLayer" parent="Mail"]
-visible = false
+layer = 2
 
 [node name="ComputerMailNewWindowBackground" type="Sprite2D" parent="Mail/Error"]
 texture = ExtResource("60_rkk8e")
@@ -564,11 +635,12 @@ centered = false
 position = Vector2(700, 455)
 texture = ExtResource("71_8mcwh")
 
-[node name="Exit" type="TextureButton" parent="Mail/Error"]
+[node name="Error Exit" type="TextureButton" parent="Mail/Error"]
 offset_left = 1290.0
 offset_top = 355.0
 offset_right = 1305.0
 offset_bottom = 370.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("72_jmu2l")
 texture_pressed = ExtResource("73_7jepk")
 texture_hover = ExtResource("73_7jepk")
@@ -578,11 +650,13 @@ offset_left = 865.0
 offset_top = 660.0
 offset_right = 1055.0
 offset_bottom = 715.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("74_reckf")
 texture_pressed = ExtResource("75_fvigi")
 texture_hover = ExtResource("75_fvigi")
 
 [node name="Face ID" type="CanvasLayer" parent="Mail"]
+visible = false
 
 [node name="ComputerMailNewWindowBackground2" type="Sprite2D" parent="Mail/Face ID"]
 texture = ExtResource("60_rkk8e")
@@ -607,4 +681,32 @@ libraries = {
 "": SubResource("AnimationLibrary_gbsdl")
 }
 
+[connection signal="pressed" from="Login/Enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="Login/Hint" to="." method="_on_hint_pressed"]
+[connection signal="pressed" from="Login/Sleep" to="." method="_on_sleep_pressed"]
+[connection signal="pressed" from="Login/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Login/Shutdown" to="." method="_on_shutdown_pressed"]
+[connection signal="pressed" from="Home/Mail" to="." method="_on_mail_pressed"]
 [connection signal="toggled" from="Home/Icon" to="." method="_on_icon_toggled"]
+[connection signal="pressed" from="Home/Dropdown/Dropdown1" to="." method="_on_dropdown_1_pressed"]
+[connection signal="pressed" from="Home/Dropdown/Dropdown2" to="." method="_on_dropdown_2_pressed"]
+[connection signal="pressed" from="Home/Dropdown/Dropdown3" to="." method="_on_dropdown_3_pressed"]
+[connection signal="pressed" from="Home/Dropdown/Dropdown4" to="." method="_on_dropdown_4_pressed"]
+[connection signal="pressed" from="Home/Dropdown/Dropdown5" to="." method="_on_dropdown_5_pressed"]
+[connection signal="pressed" from="Mail/Mail exit" to="." method="_on_mail_exit_pressed"]
+[connection signal="pressed" from="Mail/NewMessage" to="." method="_on_new_message_pressed"]
+[connection signal="pressed" from="Mail/Inbox/Message1" to="." method="_on_message_1_pressed"]
+[connection signal="pressed" from="Mail/Inbox/Message2" to="." method="_on_message_2_pressed"]
+[connection signal="pressed" from="Mail/Inbox/Message3" to="." method="_on_message_3_pressed"]
+[connection signal="pressed" from="Mail/Inbox/Message4" to="." method="_on_message_4_pressed"]
+[connection signal="pressed" from="Mail/Inbox/Message5" to="." method="_on_message_5_pressed"]
+[connection signal="pressed" from="Mail/Read/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Mail/Read/Forward" to="." method="_on_forward_pressed"]
+[connection signal="pressed" from="Mail/Read/Lock" to="." method="_on_lock_pressed"]
+[connection signal="pressed" from="Mail/Read/Mail Delete" to="." method="_on_mail_delete_pressed"]
+[connection signal="pressed" from="Mail/Read/Download" to="." method="_on_download_pressed"]
+[connection signal="pressed" from="Mail/New Message/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Mail/New Message/Send" to="." method="_on_send_pressed"]
+[connection signal="pressed" from="Mail/New Message/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Mail/Error/Error Exit" to="." method="_on_error_exit_pressed"]
+[connection signal="pressed" from="Mail/Error/Confirm" to="." method="_on_confirm_pressed"]
