@@ -1,99 +1,620 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwe7ysx8hp5yv"]
+[gd_scene load_steps=196 format=3 uid="uid://cwe7ysx8hp5yv"]
 
-[ext_resource type="Texture2D" uid="uid://d1icjoucb81f5" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 1@2x.png" id="1_ywwcj"]
-[ext_resource type="Texture2D" uid="uid://ff88mlkrx3b5" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 2@2x.png" id="2_lt4x2"]
-[ext_resource type="Texture2D" uid="uid://ddomsoqa52774" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 3@2x.png" id="3_f1hbc"]
-[ext_resource type="Texture2D" uid="uid://dbkha7noenkeh" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 4@2x.png" id="4_10sf6"]
-[ext_resource type="Texture2D" uid="uid://bb4h7r2phha7p" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 5@2x.png" id="5_y4het"]
-[ext_resource type="Texture2D" uid="uid://bw3h3uu0f5psg" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 6@2x.png" id="6_whm0j"]
-[ext_resource type="Texture2D" uid="uid://dxo2nvvhdtlyi" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 7@2x.png" id="7_5bdl4"]
-[ext_resource type="Texture2D" uid="uid://cdfibs20o38hh" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 8@2x.png" id="8_i1j23"]
-[ext_resource type="Texture2D" uid="uid://dm3g4h8efyg7r" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 3 Frame 9@2x.png" id="9_cggki"]
-[ext_resource type="Texture2D" uid="uid://bm7nffiqpuq5r" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 1@2x.png" id="10_ow85v"]
-[ext_resource type="Texture2D" uid="uid://c5d1ijm76thh0" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 2@2x.png" id="11_dkhtj"]
-[ext_resource type="Texture2D" uid="uid://ch1aaubx5fqmj" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 3@2x.png" id="12_nwfva"]
-[ext_resource type="Texture2D" uid="uid://j0oyej3vktwo" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 4@2x.png" id="13_rr1et"]
-[ext_resource type="Texture2D" uid="uid://em76mdumc6dy" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 5@2x.png" id="14_x7pt8"]
-[ext_resource type="Texture2D" uid="uid://dpfrde2m1gyge" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 6@2x.png" id="15_7drla"]
-[ext_resource type="Texture2D" uid="uid://cubmfv5bwv7s3" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 7@2x.png" id="16_ety1m"]
-[ext_resource type="Texture2D" uid="uid://ctc6qi75i75l3" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 8@2x.png" id="17_egrqx"]
-[ext_resource type="Texture2D" uid="uid://c5a25rdqahwr" path="res://ThirdHouse/Runa Journal Frames/Runa Journal Page 4 Frame 9@2x.png" id="18_lmtjt"]
+[ext_resource type="Texture2D" uid="uid://bsqf2cesb1tcy" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame1@2x.png" id="1_28p4s"]
+[ext_resource type="Script" path="res://ThirdHouse/runa_journal.gd" id="1_nyd47"]
+[ext_resource type="Texture2D" uid="uid://ciwek6ylsxqr5" path="res://ThirdHouse/Runa Journal Frames/Fifth Page@2x.png" id="1_qlge0"]
+[ext_resource type="Texture2D" uid="uid://b262jkm864myg" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page1.png" id="1_t5ubo"]
+[ext_resource type="Texture2D" uid="uid://bj3h83cjv5g8d" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame1@2x.png" id="1_t7nv3"]
+[ext_resource type="Texture2D" uid="uid://dtpp8buddpalb" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame2@2x.png" id="2_iod4d"]
+[ext_resource type="Texture2D" uid="uid://xr73yntytxa7" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame2@2x.png" id="2_jenj1"]
+[ext_resource type="Texture2D" uid="uid://cebpte1wbi6b" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page9.png" id="2_yhuds"]
+[ext_resource type="Texture2D" uid="uid://bbo0iklka2tv" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page8.png" id="3_dsp4h"]
+[ext_resource type="Texture2D" uid="uid://cfn1py4osnuh5" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame3@2x.png" id="3_ivhuo"]
+[ext_resource type="Texture2D" uid="uid://cu38o5fsj6fss" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame3@2x.png" id="3_rn4dp"]
+[ext_resource type="Texture2D" uid="uid://cbf5tg3jah1v0" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame4@2x.png" id="4_0f4wj"]
+[ext_resource type="Texture2D" uid="uid://da8wcikybsqil" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page7.png" id="4_lvgt5"]
+[ext_resource type="Texture2D" uid="uid://dwkp6jj4gf0mj" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame4@2x.png" id="4_nggc2"]
+[ext_resource type="Texture2D" uid="uid://c2w85jx6fnuk7" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame5@2x.png" id="5_1pyxx"]
+[ext_resource type="Texture2D" uid="uid://h68y7lv21kma" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame5@2x.png" id="5_18xry"]
+[ext_resource type="Texture2D" uid="uid://dpaj2u3225ijw" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page6.png" id="5_drrsf"]
+[ext_resource type="Texture2D" uid="uid://dpl5dq0hqmwmb" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame6@2x.png" id="6_cbko8"]
+[ext_resource type="Texture2D" uid="uid://bph8ndqipf5qg" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page5.png" id="6_gaxj0"]
+[ext_resource type="Texture2D" uid="uid://bib40bkjqmg48" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame6@2x.png" id="6_xon1u"]
+[ext_resource type="Texture2D" uid="uid://bm5vd1x6pgml3" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame7@2x.png" id="7_gxjfc"]
+[ext_resource type="Texture2D" uid="uid://brp6tx5o4s7qo" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page4.png" id="7_lc8ru"]
+[ext_resource type="Texture2D" uid="uid://bxytbiq7yljvd" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame7@2x.png" id="7_ni1et"]
+[ext_resource type="Texture2D" uid="uid://dkalm027x8j7w" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page3.png" id="8_86rp6"]
+[ext_resource type="Texture2D" uid="uid://cxgq6tahojuwj" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame8@2x.png" id="8_hq8w0"]
+[ext_resource type="Texture2D" uid="uid://vong3lk545x4" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame8@2x.png" id="8_l4qqc"]
+[ext_resource type="Texture2D" uid="uid://bvkr3rxmeuh4l" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page2.png" id="9_gkmys"]
+[ext_resource type="Texture2D" uid="uid://u6sfi1cofqgw" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame1@2x.png" id="9_soy7g"]
+[ext_resource type="Texture2D" uid="uid://b5vlr2kuvc5so" path="res://ThirdHouse/Runa Journal Frames/First Page@2x.png" id="9_ygw5t"]
+[ext_resource type="Texture2D" uid="uid://iytxy8q7ajcu" path="res://ThirdHouse/Runa Journal Frames/Sixth Page@2x.png" id="10_0k8iy"]
+[ext_resource type="Texture2D" uid="uid://dkxtr2heobqp0" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame2@2x.png" id="10_tdy50"]
+[ext_resource type="Texture2D" uid="uid://c0ydgk8stup4i" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame1@2x.png" id="11_bmidn"]
+[ext_resource type="Texture2D" uid="uid://ds34w17sg1or3" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame3@2x.png" id="11_uy1qj"]
+[ext_resource type="Texture2D" uid="uid://myaimn1oj3ge" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame2@2x.png" id="12_p6qap"]
+[ext_resource type="Texture2D" uid="uid://b85hhwkqdyqac" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame4@2x.png" id="12_t7b80"]
+[ext_resource type="Texture2D" uid="uid://sd2m6m8jwlsa" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame5@2x.png" id="13_1e6dp"]
+[ext_resource type="Texture2D" uid="uid://wq77o8l3mvu" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame3@2x.png" id="13_ucn1o"]
+[ext_resource type="Texture2D" uid="uid://b4iw2j4w6ulu1" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame4@2x.png" id="14_5ph1w"]
+[ext_resource type="Texture2D" uid="uid://cufh3p3vatkp2" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame6@2x.png" id="14_qg33o"]
+[ext_resource type="Texture2D" uid="uid://s5jijhs85i7t" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame5@2x.png" id="15_8abbe"]
+[ext_resource type="Texture2D" uid="uid://bj0l6hqw6pnka" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame7@2x.png" id="15_202yy"]
+[ext_resource type="Texture2D" uid="uid://l6mtnr8ikl4u" path="res://ThirdHouse/Runa Journal Frames/Fourth Page Frames/Fourth Page Frame8@2x.png" id="16_015di"]
+[ext_resource type="Texture2D" uid="uid://c3bltelljljn3" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame6@2x.png" id="16_nxqxd"]
+[ext_resource type="Texture2D" uid="uid://dnd0pu02jww0r" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame7@2x.png" id="17_2oflp"]
+[ext_resource type="Texture2D" uid="uid://bartidnk4b03i" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame1@2x.png" id="17_07n6p"]
+[ext_resource type="Texture2D" uid="uid://dbg22iibx33vx" path="res://ThirdHouse/Runa Journal Frames/Second Page@2x.png" id="18_bgr8n"]
+[ext_resource type="Texture2D" uid="uid://ddskgax46dlkn" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame2@2x.png" id="18_gb5am"]
+[ext_resource type="Texture2D" uid="uid://dd63ivmr2ntia" path="res://ThirdHouse/Runa Journal Frames/Eigth Page Frames/Eigth Page Frame8@2x.png" id="18_lyyjt"]
+[ext_resource type="Texture2D" uid="uid://dmlu6t6ewowaw" path="res://ThirdHouse/Runa Journal Frames/Ninth Page@2x.png" id="19_8if4u"]
+[ext_resource type="Texture2D" uid="uid://bkkc4o6fqhaho" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame3@2x.png" id="19_q0d48"]
+[ext_resource type="Texture2D" uid="uid://cbm3np2xg7325" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page@2x.png" id="20_3r465"]
+[ext_resource type="Texture2D" uid="uid://c0tlud3yu8gse" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame4@2x.png" id="20_ivyc1"]
+[ext_resource type="Texture2D" uid="uid://tk8fnydqh8f0" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame1@2x.png" id="21_1avtb"]
+[ext_resource type="Texture2D" uid="uid://bfi7lk2m7loui" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame5@2x.png" id="21_5017w"]
+[ext_resource type="Texture2D" uid="uid://b5oiaffb8ijwc" path="res://ThirdHouse/Runa Journal Frames/Fourth Page@2x.png" id="21_sfxkt"]
+[ext_resource type="Texture2D" uid="uid://b7hyhb38ygsjc" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame6@2x.png" id="22_bi7ts"]
+[ext_resource type="Texture2D" uid="uid://dd3a65uslyn0c" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame2@2x.png" id="22_tr7vk"]
+[ext_resource type="Texture2D" uid="uid://b5eh27seveath" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame3@2x.png" id="23_3t4cb"]
+[ext_resource type="Texture2D" uid="uid://cs7d8ug7exopm" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame7@2x.png" id="23_dvuyk"]
+[ext_resource type="Texture2D" uid="uid://bwq7jm37q0uow" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame4@2x.png" id="24_lv6oc"]
+[ext_resource type="Texture2D" uid="uid://dh66cuily8r83" path="res://ThirdHouse/Runa Journal Frames/Second Page Frames/Second Page Frame8@2x.png" id="24_yfimh"]
+[ext_resource type="Texture2D" uid="uid://cgohr1nu4geos" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame5@2x.png" id="25_4dhbe"]
+[ext_resource type="Texture2D" uid="uid://cli8m7k3rc0ei" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame1@2x.png" id="25_jtug5"]
+[ext_resource type="Texture2D" uid="uid://de5dj31dujcpi" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame6@2x.png" id="26_6tjks"]
+[ext_resource type="Texture2D" uid="uid://cx8u7itupl11s" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame2@2x.png" id="26_khbia"]
+[ext_resource type="Texture2D" uid="uid://bl5jiqpdoolpy" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame7@2x.png" id="27_gckjc"]
+[ext_resource type="Texture2D" uid="uid://d2xw4412nx1dx" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame3@2x.png" id="27_lqwy7"]
+[ext_resource type="Texture2D" uid="uid://cksds1nxf278j" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame8@2x.png" id="28_827xg"]
+[ext_resource type="Texture2D" uid="uid://cd41mweeav3ab" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame4@2x.png" id="28_mn03t"]
+[ext_resource type="Texture2D" uid="uid://cvoo6o5iyjjyr" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame5@2x.png" id="29_w0tkp"]
+[ext_resource type="Texture2D" uid="uid://bef3l6ehpw670" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame6@2x.png" id="30_rv4e7"]
+[ext_resource type="Texture2D" uid="uid://q3htnhxgjyao" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame7@2x.png" id="31_whaim"]
+[ext_resource type="Texture2D" uid="uid://cjkiolxjqnte0" path="res://ThirdHouse/Runa Journal Frames/Third Page Frames/Third Page Frame8@2x.png" id="32_o80nb"]
+[ext_resource type="Texture2D" uid="uid://cq87lebte77y5" path="res://ThirdHouse/Runa Journal Frames/Third Page@2x.png" id="38_lymmf"]
+[ext_resource type="Texture2D" uid="uid://kea8vawm2nqb" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame1@2x.png" id="39_plet0"]
+[ext_resource type="Texture2D" uid="uid://cvny21on5mneo" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame1@2x.png" id="40_prnan"]
+[ext_resource type="Texture2D" uid="uid://c8kpu6mpygjj3" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame2@2x.png" id="40_rti5r"]
+[ext_resource type="Texture2D" uid="uid://dq4yejp1gmq3j" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame3@2x.png" id="41_gp5ch"]
+[ext_resource type="Texture2D" uid="uid://cktwfqa8pm6y6" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame2@2x.png" id="41_r5qla"]
+[ext_resource type="Texture2D" uid="uid://cmirm453f3814" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame4@2x.png" id="42_1lju0"]
+[ext_resource type="Texture2D" uid="uid://c1vrq6mkjcium" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame3@2x.png" id="42_x7hgp"]
+[ext_resource type="Texture2D" uid="uid://c0l7qny3u5taq" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame5@2x.png" id="43_5r0gm"]
+[ext_resource type="Texture2D" uid="uid://ca7roee44epyn" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame4@2x.png" id="43_v7tpi"]
+[ext_resource type="Texture2D" uid="uid://knqr4wdkmnpg" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame5@2x.png" id="44_n4w2y"]
+[ext_resource type="Texture2D" uid="uid://c34v2dd4bn16k" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame6@2x.png" id="44_nykwg"]
+[ext_resource type="Texture2D" uid="uid://bdq0s3sryaf5l" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame6@2x.png" id="45_24m7p"]
+[ext_resource type="Texture2D" uid="uid://dnoj0w0ykckp2" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame7@2x.png" id="45_i5qof"]
+[ext_resource type="Texture2D" uid="uid://ymc4sm0dklmk" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame7@2x.png" id="46_1dh8m"]
+[ext_resource type="Texture2D" uid="uid://wjsfdia2mx4o" path="res://ThirdHouse/Runa Journal Frames/Sixth Page Frames/Sixth Page Frame8@2x.png" id="46_uto8d"]
+[ext_resource type="Texture2D" uid="uid://b3dxvxsttmqmm" path="res://ThirdHouse/Runa Journal Frames/Seventh Page Frames/Seventh Page Frame8@2x.png" id="47_pi3h7"]
+[ext_resource type="Texture2D" uid="uid://bfhqlqb0vakww" path="res://ThirdHouse/Runa Journal Frames/Seventh Page@2x.png" id="47_ruehv"]
+[ext_resource type="Texture2D" uid="uid://onc8jejp4sok" path="res://ThirdHouse/Runa Journal Frames/Eigth Page@2x.png" id="48_i0nrt"]
+[ext_resource type="Texture2D" uid="uid://cdjg61xkwqj0t" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame1@2x.png" id="58_1h5r6"]
+[ext_resource type="Texture2D" uid="uid://dngmtx63oicrp" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame2@2x.png" id="59_lxq7d"]
+[ext_resource type="Texture2D" uid="uid://cccbnrwd6o8ft" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame3@2x.png" id="60_25fxi"]
+[ext_resource type="Texture2D" uid="uid://b4phtuiq53pgt" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame4@2x.png" id="61_sjlql"]
+[ext_resource type="Texture2D" uid="uid://c4o1j1truyguu" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame5@2x.png" id="62_0x0ye"]
+[ext_resource type="Texture2D" uid="uid://bgfekpyvyvtut" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame6@2x.png" id="63_1ng1v"]
+[ext_resource type="Texture2D" uid="uid://d3atoyaitgvee" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame7@2x.png" id="64_4iug5"]
+[ext_resource type="Texture2D" uid="uid://ccu3w876h0yoa" path="res://ThirdHouse/Runa Journal Frames/Ninth Page Frames/Ninth Page Frame8@2x.png" id="65_5n576"]
+[ext_resource type="Texture2D" uid="uid://de6obms5256yo" path="res://ThirdHouse/Runa Journal Frames/Tenth Page@2x.png" id="66_bt5oh"]
+[ext_resource type="Texture2D" uid="uid://djgf0yvl621pv" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame1@2x.png" id="93_mmo47"]
+[ext_resource type="Texture2D" uid="uid://cylejptiuvjvn" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame2@2x.png" id="94_5dk62"]
+[ext_resource type="Texture2D" uid="uid://bv3ulbkw1day6" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame3@2x.png" id="95_8c11l"]
+[ext_resource type="Texture2D" uid="uid://bwy2oow3ch327" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame4@2x.png" id="96_ox40g"]
+[ext_resource type="Texture2D" uid="uid://cbl8eghnmelb6" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame5@2x.png" id="97_f0guq"]
+[ext_resource type="Texture2D" uid="uid://dk3lo0facy466" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame6@2x.png" id="98_18n1s"]
+[ext_resource type="Texture2D" uid="uid://blmi1q7jto507" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame7@2x.png" id="99_p23bm"]
+[ext_resource type="Texture2D" uid="uid://sk1gkhht8nib" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame8@2x.png" id="100_7s4xn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h61mm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ywwcj")
+"texture": ExtResource("1_t5ubo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_lt4x2")
+"texture": ExtResource("2_yhuds")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_f1hbc")
+"texture": ExtResource("3_dsp4h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_10sf6")
+"texture": ExtResource("4_lvgt5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_y4het")
+"texture": ExtResource("5_drrsf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_whm0j")
+"texture": ExtResource("6_gaxj0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_5bdl4")
+"texture": ExtResource("7_lc8ru")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_i1j23")
+"texture": ExtResource("8_86rp6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_cggki")
+"texture": ExtResource("9_gkmys")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_ow85v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_dkhtj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_nwfva")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_rr1et")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_x7pt8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_7drla")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_ety1m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_egrqx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_lmtjt")
+"texture": ExtResource("1_t5ubo")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Blank Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_i0nrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bmidn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p6qap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ucn1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5ph1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8abbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nxqxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2oflp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lyyjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8if4u")
+}],
+"loop": true,
+"name": &"Eigth Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_3r465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1avtb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_tr7vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3t4cb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_lv6oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4dhbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_6tjks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_gckjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_827xg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_t5ubo")
+}],
+"loop": true,
+"name": &"Eleventh Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qlge0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_t7nv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iod4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ivhuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0f4wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_18xry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cbko8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gxjfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hq8w0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0k8iy")
+}],
+"loop": true,
+"name": &"Fifth Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ygw5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_28p4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jenj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rn4dp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nggc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1pyxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xon1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ni1et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l4qqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bgr8n")
+}],
+"loop": true,
+"name": &"First Page",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_sfxkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_soy7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tdy50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uy1qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t7b80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1e6dp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qg33o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_202yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_015di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qlge0")
+}],
+"loop": true,
+"name": &"Fourth Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_8if4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_1h5r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_lxq7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_25fxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_sjlql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_0x0ye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_1ng1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_4iug5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_5n576")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_bt5oh")
+}],
+"loop": true,
+"name": &"Ninth Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_bgr8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_07n6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gb5am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q0d48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ivyc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_5017w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_bi7ts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_dvuyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_yfimh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_lymmf")
+}],
+"loop": true,
+"name": &"Second Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_ruehv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_prnan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_r5qla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_x7hgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_v7tpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_n4w2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_24m7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_1dh8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_pi3h7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_i0nrt")
+}],
+"loop": true,
+"name": &"Seventh Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0k8iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_plet0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_rti5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_gp5ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_1lju0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_5r0gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_nykwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_i5qof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_uto8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_ruehv")
+}],
+"loop": true,
+"name": &"Sixth Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("66_bt5oh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_mmo47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_5dk62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_8c11l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_ox40g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_f0guq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_18n1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_p23bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_7s4xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_3r465")
+}],
+"loop": true,
+"name": &"Tenth Page",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_lymmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_jtug5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_khbia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_lqwy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_mn03t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_w0tkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_rv4e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_whaim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_o80nb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sfxkt")
+}],
+"loop": true,
+"name": &"Third Page",
+"speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_t62c1"]
-resource_name = "Flip"
+[sub_resource type="Animation" id="Animation_ga5i4"]
+resource_name = "Fifth To Sixth"
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Third Page:frame")
+tracks/0/path = NodePath("Page Frames:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1]
+"values": [&"Fifth Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_t62c1"]
+resource_name = "First To Second"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"First Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_m1vk1"]
+resource_name = "Fourth To Fifth"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Fourth Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_lxo4h"]
@@ -101,29 +622,704 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Third Page:frame")
+tracks/0/path = NodePath("Page Frames:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"First Page"]
+}
+
+[sub_resource type="Animation" id="Animation_5vxid"]
+resource_name = "Second To Third"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [&"Second Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_fk0cc"]
+resource_name = "Seventh To Eigth"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Seventh Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_voeyb"]
+resource_name = "Sixth To Seventh"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Sixth Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_vog8u"]
+resource_name = "Third To Fourth"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Third Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_vn06u"]
+resource_name = "Eigth To Ninth"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Eigth Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_lqogx"]
+resource_name = "Ninth To Tenth"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Ninth Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_vwsdm"]
+resource_name = "Tenth To Eleventh"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Tenth Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_bl7lj"]
+resource_name = "Eleventh To Blank"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Eleventh Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_m0hxd"]
+resource_name = "Blank"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Blank Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xogr8"]
 _data = {
-"Flip": SubResource("Animation_t62c1"),
-"RESET": SubResource("Animation_lxo4h")
+"Blank": SubResource("Animation_m0hxd"),
+"Eigth To Ninth": SubResource("Animation_vn06u"),
+"Eleventh To Blank": SubResource("Animation_bl7lj"),
+"Fifth To Sixth": SubResource("Animation_ga5i4"),
+"First To Second": SubResource("Animation_t62c1"),
+"Fourth To Fifth": SubResource("Animation_m1vk1"),
+"Ninth To Tenth": SubResource("Animation_lqogx"),
+"RESET": SubResource("Animation_lxo4h"),
+"Second To Third": SubResource("Animation_5vxid"),
+"Seventh To Eigth": SubResource("Animation_fk0cc"),
+"Sixth To Seventh": SubResource("Animation_voeyb"),
+"Tenth To Eleventh": SubResource("Animation_vwsdm"),
+"Third To Fourth": SubResource("Animation_vog8u")
 }
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ldiv2"]
+animation = &"Blank"
 
-[node name="Third Page" type="AnimatedSprite2D" parent="."]
-position = Vector2(920, 542)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_la2dx"]
+animation = &"Eleventh To Blank"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ghfj7"]
+animation = &"Blank"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0icss"]
+animation = &"Eigth To Ninth"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_goost"]
+animation = &"Seventh To Eigth"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cetev"]
+animation = &"Eleventh To Blank"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c37o0"]
+animation = &"Tenth To Eleventh"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yhyqn"]
+animation = &"Fourth To Fifth"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ds7nv"]
+animation = &"Fifth To Sixth"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_es0s0"]
+animation = &"First To Second"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gm33f"]
+animation = &"Fourth To Fifth"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rfqy7"]
+animation = &"Third To Fourth"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7p5kd"]
+animation = &"Eigth To Ninth"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e2jei"]
+animation = &"Ninth To Tenth"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y1erw"]
+animation = &"First To Second"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlge3"]
+animation = &"Second To Third"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eq8k0"]
+animation = &"Seventh To Eigth"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_be7nt"]
+animation = &"Sixth To Seventh"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l5ora"]
+animation = &"Fifth To Sixth"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_11fxp"]
+animation = &"Sixth To Seventh"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1yon0"]
+animation = &"Tenth To Eleventh"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3odmc"]
+animation = &"Ninth To Tenth"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fkco8"]
+animation = &"Third To Fourth"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wonv3"]
+animation = &"Second To Third"
+play_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1msr1"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rnvbd"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_by506"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mnvdg"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ok3ht"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d2qyk"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mkfeg"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a6h50"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_axfgr"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ey3ge"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_un6xq"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fix32"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vyeid"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_emhkh"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2eydu"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jii8y"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d884k"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fxnw7"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tbdxu"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_axweq"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3n3r2"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a8p74"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5utwi"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1lisf"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wrguf"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2j5i6"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ayr8v"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ij5ep"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4mda4"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b3nuh"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1nctj"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_st60x"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qvpgx"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_paiye"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_up7k4"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h1i7s"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yqsur"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rim0s"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_llxwn"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eplel"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pkgfq"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rbgqt"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qifc5"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5j2qq"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n5rk7"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jjwdx"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mbmbu"]
+states/Blank/node = SubResource("AnimationNodeAnimation_ghfj7")
+states/Blank/position = Vector2(2249, 61)
+"states/Blank 2/node" = SubResource("AnimationNodeAnimation_ldiv2")
+"states/Blank 2/position" = Vector2(2383, 61)
+"states/Blank To Eleventh /node" = SubResource("AnimationNodeAnimation_la2dx")
+"states/Blank To Eleventh /position" = Vector2(2093, 156)
+"states/Eigth To Ninth/node" = SubResource("AnimationNodeAnimation_0icss")
+"states/Eigth To Ninth/position" = Vector2(1451, 61)
+"states/Eigth To Seventh/node" = SubResource("AnimationNodeAnimation_goost")
+"states/Eigth To Seventh/position" = Vector2(1245, 156)
+"states/Eleventh To Blank/node" = SubResource("AnimationNodeAnimation_cetev")
+"states/Eleventh To Blank/position" = Vector2(2093, 61)
+"states/Eleventh To Tenth  /node" = SubResource("AnimationNodeAnimation_c37o0")
+"states/Eleventh To Tenth  /position" = Vector2(1873, 156)
+states/End/position = Vector2(2533, 131)
+"states/Fifth To Fourth/node" = SubResource("AnimationNodeAnimation_yhyqn")
+"states/Fifth To Fourth/position" = Vector2(686, 156)
+"states/Fifth To Sixth/node" = SubResource("AnimationNodeAnimation_ds7nv")
+"states/Fifth To Sixth/position" = Vector2(861, 61)
+"states/First To Second/node" = SubResource("AnimationNodeAnimation_es0s0")
+"states/First To Second/position" = Vector2(137, 63)
+"states/Fourth To Fifth/node" = SubResource("AnimationNodeAnimation_gm33f")
+"states/Fourth To Fifth/position" = Vector2(686, 61)
+"states/Fourth To Third/node" = SubResource("AnimationNodeAnimation_rfqy7")
+"states/Fourth To Third/position" = Vector2(491, 154)
+"states/Ninth To Eigth/node" = SubResource("AnimationNodeAnimation_7p5kd")
+"states/Ninth To Eigth/position" = Vector2(1451, 156)
+"states/Ninth To Tenth/node" = SubResource("AnimationNodeAnimation_e2jei")
+"states/Ninth To Tenth/position" = Vector2(1657, 61)
+"states/Second To First/node" = SubResource("AnimationNodeAnimation_y1erw")
+"states/Second To First/position" = Vector2(137, 154)
+"states/Second To Third/node" = SubResource("AnimationNodeAnimation_mlge3")
+"states/Second To Third/position" = Vector2(311, 63)
+"states/Seventh To Eigth/node" = SubResource("AnimationNodeAnimation_eq8k0")
+"states/Seventh To Eigth/position" = Vector2(1245, 61)
+"states/Seventh To Sixth/node" = SubResource("AnimationNodeAnimation_be7nt")
+"states/Seventh To Sixth/position" = Vector2(1047, 158)
+"states/Sixth To Fifth/node" = SubResource("AnimationNodeAnimation_l5ora")
+"states/Sixth To Fifth/position" = Vector2(861, 157)
+"states/Sixth To Seventh/node" = SubResource("AnimationNodeAnimation_11fxp")
+"states/Sixth To Seventh/position" = Vector2(1047, 61)
+states/Start/position = Vector2(-1, 63)
+"states/Tenth To Eleventh/node" = SubResource("AnimationNodeAnimation_1yon0")
+"states/Tenth To Eleventh/position" = Vector2(1873, 61)
+"states/Tenth To Ninth/node" = SubResource("AnimationNodeAnimation_3odmc")
+"states/Tenth To Ninth/position" = Vector2(1657, 159)
+"states/Third To Fourth/node" = SubResource("AnimationNodeAnimation_fkco8")
+"states/Third To Fourth/position" = Vector2(491, 63)
+"states/Third To Second/node" = SubResource("AnimationNodeAnimation_wonv3")
+"states/Third To Second/position" = Vector2(311, 154)
+transitions = ["Start", "First To Second", SubResource("AnimationNodeStateMachineTransition_1msr1"), "First To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_rnvbd"), "Second To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_by506"), "Third To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_mnvdg"), "Fourth To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_ok3ht"), "Fourth To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_d2qyk"), "Third To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_mkfeg"), "Second To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_a6h50"), "Third To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_axfgr"), "Second To First", "First To Second", SubResource("AnimationNodeStateMachineTransition_ey3ge"), "First To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_un6xq"), "Third To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_fix32"), "Fourth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_vyeid"), "Fifth To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_emhkh"), "Sixth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2eydu"), "Seventh To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_jii8y"), "Eigth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_d884k"), "Ninth To Tenth", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_fxnw7"), "Tenth To Eleventh", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_tbdxu"), "Eleventh To Blank", "Blank", SubResource("AnimationNodeStateMachineTransition_axweq"), "Blank", "Blank 2", SubResource("AnimationNodeStateMachineTransition_3n3r2"), "Blank 2", "Blank", SubResource("AnimationNodeStateMachineTransition_a8p74"), "Fifth To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_5utwi"), "Sixth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_1lisf"), "Seventh To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_wrguf"), "Eigth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2j5i6"), "Ninth To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_ayr8v"), "Tenth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_ij5ep"), "Eleventh To Tenth  ", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_4mda4"), "Blank To Eleventh ", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_b3nuh"), "Fifth To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_1nctj"), "Fourth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_st60x"), "Sixth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_qvpgx"), "Fifth To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_paiye"), "Seventh To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_up7k4"), "Sixth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_h1i7s"), "Eigth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_yqsur"), "Seventh To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_rim0s"), "Ninth To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_llxwn"), "Eigth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_eplel"), "Tenth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_pkgfq"), "Ninth To Tenth", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_rbgqt"), "Eleventh To Tenth  ", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_qifc5"), "Tenth To Eleventh", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_5j2qq"), "Blank To Eleventh ", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_n5rk7"), "Eleventh To Blank", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_jjwdx")]
+graph_offset = Vector2(1555, -6)
+
+[node name="Journal" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nyd47")
+
+[node name="Page Frames" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_h61mm")
+animation = &"First Page"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_xogr8")
 }
+
+[node name="First Page" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("9_ygw5t")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_mbmbu")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/turn_page_backward = false
+parameters/conditions/turn_page_forward = false
+
+[node name="Forward" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1533.0
+offset_top = 930.0
+offset_right = 1585.0
+offset_bottom = 976.0
+
+[node name="Backward" type="Button" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 912.0
+offset_right = 407.0
+offset_bottom = 985.0
+
+[connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]
+[connection signal="pressed" from="Forward" to="." method="_on_forward_pressed"]
+[connection signal="pressed" from="Backward" to="." method="_on_backward_pressed"]

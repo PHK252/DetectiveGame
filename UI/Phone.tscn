@@ -217,6 +217,7 @@ position = Vector2(1161, 96)
 texture = ExtResource("17_a6j4e")
 
 [node name="Gallery" type="TextureButton" parent="HomeScreen"]
+layout_mode = 0
 offset_left = 1068.0
 offset_top = 810.0
 offset_right = 1176.0
@@ -227,6 +228,7 @@ texture_pressed = ExtResource("11_ao5dl")
 texture_hover = ExtResource("11_ao5dl")
 
 [node name="Notes" type="TextureButton" parent="HomeScreen"]
+layout_mode = 0
 offset_left = 906.0
 offset_top = 810.0
 offset_right = 1014.0
@@ -237,6 +239,7 @@ texture_pressed = ExtResource("13_ckxde")
 texture_hover = ExtResource("13_ckxde")
 
 [node name="Phone" type="TextureButton" parent="HomeScreen"]
+layout_mode = 0
 offset_left = 744.0
 offset_top = 810.0
 offset_right = 852.0
@@ -279,6 +282,7 @@ position = Vector2(1161, 96)
 texture = ExtResource("12_qpmkw")
 
 [node name="Time" type="RichTextLabel" parent="GalleryScreen"]
+layout_mode = 0
 offset_left = 732.0
 offset_top = 74.0
 offset_right = 872.0
@@ -301,6 +305,7 @@ visible = false
 anchors_preset = 0
 
 [node name="Gallery Title" type="RichTextLabel" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 730.0
 offset_top = 164.0
 offset_right = 1162.0
@@ -313,6 +318,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Gallery Subtitle" type="RichTextLabel" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 732.0
 offset_top = 284.0
 offset_right = 987.0
@@ -325,6 +331,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Pic1" type="TextureButton" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 732.0
 offset_top = 333.0
 offset_right = 840.0
@@ -335,6 +342,7 @@ texture_pressed = ExtResource("20_wkkr4")
 texture_hover = ExtResource("20_wkkr4")
 
 [node name="Pic2" type="TextureButton" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 846.0
 offset_top = 333.0
 offset_right = 954.0
@@ -345,6 +353,7 @@ texture_pressed = ExtResource("22_xqb3a")
 texture_hover = ExtResource("22_xqb3a")
 
 [node name="Pic3" type="TextureButton" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 960.0
 offset_top = 333.0
 offset_right = 1068.0
@@ -355,6 +364,7 @@ texture_pressed = ExtResource("24_ybx83")
 texture_hover = ExtResource("24_ybx83")
 
 [node name="Pic4" type="TextureButton" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 1074.0
 offset_top = 333.0
 offset_right = 1182.0
@@ -365,6 +375,7 @@ texture_pressed = ExtResource("26_a4e7i")
 texture_hover = ExtResource("26_a4e7i")
 
 [node name="Pic5" type="TextureButton" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 732.0
 offset_top = 447.0
 offset_right = 840.0
@@ -375,6 +386,7 @@ texture_pressed = ExtResource("28_qan61")
 texture_hover = ExtResource("28_qan61")
 
 [node name="Pic6" type="TextureButton" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 846.0
 offset_top = 447.0
 offset_right = 954.0
@@ -385,6 +397,7 @@ texture_pressed = ExtResource("30_uue8b")
 texture_hover = ExtResource("30_uue8b")
 
 [node name="Pic7" type="TextureButton" parent="GalleryScreen/GalleryList"]
+layout_mode = 0
 offset_left = 960.0
 offset_top = 447.0
 offset_right = 1068.0
@@ -471,6 +484,7 @@ texture = ExtResource("37_e75gw")
 anchors_preset = 0
 
 [node name="Back" type="TextureButton" parent="GalleryScreen/ClosePics/Buttons"]
+layout_mode = 0
 offset_left = 733.0
 offset_top = 153.0
 offset_right = 773.0
@@ -482,6 +496,7 @@ texture_hover = ExtResource("39_3iyxu")
 
 [node name="Left" type="TextureButton" parent="GalleryScreen/ClosePics/Buttons"]
 visible = false
+layout_mode = 0
 offset_left = 732.0
 offset_top = 525.0
 offset_right = 750.0
@@ -493,6 +508,7 @@ texture_hover = ExtResource("41_6rj6l")
 
 [node name="Right" type="TextureButton" parent="GalleryScreen/ClosePics/Buttons"]
 visible = false
+layout_mode = 0
 offset_left = 1170.0
 offset_top = 525.0
 offset_right = 1188.0
@@ -558,6 +574,7 @@ theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 
 [node name="zero" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 912.0
 offset_top = 660.0
 offset_right = 1008.0
@@ -568,6 +585,7 @@ texture_pressed = ExtResource("49_qpdx7")
 texture_hover = ExtResource("49_qpdx7")
 
 [node name="one" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 798.0
 offset_top = 318.0
 offset_right = 894.0
@@ -578,6 +596,7 @@ texture_pressed = ExtResource("51_tbcqo")
 texture_hover = ExtResource("51_tbcqo")
 
 [node name="two" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 912.0
 offset_top = 318.0
 offset_right = 1008.0
@@ -588,6 +607,7 @@ texture_pressed = ExtResource("53_hxh6i")
 texture_hover = ExtResource("53_hxh6i")
 
 [node name="three" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 318.0
 offset_right = 1122.0
@@ -598,6 +618,7 @@ texture_pressed = ExtResource("55_qsevn")
 texture_hover = ExtResource("55_qsevn")
 
 [node name="four" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 798.0
 offset_top = 432.0
 offset_right = 894.0
@@ -608,6 +629,7 @@ texture_pressed = ExtResource("57_slji0")
 texture_hover = ExtResource("57_slji0")
 
 [node name="five" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 912.0
 offset_top = 432.0
 offset_right = 1008.0
@@ -618,6 +640,7 @@ texture_pressed = ExtResource("59_k6odx")
 texture_hover = ExtResource("59_k6odx")
 
 [node name="six" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 432.0
 offset_right = 1122.0
@@ -628,6 +651,7 @@ texture_pressed = ExtResource("61_16t74")
 texture_hover = ExtResource("61_16t74")
 
 [node name="seven" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 798.0
 offset_top = 546.0
 offset_right = 894.0
@@ -638,6 +662,7 @@ texture_pressed = ExtResource("63_4pimk")
 texture_hover = ExtResource("63_4pimk")
 
 [node name="eight" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 912.0
 offset_top = 546.0
 offset_right = 1008.0
@@ -648,6 +673,7 @@ texture_pressed = ExtResource("65_v7q4c")
 texture_hover = ExtResource("65_v7q4c")
 
 [node name="nine" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 546.0
 offset_right = 1122.0
@@ -658,6 +684,7 @@ texture_pressed = ExtResource("67_eewx8")
 texture_hover = ExtResource("67_eewx8")
 
 [node name="Star" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 798.0
 offset_top = 660.0
 offset_right = 894.0
@@ -668,6 +695,7 @@ texture_pressed = ExtResource("69_n7hm3")
 texture_hover = ExtResource("69_n7hm3")
 
 [node name="Pound" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 660.0
 offset_right = 1122.0
@@ -678,6 +706,7 @@ texture_pressed = ExtResource("71_7m02x")
 texture_hover = ExtResource("71_7m02x")
 
 [node name="Call" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 906.0
 offset_top = 798.0
 offset_right = 1014.0
@@ -688,6 +717,7 @@ texture_pressed = ExtResource("73_4rf4d")
 texture_hover = ExtResource("73_4rf4d")
 
 [node name="Delete" type="TextureButton" parent="PhoneScreen/PhoneNum"]
+layout_mode = 0
 offset_left = 1050.0
 offset_top = 834.0
 offset_right = 1104.0
@@ -712,6 +742,7 @@ position = Vector2(960, 390)
 texture = ExtResource("77_r3y0d")
 
 [node name="Accept" type="TextureButton" parent="PhoneScreen/PhoneCall"]
+layout_mode = 0
 offset_left = 786.0
 offset_top = 720.0
 offset_right = 894.0
@@ -723,6 +754,7 @@ texture_hover = ExtResource("79_5o0rd")
 metadata/_edit_use_anchors_ = true
 
 [node name="Decline" type="TextureButton" parent="PhoneScreen/PhoneCall"]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 720.0
 offset_right = 1134.0
@@ -747,6 +779,7 @@ libraries = {
 }
 
 [node name="Time" type="RichTextLabel" parent="PhoneScreen"]
+layout_mode = 0
 offset_left = 732.0
 offset_top = 74.0
 offset_right = 872.0
