@@ -1,4 +1,4 @@
-[gd_scene load_steps=196 format=3 uid="uid://cwe7ysx8hp5yv"]
+[gd_scene load_steps=209 format=3 uid="uid://cwe7ysx8hp5yv"]
 
 [ext_resource type="Texture2D" uid="uid://bsqf2cesb1tcy" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame1@2x.png" id="1_28p4s"]
 [ext_resource type="Script" path="res://ThirdHouse/runa_journal.gd" id="1_nyd47"]
@@ -531,6 +531,11 @@ animations = [{
 "loop": true,
 "name": &"Third Page",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_m0hxd"]
@@ -756,6 +761,34 @@ tracks/1/keys = {
 "values": [&"First Page"]
 }
 
+[sub_resource type="Animation" id="Animation_qq4e4"]
+resource_name = "Reverse Blank"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page Frames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Blank Page"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Page Frames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [8, 8, 6, 5, 4, 3, 2, 1, 0]
+}
+
 [sub_resource type="Animation" id="Animation_5vxid"]
 resource_name = "Second To Third"
 step = 0.1
@@ -906,6 +939,7 @@ _data = {
 "Fourth To Fifth": SubResource("Animation_m1vk1"),
 "Ninth To Tenth": SubResource("Animation_lqogx"),
 "RESET": SubResource("Animation_lxo4h"),
+"Reverse Blank": SubResource("Animation_qq4e4"),
 "Second To Third": SubResource("Animation_5vxid"),
 "Seventh To Eigth": SubResource("Animation_fk0cc"),
 "Sixth To Seventh": SubResource("Animation_voeyb"),
@@ -960,6 +994,12 @@ play_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e2jei"]
 animation = &"Ninth To Tenth"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qbusi"]
+animation = &"Reverse Blank"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xrnpc"]
+animation = &"Reverse Blank"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y1erw"]
 animation = &"First To Second"
@@ -1226,11 +1266,61 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"turn_page_backward"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_txuba"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_blank_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gw8bi"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hg05p"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o0f0u"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_blank_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uu55a"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_blank_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oc522"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_blank_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3do36"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hlnjm"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m0cnw"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_blank_backward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7getx"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_page_backward"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mbmbu"]
 states/Blank/node = SubResource("AnimationNodeAnimation_ghfj7")
-states/Blank/position = Vector2(2249, 61)
+states/Blank/position = Vector2(2283, 62)
 "states/Blank 2/node" = SubResource("AnimationNodeAnimation_ldiv2")
-"states/Blank 2/position" = Vector2(2383, 61)
+"states/Blank 2/position" = Vector2(2451, 62)
 "states/Blank To Eleventh /node" = SubResource("AnimationNodeAnimation_la2dx")
 "states/Blank To Eleventh /position" = Vector2(2093, 156)
 "states/Eigth To Ninth/node" = SubResource("AnimationNodeAnimation_0icss")
@@ -1241,7 +1331,7 @@ states/Blank/position = Vector2(2249, 61)
 "states/Eleventh To Blank/position" = Vector2(2093, 61)
 "states/Eleventh To Tenth  /node" = SubResource("AnimationNodeAnimation_c37o0")
 "states/Eleventh To Tenth  /position" = Vector2(1873, 156)
-states/End/position = Vector2(2533, 131)
+states/End/position = Vector2(2568, 62)
 "states/Fifth To Fourth/node" = SubResource("AnimationNodeAnimation_yhyqn")
 "states/Fifth To Fourth/position" = Vector2(686, 156)
 "states/Fifth To Sixth/node" = SubResource("AnimationNodeAnimation_ds7nv")
@@ -1256,6 +1346,10 @@ states/End/position = Vector2(2533, 131)
 "states/Ninth To Eigth/position" = Vector2(1451, 156)
 "states/Ninth To Tenth/node" = SubResource("AnimationNodeAnimation_e2jei")
 "states/Ninth To Tenth/position" = Vector2(1657, 61)
+"states/Reverse Blank/node" = SubResource("AnimationNodeAnimation_xrnpc")
+"states/Reverse Blank/position" = Vector2(2283, 174)
+"states/Reverse Blank 2/node" = SubResource("AnimationNodeAnimation_qbusi")
+"states/Reverse Blank 2/position" = Vector2(2489, 174)
 "states/Second To First/node" = SubResource("AnimationNodeAnimation_y1erw")
 "states/Second To First/position" = Vector2(137, 154)
 "states/Second To Third/node" = SubResource("AnimationNodeAnimation_mlge3")
@@ -1277,7 +1371,7 @@ states/Start/position = Vector2(-1, 63)
 "states/Third To Fourth/position" = Vector2(491, 63)
 "states/Third To Second/node" = SubResource("AnimationNodeAnimation_wonv3")
 "states/Third To Second/position" = Vector2(311, 154)
-transitions = ["Start", "First To Second", SubResource("AnimationNodeStateMachineTransition_1msr1"), "First To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_rnvbd"), "Second To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_by506"), "Third To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_mnvdg"), "Fourth To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_ok3ht"), "Fourth To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_d2qyk"), "Third To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_mkfeg"), "Second To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_a6h50"), "Third To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_axfgr"), "Second To First", "First To Second", SubResource("AnimationNodeStateMachineTransition_ey3ge"), "First To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_un6xq"), "Third To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_fix32"), "Fourth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_vyeid"), "Fifth To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_emhkh"), "Sixth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2eydu"), "Seventh To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_jii8y"), "Eigth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_d884k"), "Ninth To Tenth", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_fxnw7"), "Tenth To Eleventh", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_tbdxu"), "Eleventh To Blank", "Blank", SubResource("AnimationNodeStateMachineTransition_axweq"), "Blank", "Blank 2", SubResource("AnimationNodeStateMachineTransition_3n3r2"), "Blank 2", "Blank", SubResource("AnimationNodeStateMachineTransition_a8p74"), "Fifth To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_5utwi"), "Sixth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_1lisf"), "Seventh To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_wrguf"), "Eigth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2j5i6"), "Ninth To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_ayr8v"), "Tenth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_ij5ep"), "Eleventh To Tenth  ", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_4mda4"), "Blank To Eleventh ", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_b3nuh"), "Fifth To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_1nctj"), "Fourth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_st60x"), "Sixth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_qvpgx"), "Fifth To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_paiye"), "Seventh To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_up7k4"), "Sixth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_h1i7s"), "Eigth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_yqsur"), "Seventh To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_rim0s"), "Ninth To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_llxwn"), "Eigth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_eplel"), "Tenth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_pkgfq"), "Ninth To Tenth", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_rbgqt"), "Eleventh To Tenth  ", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_qifc5"), "Tenth To Eleventh", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_5j2qq"), "Blank To Eleventh ", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_n5rk7"), "Eleventh To Blank", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_jjwdx")]
+transitions = ["Start", "First To Second", SubResource("AnimationNodeStateMachineTransition_1msr1"), "First To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_rnvbd"), "Second To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_by506"), "Third To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_mnvdg"), "Fourth To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_ok3ht"), "Fourth To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_d2qyk"), "Third To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_mkfeg"), "Second To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_a6h50"), "Third To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_axfgr"), "Second To First", "First To Second", SubResource("AnimationNodeStateMachineTransition_ey3ge"), "First To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_un6xq"), "Third To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_fix32"), "Fourth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_vyeid"), "Fifth To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_emhkh"), "Sixth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2eydu"), "Seventh To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_jii8y"), "Eigth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_d884k"), "Ninth To Tenth", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_fxnw7"), "Tenth To Eleventh", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_tbdxu"), "Eleventh To Blank", "Blank", SubResource("AnimationNodeStateMachineTransition_axweq"), "Blank", "Blank 2", SubResource("AnimationNodeStateMachineTransition_3n3r2"), "Blank 2", "Blank", SubResource("AnimationNodeStateMachineTransition_a8p74"), "Fifth To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_5utwi"), "Sixth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_1lisf"), "Seventh To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_wrguf"), "Eigth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2j5i6"), "Ninth To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_ayr8v"), "Tenth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_ij5ep"), "Eleventh To Tenth  ", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_4mda4"), "Blank To Eleventh ", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_b3nuh"), "Fifth To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_1nctj"), "Fourth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_st60x"), "Sixth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_qvpgx"), "Fifth To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_paiye"), "Seventh To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_up7k4"), "Sixth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_h1i7s"), "Eigth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_yqsur"), "Seventh To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_rim0s"), "Ninth To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_llxwn"), "Eigth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_eplel"), "Tenth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_pkgfq"), "Ninth To Tenth", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_rbgqt"), "Eleventh To Tenth  ", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_qifc5"), "Tenth To Eleventh", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_5j2qq"), "Blank To Eleventh ", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_n5rk7"), "Eleventh To Blank", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_jjwdx"), "Blank", "Reverse Blank", SubResource("AnimationNodeStateMachineTransition_txuba"), "Reverse Blank", "Blank", SubResource("AnimationNodeStateMachineTransition_gw8bi"), "Reverse Blank", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_hg05p"), "Reverse Blank 2", "Reverse Blank", SubResource("AnimationNodeStateMachineTransition_o0f0u"), "Reverse Blank", "Reverse Blank 2", SubResource("AnimationNodeStateMachineTransition_uu55a"), "Blank 2", "Reverse Blank", SubResource("AnimationNodeStateMachineTransition_oc522"), "Reverse Blank", "Blank 2", SubResource("AnimationNodeStateMachineTransition_3do36"), "Reverse Blank 2", "Blank", SubResource("AnimationNodeStateMachineTransition_hlnjm"), "Blank", "Reverse Blank 2", SubResource("AnimationNodeStateMachineTransition_m0cnw"), "Reverse Blank 2", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_7getx")]
 graph_offset = Vector2(1555, -6)
 
 [node name="Journal" type="Control"]
@@ -1303,6 +1397,7 @@ texture = ExtResource("9_ygw5t")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_mbmbu")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/turn_blank_backward = false
 parameters/conditions/turn_page_backward = false
 parameters/conditions/turn_page_forward = false
 
