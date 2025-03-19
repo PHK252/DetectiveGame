@@ -1,0 +1,44 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d2gxu25w0pvvj"]
+
+[sub_resource type="Shader" id="Shader_3hj0s"]
+code = "shader_type spatial;
+
+uniform vec3 color: source_color;
+uniform vec3 color2: source_color;
+uniform sampler2D noise;
+
+uniform float noiseScale = 20.0;
+
+varying vec3 worldPos;
+uniform float swayStrength = 0.1; // Strength of sway movement
+uniform float swaySpeed = 1.0; // Speed of sway movement
+uniform float swayFrequency = 2.0; // Frequency of sway
+
+void vertex() {
+	worldPos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	// Calculate sway effect based on world position and time
+	float swayOffset = sin(TIME * swaySpeed + worldPos.x * swayFrequency) * swayStrength;
+
+	// Scale sway effect based on UV.y (0 at base, full effect at tip)
+	VERTEX.x += swayOffset * (1.0-UV.y);
+}
+
+void fragment() {
+	vec3 noiseLevel = texture(noise, worldPos.xz / noiseScale).rgb;
+	ALBEDO = mix(color, color2, UV.y) * mix(color, color2, noiseLevel.r);
+}
+
+"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vv1rg"]
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_3hj0s")
+shader_parameter/color = Color(0.440537, 0.636862, 0.311633, 1)
+shader_parameter/color2 = Color(0.822146, 0.858848, 0.496645, 1)
+shader_parameter/noiseScale = 20.0
+shader_parameter/swayStrength = 0.02
+shader_parameter/swaySpeed = 1.0
+shader_parameter/swayFrequency = 2.0
+shader_parameter/noise = SubResource("NoiseTexture2D_vv1rg")
