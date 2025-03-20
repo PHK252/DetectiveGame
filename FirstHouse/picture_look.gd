@@ -1,6 +1,5 @@
 extends Area2D
 
-@onready var pic_cam = $"../../../../../../SubViewport/CameraSystem/Picture"
 #@onready var main_cam = $"../../../../../../SubViewport/CameraSystem/livingroom"
 #@onready var player = $"../../../../../../../Characters/Dalton/CharacterBody3D"
 #@onready var cam_anim = $"../../../../../../SubViewport/CameraSystem/Picture/AnimationPlayer"
@@ -9,7 +8,6 @@ extends Area2D
 #
 #@onready var dalton_marker = $"../../../../../../../UI/Dalton_marker"
 #@onready var micah_marker = $"../../../../../../../UI/Micah_marker"
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

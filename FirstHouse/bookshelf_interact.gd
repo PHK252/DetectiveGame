@@ -32,7 +32,7 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "book":
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_Micah_bookmark == true and GlobalVars.book_dialogue == false and GlobalVars.viewing == "":
-			print("enter dialogue")
+			#print("enter dialogue")
 			main_cam.set_tween_duration(0)
 			book_cam.priority = 0
 			main_cam.priority = 24

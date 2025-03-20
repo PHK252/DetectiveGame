@@ -18,11 +18,6 @@ func _on_forward_pressed():
 	animation_tree["parameters/conditions/turn_page_forward"] = true
 	await get_tree().create_timer(.5).timeout
 	animation_tree["parameters/conditions/turn_page_forward"] = false
-	#if animation_player.current_animation == "Blank": 
-		#animation_tree["parameters/conditions/turn_blank_forward"] = true
-		#await get_tree().create_timer(.5).timeout
-		#animation_tree["parameters/conditions/turn_blank_forward"] = false
-		#blank_turn_count += 1
 	
 
 func _on_backward_pressed():
@@ -31,7 +26,7 @@ func _on_backward_pressed():
 		await get_tree().create_timer(.5).timeout
 		animation_tree["parameters/conditions/turn_blank_backward"] = false
 		blank_turn_count -= 1
-		print(blank_turn_count)
+		#print(blank_turn_count)
 		#print(animation_tree.get_current_node())
 	else: 
 		animation_tree["parameters/conditions/turn_page_backward"] = true
@@ -42,4 +37,4 @@ func _on_backward_pressed():
 func _on_animation_tree_animation_started(anim_name):
 	if anim_name == "Blank":
 		blank_turn_count += 1
-		print(blank_turn_count)
+		#print(blank_turn_count)
