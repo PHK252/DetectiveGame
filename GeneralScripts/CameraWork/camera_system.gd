@@ -15,7 +15,6 @@ func activate_camera(cam_index: int) -> void:
 			else:
 				cameras[i].set_priority(20 - i)  # Set decreasing priority for other cameras
 
-
 func _on_hall_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(0)  # First camera
