@@ -43,6 +43,6 @@ func _input(event):
 			GlobalVars.viewed_tool_note = true
 			GlobalVars.viewing = ""
 		else:
-			await get_tree().create_timer(.5).timeout
+			#await get_tree().create_timer(.5).timeout
 			GlobalVars.viewing = ""
 			

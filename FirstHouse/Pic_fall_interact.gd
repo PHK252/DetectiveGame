@@ -11,6 +11,8 @@ extends Area2D
 @onready var dalton_marker = $"../../../../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../../../../UI/Micah_marker"
 
+func _ready():
+	pic_fall_anim.play("Default")
 
 
 func _on_input_event(viewport, event, shape_idx):
@@ -21,7 +23,7 @@ func _on_input_event(viewport, event, shape_idx):
 			pic_fall_anim.play("PicFalling")
 			await pic_fall_anim.animation_finished
 			GlobalVars.pic_fell = true
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(.5).timeout
 			GlobalVars.in_look_screen = false
 			pic_cam.priority = 0
 			main_cam.priority = 24

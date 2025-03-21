@@ -6,6 +6,7 @@ extends CanvasLayer
 
 
 func _ready():
+	front.show()
 	back.hide()
 
 func _input(event):
@@ -32,3 +33,4 @@ func _on_object_back_gui_input(event):
 func _on_exit_pressed():
 	$".".hide()
 	GlobalVars.in_look_screen = false
+	GlobalVars.viewing = ""

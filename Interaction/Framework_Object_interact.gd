@@ -1,8 +1,8 @@
 extends Node3D
 
 #Assign first person cam and exit cam + idle animation
-@export var FP_Cam: Camera3D
-@export var Exit_Cam: Camera3D
+@export var FP_Cam: PhantomCamera3D
+@export var Exit_Cam: PhantomCamera3D
 
 #First Person cam anim + movement
 @export var cam_anim: AnimationPlayer
@@ -14,6 +14,7 @@ extends Node3D
 
 #Assign player body
 @export var player: CharacterBody3D
+@export var alert: Sprite3D
 
 #Assign character markers (up to 3)
 @export var dalton_marker: Marker2D
@@ -68,9 +69,9 @@ func _process(delta):
 			book_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			book_dialogue.register_character(load(load_char_dialogue), character_marker)
 			GlobalVars.in_interaction = ""
-			read_dialogue = true
+			GlobalVars.set(dialogue, true)
 			interact_area.hide()
-			#main_cam.set_tween_duration(1)
+			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
 			print("enter")
 			Exit_Cam.set_tween_duration(0)
@@ -83,7 +84,7 @@ func _process(delta):
 			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 			interact_area.hide()
-			
+			alert.show()
 			#activate dialogue
 
 	if GlobalVars.in_look_screen == true:
@@ -96,8 +97,10 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
+	alert.show()
 
 func _on_interactable_interacted(interactor):
+	alert.hide()
 	GlobalVars.in_interaction = interact_type
 	FP_Cam.priority = 24
 	Exit_Cam.priority = 0 

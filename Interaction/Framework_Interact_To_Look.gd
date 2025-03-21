@@ -2,7 +2,7 @@ extends Area2D
 
 #Assign object in 2D and 3D
 @export var object_interact: Area2D
-@export var  object_in_scene: Resource
+@export var  object_in_scene: MeshInstance3D
 
 #UI Overlay
 @export var UI_look: CanvasLayer
@@ -44,6 +44,7 @@ func _on_input_event(viewport, event, shape_idx):
 				GlobalVars.viewing = viewing
 				GlobalVars.in_look_screen = true
 				clicked_count += 1
+				GlobalVars.set(clicked_object, clicked_count)
 
 func _on_exit_pressed():
 	if viewed_object == false and clicked_count == 1:
@@ -52,15 +53,15 @@ func _on_exit_pressed():
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start(dialogue_file)
-			viewed_object = true
-			GlobalVars.viewing = ""
+			GlobalVars.set(view_object, true)
 		else:
+			GlobalVars.set(view_object, true)
 			object_in_scene.show()
 			object_interact.show() # might not need?
 	else:
+		GlobalVars.set(view_object, true)
 		object_in_scene.show()
 		object_interact.show() # might not need?
-		GlobalVars.viewing = ""
 
 
 func _on_timeline_ended():
@@ -76,12 +77,12 @@ func _input(event):
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				Dialogic.start(dialogue_file)
-				viewed_object = true
-				GlobalVars.viewing = ""
+				GlobalVars.set(view_object, true)
 			else:
 				object_in_scene.show()
 				object_interact.show() # might not need?
+				GlobalVars.set(view_object, true)
 		else:
 			object_in_scene.show()
 			object_interact.show() # might not need?
-			GlobalVars.viewing = ""
+			GlobalVars.set(view_object, true)

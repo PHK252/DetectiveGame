@@ -1,4 +1,4 @@
-[gd_scene load_steps=525 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=523 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -41,15 +41,14 @@
 [ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="32_da8io"]
 [ext_resource type="Script" path="res://FirstHouse/case_interact.gd" id="33_km2aj"]
 [ext_resource type="Script" path="res://FirstHouse/cab_interact.gd" id="33_octh5"]
+[ext_resource type="Script" path="res://Interaction/Framework_Interact_To_Look.gd" id="34_48wft"]
 [ext_resource type="Script" path="res://StartingOffice/map.gd" id="34_mw70x"]
 [ext_resource type="PackedScene" uid="uid://crgv83s0k1fwv" path="res://map_ui.tscn" id="35_6wbhd"]
 [ext_resource type="Script" path="res://FirstHouse/bookshelf_interact.gd" id="38_ksu7f"]
 [ext_resource type="Material" uid="uid://xqamqc2sqsks" path="res://ShaderScripts/plasticbag.tres" id="39_ea1a5"]
-[ext_resource type="Script" path="res://FirstHouse/bookmark_interact.gd" id="39_t7qea"]
 [ext_resource type="PackedScene" uid="uid://c2ffunqvkd7nk" path="res://CharacterStuff/Micah/micah.tscn" id="41_8l10i"]
 [ext_resource type="PackedScene" uid="uid://la842f74mxcx" path="res://FirstHouse/closet.glb" id="42_3fi1f"]
 [ext_resource type="Script" path="res://FirstHouse/closet_interaction.gd" id="43_xpxa8"]
-[ext_resource type="Script" path="res://FirstHouse/tool_note.gd" id="44_5ew6k"]
 [ext_resource type="PackedScene" uid="uid://22d8wsirr1dd" path="res://UI/Object_Look.tscn" id="45_fykd2"]
 [ext_resource type="PackedScene" uid="uid://usnv4ohth6wd" path="res://FirstHouse/KitchenRevamp.glb" id="45_jhwux"]
 [ext_resource type="PackedScene" uid="uid://bl0qijcxkc1m8" path="res://FirstHouse/NewWallsMicah.glb" id="46_a8iu2"]
@@ -59,7 +58,6 @@
 [ext_resource type="PackedScene" uid="uid://dy27xktstpg6y" path="res://FirstHouse/newcloset_animated.glb" id="52_pw7bo"]
 [ext_resource type="Script" path="res://FirstHouse/dalton_marker_Micah's House.gd" id="52_tc40y"]
 [ext_resource type="Script" path="res://FirstHouse/Micah_marker.gd" id="53_jj6s8"]
-[ext_resource type="Script" path="res://FirstHouse/picture_look.gd" id="53_xh4u8"]
 [ext_resource type="PackedScene" uid="uid://c7kdufjom30y2" path="res://FirstHouse/cabinetOnly.glb" id="54_nsmit"]
 [ext_resource type="Material" uid="uid://3511hh4gwxji" path="res://ShaderScripts/newGlassShader.tres" id="54_xv6wc"]
 [ext_resource type="Script" path="res://FirstHouse/alert_direction.gd" id="55_8lndw"]
@@ -6718,8 +6716,29 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jckln")
 
-[node name="Bookshelf interact" type="Node3D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf" index="1"]
+[node name="Bookshelf interact" type="Node3D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf" index="1" node_paths=PackedStringArray("FP_Cam", "Exit_Cam", "cam_anim", "player", "alert", "dalton_marker", "theo_marker", "character_marker", "interact_area")]
 script = ExtResource("38_ksu7f")
+FP_Cam = NodePath("../../../SubViewport/CameraSystem/Bookshelf Close")
+Exit_Cam = NodePath("../../../SubViewport/CameraSystem/bookshelf")
+cam_anim = NodePath("../../../SubViewport/CameraSystem/Bookshelf Close/AnimationPlayer")
+tilt_up_thres = 850
+tilt_down_thres = 320
+tilt_up_angle = Vector3(-25.3, -90, 0)
+tilt_down_angle = Vector3(5, -90, 0)
+mid_angle = Vector3(-9.3, -90, 0)
+player = NodePath("../../../../Characters/Dalton/CharacterBody3D")
+alert = NodePath("../../../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../../../../UI/Dalton_marker")
+theo_marker = NodePath("../../../../UI/Theo_marker")
+character_marker = NodePath("../../../../UI/Micah_marker")
+interact_area = NodePath("Bookmark_interact")
+dialogue_file = "Micah_book"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Theo_dialogue = "res://Dialogic Characters/Theo.dch"
+load_char_dialogue = "res://Dialogic Characters/Micah.dch"
+interact_type = "book"
+dialogue = "book_dialogue"
+view_item = "viewed_Micah_bookmark"
 
 [node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact" instance=ExtResource("31_3mnbx")]
 transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -6728,9 +6747,20 @@ transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 0.492548, -0.0845643, -0.0215523)
 shape = SubResource("BoxShape3D_p4hxp")
 
-[node name="Bookmark_interact" type="Area2D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact"]
+[node name="Bookmark_interact" type="Area2D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact" node_paths=PackedStringArray("object_interact", "object_in_scene", "UI_look", "anim")]
 visible = false
-script = ExtResource("39_t7qea")
+script = ExtResource("34_48wft")
+object_interact = NodePath(".")
+object_in_scene = NodePath("../../../bookmark")
+UI_look = NodePath("../../../../../UI/Bookmark")
+viewing = "bookmark"
+clicked_object = "clicked_book_note"
+view_object = "viewed_Micah_bookmark"
+is_there_anim = true
+is_there_thoughts = true
+anim = NodePath("../../../bookmark/AnimationPlayer")
+anim_track = "Bookmark_pull"
+dialogue_file = "Micah_Bookmark_note_thoughts"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/FirstHouseUpdated/Bookshelf/Bookshelf interact/Bookmark_interact"]
 position = Vector2(1162.41, 764.553)
@@ -6885,15 +6915,40 @@ shape = SubResource("BoxShape3D_cgwtp")
 transform = Transform3D(0.999428, 0, 0.0338531, 0, 1, 0, -0.0338531, 0, 0.999428, 0.243493, -0.00208744, -0.0174446)
 
 [node name="Skeleton3D" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+bones/1/position = Vector3(-0.218168, -0.458277, -1.60787)
 bones/1/rotation = Quaternion(0.490256, -0.0240814, -0.0592481, 0.869229)
-bones/2/rotation = Quaternion(0.00177769, 0.00192289, -0.016591, 0.999859)
+bones/2/position = Vector3(0.906136, 0.237949, -0.156989)
+bones/2/rotation = Quaternion(0.0017777, 0.00192288, -0.0165909, 0.999859)
 
 [node name="PictureFrameFriend" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D" index="0"]
 transform = Transform3D(1, -9.31323e-10, 1.11759e-08, 2.79397e-09, 1, -4.47035e-08, 0, 1.49012e-08, 1, -2.75402, -0.118982, 0.506403)
 
-[node name="Interact" type="Node3D" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend" index="0"]
+[node name="Interact" type="Node3D" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend" index="0" node_paths=PackedStringArray("FP_Cam", "Exit_Cam", "cam_anim", "player", "alert", "dalton_marker", "theo_marker", "character_marker", "interact_area_fall", "interact_area_look")]
 transform = Transform3D(1, 3.72529e-09, 0, 0, 1, -1.86265e-09, 0, -4.76837e-07, 1, 9.53674e-07, 0, 7.62939e-06)
 script = ExtResource("30_cy676")
+FP_Cam = NodePath("../../../../../../SubViewport/CameraSystem/Picture")
+Exit_Cam = NodePath("../../../../../../SubViewport/CameraSystem/livingroom")
+cam_anim = NodePath("../../../../../../SubViewport/CameraSystem/Picture/AnimationPlayer")
+tilt_up_thres = 700
+tilt_down_thres = 120
+tilt_up_angle = Vector3(-45.4, 177.7, 1)
+tilt_down_angle = Vector3(-5.4, 177.7, 1)
+mid_angle = Vector3(-25.4, 177.7, 1)
+player = NodePath("../../../../../../../Characters/Dalton/CharacterBody3D")
+alert = NodePath("../../../../../../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../../../../../../../UI/Dalton_marker")
+theo_marker = NodePath("../../../../../../../UI/Theo_marker")
+character_marker = NodePath("../../../../../../../UI/Micah_marker")
+interact_area_fall = NodePath("../Pic fall Interact")
+interact_area_look = NodePath("../Picture Look")
+dialogue_file = "Micah_pic_ask"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Theo_dialogue = "res://Dialogic Characters/Theo.dch"
+load_char_dialogue = "res://Dialogic Characters/Micah.dch"
+interact_type = "picture"
+dialogue = "Micah_pic_dialogue"
+pic_status = "pic_fell"
 
 [node name="Interactable" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend/Interact" instance=ExtResource("31_3mnbx")]
 transform = Transform3D(1, 3.72529e-09, 0, 0, 1, 0, 0, 2.38419e-07, 1, -9.53674e-07, 0, 0)
@@ -6911,9 +6966,15 @@ position = Vector2(901, 814)
 rotation = -0.108141
 shape = SubResource("RectangleShape2D_chigc")
 
-[node name="Picture Look" type="Area2D" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend" index="2"]
+[node name="Picture Look" type="Area2D" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend" index="2" node_paths=PackedStringArray("object_interact", "object_in_scene", "UI_look")]
 visible = false
-script = ExtResource("53_xh4u8")
+script = ExtResource("34_48wft")
+object_interact = NodePath(".")
+object_in_scene = NodePath("..")
+UI_look = NodePath("../../../../../../../UI/Pic_look")
+viewing = "pic"
+clicked_object = "clicked_Micah_pic"
+view_object = "viewed_Micah_pic"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend/Picture Look"]
 position = Vector2(902.392, 795.09)
@@ -7132,11 +7193,34 @@ shape = SubResource("BoxShape3D_q2gun")
 [node name="Cube_001" parent="NewWallsMicah" index="1"]
 mesh = SubResource("ArrayMesh_uih57")
 
-[node name="closet" parent="." node_paths=PackedStringArray("collision", "collision2") instance=ExtResource("42_3fi1f")]
+[node name="closet" parent="." node_paths=PackedStringArray("FP_Cam", "Exit_Cam", "cam_anim", "player", "alert", "dalton_marker", "theo_marker", "character_marker", "interact_area", "closet_anim", "open_closet_door_1", "open_closet_door_2") instance=ExtResource("42_3fi1f")]
 transform = Transform3D(-0.998165, 0, -0.0605607, 0, 1, 0, 0.0605607, 0, -0.998165, -0.0457435, -0.100918, -0.838124)
 script = ExtResource("43_xpxa8")
-collision = NodePath("newcloset_animated/ClosetLeft/Skeleton3D/NewWardrobe/StaticBody3D/CollisionShape3D")
-collision2 = NodePath("newcloset_animated/ClosetLeft/Skeleton3D/NewWardrobe/StaticBody3D/CollisionShape3D2")
+FP_Cam = NodePath("../SubViewportContainer/SubViewport/CameraSystem/Closet close up")
+Exit_Cam = NodePath("../SubViewportContainer/SubViewport/CameraSystem/closet")
+cam_anim = NodePath("../SubViewportContainer/SubViewport/CameraSystem/Closet close up/AnimationPlayer")
+tilt_up_thres = 700
+tilt_down_thres = 120
+tilt_up_angle = Vector3(-25, 93.8, 1.4)
+tilt_down_angle = Vector3(-5, 93.8, 1.4)
+mid_angle = Vector3(-15, 93.8, 1.4)
+player = NodePath("../Characters/Dalton/CharacterBody3D")
+alert = NodePath("../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../UI/Dalton_marker")
+theo_marker = NodePath("../UI/Theo_marker")
+character_marker = NodePath("../UI/Micah_marker")
+interact_area = NodePath("Note")
+start_dialogue_file = "Micah_closet_ask"
+end_dialogue_file = "Micah_closet_note"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Theo_dialogue = "res://Dialogic Characters/Theo.dch"
+load_char_dialogue = "res://Dialogic Characters/Micah.dch"
+interact_type = "closet"
+dialogue = "closet_dialogue"
+view_item = "viewed_tool_note"
+closet_anim = NodePath("newcloset_animated/AnimationPlayer")
+open_closet_door_1 = NodePath("newcloset_animated/ClosetLeft/Skeleton3D/NewWardrobe/StaticBody3D/CollisionShape3D")
+open_closet_door_2 = NodePath("newcloset_animated/ClosetLeft/Skeleton3D/NewWardrobe/StaticBody3D/CollisionShape3D2")
 
 [node name="Wardrobe" parent="closet" index="0"]
 mesh = SubResource("ArrayMesh_swi2i")
@@ -7155,9 +7239,17 @@ collision_mask = 3
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 6.70552e-08, 0, 1, 0.0041523, -0.0125427, 0.00330341)
 shape = SubResource("BoxShape3D_upwcn")
 
-[node name="Note" type="Area2D" parent="closet"]
+[node name="Note" type="Area2D" parent="closet" node_paths=PackedStringArray("object_interact", "object_in_scene", "UI_look")]
 visible = false
-script = ExtResource("44_5ew6k")
+script = ExtResource("34_48wft")
+object_interact = NodePath(".")
+object_in_scene = NodePath("../../SubViewportContainer/FirstHouseUpdated/toolnote")
+UI_look = NodePath("../../UI/Tool_note")
+viewing = "tool note"
+clicked_object = "clicked_tool_note"
+view_object = "viewed_tool_note"
+is_there_thoughts = true
+dialogue_file = "Micah_closet_note_thoughts"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="closet/Note"]
 position = Vector2(1229, 753)
@@ -7165,6 +7257,10 @@ shape = SubResource("RectangleShape2D_08jig")
 
 [node name="newcloset_animated" parent="closet" instance=ExtResource("52_pw7bo")]
 transform = Transform3D(0.99998, 0, 0.00621351, 0, 1, 0, -0.00621351, 0, 0.99998, -0.0255525, 0.00979692, -0.000231624)
+
+[node name="Skeleton3D" parent="closet/newcloset_animated/ClosetLeft" index="0"]
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/1/rotation = Quaternion(1, 0, 0, -7.94663e-09)
 
 [node name="NewWardrobe" parent="closet/newcloset_animated/ClosetLeft/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_i28ou")
@@ -7199,7 +7295,6 @@ texture = ExtResource("62_3ldwi")
 stretch_mode = 2
 
 [node name="Object front" parent="UI/Tool_note" index="3"]
-visible = false
 offset_left = -500.5
 offset_top = -150.5
 offset_right = 500.5
@@ -7268,7 +7363,6 @@ pivot_offset = Vector2(500.5, 700.5)
 texture = ExtResource("70_btuvv")
 
 [node name="Object front" parent="UI/Pic_look" index="3"]
-visible = false
 offset_left = -500.5
 offset_top = -700.5
 offset_right = 500.5
@@ -7281,6 +7375,7 @@ texture = ExtResource("71_loq5r")
 visible = false
 
 [node name="Object Back" parent="UI/ID_Look" index="2"]
+visible = false
 scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(500.5, 650.5)
 texture = ExtResource("72_buesi")
@@ -7304,7 +7399,6 @@ texture = ExtResource("74_sdhhc")
 stretch_mode = 2
 
 [node name="Object front" parent="UI/Micah_Note" index="3"]
-visible = false
 offset_left = -500.5
 offset_top = -300.5
 offset_right = 500.5
@@ -7341,51 +7435,51 @@ position = Vector2(1078, 450)
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-2.40381e-09, -5.75171e-08, -2.96728)
+bones/1/position = Vector3(2.13892e-09, -5.53352e-08, -3.02129)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.00565096, 0.352256, 0.860261, -0.368558)
+bones/3/rotation = Quaternion(0.0213236, 0.309121, 0.879281, -0.361739)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.296553, 0.0279268, -0.0379491, 0.953853)
+bones/4/rotation = Quaternion(-0.208186, 0.0933271, -0.0377857, 0.972893)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.529905, -0.0565309, 0.0759837, 0.842752)
+bones/5/rotation = Quaternion(0.48971, -0.114874, 0.104951, 0.857889)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935923)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.00565094, 0.352256, 0.860261, 0.368558)
-bones/9/rotation = Quaternion(-0.296553, -0.0279268, 0.0379491, 0.953853)
+bones/8/rotation = Quaternion(-0.0213235, 0.309121, 0.879281, 0.361739)
+bones/9/rotation = Quaternion(-0.208186, -0.0933271, 0.0377857, 0.972893)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.529905, 0.0565309, -0.0759837, 0.842752)
+bones/10/rotation = Quaternion(0.48971, 0.114874, -0.104951, 0.857889)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935923)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-2.40381e-09, -2.4355e-07, -2.96728)
+bones/12/position = Vector3(2.13892e-09, -2.68827e-07, -3.02129)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.0767894, 1.15388e-07, -1.39024e-08, 0.997047)
-bones/16/rotation = Quaternion(0.019798, 3.89548e-09, 1.27764e-08, 0.999804)
+bones/15/rotation = Quaternion(-0.0863617, 1.14014e-07, -1.0787e-08, 0.996264)
+bones/16/rotation = Quaternion(0.0402823, 8.40371e-09, 8.87021e-09, 0.999188)
 bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0560112, 0.00305516, -0.0102379, 0.998373)
+bones/18/rotation = Quaternion(0.0152727, -0.0107649, -0.00960165, 0.999779)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0560112, -0.00305516, 0.0102379, 0.998373)
+bones/20/rotation = Quaternion(0.0152727, 0.0107649, 0.00960167, 0.999779)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.263638, -0.148255, -0.387171, 0.870984)
+bones/22/rotation = Quaternion(-0.254932, -0.149115, -0.405999, 0.864835)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00365646, -0.000437411, -0.335532, 0.942022)
+bones/23/rotation = Quaternion(-0.00303555, -0.000445914, -0.278554, 0.960416)
 bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.263638, 0.148255, 0.387171, 0.870984)
+bones/26/rotation = Quaternion(-0.254932, 0.149115, 0.405999, 0.864835)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00365667, 0.000437374, 0.335533, 0.942021)
+bones/27/rotation = Quaternion(-0.00303574, 0.000445934, 0.278556, 0.960415)
 bones/27/scale = Vector3(1, 1, 1)
 bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
 bones/28/scale = Vector3(1, 1, 1)
@@ -7393,16 +7487,16 @@ bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/29/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(-1.65473e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.956164, -0.0311821, -2.18336)
+bones/31/position = Vector3(0.991825, -0.0311821, -2.19351)
 bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
 bones/32/rotation = Quaternion(7.37203e-23, -0.823096, 7.94093e-23, 0.567902)
-bones/33/position = Vector3(-2.40381e-09, -1.17122e-07, -2.96728)
+bones/33/position = Vector3(2.13892e-09, -1.1494e-07, -3.02129)
 bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
 bones/34/scale = Vector3(1, 1, 1)
 bones/35/rotation = Quaternion(1.65473e-24, 0.999887, 0, 0.0150235)
-bones/36/position = Vector3(-0.956164, -0.0311821, -2.18336)
+bones/36/position = Vector3(-0.991825, -0.0311821, -2.19351)
 bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
 bones/37/rotation = Quaternion(7.37203e-23, 0.823096, -7.94093e-23, 0.567902)
 
@@ -7447,40 +7541,40 @@ Beer_Anim = NodePath("micahExtraAnims/micahArmature/Skeleton3D/BoneAttachment3D/
 marker_positions = [NodePath("../../../../MicahMarkers/drink_marker"), NodePath("../../../../MicahMarkers/basketball_marker"), NodePath("../../../../MicahMarkers/sit_marker")]
 
 [node name="Skeleton3D" parent="Characters/Micah/Micah/MicahBody/micahExtraAnims/micahArmature" index="0"]
-bones/1/position = Vector3(-1.84553e-09, -8.75576e-08, -1.96569)
+bones/1/position = Vector3(1.84629e-09, -8.56723e-08, -2.00702)
 bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/2/rotation = Quaternion(-0.0416395, -0.145342, 0.924825, 0.349057)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.110964, -0.00543305, 0.924094, -0.365662)
+bones/3/rotation = Quaternion(-0.0952079, -0.0469777, 0.924237, -0.366763)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.326288, 0.000238646, -0.0216311, 0.945023)
+bones/4/rotation = Quaternion(-0.24319, 0.000244915, -0.0161221, 0.969845)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.304057, 0.000611759, -0.00529072, 0.952639)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.648764, 0.00469907, -0.0072243, 0.760941)
+bones/6/rotation = Quaternion(0.604253, 0.00510397, -0.00694419, 0.796746)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
-bones/8/rotation = Quaternion(0.111099, -0.00548876, 0.924097, 0.365612)
+bones/8/rotation = Quaternion(0.0953561, -0.0470383, 0.924237, 0.366716)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(-0.326288, -0.000238648, 0.0216311, 0.945023)
+bones/9/rotation = Quaternion(-0.24319, -0.000244914, 0.0161221, 0.969845)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.304057, -0.000611759, 0.00529073, 0.952639)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(0.648764, -0.00469907, 0.0072243, 0.760941)
+bones/11/rotation = Quaternion(0.604253, -0.00510397, 0.0069442, 0.796746)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-1.84553e-09, -1.39242e-07, -1.96569)
+bones/12/position = Vector3(1.84629e-09, -1.291e-07, -2.00702)
 bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
 bones/13/rotation = Quaternion(-0.0383763, -4.34577e-18, -1.21606e-18, 0.999263)
-bones/14/rotation = Quaternion(-0.178105, -9.92449e-11, -7.22453e-11, 0.984012)
+bones/14/rotation = Quaternion(-0.187218, -2.4841e-10, -6.83685e-11, 0.982318)
 bones/15/rotation = Quaternion(0.0738574, -5.3914e-24, 1.10112e-16, 0.997269)
-bones/16/rotation = Quaternion(-0.00387385, 1.88127e-10, 1.04885e-12, 0.999993)
-bones/17/rotation = Quaternion(-0.111806, -0.0285514, -0.691336, 0.713259)
+bones/16/rotation = Quaternion(-0.0136206, 4.67706e-11, 2.60865e-13, 0.999907)
+bones/17/rotation = Quaternion(-0.110418, -0.0310796, -0.681827, 0.722464)
 bones/18/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(0.0270153, -0.000167356, -0.0006591, 0.999635)
 bones/20/rotation = Quaternion(-0.0262147, -0.000682082, -0.0657145, 0.997494)
 bones/20/scale = Vector3(1, 1, 1)
-bones/21/rotation = Quaternion(-0.111806, 0.0285514, 0.691336, 0.713259)
+bones/21/rotation = Quaternion(-0.110418, 0.0310796, 0.681827, 0.722464)
 bones/22/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659107, 0.999635)
@@ -7493,11 +7587,11 @@ bones/26/rotation = Quaternion(-2.77578e-17, 0.999919, 1.29257e-26, 0.0126966)
 bones/27/position = Vector3(0.248814, -0.086704, -0.109932)
 bones/27/rotation = Quaternion(0.00589149, 8.87869e-16, 0.999983, 2.91583e-10)
 bones/27/scale = Vector3(1, 1, 1)
-bones/29/position = Vector3(-1.84553e-09, -1.1736e-07, -1.96569)
+bones/29/position = Vector3(1.84629e-09, -1.15475e-07, -2.00702)
 bones/29/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Characters/Micah/Micah/MicahBody/micahExtraAnims/micahArmature/Skeleton3D" index="0"]
-transform = Transform3D(-0.934864, 0.149183, 0.322137, 0.335617, 0.0756358, 0.938957, 0.115711, 0.985912, -0.120778, 0.729605, 0.00854967, -1.61168)
+transform = Transform3D(-0.931325, 0.175848, 0.318922, 0.338346, 0.0937876, 0.936336, 0.134742, 0.979939, -0.146844, 0.763789, 0.0181117, -1.66934)
 bone_name = "DEF_Hand.L"
 bone_idx = 20
 
@@ -7546,43 +7640,43 @@ armature = NodePath("DoggyPartner2/dogrig")
 nav = NodePath("NavigationAgent3D")
 
 [node name="Skeleton3D" parent="Characters/Main/CharacterBody3D/DoggyPartner2/dogrig" index="0"]
-bones/1/position = Vector3(-2.40381e-09, -5.75171e-08, -2.96728)
+bones/1/position = Vector3(2.13892e-09, -5.53352e-08, -3.02129)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.00565086, 0.352256, 0.860261, -0.368558)
-bones/4/rotation = Quaternion(-0.296554, 0.0279268, -0.0379491, 0.953853)
-bones/5/rotation = Quaternion(0.529905, -0.0565309, 0.0759837, 0.842752)
+bones/3/rotation = Quaternion(0.0213235, 0.309121, 0.879281, -0.361739)
+bones/4/rotation = Quaternion(-0.208186, 0.0933271, -0.0377858, 0.972893)
+bones/5/rotation = Quaternion(0.48971, -0.114874, 0.104951, 0.857889)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.00565085, 0.352256, 0.860261, 0.368558)
-bones/9/rotation = Quaternion(-0.296554, -0.0279268, 0.0379491, 0.953853)
-bones/10/rotation = Quaternion(0.529905, 0.0565309, -0.0759838, 0.842752)
+bones/8/rotation = Quaternion(-0.0213235, 0.309121, 0.879281, 0.361739)
+bones/9/rotation = Quaternion(-0.208186, -0.0933271, 0.0377858, 0.972893)
+bones/10/rotation = Quaternion(0.48971, 0.114874, -0.104951, 0.857889)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-2.40381e-09, -2.1393e-07, -2.96728)
+bones/12/position = Vector3(2.13892e-09, -3.10935e-07, -3.02129)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0767893, 1.15388e-07, -1.39024e-08, 0.997047)
-bones/16/rotation = Quaternion(0.019798, 3.89548e-09, 1.27764e-08, 0.999804)
+bones/15/rotation = Quaternion(-0.0863617, 1.14014e-07, -1.0787e-08, 0.996264)
+bones/16/rotation = Quaternion(0.0402823, 8.40371e-09, 8.87021e-09, 0.999188)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.481766, 0.077037, -0.137832, 0.861957)
-bones/18/rotation = Quaternion(0.0560112, 0.00305515, -0.0102379, 0.998373)
+bones/17/rotation = Quaternion(0.43465, 0.0695029, -0.14178, 0.88665)
+bones/18/rotation = Quaternion(0.0152727, -0.0107649, -0.00960167, 0.999779)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.516981, -0.0826684, 0.13453, 0.841308)
-bones/20/rotation = Quaternion(0.0560112, -0.00305515, 0.0102379, 0.998373)
+bones/19/rotation = Quaternion(0.4353, -0.0696072, 0.141729, 0.886331)
+bones/20/rotation = Quaternion(0.0152727, 0.0107649, 0.00960167, 0.999779)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.263638, -0.148255, -0.387172, 0.870984)
-bones/23/rotation = Quaternion(-0.00365645, -0.000437413, -0.335532, 0.942022)
+bones/22/rotation = Quaternion(-0.254932, -0.149115, -0.405999, 0.864835)
+bones/23/rotation = Quaternion(-0.00303555, -0.000445937, -0.278554, 0.960416)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.263638, 0.148255, 0.387172, 0.870984)
-bones/27/rotation = Quaternion(-0.00365667, 0.000437378, 0.335532, 0.942022)
+bones/26/rotation = Quaternion(-0.254933, 0.149115, 0.405999, 0.864835)
+bones/27/rotation = Quaternion(-0.00303573, 0.000445957, 0.278555, 0.960415)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.956164, -0.0311821, -2.18336)
+bones/31/position = Vector3(0.991825, -0.0311821, -2.19351)
 bones/32/position = Vector3(1.89213, 0.889777, -4.50176)
-bones/33/position = Vector3(-2.40381e-09, -1.17122e-07, -2.96728)
+bones/33/position = Vector3(2.13892e-09, -1.1494e-07, -3.02129)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.956164, -0.0311821, -2.18336)
+bones/36/position = Vector3(-0.991825, -0.0311821, -2.19351)
 bones/37/position = Vector3(-1.89213, 0.889777, -4.50176)
 
 [node name="NavigationAgent3D" parent="Characters/Main/CharacterBody3D" index="3"]
