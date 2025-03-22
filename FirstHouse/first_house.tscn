@@ -1,4 +1,4 @@
-[gd_scene load_steps=523 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=536 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -92,6 +92,8 @@
 [ext_resource type="Texture2D" uid="uid://berto44oa4pkm" path="res://FirstHouse/MicahPushExtra_pandaE.png" id="91_667oo"]
 [ext_resource type="Texture2D" uid="uid://deuc1xudhf0ja" path="res://FirstHouse/MicahPushExtra_hylamed.png" id="92_c4qyn"]
 [ext_resource type="PackedScene" uid="uid://3t04jvejbev8" path="res://FirstHouse/MicahNormalCorrections.glb" id="94_8vf2w"]
+[ext_resource type="PackedScene" uid="uid://g5odrvnajda1" path="res://FirstHouse/Ceil.glb" id="94_tus1n"]
+[ext_resource type="Texture2D" uid="uid://bsmsq634p0ytd" path="res://UniversalEnvironmentPalette/Universal_Environment_Palette.png" id="95_dwlqp"]
 [ext_resource type="PackedScene" uid="uid://1p0nfpep5ayl" path="res://FirstHouse/Pizzas.glb" id="95_sprht"]
 
 [sub_resource type="Curve3D" id="Curve3D_tdxtl"]
@@ -132,7 +134,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_swx74"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.22
 v_offset = 1.0
 projection = 1
@@ -150,7 +152,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_mqmls"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.0
 v_offset = 0.82
 projection = 1
@@ -168,7 +170,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_lidhj"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.04
 v_offset = 0.06
 projection = 0
@@ -186,7 +188,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_e64gf"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.7
 v_offset = 0.0
 projection = 0
@@ -204,7 +206,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_ejo1w"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.0
 v_offset = 0.0
 projection = 0
@@ -387,7 +389,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_2j15o"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.0
 v_offset = 0.0
 projection = 0
@@ -570,7 +572,7 @@ ease = 0
 
 [sub_resource type="Resource" id="Resource_2ea5y"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.0
 v_offset = 0.0
 projection = 0
@@ -588,7 +590,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_7r1ae"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.0
 v_offset = 0.0
 projection = 0
@@ -606,7 +608,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_wh78f"]
 script = ExtResource("5_momqu")
-cull_mask = 1048575
+cull_mask = 1048559
 h_offset = 0.0
 v_offset = 0.0
 projection = 1
@@ -617,7 +619,7 @@ near = 0.001
 far = 4000.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k2f3k"]
-size = Vector3(2.46155, 1.9823, 1.81489)
+size = Vector3(2.46155, 1.9823, 1.50238)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2idks"]
 size = Vector3(1.19395, 1, 5.64141)
@@ -659,7 +661,7 @@ size = Vector3(1.52747, 2.35938, 1.91003)
 size = Vector3(2.50134, 2.36218, 0.946777)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uevcg"]
-size = Vector3(2.46802, 2.70715, 1.04382)
+size = Vector3(2.46802, 2.70715, 1.0982)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smctm"]
 resource_name = "tiles"
@@ -4814,19 +4816,19 @@ sky = SubResource("Sky_g4bc3")
 sky_custom_fov = 86.0
 ambient_light_source = 2
 ambient_light_color = Color(0.47092, 0.448749, 0.427202, 1)
-ambient_light_energy = 0.82
+ambient_light_energy = 1.29
 tonemap_mode = 2
 ssao_enabled = true
-ssao_radius = 2.69
-ssao_intensity = 0.29
+ssao_intensity = 0.65
 ssao_power = 2.43676
 ssil_enabled = true
-ssil_intensity = 0.19
+ssil_intensity = 1.07
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 0.68
-glow_strength = 0.77
-glow_bloom = 0.22
+glow_mix = 0.217
+glow_bloom = 0.69
+glow_blend_mode = 4
 glow_hdr_threshold = 0.75
 glow_hdr_luminance_cap = 13.85
 fog_light_color = Color(0.384694, 0.416805, 0.467277, 1)
@@ -5980,6 +5982,163 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5dxkw")
 
+[sub_resource type="Curve" id="Curve_16bf0"]
+_data = [Vector2(0.0215634, 0.979157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gffi6"]
+curve = SubResource("Curve_16bf0")
+
+[sub_resource type="Curve" id="Curve_4je32"]
+_data = [Vector2(0, 0.880898), 0.0, 0.0, 0, 0, Vector2(0.00808626, 0.627806), 0.0, 0.0, 0, 0, Vector2(0.177898, 0.73202), 0.0, 0.0, 0, 0, Vector2(0.466307, 0.28241), 0.0, 0.0, 0, 0, Vector2(0.727763, 0.410444), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_6kpxv"]
+curve = SubResource("Curve_4je32")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vfdt3"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+spread = 65.377
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.0
+gravity = Vector3(0, 0.5, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+damping_max = 6.0
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_6kpxv")
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_gffi6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_veit6"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_color = Color(0.323375, 0.39, 0.2301, 0.215686)
+emission_enabled = true
+emission = Color(0.109318, 0.13465, 0.0393694, 1)
+emission_energy_multiplier = 0.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_pmflp"]
+material = SubResource("StandardMaterial3D_veit6")
+size = Vector2(0.17, 0.26)
+
+[sub_resource type="Shader" id="Shader_tmk1r"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+uniform sampler2D color_gradient;
+uniform sampler2D fresnel_gradient;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+
+void fragment() {
+	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
+	ALBEDO = albedo.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+
+void light() {
+	float dotproduct = clamp(dot(NORMAL, LIGHT), -0.9, 0.9);
+	float sample = clamp((dotproduct + 1.0) * ATTENUATION / 2.1, 0.05, 0.95);
+	vec4 shaded = texture(color_gradient, vec2(sample, 0.0));
+	DIFFUSE_LIGHT += clamp((shaded.rgb * LIGHT_COLOR), 0.0, 1.0);
+	//DIFFUSE_LIGHT += (shaded.rgb * LIGHT_COLOR);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_011ke"]
+resource_name = "Environment"
+render_priority = 0
+shader = SubResource("Shader_tmk1r")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(1.26, 0.23, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("95_dwlqp")
+shader_parameter/color_gradient = ExtResource("8_kykha")
+shader_parameter/fresnel_gradient = ExtResource("9_phmvt")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xx0xk"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEA"),
+"name": "Environment",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP////8AAAAAAAAAAAAAAAD//wAAAAD//wAA//8AAP///////wAA//8AAAAAAAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ia04b"]
+resource_name = "Ceil_Cube_197"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("J3E0V7p0oVMncedIlG00VwFqoVOUbedIJ3F6TLp0DVAncXpMlG16TAFqDVCUbXpMJ3GhUydxoVMncaFTlG2hU5RtoVOUbaFTJ3ENUCdxDVAncQ1QlG0NUJRtDVCUbQ1Q"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AgALAAUAAgAIAAsABgAVAAkABgASABUAFAARABcAFAAOABEADAADAA8ADAAAAAMABwANABMABwABAA0AFgAEAAoAFgAQAAQA"),
+"material": SubResource("ShaderMaterial_011ke"),
+"name": "Environment",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAAAA/////wAAAAD//1TVAAD//////78AAP//////vwAA/////1TVAAAAAAAA//8AAAAAAAD//wAAAAAAAFTVAAD//wAA//8AAP//AAD/vwAA//8AAFTV//8AAP///7///wAA////////AAD//1TV/////////7//////////v////////1TV//8AAAAA/////wAAAAD/////AAAAAFTV/////wAA////////AAD/v/////8AAFTV/3//f/9//z9UVaqq/3//f////39UVaqq/z//v/9//z9UVaqq/z//v////39UVaqq/3//f/9//z+qqlRV/3//f////3+qqlRV/z//v/9//z+qqlRV/z//v////3+qqlRV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xx0xk")
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ngiwv")
 
@@ -6015,6 +6174,7 @@ curve = SubResource("Curve3D_5fejm")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(-0.0450217, -0.571096, 0.819545, 3.77573e-05, 0.820315, 0.57172, -0.998925, 0.0257704, -0.0369154, -1.61441, 1.39127, -5.59309)
+cull_mask = 1048559
 v_offset = 0.82
 projection = 1
 current = true
@@ -6065,7 +6225,6 @@ look_at_damping_value = 0.317
 [node name="bookshelf" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(-0.425246, 0.375219, -0.823637, 0.0131969, 0.912491, 0.408885, 0.904982, 0.163007, -0.392984, -4.40706, 3.86658, -3.35573)
 script = ExtResource("3_gj8k4")
-priority = 10
 tween_resource = SubResource("Resource_bxbx0")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_lidhj")
@@ -6073,7 +6232,6 @@ camera_3d_resource = SubResource("Resource_lidhj")
 [node name="closet" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(-0.25542, -0.369746, 0.893336, -0.00377398, 0.924358, 0.381507, -0.966823, 0.0940734, -0.237495, 4.96346, 3.65008, -1.29681)
 script = ExtResource("3_gj8k4")
-priority = 9
 tween_resource = SubResource("Resource_lp1qp")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_e64gf")
@@ -6081,7 +6239,6 @@ camera_3d_resource = SubResource("Resource_e64gf")
 [node name="Kitchen" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(1, 0, 0, 0, 0.836324, 0.548234, 0, -0.548234, 0.836324, 1.81186, 2.07174, -3.82701)
 script = ExtResource("3_gj8k4")
-priority = 9
 tween_resource = SubResource("Resource_ph1cv")
 camera_3d_resource = SubResource("Resource_ejo1w")
 
@@ -6171,14 +6328,12 @@ camera_3d_resource = SubResource("Resource_2ea5y")
 [node name="KitchenAlt" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(-0.591257, -0.552117, 0.587863, 0.0237929, 0.716662, 0.697014, -0.806132, 0.426102, -0.410595, 2.75412, 2.34511, -5.67363)
 script = ExtResource("3_gj8k4")
-priority = 8
 tween_resource = SubResource("Resource_ed6ce")
 camera_3d_resource = SubResource("Resource_7r1ae")
 
 [node name="KitchenAlt2" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(0.426024, -0.449268, 0.785278, 0.0390509, 0.876309, 0.480163, -0.903869, -0.173895, 0.390873, 1.96684, 1.56655, -4.34827)
 script = ExtResource("3_gj8k4")
-priority = 3
 tween_resource = SubResource("Resource_manf1")
 camera_3d_resource = SubResource("Resource_wh78f")
 
@@ -6188,7 +6343,7 @@ camera_3d_resource = SubResource("Resource_wh78f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51979, 0.736031, -5.47509)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CamAreas/HallArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 0.49115, -0.00194168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 0.49115, 0.0527649)
 shape = SubResource("BoxShape3D_k2f3k")
 
 [node name="MainArea" type="Area3D" parent="SubViewportContainer/SubViewport/CamAreas"]
@@ -6280,7 +6435,7 @@ shape = SubResource("BoxShape3D_fk2bu")
 [node name="exitcamarea" type="Area3D" parent="SubViewportContainer/SubViewport/CamAreas"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CamAreas/exitcamarea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61316, 0.853577, -7.0932)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61316, 0.853577, -7.06601)
 shape = SubResource("BoxShape3D_uevcg")
 
 [node name="FirstHouseUpdated" parent="SubViewportContainer" instance=ExtResource("1_t7mpi")]
@@ -6918,11 +7073,8 @@ shape = SubResource("BoxShape3D_cgwtp")
 transform = Transform3D(0.999428, 0, 0.0338531, 0, 1, 0, -0.0338531, 0, 0.999428, 0.243493, -0.00208744, -0.0174446)
 
 [node name="Skeleton3D" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001" index="0"]
-bones/0/position = Vector3(0, 0, 0)
-bones/1/position = Vector3(-0.218168, -0.458277, -1.60787)
 bones/1/rotation = Quaternion(0.490256, -0.0240814, -0.0592481, 0.869229)
-bones/2/position = Vector3(0.906136, 0.237949, -0.156989)
-bones/2/rotation = Quaternion(0.0017777, 0.00192288, -0.0165909, 0.999859)
+bones/2/rotation = Quaternion(0.00177769, 0.00192289, -0.016591, 0.999859)
 
 [node name="PictureFrameFriend" parent="SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D" index="0"]
 transform = Transform3D(1, -9.31323e-10, 1.11759e-08, 2.79397e-09, 1, -4.47035e-08, 0, 1.49012e-08, 1, -2.75402, -0.118982, 0.506403)
@@ -7197,7 +7349,7 @@ shape = SubResource("BoxShape3D_q2gun")
 mesh = SubResource("ArrayMesh_uih57")
 
 [node name="closet" parent="." node_paths=PackedStringArray("FP_Cam", "Exit_Cam", "cam_anim", "player", "alert", "dalton_marker", "theo_marker", "character_marker", "interact_area", "closet_anim", "open_closet_door_1", "open_closet_door_2") instance=ExtResource("42_3fi1f")]
-transform = Transform3D(-0.998165, 0, -0.0605607, 0, 1, 0, 0.0605607, 0, -0.998165, -0.0457435, -0.100918, -0.838124)
+transform = Transform3D(-0.998165, 0, -0.0605607, 0, 1, 0, 0.0605607, 0, -0.998165, -0.046, -0.021, -0.838)
 script = ExtResource("43_xpxa8")
 FP_Cam = NodePath("../SubViewportContainer/SubViewport/CameraSystem/Closet close up")
 Exit_Cam = NodePath("../SubViewportContainer/SubViewport/CameraSystem/closet")
@@ -7260,9 +7412,6 @@ shape = SubResource("RectangleShape2D_08jig")
 
 [node name="newcloset_animated" parent="closet" instance=ExtResource("52_pw7bo")]
 transform = Transform3D(0.99998, 0, 0.00621351, 0, 1, 0, -0.00621351, 0, 0.99998, -0.0255525, 0.00979692, -0.000231624)
-
-[node name="Skeleton3D" parent="closet/newcloset_animated/ClosetLeft" index="0"]
-bones/0/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="NewWardrobe" parent="closet/newcloset_animated/ClosetLeft/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_i28ou")
@@ -7437,50 +7586,70 @@ position = Vector2(1078, 450)
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-2.52166e-09, -5.75171e-08, -2.96458)
+bones/1/position = Vector3(-1.24757e-09, -5.75171e-08, -2.99373)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.00500233, 0.354058, 0.859388, -0.368878)
+bones/3/rotation = Quaternion(0.0126108, 0.333031, 0.869162, -0.365361)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.30027, 0.0247375, -0.03763, 0.952791)
+bones/4/rotation = Quaternion(-0.256999, 0.0596349, -0.0395499, 0.963759)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.531579, -0.0536672, 0.0744099, 0.842025)
+bones/5/rotation = Quaternion(0.511973, -0.0848817, 0.0908316, 0.849958)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935923)
 bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.00500231, 0.354058, 0.859388, 0.368878)
-bones/9/rotation = Quaternion(-0.30027, -0.0247375, 0.03763, 0.952791)
+bones/8/rotation = Quaternion(-0.0126107, 0.333031, 0.869162, 0.365361)
+bones/9/rotation = Quaternion(-0.256999, -0.0596349, 0.0395499, 0.963759)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.531579, 0.0536672, -0.0744099, 0.842025)
+bones/10/rotation = Quaternion(0.511973, 0.0848817, -0.0908316, 0.849958)
 bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935923)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-2.52166e-09, -2.42114e-07, -2.96458)
+bones/12/position = Vector3(-1.24757e-09, -3.19286e-07, -2.99373)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72663e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.076297, 1.1538e-07, -1.39607e-08, 0.997085)
-bones/16/rotation = Quaternion(0.0187588, 3.87755e-09, 1.27755e-08, 0.999824)
+bones/15/rotation = Quaternion(-0.0815861, 1.1547e-07, -1.33346e-08, 0.996666)
+bones/16/rotation = Quaternion(0.029993, 4.07117e-09, 1.27847e-08, 0.99955)
 bones/17/rotation = Quaternion(2.85172e-08, 6.47688e-09, -0.1579, 0.987455)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0580429, 0.00374517, -0.0102692, 0.998254)
+bones/18/rotation = Quaternion(0.0360636, -0.00371552, -0.00992854, 0.999293)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-1.61028e-08, -2.4302e-07, 0.1579, 0.987455)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0580429, -0.00374517, 0.0102692, 0.998254)
+bones/20/rotation = Quaternion(0.0360636, 0.00371552, 0.00992855, 0.999293)
 bones/20/scale = Vector3(1, 1, 1)
-bones/22/rotation = Quaternion(-0.264071, -0.148223, -0.386324, 0.871235)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.25936, -0.148604, -0.395957, 0.868255)
 bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00368454, -0.00043698, -0.338107, 0.9411)
+bones/23/rotation = Quaternion(-0.00336845, -0.000441535, -0.309102, 0.951023)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
 bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/25/scale = Vector3(1, 1, 1)
-bones/26/rotation = Quaternion(-0.264071, 0.148223, 0.386324, 0.871235)
+bones/26/rotation = Quaternion(-0.25936, 0.148604, 0.395957, 0.868255)
 bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00368475, 0.00043695, 0.338108, 0.9411)
+bones/27/rotation = Quaternion(-0.00336863, 0.000441577, 0.309102, 0.951023)
 bones/27/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
 bones/28/scale = Vector3(1, 1, 1)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/29/scale = Vector3(1, 1, 1)
-bones/31/position = Vector3(0.954369, -0.0311821, -2.18285)
-bones/33/position = Vector3(-2.52166e-09, -1.17122e-07, -2.96458)
+bones/30/rotation = Quaternion(-1.65473e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.973773, -0.0311821, -2.18837)
+bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
+bones/32/rotation = Quaternion(7.37203e-23, -0.823096, 7.94093e-23, 0.567902)
+bones/33/position = Vector3(-1.24757e-09, -1.17122e-07, -2.99373)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
 bones/34/scale = Vector3(1, 1, 1)
-bones/36/position = Vector3(-0.954369, -0.0311821, -2.18285)
+bones/35/rotation = Quaternion(1.65473e-24, 0.999887, 0, 0.0150235)
+bones/36/position = Vector3(-0.973773, -0.0311821, -2.18837)
+bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
+bones/37/rotation = Quaternion(7.37203e-23, 0.823096, -7.94093e-23, 0.567902)
 
 [node name="detective" parent="Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_y3lh2")
@@ -7523,44 +7692,57 @@ Beer_Anim = NodePath("micahExtraAnims/micahArmature/Skeleton3D/BoneAttachment3D/
 marker_positions = [NodePath("../../../../MicahMarkers/drink_marker"), NodePath("../../../../MicahMarkers/basketball_marker"), NodePath("../../../../MicahMarkers/sit_marker")]
 
 [node name="Skeleton3D" parent="Characters/Micah/Micah/MicahBody/micahExtraAnims/micahArmature" index="0"]
-bones/1/position = Vector3(-1.92761e-09, -8.75576e-08, -1.96381)
+bones/1/position = Vector3(-9.86173e-10, -8.75576e-08, -1.98535)
+bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/2/rotation = Quaternion(-0.0416395, -0.145342, 0.924825, 0.349057)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.111578, -0.00379263, 0.924048, -0.36561)
+bones/3/rotation = Quaternion(-0.104053, -0.0237725, 0.924394, -0.366201)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.329493, 0.000238364, -0.0218436, 0.943905)
+bones/4/rotation = Quaternion(-0.290203, 0.000241613, -0.0192389, 0.956772)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.304057, 0.000611759, -0.00529072, 0.952639)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.650722, 0.00468045, -0.00723638, 0.759267)
+bones/6/rotation = Quaternion(0.627996, 0.0048923, -0.00709489, 0.778169)
 bones/6/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(0.111712, -0.0038481, 0.924051, 0.365561)
+bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
+bones/8/rotation = Quaternion(0.104195, -0.0238305, 0.924396, 0.366152)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(-0.329493, -0.000238365, 0.0218436, 0.943905)
+bones/9/rotation = Quaternion(-0.290203, -0.000241613, 0.0192389, 0.956772)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.304057, -0.000611759, 0.00529073, 0.952639)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(0.650722, -0.00468044, 0.00723638, 0.759267)
+bones/11/rotation = Quaternion(0.627996, -0.0048923, 0.00709489, 0.778169)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-1.92761e-09, -1.40534e-07, -1.96381)
+bones/12/position = Vector3(-9.86173e-10, -1.29527e-07, -1.98535)
+bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
 bones/13/rotation = Quaternion(-0.0383763, -4.34577e-18, -1.21606e-18, 0.999263)
-bones/14/rotation = Quaternion(-0.177681, -9.92447e-11, -7.22451e-11, 0.984088)
+bones/14/rotation = Quaternion(-0.182426, -9.92452e-11, -7.22455e-11, 0.98322)
 bones/15/rotation = Quaternion(0.0738574, -5.3914e-24, 1.10112e-16, 0.997269)
-bones/16/rotation = Quaternion(-0.00338795, 1.88127e-10, 1.04892e-12, 0.999994)
-bones/17/rotation = Quaternion(-0.11187, -0.0284348, -0.691771, 0.712832)
+bones/16/rotation = Quaternion(-0.00896159, 1.88128e-10, 1.04919e-12, 0.99996)
+bones/17/rotation = Quaternion(-0.111139, -0.0297721, -0.686763, 0.717718)
+bones/18/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
 bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.0270153, -0.000167356, -0.0006591, 0.999635)
+bones/20/rotation = Quaternion(-0.0262147, -0.000682082, -0.0657145, 0.997494)
 bones/20/scale = Vector3(1, 1, 1)
-bones/21/rotation = Quaternion(-0.11187, 0.0284348, 0.691771, 0.712832)
+bones/21/rotation = Quaternion(-0.111139, 0.0297722, 0.686763, 0.717718)
+bones/22/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
 bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659107, 0.999635)
+bones/24/rotation = Quaternion(-0.0262147, 0.000682075, 0.0657145, 0.997494)
 bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(-0.248814, -0.0867041, -0.109932)
+bones/25/rotation = Quaternion(-0.00589136, 4.24325e-08, 0.999983, -1.08131e-10)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/rotation = Quaternion(-2.77578e-17, 0.999919, 1.29257e-26, 0.0126966)
+bones/27/position = Vector3(0.248814, -0.086704, -0.109932)
 bones/27/rotation = Quaternion(0.00589149, 8.87869e-16, 0.999983, 2.91583e-10)
 bones/27/scale = Vector3(1, 1, 1)
-bones/29/position = Vector3(-1.92761e-09, -1.1736e-07, -1.96381)
+bones/29/position = Vector3(-9.86173e-10, -1.1736e-07, -1.98535)
+bones/29/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Characters/Micah/Micah/MicahBody/micahExtraAnims/micahArmature/Skeleton3D" index="0"]
-transform = Transform3D(-0.935011, 0.147951, 0.32228, 0.33551, 0.074789, 0.939063, 0.114832, 0.986162, -0.119568, 0.728018, 0.00809096, -1.60907)
+transform = Transform3D(-0.933242, 0.162066, 0.320615, 0.336812, 0.084265, 0.937793, 0.124968, 0.983175, -0.133225, 0.746159, 0.013159, -1.63909)
 bone_name = "DEF_Hand.L"
 bone_idx = 20
 
@@ -7609,27 +7791,44 @@ armature = NodePath("DoggyPartner2/dogrig")
 nav = NodePath("NavigationAgent3D")
 
 [node name="Skeleton3D" parent="Characters/Main/CharacterBody3D/DoggyPartner2/dogrig" index="0"]
-bones/1/position = Vector3(-2.52166e-09, -5.75171e-08, -2.96458)
-bones/3/rotation = Quaternion(0.00500225, 0.354058, 0.859388, -0.368878)
-bones/4/rotation = Quaternion(-0.30027, 0.0247375, -0.03763, 0.952791)
-bones/5/rotation = Quaternion(0.531579, -0.0536672, 0.0744099, 0.842025)
-bones/8/rotation = Quaternion(-0.00500223, 0.354058, 0.859388, 0.368878)
-bones/9/rotation = Quaternion(-0.30027, -0.0247375, 0.03763, 0.952791)
-bones/10/rotation = Quaternion(0.531579, 0.0536672, -0.0744099, 0.842025)
-bones/12/position = Vector3(-2.52166e-09, -2.28e-07, -2.96458)
-bones/15/rotation = Quaternion(-0.076297, 1.1538e-07, -1.39607e-08, 0.997085)
-bones/16/rotation = Quaternion(0.0187588, 3.87754e-09, 1.27755e-08, 0.999824)
-bones/17/rotation = Quaternion(0.484082, 0.0774074, -0.137624, 0.860658)
-bones/18/rotation = Quaternion(0.0580429, 0.00374516, -0.0102692, 0.998254)
-bones/19/rotation = Quaternion(0.520945, -0.0833023, 0.134138, 0.838859)
-bones/20/rotation = Quaternion(0.0580429, -0.00374516, 0.0102692, 0.998254)
-bones/22/rotation = Quaternion(-0.264071, -0.148223, -0.386324, 0.871235)
-bones/23/rotation = Quaternion(-0.00368452, -0.000436984, -0.338107, 0.9411)
-bones/26/rotation = Quaternion(-0.264071, 0.148223, 0.386324, 0.871235)
-bones/27/rotation = Quaternion(-0.00368474, 0.000436962, 0.338108, 0.9411)
-bones/31/position = Vector3(0.954369, -0.0311821, -2.18285)
-bones/33/position = Vector3(-2.52166e-09, -1.17122e-07, -2.96458)
-bones/36/position = Vector3(-0.954369, -0.0311821, -2.18285)
+bones/1/position = Vector3(-1.24757e-09, -5.75171e-08, -2.99373)
+bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
+bones/3/rotation = Quaternion(0.0126107, 0.333031, 0.869162, -0.365361)
+bones/4/rotation = Quaternion(-0.256999, 0.0596349, -0.0395499, 0.963759)
+bones/5/rotation = Quaternion(0.511973, -0.0848817, 0.0908317, 0.849958)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0126107, 0.333031, 0.869162, 0.365361)
+bones/9/rotation = Quaternion(-0.256999, -0.0596349, 0.0395499, 0.963759)
+bones/10/rotation = Quaternion(0.511973, 0.0848818, -0.0908317, 0.849958)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(-1.24757e-09, -2.2774e-07, -2.99373)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0815861, 1.1547e-07, -1.33346e-08, 0.996666)
+bones/16/rotation = Quaternion(0.029993, 4.07118e-09, 1.27847e-08, 0.99955)
+bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
+bones/17/rotation = Quaternion(0.458849, 0.0733725, -0.139817, 0.874371)
+bones/18/rotation = Quaternion(0.0360635, -0.00371552, -0.00992855, 0.999293)
+bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
+bones/19/rotation = Quaternion(0.477468, -0.0763501, 0.138214, 0.864345)
+bones/20/rotation = Quaternion(0.0360636, 0.00371552, 0.00992854, 0.999293)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.259376, -0.148606, -0.395948, 0.868254)
+bones/23/rotation = Quaternion(-0.00336843, -0.000441552, -0.309101, 0.951023)
+bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.259361, 0.148604, 0.395958, 0.868255)
+bones/27/rotation = Quaternion(-0.00336862, 0.000441598, 0.309102, 0.951023)
+bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
+bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.973773, -0.0311821, -2.18837)
+bones/32/position = Vector3(1.89213, 0.889777, -4.50176)
+bones/33/position = Vector3(-1.24757e-09, -1.17122e-07, -2.99373)
+bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
+bones/36/position = Vector3(-0.973773, -0.0311821, -2.18837)
+bones/37/position = Vector3(-1.89213, 0.889777, -4.50176)
 
 [node name="NavigationAgent3D" parent="Characters/Main/CharacterBody3D" index="3"]
 path_desired_distance = 0.75
@@ -7649,29 +7848,55 @@ parameters/Blend3/blend_amount = 0
 environment = SubResource("Environment_mxarr")
 
 [node name="halllight1" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 0.0346204, 0.999401, 0, -0.999401, 0.0346204, -2.5403, 2.50074, -4.46159)
+transform = Transform3D(1, 0, 0, 0, 0.0346204, 0.999401, 0, -0.999401, 0.0346204, -2.5403, 3.049, -4.46159)
+light_energy = 1.671
+light_volumetric_fog_energy = 3.621
+shadow_enabled = true
+shadow_bias = 0.44
+shadow_blur = 1.738
+spot_attenuation = 0.76
 
 [node name="halllight2" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 0.0346204, 0.999401, 0, -0.999401, 0.0346204, -2.5403, 2.50074, -6.33746)
-light_energy = 2.222
+light_energy = 2.508
 light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
+light_volumetric_fog_energy = 3.688
+shadow_enabled = true
+shadow_bias = 0.522
+shadow_opacity = 0.7
+shadow_blur = 0.14
 spot_range = 4.454
+spot_attenuation = 0.92
 spot_angle = 57.5
 
 [node name="livingroom" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 0.0346204, 0.999401, 0, -0.999401, 0.0346204, -0.0604154, 2.61397, -0.433539)
-light_energy = 0.111
+transform = Transform3D(1, 0, 0, 0, 0.0346204, 0.999401, 0, -0.999401, 0.0346204, -0.0604154, 2.16145, -0.433539)
+light_color = Color(0.997834, 0.974693, 0.944904, 1)
+light_energy = 0.126
 light_indirect_energy = 1.667
-spot_range = 4.474
-spot_attenuation = -1.13
-spot_angle = 85.38
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+shadow_opacity = 0.87
+shadow_blur = 1.137
+spot_range = 4.324
+spot_attenuation = -1.46
+spot_angle = 70.63
 
 [node name="kitchen" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, -0.0267702, 0.999642, 0, -0.999642, -0.0267702, 1.77732, 2.16188, -5.22531)
+transform = Transform3D(1, 0, 0, 0, -0.0267702, 0.999642, 0, -0.999642, -0.0267702, 1.77732, 2.16188, -4.97821)
 light_color = Color(0.949641, 0.888816, 0.74277, 1)
 light_energy = 0.187
 light_volumetric_fog_energy = 5.0
+shadow_enabled = true
+spot_range = 5.432
+spot_angle = 86.25
+
+[node name="kitchen7" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, -0.0267702, 0.999642, 0, -0.999642, -0.0267702, 0.197181, 2.12846, -1.01301)
+light_color = Color(0.949641, 0.888816, 0.74277, 1)
+light_energy = 0.187
+light_volumetric_fog_energy = 5.0
+shadow_enabled = true
 spot_range = 5.432
 spot_angle = 86.25
 
@@ -7680,6 +7905,7 @@ transform = Transform3D(1, 0, 0, 0, -0.0267702, 0.999642, 0, -0.999642, -0.02677
 light_color = Color(0.949641, 0.888816, 0.74277, 1)
 light_energy = 0.187
 light_volumetric_fog_energy = 0.0
+shadow_enabled = true
 spot_range = 5.432
 spot_angle = 86.25
 
@@ -7698,12 +7924,15 @@ transform = Transform3D(1, 0, 0, 0, -0.0267702, 0.999642, 0, -0.999642, -0.02677
 light_color = Color(0.949641, 0.888816, 0.74277, 1)
 light_energy = 0.06
 light_volumetric_fog_energy = 5.0
+shadow_enabled = true
+shadow_bias = 0.0
 spot_range = 4.477
 spot_attenuation = -0.77
 spot_angle = 89.99
 
 [node name="kitchen5" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -0.0267702, 0.999642, 0, -0.999642, -0.0267702, 1.77732, 2.66057, -0.852825)
+visible = false
 light_color = Color(0.949641, 0.888816, 0.74277, 1)
 light_energy = 0.06
 light_volumetric_fog_energy = 5.0
@@ -7713,6 +7942,7 @@ spot_angle = 89.99
 
 [node name="kitchen6" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -0.0267702, 0.999642, 0, -0.999642, -0.0267702, -1.91361, 2.66057, -0.550173)
+visible = false
 light_color = Color(0.949641, 0.888816, 0.74277, 1)
 light_energy = 0.06
 light_volumetric_fog_energy = 0.0
@@ -7722,30 +7952,33 @@ spot_angle = 89.99
 
 [node name="outsidelightin(godray)" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(-0.625899, -0.232624, 0.744403, 0.677486, 0.310654, 0.666714, -0.386345, 0.921618, -0.0368386, 3.33784, 1.53457, 0.430943)
-light_energy = 2.561
+light_color = Color(0.97, 0.9118, 0.7954, 1)
+light_energy = 13.273
 light_indirect_energy = 7.132
 light_volumetric_fog_energy = 16.317
+shadow_enabled = true
+spot_range = 5.353
 spot_angle = 20.54
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(-0.0135775, -0.999908, 0.000142383, 0.0104893, -4.37188e-08, 0.999945, -0.999853, 0.0135783, 0.0104883, 0.8414, 1.54093, -4.5276)
+[node name="kitchenSpot" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(-0.0135775, -0.999908, 0.000142383, 0.0104893, -4.3162e-08, 0.999945, -0.999853, 0.0135782, 0.0104883, 0.794528, 1.55693, -4.5276)
 light_color = Color(0.958287, 0.801704, 0.66924, 1)
-light_energy = 3.066
-light_indirect_energy = 9.864
+light_energy = 11.984
+light_indirect_energy = 9.944
 light_volumetric_fog_energy = 16.0
-spot_range = 0.793
-spot_attenuation = 1.46
-spot_angle = 26.5115
+spot_range = 0.873
+spot_attenuation = 1.03
+spot_angle = 44.21
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(0.974835, 0, 0.222927, 0, 1, 0, -0.222927, 0, 0.974835, 0, 0, 0)
-light_color = Color(0.999714, 0.992802, 0.979886, 1)
+transform = Transform3D(-0.0173129, 0, 0.99985, 0, 1, 0, -0.99985, 0, -0.0173129, 4.72792, 3.28404, 1.60519)
 light_energy = 0.05
+light_indirect_energy = 1.131
 light_volumetric_fog_energy = 0.0
-shadow_enabled = true
 shadow_bias = 0.182
 shadow_opacity = 0.91
-shadow_blur = 6.0
+shadow_blur = 9.484
+directional_shadow_mode = 1
 
 [node name="Timers" type="Node" parent="."]
 
@@ -8008,6 +8241,29 @@ transform = Transform3D(0.459609, 0, 0, 0, -0.027563, -0.367472, 0, 0.0768508, -
 
 [node name="Pizzas" parent="MicahPushExtra" instance=ExtResource("95_sprht")]
 
+[node name="Particles" type="Node" parent="."]
+
+[node name="Stink" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(0.0320214, 0, 0.999487, 0, 1, 0, -0.999487, 0, 0.0320214, 2.52904, 0.353174, -2.15722)
+amount = 500
+lifetime = 2.06
+speed_scale = 0.2
+process_material = SubResource("ParticleProcessMaterial_vfdt3")
+draw_pass_1 = SubResource("QuadMesh_pmflp")
+
+[node name="Ceil" parent="." instance=ExtResource("94_tus1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.67175, -0.506802)
+
+[node name="ceil" parent="Ceil" index="0"]
+layers = 16
+mesh = SubResource("ArrayMesh_ia04b")
+
+[node name="ceil2" type="MeshInstance3D" parent="Ceil"]
+transform = Transform3D(1.68343, 0, 0, 0, -0.0414939, 0, 0, 0, 1.28394, 1.63276, 6.92092, -5.40636)
+layers = 16
+mesh = SubResource("ArrayMesh_ia04b")
+skeleton = NodePath("")
+
 [connection signal="camera_changed" from="SubViewportContainer/SubViewport/CameraSystem" to="Characters/Dalton/CharacterBody3D" method="_on_camera_system_camera_changed"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/HallArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_hall_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamAreas/HallArea" to="Characters/Dalton/CharacterBody3D" method="_on_hall_area_body_entered"]
@@ -8108,3 +8364,4 @@ transform = Transform3D(0.459609, 0, 0, 0, -0.027563, -0.367472, 0, 0.0768508, -
 [editable path="NewToolBoxTop"]
 [editable path="MicahPushExtra"]
 [editable path="MicahPushExtra/MicahNormalCorrections"]
+[editable path="Ceil"]
