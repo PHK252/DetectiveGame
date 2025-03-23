@@ -191,7 +191,7 @@ func inputNum(num: int):
 	if len(num_input.text) <  11:
 		num_input.text += str(num)
 		if len(num_input.text) == 3:
-			num_input.text += str("-")
+			num_input.text += "-"
 
 func _on_zero_pressed():
 	inputNum(0)
@@ -223,10 +223,21 @@ func _on_eight_pressed():
 func _on_nine_pressed():
 	inputNum(9)
 
+func _on_star_pressed():
+	if len(num_input.text) <  11:
+		num_input.text += "*"
+		if len(num_input.text) == 3:
+			num_input.text += "-"
+
+func _on_pound_pressed():
+	if len(num_input.text) <  11:
+		num_input.text += "#"
+		if len(num_input.text) == 3:
+			num_input.text += "-"
+
 func _on_delete_pressed():
 	if len(num_input.text) == 4:
 		num_input.text = num_input.text.erase(len(num_input.text)-2, 2)
-		print(num_input.text)
 	else:
 		num_input.text = num_input.text.erase(len(num_input.text)-1, 1)
 

@@ -31,3 +31,7 @@ func _process(delta):
 			get_tree().quit()
 	
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
+
+
+func _on_bookmark_interact_mouse_entered():
+	pass # Replace with function body.

@@ -32,6 +32,9 @@ extends Node2D
 @onready var Mail_Read_delete = $"Mail/Read/Mail Delete"
 @onready var Mail_Read_download = $Mail/Read/Download
 @onready var Mail_Read_lock = $Mail/Read/Lock
+@onready var Mail_message_1 = $Mail/Read/Message1
+@onready var Mail_message_2 = $Mail/Read/Message2
+
 
 
 @onready var Mail_button_array = [Mail_Exit, Mail_New_Message, Mail_Inbox_Message_1, Mail_Inbox_Message_2, Mail_Inbox_Message_3,
@@ -128,10 +131,12 @@ func _on_message_3_pressed():
 func _on_message_4_pressed():
 	Mail_inbox.hide()
 	Mail_read.show()
+	Mail_message_1.show()
 
 func _on_message_5_pressed():
 	Mail_inbox.hide()
 	Mail_read.show()
+	Mail_message_2.show()
 
 #new message
 func _on_new_message_pressed():
@@ -164,6 +169,8 @@ func _on_delete_pressed():
 func _on_back_pressed():
 	Mail_inbox.show()
 	Mail_read.hide()
+	Mail_message_1.hide()
+	Mail_message_2.hide()
 
 func _on_mail_delete_pressed():
 	faceScan()

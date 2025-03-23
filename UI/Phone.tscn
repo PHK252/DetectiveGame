@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=96 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://bc1c6ey4l5hh6" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Outline.png" id="45_0pifn"]
 [ext_resource type="Texture2D" uid="uid://ckskllrp26bg4" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Batteries.png" id="46_q2t4u"]
 [ext_resource type="Texture2D" uid="uid://dwkben2v4thrv" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Num Space.png" id="47_hk3kd"]
+[ext_resource type="FontFile" uid="uid://bykxh0wor3kd4" path="res://Dialogue Stuff/Fonts/Phone Num Font.ttf" id="48_7adlf"]
 [ext_resource type="Texture2D" uid="uid://b1cyevfew5i7w" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 0 Normal.png" id="48_507lu"]
 [ext_resource type="Texture2D" uid="uid://cepfbxbtoi2sx" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 0 Hovered.png" id="49_qpdx7"]
 [ext_resource type="Texture2D" uid="uid://c0cenirsjvrdb" path="res://UI/Assets/Phone/Updated/Phone/Phone Call 1 Normal.png" id="50_v1e0u"]
@@ -565,13 +566,14 @@ texture = ExtResource("47_hk3kd")
 [node name="NumInput" type="Label" parent="PhoneScreen/PhoneNum"]
 layout_mode = 0
 offset_left = 711.0
-offset_top = 205.0
+offset_top = 211.0
 offset_right = 1209.0
-offset_bottom = 314.0
+offset_bottom = 281.0
 theme_override_colors/font_color = Color(0.321569, 0.415686, 0.447059, 1)
-theme_override_fonts/font = ExtResource("14_vsnqy")
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("48_7adlf")
+theme_override_font_sizes/font_size = 60
 horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="zero" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 layout_mode = 0
@@ -782,7 +784,7 @@ libraries = {
 layout_mode = 0
 offset_left = 732.0
 offset_top = 74.0
-offset_right = 872.0
+offset_right = 817.0
 offset_bottom = 133.0
 theme_override_colors/default_color = Color(0.321569, 0.415686, 0.447059, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
@@ -836,6 +838,8 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="pressed" from="PhoneScreen/PhoneNum/seven" to="." method="_on_seven_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/eight" to="." method="_on_eight_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/nine" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Star" to="." method="_on_star_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Pound" to="." method="_on_pound_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Call" to="." method="_on_call_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
