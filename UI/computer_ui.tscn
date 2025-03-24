@@ -156,7 +156,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_rmg78"]
 resource_name = "Face-ID"
-length = 4.5
+length = 5.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -177,10 +177,10 @@ tracks/1/path = NodePath("Control:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.3, 4.32617, 4.34972, 4.37667, 4.40156, 4.42277),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.3, 4.32372, 4.34972, 4.37667, 4.40156, 4.42277, 4.44265, 4.46496, 4.48702, 4.51007),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(960, 540), Vector2(960, 540), Vector2(945, 540), Vector2(930, 540), Vector2(945, 540), Vector2(930, 540), Vector2(960, 540)]
+"values": [Vector2(960, 540), Vector2(960, 540), Vector2(945, 540), Vector2(930, 540), Vector2(945, 540), Vector2(930, 540), Vector2(960, 540), Vector2(975, 540), Vector2(990, 540), Vector2(975, 540), Vector2(960, 540)]
 }
 
 [sub_resource type="Animation" id="Animation_melli"]
@@ -459,6 +459,7 @@ position = Vector2(1517, 325)
 texture = ExtResource("46_w37nm")
 
 [node name="Time" type="RichTextLabel" parent="Mail"]
+layout_mode = 0
 offset_left = 1216.0
 offset_top = 306.0
 offset_right = 1338.0
@@ -471,6 +472,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail"]
+layout_mode = 0
 offset_left = 1371.0
 offset_top = 300.0
 offset_right = 1628.0
@@ -493,6 +495,7 @@ offset_left = 125.0
 offset_top = 355.0
 offset_right = 1795.0
 offset_bottom = 490.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("38_vg6mb")
 texture_pressed = ExtResource("39_1244i")
 texture_hover = ExtResource("39_1244i")
@@ -503,6 +506,7 @@ offset_left = 125.0
 offset_top = 490.0
 offset_right = 1795.0
 offset_bottom = 625.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("40_3jpml")
 texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
@@ -513,6 +517,7 @@ offset_left = 125.0
 offset_top = 625.0
 offset_right = 1795.0
 offset_bottom = 760.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("40_3jpml")
 texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
@@ -523,11 +528,13 @@ offset_left = 125.0
 offset_top = 760.0
 offset_right = 1795.0
 offset_bottom = 895.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("42_nyipf")
 texture_pressed = ExtResource("43_bcgys")
 texture_hover = ExtResource("43_bcgys")
 
 [node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message4"]
+layout_mode = 0
 offset_left = 481.0
 offset_top = 11.0
 offset_right = 804.0
@@ -541,6 +548,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Deletion" type="RichTextLabel" parent="Mail/Inbox/Message4"]
+layout_mode = 0
 offset_left = 1433.0
 offset_top = 32.0
 offset_right = 1607.0
@@ -554,6 +562,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message4"]
+layout_mode = 0
 offset_left = 1458.0
 offset_top = 60.0
 offset_right = 1583.0
@@ -567,6 +576,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message4"]
+layout_mode = 0
 offset_left = 142.0
 offset_top = 34.0
 offset_right = 399.0
@@ -580,6 +590,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message4"]
+layout_mode = 0
 offset_left = 482.0
 offset_top = 47.0
 offset_right = 1415.0
@@ -597,11 +608,13 @@ offset_left = 125.0
 offset_top = 895.0
 offset_right = 1795.0
 offset_bottom = 1025.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("44_fsf2l")
 texture_pressed = ExtResource("45_aepyp")
 texture_hover = ExtResource("45_aepyp")
 
 [node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message5"]
+layout_mode = 0
 offset_left = 481.0
 offset_top = 11.0
 offset_right = 804.0
@@ -616,6 +629,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Deletion" type="RichTextLabel" parent="Mail/Inbox/Message5"]
+layout_mode = 0
 offset_left = 1437.0
 offset_top = 32.0
 offset_right = 1600.0
@@ -629,6 +643,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message5"]
+layout_mode = 0
 offset_left = 1458.0
 offset_top = 60.0
 offset_right = 1583.0
@@ -642,6 +657,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message5"]
+layout_mode = 0
 offset_left = 142.0
 offset_top = 34.0
 offset_right = 399.0
@@ -655,6 +671,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message5"]
+layout_mode = 0
 offset_left = 482.0
 offset_top = 47.0
 offset_right = 1415.0
@@ -752,6 +769,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Time" type="RichTextLabel" parent="Mail/Read/Message1"]
+layout_mode = 0
 offset_left = 1498.0
 offset_top = 491.0
 offset_right = 1742.0
@@ -764,6 +782,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Subject" type="RichTextLabel" parent="Mail/Read/Message1"]
+layout_mode = 0
 offset_left = 283.0
 offset_top = 368.0
 offset_right = 872.0
@@ -776,6 +795,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail/Read/Message1"]
+layout_mode = 0
 offset_left = 348.0
 offset_top = 486.0
 offset_right = 605.0
@@ -788,6 +808,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Reciepent" type="RichTextLabel" parent="Mail/Read/Message1"]
+layout_mode = 0
 offset_left = 348.0
 offset_top = 551.0
 offset_right = 701.0
@@ -800,6 +821,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Greeting" type="RichTextLabel" parent="Mail/Read/Message1"]
+layout_mode = 0
 offset_left = 348.0
 offset_top = 626.0
 offset_right = 605.0
@@ -833,6 +855,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Time" type="RichTextLabel" parent="Mail/Read/Message2"]
+layout_mode = 0
 offset_left = 1498.0
 offset_top = 491.0
 offset_right = 1742.0
@@ -845,6 +868,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Subject" type="RichTextLabel" parent="Mail/Read/Message2"]
+layout_mode = 0
 offset_left = 283.0
 offset_top = 368.0
 offset_right = 872.0
@@ -858,6 +882,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail/Read/Message2"]
+layout_mode = 0
 offset_left = 348.0
 offset_top = 486.0
 offset_right = 605.0
@@ -870,6 +895,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Reciepent" type="RichTextLabel" parent="Mail/Read/Message2"]
+layout_mode = 0
 offset_left = 348.0
 offset_top = 551.0
 offset_right = 701.0
@@ -882,6 +908,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Greeting" type="RichTextLabel" parent="Mail/Read/Message2"]
+layout_mode = 0
 offset_left = 348.0
 offset_top = 626.0
 offset_right = 605.0
@@ -894,6 +921,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Body" type="RichTextLabel" parent="Mail/Read/Message2"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 695.0
 offset_right = 1712.0
@@ -998,6 +1026,7 @@ texture_pressed = ExtResource("75_fvigi")
 texture_hover = ExtResource("75_fvigi")
 
 [node name="Face ID" type="CanvasLayer" parent="Mail"]
+visible = false
 
 [node name="ComputerMailNewWindowBackground2" type="Sprite2D" parent="Mail/Face ID"]
 texture = ExtResource("60_rkk8e")

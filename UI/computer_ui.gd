@@ -145,6 +145,7 @@ func _on_new_message_pressed():
 
 func _on_confirm_pressed():
 	Mail_error_overlay.hide()
+	Mail_new_mail_overlay.hide()
 	enableMailButtons()
 
 func _on_exit_pressed():
@@ -153,7 +154,7 @@ func _on_exit_pressed():
 
 func _on_error_exit_pressed():
 	Mail_error_overlay.hide()
-	
+	Mail_new_mail_overlay.hide()
 	
 func _on_send_pressed():
 	disableMailButtons()
