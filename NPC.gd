@@ -98,7 +98,6 @@ func _physics_process(delta: float) -> void:
 		_rotate_towards_object(wander_choice)
 
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
-	print("idle")
 	# Prevent old path issues
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
@@ -162,6 +161,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
 	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	anim_player.play("basketball_default")
 	#set all one shots to abort
 	is_navigating = true
 	is_wandering = false
@@ -173,12 +173,21 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 		move_and_slide()
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("theo"):
+		print("theoEnter")
+		emit_signal("collision_danger")
+	
 	if body.is_in_group("player"):
+		print("see")
 		#emit_signal("collision_danger")
 		see_player = true
 
 func _on_interact_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("theo"):
+		emit_signal("collision_safe")
+		
 	if body.is_in_group("player"):
+		print("notsee")
 		#emit_signal("collision_safe")
 		see_player = false
 

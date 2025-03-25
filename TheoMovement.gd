@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var wAcontrol2: Area3D
 var animation_choice = 0
 
-const speed = 0.85
+const speed = 0.92
 const LERP_VAL = 0.15
 var STOPPING_DISTANCE = 1.0  # Distance at which we stop following
 const FOLLOW_DISTANCE = 1.2 # Distance at which we resume following (hysteresis buffer)
@@ -31,12 +31,14 @@ var distance_to_target
 signal TheoSit 
 signal TheoStand
 var cooldown = false
+var dalton_entered = false
 
 enum {
 	IDLE, 
 	FOLLOW,
 	SITTING,
-	INVESTIGATE
+	INVESTIGATE,
+	ADJUST
 }
 
 func _ready() -> void:
@@ -60,9 +62,24 @@ func _physics_process(delta: float) -> void:
 			_process_investigate_state(distance_to_target)
 		SITTING:
 			_process_sitting_state()
+		ADJUST:
+			_process_adjust_state()
 
 	if velocity.length() > MIN_STOP_THRESHOLD:
 		_rotate_towards_velocity()
+		
+func _process_adjust_state() -> void:
+	if nav.is_navigation_finished():
+		print("adjusted")
+		state = FOLLOW
+		
+	if not nav.is_navigation_finished():
+		var next_point = nav.get_next_path_position()
+		var direction = (next_point - armature.global_transform.origin).normalized()
+		#direction.y = 0
+		var velocity = direction * speed
+		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+		nav.set_velocity(velocity)
 
 func _process_investigate_state(distance_to_target) -> void:
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
@@ -219,10 +236,14 @@ func _on_k_control_body_exited(body: Node3D) -> void:
 		is_navigating = true
 		state = FOLLOW
 
-#func _on_micah_body_collision_danger() -> void:
+func _on_micah_body_collision_danger() -> void:
+	print("micahCollide")
 	#is_navigating = false
-	#state = IDLE
-#func _on_micah_body_collision_safe() -> void:
+	#anim_tree["parameters/Blend2/blend_amount"] = 1
+
+func _on_micah_body_collision_safe() -> void:
+	print("micahSafe")
+	#anim_tree["parameters/Blend2/blend_amount"] = 0
 	#is_navigating = true
 	#state = FOLLOW
 
@@ -235,6 +256,8 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 	state = INVESTIGATE
 
 func _on_investigate_timer_timeout() -> void:
+	#print("timerCheck")
+	#print(investigate_choice)
 	var choice = rng.randi_range(-10, 10)
 	investigate_choice = rng.randi_range(0, 2)
 	animation_choice = rng.randi_range(0, 10)
@@ -261,3 +284,19 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 
 func _on_cool_down_timer_timeout() -> void:
 	cooldown = false
+
+func _on_d_entered_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		print("DaltonLeft")
+		dalton_entered = false
+
+func _on_d_entered_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		print("DaltonEntered")
+		dalton_entered = true
+		#animation_choice = rng.randi_range(0, 10)
+		#is_investigating = true
+		nav.target_position = marker_list[3].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		state = ADJUST
