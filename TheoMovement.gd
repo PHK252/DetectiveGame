@@ -10,6 +10,11 @@ extends CharacterBody3D
 @export var wine_area_control: CollisionShape3D
 @export var wAcontrol2: Area3D
 var animation_choice = 0
+@export var adjustment_list: Array[Node3D]
+var theo_adjustment = false 
+var book_area = false 
+var closet_area = false
+var adjust_direction
 
 const speed = 0.92
 const LERP_VAL = 0.15
@@ -32,13 +37,17 @@ signal TheoSit
 signal TheoStand
 var cooldown = false
 var dalton_entered = false
+var direct
+
+@export var note_timer: Timer
 
 enum {
 	IDLE, 
 	FOLLOW,
 	SITTING,
 	INVESTIGATE,
-	ADJUST
+	ADJUST,
+	NOTES
 }
 
 func _ready() -> void:
@@ -64,14 +73,32 @@ func _physics_process(delta: float) -> void:
 			_process_sitting_state()
 		ADJUST:
 			_process_adjust_state()
+		NOTES:
+			_process_notes_state()
 
 	if velocity.length() > MIN_STOP_THRESHOLD:
 		_rotate_towards_velocity()
 		
+		
+func _process_notes_state() -> void:
+	velocity = velocity.lerp(Vector3.ZERO, 0.0)
+	idle_blend = lerp(idle_blend, 0.0, 0.0)
+	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+		
+
 func _process_adjust_state() -> void:
 	if nav.is_navigation_finished():
+		#if nav.target_position == adjustment_list[4].global_position or nav.target_position == adjustment_list[5].global_position:
+			#print("notesTime")
+			#is_navigating = false
+			#anim_tree["parameters/Blend2/blend_amount"] = 1
+			#note_timer.start()
+			#state = NOTES
 		print("adjusted")
-		state = FOLLOW
+		nav.path_desired_distance = 0.75
+		nav.target_desired_distance = 1.0
+		STOPPING_DISTANCE = 1.0
+		state = IDLE
 		
 	if not nav.is_navigation_finished():
 		var next_point = nav.get_next_path_position()
@@ -137,6 +164,9 @@ func _process_idle_state(distance_to_target: float) -> void:
 
 	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false):
 		print("Switching to FOLLOW state")
+		nav.path_desired_distance = 0.75
+		nav.target_desired_distance = 1.0
+		STOPPING_DISTANCE = 1.0
 		state = FOLLOW
 		return
 		
@@ -281,7 +311,6 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 		STOPPING_DISTANCE = 0.0
 		state = INVESTIGATE
 		
-
 func _on_cool_down_timer_timeout() -> void:
 	cooldown = false
 
@@ -300,3 +329,94 @@ func _on_d_entered_body_exited(body: Node3D) -> void:
 		is_navigating = true
 		STOPPING_DISTANCE = 0.0
 		state = ADJUST
+
+func _on_back_move_body_entered(body: Node3D) -> void:
+	if theo_adjustment:
+		if body.is_in_group("micah"):
+			adjust_direction = "front"
+			print("change")
+			if closet_area:
+				nav.target_position = adjustment_list[0].global_position
+			elif book_area:
+				nav.target_position = adjustment_list[1].global_position
+				
+			is_navigating = true
+			STOPPING_DISTANCE = 0.0
+			nav.path_desired_distance = 0.2
+			nav.target_desired_distance = 0.4
+			state = ADJUST
+
+func _on_front_move_body_entered(body: Node3D) -> void:
+	if theo_adjustment:
+		if body.is_in_group("micah"):
+			adjust_direction = "back"
+			print("change")
+			if closet_area:
+				nav.target_position = adjustment_list[2].global_position
+			elif book_area:
+				nav.target_position = adjustment_list[3].global_position
+			
+			is_navigating = true
+			STOPPING_DISTANCE = 0.0
+			nav.path_desired_distance = 0.2
+			nav.target_desired_distance = 0.4
+			state = ADJUST
+		
+func _on_character_body_3d_theo_adjustment() -> void:
+	theo_adjustment = true
+
+func _on_character_body_3d_theo_reset() -> void:
+	pass
+	#if book_area and theo_adjustment:
+		#if adjust_direction == "back":
+			#nav.target_position = adjustment_list[5].global_position
+		#elif adjust_direction == "front":
+			#nav.target_position = adjustment_list[4].global_position
+		
+		#is_navigating = true
+		#STOPPING_DISTANCE = 0.0
+		#nav.path_desired_distance = 0.2
+		#nav.target_desired_distance = 0.4
+		#theo_adjustment = false
+		#state = ADJUST
+		
+	#elif closet_area and theo_adjustment:
+		#if adjust_direction == "back":
+			#nav.target_position = adjustment_list[5].global_position
+		#elif adjust_direction == "front":
+			#nav.target_position = adjustment_list[4].global_position
+	
+		#is_navigating = true
+		#STOPPING_DISTANCE = 0.0
+		#nav.path_desired_distance = 0.2
+		#nav.target_desired_distance = 0.4
+		#theo_adjustment = false
+		#state = ADJUST
+	
+	#theo_adjustment = false
+
+func _on_bookshelf_became_active() -> void:
+	print("Books")
+	book_area = true
+
+func _on_bookshelf_became_inactive() -> void:
+	print("notBooks")
+	book_area = false
+
+func _on_closet_became_active() -> void:
+	print("Closet")
+	closet_area = true
+
+func _on_closet_became_inactive() -> void:
+	print("notCloset")
+	closet_area = false
+
+func _on_timer_timeout() -> void:
+	pass
+	#print("timeFollowAgain")
+	#anim_tree["parameters/Blend2/blend_amount"] = 0
+	#nav.path_desired_distance = 0.75
+	#nav.target_desired_distance = 1.0
+	#STOPPING_DISTANCE = 1.0
+	#is_navigating = true
+	#state = FOLLOW

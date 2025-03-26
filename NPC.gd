@@ -18,7 +18,8 @@ signal collision_danger
 signal collision_safe
 @export var Beer_Static: Node3D
 @export var Beer_Anim: Node3D
-
+var current_anim 
+var intDalton = false
 
 var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
@@ -49,8 +50,11 @@ var is_wandering = false
 var distance_to_target
 var wander_rotate = false
 
+signal sit_visible
+signal sit_invisible
 
 func _ready() -> void:
+	add_to_group("micah")
 	anim_player.play("basketball_default")
 	state = IDLE
 	var target_position = player.global_position
@@ -102,6 +106,9 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+	
+	#if wander_choice == 2:
+			#state = SITTING
 
 func _process_follow_state(distance_to_target: float) -> void:
 	if distance_to_target <= STOPPING_DISTANCE:
@@ -113,10 +120,12 @@ func _process_follow_state(distance_to_target: float) -> void:
 			state = IDLE
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
+	anim_player.play("basketball_default")
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
 	print("wandering")
-	var current_anim = one_shots[wander_choice]
+	if wander_choice < 2:
+		current_anim = one_shots[wander_choice]
 
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 		print("gotthere")
@@ -126,13 +135,21 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 			#Beer_Static.visible = false
 			#Beer_Anim.visible = true
 		if current_anim == "DrinkBeer":
+			anim_player.play("basketball_default")
 			wander_rotate = true
 			_beer_visible()
-		anim_tree.set("parameters/" + current_anim + "/request", true)
+			
+		if wander_choice < 2:
+			anim_tree.set("parameters/" + current_anim + "/request", true)
+
 		is_navigating = false 
 		cooldown_bool = true
 		cooldown.start()
 		wander_timer.start()
+		if wander_choice == 2:
+			anim_player.play("basketball_default")
+			emit_signal("sit_visible")
+			armature.visible = false
 		state = IDLE
 	
 func _rotate_towards_velocity() -> void:
@@ -142,7 +159,7 @@ func _beer_visible():
 	await get_tree().create_timer(2.5).timeout
 	Beer_Static.visible = false
 	Beer_Anim.visible = true
-	await get_tree().create_timer(5.8).timeout
+	await get_tree().create_timer(5.0).timeout
 	Beer_Static.visible = true
 	Beer_Anim.visible = false
 	
@@ -157,10 +174,14 @@ func _rotate_towards_object(wander_choice) -> void:
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
 	#emit_signal("collision_danger")
-	var current_anim = one_shots[wander_choice]
+	if wander_choice < 2:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
+	if wander_choice == 2:
+		emit_signal("sit_invisible")
+		armature.visible = true
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
 	anim_player.play("basketball_default")
 	#set all one shots to abort
 	is_navigating = true
@@ -194,9 +215,11 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 func _on_timer_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
-	wander_choice = rng.randi_range(0, 1)
-	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
+	wander_choice = 0# rng.randi_range(0, 2)
+	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and intDalton == false:
 		wander_rotate = false
+		emit_signal("sit_invisible")
+		armature.visible = true
 		
 		if choice > 0:
 			anim_tree.set("parameters/Yawn/request", true)
@@ -216,3 +239,13 @@ func _on_timer_timeout() -> void:
 func _on_cooldown_timeout() -> void:
 	print("timeout")
 	cooldown_bool = false
+
+func _on_character_body_3d_theo_adjustment() -> void:
+	intDalton = true
+
+func _on_character_body_3d_theo_reset() -> void:
+	intDalton = false
+	nav.target_position = marker_positions[wander_choice].global_position
+	is_navigating = true
+	is_wandering = true
+	state = WANDER

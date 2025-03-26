@@ -14,6 +14,8 @@ var _snapped_to_stairs_last_frame := false
 var _last_frame_was_on_floor = -INF
 signal moving
 signal stopped
+signal theo_adjustment
+signal theo_reset
 var move_back = false
 var is_interacting = false
 
@@ -126,10 +128,12 @@ func _physics_process(delta: float) -> void:
 func stop_player():
 	anim_tree["parameters/Blend2/blend_amount"] = 0
 	GlobalVars.player_move = false
+	emit_signal("theo_adjustment")
 
 func start_player():
 	is_interacting = false
 	GlobalVars.player_move = true
+	emit_signal("theo_reset")
 	
 func is_surface_too_steep(normal : Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
