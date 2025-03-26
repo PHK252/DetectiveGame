@@ -15,6 +15,8 @@ extends Node3D
 
 @onready var dalton_maker = $"../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../UI/Micah_marker"
+@onready var alert = $"../../../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
+
 #@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,8 +49,8 @@ func _process(delta):
 	#var dialogue_pick = Dialogic.VAR.get_variable("Asked Questions.Micah_cab")
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cab" and cab_open == false:
 		#print("whjat")
-		if Input.is_action_just_pressed("Exit") and GlobalVars.clicked_cab == 1 and GlobalVars.opened_cab == true:
-			#print("first")
+		if clickable == false and GlobalVars.clicked_cab == 1 and GlobalVars.opened_cab == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			GlobalVars.in_dialogue = true
 			cab_cam.priority = 0
 			main_cam.priority = 24
@@ -63,8 +65,9 @@ func _process(delta):
 			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			
-		elif Input.is_action_just_pressed("Exit") and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true:
+		elif clickable == false and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true:
 			#print("subs")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			pick_dialogue()
 			main_cam.set_tween_duration(0)
 			cab_cam.priority = 0
@@ -79,8 +82,9 @@ func _process(delta):
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		elif Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false:
+		elif clickable == false and Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false:
 			#print("no click")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			main_cam.set_tween_duration(0)
 			cab_cam.priority = 0
 			main_cam.priority = 24
@@ -124,6 +128,7 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	GlobalVars.opened_cab = false
+	alert.show()
 	
 func pick_dialogue():
 	var rng = RandomNumberGenerator.new()
@@ -140,11 +145,15 @@ func _on_thoughts_ended():
 	GlobalVars.in_dialogue = false
 	await get_tree().create_timer(.5).timeout
 	close_cabinet()
+	
 	#player.start_player()
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false:
+		alert.hide()
 		cab_area.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#GlobalVars.set_mouse_default()
 		is_looking = true
 		GlobalVars.in_interaction = "cab"
 		cab_cam.priority = 24
@@ -170,12 +179,13 @@ func close_cabinet():
 	anim_bags["parameters/conditions/finish"] = true
 	anim_tree["parameters/conditions/cab_closed_action"] = true
 	anim_tree["parameters/conditions/cabinet_opened"] = false
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.5).timeout
 	clickable = false
 	cab_open = false
 	cab_area.hide()
 	
 func open_cabinet():
+	cab_area.hide()
 	GlobalVars.clicked_cab += 1 
 	GlobalVars.opened_cab = true
 	anim_bags["parameters/conditions/restart"] = true

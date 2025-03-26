@@ -2,6 +2,9 @@ extends Node
 
 #Global
 #subject to lengthen
+var default_cursor = preload("res://UI/Assets/Cursors/Default Cursor.png") 
+var pointing_hand = preload("res://UI/Assets/Cursors/Pointing Cursor.png")
+
 @onready var player_move = true
 @onready var in_look_screen = false
 @onready var in_dialogue = false
@@ -59,3 +62,15 @@ var first_house_path = "res://FirstHouse/first_house.tscn"
 var cam_changed = false
 var clue_progress = 1
 var ghost_open = false
+
+func set_mouse_default():
+	#print("set default")
+	Input.set_custom_mouse_cursor(GlobalVars.default_cursor, Input.CURSOR_ARROW, Vector2(10,10))
+
+func set_mouse_pointing():
+	#print("set pointing")
+	Input.set_custom_mouse_cursor(GlobalVars.pointing_hand, Input.CURSOR_POINTING_HAND, Vector2(20,22.5))
+
+func _ready():
+	set_mouse_default()
+	set_mouse_pointing()

@@ -21,6 +21,7 @@ func _ready():
 	cab_interact.hide()
 	pic_look_interact.hide()
 	tool_anim.play("NEWToolOpen")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#var layout = Dialogic.start("Office_Donuts")
 	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
 	

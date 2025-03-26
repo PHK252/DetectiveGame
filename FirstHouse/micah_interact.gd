@@ -1,9 +1,12 @@
 extends Node3D
 
+@export var player : CharacterBody3D
+@export var dalton_marker : Marker2D
+@export var micah_marker : Marker2D
 
-@onready var player = $"../../../../../../Dalton/CharacterBody3D"
-@onready var dalton_maker = $"../../../../../../../UI/Dalton_marker"
-@onready var micah_marker = $"../../../../../../../UI/Micah_marker"
+#@onready var player = $"../../../../../../Dalton/CharacterBody3D"
+#@onready var dalton_maker = $"../../../../../../../UI/Dalton_marker"
+#@onready var micah_marker = $"../../../../../../../UI/Micah_marker"
 @onready var asked = false
 
 func _on_interactable_interacted(interactor):
@@ -12,7 +15,7 @@ func _on_interactable_interacted(interactor):
 		#player.stop_player()
 		var ask_victims = Dialogic.start("Micah_Ask_Victims")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 
 func _on_timeline_ended():

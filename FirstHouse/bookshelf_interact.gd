@@ -88,7 +88,6 @@ func _process(delta):
 	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 24:
 		interact_area.show()
 
-
 func _on_timeline_ended():
 	alert.show()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
