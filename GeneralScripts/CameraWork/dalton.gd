@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var anim_tree = $AnimationTree
 @export var camera = Camera3D
 @export var idle_time: Timer
+@export var idle_time_2: Timer
 var SPEED = 1.15
 const LERP_VAL = .15
 var jogcheck = false
@@ -217,9 +218,9 @@ func _on_player_interactor_interacted_now() -> void:
 func _on_idle_time_timeout() -> void:
 	print("timeforthink")
 	if velocity.length() == 0:  # Verify idle condition
-		print("Entering thinking state")
-		anim_tree.set("parameters/Thinking/request", true)
-
+		print("Entering thinking time")
+		idle_time_2.start()
+		
 #func _on_door_point_body_exited(body: Node3D) -> void:
 	#if body.is_in_group("player"):
 		#in_control = false
@@ -289,3 +290,8 @@ func _on_phone_call_phone_call() -> void:
 	in_control = false
 	await get_tree().create_timer(7).timeout
 	in_control = true
+
+func _on_idle_2_timeout() -> void:
+	if velocity.length() == 0: 
+		if anim_tree["parameters/Thinking/request"] != 1:
+			anim_tree.set("parameters/Thinking/request", true)

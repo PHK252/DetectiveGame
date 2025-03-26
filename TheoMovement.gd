@@ -15,6 +15,10 @@ var theo_adjustment = false
 var book_area = false 
 var closet_area = false
 var adjust_direction
+signal stop_coll
+var stop_coll_b = false
+var micahBack = false
+var micahFront = false
 
 const speed = 0.92
 const LERP_VAL = 0.15
@@ -77,7 +81,12 @@ func _physics_process(delta: float) -> void:
 			_process_notes_state()
 
 	if velocity.length() > MIN_STOP_THRESHOLD:
+		#print("rotateVelocity")
 		_rotate_towards_velocity()
+		
+	if state == IDLE and theo_adjustment:
+		#print("adjustingforplayer")
+		_rotate_towards_player()
 		
 		
 func _process_notes_state() -> void:
@@ -85,7 +94,6 @@ func _process_notes_state() -> void:
 	idle_blend = lerp(idle_blend, 0.0, 0.0)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 		
-
 func _process_adjust_state() -> void:
 	if nav.is_navigation_finished():
 		#if nav.target_position == adjustment_list[4].global_position or nav.target_position == adjustment_list[5].global_position:
@@ -159,14 +167,16 @@ func _process_idle_state(distance_to_target: float) -> void:
 	#else:
 		# Ensure blend position matches slight movement
 		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+		
 	if going_to_bar:
 		state = SITTING
 
-	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false):
+	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false):
 		print("Switching to FOLLOW state")
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0
+		anim_tree["parameters/Blend2/blend_amount"] = 0
 		state = FOLLOW
 		return
 		
@@ -192,7 +202,6 @@ func _process_idle_state(distance_to_target: float) -> void:
 		
 # Handles behavior when NPC is in the FOLLOW state
 func _process_follow_state(distance_to_target: float) -> void:
-	#print("following")
 	# Update navigation target dynamically
 	nav.target_position = player.global_transform.origin
 
@@ -220,6 +229,11 @@ func _on_interact_area_body_entered(body: Node3D) -> void:
 		print("waiting for interact")
 		see_player = true
 		state = IDLE
+		
+	if body.is_in_group("micah") and theo_adjustment:
+		print("abort")
+		is_navigating = false
+		state = IDLE
 
 func _on_interact_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -231,16 +245,23 @@ func _rotate_towards_velocity() -> void:
 	if is_navigating:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
 
+func _rotate_towards_player() -> void:
+	var direct = (player.global_position - armature.global_position).normalized()
+	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(direct.x, direct.z), LERP_VAL)
+
 func _on_interact_area_area_entered(area: Area3D) -> void:
-	if area.is_in_group("int_area"):
-		print("theo investigating")
-		anim_tree["parameters/Blend2/blend_amount"] = 1
-		is_navigating = false
-		await get_tree().create_timer(10).timeout
-		if in_kitchen == false:
-			is_navigating = true
-		print("stopped interacting")
-		anim_tree["parameters/Blend2/blend_amount"] = 0
+	if area.is_in_group("int_area") and theo_adjustment == false:
+		if stop_coll_b == false:
+			print("theo investigating")
+			anim_tree["parameters/Blend2/blend_amount"] = 1
+			is_navigating = false
+			emit_signal("stop_coll")
+			stop_coll_b = true
+			await get_tree().create_timer(10).timeout
+			if in_kitchen == false:
+				is_navigating = true
+			print("stopped interacting")
+			anim_tree["parameters/Blend2/blend_amount"] = 0
 	#if area.is_in_group("NPC"):
 		#is_navigating = false
 		#state = IDLE
@@ -331,41 +352,97 @@ func _on_d_entered_body_exited(body: Node3D) -> void:
 		state = ADJUST
 
 func _on_back_move_body_entered(body: Node3D) -> void:
-	if theo_adjustment:
-		if body.is_in_group("micah"):
-			adjust_direction = "front"
-			print("change")
-			if closet_area:
-				nav.target_position = adjustment_list[0].global_position
-			elif book_area:
-				nav.target_position = adjustment_list[1].global_position
+	if body.is_in_group("micah"):
+		print("backtM")
+		micahBack = true
+		micahFront = false
+	#if theo_adjustment:
+		#if body.is_in_group("micah"):
+			#adjust_direction = "front"
+			#print("change")
+			#if closet_area:
+				#nav.target_position = adjustment_list[0].global_position
+			#elif book_area:
+				#nav.target_position = adjustment_list[1].global_position
+				
+			#is_navigating = true
+			#STOPPING_DISTANCE = 0.0
+			#nav.path_desired_distance = 0.2
+			#nav.target_desired_distance = 0.4
+			#state = ADJUST
+func _on_front_move_body_entered(body: Node3D) -> void:
+	if body.is_in_group("micah"):
+		print("frontM")
+		micahFront = true 
+		micahBack = false
+	
+	#if theo_adjustment:
+		#if body.is_in_group("micah"):
+			#adjust_direction = "back"
+			#print("change")
+			#if closet_area:
+				#nav.target_position = adjustment_list[2].global_position
+			#elif book_area:
+				#nav.target_position = adjustment_list[3].global_position
+			
+			#is_navigating = true
+			#STOPPING_DISTANCE = 0.0
+			#nav.path_desired_distance = 0.2
+			#nav.target_desired_distance = 0.4
+			#state = ADJUST
+		
+func _on_character_body_3d_theo_adjustment() -> void:
+	theo_adjustment = true
+	await get_tree().create_timer(1.5).timeout
+	if micahBack and theo_adjustment:
+		if anim_tree["parameters/Blend2/blend_amount"] == 1:
+			state = IDLE
+			return
+		adjust_direction = "front"
+		print("change front")
+		if closet_area:
+			print("change frontC")
+			nav.target_position = adjustment_list[0].global_position
+			is_navigating = true
+			#STOPPING_DISTANCE = 0.2
+			#nav.path_desired_distance = 0.4
+			#nav.target_desired_distance = 0.6
+			state = ADJUST
+		elif book_area:
+			nav.target_position = adjustment_list[1].global_position
 				
 			is_navigating = true
-			STOPPING_DISTANCE = 0.0
-			nav.path_desired_distance = 0.2
-			nav.target_desired_distance = 0.4
+			#STOPPING_DISTANCE = 0.2
+			#nav.path_desired_distance = 0.4
+			#nav.target_desired_distance = 0.6
 			state = ADJUST
-
-func _on_front_move_body_entered(body: Node3D) -> void:
-	if theo_adjustment:
-		if body.is_in_group("micah"):
-			adjust_direction = "back"
-			print("change")
-			if closet_area:
-				nav.target_position = adjustment_list[2].global_position
-			elif book_area:
-				nav.target_position = adjustment_list[3].global_position
+	if micahFront and theo_adjustment:
+		if anim_tree["parameters/Blend2/blend_amount"] == 1:
+			state = IDLE
+			return
+		adjust_direction = "back"
+		print("change back")
+		if closet_area:
+			print("change backC")
+			nav.target_position = adjustment_list[2].global_position
+			is_navigating = true
+			STOPPING_DISTANCE = 0.2
+			nav.path_desired_distance = 0.4
+			nav.target_desired_distance = 0.6
+			state = ADJUST
+		elif book_area:
+			nav.target_position = adjustment_list[3].global_position
 			
 			is_navigating = true
 			STOPPING_DISTANCE = 0.0
 			nav.path_desired_distance = 0.2
 			nav.target_desired_distance = 0.4
 			state = ADJUST
-		
-func _on_character_body_3d_theo_adjustment() -> void:
-	theo_adjustment = true
 
 func _on_character_body_3d_theo_reset() -> void:
+	theo_adjustment = false
+	if in_kitchen == false:
+		is_navigating = true
 	pass
 	#if book_area and theo_adjustment:
 		#if adjust_direction == "back":
@@ -393,7 +470,7 @@ func _on_character_body_3d_theo_reset() -> void:
 		#theo_adjustment = false
 		#state = ADJUST
 	
-	#theo_adjustment = false
+	
 
 func _on_bookshelf_became_active() -> void:
 	print("Books")

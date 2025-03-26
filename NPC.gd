@@ -123,12 +123,12 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 	anim_player.play("basketball_default")
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
-	print("wandering")
+	#print("wandering")
 	if wander_choice < 2:
 		current_anim = one_shots[wander_choice]
 
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
-		print("gotthere")
+		#print("gotthere")
 		if current_anim == "Basketball":
 			wander_rotate = true
 			anim_player.play("basketball")
@@ -165,11 +165,13 @@ func _beer_visible():
 	
 func _rotate_towards_object(wander_choice) -> void:
 	if wander_choice == 0:
-		armature.rotation.y = -90
+		#armature.rotation.y = -90
 		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y - PI, TAU) - PI, atan2(-1, 0), 0.05)
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-1, 0), LERP_VAL)
 	elif wander_choice == 1:
-		armature.rotation.y = 0
+		#armature.rotation.y = 0
 		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y + PI, TAU) - PI, atan2(0, 1), 0.05)
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(0, 1), LERP_VAL)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
@@ -215,7 +217,7 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 func _on_timer_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
-	wander_choice = 0# rng.randi_range(0, 2)
+	wander_choice = rng.randi_range(0, 2)
 	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and intDalton == false:
 		wander_rotate = false
 		emit_signal("sit_invisible")
@@ -245,6 +247,7 @@ func _on_character_body_3d_theo_adjustment() -> void:
 
 func _on_character_body_3d_theo_reset() -> void:
 	intDalton = false
+	wander_choice = 2
 	nav.target_position = marker_positions[wander_choice].global_position
 	is_navigating = true
 	is_wandering = true
