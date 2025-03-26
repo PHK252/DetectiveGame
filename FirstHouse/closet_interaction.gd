@@ -65,9 +65,8 @@ func _process(delta):
 		FP_Cam.set_rotation_degrees(tilt_up_angle)
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		print("Read Dialogue: " + str(GlobalVars.closet_dialogue))
-		print("Viewed: " + str(GlobalVars.viewed_tool_note))
 		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "":
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 25
@@ -84,6 +83,7 @@ func _process(delta):
 			interact_area.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "": 
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 25
@@ -102,6 +102,7 @@ func _process(delta):
 		interact_area.show()
 
 func _on_interactable_interacted(interactor):
+	
 	open_closet_door_1.disabled = false
 	open_closet_door_2.disabled = false
 	Exit_Cam.priority = 24
@@ -160,6 +161,5 @@ func closetLook(argument: String):
 		Exit_Cam.priority = 0 
 		interact_area.show()
 		cam_anim.play("Cam_Idle")
-		player.hide()	#if argument == "exit":
-		#print("sign nn")
-		#player.start_player()
+		player.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

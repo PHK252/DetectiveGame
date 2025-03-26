@@ -50,6 +50,7 @@ func _process(delta):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cab" and cab_open == false:
 		#print("whjat")
 		if clickable == false and GlobalVars.clicked_cab == 1 and GlobalVars.opened_cab == true:
+			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			GlobalVars.in_dialogue = true
 			cab_cam.priority = 0
@@ -66,7 +67,7 @@ func _process(delta):
 			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			
 		elif clickable == false and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true:
-			#print("subs")
+			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			pick_dialogue()
 			main_cam.set_tween_duration(0)
@@ -83,7 +84,7 @@ func _process(delta):
 			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 		elif clickable == false and Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false:
-			#print("no click")
+			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			main_cam.set_tween_duration(0)
 			cab_cam.priority = 0
@@ -123,7 +124,7 @@ func _on_cab_input_event(viewport, event, shape_idx):
 	
 		
 func _on_timeline_ended():
-	#print("end")
+	#print("cab_dialog_end")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
@@ -150,7 +151,6 @@ func _on_thoughts_ended():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false:
-		alert.hide()
 		cab_area.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#GlobalVars.set_mouse_default()

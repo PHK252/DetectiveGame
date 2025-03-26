@@ -25,7 +25,7 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "fridge":
 		if Input.is_action_just_pressed("Exit") and in_anim == false:
-			print("enter")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			fridge_open_area.hide()
 			fridge_close_area.hide()
 			fridge_cam.priority = 0
@@ -38,6 +38,7 @@ func _process(delta):
 
 
 func _on_interactable_interacted(interactor):
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GlobalVars.in_interaction = "fridge"
 	fridge_cam.priority = 24
 	main_cam.priority = 0 

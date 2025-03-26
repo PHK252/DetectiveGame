@@ -56,24 +56,24 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "":
-			#print("enter dialogue")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 24
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
-			var book_dialogue = Dialogic.start(dialogue_file)
+			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			book_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			book_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			book_dialogue.register_character(load(load_char_dialogue), character_marker)
+			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)
 			interact_area.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
-			print("enter")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 24
@@ -100,6 +100,7 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type
 	FP_Cam.priority = 24

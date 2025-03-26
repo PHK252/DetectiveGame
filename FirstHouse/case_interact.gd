@@ -53,6 +53,7 @@ func _on_timeline_ended():
 #
 func caseUI(argument: String):
 	if argument == "look_case":
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.hide()
 		case.hide()
 		casetop.hide()
@@ -60,19 +61,20 @@ func caseUI(argument: String):
 		player.stop_player()
 		GlobalVars.in_interaction = "case"
 		UI.show()
-		case_cam.priority = 15
+		case_cam.priority = 24
 		main_cam.priority = 0 
 		cam_anim.play("Cam_Idle")
 		
 
 
 func _on_exit_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GlobalVars.Micah_in_case = false
 	player.start_player()
 	player.show()
 	GlobalVars.in_interaction = ""
 	case_cam.priority = 0
-	main_cam.priority = 12 
+	main_cam.priority = 24
 	cam_anim.play("RESET")
 
 func _input(event):
@@ -84,5 +86,5 @@ func _input(event):
 		player.show()
 		GlobalVars.in_interaction = ""
 		case_cam.priority = 0
-		main_cam.priority = 12 
+		main_cam.priority = 24
 		cam_anim.play("RESET")

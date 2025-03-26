@@ -22,6 +22,7 @@ var pointing_hand = preload("res://UI/Assets/Cursors/Pointing Cursor.png")
 @onready var closet_dialogue = false
 @onready var Micah_pic_dialogue = false
 @onready var book_dialogue = false
+@onready var window_dialogue = false
 @onready var viewed_contact = false
 @onready var viewed_partner = false
 @onready var viewed_news = false
@@ -31,6 +32,7 @@ var pointing_hand = preload("res://UI/Assets/Cursors/Pointing Cursor.png")
 @onready var viewed_Micah_bookmark = false
 @onready var viewed_Micah_pic = false
 @onready var viewed_Micah_fridge = false
+@onready var viewed_Micah_window = false
 
 @onready var viewed_Juniper_house_pic = false
 @onready var viewed_Juniper_cafe_pic = false

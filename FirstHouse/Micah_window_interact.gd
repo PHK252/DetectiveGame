@@ -14,7 +14,7 @@ extends Node3D
 
 #Assign player body
 @export var player: CharacterBody3D
-@export var alert : Sprite3D
+@export var alert: Sprite3D
 
 #Assign character markers (up to 3)
 @export var dalton_marker: Marker2D
@@ -64,7 +64,7 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			var book_dialogue = Dialogic.start(dialogue_file)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)											
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			book_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			book_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			book_dialogue.register_character(load(load_char_dialogue), character_marker)
@@ -81,20 +81,23 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
+			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 			interact_area.hide()
 			alert.show()
+			#activate dialogue
 
 	if GlobalVars.in_look_screen == true:
 		interact_area.hide()
 	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 24:
 		interact_area.show()
 
+
 func _on_timeline_ended():
-	alert.show()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
+	alert.show()
 
 func _on_interactable_interacted(interactor):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

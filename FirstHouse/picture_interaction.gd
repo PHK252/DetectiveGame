@@ -56,7 +56,7 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and pic_fell == true and read_dialogue == false and GlobalVars.viewing == "":
-			#print("enter dialogue")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 25
@@ -74,7 +74,7 @@ func _process(delta):
 			interact_area_look.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
-			print("enter")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 25
@@ -102,6 +102,7 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type
 	FP_Cam.priority = 25

@@ -27,6 +27,7 @@ func _on_input_event(viewport, event, shape_idx):
 			GlobalVars.in_look_screen = false
 			pic_cam.priority = 0
 			main_cam.priority = 24
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
