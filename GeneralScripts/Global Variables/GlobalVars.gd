@@ -5,6 +5,10 @@ extends Node
 var default_cursor = preload("res://UI/Assets/Cursors/Default Cursor.png") 
 var pointing_hand = preload("res://UI/Assets/Cursors/Pointing Cursor.png")
 
+signal phone_call_receiving 
+
+@onready var in_call = false
+@onready var calling = false
 @onready var player_move = true
 @onready var in_look_screen = false
 @onready var in_dialogue = false
@@ -76,3 +80,7 @@ func set_mouse_pointing():
 func _ready():
 	set_mouse_default()
 	set_mouse_pointing()
+
+func emit_phone_call():
+	emit_signal("phone_call_receiving")
+	calling = true

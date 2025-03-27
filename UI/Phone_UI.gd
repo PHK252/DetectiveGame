@@ -1,4 +1,7 @@
-extends Node2D
+extends CanvasLayer
+
+@onready var phone_ui = $"."
+
 
 #screen
 @onready var home = $HomeScreen
@@ -26,6 +29,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	default_screen()
+
+func default_screen():
 	home.show()
 	phone.hide()
 	gallery.hide()
@@ -34,10 +40,7 @@ func _ready():
 	phone_call.hide()
 
 func _on_home_pressed():
-	home.show()
-	phone.hide()
-	gallery.hide()
-	notes.hide()
+	default_screen()
 
 
 func _on_gallery_pressed():
@@ -55,13 +58,30 @@ func _on_notes_pressed():
 
 
 func _on_phone_pressed():
+	print(GlobalVars.in_call)
+	if GlobalVars.in_call == true and GlobalVars.calling == true:
+		home.hide()
+		gallery.hide()
+		notes.hide()
+		phone.show()
+		phone_call_receiving.show()
+	else:
+		home.hide()
+		gallery.hide()
+		notes.hide()
+		phone.show()
+		phone_num.show()
+
+func hideEverything():
 	home.hide()
 	gallery.hide()
 	notes.hide()
-	phone.show()
-	phone_num.show()
+	phone.hide()
+	phone_num.hide()
+	phone_call.hide()
 
-#phone
+
+	
 
 #gallery
 @onready var picArray = [close_pic_1, close_pic_2, close_pic_3, close_pic_4, close_pic_5, 
@@ -73,6 +93,7 @@ close_pic_6, close_pic_7]
 
 
 func _on_back_pressed():
+	#hideEverything()
 	gallery_close_pics.hide()
 	gallery_list.show()
 	picArray[picPlace].hide()
@@ -169,17 +190,21 @@ func _on_pic_7_pressed():
 
 
 func _on_right_hover_mouse_entered():
+	print("entered")
 	if picPlace != 6:
 		gallery_right.show()
 
 func _on_left_hover_mouse_entered():
+	print("entered")
 	if picPlace != 0:
 		gallery_left.show()
 
 func _on_right_hover_mouse_exited():
+	print("exit")
 	gallery_right.hide()
 
 func _on_left_hover_mouse_exited():
+	print("exit")
 	gallery_left.hide()
 
 #Phone 
@@ -238,8 +263,50 @@ func _on_pound_pressed():
 func _on_delete_pressed():
 	if len(num_input.text) == 4:
 		num_input.text = num_input.text.erase(len(num_input.text)-2, 2)
-	else:
+	elif len(num_input.text) < 0:
 		num_input.text = num_input.text.erase(len(num_input.text)-1, 1)
+	else:
+		pass
 
 func _on_call_pressed():
 	print("Calling")
+
+
+#Incoming Call
+@onready var phone_call_receiving = $PhoneScreen/PhoneCall
+@onready var phone_anim = $PhoneScreen/PhoneCall/AnimationPlayer
+
+func set_receiving_call():
+	#hideEverything()
+	home.hide()
+	notes.hide()
+	gallery.hide()
+	phone.show()
+	phone_call_receiving.show()
+	phone_anim.play("Call")
+
+func set_nums():
+	#hideEverything()
+	home.hide()
+	notes.hide()
+	gallery.hide()
+	phone.show()
+	phone_num.show()
+
+
+func _on_accept_pressed():
+	phone_ui.hide()
+	home.show()
+	phone_call.hide()
+	phone.hide()
+	#await get_tree().create_timer(.3).timeout
+	GlobalVars.in_call = false
+
+
+func _on_decline_pressed():
+	#hideEverything()
+	home.show()
+	phone.hide()
+	phone_call.hide()
+	#await get_tree().create_timer(.3).timeout
+	GlobalVars.in_call = false

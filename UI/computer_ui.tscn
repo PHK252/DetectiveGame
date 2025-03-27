@@ -304,14 +304,13 @@ texture_hover = ExtResource("14_l311m")
 [node name="HintText" type="RichTextLabel" parent="Login"]
 visible = false
 layout_mode = 0
-offset_left = 745.0
-offset_top = 718.0
-offset_right = 1185.0
-offset_bottom = 778.0
-pivot_offset = Vector2(220, 30)
+offset_left = 811.0
+offset_top = 719.0
+offset_right = 1125.0
+offset_bottom = 751.0
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
-theme_override_font_sizes/normal_font_size = 50
-text = "Your proudest achievement "
+theme_override_font_sizes/normal_font_size = 30
+text = "Hint: Your proudest achievement "
 scroll_active = false
 
 [node name="Home" type="Control" parent="."]
@@ -415,6 +414,7 @@ texture_pressed = ExtResource("28_xsnxk")
 texture_hover = ExtResource("28_xsnxk")
 
 [node name="Mail" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -196,7 +196,7 @@ _data = {
 "RESET": SubResource("Animation_ud7wl")
 }
 
-[node name="Phone UI" type="Node2D"]
+[node name="Phone UI" type="CanvasLayer"]
 script = ExtResource("1_eli2p")
 
 [node name="HomeScreen" type="Control" parent="."]
@@ -520,12 +520,14 @@ texture_pressed = ExtResource("43_g4h4a")
 texture_hover = ExtResource("43_g4h4a")
 
 [node name="RightHover" type="Area2D" parent="GalleryScreen/ClosePics/Buttons"]
+priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/ClosePics/Buttons/RightHover"]
 position = Vector2(1157, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="LeftHover" type="Area2D" parent="GalleryScreen/ClosePics/Buttons"]
+priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/ClosePics/Buttons/LeftHover"]
 position = Vector2(763, 537)
@@ -557,6 +559,7 @@ position = Vector2(1161, 96)
 texture = ExtResource("46_q2t4u")
 
 [node name="PhoneNum" type="Control" parent="PhoneScreen"]
+visible = false
 anchors_preset = 0
 
 [node name="PhoneCallNumSpace2" type="Sprite2D" parent="PhoneScreen/PhoneNum"]
@@ -730,7 +733,6 @@ texture_pressed = ExtResource("75_11vpp")
 texture_hover = ExtResource("75_11vpp")
 
 [node name="PhoneCall" type="Control" parent="PhoneScreen"]
-visible = false
 anchors_preset = 0
 
 [node name="PhoneCallBack" type="Sprite2D" parent="PhoneScreen/PhoneCall"]
@@ -842,4 +844,6 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Pound" to="." method="_on_pound_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Call" to="." method="_on_call_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneCall/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneCall/Decline" to="." method="_on_decline_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
