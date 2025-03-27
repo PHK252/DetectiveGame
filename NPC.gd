@@ -57,14 +57,15 @@ func _ready() -> void:
 	add_to_group("micah")
 	anim_player.play("basketball_default")
 	state = IDLE
-	var target_position = player.global_position
-	var target_direction = (target_position - global_transform.origin).normalized()
-	look_at(global_transform.origin + -target_direction, Vector3.UP)
+	#var target_position = player.global_position
+	#var target_direction = (target_position - global_transform.origin).normalized()
+	#look_at(global_transform.origin + -target_direction, Vector3.UP)
 	wander_timer.start()
 	#await get_tree().create_timer(10).timeout
 	#anim_tree.set("parameters/Yawn/request", true)
 	
 func _process(delta: float) -> void:
+	#print(is_wandering)
 
 	if not is_wandering:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
@@ -103,14 +104,16 @@ func _physics_process(delta: float) -> void:
 
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	# Prevent old path issues
+	#print("IDLEMICAH")
+	is_navigating = false 
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
-	
 	#if wander_choice == 2:
 			#state = SITTING
 
 func _process_follow_state(distance_to_target: float) -> void:
+	#print("FOLLOWMICAH")
 	if distance_to_target <= STOPPING_DISTANCE:
 			#emit_signal("collision_safe")
 			is_navigating = false
@@ -120,27 +123,30 @@ func _process_follow_state(distance_to_target: float) -> void:
 			state = IDLE
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
+	
 	anim_player.play("basketball_default")
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
-	#print("wandering")
+	print("wandering")
+	
 	if wander_choice < 2:
 		current_anim = one_shots[wander_choice]
 
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 		#print("gotthere")
-		if current_anim == "Basketball":
-			wander_rotate = true
-			anim_player.play("basketball")
-			#Beer_Static.visible = false
-			#Beer_Anim.visible = true
-		if current_anim == "DrinkBeer":
-			anim_player.play("basketball_default")
-			wander_rotate = true
-			_beer_visible()
-			
-		if wander_choice < 2:
-			anim_tree.set("parameters/" + current_anim + "/request", true)
+		if wander_choice != 2:
+			if current_anim == "Basketball":
+				wander_rotate = true
+				anim_player.play("basketball")
+				#Beer_Static.visible = false
+				#Beer_Anim.visible = true
+			if current_anim == "DrinkBeer":
+				anim_player.play("basketball_default")
+				wander_rotate = true
+				_beer_visible()
+				
+			if wander_choice < 2:
+				anim_tree.set("parameters/" + current_anim + "/request", true)
 
 		is_navigating = false 
 		cooldown_bool = true
@@ -174,6 +180,7 @@ func _rotate_towards_object(wander_choice) -> void:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(0, 1), LERP_VAL)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
+	intDalton = true
 	wander_rotate = false
 	#emit_signal("collision_danger")
 	if wander_choice < 2:
@@ -226,17 +233,19 @@ func _on_timer_timeout() -> void:
 		if choice > 0:
 			anim_tree.set("parameters/Yawn/request", true)
 			await get_tree().create_timer(9).timeout
-			nav.target_position = marker_positions[wander_choice].global_position
-			is_navigating = true
-			is_wandering = true
-			state = WANDER
+			if intDalton == false:
+				nav.target_position = marker_positions[wander_choice].global_position
+				is_navigating = true
+				is_wandering = true
+				state = WANDER
 		else:
 			anim_tree.set("parameters/Scratch/request", true)
 			await get_tree().create_timer(5).timeout
-			nav.target_position = marker_positions[wander_choice].global_position
-			is_navigating = true
-			is_wandering = true
-			state = WANDER
+			if intDalton == false:
+				nav.target_position = marker_positions[wander_choice].global_position
+				is_navigating = true
+				is_wandering = true
+				state = WANDER
 		
 func _on_cooldown_timeout() -> void:
 	print("timeout")
@@ -244,6 +253,7 @@ func _on_cooldown_timeout() -> void:
 
 func _on_character_body_3d_theo_adjustment() -> void:
 	intDalton = true
+	is_wandering = false
 
 func _on_character_body_3d_theo_reset() -> void:
 	intDalton = false

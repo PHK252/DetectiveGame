@@ -19,6 +19,7 @@ signal stop_coll
 var stop_coll_b = false
 var micahBack = false
 var micahFront = false
+var collision_danger = false
 
 const speed = 0.92
 const LERP_VAL = 0.15
@@ -258,6 +259,54 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 			emit_signal("stop_coll")
 			stop_coll_b = true
 			await get_tree().create_timer(10).timeout
+			
+			if micahBack and theo_adjustment:
+				anim_tree["parameters/Blend2/blend_amount"] = 0
+				adjust_direction = "front"
+				print("change front")
+				if closet_area:
+					print("change frontC")
+					if collision_danger:
+						#print("weareindanger")
+						nav.target_position = adjustment_list[6].global_position
+					else:
+						print("thischoice")
+						nav.target_position = adjustment_list[0].global_position
+					is_navigating = true
+					#STOPPING_DISTANCE = 0.2
+					#nav.path_desired_distance = 0.4
+					#nav.target_desired_distance = 0.6
+					print("stateChange")
+					state = ADJUST
+				elif book_area:
+					nav.target_position = adjustment_list[1].global_position
+					is_navigating = true
+					#STOPPING_DISTANCE = 0.2
+					#nav.path_desired_distance = 0.4
+					#nav.target_desired_distance = 0.6
+					state = ADJUST
+			if micahFront and theo_adjustment:
+				anim_tree["parameters/Blend2/blend_amount"] = 0
+				adjust_direction = "back"
+				print("change back")
+				if closet_area:
+					print("change backC")
+					nav.target_position = adjustment_list[2].global_position
+					is_navigating = true
+					STOPPING_DISTANCE = 0.2
+					nav.path_desired_distance = 0.4
+					nav.target_desired_distance = 0.6
+					state = ADJUST
+				elif book_area:
+					nav.target_position = adjustment_list[3].global_position
+					
+					is_navigating = true
+					STOPPING_DISTANCE = 0.0
+					nav.path_desired_distance = 0.2
+					nav.target_desired_distance = 0.4
+					state = ADJUST
+			
+			
 			if in_kitchen == false:
 				is_navigating = true
 			print("stopped interacting")
@@ -289,11 +338,13 @@ func _on_k_control_body_exited(body: Node3D) -> void:
 
 func _on_micah_body_collision_danger() -> void:
 	print("micahCollide")
+	collision_danger = true
 	#is_navigating = false
 	#anim_tree["parameters/Blend2/blend_amount"] = 1
 
 func _on_micah_body_collision_safe() -> void:
 	print("micahSafe")
+	collision_danger = false
 	#anim_tree["parameters/Blend2/blend_amount"] = 0
 	#is_navigating = true
 	#state = FOLLOW
@@ -392,6 +443,7 @@ func _on_front_move_body_entered(body: Node3D) -> void:
 			#state = ADJUST
 		
 func _on_character_body_3d_theo_adjustment() -> void:
+	#print("ADJUSTTT")
 	theo_adjustment = true
 	await get_tree().create_timer(1.5).timeout
 	if micahBack and theo_adjustment:
@@ -402,7 +454,13 @@ func _on_character_body_3d_theo_adjustment() -> void:
 		print("change front")
 		if closet_area:
 			print("change frontC")
-			nav.target_position = adjustment_list[0].global_position
+			if collision_danger:
+				#print("dangerhere")
+				is_navigating = true
+				state = IDLE
+				#nav.target_position = adjustment_list[6].global_position
+			else:
+				nav.target_position = adjustment_list[0].global_position
 			is_navigating = true
 			#STOPPING_DISTANCE = 0.2
 			#nav.path_desired_distance = 0.4
@@ -424,7 +482,13 @@ func _on_character_body_3d_theo_adjustment() -> void:
 		print("change back")
 		if closet_area:
 			print("change backC")
-			nav.target_position = adjustment_list[2].global_position
+			if collision_danger:
+				#print("dangerhere")
+				is_navigating = true
+				state = IDLE
+				#nav.target_position = adjustment_list[6].global_position
+			else:
+				nav.target_position = adjustment_list[2].global_position
 			is_navigating = true
 			STOPPING_DISTANCE = 0.2
 			nav.path_desired_distance = 0.4
@@ -432,7 +496,6 @@ func _on_character_body_3d_theo_adjustment() -> void:
 			state = ADJUST
 		elif book_area:
 			nav.target_position = adjustment_list[3].global_position
-			
 			is_navigating = true
 			STOPPING_DISTANCE = 0.0
 			nav.path_desired_distance = 0.2
@@ -469,7 +532,6 @@ func _on_character_body_3d_theo_reset() -> void:
 		#nav.target_desired_distance = 0.4
 		#theo_adjustment = false
 		#state = ADJUST
-	
 	
 
 func _on_bookshelf_became_active() -> void:
