@@ -97,10 +97,13 @@ func _physics_process(delta: float) -> void:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		nav.set_velocity(velocity)
 
-	if velocity.length() > MIN_STOP_THRESHOLD or wander_rotate == false:
+	if (velocity.length() > MIN_STOP_THRESHOLD or wander_rotate == false) and at_door == false:
 		_rotate_towards_velocity()
 	else:
-		_rotate_towards_object(wander_choice)
+		if at_door:
+			_rotate_towards_dalton()
+		else:
+			_rotate_towards_object(wander_choice)
 
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	# Prevent old path issues
@@ -262,3 +265,45 @@ func _on_character_body_3d_theo_reset() -> void:
 	is_navigating = true
 	is_wandering = true
 	state = WANDER
+
+func _on_micah_interact_dquestion() -> void:
+	intDalton = true
+	is_wandering = false
+
+func _on_micah_interact_dstopped() -> void:
+	at_door = false
+	intDalton = false
+	wander_choice = 2
+	nav.target_position = marker_positions[wander_choice].global_position
+	is_navigating = true
+	is_wandering = true
+	state = WANDER
+
+func _rotate_towards_dalton():
+	var targ_dir = player.global_position
+	var target = (armature.global_position - player.global_position).normalized()
+	armature.rotation.y = (lerp_angle(armature.rotation.y, atan2(-target.x, -target.z), LERP_VAL))
+
+func _on_door_micah_rotate() -> void:
+	if is_wandering == true:
+		intDalton = true
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		if wander_choice < 2:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		if wander_choice == 2:
+			emit_signal("sit_invisible")
+			armature.visible = true
+		anim_tree.set("parameters/Yawn/request", 2)
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_player.play("basketball_default")
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
+	else:
+		at_door = true
+		intDalton = true
+		is_wandering = false
+		_rotate_towards_dalton()

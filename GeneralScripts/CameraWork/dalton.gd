@@ -9,6 +9,7 @@ var SPEED = 1.15
 const LERP_VAL = .15
 var jogcheck = false
 var idle_timer_active: bool = false
+@export var force_rotate_list: Array[Marker3D]
 
 const MAX_STEP_HEIGHT = 1.2
 var _snapped_to_stairs_last_frame := false
@@ -28,6 +29,7 @@ var cam_rotation = false
 var interaction = false
 var in_control = true
 var control_area = false
+var force_rotation = false
 
 
 func _ready() -> void:
@@ -119,12 +121,20 @@ func _physics_process(delta: float) -> void:
 			start_move_back()
 		
 		if not _snap_up_stairs_check(delta):
-			
+			if force_rotation:
+				print("rotating")
+				force_rotate()
 			move_and_slide()
 			_snap_down_to_stairs_check()
 	else:
 		emit_signal("stopped")
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
+
+func force_rotate():
+	var target = force_rotate_list[0].global_position
+	var dir = (armature.global_position - target).normalized()
+	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-dir.x, -dir.z), LERP_VAL)
+		
 
 func stop_player():
 	anim_tree["parameters/Blend2/blend_amount"] = 0
@@ -194,12 +204,14 @@ func _snap_up_stairs_check(delta) -> bool:
 func start_move_back():
 	# Initialize lerp for move back
 	print("movedback")
+	force_rotation = true
 	var move_distance = 0.2  # Adjust as needed
 	move_back_start_position = global_position
 	move_back_target_position = global_position + Vector3(move_distance, 0, 0)  # Adjust for X-axis movement in 3D
 	move_back_progress = 0.0
 	anim_tree.set("parameters/OneShot/request", true)
 	await get_tree().create_timer(0.45).timeout
+	force_rotation = false
 	move_back_in_progress = true
 	move_back = false
 	is_interacting = true
@@ -268,9 +280,11 @@ func _on_detective_anims_dalton_visible() -> void:
 
 
 func _on_doughnut_001_time_to_eat() -> void:
+	force_rotation = true
 	anim_tree.set("parameters/Doughnut/request", true)
 	in_control = false
 	await get_tree().create_timer(7).timeout
+	force_rotation = false
 	in_control = true
 
 func _on_toilet_stuff_distraction() -> void:

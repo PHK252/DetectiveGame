@@ -16,10 +16,14 @@ var book_area = false
 var closet_area = false
 var adjust_direction
 signal stop_coll
+signal dHALL
+signal dINSIDE
 var stop_coll_b = false
 var micahBack = false
 var micahFront = false
 var collision_danger = false
+var door_scene = false
+
 
 const speed = 0.92
 const LERP_VAL = 0.15
@@ -96,6 +100,13 @@ func _process_notes_state() -> void:
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 		
 func _process_adjust_state() -> void:
+	if door_scene:
+		nav.target_position = player.global_transform.origin
+		nav.path_desired_distance = 0.75
+		nav.target_desired_distance = 1.0
+		STOPPING_DISTANCE = 1.0
+		state = FOLLOW
+	
 	if nav.is_navigation_finished():
 		#if nav.target_position == adjustment_list[4].global_position or nav.target_position == adjustment_list[5].global_position:
 			#print("notesTime")
@@ -279,6 +290,7 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 					print("stateChange")
 					state = ADJUST
 				elif book_area:
+					print("frontChangeBOOK")
 					nav.target_position = adjustment_list[1].global_position
 					is_navigating = true
 					#STOPPING_DISTANCE = 0.2
@@ -293,17 +305,18 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 					print("change backC")
 					nav.target_position = adjustment_list[2].global_position
 					is_navigating = true
-					STOPPING_DISTANCE = 0.2
-					nav.path_desired_distance = 0.4
-					nav.target_desired_distance = 0.6
+					#STOPPING_DISTANCE = 0.2
+					#nav.path_desired_distance = 0.4
+					#nav.target_desired_distance = 0.6
 					state = ADJUST
 				elif book_area:
+					print("backChangeBOOK")
 					nav.target_position = adjustment_list[3].global_position
 					
 					is_navigating = true
-					STOPPING_DISTANCE = 0.0
-					nav.path_desired_distance = 0.2
-					nav.target_desired_distance = 0.4
+					#STOPPING_DISTANCE = 0.2
+					#nav.path_desired_distance = 0.2
+					#nav.target_desired_distance = 0.4
 					state = ADJUST
 			
 			
@@ -390,9 +403,11 @@ func _on_d_entered_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		print("DaltonLeft")
 		dalton_entered = false
+		emit_signal("dHALL")
 
 func _on_d_entered_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
+		emit_signal("dINSIDE")
 		print("DaltonEntered")
 		dalton_entered = true
 		#animation_choice = rng.randi_range(0, 10)
@@ -467,6 +482,7 @@ func _on_character_body_3d_theo_adjustment() -> void:
 			#nav.target_desired_distance = 0.6
 			state = ADJUST
 		elif book_area:
+			print("frontChangeBOOK")
 			nav.target_position = adjustment_list[1].global_position
 				
 			is_navigating = true
@@ -495,6 +511,7 @@ func _on_character_body_3d_theo_adjustment() -> void:
 			nav.target_desired_distance = 0.6
 			state = ADJUST
 		elif book_area:
+			print("backChangeBOOK")
 			nav.target_position = adjustment_list[3].global_position
 			is_navigating = true
 			STOPPING_DISTANCE = 0.0
@@ -559,3 +576,12 @@ func _on_timer_timeout() -> void:
 	#STOPPING_DISTANCE = 1.0
 	#is_navigating = true
 	#state = FOLLOW
+
+func _on_micah_interact_tstart() -> void:
+	print("STARTEDTHEO")
+	door_scene = false
+	#state = FOLLOW
+
+func _on_micah_interact_tstop() -> void:
+	print("STOPPEDTHEO")
+	door_scene = true

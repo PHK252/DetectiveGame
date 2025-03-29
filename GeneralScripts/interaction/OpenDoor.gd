@@ -9,11 +9,17 @@ extends Node3D
 @onready var player = $"../../../Characters/Dalton/CharacterBody3D"
 var is_open: bool = false
 @onready var entered = false
+
+signal micah_rotate
+var is_outside = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func open() -> void:
+	if is_outside:
+		emit_signal("micah_rotate")
 	print("Opening")
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
@@ -92,3 +98,9 @@ func _on_interactable_unfocused(interactor):
 		#is_open = false
 		#entered = true
 		#collision.disabled = false
+
+func _on_character_body_3d_d_hall() -> void:
+	is_outside = true
+
+func _on_character_body_3d_d_inside() -> void:
+	is_outside = false
