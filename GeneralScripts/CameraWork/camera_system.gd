@@ -207,3 +207,8 @@ func _on_wine_area_body_entered(body: Node3D) -> void:
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 		activate_camera(9)
+
+
+func _on_leaves_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(10)
