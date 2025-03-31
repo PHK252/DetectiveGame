@@ -259,7 +259,6 @@ func _on_door_point_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		control_area = false
 		
-
 func _on_sitting_ppl_dalton_invisible() -> void:
 	armature.visible = false
 	in_control = false
@@ -309,3 +308,22 @@ func _on_idle_2_timeout() -> void:
 	if velocity.length() == 0: 
 		if anim_tree["parameters/Thinking/request"] != 1:
 			anim_tree.set("parameters/Thinking/request", true)
+
+
+func _on_door_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and control_area:
+		in_control = false
+		await get_tree().create_timer(0.5).timeout
+		in_control = true
+
+func _on_forest_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and control_area:
+		in_control = false
+		await get_tree().create_timer(0.5).timeout
+		in_control = true
+
+func _on_kitchen_area_jun_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and control_area:
+		in_control = false
+		await get_tree().create_timer(0.5).timeout
+		in_control = true

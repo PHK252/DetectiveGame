@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cnpm5ggomhy00"]
+
+[ext_resource type="Shader" path="res://ShaderScripts/waterfall.gdshader" id="1_rhvut"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rhvut")
+shader_parameter/WATER_COL = Color(0.14, 0.441, 1, 0.815686)
+shader_parameter/FOAM_COL = Color(0.6528, 0.94976, 0.96, 1)
+shader_parameter/distortion_speed = 1.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(0, 2)
+shader_parameter/wave_speed = 0.0
+shader_parameter/foam_intensity = 0.21
+shader_parameter/waterfall_speed = 0.35

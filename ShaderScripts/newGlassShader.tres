@@ -8,6 +8,7 @@ uniform vec3 toon_color : source_color = vec3(0.8, 0.9, 1.0);
 uniform float toon_threshold : hint_range(0.0, 1.0) = 0.5;
 uniform float outline_width : hint_range(0.0, 10.0) = 2.0;
 uniform float fresnel_power : hint_range(0.0, 10.0) = 3.0;
+render_mode cull_disabled;
 
 void fragment() {
     // Base color of the glass
