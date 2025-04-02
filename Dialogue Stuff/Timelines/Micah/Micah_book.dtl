@@ -28,7 +28,7 @@ if {Character Aff Points.Micah} <= 1:
 		Dalton: I was hoping you would know.
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
 			jump choices
-if {Character Aff Points.Micah} >= 1:
+if {Character Aff Points.Micah} > 1:
 	Dalton: Have you read this book?
 	Micah: I read it when I was a kid.
 	Micah: I think a friend gave it to me.

@@ -22,7 +22,7 @@ elif {Character Aff Points.Micah} >= 1 and {Character Aff Points.Micah} < 3:
 	Micah: Bye!
 	[signal arg="open_door"]
 	[end_timeline]
-elif {Character Aff Points.Micah} < 3 or {Asked Questions.Micah_Theo_enter} == true:
+elif {Character Aff Points.Micah} >= 3 or {Asked Questions.Micah_Theo_enter} == true:
 	Dalton: I think we're done with our search. 
 	Dalton: If you think of anything that may contribute to the case, please call us or report it to the station. 
 	Theo: Thank you for letting us in.
@@ -44,7 +44,7 @@ elif {Character Aff Points.Micah} < 3 or {Asked Questions.Micah_Theo_enter} == t
 	Dalton: Has a missing persons report been filed yet?
 	Micah: Yeah, I filed one a week ago.
 	Dalton: What's their name?
-	Micah: Skylar ____
+	Micah: Skylar Aslan.
 	Dalton: I'll look into it.
 	Micah: Thank you...
 	Dalton: Is there anything else?

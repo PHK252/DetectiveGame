@@ -6,7 +6,7 @@ if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == f
 	Dalton: ...
 	Dalton:Hmph. 
 
-if {Character Aff Points.Micah} >= 1 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} > 1 and {Asked Questions.Micah_Theo_enter} == false:
 	Dalton: It seems like someone stole your hammer. 
 	Micah: What? 
 	Dalton: Read this. 

@@ -61,5 +61,5 @@ Dalton: ...
 	jump Warrant/
 - Good morning. Are you Micah Procyon?
 	jump Good_morning/
-- Have Theo answer. | [if {Character Aff Points.Micah} == 1] [else="hide"]
+- Have Theo answer. | [if {Character Aff Points.Theo} == 1] [else="hide"]
 	jump Micah_Theo_Answer/
