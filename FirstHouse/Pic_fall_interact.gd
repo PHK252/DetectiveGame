@@ -26,7 +26,7 @@ func _on_input_event(viewport, event, shape_idx):
 			await get_tree().create_timer(.5).timeout
 			GlobalVars.in_look_screen = false
 			pic_cam.priority = 0
-			main_cam.priority = 24
+			main_cam.priority = 30
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			cam_anim.play("RESET")
 			player.show()

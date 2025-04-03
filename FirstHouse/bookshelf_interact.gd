@@ -59,7 +59,7 @@ func _process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
-			Exit_Cam.priority = 24
+			Exit_Cam.priority = 30
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -76,7 +76,7 @@ func _process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
-			Exit_Cam.priority = 24
+			Exit_Cam.priority = 30
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -100,7 +100,7 @@ func _on_interactable_interacted(interactor):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type
-	FP_Cam.priority = 24
+	FP_Cam.priority = 30
 	Exit_Cam.priority = 0 
 	interact_area.show()
 	cam_anim.play("Cam_Idle")

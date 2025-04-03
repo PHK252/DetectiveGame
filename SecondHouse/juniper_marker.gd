@@ -4,7 +4,7 @@ extends Marker2D
 @onready var pos_y = 0
 @onready var marker = $"."
 @onready var cam = $"../../SubViewportContainer/SubViewport/CameraSystem/Camera3D"
-@onready var juniper = $"../../Characters/JuniperPath3D/JuniperPathFollow3D/Main/CharacterBody3D"
+@onready var juniper = $"../../Characters/Juniper/CharacterBody3D"
 @onready var book_cam = $"../../SubViewportContainer/SubViewport/CameraSystem/CamBooks"
 
 

@@ -29,7 +29,7 @@ func _process(delta):
 			fridge_open_area.hide()
 			fridge_close_area.hide()
 			fridge_cam.priority = 0
-			main_cam.priority = 24
+			main_cam.priority = 30
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -40,7 +40,7 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GlobalVars.in_interaction = "fridge"
-	fridge_cam.priority = 24
+	fridge_cam.priority = 30
 	main_cam.priority = 0 
 	cam_anim.play("Cam_Idle")
 	player.hide()
