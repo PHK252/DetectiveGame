@@ -11,7 +11,7 @@ extends Node3D
 @export var tilt_up_angle: Vector3
 @export var tilt_down_angle: Vector3
 @export var mid_angle: Vector3
-
+@export var down_default: bool = false
 #Assign player body
 @export var player: CharacterBody3D
 @export var alert: Sprite3D
@@ -52,7 +52,10 @@ func _process(delta):
 			FP_Cam.set_rotation_degrees(mid_angle)
 				#pass
 	else:
-		FP_Cam.set_rotation_degrees(mid_angle)
+		if down_default == true:
+			FP_Cam.set_rotation_degrees(tilt_up_angle)
+		else:
+			FP_Cam.set_rotation_degrees(mid_angle)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "":

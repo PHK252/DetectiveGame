@@ -45,6 +45,8 @@ signal phone_call_receiving
 @onready var clicked_bookmark_Juniper = 0
 @onready var book_dialogue_Juniper = false
 @onready var house_dialogue_Juniper = false
+@onready var cafe_dialogue_Juniper = false
+@onready var window_thoughts_Juniper = false
 
 @onready var viewed_Juniper_case = false
 @onready var clicked_case_Juniper = 0
