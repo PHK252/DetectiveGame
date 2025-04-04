@@ -14,7 +14,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				print("click")
+				#print("click")
 				anim.play("Bookmark_Anim")
 				await anim.animation_finished
 				await get_tree().create_timer(.5).timeout
