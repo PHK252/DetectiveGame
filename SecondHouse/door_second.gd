@@ -9,6 +9,9 @@ extends Node3D
 @export var player = CharacterBody3D
 var is_open: bool = false
 @onready var entered = false
+signal j_door_open
+signal j_door_closed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -18,12 +21,14 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
+	emit_signal("j_door")
 	
 func close() -> void:
 	#print("Opening")
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
 	is_open = false
+	emit_signal("j_door_closed")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -20,6 +20,10 @@ signal collision_safe
 @export var BookShelf: Node3D
 @export var Coffee_Anim: Node3D
 var outside_player = false
+var cant_follow = false
+var tea_walking = false
+var pour = false
+var putDown = false
 
 
 var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
@@ -38,7 +42,10 @@ enum {
 	IDLE, 
 	FOLLOW,
 	WANDER,
-	SITTING
+	SITTING,
+	TEA,
+	TEADOWN,
+	ANIMPROCESS
 }
 
 var state = IDLE
@@ -77,6 +84,12 @@ func _process(delta: float) -> void:
 			_process_follow_state(distance_to_target)
 		WANDER:
 			_process_wander_state(distance_to_target, wander_choice)
+		TEA:
+			_process_tea_state(distance_to_target, wander_choice)
+		TEADOWN:
+			_process_teaDown_state(distance_to_target, wander_choice)
+		ANIMPROCESS:
+			_process_anim()
 			
 	
 func _physics_process(delta: float) -> void:
@@ -92,10 +105,40 @@ func _physics_process(delta: float) -> void:
 		direction = direction.normalized()
 		#direction.y = 0
 		velocity = velocity.lerp(direction * SPEED, accel * delta)
-		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
+		if not tea_walking:
+			anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
+		else:
+			anim_tree.set("parameters/Blend2/blend_amount", velocity.length() / SPEED)
 		look_at(global_transform.origin + -direction, Vector3.UP)
 		nav.set_velocity(velocity)
 
+func _process_tea_state(distance_to_target: float, wander_choice) -> void:
+	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
+		anim_tree.set("parameters/Pour/request", true)
+		pour = true
+		state = ANIMPROCESS
+		
+func _process_teaDown_state(distance_to_target: float, wander_choice) -> void:
+	tea_walking = true
+	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
+		anim_tree.set("parameters/PutDown/request", true)
+		putDown = true
+		state = ANIMPROCESS
+	
+func _process_anim():
+	if pour:
+		is_navigating = false
+		pour = false
+		await get_tree().create_timer(10.5).timeout
+		nav.target_position = marker_positions[4].global_position
+		is_navigating = true
+		state = TEADOWN
+	elif putDown:
+		putDown = false
+		await get_tree().create_timer(4).timeout
+		tea_walking = false
+		state = IDLE
+		
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	# Prevent old path issues
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
@@ -164,14 +207,15 @@ func _rotate_towards_object(wander_choice) -> void:
 		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y + PI, TAU) - PI, atan2(0, 1), 0.05)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	wander_rotate = false
-	#emit_signal("collision_danger")
-	var current_anim = one_shots[wander_choice]
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
-	#set all one shots to abort
-	is_navigating = true
-	is_wandering = false
-	state = FOLLOW
+	if cant_follow == false:
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)
@@ -260,3 +304,11 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 		outside_player = true
 		await get_tree().create_timer(1).timeout
 		outside_player = false
+
+func _on_tea_activate_temp_interacted(interactor: Interactor) -> void:
+	print("interactedTea")
+	cant_follow = true
+	is_navigating = true
+	is_wandering = true
+	nav.target_position = marker_positions[3].global_position
+	state = TEA
