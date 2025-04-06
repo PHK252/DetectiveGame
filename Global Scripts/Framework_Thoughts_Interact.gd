@@ -111,6 +111,7 @@ func _on_interactable_interacted(interactor):
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()
+		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_thoughts_ended)
 		Dialogic.start(thought_dialogue_file)
 		GlobalVars.set(view_item, true)
