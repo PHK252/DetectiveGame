@@ -116,6 +116,7 @@ func _physics_process(delta: float) -> void:
 			#print("rotatingVeloc")
 			_rotate_towards_velocity()
 		else:
+			print("else_state")
 			pass
 			#_rotate_towards_object(wander_choice)
 
