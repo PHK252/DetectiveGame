@@ -42,7 +42,6 @@ signal phone_call_receiving
 @onready var viewed_Juniper_cafe_pic = false
 @onready var viewed_Juniper_window = false
 @onready var viewed_Juniper_Bookmark = false
-@onready var viewed_Juniper_employee = false
 @onready var clicked_bookmark_Juniper = 0
 @onready var book_dialogue_Juniper = false
 @onready var house_dialogue_Juniper = false
@@ -54,7 +53,6 @@ signal phone_call_receiving
 @onready var case_dialogue_Juniper = false
 @onready var viewed_Juniper_resume = false
 @onready var clicked_resume_Juniper = 0
-@onready var clicked_employee_Juniper = 0
 @onready var resume_dialogue_Juniper = false
 @onready var opened_cab = false
 @onready var pic_fell = false
