@@ -63,9 +63,9 @@ func _ready() -> void:
 	add_to_group("juniper")
 	anim_player.play("idle_chain")
 	state = IDLE
-	var target_position = player.global_position
-	var target_direction = (target_position - global_transform.origin).normalized()
-	look_at(global_transform.origin + -target_direction, Vector3.UP)
+	#var target_position = player.global_position
+	#var target_direction = (target_position - global_transform.origin).normalized()
+	#look_at(global_transform.origin + -target_direction, Vector3.UP)
 	wander_timer.start()
 	#await get_tree().create_timer(10).timeout
 	#anim_tree.set("parameters/Yawn/request", true)
@@ -109,8 +109,21 @@ func _physics_process(delta: float) -> void:
 			anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		else:
 			anim_tree.set("parameters/Blend2/blend_amount", velocity.length() / SPEED)
-		look_at(global_transform.origin + -direction, Vector3.UP)
 		nav.set_velocity(velocity)
+		
+		if (velocity.length() > MIN_STOP_THRESHOLD or wander_rotate == false) and at_door == false:
+			#look_at(global_transform.origin + -direction, Vector3.UP)
+			#print("rotatingVeloc")
+			_rotate_towards_velocity()
+		else:
+			pass
+			#_rotate_towards_object(wander_choice)
+
+
+func _rotate_towards_dalton():
+	var targ_dir = player.global_position
+	var target = (armature.global_position - player.global_position).normalized()
+	armature.rotation.y = (lerp_angle(armature.rotation.y, atan2(-target.x, -target.z), LERP_VAL))
 
 func _process_tea_state(distance_to_target: float, wander_choice) -> void:
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():

@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://dugdr1exd8m8i"]
 
 [ext_resource type="Script" path="res://CharacterStuff/Juniper/NPC_Juniper.gd" id="1_cwcsm"]
-[ext_resource type="PackedScene" uid="uid://c0uq30gkvi7ia" path="res://CharacterStuff/Juniper/TexTeaCorrectionJuniper.glb" id="3_lbhev"]
+[ext_resource type="PackedScene" uid="uid://gfds4qkw3fgy" path="res://SecondHouse/JcorrectAnims.glb" id="2_1e0y7"]
 [ext_resource type="PackedScene" uid="uid://dyliy78shwhgc" path="res://CharacterStuff/Juniper/diamondNecklace.glb" id="7_6u3fn"]
 [ext_resource type="PackedScene" uid="uid://bi716ppv487p5" path="res://CharacterStuff/Juniper/ringEar.glb" id="8_lwfgv"]
 [ext_resource type="PackedScene" uid="uid://csuddcvi4tdhh" path="res://CharacterStuff/Juniper/IdleChain.glb" id="9_2xp55"]
@@ -75,7 +75,6 @@ min_space = 0.0
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_e2tjl"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5n4a3"]
-graph_offset = Vector2(468.07, 98.1941)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_lhdrm")
 nodes/Animation/position = Vector2(-10, 340)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_28fdv")
@@ -117,8 +116,8 @@ size = Vector3(1.02563, 1.35437, 1)
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("anim_tree", "anim_player", "nav", "cooldown", "wander_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151734, 0, 0.0426862)
 script = ExtResource("1_cwcsm")
-anim_tree = NodePath("TexTeaCorrectionJuniper/AnimationTree")
-anim_player = NodePath("TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain/AnimationPlayer")
+anim_tree = NodePath("AnimationTree")
+anim_player = NodePath("JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain/AnimationPlayer")
 NPC = "Juniper"
 nav = NodePath("NavigationAgent3D")
 one_shots = Array[String](["Fireplace", "Coffee", "Bookshelf"])
@@ -129,20 +128,20 @@ wander_timer = NodePath("Wander")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659311, 0)
 shape = SubResource("CapsuleShape3D_kuxkb")
 
-[node name="TexTeaCorrectionJuniper" parent="CharacterBody3D" instance=ExtResource("3_lbhev")]
+[node name="JcorrectAnims" parent="CharacterBody3D" instance=ExtResource("2_1e0y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0151734, 0, -0.0426862)
 
-[node name="Skeleton3D" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature" index="0"]
-bones/1/position = Vector3(-6.5135e-16, -0.104876, -2.53714)
+[node name="Skeleton3D" parent="CharacterBody3D/JcorrectAnims/JuniperArmature" index="0"]
+bones/1/position = Vector3(-1.31734e-23, -0.104876, -2.55709)
 bones/1/rotation = Quaternion(-5.33851e-08, 0.707107, 0.707107, -5.33851e-08)
-bones/2/rotation = Quaternion(0.108656, 0.0226274, 0.0111652, 0.993759)
-bones/3/rotation = Quaternion(-0.225643, -1.51205e-06, 4.50764e-07, 0.97421)
-bones/4/rotation = Quaternion(0.780747, -0.076576, 0.0630009, 0.616929)
-bones/5/rotation = Quaternion(0.108656, -0.0226275, -0.0111652, 0.993759)
-bones/6/rotation = Quaternion(-0.225643, 1.51029e-06, -4.22679e-07, 0.97421)
-bones/7/rotation = Quaternion(0.780747, 0.0765759, -0.0630011, 0.616929)
-bones/8/position = Vector3(0, -0.104876, -2.53714)
-bones/12/rotation = Quaternion(0.0733273, 0, 0, 0.997308)
+bones/2/rotation = Quaternion(0.0869373, 0.0225723, 0.011516, 0.995891)
+bones/3/rotation = Quaternion(-0.184391, -1.524e-06, 3.68834e-07, 0.982853)
+bones/4/rotation = Quaternion(0.775395, -0.0771167, 0.0623379, 0.623642)
+bones/5/rotation = Quaternion(0.0869373, -0.0225724, -0.011516, 0.995891)
+bones/6/rotation = Quaternion(-0.184391, 1.52492e-06, -3.45502e-07, 0.982853)
+bones/7/rotation = Quaternion(0.775395, 0.0771166, -0.062338, 0.623642)
+bones/8/position = Vector3(0, -0.104876, -2.55709)
+bones/12/rotation = Quaternion(0.0835506, 0, 0, 0.996504)
 bones/13/position = Vector3(0.310232, 1.08506, 0.0632049)
 bones/13/rotation = Quaternion(-2.20637e-08, -1.09647e-08, -0.376974, 0.926224)
 bones/14/rotation = Quaternion(0.520108, -0.0177951, -0.0291989, 0.853416)
@@ -150,75 +149,76 @@ bones/15/position = Vector3(-0.310232, 1.08506, 0.0632049)
 bones/15/rotation = Quaternion(-2.20637e-08, 1.09647e-08, 0.376974, 0.926224)
 bones/16/rotation = Quaternion(0.520108, 0.0177951, 0.0291989, 0.853416)
 bones/17/rotation = Quaternion(-0.122064, -0.00744278, -0.765779, 0.63137)
-bones/18/rotation = Quaternion(-0.331873, -0.0876733, -0.457546, 0.820259)
-bones/19/rotation = Quaternion(0.166384, 0.000278096, -0.0647858, 0.98393)
+bones/18/rotation = Quaternion(-0.335315, -0.0822473, -0.449692, 0.823758)
+bones/19/rotation = Quaternion(0.184397, 0.000277035, -0.0717995, 0.980226)
 bones/20/rotation = Quaternion(-0.0135035, -0.000961486, -0.0240722, 0.999619)
 bones/21/rotation = Quaternion(-0.122064, 0.00744278, 0.765779, 0.63137)
-bones/22/rotation = Quaternion(-0.331902, 0.087668, 0.45758, 0.82023)
-bones/23/rotation = Quaternion(0.166385, -0.000278073, 0.0647862, 0.98393)
+bones/22/rotation = Quaternion(-0.335315, 0.0822472, 0.449692, 0.823758)
+bones/23/rotation = Quaternion(0.184398, -0.000277061, 0.0717999, 0.980226)
 bones/24/rotation = Quaternion(-0.0135034, 0.000961459, 0.0240722, 0.999619)
 bones/25/position = Vector3(0.351139, -0.145298, -0.0447009)
 bones/26/position = Vector3(-0.351139, -0.145298, -0.0447009)
 bones/26/rotation = Quaternion(-1.74443e-06, 4.55223e-08, 1, -3.56109e-14)
-bones/27/position = Vector3(0.913854, -0.191435, -2.17819)
+bones/27/position = Vector3(0.939949, -0.191435, -2.20986)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/position = Vector3(-0.913853, -0.191435, -2.1782)
+bones/28/position = Vector3(-0.939949, -0.191435, -2.20986)
 bones/28/scale = Vector3(1, 1, 1)
-bones/29/position = Vector3(1.31344, 0.554072, -3.50041)
+bones/29/position = Vector3(1.31344, 0.554072, -3.52036)
 bones/29/rotation = Quaternion(-1.1856e-15, 0.886609, 4.21469e-08, -0.46252)
-bones/30/position = Vector3(-1.31344, 0.554072, -3.50041)
+bones/30/position = Vector3(-1.31344, 0.554072, -3.52036)
 bones/32/rotation = Quaternion(0, 1, 0, -1.94707e-07)
 
-[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.129666, 0.991558, 0, -0.991558, -0.129665, 0, -0.016225, -2.83143)
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.129666, 0.991558, 0, -0.991558, -0.129665, 0, -0.0162249, -2.85138)
 bone_name = "DEF_Chest"
 bone_idx = 11
 
-[node name="diamondNecklace" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D2" instance=ExtResource("7_6u3fn")]
+[node name="diamondNecklace" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D2" instance=ExtResource("7_6u3fn")]
 transform = Transform3D(3.86171, 0, 0, 0, 3.86171, 0, 0, 0, 3.86171, 0, -2.9, 0.18)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D" index="2"]
-transform = Transform3D(0.666377, 0.341746, -0.662684, -0.0124919, 0.893768, 0.448355, 0.74551, -0.290495, 0.599856, 0.469806, -0.0807496, -5.21547)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D" index="2"]
+transform = Transform3D(0.666377, 0.341746, -0.662684, -0.0277785, 0.899538, 0.435958, 0.745097, -0.272104, 0.608925, 0.469806, -0.0551852, -5.23344)
 bone_name = "DEF_earT.L"
 bone_idx = 14
 
-[node name="ringEar2" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D" instance=ExtResource("8_lwfgv")]
+[node name="ringEar2" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D" instance=ExtResource("8_lwfgv")]
 transform = Transform3D(3.86071, -4.34498e-11, 0.0876119, -0.0876119, -3.82964e-09, 3.86071, 4.34498e-11, -3.86171, -3.82964e-09, -0.66, 0.05, 5.188)
 
-[node name="ringEar3" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D" instance=ExtResource("8_lwfgv")]
+[node name="ringEar3" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D" instance=ExtResource("8_lwfgv")]
 transform = Transform3D(3.86071, -4.34498e-11, 0.0876087, -0.0876087, -3.8295e-09, 3.86071, 4.34498e-11, -3.86171, -3.8295e-09, -0.66, 0.05, 5.188)
 
-[node name="BoneAttachment3D3" type="BoneAttachment3D" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D" index="3"]
-transform = Transform3D(-0.998727, -0.0172739, 0.0473988, 0.0425461, 0.216461, 0.975364, -0.0271083, 0.976138, -0.215451, -0.288407, -0.104876, -2.29243)
+[node name="BoneAttachment3D3" type="BoneAttachment3D" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D" index="3"]
+transform = Transform3D(-0.998716, -0.0190127, 0.0469615, 0.0429569, 0.17368, 0.983865, -0.0268622, 0.984619, -0.17264, -0.288407, -0.104876, -2.31238)
 bone_name = "DEF_Leg.R"
 bone_idx = 5
 
-[node name="IdleChain" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D3" instance=ExtResource("9_2xp55")]
+[node name="IdleChain" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D3" instance=ExtResource("9_2xp55")]
 transform = Transform3D(3.46157, -1.71181, -0.00649683, -1.70099, -3.43799, -0.446866, 0.192302, 0.403424, -3.83577, 1.59873, 1.93999, -0.0217094)
 
-[node name="Skeleton3D" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain/armature_monocle" index="0"]
+[node name="Skeleton3D" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain/armature_monocle" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0.00522347, -6.93889e-18, -9.24472e-16, 0.999986)
+bones/0/rotation = Quaternion(-0.018062, -0.000716911, -0.0184124, 0.999667)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0047692, 1.19208e-07, 5.68533e-10, 0.999989)
-bones/2/rotation = Quaternion(0.000109083, 3.5646e-15, 2.60073e-11, 1)
-bones/3/rotation = Quaternion(0.000105891, 1.06736e-14, 2.52468e-11, 1)
-bones/4/rotation = Quaternion(9.90704e-05, 1.06061e-14, 2.36213e-11, 1)
-bones/5/rotation = Quaternion(8.78023e-05, -7.07549e-15, 2.09342e-11, 1)
-bones/6/rotation = Quaternion(7.40895e-05, 2.13198e-14, 1.76653e-11, 1)
-bones/7/rotation = Quaternion(5.78975e-05, 1.06092e-14, 1.38043e-11, 1)
-bones/8/rotation = Quaternion(3.88091e-05, -1.06704e-14, 9.25336e-12, 1)
-bones/9/rotation = Quaternion(1.87764e-05, -1.30504e-08, -1.14726e-09, 1)
-bones/10/position = Vector3(0, 23.7295, 0.468522)
+bones/1/rotation = Quaternion(0.0308618, -0.00217424, 0.0402546, 0.99871)
+bones/2/rotation = Quaternion(0.0840216, -0.00232407, 0.115233, 0.989776)
+bones/3/rotation = Quaternion(0.136988, -0.0022503, 0.184526, 0.973231)
+bones/4/rotation = Quaternion(0.166322, -0.00210143, 0.223311, 0.96045)
+bones/5/rotation = Quaternion(0.173171, -0.00186304, 0.232654, 0.957016)
+bones/6/rotation = Quaternion(0.157861, -0.0013825, 0.212696, 0.964281)
+bones/7/rotation = Quaternion(0.127698, -0.000747615, 0.172503, 0.976696)
+bones/8/rotation = Quaternion(0.0869627, -0.000255703, 0.117597, 0.989246)
+bones/9/rotation = Quaternion(0.0423709, -4.17631e-05, 0.0572983, 0.997458)
+bones/10/position = Vector3(-6.90242, -0.725304, 4.83048)
 bones/10/rotation = Quaternion(0.0103049, 1.106e-07, -9.31372e-10, 0.999947)
 
-[node name="chaintree" type="AnimationTree" parent="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain"]
+[node name="chaintree" type="AnimationTree" parent="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain"]
 tree_root = SubResource("AnimationNodeStateMachine_h18ra")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterBody3D/TexTeaCorrectionJuniper"]
+[node name="AnimationTree" type="AnimationTree" parent="CharacterBody3D"]
+root_node = NodePath("../JcorrectAnims")
 tree_root = SubResource("AnimationNodeBlendTree_5n4a3")
-anim_player = NodePath("../AnimationPlayer")
+anim_player = NodePath("../JcorrectAnims/AnimationPlayer")
 parameters/Blend2/blend_amount = 0.0
 parameters/BlendSpace1D/blend_position = -0.0385045
 parameters/Bookshelf/active = false
@@ -258,5 +258,5 @@ shape = SubResource("BoxShape3D_tdonu")
 [connection signal="timeout" from="CharacterBody3D/Cooldown" to="CharacterBody3D" method="_on_cooldown_timeout"]
 [connection signal="timeout" from="CharacterBody3D/Wander" to="CharacterBody3D" method="_on_wander_timeout"]
 
-[editable path="CharacterBody3D/TexTeaCorrectionJuniper"]
-[editable path="CharacterBody3D/TexTeaCorrectionJuniper/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain"]
+[editable path="CharacterBody3D/JcorrectAnims"]
+[editable path="CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain"]
