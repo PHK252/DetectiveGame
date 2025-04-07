@@ -24,7 +24,21 @@ var cant_follow = false
 var tea_walking = false
 var pour = false
 var putDown = false
+@export var tea_kitchen: Node3D
+@export var tea_living: Node3D
 
+#tea anims
+@export var kettle: Node3D
+@export var kettle_top: Node3D
+@export var tray: Node3D
+@export var tray_anim: Node3D
+@export var tray_anim_player: AnimationPlayer
+
+#tea static
+@export var kettle_static: Node3D
+@export var top_static: Node3D
+@export var tray_static: Node3D
+@export var tray_static_initial: Node3D
 
 var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
@@ -113,13 +127,11 @@ func _physics_process(delta: float) -> void:
 		
 		if (velocity.length() > MIN_STOP_THRESHOLD or wander_rotate == false) and at_door == false:
 			#look_at(global_transform.origin + -direction, Vector3.UP)
-			#print("rotatingVeloc")
 			_rotate_towards_velocity()
-		else:
-			print("else_state")
-			pass
-			#_rotate_towards_object(wander_choice)
 
+	if wander_rotate == true:
+		print("rotation")
+		_rotate_towards_object(wander_choice)
 
 func _rotate_towards_dalton():
 	var targ_dir = player.global_position
@@ -135,6 +147,10 @@ func _process_tea_state(distance_to_target: float, wander_choice) -> void:
 func _process_teaDown_state(distance_to_target: float, wander_choice) -> void:
 	tea_walking = true
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
+		tray.visible = false
+		tray_anim.visible = true
+		tea_walking = false
+		anim_tree.set("parameters/Blend2/blend_amount", 0)
 		anim_tree.set("parameters/PutDown/request", true)
 		putDown = true
 		state = ANIMPROCESS
@@ -142,15 +158,40 @@ func _process_teaDown_state(distance_to_target: float, wander_choice) -> void:
 func _process_anim():
 	if pour:
 		is_navigating = false
+		wander_rotate = true
 		pour = false
-		await get_tree().create_timer(10.5).timeout
+		await get_tree().create_timer(3.0).timeout
+		kettle.visible = true
+		kettle_static.visible = false
+		await get_tree().create_timer(2.0).timeout
+		top_static.visible = false
+		kettle_top.visible = true
+		await get_tree().create_timer(3.5).timeout
+		kettle_static.visible = true
+		kettle.visible = false
+		kettle_top.visible = false
+		await get_tree().create_timer(2.5).timeout
+		tray_static_initial.visible = false
+		tray.visible = true
 		nav.target_position = marker_positions[4].global_position
 		is_navigating = true
+		wander_rotate = false
 		state = TEADOWN
 	elif putDown:
+		wander_choice = 4
+		is_navigating = false
+		wander_rotate = true
 		putDown = false
-		await get_tree().create_timer(4).timeout
-		tea_walking = false
+		await get_tree().create_timer(1.5).timeout
+		tray_anim_player.play("trayDown")
+		await get_tree().create_timer(2.0).timeout
+		tray_anim.visible = false
+		tray_static.visible = true
+		#tea_walking = false
+		wander_rotate = false
+		cant_follow = false
+		is_navigating = true
+		wander_rotate = false
 		state = IDLE
 		
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
@@ -182,7 +223,7 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		if current_anim == "Coffee":
 			wander_rotate = true
 			_beer_visible()
-		_rotate_towards_object(wander_choice)
+		#_rotate_towards_object(wander_choice)
 		anim_tree.set("parameters/" + current_anim + "/request", true)
 		is_navigating = false 
 		cooldown_bool = true
@@ -206,19 +247,32 @@ func _rotate_towards_object(wander_choice) -> void:
 		var obj_direction = FirePlace.global_position - global_position
 		obj_direction = obj_direction.normalized()
 		obj_direction.y = 0
-		look_at(global_transform.origin + -obj_direction, Vector3.UP)
+		#look_at(global_transform.origin + -obj_direction, Vector3.UP)
 		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y - PI, TAU) - PI, atan2(-1, 0), 0.05)
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
 	elif wander_choice == 1:
 		var obj_direction = Coffee_Static.global_position - global_position
 		obj_direction = obj_direction.normalized()
 		obj_direction.y = 0
-		look_at(global_transform.origin + -obj_direction, Vector3.UP) 
+		#look_at(global_transform.origin + -obj_direction, Vector3.UP) 
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
 	elif wander_choice == 2:
 		var obj_direction = BookShelf.global_position - global_position
 		obj_direction = obj_direction.normalized()
 		obj_direction.y = 0
-		look_at(global_transform.origin + -obj_direction, Vector3.UP)
+		#look_at(global_transform.origin + -obj_direction, Vector3.UP)
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
 		#armature.rotation.y = lerp_angle(fmod(armature.rotation.y + PI, TAU) - PI, atan2(0, 1), 0.05)
+	elif wander_choice == 3:
+		var obj_direction = tea_kitchen.global_position - global_position
+		obj_direction = obj_direction.normalized()
+		obj_direction.y = 0
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
+	elif wander_choice == 4:
+		var obj_direction = tea_living.global_position - global_position
+		obj_direction = obj_direction.normalized()
+		obj_direction.y = 0
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if cant_follow == false:
@@ -253,7 +307,8 @@ func _on_cooldown_timeout() -> void:
 func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
-	wander_choice = rng.randi_range(0, 2)
+	if cant_follow == false:
+		wander_choice = rng.randi_range(0, 2)
 	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
 		wander_rotate = false
 		#if choice > 0:
@@ -321,8 +376,11 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 
 func _on_tea_activate_temp_interacted(interactor: Interactor) -> void:
 	print("interactedTea")
+	var current_anim = one_shots[wander_choice]
+	anim_tree.set("parameters/" + current_anim + "/request", 2)
 	cant_follow = true
 	is_navigating = true
 	is_wandering = true
+	wander_choice = 3
 	nav.target_position = marker_positions[3].global_position
 	state = TEA
