@@ -11,24 +11,31 @@ var is_open: bool = false
 @onready var entered = false
 signal j_door_open
 signal j_door_closed
+var cooldown = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func open() -> void:
-	#print("Opening")
+	cooldown = true
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
-	emit_signal("j_door")
+	emit_signal("j_door_open")
+	await get_tree().create_timer(2.0).timeout
+	cooldown = false
+	
 	
 func close() -> void:
 	#print("Opening")
+	cooldown = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
 	is_open = false
 	emit_signal("j_door_closed")
+	await get_tree().create_timer(2.0).timeout
+	cooldown = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -61,14 +68,14 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		pass
 	
-	elif is_open == false and GlobalVars.in_dialogue == false:
+	elif is_open == false and GlobalVars.in_dialogue == false and cooldown == false:
 		#print("open")
 		#$Interactable.queue_free()
 		open()
 		collision.disabled = true
 		return
 		
-	if is_open == true: 
+	if is_open == true and cooldown == false: 
 		close()
 		collision.disabled = false
 	
