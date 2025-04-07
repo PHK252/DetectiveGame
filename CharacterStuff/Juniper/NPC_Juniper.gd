@@ -26,6 +26,7 @@ var pour = false
 var putDown = false
 @export var tea_kitchen: Node3D
 @export var tea_living: Node3D
+@export var turn_buffer: Marker3D
 
 #tea anims
 @export var kettle: Node3D
@@ -51,6 +52,7 @@ var targ_reach = false
 var accel = 10
 @export var marker_positions: Array[Node3D]
 var wander_choice = 0
+var sharply_turn = false
 
 enum {
 	IDLE, 
@@ -122,15 +124,16 @@ func _physics_process(delta: float) -> void:
 		if not tea_walking:
 			anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		else:
-			anim_tree.set("parameters/Blend2/blend_amount", velocity.length() / SPEED)
+			print("intoState")
+			anim_tree.set("parameters/Blend2/blend_amount", 1)
 		nav.set_velocity(velocity)
 		
 		if (velocity.length() > MIN_STOP_THRESHOLD or wander_rotate == false) and at_door == false:
 			#look_at(global_transform.origin + -direction, Vector3.UP)
+			#print("velocityR")
 			_rotate_towards_velocity()
 
 	if wander_rotate == true:
-		print("rotation")
 		_rotate_towards_object(wander_choice)
 
 func _rotate_towards_dalton():
@@ -145,7 +148,6 @@ func _process_tea_state(distance_to_target: float, wander_choice) -> void:
 		state = ANIMPROCESS
 		
 func _process_teaDown_state(distance_to_target: float, wander_choice) -> void:
-	tea_walking = true
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 		tray.visible = false
 		tray_anim.visible = true
@@ -158,6 +160,7 @@ func _process_teaDown_state(distance_to_target: float, wander_choice) -> void:
 func _process_anim():
 	if pour:
 		is_navigating = false
+		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 		wander_rotate = true
 		pour = false
 		await get_tree().create_timer(3.0).timeout
@@ -166,16 +169,19 @@ func _process_anim():
 		await get_tree().create_timer(2.0).timeout
 		top_static.visible = false
 		kettle_top.visible = true
-		await get_tree().create_timer(3.5).timeout
+		await get_tree().create_timer(1.5).timeout
+		kettle_top.visible = false
+		top_static.visible = true
+		await get_tree().create_timer(2.0).timeout
 		kettle_static.visible = true
 		kettle.visible = false
-		kettle_top.visible = false
 		await get_tree().create_timer(2.5).timeout
 		tray_static_initial.visible = false
 		tray.visible = true
-		nav.target_position = marker_positions[4].global_position
-		is_navigating = true
 		wander_rotate = false
+		nav.target_position = marker_positions[4].global_position
+		tea_walking = true
+		is_navigating = true
 		state = TEADOWN
 	elif putDown:
 		wander_choice = 4
@@ -184,14 +190,18 @@ func _process_anim():
 		putDown = false
 		await get_tree().create_timer(1.5).timeout
 		tray_anim_player.play("trayDown")
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.7).timeout
 		tray_anim.visible = false
 		tray_static.visible = true
 		#tea_walking = false
 		wander_rotate = false
 		cant_follow = false
-		is_navigating = true
+		is_navigating = false
 		wander_rotate = false
+		wander_choice = 0
+		cooldown_bool = true
+		cooldown.start()
+		wander_timer.start()
 		state = IDLE
 		
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
@@ -268,6 +278,7 @@ func _rotate_towards_object(wander_choice) -> void:
 		obj_direction = obj_direction.normalized()
 		obj_direction.y = 0
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
+		
 	elif wander_choice == 4:
 		var obj_direction = tea_living.global_position - global_position
 		obj_direction = obj_direction.normalized()
@@ -278,8 +289,9 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	if cant_follow == false:
 		wander_rotate = false
 		#emit_signal("collision_danger")
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
 		#set all one shots to abort
 		is_navigating = true
 		is_wandering = false
@@ -320,8 +332,9 @@ func _on_wander_timeout() -> void:
 func _on_bookshelf_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
 	#emit_signal("collision_danger")
-	var current_anim = one_shots[wander_choice]
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
 	#set all one shots to abort
 	is_navigating = true
 	is_wandering = false
@@ -330,8 +343,9 @@ func _on_bookshelf_interacted(interactor: Interactor) -> void:
 func _on_house_pic_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
 	#emit_signal("collision_danger")
-	var current_anim = one_shots[wander_choice]
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
 	#set all one shots to abort
 	is_navigating = true
 	is_wandering = false
@@ -340,8 +354,9 @@ func _on_house_pic_interacted(interactor: Interactor) -> void:
 func _on_cafe_pic_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
 	#emit_signal("collision_danger")
-	var current_anim = one_shots[wander_choice]
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
 	#set all one shots to abort
 	is_navigating = true
 	is_wandering = false
@@ -350,8 +365,9 @@ func _on_cafe_pic_interacted(interactor: Interactor) -> void:
 func _on_resumes_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
 	#emit_signal("collision_danger")
-	var current_anim = one_shots[wander_choice]
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
 	#set all one shots to abort
 	is_navigating = true
 	is_wandering = false
@@ -360,8 +376,9 @@ func _on_resumes_interacted(interactor: Interactor) -> void:
 func _on_case_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
 	#emit_signal("collision_danger")
-	var current_anim = one_shots[wander_choice]
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
 	#set all one shots to abort
 	is_navigating = true
 	is_wandering = false
