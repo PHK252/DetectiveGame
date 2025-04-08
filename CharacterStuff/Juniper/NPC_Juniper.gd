@@ -26,7 +26,7 @@ var pour = false
 var putDown = false
 @export var tea_kitchen: Node3D
 @export var tea_living: Node3D
-@export var turn_buffer: Marker3D
+@export var door_marker: Marker3D
 
 #tea anims
 @export var kettle: Node3D
@@ -384,7 +384,6 @@ func _on_case_interacted(interactor: Interactor) -> void:
 	is_wandering = false
 	state = FOLLOW
 	
-
 func _on_door_point_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		outside_player = true
