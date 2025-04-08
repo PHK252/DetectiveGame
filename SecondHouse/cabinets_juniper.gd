@@ -47,7 +47,8 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	extra_animation.play("RESET")
+	if extra_animation:
+		extra_animation.play("RESET")
 	
 
 func _process(delta):
@@ -86,6 +87,8 @@ func _process(delta):
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)
 			interact_area.hide()
+			open_interact.hide()
+			close_interact.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -99,12 +102,14 @@ func _process(delta):
 			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 			interact_area.hide()
+			open_interact.hide()
+			close_interact.hide()
 			alert.show()
 			#activate dialogue
 
 	if GlobalVars.in_look_screen == true:
 		interact_area.hide()
-	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
+	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30 and is_open == true:
 		interact_area.show()
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
@@ -113,11 +118,6 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	GlobalVars.in_interaction = interact_type
 	FP_Cam.priority = 30
 	Exit_Cam.priority = 0 
-	interact_area.show()
-	if interact_area_2:
-		interact_area_2.show()
-	if interact_area_3:
-		interact_area_3.show()
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()
@@ -125,12 +125,17 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	if is_open == false:
 		open_interact.show()
 		close_interact.hide()
-		#open()
+		interact_area.hide()
+		
 	if is_open == true: 
 		open_interact.hide()
 		close_interact.show()
-		#close()
-		
+		interact_area.show()
+		if interact_area_2:
+			interact_area_2.show()
+		if interact_area_3:
+			interact_area_3.show()
+
 
 
 
@@ -218,9 +223,9 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_closed"] = false
 	if extra_animation:
 		extra_animation.play("Open")
+		open_interact.hide()
 		await extra_animation.animation_finished
 	close_interact.show()
-	open_interact.hide()
 	is_open = true
 	
 func close() -> void:
@@ -230,8 +235,12 @@ func close() -> void:
 	is_open = false
 	if extra_animation:
 		extra_animation.play("Close")
+		close_interact.hide()
+		interact_area.hide()
 		await extra_animation.animation_finished
-	close_interact.hide()
+	else:
+		close_interact.hide()
+		interact_area.hide()
 	open_interact.show()
 
 func _on_timeline_ended():
