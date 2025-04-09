@@ -224,7 +224,9 @@ func _process_follow_state(distance_to_target: float) -> void:
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
 	#print("wandering")
-	var current_anim = one_shots[wander_choice]
+	var current_anim 
+	if wander_choice < 3:
+		current_anim = one_shots[wander_choice]
 	
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 		print("gotthere")
