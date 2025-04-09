@@ -53,6 +53,7 @@ signal phone_call_receiving
 @onready var viewed_Juniper_case = false
 @onready var viewed_bills_juniper = false
 @onready var clicked_case_Juniper = 0
+@onready var clicked_bills_Juniper = 0
 @onready var case_dialogue_Juniper = false
 @onready var viewed_Juniper_resume = false
 @onready var clicked_resume_Juniper = 0
