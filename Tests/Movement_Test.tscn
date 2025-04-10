@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cf30hcln20mvq"]
 
-[ext_resource type="PackedScene" uid="uid://bsps5bgbdl5s3" path="res://CharacterStuff/Dalton/Dalton_Player.tscn" id="1_pgul7"]
+[sub_resource type="Resource" id="Resource_fytov"]
+metadata/__load_path__ = "res://CharacterStuff/Dalton/Dalton_Player.tscn"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ldkqq"]
 
@@ -11,7 +12,7 @@ orientation = 1
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Dalton3D" parent="." instance=ExtResource("1_pgul7")]
+[node name="Dalton3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58568, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Dalton3D"]

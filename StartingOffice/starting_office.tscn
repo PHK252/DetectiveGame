@@ -1,10 +1,10 @@
 [gd_scene load_steps=279 format=4 uid="uid://bhetiacuw2egc"]
 
-[ext_resource type="Script" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_ut7aw"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_7gcnl"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_w7w6c"]
+[ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
+[ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
+[ext_resource type="Script" uid="uid://dqmq7sj03m4v6" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_ut7aw"]
+[ext_resource type="Script" uid="uid://dd46bmhjxhf3u" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_7gcnl"]
+[ext_resource type="Script" uid="uid://ba877ddbj17hy" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_w7w6c"]
 [ext_resource type="Texture2D" uid="uid://b0fktnqqyb1yk" path="res://StartingOffice/StartingOffice_EnvironmentPalette.png" id="6_cxqsb"]
 [ext_resource type="PackedScene" uid="uid://dlxojf0qu0j80" path="res://StartingOffice/flooring.glb" id="6_rtur8"]
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="7_pxrpe"]
@@ -12,43 +12,43 @@
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="8_ccv12"]
 [ext_resource type="Texture2D" uid="uid://bv5qc3syrat7u" path="res://StartingOffice/StartingOffice_corkboard.png" id="9_7mukp"]
 [ext_resource type="Texture2D" uid="uid://b2mplxfip1j75" path="res://StartingOffice/StartingOffice_CaseFile.png" id="10_1d1wp"]
-[ext_resource type="Shader" path="res://ShaderScripts/corkboard.gdshader" id="10_b4rtr"]
+[ext_resource type="Shader" uid="uid://d2p0gdanyhnwl" path="res://ShaderScripts/corkboard.gdshader" id="10_b4rtr"]
 [ext_resource type="Texture2D" uid="uid://cgootv0oh0ocv" path="res://StartingOffice/StartingOffice_Picture1.png" id="12_k4guc"]
-[ext_resource type="Script" path="res://StartingOffice/doughnut_box.gd" id="13_hff4c"]
+[ext_resource type="Script" uid="uid://dm5n0wvcu1p4y" path="res://StartingOffice/doughnut_box.gd" id="13_hff4c"]
 [ext_resource type="Texture2D" uid="uid://kpw8bm4kvivb" path="res://StartingOffice/StartingOffice_Newspaper2.png" id="13_pvce0"]
 [ext_resource type="Texture2D" uid="uid://c3j8x2i1wetq" path="res://StartingOffice/StartingOffice_Newspaper1.png" id="14_rpyof"]
 [ext_resource type="Texture2D" uid="uid://bye2qfgq68sus" path="res://StartingOffice/StartingOffice_Picture2.png" id="15_eiup2"]
 [ext_resource type="Texture2D" uid="uid://15y8mjmycaa1" path="res://StartingOffice/StartingOffice_Contact1.png" id="16_jklhc"]
 [ext_resource type="Material" uid="uid://cgwa84pvtb52t" path="res://ShaderScripts/environment.tres" id="16_xbpkm"]
-[ext_resource type="Script" path="res://StartingOffice/doughnut_001.gd" id="17_p708w"]
+[ext_resource type="Script" uid="uid://bm5pc4vssaaq8" path="res://StartingOffice/doughnut_001.gd" id="17_p708w"]
 [ext_resource type="PackedScene" uid="uid://d1p7a1g58vmah" path="res://GeneralScripts/interaction/Interactable.tscn" id="17_rbnfb"]
-[ext_resource type="Script" path="res://StartingOffice/map.gd" id="17_yvedm"]
-[ext_resource type="Script" path="res://StartingOffice/scenechange.gd" id="18_e4s53"]
-[ext_resource type="Shader" path="res://ShaderScripts/environmentpalette.gdshader" id="18_i4am7"]
-[ext_resource type="Shader" path="res://ShaderScripts/pixel.gdshader" id="18_rugna"]
-[ext_resource type="Script" path="res://StartingOffice/corkboard_002.gd" id="19_efoaq"]
-[ext_resource type="Script" path="res://StartingOffice/Case_File.gd" id="21_2ww2x"]
+[ext_resource type="Script" uid="uid://c34k1yxh7w7ip" path="res://StartingOffice/map.gd" id="17_yvedm"]
+[ext_resource type="Script" uid="uid://bxm3brlgnve21" path="res://StartingOffice/scenechange.gd" id="18_e4s53"]
+[ext_resource type="Shader" uid="uid://jlbjfy886yfg" path="res://ShaderScripts/environmentpalette.gdshader" id="18_i4am7"]
+[ext_resource type="Shader" uid="uid://du3qvml6xbpcu" path="res://ShaderScripts/pixel.gdshader" id="18_rugna"]
+[ext_resource type="Script" uid="uid://c0js06746yn7d" path="res://StartingOffice/corkboard_002.gd" id="19_efoaq"]
+[ext_resource type="Script" uid="uid://2un2chis6s28" path="res://StartingOffice/Case_File.gd" id="21_2ww2x"]
 [ext_resource type="PackedScene" uid="uid://dy2ngrst3vkxs" path="res://StartingOffice/lamp.glb" id="21_wyk6p"]
 [ext_resource type="Texture2D" uid="uid://b4saa7axtk1im" path="res://StartingOffice/Map v2 small.png" id="22_nx55m"]
 [ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="22_pkx6a"]
 [ext_resource type="Shader" uid="uid://nav80wtg76hi" path="res://ShaderScripts/plank.tres" id="25_jbtrc"]
 [ext_resource type="Texture2D" uid="uid://bsmsq634p0ytd" path="res://UniversalEnvironmentPalette/Universal_Environment_Palette.png" id="29_lobvy"]
-[ext_resource type="Script" path="res://StartingOffice/Clues.gd" id="30_enl4g"]
+[ext_resource type="Script" uid="uid://djh7345pdktkc" path="res://StartingOffice/Clues.gd" id="30_enl4g"]
 [ext_resource type="Texture2D" uid="uid://cyeifxl34accu" path="res://UI/Assets/Interactions/Eye orange.png" id="31_vcd54"]
 [ext_resource type="PackedScene" uid="uid://cnullf4810qb3" path="res://StartingOffice/threading.glb" id="31_yvawl"]
-[ext_resource type="Script" path="res://StartingOffice/team_pic.gd" id="34_4bfs2"]
+[ext_resource type="Script" uid="uid://dc1iiylo7abbi" path="res://StartingOffice/team_pic.gd" id="34_4bfs2"]
 [ext_resource type="PackedScene" uid="uid://22d8wsirr1dd" path="res://UI/Object_Look.tscn" id="35_id4dn"]
-[ext_resource type="Script" path="res://StartingOffice/partner_pic.gd" id="35_whdai"]
-[ext_resource type="Script" path="res://StartingOffice/news.gd" id="36_p4hl6"]
-[ext_resource type="Script" path="res://StartingOffice/contact.gd" id="37_q038v"]
-[ext_resource type="Script" path="res://StartingOffice/missing_persons.gd" id="38_47f4o"]
-[ext_resource type="Script" path="res://StartingOffice/dalton_marker_office.gd" id="38_77grr"]
+[ext_resource type="Script" uid="uid://dq8hnakxd5w4m" path="res://StartingOffice/partner_pic.gd" id="35_whdai"]
+[ext_resource type="Script" uid="uid://r4fvrkl4yxov" path="res://StartingOffice/news.gd" id="36_p4hl6"]
+[ext_resource type="Script" uid="uid://mu6ukvynxqdi" path="res://StartingOffice/contact.gd" id="37_q038v"]
+[ext_resource type="Script" uid="uid://btf8wdgdbgpe6" path="res://StartingOffice/missing_persons.gd" id="38_47f4o"]
+[ext_resource type="Script" uid="uid://rf4yawdfk76r" path="res://StartingOffice/dalton_marker_office.gd" id="38_77grr"]
 [ext_resource type="PackedScene" uid="uid://bqvssux5m1c" path="res://CharacterStuff/Dalton/Dalton.tscn" id="38_yedfk"]
 [ext_resource type="Texture2D" uid="uid://bbanwvpq6op13" path="res://StartingOffice/Close Assets/Partner Pic/Back.png" id="39_jvkmi"]
 [ext_resource type="Texture2D" uid="uid://dds27tm40u01b" path="res://StartingOffice/Close Assets/Team Pic/Back.png" id="39_ylej0"]
 [ext_resource type="Texture2D" uid="uid://fuci00x3likj" path="res://StartingOffice/Close Assets/Team Pic/Team_Pic_Front.png" id="40_7cbpd"]
 [ext_resource type="Texture2D" uid="uid://cu7i65tlm00s1" path="res://StartingOffice/Close Assets/Partner Pic/Front.png" id="40_kcv36"]
-[ext_resource type="Script" path="res://StartingOffice/TheoOffice.gd" id="40_uiweq"]
+[ext_resource type="Script" uid="uid://bp0yluwwi00if" path="res://StartingOffice/TheoOffice.gd" id="40_uiweq"]
 [ext_resource type="PackedScene" uid="uid://f38h6xh5eyh4" path="res://CharacterStuff/Theo/TheoFixedAnimations.glb" id="41_yq4sa"]
 [ext_resource type="PackedScene" uid="uid://djpr0pth7a2wb" path="res://UI/Multipage_Object_Look.tscn" id="46_s8qk3"]
 [ext_resource type="Texture2D" uid="uid://r1oh3q4vff5q" path="res://StartingOffice/Close Assets/Article/Article Back@2x.png" id="47_sqkup"]
@@ -63,7 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://rrfiwkxqhhb" path="res://StartingOffice/Close Assets/Contact/Contact Intact Front@2x.png" id="50_53koq"]
 [ext_resource type="Texture2D" uid="uid://c8r2lovvflf7x" path="res://StartingOffice/Close Assets/Case File/Case File 1.png" id="50_cs8d2"]
 [ext_resource type="Texture2D" uid="uid://bosrrrfb2emvk" path="res://StartingOffice/Close Assets/Contact/Contact Ripped Front@2x.png" id="50_yhe7j"]
-[ext_resource type="Script" path="res://CharacterStuff/Dalton/sitOffice.gd" id="51_1ujax"]
+[ext_resource type="Script" uid="uid://b0mmpillh64am" path="res://CharacterStuff/Dalton/sitOffice.gd" id="51_1ujax"]
 [ext_resource type="Texture2D" uid="uid://dcg806tia73af" path="res://StartingOffice/Close Assets/Missing/Missing Back Updated@4x.png" id="51_tvjpx"]
 [ext_resource type="Texture2D" uid="uid://cjxhfyx25ima6" path="res://StartingOffice/Close Assets/Missing/Missing Front@4x.png" id="52_phbdk"]
 [ext_resource type="PackedScene" uid="uid://xrae3qn8fqb6" path="res://StartingOffice/OfficeItems.glb" id="67_7cs0s"]
@@ -161,8 +161,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_583mc"]
 _data = {
-"Cam_idle": SubResource("Animation_1ys26"),
-"RESET": SubResource("Animation_71s2v")
+&"Cam_idle": SubResource("Animation_1ys26"),
+&"RESET": SubResource("Animation_71s2v")
 }
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oecpl"]
@@ -207,16 +207,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -294,16 +294,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -346,16 +346,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -401,16 +401,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -454,16 +454,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -506,16 +506,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -558,16 +558,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -610,16 +610,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -702,16 +702,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -797,16 +797,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -1122,16 +1122,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -1177,16 +1177,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -1229,16 +1229,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -1281,16 +1281,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("6_cxqsb")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -1333,16 +1333,16 @@ resource_name = "corkboard"
 render_priority = 0
 shader = ExtResource("10_b4rtr")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("9_7mukp")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("9_7mukp")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -2371,16 +2371,16 @@ resource_name = "corkboard"
 render_priority = 0
 shader = ExtResource("25_jbtrc")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("9_7mukp")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("9_7mukp")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -2424,16 +2424,16 @@ resource_name = "corkboard"
 render_priority = 0
 shader = ExtResource("10_b4rtr")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("9_7mukp")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("9_7mukp")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -2474,16 +2474,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -2530,16 +2530,16 @@ resource_name = "EnvironmentPalette"
 render_priority = 0
 shader = ExtResource("18_i4am7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("29_lobvy")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 
@@ -2916,16 +2916,16 @@ resource_name = "purp"
 render_priority = 0
 shader = SubResource("Shader_71fmr")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("68_pjt0x")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.5
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("68_pjt0x")
 shader_parameter/color_gradient = ExtResource("7_pxrpe")
 shader_parameter/fresnel_gradient = ExtResource("8_ccv12")
 

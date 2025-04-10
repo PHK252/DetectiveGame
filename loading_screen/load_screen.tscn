@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://df6fsv80g6bxa"]
 
-[ext_resource type="Script" path="res://loading_screen/load_screen.gd" id="1_ej2at"]
+[ext_resource type="Script" uid="uid://bkrwkttxlkydd" path="res://loading_screen/load_screen.gd" id="1_ej2at"]
 [ext_resource type="Texture2D" uid="uid://0ps2bgajs12k" path="res://loading_screen/Frames/loading frames1.png" id="2_fn3pi"]
 [ext_resource type="Texture2D" uid="uid://b62w4wllcni4j" path="res://loading_screen/Frames/loading frames2.png" id="3_slre5"]
 [ext_resource type="Texture2D" uid="uid://dj5dinh0p8gng" path="res://loading_screen/Frames/loading frames3.png" id="4_7frpl"]
@@ -73,9 +73,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p2uyu"]
 _data = {
-"RESET": SubResource("Animation_cpqar"),
-"end_load": SubResource("Animation_jxku0"),
-"start_load": SubResource("Animation_647fr")
+&"RESET": SubResource("Animation_cpqar"),
+&"end_load": SubResource("Animation_jxku0"),
+&"start_load": SubResource("Animation_647fr")
 }
 
 [sub_resource type="Animation" id="Animation_4m21w"]
@@ -113,8 +113,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fyofo"]
 _data = {
-"Day_anim": SubResource("Animation_4m21w"),
-"RESET": SubResource("Animation_fw36x")
+&"Day_anim": SubResource("Animation_4m21w"),
+&"RESET": SubResource("Animation_fw36x")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qj7b"]

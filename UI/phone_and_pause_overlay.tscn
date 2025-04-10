@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://b4fmk8hkjnh1v"]
 
 [ext_resource type="Texture2D" uid="uid://b4innf3vttv8k" path="res://UI/Assets/Pause overlay/Pause Normal.png" id="1_7dng0"]
-[ext_resource type="Script" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
+[ext_resource type="Script" uid="uid://bo4tbw36hrcsa" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
 [ext_resource type="Texture2D" uid="uid://dmnejgno72ng4" path="res://UI/Assets/Pause overlay/Pause Hovered.png" id="2_ml51c"]
 [ext_resource type="Texture2D" uid="uid://dy0rggl3b07wy" path="res://UI/Assets/Pause overlay/Phone Icon2 call normal1.png" id="3_o1igb"]
 [ext_resource type="Texture2D" uid="uid://78mdbisyqrov" path="res://UI/Assets/Pause overlay/Phone Icon2 call normal2.png" id="4_utwqt"]
@@ -65,8 +65,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rpcd7"]
 _data = {
-"RESET": SubResource("Animation_b8afo"),
-"Shake": SubResource("Animation_686su")
+&"RESET": SubResource("Animation_b8afo"),
+&"Shake": SubResource("Animation_686su")
 }
 
 [node name="Phone and Pause Overlay" type="Control"]
