@@ -1,6 +1,6 @@
 [gd_scene load_steps=96 format=3 uid="uid://coi3wnw75drw1"]
 
-[ext_resource type="Script" path="res://UI/Phone_UI.gd" id="1_eli2p"]
+[ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
 [ext_resource type="Texture2D" uid="uid://cc6wybn7bpq34" path="res://UI/Assets/Phone/Updated/Home/Phone Home Back.png" id="3_ck7hi"]
 [ext_resource type="Texture2D" uid="uid://5boh6gi250xg" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Back.png" id="4_4e2o3"]
@@ -192,8 +192,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4eqew"]
 _data = {
-"Call": SubResource("Animation_tvpwm"),
-"RESET": SubResource("Animation_ud7wl")
+&"Call": SubResource("Animation_tvpwm"),
+&"RESET": SubResource("Animation_ud7wl")
 }
 
 [node name="Phone UI" type="CanvasLayer"]

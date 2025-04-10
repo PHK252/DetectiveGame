@@ -1,6 +1,6 @@
 [gd_scene load_steps=99 format=3 uid="uid://50vyga4jrdyo"]
 
-[ext_resource type="Script" path="res://UI/computer_ui.gd" id="1_f0ejt"]
+[ext_resource type="Script" uid="uid://djah5l2fl35st" path="res://UI/computer_ui.gd" id="1_f0ejt"]
 [ext_resource type="Texture2D" uid="uid://2p5t8lxiacwk" path="res://UI/Assets/Computer/Computer Login Background.png" id="1_kyt61"]
 [ext_resource type="Texture2D" uid="uid://t67pm8ubr4g8" path="res://UI/Assets/Computer/Computer UI Login Outline.png" id="2_s745x"]
 [ext_resource type="Texture2D" uid="uid://snkvmwhmqcc" path="res://UI/Assets/Computer/Computer Login Profile.png" id="3_2ffq4"]
@@ -212,8 +212,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbsdl"]
 _data = {
-"Face-ID": SubResource("Animation_rmg78"),
-"RESET": SubResource("Animation_melli")
+&"Face-ID": SubResource("Animation_rmg78"),
+&"RESET": SubResource("Animation_melli")
 }
 
 [node name="ComputerUI" type="Node2D"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=209 format=3 uid="uid://cwe7ysx8hp5yv"]
 
 [ext_resource type="Texture2D" uid="uid://bsqf2cesb1tcy" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame1@2x.png" id="1_28p4s"]
-[ext_resource type="Script" path="res://ThirdHouse/runa_journal.gd" id="1_nyd47"]
+[ext_resource type="Script" uid="uid://m3mlhke1j1s2" path="res://ThirdHouse/runa_journal.gd" id="1_nyd47"]
 [ext_resource type="Texture2D" uid="uid://ciwek6ylsxqr5" path="res://ThirdHouse/Runa Journal Frames/Fifth Page@2x.png" id="1_qlge0"]
 [ext_resource type="Texture2D" uid="uid://b262jkm864myg" path="res://ThirdHouse/Runa Journal Frames/Blank Frames/Blank Page1.png" id="1_t5ubo"]
 [ext_resource type="Texture2D" uid="uid://bj3h83cjv5g8d" path="res://ThirdHouse/Runa Journal Frames/Fifth Page Frames/Fifth Page Frame1@2x.png" id="1_t7nv3"]
@@ -931,20 +931,20 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xogr8"]
 _data = {
-"Blank": SubResource("Animation_m0hxd"),
-"Eigth To Ninth": SubResource("Animation_vn06u"),
-"Eleventh To Blank": SubResource("Animation_bl7lj"),
-"Fifth To Sixth": SubResource("Animation_ga5i4"),
-"First To Second": SubResource("Animation_t62c1"),
-"Fourth To Fifth": SubResource("Animation_m1vk1"),
-"Ninth To Tenth": SubResource("Animation_lqogx"),
-"RESET": SubResource("Animation_lxo4h"),
-"Reverse Blank": SubResource("Animation_qq4e4"),
-"Second To Third": SubResource("Animation_5vxid"),
-"Seventh To Eigth": SubResource("Animation_fk0cc"),
-"Sixth To Seventh": SubResource("Animation_voeyb"),
-"Tenth To Eleventh": SubResource("Animation_vwsdm"),
-"Third To Fourth": SubResource("Animation_vog8u")
+&"Blank": SubResource("Animation_m0hxd"),
+&"Eigth To Ninth": SubResource("Animation_vn06u"),
+&"Eleventh To Blank": SubResource("Animation_bl7lj"),
+&"Fifth To Sixth": SubResource("Animation_ga5i4"),
+&"First To Second": SubResource("Animation_t62c1"),
+&"Fourth To Fifth": SubResource("Animation_m1vk1"),
+&"Ninth To Tenth": SubResource("Animation_lqogx"),
+&"RESET": SubResource("Animation_lxo4h"),
+&"Reverse Blank": SubResource("Animation_qq4e4"),
+&"Second To Third": SubResource("Animation_5vxid"),
+&"Seventh To Eigth": SubResource("Animation_fk0cc"),
+&"Sixth To Seventh": SubResource("Animation_voeyb"),
+&"Tenth To Eleventh": SubResource("Animation_vwsdm"),
+&"Third To Fourth": SubResource("Animation_vog8u")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ldiv2"]
