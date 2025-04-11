@@ -6,12 +6,11 @@ extends Node3D
 
 #First Person cam anim + movement
 @export var cam_anim: AnimationPlayer
-@export var tilt_up_thres: int
-@export var tilt_down_thres: int
+@export var tilt_thres: int
 @export var tilt_up_angle: Vector3
 @export var tilt_down_angle: Vector3
-@export var mid_angle: Vector3
-@export var down_default: bool = false
+#@export var mid_angle: Vector3
+#@export var down_default: bool = false
 #Assign player body
 @export var player: CharacterBody3D
 @export var alert: Sprite3D
@@ -23,10 +22,10 @@ extends Node3D
 
 #Interaction Variables
 @export var open_interact : Area2D
-@export var close_interact : Area2D
+@export var close_interact_1 : Area2D
+@export var close_interact_2 : Area2D
 @export var interact_area_1: Area2D
 @export var interact_area_2 : Area2D = null
-@export var interact_area_3 : Area2D = null
 @export var dialogue_file_1: String
 @export var dialogue_file_2: String
 @export var load_Dalton_dialogue: String
@@ -51,6 +50,7 @@ extends Node3D
 @export var extra_animation: AnimationPlayer = null
 
 @onready var cab_anim = false
+@onready var tilt = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if extra_animation:
@@ -65,22 +65,36 @@ func _process(delta):
 	
 	var immediate_exit = Dialogic.VAR.get("Immediate Exit").Micah_cab # set to true in Dialogic
 	#print(mouse_pos) 
-	
+	mouse_pos = get_viewport().get_mouse_position()
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
-		mouse_pos = get_viewport().get_mouse_position()
-		if mouse_pos.y >= tilt_up_thres:
+		
+		if mouse_pos.y >= tilt_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
-		elif mouse_pos.y < tilt_down_thres:
+			tilt = "down"
+		elif mouse_pos.y < tilt_thres:
 			FP_Cam.set_rotation_degrees(tilt_down_angle)
-		else:
-			FP_Cam.set_rotation_degrees(mid_angle)
-				#pass
+			tilt = "up"
 	else:
-		mouse_pos = mouse_pos
-		#if down_default == true:
-			#FP_Cam.set_rotation_degrees(tilt_up_angle)
-		#else:
-			#FP_Cam.set_rotation_degrees(mid_angle)
+		#mouse_pos = mouse_pos
+		if tilt == "down":
+			FP_Cam.set_rotation_degrees(tilt_up_angle)
+			interact_area_2.show()
+			interact_area_1.hide()
+			if is_open == true:
+				close_interact_1.hide()
+				close_interact_2.hide()
+			else:
+				open_interact.hide()
+		elif tilt == "up":
+			FP_Cam.set_rotation_degrees(tilt_down_angle)
+			interact_area_2.hide()
+			interact_area_1.show()
+			if is_open == true:
+				close_interact_1.show()
+				close_interact_2.show()
+			else:
+				open_interact.show()
+
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if immediate_exit == true and viewed_item_1 == true and cab_anim == false:
 			alert.hide()
@@ -117,7 +131,8 @@ func _process(delta):
 			interact_area_1.hide()
 			interact_area_2.hide()
 			open_interact.hide()
-			close_interact.hide()
+			close_interact_1.hide()
+			close_interact_2.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and (viewed_item_1 == false and viewed_item_2 == true) or (viewed_item_1 == true and viewed_item_2 == true and quick_exit == true) and read_dialogue_1 == false and GlobalVars.viewing == "" and cab_anim == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -137,7 +152,8 @@ func _process(delta):
 			interact_area_1.hide()
 			interact_area_2.hide()
 			open_interact.hide()
-			close_interact.hide()
+			close_interact_1.hide()
+			close_interact_2.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and quick_exit == false and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and GlobalVars.viewing == "" and cab_anim == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -158,7 +174,8 @@ func _process(delta):
 			interact_area_1.hide()
 			interact_area_2.hide()
 			open_interact.hide()
-			close_interact.hide()
+			close_interact_1.hide()
+			close_interact_2.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "" and cab_anim == false:
 			print("exit")
@@ -174,13 +191,16 @@ func _process(delta):
 			interact_area_1.hide()
 			interact_area_2.hide()
 			open_interact.hide()
-			close_interact.hide()
+			close_interact_1.hide()
+			close_interact_2.hide()
 			alert.show()
 			
 	if GlobalVars.in_look_screen == true:
 		interact_area_1.hide()
+		interact_area_2.hide()
 	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30 and is_open == true:
 		interact_area_1.show()
+		interact_area_2.show()
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
@@ -195,17 +215,18 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		
 		if is_open == false:
 			open_interact.show()
-			close_interact.hide()
+			close_interact_1.hide()
+			close_interact_2.hide()
 			interact_area_1.hide()
+			interact_area_2.hide()
 			
 		if is_open == true: 
 			open_interact.hide()
-			close_interact.show()
+			close_interact_1.show()
+			close_interact_2.hide()
 			interact_area_1.show()
-			if interact_area_2:
-				interact_area_2.show()
-			if interact_area_3:
-				interact_area_3.show()
+			interact_area_2.show()
+
 
 
 func open() -> void:
@@ -219,7 +240,8 @@ func open() -> void:
 		await extra_animation.animation_finished
 		interact_area_1.show()
 		await get_tree().create_timer(2.1).timeout
-		close_interact.show()
+		close_interact_1.show()
+		close_interact_2.hide()
 		print(GlobalVars.viewing)
 		cab_anim = false
 		print("finished")
@@ -227,7 +249,7 @@ func open() -> void:
 		open_interact.hide()
 		interact_area_1.show()
 		await get_tree().create_timer(2.1).timeout
-		close_interact.show()
+		close_interact_1.show()
 		await get_tree().create_timer(.2).timeout
 		cab_anim = false
 	
@@ -238,14 +260,16 @@ func close() -> void:
 	is_open = false
 	if extra_animation:
 		extra_animation.play("Close")
-		close_interact.hide()
+		close_interact_1.hide()
+		close_interact_2.hide()
 		interact_area_1.hide()
 		await get_tree().create_timer(2.1).timeout
 		open_interact.show()
 		await get_tree().create_timer(.2).timeout
 		cab_anim = false
 	else:
-		close_interact.hide()
+		close_interact_1.hide()
+		close_interact_2.hide()
 		interact_area_1.hide()
 		await get_tree().create_timer(2.1).timeout
 		open_interact.show()
