@@ -66,7 +66,7 @@ func _process(delta):
 			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			
-		elif clickable == false and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true:
+		elif clickable == false and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true: # I don't think I need this
 			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			pick_dialogue()
@@ -93,7 +93,7 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
-			main_cam.set_tween_duration(1)
+			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 		
 		
