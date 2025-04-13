@@ -23,7 +23,7 @@ var micahBack = false
 var micahFront = false
 var collision_danger = false
 var door_scene = false
-
+var patio_sit = false
 
 const speed = 0.92
 const LERP_VAL = 0.15
@@ -130,12 +130,18 @@ func _process_adjust_state() -> void:
 
 func _process_investigate_state(distance_to_target) -> void:
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
+		if patio_sit:
+			armature.visible = false
+			emit_signal("TheoSit")
+			is_navigating = false
+			state = IDLE
+			return
 		if going_to_bar:
 			armature.visible = false
 			emit_signal("TheoSit")
-		if not going_to_bar and animation_choice >= 3:
+		if not going_to_bar and animation_choice >= 3 and patio_sit == false:
 			anim_tree.set("parameters/NoteAlt/request", true)
-		if not going_to_bar and animation_choice <= 2:
+		if not going_to_bar and animation_choice <= 2 and patio_sit == false:
 			anim_tree.set("parameters/Scratch/request", true)
 		velocity = velocity.lerp(Vector3.ZERO, 0.2)
 		cooldown = true
@@ -158,10 +164,21 @@ func _process_investigate_state(distance_to_target) -> void:
 		state = IDLE
 
 func _process_sitting_state() -> void:
-	wine_area_control.disabled = true
-	wAcontrol2.monitoring = false
+	if going_to_bar:
+		wine_area_control.disabled = true
+		wAcontrol2.monitoring = false
+	
+	if Input.is_action_pressed("Exit"):
+		if patio_sit:
+			is_navigating = true
+			patio_sit = false
+			going_to_bar = false
+			armature.visible = true
+			emit_signal("TheoStand")
+			state = IDLE
 	
 	if Input.is_action_pressed("meeting_done"):
+		patio_sit = false
 		going_to_bar = false
 		armature.visible = true
 		is_investigating = true
@@ -180,7 +197,7 @@ func _process_idle_state(distance_to_target: float) -> void:
 		# Ensure blend position matches slight movement
 		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
 		
-	if going_to_bar:
+	if going_to_bar or patio_sit:
 		state = SITTING
 
 	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false):
@@ -364,6 +381,7 @@ func _on_micah_body_collision_safe() -> void:
 
 func _on_theo_wander_body_entered(body: Node3D) -> void:
 	animation_choice = rng.randi_range(0, 10)
+	investigate_choice = rng.randi_range(0, 3)
 	is_investigating = true
 	nav.target_position = marker_list[investigate_choice].global_position
 	is_navigating = true
@@ -376,7 +394,7 @@ func _on_investigate_timer_timeout() -> void:
 	var choice = rng.randi_range(-10, 10)
 	investigate_choice = rng.randi_range(0, 2)
 	animation_choice = rng.randi_range(0, 10)
-	if is_investigating == true and cooldown == false and going_to_bar == false:
+	if is_investigating == true and cooldown == false and going_to_bar == false and patio_sit == false:
 		nav.target_position = marker_list[investigate_choice].global_position
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -585,3 +603,13 @@ func _on_micah_interact_tstart() -> void:
 func _on_micah_interact_tstop() -> void:
 	print("STOPPEDTHEO")
 	door_scene = true
+
+func _on_sitting_ppl_theo_out() -> void:
+	if is_investigating == false:
+		is_investigating = false
+		patio_sit = true
+		is_navigating = true
+		investigate_choice = 4
+		nav.target_position = marker_list[investigate_choice].global_position
+		STOPPING_DISTANCE = 0.0
+		state = INVESTIGATE

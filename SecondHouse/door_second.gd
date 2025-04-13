@@ -13,11 +13,14 @@ signal j_door_open
 signal j_door_closed
 var cooldown = false
 
+@export var quincy_house: bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func open() -> void:
+	print("opening")
 	cooldown = true
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
@@ -35,6 +38,12 @@ func close() -> void:
 	is_open = false
 	emit_signal("j_door_closed")
 	await get_tree().create_timer(2.0).timeout
+	if quincy_house:
+		print("quickCLosing")
+		animation_tree["parameters/conditions/quick_close"] = true
+		await get_tree().create_timer(0.5).timeout
+		animation_tree["parameters/conditions/quick_close"] = false
+		animation_tree["parameters/conditions/is_closed"] = false
 	cooldown = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

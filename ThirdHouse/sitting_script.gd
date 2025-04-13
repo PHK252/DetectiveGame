@@ -17,6 +17,9 @@ extends Node
 
 signal DaltonInvisible
 signal DaltonVisible
+signal theo_out
+
+var out_sit = false
 
 func _ready() -> void:
 	theo_sitting.visible = false
@@ -28,11 +31,18 @@ func _ready() -> void:
 func _on_character_body_3d_theo_sit() -> void:
 	theo_sitting.visible = true
 	anim_player_theo.play("Sit_Bar")
+	theo_outside.visible = true
+	anim_player_tO.play("SitOutside_001")
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	emit_signal("DaltonInvisible")
 	dalton_outside.visible = true
 	dalton_bar.visible = true
+	
+	if out_sit:
+		print("signaling")
+		emit_signal("theo_out")
+	
 	#anim_player_dO.play("Sit_Outside")
 	#anim_player_dB.play("SitandDrinkWine")
 	#await get_tree().create_timer(4.0).timeout
@@ -42,6 +52,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	#cocktailStatic.visible = true
 	#cocktailAnim.visible = false
 	anim_player_dB.play("SitNoDrink")
+	anim_player_dO.play("Sit_Outside")
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Exit"):
@@ -53,4 +64,14 @@ func _process(delta: float) -> void:
 
 func _on_character_body_3d_theo_stand() -> void:
 	theo_sitting.visible = false
+	theo_outside.visible = false
 	anim_player_theo.stop()
+	anim_player_tO.stop()
+
+func _on_theo_out_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		out_sit = true
+
+func _on_theo_out_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		out_sit = false

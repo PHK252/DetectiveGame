@@ -34,7 +34,7 @@ var wander_choice = 0
 @export var marker_positions: Array[Node3D]
 var see_player = false
 var at_door = false
-var SPEED = 0.8
+var SPEED = 1.2
 var LERP_VAL = 0.1
 var rotation_speed = 70
 var is_distracted = false
@@ -63,8 +63,11 @@ func _ready() -> void:
 	wineAnim.visible = false
 	smoke.emitting = false 
 	phone.visible = false
+	#is_navigating = false
 	
 func _process(delta: float) -> void:
+	#print(is_navigating)
+	
 	if is_distracted == false:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
@@ -170,6 +173,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 				phone.visible = true
 			state = IDLE
 
+#entrance area
 func _on_theo_wander_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		is_navigating = true
@@ -238,7 +242,7 @@ func _on_quincy_one_shot_timer_timeout() -> void:
 		wineAnim.visible = false
 
 func _on_smoke_time_timeout() -> void:
-	if state == IDLE and is_distracted == false:
+	if state == IDLE and is_distracted == false and is_navigating:
 		is_navigating = false
 		quincy_tree.set("parameters/Smoking/request", true)
 		await get_tree().create_timer(2.2).timeout
