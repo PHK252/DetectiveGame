@@ -120,3 +120,16 @@ func _on_kitchen_point_body_entered(body: CharacterBody3D) -> void:
 		if GlobalVars.ghost_open and is_open == false:
 			open()
 			GlobalVars.ghost_open = false
+
+
+func _on_side_enter_body_entered(body: Node3D) -> void:
+	if quincy_house:
+		if is_open == false:
+			open()
+			collision.disabled = true
+
+func _on_main_enter_body_entered(body: Node3D) -> void:
+	if quincy_house:
+		if is_open == false:
+			open()
+			collision.disabled = true

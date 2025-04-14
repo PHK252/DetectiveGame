@@ -9,6 +9,8 @@ extends CharacterBody3D
 @export var InvestigateTime: Timer
 @export var wine_area_control: CollisionShape3D
 @export var wAcontrol2: Area3D
+var allow_activation = true
+
 var animation_choice = 0
 @export var adjustment_list: Array[Node3D]
 var theo_adjustment = false 
@@ -47,6 +49,7 @@ signal TheoStand
 var cooldown = false
 var dalton_entered = false
 var direct
+
 
 @export var note_timer: Timer
 
@@ -181,10 +184,15 @@ func _process_sitting_state() -> void:
 		patio_sit = false
 		going_to_bar = false
 		armature.visible = true
+		animation_choice = rng.randi_range(0, 10)
+		investigate_choice = rng.randi_range(0, 3)
 		is_investigating = true
-		investigate_choice = 0
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
 		emit_signal("TheoStand")
-		state = IDLE
+		state = INVESTIGATE
+		
 		
 # Handles behavior when NPC is in the IDLE state
 func _process_idle_state(distance_to_target: float) -> void:
@@ -380,13 +388,17 @@ func _on_micah_body_collision_safe() -> void:
 	#state = FOLLOW
 
 func _on_theo_wander_body_entered(body: Node3D) -> void:
-	animation_choice = rng.randi_range(0, 10)
-	investigate_choice = rng.randi_range(0, 3)
-	is_investigating = true
-	nav.target_position = marker_list[investigate_choice].global_position
-	is_navigating = true
-	STOPPING_DISTANCE = 0.0
-	state = INVESTIGATE
+	if allow_activation:
+		print("ENTEREDWANDER")
+		animation_choice = rng.randi_range(0, 10)
+		investigate_choice = rng.randi_range(0, 3)
+		is_investigating = true
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		state = INVESTIGATE
+		allow_activation = false
+	
 
 func _on_investigate_timer_timeout() -> void:
 	#print("timerCheck")

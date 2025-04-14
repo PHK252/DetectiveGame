@@ -29,7 +29,7 @@ const MIN_STOP_THRESHOLD = 0.05
 const FOLLOW_DISTANCE = 1.2 
 var idle_blend = 0.0
 var is_navigating = false
-var accel = 10
+var accel = 1
 var wander_choice = 0
 @export var marker_positions: Array[Node3D]
 var see_player = false
@@ -46,6 +46,9 @@ var snowmobile_distraction = false
 var bathroom_distraction = false
 var poolTable = false
 var poolPos
+
+var fall_allowed = true
+var distraction_allowed = true
 
 enum {
 	IDLE, 
@@ -126,10 +129,14 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 		if Input.is_action_just_pressed("meeting_done"):
 			quincy_tree.set("parameters/Wine/request", 2)
 			is_drinking = false
-			is_distracted = true
+			#is_distracted = true
+			#is_navigating = true
+			#wander_choice = 0
+			#nav.target_position = marker_positions[0].global_position
+			#state = FOLLOW
+			wander_choice = 10
+			is_distracted = false
 			is_navigating = true
-			wander_choice = 0
-			nav.target_position = marker_positions[0].global_position
 			state = FOLLOW
 			
 		
@@ -180,20 +187,24 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 
 func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		if wine_fall == false: 
-			is_distracted = true
-			is_navigating = true
-			wander_choice = 2
-			nav.target_position = marker_positions[2].global_position
-			state = FOLLOW
+		if distraction_allowed:
+			if wine_fall == false: 
+				is_distracted = true
+				is_navigating = true
+				wander_choice = 2
+				nav.target_position = marker_positions[2].global_position
+				state = FOLLOW
+				distraction_allowed = false
 		
-		if wine_fall == true:
-			is_distracted = true
-			is_navigating = true
-			wander_choice = 1
-			nav.target_position = marker_positions[1].global_position
-			state = FOLLOW
-			distraction_timer.start()
+		if fall_allowed:
+			if wine_fall == true:
+				is_distracted = true
+				is_navigating = true
+				wander_choice = 1
+				nav.target_position = marker_positions[1].global_position
+				state = FOLLOW
+				distraction_timer.start()
+				fall_allowed = false
 		
 func _on_fixed_wine_distraction() -> void:
 	wine_fall = true
