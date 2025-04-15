@@ -1,0 +1,204 @@
+[gd_scene load_steps=11 format=4 uid="uid://dstnxb7ix56qs"]
+
+[ext_resource type="PackedScene" uid="uid://csibdb7j18agl" path="res://Cutscenes/ClutteredOffice.glb" id="1_s0xgw"]
+[ext_resource type="PackedScene" uid="uid://xrae3qn8fqb6" path="res://StartingOffice/OfficeItems.glb" id="2_hbrpb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4vmv"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8lner"]
+_surfaces = [{
+"aabb": AABB(-0.0969409, -0.0288097, -0.148165, 0.213868, 0.0718197, 0.232823),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAAQAAIAAAABABAAEAARAAIAAgARAAQAAQASABAAAQANABIAEAATABEAEAASABMAEQAUAAQABAAUAAYAFAAFAAYABgAFAAcAFAADAAUAEQAVABQAFQADABQAEwAVABEAFQAIAAMAFgAIABUAEwAWABUAFgAJAAgAFgAKAAkAEwAXABYAFwAKABYAEgAXABMAFwALAAoAEgAYABcAGAALABcADQAYABIAGAAMAAsADQAOABgADgAMABgADgAPAAwA"),
+"lods": [0.0243583, PackedByteArray("AAABAAIAAQADAAIAAgADAAQABAADAAUABAAFAAYABgAFAAcAAQAIAAMAAQAJAAgAAQAKAAkAAQALAAoADAALAAEADQAMAAEADQAOAAwADgAPAAwA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 25,
+"vertex_data": PackedByteArray("+3Rgdv//AAD4VP51tskAAEud3+gP5AAASMmhmMqUAACZuv//2+cAAJXjuOGtvgAAZtcg7S/2AAD//+/Gr/4AAN6ykHPLXgAAi7PxogAAAACljJ5RtRIAAJ1pYAtRHwAAoDsAAIUnAABQLNs4tKkAADwTxxZbdQAAAAD0I3gwAAAAf1e6VrcAAE2hkcmXuAAAnFwhU9+bAABcg9hj0ZgAAIrANc/fvgAAv6TSd76ZAADXjuk9TWgAAPNvCBh2aQAAwkfgDThsAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mbi7g"]
+resource_name = "ClutteredOffice_Plane_046"
+_surfaces = [{
+"aabb": AABB(-0.0969409, -0.0288097, -0.148165, 0.213868, 0.0718197, 0.232823),
+"attribute_data": PackedByteArray("AAD//wAA/7//P///////f/9///////+//7////////////8///8AAP+/AAD/fwAA/z8AAAAA/38AAP8/AAAAAAAA////P/+//z///wAA/7//P/+/AAD/P/8/AAD/P/8/AAD/f/8//38AAP8//z//P/8//z//PwAA/38AAAAA/3//P/8//z//f/8//3//P/8//3//P/8//z//f/8//3//P/9/AAD/vwAAAAD/v/8//3//P/+//z//v/8//3//f/9//z//f/9//z//f/9//3//f/9//z//v/8//3//P/+//z//v/8//78AAP//AAD/v/8/////P/9//3//v/8//7//f/8//7//f/9//3//v/+//z////8//7//f/+//3////9//3//f/+//3//f/+//3//v/+//3//v/+//7//f////3//v/+//7//v////7//P/+//3//v/8/////f/+//3////9//7//v/+//3////+//7//v////7//v////7//v///"),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray("EAARABIAAAATABQAFQAPABYADQAOABcAAQAYABkAGgAMABsAHAAdAB4AHwAgACEAIgAjACQAJQALACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgAKADcAOAA5ADoAOwAJADwAPQA+AD8AQABBAEIAQwBEAEUARgAIAEcASABJAEoASwBMAE0ATgBPAFAAUQADAFIAUwBUAAIAVQBWAFcAWABZAAQAWgBbAFwAXQBeAF8ABgAFAAcA"),
+"lods": [0.0243583, PackedByteArray("AAABAAIAAQADAAIAAgADAAQABAADAAUABAAFAAYABgAFAAcAAQAIAAMAAQAJAAgAAQAKAAkAAQALAAoADAALAAEADQAMAAEADQAOAAwADgAPAAwA")],
+"material": SubResource("StandardMaterial3D_f4vmv"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("+3Rgdv//N7/4VP51tskazUud3+gP5FrJSMmhmMqUr9CZuv//2+etzpXjuOGtvq3CZtcg7S/2rcL//+/Gr/6twt6ykHPLXmHFi7PxogAAob+ljJ5RtRLqvp1pYAtRHxvCoDsAAIUnA8NQLNs4tKmeyDwTxxZbdZ7IAAD0I3gwv7/7dGB2///ayAB/V7pWt9rIS53f6A/k2sj4VP51tsk3vwB/V7pWtze/PBPHFlt1v7+gOwAAhSe/v8JH4A04bJ7IUCzbOLSpGs2cXCFT35sazTwTxxZbdQPDwkfgDThsA8PCR+ANOGyxwqA7AACFJ7HCnWlgC1EfscJQLNs4tKkuz8JH4A04bC7PnFwhU9+bLs+cXCFT35u+z8JH4A04bL7P828IGHZpvs/CR+ANOGwbwvNvCBh2aRvC828IGHZp28edaWALUR/bx6WMnlG1EtvH+FT+dbbJ2dKcXCFT35vZ0gB/V7pWt9nSAH9Xula38t2cXCFT35vy3VyD2GPRmPLdnFwhU9+bptDzbwgYdmmm0FyD2GPRmKbQXIPYY9GYls3zbwgYdmmWzdeO6T1NaJbN828IGHZp6r7Xjuk9TWjqvteO6T1NaOXGpYyeUbUS5caLs/GiAADlxteO6T1NaKG/3rKQc8teob9cg9hj0Zg9y9eO6T1NaD3Lv6TSd76ZPcsAf1e6Vrd+3VyD2GPRmH7dTaGRyZe4ft3Xjuk9TWjmyd6ykHPLXubJv6TSd76Z5sm/pNJ3vplhxUjJoZjKlGHFXIPYY9GYIty/pNJ3vpki3E2hkcmXuCLcTaGRyZe4Pdy/pNJ3vpk93IrANc/fvj3cv6TSd76ZotJIyaGYypSi0orANc/fvqLSisA1z9++r9CV47jhrb6v0AB/V7pWt1rJTaGRyZe4WslLnd/oD+R8yU2hkcmXuHzJmbr//9vnfMlNoZHJl7itzorANc/fvq3Ombr//9vnUdGKwDXP375R0WbXIO0v9lHRisA1z9++RcSV47jhrb5FxGbXIO0v9kXEx/9CqqD9RmfP9aKOZfZokFXrTosz4np7M+J6ezPienvM93KcZvgTqezvFKUx//OJcfMobJv05Wyb9OVsXuqpbG75WLZu+Vi2bvlYtsf/QqrH/0KqXuqpbF7qqWyb9OVsoP1GZ6D9Rmdx8yhscfMobKD6DWyg+g1soPoNbDr+Emg6/hJoOv4SaPf9zIn3/cyJ9/3MiTH/84kx//OJqvQcr6r0HK+q9ByvE/dnqRP3Z6kT92ep/fl7jv35e479+XuODfscjw37HI8N+xyPle4JoZXuCaGV7gmh7O8UpezvFKX4+PGv+Pjxr/j48a9m+BOpZvgTqeLzwJLi88CS4vPAkk72SYtO9kmLTvZJizz1jqc89Y6nPPWOp8z3cpzM93KcBfSWjwX0lo8F9JaP8OzTiPDs04jw7NOIw/XkmsP15JrD9eSaZfZokGX2aJDP9aKOz/WijpPsHpeT7B6Xk+wel1XrTotV606LL9xMhi/cTIYv3EyGpvZpkqb2aZKm9mmS")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8lner")
+
+[sub_resource type="Gradient" id="Gradient_b70yd"]
+offsets = PackedFloat32Array(0, 0.136808, 0.863192, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12845, 0.1274, 0.14, 1, 0.86, 0.841653, 0.7912, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g58rw"]
+gradient = SubResource("Gradient_b70yd")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5o82g"]
+energy_multiplier = 0.51
+
+[sub_resource type="Sky" id="Sky_0achx"]
+sky_material = SubResource("ProceduralSkyMaterial_5o82g")
+
+[sub_resource type="Environment" id="Environment_w3682"]
+background_mode = 1
+background_color = Color(0.340339, 0.340339, 0.340339, 1)
+background_energy_multiplier = 1.45
+sky = SubResource("Sky_0achx")
+ambient_light_energy = 0.0
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.17
+ssao_intensity = 2.65
+ssil_enabled = true
+ssil_radius = 0.18
+ssil_intensity = 0.58
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.68
+glow_strength = 0.77
+glow_bloom = 0.22
+glow_hdr_threshold = 0.75
+glow_hdr_luminance_cap = 13.85
+fog_light_color = Color(0.384694, 0.416805, 0.467277, 1)
+fog_light_energy = 1.99
+fog_density = 0.006
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0717
+volumetric_fog_albedo = Color(0.603248, 0.603248, 0.603248, 1)
+volumetric_fog_emission = Color(0.288518, 0.288518, 0.288518, 1)
+volumetric_fog_emission_energy = 3.69
+volumetric_fog_gi_inject = 0.44
+volumetric_fog_anisotropy = 0.0
+volumetric_fog_length = 45.52
+volumetric_fog_detail_spread = 2.7991
+volumetric_fog_ambient_inject = 0.21
+adjustment_enabled = true
+adjustment_contrast = 0.9
+adjustment_saturation = 0.45
+adjustment_color_correction = SubResource("GradientTexture1D_g58rw")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ClutteredOffice" parent="." instance=ExtResource("1_s0xgw")]
+
+[node name="Flooring" parent="ClutteredOffice" index="31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.58898, 0, 0, -1.21505)
+
+[node name="papers_013" parent="ClutteredOffice" index="95"]
+transform = Transform3D(-0.0632549, 0, 0.868855, 0, 0.870404, 0, -1.05867, 0, -0.0519138, 0.912465, -0.046553, 1.12027)
+
+[node name="papers_014" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-1.05628, 0, 0.07808, 0, 0.870404, 0, -0.0951374, 0, -0.866895, 0.912465, 0.00374332, 1.12027)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="papers_015" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-0.849841, 0.516905, 0.0628202, 0.62729, 0.700294, -0.0463692, -0.0951374, 0, -0.866895, 0.961649, 0.0713323, 1.03006)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="papers_016" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-0.0632549, 0, 0.868855, 0, 0.870404, 0, -1.05867, 0, -0.0519138, 0.912465, 0.0410374, 1.12027)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="papers_017" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-1.05628, 0, 0.07808, 0, 0.870404, 0, -0.0951374, 0, -0.866895, 0.912465, 0.0913337, 1.12027)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="papers_018" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-0.849841, 0.516905, 0.0628202, 0.62729, 0.700294, -0.0463692, -0.0951374, 0, -0.866895, 0.961649, 0.158923, 1.03006)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="papers_019" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-0.0632549, 0, 0.868855, 0, 0.870404, 0, -1.05867, 0, -0.0519138, 0.912465, 0.130479, 1.12027)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="papers_020" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-1.05628, 0, 0.07808, 0, 0.870404, 0, -0.0951374, 0, -0.866895, 0.912465, 0.180776, 1.12027)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="papers_021" type="MeshInstance3D" parent="ClutteredOffice"]
+transform = Transform3D(-0.849841, 0.516905, 0.0628202, 0.62729, 0.700294, -0.0463692, -0.0951374, 0, -0.866895, 0.961649, 0.248365, 1.03006)
+mesh = SubResource("ArrayMesh_mbi7g")
+skeleton = NodePath("")
+
+[node name="notebook" parent="ClutteredOffice" index="113"]
+transform = Transform3D(0.0703632, 0, 0.0109171, 0, -0.00662102, 0, -0.00811267, 0, 0.0946866, -0.448718, 0.660682, 0.941509)
+
+[node name="pen" parent="ClutteredOffice" index="114"]
+transform = Transform3D(-0.00138656, -0.0251831, 0.0033029, 0.0063107, -0.000315108, 0.00252284, -0.00210889, 0.0156145, 0.00537783, -0.452432, 0.680193, 0.911927)
+
+[node name="OfficeItems" parent="." instance=ExtResource("2_hbrpb")]
+
+[node name="DoughnutBox" parent="OfficeItems" index="0"]
+transform = Transform3D(0.617922, 0, -0.539048, 0, 0.82, 0, 0.539048, 0, 0.617922, 0.134976, 0.14, 0.25834)
+
+[node name="doughnut_004" parent="OfficeItems" index="1"]
+transform = Transform3D(0.617922, 0, -0.539048, 0, 0.82, 0, 0.539048, 0, 0.617922, 0.329135, 0.142202, 0.458103)
+visible = false
+
+[node name="doughnut_001" parent="OfficeItems" index="2"]
+transform = Transform3D(0.617922, 0, -0.539048, 0, 0.82, 0, 0.539048, 0, 0.617922, 0.202824, 0.140248, 0.404218)
+visible = false
+
+[node name="doughnut_002" parent="OfficeItems" index="3"]
+transform = Transform3D(0.617922, 0, -0.539048, 0, 0.82, 0, 0.539048, 0, 0.617922, 0.0926581, 0.14, 0.337417)
+
+[node name="doughnut_003" parent="OfficeItems" index="4"]
+transform = Transform3D(0.617922, 0, -0.539048, 0, 0.82, 0, 0.539048, 0, 0.617922, 0.183347, 0.138333, 0.259841)
+visible = false
+
+[node name="lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
+environment = SubResource("Environment_w3682")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="lighting"]
+transform = Transform3D(-0.455092, -0.890267, 0.0177781, 0.0809555, -0.0214841, 0.996486, -0.886757, 0.454932, 0.0818492, -1.3418, 2.61701, 1.14673)
+light_color = Color(0.854375, 0.794032, 0.62171, 1)
+light_energy = 0.102
+light_indirect_energy = 1.281
+light_volumetric_fog_energy = 4.716
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_blur = 9.364
+spot_range = 3.324
+spot_attenuation = -3.42
+spot_angle = 57.0
+spot_angle_attenuation = 0.378929
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="lighting"]
+transform = Transform3D(-0.455092, -0.763899, 0.457547, 0.0809555, 0.476218, 0.875593, -0.886757, 0.435516, -0.154881, 2.07254, 2.55275, 1.14404)
+light_color = Color(0.854375, 0.794032, 0.62171, 1)
+light_energy = 0.102
+light_indirect_energy = 1.281
+light_volumetric_fog_energy = 4.716
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_blur = 9.091
+spot_range = 3.324
+spot_attenuation = -3.42
+spot_angle = 57.0
+spot_angle_attenuation = 0.378929
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
+light_energy = 0.1
+
+[editable path="ClutteredOffice"]
+[editable path="OfficeItems"]
