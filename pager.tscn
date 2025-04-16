@@ -248,7 +248,10 @@ _data = {
 &"RESET": SubResource("Animation_jhqlo")
 }
 
-[node name="Pager" type="Node2D"]
+[node name="Pager" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
 
 [node name="PagerUiFrame" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -260,6 +263,7 @@ position = Vector2(960, 545)
 texture = ExtResource("2_2ryhk")
 
 [node name="Intro" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Intro" type="AnimatedSprite2D" parent="Intro"]
 position = Vector2(960, 340)
@@ -267,7 +271,7 @@ sprite_frames = SubResource("SpriteFrames_o1iv1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Intro"]
 libraries = {
-"": SubResource("AnimationLibrary_u2msx")
+&"": SubResource("AnimationLibrary_u2msx")
 }
 
 [node name="0" type="TextureButton" parent="."]
