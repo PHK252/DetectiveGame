@@ -111,10 +111,6 @@ func _on_interactable_interacted(interactor):
 	FP_Cam.priority = 30
 	Exit_Cam.priority = 0 
 	interact_area.show()
-	if interact_area_2:
-		interact_area_2.show()
-	if interact_area_3:
-		interact_area_3.show()
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()

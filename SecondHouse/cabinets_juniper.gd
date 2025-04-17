@@ -25,8 +25,6 @@ extends Node3D
 @export var open_interact : Area2D
 @export var close_interact : Area2D
 @export var interact_area: Area2D
-@export var interact_area_2 : Area2D = null
-@export var interact_area_3 : Area2D = null
 @export var dialogue_file: String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
@@ -134,10 +132,6 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			open_interact.hide()
 			close_interact.show()
 			interact_area.show()
-			if interact_area_2:
-				interact_area_2.show()
-			if interact_area_3:
-				interact_area_3.show()
 
 
 func open() -> void:

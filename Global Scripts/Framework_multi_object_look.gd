@@ -23,8 +23,7 @@ extends Node3D
 
 #Interaction Variables
 @export var interact_area_1: Area2D
-@export var interact_area_2 : Area2D = null
-@export var interact_area_3 : Area2D = null
+@export var interact_area_2 : Area2D
 @export var dialogue_file_1: String
 @export var dialogue_file_2: String
 @export var choice: String
@@ -67,48 +66,17 @@ func _process(delta):
 			FP_Cam.set_rotation_degrees(mid_angle)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		if Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == false and read_dialogue_1 == false and GlobalVars.viewing == "":
+		if Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
+			print("cab exit_1")
+			print("V1 :" +  str(viewed_item_1))
+			print("V2 :" +  str(viewed_item_2))
+			print("D1 :" +  str(read_dialogue_1))
+			print("D2 :" +  str(read_dialogue_2))
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
-			await get_tree().create_timer(.03).timeout
-			cam_anim.play("RESET")
-			player.show()
-			var game_dialogue = Dialogic.start(dialogue_file_1)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			game_dialogue.register_character(load(load_char_dialogue), character_marker)
-			GlobalVars.in_interaction = ""
-			GlobalVars.set(dialogue_1, true)
-			interact_area_1.hide()
-			interact_area_2.hide()
-			alert.hide()
-		elif Input.is_action_just_pressed("Exit") and viewed_item_1 == false and viewed_item_2 == true and read_dialogue_2 == false and GlobalVars.viewing == "":
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			Exit_Cam.set_tween_duration(0)
-			FP_Cam.priority = 0
-			Exit_Cam.priority = 30
-			await get_tree().create_timer(.03).timeout
-			cam_anim.play("RESET")
-			player.show()
-			var game_dialogue = Dialogic.start(dialogue_file_2)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			game_dialogue.register_character(load(load_char_dialogue), character_marker)
-			GlobalVars.in_interaction = ""
-			GlobalVars.set(dialogue_2, true)
-			interact_area_1.hide()
-			interact_area_2.hide()
-			alert.hide()
-		elif Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			Exit_Cam.set_tween_duration(0)
-			FP_Cam.priority = 0
-			Exit_Cam.priority = 30
-			await get_tree().create_timer(.03).timeout
+			#await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
 			var game_dialogue = Dialogic.start(choice)
@@ -117,13 +85,66 @@ func _process(delta):
 			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			GlobalVars.in_interaction = ""
+			print("clear")
 			GlobalVars.set(dialogue_1, true)
 			GlobalVars.set(dialogue_2, true)
 			interact_area_1.hide()
 			interact_area_2.hide()
 			alert.hide()
+		elif Input.is_action_just_pressed("Exit") and read_dialogue_1 == false and GlobalVars.viewing == "" and ((viewed_item_1 == true and viewed_item_2 == false) or (viewed_item_1 == true and viewed_item_2 == true)):
+			print("cab exit_2")
+			print("V1 :" +  str(viewed_item_1))
+			print("V2 :" +  str(viewed_item_2))
+			print("D1 :" +  str(read_dialogue_1))
+			print("D2 :" +  str(read_dialogue_2))
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Exit_Cam.set_tween_duration(0)
+			FP_Cam.priority = 0
+			Exit_Cam.priority = 30
+			#await get_tree().create_timer(.03).timeout
+			cam_anim.play("RESET")
+			player.show()
+			var game_dialogue = Dialogic.start(dialogue_file_1)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			game_dialogue.register_character(load(load_char_dialogue), character_marker)
+			GlobalVars.in_interaction = ""
+			print("clear")
+			GlobalVars.set(dialogue_1, true)
+			interact_area_1.hide()
+			interact_area_2.hide()
+			alert.hide()
+		elif Input.is_action_just_pressed("Exit") and read_dialogue_2 == false and GlobalVars.viewing == "" and ((viewed_item_1 == false and viewed_item_2 == true) or (viewed_item_1 == true and viewed_item_2 == true)):
+			print("cab exit_3")
+			print("V1 :" +  str(viewed_item_1))
+			print("V2 :" +  str(viewed_item_2))
+			print("D1 :" +  str(read_dialogue_1))
+			print("D2 :" +  str(read_dialogue_2))
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Exit_Cam.set_tween_duration(0)
+			FP_Cam.priority = 0
+			Exit_Cam.priority = 30
+			#await get_tree().create_timer(.03).timeout
+			cam_anim.play("RESET")
+			player.show()
+			var game_dialogue = Dialogic.start(dialogue_file_2)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			game_dialogue.register_character(load(load_char_dialogue), character_marker)
+			GlobalVars.in_interaction = ""
+			print("clear")
+			GlobalVars.set(dialogue_2, true)
+			interact_area_1.hide()
+			interact_area_2.hide()
+			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
-			print("exit")
+			print("cab exit_4")
+			print("V1 :" +  str(viewed_item_1))
+			print("V2 :" +  str(viewed_item_2))
+			print("D1 :" +  str(read_dialogue_1))
+			print("D2 :" +  str(read_dialogue_2))
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
@@ -136,13 +157,13 @@ func _process(delta):
 			interact_area_1.hide()
 			interact_area_2.hide()
 			alert.show()
-
+			
 	if GlobalVars.in_look_screen == true:
-			interact_area_1.hide()
-			interact_area_2.hide()
+		interact_area_1.hide()
+		interact_area_2.hide()
 	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
-			interact_area_1.show()
-			interact_area_2.show()
+		interact_area_1.show()
+		interact_area_2.show()
 
 
 func _on_timeline_ended():

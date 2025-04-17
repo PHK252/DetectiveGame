@@ -51,18 +51,27 @@ signal phone_call_receiving
 @onready var bills_dialogue_Juniper = false
 @onready var pills_dialogue_Juniper = false
 @onready var pie_dialogue_Juniper = false
+@onready var cran_dialogue_Juniper = false
+@onready var recipe_dialogue_Juniper = false
+@onready var resume_dialogue_Juniper = false
+@onready var employee_dialogue_Juniper = false
 
+@onready var viewed_recipe_juniper = false
+@onready var viewed_cran_juniper = false
 @onready var viewed_pills_juniper = false
 @onready var viewed_Juniper_case = false
 @onready var viewed_pie_juniper = false
 @onready var viewed_bills_juniper = false
+@onready var viewed_Juniper_resume = false
+@onready var viewed_Juniper_empinfo = false
+
+@onready var clicked_recipe_Juniper = 0
 @onready var clicked_case_Juniper = 0
 @onready var clicked_bills_Juniper = 0
 @onready var case_dialogue_Juniper = false
-@onready var viewed_Juniper_resume = false
 @onready var clicked_resume_Juniper = 0
 @onready var clicked_employee_Juniper = 0
-@onready var resume_dialogue_Juniper = false
+
 @onready var opened_cab = false
 @onready var pic_fell = false
 @onready var Micah_in_case = false
@@ -90,6 +99,7 @@ func set_mouse_pointing():
 	Input.set_custom_mouse_cursor(GlobalVars.pointing_hand, Input.CURSOR_POINTING_HAND, Vector2(20,22.5))
 
 func _ready():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	set_mouse_default()
 	set_mouse_pointing()
 

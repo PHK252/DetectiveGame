@@ -91,3 +91,33 @@ func _on_pie_mouse_entered():
 
 func _on_pie_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_cranberries_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_cranberries_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_cab_1_close_2_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_cab_1_close_2_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_cab_1_close_1_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_cab_1_close_1_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_recipes_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_recipes_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
