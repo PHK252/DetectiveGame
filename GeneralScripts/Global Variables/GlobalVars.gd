@@ -49,8 +49,12 @@ signal phone_call_receiving
 @onready var cafe_dialogue_Juniper = false
 @onready var window_thoughts_Juniper = false
 @onready var bills_dialogue_Juniper = false
+@onready var pills_dialogue_Juniper = false
+@onready var pie_dialogue_Juniper = false
 
+@onready var viewed_pills_juniper = false
 @onready var viewed_Juniper_case = false
+@onready var viewed_pie_juniper = false
 @onready var viewed_bills_juniper = false
 @onready var clicked_case_Juniper = 0
 @onready var clicked_bills_Juniper = 0

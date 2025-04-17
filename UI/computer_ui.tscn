@@ -1048,7 +1048,7 @@ sprite_frames = SubResource("SpriteFrames_0n1dt")
 
 [node name="FaceID Anim" type="AnimationPlayer" parent="Mail/Face ID"]
 libraries = {
-"": SubResource("AnimationLibrary_gbsdl")
+&"": SubResource("AnimationLibrary_gbsdl")
 }
 
 [connection signal="pressed" from="Login/Enter" to="." method="_on_enter_pressed"]

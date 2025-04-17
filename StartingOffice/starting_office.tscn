@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cgootv0oh0ocv" path="res://StartingOffice/StartingOffice_Picture1.png" id="12_k4guc"]
 [ext_resource type="Script" uid="uid://dm5n0wvcu1p4y" path="res://StartingOffice/doughnut_box.gd" id="13_hff4c"]
 [ext_resource type="Texture2D" uid="uid://kpw8bm4kvivb" path="res://StartingOffice/StartingOffice_Newspaper2.png" id="13_pvce0"]
-[ext_resource type="Texture2D" uid="uid://c3j8x2i1wetq" path="res://StartingOffice/StartingOffice_Newspaper1.png" id="14_rpyof"]
+[ext_resource type="Texture2D" uid="uid://blwtsdl22xbj" path="res://StartingOffice/StartingOffice_Newspaper1.png" id="14_rpyof"]
 [ext_resource type="Texture2D" uid="uid://bye2qfgq68sus" path="res://StartingOffice/StartingOffice_Picture2.png" id="15_eiup2"]
 [ext_resource type="Texture2D" uid="uid://15y8mjmycaa1" path="res://StartingOffice/StartingOffice_Contact1.png" id="16_jklhc"]
 [ext_resource type="Material" uid="uid://cgwa84pvtb52t" path="res://ShaderScripts/environment.tres" id="16_xbpkm"]
@@ -3162,7 +3162,7 @@ camera_3d_resource = SubResource("Resource_kvue2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/Corkboard cam"]
 libraries = {
-"": SubResource("AnimationLibrary_583mc")
+&"": SubResource("AnimationLibrary_583mc")
 }
 
 [node name="StartingOffice" type="Node3D" parent="SubViewportContainer/SubViewport"]

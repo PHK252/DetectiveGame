@@ -1,8 +1,6 @@
 extends Node
 
 
-
-
 func _on_bookmark_mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
@@ -55,4 +53,41 @@ func _on_med_bills_mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_med_bills_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+
+func _on_cab_2_open_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_cab_2_open_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_cab_2_close_1_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+	
+func _on_cab_2_close_1_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func _on_cab_2_close_2_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_cab_2_close_2_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_pills_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_pills_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_pie_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_pie_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

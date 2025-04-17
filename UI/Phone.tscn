@@ -779,7 +779,7 @@ sprite_frames = SubResource("SpriteFrames_yoxuf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneScreen/PhoneCall"]
 libraries = {
-"": SubResource("AnimationLibrary_4eqew")
+&"": SubResource("AnimationLibrary_4eqew")
 }
 
 [node name="Time" type="RichTextLabel" parent="PhoneScreen"]
