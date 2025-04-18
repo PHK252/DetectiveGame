@@ -23,8 +23,6 @@ extends Node3D
 
 #Interaction Variables
 @export var interact_area: Area2D
-@export var interact_area_2 : Area2D = null
-@export var interact_area_3 : Area2D = null
 @export var dialogue_file: String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String

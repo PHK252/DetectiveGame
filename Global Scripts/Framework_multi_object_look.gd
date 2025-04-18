@@ -39,9 +39,10 @@ extends Node3D
 @export var dialogue_2: String
 @export var view_item_2: String
 
+@export var tilt_hide = false
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
-
+@onready var tilt = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -52,19 +53,23 @@ func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	#print(mouse_pos) 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+		mouse_pos = get_viewport().get_mouse_position()
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
+			tilt = "down"
 		elif mouse_pos.y < tilt_down_thres:
 			FP_Cam.set_rotation_degrees(tilt_down_angle)
+			tilt = "up"
 		else:
 			FP_Cam.set_rotation_degrees(mid_angle)
-				#pass
-	else:
-		if down_default == true:
+			tilt = "mid"
+		#mouse_pos = mouse_pos
+		if tilt_hide == true and tilt == "down":
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
-		else:
-			FP_Cam.set_rotation_degrees(mid_angle)
-	
+			interact_area_2.show()
+			interact_area_1.hide()
+		elif tilt_hide == true and tilt == "up":
+			interact_area_2.hide()
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
 			print("cab exit_1")

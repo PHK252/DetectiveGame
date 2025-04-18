@@ -65,6 +65,31 @@ signal phone_call_receiving
 @onready var viewed_Juniper_resume = false
 @onready var viewed_Juniper_empinfo = false
 
+@onready var viewed_Quincy_offPic = false
+@onready var viewed_Quincy_famPic = false
+@onready var viewed_Quincy_coor = false
+@onready var viewed_Quincy_journal = false
+@onready var viewed_Quincy_phone = false
+@onready var viewed_Quincy_fish = false
+@onready var viewed_Quincy_poker = false
+@onready var viewed_Quincy_case = false
+
+@onready var offPic_dialogue_Quincy = false
+@onready var famPic_dialogue_Quincy = false
+@onready var coor_dialogue_Quincy = false
+@onready var journal_dialogue_Quincy = false
+@onready var phone_dialogue_Quincy = false
+@onready var fish_dialogue_Quincy = false
+@onready var poker_thoughts_Quincy = false
+@onready var case_dialogue_Quincy = false
+
+@onready var clicked_offPic_Quincy = 0
+@onready var clicked_journal_Quincy = 0
+#@onready var clicked_famPic_Quincy = 0
+@onready var clicked_coor_Quincy = 0
+@onready var clicked_phone_Quincy = 0
+@onready var clicked_case_Quincy = 0
+
 @onready var clicked_recipe_Juniper = 0
 @onready var clicked_case_Juniper = 0
 @onready var clicked_bills_Juniper = 0

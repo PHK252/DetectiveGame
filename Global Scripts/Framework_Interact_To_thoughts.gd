@@ -10,8 +10,6 @@ extends Area2D
 #Access Globals
 @onready var viewed_object = GlobalVars.get(view_object)
 
-
-
 #Dialogue if there is a single thought behind those eyes
 @export var dialogue_file : String
 
