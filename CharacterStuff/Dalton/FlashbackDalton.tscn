@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ihrx1yb4u0kg"]
+[gd_scene load_steps=11 format=3 uid="uid://ihrx1yb4u0kg"]
 
 [ext_resource type="Script" uid="uid://beud03p60gktg" path="res://flashbackDalton.gd" id="1_t2a7y"]
 [ext_resource type="PackedScene" uid="uid://065g7k1ysem6" path="res://GeneralScripts/interaction/PlayerInteractor.tscn" id="2_ydow6"]
@@ -8,163 +8,21 @@
 radius = 0.279652
 height = 1.58477
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ufv3"]
-animation = &"Inspect"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pbqyx"]
-animation = &"CellPhone"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_13s8h"]
-animation = &"Doughnuts"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dt2x"]
-animation = &"Knocking"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lyivp"]
-animation = &"Thinking"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3l1ka"]
-animation = &"Sit_Outside"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ingx5"]
-animation = &"Sit_Office"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iq1id"]
-animation = &"SitNoDrink"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxpxx"]
-animation = &"Sneeze"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aru7t"]
-animation = &"StuffToilet"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7yo2g"]
-animation = &"Sleeping"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6v0ew"]
-animation = &"SitandDrinkWine"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pu6fb"]
-animation = &"Jog"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_gmom7"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w1ito"]
-animation = &"Idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jk7j8"]
-animation = &"Walk"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_l8ckr"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_w1ito")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_jk7j8")
-blend_point_1/pos = 1.0
-min_space = 0.0
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ymdlm"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_jrqrf"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gg0l2"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_fjgku"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_qjg4y"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qodm2"]
-
-[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_2e6c6"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3eci3"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_t33ed"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0nytb"]
-animation = &"StepBack"
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_tv2cu"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_3x2av"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_y6jwr"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2vgqh"]
-graph_offset = Vector2(-54.8392, -105.344)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_pu6fb")
-nodes/Animation/position = Vector2(-130, 310)
-"nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_8ufv3")
-"nodes/Animation 10/position" = Vector2(2640, 200)
-"nodes/Animation 11/node" = SubResource("AnimationNodeAnimation_pbqyx")
-"nodes/Animation 11/position" = Vector2(2940, 200)
-"nodes/Animation 12/node" = SubResource("AnimationNodeAnimation_13s8h")
-"nodes/Animation 12/position" = Vector2(3200, 190)
-"nodes/Animation 13/node" = SubResource("AnimationNodeAnimation_0dt2x")
-"nodes/Animation 13/position" = Vector2(3490, 170)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lyivp")
-"nodes/Animation 2/position" = Vector2(930, 210)
-"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_3l1ka")
-"nodes/Animation 3/position" = Vector2(1310, 190)
-"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_ingx5")
-"nodes/Animation 4/position" = Vector2(1310, -50)
-"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_iq1id")
-"nodes/Animation 5/position" = Vector2(1510, 220)
-"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_xxpxx")
-"nodes/Animation 6/position" = Vector2(2140, 220)
-"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_aru7t")
-"nodes/Animation 7/position" = Vector2(2350, 220)
-"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_7yo2g")
-"nodes/Animation 8/position" = Vector2(1710, 210)
-"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_6v0ew")
-"nodes/Animation 9/position" = Vector2(1920, 210)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_gmom7")
-nodes/Blend2/position = Vector2(280, 90)
-nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_l8ckr")
-nodes/BlendSpace1D/position = Vector2(-140, 160)
-nodes/CellPhone/node = SubResource("AnimationNodeOneShot_ymdlm")
-nodes/CellPhone/position = Vector2(3110, -70)
-nodes/Doughnut/node = SubResource("AnimationNodeOneShot_jrqrf")
-nodes/Doughnut/position = Vector2(3380, -60)
-nodes/Inspect/node = SubResource("AnimationNodeOneShot_gg0l2")
-nodes/Inspect/position = Vector2(2820, -40)
-nodes/Knock/node = SubResource("AnimationNodeOneShot_fjgku")
-nodes/Knock/position = Vector2(3700, -50)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_qjg4y")
-nodes/OneShot/position = Vector2(750, 50)
-nodes/SitNoWine/node = SubResource("AnimationNodeBlend2_qodm2")
-nodes/SitNoWine/position = Vector2(1620, -10)
-nodes/SitOutIn/node = SubResource("AnimationNodeBlend3_2e6c6")
-nodes/SitOutIn/position = Vector2(1460, 30)
-nodes/Sleep/node = SubResource("AnimationNodeBlend2_3eci3")
-nodes/Sleep/position = Vector2(1840, -20)
-nodes/Sneeze/node = SubResource("AnimationNodeOneShot_t33ed")
-nodes/Sneeze/position = Vector2(2250, -30)
-nodes/StepBack/node = SubResource("AnimationNodeAnimation_0nytb")
-nodes/StepBack/position = Vector2(540, 230)
-nodes/StuffToilet/node = SubResource("AnimationNodeOneShot_tv2cu")
-nodes/StuffToilet/position = Vector2(2510, -40)
-nodes/Thinking/node = SubResource("AnimationNodeOneShot_3x2av")
-nodes/Thinking/position = Vector2(1140, 40)
-nodes/WineDrink/node = SubResource("AnimationNodeBlend2_y6jwr")
-nodes/WineDrink/position = Vector2(2060, -10)
-nodes/output/position = Vector2(3930, -20)
-node_connections = [&"Blend2", 0, &"BlendSpace1D", &"Blend2", 1, &"Animation", &"CellPhone", 0, &"Inspect", &"CellPhone", 1, &"Animation 11", &"Doughnut", 0, &"CellPhone", &"Doughnut", 1, &"Animation 12", &"Inspect", 0, &"StuffToilet", &"Inspect", 1, &"Animation 10", &"Knock", 0, &"Doughnut", &"Knock", 1, &"Animation 13", &"OneShot", 0, &"Blend2", &"OneShot", 1, &"StepBack", &"SitNoWine", 0, &"SitOutIn", &"SitNoWine", 1, &"Animation 5", &"SitOutIn", 0, &"Animation 4", &"SitOutIn", 1, &"Thinking", &"SitOutIn", 2, &"Animation 3", &"Sleep", 0, &"SitNoWine", &"Sleep", 1, &"Animation 8", &"Sneeze", 0, &"WineDrink", &"Sneeze", 1, &"Animation 6", &"StuffToilet", 0, &"Sneeze", &"StuffToilet", 1, &"Animation 7", &"Thinking", 0, &"OneShot", &"Thinking", 1, &"Animation 2", &"WineDrink", 0, &"Sleep", &"WineDrink", 1, &"Animation 9", &"output", 0, &"Knock"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sh0vf"]
 animation = &"ThinkingDetective"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_5swew"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6e4os"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bj0sv"]
 animation = &"IdleDetective"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wigf2"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mtg1n"]
 animation = &"WalkDetective"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_ysc4g"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_6e4os")
+blend_point_0/node = SubResource("AnimationNodeAnimation_bj0sv")
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_wigf2")
+blend_point_1/node = SubResource("AnimationNodeAnimation_mtg1n")
 blend_point_1/pos = 1.0
 min_space = 0.0
 
@@ -195,11 +53,11 @@ script = ExtResource("1_t2a7y")
 transform = Transform3D(0.423249, 0, 0, 0, -1.85008e-08, -0.423249, 0, 0.423249, -1.85008e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Dalton/CharacterBody3D/Flashback/FlashBackDalton" index="0"]
-bones/0/position = Vector3(1.69857e-09, -1.10713e-08, -1.74538)
+bones/0/position = Vector3(-1.08236e-12, -1.30962e-08, -1.75282)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0723338, -7.62132e-10, -3.00192e-10, 0.99738)
-bones/5/rotation = Quaternion(0.0733409, -5.30822e-17, 5.29089e-16, 0.997307)
+bones/4/rotation = Quaternion(-0.075497, 1.44636e-16, 2.0208e-15, 0.997146)
+bones/5/rotation = Quaternion(0.0753429, -4.8828e-10, -9.12011e-11, 0.997158)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662163)
 bones/6/rotation = Quaternion(2.65866e-10, -5.70862e-10, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898594, 0.0145798, 0.997999)
@@ -207,68 +65,35 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-3.7282e-10, 3.78358e-10, 0.138842, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.14247, 0.0557454, -0.688243, 0.709166)
-bones/11/rotation = Quaternion(-0.355214, 0.00623151, -0.518095, 0.77805)
-bones/12/rotation = Quaternion(0.400663, 0.27313, -0.315019, 0.815863)
+bones/11/rotation = Quaternion(-0.351334, 0.00234696, -0.523768, 0.776032)
+bones/12/rotation = Quaternion(0.391865, 0.271701, -0.311083, 0.8221)
 bones/13/rotation = Quaternion(0.00671636, -0.00228499, -0.0206946, 0.999761)
 bones/14/rotation = Quaternion(-0.14247, -0.0557454, 0.688243, 0.709166)
-bones/15/rotation = Quaternion(-0.33496, 0.0153293, 0.519751, 0.785764)
-bones/16/rotation = Quaternion(0.323939, -0.2629, 0.322811, 0.849553)
+bones/15/rotation = Quaternion(-0.327125, 0.0234113, 0.526867, 0.784125)
+bones/16/rotation = Quaternion(0.299822, -0.258996, 0.316239, 0.861987)
 bones/17/rotation = Quaternion(0.00671635, 0.00228496, 0.0206946, 0.999761)
-bones/19/rotation = Quaternion(0.107814, 0.00966356, -0.00644909, 0.994103)
-bones/20/rotation = Quaternion(-0.263153, 0.00013309, -0.00721855, 0.964727)
-bones/21/rotation = Quaternion(0.788795, -0.0293138, 0.0285353, 0.613293)
-bones/23/rotation = Quaternion(0.107814, -0.00966351, 0.00644908, 0.994103)
-bones/24/rotation = Quaternion(-0.263153, -0.00013309, 0.00721855, 0.964727)
-bones/25/rotation = Quaternion(0.788795, 0.0293138, -0.0285353, 0.613293)
+bones/19/rotation = Quaternion(0.0986812, 0.00997318, -0.00680319, 0.995046)
+bones/20/rotation = Quaternion(-0.245184, 0.000133741, -0.00672567, 0.969453)
+bones/21/rotation = Quaternion(0.783305, -0.0295666, 0.0282733, 0.620291)
+bones/23/rotation = Quaternion(0.0986812, -0.00997314, 0.00680318, 0.995046)
+bones/24/rotation = Quaternion(-0.245184, -0.00013374, 0.00672567, 0.969453)
+bones/25/rotation = Quaternion(0.783305, 0.0295666, -0.0282733, 0.620291)
 bones/26/position = Vector3(0.302293, -0.0768642, -0.13186)
 bones/26/rotation = Quaternion(0.0204546, 0, 0.999791, 6.58544e-10)
 bones/26/scale = Vector3(1.10417, 1, 1.00018)
 bones/27/position = Vector3(-0.302293, -0.0768642, -0.13186)
 bones/27/rotation = Quaternion(-0.0204547, 8.89046e-16, 0.999791, -1.31709e-09)
 bones/27/scale = Vector3(1.10417, 1, 1.00018)
-bones/28/position = Vector3(0.492159, 0.0849775, -1.52113)
+bones/28/position = Vector3(0.489167, 0.0961845, -1.52193)
 bones/28/rotation = Quaternion(0.790332, -2.10734e-08, 0.612679, -7.76605e-08)
-bones/28/scale = Vector3(1.00564, 1, 1.08429)
-bones/29/position = Vector3(-0.498186, 0.0643394, -1.47789)
+bones/28/scale = Vector3(1.00441, 1, 1.06466)
+bones/29/position = Vector3(-0.496347, 0.0715945, -1.47042)
 bones/29/rotation = Quaternion(0.790332, 2.10734e-08, -0.612679, -7.76605e-08)
-bones/29/scale = Vector3(1.00564, 1, 1.08429)
+bones/29/scale = Vector3(1.00441, 1, 1.06466)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dalton/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0168054, 0.77996, -0.0376161)
 shape = SubResource("CapsuleShape3D_u4bml")
-
-[node name="AnimationTree" type="AnimationTree" parent="Dalton/CharacterBody3D"]
-tree_root = SubResource("AnimationNodeBlendTree_2vgqh")
-parameters/Blend2/blend_amount = 0.0
-parameters/BlendSpace1D/blend_position = 0.0
-parameters/CellPhone/active = false
-parameters/CellPhone/internal_active = false
-parameters/CellPhone/request = 0
-parameters/Doughnut/active = false
-parameters/Doughnut/internal_active = false
-parameters/Doughnut/request = 0
-parameters/Inspect/active = false
-parameters/Inspect/internal_active = false
-parameters/Inspect/request = 0
-parameters/Knock/active = false
-parameters/Knock/internal_active = false
-parameters/Knock/request = 0
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
-parameters/SitNoWine/blend_amount = 0.0
-parameters/SitOutIn/blend_amount = 0.0
-parameters/Sleep/blend_amount = 0.0
-parameters/Sneeze/active = false
-parameters/Sneeze/internal_active = false
-parameters/Sneeze/request = 0
-parameters/StuffToilet/active = false
-parameters/StuffToilet/internal_active = false
-parameters/StuffToilet/request = 0
-parameters/Thinking/active = false
-parameters/Thinking/internal_active = false
-parameters/Thinking/request = 0
-parameters/WineDrink/blend_amount = 0.0
 
 [node name="FlashBackAnims" type="AnimationTree" parent="Dalton/CharacterBody3D"]
 root_node = NodePath("../Flashback")

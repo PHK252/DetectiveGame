@@ -17,29 +17,15 @@ var cam_rotation = false
 var interaction = false
 var in_control = true
 var force_rotation = false
-var move_out = false
+var move_out = true
 var number = 0
-
-var blend_target = 1.0
-
 
 func _ready() -> void:
 	add_to_group("player")
-	anim_tree.set("parameters/Blend2/blend_amount", blend_target)
 	in_control = false
-
-	await get_tree().create_timer(10).timeout
-
-	# Start lerping to 0
-	blend_target = 0.0
+	await get_tree().create_timer(4.0).timeout
 	in_control = true
-
-func _process(delta: float) -> void:
-	var current_blend = anim_tree.get("parameters/Blend2/blend_amount")
-	var speed = 2.0  # how fast it fades out
-	var new_blend = lerp(current_blend, blend_target, delta * speed)
-	anim_tree.set("parameters/Blend2/blend_amount", new_blend)
-	#doughnut.visible = false
+	move_out = false
 
 func _physics_process(delta: float) -> void:
 	GlobalVars.player_pos = global_position
@@ -85,7 +71,7 @@ func _physics_process(delta: float) -> void:
 			force_rotate(number)
 		
 		if move_out:
-			var direction = (armature.global_position - force_rotate_list[1].global_position).normalized()
+			var direction = (armature.global_position - force_rotate_list[number].global_position).normalized()
 			velocity.x = lerp(velocity.x, -direction.x * SPEED, LERP_VAL)
 			velocity.z = lerp(velocity.z, -direction.z * SPEED, LERP_VAL)
 			armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-direction.x, -direction.z), LERP_VAL)
@@ -118,13 +104,14 @@ func _on_player_interactor_interacted_now() -> void:
 	interaction = false
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	number = 0
-	force_rotation = true
 	in_control = false
-	await get_tree().create_timer(6).timeout
-	force_rotation = false
-	SPEED = 1.5
-	collision.disabled = true
 	number = 1
-	force_rotate(number)
 	move_out = true
+	collision.disabled = true
+	#await get_tree().create_timer(6).timeout
+	#force_rotation = false
+	#SPEED = 1.5
+	#collision.disabled = true
+	#number = 1
+	#force_rotate(number)
+	#move_out = true
