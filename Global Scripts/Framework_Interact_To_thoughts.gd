@@ -32,6 +32,9 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	GlobalVars.viewing = ""
 	object_interact.show()
-	GlobalVars.set(view_object, true)
 	if extra_anim:
 		extra_anim.play(anim_track)
+		await extra_anim.animation_finished
+		GlobalVars.set(view_object, true)
+	else:
+		GlobalVars.set(view_object, true)

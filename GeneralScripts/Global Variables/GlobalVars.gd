@@ -84,6 +84,7 @@ signal phone_call_receiving
 @onready var poker_thoughts_Quincy = false
 @onready var case_dialogue_Quincy = false
 @onready var bar_dialogue_Quincy_finsihed = false
+@onready var Quincy_toilet_distracted = false
 
 @onready var clicked_offPic_Quincy = 0
 @onready var clicked_journal_Quincy = 0
