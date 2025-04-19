@@ -13,6 +13,8 @@ extends Area2D
 #Dialogue if there is a single thought behind those eyes
 @export var dialogue_file : String
 
+@export var extra_anim : AnimationPlayer = null
+@export var anim_track : String = ""
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
@@ -31,3 +33,5 @@ func _on_timeline_ended():
 	GlobalVars.viewing = ""
 	object_interact.show()
 	GlobalVars.set(view_object, true)
+	if extra_anim:
+		extra_anim.play(anim_track)

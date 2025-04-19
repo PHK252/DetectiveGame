@@ -5,13 +5,15 @@ extends Node3D
 
 @export var collision : CollisionShape3D
 @export var collision_2 : CollisionShape3D
+@export var animation : AnimationPlayer
 
+@export var dialogue_file : String
 #@onready var dalton_marker = $"../../../UI/Dalton_marker"
 #@onready var micah_marker = $"../../../UI/Micah_marker"
 #@onready var theo_marker = $"../../../UI/Theo_marker"
 @export var player = CharacterBody3D
 var is_open: bool = false
-
+var did_dialogue = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -40,19 +42,26 @@ func close() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var distracted = Dialogic.VAR.get_variable("Quincy.is_distracted")
+	if distracted == true: 
+		if is_open == false:
+			await animation.animation_finished
+			open()
+			collision.disabled = true
+			collision_2.disabled = true
+			if did_dialogue == false:
+				GlobalVars.in_dialogue = true
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				Dialogic.start(dialogue_file)
+		if is_open == true: 
+			close()
+			collision.disabled = false
+			collision_2.disabled = false
 
-func _on_interactable_interacted(interactor: Interactor) -> void:
 	
-	if is_open == false:
-		open()
-		collision.disabled = true
-		collision_2.disabled = true
-		return
-		
-	if is_open == true: 
-		close()
-		collision.disabled = false
-		collision_2.disabled = false
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
+	did_dialogue = true
 	
 	

@@ -73,6 +73,7 @@ signal phone_call_receiving
 @onready var viewed_Quincy_fish = false
 @onready var viewed_Quincy_poker = false
 @onready var viewed_Quincy_case = false
+@onready var viewed_Quincy_bookmark = false
 
 @onready var offPic_dialogue_Quincy = false
 @onready var famPic_dialogue_Quincy = false
@@ -82,6 +83,7 @@ signal phone_call_receiving
 @onready var fish_dialogue_Quincy = false
 @onready var poker_thoughts_Quincy = false
 @onready var case_dialogue_Quincy = false
+@onready var bar_dialogue_Quincy_finsihed = false
 
 @onready var clicked_offPic_Quincy = 0
 @onready var clicked_journal_Quincy = 0
@@ -89,6 +91,9 @@ signal phone_call_receiving
 @onready var clicked_coor_Quincy = 0
 @onready var clicked_phone_Quincy = 0
 @onready var clicked_case_Quincy = 0
+
+@onready var Quincy_in_case = false
+@onready var Quincy_in_computer = false
 
 @onready var clicked_recipe_Juniper = 0
 @onready var clicked_case_Juniper = 0

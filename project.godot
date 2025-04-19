@@ -108,6 +108,7 @@ directories/dtl_directory={
 "PLACEHOLDER CHOICE": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER CHOICE.dtl",
 "PLACEHOLDER THOUGHTS": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER THOUGHTS.dtl",
 "PLACEHOLDER2": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER2.dtl",
+"Quincy_Computer": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Computer.dtl",
 "Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
 "Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl",
 "Warrant_home": "res://Dialogue Stuff/Timelines/Micah/Warrant_home.dtl",
@@ -151,6 +152,11 @@ variables={
 "first_house": "",
 "went_to_Juniper": false,
 "went_to_Micah": false
+},
+"Quincy": {
+"Quincy_asked_case": "",
+"is_distracted": false,
+"needs_distraction": false
 }
 }
 glossary/default_case_sensitive=true

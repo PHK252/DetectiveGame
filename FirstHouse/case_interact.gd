@@ -61,7 +61,7 @@ func caseUI(argument: String):
 		player.stop_player()
 		GlobalVars.in_interaction = "case"
 		UI.show()
-		case_cam.priority = 24
+		case_cam.priority = 30
 		main_cam.priority = 0 
 		cam_anim.play("Cam_Idle")
 		
@@ -74,7 +74,7 @@ func _on_exit_pressed():
 	player.show()
 	GlobalVars.in_interaction = ""
 	case_cam.priority = 0
-	main_cam.priority = 24
+	main_cam.priority = 30
 	cam_anim.play("RESET")
 
 func _input(event):
@@ -86,5 +86,5 @@ func _input(event):
 		player.show()
 		GlobalVars.in_interaction = ""
 		case_cam.priority = 0
-		main_cam.priority = 24
+		main_cam.priority = 30
 		cam_anim.play("RESET")

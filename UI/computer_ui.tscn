@@ -216,7 +216,7 @@ _data = {
 &"RESET": SubResource("Animation_melli")
 }
 
-[node name="ComputerUI" type="Node2D"]
+[node name="ComputerUI" type="CanvasLayer"]
 script = ExtResource("1_f0ejt")
 
 [node name="Login" type="Control" parent="."]
