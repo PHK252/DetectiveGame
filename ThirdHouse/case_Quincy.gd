@@ -65,7 +65,7 @@ func caseUI(argument: String):
 		case.hide()
 		GlobalVars.Quincy_in_case = true
 		player.stop_player()
-		GlobalVars.in_interaction = dialogue_file
+		GlobalVars.in_interaction = interact_type
 		UI.show()
 		case_cam.priority = 30
 		main_cam.priority = 0 
@@ -84,7 +84,7 @@ func _on_exit_pressed():
 	cam_anim.play("RESET")
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == dialogue_file: 
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type: 
 		#print("funk")
 		UI.hide()
 		GlobalVars.Quincy_in_case = false

@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var case_ui = $"."
 @onready var text_edit = $Label
 @onready var password = "8008569420"
 
@@ -53,8 +54,12 @@ func _on_x_pressed():
 
 func _on_enter_pressed():
 	if text_edit.text == password:
+		GlobalVars.open_juniper_case.connect(_open_case) 
 		print("Open")
+		GlobalVars.emit_open_jun_case()
 		await get_tree().create_timer(1.5).timeout
+		print("opened case " + str(GlobalVars.opened_jun_case))
+		
 		text_edit.text = ""
 	else:
 		print("nu uh")
@@ -73,3 +78,15 @@ func _input(event):
 	if Input.is_action_just_pressed("Exit"):
 		$".".hide()
 		GlobalVars.in_look_screen = false
+
+	
+
+
+func _open_case():
+	case_ui.hide()
+	#print("opeeended")
+	await get_tree().create_timer(.03).timeout
+	GlobalVars.viewing = ""
+	#play anim
+	$"../../SubViewportContainer/SubViewport/SecondHouseUpdate/Armature/Skeleton3D/topcase".hide()
+	GlobalVars.open_juniper_case.disconnect(_open_case)

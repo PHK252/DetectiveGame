@@ -263,7 +263,7 @@ func _on_pound_pressed():
 func _on_delete_pressed():
 	if len(num_input.text) == 4:
 		num_input.text = num_input.text.erase(len(num_input.text)-2, 2)
-	elif len(num_input.text) < 0:
+	elif len(num_input.text) > 0:
 		num_input.text = num_input.text.erase(len(num_input.text)-1, 1)
 	else:
 		pass

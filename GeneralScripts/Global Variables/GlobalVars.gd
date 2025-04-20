@@ -6,6 +6,9 @@ var default_cursor = preload("res://UI/Assets/Cursors/Default Cursor.png")
 var pointing_hand = preload("res://UI/Assets/Cursors/Pointing Cursor.png")
 
 signal phone_call_receiving 
+signal open_micah_case
+signal open_juniper_case
+signal open_quincy_case
 
 @onready var in_call = false
 @onready var calling = false
@@ -59,11 +62,12 @@ signal phone_call_receiving
 @onready var viewed_recipe_juniper = false
 @onready var viewed_cran_juniper = false
 @onready var viewed_pills_juniper = false
-@onready var viewed_Juniper_case = false
+#@onready var viewed_Juniper_case = false
 @onready var viewed_pie_juniper = false
 @onready var viewed_bills_juniper = false
 @onready var viewed_Juniper_resume = false
 @onready var viewed_Juniper_empinfo = false
+@onready var Juniper_in_case = false
 
 @onready var viewed_Quincy_offPic = false
 @onready var viewed_Quincy_famPic = false
@@ -72,7 +76,7 @@ signal phone_call_receiving
 @onready var viewed_Quincy_phone = false
 @onready var viewed_Quincy_fish = false
 @onready var viewed_Quincy_poker = false
-@onready var viewed_Quincy_case = false
+#@onready var viewed_Quincy_case = false
 @onready var viewed_Quincy_bookmark = false
 
 @onready var offPic_dialogue_Quincy = false
@@ -82,7 +86,7 @@ signal phone_call_receiving
 @onready var phone_dialogue_Quincy = false
 @onready var fish_dialogue_Quincy = false
 @onready var poker_thoughts_Quincy = false
-@onready var case_dialogue_Quincy = false
+#@onready var case_dialogue_Quincy = false
 @onready var bar_dialogue_Quincy_finsihed = false
 @onready var Quincy_toilet_distracted = false
 
@@ -99,7 +103,7 @@ signal phone_call_receiving
 @onready var clicked_recipe_Juniper = 0
 @onready var clicked_case_Juniper = 0
 @onready var clicked_bills_Juniper = 0
-@onready var case_dialogue_Juniper = false
+#@onready var case_dialogue_Juniper = false
 @onready var clicked_resume_Juniper = 0
 @onready var clicked_employee_Juniper = 0
 
@@ -110,6 +114,9 @@ signal phone_call_receiving
 @onready var viewing = ""
 @onready var first_house = ""
 
+@onready var opened_jun_case = false
+@onready var opened_micah_case = false
+@onready var opened_quincy_case = false
 #not quite sure if we need this one
 #@onready var second_house = ""
 @onready var has_secret = false
@@ -137,3 +144,15 @@ func _ready():
 func emit_phone_call():
 	emit_signal("phone_call_receiving")
 	calling = true
+
+func emit_open_micah_case():
+	emit_signal("open_micah_case")
+	opened_micah_case = true
+
+func emit_open_jun_case():
+	emit_signal("open_juniper_case")
+	opened_jun_case = true
+	
+func emit_open_quincy_case():
+	emit_signal("open_quincy_case")
+	opened_quincy_case = true

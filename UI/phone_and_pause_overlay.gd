@@ -17,7 +17,6 @@ func _ready():
 	pass
 func _process(delta):
 	if GlobalVars.in_call == false and called == false:
-
 		GlobalVars.phone_call_receiving.connect(_on_call_received)
 		GlobalVars.in_call = true
 	else:
