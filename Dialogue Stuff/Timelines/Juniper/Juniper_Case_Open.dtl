@@ -14,6 +14,7 @@ if {Character Aff Points.Juniper} >= 1:
 	Dalton: ...
 	Dalton: What is it?
 	Theo: It's not worth the time, Dalton...
+	set {Juniper.Juniper_case_interlude_finished} = true
 	[end_timeline]
 else:
 	[end_timeline]

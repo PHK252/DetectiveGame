@@ -69,6 +69,11 @@ signal open_quincy_case
 @onready var viewed_Juniper_empinfo = false
 @onready var Juniper_in_case = false
 
+@onready var view_apron_juniper = false
+@onready var view_letter_juniper = false
+@onready var view_bills_juniper = false
+@onready var view_nametag_juniper = false
+
 @onready var viewed_Quincy_offPic = false
 @onready var viewed_Quincy_famPic = false
 @onready var viewed_Quincy_coor = false
@@ -94,6 +99,7 @@ signal open_quincy_case
 @onready var clicked_journal_Quincy = 0
 #@onready var clicked_famPic_Quincy = 0
 @onready var clicked_coor_Quincy = 0
+
 @onready var clicked_phone_Quincy = 0
 @onready var clicked_case_Quincy = 0
 
@@ -101,8 +107,10 @@ signal open_quincy_case
 @onready var Quincy_in_computer = false
 
 @onready var clicked_recipe_Juniper = 0
+@onready var clicked_letter_Juniper = 0
 @onready var clicked_case_Juniper = 0
 @onready var clicked_bills_Juniper = 0
+@onready var clicked_nametag_Juniper = 0
 #@onready var case_dialogue_Juniper = false
 @onready var clicked_resume_Juniper = 0
 @onready var clicked_employee_Juniper = 0
