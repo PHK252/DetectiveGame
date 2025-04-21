@@ -10,6 +10,7 @@ extends Area2D
 
 @onready var dalton_marker = $"../../../../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../../../../UI/Micah_marker"
+var pic_fell = false
 
 func _ready():
 	pic_fall_anim.play("Default")
@@ -17,7 +18,8 @@ func _ready():
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true and pic_fell == false:
+			pic_fell = true
 			print("weeeeeeee") 
 			GlobalVars.in_look_screen = true
 			pic_fall_anim.play("PicFalling")
