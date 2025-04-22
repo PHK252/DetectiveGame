@@ -13,16 +13,17 @@ extends Node3D
 @onready var asked = false
 
 func _on_interactable_interacted(interactor):
+	#print(asked)
 	#emit_signal("Dquestion")
-	if asked == false:
+	if GlobalVars.in_dialogue == false and asked == false:
 		#emit_signal("Tstop")
 		GlobalVars.in_dialogue = true
 		player.stop_player()
 		var ask_victims = Dialogic.start("Juniper_questions")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), theo_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), juniper_marker)
+		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		ask_victims.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 
 func _on_timeline_ended():
 	#emit_signal("Dstopped")
@@ -30,9 +31,10 @@ func _on_timeline_ended():
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	asked = true
+	#asked = true
 
 func _process(delta):
+	asked = Dialogic.VAR.get_variable("Juniper.asked_all")
 	if asked == true:
 		#print("hide")
 		$Interactable.set_monitorable(false)

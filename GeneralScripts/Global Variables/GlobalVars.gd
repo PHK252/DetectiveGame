@@ -25,6 +25,7 @@ signal open_quincy_case
 @onready var clicked_cab = 0
 @onready var viewed_case_file = 0
 @onready var clicked_Micah_pic = 0
+@onready var clicked_case_Micah = 0
 
 @onready var closet_dialogue = false
 @onready var Micah_pic_dialogue = false

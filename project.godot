@@ -137,12 +137,15 @@ variables={
 "Micah_Quincy_Q1": false,
 "Micah_Quincy_Q2": false,
 "Micah_Theo_enter": false,
+"Micah_asked_all": false,
 "Micah_asked_juniper": false,
 "Micah_cab": 0,
-"Micah_know_Juniper": false
+"Micah_know_Juniper": false,
+"finished_key": false,
+"finished_letter": false
 },
 "Character Aff Points": {
-"Juniper": 2,
+"Juniper": 0,
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
@@ -156,11 +159,17 @@ variables={
 "Juniper": {
 "Juniper_asked_case": false,
 "Juniper_case_interlude_finished": false,
+"asked_Micah": false,
+"asked_Quincy": false,
+"asked_all": false,
+"asked_missing": false,
+"asked_time": false,
+"asked_who": false,
 "finished_letter": false,
 "finished_name_tag": false
 },
 "Quincy": {
-"Quincy_asked_case": "",
+"Quincy_asked_case": false,
 "is_distracted": false,
 "needs_distraction": false,
 "out_of_bathroom": false
@@ -186,6 +195,7 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
+save/autosave=false
 
 [display]
 

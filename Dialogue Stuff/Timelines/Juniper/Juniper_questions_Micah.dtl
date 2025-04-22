@@ -1,8 +1,8 @@
+set {Juniper.asked_Micah} = true
 if {Character Aff Points.Juniper} <= 0:
 	Dalton: Do you know him?
 	Juniper: Who is this?
 	Dalton: I was hoping you would tell me.
-	
 	if {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == true and {Asked Questions.Micah_asked_juniper} == true:
 		Juniper: No.
 		Juniper: I don't know him.
@@ -14,6 +14,18 @@ if {Character Aff Points.Juniper} <= 0:
 		Juniper: I don't know him...
 		Juniper: It's not like I keep tabs with all my costumers.
 		Dalton: Hmph.
+		if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+			set {Juniper.asked_all} = true
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton: ...
+			- Ask more questions.
+				jump Juniper_questions/questions
+			- Continue looking around the house.
+				Dalton: That's all the questions I have right now.
+				[end_timeline]
 	elif {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == false and {Asked Questions.Micah_asked_juniper} == true:
 		Juniper: No.
 		Juniper: I don't know him.
@@ -24,9 +36,33 @@ if {Character Aff Points.Juniper} <= 0:
 		Juniper: You dectectives and your vagueries.
 		Juniper: He probably mistook me for somebody else.
 		Juniper: I've never seen him ever in my life...
+		if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+			set {Juniper.asked_all} = true
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton: ...
+			- Ask more questions.
+				jump Juniper_questions/questions
+			- Continue looking around the house.
+				Dalton: That's all the questions I have right now.
+				[end_timeline]
 	else:
 		Juniper: No
 		Juniper: I don't know him.
+		if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+			set {Juniper.asked_all} = true
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton: ...
+			- Ask more questions.
+				jump Juniper_questions/questions
+			- Continue looking around the house.
+				Dalton: That's all the questions I have right now.
+				[end_timeline]
 else:
 	Dalton: Do you know him?
 	Juniper: ... 
@@ -41,6 +77,18 @@ else:
 		Juniper: I'm sorry...
 		Dalton: Oh... 
 		Dalton: ...it's fine.
+		if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+			set {Juniper.asked_all} = true
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton: ...
+			- Ask more questions.
+				jump Juniper_questions/questions
+			- Continue looking around the house.
+				Dalton: That's all the questions I have right now.
+				[end_timeline]
 	elif {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == false and {Asked Questions.Micah_asked_juniper} == true:
 		Dalton: He said you recognized you from...
 		Dalton: ..."around".
@@ -51,9 +99,33 @@ else:
 		Juniper: Or maybe we crossed paths on the street one day... 
 		Juniper: But no I don't know him personally.
 		Dalton: Hmph.
+		if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+			set {Juniper.asked_all} = true
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton: ...
+			- Ask more questions.
+				jump Juniper_questions/questions
+			- Continue looking around the house.
+				Dalton: That's all the questions I have right now.
+				[end_timeline]
 	else:
 		Juniper: Oh...
 		Juniper: I don't know who that is... 
 		Juniper: I'm sorry...
 		Dalton: Hmmph.
 		Dalton: It's fine...
+		if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+			set {Juniper.asked_all} = true
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton: ...
+			- Ask more questions.
+				jump Juniper_questions/questions
+			- Continue looking around the house.
+				Dalton: That's all the questions I have right now.
+				[end_timeline]

@@ -179,7 +179,6 @@ func _input(event):
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			else:
-				print("enteredddd")
 				GlobalVars.in_interaction = ""
 				player.start_player()
 				alert.show()

@@ -1,32 +1,52 @@
 if {Character Aff Points.Juniper} <= 0:
 	Dalton: Can I ask you a few questions?
-	Juniper: Sure... 
+	Juniper: Sure...
 	Juniper: Make it quick.
+	[wait time="0.3"]
+	label questions
 	Dalton: ...
+	- Ask preliminary questions.
+		[wait time="0.3"]
+		Dalton: ...
 		- Were you here when the break-in happened?
 			jump Juniper_questions_time/
 		- Anything missing?
 			jump Juniper_questions_missing/
 		- Do you know of anyone who would want to break-in?
 			jump Juniper_questions_who/
-		- Connection to other victims
-			- Ask about Quincy 
-				jump Juniper_questions_quincy/
-			- Ask about Micah
-				jump Juniper_questions_Micah/
-else: 
+	- Ask about her connection to other victims
+		[wait time="0.3"]
+		Dalton: ...
+		- Show picture of Quincy
+			jump Juniper_questions_quincy/
+		- Show picture of Micah
+			jump Juniper_questions_Micah/
+	- Continue looking around the house.
+		Dalton: That's all the questions I have right now.
+		[end_timeline]
+else:
 	Dalton: Can I ask you a few questions?
-	Juniper: Of course! 
+	Juniper: Of course!
 	Juniper: Ask away!
+	label questions
+	[wait time="0.3"]
 	Dalton: ...
+	- Ask about preliminary questions
+		[wait time="0.3"]
+		Dalton: ...
 		- Were you here when the break-in happened?
 			jump Juniper_questions_time/
 		- Anything missing?
 			jump Juniper_questions_missing/
 		- Do you know of anyone who would want to break-in?
 			jump Juniper_questions_who/
-		- Connection to other victims
-			- Ask about Quincy 
-				jump Juniper_questions_quincy/
-			- Ask about Micah
-				jump Juniper_questions_Micah/
+	- Connection to other victims
+		[wait time="0.3"]
+		Dalton: ...
+		- Ask about Quincy
+			jump Juniper_questions_quincy/
+		- Ask about Micah
+			jump Juniper_questions_Micah/
+	- Continue looking around the house.
+		Dalton: That's all the questions I have right now.
+		[end_timeline]

@@ -1,10 +1,23 @@
+set {Juniper.asked_time} = true
 if {Character Aff Points.Juniper} <= 0:
 	Dalton: Were you present when the break-in happened? 
 	Juniper: No, I was at the Cafe when it happened.
 	Juniper: I suppose... 
 	Dalton: When did you leave for the cafe?
 	Juniper: Yesterday Noon.
-	Dalton: Hmph. 
+	Dalton: Hmph.
+	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+		set {Juniper.asked_all} = true
+		Dalton: That's all the questions I have right now.
+		[end_timeline]
+	else:
+		[wait time="0.3"]
+		Dalton: ...
+		- Ask more questions.
+			jump Juniper_questions/questions
+		- Continue looking around the house.
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
 else:
 	Dalton: Were you present when the break-in happened? 
 	Juniper: No... 
@@ -18,3 +31,15 @@ else:
 	Juniper: I am...
 	Dalton: I'll try not to take up more of your time
 	Juniper: Thanks.
+	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+		set {Juniper.asked_all} = true
+		Dalton: That's all the questions I have right now.
+		[end_timeline]
+	else:
+		[wait time="0.3"]
+		Dalton: ...
+		- Ask more questions.
+			jump Juniper_questions/questions
+		- Continue looking around the house.
+			Dalton: That's all the questions I have right now.
+			[end_timeline]

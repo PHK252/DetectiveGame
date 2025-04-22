@@ -29,9 +29,10 @@ func _on_timeline_ended():
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	asked = true
+	#asked = true
 
 func _process(delta):
+	asked = Dialogic.VAR.get_variable("Asked Questions.Micah_asked_all")
 	if asked == true:
 		#print("hide")
 		$Interactable.set_monitorable(false)

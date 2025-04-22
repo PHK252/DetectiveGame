@@ -1,3 +1,4 @@
+set {Juniper.asked_Quincy} = true
 if {Character Aff Points.Juniper} <= 0:
 	Juniper: Why are you showing me a picture of the mayor?
 	Dalton: ... 
@@ -23,6 +24,18 @@ if {Character Aff Points.Juniper} <= 0:
 	Juniper: Kinda a stupid question to ask knowing what you know... 
 	Juniper: But, no I don't... 
 	Juniper: I wouldn't tell you even if I did. 
+	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+		set {Juniper.asked_all} = true
+		Dalton: That's all the questions I have right now.
+		[end_timeline]
+	else:
+		[wait time="0.3"]
+		Dalton: ...
+		- Ask more questions.
+			jump Juniper_questions/questions
+		- Continue looking around the house.
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
 else:
 	Juniper: Huh? 
 	Juniper: Why are you showing me a picture of the mayor?
@@ -52,3 +65,15 @@ else:
 	Juniper: Oh, I know many...
 	Juniper: Just noone that would be able to do it successfully... 
 	Dalton: I see...
+	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
+		set {Juniper.asked_all} = true
+		Dalton: That's all the questions I have right now.
+		[end_timeline]
+	else:
+		[wait time="0.3"]
+		Dalton: ...
+		- Ask more questions.
+			jump Juniper_questions/questions
+		- Continue looking around the house.
+			Dalton: That's all the questions I have right now.
+			[end_timeline]
