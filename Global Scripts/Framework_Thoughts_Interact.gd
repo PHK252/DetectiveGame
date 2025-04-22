@@ -29,6 +29,8 @@ extends Node3D
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
 
+@export var is_player_visible : bool = false
+
 #Load Global Variables
 @export var interact_type: String
 @export var dialogue: String
@@ -109,7 +111,8 @@ func _on_interactable_interacted(interactor):
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
 		cam_anim.play("Cam_Idle")
-		player.hide()
+		if is_player_visible == false:
+			player.hide()
 		player.stop_player()
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_thoughts_ended)
