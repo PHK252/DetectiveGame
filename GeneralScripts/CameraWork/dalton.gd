@@ -327,3 +327,7 @@ func _on_kitchen_area_jun_body_entered(body: Node3D) -> void:
 		in_control = false
 		await get_tree().create_timer(0.5).timeout
 		in_control = true
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

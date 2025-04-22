@@ -300,7 +300,8 @@ func _on_door_micah_rotate() -> void:
 		anim_player.play("basketball_default")
 		#set all one shots to abort
 		is_navigating = true
-		is_wandering = false
+		nav.target_position = marker_positions[3].global_position
+		is_wandering = true
 		state = FOLLOW
 	else:
 		at_door = true
