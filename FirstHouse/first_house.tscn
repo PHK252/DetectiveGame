@@ -7844,6 +7844,8 @@ v_offset = 0.34
 projection = 1
 transform = Transform3D(-1, -6.25678e-08, 6.10574e-08, 0, 0.698415, 0.715693, -8.74228e-08, 0.715693, -0.698415, 0.68, 1.38339, 1.015)
 current = true
+size = 2.8
+near = 2.386
 
 [node name="PhantomCameraHost" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem/Camera3D"]
 script = ExtResource("1_jaeu8")
@@ -8367,6 +8369,7 @@ mesh = SubResource("ArrayMesh_eo4h0")
 
 [node name="note" parent="SubViewportContainer/FirstHouseUpdated" index="39"]
 transform = Transform3D(-0.000385922, 0, -0.0605207, 0, 0.0666109, 0, 0.0666098, 0, -0.000350657, 2.82947, 0.590013, 0.212496)
+visible = false
 
 [node name="Plane_004" parent="SubViewportContainer/FirstHouseUpdated" index="40"]
 transform = Transform3D(-0.000407009, 0.287378, 6.41122e-06, -0.601623, -0.00019421, 0.018961, 0.0277269, 4.47314e-06, 0.411419, -3.10612, 1.3133, 1.32457)
