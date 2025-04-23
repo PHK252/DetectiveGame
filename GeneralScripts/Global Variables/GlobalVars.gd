@@ -22,6 +22,7 @@ signal open_quincy_case
 @onready var clicked_missing = 0
 @onready var clicked_tool_note = 0
 @onready var clicked_book_note = 0
+@onready var clicked_case_letter_note = 0
 @onready var clicked_cab = 0
 @onready var viewed_case_file = 0
 @onready var clicked_Micah_pic = 0
@@ -41,6 +42,9 @@ signal open_quincy_case
 @onready var viewed_Micah_pic = false
 @onready var viewed_Micah_fridge = false
 @onready var viewed_Micah_window = false
+@onready var viewed_Micah_letter = false
+@onready var viewed_Micah_key = false
+@onready var viewed_Micah_hair = false
 
 @onready var viewed_Juniper_house_pic = false
 @onready var viewed_Juniper_cafe_pic = false

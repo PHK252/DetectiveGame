@@ -32,7 +32,7 @@ Dalton: ...
 	Theo: Would you like to talk more inside?
 	Juniper: I guess...
 	Theo: Thanks...
-	# #signal Juniper Enter House
+	[signal arg="open_door"]
 	# #jump Juniper Low 
 - Talk inside
 	Dalton: Shall we take this conversation inside?
@@ -43,5 +43,5 @@ Dalton: ...
 	Juniper: Come inside.
 	Dalton: Thank you.
 	Theo: Thanks, ma'am
-	# #signal Juniper Enter House
+	[signal arg="open_door"]
 	# #jump Juniper Low

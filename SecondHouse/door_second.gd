@@ -4,7 +4,7 @@ extends Node3D
 @export var collision : CollisionShape3D
 
 #@onready var dalton_marker = $"../../../UI/Dalton_marker"
-#@onready var micah_marker = $"../../../UI/Micah_marker"
+#@onready var micah_marker = $"../../../UI/Juniper_marker"
 #@onready var theo_marker = $"../../../UI/Theo_marker"
 @export var player = CharacterBody3D
 var is_open: bool = false
