@@ -14,6 +14,7 @@ extends CanvasLayer
 
 @export var cam_anim : AnimationPlayer
 @export var open_animation : AnimationPlayer
+@export var open_animation_2 : AnimationTree
 @export var interact_area_1 : Area2D
 @export var interact_area_2 : Area2D
 @export var interact_area_3 : Area2D
@@ -102,8 +103,9 @@ func _open_case():
 	GlobalVars.in_look_screen = false
 	GlobalVars.Micah_in_case = false
 	$".".hide()
-	open_animation.play("caseopened")
-	await open_animation.animation_finished
+	#open_animation.play("caseopened")
+	open_animation_2["parameters/conditions/case_opened"] = true
+	await open_animation_2.animation_finished
 	await get_tree().create_timer(.03).timeout
 	GlobalVars.viewing = ""
 	interact_area_1.show()
