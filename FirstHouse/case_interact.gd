@@ -9,6 +9,14 @@ extends Node3D
 @export var interact_area: Area2D
 @export var UI : CanvasLayer
 
+@export var case_top_1 : MeshInstance3D
+@export var case_bottom_1 : MeshInstance3D
+
+@export var case_top_2 : MeshInstance3D
+@export var case_bottom_2 : MeshInstance3D
+@export var case_hair : MeshInstance3D
+@export var case_note : MeshInstance3D
+@export var case_key : MeshInstance3D
 
 @export var interior_interact_area_1 : Area2D
 @export var interior_interact_area_2 : Area2D
@@ -31,6 +39,11 @@ extends Node3D
 func _ready():
 	UI.hide()
 	interact_area.hide()
+	case_top_2.hide()
+	case_bottom_2.hide()
+	case_hair.hide()
+	case_note.hide()
+	case_key.hide()
 	pass # Replace with function body.
 
 
@@ -39,6 +52,11 @@ func _on_interactable_interacted(interactor):
 	print(case_asked)
 	if GlobalVars.in_dialogue == false:
 		if case_asked == false:
+			case_top_2.hide()
+			case_bottom_2.hide()
+			case_hair.hide()
+			case_note.hide()
+			case_key.hide()
 			GlobalVars.in_dialogue = true
 			GlobalVars.in_interaction = interact_type
 			alert.hide()
@@ -57,7 +75,7 @@ func _on_interactable_interacted(interactor):
 			player.stop_player()
 			case_cam.priority = 30
 			main_cam.priority = 0 
-			cam_anim.play("Cam_Idle")
+			cam_anim.play("Case_look")
 			interior_interact_area_1.show()
 			interior_interact_area_2.show()
 		else:
