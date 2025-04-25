@@ -141,6 +141,10 @@ var cam_changed = false
 var clue_progress = 1
 var ghost_open = false
 
+var master_volume : int
+var music_volume : int
+var effect_volume : int
+
 func set_mouse_default():
 	#print("set default")
 	Input.set_custom_mouse_cursor(GlobalVars.default_cursor, Input.CURSOR_ARROW, Vector2(10,10))

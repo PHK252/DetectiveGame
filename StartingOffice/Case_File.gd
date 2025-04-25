@@ -2,9 +2,9 @@ extends MeshInstance3D
 
 @onready var object = $"."
 @onready var look = $"../../../../UI/Case Look"
-@onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../Characters/Dalton/CharacterBody3D"
 @onready var dalton_marker = $"../../../../UI/Dalton's Marker"
-@onready var alert = $"../../../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
+@onready var alert = $"../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
 func _on_interactable_interacted(interactor):
 	object.hide()

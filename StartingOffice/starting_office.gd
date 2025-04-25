@@ -5,7 +5,7 @@ extends Node3D
 @onready var news = $UI/News
 @onready var contact = $UI/Contact
 @onready var missing = $"UI/Missing Persons"
-@onready var alert = $Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert
+@onready var alert = $SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	team_pic.hide()

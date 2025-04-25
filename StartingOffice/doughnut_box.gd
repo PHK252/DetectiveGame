@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-@onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D"
 @onready var dalton_marker = $"../../../../UI/Dalton's Marker"
 
 func _on_interactable_interacted(interactor):

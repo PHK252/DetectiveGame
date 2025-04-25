@@ -3,7 +3,7 @@ extends MeshInstance3D
 @onready var cork_cam = $"../../CameraSystem/Corkboard cam"
 @onready var cam_anim = $"../../CameraSystem/Corkboard cam/AnimationPlayer"
 @onready var main_cam = $"../../CameraSystem/PhantomCamera3D"
-@onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../Characters/Dalton/CharacterBody3D"
 @onready var team_pic = $"../../../../UI/TeamPic"
 @onready var partner_pic = $"../../../../UI/PartnerPic"
 @onready var news = $"../../../../UI/News"

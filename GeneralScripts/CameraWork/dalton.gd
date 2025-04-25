@@ -10,6 +10,10 @@ const LERP_VAL = .15
 var jogcheck = false
 var idle_timer_active: bool = false
 @export var force_rotate_list: Array[Marker3D]
+@export var sound_player : AnimationPlayer
+var gathered = false
+var walk_indicate = false
+
 
 const MAX_STEP_HEIGHT = 1.2
 var _snapped_to_stairs_last_frame := false
@@ -78,14 +82,23 @@ func _physics_process(delta: float) -> void:
 				# Set movement direction and apply smooth movement
 				velocity.x = lerp(velocity.x, -rotated_dir.x * SPEED, LERP_VAL)
 				velocity.z = lerp(velocity.z, -rotated_dir.z * SPEED, LERP_VAL)
-
+				if SPEED == 2.2:
+					sound_player.play("FootstepsJog")
+				else:
+					sound_player.play("Footsteps")
 				# Smoothly rotate the armature to face the movement direction
 				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
 				jogcheck = true
 				idle_timer_active = false
+				walk_indicate = true
+				gathered = false
 				#if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					#anim_tree["parameters/Blend3/blend_amount"] = 0
 			else:
+				if gathered == false and walk_indicate == true:
+					sound_player.stop()
+					sound_player.play("FootstepsGather")
+					gathered = true
 				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
 				jogcheck = false
@@ -327,7 +340,6 @@ func _on_kitchen_area_jun_body_entered(body: Node3D) -> void:
 		in_control = false
 		await get_tree().create_timer(0.5).timeout
 		in_control = true
-
 
 func _on_timer_timeout() -> void:
 	pass # Replace with function body.
