@@ -3,11 +3,13 @@ extends Area2D
 @onready var object = $"."
 @onready var look = $"../TeamPic Look"
 @onready var alert = $"../TeamHover"
+@export var click : AudioStreamPlayer
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				click.play()
 				object.hide()
 				alert.hide()
 				look.show()

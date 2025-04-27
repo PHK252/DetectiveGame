@@ -5,7 +5,10 @@ extends Node
 @export var audio_master : Array[AudioStreamPlayer]
 
 func _on_doughnut_001_time_to_eat() -> void:
-	await get_tree().create_timer(3.0).timeout
+	audio[3].play()
+	await get_tree().create_timer(2.0).timeout
+	audio[9].play()
+	await get_tree().create_timer(1.0).timeout
 	audio[2].play()
 
 func _on_detective_anims_dalton_invisible() -> void:
@@ -30,3 +33,23 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 func _on_paper_sound() -> void:
 	audio_master[0]["parameters/switch_to_clip"] = "Clip 10"
 	audio_master[0].play() 
+
+
+func _on_general_interacted(interactor: Interactor) -> void:
+	audio[3].play()
+	
+	
+func _on_team_pic_mouse_entered() -> void:
+	audio[4].play()
+	
+func exit_hiss_mouse_entered() -> void:
+	audio[6].play()
+
+func _on_exit_pressed() -> void:
+	audio[5].play()
+
+func _on_arrow_pressed() -> void:
+	audio[7].play()
+
+func _on_back_arrow_pressed() -> void:
+	audio[8].play()

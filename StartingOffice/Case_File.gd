@@ -5,16 +5,18 @@ extends MeshInstance3D
 @onready var player = $"../../Characters/Dalton/CharacterBody3D"
 @onready var dalton_marker = $"../../../../UI/Dalton's Marker"
 @onready var alert = $"../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
+var just_interacted = false
 
 func _on_interactable_interacted(interactor):
-	object.hide()
-	look.show()
-	GlobalVars.in_look_screen = true
-	GlobalVars.in_interaction = "case file"
-
-
+	if just_interacted == false:
+		just_interacted = true
+		object.hide()
+		look.show()
+		GlobalVars.in_look_screen = true
+		GlobalVars.in_interaction = "case file"
 
 func _on_exit_pressed():
+	just_interacted = false
 	alert.hide()
 	object.show()
 	#GlobalVars.in_look_screen = false
@@ -35,6 +37,7 @@ func _on_timeline_ended():
 func _process(delta):
 	if GlobalVars.in_interaction == "case file":
 		if Input.is_action_just_pressed("Exit"):
+			just_interacted = false
 			alert.hide()
 			object.show()
 			#GlobalVars.in_look_screen = false

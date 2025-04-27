@@ -320,6 +320,7 @@ func _on_phone_call_phone_call() -> void:
 func _on_idle_2_timeout() -> void:
 	if velocity.length() == 0: 
 		if anim_tree["parameters/Thinking/request"] != 1:
+			sound_player.play("thinking")
 			anim_tree.set("parameters/Thinking/request", true)
 
 

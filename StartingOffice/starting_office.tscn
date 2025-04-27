@@ -1,4 +1,4 @@
-[gd_scene load_steps=334 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=348 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dy2ngrst3vkxs" path="res://StartingOffice/lamp.glb" id="21_wyk6p"]
 [ext_resource type="Texture2D" uid="uid://b4saa7axtk1im" path="res://StartingOffice/Map v2 small.png" id="22_nx55m"]
 [ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="22_pkx6a"]
+[ext_resource type="AudioStream" uid="uid://5imfpjhajooe" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hover.wav" id="25_3mogx"]
 [ext_resource type="Shader" uid="uid://nav80wtg76hi" path="res://ShaderScripts/plank.tres" id="25_jbtrc"]
 [ext_resource type="Texture2D" uid="uid://bsmsq634p0ytd" path="res://UniversalEnvironmentPalette/Universal_Environment_Palette.png" id="29_lobvy"]
 [ext_resource type="Script" uid="uid://djh7345pdktkc" path="res://StartingOffice/Clues.gd" id="30_enl4g"]
@@ -86,9 +87,11 @@
 [ext_resource type="AudioStream" uid="uid://d27k22hlhjvko" path="res://Audio/Footsteps/shoe_wood_8.wav" id="57_llyb2"]
 [ext_resource type="AudioStream" uid="uid://dsh00lmukhbvg" path="res://Audio/Footsteps/shoe_wood_9.wav" id="58_olyjw"]
 [ext_resource type="AudioStream" uid="uid://2f81e4qr4mdd" path="res://Audio/Footsteps/shoe_wood_10.wav" id="59_tc634"]
+[ext_resource type="AudioStream" uid="uid://dmbp61y7n6gng" path="res://Audio/StartOffice/thinking_sound.wav" id="60_coq00"]
 [ext_resource type="AudioStream" uid="uid://djut5wwrbltgv" path="res://Audio/StartOffice/Doughnut_1.wav" id="60_tc634"]
 [ext_resource type="AudioStream" uid="uid://chk4kr707asft" path="res://Audio/StartOffice/Doughnut_2.wav" id="61_pkwu4"]
 [ext_resource type="AudioStream" uid="uid://do8mg23jw0n1l" path="res://Audio/StartOffice/Doughnut_3.wav" id="62_t2mo3"]
+[ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="65_n72d4"]
 [ext_resource type="AudioStream" uid="uid://b3m6l832o8ih3" path="res://Audio/StartOffice/SitDown_1.wav" id="67_4ovd3"]
 [ext_resource type="PackedScene" uid="uid://xrae3qn8fqb6" path="res://StartingOffice/OfficeItems.glb" id="67_7cs0s"]
 [ext_resource type="Script" uid="uid://ce65wpgqyu531" path="res://GeneralScripts/AudioScripts/audio_manager.gd" id="67_pkwu4"]
@@ -96,7 +99,11 @@
 [ext_resource type="Texture2D" uid="uid://brsitg6ifj3o8" path="res://StartingOffice/OfficeItems_doughnutPatterns.png" id="68_pjt0x"]
 [ext_resource type="AudioStream" uid="uid://ojaa8oniyhyn" path="res://Audio/StartOffice/SitDown_3.wav" id="69_0gwsg"]
 [ext_resource type="AudioStream" uid="uid://c8ynot71jue2b" path="res://Audio/StartOffice/GetUpChair.wav" id="70_exaa1"]
+[ext_resource type="AudioStream" uid="uid://c0pb3xq0e7rqx" path="res://Audio/StartOffice/crackle_1.wav" id="70_unpt5"]
+[ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="70_uq3cw"]
+[ext_resource type="AudioStream" uid="uid://mjetrajgnyme" path="res://Audio/StartOffice/crackle_2.wav" id="71_coq00"]
 [ext_resource type="AudioStream" uid="uid://j5ew6cqfmox4" path="res://Audio/StartOffice/GetUpChair_2.wav" id="71_n72d4"]
+[ext_resource type="AudioStream" uid="uid://hehmwaqn2yue" path="res://Audio/StartOffice/crackle_3.wav" id="72_3mogx"]
 [ext_resource type="AudioStream" uid="uid://desghnpqodlth" path="res://Audio/StartOffice/GetUpChair3.wav" id="72_uq3cw"]
 [ext_resource type="AudioStream" uid="uid://cfvcemw6c8n7a" path="res://Audio/PapersGeneral/Paper_1.wav" id="73_ykcnq"]
 [ext_resource type="AudioStream" uid="uid://brscf5foi065t" path="res://Audio/PapersGeneral/Paper_2.wav" id="74_qhxu8"]
@@ -108,7 +115,11 @@
 [ext_resource type="AudioStream" uid="uid://bx07fx708ewye" path="res://Audio/PapersGeneral/Paper_8.wav" id="80_bexh6"]
 [ext_resource type="AudioStream" uid="uid://bfbj3huhs0vea" path="res://Audio/PapersGeneral/Paper_9.wav" id="81_l4hd4"]
 [ext_resource type="AudioStream" uid="uid://cer2ihpoxkm2d" path="res://Audio/PapersGeneral/Paper_10.wav" id="82_0xn1k"]
+[ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="84_4ovd3"]
 [ext_resource type="AudioStream" uid="uid://dhtooci6dtyw5" path="res://Audio/Ambience/ACnoise.wav" id="84_t2mo3"]
+[ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="86_0gwsg"]
+[ext_resource type="AudioStream" uid="uid://dlmukgdrndsxy" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_2.wav" id="86_huq4m"]
+[ext_resource type="AudioStream" uid="uid://cfpc6h48grldo" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/blip_2.wav" id="89_uq3cw"]
 
 [sub_resource type="Curve3D" id="Curve3D_acv4t"]
 bake_interval = 1.0
@@ -3179,11 +3190,29 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_3mogx"]
+resource_name = "thinking"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dalton/ThinkingSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxqof"]
 _data = {
 &"Footsteps": SubResource("Animation_6r5d2"),
 &"FootstepsGather": SubResource("Animation_5ufrc"),
-&"FootstepsJog": SubResource("Animation_hxqof")
+&"FootstepsJog": SubResource("Animation_hxqof"),
+&"thinking": SubResource("Animation_3mogx")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s2tlg"]
@@ -3225,7 +3254,6 @@ blend_point_1/pos = 1.0
 min_space = 0.0
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_el3uy"]
-graph_offset = Vector2(-150.72, 50.88)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_suyxw")
 nodes/Animation/position = Vector2(110, 210)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_iby5t")
@@ -3234,6 +3262,13 @@ nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_cdqyf")
 nodes/BlendSpace1D/position = Vector2(80, 60)
 nodes/output/position = Vector2(510, 140)
 node_connections = [&"Blend2", 0, &"BlendSpace1D", &"Blend2", 1, &"Animation", &"output", 0, &"Blend2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e7hds"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("70_unpt5")
+stream_1/stream = ExtResource("71_coq00")
+stream_2/stream = ExtResource("72_3mogx")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wr5i3"]
 streams_count = 3
@@ -3302,6 +3337,12 @@ clip_10/name = &"Paper 11"
 clip_10/stream = SubResource("AudioStreamRandomizer_0gwsg")
 clip_10/auto_advance = 0
 initial_clip = 10
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_uq3cw"]
+data = PackedByteArray("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80UQCgDTRTjBIcYBApoAgEAFFBMAnA440AUAnAhAKDhTRIDRAgAABOONBwEACHLLHGmmGgRTjhQDjTTTAgOWNAEJwgECACiCmgU00QQAAAACcIAAAAABxpgEBooA4AUQE4ACAQcIBQThCIAIAEgMAAgBxoMCE0AAQGmCigjAAAADjAIIAgApNANOMAgA0HCACgAnCAAaaIKcYAAIBNNBoONANEUAQUwAAEQHGAQKBAAAABBAANNEAEEENEAAU0QQGiCnGAKKaaIABQBRAAEBxgOWOAgAQQGmmg4wHAKacqaDjAIIBooAoIoFNEAGmg4wA0HHGgBDRBADjRTjAFAogEBgBokEHKiGGiAQAwDRBAAAeKKDBEOMBpppgNMI0QA0HGgUAgTlhTjjjjjQAgAEAEFUBxgAinHGiA4wnAAcaYBAaaaYBxpOEFAogEICCCA0CE444wKKaABRBVjDCEABApxxogAAAQGiCACHKgCccaCcaBQcAghywpxxoAoCAAinGgUQQAIRTgACccaIAhggOMEAgpoCACmA4SA0GgIaaaaaIAKBBohpohhogggAAAUAAAEACgDjRDRAAQATApoNEJoggFMAiE40AAU0SATTTTRIIJBIBxpoOOAoAAEA5YwAGmA40AADjQBQIAaVAxxpxxxoAAEEQ0HKg0Q0QwTRDQaIATgACVCyogEEEAgAAHHLGgAAQQTjQcaDjjgcAAgENEBpoNMA405UHGiCAATTTRIaIDjAApoEEApwpxoAAAAAACiA0QDhBQABABAAAIEJxoEJoAEACgAUAQACAATjThAKDhCcANEhoNEEANECAAUQCAnGnAIIIKcDSKaBBogoFAAAogEAmg04SA0QCgAYAJBDQaDlAAAAABxpxgAI00QCACgAAAIAcaIAAAKBApxooFOMAgME0UwCGmg0GgjQAACaAcaIAONAFAoopxgACGiCmmg40AAKIDjRABCaAAogBppohogCiiiiAUAAAAKcsaBRAAKIAFONMEBohyoACnGACiAAUQDjAYIBBAAcBAoJxxxpxwgHHHHGnCE4CgThABTAaIIcAAoABApxgAMKiCCAQwHGAQjhAaYABTTRBOVEBNIgoooCA0wQwA0HKgBQAKBQRRTQBoggONOOFOMCminAQASmgwCKcIAKCcIACWVENNNWWMAAAAAAHCACiQBBDTQaIcsc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")
+format = 3
+mix_rate = 96000
+stereo = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlk2f"]
 size = Vector2(375, 251.5)
@@ -3679,8 +3720,12 @@ offset_bottom = 1075.41
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43661, 1.33499, 1.42661)
 shape = SubResource("BoxShape3D_iwf58")
 
-[node name="Corkboard_002" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
+[node name="Corkboard_002" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice" node_paths=PackedStringArray("exit_cork")]
 script = ExtResource("19_efoaq")
+exit_cork = NodePath("Hover")
+
+[node name="Hover" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002"]
+stream = ExtResource("25_3mogx")
 
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" instance=ExtResource("17_rbnfb")]
 
@@ -4013,43 +4058,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541894, 0)
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(3.45478e-09, -5.39206e-08, -3.01903)
+bones/1/position = Vector3(9.3106e-12, -5.39206e-08, -2.9402)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.0205283, 0.311296, 0.878403, -0.362053)
-bones/4/rotation = Quaternion(-0.212609, 0.090541, -0.0380998, 0.972187)
-bones/5/rotation = Quaternion(0.491726, -0.112395, 0.103859, 0.857197)
+bones/3/rotation = Quaternion(-0.000510038, 0.369432, 0.851664, -0.371737)
+bones/4/rotation = Quaternion(-0.332252, -0.00401425, -0.0337483, 0.942578)
+bones/5/rotation = Quaternion(0.545854, -0.027741, 0.0596846, 0.835291)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0205283, 0.311296, 0.878403, 0.362053)
-bones/9/rotation = Quaternion(-0.212609, -0.090541, 0.0380998, 0.972187)
-bones/10/rotation = Quaternion(0.491726, 0.112395, -0.103859, 0.857197)
+bones/8/rotation = Quaternion(0.000510063, 0.369432, 0.851664, 0.371737)
+bones/9/rotation = Quaternion(-0.332252, 0.00401425, 0.0337483, 0.942578)
+bones/10/rotation = Quaternion(0.545854, 0.027741, -0.0596846, 0.835291)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(3.45478e-09, -2.57348e-07, -3.01903)
+bones/12/position = Vector3(9.31061e-12, -2.38306e-07, -2.9402)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0861793, 1.13844e-07, -1.05925e-08, 0.99628)
-bones/16/rotation = Quaternion(0.0397397, 9.209e-09, 8.10112e-09, 0.99921)
-bones/18/rotation = Quaternion(0.0169777, -0.0101871, -0.00962864, 0.999758)
-bones/20/rotation = Quaternion(0.0169777, 0.0101871, 0.00962866, 0.999758)
+bones/15/rotation = Quaternion(-0.0719549, 1.13603e-07, -1.22763e-08, 0.997408)
+bones/16/rotation = Quaternion(0.00947268, 8.68724e-09, 8.07632e-09, 0.999955)
+bones/18/rotation = Quaternion(0.0763921, 0.00998026, -0.0105497, 0.996972)
+bones/20/rotation = Quaternion(0.0763921, -0.00998026, 0.0105497, 0.996972)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.255169, -0.149084, -0.40544, 0.865033)
-bones/23/rotation = Quaternion(-0.00306424, -0.000445567, -0.281186, 0.959648)
+bones/22/rotation = Quaternion(-0.267911, -0.147978, -0.379148, 0.873254)
+bones/23/rotation = Quaternion(-0.00392762, -0.000433074, -0.360414, 0.932784)
 bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.255169, 0.149084, 0.40544, 0.865033)
-bones/27/rotation = Quaternion(-0.00306441, 0.000445549, 0.281187, 0.959648)
+bones/26/rotation = Quaternion(-0.267911, 0.147978, 0.379148, 0.873254)
+bones/27/rotation = Quaternion(-0.00392781, 0.00043314, 0.360415, 0.932784)
 bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
 bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.990615, -0.0311821, -2.19316)
+bones/31/position = Vector3(0.938141, -0.0311821, -2.17823)
 bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
 bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
-bones/33/position = Vector3(3.45478e-09, -1.13525e-07, -3.01903)
+bones/33/position = Vector3(9.31061e-12, -1.13525e-07, -2.9402)
 bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
 bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
-bones/36/position = Vector3(-0.990615, -0.0311821, -2.19316)
+bones/36/position = Vector3(-0.938141, -0.0311821, -2.17823)
 bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
 bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 
@@ -4058,7 +4103,7 @@ mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.632943, -0.0214358, 0.773902, 0.73928, 0.280089, 0.612385, -0.229888, 0.959734, -0.161433, 0.990616, -0.0313314, -2.19314)
+transform = Transform3D(-0.606189, -0.0874576, 0.790497, 0.729238, 0.335551, 0.596337, -0.317406, 0.937953, -0.13963, 0.937941, -0.0305637, -2.17813)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -4098,6 +4143,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_hxqof")
 }
 
+[node name="ThinkingSound" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
+transform = Transform3D(1, -5.29396e-23, 1.86265e-09, 0, 1, 2.84217e-14, -1.86265e-09, -2.84217e-14, 1, 0.0210896, 1.46936, 0.0982962)
+stream = ExtResource("60_coq00")
+volume_db = -30.0
+bus = &"SFX"
+
 [node name="DoughnutEat" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39192, 0)
 stream = SubResource("AudioStreamRandomizer_s2tlg")
@@ -4124,42 +4175,42 @@ path = NodePath("..")
 transform = Transform3D(0.98487, -9.09495e-13, -0.173293, 2.47087e-06, 1, 1.40426e-05, 0.173293, -1.42583e-05, 0.98487, 0.110734, 0.0839252, -0.0822144)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(3.45478e-09, -5.39206e-08, -3.01903)
+bones/1/position = Vector3(9.31061e-12, -5.39206e-08, -2.9402)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.0205283, 0.311296, 0.878403, -0.362053)
-bones/4/rotation = Quaternion(-0.212609, 0.090541, -0.0380997, 0.972187)
-bones/5/rotation = Quaternion(0.491726, -0.112395, 0.103859, 0.857197)
+bones/3/rotation = Quaternion(-0.000510084, 0.369432, 0.851664, -0.371737)
+bones/4/rotation = Quaternion(-0.332252, -0.00401425, -0.0337483, 0.942578)
+bones/5/rotation = Quaternion(0.545854, -0.027741, 0.0596846, 0.835291)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0205283, 0.311296, 0.878403, 0.362053)
-bones/9/rotation = Quaternion(-0.212609, -0.090541, 0.0380998, 0.972187)
-bones/10/rotation = Quaternion(0.491725, 0.112395, -0.103859, 0.857197)
+bones/8/rotation = Quaternion(0.00051009, 0.369432, 0.851664, 0.371737)
+bones/9/rotation = Quaternion(-0.332252, 0.00401425, 0.0337483, 0.942578)
+bones/10/rotation = Quaternion(0.545854, 0.027741, -0.0596846, 0.835291)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(3.45478e-09, -3.00189e-07, -3.01903)
+bones/12/position = Vector3(9.31061e-12, -2.69776e-07, -2.9402)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0861793, 1.13844e-07, -1.05925e-08, 0.99628)
-bones/16/rotation = Quaternion(0.0397397, 9.209e-09, 8.10112e-09, 0.99921)
+bones/15/rotation = Quaternion(-0.0719549, 1.13603e-07, -1.22763e-08, 0.997408)
+bones/16/rotation = Quaternion(0.00947268, 8.68724e-09, 8.07633e-09, 0.999955)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.436646, 0.0698221, -0.141623, 0.885668)
-bones/18/rotation = Quaternion(0.0169777, -0.0101871, -0.00962866, 0.999758)
+bones/17/rotation = Quaternion(0.504856, 0.0807293, -0.135702, 0.848639)
+bones/18/rotation = Quaternion(0.0763921, 0.00998026, -0.0105497, 0.996972)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.43879, -0.0701653, 0.141454, 0.884608)
-bones/20/rotation = Quaternion(0.0169777, 0.0101871, 0.00962865, 0.999758)
+bones/19/rotation = Quaternion(0.55649, -0.0889862, 0.130437, 0.815712)
+bones/20/rotation = Quaternion(0.0763921, -0.00998027, 0.0105497, 0.996972)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.255169, -0.149084, -0.40544, 0.865033)
-bones/23/rotation = Quaternion(-0.00306426, -0.00044557, -0.281186, 0.959648)
+bones/22/rotation = Quaternion(-0.267911, -0.147978, -0.379148, 0.873254)
+bones/23/rotation = Quaternion(-0.00392761, -0.000433107, -0.360413, 0.932784)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.255169, 0.149084, 0.40544, 0.865033)
-bones/27/rotation = Quaternion(-0.00306443, 0.000445606, 0.281187, 0.959648)
+bones/26/rotation = Quaternion(-0.267911, 0.147978, 0.379148, 0.873254)
+bones/27/rotation = Quaternion(-0.00392782, 0.000433071, 0.360414, 0.932784)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.990615, -0.0311821, -2.19316)
-bones/33/position = Vector3(3.45478e-09, -1.13525e-07, -3.01903)
+bones/31/position = Vector3(0.938141, -0.0311821, -2.17823)
+bones/33/position = Vector3(9.31061e-12, -1.13525e-07, -2.9402)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.990615, -0.0311821, -2.19316)
+bones/36/position = Vector3(-0.938141, -0.0311821, -2.17823)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129358, 0.956745, -0.075851)
@@ -4177,6 +4228,14 @@ tree_root = SubResource("AnimationNodeBlendTree_el3uy")
 anim_player = NodePath("../TheoFixedAnimations/AnimationPlayer")
 parameters/Blend2/blend_amount = 0.0
 parameters/BlendSpace1D/blend_position = -0.0317848
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
+transform = Transform3D(0.0180693, -9.37935e-13, 0.999838, -1.42561e-05, 1.00001, 2.57641e-07, -0.999849, -1.42585e-05, 0.0180695, 0.740242, 1.28301, -2.40083)
+stream = ExtResource("65_n72d4")
+
+[node name="ItemBlip1" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
+transform = Transform3D(0.0180693, -9.94769e-13, 0.999838, -1.42561e-05, 1.00001, 2.57641e-07, -0.999849, -1.42585e-05, 0.0180695, 0.781422, 0.968716, -2.46268)
+stream = ExtResource("84_4ovd3")
 
 [node name="SittingDalton" type="Node" parent="SubViewportContainer/SubViewport"]
 
@@ -4234,8 +4293,17 @@ bones/37/rotation = Quaternion(7.37203e-23, 0.823096, -7.94093e-23, 0.567902)
 [node name="SpatialSounds" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("audio", "audio_master")]
 script = ExtResource("67_pkwu4")
 level = "start_office"
-audio = [NodePath("ChairSit"), NodePath("ChairGetUp"), NodePath("../Characters/Dalton/DoughnutEat")]
+audio = [NodePath("ChairSit"), NodePath("ChairGetUp"), NodePath("../Characters/Dalton/DoughnutEat"), NodePath("ItemBlip2"), NodePath("Hiss01"), NodePath("../Characters/Path3D/PathFollow3D/CharacterBody3D/ItemBlip1"), NodePath("Hiss02"), NodePath("ClickSoundR"), NodePath("ClickSoundL"), NodePath("Crackle1")]
 audio_master = [NodePath("PaperSounds"), NodePath("../Ambience_and_Music/AC")]
+
+[node name="Crackle1" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50168, 0.710807, 1.13102)
+stream = SubResource("AudioStreamRandomizer_e7hds")
+volume_db = -30.0
+
+[node name="Hiss02" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572587, 1.26452, 0.536372)
+stream = ExtResource("70_uq3cw")
 
 [node name="ChairSit" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0526351, 0.514612, 0.71184)
@@ -4248,7 +4316,34 @@ stream = SubResource("AudioStreamRandomizer_225nm")
 [node name="PaperSounds" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 stream = SubResource("AudioStreamInteractive_pkwu4")
 
+[node name="ItemBlip2" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70813, 1.283, 0.813573)
+stream = ExtResource("86_huq4m")
+
+[node name="ItemBlip1" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55283, 1.00946, 1.13752)
+stream = ExtResource("84_4ovd3")
+
+[node name="ClickSoundR" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84601, 0.689259, 0.949003)
+stream = ExtResource("65_n72d4")
+
+[node name="ClickSoundL" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88999, 0.689259, 0.949003)
+stream = SubResource("AudioStreamWAV_uq3cw")
+
+[node name="Hiss01" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
+transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 5.68434e-14, -3.72529e-09, -5.68434e-14, 1, 1.63669, 1.33032, 1.45186)
+stream = ExtResource("86_0gwsg")
+
 [node name="Ambience_and_Music" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="Blip2" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ambience_and_Music"]
+stream = ExtResource("89_uq3cw")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ambience_and_Music"]
+stream = ExtResource("65_n72d4")
+volume_db = -14.682
 
 [node name="AC" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ambience_and_Music"]
 stream = ExtResource("84_t2mo3")
@@ -4283,43 +4378,48 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.824, 1.318, 1.492)
 visible = false
 texture = ExtResource("31_vcd54")
 
-[node name="TeamPic" type="Area2D" parent="UI"]
+[node name="TeamPic" type="Area2D" parent="UI" node_paths=PackedStringArray("click")]
 visible = false
 script = ExtResource("34_4bfs2")
+click = NodePath("../../SubViewportContainer/SubViewport/Ambience_and_Music/ClickSound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/TeamPic"]
 visible = false
 position = Vector2(749.5, 599.25)
 shape = SubResource("RectangleShape2D_qlk2f")
 
-[node name="PartnerPic" type="Area2D" parent="UI"]
+[node name="PartnerPic" type="Area2D" parent="UI" node_paths=PackedStringArray("click")]
 visible = false
 script = ExtResource("35_whdai")
+click = NodePath("../../SubViewportContainer/SubViewport/Ambience_and_Music/ClickSound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/PartnerPic"]
 position = Vector2(1344.25, 780)
 shape = SubResource("RectangleShape2D_w6kdm")
 
-[node name="News" type="Area2D" parent="UI"]
+[node name="News" type="Area2D" parent="UI" node_paths=PackedStringArray("click")]
 visible = false
 script = ExtResource("36_p4hl6")
+click = NodePath("../../SubViewportContainer/SubViewport/Ambience_and_Music/ClickSound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/News"]
 position = Vector2(1289, 344)
 shape = SubResource("RectangleShape2D_fcvup")
 
-[node name="Contact" type="Area2D" parent="UI"]
+[node name="Contact" type="Area2D" parent="UI" node_paths=PackedStringArray("click")]
 visible = false
 script = ExtResource("37_q038v")
+click = NodePath("../../SubViewportContainer/SubViewport/Ambience_and_Music/ClickSound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Contact"]
 position = Vector2(1020.35, 935.403)
 rotation = -0.132099
 shape = SubResource("RectangleShape2D_tbbtk")
 
-[node name="Missing Persons" type="Area2D" parent="UI"]
+[node name="Missing Persons" type="Area2D" parent="UI" node_paths=PackedStringArray("click")]
 visible = false
 script = ExtResource("38_47f4o")
+click = NodePath("../../SubViewportContainer/SubViewport/Ambience_and_Music/ClickSound")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Missing Persons"]
 position = Vector2(793.5, 238.25)
@@ -4456,6 +4556,9 @@ stretch_mode = 2
 visible = false
 pageCount = 4
 
+[node name="Background2" parent="UI/Case Look" index="0"]
+visible = false
+
 [node name="Page4" parent="UI/Case Look" index="2"]
 offset_left = -500.5
 offset_top = -680.5
@@ -4516,9 +4619,11 @@ script = ExtResource("38_77grr")
 [connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/office_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_office_button_pressed"]
 [connection signal="focused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_focused"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_general_interacted"]
 [connection signal="unfocused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_unfocused"]
 [connection signal="focused" from="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_interactable_focused"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002/Interactable" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_general_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/Exposition/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/Exposition/Interactable" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/Interactable" to="SubViewportContainer/SubViewport/SittingDalton/Detective_Anims" method="_on_interactable_interacted"]
@@ -4532,36 +4637,59 @@ script = ExtResource("38_77grr")
 [connection signal="DaltonVisible" from="SubViewportContainer/SubViewport/SittingDalton/Detective_Anims" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_detective_anims_dalton_visible"]
 [connection signal="input_event" from="UI/TeamPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_input_event"]
 [connection signal="input_event" from="UI/TeamPic" to="UI/TeamPic" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/TeamPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/TeamPic" to="UI/TeamPic" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/TeamPic" to="UI/TeamPic" method="_on_mouse_exited"]
 [connection signal="input_event" from="UI/PartnerPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_partner_pic_input_event"]
 [connection signal="input_event" from="UI/PartnerPic" to="UI/PartnerPic" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/PartnerPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/PartnerPic" to="UI/PartnerPic" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/PartnerPic" to="UI/PartnerPic" method="_on_mouse_exited"]
 [connection signal="input_event" from="UI/News" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_news_input_event"]
 [connection signal="input_event" from="UI/News" to="UI/News" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/News" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/News" to="UI/News" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/News" to="UI/News" method="_on_mouse_exited"]
 [connection signal="input_event" from="UI/Contact" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_contact_input_event"]
 [connection signal="input_event" from="UI/Contact" to="UI/Contact" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/Contact" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/Contact" to="UI/Contact" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Contact" to="UI/Contact" method="_on_mouse_exited"]
 [connection signal="input_event" from="UI/Missing Persons" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_missing_persons_input_event"]
 [connection signal="input_event" from="UI/Missing Persons" to="UI/Missing Persons" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/Missing Persons" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/Missing Persons" to="UI/Missing Persons" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Missing Persons" to="UI/Missing Persons" method="_on_mouse_exited"]
 [connection signal="paper_sound" from="UI/Partner Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
+[connection signal="mouse_entered" from="UI/Partner Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/Partner Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Partner Look/Exit" to="UI/PartnerPic" method="_on_exit_pressed"]
 [connection signal="paper_sound" from="UI/TeamPic Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
+[connection signal="mouse_entered" from="UI/TeamPic Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/TeamPic Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/TeamPic Look/Exit" to="UI/TeamPic" method="_on_exit_pressed"]
 [connection signal="paper_sound" from="UI/News Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
+[connection signal="mouse_entered" from="UI/News Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/News Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/News Look/Exit" to="UI/News" method="_on_exit_pressed"]
 [connection signal="paper_sound" from="UI/Contact_Ripped Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
+[connection signal="mouse_entered" from="UI/Contact_Ripped Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/Contact_Ripped Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="paper_sound" from="UI/Contact Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
+[connection signal="mouse_entered" from="UI/Contact Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/Contact Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Contact Look/Exit" to="UI/Contact" method="_on_exit_pressed"]
 [connection signal="paper_sound" from="UI/Missing Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
+[connection signal="mouse_entered" from="UI/Missing Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/Missing Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Missing Look/Exit" to="UI/Missing Persons" method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
+[connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_arrow_pressed"]
 [connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_pressed"]
+[connection signal="mouse_entered" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
+[connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_forward_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]

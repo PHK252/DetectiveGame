@@ -10,6 +10,7 @@ extends MeshInstance3D
 @onready var contact = $"../../../../UI/Contact"
 @onready var missing = $"../../../../UI/Missing Persons"
 @onready var mouse_pos = Vector2(0,0)
+@export var exit_cork : AudioStreamPlayer
 #@onready var current_rot = Vector3(-3, 179.1, .4)
 #signal up
 #signal down
@@ -37,8 +38,9 @@ func _process(delta):
 		cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
 		
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.viewing == "":
-		if Input.is_action_just_pressed("Exit"):
+		if Input.is_action_just_pressed("Exit") and cork_cam.priority == 1:
 			#print("scene enter")
+			exit_cork.play()
 			cork_cam.priority = 0
 			main_cam.priority = 1
 			await get_tree().create_timer(.03).timeout
