@@ -28,16 +28,23 @@ extends Area2D
 #Dialogue if there is a single thought behind those eyes
 @export var dialogue_file : String
 
+#bookmark swipe
+@export var note_swipe : AudioStreamPlayer3D
+@export var paper : AudioStreamPlayer
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				if is_there_anim == true:
+					if clicked_object == "clicked_book_note":
+						note_swipe.play()
 					anim.play(anim_track)
 					await anim.animation_finished
 					await get_tree().create_timer(.5).timeout
 					anim.play("RESET")
+				if clicked_object == "clicked_Micah_pic" or "clicked_tool_note":
+						paper.play()
 				object_in_scene.hide()
 				object_interact.hide()
 				UI_look.show()
@@ -45,6 +52,7 @@ func _on_input_event(viewport, event, shape_idx):
 				GlobalVars.in_look_screen = true
 				clicked_count += 1
 				GlobalVars.set(clicked_object, clicked_count)
+				
 
 func _on_exit_pressed():
 	if viewed_object == false and clicked_count == 1:

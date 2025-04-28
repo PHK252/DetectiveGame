@@ -38,6 +38,8 @@ extends Node3D
 @export var load_char_dialogue: String
 
 @export var interact_type: String
+
+@export var case_pickup : AudioStreamPlayer3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI.hide()
@@ -225,6 +227,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				case_pickup.play()
 				if GlobalVars.in_interaction == "":
 					GlobalVars.in_interaction = interact_type
 				UI.show()

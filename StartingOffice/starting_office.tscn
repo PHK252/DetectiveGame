@@ -4265,32 +4265,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541894, 0)
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(8.61556e-10, -5.39206e-08, -2.9597)
-bones/3/rotation = Quaternion(0.00383793, 0.357292, 0.857806, -0.369454)
-bones/4/rotation = Quaternion(-0.306935, 0.0189723, -0.0370264, 0.950821)
-bones/5/rotation = Quaternion(0.534573, -0.0484878, 0.0715505, 0.840691)
-bones/8/rotation = Quaternion(-0.00383792, 0.357292, 0.857806, 0.369454)
-bones/9/rotation = Quaternion(-0.306935, -0.0189723, 0.0370264, 0.950821)
-bones/10/rotation = Quaternion(0.534573, 0.0484878, -0.0715505, 0.840691)
-bones/12/position = Vector3(8.61556e-10, -1.85477e-07, -2.9597)
-bones/15/rotation = Quaternion(-0.0754059, 1.13663e-07, -1.18682e-08, 0.997153)
-bones/16/rotation = Quaternion(0.0168779, 8.81562e-09, 8.08307e-09, 0.999858)
-bones/18/rotation = Quaternion(0.0617192, 0.00499388, -0.0103257, 0.998028)
-bones/20/rotation = Quaternion(0.0617192, -0.00499388, 0.0103257, 0.998028)
-bones/22/rotation = Quaternion(-0.264856, -0.148162, -0.384789, 0.871686)
-bones/23/rotation = Quaternion(-0.00373531, -0.000436189, -0.342764, 0.939414)
-bones/26/rotation = Quaternion(-0.264856, 0.148162, 0.384789, 0.871686)
-bones/27/rotation = Quaternion(-0.00373548, 0.000436152, 0.342764, 0.939414)
-bones/31/position = Vector3(0.95112, -0.0311821, -2.18192)
-bones/33/position = Vector3(8.61556e-10, -1.13525e-07, -2.9597)
-bones/36/position = Vector3(-0.95112, -0.0311821, -2.18192)
+bones/1/position = Vector3(3.01313e-10, -5.39206e-08, -2.94688)
+bones/3/rotation = Quaternion(0.000934076, 0.365391, 0.853744, -0.370959)
+bones/4/rotation = Quaternion(-0.323648, 0.00397673, -0.0350205, 0.945521)
+bones/5/rotation = Quaternion(0.542038, -0.0349696, 0.0638816, 0.837192)
+bones/8/rotation = Quaternion(-0.000934045, 0.365391, 0.853744, 0.370959)
+bones/9/rotation = Quaternion(-0.323648, -0.00397673, 0.0350204, 0.945521)
+bones/10/rotation = Quaternion(0.542038, 0.0349697, -0.0638816, 0.837192)
+bones/12/position = Vector3(3.01313e-10, -2.27042e-07, -2.94688)
+bones/15/rotation = Quaternion(-0.0731194, 1.13623e-07, -1.21386e-08, 0.997323)
+bones/16/rotation = Quaternion(0.0119375, 8.73003e-09, 8.0786e-09, 0.999929)
+bones/18/rotation = Quaternion(0.0713679, 0.00827241, -0.0104733, 0.997361)
+bones/20/rotation = Quaternion(0.0713679, -0.00827241, 0.0104733, 0.997361)
+bones/22/rotation = Quaternion(-0.266897, -0.148036, -0.380982, 0.872757)
+bones/23/rotation = Quaternion(-0.00386291, -0.000434131, -0.354477, 0.935057)
+bones/26/rotation = Quaternion(-0.266897, 0.148036, 0.380982, 0.872757)
+bones/27/rotation = Quaternion(-0.00386312, 0.000434158, 0.354477, 0.935057)
+bones/31/position = Vector3(0.942588, -0.0311821, -2.1795)
+bones/33/position = Vector3(3.01313e-10, -1.13525e-07, -2.94688)
+bones/36/position = Vector3(-0.942588, -0.0311821, -2.1795)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.613285, -0.0724892, 0.786528, 0.73166, 0.323023, 0.600274, -0.29758, 0.943611, -0.145068, 0.951117, -0.0311849, -2.18188)
+transform = Transform3D(-0.608625, -0.0823373, 0.789174, 0.730138, 0.331223, 0.597653, -0.310602, 0.939953, -0.141473, 0.942586, -0.0310454, -2.17943)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -4320,16 +4320,19 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10868, 0.121142)
 stream = SubResource("AudioStreamSynchronized_4ovd3")
 volume_db = -50.0
+bus = &"SFX"
 
 [node name="TileFootsteps" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10868, 0.121142)
 stream = SubResource("AudioStreamSynchronized_5q0fi")
 volume_db = -50.0
+bus = &"SFX"
 
 [node name="CarpetFootsteps" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10868, 0.121142)
 stream = SubResource("AudioStreamSynchronized_wrcok")
 volume_db = -50.0
+bus = &"SFX"
 
 [node name="DaltonListener" type="AudioListener3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 current = true
@@ -4372,42 +4375,42 @@ path = NodePath("..")
 transform = Transform3D(0.98487, -9.09495e-13, -0.173293, 2.47087e-06, 1, 1.40426e-05, 0.173293, -1.42583e-05, 0.98487, 0.110734, 0.0839252, -0.0822144)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(8.61556e-10, -5.39206e-08, -2.9597)
+bones/1/position = Vector3(3.01313e-10, -5.39206e-08, -2.94688)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.00383789, 0.357292, 0.857806, -0.369454)
-bones/4/rotation = Quaternion(-0.306935, 0.0189723, -0.0370264, 0.950821)
-bones/5/rotation = Quaternion(0.534573, -0.0484878, 0.0715506, 0.840691)
+bones/3/rotation = Quaternion(0.000934018, 0.365391, 0.853744, -0.370959)
+bones/4/rotation = Quaternion(-0.323648, 0.00397673, -0.0350205, 0.945521)
+bones/5/rotation = Quaternion(0.542038, -0.0349696, 0.0638816, 0.837192)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.00383787, 0.357292, 0.857806, 0.369454)
-bones/9/rotation = Quaternion(-0.306935, -0.0189723, 0.0370264, 0.950821)
-bones/10/rotation = Quaternion(0.534573, 0.0484878, -0.0715506, 0.840691)
+bones/8/rotation = Quaternion(-0.000934006, 0.365391, 0.853744, 0.370959)
+bones/9/rotation = Quaternion(-0.323648, -0.00397673, 0.0350204, 0.945521)
+bones/10/rotation = Quaternion(0.542038, 0.0349697, -0.0638816, 0.837192)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(8.61556e-10, -2.26455e-07, -2.9597)
+bones/12/position = Vector3(3.01313e-10, -2.6005e-07, -2.94688)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0754058, 1.13663e-07, -1.18682e-08, 0.997153)
-bones/16/rotation = Quaternion(0.0168779, 8.81561e-09, 8.08309e-09, 0.999858)
+bones/15/rotation = Quaternion(-0.0731194, 1.13623e-07, -1.21387e-08, 0.997323)
+bones/16/rotation = Quaternion(0.0119375, 8.73003e-09, 8.07862e-09, 0.999929)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.488266, 0.0780765, -0.137246, 0.858291)
-bones/18/rotation = Quaternion(0.0617191, 0.00499388, -0.0103257, 0.998028)
+bones/17/rotation = Quaternion(0.499195, 0.0798241, -0.136237, 0.851981)
+bones/18/rotation = Quaternion(0.0713679, 0.00827242, -0.0104733, 0.997361)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.528089, -0.0844446, 0.133422, 0.83438)
-bones/20/rotation = Quaternion(0.0617191, -0.00499388, 0.0103257, 0.998028)
+bones/19/rotation = Quaternion(0.546642, -0.0874114, 0.131497, 0.822344)
+bones/20/rotation = Quaternion(0.0713679, -0.00827241, 0.0104732, 0.997361)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.264856, -0.148162, -0.384789, 0.871686)
-bones/23/rotation = Quaternion(-0.00373529, -0.000436207, -0.342763, 0.939414)
+bones/22/rotation = Quaternion(-0.266897, -0.148036, -0.380982, 0.872757)
+bones/23/rotation = Quaternion(-0.0038629, -0.00043416, -0.354476, 0.935057)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.264856, 0.148162, 0.384789, 0.871686)
-bones/27/rotation = Quaternion(-0.00373546, 0.000436173, 0.342764, 0.939414)
+bones/26/rotation = Quaternion(-0.266897, 0.148036, 0.380982, 0.872757)
+bones/27/rotation = Quaternion(-0.0038631, 0.000434183, 0.354477, 0.935057)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.95112, -0.0311821, -2.18192)
-bones/33/position = Vector3(8.61556e-10, -1.13525e-07, -2.9597)
+bones/31/position = Vector3(0.942588, -0.0311821, -2.1795)
+bones/33/position = Vector3(3.01313e-10, -1.13525e-07, -2.94688)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.95112, -0.0311821, -2.18192)
+bones/36/position = Vector3(-0.942588, -0.0311821, -2.1795)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129358, 0.956745, -0.075851)
@@ -4429,10 +4432,12 @@ parameters/BlendSpace1D/blend_position = -0.0317848
 [node name="ClickSound" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
 transform = Transform3D(0.0180693, -9.37935e-13, 0.999838, -1.42561e-05, 1.00001, 2.57641e-07, -0.999849, -1.42585e-05, 0.0180695, 0.740242, 1.28301, -2.40083)
 stream = ExtResource("65_n72d4")
+bus = &"SFX"
 
 [node name="ItemBlip1" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
 transform = Transform3D(0.0180693, -9.94769e-13, 0.999838, -1.42561e-05, 1.00001, 2.57641e-07, -0.999849, -1.42585e-05, 0.0180695, 0.781422, 0.968716, -2.46268)
 stream = ExtResource("84_4ovd3")
+bus = &"SFX"
 
 [node name="SittingDalton" type="Node" parent="SubViewportContainer/SubViewport"]
 
@@ -4497,50 +4502,62 @@ audio_master = [NodePath("PaperSounds"), NodePath("../Ambience_and_Music/AC")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50168, 0.710807, 1.13102)
 stream = SubResource("AudioStreamRandomizer_e7hds")
 volume_db = -30.0
+bus = &"SFX"
 
 [node name="Hiss02" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572587, 1.26452, 0.536372)
 stream = ExtResource("70_uq3cw")
+bus = &"SFX"
 
 [node name="ChairSit" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0526351, 0.514612, 0.71184)
 stream = SubResource("AudioStreamRandomizer_wr5i3")
+bus = &"SFX"
 
 [node name="ChairGetUp" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46659, 0.749383)
 stream = SubResource("AudioStreamRandomizer_225nm")
+bus = &"SFX"
 
 [node name="PaperSounds" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 stream = SubResource("AudioStreamInteractive_pkwu4")
+bus = &"SFX"
 
 [node name="ItemBlip2" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70813, 1.283, 0.813573)
 stream = ExtResource("86_huq4m")
+bus = &"SFX"
 
 [node name="ItemBlip1" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55283, 1.00946, 1.13752)
 stream = ExtResource("84_4ovd3")
+bus = &"SFX"
 
 [node name="ClickSoundR" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84601, 0.689259, 0.949003)
 stream = ExtResource("65_n72d4")
+bus = &"SFX"
 
 [node name="ClickSoundL" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88999, 0.689259, 0.949003)
 stream = SubResource("AudioStreamWAV_uq3cw")
+bus = &"SFX"
 
 [node name="Hiss01" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SpatialSounds"]
 transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 5.68434e-14, -3.72529e-09, -5.68434e-14, 1, 1.63669, 1.33032, 1.45186)
 stream = ExtResource("86_0gwsg")
+bus = &"SFX"
 
 [node name="Ambience_and_Music" type="Node" parent="SubViewportContainer/SubViewport"]
 
 [node name="Blip2" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ambience_and_Music"]
 stream = ExtResource("89_uq3cw")
+bus = &"SFX"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ambience_and_Music"]
 stream = ExtResource("65_n72d4")
 volume_db = -14.682
+bus = &"SFX"
 
 [node name="AC" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ambience_and_Music"]
 stream = ExtResource("84_t2mo3")
@@ -4883,8 +4900,8 @@ script = ExtResource("38_77grr")
 [connection signal="mouse_entered" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
-[connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_arrow_pressed"]
 [connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_pressed"]
+[connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_arrow_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_forward_pressed"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]

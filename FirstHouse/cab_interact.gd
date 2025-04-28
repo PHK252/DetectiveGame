@@ -12,10 +12,16 @@ extends Node3D
 @onready var clickable = false
 @onready var bag_group = get_tree().get_nodes_in_group("plastic_bags")
 @onready var cab_area = $Cab
+@export var cab_open_sound : AudioStreamPlayer3D
+@export var cab_close_sound : AudioStreamPlayer3D
+@export var bag_fall_sound : AnimationPlayer
 
 @onready var dalton_maker = $"../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../UI/Micah_marker"
-@onready var alert = $"../../../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
+@onready var alert = $"../../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
+
+#sound 
+signal general_interact
 
 #@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
@@ -150,6 +156,7 @@ func _on_thoughts_ended():
 	#player.start_player()
 
 func _on_interactable_interacted(interactor):
+	emit_signal("general_interact")
 	if GlobalVars.in_dialogue == false:
 		cab_area.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -168,7 +175,7 @@ func _on_interactable_interacted(interactor):
 			clickable = true
 		
 func close_cabinet():
-	
+	bag_fall_sound.stop()
 	for member in bag_group:
 		member.hide()
 	
@@ -179,12 +186,15 @@ func close_cabinet():
 	anim_bags["parameters/conditions/finish"] = true
 	anim_tree["parameters/conditions/cab_closed_action"] = true
 	anim_tree["parameters/conditions/cabinet_opened"] = false
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(1.7).timeout
+	cab_close_sound.play()
 	clickable = false
 	cab_open = false
 	cab_area.hide()
 	
 func open_cabinet():
+	cab_open_sound.play()
+	bag_fall_sound.play("bag_fall")
 	cab_area.hide()
 	GlobalVars.clicked_cab += 1 
 	GlobalVars.opened_cab = true

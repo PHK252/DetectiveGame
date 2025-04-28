@@ -50,3 +50,22 @@ func _on_arrow_pressed() -> void:
 
 func _on_back_arrow_pressed() -> void:
 	audio[8].play()
+
+
+func _on_plastic_crunch_body_entered(body: Node3D) -> void:
+	audio[0].play()
+
+
+func _on_exit_mouse_entered() -> void:
+	audio[2].play()
+
+
+func _on_up_mouse_entered() -> void:
+	audio[6].play()
+
+func _on_down_mouse_entered() -> void:
+	audio[7].play()
+
+
+func _on_closet_general_interact() -> void:
+	audio[3].play()

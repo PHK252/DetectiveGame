@@ -45,7 +45,9 @@ extends Node3D
 @export var open_closet_door_1 : CollisionShape3D
 @export var open_closet_door_2 : CollisionShape3D
 signal stepback
-
+@export var open_closet_sound : AudioStreamPlayer3D
+@export var close_closet_sound : AudioStreamPlayer3D
+signal general_interact
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -102,14 +104,15 @@ func _process(delta):
 		interact_area.show()
 
 func _on_interactable_interacted(interactor):
-	
 	open_closet_door_1.disabled = false
 	open_closet_door_2.disabled = false
 	Exit_Cam.priority = 30
 	alert.hide()
 	if closet_open == false: 
+		emit_signal("general_interact")
 		emit_signal("stepback")
 		await get_tree().create_timer(2).timeout
+		open_closet_sound.play()
 	
 	var tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
 	if GlobalVars.in_dialogue == false:

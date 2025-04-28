@@ -40,6 +40,9 @@ extends Node3D
 @onready var mouse_pos = Vector2(0,0) 
 @onready var thoughts = false
 
+#sound
+signal general_interact
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var read_dialogue : bool = GlobalVars.get(dialogue)
@@ -103,6 +106,7 @@ func _on_thoughts_ended():
 	#await get_tree().create_timer(.5).timeout
 
 func _on_interactable_interacted(interactor):
+	emit_signal("general_interact")
 	if GlobalVars.in_dialogue == false and thoughts == false:
 		thoughts = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

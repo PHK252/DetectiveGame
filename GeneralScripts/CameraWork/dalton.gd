@@ -147,7 +147,7 @@ func _physics_process(delta: float) -> void:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 
 func floor_type_walk():
-	if $FloorType.is_colliding():
+	if $FloorType.is_colliding() and move_back == false:
 		var collider = $FloorType.get_collider()
 		if collider.is_in_group("wood"):
 			sound_player.play("Footsteps")
@@ -260,6 +260,7 @@ func start_move_back():
 	move_back_target_position = global_position + Vector3(move_distance, 0, 0)  # Adjust for X-axis movement in 3D
 	move_back_progress = 0.0
 	anim_tree.set("parameters/OneShot/request", true)
+	sound_player.play("Footsteps_Carpet_Back")
 	await get_tree().create_timer(0.45).timeout
 	force_rotation = false
 	move_back_in_progress = true

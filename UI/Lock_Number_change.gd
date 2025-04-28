@@ -13,6 +13,8 @@ extends Node2D
 
 @onready var numClick = 0
 
+#sound
+@export var case_click : AudioStreamPlayer
 
 
 func _ready():
@@ -21,6 +23,8 @@ func _ready():
 
 func _on_up_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	case_click.play()
+	
 	if numClick < 9:
 		numClick = numClick + 1 
 	else:
@@ -29,6 +33,8 @@ func _on_up_pressed():
 
 func _on_down_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		case_click.play()
+		
 		if numClick > 0:
 			numClick = numClick - 1
 		else:

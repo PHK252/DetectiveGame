@@ -27,6 +27,12 @@ extends CanvasLayer
 @export var case_hair : MeshInstance3D
 @export var case_note : MeshInstance3D
 @export var case_key : MeshInstance3D
+
+#sounds
+@export var case_locked : AudioStreamPlayer3D
+@export var case_unlocked : AudioStreamPlayer3D
+@export var switch : AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$".".hide()
@@ -57,6 +63,7 @@ func  show_closed_case():
 func _input(event):
 	if GlobalVars.Micah_in_case == true:
 		if Input.is_action_just_pressed("case_right"):
+			switch.play()
 			if posClick < 5:
 				posClick = posClick + 1 
 			else:
@@ -64,6 +71,7 @@ func _input(event):
 			posChange()
 		
 		if Input.is_action_just_pressed("case_left"):
+			switch.play()
 			if posClick > 0:
 				posClick = posClick - 1
 			else:
@@ -71,6 +79,8 @@ func _input(event):
 			posChange()
 		if Input.is_action_just_pressed("ui_accept"):
 			print(check)
+			if check != password:
+				case_locked.play()
 #	if Input.is_action_just_pressed("Exit"):
 	#	$".".hide()
 
@@ -97,6 +107,7 @@ func _on_exit_pressed():
 	$".".hide()
 
 func _open_case():
+	case_unlocked.play()
 	cam_anim.play("Case_look")
 	hide_closed_case()
 	show_open_case()

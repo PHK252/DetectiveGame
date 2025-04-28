@@ -14,6 +14,7 @@ var pic_fell = false
 
 #sounds
 @export var frame_fall : AudioStreamPlayer3D
+@export var paper_fall : AnimationPlayer
 
 func _ready():
 	pic_fall_anim.play("Default")
@@ -23,6 +24,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true and pic_fell == false:
 			frame_fall.play()
+			paper_fall.play("PicFloat")
 			pic_fell = true
 			print("weeeeeeee") 
 			GlobalVars.in_look_screen = true

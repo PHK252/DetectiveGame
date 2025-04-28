@@ -10,6 +10,8 @@ extends CharacterBody3D
 @export var wine_area_control: CollisionShape3D
 @export var wAcontrol2: Area3D
 var allow_activation = true
+@export var sound_player : AnimationPlayer
+@export var note_sound : AudioStreamPlayer3D
 
 var animation_choice = 0
 @export var adjustment_list: Array[Node3D]
@@ -96,7 +98,30 @@ func _physics_process(delta: float) -> void:
 		#print("adjustingforplayer")
 		_rotate_towards_player()
 		
+
+func floor_type_walk():
+	if $FloorTypeTheo.is_colliding():
+		var collider = $FloorTypeTheo.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("Footsteps")
+		if collider.is_in_group("tile"):
+			sound_player.play("Footsteps_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("Footsteps_Carpet")
 		
+# floor type gather
+func floor_type_gather():
+	if $FloorTypeTheo.is_colliding():
+		var collider = $FloorTypeTheo.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("FootstepsGather")
+		if collider.is_in_group("tile"):
+			sound_player.play("FootstepsGather_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("FootstepsGather_Carpet")
+		
+
+
 func _process_notes_state() -> void:
 	velocity = velocity.lerp(Vector3.ZERO, 0.0)
 	idle_blend = lerp(idle_blend, 0.0, 0.0)
@@ -129,6 +154,7 @@ func _process_adjust_state() -> void:
 		#direction.y = 0
 		var velocity = direction * speed
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+		floor_type_walk()
 		nav.set_velocity(velocity)
 
 func _process_investigate_state(distance_to_target) -> void:
@@ -144,6 +170,9 @@ func _process_investigate_state(distance_to_target) -> void:
 			emit_signal("TheoSit")
 		if not going_to_bar and animation_choice >= 3 and patio_sit == false:
 			anim_tree.set("parameters/NoteAlt/request", true)
+			#await get_tree().create_timer(6).timeout
+			#note_sound.play()
+			#await get_tree().create_timer(4).timeout
 		if not going_to_bar and animation_choice <= 2 and patio_sit == false:
 			anim_tree.set("parameters/Scratch/request", true)
 		velocity = velocity.lerp(Vector3.ZERO, 0.2)
@@ -160,6 +189,7 @@ func _process_investigate_state(distance_to_target) -> void:
 		#direction.y = 0
 		var velocity = direction * speed 
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+		floor_type_walk()
 		nav.set_velocity(velocity)
 		if is_navigating == false:
 			state = IDLE
@@ -214,6 +244,7 @@ func _process_idle_state(distance_to_target: float) -> void:
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0
 		anim_tree["parameters/Blend2/blend_amount"] = 0
+		note_sound.stop()
 		state = FOLLOW
 		return
 		
@@ -244,6 +275,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 
 	# Stop following if within stopping distance
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
+		floor_type_gather()
 		velocity = velocity.lerp(Vector3.ZERO, 0.2)
 		state = IDLE
 		return
@@ -255,6 +287,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 		#direction.y = 0
 		var velocity = direction * speed 
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+		floor_type_walk()
 		nav.set_velocity(velocity)
 		if is_navigating == false:
 			state = IDLE
@@ -294,7 +327,9 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 			is_navigating = false
 			emit_signal("stop_coll")
 			stop_coll_b = true
-			await get_tree().create_timer(10).timeout
+			await get_tree().create_timer(6).timeout
+			note_sound.play()
+			await get_tree().create_timer(4).timeout
 			
 			if micahBack and theo_adjustment:
 				anim_tree["parameters/Blend2/blend_amount"] = 0

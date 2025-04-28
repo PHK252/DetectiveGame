@@ -37,6 +37,8 @@ extends Node3D
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
 
+#sound
+signal general_interact
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -103,6 +105,7 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
+	emit_signal("general_interact")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type

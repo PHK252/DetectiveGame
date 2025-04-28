@@ -21,6 +21,13 @@ signal collision_safe
 var current_anim 
 var intDalton = false
 
+@export var sound_player : AnimationPlayer
+@export var yawn : AudioStreamPlayer3D
+@export var scratch : AudioStreamPlayer3D
+@export var beer : AnimationPlayer
+
+
+
 var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
 const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
@@ -94,6 +101,7 @@ func _physics_process(delta: float) -> void:
 		direction = direction.normalized()
 		#direction.y = 0
 		velocity = velocity.lerp(direction * SPEED, accel * delta)
+		floor_type_walk()
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		nav.set_velocity(velocity)
 
@@ -104,6 +112,29 @@ func _physics_process(delta: float) -> void:
 			_rotate_towards_dalton()
 		else:
 			_rotate_towards_object(wander_choice)
+
+
+func floor_type_walk():
+	if $FloorTypeMicah.is_colliding():
+		var collider = $FloorTypeMicah.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("Footsteps")
+		if collider.is_in_group("tile"):
+			sound_player.play("Footsteps_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("Footsteps_Carpet")
+		
+# floor type gather
+func floor_type_gather():
+	if $FloorTypeMicah.is_colliding():
+		var collider = $FloorTypeMicah.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("FootstepsGather")
+		if collider.is_in_group("tile"):
+			sound_player.play("FootstepsGather_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("FootstepsGather_Carpet")
+		
 
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	# Prevent old path issues
@@ -130,6 +161,8 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 	anim_player.play("basketball_default")
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
+	yawn.stop()
+	scratch.stop()
 	print("wandering")
 	
 	if wander_choice < 2:
@@ -165,6 +198,7 @@ func _rotate_towards_velocity() -> void:
 	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
 		
 func _beer_visible():
+	beer.play("beer_micah")
 	await get_tree().create_timer(2.5).timeout
 	Beer_Static.visible = false
 	Beer_Anim.visible = true
@@ -194,6 +228,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		armature.visible = true
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
+	yawn.stop()
+	scratch.stop()
 	anim_player.play("basketball_default")
 	#set all one shots to abort
 	is_navigating = true
@@ -235,6 +271,7 @@ func _on_timer_timeout() -> void:
 		
 		if choice > 0:
 			anim_tree.set("parameters/Yawn/request", true)
+			yawn.play()
 			await get_tree().create_timer(9).timeout
 			if intDalton == false:
 				nav.target_position = marker_positions[wander_choice].global_position
@@ -243,7 +280,9 @@ func _on_timer_timeout() -> void:
 				state = WANDER
 		else:
 			anim_tree.set("parameters/Scratch/request", true)
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(2).timeout
+			scratch.play()
+			await get_tree().create_timer(3).timeout
 			if intDalton == false:
 				nav.target_position = marker_positions[wander_choice].global_position
 				is_navigating = true
@@ -296,7 +335,9 @@ func _on_door_micah_rotate() -> void:
 			emit_signal("sit_invisible")
 			armature.visible = true
 		anim_tree.set("parameters/Yawn/request", 2)
+		yawn.stop()
 		anim_tree.set("parameters/Scratch/request", 2)
+		scratch.stop()
 		anim_player.play("basketball_default")
 		#set all one shots to abort
 		is_navigating = true
