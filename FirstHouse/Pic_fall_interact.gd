@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var pic_cam = $"../../../../../../SubViewport/CameraSystem/Picture"
 @onready var main_cam = $"../../../../../../SubViewport/CameraSystem/livingroom"
-@onready var player = $"../../../../../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../../../../../Characters/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../../../../../SubViewport/CameraSystem/Picture/AnimationPlayer"
 @onready var pic_fall = $"."
 @onready var pic_fall_anim = $"../../../../AnimationPlayer"
@@ -12,6 +12,9 @@ extends Area2D
 @onready var micah_marker = $"../../../../../../../UI/Micah_marker"
 var pic_fell = false
 
+#sounds
+@export var frame_fall : AudioStreamPlayer3D
+
 func _ready():
 	pic_fall_anim.play("Default")
 
@@ -19,6 +22,7 @@ func _ready():
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true and pic_fell == false:
+			frame_fall.play()
 			pic_fell = true
 			print("weeeeeeee") 
 			GlobalVars.in_look_screen = true

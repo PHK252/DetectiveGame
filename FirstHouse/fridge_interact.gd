@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var fridge_cam =  $"../../SubViewport/CameraSystem/Fridge"
 @onready var main_cam = $"../../SubViewport/CameraSystem/livingroom"
-@onready var player = $"../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../Characters/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../SubViewport/CameraSystem/Fridge/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
 @onready var fridge_open = false
@@ -10,6 +10,8 @@ extends Node3D
 @onready var fridge_open_area = $Fridge_open
 @onready var fridge_close_area = $Fridge_close
 @onready var in_anim = false
+@export var fridge_open_sound : AudioStreamPlayer3D
+@export var fridge_close_sound : AudioStreamPlayer3D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -60,6 +62,7 @@ func _on_fridge_open_input_event(viewport, event, shape_idx):
 			fridge_open_area.hide()
 			fridge_open = true
 			fridge_anim.play("NEWfridgeopen")
+			fridge_open_sound.play()
 			await fridge_anim.animation_finished
 			in_anim = false
 			if GlobalVars.viewed_Micah_fridge == false:
@@ -78,6 +81,7 @@ func _on_fridge_close_input_event(viewport, event, shape_idx):
 			fridge_open = false
 			fridge_close_area.hide()
 			fridge_anim.play_backwards("NEWfridgeopen")
+			fridge_close_sound.play()
 			await fridge_anim.animation_finished
 			GlobalVars.in_look_screen = false
 			fridge_open_area.show()

@@ -37,6 +37,7 @@ extends Node3D
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pic_fell : bool = GlobalVars.get(pic_status)

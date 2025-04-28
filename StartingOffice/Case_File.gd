@@ -45,4 +45,5 @@ func _process(delta):
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			player.stop_player()
 			var layout = Dialogic.start("Day 1 Office timeline")
+
 			layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)

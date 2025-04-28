@@ -15,7 +15,6 @@ func _on_detective_anims_dalton_invisible() -> void:
 	audio[0].play()
 
 func _on_detective_anims_dalton_visible() -> void:
-	print("VISIBILITY")
 	audio[1].play()
 
 func _on_forward_pressed() -> void:
@@ -34,10 +33,8 @@ func _on_paper_sound() -> void:
 	audio_master[0]["parameters/switch_to_clip"] = "Clip 10"
 	audio_master[0].play() 
 
-
 func _on_general_interacted(interactor: Interactor) -> void:
 	audio[3].play()
-	
 	
 func _on_team_pic_mouse_entered() -> void:
 	audio[4].play()

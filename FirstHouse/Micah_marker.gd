@@ -4,7 +4,7 @@ extends Marker2D
 @onready var pos_y = 0
 @onready var marker = $"."
 @onready var cam = $"../../SubViewportContainer/SubViewport/CameraSystem/Camera3D"
-@onready var micah = $"../../Characters/Micah/Micah/MicahBody"
+@onready var micah = $"../../SubViewportContainer/Characters/Micah/Micah/MicahBody"
 @onready var kitchen = $"../../SubViewportContainer/SubViewport/CameraSystem/Kitchen"
 @onready var live_cam = $"../../SubViewportContainer/SubViewport/CameraSystem/livingroom"
 # Called when the node enters the scene tree for the first time.

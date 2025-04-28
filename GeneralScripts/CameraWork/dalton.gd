@@ -11,6 +11,7 @@ var jogcheck = false
 var idle_timer_active: bool = false
 @export var force_rotate_list: Array[Marker3D]
 @export var sound_player : AnimationPlayer
+
 var gathered = false
 var walk_indicate = false
 
@@ -34,6 +35,7 @@ var interaction = false
 var in_control = true
 var control_area = false
 var force_rotation = false
+
 
 
 func _ready() -> void:
@@ -83,9 +85,10 @@ func _physics_process(delta: float) -> void:
 				velocity.x = lerp(velocity.x, -rotated_dir.x * SPEED, LERP_VAL)
 				velocity.z = lerp(velocity.z, -rotated_dir.z * SPEED, LERP_VAL)
 				if SPEED == 2.2:
-					sound_player.play("FootstepsJog")
+					floor_type_jog()
 				else:
-					sound_player.play("Footsteps")
+					#sound_player.play("Footsteps")
+					floor_type_walk()
 				# Smoothly rotate the armature to face the movement direction
 				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
 				jogcheck = true
@@ -97,7 +100,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				if gathered == false and walk_indicate == true:
 					sound_player.stop()
-					sound_player.play("FootstepsGather")
+					floor_type_gather()
 					gathered = true
 				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
@@ -142,6 +145,40 @@ func _physics_process(delta: float) -> void:
 	else:
 		emit_signal("stopped")
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
+
+func floor_type_walk():
+	if $FloorType.is_colliding():
+		var collider = $FloorType.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("Footsteps")
+		if collider.is_in_group("tile"):
+			sound_player.play("Footsteps_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("Footsteps_Carpet")
+		
+# floor type jog 
+func floor_type_jog():
+	if $FloorType.is_colliding():
+		var collider = $FloorType.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("FootstepsJog")
+		if collider.is_in_group("tile"):
+			sound_player.play("FootstepsJog_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("FootstepsJog_Carpet")
+		
+
+# floor type gather
+func floor_type_gather():
+	if $FloorType.is_colliding():
+		var collider = $FloorType.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("FootstepsGather")
+		if collider.is_in_group("tile"):
+			sound_player.play("FootstepsGather_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("FootstepsGather_Carpet")
+		
 
 func force_rotate():
 	var target = force_rotate_list[0].global_position

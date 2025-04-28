@@ -9,6 +9,8 @@ extends Node3D
 @onready var player = $"../../../Characters/Dalton/CharacterBody3D"
 var is_open: bool = false
 @onready var entered = false
+@export var door_sound : AudioStreamPlayer3D
+@export var door_sound_close : AudioStreamPlayer3D
 
 signal micah_rotate
 var is_outside = true
@@ -21,15 +23,19 @@ func open() -> void:
 	if is_outside:
 		emit_signal("micah_rotate")
 	print("Opening")
+	door_sound.play()
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
 	
 func close() -> void:
 	print("Closing")
+	
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
 	is_open = false
+	await get_tree().create_timer(2.5).timeout
+	door_sound_close.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var cab_cam = $"../../../SubViewport/CameraSystem/Cabinet"
 @onready var main_cam = $"../../../SubViewport/CameraSystem/Kitchen"
-@onready var player = $"../../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../../Characters/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../../SubViewport/CameraSystem/Cabinet/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
 @onready var cab_open = false
