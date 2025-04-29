@@ -248,10 +248,8 @@ _data = {
 &"RESET": SubResource("Animation_jhqlo")
 }
 
-[node name="Pager" type="Control"]
+[node name="Pager" type="CanvasLayer"]
 visible = false
-layout_mode = 3
-anchors_preset = 0
 
 [node name="PagerUiFrame" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -275,7 +273,6 @@ libraries = {
 }
 
 [node name="0" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1100.0
 offset_top = 570.0
 offset_right = 1151.0
@@ -286,7 +283,6 @@ texture_pressed = ExtResource("28_y8wy7")
 texture_hover = ExtResource("28_y8wy7")
 
 [node name="1" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 650.0
 offset_top = 570.0
 offset_right = 701.0
@@ -296,7 +292,6 @@ texture_pressed = ExtResource("30_ea2b3")
 texture_hover = ExtResource("30_ea2b3")
 
 [node name="2" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 700.0
 offset_top = 570.0
 offset_right = 751.0
@@ -306,7 +301,6 @@ texture_pressed = ExtResource("32_ep0jv")
 texture_hover = ExtResource("32_ep0jv")
 
 [node name="3" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 750.0
 offset_top = 570.0
 offset_right = 801.0
@@ -316,7 +310,6 @@ texture_pressed = ExtResource("34_xo4xx")
 texture_hover = ExtResource("34_xo4xx")
 
 [node name="4" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 800.0
 offset_top = 570.0
 offset_right = 851.0
@@ -326,7 +319,6 @@ texture_pressed = ExtResource("36_052fc")
 texture_hover = ExtResource("36_052fc")
 
 [node name="5" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 850.0
 offset_top = 570.0
 offset_right = 901.0
@@ -336,7 +328,6 @@ texture_pressed = ExtResource("38_y4uyk")
 texture_hover = ExtResource("38_y4uyk")
 
 [node name="6" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 900.0
 offset_top = 570.0
 offset_right = 951.0
@@ -346,7 +337,6 @@ texture_pressed = ExtResource("40_ia7w1")
 texture_hover = ExtResource("40_ia7w1")
 
 [node name="7" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 950.0
 offset_top = 570.0
 offset_right = 1001.0
@@ -356,7 +346,6 @@ texture_pressed = ExtResource("42_742dx")
 texture_hover = ExtResource("42_742dx")
 
 [node name="8" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1000.0
 offset_top = 570.0
 offset_right = 1051.0
@@ -366,7 +355,6 @@ texture_pressed = ExtResource("44_di1qb")
 texture_hover = ExtResource("44_di1qb")
 
 [node name="9" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1050.0
 offset_top = 570.0
 offset_right = 1101.0
@@ -376,7 +364,6 @@ texture_pressed = ExtResource("46_auon5")
 texture_hover = ExtResource("46_auon5")
 
 [node name="q" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 660.0
 offset_top = 620.0
 offset_right = 721.0
@@ -386,7 +373,6 @@ texture_pressed = ExtResource("48_midpi")
 texture_hover = ExtResource("48_midpi")
 
 [node name="w" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 720.0
 offset_top = 620.0
 offset_right = 781.0
@@ -396,7 +382,6 @@ texture_pressed = ExtResource("50_jd3ha")
 texture_hover = ExtResource("50_jd3ha")
 
 [node name="e" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 780.0
 offset_top = 620.0
 offset_right = 841.0
@@ -406,7 +391,6 @@ texture_pressed = ExtResource("52_2x6id")
 texture_hover = ExtResource("52_2x6id")
 
 [node name="r" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 840.0
 offset_top = 620.0
 offset_right = 901.0
@@ -416,7 +400,6 @@ texture_pressed = ExtResource("54_d30ej")
 texture_hover = ExtResource("54_d30ej")
 
 [node name="t" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 900.0
 offset_top = 620.0
 offset_right = 961.0
@@ -426,7 +409,6 @@ texture_pressed = ExtResource("56_v1bgl")
 texture_hover = ExtResource("56_v1bgl")
 
 [node name="y" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 960.0
 offset_top = 620.0
 offset_right = 1021.0
@@ -436,7 +418,6 @@ texture_pressed = ExtResource("58_v8gql")
 texture_hover = ExtResource("58_v8gql")
 
 [node name="u" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1020.0
 offset_top = 620.0
 offset_right = 1081.0
@@ -446,7 +427,6 @@ texture_pressed = ExtResource("60_kkpm7")
 texture_hover = ExtResource("60_kkpm7")
 
 [node name="i" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1080.0
 offset_top = 620.0
 offset_right = 1141.0
@@ -456,7 +436,6 @@ texture_pressed = ExtResource("62_pmy7i")
 texture_hover = ExtResource("62_pmy7i")
 
 [node name="o" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1140.0
 offset_top = 620.0
 offset_right = 1201.0
@@ -466,7 +445,6 @@ texture_pressed = ExtResource("64_nu4j2")
 texture_hover = ExtResource("64_nu4j2")
 
 [node name="p" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1200.0
 offset_top = 620.0
 offset_right = 1261.0
@@ -476,7 +454,6 @@ texture_pressed = ExtResource("66_svyvn")
 texture_hover = ExtResource("66_svyvn")
 
 [node name="a" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 690.0
 offset_top = 680.0
 offset_right = 751.0
@@ -486,7 +463,6 @@ texture_pressed = ExtResource("68_6p0ea")
 texture_hover = ExtResource("68_6p0ea")
 
 [node name="s" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 750.0
 offset_top = 680.0
 offset_right = 811.0
@@ -496,7 +472,6 @@ texture_pressed = ExtResource("70_oahyc")
 texture_hover = ExtResource("70_oahyc")
 
 [node name="d" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 810.0
 offset_top = 680.0
 offset_right = 871.0
@@ -506,7 +481,6 @@ texture_pressed = ExtResource("72_yrwb8")
 texture_hover = ExtResource("72_yrwb8")
 
 [node name="f" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 870.0
 offset_top = 680.0
 offset_right = 931.0
@@ -516,7 +490,6 @@ texture_pressed = ExtResource("74_s5urs")
 texture_hover = ExtResource("74_s5urs")
 
 [node name="g" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 930.0
 offset_top = 680.0
 offset_right = 991.0
@@ -526,7 +499,6 @@ texture_pressed = ExtResource("76_jpo48")
 texture_hover = ExtResource("76_jpo48")
 
 [node name="h" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 990.0
 offset_top = 680.0
 offset_right = 1051.0
@@ -536,7 +508,6 @@ texture_pressed = ExtResource("78_i1wu0")
 texture_hover = ExtResource("78_i1wu0")
 
 [node name="j" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1050.0
 offset_top = 680.0
 offset_right = 1111.0
@@ -546,7 +517,6 @@ texture_pressed = ExtResource("80_p7fys")
 texture_hover = ExtResource("80_p7fys")
 
 [node name="k" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1110.0
 offset_top = 680.0
 offset_right = 1171.0
@@ -556,7 +526,6 @@ texture_pressed = ExtResource("82_vy5h7")
 texture_hover = ExtResource("82_vy5h7")
 
 [node name="l" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1170.0
 offset_top = 680.0
 offset_right = 1231.0
@@ -566,7 +535,6 @@ texture_pressed = ExtResource("84_pktn4")
 texture_hover = ExtResource("84_pktn4")
 
 [node name="z" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 660.0
 offset_top = 740.0
 offset_right = 721.0
@@ -576,7 +544,6 @@ texture_pressed = ExtResource("86_mq0wg")
 texture_hover = ExtResource("86_mq0wg")
 
 [node name="x" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 720.0
 offset_top = 740.0
 offset_right = 781.0
@@ -585,7 +552,6 @@ texture_normal = ExtResource("87_b8kfi")
 texture_pressed = ExtResource("88_e60y3")
 
 [node name="c" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 780.0
 offset_top = 740.0
 offset_right = 841.0
@@ -595,7 +561,6 @@ texture_pressed = ExtResource("90_0iqo4")
 texture_hover = ExtResource("90_0iqo4")
 
 [node name="v" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 840.0
 offset_top = 740.0
 offset_right = 901.0
@@ -605,7 +570,6 @@ texture_pressed = ExtResource("92_i8as2")
 texture_hover = ExtResource("92_i8as2")
 
 [node name="b" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 900.0
 offset_top = 740.0
 offset_right = 961.0
@@ -615,7 +579,6 @@ texture_pressed = ExtResource("94_r1qc7")
 texture_hover = ExtResource("94_r1qc7")
 
 [node name="n" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 960.0
 offset_top = 740.0
 offset_right = 1021.0
@@ -625,7 +588,6 @@ texture_pressed = ExtResource("96_y0c2g")
 texture_hover = ExtResource("96_y0c2g")
 
 [node name="m" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1020.0
 offset_top = 740.0
 offset_right = 1081.0
@@ -635,7 +597,6 @@ texture_pressed = ExtResource("98_n8axb")
 texture_hover = ExtResource("98_n8axb")
 
 [node name="," type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1080.0
 offset_top = 740.0
 offset_right = 1141.0
@@ -645,7 +606,6 @@ texture_pressed = ExtResource("100_ui21k")
 texture_hover = ExtResource("100_ui21k")
 
 [node name="Question" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1200.0
 offset_top = 740.0
 offset_right = 1261.0
@@ -655,7 +615,6 @@ texture_pressed = ExtResource("102_d7i6w")
 texture_hover = ExtResource("102_d7i6w")
 
 [node name="Backspace" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1158.0
 offset_top = 576.0
 offset_right = 1273.0
@@ -666,7 +625,6 @@ texture_pressed = ExtResource("104_mshpm")
 texture_hover = ExtResource("104_mshpm")
 
 [node name="Back" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 850.0
 offset_top = 859.0
 offset_right = 911.0
@@ -676,7 +634,6 @@ texture_pressed = ExtResource("106_0gpif")
 texture_hover = ExtResource("106_0gpif")
 
 [node name="Check" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1010.0
 offset_top = 859.0
 offset_right = 1071.0
@@ -686,7 +643,6 @@ texture_pressed = ExtResource("108_nwddx")
 texture_hover = ExtResource("108_nwddx")
 
 [node name="Continue" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 89.0
 offset_top = 702.0
 offset_right = 310.0
@@ -696,7 +652,6 @@ texture_pressed = ExtResource("110_0pld0")
 texture_hover = ExtResource("110_0pld0")
 
 [node name="Direction" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 910.0
 offset_top = 809.0
 offset_right = 1011.0
@@ -706,7 +661,6 @@ texture_pressed = ExtResource("111_21hw0")
 texture_hover = ExtResource("111_21hw0")
 
 [node name="Up" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 949.0
 offset_top = 824.0
 offset_right = 971.0
@@ -716,7 +670,6 @@ texture_pressed = ExtResource("114_idxxn")
 texture_hover = ExtResource("114_idxxn")
 
 [node name="Down" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 949.0
 offset_top = 880.0
 offset_right = 971.0
@@ -726,7 +679,6 @@ texture_pressed = ExtResource("116_fnwrf")
 texture_hover = ExtResource("116_fnwrf")
 
 [node name="Left" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 925.0
 offset_top = 849.0
 offset_right = 945.0
@@ -736,7 +688,6 @@ texture_pressed = ExtResource("118_4g48p")
 texture_hover = ExtResource("118_4g48p")
 
 [node name="Right" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 981.0
 offset_top = 849.0
 offset_right = 996.0
@@ -746,7 +697,6 @@ texture_pressed = ExtResource("120_2apvr")
 texture_hover = ExtResource("120_2apvr")
 
 [node name="Enter" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1035.0
 offset_top = 804.0
 offset_right = 1185.0
@@ -757,7 +707,6 @@ texture_pressed = ExtResource("114_afju4")
 texture_hover = ExtResource("114_afju4")
 
 [node name="Home" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1150.0
 offset_top = 808.0
 offset_right = 1300.0
@@ -767,7 +716,6 @@ texture_pressed = ExtResource("116_bll33")
 texture_hover = ExtResource("116_bll33")
 
 [node name="Shift" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 620.0
 offset_top = 809.0
 offset_right = 770.0
@@ -777,7 +725,6 @@ texture_pressed = ExtResource("118_qvd8s")
 texture_hover = ExtResource("118_qvd8s")
 
 [node name="Space" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 735.0
 offset_top = 804.0
 offset_right = 885.0
@@ -787,7 +734,6 @@ texture_pressed = ExtResource("120_28del")
 texture_hover = ExtResource("120_28del")
 
 [node name="period" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1140.0
 offset_top = 740.0
 offset_right = 1201.0

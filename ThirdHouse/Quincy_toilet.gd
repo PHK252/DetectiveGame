@@ -31,8 +31,8 @@ extends Node3D
 @export var regular_dialogue_file: String
 @export var thought_dialogue_file: String
 
-@export var flood_anim : AnimationPlayer
-@export var anim_track : String
+#@export var flood_anim : AnimationPlayer
+#@export var anim_track : String
 #Load Global Variables
 @export var interact_type: String
 @export var view_item: String
@@ -91,7 +91,7 @@ func _process(delta):
 			interact_area_1.hide()
 			interact_area_2.hide()
 			alert.show()
-			flood_anim.play(anim_track)
+			#flood_anim.play(anim_track)
 			
 	if GlobalVars.in_look_screen == true:
 		interact_area_1.hide()

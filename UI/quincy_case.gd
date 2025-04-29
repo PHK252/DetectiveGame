@@ -31,8 +31,13 @@ extends CanvasLayer
 
 @onready var button_pressed = ""
 
+@export var open_animation : AnimationPlayer
+@export var interact_area_1 : Area2D
+@export var interact_area_2 : Area2D
+
 func _ready():
 	label.text = ""
+	open_animation.play("default")
 
 
 func reset_num():
@@ -138,10 +143,14 @@ func _on_enter_pressed():
 	input = label.text
 	reset_num()
 	if password == input:
-		print("correct")
+		#print("correct")
 		label.text = "Opening..."
+		GlobalVars.open_quincy_case.connect(_open_case) 
+		print("Open")
+		GlobalVars.emit_open_quincy_case()
+		await get_tree().create_timer(1.5).timeout
 	else:
-		print("very wrong")
+		#print("very wrong")
 		label.text = "Wrong"
 		await get_tree().create_timer(1.5).timeout
 		input = ""
@@ -172,3 +181,19 @@ func _on_tuv_mouse_exited():
 
 func _on_wxyz_mouse_exited():
 	reset_num()
+
+func _open_case():
+	#case_unlocked.play()
+	#cam_anim.play("Case_look")
+	#hide_closed_case()
+	#show_open_case()
+	GlobalVars.in_look_screen = false
+	GlobalVars.Quincy_in_case = false
+	$".".hide()
+	open_animation.play("case_open")
+	await open_animation.animation_finished
+	await get_tree().create_timer(.03).timeout
+	GlobalVars.viewing = ""
+	interact_area_1.show()
+	interact_area_2.show()
+	GlobalVars.open_quincy_case.disconnect(_open_case)

@@ -86,7 +86,8 @@ signal open_quincy_case
 @onready var viewed_Quincy_phone = false
 @onready var viewed_Quincy_fish = false
 @onready var viewed_Quincy_poker = false
-#@onready var viewed_Quincy_case = false
+@onready var viewed_Quincy_letter = false
+@onready var viewed_Quincy_hammer = false
 @onready var viewed_Quincy_bookmark = false
 
 @onready var offPic_dialogue_Quincy = false
