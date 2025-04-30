@@ -155,6 +155,12 @@ func floor_type_walk():
 			sound_player.play("Footsteps_Tile")
 		if collider.is_in_group("carpet"):
 			sound_player.play("Footsteps_Carpet")
+		if collider.is_in_group("soil"):
+			sound_player.play("Footsteps_Soil")
+		if collider.is_in_group("grass"):
+			sound_player.play("Footsteps_Grass")
+		if collider.is_in_group("woodStairs"):
+			sound_player.play("Footsteps_WoodStair")
 		
 # floor type jog 
 func floor_type_jog():
@@ -166,6 +172,12 @@ func floor_type_jog():
 			sound_player.play("FootstepsJog_Tile")
 		if collider.is_in_group("carpet"):
 			sound_player.play("FootstepsJog_Carpet")
+		if collider.is_in_group("soil"):
+			sound_player.play("FootstepsJog_Soil")
+		if collider.is_in_group("grass"):
+			sound_player.play("FootstepsJog_Grass")
+		if collider.is_in_group("woodStairs"):
+			sound_player.play("FootstepsJog_WoodStair")
 		
 
 # floor type gather
@@ -178,6 +190,12 @@ func floor_type_gather():
 			sound_player.play("FootstepsGather_Tile")
 		if collider.is_in_group("carpet"):
 			sound_player.play("FootstepsGather_Carpet")
+		if collider.is_in_group("soil"):
+			sound_player.play("FootstepsGather_Soil")
+		if collider.is_in_group("grass"):
+			sound_player.play("FootstepsGather_Grass")
+		if collider.is_in_group("woodStairs"):
+			sound_player.play("FootstepsGather_WoodStair")
 		
 
 func force_rotate():

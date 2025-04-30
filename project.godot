@@ -31,8 +31,6 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SaveLoad="*res://GeneralScripts/Save System/Save_Load.gd"
 GlobalVars="*res://GeneralScripts/Global Variables/GlobalVars.gd"
 LoadManager="*res://Autoloads/load_manager.gd"
-SoundManager="*res://addons/resonate/sound_manager/sound_manager.gd"
-MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
 
 [dialogic]
 
@@ -217,6 +215,11 @@ int_area=""
 wood=""
 tile=""
 carpet=""
+soil=""
+snow=""
+woodStairs=""
+metalStairs=""
+grass=""
 
 [gui]
 
