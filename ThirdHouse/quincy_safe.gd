@@ -32,6 +32,8 @@ extends Node3D
 @export var interior_interact_area_2 : Area2D
 @export var interior_interact_area_3 : Area2D
 @export var interior_interact_area_4 : Area2D
+@export var open_interact : Area2D
+@export var close_interact : Area2D
 @export var load_Dalton_dialogue: String 
 #Load Global Variables
 @export var interact_type: String
@@ -90,6 +92,8 @@ func _process(delta):
 			interior_interact_area_2.hide()
 			interior_interact_area_3.hide()
 			interior_interact_area_4.hide()
+			open_interact.hide()
+			close_interact.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -105,6 +109,8 @@ func _process(delta):
 			interior_interact_area_2.hide()
 			interior_interact_area_3.hide()
 			interior_interact_area_4.hide()
+			open_interact.hide()
+			close_interact.hide()
 			alert.show()
 			
 	if GlobalVars.in_look_screen == true:

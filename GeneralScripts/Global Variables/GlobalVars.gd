@@ -90,7 +90,10 @@ signal open_quincy_case
 @onready var viewed_Quincy_hammer = false
 @onready var viewed_Quincy_bookmark = false
 @onready var viewed_Quincy_pager = false
-@onready var Quincy_Safe_UI = false
+@onready var viewed_Quincy_news = false
+@onready var viewed_Quincy_usb = false
+@onready var viewed_Quincy_proposal = false
+
 
 @onready var offPic_dialogue_Quincy = false
 @onready var famPic_dialogue_Quincy = false
@@ -99,20 +102,22 @@ signal open_quincy_case
 @onready var phone_dialogue_Quincy = false
 @onready var fish_dialogue_Quincy = false
 @onready var poker_thoughts_Quincy = false
-#@onready var case_dialogue_Quincy = false
+@onready var safe_dialogue_Quincy = false
 @onready var bar_dialogue_Quincy_finsihed = false
 @onready var Quincy_toilet_distracted = false
 
 @onready var clicked_offPic_Quincy = 0
 @onready var clicked_journal_Quincy = 0
-#@onready var clicked_famPic_Quincy = 0
+@onready var clicked_proposal_Quincy = 0
 @onready var clicked_coor_Quincy = 0
 @onready var clicked_pager_Quincy = 0
-
+@onready var clicked_news_Quincy = 0
 @onready var clicked_phone_Quincy = 0
 @onready var clicked_case_Quincy = 0
+@onready var clicked_letter_Quincy = 0
 
 @onready var Quincy_in_case = false
+@onready var Quincy_Safe_UI = false
 @onready var Quincy_in_computer = false
 
 @onready var clicked_recipe_Juniper = 0

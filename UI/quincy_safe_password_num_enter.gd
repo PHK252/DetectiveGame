@@ -112,7 +112,48 @@ func close() -> void:
 	safe_anim = false
 
 
+
 func _on_to_close_safe_input_event(viewport, event, shape_idx):
 		if GlobalVars.in_look_screen == false:
 			if event is InputEventMouseButton:
 				close()
+
+func _on_input_event(viewport, event, shape_idx):
+	$".".show()
+	GlobalVars.Quincy_Safe_UI = true
+	GlobalVars.viewing = "safe"
+	GlobalVars.in_look_screen = true
+
+
+func _on_exit_pressed():
+	$".".show()
+	GlobalVars.Quincy_Safe_UI = false
+	GlobalVars.viewing = ""
+	GlobalVars.in_look_screen = false
+	open_interact.show()
+
+func _input(event):
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "safe":
+		$".".hide()
+		GlobalVars.Quincy_Safe_UI = false
+		GlobalVars.in_look_screen = false
+		await get_tree().create_timer(.3).timeout
+		GlobalVars.viewing = ""
+		open_interact.show()
+
+func _on_safe_interact_interacted(interactor):
+	if is_open == false:
+		open_interact.show()
+		close_interact.hide()
+		interior_interact_area_1.hide()
+		interior_interact_area_2.hide()
+		interior_interact_area_3.hide()
+		interior_interact_area_4.hide()
+		
+	if is_open == true: 
+		open_interact.hide()
+		close_interact.show()
+		interior_interact_area_1.show()
+		interior_interact_area_2.show()
+		interior_interact_area_3.show()
+		interior_interact_area_4.show()

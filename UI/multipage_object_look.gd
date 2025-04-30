@@ -40,10 +40,13 @@ func _on_back_pressed():
 func _on_exit_pressed():
 	$".".hide()
 	GlobalVars.in_look_screen = false
+	GlobalVars.viewing = ""
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit"):
 		$".".hide()
 		GlobalVars.in_look_screen = false
+		await get_tree().create_timer(.3).timeout
+		GlobalVars.viewing = ""
 
 	
