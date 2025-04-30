@@ -53,6 +53,13 @@ extends Node3D
 
 @onready var cab_anim = false
 @onready var tilt = ""
+
+#sound 
+@export var close_cab_sound : AudioStreamPlayer3D
+@export var open_cab_sound : AudioStreamPlayer3D
+signal general_interact
+signal general_quit
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if extra_animation:
@@ -112,6 +119,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("general_quit")
 			#await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -142,6 +150,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("general_quit")
 			#await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -171,6 +180,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("general_quit")
 			#await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -198,6 +208,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("general_quit")
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
@@ -221,6 +232,7 @@ func _process(delta):
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		emit_signal("general_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
@@ -233,6 +245,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 
 
 func open() -> void:
+	open_cab_sound.play()
 	cab_anim = true
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
@@ -267,7 +280,9 @@ func close() -> void:
 		close_interact_1.hide()
 		close_interact_2.hide()
 		interact_area_1.hide()
-		await get_tree().create_timer(2.1).timeout
+		await get_tree().create_timer(1.0).timeout
+		close_cab_sound.play()
+		await get_tree().create_timer(1.1).timeout
 		open_interact.show()
 		await get_tree().create_timer(.2).timeout
 		cab_anim = false
@@ -275,7 +290,9 @@ func close() -> void:
 		close_interact_1.hide()
 		close_interact_2.hide()
 		interact_area_1.hide()
-		await get_tree().create_timer(2.1).timeout
+		await get_tree().create_timer(1.0).timeout
+		close_cab_sound.play()
+		await get_tree().create_timer(1.1).timeout
 		open_interact.show()
 		await get_tree().create_timer(.2).timeout
 		cab_anim = false
@@ -335,6 +352,7 @@ func _on_input_event(viewport, event, shape_idx):
 					GlobalVars.in_dialogue = true
 					FP_Cam.priority = 0
 					Exit_Cam.priority = 30
+					emit_signal("general_quit")
 					await get_tree().create_timer(.03).timeout
 					cam_anim.play("RESET")
 					player.show()

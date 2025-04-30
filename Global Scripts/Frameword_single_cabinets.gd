@@ -43,6 +43,12 @@ extends Node3D
 @export var extra_animation: AnimationPlayer = null
 
 @onready var cab_anim = false
+
+#sounds
+@export var open_sound : AudioStreamPlayer3D
+@export var close_sound : AudioStreamPlayer3D
+signal general_interact
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if extra_animation:
@@ -114,6 +120,7 @@ func _process(delta):
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		emit_signal("general_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
@@ -135,6 +142,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 
 
 func open() -> void:
+	open_sound.play()
 	cab_anim = true
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
@@ -158,6 +166,7 @@ func open() -> void:
 		cab_anim = false
 	
 func close() -> void:
+	close_sound.play()
 	cab_anim = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false

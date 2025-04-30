@@ -37,7 +37,7 @@ func _on_input_event(viewport, event, shape_idx):
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				if is_there_anim == true:
-					if clicked_object == "clicked_book_note":
+					if clicked_object == "clicked_book_note" or "clicked_bookmark_Juniper":
 						note_swipe.play()
 					anim.play(anim_track)
 					await anim.animation_finished

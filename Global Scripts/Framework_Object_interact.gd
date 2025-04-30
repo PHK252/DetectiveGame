@@ -36,6 +36,8 @@ extends Node3D
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
 
+signal general_interact
+signal general_quit
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -63,6 +65,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("general_quit")
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -80,6 +83,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("general_quit")
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -103,6 +107,7 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
+	emit_signal("general_interact")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type

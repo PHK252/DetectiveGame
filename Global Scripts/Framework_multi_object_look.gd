@@ -44,6 +44,8 @@ extends Node3D
 @onready var mouse_pos = Vector2(0,0) 
 @onready var tilt = ""
 
+signal general_interact
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var read_dialogue_1 : bool = GlobalVars.get(dialogue_1)
@@ -178,6 +180,7 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
+	emit_signal("general_interact")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type

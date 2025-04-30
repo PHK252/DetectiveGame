@@ -68,4 +68,26 @@ func _on_down_mouse_entered() -> void:
 
 
 func _on_closet_general_interact() -> void:
+	#for all micah
 	audio[3].play()
+
+
+func _on_cafe_interact_general_interact() -> void:
+	#for all juniper
+	audio[3].play()
+
+
+func _on_cafe_interact_general_quit() -> void:
+	audio_master[0].play()
+
+func _on_recipe_paper_sound() -> void:
+	audio_master[1].play()
+
+func _on_back_mouse_entered_Juniper() -> void:
+	audio[4].play()
+
+func _on_back_pressed_juniper() -> void:
+	audio[0].play()
+
+func _on_forward_pressed_juniper() -> void:
+	audio[1].play()
