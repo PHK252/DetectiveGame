@@ -10,6 +10,17 @@ extends CanvasLayer
 @onready var array_pos = 0
 @onready var incorrect_times = 2
 
+@onready var is_open: bool = false
+@export var animation_tree : AnimationTree
+@onready var safe_anim = false
+@export var open_interact : Area2D
+@export var close_interact : Area2D
+
+@export var interior_interact_area_1 : Area2D
+@export var interior_interact_area_2 : Area2D
+@export var interior_interact_area_3 : Area2D
+@export var interior_interact_area_4 : Area2D
+
 func _ready():
 	pass_enter.text = ""
 
@@ -46,17 +57,23 @@ func _on_backspace_pressed():
 func _on_enter_pressed():
 	input = input + input_array[array_pos]
 	if password == input:
-		print("correct")
+		$".".hide()
+		GlobalVars.in_look_screen = false
+		GlobalVars.Quincy_Safe_UI = false
+		#print("correct")
 		pass_enter.text = "Opening..."
+		await get_tree().create_timer(1.5).timeout
+		open()
+		
 	elif incorrect_times > 0:
-		print("wrong")
+		#print("wrong")
 		pass_enter.text = "Incorrect. " + str(incorrect_times) + " tries remaining."
 		incorrect_times -= 1
 		await get_tree().create_timer(1.5).timeout
 		input = ""
 		pass_enter.text = input
 	else:
-		print("very wrong")
+		#print("very wrong")
 		pass_enter.text = "Exceeded amount of incorrect tries."
 		await get_tree().create_timer(1.5).timeout
 		pass_enter.text = "Sending alarm..."
@@ -64,3 +81,38 @@ func _on_enter_pressed():
 		input = ""
 		pass_enter.text = input
 		
+func open() -> void:
+	safe_anim = true
+	animation_tree["parameters/conditions/is_opened"] = true
+	animation_tree["parameters/conditions/is_closed"] = false
+	is_open = true
+	open_interact.hide()
+	interior_interact_area_1.show()
+	interior_interact_area_2.show()
+	interior_interact_area_3.show()
+	interior_interact_area_4.show()
+	await get_tree().create_timer(2.1).timeout
+	close_interact.show()
+	await get_tree().create_timer(.2).timeout
+	safe_anim = false
+	
+func close() -> void:
+	safe_anim = true
+	animation_tree["parameters/conditions/is_closed"] = true
+	animation_tree["parameters/conditions/is_opened"] = false
+	is_open = false
+	close_interact.hide()
+	interior_interact_area_1.hide()
+	interior_interact_area_2.hide()
+	interior_interact_area_3.hide()
+	interior_interact_area_4.hide()
+	await get_tree().create_timer(2.1).timeout
+	open_interact.show()
+	await get_tree().create_timer(.2).timeout
+	safe_anim = false
+
+
+func _on_to_close_safe_input_event(viewport, event, shape_idx):
+		if GlobalVars.in_look_screen == false:
+			if event is InputEventMouseButton:
+				close()

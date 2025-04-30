@@ -89,6 +89,8 @@ signal open_quincy_case
 @onready var viewed_Quincy_letter = false
 @onready var viewed_Quincy_hammer = false
 @onready var viewed_Quincy_bookmark = false
+@onready var viewed_Quincy_pager = false
+@onready var Quincy_Safe_UI = false
 
 @onready var offPic_dialogue_Quincy = false
 @onready var famPic_dialogue_Quincy = false
@@ -105,6 +107,7 @@ signal open_quincy_case
 @onready var clicked_journal_Quincy = 0
 #@onready var clicked_famPic_Quincy = 0
 @onready var clicked_coor_Quincy = 0
+@onready var clicked_pager_Quincy = 0
 
 @onready var clicked_phone_Quincy = 0
 @onready var clicked_case_Quincy = 0
