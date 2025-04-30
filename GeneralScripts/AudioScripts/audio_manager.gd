@@ -91,3 +91,30 @@ func _on_back_pressed_juniper() -> void:
 
 func _on_forward_pressed_juniper() -> void:
 	audio[1].play()
+
+func _on_caseButtonJuniper_pressed() -> void:
+	audio_master[0].play()
+
+func _on_x_pressed() -> void:
+	audio[8].play()
+
+func _on_enter_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_caseHoverJuniper_entered() -> void:
+	audio_master[2].play()
+
+
+func _on_case_ui_locked_sound() -> void:
+	audio_master[3].play()
+
+
+func _on_case_ui_unlocked_sound() -> void:
+	audio_master[4].play()
+	await get_tree().create_timer(0.2).timeout
+	audio[7].play()
+
+
+func _on_case_picking_up() -> void:
+	print("PICKINGUP")
+	audio[6].play()

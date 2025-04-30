@@ -25,6 +25,9 @@ extends CanvasLayer
 @export var theo_marker: Marker2D
 @export var character_marker: Marker2D
 
+signal locked_sound
+signal unlocked_sound
+
 func key_press(num : int):
 	if len(text_edit.text) <  10:
 		text_edit.text += str(num)
@@ -75,6 +78,7 @@ func _on_x_pressed():
 
 func _on_enter_pressed():
 	if text_edit.text == password:
+		emit_signal("unlocked_sound")
 		GlobalVars.open_juniper_case.connect(_open_case) 
 		print("Open")
 		GlobalVars.emit_open_jun_case()
@@ -82,6 +86,7 @@ func _on_enter_pressed():
 		#print("opened case " + str(GlobalVars.opened_jun_case))
 		text_edit.text = ""
 	else:
+		emit_signal("locked_sound")
 		print("nu uh")
 		text_edit.text = "xxxxxxxxxx"
 		await get_tree().create_timer(1.5).timeout

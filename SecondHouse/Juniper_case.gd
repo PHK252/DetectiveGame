@@ -29,6 +29,10 @@ extends Node3D
 @export var load_char_dialogue: String
 
 @export var interact_type: String
+
+#sound
+@export var case_pickup : AudioStreamPlayer3D
+@export var case_pickup_2 : AudioStreamPlayer3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI.hide()
@@ -86,6 +90,7 @@ func _on_timeline_ended():
 #
 func caseUI(argument: String):
 	if argument == "look_case":
+		case_pickup.play()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.hide()
 		GlobalVars.Juniper_in_case = true
@@ -195,6 +200,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				case_pickup_2.play()
 				if GlobalVars.in_interaction == "":
 					GlobalVars.in_interaction = interact_type
 				UI.show()
