@@ -212,3 +212,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 func _on_leaves_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(10)
+
+
+func _on_porch_juniper_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(11)
