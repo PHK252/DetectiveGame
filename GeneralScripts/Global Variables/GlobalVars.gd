@@ -15,6 +15,7 @@ signal open_quincy_case
 @onready var player_move = true
 @onready var in_look_screen = false
 @onready var in_dialogue = false
+@onready var intro_dialogue = false
 @onready var clicked_contact = 0
 @onready var clicked_partner = 0
 @onready var clicked_news = 0
@@ -24,7 +25,8 @@ signal open_quincy_case
 @onready var clicked_book_note = 0
 @onready var clicked_case_letter_note = 0
 @onready var clicked_cab = 0
-@onready var viewed_case_file = 0
+@onready var viewed_case_file = false
+@onready var clicked_case_file = false
 @onready var clicked_Micah_pic = 0
 @onready var clicked_case_Micah = 0
 

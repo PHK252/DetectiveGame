@@ -2,7 +2,6 @@ extends Area2D
 
 @onready var object = $"."
 @onready var look = $"../TeamPic Look"
-@onready var alert = $"../TeamHover"
 @export var click : AudioStreamPlayer
 
 func _on_input_event(viewport, event, shape_idx):
@@ -11,7 +10,6 @@ func _on_input_event(viewport, event, shape_idx):
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				click.play()
 				object.hide()
-				alert.hide()
 				look.show()
 				GlobalVars.viewing = "team"
 				GlobalVars.in_look_screen = true
@@ -38,11 +36,3 @@ func _process(delta):
 			Dialogic.start("Office_Team_Picture")
 			GlobalVars.viewed_team == true
 			GlobalVars.viewing = ""
-
-
-func _on_mouse_entered():
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
-		alert.show()
-
-func _on_mouse_exited():
-	alert.hide()
