@@ -4,7 +4,7 @@ extends Marker2D
 @onready var pos_y = 0
 @onready var marker = $"."
 @onready var cam = $"../../SubViewportContainer/SubViewport/CameraSystem/Camera3D"
-@onready var player = $"../../SubViewportContainer/Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../SubViewportContainer/SubViewport/Dalton/CharacterBody3D"
 @onready var live_cam = $"../../SubViewportContainer/SubViewport/CameraSystem/livingroom"
 @onready var kitchen = $"../../SubViewportContainer/SubViewport/CameraSystem/Kitchen"
 

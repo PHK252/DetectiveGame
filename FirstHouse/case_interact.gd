@@ -40,6 +40,7 @@ extends Node3D
 @export var interact_type: String
 
 @export var case_pickup : AudioStreamPlayer3D
+signal general_quit
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI.hide()
@@ -150,6 +151,7 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30
+			emit_signal("general_quit")
 			cam_anim.play("RESET")
 			player.show()
 			if GlobalVars.opened_micah_case == true:

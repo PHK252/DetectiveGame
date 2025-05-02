@@ -15,7 +15,10 @@ var introduction_happened = false
 
 signal micah_rotate
 signal greeting
+signal general_interact
 var is_outside = true
+
+var cooldown = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,70 +27,77 @@ func _ready() -> void:
 func open() -> void:
 	#if is_outside:
 		#emit_signal("micah_rotate")
-
+	cooldown = true
 	print("Opening")
 	door_sound.play()
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
+	await get_tree().create_timer(2.5).timeout
+	cooldown = false
 	
 func close() -> void:
 	print("Closing")
 	
+	cooldown = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
 	is_open = false
 	await get_tree().create_timer(2.5).timeout
 	door_sound_close.play()
+	cooldown = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	print(is_open)
-	print(entered)
-	#game code
-	#__________________
-	#player.stop_player()
-	#GlobalVars.in_dialogue = true
-	#Dialogic.timeline_ended.connect(_on_timeline_ended)
-	#Dialogic.signal_event.connect(doorOpen)
-	#var layout = Dialogic.start("Enter_house")
-	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	#layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-	#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-	
-	#for debug
-	#__________________
-	
-	
-	if is_open == false and entered == true and GlobalVars.in_dialogue == false:
-		GlobalVars.in_dialogue == true
-		Dialogic.signal_event.connect(doorOpen)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		var layout = Dialogic.start("Micah_Leave")
-		layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-	elif is_open == false and GlobalVars.in_dialogue == false:
-		#print("open")
-		#$Interactable.queue_free()
-		if introduction_happened:
-			open()
-			collision.disabled = true
-		else:
-			emit_signal("greeting")
-			emit_signal("micah_rotate")
-			print("dalton_move_knock")
+	if cooldown == false:
+		cooldown = true
+		emit_signal("general_interact")
+		print(is_open)
+		print(entered)
+		#game code
+		#__________________
+		#player.stop_player()
+		#GlobalVars.in_dialogue = true
+		#Dialogic.timeline_ended.connect(_on_timeline_ended)
+		#Dialogic.signal_event.connect(doorOpen)
+		#var layout = Dialogic.start("Enter_house")
+		#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		#layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+		#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		
-		return
+		#for debug
+		#__________________
+		
+		
+		if is_open == false and entered == true and GlobalVars.in_dialogue == false:
+			GlobalVars.in_dialogue == true
+			Dialogic.signal_event.connect(doorOpen)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			var layout = Dialogic.start("Micah_Leave")
+			layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		elif is_open == false and GlobalVars.in_dialogue == false:
+			#print("open")
+			#$Interactable.queue_free()
+			if introduction_happened:
+				open()
+				collision.disabled = true
+			else:
+				emit_signal("greeting")
+				emit_signal("micah_rotate")
+				print("dalton_move_knock")
 			
-		
-	if is_open == true: 
-		close()
-		collision.disabled = false
-		return
+			return
+				
+			
+		if is_open == true: 
+			close()
+			collision.disabled = false
+			return
 		
 
 #game code
@@ -125,3 +135,4 @@ func _on_micah_body_micah_open() -> void:
 	await get_tree().create_timer(5).timeout
 	open()
 	collision.disabled = true
+	introduction_happened = true

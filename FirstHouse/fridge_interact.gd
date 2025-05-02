@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var fridge_cam =  $"../../SubViewport/CameraSystem/Fridge"
 @onready var main_cam = $"../../SubViewport/CameraSystem/livingroom"
-@onready var player = $"../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../SubViewport/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../SubViewport/CameraSystem/Fridge/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
 @onready var fridge_open = false

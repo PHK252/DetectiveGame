@@ -36,7 +36,7 @@ var in_control = true
 var control_area = false
 var force_rotation = false
 
-
+var number = 0
 
 func _ready() -> void:
 	add_to_group("player")
@@ -139,7 +139,7 @@ func _physics_process(delta: float) -> void:
 		if not _snap_up_stairs_check(delta):
 			if force_rotation:
 				print("rotating")
-				force_rotate()
+				force_rotate(number)
 			move_and_slide()
 			_snap_down_to_stairs_check()
 	else:
@@ -198,8 +198,8 @@ func floor_type_gather():
 			sound_player.play("FootstepsGather_WoodStair")
 		
 
-func force_rotate():
-	var target = force_rotate_list[0].global_position
+func force_rotate(number : int):
+	var target = force_rotate_list[number].global_position
 	var dir = (armature.global_position - target).normalized()
 	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-dir.x, -dir.z), LERP_VAL)
 		
@@ -272,6 +272,7 @@ func _snap_up_stairs_check(delta) -> bool:
 func start_move_back():
 	# Initialize lerp for move back
 	print("movedback")
+	number = 0
 	force_rotation = true
 	var move_distance = 0.2  # Adjust as needed
 	move_back_start_position = global_position
@@ -416,10 +417,13 @@ func _on_door_micah_rotate() -> void:
 	pass # Replace with function body.
 
 func _on_door_greeting() -> void:
+	number = 1
 	in_control = false
+	force_rotation = true
 	#knock anim
 	anim_tree.set("parameters/Knock/request", true)
 	emit_signal("knocking")
 	await get_tree().create_timer(2).timeout
+	force_rotation = false
 	in_control = true
 	

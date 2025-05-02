@@ -114,11 +114,28 @@ func _on_case_ui_unlocked_sound() -> void:
 	await get_tree().create_timer(0.2).timeout
 	audio[7].play()
 
-
 func _on_case_picking_up() -> void:
-	print("PICKINGUP")
 	audio[6].play()
 
 func _on_character_body_3d_knocking() -> void:
 	await get_tree().create_timer(2).timeout
 	audio[13].play()
+
+func _on_door_general_interact() -> void:
+	print("trytoPlay")
+	audio[3].play()
+
+func _on_interact_general_quit() -> void:
+	audio_master[1].play()
+
+func _on_closet_general_quit() -> void:
+	audio_master[1].play()
+
+func _on_window_general_quit() -> void:
+	audio_master[1].play()
+
+func _on_bookshelf_interact_general_quit() -> void:
+	audio_master[1].play()
+
+func _on_cab_interact_general_quit() -> void:
+	audio_master[1].play()

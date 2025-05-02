@@ -38,6 +38,7 @@ extends Node3D
 
 #sound effect
 signal general_interact 
+signal general_quit
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -79,6 +80,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("general_quit")
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()

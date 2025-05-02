@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var pic_cam = $"../../../../../../SubViewport/CameraSystem/Picture"
 @onready var main_cam = $"../../../../../../SubViewport/CameraSystem/livingroom"
-@onready var player = $"../../../../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../../../../../SubViewport/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../../../../../SubViewport/CameraSystem/Picture/AnimationPlayer"
 @onready var pic_fall = $"."
 @onready var pic_fall_anim = $"../../../../AnimationPlayer"

@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var cab_cam = $"../../../SubViewport/CameraSystem/Cabinet"
 @onready var main_cam = $"../../../SubViewport/CameraSystem/Kitchen"
-@onready var player = $"../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../../SubViewport/Dalton/CharacterBody3D"
 @onready var cam_anim = $"../../../SubViewport/CameraSystem/Cabinet/AnimationPlayer"
 @onready var mouse_pos = Vector2(0,0) 
 @onready var cab_open = false
@@ -18,10 +18,11 @@ extends Node3D
 
 @onready var dalton_maker = $"../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../UI/Micah_marker"
-@onready var alert = $"../../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
+@onready var alert = $"../../../SubViewport/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
 #sound 
 signal general_interact
+signal general_quit
 
 #@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
@@ -61,6 +62,7 @@ func _process(delta):
 			GlobalVars.in_dialogue = true
 			cab_cam.priority = 0
 			main_cam.priority = 24
+			emit_signal("general_quit")
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
@@ -95,6 +97,7 @@ func _process(delta):
 			main_cam.set_tween_duration(0)
 			cab_cam.priority = 0
 			main_cam.priority = 24
+			emit_signal("general_quit")
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
