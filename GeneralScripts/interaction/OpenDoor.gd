@@ -6,13 +6,15 @@ extends Node3D
 @onready var dalton_marker = $"../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../UI/Micah_marker"
 @onready var theo_marker = $"../../../UI/Theo_marker"
-@onready var player = $"../../../Characters/Dalton/CharacterBody3D"
+@onready var player = $"../../Characters/Dalton/CharacterBody3D"
 var is_open: bool = false
 @onready var entered = false
 @export var door_sound : AudioStreamPlayer3D
 @export var door_sound_close : AudioStreamPlayer3D
+var introduction_happened = false
 
 signal micah_rotate
+signal greeting
 var is_outside = true
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +22,9 @@ func _ready() -> void:
 	pass
 
 func open() -> void:
-	if is_outside:
-		emit_signal("micah_rotate")
+	#if is_outside:
+		#emit_signal("micah_rotate")
+
 	print("Opening")
 	door_sound.play()
 	animation_tree["parameters/conditions/is_opened"] = true
@@ -70,9 +73,16 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	elif is_open == false and GlobalVars.in_dialogue == false:
 		#print("open")
 		#$Interactable.queue_free()
-		open()
-		collision.disabled = true
+		if introduction_happened:
+			open()
+			collision.disabled = true
+		else:
+			emit_signal("greeting")
+			emit_signal("micah_rotate")
+			print("dalton_move_knock")
+		
 		return
+			
 		
 	if is_open == true: 
 		close()
@@ -110,3 +120,8 @@ func _on_character_body_3d_d_hall() -> void:
 
 func _on_character_body_3d_d_inside() -> void:
 	is_outside = false
+
+func _on_micah_body_micah_open() -> void:
+	await get_tree().create_timer(5).timeout
+	open()
+	collision.disabled = true

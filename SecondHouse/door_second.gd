@@ -13,6 +13,10 @@ signal j_door_open
 signal j_door_closed
 var cooldown = false
 
+@onready var greeting = false
+signal juniper_greeting
+signal cam_greeting
+
 @export var quincy_house: bool
 
 # Called when the node enters the scene tree for the first time.
@@ -80,9 +84,18 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	elif is_open == false and GlobalVars.in_dialogue == false and cooldown == false:
 		#print("open")
 		#$Interactable.queue_free()
-		open()
-		collision.disabled = true
-		return
+		if greeting == false and quincy_house == false:
+			print("asking juniper to come")
+			emit_signal("juniper_greeting")
+			emit_signal("cam_greeting")
+			greeting = true
+			return
+			#play knocking sound
+		
+		if greeting == true and quincy_house == false:
+			open()
+			collision.disabled = true
+			return
 		
 	if is_open == true and cooldown == false: 
 		close()
@@ -133,3 +146,10 @@ func _on_main_enter_body_entered(body: Node3D) -> void:
 		if is_open == false:
 			open()
 			collision.disabled = true
+			
+			
+#emit a signal on arrival to open
+
+func _on_character_body_3d_juniper_open_door() -> void:
+	open()
+	collision.disabled = true

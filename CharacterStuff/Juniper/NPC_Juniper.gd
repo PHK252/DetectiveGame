@@ -53,6 +53,9 @@ var accel = 10
 @export var marker_positions: Array[Node3D]
 var wander_choice = 0
 var sharply_turn = false
+var greeting = false
+var greet_rotation = false
+signal juniper_open_door
 
 enum {
 	IDLE, 
@@ -89,7 +92,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	if not is_wandering:
-		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
+		if greeting == true:
+			distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
+		else:
+			distance_to_target = armature.global_transform.origin.distance_to(marker_positions[5].global_transform.origin)
+			
 	else:
 		distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
 
@@ -113,8 +120,13 @@ func _physics_process(delta: float) -> void:
 	if is_navigating:
 		var direction = Vector3()
 		if not is_wandering:
-			STOPPING_DISTANCE = 1.0
-			nav.target_position = player.global_position
+			if greeting == true:
+				STOPPING_DISTANCE = 1.0
+				nav.target_position = player.global_position
+			else:
+				STOPPING_DISTANCE = 1.0
+				nav.target_position = marker_positions[5].global_position
+				
 		else:
 			STOPPING_DISTANCE = 0.0
 		direction = nav.get_next_path_position() - global_position
@@ -135,6 +147,10 @@ func _physics_process(delta: float) -> void:
 
 	if wander_rotate == true:
 		_rotate_towards_object(wander_choice)
+	
+	if greet_rotation:
+		_rotate_towards_dalton()
+		
 
 func _rotate_towards_dalton():
 	var targ_dir = player.global_position
@@ -213,13 +229,16 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 func _process_follow_state(distance_to_target: float) -> void:
 	if distance_to_target <= STOPPING_DISTANCE:
 			#emit_signal("collision_safe")
+			if greeting == false:
+				emit_signal("juniper_open_door")
+			greet_rotation = true
 			is_navigating = false
 			cooldown_bool = true
 			cooldown.start()
 			wander_timer.start()
 			state = IDLE
 	
-	if outside_player:
+	if outside_player and greeting == true:
 		state = IDLE
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
@@ -321,15 +340,16 @@ func _on_cooldown_timeout() -> void:
 func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
-	if cant_follow == false:
-		wander_choice = rng.randi_range(0, 2)
-	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
-		wander_rotate = false
-		#if choice > 0:
-		nav.target_position = marker_positions[wander_choice].global_position
-		is_navigating = true
-		is_wandering = true
-		state = WANDER
+	if greeting == true:
+		if cant_follow == false:
+			wander_choice = rng.randi_range(0, 2)
+		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
+			wander_rotate = false
+			#if choice > 0:
+			nav.target_position = marker_positions[wander_choice].global_position
+			is_navigating = true
+			is_wandering = true
+			state = WANDER
 
 func _on_bookshelf_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
@@ -402,3 +422,17 @@ func _on_tea_activate_temp_interacted(interactor: Interactor) -> void:
 	wander_choice = 3
 	nav.target_position = marker_positions[3].global_position
 	state = TEA
+
+func _on_door_second_juniper_greeting() -> void:
+	print("coming to door")
+	if cant_follow == false:
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
+	

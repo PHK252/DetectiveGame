@@ -118,3 +118,7 @@ func _on_case_ui_unlocked_sound() -> void:
 func _on_case_picking_up() -> void:
 	print("PICKINGUP")
 	audio[6].play()
+
+func _on_character_body_3d_knocking() -> void:
+	await get_tree().create_timer(2).timeout
+	audio[13].play()

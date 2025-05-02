@@ -217,3 +217,7 @@ func _on_leaves_area_body_entered(body: Node3D) -> void:
 func _on_porch_juniper_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(11)
+
+
+func _on_door_second_cam_greeting() -> void:
+	activate_camera(12)

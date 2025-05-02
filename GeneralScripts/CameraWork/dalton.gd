@@ -15,7 +15,6 @@ var idle_timer_active: bool = false
 var gathered = false
 var walk_indicate = false
 
-
 const MAX_STEP_HEIGHT = 1.2
 var _snapped_to_stairs_last_frame := false
 var _last_frame_was_on_floor = -INF
@@ -23,6 +22,7 @@ signal moving
 signal stopped
 signal theo_adjustment
 signal theo_reset
+signal knocking
 var move_back = false
 var is_interacting = false
 
@@ -400,3 +400,26 @@ func _on_kitchen_area_jun_body_entered(body: Node3D) -> void:
 
 func _on_timer_timeout() -> void:
 	pass # Replace with function body.
+
+func _on_door_second_juniper_greeting() -> void:
+	in_control = false
+	#move to door
+	#knock anim
+	anim_tree.set("parameters/Knock/request", true)
+	#play knock sound
+	#move back
+	#pass # Replace with function body.
+
+#signal for dialogue done back in control
+
+func _on_door_micah_rotate() -> void:
+	pass # Replace with function body.
+
+func _on_door_greeting() -> void:
+	in_control = false
+	#knock anim
+	anim_tree.set("parameters/Knock/request", true)
+	emit_signal("knocking")
+	await get_tree().create_timer(2).timeout
+	in_control = true
+	

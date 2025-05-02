@@ -59,6 +59,7 @@ var wander_rotate = false
 
 signal sit_visible
 signal sit_invisible
+signal micah_open
 
 func _ready() -> void:
 	add_to_group("micah")
@@ -349,3 +350,4 @@ func _on_door_micah_rotate() -> void:
 		intDalton = true
 		is_wandering = false
 		_rotate_towards_dalton()
+		emit_signal("micah_open")

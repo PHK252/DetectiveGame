@@ -45,7 +45,7 @@ func _ready():
 	UI.hide()
 	interact_area.hide()
 	hide_open_case()
-	show_open_case()
+	#show_open_case()
 	pass # Replace with function body.
 
 func hide_open_case():
