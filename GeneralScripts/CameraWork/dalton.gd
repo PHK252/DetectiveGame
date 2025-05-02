@@ -403,13 +403,15 @@ func _on_timer_timeout() -> void:
 	pass # Replace with function body.
 
 func _on_door_second_juniper_greeting() -> void:
+	number = 0
 	in_control = false
-	#move to door
+	force_rotation = true
 	#knock anim
 	anim_tree.set("parameters/Knock/request", true)
-	#play knock sound
-	#move back
-	#pass # Replace with function body.
+	await get_tree().create_timer(2).timeout
+	emit_signal("knocking")
+	force_rotation = false
+	in_control = true
 
 #signal for dialogue done back in control
 
@@ -426,4 +428,5 @@ func _on_door_greeting() -> void:
 	await get_tree().create_timer(2).timeout
 	force_rotation = false
 	in_control = true
+	
 	

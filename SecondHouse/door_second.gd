@@ -16,6 +16,7 @@ var cooldown = false
 @onready var greeting = false
 signal juniper_greeting
 signal cam_greeting
+signal j_dialogue
 
 @export var quincy_house: bool
 
@@ -153,3 +154,5 @@ func _on_main_enter_body_entered(body: Node3D) -> void:
 func _on_character_body_3d_juniper_open_door() -> void:
 	open()
 	collision.disabled = true
+	await get_tree().create_timer(2.0).timeout
+	emit_signal("j_dialogue")

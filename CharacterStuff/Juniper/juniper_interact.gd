@@ -12,6 +12,8 @@ extends Node3D
 
 @onready var asked = false
 
+signal finish_greeting
+
 func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
@@ -31,6 +33,7 @@ func _on_timeline_ended():
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	emit_signal("finish_greeting")
 	#asked = true
 
 func _process(delta):
@@ -50,3 +53,16 @@ func _process(delta):
 		#ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		#ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), theo_marker)
 		#ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), juniper_marker)
+
+func _on_door_second_j_dialogue() -> void:
+	print("recieved")
+	if GlobalVars.in_dialogue == false and asked == false:
+		#emit_signal("Tstop")
+		print("tryingtogrree")
+		GlobalVars.in_dialogue = true
+		player.stop_player()
+		var ask_victims = Dialogic.start("Juniper_questions")
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		ask_victims.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)

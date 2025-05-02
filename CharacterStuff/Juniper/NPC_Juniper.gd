@@ -57,6 +57,9 @@ var greeting = false
 var greet_rotation = false
 signal juniper_open_door
 
+#sounds and footsteps
+@export var sound_player : AnimationPlayer
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -133,6 +136,7 @@ func _physics_process(delta: float) -> void:
 		direction = direction.normalized()
 		#direction.y = 0
 		velocity = velocity.lerp(direction * SPEED, accel * delta)
+		floor_type_walk()
 		if not tea_walking:
 			anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		else:
@@ -151,6 +155,30 @@ func _physics_process(delta: float) -> void:
 	if greet_rotation:
 		_rotate_towards_dalton()
 		
+
+func floor_type_walk():
+	if $FloorTypeJuniper.is_colliding():
+		var collider = $FloorTypeJuniper.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("Footsteps")
+		if collider.is_in_group("tile"):
+			sound_player.play("Footsteps_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("Footsteps_Carpet")
+		
+# floor type gather
+func floor_type_gather():
+	if $FloorTypeJuniper.is_colliding():
+		var collider = $FloorTypeJuniper.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("FootstepsGather")
+		if collider.is_in_group("tile"):
+			sound_player.play("FootstepsGather_Tile")
+		if collider.is_in_group("carpet"):
+			sound_player.play("FootstepsGather_Carpet")
+		
+
+
 
 func _rotate_towards_dalton():
 	var targ_dir = player.global_position
@@ -436,3 +464,16 @@ func _on_door_second_juniper_greeting() -> void:
 		is_wandering = false
 		state = FOLLOW
 	
+func _on_juniper_interact_finish_greeting() -> void:
+	if greeting == false:
+		greet_rotation = false
+		greeting = true
+		print("interactedTea")
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
+		cant_follow = true
+		is_navigating = true
+		is_wandering = true
+		wander_choice = 3
+		nav.target_position = marker_positions[3].global_position
+		state = TEA

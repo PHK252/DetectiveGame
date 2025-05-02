@@ -1,4 +1,4 @@
-[gd_scene load_steps=846 format=4 uid="uid://cd7ybbyqo6dgq"]
+[gd_scene load_steps=852 format=4 uid="uid://cd7ybbyqo6dgq"]
 
 [ext_resource type="Script" uid="uid://qmqj74pm4p5a" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_6xsii"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_jaeu8"]
@@ -6418,6 +6418,40 @@ stream_0/stream = ExtResource("165_r2hb6")
 stream_1/stream = ExtResource("166_wopq1")
 stream_2/stream = ExtResource("167_6ag62")
 
+[sub_resource type="Animation" id="Animation_wopq1"]
+resource_name = "FootstepsGather_Carpet"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarpetFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6ag62"]
+resource_name = "FootstepsGather_Tile"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TileFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_iup51"]
 resource_name = "Footsteps_Carpet"
 tracks/0/type = "method"
@@ -6458,40 +6492,6 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_wopq1"]
-resource_name = "FootstepsGather_Carpet"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CarpetFootsteps")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_6ag62"]
-resource_name = "FootstepsGather_Tile"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TileFootsteps")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_evwoe"]
 _data = {
 &"FootstepsGather_Carpet": SubResource("Animation_wopq1"),
@@ -6507,36 +6507,16 @@ stream_1/stream = ExtResource("176_1nngx")
 stream_2/stream = ExtResource("177_m4hd6")
 stream_3/stream = ExtResource("178_c8xgw")
 
-[sub_resource type="Animation" id="Animation_43tcr"]
-resource_name = "Footsteps_Tile"
+[sub_resource type="Animation" id="Animation_hmj40"]
+resource_name = "Footsteps"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TileFootsteps")
+tracks/0/path = NodePath("WoodenFootsteps")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.133333, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_l23g4"]
-resource_name = "Footsteps_Carpet"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CarpetFootsteps")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.133333, 0.6),
+"times": PackedFloat32Array(0.133333, 0.633333),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [0.0],
@@ -6553,6 +6533,23 @@ tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("CarpetFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hb12e"]
+resource_name = "FootstepsGather_Soil"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoilFootsteps")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -6581,12 +6578,132 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ruthx"]
+resource_name = "FootstepsGather_Wood"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WoodenFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qo2hx"]
+resource_name = "FootstepsGather_WoodStair"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WoodenStairFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_l23g4"]
+resource_name = "Footsteps_Carpet"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarpetFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fo7en"]
+resource_name = "Footsteps_Soil"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoilFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_43tcr"]
+resource_name = "Footsteps_Tile"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TileFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mlvjp"]
+resource_name = "Footsteps_WoodStair"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WoodenStairFootsteps")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4t0hj"]
 _data = {
+&"Footsteps": SubResource("Animation_hmj40"),
 &"FootstepsGather_Carpet": SubResource("Animation_f33cq"),
+&"FootstepsGather_Soil": SubResource("Animation_hb12e"),
 &"FootstepsGather_Tile": SubResource("Animation_87fi3"),
+&"FootstepsGather_Wood": SubResource("Animation_ruthx"),
+&"FootstepsGather_WoodStair": SubResource("Animation_qo2hx"),
 &"Footsteps_Carpet": SubResource("Animation_l23g4"),
-&"Footsteps_Tile": SubResource("Animation_43tcr")
+&"Footsteps_Soil": SubResource("Animation_fo7en"),
+&"Footsteps_Tile": SubResource("Animation_43tcr"),
+&"Footsteps_WoodStair": SubResource("Animation_mlvjp")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_135jl"]
@@ -10486,31 +10603,18 @@ shape = SubResource("BoxShape3D_3r66h")
 
 [node name="Skeleton3D" parent="SubViewportContainer/Characters/Micah/Micah/MicahBody/micahExtraAnims/micahArmature" index="0"]
 bones/1/position = Vector3(2.00845e-09, -8.50578e-08, -1.99667)
-bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/3/rotation = Quaternion(-0.0996364, -0.0353992, 0.924391, -0.366498)
 bones/4/rotation = Quaternion(-0.267096, 0.000243316, -0.017707, 0.963507)
 bones/6/rotation = Quaternion(0.615834, 0.00500192, -0.00701805, 0.787829)
-bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
 bones/8/rotation = Quaternion(0.0997813, -0.0354587, 0.924392, 0.36645)
 bones/9/rotation = Quaternion(-0.267096, -0.000243316, 0.017707, 0.963507)
 bones/11/rotation = Quaternion(0.615834, -0.00500192, 0.00701805, 0.787829)
 bones/12/position = Vector3(2.00845e-09, -1.64888e-07, -1.99667)
-bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
 bones/14/rotation = Quaternion(-0.185037, -2.64681e-10, -6.79461e-11, 0.982732)
 bones/16/rotation = Quaternion(-0.0118906, -1.74337e-18, -6.02699e-17, 0.999929)
 bones/17/rotation = Quaternion(-0.110752, -0.0304744, -0.684116, 0.720271)
-bones/18/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
-bones/19/rotation = Quaternion(0.0270153, -0.000167356, -0.0006591, 0.999635)
-bones/20/rotation = Quaternion(-0.0262147, -0.000682082, -0.0657145, 0.997494)
 bones/21/rotation = Quaternion(-0.110752, 0.0304744, 0.684116, 0.720271)
-bones/22/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
-bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659107, 0.999635)
-bones/24/rotation = Quaternion(-0.0262147, 0.000682075, 0.0657145, 0.997494)
-bones/25/position = Vector3(-0.248814, -0.0867041, -0.109932)
-bones/25/rotation = Quaternion(-0.00589136, 4.24325e-08, 0.999983, -1.08131e-10)
-bones/27/position = Vector3(0.248814, -0.086704, -0.109932)
 bones/29/position = Vector3(2.00845e-09, -1.1486e-07, -1.99667)
-bones/29/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/Characters/Micah/Micah/MicahBody/micahExtraAnims/micahArmature/Skeleton3D" index="0"]
 transform = Transform3D(-0.932235, 0.16947, 0.319713, 0.337618, 0.0894597, 0.937022, 0.130196, 0.981466, -0.140614, 0.755641, 0.01588, -1.65497)
@@ -10613,46 +10717,29 @@ note_timer = NodePath("Timer")
 
 [node name="Skeleton3D" parent="SubViewportContainer/Characters/Main/CharacterBody3D/DoggyPartner2/dogrig" index="0"]
 bones/1/position = Vector3(2.78385e-09, -5.39206e-08, -3.00368)
-bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/3/rotation = Quaternion(0.015547, 0.324949, 0.8727, -0.364089)
 bones/4/rotation = Quaternion(-0.240468, 0.0717291, -0.0393768, 0.967202)
 bones/5/rotation = Quaternion(0.504437, -0.0956555, 0.0961118, 0.852734)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/8/rotation = Quaternion(-0.015547, 0.324949, 0.8727, 0.364089)
 bones/9/rotation = Quaternion(-0.240468, -0.0717291, 0.0393768, 0.967202)
 bones/10/rotation = Quaternion(0.504437, 0.0956555, -0.0961118, 0.852734)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/12/position = Vector3(2.78385e-09, -2.40712e-07, -3.00368)
-bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
 bones/15/rotation = Quaternion(-0.083435, 1.13799e-07, -1.09177e-08, 0.996513)
 bones/16/rotation = Quaternion(0.0338268, 9.10768e-09, 8.09686e-09, 0.999428)
-bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
 bones/17/rotation = Quaternion(0.450148, 0.0719812, -0.140538, 0.878882)
 bones/18/rotation = Quaternion(0.0285571, -0.00626155, -0.00981105, 0.999524)
-bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
 bones/19/rotation = Quaternion(0.462348, -0.0739323, 0.139522, 0.872526)
 bones/20/rotation = Quaternion(0.0285571, 0.00626155, 0.00981106, 0.999524)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
 bones/22/rotation = Quaternion(-0.257724, -0.148776, -0.399562, 0.867061)
 bones/23/rotation = Quaternion(-0.00325217, -0.000443135, -0.298432, 0.954425)
-bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/26/rotation = Quaternion(-0.257724, 0.148776, 0.399562, 0.867061)
 bones/27/rotation = Quaternion(-0.00325238, 0.000443166, 0.298434, 0.954425)
-bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
-bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
-bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
 bones/31/position = Vector3(0.980397, -0.0311821, -2.19026)
 bones/31/rotation = Quaternion(0.805455, -2.20541e-15, 0.592656, 5.51352e-16)
-bones/32/position = Vector3(1.89213, 0.889777, -4.50176)
 bones/33/position = Vector3(2.78385e-09, -1.13525e-07, -3.00368)
-bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
-bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
 bones/36/position = Vector3(-0.980397, -0.0311821, -2.19026)
 bones/36/rotation = Quaternion(0.805455, 2.20541e-15, -0.592656, 5.51352e-16)
-bones/37/position = Vector3(-1.89213, 0.889777, -4.50176)
 
 [node name="InteractArea" parent="SubViewportContainer/Characters/Main/CharacterBody3D" index="2"]
 collision_mask = 17
@@ -11595,16 +11682,13 @@ script = null
 
 [node name="Skeleton3D" parent="SitMicah/Micah/MicahBody/micahExtraAnims/micahArmature" index="0"]
 bones/1/position = Vector3(1.77636e-15, -6.90016e-08, -1.5834)
-bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/3/rotation = Quaternion(-0.260737, 0.47305, 0.762095, -0.357003)
 bones/4/rotation = Quaternion(-0.571843, 0.00640723, -0.188287, 0.798438)
 bones/6/rotation = Quaternion(0.59977, -0.0389676, -0.0465398, 0.797867)
-bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
 bones/8/rotation = Quaternion(0.288511, 0.391518, 0.817303, 0.309016)
 bones/9/rotation = Quaternion(-0.623967, 0.00743126, 0.0250301, 0.781015)
 bones/11/rotation = Quaternion(0.55091, -0.00598099, 0.0146574, 0.834414)
 bones/12/position = Vector3(1.77636e-15, -1.1942e-07, -1.5834)
-bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
 bones/14/rotation = Quaternion(-0.317098, -0.0674373, 0.0230039, 0.945712)
 bones/16/rotation = Quaternion(0.147307, -0.132821, -0.062568, 0.978133)
 bones/17/rotation = Quaternion(-0.110367, -0.0311714, -0.681479, 0.722796)
@@ -11616,10 +11700,8 @@ bones/22/rotation = Quaternion(-0.357921, -0.161236, 0.490131, 0.778246)
 bones/23/rotation = Quaternion(0.160402, 0.0269438, -0.0730597, 0.983975)
 bones/24/rotation = Quaternion(-0.0262147, 0.000682107, 0.0657145, 0.997494)
 bones/25/position = Vector3(-0.302449, 0.6131, -0.172228)
-bones/25/rotation = Quaternion(-0.00589136, 4.24325e-08, 0.999983, -1.08131e-10)
 bones/27/position = Vector3(0.248789, 0.844911, -0.295784)
 bones/29/position = Vector3(1.77636e-15, -9.8804e-08, -1.5834)
-bones/29/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 
 [node name="AnimationTree" parent="SitMicah/Micah/MicahBody/micahExtraAnims" index="2"]
 parameters/Sit_Blend/blend_amount = 1.0

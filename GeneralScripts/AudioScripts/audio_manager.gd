@@ -139,3 +139,6 @@ func _on_bookshelf_interact_general_quit() -> void:
 
 func _on_cab_interact_general_quit() -> void:
 	audio_master[1].play()
+
+func _on_character_body_3d_knocking_juniper() -> void:
+	audio[9].play()

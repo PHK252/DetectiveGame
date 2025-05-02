@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3511hh4gwxji"]
 
-[sub_resource type="Shader" id="Shader_rgsn0"]
+[sub_resource type="Shader" id="Shader_1wfcw"]
 code = "shader_type spatial;
 
 uniform float transparency : hint_range(0.0, 1.0) = 0.3;
@@ -53,9 +53,9 @@ void light() {
 [resource]
 resource_name = "W"
 render_priority = 0
-shader = SubResource("Shader_rgsn0")
-shader_parameter/transparency = 0.044
-shader_parameter/toon_color = Color(3.08037e-06, 0.509267, 0.846365, 1)
+shader = SubResource("Shader_1wfcw")
+shader_parameter/transparency = 0.014
+shader_parameter/toon_color = Color(0.53739, 0.564618, 0.576214, 1)
 shader_parameter/toon_threshold = 0.197
 shader_parameter/outline_width = 1.656
 shader_parameter/fresnel_power = 1.582

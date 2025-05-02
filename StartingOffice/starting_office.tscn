@@ -4297,19 +4297,19 @@ autostart = true
 wait_time = 5.0
 one_shot = true
 
-[node name="WoodenFootsteps" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
+[node name="WoodenFootsteps2" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10868, 0.121142)
 stream = SubResource("AudioStreamSynchronized_4ovd3")
 volume_db = -50.0
 bus = &"SFX"
 
-[node name="TileFootsteps" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
+[node name="TileFootsteps2" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10868, 0.121142)
 stream = SubResource("AudioStreamSynchronized_5q0fi")
 volume_db = -50.0
 bus = &"SFX"
 
-[node name="CarpetFootsteps" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
+[node name="CarpetFootsteps2" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10868, 0.121142)
 stream = SubResource("AudioStreamSynchronized_wrcok")
 volume_db = -50.0
@@ -4318,13 +4318,13 @@ bus = &"SFX"
 [node name="DaltonListener" type="AudioListener3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 current = true
 
-[node name="DaltonSoundPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
+[node name="DaltonSoundPlayer2" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_hxqof")
 }
 
-[node name="ThinkingSound" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
+[node name="ThinkingSound2" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Dalton"]
 transform = Transform3D(1, -5.29396e-23, 1.86265e-09, 0, 1, 2.84217e-14, -1.86265e-09, -2.84217e-14, 1, 0.0210896, 1.46936, 0.0982962)
 stream = ExtResource("60_coq00")
 volume_db = -30.0
@@ -4904,11 +4904,11 @@ script = ExtResource("139_771f8")
 [connection signal="mouse_entered" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
-[connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_arrow_pressed"]
 [connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_pressed"]
+[connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_arrow_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
-[connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_forward_pressed"]
+[connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/DoughnutBox/Interactable"]

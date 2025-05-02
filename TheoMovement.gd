@@ -130,7 +130,7 @@ func floor_type_gather():
 		if collider.is_in_group("grass"):
 			sound_player.play("FootstepsGather_Grass")
 		if collider.is_in_group("woodStairs"):
-			sound_player.play("FootstepsJog_WoodStair")
+			sound_player.play("FootstepsGather_WoodStair")
 		
 
 
