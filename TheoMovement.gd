@@ -396,6 +396,7 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 				is_navigating = true
 			print("stopped interacting")
 			anim_tree["parameters/Blend2/blend_amount"] = 0
+			state = FOLLOW
 	#if area.is_in_group("NPC"):
 		#is_navigating = false
 		#state = IDLE
@@ -418,8 +419,9 @@ func _on_k_control_body_entered(body: Node3D) -> void:
 func _on_k_control_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		in_kitchen = false
-		is_navigating = true
-		state = FOLLOW
+		if anim_tree["parameters/Blend2/blend_amount"] == 0:
+			is_navigating = true
+			state = FOLLOW
 
 func _on_micah_body_collision_danger() -> void:
 	print("micahCollide")

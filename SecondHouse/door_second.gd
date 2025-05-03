@@ -12,6 +12,7 @@ var is_open: bool = false
 signal j_door_open
 signal j_door_closed
 var cooldown = false
+var triggered = false
 
 @onready var greeting = false
 signal juniper_greeting
@@ -85,11 +86,11 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	elif is_open == false and GlobalVars.in_dialogue == false and cooldown == false:
 		#print("open")
 		#$Interactable.queue_free()
-		if greeting == false and quincy_house == false:
+		if greeting == false and quincy_house == false and triggered == false:
 			print("asking juniper to come")
 			emit_signal("juniper_greeting")
 			emit_signal("cam_greeting")
-			greeting = true
+			triggered = true
 			return
 			#play knocking sound
 		
@@ -98,7 +99,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			collision.disabled = true
 			return
 		
-	if is_open == true and cooldown == false: 
+	if is_open == true and cooldown == false and greeting == true: 
 		close()
 		collision.disabled = false
 	
@@ -156,3 +157,6 @@ func _on_character_body_3d_juniper_open_door() -> void:
 	collision.disabled = true
 	await get_tree().create_timer(2.0).timeout
 	emit_signal("j_dialogue")
+
+func _on_juniper_interact_finish_greeting() -> void:
+	greeting = true

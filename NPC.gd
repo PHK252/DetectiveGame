@@ -27,7 +27,6 @@ var intDalton = false
 @export var beer : AnimationPlayer
 
 
-
 var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
 const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
@@ -79,7 +78,6 @@ func _process(delta: float) -> void:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
 		distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
-
 	match state:
 		IDLE:
 			_process_idle_state(distance_to_target, delta)
@@ -97,7 +95,10 @@ func _physics_process(delta: float) -> void:
 			STOPPING_DISTANCE = 1.0
 			nav.target_position = player.global_position
 		else:
-			STOPPING_DISTANCE = 0.0
+			if wander_choice != 3:
+				STOPPING_DISTANCE = 0.0
+			else:
+				STOPPING_DISTANCE = 0.5
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
 		#direction.y = 0
@@ -151,11 +152,20 @@ func _process_follow_state(distance_to_target: float) -> void:
 	#print("FOLLOWMICAH")
 	if distance_to_target <= STOPPING_DISTANCE:
 			#emit_signal("collision_safe")
-			is_navigating = false
-			cooldown_bool = true
-			cooldown.start()
-			wander_timer.start()
-			state = IDLE
+			if wander_choice != 3:
+				is_navigating = false
+				cooldown_bool = true
+				cooldown.start()
+				wander_timer.start()
+				state = IDLE
+			else:
+				at_door = true
+				intDalton = true
+				is_wandering = false
+				_rotate_towards_dalton()
+				emit_signal("micah_open")
+				state = IDLE
+				
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
 	
@@ -165,24 +175,28 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 	yawn.stop()
 	scratch.stop()
 	print("wandering")
+	print(wander_choice)
 	
 	if wander_choice < 2:
 		current_anim = one_shots[wander_choice]
 
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 		#print("gotthere")
-		if wander_choice != 2:
+		if wander_choice != 2 and wander_choice != 3:
 			if current_anim == "Basketball":
+				print("gotintoB")
 				wander_rotate = true
 				anim_player.play("basketball")
 				#Beer_Static.visible = false
 				#Beer_Anim.visible = true
 			if current_anim == "DrinkBeer":
+				print("gotintoD")
 				anim_player.play("basketball_default")
 				wander_rotate = true
 				_beer_visible()
 				
 			if wander_choice < 2:
+				print("gotintoAnim")
 				anim_tree.set("parameters/" + current_anim + "/request", true)
 
 		is_navigating = false 
@@ -263,9 +277,9 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 
 func _on_timer_timeout() -> void:
 	print(cooldown_bool)
-	var choice = rng.randi_range(-10, 10)
-	wander_choice = rng.randi_range(0, 2)
 	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and intDalton == false:
+		var choice = rng.randi_range(-10, 10)
+		wander_choice = rng.randi_range(0, 2)
 		wander_rotate = false
 		emit_signal("sit_invisible")
 		armature.visible = true
@@ -342,6 +356,7 @@ func _on_door_micah_rotate() -> void:
 		anim_player.play("basketball_default")
 		#set all one shots to abort
 		is_navigating = true
+		wander_choice = 3
 		nav.target_position = marker_positions[3].global_position
 		is_wandering = true
 		state = FOLLOW

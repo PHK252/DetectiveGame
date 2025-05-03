@@ -410,6 +410,7 @@ func _on_door_second_juniper_greeting() -> void:
 	anim_tree.set("parameters/Knock/request", true)
 	await get_tree().create_timer(2).timeout
 	emit_signal("knocking")
+	await get_tree().create_timer(8).timeout
 	force_rotation = false
 	in_control = true
 
@@ -425,7 +426,7 @@ func _on_door_greeting() -> void:
 	#knock anim
 	anim_tree.set("parameters/Knock/request", true)
 	emit_signal("knocking")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(4).timeout
 	force_rotation = false
 	in_control = true
 	
