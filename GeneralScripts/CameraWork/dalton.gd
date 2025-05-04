@@ -38,6 +38,9 @@ var force_rotation = false
 
 var number = 0
 
+@export var tea_wait_marker : Marker3D
+var tea_time = false
+
 func _ready() -> void:
 	add_to_group("player")
 	#doughnut.visible = false
@@ -74,6 +77,16 @@ func _physics_process(delta: float) -> void:
 			
 		
 		if GlobalVars.cam_changed == false:
+			#if tea_time:
+				#in_control = false
+				#var direction = (armature.global_position - tea_wait_marker.global_position).normalized()
+				#velocity.x = lerp(velocity.x, -direction.x * SPEED, LERP_VAL)
+				#velocity.z = lerp(velocity.z, -direction.z * SPEED, LERP_VAL)
+				#armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-direction.x, -direction.z), LERP_VAL)
+				#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
+				#floor_type_walk()
+			
+			
 			if input_dir != Vector2.ZERO:
 				anim_tree.set("parameters/Thinking/request", 2)
 				# Rotate input direction based on the camera's orientation
@@ -448,4 +461,13 @@ func _on_door_greeting() -> void:
 	force_rotation = false
 	in_control = true
 	
+	
+#func _on_juniper_interact_finish_greeting() -> void:
+	#in_control = false
+	#SPEED = 2.0
+	#tea_time = true
+	#await get_tree().create_timer(5).timeout
+	#tea_time = false
+	#SPEED = 1.15
+	#floor_type_gather()
 	

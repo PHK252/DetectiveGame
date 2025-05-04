@@ -60,6 +60,7 @@ signal juniper_open_door
 #sounds and footsteps
 @export var sound_player : AnimationPlayer
 
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -280,6 +281,7 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		if current_anim == "Fireplace":
 			wander_rotate = true
 		if current_anim == "Coffee":
+			sound_player.play("Coffee")
 			wander_rotate = true
 			_beer_visible()
 		#_rotate_towards_object(wander_choice)
@@ -440,16 +442,16 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 		await get_tree().create_timer(1).timeout
 		outside_player = false
 
-func _on_tea_activate_temp_interacted(interactor: Interactor) -> void:
-	print("interactedTea")
-	var current_anim = one_shots[wander_choice]
-	anim_tree.set("parameters/" + current_anim + "/request", 2)
-	cant_follow = true
-	is_navigating = true
-	is_wandering = true
-	wander_choice = 3
-	nav.target_position = marker_positions[3].global_position
-	state = TEA
+#func _on_tea_activate_temp_interacted(interactor: Interactor) -> void:
+	#print("interactedTea")
+	#var current_anim = one_shots[wander_choice]
+	#anim_tree.set("parameters/" + current_anim + "/request", 2)
+	#cant_follow = true
+	#is_navigating = true
+	#is_wandering = true
+	#wander_choice = 3
+	#nav.target_position = marker_positions[3].global_position
+	#state = TEA
 
 func _on_door_second_juniper_greeting() -> void:
 	print("coming to door")
@@ -468,12 +470,20 @@ func _on_juniper_interact_finish_greeting() -> void:
 	if greeting == false:
 		greet_rotation = false
 		greeting = true
-		print("interactedTea")
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
-		cant_follow = true
+		
+		wander_choice = rng.randi_range(0, 2)
+		wander_rotate = false
+		#if choice > 0:
+		nav.target_position = marker_positions[wander_choice].global_position
 		is_navigating = true
 		is_wandering = true
-		wander_choice = 3
-		nav.target_position = marker_positions[3].global_position
-		state = TEA
+		state = WANDER
+		#print("interactedTea")
+		#var current_anim = one_shots[wander_choice]
+		#anim_tree.set("parameters/" + current_anim + "/request", 2)
+		#cant_follow = true
+		#is_navigating = true
+		#is_wandering = true
+		#wander_choice = 3
+		#nav.target_position = marker_positions[3].global_position
+		#state = TEA
