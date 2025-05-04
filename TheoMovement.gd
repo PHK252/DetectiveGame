@@ -52,6 +52,7 @@ var cooldown = false
 var dalton_entered = false
 var direct
 
+@export var juniper_house = false
 
 @export var note_timer: Timer
 
@@ -252,6 +253,9 @@ func _process_sitting_state() -> void:
 func _process_idle_state(distance_to_target: float) -> void:
 	# Transition to idle animation only if NPC is stationary
 	#print("idling")
+	if juniper_house:
+		nav.radius = 0.01
+		#nav.neighbor_distance = 0.1
 	velocity = velocity.lerp(Vector3.ZERO, 0.0)
 	idle_blend = lerp(idle_blend, 0.0, 0.0)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
@@ -297,6 +301,9 @@ func _process_follow_state(distance_to_target: float) -> void:
 	# Update navigation target dynamically
 	nav.target_position = player.global_transform.origin
 
+	if juniper_house:
+		nav.radius = 0.5
+		#nav.neighbor_distance = 50
 	# Stop following if within stopping distance
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
 		floor_type_gather()
@@ -686,3 +693,65 @@ func _on_sitting_ppl_theo_out() -> void:
 		nav.target_position = marker_list[investigate_choice].global_position
 		STOPPING_DISTANCE = 0.0
 		state = INVESTIGATE
+
+
+func _on_left_porch_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		#print("adjustRight")
+		theo_adjustment = true
+		nav.target_position = adjustment_list[0].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.4
+		state = ADJUST
+
+func _on_right_porch_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		#print("adjustLeft")
+		theo_adjustment = true
+		nav.target_position = adjustment_list[1].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.4
+		state = ADJUST
+
+func _on_sofa_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		#print("adjustMiddle")
+		theo_adjustment = true
+		in_kitchen = true
+		nav.target_position = adjustment_list[2].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.4
+		state = ADJUST
+
+func _on_right_porch_body_exited(body: Node3D) -> void:
+	theo_adjustment = false
+
+func _on_left_porch_body_exited(body: Node3D) -> void:
+	theo_adjustment = false
+
+func _on_sofa_area_body_exited(body: Node3D) -> void:
+	theo_adjustment = false
+	in_kitchen = false 
+
+func _on_interactable_interacted_Juniper(interactor: Interactor) -> void:	
+	#print("noteTakeStop")
+	theo_adjustment = true
+	#is_navigating = false
+	#state = NOTES
+	#print("theo note_take")
+	#anim_tree["parameters/Blend2/blend_amount"] = 1
+	#anim_tree.set("parameters/NoteAlt/request", true)
+	#await get_tree().create_timer(6).timeout
+	#note_sound.play()
+	await get_tree().create_timer(2).timeout
+	#anim_tree["parameters/Blend2/blend_amount"] = 0
+	#state = IDLE
+	theo_adjustment = false
+	#is_navigating = true
+	
