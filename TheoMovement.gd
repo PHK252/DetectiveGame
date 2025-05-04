@@ -114,6 +114,12 @@ func floor_type_walk():
 			sound_player.play("Footsteps_Grass")
 		if collider.is_in_group("woodStairs"):
 			sound_player.play("Footsteps_WoodStair")
+		if collider.is_in_group("snow"):
+			sound_player.play("Footsteps_Snow")
+		if collider.is_in_group("metal"):
+			sound_player.play("Footsteps_Metal")
+		if collider.is_in_group("marble"):
+			sound_player.play("Footsteps_Marble")
 		
 # floor type gather
 func floor_type_gather():
@@ -131,6 +137,12 @@ func floor_type_gather():
 			sound_player.play("FootstepsGather_Grass")
 		if collider.is_in_group("woodStairs"):
 			sound_player.play("FootstepsGather_WoodStair")
+		if collider.is_in_group("snow"):
+			sound_player.play("FootstepsGather_Snow")
+		if collider.is_in_group("metal"):
+			sound_player.play("FootstepsGather_Metal")
+		if collider.is_in_group("marble"):
+			sound_player.play("FootstepsGather_Marble")
 		
 
 

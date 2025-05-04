@@ -50,6 +50,9 @@ var poolPos
 var fall_allowed = true
 var distraction_allowed = true
 
+#sounds
+@export var sound_player : AnimationPlayer
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -99,6 +102,8 @@ func _physics_process(delta: float) -> void:
 		#direction.y = 0
 		velocity = velocity.lerp(direction * SPEED, accel * delta)
 		quincy_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
+		if velocity.length() > 0.5:
+			floor_type_walk()
 		_rotate_towards_velocity()
 		nav.set_velocity(velocity)
 
@@ -110,6 +115,34 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 func _rotate_towards_velocity() -> void:
 	if is_navigating:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
+
+#sound handle
+func floor_type_walk():
+	if $FloorTypeQuincy.is_colliding():
+		var collider = $FloorTypeQuincy.get_collider()
+		if collider.is_in_group("carpet"):
+			sound_player.play("Footsteps_Carpet")
+		if collider.is_in_group("snow"):
+			sound_player.play("Footsteps_Snow")
+		if collider.is_in_group("metal"):
+			sound_player.play("Footsteps_Metal")
+		if collider.is_in_group("marble"):
+			sound_player.play("Footsteps_Marble")
+		
+# floor type gather
+func floor_type_gather():
+	if $FloorTypeQuincy.is_colliding():
+		var collider = $FloorTypeQuincy.get_collider()
+		if collider.is_in_group("carpet"):
+			sound_player.play("FootstepsGather_Carpet")
+		if collider.is_in_group("snow"):
+			sound_player.play("FootstepsGather_Snow")
+		if collider.is_in_group("metal"):
+			sound_player.play("FootstepsGather_Metal")
+		if collider.is_in_group("marble"):
+			sound_player.play("FootstepsGather_Marble")
+
+
 
 #States
 func _process_idle_state(distance_to_target: float, delta: float) -> void:

@@ -94,12 +94,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			return
 			#play knocking sound
 		
-		if greeting == true and quincy_house == false:
+		if (greeting == true and quincy_house == false) or quincy_house:
 			open()
 			collision.disabled = true
 			return
 		
-	if is_open == true and cooldown == false and greeting == true: 
+	if is_open == true and cooldown == false and (greeting == true or quincy_house): 
 		close()
 		collision.disabled = false
 	

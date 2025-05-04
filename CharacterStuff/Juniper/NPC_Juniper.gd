@@ -259,7 +259,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 			#emit_signal("collision_safe")
 			if greeting == false:
 				emit_signal("juniper_open_door")
-			greet_rotation = true
+				greet_rotation = true
 			is_navigating = false
 			cooldown_bool = true
 			cooldown.start()
