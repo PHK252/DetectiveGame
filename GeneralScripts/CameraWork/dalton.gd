@@ -14,6 +14,7 @@ var idle_timer_active: bool = false
 
 var gathered = false
 var walk_indicate = false
+var finished_greet = false
 
 const MAX_STEP_HEIGHT = 1.2
 var _snapped_to_stairs_last_frame := false
@@ -462,7 +463,8 @@ func _on_door_greeting() -> void:
 	in_control = true
 	
 	
-#func _on_juniper_interact_finish_greeting() -> void:
+func _on_juniper_interact_finish_greeting() -> void:
+	finished_greet = true
 	#in_control = false
 	#SPEED = 2.0
 	#tea_time = true
@@ -471,3 +473,18 @@ func _on_door_greeting() -> void:
 	#SPEED = 1.15
 	#floor_type_gather()
 	
+
+func _on_cam_books_became_active() -> void:
+	pass
+	#if control_area:
+		#print("controlling")
+		#in_control = false
+		#await get_tree().create_timer(0.5).timeout
+		#in_control = true
+
+func _on_porch_cam_became_active() -> void:
+	if control_area and finished_greet == true:
+		#print("controlling")
+		in_control = false
+		await get_tree().create_timer(0.5).timeout
+		in_control = true
