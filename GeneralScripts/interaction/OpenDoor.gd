@@ -6,7 +6,7 @@ extends Node3D
 @onready var dalton_marker = $"../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../UI/Micah_marker"
 @onready var theo_marker = $"../../../UI/Theo_marker"
-@onready var player = $"../../Characters/Dalton/CharacterBody3D"
+@export var player :CharacterBody3D
 var is_open: bool = false
 @onready var entered = false
 @export var door_sound : AudioStreamPlayer3D
