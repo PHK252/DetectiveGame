@@ -56,6 +56,8 @@ var sharply_turn = false
 var greeting = false
 var greet_rotation = false
 signal juniper_open_door
+var interaction : bool = false
+var bookshelf = false
 
 #sounds and footsteps
 @export var sound_player : AnimationPlayer
@@ -126,7 +128,10 @@ func _physics_process(delta: float) -> void:
 		if not is_wandering:
 			if greeting == true:
 				STOPPING_DISTANCE = 1.0
-				nav.target_position = player.global_position
+				if bookshelf == false:
+					nav.target_position = player.global_position
+				else:
+					nav.target_position = marker_positions[6].global_position
 			else:
 				STOPPING_DISTANCE = 1.0
 				nav.target_position = marker_positions[5].global_position
@@ -247,6 +252,7 @@ func _process_anim():
 		cooldown_bool = true
 		cooldown.start()
 		wander_timer.start()
+		floor_type_gather()
 		state = IDLE
 		
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
@@ -256,18 +262,25 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 
 func _process_follow_state(distance_to_target: float) -> void:
-	if distance_to_target <= STOPPING_DISTANCE:
+	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 			#emit_signal("collision_safe")
 			if greeting == false:
 				emit_signal("juniper_open_door")
 				greet_rotation = true
+			if bookshelf:
+				bookshelf = false
+				greet_rotation = true
+				await get_tree().create_timer(0.5).timeout
+				greet_rotation = false
 			is_navigating = false
 			cooldown_bool = true
 			cooldown.start()
 			wander_timer.start()
+			floor_type_gather()
 			state = IDLE
 	
 	if outside_player and greeting == true:
+		floor_type_gather()
 		state = IDLE
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
@@ -290,6 +303,7 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		cooldown_bool = true
 		cooldown.start()
 		wander_timer.start()
+		floor_type_gather()
 		state = IDLE
 	
 func _rotate_towards_velocity() -> void:
@@ -373,7 +387,7 @@ func _on_wander_timeout() -> void:
 	if greeting == true:
 		if cant_follow == false:
 			wander_choice = rng.randi_range(0, 2)
-		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
+		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false:
 			wander_rotate = false
 			#if choice > 0:
 			nav.target_position = marker_positions[wander_choice].global_position
@@ -383,6 +397,7 @@ func _on_wander_timeout() -> void:
 
 func _on_bookshelf_interacted(interactor: Interactor) -> void:
 	wander_rotate = false
+	bookshelf = true
 	#emit_signal("collision_danger")
 	if wander_choice < 3:
 		var current_anim = one_shots[wander_choice]
@@ -487,3 +502,24 @@ func _on_juniper_interact_finish_greeting() -> void:
 		#wander_choice = 3
 		#nav.target_position = marker_positions[3].global_position
 		#state = TEA
+
+
+func _on_house_interact_general_interact() -> void:
+	pass # Replace with function body.
+
+func _on_resume_interact_juniper_wander() -> void:
+	interaction = false
+	var choice = rng.randi_range(-10, 10)
+	if greeting == true:
+		if cant_follow == false:
+			wander_choice = rng.randi_range(0, 2)
+		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
+			wander_rotate = false
+			#if choice > 0:
+			nav.target_position = marker_positions[wander_choice].global_position
+			is_navigating = true
+			is_wandering = true
+			state = WANDER
+
+func _on_resume_interact_general_interact() -> void:
+	interaction = true

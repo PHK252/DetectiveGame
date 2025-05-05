@@ -28,6 +28,7 @@ var micahFront = false
 var collision_danger = false
 var door_scene = false
 var patio_sit = false
+var entered_junipers = false
 
 const speed = 0.92
 const LERP_VAL = 0.15
@@ -51,6 +52,7 @@ signal TheoStand
 var cooldown = false
 var dalton_entered = false
 var direct
+var greeting_finished = false
 
 @export var juniper_house = false
 
@@ -755,3 +757,41 @@ func _on_interactable_interacted_Juniper(interactor: Interactor) -> void:
 	theo_adjustment = false
 	#is_navigating = true
 	
+
+func _on_interactable_interacted_cafe(interactor: Interactor) -> void:
+	nav.target_position = adjustment_list[3].global_position
+	is_navigating = true
+	STOPPING_DISTANCE = 0.0
+	nav.path_desired_distance = 0.2
+	nav.target_desired_distance = 0.4
+	state = ADJUST
+
+
+func _on_cam_books_became_active() -> void:
+	await get_tree().create_timer(1.5).timeout
+	if entered_junipers:
+		print("doingtheTHing")
+		is_navigating = false
+		await get_tree().create_timer(2.5).timeout
+		nav.target_position = adjustment_list[4].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.4
+		state = ADJUST
+
+
+func _on_door_point_body_entered(body: Node3D) -> void:
+	if body.is_in_group("theo"):
+		if greeting_finished:
+			entered_junipers = true 
+			print("doingtheent")
+
+func _on_door_point_body_exited(body: Node3D) -> void:
+	if body.is_in_group("theo"):
+		if greeting_finished:
+			entered_junipers = false
+			print("doingtheext")
+
+func _on_juniper_interact_finish_greeting() -> void:
+	greeting_finished = true

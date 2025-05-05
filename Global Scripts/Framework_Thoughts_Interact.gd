@@ -43,6 +43,7 @@ extends Node3D
 #sound
 signal general_interact
 signal general_quit
+signal juniper_wander
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -100,6 +101,7 @@ func _process(delta):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	emit_signal("juniper_wander")
 	player.start_player()
 	alert.show()
 	
