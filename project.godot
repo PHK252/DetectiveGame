@@ -12,7 +12,7 @@ config_version=5
 
 config/name="DetectiveGame"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Misc/icon.svg"
+config/icon="res://Dialogue Stuff/Misc/icon.svg"
 
 [audio]
 
@@ -31,6 +31,10 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SaveLoad="*res://GeneralScripts/Save System/Save_Load.gd"
 GlobalVars="*res://GeneralScripts/Global Variables/GlobalVars.gd"
 LoadManager="*res://Autoloads/load_manager.gd"
+
+[debug]
+
+settings/stdout/verbose_stdout=true
 
 [dialogic]
 
@@ -98,7 +102,6 @@ directories/dtl_directory={
 "Morning_night": "res://Dialogue Stuff/Timelines/Micah/Morning_night.dtl",
 "Morning_night_sus": "res://Dialogue Stuff/Timelines/Micah/Morning_night_sus.dtl",
 "Morning_night_time": "res://Dialogue Stuff/Timelines/Micah/Morning_night_time.dtl",
-"Office": "res://Misc/Office.dtl",
 "Office_Donuts": "res://Dialogue Stuff/Timelines/Office/Office_Donuts.dtl",
 "Office_Partner_Picture": "res://Dialogue Stuff/CustomTextBubble/Office_Partner_Picture.dtl",
 "Office_Team_Picture": "res://Dialogue Stuff/Timelines/Office/Office_Team_Picture.dtl",
