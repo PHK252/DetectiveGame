@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bbqt4wtg38nww" path="res://demo/ai/tasks/pursue.gd" id="5_r1ou0"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_46tbn"]
+resource_local_to_scene = false
+resource_name = ""
 var/speed/name = &"speed"
 var/speed/type = 3
 var/speed/value = 400.0
@@ -19,38 +21,59 @@ var/flank_speed/hint = 1
 var/flank_speed/hint_string = "10,1000,10"
 
 [sub_resource type="BBNode" id="BBNode_nrd4b"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_qiw21"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_nrd4b")
 animation_name = &"idle"
 blend = 0.1
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_xlud8"]
+resource_local_to_scene = false
+resource_name = ""
 min_duration = 0.7
 max_duration = 1.5
 
 [sub_resource type="BTAction" id="BTAction_c4cxo"]
+resource_local_to_scene = false
+resource_name = ""
+group = &"player"
+output_var = &"target"
 script = ExtResource("1_08fik")
 group = &"player"
 output_var = &"target"
 
 [sub_resource type="BTSequence" id="BTSequence_yhjh1"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Pause before action"
 children = [SubResource("BTPlayAnimation_qiw21"), SubResource("BTRandomWait_xlud8"), SubResource("BTAction_c4cxo")]
 
 [sub_resource type="BBNode" id="BBNode_kc64r"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_panch"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_kc64r")
 animation_name = &"walk"
 blend = 0.1
 speed = 1.5
 
 [sub_resource type="BTAction" id="BTAction_6e48s"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
+flank_side = 1
+range_min = 400
+range_max = 600
+position_var = &"flank_pos"
 script = ExtResource("2_te3yo")
 target_var = &"target"
 flank_side = 1
@@ -59,6 +82,12 @@ range_max = 600
 position_var = &"flank_pos"
 
 [sub_resource type="BTAction" id="BTAction_66hsk"]
+resource_local_to_scene = false
+resource_name = ""
+target_position_var = &"flank_pos"
+speed_var = &"flank_speed"
+tolerance = 50.0
+avoid_var = &"target"
 script = ExtResource("3_svwk8")
 target_position_var = &"flank_pos"
 speed_var = &"flank_speed"
@@ -66,75 +95,116 @@ tolerance = 50.0
 avoid_var = &"target"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_24ath"]
+resource_local_to_scene = false
+resource_name = ""
 children = [SubResource("BTAction_66hsk")]
 
 [sub_resource type="BTAction" id="BTAction_enw2m"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
 script = ExtResource("4_mvsyw")
 target_var = &"target"
 
 [sub_resource type="BTSequence" id="BTSequence_lhg7f"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Flank player"
 children = [SubResource("BTPlayAnimation_panch"), SubResource("BTAction_6e48s"), SubResource("BTTimeLimit_24ath"), SubResource("BTAction_enw2m")]
 metadata/_weight_ = 1.0
 
 [sub_resource type="BTCooldown" id="BTCooldown_skw41"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 6.0
 children = [SubResource("BTSequence_lhg7f")]
 metadata/_weight_ = 2.0
 
 [sub_resource type="BBNode" id="BBNode_wpj6d"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_olf37"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_wpj6d")
 animation_name = &"walk"
 blend = 0.1
 
 [sub_resource type="BTAction" id="BTAction_a4jqi"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
+speed_var = &"speed"
+approach_distance = 100.0
 script = ExtResource("5_r1ou0")
 target_var = &"target"
 speed_var = &"speed"
 approach_distance = 100.0
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_xek5v"]
+resource_local_to_scene = false
+resource_name = ""
 time_limit = 2.0
 children = [SubResource("BTAction_a4jqi")]
 
 [sub_resource type="BTAction" id="BTAction_kidxn"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
 script = ExtResource("4_mvsyw")
 target_var = &"target"
 
 [sub_resource type="BTWait" id="BTWait_tadkc"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.1
 
 [sub_resource type="BBNode" id="BBNode_g8qww"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_a8yqu"]
+resource_local_to_scene = false
+resource_name = ""
 await_completion = 2.0
 animation_player = SubResource("BBNode_g8qww")
 animation_name = &"attack_2"
 
 [sub_resource type="BTWait" id="BTWait_vjstl"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.1
 
 [sub_resource type="BBNode" id="BBNode_rfop0"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_8oyw6"]
+resource_local_to_scene = false
+resource_name = ""
 await_completion = 2.0
 animation_player = SubResource("BBNode_rfop0")
 animation_name = &"attack_3"
 
 [sub_resource type="BTSequence" id="BTSequence_1xfnq"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Approach and melee attack"
 children = [SubResource("BTPlayAnimation_olf37"), SubResource("BTTimeLimit_xek5v"), SubResource("BTAction_kidxn"), SubResource("BTWait_tadkc"), SubResource("BTPlayAnimation_a8yqu"), SubResource("BTWait_vjstl"), SubResource("BTPlayAnimation_8oyw6")]
 metadata/_weight_ = 4.0
 
 [sub_resource type="BTAction" id="BTAction_mf87t"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
+flank_side = 0
+range_min = 350
+range_max = 600
+position_var = &"pos"
 script = ExtResource("2_te3yo")
 target_var = &"target"
 flank_side = 0
@@ -143,15 +213,24 @@ range_max = 600
 position_var = &"pos"
 
 [sub_resource type="BBNode" id="BBNode_cx111"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_mfbeu"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_cx111")
 animation_name = &"walk"
 blend = 0.1
 
 [sub_resource type="BTAction" id="BTAction_6nx58"]
+resource_local_to_scene = false
+resource_name = ""
+target_position_var = &"pos"
+speed_var = &"speed"
+tolerance = 50.0
+avoid_var = &""
 script = ExtResource("3_svwk8")
 target_position_var = &"pos"
 speed_var = &"speed"
@@ -159,60 +238,86 @@ tolerance = 50.0
 avoid_var = &""
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_tidwl"]
+resource_local_to_scene = false
+resource_name = ""
 time_limit = 3.0
 children = [SubResource("BTAction_6nx58")]
 
 [sub_resource type="BTAction" id="BTAction_8q20y"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
 script = ExtResource("4_mvsyw")
 target_var = &"target"
 
 [sub_resource type="BBNode" id="BBNode_s6vt4"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_qa8jy"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_s6vt4")
 animation_name = &"throw_prepare"
 blend = 0.1
 speed = 0.7
 
 [sub_resource type="BTWait" id="BTWait_gbcyb"]
+resource_local_to_scene = false
+resource_name = ""
 
 [sub_resource type="BBNode" id="BBNode_qkfqt"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_0ktds"]
+resource_local_to_scene = false
+resource_name = ""
 await_completion = 1.0
 animation_player = SubResource("BBNode_qkfqt")
 animation_name = &"throw"
 blend = 0.05
 
 [sub_resource type="BBNode" id="BBNode_1yxc5"]
-saved_value = NodePath(".")
+resource_local_to_scene = false
 resource_name = "."
+saved_value = NodePath(".")
 
 [sub_resource type="BTCallMethod" id="BTCallMethod_yx4fk"]
+resource_local_to_scene = false
+resource_name = ""
 node = SubResource("BBNode_1yxc5")
 method = &"throw_ninja_star"
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_2pmoe"]
+resource_local_to_scene = false
+resource_name = ""
 max_duration = 1.5
 
 [sub_resource type="BTSequence" id="BTSequence_rgbq3"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Throw ninja star"
 children = [SubResource("BTAction_mf87t"), SubResource("BTPlayAnimation_mfbeu"), SubResource("BTTimeLimit_tidwl"), SubResource("BTAction_8q20y"), SubResource("BTPlayAnimation_qa8jy"), SubResource("BTWait_gbcyb"), SubResource("BTPlayAnimation_0ktds"), SubResource("BTCallMethod_yx4fk"), SubResource("BTRandomWait_2pmoe")]
 metadata/_weight_ = 2.0
 
 [sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_rjsiq"]
+resource_local_to_scene = false
+resource_name = ""
 abort_on_failure = true
 children = [SubResource("BTCooldown_skw41"), SubResource("BTSequence_1xfnq"), SubResource("BTSequence_rgbq3")]
 
 [sub_resource type="BTSequence" id="BTSequence_pxl2k"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Main"
 children = [SubResource("BTSequence_yhjh1"), SubResource("BTProbabilitySelector_rjsiq")]
 
 [resource]
+resource_local_to_scene = false
+resource_name = ""
 description = "[comp]ProbabilitySelector[/comp] chooses a child task to execute based on attached probabilities. Probability distribution is calculated based on weights assigned to each child task.
 "
 blackboard_plan = SubResource("BlackboardPlan_46tbn")

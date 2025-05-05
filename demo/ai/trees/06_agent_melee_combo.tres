@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bq3i7dge2e6pk" path="res://demo/ai/tasks/move_forward.gd" id="5_au5yc"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_46tbn"]
+resource_local_to_scene = false
+resource_name = ""
 var/speed/name = &"speed"
 var/speed/type = 3
 var/speed/value = 400.0
@@ -19,28 +21,46 @@ var/charge_speed/hint = 0
 var/charge_speed/hint_string = ""
 
 [sub_resource type="BBNode" id="BBNode_nrd4b"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_qiw21"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_nrd4b")
 animation_name = &"idle"
 blend = 0.1
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_xlud8"]
+resource_local_to_scene = false
+resource_name = ""
 min_duration = 0.7
 max_duration = 1.5
 
 [sub_resource type="BTAction" id="BTAction_ulbrf"]
+resource_local_to_scene = false
+resource_name = ""
+group = &"player"
+output_var = &"target"
 script = ExtResource("1_sf4l8")
 group = &"player"
 output_var = &"target"
 
 [sub_resource type="BTSequence" id="BTSequence_yhjh1"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Pause before action"
 children = [SubResource("BTPlayAnimation_qiw21"), SubResource("BTRandomWait_xlud8"), SubResource("BTAction_ulbrf")]
 
 [sub_resource type="BTAction" id="BTAction_85keo"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
+flank_side = 0
+range_min = 300
+range_max = 400
+position_var = &"pos"
 script = ExtResource("2_5nwkp")
 target_var = &"target"
 flank_side = 0
@@ -49,15 +69,24 @@ range_max = 400
 position_var = &"pos"
 
 [sub_resource type="BBNode" id="BBNode_wpj6d"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_olf37"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_wpj6d")
 animation_name = &"walk"
 blend = 0.1
 
 [sub_resource type="BTAction" id="BTAction_ygjnc"]
+resource_local_to_scene = false
+resource_name = ""
+target_position_var = &"pos"
+speed_var = &"speed"
+tolerance = 50.0
+avoid_var = &""
 script = ExtResource("3_3tom2")
 target_position_var = &"pos"
 speed_var = &"speed"
@@ -65,99 +94,150 @@ tolerance = 50.0
 avoid_var = &""
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_xek5v"]
+resource_local_to_scene = false
+resource_name = ""
 children = [SubResource("BTAction_ygjnc")]
 
 [sub_resource type="BTSequence" id="BTSequence_1xfnq"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Align with player"
 children = [SubResource("BTAction_85keo"), SubResource("BTPlayAnimation_olf37"), SubResource("BTTimeLimit_xek5v")]
 
 [sub_resource type="BTAction" id="BTAction_kidxn"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
 script = ExtResource("4_hi228")
 target_var = &"target"
 
 [sub_resource type="BBNode" id="BBNode_giv5l"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_usdja"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_giv5l")
 animation_name = &"idle"
 blend = 0.1
 
 [sub_resource type="BTWait" id="BTWait_tadkc"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.4
 
 [sub_resource type="BBNode" id="BBNode_s8evu"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ppmxd"]
+resource_local_to_scene = false
+resource_name = ""
 await_completion = 2.0
 animation_player = SubResource("BBNode_s8evu")
 animation_name = &"attack_1"
 
 [sub_resource type="BTAction" id="BTAction_u22bc"]
+resource_local_to_scene = false
+resource_name = ""
+speed_var = &"charge_speed"
+duration = 0.1
 script = ExtResource("5_au5yc")
 speed_var = &"charge_speed"
 duration = 0.1
 
 [sub_resource type="BTParallel" id="BTParallel_ec2e3"]
+resource_local_to_scene = false
+resource_name = ""
 num_successes_required = 2
 children = [SubResource("BTPlayAnimation_ppmxd"), SubResource("BTAction_u22bc")]
 
 [sub_resource type="BTWait" id="BTWait_c0lo0"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.2
 
 [sub_resource type="BBNode" id="BBNode_3oljv"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_q4uis"]
+resource_local_to_scene = false
+resource_name = ""
 await_completion = 2.0
 animation_player = SubResource("BBNode_3oljv")
 animation_name = &"attack_2"
 
 [sub_resource type="BTAction" id="BTAction_yuxl3"]
+resource_local_to_scene = false
+resource_name = ""
+speed_var = &"charge_speed"
+duration = 0.1
 script = ExtResource("5_au5yc")
 speed_var = &"charge_speed"
 duration = 0.1
 
 [sub_resource type="BTParallel" id="BTParallel_thojy"]
+resource_local_to_scene = false
+resource_name = ""
 num_successes_required = 2
 children = [SubResource("BTPlayAnimation_q4uis"), SubResource("BTAction_yuxl3")]
 
 [sub_resource type="BTWait" id="BTWait_y3pmv"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.2
 
 [sub_resource type="BBNode" id="BBNode_ot40l"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ye5pt"]
+resource_local_to_scene = false
+resource_name = ""
 await_completion = 2.0
 animation_player = SubResource("BBNode_ot40l")
 animation_name = &"attack_3"
 
 [sub_resource type="BTAction" id="BTAction_rwp18"]
+resource_local_to_scene = false
+resource_name = ""
+speed_var = &"charge_speed"
+duration = 0.1
 script = ExtResource("5_au5yc")
 speed_var = &"charge_speed"
 duration = 0.1
 
 [sub_resource type="BTParallel" id="BTParallel_qmdfb"]
+resource_local_to_scene = false
+resource_name = ""
 num_successes_required = 2
 children = [SubResource("BTPlayAnimation_ye5pt"), SubResource("BTAction_rwp18")]
 
 [sub_resource type="BTWait" id="BTWait_nxyko"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.5
 
 [sub_resource type="BTSequence" id="BTSequence_ww5v2"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Combo Melee attack"
 children = [SubResource("BTAction_kidxn"), SubResource("BTPlayAnimation_usdja"), SubResource("BTWait_tadkc"), SubResource("BTParallel_ec2e3"), SubResource("BTWait_c0lo0"), SubResource("BTParallel_thojy"), SubResource("BTWait_y3pmv"), SubResource("BTParallel_qmdfb"), SubResource("BTWait_nxyko")]
 
 [sub_resource type="BTSequence" id="BTSequence_pxl2k"]
+resource_local_to_scene = false
+resource_name = ""
 children = [SubResource("BTSequence_yhjh1"), SubResource("BTSequence_1xfnq"), SubResource("BTSequence_ww5v2")]
 
 [resource]
+resource_local_to_scene = false
+resource_name = ""
 description = "In some scenarios, you might need to execute multiple tasks at the same time until specific conditions are fulfilled. To achieve this, the [comp]Parallel[/comp] composite is an invaluable tool. This composite task allows its children to be executed simultaneously during each tick until a specified number of successes or failures is reached. In this example, it will execute both the [act]PlayAnimation[/act] and [act]MoveForward[/act] actions each tick until both actions have finished with a [SUCCESS] status."
 blackboard_plan = SubResource("BlackboardPlan_46tbn")
 root_task = SubResource("BTSequence_pxl2k")

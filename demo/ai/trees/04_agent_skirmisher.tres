@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://db7ce8503ara" path="res://demo/ai/tasks/back_away.gd" id="6_fkv0k"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_46tbn"]
+resource_local_to_scene = false
+resource_name = ""
 var/speed/name = &"speed"
 var/speed/type = 3
 var/speed/value = 400.0
@@ -26,137 +28,212 @@ var/slow_speed/hint = 1
 var/slow_speed/hint_string = "10,1000,10"
 
 [sub_resource type="BTAction" id="BTAction_ulbrf"]
+resource_local_to_scene = false
+resource_name = ""
+group = &"player"
+output_var = &"target"
 script = ExtResource("1_2883n")
 group = &"player"
 output_var = &"target"
 
 [sub_resource type="BBNode" id="BBNode_nrd4b"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_qiw21"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_nrd4b")
 animation_name = &"idle"
 blend = 0.1
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_xlud8"]
+resource_local_to_scene = false
+resource_name = ""
 min_duration = 2.0
 max_duration = 3.0
 
 [sub_resource type="BTSequence" id="BTSequence_yhjh1"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Summoning sickness"
 children = [SubResource("BTAction_ulbrf"), SubResource("BTPlayAnimation_qiw21"), SubResource("BTRandomWait_xlud8")]
 
 [sub_resource type="BTRunLimit" id="BTRunLimit_tq3e1"]
+resource_local_to_scene = false
+resource_name = ""
 children = [SubResource("BTSequence_yhjh1")]
 
 [sub_resource type="BTCondition" id="BTCondition_uk4dg"]
+resource_local_to_scene = false
+resource_name = ""
+distance_min = 0.0
+distance_max = 300.0
+target_var = &"target"
 script = ExtResource("5_p5dih")
 distance_min = 0.0
 distance_max = 300.0
 target_var = &"target"
 
 [sub_resource type="BBNode" id="BBNode_7c0g0"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_sty80"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_7c0g0")
 animation_name = &"walk"
 blend = 0.1
 speed = 1.2
 
 [sub_resource type="BTAction" id="BTAction_jryg6"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
+speed_var = &"speed"
+approach_distance = 100.0
 script = ExtResource("2_lpckh")
 target_var = &"target"
 speed_var = &"speed"
 approach_distance = 100.0
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_lkphr"]
+resource_local_to_scene = false
+resource_name = ""
 time_limit = 1.0
 children = [SubResource("BTAction_jryg6")]
 
 [sub_resource type="BTAction" id="BTAction_kidxn"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
 script = ExtResource("4_57x51")
 target_var = &"target"
 
 [sub_resource type="BTWait" id="BTWait_tadkc"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.2
 
 [sub_resource type="BBNode" id="BBNode_kcqly"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_hngi6"]
+resource_local_to_scene = false
+resource_name = ""
 await_completion = 2.0
 animation_player = SubResource("BBNode_kcqly")
 animation_name = &"attack_3"
 
 [sub_resource type="BTWait" id="BTWait_cm8jy"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 0.5
 
 [sub_resource type="BTSequence" id="BTSequence_ww5v2"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Melee attack"
 children = [SubResource("BTCondition_uk4dg"), SubResource("BTPlayAnimation_sty80"), SubResource("BTTimeLimit_lkphr"), SubResource("BTAction_kidxn"), SubResource("BTWait_tadkc"), SubResource("BTPlayAnimation_hngi6"), SubResource("BTWait_cm8jy")]
 
 [sub_resource type="BTCooldown" id="BTCooldown_ksvfy"]
+resource_local_to_scene = false
+resource_name = ""
 duration = 2.0
 children = [SubResource("BTSequence_ww5v2")]
 
 [sub_resource type="BTCondition" id="BTCondition_fpufi"]
+resource_local_to_scene = false
+resource_name = ""
+distance_min = 0.0
+distance_max = 300.0
+target_var = &"target"
 script = ExtResource("5_p5dih")
 distance_min = 0.0
 distance_max = 300.0
 target_var = &"target"
 
 [sub_resource type="BBNode" id="BBNode_3iqcf"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ee0ff"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_3iqcf")
 animation_name = &"walk"
 blend = 0.1
 speed = -0.7
 
 [sub_resource type="BTAction" id="BTAction_4ye2y"]
+resource_local_to_scene = false
+resource_name = ""
+speed_var = &"slow_speed"
+max_angle_deviation = 0.7
 script = ExtResource("6_fkv0k")
 speed_var = &"slow_speed"
 max_angle_deviation = 0.7
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_cns1i"]
+resource_local_to_scene = false
+resource_name = ""
 time_limit = 1.5
 children = [SubResource("BTAction_4ye2y")]
 
 [sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_nw4ep"]
+resource_local_to_scene = false
+resource_name = ""
 children = [SubResource("BTTimeLimit_cns1i")]
 
 [sub_resource type="BBNode" id="BBNode_81x7t"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_e61er"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_81x7t")
 animation_name = &"idle"
 blend = 0.1
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_jw0cm"]
+resource_local_to_scene = false
+resource_name = ""
 
 [sub_resource type="BTSequence" id="BTSequence_y12eg"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Disengage"
 children = [SubResource("BTCondition_fpufi"), SubResource("BTPlayAnimation_ee0ff"), SubResource("BTAlwaysSucceed_nw4ep"), SubResource("BTPlayAnimation_e61er"), SubResource("BTRandomWait_jw0cm")]
 
 [sub_resource type="BBNode" id="BBNode_wpj6d"]
-saved_value = NodePath("AnimationPlayer")
+resource_local_to_scene = false
 resource_name = "AnimationPlayer"
+saved_value = NodePath("AnimationPlayer")
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_olf37"]
+resource_local_to_scene = false
+resource_name = ""
 animation_player = SubResource("BBNode_wpj6d")
 animation_name = &"walk"
 blend = 0.1
 speed = 1.2
 
 [sub_resource type="BTAction" id="BTAction_g5ayy"]
+resource_local_to_scene = false
+resource_name = ""
+target_var = &"target"
+flank_side = 2
+range_min = 90
+range_max = 90
+position_var = &"flank_pos"
 script = ExtResource("2_cjso2")
 target_var = &"target"
 flank_side = 2
@@ -165,6 +242,12 @@ range_max = 90
 position_var = &"flank_pos"
 
 [sub_resource type="BTAction" id="BTAction_tv4lt"]
+resource_local_to_scene = false
+resource_name = ""
+target_position_var = &"flank_pos"
+speed_var = &"fast_speed"
+tolerance = 50.0
+avoid_var = &"target"
 script = ExtResource("3_treio")
 target_position_var = &"flank_pos"
 speed_var = &"fast_speed"
@@ -172,16 +255,24 @@ tolerance = 50.0
 avoid_var = &"target"
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_xek5v"]
+resource_local_to_scene = false
+resource_name = ""
 children = [SubResource("BTAction_tv4lt")]
 
 [sub_resource type="BTSequence" id="BTSequence_rgwic"]
+resource_local_to_scene = false
+resource_name = ""
 custom_name = "Flank from behind"
 children = [SubResource("BTPlayAnimation_olf37"), SubResource("BTAction_g5ayy"), SubResource("BTTimeLimit_xek5v")]
 
 [sub_resource type="BTSelector" id="BTSelector_2jnau"]
+resource_local_to_scene = false
+resource_name = ""
 children = [SubResource("BTRunLimit_tq3e1"), SubResource("BTCooldown_ksvfy"), SubResource("BTSequence_y12eg"), SubResource("BTSequence_rgwic")]
 
 [resource]
+resource_local_to_scene = false
+resource_name = ""
 description = "Like actions, conditions do not contain child tasks within them. Instead, they evaluate specific criteria and return either a [SUCCESS] or [FAILURE] based on the agent's or environment's state (for example, \"IsLowOnHealth\", \"IsTargetInSight\"). Conditions are commonly employed alongside sequences to interrupt their execution if a particular requirement is not met.
 
 In our example, if the target is not within the specified range, the [con]InRange[/con] condition will return [FAILURE], causing the [comp]sequence[/comp] to be aborted.
