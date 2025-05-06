@@ -223,7 +223,7 @@ nodes/WineDrink/position = Vector2(2060, -10)
 nodes/output/position = Vector2(3930, -20)
 node_connections = [&"Blend2", 0, &"BlendSpace1D", &"Blend2", 1, &"Animation", &"CellPhone", 0, &"Inspect", &"CellPhone", 1, &"Animation 11", &"Doughnut", 0, &"CellPhone", &"Doughnut", 1, &"Animation 12", &"Inspect", 0, &"StuffToilet", &"Inspect", 1, &"Animation 10", &"Knock", 0, &"Doughnut", &"Knock", 1, &"Animation 13", &"OneShot", 0, &"Blend2", &"OneShot", 1, &"StepBack", &"SitNoWine", 0, &"SitOutIn", &"SitNoWine", 1, &"Animation 5", &"SitOutIn", 0, &"Animation 4", &"SitOutIn", 1, &"Thinking", &"SitOutIn", 2, &"Animation 3", &"Sleep", 0, &"SitNoWine", &"Sleep", 1, &"Animation 8", &"Sneeze", 0, &"WineDrink", &"Sneeze", 1, &"Animation 6", &"StuffToilet", 0, &"Sneeze", &"StuffToilet", 1, &"Animation 7", &"Thinking", 0, &"OneShot", &"Thinking", 1, &"Animation 2", &"WineDrink", 0, &"Sleep", &"WineDrink", 1, &"Animation 9", &"output", 0, &"Knock"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nnpji"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u8rua"]
 random_pitch = 1.1
 random_volume_offset_db = 0.2
 streams_count = 10
@@ -238,7 +238,7 @@ stream_7/stream = ExtResource("11_7t8j7")
 stream_8/stream = ExtResource("12_xwd3j")
 stream_9/stream = ExtResource("13_4t6f6")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8xnml"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cfje3"]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
 streams_count = 10
@@ -255,12 +255,12 @@ stream_9/stream = ExtResource("23_u8rua")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_ef4p2"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_nnpji")
+stream_0/stream = SubResource("AudioStreamRandomizer_u8rua")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_8xnml")
+stream_1/stream = SubResource("AudioStreamRandomizer_cfje3")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6mit7"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vxxc2"]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
 streams_count = 6
@@ -273,12 +273,12 @@ stream_5/stream = ExtResource("29_i7u5g")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_ahvww"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_nnpji")
+stream_0/stream = SubResource("AudioStreamRandomizer_u8rua")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_6mit7")
+stream_1/stream = SubResource("AudioStreamRandomizer_vxxc2")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lhbok"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ffe5"]
 random_pitch = 1.1
 random_volume_offset_db = 0.2
 streams_count = 10
@@ -293,7 +293,7 @@ stream_7/stream = ExtResource("11_7t8j7")
 stream_8/stream = ExtResource("12_xwd3j")
 stream_9/stream = ExtResource("13_4t6f6")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kx2lr"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ij35r"]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
 streams_count = 8
@@ -308,18 +308,18 @@ stream_7/stream = ExtResource("37_jy3y7")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_sslqq"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_lhbok")
+stream_0/stream = SubResource("AudioStreamRandomizer_7ffe5")
 stream_0/volume = -5.0
-stream_1/stream = SubResource("AudioStreamRandomizer_kx2lr")
+stream_1/stream = SubResource("AudioStreamRandomizer_ij35r")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ki1ll"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xpb17"]
 random_pitch = 1.1
 random_volume_offset_db = 0.2
 streams_count = 1
 stream_0/stream = ExtResource("4_ktrcu")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fq0s1"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i7u5g"]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
 streams_count = 3
@@ -329,12 +329,12 @@ stream_2/stream = ExtResource("40_47jer")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_pw86d"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_ki1ll")
+stream_0/stream = SubResource("AudioStreamRandomizer_xpb17")
 stream_0/volume = -10.0
-stream_1/stream = SubResource("AudioStreamRandomizer_fq0s1")
+stream_1/stream = SubResource("AudioStreamRandomizer_i7u5g")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yxv1o"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rpna7"]
 random_pitch = 1.1
 random_volume_offset_db = 0.2
 streams_count = 10
@@ -349,7 +349,7 @@ stream_7/stream = ExtResource("11_7t8j7")
 stream_8/stream = ExtResource("12_xwd3j")
 stream_9/stream = ExtResource("13_4t6f6")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8b33n"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kk7qq"]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
 streams_count = 8
@@ -364,12 +364,12 @@ stream_7/stream = ExtResource("48_sfw81")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_neyy0"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_yxv1o")
+stream_0/stream = SubResource("AudioStreamRandomizer_rpna7")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_8b33n")
+stream_1/stream = SubResource("AudioStreamRandomizer_kk7qq")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_urx0j"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_llxqq"]
 random_pitch = 1.1
 random_volume_offset_db = 0.2
 streams_count = 10
@@ -384,7 +384,7 @@ stream_7/stream = ExtResource("11_7t8j7")
 stream_8/stream = ExtResource("12_xwd3j")
 stream_9/stream = ExtResource("13_4t6f6")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_htjjp"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wm6ln"]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
 streams_count = 8
@@ -399,18 +399,18 @@ stream_7/stream = ExtResource("57_w4y7q")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_vl7s6"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_urx0j")
+stream_0/stream = SubResource("AudioStreamRandomizer_llxqq")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_htjjp")
+stream_1/stream = SubResource("AudioStreamRandomizer_wm6ln")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_athsd"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_twayg"]
 streams_count = 3
 stream_0/stream = ExtResource("4_ktrcu")
 stream_1/stream = ExtResource("5_k80n7")
 stream_2/stream = ExtResource("6_inu2d")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_47jer"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jkg0x"]
 streams_count = 6
 stream_0/stream = ExtResource("59_mieye")
 stream_1/stream = ExtResource("60_u8rua")
@@ -421,18 +421,18 @@ stream_5/stream = ExtResource("64_ij35r")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_vmrya"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_athsd")
+stream_0/stream = SubResource("AudioStreamRandomizer_twayg")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_47jer")
+stream_1/stream = SubResource("AudioStreamRandomizer_jkg0x")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mt2s7"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0fshi"]
 streams_count = 3
 stream_0/stream = ExtResource("7_b7rb4")
 stream_1/stream = ExtResource("8_2eely")
 stream_2/stream = ExtResource("9_vag8b")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oy8dh"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jy3y7"]
 streams_count = 3
 stream_0/stream = ExtResource("65_xpb17")
 stream_1/stream = ExtResource("66_i7u5g")
@@ -440,16 +440,16 @@ stream_2/stream = ExtResource("67_rpna7")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_t5xbl"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_mt2s7")
+stream_0/stream = SubResource("AudioStreamRandomizer_0fshi")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_oy8dh")
+stream_1/stream = SubResource("AudioStreamRandomizer_jy3y7")
 stream_1/volume = 0.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_coppk"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0d8sf"]
 streams_count = 1
 stream_0/stream = ExtResource("68_u8rua")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lnde4"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_athsd"]
 streams_count = 8
 stream_0/stream = ExtResource("68_kk7qq")
 stream_1/stream = ExtResource("69_llxqq")
@@ -462,9 +462,9 @@ stream_7/stream = ExtResource("75_0d8sf")
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_pfwrc"]
 stream_count = 2
-stream_0/stream = SubResource("AudioStreamRandomizer_coppk")
+stream_0/stream = SubResource("AudioStreamRandomizer_0d8sf")
 stream_0/volume = 0.0
-stream_1/stream = SubResource("AudioStreamRandomizer_lnde4")
+stream_1/stream = SubResource("AudioStreamRandomizer_athsd")
 stream_1/volume = 0.0
 
 [node name="Dalton" type="Node3D"]
@@ -480,43 +480,43 @@ unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
 bones/0/rotation = Quaternion(0, 0, 0, 1)
-bones/1/position = Vector3(-8.19068e-10, -5.75171e-08, -3.00353)
+bones/1/position = Vector3(-8.42904e-10, -5.75171e-08, -3.00299)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.0154889, 0.325106, 0.872634, -0.364109)
-bones/4/rotation = Quaternion(-0.240783, 0.0715452, -0.0394067, 0.967136)
-bones/5/rotation = Quaternion(0.504578, -0.0954928, 0.096044, 0.852677)
+bones/3/rotation = Quaternion(0.0153255, 0.325556, 0.872441, -0.364179)
+bones/4/rotation = Quaternion(-0.241704, 0.0708814, -0.0394231, 0.966954)
+bones/5/rotation = Quaternion(0.504998, -0.0949016, 0.0957575, 0.852526)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0154889, 0.325106, 0.872634, 0.364109)
-bones/9/rotation = Quaternion(-0.240783, -0.0715452, 0.0394067, 0.967136)
-bones/10/rotation = Quaternion(0.504578, 0.0954928, -0.096044, 0.852677)
+bones/8/rotation = Quaternion(-0.0153255, 0.325556, 0.872441, 0.364179)
+bones/9/rotation = Quaternion(-0.241704, -0.0708814, 0.0394231, 0.966954)
+bones/10/rotation = Quaternion(0.504998, 0.0949017, -0.0957575, 0.852526)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-8.19068e-10, -3.29304e-07, -3.00353)
+bones/12/position = Vector3(-8.42904e-10, -3.2964e-07, -3.00299)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0832988, 1.15498e-07, -1.31317e-08, 0.996525)
-bones/16/rotation = Quaternion(0.0337703, 4.13619e-09, 1.27875e-08, 0.99943)
-bones/18/rotation = Quaternion(0.0286675, -0.0062241, -0.00981277, 0.999521)
-bones/20/rotation = Quaternion(0.0286675, 0.0062241, 0.00981279, 0.999521)
+bones/15/rotation = Quaternion(-0.0832002, 1.15496e-07, -1.31434e-08, 0.996533)
+bones/16/rotation = Quaternion(0.0335602, 4.13258e-09, 1.27873e-08, 0.999437)
+bones/18/rotation = Quaternion(0.029079, -0.00608458, -0.00981923, 0.99951)
+bones/20/rotation = Quaternion(0.029079, 0.00608458, 0.00981925, 0.99951)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.25775, -0.148769, -0.39949, 0.867087)
-bones/23/rotation = Quaternion(-0.00325436, -0.000443093, -0.298631, 0.954363)
+bones/22/rotation = Quaternion(-0.25784, -0.148759, -0.399291, 0.867154)
+bones/23/rotation = Quaternion(-0.0032608, -0.000443007, -0.299222, 0.954178)
 bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.25775, 0.148769, 0.39949, 0.867087)
-bones/27/rotation = Quaternion(-0.00325453, 0.000443099, 0.298632, 0.954363)
+bones/26/rotation = Quaternion(-0.25784, 0.148759, 0.399291, 0.867154)
+bones/27/rotation = Quaternion(-0.00326096, 0.000443016, 0.299222, 0.954178)
 bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
 bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.980299, -0.0311821, -2.19023)
+bones/31/position = Vector3(0.979936, -0.0311821, -2.19012)
 bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
 bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
-bones/33/position = Vector3(-8.19068e-10, -1.17122e-07, -3.00353)
+bones/33/position = Vector3(-8.42904e-10, -1.17122e-07, -3.00299)
 bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
 bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
-bones/36/position = Vector3(-0.980299, -0.0311821, -2.19023)
+bones/36/position = Vector3(-0.979936, -0.0311821, -2.19012)
 bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
 bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 

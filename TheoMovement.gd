@@ -766,20 +766,18 @@ func _on_interactable_interacted_cafe(interactor: Interactor) -> void:
 	nav.target_desired_distance = 0.4
 	state = ADJUST
 
-
 func _on_cam_books_became_active() -> void:
-	await get_tree().create_timer(1.5).timeout
-	if entered_junipers:
-		print("doingtheTHing")
-		is_navigating = false
-		await get_tree().create_timer(2.5).timeout
-		nav.target_position = adjustment_list[4].global_position
-		is_navigating = true
-		STOPPING_DISTANCE = 0.0
-		nav.path_desired_distance = 0.2
-		nav.target_desired_distance = 0.4
-		state = ADJUST
-
+	pass
+	#await get_tree().create_timer(1.5).timeout
+	#if entered_junipers:
+		#is_navigating = false
+		#await get_tree().create_timer(2.5).timeout
+		#nav.target_position = adjustment_list[4].global_position
+		#is_navigating = true
+		#STOPPING_DISTANCE = 0.0
+		#nav.path_desired_distance = 0.2
+		#nav.target_desired_distance = 0.4
+		#state = ADJUST
 
 func _on_door_point_body_entered(body: Node3D) -> void:
 	if body.is_in_group("theo"):
@@ -795,3 +793,8 @@ func _on_door_point_body_exited(body: Node3D) -> void:
 
 func _on_juniper_interact_finish_greeting() -> void:
 	greeting_finished = true
+
+func _on_door_second_juniper_greeting() -> void:
+	theo_adjustment = true
+	await get_tree().create_timer(2).timeout
+	theo_adjustment = false
