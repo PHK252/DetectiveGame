@@ -1,4 +1,4 @@
-[gd_scene load_steps=884 format=4 uid="uid://cqqnmstl4cse3"]
+[gd_scene load_steps=886 format=4 uid="uid://cqqnmstl4cse3"]
 
 [ext_resource type="PackedScene" uid="uid://dfbv5oel5w2aw" path="res://ThirdHouse/ThirdHouseUpdate.glb" id="1_b3t2i"]
 [ext_resource type="Script" uid="uid://cpi47sa1wppw6" path="res://ThirdHouse/third_house.gd" id="1_g4lql"]
@@ -6564,12 +6564,14 @@ func _process(_delta):
 		make_stairs()
 "
 
+[sub_resource type="BoxMesh" id="BoxMesh_2wgj7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k60w3"]
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_ghyc3"]
-vertices = PackedVector3Array(-5.90532, 0.318216, -9.54462, -5.45533, 0.318216, -9.49462, -5.35532, 0.318216, -9.99462, -5.45533, 0.318216, -11.3446, -5.90532, 0.318216, -12.8446, -5.00533, 0.318216, -10.2446, -3.85532, 0.318216, -10.2446, -3.85532, 0.318216, -10.8946, -5.00533, 0.318216, -10.8946, -5.35532, 0.318216, -11.1446, -5.45533, 0.318216, -12.8446, -15.9553, -0.681784, -10.2446, -15.5553, -0.681784, -11.1446, -16.7053, -0.681784, -11.6946, -17.3553, -0.681784, -10.3946, -2.65532, 3.71822, -10.1446, -2.15532, 3.71822, -10.2446, -2.20532, 3.71822, -10.7946, -2.90532, 3.71822, -9.79462, -5.10532, 3.61822, -10.7446, -6.45533, 3.61822, -6.34462, -5.35532, 3.51822, -6.19462, -5.25533, 3.61822, -6.59462, -2.20532, 3.71822, -6.84462, -2.15532, 3.71822, -7.89462, -2.65532, 3.71822, -7.99462, -4.90532, 3.61822, -6.84462, -6.20533, 3.61822, -8.69462, -6.45533, 3.61822, -8.54462, -2.90532, 3.71822, -8.34462, 0.0446758, 3.71822, -10.2446, 0.0946751, 3.71822, -10.7946, 0.544676, 3.71822, -10.1446, 1.89467, 3.71822, -9.49462, 1.89467, 3.71822, -10.7946, 0.794676, 3.71822, -9.79462, 1.59468, 3.71822, -9.24462, 0.744675, 3.71822, -8.29462, 1.19468, 3.71822, -8.19462, 2.19468, 3.71822, -9.54462, 3.09468, 3.71822, -9.19462, 3.09468, 3.71822, -10.7946, -15.3053, -0.681784, -8.29462, -15.2553, -0.681784, -9.54462, -15.5553, -0.681784, -9.54462, -16.0053, -0.681784, -9.99462, -15.9053, -0.681784, -9.79462, -18.3553, -0.681784, -8.29462, -16.8553, -0.681784, -8.19462, -16.6553, -0.681784, -8.29462, -14.2053, -0.481784, -7.84462, -14.2053, -0.281784, -7.44462, -13.3053, -0.181784, -7.44462, -13.3053, -0.481784, -7.84462, -14.6553, -0.681784, -8.29462, -13.2053, -0.581784, -8.04462, -14.4553, -0.681784, -8.19462, -12.9053, -0.681784, -8.24462, -12.4553, -0.681784, -9.54462, -12.5053, -0.681784, -8.24462, -11.9053, -0.681784, -9.14462, -12.1553, -0.681784, -9.54462, -11.6553, -0.681784, -8.09462, -11.4553, -0.581784, -8.99462, -5.90532, 0.318216, -8.94462, -5.45533, 0.318216, -8.94462, -6.00533, 0.318216, -8.74462, -6.45533, 0.318216, -8.49462, -6.45533, 0.318216, -6.59462, -5.30533, 0.318216, -6.64462, -5.30533, 0.318216, -8.74462, -1.90532, 4.61822, -9.24462, -1.90532, 4.61822, -8.89462, -0.205324, 4.61822, -8.89462, -0.205324, 4.61822, -9.24462, -7.45533, -0.0817835, -7.34462, -7.50533, -0.0817835, -8.34462, 2.29468, 4.61822, -8.44462, 2.04468, 4.61822, -7.79462, 2.04468, 4.61822, -7.59462, 2.64467, 4.61822, -7.39462, 2.89467, 4.61822, -8.04462, 2.84468, 4.61822, -8.24462, -17.5553, -0.681784, -7.09462, -17.4553, -0.681784, -7.09462, -17.0553, -0.681784, -7.99462, -18.6553, -0.681784, -7.64462, 0.544676, 3.71822, -7.99462, 0.894674, 3.71822, -7.29462, 0.344675, 3.71822, -7.89462, 1.34468, 3.71822, -6.84462, 0.994675, 3.71822, -7.09462, -14.4053, 0.318216, -5.94462, -14.6553, 0.318216, -5.84462, -14.5053, 0.318216, -5.59462, -13.9553, 0.318216, -5.69462, -14.1553, 0.318216, -6.29462, -13.3053, 0.318216, -6.29462, -13.6053, 0.318216, -5.39462, -13.0053, 0.318216, -5.94462, -4.60532, 0.318216, -5.89462, -4.65532, 0.318216, -5.54462, -4.25533, 0.318216, -5.44462, -2.70532, 0.318216, -5.89462, -1.50533, 0.318216, -6.89462, -1.25533, 0.318216, -7.44462, -2.25533, 0.318216, -7.44462, -2.25533, 0.318216, -6.34462, -4.00533, 0.318216, -5.09462, -1.50533, 0.318216, -6.54462, -2.50533, 0.318216, -5.99462, -1.20532, 0.318216, -5.89462, -4.00533, 0.318216, -3.84462, -2.35533, 0.318216, -3.84462, -2.05532, 0.318216, -3.59462, -1.00533, 0.318216, -5.74462, 1.24467, 0.318216, -7.44462, 0.694675, 0.318216, -7.44462, 0.994675, 0.318216, -6.64462, -0.355326, 0.318216, -5.44462, -1.95532, 0.418216, -3.34462, 1.24467, 0.318216, -3.34462, 0.494675, 0.318216, -5.74462, 0.694675, 0.318216, -5.94462, -0.155325, 1.21822, -6.49462, -0.0553246, 1.21822, -6.59462, -0.0553246, 1.21822, -6.79462, -0.205324, 1.21822, -6.94462, -0.455324, 1.21822, -6.89462, -0.505325, 1.21822, -6.79462, -0.405325, 1.21822, -6.49462, -4.85532, 0.318216, -5.89462, -5.10532, 0.318216, -5.54462, -5.55533, 0.318216, -5.04462, -5.30533, 0.318216, -5.44462, -5.20533, 0.318216, -6.14462, -6.45533, 0.318216, -5.04462, -6.50533, 1.81822, -3.79462, -5.35532, 1.81822, -3.84462, -0.355326, -2.78178, -3.59462, 0.0946751, -2.78178, -3.59462, 0.0946751, -2.78178, -4.29462, -0.555325, -2.78178, -3.49462, -0.705324, -2.78178, -4.29462, -0.905325, -2.78178, -4.19462, -1.55532, -2.78178, -3.19462, -0.805325, -2.78178, -3.09462, -1.50533, -2.78178, -4.19462, -0.155325, -2.78178, -4.64462, -0.455324, -2.78178, -4.64462, -0.155325, -2.78178, -6.19462, -0.455324, -2.78178, -6.19462, -11.5553, 0.318216, -5.64462, -11.2553, 0.318216, -5.74462, -11.2553, 0.318216, -5.84462, -12.8553, 0.318216, -5.84462, -13.3053, 0.318216, -4.04462, -12.0553, 0.318216, -4.04462, -12.2053, 0.318216, -4.29462, -13.2053, 0.318216, -4.44462, -12.2053, 0.318216, -4.54462, -11.7553, 0.318216, -5.44462, -15.3553, 0.318216, -5.14462, -16.9053, 0.318216, -5.84462, -16.9053, 0.318216, -4.54462, -15.4053, 0.318216, -4.54462, -15.4553, 0.318216, -4.94462, -10.0053, 0.318216, -5.04462, -9.90532, 0.318216, -4.74462, -9.30533, 0.318216, -4.74462, -10.2053, 0.318216, -5.24462, -9.30533, 0.318216, -5.84462, -6.45533, -0.381784, -3.54462, -5.50533, -0.381784, -3.49462, -10.6053, 0.318216, -3.54462, -10.8053, 0.318216, -3.49462, -10.8053, 0.318216, -2.24462, -8.85532, 0.518216, -2.49462, -9.20533, 0.318216, -2.74462, -9.1339, 0.318216, -2.45891, -10.3553, 0.318216, -3.79462, -9.30533, 0.318216, -2.94462, -7.45533, 1.81822, -1.84462, -7.45533, 1.81822, -2.49462, -11.1553, 0.318216, -1.84462, -9.16302, 0.318216, -1.84462, -14.2553, 0.318216, -2.24462, -14.2553, 0.318216, -3.59462, -14.4053, 0.318216, -3.49462, -14.7053, 0.318216, -3.49462, -14.9053, 0.318216, -3.59462, -16.9053, 0.318216, -1.84462, -13.9053, 0.318216, -1.84462, 0.294676, -2.78178, -4.19462, 0.494675, -2.78178, -3.49462, 0.744675, -2.78178, -3.14462, 0.744675, -2.78178, -1.04462, 1.04468, -2.78178, -1.04462, 1.04468, -2.78178, -4.19462, -4.95533, 1.41822, -3.09462, -4.95533, 1.41822, -3.19462, -5.15532, 1.41822, -3.24462, -6.50533, 1.51822, -3.29462, -6.70533, 1.41822, -3.04462, -6.80533, 1.51822, -2.69462, -7.10532, 1.61822, -2.49462, -6.90532, 1.51822, -1.74462, -4.20533, 1.31822, -1.14462, -4.20533, 1.31822, -2.84462, -4.60532, 1.41822, -2.84462, -6.70533, 1.51822, -1.44462, -5.35532, 1.61822, -3.54462, -6.75533, 1.41822, -1.14462, -4.4831, 1.41822, -1.17795, -4.48866, 1.41822, -1.14462, -5.50533, -0.581784, -3.14462, -6.55533, -0.681784, -2.99462, -6.80533, -0.681784, -2.84462, -6.80533, -0.681784, -1.14462, -5.15532, -0.681784, -1.14462, -5.15532, -0.681784, -2.74462, -0.755325, 0.218216, -0.394621, -0.205324, 0.318216, -0.24462, -0.205324, 0.318216, -0.594621, -0.855326, 0.318216, -0.894621, 0.0946751, 0.318216, -1.04462, 0.294676, 0.318216, -1.14462, 1.24467, 0.318216, -1.14462, -1.20532, 0.318216, -1.14462, -2.15532, 0.518216, -2.94462, -1.25229, 0.318216, -2.24886, -2.35533, 0.518216, -2.84462, -2.75533, 0.718216, -2.84462, -2.75533, 0.718216, -1.14462, -1.72199, 0.318216, -1.14462, -1.70532, -2.68178, -2.94462, -1.90532, -2.58178, -2.84462, -2.30532, -2.28178, -1.14462, -0.805325, -2.78178, -1.04462, -1.55532, -2.78178, -1.09462, -1.56032, -2.78178, -2.54962, -2.30532, -2.28178, -2.84462, -13.2553, 0.918216, -3.04462, -13.2553, 0.918216, -2.79462, -11.8053, 0.918216, -2.79462, -11.8053, 0.918216, -3.04462, -3.00533, -1.78178, -2.84462, -3.20532, -1.68178, -2.69462, -4.01532, -1.08178, -1.14462, -4.31961, -0.881784, -2.72319, -1.20532, 0.218216, 4.85538, -1.20532, 0.218216, 5.05538, -0.955324, 0.218216, 5.10538, -0.605326, 0.318216, 5.10538)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(8, 7, 5), PackedInt32Array(5, 7, 6), PackedInt32Array(3, 9, 2), PackedInt32Array(5, 2, 8), PackedInt32Array(8, 2, 9), PackedInt32Array(4, 10, 3), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(15, 18, 17), PackedInt32Array(17, 18, 19), PackedInt32Array(22, 21, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(22, 20, 26), PackedInt32Array(26, 20, 28), PackedInt32Array(26, 28, 27), PackedInt32Array(25, 23, 29), PackedInt32Array(29, 23, 26), PackedInt32Array(18, 29, 19), PackedInt32Array(19, 29, 27), PackedInt32Array(27, 29, 26), PackedInt32Array(16, 17, 30), PackedInt32Array(30, 17, 31), PackedInt32Array(32, 30, 31), PackedInt32Array(32, 31, 35), PackedInt32Array(35, 31, 36), PackedInt32Array(36, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(38, 37, 36), PackedInt32Array(36, 37, 35), PackedInt32Array(39, 33, 34), PackedInt32Array(34, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(44, 43, 42), PackedInt32Array(14, 11, 45), PackedInt32Array(45, 46, 14), PackedInt32Array(14, 46, 49), PackedInt32Array(14, 49, 48), PackedInt32Array(14, 48, 47), PackedInt32Array(44, 42, 46), PackedInt32Array(46, 42, 49), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(54, 42, 43), PackedInt32Array(53, 50, 55), PackedInt32Array(55, 50, 56), PackedInt32Array(56, 54, 55), PackedInt32Array(55, 54, 57), PackedInt32Array(57, 54, 58), PackedInt32Array(58, 54, 43), PackedInt32Array(58, 59, 57), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(59, 60, 62), PackedInt32Array(60, 63, 62), PackedInt32Array(65, 64, 1), PackedInt32Array(1, 64, 0), PackedInt32Array(65, 70, 66), PackedInt32Array(66, 70, 67), PackedInt32Array(67, 70, 69), PackedInt32Array(67, 69, 68), PackedInt32Array(66, 64, 65), PackedInt32Array(74, 73, 71), PackedInt32Array(71, 73, 72), PackedInt32Array(63, 76, 62), PackedInt32Array(62, 76, 75), PackedInt32Array(82, 81, 77), PackedInt32Array(77, 81, 78), PackedInt32Array(78, 81, 79), PackedInt32Array(79, 81, 80), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 47), PackedInt32Array(47, 83, 86), PackedInt32Array(47, 48, 85), PackedInt32Array(87, 37, 38), PackedInt32Array(87, 38, 89), PackedInt32Array(89, 38, 88), PackedInt32Array(91, 90, 23), PackedInt32Array(88, 91, 89), PackedInt32Array(89, 91, 24), PackedInt32Array(24, 91, 23), PackedInt32Array(94, 93, 92), PackedInt32Array(94, 92, 95), PackedInt32Array(95, 92, 96), PackedInt32Array(97, 96, 52), PackedInt32Array(52, 96, 51), PackedInt32Array(95, 96, 98), PackedInt32Array(98, 96, 97), PackedInt32Array(98, 97, 99), PackedInt32Array(101, 100, 102), PackedInt32Array(102, 100, 103), PackedInt32Array(105, 104, 106), PackedInt32Array(106, 104, 107), PackedInt32Array(108, 102, 103), PackedInt32Array(109, 107, 104), PackedInt32Array(107, 109, 110), PackedInt32Array(110, 109, 111), PackedInt32Array(112, 108, 113), PackedInt32Array(113, 108, 103), PackedInt32Array(110, 111, 103), PackedInt32Array(103, 111, 115), PackedInt32Array(103, 115, 113), PackedInt32Array(113, 115, 114), PackedInt32Array(118, 117, 116), PackedInt32Array(114, 115, 119), PackedInt32Array(114, 119, 120), PackedInt32Array(120, 119, 122), PackedInt32Array(120, 122, 121), PackedInt32Array(123, 118, 121), PackedInt32Array(118, 116, 121), PackedInt32Array(121, 122, 123), PackedInt32Array(126, 125, 124), PackedInt32Array(128, 127, 129), PackedInt32Array(129, 127, 126), PackedInt32Array(129, 126, 124), PackedInt32Array(129, 124, 130), PackedInt32Array(100, 101, 131), PackedInt32Array(131, 101, 132), PackedInt32Array(134, 133, 135), PackedInt32Array(135, 133, 69), PackedInt32Array(69, 133, 136), PackedInt32Array(69, 136, 68), PackedInt32Array(132, 134, 131), PackedInt32Array(131, 134, 135), PackedInt32Array(138, 137, 21), PackedInt32Array(21, 137, 20), PackedInt32Array(141, 140, 139), PackedInt32Array(142, 144, 139), PackedInt32Array(139, 144, 143), PackedInt32Array(139, 143, 141), PackedInt32Array(146, 145, 142), PackedInt32Array(142, 145, 144), PackedInt32Array(144, 145, 147), PackedInt32Array(148, 141, 149), PackedInt32Array(149, 141, 143), PackedInt32Array(149, 151, 148), PackedInt32Array(148, 151, 150), PackedInt32Array(153, 152, 154), PackedInt32Array(154, 152, 155), PackedInt32Array(155, 98, 99), PackedInt32Array(158, 157, 159), PackedInt32Array(159, 157, 156), PackedInt32Array(98, 155, 159), PackedInt32Array(159, 155, 160), PackedInt32Array(160, 155, 161), PackedInt32Array(160, 158, 159), PackedInt32Array(161, 155, 152), PackedInt32Array(94, 162, 93), PackedInt32Array(93, 162, 163), PackedInt32Array(163, 162, 164), PackedInt32Array(166, 165, 164), PackedInt32Array(162, 166, 164), PackedInt32Array(169, 168, 167), PackedInt32Array(167, 170, 169), PackedInt32Array(169, 170, 171), PackedInt32Array(153, 154, 170), PackedInt32Array(170, 154, 171), PackedInt32Array(136, 133, 172), PackedInt32Array(172, 133, 173), PackedInt32Array(177, 179, 178), PackedInt32Array(178, 179, 176), PackedInt32Array(178, 176, 174), PackedInt32Array(174, 176, 175), PackedInt32Array(168, 169, 180), PackedInt32Array(180, 169, 181), PackedInt32Array(177, 183, 179), PackedInt32Array(179, 183, 182), PackedInt32Array(179, 182, 185), PackedInt32Array(179, 185, 176), PackedInt32Array(176, 185, 184), PackedInt32Array(181, 178, 180), PackedInt32Array(180, 178, 174), PackedInt32Array(188, 187, 186), PackedInt32Array(189, 188, 186), PackedInt32Array(190, 189, 186), PackedInt32Array(165, 190, 164), PackedInt32Array(164, 190, 186), PackedInt32Array(164, 186, 191), PackedInt32Array(186, 192, 191), PackedInt32Array(141, 193, 140), PackedInt32Array(140, 193, 194), PackedInt32Array(196, 195, 197), PackedInt32Array(197, 195, 198), PackedInt32Array(194, 193, 195), PackedInt32Array(195, 193, 198), PackedInt32Array(200, 199, 201), PackedInt32Array(201, 199, 202), PackedInt32Array(204, 203, 202), PackedInt32Array(183, 205, 182), PackedInt32Array(182, 205, 206), PackedInt32Array(209, 208, 207), PackedInt32Array(205, 204, 206), PackedInt32Array(206, 204, 210), PackedInt32Array(138, 211, 137), PackedInt32Array(137, 211, 202), PackedInt32Array(207, 214, 213), PackedInt32Array(213, 214, 210), PackedInt32Array(210, 214, 212), PackedInt32Array(207, 213, 209), PackedInt32Array(209, 213, 199), PackedInt32Array(199, 213, 202), PackedInt32Array(202, 213, 204), PackedInt32Array(204, 213, 210), PackedInt32Array(202, 211, 201), PackedInt32Array(173, 215, 172), PackedInt32Array(172, 215, 216), PackedInt32Array(216, 215, 217), PackedInt32Array(217, 215, 220), PackedInt32Array(217, 220, 219), PackedInt32Array(217, 219, 218), PackedInt32Array(223, 222, 221), PackedInt32Array(221, 224, 223), PackedInt32Array(223, 224, 225), PackedInt32Array(121, 227, 226), PackedInt32Array(224, 226, 225), PackedInt32Array(120, 230, 229), PackedInt32Array(229, 230, 228), PackedInt32Array(228, 230, 224), PackedInt32Array(224, 230, 226), PackedInt32Array(226, 230, 121), PackedInt32Array(121, 230, 120), PackedInt32Array(233, 232, 231), PackedInt32Array(231, 229, 233), PackedInt32Array(233, 229, 234), PackedInt32Array(234, 229, 228), PackedInt32Array(235, 145, 146), PackedInt32Array(239, 240, 238), PackedInt32Array(238, 240, 146), PackedInt32Array(146, 240, 235), PackedInt32Array(235, 240, 236), PackedInt32Array(236, 240, 237), PackedInt32Array(237, 240, 239), PackedInt32Array(237, 241, 236), PackedInt32Array(245, 244, 242), PackedInt32Array(242, 244, 243), PackedInt32Array(208, 232, 207), PackedInt32Array(207, 232, 233), PackedInt32Array(246, 241, 247), PackedInt32Array(247, 241, 237), PackedInt32Array(220, 249, 219), PackedInt32Array(219, 249, 248), PackedInt32Array(248, 249, 247), PackedInt32Array(248, 247, 237), PackedInt32Array(251, 250, 252), PackedInt32Array(252, 250, 253), PackedInt32Array(253, 250, 222), PackedInt32Array(222, 250, 221)]
-cell_size = 0.05
-cell_height = 0.1
-agent_height = 1.2
+vertices = PackedVector3Array(-4.75533, 0.468216, -5.59462, -4.50533, 0.468216, -6.09462, -5.25533, 0.468216, -6.34462, -5.50533, 0.468216, -5.34462, -6.75533, 0.468216, -8.34462, -7.25533, 0.218216, -7.34462, -6.50533, 0.468216, -6.84462, -13.2553, 0.468216, -5.34462, -13.0053, 0.468216, -4.09462, -12.2553, 0.468216, -4.09462, -11.7553, 0.468216, -5.84462, -13.2553, 0.718216, -6.09462, -1.00533, -2.53178, -0.844621, -1.00533, -2.53178, -3.34462, -1.75533, -2.28178, -2.84462, -12.0053, -0.531784, -9.59462, -15.5053, -0.531784, -9.59462, -14.2553, -0.281784, -8.09462, -13.2553, -0.281784, -8.09462, -10.7553, -0.281784, -8.84462, -14.5053, 0.468216, -5.84462, -5.25533, 0.468216, -11.3446, -5.25533, 0.468216, -12.8446, -6.00533, 0.468216, -12.8446, -0.00532532, -2.53178, -4.59462, -0.00532532, -2.53178, -6.34462, -0.505325, -2.53178, -6.34462, -0.505325, -2.53178, -4.59462, -5.25533, -0.531784, -2.59462, -7.00533, -0.531784, -1.09462, -4.60533, -0.531784, -0.99462, -4.08866, -0.781784, -2.67795, -1.50533, -2.53178, -4.34462, -5.25533, 0.468216, -9.84462, -3.75533, 0.468216, -10.0946, -3.75533, 0.468216, -11.0946, -18.7553, -0.531784, -7.84462, -17.2553, -0.531784, -7.09462, -16.7553, -0.531784, -8.09462, 0.494675, -2.53178, -3.59462, 1.24467, -2.53178, -4.34462, -15.5053, -0.531784, -11.0946, -17.0053, -0.531784, -11.5946, -6.00533, 0.468216, -8.84462, -12.0553, -0.531784, -7.94462, 0.744675, -2.53178, -0.844621, 1.24467, -2.53178, -0.844621, -9.25533, 0.468216, -5.84462, -10.7553, 0.468216, -5.84462, -9.75533, 0.468216, -5.09462, 0.744675, 3.96822, -10.3446, 1.24467, 3.96822, -8.59462, 1.49467, 3.96822, -9.59462, 2.99467, 3.96822, -9.59462, 2.99467, 3.96822, -10.8446, -10.0053, 0.468216, -3.84462, -9.00533, 0.718216, -2.59462, 0.994675, 3.96822, -7.09462, 0.744675, 3.96822, -7.84462, -2.75533, 3.96822, -7.84462, -5.25533, 3.96822, -6.59462, -10.7553, 0.468216, -3.34462, -10.7553, 0.468216, -1.84462, -4.75533, 3.96822, -10.8446, -3.00533, 3.96822, -10.0946, -7.25533, 1.96822, -1.84462, -7.25533, 1.96822, -2.59462, -9.58866, 0.468216, -1.84462, -5.75533, 3.96822, -8.84462, -6.50533, 1.71822, -3.09462, -7.00533, 1.71822, -1.09462, -5.00533, 1.71822, -3.09462, -2.00533, 0.718216, -1.09462, -2.25533, 0.718216, -3.09462, -4.50533, 1.71822, -1.09462, -6.50533, 3.96822, -8.34462, -6.50533, 3.46822, -5.71962, -2.00533, 4.71822, -9.34462, -2.00533, 4.71822, -8.84462, -0.00532532, 4.71822, -8.84462, -0.00532532, 4.71822, -9.34462, 1.99467, 4.71822, -8.09462, 2.24467, 4.71822, -7.34462, 2.99467, 4.71822, -7.84462, 2.49467, 4.71822, -8.59462, -4.00533, 0.468216, -5.34462, -2.50533, 0.468216, -6.09462, -1.00533, 0.468216, -5.34462, -2.25533, 0.468216, -3.84462, 0.244675, 0.468216, -5.34462, -1.50533, 0.468216, -7.59462, -2.25533, 0.468216, -7.59462, -1.50533, 0.468216, -5.84462, 1.24467, 0.468216, -1.09462, 0.994675, 0.468216, -5.84462, 0.244675, 0.468216, -1.09462, -4.00533, 0.468216, -3.84462, -0.255325, 0.468216, -0.0946207, -1.00533, 0.468216, -0.844621, -1.25533, 0.468216, 5.15538, -0.505325, 0.468216, 5.15538, 1.24467, 0.468216, -7.59462, -15.5053, 0.468216, -5.34462, -14.7553, 0.468216, -5.84462, -17.0053, 0.468216, -5.84462, -14.2553, 0.468216, -1.84462, -14.2553, 0.468216, -3.34462, -15.0053, 0.468216, -3.34462, -15.5053, 0.468216, -4.09462, -17.0053, 0.468216, -1.84462, -13.2553, 1.21822, -3.09462, -13.2553, 1.21822, -2.59462, -11.7553, 1.21822, -2.59462, -11.7553, 1.21822, -3.09462)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 11), PackedInt32Array(9, 11, 10), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 15), PackedInt32Array(18, 15, 19), PackedInt32Array(11, 7, 20), PackedInt32Array(23, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(30, 31, 14), PackedInt32Array(30, 14, 12), PackedInt32Array(27, 24, 32), PackedInt32Array(32, 24, 13), PackedInt32Array(32, 13, 14), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 21), PackedInt32Array(3, 28, 6), PackedInt32Array(6, 28, 29), PackedInt32Array(38, 37, 36), PackedInt32Array(18, 11, 17), PackedInt32Array(17, 11, 20), PackedInt32Array(17, 38, 16), PackedInt32Array(40, 39, 24), PackedInt32Array(24, 39, 13), PackedInt32Array(41, 16, 42), PackedInt32Array(42, 16, 38), PackedInt32Array(42, 38, 36), PackedInt32Array(33, 43, 21), PackedInt32Array(21, 43, 23), PackedInt32Array(18, 19, 44), PackedInt32Array(44, 19, 5), PackedInt32Array(5, 19, 4), PackedInt32Array(43, 33, 2), PackedInt32Array(3, 6, 2), PackedInt32Array(2, 6, 4), PackedInt32Array(2, 4, 43), PackedInt32Array(45, 39, 46), PackedInt32Array(46, 39, 40), PackedInt32Array(49, 48, 47), PackedInt32Array(52, 51, 50), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 50), PackedInt32Array(49, 47, 55), PackedInt32Array(55, 47, 56), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(55, 56, 61), PackedInt32Array(61, 56, 62), PackedInt32Array(64, 63, 50), PackedInt32Array(50, 63, 54), PackedInt32Array(62, 56, 67), PackedInt32Array(67, 56, 66), PackedInt32Array(67, 66, 65), PackedInt32Array(63, 64, 68), PackedInt32Array(68, 64, 59), PackedInt32Array(68, 59, 60), PackedInt32Array(65, 66, 70), PackedInt32Array(70, 66, 69), PackedInt32Array(70, 69, 71), PackedInt32Array(70, 71, 74), PackedInt32Array(74, 71, 73), PackedInt32Array(74, 73, 72), PackedInt32Array(68, 60, 75), PackedInt32Array(75, 60, 76), PackedInt32Array(76, 60, 69), PackedInt32Array(69, 60, 71), PackedInt32Array(80, 79, 77), PackedInt32Array(77, 79, 78), PackedInt32Array(84, 83, 81), PackedInt32Array(81, 83, 82), PackedInt32Array(0, 1, 85), PackedInt32Array(85, 1, 86), PackedInt32Array(88, 87, 73), PackedInt32Array(73, 87, 89), PackedInt32Array(91, 90, 86), PackedInt32Array(86, 90, 92), PackedInt32Array(95, 73, 93), PackedInt32Array(93, 73, 89), PackedInt32Array(93, 89, 94), PackedInt32Array(92, 87, 86), PackedInt32Array(86, 87, 88), PackedInt32Array(86, 88, 85), PackedInt32Array(85, 88, 96), PackedInt32Array(98, 95, 97), PackedInt32Array(100, 99, 97), PackedInt32Array(97, 99, 98), PackedInt32Array(94, 101, 93), PackedInt32Array(98, 72, 95), PackedInt32Array(95, 72, 73), PackedInt32Array(104, 103, 102), PackedInt32Array(107, 106, 105), PackedInt32Array(104, 102, 108), PackedInt32Array(107, 105, 108), PackedInt32Array(108, 105, 109), PackedInt32Array(108, 109, 104), PackedInt32Array(113, 112, 110), PackedInt32Array(110, 112, 111)]
+agent_height = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kqeaq"]
 size = Vector3(1, 3.37695, 1)
@@ -8480,43 +8482,43 @@ visible = false
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(1.55495e-09, -5.39206e-08, -2.97556)
+bones/1/position = Vector3(2.51826e-09, -5.39206e-08, -2.9976)
 bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.00772442, 0.346511, 0.862998, -0.367566)
-bones/4/rotation = Quaternion(-0.284723, 0.0377876, -0.0387358, 0.957081)
-bones/5/rotation = Quaternion(0.524565, -0.0653677, 0.0807474, 0.845008)
+bones/3/rotation = Quaternion(0.0137191, 0.329973, 0.870517, -0.364868)
+bones/4/rotation = Quaternion(-0.250737, 0.0643279, -0.0395613, 0.965105)
+bones/5/rotation = Quaternion(0.509118, -0.0890653, 0.0929178, 0.851019)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0077244, 0.346511, 0.862998, 0.367566)
-bones/9/rotation = Quaternion(-0.284723, -0.0377876, 0.0387357, 0.957081)
-bones/10/rotation = Quaternion(0.524565, 0.0653677, -0.0807474, 0.845008)
+bones/8/rotation = Quaternion(-0.0137198, 0.329968, 0.870522, 0.364862)
+bones/9/rotation = Quaternion(-0.250737, -0.064328, 0.0395613, 0.965105)
+bones/10/rotation = Quaternion(0.509118, 0.0890652, -0.0929178, 0.851019)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(1.55495e-09, -2.65551e-07, -2.97556)
+bones/12/position = Vector3(2.51826e-09, -2.01468e-07, -2.9976)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0783026, 1.13713e-07, -1.15255e-08, 0.99693)
-bones/16/rotation = Quaternion(0.0229923, 8.92126e-09, 8.08831e-09, 0.999736)
-bones/18/rotation = Quaternion(0.0497641, 0.000933995, -0.0101415, 0.998709)
-bones/20/rotation = Quaternion(0.0497641, -0.000933994, 0.0101415, 0.998709)
+bones/15/rotation = Quaternion(-0.082326, 1.13781e-07, -1.10491e-08, 0.996606)
+bones/16/rotation = Quaternion(0.0314856, 9.06749e-09, 8.09508e-09, 0.999504)
+bones/18/rotation = Quaternion(0.0331411, -0.00470689, -0.00988287, 0.999391)
+bones/20/rotation = Quaternion(0.0331411, 0.00470689, 0.00988287, 0.999391)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.262307, -0.148352, -0.389816, 0.87019)
-bones/23/rotation = Quaternion(-0.00356907, -0.000438664, -0.327515, 0.944839)
+bones/22/rotation = Quaternion(-0.258733, -0.148666, -0.397325, 0.867807)
+bones/23/rotation = Quaternion(-0.00332404, -0.000442156, -0.305027, 0.952338)
 bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.262307, 0.148352, 0.389816, 0.87019)
-bones/27/rotation = Quaternion(-0.00356928, 0.00043868, 0.327515, 0.944839)
+bones/26/rotation = Quaternion(-0.258727, 0.148665, 0.397327, 0.867808)
+bones/27/rotation = Quaternion(-0.00332422, 0.000442175, 0.305028, 0.952337)
 bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
 bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.961681, -0.0311821, -2.18493)
+bones/31/position = Vector3(0.976352, -0.0311821, -2.1891)
 bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
 bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
-bones/33/position = Vector3(1.55495e-09, -1.13525e-07, -2.97556)
+bones/33/position = Vector3(2.51826e-09, -1.13525e-07, -2.9976)
 bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
 bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
-bones/36/position = Vector3(-0.961681, -0.0311821, -2.18493)
+bones/36/position = Vector3(-0.976352, -0.0311821, -2.1891)
 bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
 bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 
@@ -8526,7 +8528,7 @@ mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.618875, 0.0597456, -0.783214, -0.733594, 0.312452, 0.603501, 0.280773, 0.948052, -0.14954, -0.961675, -0.0311878, -2.18483)
+transform = Transform3D(-0.626252, 0.0410552, -0.778539, -0.736372, 0.296832, 0.607986, 0.256057, 0.954046, -0.15566, -0.976346, -0.0311873, -2.18905)
 bone_name = "DEF_Hand.R"
 bone_idx = 28
 
@@ -8537,7 +8539,7 @@ mesh = SubResource("ArrayMesh_mxwhg")
 skeleton = NodePath("")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="2"]
-transform = Transform3D(-0.618875, -0.0597452, 0.783214, 0.733594, 0.312452, 0.603501, -0.280773, 0.948053, -0.14954, 0.961674, -0.0311882, -2.18483)
+transform = Transform3D(-0.626243, -0.0410523, 0.778546, 0.736381, 0.296825, 0.607978, -0.256051, 0.954049, -0.155655, 0.976342, -0.0312072, -2.18904)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -8602,68 +8604,45 @@ sound_player = NodePath("../CorrectedPlayer")
 note_sound = NodePath("../Notes")
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D/DoggyPartner2/dogrig" index="0"]
-bones/1/position = Vector3(1.55495e-09, -5.39206e-08, -2.97556)
+bones/1/position = Vector3(2.51826e-09, -5.39206e-08, -2.9976)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.00772435, 0.346511, 0.862998, -0.367566)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.284723, 0.0377876, -0.0387358, 0.957081)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.524565, -0.0653677, 0.0807475, 0.845008)
-bones/5/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.0137198, 0.329968, 0.870522, -0.364862)
+bones/4/rotation = Quaternion(-0.250737, 0.0643279, -0.0395613, 0.965105)
+bones/5/rotation = Quaternion(0.509118, -0.0890653, 0.0929178, 0.851019)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
-bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.00772432, 0.346511, 0.862998, 0.367566)
-bones/9/rotation = Quaternion(-0.284723, -0.0377876, 0.0387358, 0.957081)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.524565, 0.0653677, -0.0807475, 0.845008)
-bones/10/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.0137198, 0.329968, 0.870522, 0.364862)
+bones/9/rotation = Quaternion(-0.250737, -0.0643279, 0.0395613, 0.965105)
+bones/10/rotation = Quaternion(0.509118, 0.0890652, -0.0929178, 0.851019)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(1.55495e-09, -3.06654e-07, -2.97556)
+bones/12/position = Vector3(2.51826e-09, -2.43738e-07, -2.9976)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/13/rotation = Quaternion(-0.178856, -2.06909e-17, -8.96566e-18, 0.983875)
-bones/14/rotation = Quaternion(-0.0917859, -1.02416e-17, -1.72665e-18, 0.995779)
-bones/15/rotation = Quaternion(-0.0783026, 1.13713e-07, -1.15255e-08, 0.99693)
-bones/16/rotation = Quaternion(0.0229923, 8.92126e-09, 8.08832e-09, 0.999736)
-bones/16/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.082326, 1.13781e-07, -1.10491e-08, 0.996606)
+bones/16/rotation = Quaternion(0.0314856, 9.06749e-09, 8.09509e-09, 0.999504)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.474622, 0.0758946, -0.138464, 0.865911)
-bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0497641, 0.000933987, -0.0101415, 0.998709)
-bones/18/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.455467, 0.0728316, -0.140099, 0.876138)
+bones/18/rotation = Quaternion(0.0331411, -0.00470689, -0.00988287, 0.999391)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.504718, -0.0807076, 0.135715, 0.848721)
-bones/19/scale = Vector3(1, 1, 1)
-bones/20/rotation = Quaternion(0.0497641, -0.000933998, 0.0101415, 0.998709)
-bones/20/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.471596, -0.0754111, 0.138728, 0.867563)
+bones/20/rotation = Quaternion(0.0331411, 0.00470689, 0.00988288, 0.999391)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.262307, -0.148352, -0.389816, 0.87019)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/rotation = Quaternion(-0.00356909, -0.000438677, -0.327516, 0.944839)
+bones/22/rotation = Quaternion(-0.258726, -0.148665, -0.397327, 0.867808)
+bones/23/rotation = Quaternion(-0.00332404, -0.000442187, -0.305027, 0.952338)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
-bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.262307, 0.148352, 0.389815, 0.87019)
-bones/26/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(-0.00356929, 0.000438704, 0.327516, 0.944839)
-bones/27/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(-0.258727, 0.148665, 0.397327, 0.867808)
+bones/27/rotation = Quaternion(-0.00332424, 0.000442212, 0.305028, 0.952337)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
-bones/28/scale = Vector3(1, 1, 1)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
-bones/29/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.961681, -0.0311821, -2.18493)
+bones/31/position = Vector3(0.976352, -0.0311821, -2.1891)
 bones/31/rotation = Quaternion(0.805455, -2.20541e-15, 0.592656, 5.51352e-16)
 bones/32/position = Vector3(1.89213, 0.889777, -4.50176)
-bones/33/position = Vector3(1.55495e-09, -1.13525e-07, -2.97556)
+bones/33/position = Vector3(2.51826e-09, -1.13525e-07, -2.9976)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/34/scale = Vector3(1, 1, 1)
-bones/35/rotation = Quaternion(0, 0.999887, 0, 0.0150235)
-bones/36/position = Vector3(-0.961681, -0.0311821, -2.18493)
+bones/36/position = Vector3(-0.976352, -0.0311821, -2.1891)
 bones/36/rotation = Quaternion(0.805455, 2.20541e-15, -0.592656, 5.51352e-16)
 bones/37/position = Vector3(-1.89213, 0.889777, -4.50176)
 
@@ -8746,40 +8725,40 @@ marker_positions = [NodePath("../../../../../QuincyMarkers/WaitingDownstairs"), 
 sound_player = NodePath("../QuincySounds")
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig" index="0"]
-bones/1/position = Vector3(1.55495e-09, -5.39208e-08, -2.97556)
-bones/1/rotation = Quaternion(5.3922e-09, 0.708143, 0.70607, -5.27032e-09)
-bones/3/rotation = Quaternion(0.00822526, 0.345073, 0.86357, -0.367566)
-bones/4/rotation = Quaternion(-0.284833, 0.0377862, -0.0387509, 0.957048)
-bones/5/rotation = Quaternion(0.524801, -0.065371, 0.0807504, 0.844861)
+bones/1/position = Vector3(2.51826e-09, -5.39213e-08, -2.9976)
+bones/1/rotation = Quaternion(5.42972e-09, 0.70878, 0.70543, -5.23277e-09)
+bones/3/rotation = Quaternion(0.0145321, 0.327637, 0.871396, -0.364844)
+bones/4/rotation = Quaternion(-0.250937, 0.0643244, -0.0395929, 0.965052)
+bones/5/rotation = Quaternion(0.509508, -0.0890658, 0.0929342, 0.850783)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.00822526, 0.345073, 0.86357, 0.367566)
-bones/9/rotation = Quaternion(-0.284833, -0.0377862, 0.0387508, 0.957048)
-bones/10/rotation = Quaternion(0.524801, 0.0653711, -0.0807504, 0.844861)
+bones/8/rotation = Quaternion(-0.014532, 0.327637, 0.871396, 0.364844)
+bones/9/rotation = Quaternion(-0.250937, -0.0643244, 0.0395929, 0.965052)
+bones/10/rotation = Quaternion(0.509508, 0.0890658, -0.0929342, 0.850783)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935922)
-bones/12/position = Vector3(1.55495e-09, -2.65551e-07, -2.97556)
-bones/12/rotation = Quaternion(-0.458884, 2.04641e-08, 6.29456e-08, 0.888496)
-bones/15/rotation = Quaternion(-0.0843557, 1.13814e-07, -1.08081e-08, 0.996436)
-bones/16/rotation = Quaternion(0.0127259, 8.7433e-09, 8.07971e-09, 0.999919)
-bones/18/rotation = Quaternion(0.0497641, 0.000933995, -0.0101415, 0.998709)
-bones/20/rotation = Quaternion(0.0497641, -0.000933995, 0.0101415, 0.998709)
+bones/12/position = Vector3(2.51826e-09, -2.01468e-07, -2.9976)
+bones/12/rotation = Quaternion(-0.459687, 2.06036e-08, 6.28535e-08, 0.888081)
+bones/15/rotation = Quaternion(-0.0921245, 1.13938e-07, -9.88673e-09, 0.995748)
+bones/16/rotation = Quaternion(0.0148395, 8.7797e-09, 8.08185e-09, 0.99989)
+bones/18/rotation = Quaternion(0.0331411, -0.00470689, -0.00988287, 0.999391)
+bones/20/rotation = Quaternion(0.0331411, 0.00470689, 0.00988288, 0.999391)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.259384, -0.14302, -0.382203, 0.875321)
-bones/23/rotation = Quaternion(-0.00362775, -0.000437776, -0.332897, 0.942956)
+bones/22/rotation = Quaternion(-0.254117, -0.139809, -0.384904, 0.8762)
+bones/23/rotation = Quaternion(-0.00342357, -0.000440772, -0.31416, 0.949364)
 bones/24/rotation = Quaternion(0.0187947, 0.00442638, -0.00950232, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.258221, 0.144125, 0.382009, 0.875568)
-bones/27/rotation = Quaternion(-0.00362627, 0.000437841, 0.332742, 0.943011)
+bones/26/rotation = Quaternion(-0.252204, 0.14158, 0.384696, 0.87656)
+bones/27/rotation = Quaternion(-0.00341851, 0.000440861, 0.313681, 0.949522)
 bones/28/rotation = Quaternion(0.0187947, -0.00442637, 0.00950232, 0.999768)
 bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
 bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.984691, -0.0345264, -2.19027)
-bones/33/position = Vector3(1.55495e-09, -1.13525e-07, -2.97556)
-bones/33/rotation = Quaternion(-0.707106, 0.00103435, 0.707106, -0.00103441)
+bones/31/position = Vector3(1.01362, -0.0365983, -2.19776)
+bones/33/position = Vector3(2.51826e-09, -1.13525e-07, -2.9976)
+bones/33/rotation = Quaternion(-0.707105, 0.00165452, 0.707105, -0.00165459)
 bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
-bones/36/position = Vector3(-0.990179, -0.0295568, -2.19105)
+bones/36/position = Vector3(-1.02251, -0.0285499, -2.19902)
 
 [node name="quincy" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="0"]
 layers = 256
@@ -8787,21 +8766,21 @@ mesh = SubResource("ArrayMesh_ech3r")
 skin = SubResource("Skin_m6dns")
 
 [node name="TailAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="1"]
-transform = Transform3D(1, -1.30635e-07, -2.1405e-08, 9.30726e-08, 0.57885, 0.815434, -9.4134e-08, -0.815434, 0.57885, 1.55495e-09, -2.65551e-07, -2.97556)
+transform = Transform3D(1, -1.3058e-07, -2.11905e-08, 9.26957e-08, 0.577377, 0.816478, -9.43812e-08, -0.816478, 0.577377, 2.51826e-09, -2.01468e-07, -2.9976)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ/QuincyTail" index="0"]
 bones/0/rotation = Quaternion(0.0367603, 0.00289238, -0.00525729, 0.999306)
-bones/1/rotation = Quaternion(-0.154109, 0.0150005, -0.113242, 0.981428)
+bones/1/rotation = Quaternion(-0.155458, 0.0138514, -0.107151, 0.981916)
 bones/2/rotation = Quaternion(-0.0324854, -0.00840287, 0.100727, 0.994348)
 bones/3/rotation = Quaternion(0.328977, -0.104131, 0.00984383, 0.938528)
 bones/4/rotation = Quaternion(0.192826, -0.0654902, 0.0478505, 0.977875)
 bones/5/rotation = Quaternion(0.0204284, 0.00139657, 0.0583011, 0.998089)
 
 [node name="LighterAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="2"]
-transform = Transform3D(-0.627812, -0.0562086, 0.776333, 0.725079, 0.320452, 0.609566, -0.28304, 0.945595, -0.160428, 0.984658, -0.0345415, -2.1902)
+transform = Transform3D(-0.640398, -0.035349, 0.767229, 0.722755, 0.310218, 0.617568, -0.259838, 0.950008, -0.173114, 1.0136, -0.0366175, -2.1977)
 
 [node name="CigAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="3"]
-transform = Transform3D(-0.628697, 0.0538889, -0.77578, -0.72436, 0.322355, 0.609417, 0.282918, 0.945083, -0.163629, -0.990156, -0.0295767, -2.19098)
+transform = Transform3D(-0.641745, 0.0314466, -0.766273, -0.721734, 0.313126, 0.617294, 0.259352, 0.949191, -0.178251, -1.02249, -0.0285696, -2.19896)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D/CigAttachment" index="1"]
 transform = Transform3D(0.99988, -0.0143464, 0.00570992, 0.014332, 0.999893, 0.00272787, -0.00574854, -0.00264585, 0.999979, 0.093071, 0.202823, -0.101576)
@@ -8810,13 +8789,13 @@ process_material = SubResource("ParticleProcessMaterial_msbxp")
 draw_pass_1 = SubResource("SphereMesh_yclqe")
 
 [node name="CigPackAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="4"]
-transform = Transform3D(-0.627812, -0.0562086, 0.776333, 0.725079, 0.320452, 0.609566, -0.28304, 0.945595, -0.160428, 0.984658, -0.0345415, -2.1902)
+transform = Transform3D(-0.640398, -0.035349, 0.767229, 0.722755, 0.310218, 0.617568, -0.259838, 0.950008, -0.173114, 1.0136, -0.0366175, -2.1977)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack/cigOpen" index="1"]
 bones/0/rotation = Quaternion(-6.81321e-08, 5.82077e-10, -9.02219e-10, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="5"]
-transform = Transform3D(-0.628697, 0.0538889, -0.77578, -0.72436, 0.322355, 0.609417, 0.282918, 0.945083, -0.163629, -0.990156, -0.0295767, -2.19098)
+transform = Transform3D(-0.641745, 0.0314466, -0.766273, -0.721734, 0.313126, 0.617294, 0.259352, 0.949191, -0.178251, -1.02249, -0.0285696, -2.19896)
 bone_name = "DEF_Hand.R"
 bone_idx = 28
 
@@ -8825,7 +8804,7 @@ transform = Transform3D(-2.53609, -2.24179, 0.730253, 0.195748, 0.868604, 3.3463
 visible = false
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="6"]
-transform = Transform3D(1, -9.52115e-08, 1.46802e-07, -1.5307e-07, -0.0695631, 0.997577, -8.47689e-08, -0.997577, -0.0695631, -1.69622e-07, 0.00962949, -4.81821)
+transform = Transform3D(1, -9.68084e-08, 1.4628e-07, -1.53785e-07, -0.0827014, 0.996574, -8.43793e-08, -0.996574, -0.0827014, -1.71587e-07, -0.0147697, -4.83805)
 bone_name = "DEF_Head"
 bone_idx = 16
 
@@ -8842,7 +8821,7 @@ process_material = SubResource("ParticleProcessMaterial_v6j4w")
 draw_pass_1 = SubResource("SphereMesh_agqx1")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="7"]
-transform = Transform3D(-0.627812, -0.0562086, 0.776333, 0.725079, 0.320452, 0.609566, -0.28304, 0.945595, -0.160428, 0.984658, -0.0345415, -2.1902)
+transform = Transform3D(-0.640398, -0.035349, 0.767229, 0.722755, 0.310218, 0.617568, -0.259838, 0.950008, -0.173114, 1.0136, -0.0366175, -2.1977)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -11147,10 +11126,10 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.182047, 0.035311, -6.18773)
 
 [node name="Skeleton3D" parent="SubViewportContainer/FishAnim/fishanim" index="0"]
-bones/0/position = Vector3(-0.105653, 0.0654056, 0.188367)
-bones/0/rotation = Quaternion(0.0799333, 0.0258379, -0.0801346, 0.993238)
-bones/1/position = Vector3(0.136845, 1.80961, -3.31762)
-bones/1/rotation = Quaternion(-0.0306625, -0.000367064, -3.60416e-09, 0.99953)
+bones/0/position = Vector3(-1.10271, 3.24828, 2.74866)
+bones/0/rotation = Quaternion(-0.988858, 0.000140383, -0.0752942, 0.128414)
+bones/1/position = Vector3(0.585797, 2.40274, -4.96641)
+bones/1/rotation = Quaternion(-0.997691, -0.0119434, -1.09532e-09, 0.0668547)
 
 [node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/FishAnim"]
 tree_root = SubResource("AnimationNodeStateMachine_urhgi")
@@ -11670,26 +11649,16 @@ operation = 2
 polygon = PackedVector2Array(0, 0.0391774, 0.0521099, 0.0391774, 0.0521099, 0.0783549, 0.10422, 0.0783549, 0.10422, 0.117532, 0.15633, 0.117532, 0.15633, 0.15671, 0.20844, 0.15671, 0.20844, 0.195887, 0.260549, 0.195887, 0.260549, 0.235065, 0.312659, 0.235065, 0.312659, 0.274242, 0.364769, 0.274242, 0.364769, 0.31342, 0.416879, 0.31342, 0.416879, 0.352597, 0.468989, 0.352597, 0.468989, 0.391774, 0.521099, 0.391774, 0.521099, 0.430952, 0.573209, 0.430952, 0.573209, 0.470129, 0.625319, 0.470129, 0.625319, 0.509307, 0.677429, 0.509307, 0.677429, 0.548484, 0.729539, 0.548484, 0.729539, 0.587662, 0.781648, 0.587662, 0.781648, 0.626839, 0.833758, 0.626839, 0.833758, 0.666017, 0.885868, 0.666017, 0.885868, 0.705194, 0.937978, 0.705194, 0.937978, 0.744371, 0.990088, 0.744371, 0.990088, 0.783549, 1.0422, 0.783549, 1.0422, 0.822726, 1.09431, 0.822726, 1.09431, 0.861904, 1.14642, 0.861904, 1.14642, 0.901081, 1.19853, 0.901081, 1.19853, 0.940259, 1.25064, 0.940259, 1.25064, 0.979436, 1.30275, 0.979436, 1.30275, 1.01861, 1.35486, 1.01861, 1.35486, 1.05779, 1.40697, 1.05779, 1.40697, 1.09697, 1.45908, 1.09697, 1.45908, 1.13615, 1.51119, 1.13615, 1.51119, 1.17532, 1.5633, 1.17532, 1.5633, 1.2145, 1.61541, 1.2145, 1.61541, 1.25368, 1.66752, 1.25368, 1.66752, 1.29286, 1.71963, 1.29286, 1.71963, 1.33203, 1.77174, 1.33203, 1.77174, 1.37121, 1.82385, 1.37121, 1.82385, 1.41039, 1.87596, 1.41039, 1.87596, 1.44957, 1.92807, 1.44957, 1.92807, 1.48874, 1.98018, 1.48874, 1.98018, 1.52792, 2.03229, 1.52792, 2.03229, 1.5671, 2.0844, 1.5671, 2.0844, 1.60628, 2.13651, 1.60628, 2.13651, 1.64545, 2.18862, 1.64545, 2.18862, 1.68463, 2.24073, 1.68463, 2.24073, 1.72381, 2.29284, 1.72381, 2.29284, 1.76298, 2.34495, 1.76298, 2.34495, 1.80216, 2.39706, 1.80216, 2.39706, 1.84134, 2.44916, 1.84134, 2.44916, 1.88052, 2.50127, 1.88052, 2.50127, 1.91969, 2.55338, 1.91969, 2.55338, 1.95887, 2.60549, 1.95887, 2.60549, 1.99805, 2.6576, 1.99805, 2.6576, 2.03723, 2.70971, 2.03723, 2.70971, 2.0764, 2.76182, 2.0764, 2.76182, 2.11558, 2.81393, 2.11558, 2.81393, 2.15476, 2.86604, 2.15476, 2.86604, 2.19394, 2.91815, 2.19394, 2.91815, 2.23311, 2.97026, 2.23311, 2.97026, 2.27229, 3.02237, 2.27229, 3.02237, 2.31147, 3.07448, 2.31147, 3.07448, 2.35065, 0, 2.35065)
 depth = 2.00886
 
-[node name="CSGStairMaker3D5" type="CSGBox3D" parent="StairsColliders" groups=["metal"]]
-transform = Transform3D(0.0458337, -3.51173e-05, 0.998949, 0.000366062, 1, 1.83591e-05, -0.998949, 0.000364883, 0.0458338, -4.90914, 2.4302, -4.73029)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StairsColliders"]
+transform = Transform3D(0.84, 0, 0, 0, 1.07685, -1.78496, 0, 0.61482, 3.12633, -4.52945, 3.42272, -4.44088)
 visible = false
-use_collision = true
-collision_layer = 134217730
-size = Vector3(3.12659, 2.50528, 0.119787)
-script = SubResource("GDScript_0f1mt")
-num_stairs = 1
+mesh = SubResource("BoxMesh_2wgj7")
 
-[node name="StairsSubtractCSG" type="CSGPolygon3D" parent="StairsColliders/CSGStairMaker3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5633, -1.25264, 0.0598935)
-operation = 2
-polygon = PackedVector2Array(0, 2.50528, 0, 2.50528)
-depth = 0.119787
+[node name="StaticBody3D" type="StaticBody3D" parent="StairsColliders/MeshInstance3D"]
+collision_layer = 4
 
-[node name="StairsSubtractCSG2" type="CSGPolygon3D" parent="StairsColliders/CSGStairMaker3D5"]
-transform = Transform3D(-0.993017, 8.72242e-08, 0, -8.68167e-08, -1.00001, -1.63709e-11, 0, -3.63798e-12, 1.1522, 1.60791, 0.997958, 1.02007)
-operation = 2
-polygon = PackedVector2Array(0, 0.0391774, 0.0521099, 0.0391774, 0.0521099, 0.0783549, 0.10422, 0.0783549, 0.10422, 0.117532, 0.15633, 0.117532, 0.15633, 0.15671, 0.20844, 0.15671, 0.20844, 0.195887, 0.260549, 0.195887, 0.260549, 0.235065, 0.312659, 0.235065, 0.312659, 0.274242, 0.364769, 0.274242, 0.364769, 0.31342, 0.416879, 0.31342, 0.416879, 0.352597, 0.468989, 0.352597, 0.468989, 0.391774, 0.521099, 0.391774, 0.521099, 0.430952, 0.573209, 0.430952, 0.573209, 0.470129, 0.625319, 0.470129, 0.625319, 0.509307, 0.677429, 0.509307, 0.677429, 0.548484, 0.729539, 0.548484, 0.729539, 0.587662, 0.781648, 0.587662, 0.781648, 0.626839, 0.833758, 0.626839, 0.833758, 0.666017, 0.885868, 0.666017, 0.885868, 0.705194, 0.937978, 0.705194, 0.937978, 0.744371, 0.990088, 0.744371, 0.990088, 0.783549, 1.0422, 0.783549, 1.0422, 0.822726, 1.09431, 0.822726, 1.09431, 0.861904, 1.14642, 0.861904, 1.14642, 0.901081, 1.19853, 0.901081, 1.19853, 0.940259, 1.25064, 0.940259, 1.25064, 0.979436, 1.30275, 0.979436, 1.30275, 1.01861, 1.35486, 1.01861, 1.35486, 1.05779, 1.40697, 1.05779, 1.40697, 1.09697, 1.45908, 1.09697, 1.45908, 1.13615, 1.51119, 1.13615, 1.51119, 1.17532, 1.5633, 1.17532, 1.5633, 1.2145, 1.61541, 1.2145, 1.61541, 1.25368, 1.66752, 1.25368, 1.66752, 1.29286, 1.71963, 1.29286, 1.71963, 1.33203, 1.77174, 1.33203, 1.77174, 1.37121, 1.82385, 1.37121, 1.82385, 1.41039, 1.87596, 1.41039, 1.87596, 1.44957, 1.92807, 1.44957, 1.92807, 1.48874, 1.98018, 1.48874, 1.98018, 1.52792, 2.03229, 1.52792, 2.03229, 1.5671, 2.0844, 1.5671, 2.0844, 1.60628, 2.13651, 1.60628, 2.13651, 1.64545, 2.18862, 1.64545, 2.18862, 1.68463, 2.24073, 1.68463, 2.24073, 1.72381, 2.29284, 1.72381, 2.29284, 1.76298, 2.34495, 1.76298, 2.34495, 1.80216, 2.39706, 1.80216, 2.39706, 1.84134, 2.44916, 1.84134, 2.44916, 1.88052, 2.50127, 1.88052, 2.50127, 1.91969, 2.55338, 1.91969, 2.55338, 1.95887, 2.60549, 1.95887, 2.60549, 1.99805, 2.6576, 1.99805, 2.6576, 2.03723, 2.70971, 2.03723, 2.70971, 2.0764, 2.76182, 2.0764, 2.76182, 2.11558, 2.81393, 2.11558, 2.81393, 2.15476, 2.86604, 2.15476, 2.86604, 2.19394, 2.91815, 2.19394, 2.91815, 2.23311, 2.97026, 2.23311, 2.97026, 2.27229, 3.02237, 2.27229, 3.02237, 2.31147, 3.07448, 2.31147, 3.07448, 2.35065, 0, 2.35065)
-depth = 2.00886
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StairsColliders/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_k60w3")
 
 [node name="WaitTimer" type="Node" parent="."]
 
