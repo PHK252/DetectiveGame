@@ -303,7 +303,8 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		cooldown_bool = true
 		cooldown.start()
 		wander_timer.start()
-		floor_type_gather()
+		if current_anim != "Coffee":
+			floor_type_gather()
 		state = IDLE
 	
 func _rotate_towards_velocity() -> void:
@@ -385,9 +386,8 @@ func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
 	if greeting == true:
-		if cant_follow == false:
-			wander_choice = rng.randi_range(0, 2)
 		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false:
+			wander_choice = rng.randi_range(0, 2)
 			wander_rotate = false
 			#if choice > 0:
 			nav.target_position = marker_positions[wander_choice].global_position
