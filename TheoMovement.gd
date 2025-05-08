@@ -798,3 +798,17 @@ func _on_door_second_juniper_greeting() -> void:
 	theo_adjustment = true
 	await get_tree().create_timer(2).timeout
 	theo_adjustment = false
+
+func _on_theo_no_go_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if state == FOLLOW:
+			in_kitchen = true
+			is_navigating = false
+			state = IDLE
+
+func _on_theo_no_go_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if state == IDLE and is_investigating == false:
+			in_kitchen = false
+			is_navigating = true
+			state = FOLLOW

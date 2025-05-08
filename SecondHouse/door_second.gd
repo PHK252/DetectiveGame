@@ -120,14 +120,15 @@ func doorOpen(argument: String):
 
 # will need more debugging
 func _on_interactable_unfocused(interactor):
-	if is_open == true:
-		print("close")
-		await get_tree().create_timer(3.0).timeout
-		animation_tree["parameters/conditions/is_closed"] = true
-		animation_tree["parameters/conditions/is_opened"] = false
-		is_open = false
-		entered = true
-		collision.disabled = false
+	pass
+	#if is_open == true:
+		#print("close")
+		#await get_tree().create_timer(3.0).timeout
+		#animation_tree["parameters/conditions/is_closed"] = true
+		#animation_tree["parameters/conditions/is_opened"] = false
+		#is_open = false
+		#entered = true
+		#collision.disabled = false
 		
 func _on_kitchen_point_body_entered(body: CharacterBody3D) -> void:
 	if body.is_in_group("player"):

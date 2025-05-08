@@ -46,6 +46,7 @@ var snowmobile_distraction = false
 var bathroom_distraction = false
 var poolTable = false
 var poolPos
+var greeting = false
 
 var fall_allowed = true
 var distraction_allowed = true
@@ -350,3 +351,24 @@ func _on_pool_table_stop_body_entered(body: Node3D) -> void:
 		is_distracted = false
 		is_navigating = true 
 		poolTable = false
+
+func _on_bookshelf_distract(interactor: Interactor) -> void:
+	is_distracted = true
+	is_navigating = true
+	wander_choice = 1
+	nav.target_position = marker_positions[1].global_position
+	state = FOLLOW
+	distraction_timer.start()
+	fall_allowed = false
+
+func _on_theo_quincy_no_go_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if state == FOLLOW and is_distracted == false and is_navigating:
+			is_navigating = false
+			state = IDLE
+
+func _on_theo_quincy_no_go_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if state == IDLE and is_distracted == false and is_navigating == false and greeting == true:
+			is_navigating = true
+			state = FOLLOW
