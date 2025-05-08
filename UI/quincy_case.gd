@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @onready var label = $Label
+@onready var blinker = $Blink
+
 
 @onready var password = "56423"
 @onready var input = ""
@@ -30,14 +32,20 @@ extends CanvasLayer
 @onready var wxyz_array = ["9", "w", "x", "y", "z"]
 
 @onready var button_pressed = ""
-
+@onready var blinker_x_pos = 444
+@onready var blinker_anim = $AnimationPlayer
+@onready var position = 0
 @export var open_animation : AnimationPlayer
 @export var interact_area_1 : Area2D
 @export var interact_area_2 : Area2D
 
 func _ready():
 	label.text = ""
+	blinker.size = Vector2(15, 3)
+	blinker.position = Vector2(blinker_x_pos, 821.0)
+	blinker_anim.play("Blink")
 	open_animation.play("default")
+
 
 
 func reset_num():
@@ -127,19 +135,37 @@ func _on_wxyz_pressed():
 
 func _on_next_pressed():
 	input = label.text
+	if len(input) == position + 1:
+		position += 1
+		position_blinker_forward(position - 1)
 	reset_num()
-	print(input)
+	#print(input)
 
 func _on_back_pressed():
 	if len(input) > 0:
+		position_blinker_backwards(position-1)
 		label.text = label.text.erase(len(label.text)-1, 1)
 		input = label.text
-		print(input)
+		position -= 1
+		print(position)
 		reset_num()
 
+func position_blinker_forward(pos : int):
+	var offset = label.get_character_bounds(pos)
+	#print("Before " + str(blinker.position.x))
+	blinker_x_pos = offset.size.x + blinker_x_pos
+	blinker.position.x = blinker_x_pos
+	#print("After " + str(blinker.position.x))
 
+func position_blinker_backwards(pos : int):
+	var offset = label.get_character_bounds(pos)
+	print("Before " + str(blinker.position.x))
+	blinker_x_pos =  blinker_x_pos - offset.size.x
+	blinker.position.x = blinker_x_pos
+	print("After " + str(blinker.position.x))
 
 func _on_enter_pressed():
+	blinker_anim.play("RESET")
 	input = label.text
 	reset_num()
 	if password == input:
@@ -155,6 +181,8 @@ func _on_enter_pressed():
 		await get_tree().create_timer(1.5).timeout
 		input = ""
 		label.text = input
+		position = 0
+		blinker_anim.play("Blink")
 		pass
 
 
@@ -197,3 +225,19 @@ func _open_case():
 	interact_area_1.show()
 	interact_area_2.show()
 	GlobalVars.open_quincy_case.disconnect(_open_case)
+
+#func _on_exit_pressed():
+	#$".".show()
+	#GlobalVars.Quincy_Safe_UI = false
+	#GlobalVars.viewing = ""
+	#GlobalVars.in_look_screen = false
+	#open_interact.show()
+#
+#func _input(event):
+	#if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "safe":
+		#$".".hide()
+		#GlobalVars.Quincy_Safe_UI = false
+		#GlobalVars.in_look_screen = false
+		#await get_tree().create_timer(.3).timeout
+		#GlobalVars.viewing = ""
+		#open_interact.show()
