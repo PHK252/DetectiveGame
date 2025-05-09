@@ -31,8 +31,8 @@ extends CanvasLayer
 @onready var wxyz_pos = -1
 @onready var wxyz_array = ["9", "w", "x", "y", "z"]
 
-@onready var button_pressed = ""
-@onready var blinker_x_pos = 444
+@onready var blinker_x_pos_intial = 444
+@onready var blinker_x_pos = blinker_x_pos_intial
 @onready var blinker_anim = $AnimationPlayer
 @onready var position = 0
 @export var open_animation : AnimationPlayer
@@ -41,12 +41,10 @@ extends CanvasLayer
 
 func _ready():
 	label.text = ""
-	blinker.size = Vector2(15, 3)
-	blinker.position = Vector2(blinker_x_pos, 821.0)
+	#blinker.size = Vector2(15, 3)
+	#blinker.position = Vector2(blinker_x_pos, 821.0)
 	blinker_anim.play("Blink")
-	open_animation.play("default")
-
-
+#	open_animation.play("default")
 
 func reset_num():
 	abc_pos = -1
@@ -159,14 +157,15 @@ func position_blinker_forward(pos : int):
 
 func position_blinker_backwards(pos : int):
 	var offset = label.get_character_bounds(pos)
-	print("Before " + str(blinker.position.x))
+	#print("Before " + str(blinker.position.x))
 	blinker_x_pos =  blinker_x_pos - offset.size.x
 	blinker.position.x = blinker_x_pos
-	print("After " + str(blinker.position.x))
+	#print("After " + str(blinker.position.x))
 
 func _on_enter_pressed():
 	blinker_anim.play("RESET")
 	input = label.text
+	blinker.position.x = blinker_x_pos_intial
 	reset_num()
 	if password == input:
 		#print("correct")
@@ -225,19 +224,3 @@ func _open_case():
 	interact_area_1.show()
 	interact_area_2.show()
 	GlobalVars.open_quincy_case.disconnect(_open_case)
-
-#func _on_exit_pressed():
-	#$".".show()
-	#GlobalVars.Quincy_Safe_UI = false
-	#GlobalVars.viewing = ""
-	#GlobalVars.in_look_screen = false
-	#open_interact.show()
-#
-#func _input(event):
-	#if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "safe":
-		#$".".hide()
-		#GlobalVars.Quincy_Safe_UI = false
-		#GlobalVars.in_look_screen = false
-		#await get_tree().create_timer(.3).timeout
-		#GlobalVars.viewing = ""
-		#open_interact.show()

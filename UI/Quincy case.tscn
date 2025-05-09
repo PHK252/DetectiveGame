@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b3a7fejp4gdt6"]
+[gd_scene load_steps=37 format=3 uid="uid://b3a7fejp4gdt6"]
 
 [ext_resource type="Script" uid="uid://ck8v21bolbd81" path="res://UI/quincy_case.gd" id="1_xhsbu"]
 [ext_resource type="Texture2D" uid="uid://ykqne0r1gdue" path="res://UI/Assets/Quincy Case/Quincy_case_UI.png" id="2_kxnh3"]
@@ -30,10 +30,12 @@
 [ext_resource type="Texture2D" uid="uid://bcxwyar10ct0a" path="res://UI/Assets/Quincy Case/Quincy Case left pressed.png" id="28_c7l6c"]
 [ext_resource type="Texture2D" uid="uid://dinkwp5f78pxi" path="res://UI/Assets/Quincy Case/Quincy Case right normal.png" id="29_2fy05"]
 [ext_resource type="Texture2D" uid="uid://bgixjj43ivhof" path="res://UI/Assets/Quincy Case/Quincy Case right pressed.png" id="30_wfq0x"]
+[ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="31_4bu4b"]
+[ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="32_l4c5b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r62oi"]
 font_size = 35
-font_color = Color(0.431373, 0.47451, 0.411765, 1)
+font_color = Color(0.4, 0.454902, 0.380392, 1)
 
 [sub_resource type="Animation" id="Animation_kxnh3"]
 resource_name = "Blink"
@@ -91,6 +93,7 @@ offset_left = 444.0
 offset_top = 794.0
 offset_right = 687.0
 offset_bottom = 824.0
+theme_override_colors/font_color = Color(0.4, 0.454902, 0.380392, 1)
 theme_override_fonts/font = ExtResource("4_4bu4b")
 theme_override_font_sizes/font_size = 45
 text = "1"
@@ -219,13 +222,20 @@ texture_normal = ExtResource("29_2fy05")
 texture_pressed = ExtResource("30_wfq0x")
 texture_hover = ExtResource("29_2fy05")
 
+[node name="Exit" type="TextureButton" parent="."]
+offset_right = 100.0
+offset_bottom = 100.0
+texture_normal = ExtResource("31_4bu4b")
+texture_pressed = ExtResource("32_l4c5b")
+texture_hover = ExtResource("31_4bu4b")
+
 [node name="Blink" type="ColorRect" parent="."]
 visible = false
 offset_left = 444.0
 offset_top = 821.0
 offset_right = 464.0
 offset_bottom = 824.0
-color = Color(0.431373, 0.47451, 0.411765, 1)
+color = Color(0.4, 0.454902, 0.380392, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

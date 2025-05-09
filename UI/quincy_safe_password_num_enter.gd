@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var pass_enter = $Label
-@onready var input_array = ["-", "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", 
+@onready var input_array = ["", "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", 
 "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", 
 "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 @onready var password = "REVER"
@@ -16,6 +16,12 @@ extends CanvasLayer
 @export var open_interact : Area2D
 @export var close_interact : Area2D
 
+@onready var blinker = $blinker
+@onready var blinker_x_pos_intial = 506
+@onready var blinker_x_pos = blinker_x_pos_intial
+@onready var blinker_anim = $AnimationPlayer
+@onready var position = 0
+
 @export var interior_interact_area_1 : Area2D
 @export var interior_interact_area_2 : Area2D
 @export var interior_interact_area_3 : Area2D
@@ -23,6 +29,7 @@ extends CanvasLayer
 
 func _ready():
 	pass_enter.text = ""
+	blinker_anim.play("Blink")
 
 func _on_down_pressed():
 	if array_pos == 0:
@@ -44,17 +51,35 @@ func _on_up_pressed():
 
 func _on_next_pressed():
 	input = input + input_array[array_pos]
+	if len(input) == position + 1:
+		position += 1
+		position_blinker_forward(position - 1)
 	array_pos = 0
 	print(input)
 
 func _on_backspace_pressed():
 	if len(input) > 0:
+		position_blinker_backwards(position-1)
 		pass_enter.text = pass_enter.text.erase(len(pass_enter.text)-1, 1)
 		input = pass_enter.text
-		print(input)
+		position -= 1
+		print(position)
 		array_pos = 0
 
+func position_blinker_forward(pos : int):
+	var offset = pass_enter.get_character_bounds(pos)
+	blinker_x_pos = offset.size.x + blinker_x_pos
+	blinker.position.x = blinker_x_pos
+
+
+func position_blinker_backwards(pos : int):
+	var offset = pass_enter.get_character_bounds(pos)
+	blinker_x_pos =  blinker_x_pos - offset.size.x
+	blinker.position.x = blinker_x_pos
+
 func _on_enter_pressed():
+	blinker_anim.play("RESET")
+	blinker.position.x = blinker_x_pos_intial
 	input = input + input_array[array_pos]
 	if password == input:
 		$".".hide()
@@ -70,6 +95,7 @@ func _on_enter_pressed():
 		pass_enter.text = "Incorrect. " + str(incorrect_times) + " tries remaining."
 		incorrect_times -= 1
 		await get_tree().create_timer(1.5).timeout
+		blinker_anim.play("Blink")
 		input = ""
 		pass_enter.text = input
 	else:
@@ -78,6 +104,8 @@ func _on_enter_pressed():
 		await get_tree().create_timer(1.5).timeout
 		pass_enter.text = "Sending alarm..."
 		await get_tree().create_timer(1.5).timeout
+		$".".hide()
+		#exit to third cam
 		input = ""
 		pass_enter.text = input
 		
@@ -126,7 +154,7 @@ func _on_input_event(viewport, event, shape_idx):
 
 
 func _on_exit_pressed():
-	$".".show()
+	$".".hide()
 	GlobalVars.Quincy_Safe_UI = false
 	GlobalVars.viewing = ""
 	GlobalVars.in_look_screen = false
