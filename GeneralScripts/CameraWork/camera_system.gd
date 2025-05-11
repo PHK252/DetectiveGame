@@ -221,3 +221,13 @@ func _on_porch_juniper_body_entered(body: Node3D) -> void:
 
 func _on_door_second_cam_greeting() -> void:
 	activate_camera(12)
+
+
+func _on_water_close_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(13)
+
+
+func _on_water_close_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(6)

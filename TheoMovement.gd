@@ -129,7 +129,7 @@ func floor_type_gather():
 	if $FloorTypeTheo.is_colliding():
 		var collider = $FloorTypeTheo.get_collider()
 		if collider.is_in_group("wood"):
-			sound_player.play("FootstepsGather")
+			sound_player.play("FootstepsGather_Wood")
 		if collider.is_in_group("tile"):
 			sound_player.play("FootstepsGather_Tile")
 		if collider.is_in_group("carpet"):
