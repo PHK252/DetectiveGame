@@ -3,7 +3,9 @@ extends Node
 var count : int = 0
 var walking : bool = false
 var panda_activate : bool = false
+var panda_inside : bool = false
 var delivery_activate : bool = false
+var go_back_activate : bool = false
 
 var speed : float = 0.1
 var sloth_speed : float = 0.05
@@ -27,6 +29,9 @@ var sloth_speed : float = 0.05
 @export var sloth : Node3D
 @export var sloth_path : PathFollow3D
 @export var sloth_anims : AnimationTree
+@export var anim_box : AnimationPlayer
+@export var cardboard_anim : Node3D
+@export var cardboard_static : Node3D
 
 #panda control
 @export var panda : Node3D
@@ -36,6 +41,8 @@ var sloth_speed : float = 0.05
 func _ready():
 	wander_character.visible = false
 	walking_character.visible = false
+	cardboard_static.visible = false
+	cardboard_anim.visible = true
 	sloth.visible = false
 	panda.visible = false
 	panda_timer.start()
@@ -60,13 +67,21 @@ func _physics_process(delta: float) -> void:
 		path.progress_ratio += speed * delta
 	
 	if panda_activate and panda_path.progress_ratio < 1:
-		panda_anims.set("parameters/BlendSpace1D/blend_position", 1)
-		panda_path.progress_ratio += speed * delta
+		if panda_inside == false:
+			panda_anims.set("parameters/OpenDoor/request", 2)
+			panda_anims.set("parameters/BlendSpace1D/blend_position", 1)
+			panda_path.progress_ratio += speed * delta
+			
 		
 	if delivery_activate and sloth_path.progress_ratio < 1:
 		#sloth_anims.set("parameters/BlendSpace1D/blend_position", 1)
 		sloth_anims.set("parameters/Blend2/blend_amount", 1)
 		sloth_path.progress_ratio += sloth_speed * delta
+	
+	if go_back_activate:
+		sloth_anims.set("parameters/Blend2/blend_amount", 1)
+		sloth_path.progress_ratio -= sloth_speed * delta
+		
 	
 func _on_window_close_became_inactive() -> void:
 	wander_character.visible = false
@@ -93,3 +108,28 @@ func _on_delivery_timer_timeout() -> void:
 	sloth.basis = flipped_deliver 
 	await get_tree().create_timer(1.3).timeout
 	delivery_activate = true
+
+func _on_panda_door_body_entered(body: Node3D) -> void:
+	panda_inside = true
+	panda_anims.set("parameters/BlendSpace1D/blend_position", 0)
+	panda_anims.set("parameters/OpenDoor/request", true)
+	await get_tree().create_timer(2.0).timeout
+	door_anim.play("doorOpen")
+	await get_tree().create_timer(2.0).timeout
+	panda_inside = false
+	await get_tree().create_timer(2.0).timeout
+	door_anim.play("doorClose")
+	
+
+func _on_delivery_door_body_entered(body: Node3D) -> void:
+	sloth_anims.set("parameters/Blend2/blend_amount", 0)
+	sloth_anims.set("parameters/PutDown/request", true)
+	anim_box.play("box_drop")
+	await get_tree().create_timer(10).timeout
+	cardboard_static.visible = true
+	cardboard_anim.visible = false
+	var flipped_deliver = sloth.global_transform.basis
+	var rotation = Basis(Vector3.UP, deg_to_rad(100))
+	sloth.basis = rotation * flipped_deliver
+	delivery_activate = false
+	go_back_activate = true
