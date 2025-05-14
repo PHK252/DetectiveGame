@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cag171myh2rvi"]
+[gd_scene load_steps=37 format=4 uid="uid://cag171myh2rvi"]
 
 [ext_resource type="PackedScene" uid="uid://b4bg3e2c51b0g" path="res://Cutscenes/PrisonGLB.glb" id="1_etn41"]
 [ext_resource type="Script" uid="uid://cguvqsqv4exb7" path="res://Cutscenes/color_rect.gd" id="1_ln8dv"]
@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://bg6x2s3putvcy" path="res://Cutscenes/PrisonQuincy.glb" id="4_hw0go"]
 [ext_resource type="Script" uid="uid://b5lhuyesurqah" path="res://Cutscenes/activate_prison_anims.gd" id="4_m0gac"]
 [ext_resource type="Script" uid="uid://ccovd87evifgp" path="res://Cutscenes/cam_transition.gd" id="8_m0gac"]
+[ext_resource type="AudioStream" uid="uid://bc8grwemfbmov" path="res://Audio/cutsceneSounds/prisonNight.wav" id="10_o1jab"]
+[ext_resource type="AudioStream" uid="uid://seurfr0qrc6t" path="res://Audio/Footsteps/Kick2_01.wav" id="10_q0k7s"]
+[ext_resource type="AudioStream" uid="uid://lpnvg1nl7eco" path="res://Audio/Footsteps/Marble/marble_step_01.wav" id="11_8xffw"]
+[ext_resource type="AudioStream" uid="uid://d1ln4ckym7cbx" path="res://Audio/cutsceneSounds/barsredo.wav" id="11_i0jhu"]
+[ext_resource type="AudioStream" uid="uid://b8h4luhjuk5wr" path="res://Audio/Footsteps/Marble/marble_step_02.wav" id="12_fh40h"]
+[ext_resource type="AudioStream" uid="uid://darunyq5nt4kn" path="res://Audio/Footsteps/Marble/marble_step_03.wav" id="13_n5m3w"]
+[ext_resource type="AudioStream" uid="uid://2s4y5hrfxgoi" path="res://Audio/Footsteps/Marble/marble_Step_04.wav" id="14_yexe8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k6gjj"]
 _surfaces = [{
@@ -148,6 +155,83 @@ _data = {
 &"RESET": SubResource("Animation_m0gac")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6iqnm"]
+streams_count = 1
+stream_0/stream = ExtResource("10_q0k7s")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ovxpf"]
+streams_count = 4
+stream_0/stream = ExtResource("11_8xffw")
+stream_1/stream = ExtResource("12_fh40h")
+stream_2/stream = ExtResource("13_n5m3w")
+stream_3/stream = ExtResource("14_yexe8")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_pomda"]
+stream_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_6iqnm")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_ovxpf")
+stream_1/volume = 0.0
+
+[sub_resource type="Animation" id="Animation_o1jab"]
+resource_name = "prisonSounds"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Bars")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WalkDalton")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("walk"),
+"times": PackedFloat32Array(5.93333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0jhu"]
+_data = {
+&"prisonSounds": SubResource("Animation_o1jab")
+}
+
+[sub_resource type="Animation" id="Animation_utcoj"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("walkDalton")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onu11"]
+_data = {
+&"walk": SubResource("Animation_utcoj")
+}
+
 [node name="Node3D" type="Node3D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -163,6 +247,7 @@ script = ExtResource("1_ln8dv")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
+audio_listener_enable_3d = true
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
@@ -216,7 +301,33 @@ anim_d = NodePath("PrisonDaltonWalkOut/AnimationPlayer")
 [node name="PrisonDaltonWalkOut" parent="SubViewportContainer/SubViewport/Character" instance=ExtResource("2_7bji2")]
 
 [node name="Armature_002" parent="SubViewportContainer/SubViewport/Character/PrisonDaltonWalkOut" index="0"]
-transform = Transform3D(-0.423249, -1.64819e-07, 7.20447e-15, 0, -1.85008e-08, -0.423249, 1.64819e-07, -0.423249, 1.85008e-08, -0.145498, 0, 0.835787)
+transform = Transform3D(-0.423249, -1.64819e-07, 7.20448e-15, 0, -1.85008e-08, -0.423249, 1.64819e-07, -0.423249, 1.85008e-08, -0.145498, 0, 0.835787)
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Character/PrisonDaltonWalkOut/Armature_002" index="0"]
+bones/0/position = Vector3(0, 0, -1.87223)
+bones/0/rotation = Quaternion(-2.13163e-14, 0.707107, 0.707107, -2.16303e-14)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
+bones/4/rotation = Quaternion(-0.0750211, 0.00216294, 8.42178e-05, 0.99718)
+bones/5/rotation = Quaternion(0.0633452, -0.00857169, -0.000524862, 0.997955)
+bones/10/rotation = Quaternion(-0.14247, 0.0557454, -0.688243, 0.709166)
+bones/11/rotation = Quaternion(-0.308177, 0.0254112, -0.39515, 0.865008)
+bones/12/rotation = Quaternion(-0.322534, -0.460234, -0.480704, 0.673112)
+bones/14/rotation = Quaternion(-0.141104, -0.0543877, 0.688698, 0.709103)
+bones/15/rotation = Quaternion(-0.351175, -0.0486138, 0.402646, 0.843913)
+bones/16/rotation = Quaternion(-0.15145, 0.377529, 0.569525, 0.714266)
+bones/19/rotation = Quaternion(0.139264, -0.00967968, -0.0171116, 0.99006)
+bones/20/rotation = Quaternion(-0.334286, 0.000130014, -0.00916981, 0.942427)
+bones/21/rotation = Quaternion(0.825743, -0.0274645, 0.0303194, 0.562562)
+bones/23/rotation = Quaternion(0.14741, 0.0483442, 0.0215589, 0.987658)
+bones/24/rotation = Quaternion(-0.290243, -0.00438581, 0.0281743, 0.956528)
+bones/25/rotation = Quaternion(0.804837, 0.028544, -0.0293053, 0.592085)
+bones/26/position = Vector3(0.256355, -0.0907406, -0.292152)
+bones/26/rotation = Quaternion(0.0265639, -0.243664, 0.969252, -0.0217622)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/position = Vector3(-0.202026, 0.00885522, -0.266457)
+bones/27/rotation = Quaternion(-0.0159334, 0.07277, 0.995248, 0.062713)
+bones/28/position = Vector3(0.437328, -0.166017, -1.7059)
+bones/29/position = Vector3(-0.45877, -0.121475, -1.71318)
 
 [node name="PrisonSkylar2" parent="SubViewportContainer/SubViewport/Character" instance=ExtResource("3_ru8gc")]
 
@@ -251,11 +362,33 @@ bones/29/position = Vector3(-0.756581, -0.371981, -1.6056)
 [node name="PrisonQuincy2" parent="SubViewportContainer/SubViewport/Character" instance=ExtResource("4_hw0go")]
 visible = false
 
-[node name="Cams" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("cam_1", "cam_2", "cam_anims")]
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Character/PrisonQuincy2/QPrison" index="0"]
+bones/0/position = Vector3(2.38419e-07, -0.134949, -1.28261)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19025e-08)
+bones/4/rotation = Quaternion(0.177486, -1.06526e-08, -5.64958e-09, 0.984123)
+bones/5/rotation = Quaternion(0.440164, -1.35142e-08, 1.06988e-09, 0.897917)
+bones/11/rotation = Quaternion(-0.153404, -0.318317, -0.624506, 0.696516)
+bones/12/rotation = Quaternion(-0.10569, -0.173747, -0.461835, 0.863337)
+bones/15/rotation = Quaternion(-0.032281, 0.447084, 0.618993, 0.64492)
+bones/16/rotation = Quaternion(-0.0135661, -0.480779, 0.485289, 0.73018)
+bones/19/rotation = Quaternion(0.505642, -0.0809873, -0.0239685, 0.858599)
+bones/20/rotation = Quaternion(-0.469973, 6.65653e-05, -0.0402904, 0.881761)
+bones/21/rotation = Quaternion(0.880135, -0.0211555, 0.0347178, 0.47298)
+bones/23/rotation = Quaternion(0.462941, 0.0354461, -0.0102408, 0.885621)
+bones/24/rotation = Quaternion(-0.623224, -5.8915e-05, 0.0534285, 0.780216)
+bones/25/rotation = Quaternion(0.880135, 0.0211555, -0.0347178, 0.47298)
+bones/26/position = Vector3(0.213323, 0.56195, 0.0202537)
+bones/27/position = Vector3(-0.273732, 0.105782, 0.0202538)
+bones/27/rotation = Quaternion(-0.0204547, 8.89913e-16, 0.999791, -1.97563e-09)
+bones/28/position = Vector3(0.426723, 0.331146, -0.98703)
+bones/29/position = Vector3(-0.396967, 0.459075, -1.04095)
+
+[node name="Cams" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("cam_1", "cam_2", "cam_anims", "soundplayer")]
 script = ExtResource("8_m0gac")
 cam_1 = NodePath("Camera3D2")
 cam_2 = NodePath("Camera3D")
 cam_anims = NodePath("AnimationPlayer")
+soundplayer = NodePath("../SoundsAnim/SoundPlayer")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Cams"]
 transform = Transform3D(-0.99933, 3.75737e-09, -0.0365913, -0.0135556, 0.928848, 0.370212, 0.0339877, 0.37046, -0.928226, 0.162882, 1.9051, -2.56562)
@@ -269,6 +402,37 @@ far = 4023.1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Cams"]
 libraries = {
 &"": SubResource("AnimationLibrary_hw0go")
+}
+
+[node name="SoundsAnim" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="walkDalton" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SoundsAnim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.974875, 0.735127, 0.668298)
+stream = SubResource("AudioStreamSynchronized_pomda")
+volume_db = -15.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="NightSounds" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/SoundsAnim"]
+stream = ExtResource("10_o1jab")
+volume_db = -20.0
+autoplay = true
+bus = &"Ambience"
+
+[node name="Bars" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/SoundsAnim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57261, 0)
+stream = ExtResource("11_i0jhu")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SoundPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/SoundsAnim"]
+libraries = {
+&"": SubResource("AnimationLibrary_i0jhu")
+}
+
+[node name="WalkDalton" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/SoundsAnim"]
+libraries = {
+&"": SubResource("AnimationLibrary_onu11")
 }
 
 [editable path="SubViewportContainer/SubViewport/PrisonGLB"]

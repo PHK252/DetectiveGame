@@ -3,8 +3,10 @@ extends Node
 @export var cam_1 : Camera3D
 @export var cam_2 : Camera3D
 @export var cam_anims : AnimationPlayer
+@export var soundplayer : AnimationPlayer
 
 func _ready():
+	soundplayer.play("prisonSounds")
 	cam_anims.play("CamAnims")
 	cam_1.current = true
 	cam_2.current = false
