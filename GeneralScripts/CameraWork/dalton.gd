@@ -488,3 +488,14 @@ func _on_porch_cam_became_active() -> void:
 		in_control = false
 		await get_tree().create_timer(0.5).timeout
 		in_control = true
+
+
+func _on_tent_cam_became_active() -> void:
+	in_control = false
+	await get_tree().create_timer(0.5).timeout
+	in_control = true
+
+func _on_tent_cam_became_inactive() -> void:
+	in_control = false
+	await get_tree().create_timer(0.5).timeout
+	in_control = true

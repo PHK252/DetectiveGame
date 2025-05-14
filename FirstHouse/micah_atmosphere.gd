@@ -156,14 +156,17 @@ func _on_panda_door_body_entered(body: Node3D) -> void:
 	
 
 func _on_delivery_door_body_entered(body: Node3D) -> void:
+	delivery_activate = false
+	sloth_anims.set("parameters/BlendSpaceBox/blend_position", 0)
 	sloth_anims.set("parameters/Blend2/blend_amount", 0)
+	await get_tree().create_timer(1.2).timeout
 	sloth_anims.set("parameters/PutDown/request", true)
 	anim_box.play("box_drop")
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(10.5).timeout
 	cardboard_static.visible = true
 	cardboard_anim.visible = false
 	var flipped_deliver = sloth.global_transform.basis
-	var rotation = Basis(Vector3.UP, deg_to_rad(100))
+	var rotation = Basis(Vector3.UP, deg_to_rad(87))
 	sloth.basis = rotation * flipped_deliver
 	delivery_activate = false
 	go_back_activate = true
