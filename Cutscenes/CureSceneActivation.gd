@@ -9,6 +9,8 @@ extends Node
 @export var cure_brother_hand : Node3D
 @export var cam_anims : AnimationPlayer
 @export var dialogue_cam : Camera3D
+@export var door_sound : AudioStreamPlayer3D
+@export var general_sound : AnimationPlayer
 
 func _ready() -> void:
 	cam_anims.play("IntroAnimation")
@@ -22,6 +24,7 @@ func _process(delta):
 		brother_anims["parameters/conditions/take_cure"] = true
 		await get_tree().create_timer(0.7).timeout
 		dalton_anims["parameters/conditions/give_cure"] = true
+		general_sound.play("gen_sounds")
 		cure_dalton_hand.visible = true
 		await get_tree().create_timer(3).timeout
 		cure_dalton_hand.visible = false
@@ -30,8 +33,10 @@ func _process(delta):
 		cure_brother_hand.visible = false
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
+	pass
+	
+func _on_character_body_3d_open_door_brother() -> void:
+	door_sound.play()
 	door.play("doorOpen")
 	brother_anims["parameters/conditions/door_open"] = true
 	dialogue_cam.current = true
-	
-	

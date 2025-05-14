@@ -6,6 +6,8 @@ extends CharacterBody3D
 var SPEED = 1.15
 const LERP_VAL = .15
 @export var force_rotate_list: Array[Marker3D]
+@export var knockSound : AudioStreamPlayer3D
+signal open_door_brother
 
 signal moving
 signal stopped
@@ -18,6 +20,10 @@ var in_control = true
 var force_rotation = false
 var move_out = false
 var number = 0
+
+var is_walking : bool = false
+
+@export var sound_player : AnimationPlayer
 
 func _ready() -> void:
 	add_to_group("player")
@@ -57,12 +63,16 @@ func _physics_process(delta: float) -> void:
 				# Set movement direction and apply smooth movement
 				velocity.x = lerp(velocity.x, -rotated_dir.x * SPEED, LERP_VAL)
 				velocity.z = lerp(velocity.z, -rotated_dir.z * SPEED, LERP_VAL)
-
+				floor_type_walk()
 				# Smoothly rotate the armature to face the movement direction
 				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
 				#if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					#anim_tree["parameters/Blend3/blend_amount"] = 0
+				is_walking = true
 			else:
+				if is_walking:
+					floor_type_gather()
+					is_walking = false 
 				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
@@ -77,12 +87,30 @@ func _physics_process(delta: float) -> void:
 			velocity.z = lerp(velocity.z, -direction.z * SPEED, LERP_VAL)
 			armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-direction.x, -direction.z), LERP_VAL)
 			anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
+			floor_type_walk()
 			
 		move_and_slide()
 	else:
 		emit_signal("stopped")
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 			
+			
+func floor_type_walk():
+	if $rayFloor.is_colliding() and move_back == false:
+		var collider = $rayFloor.get_collider()
+		if collider.is_in_group("carpet"):
+			sound_player.play("CarpetStep")
+		if collider.is_in_group("tile"):
+			sound_player.play("MarbleStep")
+# floor type gather
+func floor_type_gather():
+	if $rayFloor.is_colliding():
+		var collider = $rayFloor.get_collider()
+		if collider.is_in_group("carpet"):
+			sound_player.play("MarbleStep_gather")
+		if collider.is_in_group("tile"):
+			sound_player.play("CarpetStep_gather")
+
 func force_rotate(number):
 	var target = force_rotate_list[number].global_position
 	var dir = (armature.global_position - target).normalized()
@@ -105,7 +133,16 @@ func _on_player_interactor_interacted_now() -> void:
 	interaction = false
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	pass
+	in_control = false
+	force_rotation = true
+	anim_tree.set("parameters/Knock/request", true)
+	await get_tree().create_timer(2.3).timeout
+	knockSound.play()
+	await get_tree().create_timer(2.7).timeout
+	force_rotation = false
+	in_control = true
+	emit_signal("open_door_brother")
+	
 	#in_control = false
 	#playAnim
 	#number = 1
