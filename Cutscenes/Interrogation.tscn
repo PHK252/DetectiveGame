@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://dvpjxk4n18ieq"]
+[gd_scene load_steps=78 format=4 uid="uid://dvpjxk4n18ieq"]
 
 [ext_resource type="Script" uid="uid://cihflo7rcqd4k" path="res://Cutscenes/InterrogationAnimations.gd" id="1_5rl5i"]
 [ext_resource type="PackedScene" uid="uid://6htuu4lrsnoi" path="res://Cutscenes/InterrogationRoom_1.glb" id="1_iwkaf"]
@@ -13,6 +13,16 @@
 [ext_resource type="PackedScene" uid="uid://b3vtr10uqasu6" path="res://Cutscenes/Theo2.glb" id="11_j8pnw"]
 [ext_resource type="PackedScene" uid="uid://dfo38w0cwjlny" path="res://Cutscenes/Skylar2.glb" id="12_i4d3i"]
 [ext_resource type="Material" uid="uid://cs1rbocmvbaxw" path="res://ShaderScripts/Skylar.tres" id="13_bg3hh"]
+[ext_resource type="AudioStream" uid="uid://duocff5oxgbx8" path="res://Audio/cutsceneSounds/lightPrison.wav" id="14_oo0j1"]
+[ext_resource type="AudioStream" uid="uid://c8aqf8ph44iyd" path="res://Audio/door/open_door_02.wav" id="15_7n5bu"]
+[ext_resource type="AudioStream" uid="uid://b4ao77xhfc2bm" path="res://Audio/cutsceneSounds/keySlide.wav" id="16_ud6iv"]
+[ext_resource type="AudioStream" uid="uid://d1gp4oktd4ofp" path="res://Audio/cutsceneSounds/chairSlideBack.wav" id="17_xhe4e"]
+[ext_resource type="AudioStream" uid="uid://cx044am2flcho" path="res://Audio/cutsceneSounds/openCuffs.wav" id="18_nkcaq"]
+[ext_resource type="AudioStream" uid="uid://caxuj3igeaw85" path="res://Audio/Footsteps/AltKicks/kick_Q.wav" id="19_2v02n"]
+[ext_resource type="AudioStream" uid="uid://cptvpv8u4ch00" path="res://Audio/Footsteps/micah_tile_05.wav" id="20_ed5sx"]
+[ext_resource type="AudioStream" uid="uid://bt230tgg7rfe5" path="res://Audio/Footsteps/micah_tile_02.wav" id="21_iif1m"]
+[ext_resource type="AudioStream" uid="uid://dy1ecgq2xopi4" path="res://Audio/Footsteps/micah_tile_06.wav" id="22_u5x86"]
+[ext_resource type="AudioStream" uid="uid://cdnr24g6kjaq5" path="res://Audio/Footsteps/micah_tile_01.wav" id="23_1dvrp"]
 
 [sub_resource type="Gradient" id="Gradient_s03m4"]
 offsets = PackedFloat32Array(0, 0.150641, 0.894231, 1)
@@ -585,6 +595,125 @@ states/Start/position = Vector2(94.5, 89)
 transitions = ["Start", "SkylarInterrogationStart", SubResource("AnimationNodeStateMachineTransition_i4d3i"), "SkylarInterrogationStart", "SkylarInterrogationIdle", SubResource("AnimationNodeStateMachineTransition_oo0j1"), "SkylarInterrogationIdle", "SkylarInterrogationNo", SubResource("AnimationNodeStateMachineTransition_1dvrp"), "SkylarInterrogationNo", "SkylarInterrogationIdle", SubResource("AnimationNodeStateMachineTransition_4ckih"), "SkylarInterrogationIdle", "SkylarInterrogationYes", SubResource("AnimationNodeStateMachineTransition_ddi3a"), "SkylarInterrogationYes", "SkylarInterrogationIdle", SubResource("AnimationNodeStateMachineTransition_6fv5t"), "SkylarInterrogationIdle", "SkylarInterrogationArrested", SubResource("AnimationNodeStateMachineTransition_8lk3s"), "SkylarInterrogationIdle", "SkylarInterrogationRelease", SubResource("AnimationNodeStateMachineTransition_n3v5g")]
 graph_offset = Vector2(393.645, -50.2125)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ckih"]
+streams_count = 1
+stream_0/stream = ExtResource("19_2v02n")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ddi3a"]
+streams_count = 4
+stream_0/stream = ExtResource("20_ed5sx")
+stream_1/stream = ExtResource("21_iif1m")
+stream_2/stream = ExtResource("22_u5x86")
+stream_3/stream = ExtResource("23_1dvrp")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_6fv5t"]
+stream_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_4ckih")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_ddi3a")
+stream_1/volume = 0.0
+
+[sub_resource type="Animation" id="Animation_oo0j1"]
+resource_name = "SoundsKey"
+length = 22.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(18.6333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cuffs")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.23333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChairSlide")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(12.2667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SlideKey")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WalkPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("skyWalk", "[stop]", "skyWalk"),
+"times": PackedFloat32Array(13.5667, 18.1667, 20.1333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7n5bu"]
+_data = {
+&"SoundsKey": SubResource("Animation_oo0j1")
+}
+
+[sub_resource type="Animation" id="Animation_2v02n"]
+resource_name = "skyWalk"
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("walking")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ed5sx"]
+_data = {
+&"skyWalk": SubResource("Animation_2v02n")
+}
+
 [node name="Main" type="Node3D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -599,6 +728,7 @@ stretch_shrink = 6
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
+audio_listener_enable_3d = true
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
@@ -626,7 +756,7 @@ omni_attenuation = 0.505
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Lighting"]
 environment = SubResource("Environment_qc3y7")
 
-[node name="Cameras" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("S_anim", "D_anim", "T_anim", "decision_cam", "cam_anims", "cuffs_open", "cuffs_closed", "KeyAnim", "DoorAnim")]
+[node name="Cameras" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("S_anim", "D_anim", "T_anim", "decision_cam", "cam_anims", "cuffs_open", "cuffs_closed", "KeyAnim", "DoorAnim", "soundplayer")]
 script = ExtResource("1_5rl5i")
 S_anim = NodePath("../Characters/Skylar2/SkylarAnims")
 D_anim = NodePath("../Characters/DaltonInterrogation/DaltonAnims")
@@ -637,6 +767,7 @@ cuffs_open = NodePath("../Stuff/Cuffs/openCuff")
 cuffs_closed = NodePath("../Stuff/Cuffs/cuffClosed")
 KeyAnim = NodePath("../Stuff/KeyAnim/AnimationPlayer")
 DoorAnim = NodePath("../Stuff/InterrogationDoor/AnimationPlayer")
+soundplayer = NodePath("../Sounds/SoundsPlayer")
 
 [node name="TopDecision" type="Camera3D" parent="SubViewportContainer/SubViewport/Cameras"]
 transform = Transform3D(0.361815, 0.489561, -0.79336, 0.0324572, 0.843885, 0.535542, 0.931685, -0.219517, 0.289441, -1.3462, 1.91182, 0.240892)
@@ -754,21 +885,21 @@ bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -5.18479e-16)
 bones/1/rotation = Quaternion(-0.00955379, -0.0996726, 0.9923, -0.0729054)
 bones/2/rotation = Quaternion(-0.0134291, 1.10369e-08, 4.74166e-09, 0.99991)
 bones/3/rotation = Quaternion(-0.104185, 2.4481e-10, -2.13259e-09, 0.994558)
-bones/4/rotation = Quaternion(0.00208038, -5.88042e-09, 4.19985e-09, 0.999998)
-bones/5/rotation = Quaternion(0.280861, 0.0794675, -0.0221618, 0.956196)
-bones/6/position = Vector3(0.256853, 0.657019, 0.0615104)
-bones/6/rotation = Quaternion(-0.0398365, 0.00578758, -0.143657, 0.988809)
+bones/4/rotation = Quaternion(0.0302383, 1.28034e-09, 1.07044e-08, 0.999543)
+bones/5/rotation = Quaternion(0.279811, 2.55848e-09, -1.96823e-08, 0.960055)
+bones/6/position = Vector3(0.256909, 0.65721, 0.0662158)
+bones/6/rotation = Quaternion(-1.06386e-08, -1.97196e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898598, 0.0145798, 0.997999)
-bones/8/position = Vector3(-0.262163, 0.657266, 0.0616539)
-bones/8/rotation = Quaternion(-0.0401496, -0.00562896, 0.138727, 0.9895)
+bones/8/position = Vector3(-0.262216, 0.657453, 0.0662159)
+bones/8/rotation = Quaternion(-4.72337e-09, -6.55654e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898615, 0.0145794, 0.997999)
 bones/10/rotation = Quaternion(-0.14247, 0.0557454, -0.688243, 0.709166)
-bones/11/rotation = Quaternion(-0.212251, -0.12455, -0.43373, 0.866785)
-bones/12/rotation = Quaternion(0.620158, 0.405303, -0.169741, 0.649863)
+bones/11/rotation = Quaternion(-0.239544, -0.143158, -0.464699, 0.840345)
+bones/12/rotation = Quaternion(0.639605, 0.396101, -0.175064, 0.635108)
 bones/13/rotation = Quaternion(0.00671634, -0.00228499, -0.0206946, 0.999761)
 bones/14/rotation = Quaternion(-0.14247, -0.0557454, 0.688243, 0.709166)
-bones/15/rotation = Quaternion(-0.130781, 0.200736, 0.707551, 0.664811)
-bones/16/rotation = Quaternion(0.467234, -0.462955, 0.127885, 0.742301)
+bones/15/rotation = Quaternion(-0.133189, 0.194289, 0.735832, 0.634873)
+bones/16/rotation = Quaternion(0.453823, -0.466954, 0.124215, 0.748712)
 bones/17/rotation = Quaternion(0.00671635, 0.00228497, 0.0206946, 0.999761)
 bones/19/rotation = Quaternion(0.587322, 0.154732, 0.0986425, 0.788277)
 bones/20/rotation = Quaternion(-0.702749, 0.00877381, -0.246666, 0.667251)
@@ -782,9 +913,9 @@ bones/26/scale = Vector3(1, 1, 1)
 bones/27/position = Vector3(-0.316024, 0.346653, -0.629386)
 bones/27/rotation = Quaternion(-0.0204547, 8.88178e-16, 0.999791, -1.97563e-09)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/position = Vector3(0.902999, 0.286023, -2.15983)
+bones/28/position = Vector3(0.848431, 0.304878, -2.15983)
 bones/28/scale = Vector3(0.990445, 1, 0.844322)
-bones/29/position = Vector3(-0.518535, 0.722745, -2.11051)
+bones/29/position = Vector3(-0.429965, 0.733313, -2.08833)
 bones/29/scale = Vector3(0.990445, 1, 0.844322)
 
 [node name="DaltonAnims" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/DaltonInterrogation"]
@@ -805,7 +936,7 @@ bones/0/rotation = Quaternion(-2.57216e-12, 0.707107, 0.707107, -2.57248e-12)
 bones/1/rotation = Quaternion(1.4526e-08, 0.129933, 0.991523, -1.19029e-08)
 bones/2/rotation = Quaternion(-0.0134291, 1.58091e-08, 6.42937e-09, 0.99991)
 bones/3/rotation = Quaternion(-0.104185, 1.00771e-13, -4.65913e-13, 0.994558)
-bones/4/rotation = Quaternion(-0.0215259, 0.121543, 0.0396184, 0.991562)
+bones/4/rotation = Quaternion(-0.0193812, 0.121628, 0.0393554, 0.991606)
 bones/5/rotation = Quaternion(0.189727, 0.105139, -0.0207194, 0.975971)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662165)
 bones/6/rotation = Quaternion(-1.12881e-08, -2.58756e-08, -0.143774, 0.989611)
@@ -814,11 +945,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-2.42619e-09, -9.526e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898628, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.163088, 0.0767725, -0.68275, 0.708068)
-bones/11/rotation = Quaternion(-0.139366, -0.0817112, -0.50939, 0.845235)
+bones/11/rotation = Quaternion(-0.139354, -0.0827264, -0.509732, 0.844932)
 bones/12/rotation = Quaternion(-0.435576, -0.481891, -0.451701, 0.611573)
 bones/13/rotation = Quaternion(0.00671634, -0.00228498, -0.0206946, 0.999761)
 bones/14/rotation = Quaternion(-0.162166, -0.0758297, 0.68301, 0.708131)
-bones/15/rotation = Quaternion(-0.392836, 0.141644, 0.349088, 0.838901)
+bones/15/rotation = Quaternion(-0.393736, 0.142912, 0.349481, 0.8381)
 bones/16/rotation = Quaternion(-0.478536, 0.448251, 0.496415, 0.568898)
 bones/17/rotation = Quaternion(0.00671635, 0.00228499, 0.0206946, 0.999761)
 bones/19/rotation = Quaternion(0.0474238, 0.0333852, 0.00277184, 0.998313)
@@ -846,13 +977,13 @@ parameters/conditions/theo_look = false
 transform = Transform3D(-0.430659, -6.50277e-08, 2.84245e-15, 0, -1.88247e-08, -0.430659, 6.50277e-08, -0.430659, 1.88247e-08, -0.0398343, 0, 0.482563)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Skylar2/Armature" index="0"]
-bones/0/position = Vector3(7.45058e-09, 0, -1.31942)
+bones/0/position = Vector3(7.45058e-09, 0, -1.3073)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/2/rotation = Quaternion(-0.0134291, 1.58083e-08, 6.42944e-09, 0.99991)
 bones/3/rotation = Quaternion(-0.104185, 1.41151e-14, 1.93131e-15, 0.994558)
-bones/4/rotation = Quaternion(-0.0965587, 1.76116e-09, -1.00131e-08, 0.995327)
-bones/5/rotation = Quaternion(0.0659514, 4.23756e-11, 1.43175e-11, 0.997823)
+bones/4/rotation = Quaternion(-0.084839, 5.36382e-15, 3.4024e-16, 0.996395)
+bones/5/rotation = Quaternion(0.0709988, -4.88307e-10, -9.11991e-11, 0.997476)
 bones/6/position = Vector3(0.295781, 0.756361, 0.0710941)
 bones/6/rotation = Quaternion(-7.78236e-08, 5.62116e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615112, 0.000898575, 0.0145806, 0.997999)
@@ -860,18 +991,18 @@ bones/8/position = Vector3(-0.291152, 0.755717, 0.0695998)
 bones/8/rotation = Quaternion(-3.79078e-10, 2.74766e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.0615113, 0.000898612, 0.0145797, 0.997999)
 bones/10/rotation = Quaternion(-0.171837, 0.0857196, -0.68022, 0.707407)
-bones/11/rotation = Quaternion(-0.309729, -0.0470223, -0.488593, 0.81433)
-bones/12/rotation = Quaternion(0.728996, 0.228245, -0.290332, 0.576348)
+bones/11/rotation = Quaternion(-0.314871, -0.0513505, -0.488101, 0.81239)
+bones/12/rotation = Quaternion(0.737425, 0.223952, -0.293689, 0.565506)
 bones/13/rotation = Quaternion(-0.048719, 0.400544, -0.437888, 0.803396)
 bones/14/rotation = Quaternion(-0.1752, -0.0891616, 0.679216, 0.707121)
-bones/15/rotation = Quaternion(-0.132272, 0.141101, 0.730304, 0.655172)
-bones/16/rotation = Quaternion(0.478516, -0.30365, 0.296479, 0.768713)
+bones/15/rotation = Quaternion(-0.132077, 0.141005, 0.730087, 0.655474)
+bones/16/rotation = Quaternion(0.494807, -0.298733, 0.306572, 0.756266)
 bones/17/rotation = Quaternion(0.0221574, 0.0019914, 0.0247039, 0.999447)
-bones/19/rotation = Quaternion(0.695402, -0.133032, 0.178297, 0.683322)
-bones/20/rotation = Quaternion(-0.693934, -0.00246188, -0.325111, 0.642458)
+bones/19/rotation = Quaternion(0.700329, -0.13407, 0.179807, 0.677668)
+bones/20/rotation = Quaternion(-0.69799, -0.00244125, -0.327011, 0.637078)
 bones/21/rotation = Quaternion(0.780307, 0.0104256, 0.0471575, 0.623529)
-bones/23/rotation = Quaternion(0.589047, 0.307897, -0.065369, 0.744278)
-bones/24/rotation = Quaternion(-0.543321, 0.00306541, 0.254548, 0.799999)
+bones/23/rotation = Quaternion(0.597575, 0.298836, -0.0684107, 0.740892)
+bones/24/rotation = Quaternion(-0.549378, 0.00304601, 0.257385, 0.794939)
 bones/25/rotation = Quaternion(0.780307, -0.0104256, -0.0471575, 0.623529)
 bones/26/position = Vector3(0.260426, 0.726119, -0.439704)
 bones/26/rotation = Quaternion(0.0204546, 4.33681e-19, 0.999791, 6.58544e-10)
@@ -893,6 +1024,47 @@ parameters/conditions/arrest_skylar = false
 parameters/conditions/nod_no = false
 parameters/conditions/nod_yes = false
 parameters/conditions/release_skylar = false
+
+[node name="Sounds" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="Light" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = ExtResource("14_oo0j1")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"
+
+[node name="DoorSound" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20763, 0.688092, -1.88394)
+stream = ExtResource("15_7n5bu")
+bus = &"SFX"
+
+[node name="SlideKey" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = ExtResource("16_ud6iv")
+bus = &"SFX"
+
+[node name="ChairSlide" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584323, 0.754229)
+stream = ExtResource("17_xhe4e")
+bus = &"SFX"
+
+[node name="Cuffs" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.778798, 0)
+stream = ExtResource("18_nkcaq")
+bus = &"SFX"
+
+[node name="walking" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = SubResource("AudioStreamSynchronized_6fv5t")
+bus = &"SFX"
+
+[node name="SoundsPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+libraries = {
+&"": SubResource("AnimationLibrary_7n5bu")
+}
+
+[node name="WalkPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+libraries = {
+&"": SubResource("AnimationLibrary_ed5sx")
+}
 
 [editable path="SubViewportContainer/SubViewport/Stuff/Ceil"]
 [editable path="SubViewportContainer/SubViewport/Stuff/InterrogationDoor"]

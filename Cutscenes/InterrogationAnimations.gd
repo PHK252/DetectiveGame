@@ -13,7 +13,7 @@ extends Node
 
 @export var KeyAnim : AnimationPlayer
 @export var DoorAnim : AnimationPlayer
-
+@export var soundplayer : AnimationPlayer
 
 func _ready() -> void:
 	cam_anims.play("IntroAnimation")
@@ -22,6 +22,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
+		soundplayer.play("SoundsKey")
 		cuffs_closed.visible = false
 		cuffs_open.visible = true
 		KeyAnim.play("Key")
