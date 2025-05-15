@@ -7,6 +7,11 @@ extends Node3D
 #First Person cam anim + movement
 @export var cam_anim: AnimationPlayer
 @export var bookmark_anim : AnimationPlayer
+@export var doorL_anim : AnimationTree
+@export var doorR_anim : AnimationTree
+@export var collision : CollisionShape3D
+@export var collision_2 : CollisionShape3D
+@export var bookmark : MeshInstance3D
 @export var tilt_up_thres: int
 @export var tilt_down_thres: int
 @export var tilt_up_angle: Vector3
@@ -37,6 +42,8 @@ extends Node3D
 #set defaults
 @onready var mouse_pos = Vector2(0,0)
 @onready var distracted = false
+@onready var cab_anim = false
+@onready var is_open = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -126,9 +133,49 @@ func _on_input_event(viewport, event, shape_idx):
 					game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 					game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 					game_dialogue.register_character(load(load_char_dialogue), character_marker)
-					GlobalVars.in_interaction = ""
 					#GlobalVars.set(view_item, true)
 					interact_area.hide()
 				else:
+					interact_area.hide()
 					bookmark_anim.play("Bookmark_pull")
 					GlobalVars.set(view_item, true)
+					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+					await bookmark_anim.animation_finished
+					open()
+					bookmark.hide()
+					await doorL_anim.animation_finished
+					FP_Cam.priority = 0
+					Exit_Cam.priority = 30
+					cam_anim.play("RESET")
+					player.show()
+					player.start_player()
+					GlobalVars.in_interaction = ""
+					interact_area.hide()
+					
+
+func open() -> void:
+	#open_sound.play()
+	cab_anim = true
+	doorL_anim["parameters/conditions/is_opened"] = true
+	doorL_anim["parameters/conditions/is_closed"] = false
+	doorR_anim["parameters/conditions/is_opened"] = true
+	doorR_anim["parameters/conditions/is_closed"] = false
+	is_open = true
+	await get_tree().create_timer(2.1).timeout
+	cab_anim = false
+	collision.disabled = true
+	collision_2.disabled = true
+	
+func close() -> void:
+	#close_sound.play()
+	cab_anim = true
+	doorL_anim["parameters/conditions/is_opened"] = false
+	doorL_anim["parameters/conditions/is_closed"] = true
+	doorR_anim["parameters/conditions/is_opened"] = false
+	doorR_anim["parameters/conditions/is_closed"] = true
+	is_open = false
+	await get_tree().create_timer(2.1).timeout
+	cab_anim = false
+	collision.disabled = false
+	collision_2.disabled = false
+	

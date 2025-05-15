@@ -36,6 +36,8 @@ extends Marker2D
 
 
 func _process(delta):
+	#var mouse_pos = get_viewport().get_mouse_position()
+	#print(mouse_pos) 
 	if cam_var1:
 		if cam_var1.is_active() == true:
 			positionMarker(6, 0, 360)

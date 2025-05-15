@@ -43,8 +43,8 @@ func _on_input_event(viewport, event, shape_idx):
 					await anim.animation_finished
 					await get_tree().create_timer(.5).timeout
 					anim.play("RESET")
-				if clicked_object == "clicked_Micah_pic" or "clicked_tool_note":
-						paper.play()
+				#if clicked_object == "clicked_Micah_pic" or "clicked_tool_note" or "clicked_coor_Quincy":
+						#paper.play()
 				object_in_scene.hide()
 				object_interact.hide()
 				UI_look.show()

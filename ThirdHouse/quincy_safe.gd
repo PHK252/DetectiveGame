@@ -132,15 +132,13 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
+	print("enter safe")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type
 	FP_Cam.priority = 30
 	Exit_Cam.priority = 0 
-	interior_interact_area_1.show()
-	interior_interact_area_2.show()
-	interior_interact_area_3.show()
-	interior_interact_area_4.show()
+	open_interact.show()
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()

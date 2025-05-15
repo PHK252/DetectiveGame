@@ -170,6 +170,7 @@ func _input(event):
 		open_interact.show()
 
 func _on_safe_interact_interacted(interactor):
+	print("enter safe")
 	if is_open == false:
 		open_interact.show()
 		close_interact.hide()
