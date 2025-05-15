@@ -118,11 +118,11 @@ func _process(delta):
 		interior_interact_area_2.hide()
 		interior_interact_area_3.hide()
 		interior_interact_area_4.hide()
-	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
-		interior_interact_area_1.show()
-		interior_interact_area_2.show()
-		interior_interact_area_3.show()
-		interior_interact_area_4.show()
+	#elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
+		#interior_interact_area_1.show()
+		#interior_interact_area_2.show()
+		#interior_interact_area_3.show()
+		#interior_interact_area_4.show()
 
 
 func _on_timeline_ended():
@@ -142,6 +142,10 @@ func _on_interactable_interacted(interactor):
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()
+	#interior_interact_area_1.hide()
+	#interior_interact_area_2.hide()
+	#interior_interact_area_3.hide()
+	#interior_interact_area_4.hide()
 
 
 

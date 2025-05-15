@@ -8,7 +8,7 @@ extends CanvasLayer
 
 @onready var input = ""
 @onready var array_pos = 0
-@onready var incorrect_times = 2
+@onready var incorrect_times = 3
 
 @onready var is_open: bool = false
 @export var animation_tree : AnimationTree
@@ -89,9 +89,13 @@ func _on_enter_pressed():
 		pass_enter.text = "Opening..."
 		await get_tree().create_timer(1.5).timeout
 		open()
+		array_pos = 0
+		input = ""
+		pass_enter.text = input
 		
 	elif incorrect_times > 0:
 		#print("wrong")
+		array_pos = 0
 		pass_enter.text = "Incorrect. " + str(incorrect_times) + " tries remaining."
 		incorrect_times -= 1
 		await get_tree().create_timer(1.5).timeout
@@ -100,6 +104,7 @@ func _on_enter_pressed():
 		pass_enter.text = input
 	else:
 		#print("very wrong")
+		array_pos = 0
 		pass_enter.text = "Exceeded amount of incorrect tries."
 		await get_tree().create_timer(1.5).timeout
 		pass_enter.text = "Sending alarm..."
@@ -147,10 +152,19 @@ func _on_to_close_safe_input_event(viewport, event, shape_idx):
 				close()
 
 func _on_input_event(viewport, event, shape_idx):
-	$".".show()
-	GlobalVars.Quincy_Safe_UI = true
-	GlobalVars.viewing = "safe"
-	GlobalVars.in_look_screen = true
+	if GlobalVars.in_look_screen == false:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				$".".show()
+				interior_interact_area_1.hide()
+				interior_interact_area_2.hide()
+				interior_interact_area_3.hide()
+				interior_interact_area_4.hide()
+				open_interact.hide()
+				GlobalVars.Quincy_Safe_UI = true
+				GlobalVars.viewing = "safe"
+				GlobalVars.in_look_screen = true
+				blinker_anim.play("Blink")
 
 
 func _on_exit_pressed():
@@ -168,9 +182,17 @@ func _input(event):
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""
 		open_interact.show()
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "proposal" or GlobalVars.viewing == "newspaper" or  GlobalVars.viewing == "pager":
+		open_interact.hide()
+		close_interact.show()
+		interior_interact_area_1.show()
+		interior_interact_area_2.show()
+		interior_interact_area_3.show()
+		interior_interact_area_4.show()
+
+
 
 func _on_safe_interact_interacted(interactor):
-	print("enter safe")
 	if is_open == false:
 		open_interact.show()
 		close_interact.hide()
@@ -186,3 +208,12 @@ func _on_safe_interact_interacted(interactor):
 		interior_interact_area_2.show()
 		interior_interact_area_3.show()
 		interior_interact_area_4.show()
+
+
+func _on_object_exit_pressed():
+	open_interact.hide()
+	close_interact.show()
+	interior_interact_area_1.show()
+	interior_interact_area_2.show()
+	interior_interact_area_3.show()
+	interior_interact_area_4.show()

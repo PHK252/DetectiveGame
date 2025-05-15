@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://22d8wsirr1dd"]
+[gd_scene load_steps=10 format=3 uid="uid://22d8wsirr1dd"]
 
 [ext_resource type="Script" uid="uid://cr2ara2tataqf" path="res://UI/object_look.gd" id="1_vbqem"]
 [ext_resource type="Texture2D" uid="uid://rl0a0561d2d8" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Blue.png" id="2_y0pbs"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="6_ab2j5"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l20xi"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pimcf"]
+device = -1
+keycode = 81
+unicode = 113
+
+[sub_resource type="Shortcut" id="Shortcut_jwkcv"]
+events = [SubResource("InputEventKey_pimcf")]
 
 [node name="ObjectLook" type="CanvasLayer"]
 script = ExtResource("1_vbqem")
@@ -64,6 +72,7 @@ offset_left = 50.0
 offset_top = 30.0
 offset_right = 150.0
 offset_bottom = 146.0
+shortcut = SubResource("Shortcut_jwkcv")
 texture_normal = ExtResource("4_2uadh")
 texture_pressed = ExtResource("5_pmhv8")
 texture_hover = ExtResource("5_pmhv8")
