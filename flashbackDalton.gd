@@ -7,6 +7,10 @@ var SPEED = 1.15
 const LERP_VAL = .15
 @export var force_rotate_list: Array[Marker3D]
 @export var collision : CollisionShape3D
+@export var sound_player : AnimationPlayer
+var just_walked : bool = false
+@export var paperSound : AudioStreamPlayer3D
+@export var think : AudioStreamPlayer3D
 
 signal moving
 signal stopped
@@ -27,11 +31,10 @@ func _ready() -> void:
 	add_to_group("player")
 	anim_tree.set("parameters/Blend2/blend_amount", blend_target)
 	in_control = false
-
 	await get_tree().create_timer(10).timeout
-
 	# Start lerping to 0
 	blend_target = 0.0
+	await get_tree().create_timer(1).timeout
 	in_control = true
 
 func _process(delta: float) -> void:
@@ -75,7 +78,12 @@ func _physics_process(delta: float) -> void:
 				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
 				#if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					#anim_tree["parameters/Blend3/blend_amount"] = 0
+				sound_player.play("wood_walk")
+				just_walked = true
 			else:
+				if just_walked:
+					sound_player.play("wood_gather")
+					just_walked = false
 				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
@@ -128,3 +136,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	number = 1
 	force_rotate(number)
 	move_out = true
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		paperSound.play()
+		
