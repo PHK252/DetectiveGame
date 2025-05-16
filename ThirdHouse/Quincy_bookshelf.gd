@@ -30,6 +30,7 @@ extends Node3D
 #Interaction Variables
 @export var interact_area: Area2D
 @export var dialogue_file: String
+@export var react_file: String
 @export var thought_dialogue_file: String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
@@ -90,16 +91,22 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.show()
+	
+func _on_reaction_ended():
+	Dialogic.timeline_ended.disconnect(_on_reaction_ended)
+	GlobalVars.in_dialogue = false
+	player.start_player()
 
 func _on_thoughts_ended():
 	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
 	GlobalVars.in_dialogue = false
 	interact_area.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_interactable_interacted(interactor):
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	alert.hide()
 	GlobalVars.in_interaction = interact_type
+	interact_area.hide()
 	FP_Cam.priority = 30
 	Exit_Cam.priority = 0 
 	cam_anim.play("Cam_Idle")
@@ -107,10 +114,10 @@ func _on_interactable_interacted(interactor):
 	player.stop_player()
 	if distracted == true:
 		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_thoughts_ended)
 		Dialogic.start(thought_dialogue_file)
-		
-
+		Dialogic.timeline_ended.connect(_on_thoughts_ended)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -118,6 +125,7 @@ func _on_input_event(viewport, event, shape_idx):
 			if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 				if distracted == false:
 					alert.hide()
+					Exit_Cam.set_tween_duration(0)
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					GlobalVars.in_dialogue = true
 					FP_Cam.priority = 0
@@ -134,8 +142,10 @@ func _on_input_event(viewport, event, shape_idx):
 					game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 					game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					#GlobalVars.set(view_item, true)
+					Exit_Cam.set_tween_duration(1)
 					interact_area.hide()
 				else:
+					Exit_Cam.set_tween_duration(0)
 					interact_area.hide()
 					bookmark_anim.play("Bookmark_pull")
 					GlobalVars.set(view_item, true)
@@ -151,6 +161,13 @@ func _on_input_event(viewport, event, shape_idx):
 					player.start_player()
 					GlobalVars.in_interaction = ""
 					interact_area.hide()
+					Exit_Cam.set_tween_duration(1)
+					var react_dialogue = Dialogic.start(react_file)
+					#Dialogic.VAR.get("Asked Questions").Micah_cab = 1 #need quincy version
+					Dialogic.timeline_ended.connect(_on_reaction_ended)
+					react_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+					react_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+					react_dialogue.register_character(load(load_char_dialogue), character_marker)
 					
 
 func open() -> void:

@@ -48,7 +48,7 @@ func _on_interactable_interacted(interactor):
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			game_dialogue.register_character(load(load_char_dialogue), character_marker)
-		elif GlobalVars.opened_jun_case == true:
+		elif GlobalVars.opened_quincy_case == true:
 			GlobalVars.in_interaction = interact_type
 			#print("look " + str(GlobalVars.in_look_screen))
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -110,7 +110,9 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30
+			main_cam.set_tween_duration(0)
 			cam_anim.play("RESET")
+			#main_cam.set_tween_duration(1)
 			player.show()
 			if GlobalVars.opened_jun_case == true:
 				interior_interact_area_1.hide()
@@ -174,6 +176,8 @@ func _input(event):
 				player.start_player()
 				alert.show()
 				interact_area.hide()
+				interior_interact_area_1.hide()
+				interior_interact_area_2.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "case_ui": 
 			UI.hide()
 			GlobalVars.in_look_screen = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b3a7fejp4gdt6"]
+[gd_scene load_steps=75 format=3 uid="uid://b3a7fejp4gdt6"]
 
 [ext_resource type="Script" uid="uid://ck8v21bolbd81" path="res://UI/quincy_case.gd" id="1_xhsbu"]
 [ext_resource type="Texture2D" uid="uid://ykqne0r1gdue" path="res://UI/Assets/Quincy Case/Quincy_case_UI.png" id="2_kxnh3"]
@@ -36,6 +36,165 @@
 [sub_resource type="LabelSettings" id="LabelSettings_r62oi"]
 font_size = 35
 font_color = Color(0.4, 0.454902, 0.380392, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_4bu4b"]
+device = -1
+keycode = 4194439
+unicode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_l4c5b"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_oqckw"]
+events = [SubResource("InputEventKey_4bu4b"), SubResource("InputEventKey_l4c5b")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5wwwy"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="InputEventKey" id="InputEventKey_oqckw"]
+device = -1
+keycode = 4194440
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_acjfw"]
+events = [SubResource("InputEventKey_5wwwy"), SubResource("InputEventKey_oqckw")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_acjfw"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="InputEventKey" id="InputEventKey_mujld"]
+device = -1
+keycode = 4194441
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_1ijul"]
+events = [SubResource("InputEventKey_acjfw"), SubResource("InputEventKey_mujld")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tncqy"]
+device = -1
+keycode = 52
+unicode = 52
+
+[sub_resource type="InputEventKey" id="InputEventKey_ivoop"]
+device = -1
+keycode = 4194442
+unicode = 52
+
+[sub_resource type="Shortcut" id="Shortcut_fbqfa"]
+events = [SubResource("InputEventKey_tncqy"), SubResource("InputEventKey_ivoop")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_53dwd"]
+device = -1
+keycode = 53
+unicode = 53
+
+[sub_resource type="InputEventKey" id="InputEventKey_vcyeo"]
+device = -1
+keycode = 4194443
+unicode = 53
+
+[sub_resource type="Shortcut" id="Shortcut_dtimt"]
+events = [SubResource("InputEventKey_53dwd"), SubResource("InputEventKey_vcyeo")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_dceih"]
+device = -1
+keycode = 54
+unicode = 54
+
+[sub_resource type="InputEventKey" id="InputEventKey_ytet1"]
+device = -1
+keycode = 4194444
+unicode = 54
+
+[sub_resource type="Shortcut" id="Shortcut_41t5e"]
+events = [SubResource("InputEventKey_dceih"), SubResource("InputEventKey_ytet1")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_71fra"]
+device = -1
+keycode = 54
+unicode = 54
+
+[sub_resource type="InputEventKey" id="InputEventKey_gnfr8"]
+device = -1
+keycode = 4194444
+unicode = 54
+
+[sub_resource type="Shortcut" id="Shortcut_0qss6"]
+events = [SubResource("InputEventKey_71fra"), SubResource("InputEventKey_gnfr8")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_rmd0l"]
+device = -1
+keycode = 56
+unicode = 56
+
+[sub_resource type="InputEventKey" id="InputEventKey_hlwna"]
+device = -1
+keycode = 4194446
+unicode = 56
+
+[sub_resource type="Shortcut" id="Shortcut_umg6v"]
+events = [SubResource("InputEventKey_rmd0l"), SubResource("InputEventKey_hlwna")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ex24i"]
+device = -1
+keycode = 57
+unicode = 57
+
+[sub_resource type="InputEventKey" id="InputEventKey_i0uqv"]
+device = -1
+keycode = 4194447
+unicode = 57
+
+[sub_resource type="Shortcut" id="Shortcut_c7l6c"]
+events = [SubResource("InputEventKey_ex24i"), SubResource("InputEventKey_i0uqv")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_2fy05"]
+device = -1
+keycode = 48
+unicode = 48
+
+[sub_resource type="InputEventKey" id="InputEventKey_wfq0x"]
+device = -1
+keycode = 4194438
+unicode = 48
+
+[sub_resource type="Shortcut" id="Shortcut_r62oi"]
+events = [SubResource("InputEventKey_2fy05"), SubResource("InputEventKey_wfq0x")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_bov0u"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_jwixr"]
+device = -1
+keycode = 4194310
+
+[sub_resource type="Shortcut" id="Shortcut_hdetl"]
+events = [SubResource("InputEventKey_bov0u"), SubResource("InputEventKey_jwixr")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_22cjp"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="InputEventKey" id="InputEventKey_eiyat"]
+device = -1
+keycode = 4194308
+
+[sub_resource type="Shortcut" id="Shortcut_2guk5"]
+events = [SubResource("InputEventKey_22cjp"), SubResource("InputEventKey_eiyat")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_urqgl"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_ju8do"]
+events = [SubResource("InputEventKey_urqgl")]
 
 [sub_resource type="Animation" id="Animation_kxnh3"]
 resource_name = "Blink"
@@ -106,6 +265,9 @@ offset_left = 455.0
 offset_top = 480.0
 offset_right = 510.0
 offset_bottom = 540.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_oqckw")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("5_l4c5b")
 texture_pressed = ExtResource("6_oqckw")
 texture_hover = ExtResource("5_l4c5b")
@@ -115,6 +277,9 @@ offset_left = 540.0
 offset_top = 480.0
 offset_right = 595.0
 offset_bottom = 540.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_acjfw")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("7_5wwwy")
 texture_pressed = ExtResource("8_acjfw")
 texture_hover = ExtResource("7_5wwwy")
@@ -124,6 +289,9 @@ offset_left = 625.0
 offset_top = 480.0
 offset_right = 680.0
 offset_bottom = 540.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_1ijul")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("9_mujld")
 texture_pressed = ExtResource("10_1ijul")
 texture_hover = ExtResource("9_mujld")
@@ -133,6 +301,9 @@ offset_left = 455.0
 offset_top = 555.0
 offset_right = 510.0
 offset_bottom = 615.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_fbqfa")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("11_tncqy")
 texture_pressed = ExtResource("12_ivoop")
 texture_hover = ExtResource("11_tncqy")
@@ -142,6 +313,9 @@ offset_left = 540.0
 offset_top = 555.0
 offset_right = 595.0
 offset_bottom = 615.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_dtimt")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("13_fbqfa")
 texture_pressed = ExtResource("14_53dwd")
 texture_hover = ExtResource("13_fbqfa")
@@ -152,6 +326,9 @@ offset_left = 625.0
 offset_top = 555.0
 offset_right = 680.0
 offset_bottom = 615.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_41t5e")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("15_vcyeo")
 texture_pressed = ExtResource("16_dtimt")
 texture_hover = ExtResource("15_vcyeo")
@@ -162,6 +339,9 @@ offset_left = 455.0
 offset_top = 630.0
 offset_right = 510.0
 offset_bottom = 690.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_0qss6")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("17_dceih")
 texture_pressed = ExtResource("18_ytet1")
 texture_hover = ExtResource("17_dceih")
@@ -172,6 +352,9 @@ offset_left = 540.0
 offset_top = 630.0
 offset_right = 595.0
 offset_bottom = 690.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_umg6v")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("19_41t5e")
 texture_pressed = ExtResource("20_71fra")
 texture_hover = ExtResource("19_41t5e")
@@ -182,6 +365,9 @@ offset_left = 625.0
 offset_top = 630.0
 offset_right = 680.0
 offset_bottom = 690.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_c7l6c")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("21_gnfr8")
 texture_pressed = ExtResource("22_0qss6")
 texture_hover = ExtResource("21_gnfr8")
@@ -191,6 +377,9 @@ offset_left = 540.0
 offset_top = 705.0
 offset_right = 595.0
 offset_bottom = 765.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_r62oi")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("23_rmd0l")
 texture_pressed = ExtResource("24_hlwna")
 texture_hover = ExtResource("23_rmd0l")
@@ -200,6 +389,9 @@ offset_left = 720.0
 offset_top = 785.0
 offset_right = 775.0
 offset_bottom = 840.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_hdetl")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("25_umg6v")
 texture_pressed = ExtResource("26_ex24i")
 texture_hover = ExtResource("25_umg6v")
@@ -209,6 +401,9 @@ offset_left = 455.0
 offset_top = 705.0
 offset_right = 510.0
 offset_bottom = 765.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_2guk5")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("27_i0uqv")
 texture_pressed = ExtResource("28_c7l6c")
 texture_hover = ExtResource("27_i0uqv")
@@ -218,13 +413,20 @@ offset_left = 625.0
 offset_top = 705.0
 offset_right = 680.0
 offset_bottom = 765.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_ju8do")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("29_2fy05")
 texture_pressed = ExtResource("30_wfq0x")
 texture_hover = ExtResource("29_2fy05")
 
 [node name="Exit" type="TextureButton" parent="."]
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = 50.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 130.0
+mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
 texture_normal = ExtResource("31_4bu4b")
 texture_pressed = ExtResource("32_l4c5b")
 texture_hover = ExtResource("31_4bu4b")
