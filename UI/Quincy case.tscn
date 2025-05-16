@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://b3a7fejp4gdt6"]
+[gd_scene load_steps=74 format=3 uid="uid://b3a7fejp4gdt6"]
 
 [ext_resource type="Script" uid="uid://ck8v21bolbd81" path="res://UI/quincy_case.gd" id="1_xhsbu"]
 [ext_resource type="Texture2D" uid="uid://ykqne0r1gdue" path="res://UI/Assets/Quincy Case/Quincy_case_UI.png" id="2_kxnh3"]
@@ -116,14 +116,10 @@ unicode = 54
 events = [SubResource("InputEventKey_dceih"), SubResource("InputEventKey_ytet1")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_71fra"]
-device = -1
-keycode = 54
-unicode = 54
+keycode = 55
 
 [sub_resource type="InputEventKey" id="InputEventKey_gnfr8"]
-device = -1
-keycode = 4194444
-unicode = 54
+keycode = 4194445
 
 [sub_resource type="Shortcut" id="Shortcut_0qss6"]
 events = [SubResource("InputEventKey_71fra"), SubResource("InputEventKey_gnfr8")]
@@ -171,12 +167,8 @@ events = [SubResource("InputEventKey_2fy05"), SubResource("InputEventKey_wfq0x")
 device = -1
 keycode = 4194309
 
-[sub_resource type="InputEventKey" id="InputEventKey_jwixr"]
-device = -1
-keycode = 4194310
-
 [sub_resource type="Shortcut" id="Shortcut_hdetl"]
-events = [SubResource("InputEventKey_bov0u"), SubResource("InputEventKey_jwixr")]
+events = [SubResource("InputEventKey_bov0u")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_22cjp"]
 device = -1
@@ -265,6 +257,7 @@ offset_left = 455.0
 offset_top = 480.0
 offset_right = 510.0
 offset_bottom = 540.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_oqckw")
 shortcut_in_tooltip = false
@@ -277,6 +270,7 @@ offset_left = 540.0
 offset_top = 480.0
 offset_right = 595.0
 offset_bottom = 540.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_acjfw")
 shortcut_in_tooltip = false
@@ -289,6 +283,7 @@ offset_left = 625.0
 offset_top = 480.0
 offset_right = 680.0
 offset_bottom = 540.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_1ijul")
 shortcut_in_tooltip = false
@@ -301,6 +296,7 @@ offset_left = 455.0
 offset_top = 555.0
 offset_right = 510.0
 offset_bottom = 615.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_fbqfa")
 shortcut_in_tooltip = false
@@ -313,6 +309,7 @@ offset_left = 540.0
 offset_top = 555.0
 offset_right = 595.0
 offset_bottom = 615.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_dtimt")
 shortcut_in_tooltip = false
@@ -326,6 +323,7 @@ offset_left = 625.0
 offset_top = 555.0
 offset_right = 680.0
 offset_bottom = 615.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_41t5e")
 shortcut_in_tooltip = false
@@ -339,6 +337,7 @@ offset_left = 455.0
 offset_top = 630.0
 offset_right = 510.0
 offset_bottom = 690.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_0qss6")
 shortcut_in_tooltip = false
@@ -352,6 +351,7 @@ offset_left = 540.0
 offset_top = 630.0
 offset_right = 595.0
 offset_bottom = 690.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_umg6v")
 shortcut_in_tooltip = false
@@ -365,6 +365,7 @@ offset_left = 625.0
 offset_top = 630.0
 offset_right = 680.0
 offset_bottom = 690.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_c7l6c")
 shortcut_in_tooltip = false
@@ -377,6 +378,7 @@ offset_left = 540.0
 offset_top = 705.0
 offset_right = 595.0
 offset_bottom = 765.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_r62oi")
 shortcut_in_tooltip = false
@@ -389,6 +391,7 @@ offset_left = 720.0
 offset_top = 785.0
 offset_right = 775.0
 offset_bottom = 840.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_hdetl")
 shortcut_in_tooltip = false
@@ -401,6 +404,7 @@ offset_left = 455.0
 offset_top = 705.0
 offset_right = 510.0
 offset_bottom = 765.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_2guk5")
 shortcut_in_tooltip = false
@@ -413,6 +417,7 @@ offset_left = 625.0
 offset_top = 705.0
 offset_right = 680.0
 offset_bottom = 765.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_ju8do")
 shortcut_in_tooltip = false
@@ -445,11 +450,8 @@ libraries = {
 }
 
 [connection signal="pressed" from="1" to="." method="_on_one_pressed"]
-[connection signal="mouse_exited" from="2abc" to="." method="_on_abc_mouse_exited"]
 [connection signal="pressed" from="2abc" to="." method="_on_abc_pressed"]
-[connection signal="mouse_exited" from="3def" to="." method="_on_def_mouse_exited"]
 [connection signal="pressed" from="3def" to="." method="_on_def_pressed"]
-[connection signal="mouse_exited" from="4ghi" to="." method="_on_ghi_mouse_exited"]
 [connection signal="pressed" from="4ghi" to="." method="_on_ghi_pressed"]
 [connection signal="mouse_exited" from="5jkl" to="." method="_on_jkl_mouse_exited"]
 [connection signal="pressed" from="5jkl" to="." method="_on_jkl_pressed"]

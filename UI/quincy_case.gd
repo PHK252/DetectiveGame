@@ -186,6 +186,7 @@ func position_blinker_backwards(pos : int):
 	#print("After " + str(blinker.position.x))
 
 func _on_enter_pressed():
+	pressed_button = "enter"
 	blinker_anim.play("RESET")
 	input = label.text
 	blinker.position.x = blinker_x_pos_intial
@@ -198,42 +199,46 @@ func _on_enter_pressed():
 		GlobalVars.emit_open_quincy_case()
 		await get_tree().create_timer(1.5).timeout
 	else:
-		#print("very wrong")
+		print("very wrong")
 		label.text = "Wrong"
+		await get_tree().create_timer(.05).timeout
+		$Enter.disabled = true
 		await get_tree().create_timer(1.5).timeout
 		input = ""
 		label.text = input
 		position = 0
 		blinker_anim.play("Blink")
+		$Enter.disabled = false
 		pass
 
 
-func _on_def_mouse_exited():
-	reset_num()
-
-func _on_abc_mouse_exited():
-	reset_num()
-
-func _on_ghi_mouse_exited():
-	reset_num()
-
-func _on_jkl_mouse_exited():
-	reset_num()
-
-func _on_mno_mouse_exited():
-	reset_num()
-
-func _on_pqrs_mouse_exited():
-	reset_num()
-
-func _on_tuv_mouse_exited():
-	reset_num()
-
-func _on_wxyz_mouse_exited():
-	reset_num()
+#func _on_def_mouse_exited():
+	#reset_num()
+#
+#func _on_abc_mouse_exited():
+	#reset_num()
+#
+#func _on_ghi_mouse_exited():
+	#reset_num()
+#
+#func _on_jkl_mouse_exited():
+	#reset_num()
+#
+#func _on_mno_mouse_exited():
+	#reset_num()
+#
+#func _on_pqrs_mouse_exited():
+	#reset_num()
+#
+#func _on_tuv_mouse_exited():
+	#reset_num()
+#
+#func _on_wxyz_mouse_exited():
+	#reset_num()
 
 func reset_when_switch():
-	if current_button != pressed_button:
+	print("entered")
+	if pressed_button != "enter" and current_button != pressed_button:
 		current_button = pressed_button
 		print(current_button)
 		reset_num()

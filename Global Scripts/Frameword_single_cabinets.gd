@@ -115,7 +115,7 @@ func _process(delta):
 
 	if GlobalVars.in_look_screen == true:
 		interact_area.hide()
-	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30 and is_open == true:
+	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30 and is_open == true and cab_anim == false:
 		interact_area.show()
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
@@ -142,7 +142,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 
 
 func open() -> void:
-	open_sound.play()
+	#open_sound.play()
 	cab_anim = true
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
@@ -159,14 +159,14 @@ func open() -> void:
 		print("finished")
 	else:
 		open_interact.hide()
-		interact_area.show()
 		await get_tree().create_timer(2.1).timeout
+		interact_area.show()
 		close_interact.show()
 		await get_tree().create_timer(.2).timeout
 		cab_anim = false
 	
 func close() -> void:
-	close_sound.play()
+	#close_sound.play()
 	cab_anim = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false

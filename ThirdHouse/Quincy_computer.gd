@@ -41,8 +41,9 @@ func compUI(argument: String):
 		player.hide()
 		GlobalVars.Quincy_in_computer = true
 		player.stop_player()
-		GlobalVars.in_interaction = dialogue_file
+		GlobalVars.in_interaction = "computer"
 		UI.show()
+		Dialogic.signal_event.disconnect(compUI)
 		
 
 func _input(event):

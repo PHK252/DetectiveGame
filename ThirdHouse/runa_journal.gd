@@ -38,3 +38,16 @@ func _on_animation_tree_animation_started(anim_name):
 	if anim_name == "Blank":
 		blank_turn_count += 1
 		#print(blank_turn_count)
+
+
+func _on_exit_pressed():
+	$".".hide()
+	GlobalVars.in_look_screen = false
+	GlobalVars.viewing = ""
+
+func _input(event):
+	if Input.is_action_just_pressed("Exit"):
+		$".".hide()
+		GlobalVars.in_look_screen = false
+		await get_tree().create_timer(.3).timeout
+		GlobalVars.viewing = ""
