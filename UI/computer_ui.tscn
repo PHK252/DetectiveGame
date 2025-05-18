@@ -360,8 +360,9 @@ texture_normal = ExtResource("21_tm4ku")
 texture_pressed = ExtResource("22_kq6sd")
 texture_hover = ExtResource("22_kq6sd")
 
-[node name="Dropdown" type="CanvasLayer" parent="Home"]
+[node name="Dropdown" type="Control" parent="Home"]
 visible = false
+anchors_preset = 0
 
 [node name="Dropdown1" type="TextureButton" parent="Home/Dropdown"]
 offset_left = 10.0
@@ -850,6 +851,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Message2" type="Control" parent="Mail/Read"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -939,8 +941,9 @@ Thank you for your hard work. Your cooperation is appreciated.
 fit_content = true
 scroll_active = false
 
-[node name="New Message" type="CanvasLayer" parent="Mail"]
+[node name="New Message" type="Control" parent="Mail"]
 visible = false
+anchors_preset = 0
 
 [node name="ComputerMailNewWindowBackground" type="Sprite2D" parent="Mail/New Message"]
 texture = ExtResource("60_rkk8e")
@@ -983,9 +986,9 @@ texture_normal = ExtResource("67_0d57v")
 texture_pressed = ExtResource("68_21br3")
 texture_hover = ExtResource("68_21br3")
 
-[node name="Error" type="CanvasLayer" parent="Mail"]
-layer = 2
+[node name="Error" type="Control" parent="Mail"]
 visible = false
+anchors_preset = 0
 
 [node name="ComputerMailNewWindowBackground" type="Sprite2D" parent="Mail/Error"]
 texture = ExtResource("60_rkk8e")
@@ -1025,8 +1028,9 @@ texture_normal = ExtResource("74_reckf")
 texture_pressed = ExtResource("75_fvigi")
 texture_hover = ExtResource("75_fvigi")
 
-[node name="Face ID" type="CanvasLayer" parent="Mail"]
+[node name="Face ID" type="Control" parent="Mail"]
 visible = false
+anchors_preset = 0
 
 [node name="ComputerMailNewWindowBackground2" type="Sprite2D" parent="Mail/Face ID"]
 texture = ExtResource("60_rkk8e")

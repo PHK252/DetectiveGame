@@ -61,7 +61,7 @@ func _on_hint_pressed():
 	$Login/HintText.hide()
 
 func _on_sleep_pressed():
-	get_tree().quit()
+	$".".hide()
 
 
 func _on_restart_pressed():
@@ -69,7 +69,7 @@ func _on_restart_pressed():
 
 
 func _on_shutdown_pressed():
-	get_tree().quit()
+	$".".hide()
 
 
 #Home
@@ -87,19 +87,18 @@ func _on_dropdown_1_pressed():
 	home.hide()
 
 func _on_dropdown_2_pressed():
-	get_tree().quit()
+	$".".hide()
 
 
 func _on_dropdown_3_pressed():
-	get_tree().quit()
+	$".".hide()
 
 
 func _on_dropdown_4_pressed():
-	get_tree().quit()
-
+	$".".hide()
 
 func _on_dropdown_5_pressed():
-	get_tree().quit()
+	$".".hide()
 
 func _on_mail_pressed():
 	Home_dropdown_overlay.hide()
