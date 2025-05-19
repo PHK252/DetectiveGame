@@ -365,6 +365,7 @@ visible = false
 anchors_preset = 0
 
 [node name="Dropdown1" type="TextureButton" parent="Home/Dropdown"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 35.0
 offset_right = 190.0
@@ -375,6 +376,7 @@ texture_pressed = ExtResource("24_nsuay")
 texture_hover = ExtResource("24_nsuay")
 
 [node name="Dropdown2" type="TextureButton" parent="Home/Dropdown"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 65.0
 offset_right = 190.0
@@ -385,6 +387,7 @@ texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
 
 [node name="Dropdown3" type="TextureButton" parent="Home/Dropdown"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 95.0
 offset_right = 190.0
@@ -395,6 +398,7 @@ texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
 
 [node name="Dropdown4" type="TextureButton" parent="Home/Dropdown"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 125.0
 offset_right = 190.0
@@ -405,6 +409,7 @@ texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
 
 [node name="Dropdown5" type="TextureButton" parent="Home/Dropdown"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 155.0
 offset_right = 190.0
@@ -960,6 +965,7 @@ texture = ExtResource("62_4q0q3")
 centered = false
 
 [node name="Exit" type="TextureButton" parent="Mail/New Message"]
+layout_mode = 0
 offset_left = 1565.0
 offset_top = 250.0
 offset_right = 1590.0
@@ -969,6 +975,7 @@ texture_pressed = ExtResource("64_b4nmn")
 texture_hover = ExtResource("64_b4nmn")
 
 [node name="Send" type="TextureButton" parent="Mail/New Message"]
+layout_mode = 0
 offset_left = 345.0
 offset_top = 810.0
 offset_right = 400.0
@@ -978,6 +985,7 @@ texture_pressed = ExtResource("66_3fope")
 texture_hover = ExtResource("66_3fope")
 
 [node name="Delete" type="TextureButton" parent="Mail/New Message"]
+layout_mode = 0
 offset_left = 1540.0
 offset_top = 825.0
 offset_right = 1585.0
@@ -1009,6 +1017,7 @@ position = Vector2(700, 455)
 texture = ExtResource("71_8mcwh")
 
 [node name="Error Exit" type="TextureButton" parent="Mail/Error"]
+layout_mode = 0
 offset_left = 1290.0
 offset_top = 355.0
 offset_right = 1305.0
@@ -1019,6 +1028,7 @@ texture_pressed = ExtResource("73_7jepk")
 texture_hover = ExtResource("73_7jepk")
 
 [node name="Confirm" type="TextureButton" parent="Mail/Error"]
+layout_mode = 0
 offset_left = 865.0
 offset_top = 660.0
 offset_right = 1055.0

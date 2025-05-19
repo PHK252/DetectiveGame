@@ -109,6 +109,7 @@ directories/dtl_directory={
 "PLACEHOLDER THOUGHTS": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER THOUGHTS.dtl",
 "PLACEHOLDER2": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER2.dtl",
 "Quincy_Computer": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Computer.dtl",
+"Quincy_Office_door": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Office_door.dtl",
 "Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
 "Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl",
 "Warrant_home": "res://Dialogue Stuff/Timelines/Micah/Warrant_home.dtl",
@@ -141,8 +142,8 @@ variables={
 "Micah_asked_juniper": false,
 "Micah_cab": 0,
 "Micah_know_Juniper": false,
-"finished_key": false,
-"finished_letter": false
+"has_key": true,
+"has_letter": false
 },
 "Character Aff Points": {
 "Juniper": 0,
@@ -170,11 +171,12 @@ variables={
 },
 "Quincy": {
 "Quincy_asked_case": false,
-"finished_case_hammer": "",
-"finished_case_note": "",
+"finished_case_hammer": false,
+"finished_case_note": false,
 "is_distracted": true,
 "needs_distraction": false,
-"out_of_bathroom": false
+"out_of_bathroom": false,
+"unlocked_office": false
 }
 }
 glossary/default_case_sensitive=true

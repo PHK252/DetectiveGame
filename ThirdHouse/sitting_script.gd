@@ -15,6 +15,7 @@ extends Node
 @export var cocktailAnim: Node3D
 @export var cocktailStatic: Node3D
 
+@export var alert : Sprite3D
 signal DaltonInvisible
 signal DaltonVisible
 signal theo_out
@@ -35,6 +36,7 @@ func _on_character_body_3d_theo_sit() -> void:
 	anim_player_tO.play("SitOutside_001")
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
+	alert.hide()
 	emit_signal("DaltonInvisible")
 	dalton_outside.visible = true
 	dalton_bar.visible = true
@@ -55,9 +57,10 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	anim_player_dO.play("Sit_Outside")
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Exit"):
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
 		dalton_outside.visible = false
 		dalton_bar.visible = false
+		alert.show()
 		emit_signal("DaltonVisible")
 		
 		
