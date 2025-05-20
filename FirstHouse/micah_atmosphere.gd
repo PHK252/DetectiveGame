@@ -138,7 +138,7 @@ func _on_delivery_timer_timeout() -> void:
 	flipped_deliver.x = -flipped_deliver.x  # Flip the X basis vector to mirror rotation on the Y-axis
 	flipped_deliver.z = -flipped_deliver.z  # Flip the Z basis vector to mirror rotation on the Y-axis
 	sloth.basis = flipped_deliver 
-	#await get_tree().create_timer(0.3).timeout
+	#await get_tree().create_timer(0.5).timeout
 	delivery_activate = true
 
 func _on_panda_door_body_entered(body: Node3D) -> void:
@@ -162,13 +162,19 @@ func _on_delivery_door_body_entered(body: Node3D) -> void:
 	await get_tree().create_timer(1.2).timeout
 	sloth_anims.set("parameters/PutDown/request", true)
 	anim_box.play("box_drop")
+	sloth_anims.set("parameters/blendHold/blend_amount", 1)
+	sloth_anims.set("parameters/BlendSpaceNone/blend_position", 0)
 	await get_tree().create_timer(10.5).timeout
 	cardboard_static.visible = true
 	cardboard_anim.visible = false
+	await get_tree().create_timer(1).timeout
 	var flipped_deliver = sloth.global_transform.basis
 	var rotation = Basis(Vector3.UP, deg_to_rad(87))
 	sloth.basis = rotation * flipped_deliver
 	delivery_activate = false
+	#sloth_anims.set("parameters/blendHold/blend_amount", 1)
+	#sloth_anims.set("parameters/BlendSpaceNone/blend_position", 0)
+	await get_tree().create_timer(0.2).timeout
 	go_back_activate = true
 
 
@@ -184,7 +190,6 @@ func _on_elevator_button_body_entered(body: Node3D) -> void:
 		E_sounds.play("OpenClose")
 		go_back_activate = true
 		
-
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	print("focusedI")

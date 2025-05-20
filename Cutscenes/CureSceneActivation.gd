@@ -25,8 +25,9 @@ func _process(delta):
 		await get_tree().create_timer(0.7).timeout
 		dalton_anims["parameters/conditions/give_cure"] = true
 		general_sound.play("gen_sounds")
+		await get_tree().create_timer(1).timeout
 		cure_dalton_hand.visible = true
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2).timeout
 		cure_dalton_hand.visible = false
 		cure_brother_hand.visible = true
 		await get_tree().create_timer(2).timeout
