@@ -211,6 +211,12 @@ func _on_left_hover_mouse_exited():
 
 #Number input
 @onready var num_input = $PhoneScreen/PhoneNum/NumInput
+@onready var at_bookshelf = false
+@export var dalton_marker : Marker2D
+@export var quincy_marker : Marker2D
+#@export var theo_marker : Marker2D
+@export var phone_marker : Marker2D
+@export var player : CharacterBody3D
 
 func inputNum(num: int):
 	if len(num_input.text) <  11:
@@ -270,7 +276,44 @@ func _on_delete_pressed():
 
 func _on_call_pressed():
 	print("Calling")
+	phone_ui.hide()
+	GlobalVars.phone_up = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var called_num = num_input.text
+	num_input.text = ""
+	phone.hide()
+	home.show()
+	
+	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	#print(at_bookshelf)
+	#print(needs_distraction)
+	#print(called_num)
+	if called_num == "034-2012":
+		if at_bookshelf == true and needs_distraction == true and GlobalVars.in_dialogue == false:
+			var book_distract = Dialogic.start("Quincy_book_distract")
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+			book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+	else:
+		if GlobalVars.in_dialogue == false:
+			var wrong_num = Dialogic.start("Phone_wrong_num")
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 
+func _on_bookshelf_area_body_entered(body):
+	at_bookshelf = true
+
+func _on_bookshelf_area_body_exited(body):
+	at_bookshelf = false
+
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
+	player.start_player()
 
 #Incoming Call
 @onready var phone_call_receiving = $PhoneScreen/PhoneCall

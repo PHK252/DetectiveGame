@@ -39,6 +39,7 @@ directories/dch_directory={
 "Daltons Thoughts": "res://Dialogic Characters/Daltons Thoughts.dch",
 "Juniper": "res://Dialogic Characters/Juniper.dch",
 "Micah": "res://Dialogic Characters/Micah.dch",
+"Phone": "res://Dialogic Characters/Phone.dch",
 "Quincy": "res://Dialogic Characters/Quincy.dch",
 "Theo": "res://Dialogic Characters/Theo.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
@@ -108,10 +109,12 @@ directories/dtl_directory={
 "PLACEHOLDER CHOICE": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER CHOICE.dtl",
 "PLACEHOLDER THOUGHTS": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER THOUGHTS.dtl",
 "PLACEHOLDER2": "res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER2.dtl",
+"Phone_wrong_num": "res://Dialogue Stuff/Timelines/Phone Calls/Phone_wrong_num.dtl",
 "Quincy_Computer": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Computer.dtl",
 "Quincy_Office_door": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Office_door.dtl",
 "Quincy_Patio_Locked": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Patio_Locked.dtl",
 "Quincy_Questions": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Questions.dtl",
+"Quincy_book_distract": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_distract.dtl",
 "Quincy_greeting": "res://Dialogue Stuff/Timelines/Quincy/Quincy_greeting.dtl",
 "Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
 "Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl",
@@ -177,8 +180,9 @@ variables={
 "asked_all": false,
 "finished_case_hammer": false,
 "finished_case_note": false,
+"in_bar_convo": false,
 "is_distracted": false,
-"needs_distraction": false,
+"needs_distraction": true,
 "out_of_bathroom": false,
 "unlocked_office": false
 }
@@ -341,6 +345,11 @@ meeting_done={
 call={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
+]
+}
+Phone={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

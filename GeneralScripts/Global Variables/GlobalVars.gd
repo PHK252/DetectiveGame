@@ -152,6 +152,8 @@ var cam_changed = false
 var clue_progress = 1
 var ghost_open = false
 
+var phone_up = false
+
 var master_volume : int
 var music_volume : int
 var effect_volume : int
