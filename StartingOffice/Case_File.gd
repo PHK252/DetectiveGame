@@ -10,7 +10,7 @@ extends MeshInstance3D
 @onready var theo_marker = $"../../../../UI/Theo's Marker"
 @onready var alert = $"../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
-var just_interacted = false
+var just_interacted := false
 
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:

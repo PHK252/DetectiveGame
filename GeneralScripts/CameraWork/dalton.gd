@@ -5,18 +5,18 @@ extends CharacterBody3D
 @export var camera = Camera3D
 @export var idle_time: Timer
 @export var idle_time_2: Timer
-var SPEED = 1.15
-const LERP_VAL = .15
-var jogcheck = false
+var SPEED := 1.15
+const LERP_VAL := .15
+var jogcheck := false
 var idle_timer_active: bool = false
 @export var force_rotate_list: Array[Marker3D]
 @export var sound_player : AnimationPlayer
 
-var gathered = false
-var walk_indicate = false
-var finished_greet = false
+var gathered := false
+var walk_indicate := false
+var finished_greet := false
 
-const MAX_STEP_HEIGHT = 1.2
+const MAX_STEP_HEIGHT := 1.2
 var _snapped_to_stairs_last_frame := false
 var _last_frame_was_on_floor = -INF
 signal moving
@@ -24,20 +24,20 @@ signal stopped
 signal theo_adjustment
 signal theo_reset
 signal knocking
-var move_back = false
-var is_interacting = false
+var move_back := false
+var is_interacting := false
 
-var move_back_in_progress = false
+var move_back_in_progress := false
 var move_back_start_position = Vector3()
 var move_back_target_position = Vector3()
 var move_back_progress = 0.0  # Tracks the progress of the lerp
-var cam_rotation = false
-var interaction = false
-var in_control = true
-var control_area = false
-var force_rotation = false
+var cam_rotation := false
+var interaction := false
+var in_control := true
+var control_area := false
+var force_rotation := false
 
-var number = 0
+var number := 0
 
 @export var tea_wait_marker : Marker3D
 var tea_time = false
