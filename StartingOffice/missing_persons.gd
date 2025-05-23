@@ -12,13 +12,27 @@ func _on_input_event(viewport, event, shape_idx):
 				object.hide()
 				look.show()
 				GlobalVars.in_look_screen = true
+				GlobalVars.clicked_missing += 1
 				GlobalVars.viewing = "missing"
-				print("missing")
 
-#
-#func _on_exit_pressed():
-	#GlobalVars.viewing = ""
-#
-#func _process(delta):
-	#if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "missing":
-		#GlobalVars.viewing = ""
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
+
+func _on_exit_pressed():
+	if GlobalVars.viewed_missing == false and GlobalVars.clicked_missing == 1:
+		print("entered")
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.start("Office_Missing")
+		GlobalVars.viewed_missing == true
+		GlobalVars.viewing = ""
+
+func _process(delta):
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "missing":
+		if GlobalVars.viewed_missing == false and GlobalVars.clicked_missing == 1:
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.start("Office_Missing")
+			GlobalVars.viewed_missing == true
+			GlobalVars.viewing = ""

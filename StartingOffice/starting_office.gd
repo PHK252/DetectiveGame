@@ -14,7 +14,7 @@ func _ready():
 	contact.hide()
 	missing.hide()
 	GlobalVars.current_level = "Office"
-	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	#$"UI/TeamPic Look".hide()
 	#var layout = Dialogic.start("Office_contact_ad")
