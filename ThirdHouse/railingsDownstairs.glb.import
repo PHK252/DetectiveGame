@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c5ud6vtu7lr4t"
-path="res://.godot/imported/NewStairRails.glb-9d76e001f70179f08ea7c1caa7eef7c6.scn"
+uid="uid://qkeywqqgxg3k"
+path="res://.godot/imported/railingsDownstairs.glb-01c74882fae0ff100c72bd5ebece6bdb.scn"
 
 [deps]
 
-source_file="res://ThirdHouse/NewStairRails.glb"
-dest_files=["res://.godot/imported/NewStairRails.glb-9d76e001f70179f08ea7c1caa7eef7c6.scn"]
+source_file="res://ThirdHouse/railingsDownstairs.glb"
+dest_files=["res://.godot/imported/railingsDownstairs.glb-01c74882fae0ff100c72bd5ebece6bdb.scn"]
 
 [params]
 
@@ -33,17 +33,24 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Environment": {
+"use_external/enabled": true,
+"use_external/path": "uid://cgwa84pvtb52t"
+},
+"Material.025": {
+"use_external/enabled": true,
+"use_external/path": "uid://3511hh4gwxji"
+}
+},
 "nodes": {
-"PATH:StairRails": {
+"PATH:goldWalls": {
 "import/skip_import": true
 },
-"PATH:StairRails_001": {
+"PATH:goldWalls_001": {
 "import/skip_import": true
 },
-"PATH:StairTop": {
-"import/skip_import": true
-},
-"PATH:Stairs_001": {
+"PATH:goldWalls_002": {
 "import/skip_import": true
 }
 }
