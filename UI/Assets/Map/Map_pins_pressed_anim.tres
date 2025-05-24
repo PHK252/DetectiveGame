@@ -1,0 +1,18 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://cnxf12dgpkb"]
+
+[ext_resource type="Texture2D" uid="uid://fh41322xfkyh" path="res://UI/Assets/Map/Pin Pressed1.png" id="1_ent7m"]
+[ext_resource type="Texture2D" uid="uid://cc5h76t8cgksm" path="res://UI/Assets/Map/Pin Pressed2.png" id="2_kfmwg"]
+[ext_resource type="Texture2D" uid="uid://cyrjmkar8veol" path="res://UI/Assets/Map/Pin Pressed3.png" id="3_nbyhc"]
+[ext_resource type="Texture2D" uid="uid://pexhy6kd641v" path="res://UI/Assets/Map/Pin Pressed4.png" id="4_536cs"]
+
+[resource]
+frames = 4
+one_shot = true
+frame_0/texture = ExtResource("1_ent7m")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("2_kfmwg")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("3_nbyhc")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("4_536cs")
+frame_3/duration = 0.25

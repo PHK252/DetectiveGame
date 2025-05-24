@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjrv3kmqym4e1"]
+[gd_scene load_steps=11 format=3 uid="uid://cjrv3kmqym4e1"]
 
 [ext_resource type="Script" uid="uid://bxm3brlgnve21" path="res://StartingOffice/scenechange.gd" id="1_n4a1j"]
 [ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="2_ek0q2"]
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="3_5gnlj"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="4_rhcr0"]
-[ext_resource type="Texture2D" uid="uid://dqcrocqnqacwu" path="res://UI/Assets/Interactions/Exclaim orange.png" id="5_ek0q2"]
+[ext_resource type="Texture2D" uid="uid://q2c5aislv1l7" path="res://UI/Assets/Map/Map_pins_normal_anim.tres" id="5_rhcr0"]
+[ext_resource type="Texture2D" uid="uid://cnxf12dgpkb" path="res://UI/Assets/Map/Map_pins_pressed_anim.tres" id="6_xb0rx"]
+[ext_resource type="Texture2D" uid="uid://cxkkmtm38716w" path="res://UI/Assets/Map/Map_pins_hover_anim.tres" id="7_uw31m"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ek0q2"]
 
@@ -29,7 +31,7 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_ek0q2")
 
 [node name="Map" type="TextureRect" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 322.5
@@ -55,50 +57,66 @@ texture_pressed = ExtResource("4_rhcr0")
 texture_hover = ExtResource("4_rhcr0")
 
 [node name="Micah" type="TextureButton" parent="."]
-offset_left = 944.0
-offset_top = 852.0
-offset_right = 1044.0
-offset_bottom = 952.0
+offset_left = 997.0
+offset_top = 860.0
+offset_right = 1097.0
+offset_bottom = 975.0
+scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
-texture_normal = ExtResource("5_ek0q2")
+texture_normal = ExtResource("5_rhcr0")
+texture_pressed = ExtResource("6_xb0rx")
+texture_hover = ExtResource("7_uw31m")
 
 [node name="Juniper" type="TextureButton" parent="."]
-offset_left = 1132.0
-offset_top = 57.0
-offset_right = 1232.0
-offset_bottom = 157.0
+offset_left = 637.0
+offset_top = 535.0
+offset_right = 737.0
+offset_bottom = 650.0
+scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
-texture_normal = ExtResource("5_ek0q2")
+texture_normal = ExtResource("5_rhcr0")
+texture_pressed = ExtResource("6_xb0rx")
+texture_hover = ExtResource("7_uw31m")
 
 [node name="Quincy" type="TextureButton" parent="."]
-offset_left = 574.0
-offset_top = 510.0
-offset_right = 674.0
-offset_bottom = 610.0
+offset_left = 1196.0
+offset_top = 43.0
+offset_right = 1230.0
+offset_bottom = 143.0
+scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
+toggle_mode = true
+keep_pressed_outside = true
 shortcut_in_tooltip = false
-texture_normal = ExtResource("5_ek0q2")
+texture_normal = ExtResource("5_rhcr0")
+texture_pressed = ExtResource("6_xb0rx")
+texture_hover = ExtResource("7_uw31m")
 
 [node name="Office" type="TextureButton" parent="."]
-offset_left = 813.0
-offset_top = 492.0
-offset_right = 913.0
-offset_bottom = 592.0
+offset_left = 860.0
+offset_top = 488.0
+offset_right = 960.0
+offset_bottom = 603.0
+scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
-texture_normal = ExtResource("5_ek0q2")
+texture_normal = ExtResource("5_rhcr0")
+texture_pressed = ExtResource("6_xb0rx")
+texture_hover = ExtResource("7_uw31m")
 
 [node name="Secret" type="TextureButton" parent="."]
-visible = false
-offset_left = 627.0
-offset_top = 23.0
-offset_right = 727.0
-offset_bottom = 123.0
+offset_left = 640.0
+offset_top = 35.0
+offset_right = 740.0
+offset_bottom = 150.0
+scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
-texture_normal = ExtResource("5_ek0q2")
+texture_normal = ExtResource("5_rhcr0")
+texture_pressed = ExtResource("6_xb0rx")
+texture_hover = ExtResource("7_uw31m")
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Micah" to="." method="_on_firsthouse_button_pressed"]
