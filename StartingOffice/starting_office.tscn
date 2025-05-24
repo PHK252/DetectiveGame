@@ -21,14 +21,12 @@
 [ext_resource type="Script" uid="uid://bm5pc4vssaaq8" path="res://StartingOffice/doughnut_001.gd" id="17_p708w"]
 [ext_resource type="PackedScene" uid="uid://d1p7a1g58vmah" path="res://GeneralScripts/interaction/Interactable.tscn" id="17_rbnfb"]
 [ext_resource type="Script" uid="uid://c34k1yxh7w7ip" path="res://StartingOffice/map.gd" id="17_yvedm"]
-[ext_resource type="Script" uid="uid://bxm3brlgnve21" path="res://StartingOffice/scenechange.gd" id="18_e4s53"]
 [ext_resource type="Shader" uid="uid://jlbjfy886yfg" path="res://ShaderScripts/environmentpalette.gdshader" id="18_i4am7"]
 [ext_resource type="Shader" uid="uid://du3qvml6xbpcu" path="res://ShaderScripts/pixel.gdshader" id="18_rugna"]
 [ext_resource type="Script" uid="uid://c0js06746yn7d" path="res://StartingOffice/corkboard_002.gd" id="19_efoaq"]
 [ext_resource type="Script" uid="uid://2un2chis6s28" path="res://StartingOffice/Case_File.gd" id="21_2ww2x"]
 [ext_resource type="PackedScene" uid="uid://dy2ngrst3vkxs" path="res://StartingOffice/lamp.glb" id="21_wyk6p"]
 [ext_resource type="Texture2D" uid="uid://b4saa7axtk1im" path="res://StartingOffice/Map v2 small.png" id="22_nx55m"]
-[ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="22_pkx6a"]
 [ext_resource type="AudioStream" uid="uid://5imfpjhajooe" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hover.wav" id="25_3mogx"]
 [ext_resource type="Shader" uid="uid://nav80wtg76hi" path="res://ShaderScripts/plank.tres" id="25_jbtrc"]
 [ext_resource type="Material" uid="uid://ct5ccdodxwgbu" path="res://ShaderScripts/case_file.tres" id="26_771f8"]
@@ -136,7 +134,8 @@
 [ext_resource type="AudioStream" uid="uid://dlmukgdrndsxy" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_2.wav" id="86_huq4m"]
 [ext_resource type="AudioStream" uid="uid://cfpc6h48grldo" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/blip_2.wav" id="89_uq3cw"]
 [ext_resource type="Script" uid="uid://brrqdc5chhi5y" path="res://StartingOffice/Office_mouse_active.gd" id="112_01533"]
-[ext_resource type="Script" uid="uid://blqvv15y55hqr" path="res://Global Scripts/Framework_Interact_To_Look.gd" id="119_7cjfq"]
+[ext_resource type="Script" uid="uid://02udc7tlpl6h" path="res://StartingOffice/casefile_look.gd" id="118_7cjfq"]
+[ext_resource type="PackedScene" uid="uid://cjrv3kmqym4e1" path="res://UI/Map_Ui.tscn" id="137_01533"]
 [ext_resource type="Script" uid="uid://b3uu2rmkwrrnb" path="res://StartingOffice/theo's_marker.gd" id="139_771f8"]
 
 [sub_resource type="Curve3D" id="Curve3D_acv4t"]
@@ -288,6 +287,61 @@ tracks/0/keys = {
 _data = {
 &"Cam_Idle": SubResource("Animation_4i1j6"),
 &"RESET": SubResource("Animation_hf6lb")
+}
+
+[sub_resource type="Resource" id="Resource_771f8"]
+script = ExtResource("4_7gcnl")
+duration = 0.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_4i1j6"]
+script = ExtResource("5_w7w6c")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Animation" id="Animation_gvlj3"]
+resource_name = "Cam_Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.465, 1.341, 0.989), Vector3(-1.465, 1.321, 0.989)]
+}
+
+[sub_resource type="Animation" id="Animation_yejlv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.465, 1.341, 0.989)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6735s"]
+_data = {
+&"Cam_Idle": SubResource("Animation_gvlj3"),
+&"RESET": SubResource("Animation_yejlv")
 }
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3x1a5"]
@@ -3529,6 +3583,9 @@ size = Vector2(439, 322.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_771f8"]
 size = Vector2(288.837, 329.595)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gyyf"]
+size = Vector2(700, 1028)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_aawn4")
 
@@ -3616,6 +3673,19 @@ metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/Casefile Cam"]
 libraries = {
 &"": SubResource("AnimationLibrary_gvlj3")
+}
+
+[node name="Map Cam" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
+transform = Transform3D(-0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, -0.999848, -1.465, 1.341, 0.989)
+script = ExtResource("3_ut7aw")
+tween_resource = SubResource("Resource_771f8")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_4i1j6")
+metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/CameraSystem/Map Cam"]
+libraries = {
+&"": SubResource("AnimationLibrary_6735s")
 }
 
 [node name="StartingOffice" type="Node3D" parent="SubViewportContainer/SubViewport"]
@@ -3831,63 +3901,17 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_xbjvr")
 skeleton = NodePath("")
 
-[node name="corkboard_001" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00353871)
+[node name="corkboard_001" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice" node_paths=PackedStringArray("map", "main_cam", "cam_anim", "exit_cam", "map_click", "player")]
+transform = Transform3D(1.07723, 0, 0, 0, 0.840278, 0, 0, 0, 1, 0.109919, 0.224876, -0.0180356)
 mesh = SubResource("ArrayMesh_krh22")
 skeleton = NodePath("")
 script = ExtResource("17_yvedm")
-
-[node name="MapUI" type="TextureRect" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001"]
-visible = false
-top_level = true
-offset_right = 1469.0
-offset_bottom = 1976.0
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("22_pkx6a")
-script = ExtResource("18_e4s53")
-
-[node name="firsthouse_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
-modulate = Color(0.988235, 0.992157, 1, 0)
-layout_mode = 0
-offset_left = 772.414
-offset_top = 1575.86
-offset_right = 851.414
-offset_bottom = 1620.86
-scale = Vector2(6.7, 6.7)
-
-[node name="secondhouse_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
-modulate = Color(1, 1, 1, 0.00392157)
-layout_mode = 0
-offset_left = 69.0
-offset_top = 1045.0
-offset_right = 116.0
-offset_bottom = 1091.0
-scale = Vector2(6.7, 6.7)
-
-[node name="thirdhouse_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
-modulate = Color(1, 1, 1, 0.0156863)
-layout_mode = 0
-offset_left = 855.0
-offset_top = 93.0
-offset_right = 936.0
-offset_bottom = 130.0
-scale = Vector2(6.7, 6.7)
-
-[node name="secret_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
-modulate = Color(1, 1, 1, 0.0117647)
-layout_mode = 0
-offset_left = 79.3103
-offset_top = 75.8621
-offset_right = 358.31
-offset_bottom = 396.862
-
-[node name="office_button" type="Button" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI"]
-modulate = Color(1, 1, 1, 0.0196078)
-layout_mode = 0
-offset_left = 451.724
-offset_top = 572.414
-offset_right = 972.724
-offset_bottom = 1075.41
+map = NodePath("../../../../UI/Map")
+main_cam = NodePath("../../CameraSystem/Map Cam")
+cam_anim = NodePath("../../CameraSystem/Map Cam/AnimationPlayer")
+exit_cam = NodePath("../../CameraSystem/PhantomCamera3D")
+map_click = NodePath("../../../../UI/Map_click")
+player = NodePath("../../Characters/Dalton/CharacterBody3D")
 
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" instance=ExtResource("17_rbnfb")]
 
@@ -3908,7 +3932,7 @@ stream = ExtResource("25_3mogx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57622, 1.32345, 1.42435)
 shape = SubResource("BoxShape3D_roawh")
 
-[node name="Exposition" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice" node_paths=PackedStringArray("casefilecam", "exitcam", "camanim")]
+[node name="Exposition" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice" node_paths=PackedStringArray("casefilecam", "exitcam", "camanim", "dalton_marker", "theo_marker")]
 transform = Transform3D(0.150422, 0, 0.075116, 0, 0.165014, 0, -0.0644709, 0, 0.175259, -0.322197, 0.654929, 0.964559)
 mesh = SubResource("ArrayMesh_in3td")
 skeleton = NodePath("")
@@ -3916,6 +3940,8 @@ script = ExtResource("21_2ww2x")
 casefilecam = NodePath("../../CameraSystem/Casefile Cam")
 exitcam = NodePath("../../CameraSystem/PhantomCamera3D")
 camanim = NodePath("../../CameraSystem/Casefile Cam/AnimationPlayer")
+dalton_marker = NodePath("../../../../UI/Dalton\'s Marker")
+theo_marker = NodePath("../../../../UI/Theo\'s Marker")
 
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/Exposition" instance=ExtResource("17_rbnfb")]
 
@@ -4029,12 +4055,12 @@ mesh = SubResource("ArrayMesh_b1aku")
 skeleton = NodePath("")
 
 [node name="Pin_004" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
-transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.66265, 1.77197, 1.51722)
+transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.66265, 1.70786, 1.51722)
 mesh = SubResource("ArrayMesh_abfr5")
 skeleton = NodePath("")
 
 [node name="Pin_005" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
-transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.19875, 1.77197, 1.51722)
+transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.17085, 1.70851, 1.51722)
 mesh = SubResource("ArrayMesh_tmsue")
 skeleton = NodePath("")
 
@@ -4065,12 +4091,12 @@ mesh = SubResource("ArrayMesh_i63en")
 skeleton = NodePath("")
 
 [node name="Pin_006" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
-transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.66265, 0.886366, 1.51722)
+transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.66265, 0.952031, 1.51722)
 mesh = SubResource("ArrayMesh_78agt")
 skeleton = NodePath("")
 
 [node name="Pin_007" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice"]
-transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.19875, 0.886366, 1.51722)
+transform = Transform3D(0.00804484, 0.000570501, 0.000833653, 0.000779688, 0.000747672, -0.00803573, -0.000642289, 0.00805329, 0.000686986, -1.19875, 0.966109, 1.51722)
 mesh = SubResource("ArrayMesh_qk73d")
 skeleton = NodePath("")
 
@@ -4638,21 +4664,27 @@ click = NodePath("../../SubViewportContainer/SubViewport/Ambience_and_Music/Clic
 position = Vector2(793.5, 238.25)
 shape = SubResource("RectangleShape2D_3b17k")
 
-[node name="Casefile" type="Area2D" parent="UI" node_paths=PackedStringArray("object_interact", "object_in_scene", "UI_look", "paper")]
+[node name="Casefile" type="Area2D" parent="UI" node_paths=PackedStringArray("object_interact", "object_in_scene", "UI_look")]
 visible = false
-script = ExtResource("119_7cjfq")
+script = ExtResource("118_7cjfq")
 object_interact = NodePath(".")
 object_in_scene = NodePath("../../SubViewportContainer/SubViewport/StartingOffice/Exposition")
 UI_look = NodePath("../Case Look")
 viewing = "file"
 clicked_object = "clicked_case_file"
 view_object = "viewed_case_file"
-paper = NodePath("../../SubViewportContainer/SubViewport/SpatialSounds/PaperSounds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Casefile"]
 position = Vector2(779, 871)
 rotation = -0.239204
 shape = SubResource("RectangleShape2D_771f8")
+
+[node name="Map_click" type="Area2D" parent="UI"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Map_click"]
+position = Vector2(896, 530)
+shape = SubResource("RectangleShape2D_2gyyf")
 
 [node name="Partner Look" parent="UI" instance=ExtResource("35_id4dn")]
 layer = 0
@@ -4839,15 +4871,24 @@ script = ExtResource("38_77grr")
 [node name="Theo\'s Marker" type="Marker2D" parent="UI"]
 script = ExtResource("139_771f8")
 
+[node name="Map" parent="UI" instance=ExtResource("137_01533")]
+visible = false
+
+[node name="Map" parent="UI/Map" index="1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -637.5
+offset_top = -850.0
+offset_right = 637.5
+offset_bottom = 850.0
+
 [connection signal="became_active" from="SubViewportContainer/SubViewport/CameraSystem/Corkboard cam" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_corkboard_cam_became_active"]
 [connection signal="time_to_eat" from="SubViewportContainer/SubViewport/StartingOffice/doughnut_001" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_doughnut_001_time_to_eat"]
 [connection signal="time_to_eat" from="SubViewportContainer/SubViewport/StartingOffice/doughnut_001" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_doughnut_001_time_to_eat"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/doughnut_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/doughnut_001" method="_on_interactable_interacted"]
-[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/firsthouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_firsthouse_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/secondhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_secondhouse_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/thirdhouse_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_thirdhouse_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/secret_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_secret_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI/office_button" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/MapUI" method="_on_office_button_pressed"]
 [connection signal="focused" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_focused"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/StartingOffice/corkboard_001/Interactable" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_general_interacted"]
@@ -4894,6 +4935,9 @@ script = ExtResource("139_771f8")
 [connection signal="input_event" from="UI/Casefile" to="UI/Casefile" method="_on_input_event"]
 [connection signal="mouse_entered" from="UI/Casefile" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Casefile" to="UI" method="_on_mouse_exited"]
+[connection signal="input_event" from="UI/Map_click" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_map_click_input_event"]
+[connection signal="mouse_entered" from="UI/Map_click" to="UI" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Map_click" to="UI" method="_on_mouse_exited"]
 [connection signal="paper_sound" from="UI/Partner Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
 [connection signal="mouse_entered" from="UI/Partner Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
 [connection signal="pressed" from="UI/Partner Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
@@ -4918,13 +4962,16 @@ script = ExtResource("139_771f8")
 [connection signal="pressed" from="UI/Missing Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Missing Look/Exit" to="UI/Missing Persons" method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
+[connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
+[connection signal="pressed" from="UI/Case Look/Exit" to="UI/Casefile" method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_pressed"]
 [connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_arrow_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_forward_pressed"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
+[connection signal="pressed" from="UI/Map/Exit" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_exit_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/doughnut_001/Interactable"]
@@ -4947,3 +4994,4 @@ script = ExtResource("139_771f8")
 [editable path="UI/Contact Look"]
 [editable path="UI/Missing Look"]
 [editable path="UI/Case Look"]
+[editable path="UI/Map"]

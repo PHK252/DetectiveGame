@@ -159,8 +159,8 @@ func _on_thoughts_ended():
 	#player.start_player()
 
 func _on_interactable_interacted(interactor):
-	emit_signal("general_interact")
-	if GlobalVars.in_dialogue == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		emit_signal("general_interact")
 		cab_area.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#GlobalVars.set_mouse_default()

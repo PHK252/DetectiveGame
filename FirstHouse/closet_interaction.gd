@@ -108,8 +108,6 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	open_closet_door_1.disabled = false
 	open_closet_door_2.disabled = false
-	Exit_Cam.priority = 30
-	alert.hide()
 	if closet_open == false: 
 		emit_signal("general_interact")
 		emit_signal("stepback")
@@ -117,7 +115,9 @@ func _on_interactable_interacted(interactor):
 		open_closet_sound.play()
 	
 	var tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
-	if GlobalVars.in_dialogue == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction:
+		Exit_Cam.priority = 30
+		alert.hide()
 		if closet_open == false and tool_asked == false:
 			GlobalVars.in_dialogue = true
 			player.stop_player()

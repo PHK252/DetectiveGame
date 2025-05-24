@@ -105,21 +105,22 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
-	if distracted == true:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		alert.hide()
-		GlobalVars.in_interaction = interact_type
-		FP_Cam.priority = 30
-		Exit_Cam.priority = 0 
-		interact_area.show()
-		cam_anim.play("Cam_Idle")
-		player.hide()
-		player.stop_player()
-	else:
-		var game_dialogue = Dialogic.start(regular_dialogue_file)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		game_dialogue.register_character(load(load_char_dialogue), character_marker)
-		player.stop_player()
-		alert.hide()
+	if GlobalVars.in_interaction == "":
+		if distracted == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			alert.hide()
+			GlobalVars.in_interaction = interact_type
+			FP_Cam.priority = 30
+			Exit_Cam.priority = 0 
+			interact_area.show()
+			cam_anim.play("Cam_Idle")
+			player.hide()
+			player.stop_player()
+		else:
+			var game_dialogue = Dialogic.start(regular_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			game_dialogue.register_character(load(load_char_dialogue), character_marker)
+			player.stop_player()
+			alert.hide()
