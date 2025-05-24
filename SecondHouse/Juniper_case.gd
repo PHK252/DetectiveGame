@@ -115,7 +115,7 @@ func _on_exit_pressed():
 func _input(event):
 	var finished_letter = Dialogic.VAR.get_variable("Juniper.finished_letter")
 	var finished_tag = Dialogic.VAR.get_variable("Juniper.finished_name_tag")
-	if GlobalVars.in_dialogue == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0

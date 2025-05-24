@@ -41,7 +41,7 @@ func _process(delta):
 			FP_Cam.set_rotation_degrees(mid_angle)
 
 func _on_interactable_interacted(interactor):
-	if GlobalVars.in_dialogue == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		alert.hide()
 		GlobalVars.in_dialogue = true
 		player.stop_player()

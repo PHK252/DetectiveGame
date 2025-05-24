@@ -10,6 +10,9 @@ signal open_micah_case
 signal open_juniper_case
 signal open_quincy_case
 
+
+@onready var day = "Day 1"
+
 @onready var in_call = false
 @onready var calling = false
 @onready var player_move = true
@@ -26,7 +29,7 @@ signal open_quincy_case
 @onready var clicked_case_letter_note = 0
 @onready var clicked_cab = 0
 @onready var viewed_case_file = false
-@onready var clicked_case_file = false
+@onready var clicked_case_file = 0
 @onready var clicked_Micah_pic = 0
 @onready var clicked_case_Micah = 0
 
@@ -148,6 +151,10 @@ signal open_quincy_case
 @onready var current_level = ""
 var player_pos
 var first_house_path = "res://FirstHouse/first_house.tscn"
+var second_house_path = "res://SecondHouse/second_house.tscn"
+var third_house_path = "res://ThirdHouse/third_house.tscn"
+var secret_path = "res://SecretLocation/secret_location.tscn"
+var office_path = "res://StartingOffice/starting_office.tscn"
 var cam_changed = false
 var clue_progress = 1
 var ghost_open = false
