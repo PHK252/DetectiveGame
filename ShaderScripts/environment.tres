@@ -2,9 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_3n4bq"]
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_qwxkn"]
-[ext_resource type="Texture2D" uid="uid://bsmsq634p0ytd" path="res://UniversalEnvironmentPalette/Universal_Environment_Palette.png" id="4_20840"]
 
-[sub_resource type="Shader" id="Shader_npkob"]
+[sub_resource type="Shader" id="Shader_ky2bx"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
 
 shader_type spatial;
@@ -59,12 +58,15 @@ void light() {
 }
 "
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4yh80"]
+load_path = "res://.godot/imported/Universal_Environment_Palette.png-9534aa2e58698e51a887fcb0ba144a44.ctex"
+
 [resource]
 resource_name = "Environment"
 render_priority = 0
-shader = SubResource("Shader_npkob")
+shader = SubResource("Shader_ky2bx")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("4_20840")
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_4yh80")
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)

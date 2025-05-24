@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_2spl7"]
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_tahac"]
 
-[sub_resource type="Shader" id="Shader_ac8kb"]
+[sub_resource type="Shader" id="Shader_pj5nv"]
 code = "/*
 	木目シェーダー by あるる（きのもと 結衣）
 	Grain Shader by Yui Kinomoto @arlez80
@@ -83,7 +83,7 @@ void light() {
 
 [resource]
 render_priority = 0
-shader = SubResource("Shader_ac8kb")
+shader = SubResource("Shader_pj5nv")
 shader_parameter/albedo = Color(0, 0, 0, 1)
 shader_parameter/light_color = Color(0.952941, 0.858824, 0.74902, 1)
 shader_parameter/dark_color = Color(0.74902, 0.619608, 0.490196, 1)

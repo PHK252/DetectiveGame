@@ -231,3 +231,9 @@ func _on_water_close_body_entered(body: Node3D) -> void:
 func _on_water_close_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(6)
+
+
+
+func _on_hall_close_cam_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		activate_camera(21)
