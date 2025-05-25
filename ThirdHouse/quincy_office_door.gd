@@ -44,11 +44,11 @@ func close() -> void:
 	animation_tree["parameters/conditions/is_opened"] = false
 	is_open = false
 	await get_tree().create_timer(2.0).timeout
-	print("quickCLosing")
-	animation_tree["parameters/conditions/quick_close"] = true
-	await get_tree().create_timer(0.5).timeout
-	animation_tree["parameters/conditions/quick_close"] = false
-	animation_tree["parameters/conditions/is_closed"] = false
+	#print("quickCLosing")
+	#animation_tree["parameters/conditions/quick_close"] = true
+	#await get_tree().create_timer(0.5).timeout
+	#animation_tree["parameters/conditions/quick_close"] = false
+	#animation_tree["parameters/conditions/is_closed"] = false
 	cooldown = false
 
 func _process(delta):
@@ -68,10 +68,10 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	var unlocked = Dialogic.VAR.get_variable("Quincy.unlocked_office")
 	print(is_open)
 	print(entered)
-	if unlocked == true and is_open == false:
+	if unlocked == true and is_open == false and cooldown == false:
 		open()
 		collision.disabled = true
-	elif unlocked == true and is_open == true:
+	elif unlocked == true and is_open == true and cooldown == false:
 		close()
 		collision.disabled = false
 	else:

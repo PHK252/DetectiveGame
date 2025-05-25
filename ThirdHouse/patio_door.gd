@@ -37,7 +37,7 @@ func close() -> void:
 	await get_tree().create_timer(0.5).timeout
 	animation_tree["parameters/conditions/quick_close"] = false
 	animation_tree["parameters/conditions/is_closed"] = false
-	#cooldown = false
+	cooldown = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -45,21 +45,21 @@ func _process(delta: float) -> void:
 
 
 func _on_back_interacted(interactor):
-	if is_open == false:
+	if is_open == false and cooldown == false:
 		open()
 		collision.disabled = true
 		if inside_open == false:
 			inside_open = true
-	elif is_open == true:
+	elif is_open == true and cooldown == false:
 		close()
 		collision.disabled = false
 
 func _on_front_interacted(interactor):
 	if inside_open == true:
-		if is_open == false:
+		if is_open == false and cooldown == false:
 			open()
 			collision.disabled = true
-		elif is_open == true:
+		elif is_open == true and cooldown == false:
 			close()
 			collision.disabled = false
 	else:

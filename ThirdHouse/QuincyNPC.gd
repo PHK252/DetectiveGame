@@ -26,7 +26,7 @@ var distance_to_target
 var STOPPING_DISTANCE = 1.0 
 const STOPPING_BUFFER = 0.4  
 const MIN_STOP_THRESHOLD = 0.05 
-const FOLLOW_DISTANCE = 1.2 
+const FOLLOW_DISTANCE = 0.9 
 var idle_blend = 0.0
 var is_navigating = false
 var accel = 1
@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 		quincy_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		if velocity.length() > 0.5:
 			floor_type_walk()
-		_rotate_towards_velocity()
+			_rotate_towards_velocity()
 		nav.set_velocity(velocity)
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
@@ -212,6 +212,9 @@ func _process_follow_state(distance_to_target: float) -> void:
 			if snowmobile_distraction:
 				quincy_tree.set("parameters/Call/request", true)
 				phone.visible = true
+			
+			if wander_choice == 8:
+				is_navigating = false
 			state = IDLE
 
 #entrance area
@@ -308,20 +311,21 @@ func _on_smoke_time_timeout() -> void:
 		is_navigating = true
 
 func _on_bathroom_q_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		if bathroom_distraction == false:
-			is_distracted = true
-			is_navigating = true
-			wander_choice = 3
-			nav.target_position = marker_positions[3].global_position
-			state = FOLLOW
+	pass
+	#if body.is_in_group("player"):
+		#if bathroom_distraction == false:
+			#is_distracted = true
+			#is_navigating = true
+			#wander_choice = 3
+			#nav.target_position = marker_positions[3].global_position
+			#state = FOLLOW
 
 func _on_bathroom_q_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		if bathroom_distraction == false:
-			is_distracted = false
-			is_navigating = true
-			state = FOLLOW
+		#if bathroom_distraction == false:
+			#is_distracted = false
+			#is_navigating = true
+			#state = FOLLOW
 		
 		if bathroom_distraction == true:
 			is_navigating = true
@@ -372,3 +376,16 @@ func _on_theo_quincy_no_go_body_exited(body: Node3D) -> void:
 		if state == IDLE and is_distracted == false and is_navigating == false and greeting == true:
 			is_navigating = true
 			state = FOLLOW
+
+func _on_hallway_check_body_entered(body: Node3D) -> void:
+	is_distracted = true
+	is_navigating = true
+	wander_choice = 8
+	nav.target_position = marker_positions[8].global_position
+	state = FOLLOW
+
+func _on_hallway_check_body_exited(body: Node3D) -> void:
+	wander_choice = 0
+	is_distracted = false
+	is_navigating = true
+	#state = FOLLOW
