@@ -1,4 +1,4 @@
-[gd_scene load_steps=211 format=3 uid="uid://cwe7ysx8hp5yv"]
+[gd_scene load_steps=219 format=3 uid="uid://cwe7ysx8hp5yv"]
 
 [ext_resource type="Texture2D" uid="uid://bsqf2cesb1tcy" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame1@2x.png" id="1_28p4s"]
 [ext_resource type="Script" uid="uid://m3mlhke1j1s2" path="res://ThirdHouse/runa_journal.gd" id="1_nyd47"]
@@ -110,7 +110,11 @@
 [ext_resource type="Texture2D" uid="uid://blmi1q7jto507" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame7@2x.png" id="99_p23bm"]
 [ext_resource type="Texture2D" uid="uid://sk1gkhht8nib" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame8@2x.png" id="100_7s4xn"]
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="110_66pc2"]
+[ext_resource type="Texture2D" uid="uid://b2s25v3x8jo6d" path="res://UI/Assets/Journal/Next Normal.png" id="110_kbkql"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="111_02h5c"]
+[ext_resource type="Texture2D" uid="uid://x40pjfxkl1yx" path="res://UI/Assets/Journal/Next Hovered.png" id="111_31bv6"]
+[ext_resource type="Texture2D" uid="uid://cqxlwu25g6cyt" path="res://UI/Assets/Journal/Back Normal.png" id="112_jjlkw"]
+[ext_resource type="Texture2D" uid="uid://bpqp33c00w4vr" path="res://UI/Assets/Journal/Back Hovered.png" id="113_ea8c0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h61mm"]
 animations = [{
@@ -1376,6 +1380,20 @@ states/Start/position = Vector2(-1, 63)
 transitions = ["Start", "First To Second", SubResource("AnimationNodeStateMachineTransition_1msr1"), "First To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_rnvbd"), "Second To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_by506"), "Third To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_mnvdg"), "Fourth To Third", "Third To Fourth", SubResource("AnimationNodeStateMachineTransition_ok3ht"), "Fourth To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_d2qyk"), "Third To Second", "Second To Third", SubResource("AnimationNodeStateMachineTransition_mkfeg"), "Second To Third", "Third To Second", SubResource("AnimationNodeStateMachineTransition_a6h50"), "Third To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_axfgr"), "Second To First", "First To Second", SubResource("AnimationNodeStateMachineTransition_ey3ge"), "First To Second", "Second To First", SubResource("AnimationNodeStateMachineTransition_un6xq"), "Third To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_fix32"), "Fourth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_vyeid"), "Fifth To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_emhkh"), "Sixth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2eydu"), "Seventh To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_jii8y"), "Eigth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_d884k"), "Ninth To Tenth", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_fxnw7"), "Tenth To Eleventh", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_tbdxu"), "Eleventh To Blank", "Blank", SubResource("AnimationNodeStateMachineTransition_axweq"), "Blank", "Blank 2", SubResource("AnimationNodeStateMachineTransition_3n3r2"), "Blank 2", "Blank", SubResource("AnimationNodeStateMachineTransition_a8p74"), "Fifth To Fourth", "Fourth To Fifth", SubResource("AnimationNodeStateMachineTransition_5utwi"), "Sixth To Fifth", "Fifth To Sixth", SubResource("AnimationNodeStateMachineTransition_1lisf"), "Seventh To Sixth", "Sixth To Seventh", SubResource("AnimationNodeStateMachineTransition_wrguf"), "Eigth To Seventh", "Seventh To Eigth", SubResource("AnimationNodeStateMachineTransition_2j5i6"), "Ninth To Eigth", "Eigth To Ninth", SubResource("AnimationNodeStateMachineTransition_ayr8v"), "Tenth To Ninth", "Ninth To Tenth", SubResource("AnimationNodeStateMachineTransition_ij5ep"), "Eleventh To Tenth  ", "Tenth To Eleventh", SubResource("AnimationNodeStateMachineTransition_4mda4"), "Blank To Eleventh ", "Eleventh To Blank", SubResource("AnimationNodeStateMachineTransition_b3nuh"), "Fifth To Fourth", "Fourth To Third", SubResource("AnimationNodeStateMachineTransition_1nctj"), "Fourth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_st60x"), "Sixth To Fifth", "Fifth To Fourth", SubResource("AnimationNodeStateMachineTransition_qvpgx"), "Fifth To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_paiye"), "Seventh To Sixth", "Sixth To Fifth", SubResource("AnimationNodeStateMachineTransition_up7k4"), "Sixth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_h1i7s"), "Eigth To Seventh", "Seventh To Sixth", SubResource("AnimationNodeStateMachineTransition_yqsur"), "Seventh To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_rim0s"), "Ninth To Eigth", "Eigth To Seventh", SubResource("AnimationNodeStateMachineTransition_llxwn"), "Eigth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_eplel"), "Tenth To Ninth", "Ninth To Eigth", SubResource("AnimationNodeStateMachineTransition_pkgfq"), "Ninth To Tenth", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_rbgqt"), "Eleventh To Tenth  ", "Tenth To Ninth", SubResource("AnimationNodeStateMachineTransition_qifc5"), "Tenth To Eleventh", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_5j2qq"), "Blank To Eleventh ", "Eleventh To Tenth  ", SubResource("AnimationNodeStateMachineTransition_n5rk7"), "Eleventh To Blank", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_jjwdx"), "Blank", "Reverse Blank", SubResource("AnimationNodeStateMachineTransition_txuba"), "Reverse Blank", "Blank", SubResource("AnimationNodeStateMachineTransition_gw8bi"), "Reverse Blank", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_hg05p"), "Reverse Blank 2", "Reverse Blank", SubResource("AnimationNodeStateMachineTransition_o0f0u"), "Reverse Blank", "Reverse Blank 2", SubResource("AnimationNodeStateMachineTransition_uu55a"), "Blank 2", "Reverse Blank", SubResource("AnimationNodeStateMachineTransition_oc522"), "Reverse Blank", "Blank 2", SubResource("AnimationNodeStateMachineTransition_3do36"), "Reverse Blank 2", "Blank", SubResource("AnimationNodeStateMachineTransition_hlnjm"), "Blank", "Reverse Blank 2", SubResource("AnimationNodeStateMachineTransition_m0cnw"), "Reverse Blank 2", "Blank To Eleventh ", SubResource("AnimationNodeStateMachineTransition_7getx")]
 graph_offset = Vector2(1555, -6)
 
+[sub_resource type="InputEventKey" id="InputEventKey_wr1yl"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_qynik"]
+events = [SubResource("InputEventKey_wr1yl")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_rsvsu"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_gh0ea"]
+events = [SubResource("InputEventKey_rsvsu")]
+
 [node name="Journal" type="CanvasLayer"]
 script = ExtResource("1_nyd47")
 
@@ -1401,23 +1419,34 @@ parameters/conditions/turn_blank_backward = false
 parameters/conditions/turn_page_backward = false
 parameters/conditions/turn_page_forward = false
 
-[node name="Forward" type="Button" parent="."]
-offset_left = 1533.0
-offset_top = 930.0
-offset_right = 1585.0
-offset_bottom = 976.0
-
-[node name="Backward" type="Button" parent="."]
-offset_left = 323.0
+[node name="Forward" type="TextureButton" parent="."]
+offset_left = 1494.0
 offset_top = 912.0
-offset_right = 407.0
+offset_right = 1574.0
+offset_bottom = 982.0
+shortcut = SubResource("Shortcut_qynik")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("110_kbkql")
+texture_pressed = ExtResource("111_31bv6")
+texture_hover = ExtResource("111_31bv6")
+
+[node name="Backward" type="TextureButton" parent="."]
+offset_left = 347.0
+offset_top = 912.0
+offset_right = 431.0
 offset_bottom = 985.0
+shortcut = SubResource("Shortcut_gh0ea")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("112_jjlkw")
+texture_pressed = ExtResource("113_ea8c0")
+texture_hover = ExtResource("113_ea8c0")
 
 [node name="Exit" type="TextureButton" parent="."]
 offset_left = 50.0
 offset_top = 30.0
 offset_right = 150.0
 offset_bottom = 130.0
+shortcut_in_tooltip = false
 texture_normal = ExtResource("110_66pc2")
 texture_pressed = ExtResource("111_02h5c")
 texture_hover = ExtResource("111_02h5c")

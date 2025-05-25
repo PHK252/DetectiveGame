@@ -11,7 +11,7 @@ signal open_juniper_case
 signal open_quincy_case
 
 
-@onready var day = "Day 1"
+@onready var day = ""
 
 @onready var in_call = false
 @onready var calling = false

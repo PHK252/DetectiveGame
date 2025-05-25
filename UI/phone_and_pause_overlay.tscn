@@ -1,36 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4fmk8hkjnh1v"]
+[gd_scene load_steps=14 format=3 uid="uid://b4fmk8hkjnh1v"]
 
 [ext_resource type="Texture2D" uid="uid://b4innf3vttv8k" path="res://UI/Assets/Pause overlay/Pause Normal.png" id="1_7dng0"]
 [ext_resource type="Script" uid="uid://bo4tbw36hrcsa" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
 [ext_resource type="Texture2D" uid="uid://dmnejgno72ng4" path="res://UI/Assets/Pause overlay/Pause Hovered.png" id="2_ml51c"]
-[ext_resource type="Texture2D" uid="uid://dy0rggl3b07wy" path="res://UI/Assets/Pause overlay/Phone Icon2 call normal1.png" id="3_o1igb"]
-[ext_resource type="Texture2D" uid="uid://78mdbisyqrov" path="res://UI/Assets/Pause overlay/Phone Icon2 call normal2.png" id="4_utwqt"]
-[ext_resource type="Texture2D" uid="uid://c1qwh3lqq8jar" path="res://UI/Assets/Pause overlay/Phone Icon2 call normal3.png" id="5_ijjq8"]
-[ext_resource type="Texture2D" uid="uid://bbs3un7kxw26h" path="res://UI/Assets/Pause overlay/Phone Icon2 call Hovered1.png" id="6_cucve"]
-[ext_resource type="Texture2D" uid="uid://cmi0y2lfipyim" path="res://UI/Assets/Pause overlay/Phone Icon2 call Hovered2.png" id="7_aayyl"]
-[ext_resource type="Texture2D" uid="uid://dl8f08oinc7hu" path="res://UI/Assets/Pause overlay/Phone Icon2 call Hovered3.png" id="8_ok7x6"]
-[ext_resource type="Texture2D" uid="uid://b3hhct8lpxotj" path="res://UI/Assets/Pause overlay/Phone Icon2 normal.png" id="9_fl41k"]
-[ext_resource type="Texture2D" uid="uid://bx553r4et636q" path="res://UI/Assets/Pause overlay/Phone Icon2 Hovered.png" id="10_nch8d"]
+[ext_resource type="Texture2D" uid="uid://b6c7lhul6o2dq" path="res://UI/Assets/Pause overlay/Phone call normal.tres" id="4_ixe56"]
+[ext_resource type="Texture2D" uid="uid://b61sxnpf7cfwd" path="res://UI/Assets/Pause overlay/Phone call hovered.tres" id="5_uxvkf"]
+[ext_resource type="Texture2D" uid="uid://bbwfruyq4lwyn" path="res://UI/Assets/Pause overlay/Updated/Phone normal Call1.png" id="6_ygsle"]
+[ext_resource type="Texture2D" uid="uid://b0rjlrsk8lobi" path="res://UI/Assets/Pause overlay/Updated/Phone Hovered Call1.png" id="7_0704h"]
+[ext_resource type="Texture2D" uid="uid://d0ggfyvlq2ylq" path="res://UI/Assets/Pause overlay/Updated/Phone disabled.png" id="8_i8x5r"]
 [ext_resource type="PackedScene" uid="uid://coi3wnw75drw1" path="res://UI/Phone.tscn" id="11_wwlkg"]
 [ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="12_15hi7"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_syhrg"]
-frames = 3
-frame_0/texture = ExtResource("3_o1igb")
-frame_0/duration = 0.3
-frame_1/texture = ExtResource("4_utwqt")
-frame_1/duration = 0.3
-frame_2/texture = ExtResource("5_ijjq8")
-frame_2/duration = 0.3
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_u5efo"]
-frames = 3
-frame_0/texture = ExtResource("6_cucve")
-frame_0/duration = 0.3
-frame_1/texture = ExtResource("7_aayyl")
-frame_1/duration = 0.3
-frame_2/texture = ExtResource("8_ok7x6")
-frame_2/duration = 0.3
 
 [sub_resource type="Animation" id="Animation_b8afo"]
 length = 0.001
@@ -93,25 +72,28 @@ texture_hover = ExtResource("2_ml51c")
 
 [node name="Receiving call" type="TextureButton" parent="CanvasLayer"]
 visible = false
-offset_left = 1773.0
+offset_left = 1808.0
 offset_top = 956.0
-offset_right = 1873.0
-offset_bottom = 1046.0
+offset_right = 1908.0
+offset_bottom = 1056.0
 pivot_offset = Vector2(50, 45)
 mouse_default_cursor_shape = 2
-texture_normal = SubResource("AnimatedTexture_syhrg")
-texture_pressed = SubResource("AnimatedTexture_u5efo")
-texture_hover = SubResource("AnimatedTexture_u5efo")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("4_ixe56")
+texture_pressed = ExtResource("5_uxvkf")
+texture_hover = ExtResource("5_uxvkf")
+stretch_mode = 3
 
 [node name="Call Normal" type="TextureButton" parent="CanvasLayer"]
-offset_left = 1773.0
+offset_left = 1808.0
 offset_top = 956.0
-offset_right = 1873.0
-offset_bottom = 1046.0
+offset_right = 1908.0
+offset_bottom = 1056.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("9_fl41k")
-texture_pressed = ExtResource("10_nch8d")
-texture_hover = ExtResource("10_nch8d")
+texture_normal = ExtResource("6_ygsle")
+texture_pressed = ExtResource("7_0704h")
+texture_hover = ExtResource("7_0704h")
+texture_disabled = ExtResource("8_i8x5r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
