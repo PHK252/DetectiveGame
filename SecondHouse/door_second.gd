@@ -20,6 +20,7 @@ signal cam_greeting
 signal j_dialogue
 
 @export var quincy_house: bool
+@export var quincy_house_inside: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -94,12 +95,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			return
 			#play knocking sound
 		
-		if (greeting == true and quincy_house == false) or quincy_house:
+		if (greeting == true and quincy_house == false) or quincy_house or quincy_house_inside:
 			open()
 			collision.disabled = true
 			return
 		
-	if is_open == true and cooldown == false and (greeting == true or quincy_house): 
+	if is_open == true and cooldown == false and (greeting == true or quincy_house or quincy_house_inside): 
 		close()
 		collision.disabled = false
 	
