@@ -9,50 +9,50 @@ extends CharacterBody3D
 @export var InvestigateTime: Timer
 @export var wine_area_control: CollisionShape3D
 @export var wAcontrol2: Area3D
-var allow_activation = true
+var allow_activation := true
 @export var sound_player : AnimationPlayer
 @export var note_sound : AudioStreamPlayer3D
 
-var animation_choice = 0
+var animation_choice := 0
 @export var adjustment_list: Array[Node3D]
-var theo_adjustment = false 
-var book_area = false 
-var closet_area = false
+var theo_adjustment := false 
+var book_area := false 
+var closet_area := false
 var adjust_direction
 signal stop_coll
 signal dHALL
 signal dINSIDE
-var stop_coll_b = false
-var micahBack = false
-var micahFront = false
-var collision_danger = false
-var door_scene = false
-var patio_sit = false
-var entered_junipers = false
+var stop_coll_b := false
+var micahBack := false
+var micahFront := false
+var collision_danger := false
+var door_scene := false
+var patio_sit := false
+var entered_junipers := false
 
-const speed = 0.92
-const LERP_VAL = 0.15
-var STOPPING_DISTANCE = 1.0  # Distance at which we stop following
-const FOLLOW_DISTANCE = 1.2 # Distance at which we resume following (hysteresis buffer)
-const STOPPING_BUFFER = 0.2  # Small buffer to prevent jittering
-const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
+const speed := 0.92
+const LERP_VAL := 0.15
+var STOPPING_DISTANCE := 1.0  # Distance at which we stop following
+const FOLLOW_DISTANCE := 1.2 # Distance at which we resume following (hysteresis buffer)
+const STOPPING_BUFFER := 0.2  # Small buffer to prevent jittering
+const MIN_STOP_THRESHOLD := 0.05  # Minimum velocity to consider NPC as stationary
 
-var idle_blend = 0.0
-var state = IDLE  # Current state of the NPC
-var see_player = false
-var is_navigating = true
-var in_kitchen = false
+var idle_blend := 0.0
+var state := IDLE  # Current state of the NPC
+var see_player := false
+var is_navigating := true
+var in_kitchen := false
 var rng = RandomNumberGenerator.new()
-var investigate_choice = 0
-var is_investigating = false 
-var going_to_bar = false
+var investigate_choice := 0
+var is_investigating := false 
+var going_to_bar := false
 var distance_to_target
 signal TheoSit 
 signal TheoStand
-var cooldown = false
-var dalton_entered = false
+var cooldown := false
+var dalton_entered := false
 var direct
-var greeting_finished = false
+var greeting_finished := false
 
 @export var juniper_house = false
 
@@ -809,5 +809,22 @@ func _on_theo_no_go_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if state == IDLE and is_investigating == false:
 			in_kitchen = false
+			is_navigating = true
+			state = FOLLOW
+
+func _on_quincy_body_entered(body: Node3D) -> void:
+	if body.is_in_group("theo"):
+		is_navigating = false
+		state = IDLE
+
+func _on_quincy_body_exited(body: Node3D) -> void:
+	if body.is_in_group("theo"):
+		if is_investigating:
+			investigate_choice = 0
+			nav.target_position = marker_list[investigate_choice].global_position
+			is_navigating = true
+			STOPPING_DISTANCE = 0.0
+			state = INVESTIGATE
+		else:
 			is_navigating = true
 			state = FOLLOW

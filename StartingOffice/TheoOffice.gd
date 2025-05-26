@@ -8,7 +8,9 @@ extends CharacterBody3D
 const speed = 0.3
 const LERP_VAL = 0.15
 var rotation_speed = 70
-var stop_walk = false
+var stop_walk := false
+var come_in := false
+var dalton_rotation := false
 
 enum {
 	IDLE, 
@@ -26,9 +28,18 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
+	
+	if dalton_rotation:
+		_rotate_dalton(delta)
+
 	move_and_slide()
 	
+func _rotate_dalton(delta):
+	pass
+	#var direct = (player.global_position - armature.global_position).normalized()
+	#armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-direct.x, -direct.z), LERP_VAL)
+	
+
 func _process(delta):
 	if state == WALK:
 		var flipped_basis = path.global_transform.basis
@@ -43,19 +54,10 @@ func _process(delta):
 		state = IDLE
 
 		# Get the target direction to the player position
-		var target_position = Vector3(GlobalVars.player_pos.x, global_transform.origin.y, GlobalVars.player_pos.z)
-		var target_direction = (target_position - global_transform.origin).normalized()
-	
-		target_direction = -target_direction
-		# Get the current direction the NPC is facing
-		var current_direction = -global_transform.basis.z  # Use -Z as the forward direction in Godot
-		# Interpolate between the current and target direction smoothly
-		var smooth_direction = current_direction.slerp(target_direction, rotation_speed * delta)
-
-		# Update the NPC's rotation to face the interpolated direction
-		look_at(global_transform.origin + smooth_direction, Vector3.UP)
 		
-	if path.progress_ratio < 1:
+		
+	if path.progress_ratio < 1 and come_in:
+		stop_walk = false
 		state = WALK
 	elif path.progress_ratio == 1:
 		state = IDLE
@@ -66,14 +68,16 @@ func _process(delta):
 	
 	match state:
 		IDLE:
+			dalton_rotation = true
 			anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 			stop_walk = true
 		WALK:
+			dalton_rotation = false
 			anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
-			if path.progress_ratio < 1:
+			if path.progress_ratio < 1 and come_in:
 				if stop_walk == false: 
 					path.progress_ratio += speed * delta
-					if path.progress_ratio == 1 or path.progress > 1.6:
+					if path.progress_ratio == 1 or path.progress > 1.2:
 						print("checked for stop")
 						stop_walk = true
 						path.progress_ratio = 1
@@ -89,5 +93,8 @@ func _on_interact_area_body_entered(body: Node3D) -> void:
 func _on_interact_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		print("left")
-		state = WALK
-		see_player = false
+		#state = WALK
+		#see_player = false
+
+func _on_exposition_theo_move() -> void:
+	come_in = true

@@ -11,6 +11,7 @@ extends MeshInstance3D
 @onready var alert = $"../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
 var just_interacted := false
+signal theo_move
 
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:
@@ -85,10 +86,10 @@ func _process(delta):
 				alert.show()
 				GlobalVars.in_interaction = ""
 
-
 func enter_Theo(argument: String):
 	if argument == "enter_theo":
 		#Prompt theo to walk through the door
 		print("Theo enters")
+		emit_signal("theo_move")
 		Dialogic.signal_event.disconnect(enter_Theo)
 		pass

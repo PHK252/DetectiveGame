@@ -389,3 +389,16 @@ func _on_hallway_check_body_exited(body: Node3D) -> void:
 	is_distracted = false
 	is_navigating = true
 	#state = FOLLOW
+
+func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		is_distracted = true
+		is_navigating = true
+		wander_choice = 9
+		nav.target_position = marker_positions[9].global_position
+
+func _on_living_room_adjustment_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		wander_choice = 0
+		is_distracted = false
+		is_navigating = true

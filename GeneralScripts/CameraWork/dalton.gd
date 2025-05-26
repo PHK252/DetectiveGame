@@ -15,6 +15,7 @@ var idle_timer_active: bool = false
 var gathered := false
 var walk_indicate := false
 var finished_greet := false
+var needs_rotation_forced := false
 
 const MAX_STEP_HEIGHT := 1.2
 var _snapped_to_stairs_last_frame := false
@@ -61,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		# Smoothly interpolate position
 		global_position = move_back_start_position.lerp(move_back_target_position, move_back_progress)
 	# Add the gravity.
-	if GlobalVars.player_move == true:
+	if GlobalVars.player_move == true or needs_rotation_forced:
 		emit_signal("moving")
 		
 		if not is_on_floor():
@@ -489,7 +490,6 @@ func _on_porch_cam_became_active() -> void:
 		await get_tree().create_timer(0.5).timeout
 		in_control = true
 
-
 func _on_tent_cam_became_active() -> void:
 	in_control = false
 	await get_tree().create_timer(0.5).timeout
@@ -498,4 +498,16 @@ func _on_tent_cam_became_active() -> void:
 func _on_tent_cam_became_inactive() -> void:
 	in_control = false
 	await get_tree().create_timer(0.5).timeout
+	in_control = true
+
+func _on_exposition_theo_move() -> void:
+	await get_tree().create_timer(3).timeout
+	needs_rotation_forced = true
+	in_control = false
+	number = 1
+	force_rotation = true
+	await get_tree().create_timer(1).timeout
+	force_rotation = false
+	number = 0
+	needs_rotation_forced = false
 	in_control = true

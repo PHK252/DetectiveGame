@@ -30,7 +30,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	audio_master[0].play() 
 
 func _on_paper_sound() -> void:
-	audio_master[0]["parameters/switch_to_clip"] = "Clip 10"
+	audio_master[0]["parameters/switch_to_clip"] = "Paper 11"
 	audio_master[0].play() 
 
 func _on_general_interacted(interactor: Interactor) -> void:
