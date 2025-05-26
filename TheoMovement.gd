@@ -29,6 +29,7 @@ var collision_danger := false
 var door_scene := false
 var patio_sit := false
 var entered_junipers := false
+var living_room_nogo := false
 
 const speed := 0.92
 const LERP_VAL := 0.15
@@ -473,16 +474,17 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 func _on_investigate_timer_timeout() -> void:
 	#print("timerCheck")
 	#print(investigate_choice)
-	var choice = rng.randi_range(-10, 10)
-	investigate_choice = rng.randi_range(0, 2)
-	animation_choice = rng.randi_range(0, 10)
-	if is_investigating == true and cooldown == false and going_to_bar == false and patio_sit == false:
-		nav.target_position = marker_list[investigate_choice].global_position
-		anim_tree.set("parameters/Scratch/request", 2)
-		anim_tree.set("parameters/NoteAlt/request", 2)
-		is_navigating = true
-		STOPPING_DISTANCE = 0.0
-		state = INVESTIGATE
+	if living_room_nogo == false:
+		var choice = rng.randi_range(-10, 10)
+		investigate_choice = rng.randi_range(0, 2)
+		animation_choice = rng.randi_range(0, 10)
+		if is_investigating == true and cooldown == false and going_to_bar == false and patio_sit == false:
+			nav.target_position = marker_list[investigate_choice].global_position
+			anim_tree.set("parameters/Scratch/request", 2)
+			anim_tree.set("parameters/NoteAlt/request", 2)
+			is_navigating = true
+			STOPPING_DISTANCE = 0.0
+			state = INVESTIGATE
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
 	print("entered")
@@ -757,7 +759,6 @@ func _on_interactable_interacted_Juniper(interactor: Interactor) -> void:
 	theo_adjustment = false
 	#is_navigating = true
 	
-
 func _on_interactable_interacted_cafe(interactor: Interactor) -> void:
 	nav.target_position = adjustment_list[3].global_position
 	is_navigating = true
@@ -812,19 +813,46 @@ func _on_theo_no_go_body_exited(body: Node3D) -> void:
 			is_navigating = true
 			state = FOLLOW
 
-func _on_quincy_body_entered(body: Node3D) -> void:
-	if body.is_in_group("theo"):
-		is_navigating = false
-		state = IDLE
+func _on_living_room_no_go_theo_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		living_room_nogo = true
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_tree.set("parameters/NoteAlt/request", 2)
+		investigate_choice = 0
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		state = INVESTIGATE
 
-func _on_quincy_body_exited(body: Node3D) -> void:
-	if body.is_in_group("theo"):
-		if is_investigating:
-			investigate_choice = 0
-			nav.target_position = marker_list[investigate_choice].global_position
-			is_navigating = true
-			STOPPING_DISTANCE = 0.0
-			state = INVESTIGATE
-		else:
-			is_navigating = true
-			state = FOLLOW
+func _on_living_room_no_go_theo_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		living_room_nogo = false
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_tree.set("parameters/NoteAlt/request", 2)
+		investigate_choice = 2
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		state = INVESTIGATE
+
+func _on_painting_adjustment_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		living_room_nogo = true
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_tree.set("parameters/NoteAlt/request", 2)
+		investigate_choice = 2
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		state = INVESTIGATE
+
+func _on_painting_adjustment_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		living_room_nogo = false
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_tree.set("parameters/NoteAlt/request", 2)
+		investigate_choice = 1
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		state = INVESTIGATE

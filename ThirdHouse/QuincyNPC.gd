@@ -23,36 +23,41 @@ extends CharacterBody3D
 @export var armature: Node3D
 @export var distraction_timer: Timer
 var distance_to_target
-var STOPPING_DISTANCE = 1.0 
-const STOPPING_BUFFER = 0.4  
-const MIN_STOP_THRESHOLD = 0.05 
-const FOLLOW_DISTANCE = 0.9 
-var idle_blend = 0.0
-var is_navigating = false
-var accel = 1
-var wander_choice = 0
+var STOPPING_DISTANCE := 1.0 
+const STOPPING_BUFFER := 0.4  
+const MIN_STOP_THRESHOLD := 0.05 
+const FOLLOW_DISTANCE := 0.9 
+var idle_blend := 0.0
+var is_navigating := false
+var accel := 1
+var wander_choice := 0
 @export var marker_positions: Array[Node3D]
-var see_player = false
-var at_door = false
-var SPEED = 1.2
-var LERP_VAL = 0.1
-var rotation_speed = 70
-var is_distracted = false
-var distraction_rotate = false
-var wine_fall = false
-var catch_possibility = false
-var is_drinking = false
-var snowmobile_distraction = false
-var bathroom_distraction = false
-var poolTable = false
+@export var rotate_positions: Array[Node3D]
+var see_player := false
+var at_door := false
+var SPEED := 1.2
+var LERP_VAL := 0.1
+var rotation_speed := 70
+var is_distracted := false
+var distraction_rotate := false
+var wine_fall := false
+var catch_possibility := false
+var is_drinking := false
+var snowmobile_distraction := false
+var bathroom_distraction := false
+var poolTable := false
 var poolPos
-var greeting = false
+var greeting := false
+var rotate_forced := false
 
-var fall_allowed = true
-var distraction_allowed = true
+var fall_allowed := true
+var distraction_allowed := true
+var rotate_number := 0
 
 #sounds
 @export var sound_player : AnimationPlayer
+
+#
 
 enum {
 	IDLE, 
@@ -60,7 +65,7 @@ enum {
 	DISTRACTED
 }
 
-var state = IDLE
+var state := IDLE
 
 func _ready() -> void:
 	add_to_group("quincy")
@@ -72,6 +77,7 @@ func _ready() -> void:
 	phone.visible = false
 	#is_navigating = false
 	
+
 func _process(delta: float) -> void:
 	#print(is_navigating)
 	
@@ -103,20 +109,29 @@ func _physics_process(delta: float) -> void:
 		#direction.y = 0
 		velocity = velocity.lerp(direction * SPEED, accel * delta)
 		quincy_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
-		if velocity.length() > 0.5:
+		if velocity.length() > 0.5 and rotate_forced == false:
 			floor_type_walk()
 			_rotate_towards_velocity()
 		nav.set_velocity(velocity)
+	
+	if rotate_forced:
+		force_rotate(rotate_number)
+		
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)
-	if is_navigating:
+	if is_navigating and velocity.length() > 0.5:
 		move_and_slide()
 		
 func _rotate_towards_velocity() -> void:
 	if is_navigating:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
 
+func force_rotate(number : int):
+	var target = rotate_positions[number].global_position
+	var dir = (armature.global_position - target).normalized()
+	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-dir.x, -dir.z), LERP_VAL)
+	
 #sound handle
 func floor_type_walk():
 	if $FloorTypeQuincy.is_colliding():
@@ -213,8 +228,18 @@ func _process_follow_state(distance_to_target: float) -> void:
 				quincy_tree.set("parameters/Call/request", true)
 				phone.visible = true
 			
-			if wander_choice == 8:
+			if wander_choice == 8 or wander_choice == 9:
 				is_navigating = false
+			
+			if wander_choice == 9:
+				rotate_number = 0 
+				rotate_forced = true
+				#await get_tree().create_timer(0.5).timeout
+				#rotate_forced = false
+			if wander_choice == 10:
+				rotate_number = 1
+				rotate_forced = true
+				
 			state = IDLE
 
 #entrance area
@@ -396,9 +421,26 @@ func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
 		is_navigating = true
 		wander_choice = 9
 		nav.target_position = marker_positions[9].global_position
+		state = FOLLOW
 
 func _on_living_room_adjustment_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
+		rotate_forced = false
+		wander_choice = 0
+		is_distracted = false
+		is_navigating = true
+
+func _on_painting_adjustment_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		is_distracted = true
+		is_navigating = true
+		wander_choice = 10
+		nav.target_position = marker_positions[10].global_position
+		state = FOLLOW
+
+func _on_painting_adjustment_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		rotate_forced = false
 		wander_choice = 0
 		is_distracted = false
 		is_navigating = true
