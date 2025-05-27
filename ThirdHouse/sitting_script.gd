@@ -63,6 +63,11 @@ func _process(delta: float) -> void:
 		dalton_bar.visible = false
 		alert.show()
 		emit_signal("DaltonVisible")
+	elif Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
+		dalton_outside.visible = false
+		dalton_bar.visible = false
+		alert.show()
+		emit_signal("DaltonVisible")
 		
 		
 

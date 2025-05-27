@@ -12,7 +12,9 @@ extends CharacterBody3D
 var allow_activation := true
 @export var sound_player : AnimationPlayer
 @export var note_sound : AudioStreamPlayer3D
+@export var collision_theo : CollisionShape3D
 
+signal allow_stairs
 var animation_choice := 0
 @export var adjustment_list: Array[Node3D]
 var theo_adjustment := false 
@@ -189,13 +191,21 @@ func _process_investigate_state(distance_to_target) -> void:
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
 		if patio_sit:
 			armature.visible = false
+			collision_theo.disabled = true
 			emit_signal("TheoSit")
 			is_navigating = false
 			state = IDLE
 			return
 		if going_to_bar:
+			velocity = velocity.lerp(Vector3.ZERO, 0.2)
+			idle_blend = lerp(idle_blend, 0.0, 0.0)
+			anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+			await get_tree().create_timer(3).timeout
 			armature.visible = false
+			collision_theo.disabled = true
 			emit_signal("TheoSit")
+			is_navigating = false
+			state = IDLE
 		if not going_to_bar and animation_choice >= 3 and patio_sit == false:
 			anim_tree.set("parameters/NoteAlt/request", true)
 			#await get_tree().create_timer(6).timeout
@@ -235,18 +245,23 @@ func _process_sitting_state() -> void:
 			patio_sit = false
 			going_to_bar = false
 			armature.visible = true
+			collision_theo.disabled = false
 			emit_signal("TheoStand")
 			state = IDLE
 	
 	if Input.is_action_pressed("meeting_done"):
+		emit_signal("allow_stairs")
 		patio_sit = false
 		going_to_bar = false
 		armature.visible = true
+		collision_theo.disabled = false
 		animation_choice = rng.randi_range(0, 10)
 		investigate_choice = rng.randi_range(0, 3)
 		is_investigating = true
 		nav.target_position = marker_list[investigate_choice].global_position
 		is_navigating = true
+		nav.path_desired_distance = 0.75
+		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 0.0
 		emit_signal("TheoStand")
 		state = INVESTIGATE
@@ -329,7 +344,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 		state = IDLE
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and is_investigating == false:
+	if body.is_in_group("player") and is_investigating == false and going_to_bar == false:
 		print("waiting for interact")
 		see_player = true
 		state = IDLE
@@ -462,7 +477,7 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 	if allow_activation:
 		print("ENTEREDWANDER")
 		animation_choice = rng.randi_range(0, 10)
-		investigate_choice = rng.randi_range(0, 3)
+		investigate_choice = rng.randi_range(0, 2)
 		is_investigating = true
 		nav.target_position = marker_list[investigate_choice].global_position
 		is_navigating = true
@@ -490,11 +505,15 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 	print("entered")
 	if body.is_in_group("player"):
 		print("wine_time")
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_tree.set("parameters/NoteAlt/request", 2)
 		is_investigating = false
 		going_to_bar = true
 		is_navigating = true
 		investigate_choice = 3
 		nav.target_position = marker_list[investigate_choice].global_position
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.2
 		STOPPING_DISTANCE = 0.0
 		state = INVESTIGATE
 		

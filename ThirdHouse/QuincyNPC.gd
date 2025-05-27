@@ -183,7 +183,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 			#wander_choice = 0
 			#nav.target_position = marker_positions[0].global_position
 			#state = FOLLOW
-			wander_choice = 10
+			wander_choice = 0
 			is_distracted = false
 			is_navigating = true
 			state = FOLLOW
