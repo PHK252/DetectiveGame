@@ -7,6 +7,9 @@ extends CharacterBody3D
 @export var smoke: GPUParticles3D
 @export var smoke_release: GPUParticles3D
 @export var phone: Node3D
+@export var quincyTransform: Node3D
+var transform_quincy := false
+var just_wentUp := false
 
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
@@ -114,6 +117,11 @@ func _physics_process(delta: float) -> void:
 			_rotate_towards_velocity()
 		nav.set_velocity(velocity)
 	
+	#if transform_quincy:
+		#quincyTransform.position.y = quincyTransform.position.y - 0.05
+		#transform_quincy = false
+	
+	
 	if rotate_forced:
 		force_rotate(rotate_number)
 		
@@ -144,6 +152,8 @@ func floor_type_walk():
 			sound_player.play("Footsteps_Metal")
 		if collider.is_in_group("marble"):
 			sound_player.play("Footsteps_Marble")
+		if collider.is_in_group("wood"):
+			sound_player.play("WoodFootsteps")
 		
 # floor type gather
 func floor_type_gather():
@@ -157,6 +167,8 @@ func floor_type_gather():
 			sound_player.play("FootstepsGather_Metal")
 		if collider.is_in_group("marble"):
 			sound_player.play("FootstepsGather_Marble")
+		if collider.is_in_group("wood"):
+			sound_player.play("WoodFootsteps_Gather")
 
 
 
@@ -444,3 +456,22 @@ func _on_painting_adjustment_body_exited(body: Node3D) -> void:
 		wander_choice = 0
 		is_distracted = false
 		is_navigating = true
+
+func _on_quincy_lower_body_entered(body: Node3D) -> void:
+	#transform_quincy = true
+	armature.position.y = armature.position.y - 0.1
+
+func _on_quincy_lower_body_exited(body: Node3D) -> void:
+	#transform_quincy = false
+	armature.position.y = armature.position.y + 0.05
+
+func _on_pool_t_cam_became_active() -> void:
+	if transform_quincy == false:
+		armature.position.y = armature.position.y - 0.12
+	transform_quincy = true
+	
+
+func _on_upstairs_cam_became_active() -> void:
+	if transform_quincy == true:
+		armature.position.y = armature.position.y + 0.12
+	transform_quincy = false
