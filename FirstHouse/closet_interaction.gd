@@ -23,7 +23,8 @@ extends Node3D
 @export var character_marker: Marker2D
 
 #Interaction Variables
-@export var interact_area: Area2D
+@export var interact_area_1: Area2D
+@export var interact_area_2: Area2D
 @export var start_dialogue_file: String
 @export var end_dialogue_file: String
 @export var load_Dalton_dialogue: String
@@ -83,7 +84,8 @@ func _process(delta):
 			closet_dialogue.register_character(load(load_char_dialogue), character_marker)
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)
-			interact_area.hide()
+			interact_area_1.hide()
+			interact_area_2.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "": 
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -96,14 +98,17 @@ func _process(delta):
 			player.show()
 			player.start_player()
 			GlobalVars.in_interaction = ""
-			interact_area.hide()
+			interact_area_1.hide()
+			interact_area_2.hide()
 			alert.show()
 			#main_cam.set_tween_duration(1)
 	
 	if GlobalVars.in_look_screen == true:
-		interact_area.hide()
+		interact_area_1.hide()
+		interact_area_2.hide()
 	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 25:
-		interact_area.show()
+		interact_area_1.show()
+		interact_area_2.show()
 
 func _on_interactable_interacted(interactor):
 	open_closet_door_1.disabled = false
@@ -164,7 +169,8 @@ func closetLook(argument: String):
 		GlobalVars.in_interaction = interact_type
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
-		interact_area.show()
+		interact_area_1.show()
+		interact_area_2.show()
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

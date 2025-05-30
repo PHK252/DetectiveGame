@@ -2,9 +2,10 @@
 "Daltons Thoughts": That punk...
 "Daltons Thoughts": Acting way too familiar for a rookie.
 "Daltons Thoughts": How did he even get in here?
-"Daltons Thoughts": Take One?
-- Yes.
-	"Daltons Thoughts": It wouldn’t hurt to have.
-- No.
-	"Daltons Thoughts": I don’t need it.
-
+if {Global.got_theo_ad} == false:
+	"Daltons Thoughts": Take One?
+	- Yes.
+		"Daltons Thoughts": It wouldn’t hurt to have.
+		set {Global.got_theo_ad} = true
+	- No.
+		"Daltons Thoughts": I don’t need it.

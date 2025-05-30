@@ -25,6 +25,7 @@ signal open_quincy_case
 @onready var clicked_team = 0
 @onready var clicked_missing = 0
 @onready var clicked_tool_note = 0
+@onready var clicked_id_card = 0
 @onready var clicked_book_note = 0
 @onready var clicked_case_letter_note = 0
 @onready var clicked_cab = 0
@@ -43,6 +44,7 @@ signal open_quincy_case
 @onready var viewed_team = false
 @onready var viewed_missing = false
 @onready var viewed_tool_note = false
+@onready var viewed_id_card = false
 @onready var viewed_Micah_bookmark = false
 @onready var viewed_Micah_pic = false
 @onready var viewed_Micah_fridge = false
