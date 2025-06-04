@@ -1,0 +1,440 @@
+[gd_scene load_steps=27 format=3 uid="uid://d2qmed24hoimf"]
+
+[ext_resource type="PackedScene" uid="uid://cnei0gnqkka7" path="res://dream_stuff/DreamTransition.glb" id="1_q1hl2"]
+[ext_resource type="PackedScene" uid="uid://dpyd2ngef4s53" path="res://dream_stuff/FrameSep.glb" id="2_jm08a"]
+[ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_ouh8g"]
+[ext_resource type="Shader" uid="uid://du3qvml6xbpcu" path="res://ShaderScripts/pixel.gdshader" id="3_fxi6b"]
+[ext_resource type="Script" uid="uid://qmqj74pm4p5a" path="res://GeneralScripts/CameraWork/camera_system.gd" id="3_gseyv"]
+[ext_resource type="Script" uid="uid://dqmq7sj03m4v6" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_jm08a"]
+[ext_resource type="Script" uid="uid://dd46bmhjxhf3u" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_gseyv"]
+[ext_resource type="Script" uid="uid://ba877ddbj17hy" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_nv2et"]
+[ext_resource type="PackedScene" uid="uid://bqvssux5m1c" path="res://CharacterStuff/Dalton/Dalton.tscn" id="8_gseyv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nv2et"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_4n2im"]
+material = SubResource("StandardMaterial3D_nv2et")
+
+[sub_resource type="Environment" id="Environment_q1hl2"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 1.2
+ambient_light_energy = 0.0
+tonemap_mode = 2
+tonemap_exposure = 0.4
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.23
+glow_mix = 0.015
+glow_bloom = 0.65
+glow_blend_mode = 4
+adjustment_enabled = true
+adjustment_contrast = 0.9
+adjustment_saturation = 1.88
+
+[sub_resource type="Curve3D" id="Curve3D_gseyv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.278934, 2.38419e-07, -0.000221252, 0, 0, 0, 0, 0, 0, 0.0932813, 4.76837e-07, -0.000221252),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_nv2et"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0672903, 0, -0.000818729, 0, 0, 0, 0, 0, 0, 0.0454426, 0, -0.00696802),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n2im"]
+render_priority = 0
+shader = ExtResource("3_fxi6b")
+shader_parameter/depth_threshold = 0.25
+shader_parameter/reverse_depth_threshold = 0.25
+shader_parameter/normal_threshold = 0.6
+shader_parameter/darken_amount = 0.3
+shader_parameter/lighten_amount = 1.5
+shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.96, -0.18, 0.2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_g1nns"]
+material = SubResource("ShaderMaterial_4n2im")
+size = Vector2(2, 2)
+
+[sub_resource type="Resource" id="Resource_oq3si"]
+script = ExtResource("5_gseyv")
+duration = 0.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_uvv1u"]
+script = ExtResource("6_nv2et")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 1.0
+projection = 1
+fov = 75.0
+size = 8.543
+frustum_offset = Vector2(0, 0)
+near = 0.001
+far = 4007.19
+
+[sub_resource type="Resource" id="Resource_g1nns"]
+script = ExtResource("5_gseyv")
+duration = 0.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_ju085"]
+script = ExtResource("6_nv2et")
+cull_mask = 1048063
+h_offset = 0.0
+v_offset = 0.0
+projection = 1
+fov = 75.0
+size = 4.343
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gseyv"]
+size = Vector3(1.1806, 1, 2.50983)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nv2et"]
+size = Vector3(1.25562, 3.20557, 8.35748)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ga30b"]
+size = Vector3(21.117, 0.487915, 9.3115)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7xep"]
+size = Vector3(0.306612, 4.80273, 9.3115)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4n2im"]
+size = Vector3(0.0674367, 4.80273, 4.39513)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85rt7"]
+size = Vector3(21.1001, 4.80273, 1.96093)
+
+[node name="Main" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 6
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="DreamTransition" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_q1hl2")]
+
+[node name="doorFrame" parent="SubViewportContainer/SubViewport/DreamTransition" index="0"]
+layers = 512
+gi_mode = 0
+
+[node name="Clue" parent="SubViewportContainer/SubViewport/DreamTransition" index="1"]
+transform = Transform3D(0.17, 0, 0, 0, -9.83506e-09, -0.225, 0, 0.225, -9.83506e-09, -2.5532, 1.93023, -1.25448)
+
+[node name="FloatingCase" parent="SubViewportContainer/SubViewport/DreamTransition" index="2"]
+layers = 512
+
+[node name="doorFrame_001" parent="SubViewportContainer/SubViewport/DreamTransition" index="3"]
+layers = 512
+
+[node name="Tiles_003" parent="SubViewportContainer/SubViewport/DreamTransition" index="8"]
+layers = 512
+
+[node name="Tiles_004" parent="SubViewportContainer/SubViewport/DreamTransition" index="9"]
+layers = 512
+
+[node name="Tiles_005" parent="SubViewportContainer/SubViewport/DreamTransition" index="10"]
+layers = 512
+
+[node name="Tiles_006" parent="SubViewportContainer/SubViewport/DreamTransition" index="11"]
+layers = 512
+
+[node name="Tiles_007" parent="SubViewportContainer/SubViewport/DreamTransition" index="12"]
+layers = 512
+
+[node name="Tiles_008" parent="SubViewportContainer/SubViewport/DreamTransition" index="13"]
+layers = 512
+
+[node name="Tiles_009" parent="SubViewportContainer/SubViewport/DreamTransition" index="14"]
+layers = 512
+
+[node name="Tiles_010" parent="SubViewportContainer/SubViewport/DreamTransition" index="15"]
+layers = 512
+
+[node name="Tiles_011" parent="SubViewportContainer/SubViewport/DreamTransition" index="16"]
+layers = 512
+
+[node name="Tiles_012" parent="SubViewportContainer/SubViewport/DreamTransition" index="18"]
+layers = 512
+
+[node name="Tiles_013" parent="SubViewportContainer/SubViewport/DreamTransition" index="19"]
+layers = 512
+
+[node name="Tiles_014" parent="SubViewportContainer/SubViewport/DreamTransition" index="20"]
+layers = 512
+
+[node name="Tiles_015" parent="SubViewportContainer/SubViewport/DreamTransition" index="21"]
+layers = 512
+
+[node name="Tiles_016" parent="SubViewportContainer/SubViewport/DreamTransition" index="22"]
+layers = 512
+
+[node name="Tiles_017" parent="SubViewportContainer/SubViewport/DreamTransition" index="23"]
+layers = 512
+
+[node name="Tiles_018" parent="SubViewportContainer/SubViewport/DreamTransition" index="24"]
+layers = 512
+
+[node name="Tiles_019" parent="SubViewportContainer/SubViewport/DreamTransition" index="25"]
+layers = 512
+
+[node name="Tiles_020" parent="SubViewportContainer/SubViewport/DreamTransition" index="26"]
+layers = 512
+
+[node name="Tiles_021" parent="SubViewportContainer/SubViewport/DreamTransition" index="27"]
+layers = 512
+
+[node name="Tiles_022" parent="SubViewportContainer/SubViewport/DreamTransition" index="28"]
+layers = 512
+
+[node name="Tiles_023" parent="SubViewportContainer/SubViewport/DreamTransition" index="29"]
+layers = 512
+
+[node name="Tiles_024" parent="SubViewportContainer/SubViewport/DreamTransition" index="30"]
+layers = 512
+
+[node name="Tiles_025" parent="SubViewportContainer/SubViewport/DreamTransition" index="31"]
+layers = 512
+
+[node name="Tiles_026" parent="SubViewportContainer/SubViewport/DreamTransition" index="32"]
+layers = 512
+
+[node name="Tiles_027" parent="SubViewportContainer/SubViewport/DreamTransition" index="33"]
+layers = 512
+
+[node name="Tiles_028" parent="SubViewportContainer/SubViewport/DreamTransition" index="34"]
+layers = 512
+
+[node name="Tiles_029" parent="SubViewportContainer/SubViewport/DreamTransition" index="35"]
+layers = 512
+
+[node name="Clue02" parent="SubViewportContainer/SubViewport/DreamTransition" index="36"]
+layers = 512
+
+[node name="hangingString" parent="SubViewportContainer/SubViewport/DreamTransition" index="37"]
+transform = Transform3D(0.17, 0, 0, 0, -9.83506e-09, -0.225, 0, 0.225, -9.83506e-09, -2.5532, 1.93023, -1.25448)
+
+[node name="FrameSep" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_jm08a")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/FrameSep/doorFrame_002" index="0"]
+transform = Transform3D(0.168981, 0, -0.998077, 0, 2.00503, 0, 1.66475, 0, 0.101311, -0.093871, -0.0204292, 0)
+mesh = SubResource("QuadMesh_4n2im")
+
+[node name="Lighting" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Lighting"]
+environment = SubResource("Environment_q1hl2")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport/Lighting"]
+transform = Transform3D(1, 0, 0, 0, -0.0483094, 0.998832, 0, -0.998832, -0.0483094, 8.29855, 4.53857, 0)
+light_energy = 9.714
+shadow_enabled = true
+spot_range = 7.341
+spot_angle = 54.97
+
+[node name="CamSystem" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("cameras")]
+script = ExtResource("3_gseyv")
+cameras = [NodePath("StartArea"), NodePath("CasePuzzle")]
+
+[node name="Path" type="Node" parent="SubViewportContainer/SubViewport/CamSystem"]
+
+[node name="PathOut" type="Path3D" parent="SubViewportContainer/SubViewport/CamSystem/Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62, 2.1816, 2.91019)
+curve = SubResource("Curve3D_gseyv")
+
+[node name="PathIn" type="Path3D" parent="SubViewportContainer/SubViewport/CamSystem/Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35447, 5.35369, 7.23412)
+curve = SubResource("Curve3D_nv2et")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CamSystem"]
+transform = Transform3D(0.976181, 0.0711853, -0.204877, -7.41323e-07, 0.944398, 0.328253, 0.216896, -0.320379, 0.922086, -3.52672, 2.1816, 2.90997)
+cull_mask = 1048063
+projection = 1
+current = true
+size = 4.343
+
+[node name="PhantomCameraHost" type="Node" parent="SubViewportContainer/SubViewport/CamSystem/Camera3D"]
+script = ExtResource("2_ouh8g")
+
+[node name="PixelEffect" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/CamSystem/Camera3D"]
+transform = Transform3D(-2.06982, 0.00379726, 0.00203619, -0.00198912, 1.05641, -0.308058, -0.0104998, -0.948679, -0.343031, 0.0133445, -1.31957, -2.3806)
+transparency = 0.16
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_g1nns")
+skeleton = NodePath("../../..")
+
+[node name="CasePuzzle" type="Node3D" parent="SubViewportContainer/SubViewport/CamSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target", "look_at_targets")]
+transform = Transform3D(0.869837, -0.30856, 0.403222, -4.11679e-05, 0.802376, 0.612763, -0.506303, -0.530176, 0.692691, 8.28718, 5.35369, 7.2333)
+script = ExtResource("4_jm08a")
+follow_mode = 4
+follow_target = NodePath("../../Dalton2/CharacterBody3D")
+follow_path = NodePath("../Path/PathIn")
+look_at_mode = 3
+look_at_target = NodePath("../../Dalton2")
+look_at_targets = [NodePath("../../Dalton2/CharacterBody3D"), NodePath("../../DreamTransition/FloatingCase")]
+tween_resource = SubResource("Resource_oq3si")
+camera_3d_resource = SubResource("Resource_uvv1u")
+follow_damping = true
+follow_damping_value = Vector3(0.361, 0.192, 0.187)
+look_at_offset = Vector3(0.5, -2.41, -1.81)
+look_at_damping = true
+look_at_damping_value = 0.364
+
+[node name="StartArea" type="Node3D" parent="SubViewportContainer/SubViewport/CamSystem" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target", "look_at_targets")]
+transform = Transform3D(0.976181, 0.0711853, -0.204877, -7.41323e-07, 0.944398, 0.328253, 0.216896, -0.320379, 0.922086, -3.52672, 2.1816, 2.90997)
+script = ExtResource("4_jm08a")
+priority = 30
+follow_mode = 4
+follow_target = NodePath("../../Dalton2/CharacterBody3D")
+follow_path = NodePath("../Path/PathOut")
+look_at_mode = 3
+look_at_target = NodePath("../../Dalton2")
+look_at_targets = [NodePath("../../Dalton2/CharacterBody3D"), NodePath("../../DreamTransition/Clue")]
+tween_resource = SubResource("Resource_g1nns")
+camera_3d_resource = SubResource("Resource_ju085")
+follow_damping = true
+look_at_offset = Vector3(0, -0.01, 0)
+look_at_damping = true
+metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
+
+[node name="CamAreas" type="Node" parent="SubViewportContainer/SubViewport/CamSystem"]
+
+[node name="Area_01" type="Area3D" parent="SubViewportContainer/SubViewport/CamSystem/CamAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23973, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CamSystem/CamAreas/Area_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32111, 1.16978, 0.170013)
+shape = SubResource("BoxShape3D_gseyv")
+
+[node name="Area_02" type="Area3D" parent="SubViewportContainer/SubViewport/CamSystem/CamAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.701567, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CamSystem/CamAreas/Area_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0653076, 1.10278, 0.102631)
+shape = SubResource("BoxShape3D_nv2et")
+
+[node name="Dalton" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="Dalton2" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_gseyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94596, -0.0373218, 0.0911722)
+
+[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport/Dalton2" index="0" node_paths=PackedStringArray("armature", "camera", "idle_time", "idle_time_2", "sound_player")]
+armature = NodePath("DaltonStepBack/DetectiveRig")
+camera = NodePath("../../CamSystem/Camera3D")
+idle_time = NodePath("Idle")
+idle_time_2 = NodePath("Idle2")
+sound_player = NodePath("../DaltonSoundPlayer")
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
+bones/1/position = Vector3(1.53711e-09, -5.39206e-08, -2.97516)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.00761895, 0.346802, 0.862861, -0.367615)
+bones/4/rotation = Quaternion(-0.285322, 0.0372991, -0.0387069, 0.956923)
+bones/5/rotation = Quaternion(0.524836, -0.0649307, 0.0805167, 0.844896)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.00761894, 0.346802, 0.862861, 0.367614)
+bones/9/rotation = Quaternion(-0.285322, -0.0372991, 0.0387069, 0.956923)
+bones/10/rotation = Quaternion(0.524836, 0.0649307, -0.0805167, 0.844896)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(1.53711e-09, -2.65383e-07, -2.97516)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0782281, 1.13712e-07, -1.15343e-08, 0.996935)
+bones/16/rotation = Quaternion(0.022835, 8.91855e-09, 8.08818e-09, 0.999739)
+bones/18/rotation = Quaternion(0.0500717, 0.00103843, -0.0101462, 0.998694)
+bones/20/rotation = Quaternion(0.0500717, -0.00103843, 0.0101463, 0.998694)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.262373, -0.148346, -0.389682, 0.870231)
+bones/23/rotation = Quaternion(-0.00357346, -0.0004386, -0.327918, 0.944699)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.262373, 0.148346, 0.389682, 0.870231)
+bones/27/rotation = Quaternion(-0.00357367, 0.000438617, 0.327919, 0.944699)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.961409, -0.0311821, -2.18485)
+bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
+bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
+bones/33/position = Vector3(1.53711e-09, -1.13525e-07, -2.97516)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
+bones/36/position = Vector3(-0.961409, -0.0311821, -2.18485)
+bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
+bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
+
+[node name="Idle" type="Timer" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D" index="8"]
+wait_time = 35.0
+autostart = true
+
+[node name="Idle2" type="Timer" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D" index="9"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Colliders" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Colliders"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64402, -0.256042, 0.216114)
+shape = SubResource("BoxShape3D_ga30b")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.76115, 1.90137, 0.216114)
+shape = SubResource("BoxShape3D_s7xep")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0203111, 1.90137, 2.6743)
+shape = SubResource("BoxShape3D_4n2im")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0203111, 1.90137, -2.6893)
+shape = SubResource("BoxShape3D_4n2im")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0051, 1.90137, 0.216114)
+shape = SubResource("BoxShape3D_s7xep")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60836, 1.90137, 3.8914)
+shape = SubResource("BoxShape3D_85rt7")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60836, 1.90137, -4.13396)
+shape = SubResource("BoxShape3D_85rt7")
+
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/CamSystem/CamAreas/Area_01" to="SubViewportContainer/SubViewport/CamSystem" method="_on_area_01_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/CamSystem/CamAreas/Area_02" to="SubViewportContainer/SubViewport/CamSystem" method="_on_area_02_body_entered"]
+
+[editable path="SubViewportContainer/SubViewport/DreamTransition"]
+[editable path="SubViewportContainer/SubViewport/FrameSep"]
+[editable path="SubViewportContainer/SubViewport/Dalton2"]
+[editable path="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D/DaltonStepBack"]
