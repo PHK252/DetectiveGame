@@ -1,0 +1,625 @@
+[gd_scene load_steps=88 format=3 uid="uid://7vduw88j8d4w"]
+
+[ext_resource type="Script" uid="uid://cm6a5y87pfip2" path="res://quincy_caught.gd" id="1_xxbli"]
+[ext_resource type="Texture2D" uid="uid://ch4d6mcfcyikc" path="res://ThirdHouse/Dectection Restart/Quincy Detection background.png" id="2_ud1ue"]
+[ext_resource type="Texture2D" uid="uid://cv2mnctmvr8bh" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error1.png" id="3_k6imd"]
+[ext_resource type="Texture2D" uid="uid://bsqwckbi6mri3" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error2.png" id="4_mgx7t"]
+[ext_resource type="Texture2D" uid="uid://dc60lil58oihg" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error3.png" id="5_of4fa"]
+[ext_resource type="Texture2D" uid="uid://btedanxtdgbdv" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error4.png" id="6_hru5b"]
+[ext_resource type="Texture2D" uid="uid://nwt5sjbe8on3" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error5.png" id="7_t1ilo"]
+[ext_resource type="Texture2D" uid="uid://bb5osa6xoqmhv" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error6.png" id="8_dwkkf"]
+[ext_resource type="Texture2D" uid="uid://cmjedoxnm0cmc" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error7.png" id="9_wad3n"]
+[ext_resource type="Texture2D" uid="uid://b163bo6pl0r6v" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error8.png" id="10_jc4wn"]
+[ext_resource type="Texture2D" uid="uid://75dcxjbuhadp" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error9.png" id="11_y0spg"]
+[ext_resource type="Texture2D" uid="uid://m84oyuptelxy" path="res://ThirdHouse/Dectection Restart/Eye/Corrupt/Quincy Detection Eye Error freeze.png" id="12_eq27j"]
+[ext_resource type="Texture2D" uid="uid://buss6a6mmivf3" path="res://ThirdHouse/Dectection Restart/Logo/Logo/Quincy Detection Logo1.png" id="13_ekhkn"]
+[ext_resource type="Texture2D" uid="uid://bmw0bc7cu41f2" path="res://ThirdHouse/Dectection Restart/Logo/Logo/Quincy Detection Logo2.png" id="14_5jvch"]
+[ext_resource type="Texture2D" uid="uid://bg7chh7hq4u3n" path="res://ThirdHouse/Dectection Restart/Logo/Logo/Quincy Detection Logo3.png" id="15_dckb3"]
+[ext_resource type="Texture2D" uid="uid://eyi4j83rycah" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition1.png" id="16_i7bli"]
+[ext_resource type="Texture2D" uid="uid://cimpuflllspw2" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition2.png" id="17_isurj"]
+[ext_resource type="Texture2D" uid="uid://todkfgjpy1tb" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition3.png" id="18_07baf"]
+[ext_resource type="Texture2D" uid="uid://bv2eqerxwqctv" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition4.png" id="19_4xdks"]
+[ext_resource type="Texture2D" uid="uid://wrwmwwgi5bgj" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition5.png" id="20_q4qif"]
+[ext_resource type="Texture2D" uid="uid://btvungtgw61jd" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition6.png" id="21_yitij"]
+[ext_resource type="Texture2D" uid="uid://c2ptvav7is3fr" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition7.png" id="22_yr73p"]
+[ext_resource type="Texture2D" uid="uid://im3noicnb7bv" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition8.png" id="23_ppixu"]
+[ext_resource type="Texture2D" uid="uid://domwhkvx365wh" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition9.png" id="24_wjx27"]
+[ext_resource type="Texture2D" uid="uid://dnji3yif413cn" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition10.png" id="25_itdnt"]
+[ext_resource type="Texture2D" uid="uid://hwrk244mr0oc" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition11.png" id="26_ytpt1"]
+[ext_resource type="Texture2D" uid="uid://dac5hoth63lae" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition12.png" id="27_4a4ym"]
+[ext_resource type="Texture2D" uid="uid://1qawf03munbp" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition13.png" id="28_njixn"]
+[ext_resource type="Texture2D" uid="uid://c4iscgc3a8u7k" path="res://ThirdHouse/Dectection Restart/Logo/Transition/Quincy Detection Logo transition14.png" id="29_3iwox"]
+[ext_resource type="Texture2D" uid="uid://b7tt2yifrkn5f" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye1.png" id="30_6cy07"]
+[ext_resource type="Texture2D" uid="uid://pyhbusnkyh8q" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye2.png" id="31_qct20"]
+[ext_resource type="Texture2D" uid="uid://c1egqntda6cmc" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye3.png" id="32_mid4j"]
+[ext_resource type="Texture2D" uid="uid://ck5llqubm202m" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye4.png" id="33_u2wi3"]
+[ext_resource type="Texture2D" uid="uid://cun6iuiayndy1" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye5.png" id="34_oawn2"]
+[ext_resource type="Texture2D" uid="uid://cgqdgkvdovv8l" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye6.png" id="35_r2tb5"]
+[ext_resource type="Texture2D" uid="uid://bn2kwfrupsawb" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye7.png" id="36_c0w8u"]
+[ext_resource type="Texture2D" uid="uid://6hwb8fag7e3k" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye8.png" id="37_qhk8a"]
+[ext_resource type="Texture2D" uid="uid://dpw7xb3tfchc7" path="res://ThirdHouse/Dectection Restart/Eye/Register/Quincy Detection Eye9.png" id="38_4lxp4"]
+[ext_resource type="Texture2D" uid="uid://cycxeqd0ew32" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan1.png" id="39_0wjt5"]
+[ext_resource type="Texture2D" uid="uid://wnvewign3cxb" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan2.png" id="40_qgkhv"]
+[ext_resource type="Texture2D" uid="uid://b5np1uyeliu0" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan3.png" id="41_owapc"]
+[ext_resource type="Texture2D" uid="uid://bf4utm6nd2fhq" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan4.png" id="42_x6ldl"]
+[ext_resource type="Texture2D" uid="uid://cn2elip5bb67t" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan5.png" id="43_6070v"]
+[ext_resource type="Texture2D" uid="uid://dlu1m3bu8mrnt" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan6.png" id="44_m7aii"]
+[ext_resource type="Texture2D" uid="uid://c8ja4r2gu3nrd" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan7.png" id="45_h0vb7"]
+[ext_resource type="Texture2D" uid="uid://dmxb1p46jvddf" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan8.png" id="46_ogq0b"]
+[ext_resource type="Texture2D" uid="uid://dnu53t2lr7sxl" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan9.png" id="47_4x7bq"]
+[ext_resource type="Texture2D" uid="uid://chsw1buwjkej0" path="res://ThirdHouse/Dectection Restart/Eye/Scan/Quincy Detection Eye Scan11.png" id="48_abs6w"]
+[ext_resource type="Texture2D" uid="uid://caa6ogy2x0c4r" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null1.png" id="49_0iow3"]
+[ext_resource type="Texture2D" uid="uid://x6s5xy1vn4gu" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null2.png" id="50_uy4ov"]
+[ext_resource type="Texture2D" uid="uid://m26miqbgu1v3" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null3.png" id="51_e6wgm"]
+[ext_resource type="Texture2D" uid="uid://c88iy5dek3bex" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null4.png" id="52_7tuib"]
+[ext_resource type="Texture2D" uid="uid://cy41lt1d8xap0" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null5.png" id="53_nmwen"]
+[ext_resource type="Texture2D" uid="uid://qt8t00chwp4g" path="res://ThirdHouse/Dectection Restart/Text/Starting/Quincy Detection Starting1.png" id="54_5wp25"]
+[ext_resource type="Texture2D" uid="uid://gu5y0bdx3qky" path="res://ThirdHouse/Dectection Restart/Text/Starting/Quincy Detection Starting2.png" id="55_5j1x4"]
+[ext_resource type="Texture2D" uid="uid://cxfbnnfyxxnja" path="res://ThirdHouse/Dectection Restart/Text/Starting/Quincy Detection Starting3.png" id="56_5haa7"]
+[ext_resource type="Texture2D" uid="uid://4i7q18nyc8x2" path="res://ThirdHouse/Dectection Restart/Text/Starting/Quincy Detection Starting4.png" id="57_j2qa3"]
+[ext_resource type="Texture2D" uid="uid://c0vr0hucdto7d" path="res://ThirdHouse/Dectection Restart/Text/Starting/Quincy Detection Starting5.png" id="58_7gey2"]
+[ext_resource type="Texture2D" uid="uid://cf0hrrppxlq1k" path="res://ThirdHouse/Dectection Restart/Text/Register/Quincy Detection Register1.png" id="59_pmljk"]
+[ext_resource type="Texture2D" uid="uid://cpxav2epp4cu3" path="res://ThirdHouse/Dectection Restart/Text/Register/Quincy Detection Register2.png" id="60_o5580"]
+[ext_resource type="Texture2D" uid="uid://cpxt8tapfh3q" path="res://ThirdHouse/Dectection Restart/Text/Register/Quincy Detection Register3.png" id="61_esfue"]
+[ext_resource type="Texture2D" uid="uid://d4bweypkqduks" path="res://ThirdHouse/Dectection Restart/Text/Register/Quincy Detection Register4.png" id="62_67sbs"]
+[ext_resource type="Texture2D" uid="uid://dh33pro300m3l" path="res://ThirdHouse/Dectection Restart/Text/Register/Quincy Detection Register5.png" id="63_d1l7h"]
+[ext_resource type="Texture2D" uid="uid://34tv8yeexfu2" path="res://ThirdHouse/Dectection Restart/Text/Scan/Quincy Detection Scan1.png" id="64_7xojw"]
+[ext_resource type="Texture2D" uid="uid://cwqqk56vl77aj" path="res://ThirdHouse/Dectection Restart/Text/Scan/Quincy Detection Scan2.png" id="65_mic34"]
+[ext_resource type="Texture2D" uid="uid://chcsj6wjp8ixy" path="res://ThirdHouse/Dectection Restart/Text/Scan/Quincy Detection Scan3.png" id="66_q1m5i"]
+[ext_resource type="Texture2D" uid="uid://50lsle0mrjv1" path="res://ThirdHouse/Dectection Restart/Text/Scan/Quincy Detection Scan4.png" id="67_uw2mh"]
+[ext_resource type="Texture2D" uid="uid://vuxb50b52tx" path="res://ThirdHouse/Dectection Restart/Text/Scan/Quincy Detection Scan5.png" id="68_i24fn"]
+[ext_resource type="Texture2D" uid="uid://bljl8phecdb71" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null corrupt1.png" id="69_a15o6"]
+[ext_resource type="Texture2D" uid="uid://cxhuxf78ynh53" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null corrupt2.png" id="70_bnn7a"]
+[ext_resource type="Texture2D" uid="uid://doy0nh71560xd" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null corrupt3.png" id="71_gv83m"]
+[ext_resource type="Texture2D" uid="uid://d1kvsscihnm6k" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null corrupt4.png" id="72_ekrau"]
+[ext_resource type="Texture2D" uid="uid://b2akbkmbxue5l" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null corrupt5.png" id="73_4mo6m"]
+[ext_resource type="Texture2D" uid="uid://1uxxf34o5411" path="res://ThirdHouse/Dectection Restart/Text/Null/Quincy Detection Null corrupt freeze.png" id="74_3kapv"]
+[ext_resource type="Texture2D" uid="uid://ctefpf518lobk" path="res://ThirdHouse/Dectection Restart/Text/Restart/Quincy Detection restart.png" id="75_k77xi"]
+[ext_resource type="Texture2D" uid="uid://dvdnqwbj0xdh1" path="res://ThirdHouse/Dectection Restart/Text/Binary/Quincy Detection code1.png" id="76_mgx7t"]
+[ext_resource type="Texture2D" uid="uid://byfryl7mlwxn0" path="res://ThirdHouse/Dectection Restart/Text/Binary/Quincy Detection code2.png" id="77_of4fa"]
+[ext_resource type="Texture2D" uid="uid://da348evhp14t5" path="res://ThirdHouse/Dectection Restart/Text/Binary/Quincy Detection code3.png" id="78_hru5b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfxm2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k6imd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mgx7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_of4fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hru5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t1ilo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dwkkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wad3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jc4wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_y0spg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eq27j")
+}],
+"loop": true,
+"name": &"Error",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_eq27j")
+}],
+"loop": true,
+"name": &"Freeze",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ekhkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5jvch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dckb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5jvch")
+}],
+"loop": true,
+"name": &"Logo Load",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_i7bli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_isurj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_07baf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4xdks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_q4qif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_yitij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_yr73p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ppixu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_wjx27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_itdnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ytpt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_4a4ym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_njixn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_3iwox")
+}],
+"loop": true,
+"name": &"Logo Transition",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_6cy07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_qct20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_mid4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_u2wi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_oawn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_r2tb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_c0w8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_qhk8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4lxp4")
+}],
+"loop": true,
+"name": &"Register Eye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_0wjt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_qgkhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_owapc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_x6ldl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_6070v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_m7aii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_h0vb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_ogq0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_4x7bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_abs6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4lxp4")
+}],
+"loop": true,
+"name": &"Scan Eye",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kq1st"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_0iow3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_uy4ov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_e6wgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_7tuib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_nmwen")
+}],
+"loop": true,
+"name": &"Intial",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("54_5wp25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_5j1x4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_5haa7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_j2qa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_7gey2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dckb3")
+}],
+"loop": true,
+"name": &"Loading",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("59_pmljk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_o5580")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_esfue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_67sbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_d1l7h")
+}],
+"loop": true,
+"name": &"Register",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("64_7xojw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_mic34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_q1m5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_uw2mh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_i24fn")
+}],
+"loop": true,
+"name": &"Scan",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("69_a15o6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_bnn7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_gv83m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_ekrau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_4mo6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_3kapv")
+}],
+"loop": true,
+"name": &"corrupt",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_4soxm"]
+resource_name = "Caught_Anim"
+length = 20.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimFrames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.4, 5.8, 12.2, 17.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"Logo Load", &"Logo Transition", &"Register Eye", &"Scan Eye", &"Error"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimFrames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1, 1.1, 1.6, 1.7, 2.1, 2.2, 2.7, 2.8, 3.2, 3.3, 3.8, 3.9, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.9, 13, 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.7, 13.8, 13.9, 14, 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 14.9, 15, 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9, 16, 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 16.9, 17, 17.1, 17.2, 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 17.9, 18, 18.1, 18.2, 18.3, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 7, 8, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.8, 12.2, 17.4, 17.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"Loading", &"Register", &"Scan", &"Intial", &"corrupt"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Text:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4.4, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8, 8, 8.2, 8.4, 8.6, 8.8, 9, 9.2, 9.4, 9.6, 9.8, 10, 10.2, 10.4, 10.6, 10.8, 11, 11.2, 11.4, 11.6, 11.8, 12, 12.2, 12.4, 12.6, 12.8, 13, 13.2, 13.4, 13.6, 13.8, 14, 14.2, 14.4, 14.6, 14.8, 15, 15.2, 15.4, 15.6, 15.8, 16, 16.2, 16.4, 16.6, 16.8, 17, 17.2, 17.4, 17.6, 17.8, 17.9, 18, 18.1, 18.2, 18.3, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 0, 1, 2, 3, 4, 5, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Code:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(10.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Code"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Code:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 10.4, 10.7, 15.7, 16, 17.5, 17.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 0, 3, 1, 3, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ruqi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimFrames:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Logo Load"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimFrames:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Loading"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Text:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Code:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Code"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Code:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hdfi"]
+_data = {
+&"Caught_Anim": SubResource("Animation_4soxm"),
+&"RESET": SubResource("Animation_ruqi4")
+}
+
+[sub_resource type="Animation" id="Animation_tcepm"]
+resource_name = "Restart"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuincyDetectionRestart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fqkkw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuincyDetectionRestart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvqcv"]
+_data = {
+&"RESET": SubResource("Animation_fqkkw"),
+&"Restart": SubResource("Animation_tcepm")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1ilo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("76_mgx7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_of4fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_hru5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dckb3")
+}],
+"loop": true,
+"name": &"Code",
+"speed": 5.0
+}]
+
+[node name="Quincy Caught" type="Node2D" node_paths=PackedStringArray("anim", "restart")]
+script = ExtResource("1_xxbli")
+anim = NodePath("CaughtAnim")
+restart = NodePath("Restart")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ud1ue")
+
+[node name="AnimFrames" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gfxm2")
+animation = &"Logo Load"
+centered = false
+
+[node name="Text" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kq1st")
+animation = &"Loading"
+centered = false
+
+[node name="CaughtAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2hdfi")
+}
+
+[node name="QuincyDetectionRestart" type="Sprite2D" parent="."]
+texture = ExtResource("75_k77xi")
+centered = false
+
+[node name="Restart" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tvqcv")
+}
+
+[node name="Code" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.152941)
+sprite_frames = SubResource("SpriteFrames_t1ilo")
+animation = &"Code"
+centered = false
