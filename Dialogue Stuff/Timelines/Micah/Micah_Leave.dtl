@@ -9,7 +9,7 @@ if {Character Aff Points.Micah} <= 2:
 	Micah: bye... 
 	[signal arg="open_door"]
 	[end_timeline]
-elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 6:
+elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 5:
 	Dalton: I think we're done with our search. 
 	Dalton: If you think of anything that may contribute to the case, please call us or report it to the station. 
 	Theo: Thank you for letting us in.
@@ -22,7 +22,7 @@ elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 6:
 	Micah: Bye!
 	[signal arg="open_door"]
 	[end_timeline]
-elif {Character Aff Points.Micah} >= 6 or {Asked Questions.Micah_Theo_enter} == true and {Global.first_house} == "Micah":
+elif {Character Aff Points.Micah} >= 5 or {Asked Questions.Micah_Theo_enter} == true and {Global.first_house} == "Micah":
 	Theo: I think we're done with our search.
 	Theo: Thank you for letting us in.
 	Theo: And sorry for interrupting your bedtime

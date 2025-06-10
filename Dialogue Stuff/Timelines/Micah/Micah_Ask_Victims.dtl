@@ -6,19 +6,24 @@ Dalton: ...
 		[wait time="0.3"]
 		Dalton: ...
 		- Connection to Juniper?
-			set {Asked Questions.Micah_Juniper_Q1} = true
-			Dalton: Do you recognize her?
-			Micah: ...
-			Micah: She looks...
-			Micah: familar?
-			Dalton: So you've seen her before.
-			Micah: ... I think?
-			Dalton: Do you remember where?
-			Micah: ...
-			Micah: Around?
-			Dalton: ...
-			Micah: ...
-			Dalton: Hmmph.
+			if {Asked Questions.Micah_Juniper_Q1} == true:
+				Dalton: Do you recognize her?
+				Micah: ...
+				Micah: Still don’t.
+			else:
+				set {Asked Questions.Micah_Juniper_Q1} = true
+				Dalton: Do you recognize her?
+				Micah: ...
+				Micah: She looks...
+				Micah: familar?
+				Dalton: So you've seen her before.
+				Micah: ... I think?
+				Dalton: Do you remember where?
+				Micah: ...
+				Micah: Around?
+				Dalton: ...
+				Micah: ...
+				Dalton: Hmmph.
 			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 				set {Asked Questions.Micah_asked_all} = true
 				Dalton: That's all the questions I have for now.
@@ -27,15 +32,20 @@ Dalton: ...
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump
+					jump 
 				- Continue searching the apartment
 					Dalton: That's all the questions I have for now.
-		- Do you know anybody who would have a reason to target her?
-			set {Asked Questions.Micah_Juniper_Q2} = true
-			Dalton: Do you know anybody who would have a reason to target her?
-			Micah: I don't...
-			Micah: ...know her?
-			Dalton: Hmph.
+		- Know of any subjects with motive?
+			if {Asked Questions.Micah_Juniper_Q2} == true:
+				Dalton: Do you know anybody who would have a reason to target her?
+				Micah: ...
+				Micah: Who is that again?
+			else:
+				set {Asked Questions.Micah_Juniper_Q2} = true
+				Dalton: Do you know anybody who would have a reason to target her?
+				Micah: I don't...
+				Micah: ...know her?
+				Dalton: Hmph.
 			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 				set {Asked Questions.Micah_asked_all} = true
 				Dalton: That's all the questions I have for now.
@@ -44,123 +54,338 @@ Dalton: ...
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump
+					jump 
 				- Continue searching the apartment
 					Dalton: That's all the questions I have for now.
 	elif {Character Aff Points.Micah} > 2:
 		[wait time="0.3"]
 		Dalton: ...
-		- Do you recognize her?
-			set {Asked Questions.Micah_Juniper_Q1} = true
-			Dalton: Do you recognize her?
-			Micah: ...
-			Micah: Hmm...
-			Micah: I think so?
-			Micah: Doesn't she run a cafe near mid-town?
-			Micah: I think I went there a few times with a friend.
-			Dalton: Hmph.
+		- Connection to Juniper?
 			set {Asked Questions.Micah_know_Juniper} = true
-			elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+			if {Asked Questions.Micah_Juniper_Q1} == true:
+				Dalton: Do you recognize her?
+				Micah: Cafe owner in Midtown, right?
+				Micah: Is this a test?
+				Dalton: Hmph.
+				Micah: ...?
+				Theo: Ah, don’t worry about him.
+				Theo: His old age is catching up to him, I fear.
+			else:
+				set {Asked Questions.Micah_Juniper_Q1} = true
+				Dalton: Do you recognize her?
+				Micah: ...
+				Micah: Hmm...
+				Micah: I think so?
+				Micah: Doesn't she run a café near Midtown?
+				Micah: I think I went there a few times with a friend.
+				Dalton: Hmph.
+				Dalton: So you know her.
+				Micah: Uhh…
+				Micah: Not personally.
+				if {Asked Questions.Micah_Theo_enter} == true or {Juniper.found_skylar} == true:
+					Micah: My friend does-
+					Micah: Uh…
+					Micah: Did work there before.
+			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				set {Asked Questions.Micah_asked_all} = true
+				Dalton: That's all the questions I have for now.
 				[end_timeline]
 			else:
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump
+					jump 
 				- Continue searching the apartment
 					Dalton: That's all the questions I have for now.
-		- Do you know anybody who would have a reason to target her?
-			set {Asked Questions.Micah_Juniper_Q2} = true
-			Micah: I don't know her enough to know that.
-		elif {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
-			set {Asked Questions.Micah_asked_all} = true
-			Dalton: That's all the questions I have for now.
-			[end_timeline]
-		else:
-			[wait time="0.3"]
-			Dalton: ...
-			- Ask more questions
-				jump
-			- Continue searching the apartment
+					[end_timeline]
+		- Know of any subjects with motive?
+			if {Asked Questions.Micah_Juniper_Q2} == true:
+				Dalton: Do you know anybody who would have a reason to target her?
+				Micah: I don’t know.
+				Micah: Mad customers?
+				Micah: What do you want me to say?
+				Dalton: Hmph.
+			else:
+				set {Asked Questions.Micah_Juniper_Q2} = true
+				Dalton: Do you know anybody who would have a reason to target her?
+				Micah: I-
+				Micah: I don't know her enough to know that.
+			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				set {Asked Questions.Micah_asked_all} = true
 				Dalton: That's all the questions I have for now.
+				[end_timeline]
+			else:
+				[wait time="0.3"]
+				Dalton: ...
+				- Ask more questions
+					jump 
+				- Continue searching the apartment
+					Dalton: That's all the questions I have for now.
 - Show Micah a picture of Quincy.
 	label quincy qs
 	if {Character Aff Points.Micah} <= 2:
 		[wait time="0.3"]
 		Dalton: ...
-		- Do you recognize him?
-			set {Asked Questions.Micah_Quincy_Q1} = true
-			Dalton: Do you recognize him?
-			Micah: ...
-			Micah: He's the mayor...
-			Micah: Right?
-			Dalton: Yes.
+		- Connection to Quincy?
+			if {Asked Questions.Micah_Quincy_Q1} == true:
+				Dalton: Do you recognize him?
+				Micah: Again?
+				Dalton: …
+				Micah: It’s the mayor.
+				Micah: Never met the guy though.
+			else:
+				set {Asked Questions.Micah_Quincy_Q1} = true
+				Dalton: Do you recognize him?
+				Micah: ...
+				Micah: He's the mayor...
+				Micah: Right?
+				Dalton: Yes.
+				Dalton: Have you met or spoken with him before?
+				Micah: Nope.
+				Micah: I’ve only seen him on the news.
 			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
-			set {Asked Questions.Micah_asked_all} = true
-			Dalton: That's all the questions I have for now.
-			[end_timeline]
+				set {Asked Questions.Micah_asked_all} = true
+				Dalton: That's all the questions I have for now.
+				[end_timeline]
+			else:
+				[wait time="0.3"]
+				Dalton: ...
+				- Ask more questions
+					jump 
+				- Continue searching the apartment
+					Dalton: That's all the questions I have for now.
+		- Know of any subjects with motive?
+			if {Asked Questions.Micah_Quincy_Q2} == true:
+				Dalton: Do you know anybody who would target him?
+				Micah: Nope
+			else:
+				set {Asked Questions.Micah_Quincy_Q2} = true
+				Dalton: Do you know anybody who would target him?
+				Micah: Not specifically... no.
+			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+				set {Asked Questions.Micah_asked_all} = true
+				Dalton: That's all the questions I have for now.
+				[end_timeline]
 		else:
 			[wait time="0.3"]
 			Dalton: ...
 			- Ask more questions
-				jump
+				jump 
 			- Continue searching the apartment
 				Dalton: That's all the questions I have for now.
-		- Do you know anybody who would target him?
-			set {Asked Questions.Micah_Quincy_Q2} = true
-			Dalton: Do you know anybody who would target him?
-			Micah: Not specifically... no.
-			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
-				set {Asked Questions.Micah_asked_all} = true
-				Dalton: That's all the questions I have for now.
-				[end_timeline]
-			else:
-				[wait time="0.3"]
-				Dalton: ...
-				- Ask more questions
-					jump
-				- Continue searching the apartment
-					Dalton: That's all the questions I have for now.
-	elif {Character Aff Points.Micah} > 2:
-		[wait time="0.3"]
-		- Do you recognize him?
+elif {Character Aff Points.Micah} > 2:
+	[wait time="0.3"]
+	Dalton: ...
+	- Connection to Quincy?
+		if {Asked Questions.Micah_Quincy_Q1} == true:
+			Dalton: Do you recognize him?
+			Micah: It’s the mayor.
+			Micah: But do you recognize him?
+			Dalton: ...Hmph.
+			Dalton: I do.
+			Theo: Oh, yeah!
+			Theo: They’re besties.
+			Theo: Got each other’s numbers on speed dial and everything.
+			Dalton: Theo!
+			Dalton: Shut.
+			Theo: It’s true though…
+			Dalton: Huff.
+		else:
 			set {Asked Questions.Micah_Quincy_Q1} = true
 			Dalton: Do you recognize him?
 			Micah: Isn't he the mayor?
 			Dalton: Yes.
-			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
-				set {Asked Questions.Micah_asked_all} = true
+			Dalton: Have you met or spoken with him before?
+			Micah: Nope.
+			Micah: But it’s impossible to avoid him on the news.
+			Micah: His face is on every page.
+		if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+			set {Asked Questions.Micah_asked_all} = true
+			Dalton: That's all the questions I have for now.
+			[end_timeline]
+	else:
+		[wait time="0.3"]
+		Dalton: ...
+		- Ask more questions
+			jump 
+		- Continue searching the apartment
+			Dalton: That's all the questions I have for now.
+- Know of any subjects with motive?
+	if {Asked Questions.Micah_Quincy_Q2} == true:
+		Dalton: Do you know anybody who would want to target him?
+		Micah: Why would I know?
+		Micah: Wouldn’t you know better than me?
+		Dalton: Hmph.
+		Dalton: Don’t answer my questions with questions.
+		Theo: He’s got a point though.
+	else:
+		set {Asked Questions.Micah_Quincy_Q2} = true
+		Dalton: Do you know anybody who would want to target him?
+		Micah: I mean…
+		Micah: Despite what the papers want us to think,
+		Micah: He's not the greatest person...
+		Micah: So...
+		Micah: I don't know.
+	if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+		set {Asked Questions.Micah_asked_all} = true
+		Dalton: That's all the questions I have for now.
+		[end_timeline]
+	else:
+		[wait time="0.3"]
+		Dalton: ...
+		- Ask more questions
+			jump 
+		- Continue searching the apartment
+			Dalton: That's all the questions I have for now.
+			[end_timeline]
+- Ask about Clyde Procyon. | [if {Asked Questions.Micah_viewed_ID} == true]
+	label Clyde qs
+	if {Character Aff Points.Micah} <= 2:
+		if {Asked Questions.Micah_Asked_Clyde} == true:
+			set {Character Aff Points.Micah} -= 1
+			Dalton: Clyde Procyon.
+			Micah: I told you to leave him out of this.
+			Dalton: Hmph.
+		else:
+			set {Asked Questions.Micah_Asked_Clyde} = true
+			Dalton: Clyde Procyon.
+			Dalton: He is your father, correct?
+			Micah: …!
+			Micah: Yes?
+			Dalton: He’s the Lead Plant Operator for Arcadia Water Plant, correct?
+			Micah: Y-yes.
+			Dalton: How often does he communicate with the Mayor?
+			Micah: Um…
+			Micah: Not often?
+			Dalton: Hmph.
+			Micah: Is Pa in trouble?
+			Dalton: For now, no.
+			Micah: ...!
+			Micah: My father has nothing to do with whatever this is, I swear.
+			Micah: Please, just leave him out of this.
+			Dalton: Hmph.
+			if {Asked Questions.Micah_asked_all} == true:
 				Dalton: That's all the questions I have for now.
 				[end_timeline]
 			else:
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump
+					jump 
 				- Continue searching the apartment
 					Dalton: That's all the questions I have for now.
-		- Do you know anybody who would target him?
-			set {Asked Questions.Micah_Quincy_Q2} = true
-			Dalton: Do you know anybody who would want to target him?
-			Micah: I mean...
-			Micah: He's not the greatest person...
-			Micah: So...
-			Micah: I don't know.
-			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
-				set {Asked Questions.Micah_asked_all} = true
+					[end_timeline]
+	elif {Character Aff Points.Micah} > 2:
+		if {Asked Questions.Micah_Asked_Clyde} == true:
+			Dalton: Clyde Procyon.
+			Micah: Still covering your bases?
+			Dalton: Hmph.
+		else:
+			set {Asked Questions.Micah_Asked_Clyde} = true
+			Dalton: Clyde Procyon.
+			Dalton: He is your father, correct?
+			Micah: ...!
+			Micah: Yes?
+			Dalton: He’s the Lead Plant Operator for Arcadia Water Plant, correct?
+			Micah: Y-yes.
+			Dalton: How often does he communicate with the Mayor?
+			Micah: Um...
+			Micah: Not often?
+			Dalton: Hmph.
+			Micah: Why are you asking about Pa!? I-Is he in trouble!?
+			Dalton: No.
+			Dalton: I’m just covering my bases.
+			Micah: Then...
+			Micah: H-how did you know about Pa?
+			Dalton: His ID badge was in your closet.
+			Dalton: You might want to return it to him.
+			Micah: Huu...
+			Micah: Yeah.
+			if {Asked Questions.Micah_asked_all} == true:
 				Dalton: That's all the questions I have for now.
 				[end_timeline]
 			else:
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump
+					jump 
 				- Continue searching the apartment
 					Dalton: That's all the questions I have for now.
+					[end_timeline]
+- Ask about Skylar Aslan. | [if {Juniper.found_skylar} == true]
+	label Skylar
+	if {Character Aff Points.Micah} <= 2:
+		if {Asked Questions.Micah_Asked_Skylar} == true:
+			Dalton: Do you know of a Skylar Aslan?
+			Micah: Hm?
+			Micah: What did you say?
+			Dalton: Do yo-
+			Micah: Oh. I didn’t quite catch that.
+			Dalton: Hmph. 
+			Dalton: Nevermind.
+		else:
+			set {Asked Questions.Micah_Asked_Skylar} = true
+			Dalton: Clyde Procyon.
+			DaDalton: Do you know of a Skylar Aslan?
+			Micah: ...!
+			Micah: N-no.
+			Micah: Why?
+			Dalton: We have reason to believe that he is the one behind these break-ins.
+			Dalton: If you have any information about his appearance or whereabouts, we would greatly appreciate it. 
+			Micah: Ah...
+			Micah: Sorry...
+			Micah: I don’t think I can help you.
+			if {Asked Questions.Micah_asked_all} == true:
+				Dalton: That's all the questions I have for now.
+				[end_timeline]
+			else:
+				[wait time="0.3"]
+				Dalton: ...
+				- Ask more questions
+					jump 
+				- Continue searching the apartment
+					Dalton: That's all the questions I have for now.
+					[end_timeline]
+	elif {Character Aff Points.Micah} > 2:
+		if {Asked Questions.Micah_Asked_Clyde} == true:
+				Dalton: Do you know of a Skylar Aslan?
+				Micah: Yeah...
+				Micah: We’ve been over this.
+				Dalton: Hmph.
+				Dalton: Sorry.
+		else:
+			set {Asked Questions.Micah_Asked_Clyde} = true
+			Dalton: Do you know of a Skylar Aslan?
+			Micah: ...!
+			Micah: Y-yeah.
+			Micah: They’re my friend.
+			Micah: Why?
+			Dalton: We have reason to believe that he is linked to this case.
+			Dalton: If you have any information about his appearance or whereabouts, we would greatly appreciate it. 
+			Micah: Ah...
+			Micah: Um...
+			Micah: The picture on the tv stand…
+			Micah: That’s Skylar.
+			Micah: But I don’t know where they are. 
+			Micah: Sorry.
+			Theo: No need to apologize, you already helped us tons. 
+			if {Asked Questions.Micah_asked_all} == true:
+				Dalton: That's all the questions I have for now.
+				[end_timeline]
+			else:
+				[wait time="0.3"]
+				Dalton: ...
+				- Ask more questions
+					jump 
+				- Continue searching the apartment
+					Dalton: That's all the questions I have for now.
+					[end_timeline]
 - Continue searching the apartment
 	if {Asked Questions.Micah_Juniper_Q1} == false and {Asked Questions.Micah_Juniper_Q2} == false and {Asked Questions.Micah_Quincy_Q1} == false and {Asked Questions.Micah_Quincy_Q2} == false:
 		Dalton: Um.
 		Dalton: Nevermind.
 		Micah: Ok?
+		[end_timeline]
 	else:
 		Dalton: That's all the questions I have for now.
+		[end_timeline]

@@ -144,8 +144,8 @@ func _on_exit_pressed():
 	GlobalVars.viewing = ""
 
 func _input(event):
-	var finished_letter = Dialogic.VAR.get_variable("Asked Questions.finished_letter")
-	var finished_key = Dialogic.VAR.get_variable("Asked Questions.finished_key")
+	var finished_letter = Dialogic.VAR.get_variable("Asked Questions.Micah_asked_letter")
+	var finished_key = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Key")
 	if GlobalVars.in_dialogue == false:
 		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

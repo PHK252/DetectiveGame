@@ -16,8 +16,8 @@ if {Character Aff Points.Micah} <= 2:
 if {Character Aff Points.Micah} > 2:
 	if {Asked Questions.Micah_asked_letter} == true:
 		Dalton: Do you know who could've written this?
-		Micah: Ah.
-		Micah: No.
+		Micah: I don't know... 
+		Micah: Sorry.
 	else:
 		set {Asked Questions.Micah_asked_letter} = true
 		Dalton: Do you know who could've written this?
@@ -29,9 +29,9 @@ if {Character Aff Points.Micah} > 2:
 		Micah: Maybe...
 		Micah: No...
 		Micah: I don't know.
-		#ifasked Skylar
-		Theo: Do you think it could be Skylar?
-		Micah: Maybe…
-		Micah: But why would they leave again?
+		if {Asked Questions.Micah_Asked_Skylar} == true:
+			Theo: Do you think it could be Skylar?
+			Micah: Maybe...
+			Micah: But why would they come back just to leave again?
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
 			jump Micah_ask_keep/

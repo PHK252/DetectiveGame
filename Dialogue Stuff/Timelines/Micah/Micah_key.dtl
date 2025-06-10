@@ -14,7 +14,8 @@ if {Character Aff Points.Micah} <= 2:
 		Dalton: Do you know that this key is used for?
 		Micah: No... 
 		Micah: I don't think I have anything that requires a key.
-		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+		if {Asked Questions.Micah_in_choice} == true and {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			set {Asked Questions.Micah_in_choice} = false
 			jump Micah_ask_keep/
 
 if {Character Aff Points.Micah} > 2:
@@ -32,5 +33,6 @@ if {Character Aff Points.Micah} > 2:
 		Dalton: Do you know what it belongs to?
 		Micah: Nope.
 		Micah: Never seen it before.
-		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+		if {Asked Questions.Micah_in_choice} == true and {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			set {Asked Questions.Micah_in_choice} = false
 			jump Micah_ask_keep/

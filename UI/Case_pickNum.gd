@@ -115,6 +115,7 @@ func _open_case():
 	GlobalVars.Micah_in_case = false
 	$".".hide()
 	#open_animation.play("caseopened")
+	Dialogic.VAR.set_variable("Asked Questions.Micah_Solved_Case", true)
 	open_animation_2["parameters/conditions/case_opened"] = true
 	await open_animation_2.animation_finished
 	await get_tree().create_timer(.03).timeout
