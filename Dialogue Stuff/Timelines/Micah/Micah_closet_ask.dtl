@@ -1,8 +1,9 @@
-# #third person cam still
 Dalton: Do you notice anything different about your closet?
-Micah: No...
-Micah: But also...
-Micah: A few hoodies could go missing and I wouldn't notice.
+if {Character Aff Points.Micah} > 2.0:
+	Micah: Honestly…
+	Micah: I wouldn’t know.
+else:
+	Micah: No…
 Dalton: I see.
 [wait time="0.3"]
 label choices
@@ -10,14 +11,27 @@ Dalton: ...
 - Ask about toolbox.
 	set {Asked Questions.Micah_Closet_Asked} = true
 	Dalton: Do you usually keep a toolbox in your closet?
-	Theo: Hey, don't judge a raccoon's toolbox placement.
-	Micah: It's fine...
-	Micah: I just keep it there so it's out of the way.
-	Micah: I don't really use it though...
-	Dalton: Did you use it recently?
-	Micah: No?
-	Dalton: Why is it open then?
-	Micah: Huh?
+	if {Character Aff Points.Micah} > 2.0:
+		Theo: Is that not where you put a toolbox?
+		Dalton: ...
+		Micah: I...
+		Micah: I just keep it there so it's out of the way.
+		Micah: I don't really use it though...
+		Dalton: Did you use it recently?
+		Micah: No?
+		Dalton: Did you leave it open?
+		Micah: Huh?
+		Dalton: ...
+	else:
+		Theo: Hey! Don't judge a raccoon's toolbox placement.
+		Dalton: I’m not. I-
+		Micah: I just keep it there so it's out of the way.
+		Micah: I don't really use it though...
+		Dalton: Did you use it recently?
+		Micah: No?
+		Dalton: Why is it open, then?
+		Micah: Huh?
+		Dalton: ...
 	label tool choices
 	[wait time="0.3"]
 	Dalton: ...

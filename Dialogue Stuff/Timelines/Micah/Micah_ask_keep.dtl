@@ -1,38 +1,58 @@
-if {Character Aff Points.Micah} <= 1:
+if {Character Aff Points.Micah} <= 2:
 	Dalton: Can I take the key in as evidence?
-	Micah: ... I guess
-	Dalton: I'll be taking the letter too?
+	Micah: ... 
+	Micah: I-I think that might be mine.
+	Dalton: Fine.
+	Dalton: Then I'll be taking the letter.
 	Micah: Wait!
 	Micah: No...
 	Micah: Can I keep it?
-	Dalton: Why?
-	Micah: ...
-	Dalton: Drop the act.
-	Dalton: I know you're hiding something.
-	Micah: ...
-	Dalton: You're not gonna tell us?
-	Micah: ...
-	[wait time="1.0"]
-	Theo: Hey, Dalton... 
-	Theo: Lay off him.
 	Dalton: ...
-	Dalton: I'm taking the letter. 
-	Dalton: You can come get it at the station once you're ready to talk.
+	- Negotiate 
+		set {Character Aff Points.Micah} -= 1
+		set {Character Aff Points.Theo} -= 1
+		set {Asked Questions.has_letter} = true
+		Dalton: Why?
+		Micah: It’s-
+		Micah: Um…
+		Micah: ...
+		Dalton: Drop the act.
+		Dalton: I know you're hiding something.
+		Micah: ...
+		Dalton: You're not going to tell us?
+		Micah: ...
+		Theo: Hey, Dalton...
+		Theo: Lay off him.
+		Dalton: ...
+		Dalton: I'm taking the letter.
+		Dalton: You can come get it at the station once you're ready to talk.
+	- Relinquish
+		set {Character Aff Points.Micah} += 1
+		Dalton: Theo, did you take a picture of the letter?
+		Theo: Yep! It’s uploading right now.
+		Dalton: ...
+		Dalton: Fine.
+		Dalton: You can keep it.
+		Micah: ...!
+		Micah: Thank you.
 
-if {Character Aff Points.Micah} > 1:
+if {Character Aff Points.Micah} > 2:
+	set {Asked Questions.has_key} = true
 	Dalton: Can we take the key in as evidence?
-	Micah: Sure... 
-	Micah: I mean I wouldn't know what to do with it.
+	Micah: Sure...
+	Micah: I wouldn't know what to do with it anyway.
 	Dalton: The letter?
-	Micah: ... 
-	Micah: Can... 
+	Micah: ...
+	Micah: Can...
 	Micah: Can I keep it?
-	Dalton: Hmphm.
+	Dalton: Hmph.
 	Dalton: Theo, did you take a picture of the letter?
-	Theo: Yes, I'm sending it to you right now.
+	Theo: Yep! It’s uploading right now.
 	Dalton: Did-
-	Theo: Yes, I took pictures of the rest of the notes too.
+	Theo: Yes, I took notes and pictures of the other pieces of evidence too.
 	Dalton: ...
 	Dalton: Hmph.
 	Dalton: Thanks.
-	Theo: Anything for you, old man.
+	Theo: Anything for you, ya old fox.
+	Dalton: It’s still Detective Reynard to you.
+	Theo: Yeah, yeah.

@@ -1,16 +1,37 @@
-if {Character Aff Points.Micah} <= 1:
-	Dalton: Do you know who could've written this?
-	Micah: I... 
-	Micah: No... 
-	Micah: I don't know.
-	Dalton: ...hmmph.
+if {Character Aff Points.Micah} <= 2:
+	if {Asked Questions.Micah_asked_letter} == true:
+		Dalton: Do you know who could've written this?
+		Micah: Ah.
+		Micah: No.
+	else:
+		set {Asked Questions.Micah_asked_letter} = true
+		Dalton: Do you know who could've written this?
+		Micah: I...
+		Micah: No...
+		Micah: I don't know.
+		Dalton: ...hmmph.
+		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			jump Micah_ask_keep/
 
-if {Character Aff Points.Micah} >= 1:
-	Dalton: Do you know who could've written this?
-	Micah: I don't know... sorry.
-	Theo: The writer seems to be addressing you, Micah.
-	Theo: Are you sure you don't know? 
-	Micah: It...
-	Micah: Maybe... 
-	Micah: No... 
-	Micah: I don't know.
+if {Character Aff Points.Micah} > 2:
+	if {Asked Questions.Micah_asked_letter} == true:
+		Dalton: Do you know who could've written this?
+		Micah: Ah.
+		Micah: No.
+	else:
+		set {Asked Questions.Micah_asked_letter} = true
+		Dalton: Do you know who could've written this?
+		Micah: ...!
+		Micah: I-I don't know.
+		Theo: The writer seems to be addressing you, Micah.
+		Theo: Are you sure you don't know?
+		Micah: It...
+		Micah: Maybe...
+		Micah: No...
+		Micah: I don't know.
+		#ifasked Skylar
+		Theo: Do you think it could be Skylar?
+		Micah: Maybe…
+		Micah: But why would they leave again?
+		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			jump Micah_ask_keep/

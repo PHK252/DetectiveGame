@@ -1,4 +1,4 @@
-if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == false:
 	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton: Is this yours?
 	Micah: Ah...
@@ -16,9 +16,9 @@ if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == f
 	Dalton: Do you know how to open it?
 	Micah: ...
 	Micah: no...
-	[wait time="1.0"]
 	Dalton: ...
 	Micah: ...
+	Micah: :/
 	Dalton: Hmph.
 	Dalton: Tsk...
 	[wait time="0.3"]
@@ -29,25 +29,36 @@ if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == f
 	-  Keep looking around Micah's house.
 		[end_timeline]
 
-if {Character Aff Points.Micah} >= 1 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == false:
 	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton: Is this yours?
 	Micah: Ah...
 	Micah: No...
 	Micah: It appeared this morning.
 	Dalton: This morning?
-	Micah: Yeah...
-	Dalton: But you said that nothing changed-
-	Micah: I'm tired, man!
-	[wait time="1.0"]
-	Micah: ...
 	Dalton: ...
-	Micah: sorry.
-	Dalton: Hmph.
-	Dalton: Do you know where it came from?
+	- Bring up inconsistency
+		set {Character Aff Points.Micah} -= 1
+		Micah: Yeah...
+		Dalton: I believe you told us nothing changed-
+		Micah: I'm tired, ya dingo!
+		Micah: And-
+		Micah: And what do you expect me to do when two cops show up at my doorstep unannounced!
+		Micah: ...
+		Dalton: ...
+		Micah: sorry.
+		Theo: No,no.
+		Theo: We are sorry.
+		Theo: Dalton, take it easy on him. 
+		Dalton: Hmph.
+		jump continue
+	- Continue
+		jump continue
+	label continue
+	Dalton: Do you know where the case came from?
 	Micah: No...
 	Micah: I've'nt seen anything like it before.
-	Dalton: Have you tried to open it?
+	Dalton: Have you tried opening it?
 	Micah: No.
 	Micah: I just woke up.
 	Dalton: Hmph...
@@ -64,14 +75,17 @@ if {Asked Questions.Micah_Theo_enter} == true:
 	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton: Is this the case you were talking about?
 	Micah: Yeah.
-	Dalton: Do you know how might have left this?
+	Dalton: Do you know who might have left it?
 	Micah: Not really...
-	Dalton: Do you know any possible six digit codes they might have used?
-	Micah: No..
-	Micah: Not on the top of my head.
+	Dalton: Do you know what the code is?
+	Micah: No...
+	Micah: If I did, I wouldn’t be asking you for help.
+	Dalton: Hmph.
 	Theo: Well...
-	Theo: Time to do some dectctive work, sir Dalton.
+	Theo: It was worth a shot. 
+	Theo: Time to do some detective work, sir Dalton.
 	Dalton: Hmmph.
+	Dalton: ...
 	[wait time="0.3"]
 	label choices
 	Dalton: ...

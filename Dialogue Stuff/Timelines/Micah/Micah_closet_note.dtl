@@ -1,31 +1,46 @@
-if {Character Aff Points.Micah} <= 1 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == false:
 	Dalton: Do you know who wrote this note?
-	Micah: Huh? 
-	Micah: Oh, my dad must've left it when he gave the toolbox to me...
+	Micah: Huh?
+	Micah: Oh, Pa must've left it when he gave the toolbox to me...
 	Micah: heh...
 	Dalton: ...
-	Dalton:Hmph. 
-
-if {Character Aff Points.Micah} > 1 and {Asked Questions.Micah_Theo_enter} == false:
-	Dalton: It seems like someone stole your hammer. 
-	Micah: What? 
-	Dalton: Read this. 
+	Dalton: Then who is this “Pa” then?
+	Micah: ...!
+	Micah: Um... 
+	Micah: Ah... 
+	Micah: P-pa talks weird sometimes...
+	Dalton: Hmph.
+	[end_timeline]
+if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == false:
+	Dalton: It seems like someone stole your hammer.
+	Micah: Hmm?
+	Dalton: Read this.
 	Micah: Oh.
-	Micah: That's fine. 
-	Micah: I don't use it anyway. 
+	Micah: Ah...
+	Micah: That's fine.
+	Micah: I don't use it anyway.
 	Dalton: Do you know who might have left the note?
-	Dalton: Or needed a hammer?
-	Micah: I...
-	Micah: I don't know...
-	
+	Theo: Or needed a hammer?
+	Micah: I don't know.
+	Theo: You seem quite unbothered by this.
+	Micah: ...!
+	Micah: I-
+	Micah: Uh...
+	Micah: I mean it doesn’t affect me that much, so why worry about it...
+	Micah: Heh...
+	Theo: Ah...
+	Theo: That makes sense. 
+	[end_timeline]
 if {Asked Questions.Micah_Theo_enter} == true:
-	Dalton: It seems like someone stole your hammer. 
-	Micah: What? 
-	Dalton: Read this. 
+	Dalton: It seems like someone stole your hammer.
+	Micah: What?
+	Dalton: Read this.
 	Micah: Oh.
-	Micah: That's fine. 
-	Micah: I don't use it anyway. 
+	Micah: That's fine.
+	Micah: I don't use it anyway.
 	Dalton: Do you know who might have left the note?
-	Dalton: Or needed a hammer?
+	Theo: Or needed a hammer?
 	Micah: I...
-	Micah: I need time to think...
+	Micah: I need time to think…
+	Theo: Yeah, take your time.
+	[end_timeline]

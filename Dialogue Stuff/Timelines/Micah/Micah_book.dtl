@@ -1,13 +1,13 @@
-if {Character Aff Points.Micah} <= 1:
-	Dalton: Have you read this book?
+if {Character Aff Points.Micah} <= 2:
+	DDalton: Have you read this book?
 	Micah: Huh?
 	Micah: Oh.
 	Micah: I skimmed it a while back.
-	Micah: Don't remeber much though.
+	Micah: Don't remember much, though.
 	label choices
 	[wait time="0.3"]
 	Dalton: ...
-	- Did you write this note?
+	- Who wrote the note?
 		set {Asked Questions.Micah_Book_Asked_wrote} = true
 		Dalton: Did you write this note?
 		Micah: What note?
@@ -17,42 +17,49 @@ if {Character Aff Points.Micah} <= 1:
 		Dalton: So no.
 		Micah: ...
 		Micah: Nope.
+		Dalton: Do you know who wrote it?
+		Micah: Really?
+		Dalton: ...
+		Micah: No.
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
 			jump choices
-	- Do you know what the note means?
+	- Meaning of the note?
 		set {Asked Questions.Micah_Book_Asked_meaning} = true
 		Dalton: Do you know what the note means?
 		Micah: ...
 		Micah: No...
-		Micah: Why is that there?
+		Micah: How did it get there?
 		Dalton: I was hoping you would know.
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
 			jump choices
-if {Character Aff Points.Micah} > 1:
+if {Character Aff Points.Micah} > 2:
 	Dalton: Have you read this book?
 	Micah: I read it when I was a kid.
-	Micah: I think a friend gave it to me.
-	Micah: Don't remeber much though.
+	Micah: A friend gave it to me.
+	Micah: Don't remember much, though.
 	label choices
 	[wait time="0.3"]
-	- Did you write this note?
+	- Who wrote the note?
 		set {Asked Questions.Micah_Book_Asked_wrote} = true
 		Dalton: Did you write this note?
 		Micah: Huh?
 		Micah: ...
 		Micah: I don't think so.
 		Micah: If I did, I don't remember.
+		Dalton: Do you know who might’ve written it?
+		Micah: ...
+		Micah: No idea.
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
 			jump choices
-	- Do you know what the note means?
+	- Meaning of the note?
 		set {Asked Questions.Micah_Book_Asked_meaning} = true
 		Dalton: Do you know that the note means?
 		Micah: ...
 		Micah: No?
 		Micah: Where did you find that?
-		Dalton: It was in this book.
+		Dalton: It was in the book.
 		Micah: Oh...
 		Micah: Weird.
-		Micah: I haven't touch that book in ages.
+		Micah: I haven't touched that book in ages.
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
 			jump choices

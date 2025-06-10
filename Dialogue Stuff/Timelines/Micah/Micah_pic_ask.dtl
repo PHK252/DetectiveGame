@@ -1,20 +1,23 @@
-if {Character Aff Points.Micah} <= 1:
+if {Character Aff Points.Micah} <= 2:
 	Dalton: Who's this?
 	Micah: Oh...
 	Micah: Just a friend.
-	[wait time="0.5"]
 	Dalton: ...
 	Micah: ...
 	Dalton: Hmph.
-
-if {Character Aff Points.Micah} > 1:
+	[end_timeline]
+if {Character Aff Points.Micah} > 2:
 	Dalton: Who's this?
 	Micah: Oh!
 	Micah: A childhood friend.
 	Dalton: Hmph...
 	Dalton: How did you guys meet?
-	Micah: Our parents... 
+	Micah: Our parents...
 	Micah:: Uhh...
-	Micah: ...knew each other.
+	Micah: ...knew each other?
 	Dalton: Hmph.
 	Dalton: I see.
+	Theo: Do you guys still talk often?
+	Micah: We used to...
+	Theo: Ah.
+	[end_timeline]

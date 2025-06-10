@@ -1,6 +1,10 @@
-Dalton: Did you open the window after you got back from work?
+Dalton: Did you leave the window open before going to work?
 Micah: ...?
-Micah: I don't think so...
-Dalton: Did you leave it open? 
-Micah: No...
-Micah: I don't usually open the window.
+Micah: Maybe?
+if {Character Aff Points.Micah} > 2:
+	Micah: I usually keep it open ‘cause it helps with the smell.
+	Micah: But sometimes I forget to close it before I leave.
+else:
+	Micah: I don’t remember.
+Dalton: Hmph.
+

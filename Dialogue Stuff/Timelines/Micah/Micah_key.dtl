@@ -1,14 +1,36 @@
-if {Character Aff Points.Micah} <= 1:
-	Dalton: Do you know that this key is used for?
-	Micah: No... 
-	Micah: I don't think I have anything that requires a key.
+if {Character Aff Points.Micah} <= 2:
+	if {Asked Questions.Micah_Asked_Key} == true:
+		Dalton: Is this key yours?
+		Micah: Hm?
+		Micah: Uh...
+		Micah: Maybe.
+		Dalton: Do you know that this key is used for?
+		Micah: No...
+		Micah: Where did you get that?
+		Dalton: From the case...
+		Micah: Oh.
+	else:
+		set {Asked Questions.Micah_Asked_Key} = true
+		Dalton: Do you know that this key is used for?
+		Micah: No... 
+		Micah: I don't think I have anything that requires a key.
+		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			jump Micah_ask_keep/
 
-if {Character Aff Points.Micah} > 1:
-	Dalton: Are you missing a key by any chance?
-	Micah: What?
-	Dalton: This was in the case. 
-	Micah: That's...
-	Micah: ...not mine...
-	Dalton: Do you know what it belongs to?
-	Micah: Nope.
-	Micah: Never seen it before.
+if {Character Aff Points.Micah} > 2:
+	if {Asked Questions.Micah_Asked_Key} == true:
+		Dalton: Are you missing a key by any chance?
+		Micah: Not that one. 
+	else:
+		set {Asked Questions.Micah_Asked_Key} = true
+		Dalton: Are you missing a key by any chance?
+		Micah: What?
+		Dalton: This was in the case.
+		Micah: That's...
+		Micah: ...not 
+		Micah: ...mine...?
+		Dalton: Do you know what it belongs to?
+		Micah: Nope.
+		Micah: Never seen it before.
+		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			jump Micah_ask_keep/
