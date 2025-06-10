@@ -7,11 +7,11 @@ Dalton: We have a warrant to search your property, but I would first like to ask
 label Questions
 [wait time="0.3"]
 Dalton: ...
-- What were you doing last night?
+- Location during the time of break in?
 	jump Warrant_night/
-- Did you notice any changes in your property?
+- Damage in property?
 	jump Warrant_property/
-- Can you think of anyone who would want to enter your home?
+- Any subjects with motive?
 	jump Warrant_home/
 - Ask to enter Micah's apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
 	jump Micah_ask_enter/

@@ -1,7 +1,7 @@
 Dalton: What time did you come back from your shift?
 Micah: Um…
 Micah: Around 8 a.m.
-Dalton: What did you do after going home?
+Dalton: What did you do after coming home?
 Micah: I went to bed.
 set {Asked Questions.Micah_Asked_Night_Time} = true
 if {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true:

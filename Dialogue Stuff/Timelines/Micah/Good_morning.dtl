@@ -1,22 +1,21 @@
 set {Character Aff Points.Micah} += 1
-
 Dalton: Good morning.
 Dalton: Am I speaking with Micah Procyon?
 Micah: Y-yeah?
-Dalton: My name is Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
+Dalton: Hello. I’m Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
 Micah: Hi?
-Theo: Hello!
-Dalton: We have reason to believe that your house is part of a string of break-ins that happened last night.
+Theo: Hello! Nice to meet ya!
+Dalton: We have reason to believe that your apartment was involved in a string of break-ins that happened last night.
 Dalton: Can we ask you a few questions?
-Micah: S-sure…
+Micah: S-sure...
 label Questions
 [wait time="0.3"]
 Dalton: ...
-- What were you doing last night?
+- Location during the time of break in?
 	jump Morning_night/
-- Did you notice any changes in your property?
+- Damage in property?
 	jump Morning_Property/
-- Can you think of anyone who would want to enter your home?
+- Any subjects with motive?
 	jump Morning_home/
 - Ask to enter Micah's apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
 	jump Micah_ask_enter/

@@ -9,13 +9,13 @@ Dalton: Hello!
 Dalton: Is anybody home?
 # #knock
 [wait time="1.0"]
-Dalton: XPD!
+Dalton: ASPD!
 [wait time="3.0"]
-Dalton: ...
+Dalon: ...
 - Knock Again.
 	# #Knock knock
 	Dalton: Hello?
-	Dalton: We are here to investigate a possible break in that happened last night.
+	Dalton: We are here to investigate a break in that happened last night.
 	# #knock 
 	[wait time="2.0"]
 	# #knock
@@ -41,11 +41,11 @@ Dalton: ...
 		set {Character Aff Points.Micah} += 1
 		# #Knock
 		Dalton: XPD!
-		Dalton: We are here to investi-
+    	Dalton: We are here to investi-
 		# #A loud thud comes from inside the apartment, followed by tired groan and a curse
 		# #Faint footsteps can be heard through the door
 		Theo: Someone’s not having a good day.
-		Dalton: Shh.
+    	Dalton: Shh.
 		jump Micah Open
 	- Wait.
 		jump Wait

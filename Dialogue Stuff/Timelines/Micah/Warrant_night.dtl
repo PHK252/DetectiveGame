@@ -1,12 +1,12 @@
-Dalton: What were you doing last night?
-Micah: I...
-Micah: Uh...
-Micah: I went to start my shift at the [Insert Convenient Store Name here].
+Dalton: What were you doing last night between 3a.m. to 7a.m.?
+Micah: I…
+Micah: Uh…
+Micah: I was on my shift at the Hustle and Bustle down the street.
 set {Asked Questions.Micah_Asked_Night} = true
 [wait time="0.3"]
 label Questions
 Dalton: ...
-- What time did you come back from your shift?
+- Time of return?
 	jump Warrant_night_time/
-- Did anything suspicious happen during your shift?
+- Suspicious activity?
 	jump Warrant_night_sus/
