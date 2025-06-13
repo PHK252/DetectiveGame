@@ -1,19 +1,42 @@
 if {Character Aff Points.Juniper} <= 0:
-	Dalton: Is this one of your employees?
-	Juniper: Not anymore.
-	Dalton: What happened? 
-	Juniper: What does this have to do with the break in?
-	Dalton: Motive.
-	Juniper: ...
-	Juniper: Tsk... 
+	set {Character Aff Points.Juniper} -= 1
+	Dalton: Is this a list of all your employees?
+	Juniper: Hey!
+	Juniper: Put that down!
+	Juniper: Why are ya looking through my stuff!?
+	Dalton: What happened to your last employee?
+	Dalton: Aslan, S.
+	Juniper: Huuuu...
+	Juniper: If I knew y’all would be snooping around all my stuff for a goddamn window, I would’ve never called ya.
+	Dalton: ...
+	Juniper: Tsk...
 	Juniper: They stopped showing up.
-	Juniper: I don't know why. 
-	Dalton: oh. 
+	Juniper: Don't know why.
+	Juniper: Why are ya asking, anyway?
+	Dalton: Motive.
+	Juniper: Hah! 
+	Juniper: If ya want a person with motive, y’all should’ve asked about Brutus. 
+	Dalton: Do you think he did this?
+	Juniper: Oh, hell no. 
+	Juniper: Heard he found another job that has even more bread.
 else:
-	Dalton: Is this one of your employees?
-	Juniper: Was... 
+	Dalton: Is this a list of all your employees?
+	Juniper: Woah!
+	Juniper: What are ya doing, looking at that?
+	Dalton: Oh. 
+	Dalton: Sorry, is this confidential? 
+	Juniper: It isn’t now.
+	Dalton: ...
+	Juniper: Well, ask away. 
+	Juniper: I can see those gears turning in that lil fox head of yours. 
+	Dalton: Hmph. 
+	Dalton: Your last employee...
+	Dalton: It says that they are missing. 
+	Dalton: What happened?
+	Juniper: Ah.
+	Juniper: I don’t quite know, actually. 
 	Juniper: They just suddenly stopped showing up to shifts
-	Juniper: It's odd since they were a pretty reliable and deligent worker... 
+	Juniper: It's odd since they were a pretty reliable and diligent worker...
 	Juniper: I tried contacting them, but they never replied.
 	Juniper: It's been a tough few weeks without them.
 	Dalton: Hmph.

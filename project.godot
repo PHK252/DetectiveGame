@@ -49,10 +49,12 @@ directories/dtl_directory={
 "Enter_house": "res://Dialogue Stuff/Timelines/Micah/Enter_house.dtl",
 "Good_morning": "res://Dialogue Stuff/Timelines/Micah/Good_morning.dtl",
 "Juniper_Book": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Book.dtl",
+"Juniper_Bookmark_Thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Bookmark_Thoughts.dtl",
 "Juniper_Cafe_Pic": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Cafe_Pic.dtl",
 "Juniper_Case": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Case.dtl",
 "Juniper_Case_Open": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Case_Open.dtl",
 "Juniper_Coffee": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Coffee.dtl",
+"Juniper_Cranberries": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Cranberries.dtl",
 "Juniper_Employee": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Employee.dtl",
 "Juniper_Enter_House": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Enter_House.dtl",
 "Juniper_Greet_First_house": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Greet_First_house.dtl",
@@ -60,8 +62,11 @@ directories/dtl_directory={
 "Juniper_Greeting": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Greeting.dtl",
 "Juniper_Leave": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Leave.dtl",
 "Juniper_Letter": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Letter.dtl",
+"Juniper_Med_Bills": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Med_Bills.dtl",
 "Juniper_Name_Tag": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Name_Tag.dtl",
 "Juniper_Old_House_Pics": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Old_House_Pics.dtl",
+"Juniper_Pills": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Pills.dtl",
+"Juniper_Pills_Thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Pills_Thoughts.dtl",
 "Juniper_Resumes": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Resumes.dtl",
 "Juniper_Second_house_Dalton Answer": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Second_house_Dalton Answer.dtl",
 "Juniper_Second_house_Theo_Answer": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Second_house_Theo_Answer.dtl",
@@ -75,6 +80,7 @@ directories/dtl_directory={
 "Juniper_questions_quincy": "res://Dialogue Stuff/Timelines/Juniper/Juniper_questions_quincy.dtl",
 "Juniper_questions_time": "res://Dialogue Stuff/Timelines/Juniper/Juniper_questions_time.dtl",
 "Juniper_questions_who": "res://Dialogue Stuff/Timelines/Juniper/Juniper_questions_who.dtl",
+"Juniper_waterfall": "res://Dialogue Stuff/Timelines/Juniper/Juniper_waterfall.dtl",
 "Micah_Ask_Victims": "res://Dialogue Stuff/Timelines/Micah/Micah_Ask_Victims.dtl",
 "Micah_Bookmark_note_thoughts": "res://Dialogue Stuff/Timelines/Micah/Micah_Bookmark_note_thoughts.dtl",
 "Micah_Fridge_thoughts": "res://Dialogue Stuff/Timelines/Micah/Micah_Fridge_thoughts.dtl",
@@ -161,11 +167,12 @@ variables={
 "Micah_in_choice": false,
 "Micah_know_Juniper": false,
 "Micah_viewed_ID": false,
+"Micah_viewed_bookmark": false,
 "has_key": false,
 "has_letter": false
 },
 "Character Aff Points": {
-"Juniper": 0,
+"Juniper": -1,
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
@@ -179,8 +186,10 @@ variables={
 "went_to_Quincy": false
 },
 "Juniper": {
+"Cran_repeat": 0,
 "Juniper_asked_case": false,
 "Juniper_case_interlude_finished": false,
+"ask_mom_rever": false,
 "asked_Micah": false,
 "asked_Quincy": false,
 "asked_all": false,
@@ -189,7 +198,9 @@ variables={
 "asked_who": false,
 "finished_letter": false,
 "finished_name_tag": false,
-"found_skylar": false
+"found_skylar": false,
+"reenter_resumes": false,
+"viewed_bookmark": false
 },
 "Quincy": {
 "Quincy_asked_case": false,
@@ -199,7 +210,7 @@ variables={
 "has_secret_coor": false,
 "in_bar_convo": false,
 "is_distracted": false,
-"needs_distraction": true,
+"needs_distraction": false,
 "out_of_bathroom": false,
 "unlocked_office": false
 }

@@ -1,11 +1,69 @@
-if {Character Aff Points.Juniper} <= 0:
-	Dalton: These resumes... 
+if {Character Aff Points.Juniper} < 0:
+	Dalton: These resumes...
 	Dalton: What are they for?
-	Juniper: That's none of your business. 
+	Juniper: That's none of your business.
 else:
-	Dalton: These resumes... 
-	Dalton: What are they for?
-	Juniper: There has been a... 
-	Juniper: ...sudden opening at the Cafe... 
-	Juniper: We've been understaffed and swamped for the past few weeks.
-	Juniper: I've been trying to fill it as soon as possible but I've never been good at these types of things.
+	if {Juniper.reenter_resumes} == false:
+		Dalton: These resumes...
+		Dalton: What are they for?
+		Juniper: There has been a...
+		Juniper: ...sudden opening at the cafe.
+		Juniper: We've been understaffed and swamped for the past few weeks.
+		Juniper: I've been trying to fill it as soon as possible, but I haven’t had the time to look over them.
+		if {Character Aff Points.Juniper} >= 1:
+			Juniper: ...
+			Juniper: Wanna help?
+			[wait time="0.3"]
+			Dalton: ...
+			- Nope.
+				Dalton: Uh...
+				Dalton: I’m afraid this is beyond my jurisdiction. 
+				Juniper: Darn.
+			- Sure. 
+				set {Character Aff Points.Juniper} += 1
+				Dalton: Uh...
+				Dalton: Sure. I’ll try.
+				label choices
+				[wait time="0.3"]
+				Dalton: ...
+				- Milo’s resume
+					Dalton: This one.
+					Juniper: Hmm...
+					Juniper: Seems like a smart kid.
+					Dalton: Yeah...
+					Juniper: I’ll keep your suggestion in mind.
+					Junipers: Thanks!
+					Dalton: Yeah.
+				- Ash’s resume
+					Dalton: This one.
+					Juniper: Oh! 
+					Juniper: They seem perfect for us.
+					Juniper: Thank you!
+					Dalton: Yeah...
+					Dalton: No problem.
+				- Pippin’s resume
+					Dalton: This one. 
+					Juniper: Hm?
+					Juniper: What...
+					Juniper: What a choice.
+					Juniper: I’ll keep it in mind.
+					Dalton: Hmph.
+				- Take another look.
+					set {Character Aff Points.Juniper} -= 1
+					set {Juniper.reenter_resumes} = true
+					Dalton: Let me take another look at those resumes.
+					Juniper: Sure.
+					Juniper: Go ahead.
+		else:
+			[end_timeline]
+	else:
+	Juniper: Did ya choose one?
+	[wait time="0.3"]
+	Dalton: ...
+	- Yes.
+		Dalton: Yeah…
+		jump choices
+	- No.
+		Dalton: No...
+		Dalton: I need more time.
+		Juniper: Of course!

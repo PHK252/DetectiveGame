@@ -1,22 +1,28 @@
-if {Character Aff Points.Juniper} >= 1:
-	Juniper: Here, here. 
-	Juniper: Y'all can sit on these chairs... 
-	Juniper: They shouldn't have any glass on them... 
-	Juniper: Or you can look around...
-	Juniper: Whatever you want!
-	Juniper: Oh! 
-	Juniper: I almost forgot! 
-	Juniper: Are y'all coffee or tea animals?
-	Dalton: ...
- 	- Coffee.
-		jump Juniper_Coffee/
-	- Tea.
-		jump Juniper_Tea/
+if {Character Aff Points.Juniper} >= 0:
+	Juniper: Here, here.
+	Juniper: Y'all can sit on the couch...
+	Juniper: Ah, no!
+	Juniper: There’s glass on it!
+	Juniper: Hmm…
+	Juniper: Y’all are welcome to sit on the floor.
+	Juniper: Or ya can look around...
+	Juniper: Whatever ya want!
+	if {Character Aff Points.Juniper} >= 1:
+		Juniper: Oh!
+		Juniper: I almost forgot!
+		Juniper: Are y'all coffee or tea canines?
+		Dalton: ...
+		- Coffee.
+			jump Juniper_Coffee/
+		- Tea.
+			jump Juniper_Tea/
+	else:
+		[end_timeline]
 else:
-	Juniper: Over there is the broken window and...
-	Juniper: Oh!
-	Juniper: I forgot to mention...
-	Juniper: A case appeared here too. 
-	Juniper: I tried to open it but I couldn't figure out the passcode. 
-	Dalton: Hmph... 
-	Dalton: We'll take a look around.
+Juniper: Over there is the broken window and...
+Juniper: Oh!
+Juniper: I forgot to mention...
+Juniper: A case appeared here too.
+Juniper: I tried to open it, but I couldn't figure out the passcode.
+Dalton: Hmph...
+Dalton: We'll take a look around.

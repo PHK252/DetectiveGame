@@ -1,0 +1,24 @@
+if {Character Aff Points.Juniper} > 0:
+	if {Juniper.ask_mom_rever} == true:
+		Dalton: These pills were for your mom?
+		Juniper: Yeah...
+		Juniper: I probably shoulda flushed them a while ago, but...
+	else:
+		Dalton: Are these pills yours?
+		Juniper: ...!
+		Juniper: Oh...
+		Juniper: Those were my Ma’s pills.
+		Dalton: I see.
+else:
+	Dalton: Are these pills yours?
+	Juniper: ...!
+	Juniper: Put those back right now!
+	Dalton: Who’s were they?
+	Juniper: They were my Ma’s!
+	Juniper: Ya happy now?
+	Dalton: Were?
+	Juniper: Yeah, she doesn’t need them anymore.
+	Dalton: Why do you still have them, then?
+	Juniper: Just in case.
+	Dalton: Hmph.
+
