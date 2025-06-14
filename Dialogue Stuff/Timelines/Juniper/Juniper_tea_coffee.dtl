@@ -1,0 +1,17 @@
+if {Juniper.times_drank} == 0:
+	set {Juniper.drank} = true
+	set {Character Aff Points.Juniper} += 1
+	"Daltons thoughts": ...!
+	"Daltons thoughts": That’s good.
+	"Daltons thoughts": Really good.
+else:
+	if {Character Aff Points.Juniper} < 7:
+		set {Character Aff Points.Juniper} += 1
+	if {Juniper.drink_response} == 1:
+		"Daltons thoughts": Ahh...
+		"Daltons thoughts": That hits the spot.
+	elif {Juniper.drink_response} == 2:
+		"Daltons thoughts": Mmm...
+		"Daltons thoughts": Isaac would’ve loved this.
+	else:
+		"Daltons thoughts": How is every sip better than the last?

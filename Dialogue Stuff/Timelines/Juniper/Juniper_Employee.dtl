@@ -19,6 +19,7 @@ if {Character Aff Points.Juniper} <= 0:
 	Dalton: Do you think he did this?
 	Juniper: Oh, hell no. 
 	Juniper: Heard he found another job that has even more bread.
+	set {Juniper.found_last_name} = true
 else:
 	Dalton: Is this a list of all your employees?
 	Juniper: Woah!
@@ -30,6 +31,7 @@ else:
 	Juniper: Well, ask away. 
 	Juniper: I can see those gears turning in that lil fox head of yours. 
 	Dalton: Hmph. 
+	Dalton: Aslan, S.
 	Dalton: Your last employee...
 	Dalton: It says that they are missing. 
 	Dalton: What happened?
@@ -41,3 +43,4 @@ else:
 	Juniper: It's been a tough few weeks without them.
 	Dalton: Hmph.
 	Dalton: I see.
+	set {Juniper.found_last_name} = true

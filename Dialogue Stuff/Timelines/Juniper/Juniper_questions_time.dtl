@@ -1,11 +1,16 @@
-set {Juniper.asked_time} = true
 if {Character Aff Points.Juniper} <= 0:
-	Dalton: Were you present when the break-in happened? 
-	Juniper: No, I was at the Cafe when it happened.
-	Juniper: I suppose... 
-	Dalton: When did you leave for the cafe?
-	Juniper: Yesterday Noon.
-	Dalton: Hmph.
+	if {Juniper.asked_time} == false:
+		set {Juniper.asked_time} = true
+		Dalton: Were you present when the break-in happened?
+		Juniper: No, I was at the cafe when it happened.
+		Dalton: When did you leave for the cafe?
+		Juniper: Yesterday Noon.
+		Dalton: Hmph.
+	else:
+		Dalton: Were you present when the break-in happened?
+		Juniper: Really?
+		Juniper: Again?
+		Dalton: Hmph.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
 		Dalton: That's all the questions I have right now.
@@ -19,18 +24,27 @@ if {Character Aff Points.Juniper} <= 0:
 			Dalton: That's all the questions I have right now.
 			[end_timeline]
 else:
-	Dalton: Were you present when the break-in happened? 
-	Juniper: No... 
-	Juniper: I had to take care of some stuff at the Cafe, so I got home pretty late... 
-	Juniper: But when I saw the smashed window, I freaked out and called in to report it... 
-	Dalton: When did you leave for the cafe?
-	Juniper: Around noon yesterday.
-	Dalton: ...
-	Dalton: You must be exhausted... 
-	Juniper: Yeah... 
-	Juniper: I am...
-	Dalton: I'll try not to take up more of your time
-	Juniper: Thanks.
+	if {Juniper.asked_time} == false:
+		set {Juniper.asked_time} = true
+		Dalton: Were you present when the break-in happened?
+		Juniper: Nah, I had to take care of some stuff at the cafe.
+		Juniper: So I got home pretty late…
+		Juniper: But when I saw the smashed window, I freaked out and called in to report it...
+		Dalton: When did you leave for the cafe?
+		Juniper: Around noon yesterday.
+		Dalton: ...
+		Theo: You must be exhausted...
+		Juniper: Yeah...
+		Juniper: I am...
+		Dalton: I'll try not to take up more of your time
+		Juniper: Thanks.
+	else:
+		Dalton: Were you present when the break-in happened?
+		Juniper: Nah...
+		Juniper: I was at the cafe...
+		Juniper:...
+		Juniper: Are you also getting a weird sense of deja vu?
+		Dalton: Hmph.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
 		Dalton: That's all the questions I have right now.

@@ -48,6 +48,7 @@ directories/dtl_directory={
 "Day 1 Office timeline": "res://Dialogue Stuff/Timelines/Office/Day 1 Office timeline.dtl",
 "Enter_house": "res://Dialogue Stuff/Timelines/Micah/Enter_house.dtl",
 "Good_morning": "res://Dialogue Stuff/Timelines/Micah/Good_morning.dtl",
+"Juniper_Apron_thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Apron_thoughts.dtl",
 "Juniper_Book": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Book.dtl",
 "Juniper_Bookmark_Thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Bookmark_Thoughts.dtl",
 "Juniper_Cafe_Pic": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Cafe_Pic.dtl",
@@ -64,7 +65,10 @@ directories/dtl_directory={
 "Juniper_Letter": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Letter.dtl",
 "Juniper_Med_Bills": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Med_Bills.dtl",
 "Juniper_Name_Tag": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Name_Tag.dtl",
+"Juniper_Name_Tag_Thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Name_Tag_Thoughts.dtl",
 "Juniper_Old_House_Pics": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Old_House_Pics.dtl",
+"Juniper_Pie": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Pie.dtl",
+"Juniper_Pie_Thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Pie_Thoughts.dtl",
 "Juniper_Pills": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Pills.dtl",
 "Juniper_Pills_Thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Pills_Thoughts.dtl",
 "Juniper_Resumes": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Resumes.dtl",
@@ -80,6 +84,8 @@ directories/dtl_directory={
 "Juniper_questions_quincy": "res://Dialogue Stuff/Timelines/Juniper/Juniper_questions_quincy.dtl",
 "Juniper_questions_time": "res://Dialogue Stuff/Timelines/Juniper/Juniper_questions_time.dtl",
 "Juniper_questions_who": "res://Dialogue Stuff/Timelines/Juniper/Juniper_questions_who.dtl",
+"Juniper_recipe": "res://Dialogue Stuff/Timelines/Juniper/Juniper_recipe.dtl",
+"Juniper_tea_coffee": "res://Dialogue Stuff/Timelines/Juniper/Juniper_tea_coffee.dtl",
 "Juniper_waterfall": "res://Dialogue Stuff/Timelines/Juniper/Juniper_waterfall.dtl",
 "Micah_Ask_Victims": "res://Dialogue Stuff/Timelines/Micah/Micah_Ask_Victims.dtl",
 "Micah_Bookmark_note_thoughts": "res://Dialogue Stuff/Timelines/Micah/Micah_Bookmark_note_thoughts.dtl",
@@ -172,7 +178,7 @@ variables={
 "has_letter": false
 },
 "Character Aff Points": {
-"Juniper": -1,
+"Juniper": 1,
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
@@ -196,11 +202,15 @@ variables={
 "asked_missing": false,
 "asked_time": false,
 "asked_who": false,
+"drank": true,
+"drink_response": false,
 "finished_letter": false,
 "finished_name_tag": false,
 "found_skylar": false,
 "reenter_resumes": false,
-"viewed_bookmark": false
+"times_drank": 0,
+"viewed_bookmark": false,
+"viewed_name_tag": false
 },
 "Quincy": {
 "Quincy_asked_case": false,

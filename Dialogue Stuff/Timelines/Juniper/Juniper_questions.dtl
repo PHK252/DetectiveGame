@@ -17,10 +17,10 @@ if {Character Aff Points.Juniper} <= 0:
 	- Ask about her connection to other victims
 		[wait time="0.3"]
 		Dalton: ...
-		- Show picture of Quincy
-			jump Juniper_questions_quincy/
 		- Show picture of Micah
 			jump Juniper_questions_Micah/
+		- Show picture of Quincy
+			jump Juniper_questions_quincy/
 	- Continue looking around the house.
 		Dalton: That's all the questions I have right now.
 		[end_timeline]
@@ -43,10 +43,10 @@ else:
 	- Connection to other victims
 		[wait time="0.3"]
 		Dalton: ...
-		- Ask about Quincy
-			jump Juniper_questions_quincy/
-		- Ask about Micah
+		- Show picture of Micah
 			jump Juniper_questions_Micah/
+		- Show picture of Quincy
+			jump Juniper_questions_quincy/
 	- Continue looking around the house.
 		Dalton: That's all the questions I have right now.
 		[end_timeline]
