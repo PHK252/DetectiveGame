@@ -1,0 +1,51 @@
+[wait time="1.0"]
+set {Juniper.kicked_out} = true
+set {Character Aff Points.Theo} -= 2
+Juniper: Okay. 
+Juniper: That’s enough. 
+Juniper: Y’all are getting on ma nerves. 
+Juniper: Get out. 
+Dalton: ...!
+Theo: ...!
+Theo: We’re sorry ma’am, but-
+Juniper: Get out of my house!
+Juniper: Now!
+Theo: Detective Reynard?
+Dalton: ...
+Dalton: ...
+Dalton: hmph. 
+Dalton: Let’s go...
+[end_timeline]
+
+label exit
+if {Asked Questions.Micah_kicked_out} == true:
+	Theo: Again?
+	Theo: Seriously?
+	Dalton: ...
+	Theo: Huuu...
+	Theo: I’m starting to believe you’re a lost cause.
+	Theo: How the hell did you last ten years in this goddamn job?
+	Dalton: ...
+	Dalton: Isaac.
+	Theo: oh.
+	Theo: He must’ve had the patience of a saint. 
+	Dalton: ...
+	Dalton: Let’s go back to the station. 
+	Theo: Yeah.
+	Theo: Chief’s gonna have a field day with this.
+else:
+	Theo: What the hell was that?
+	Theo: Was that on purpose?
+	Dalton: ...
+	Dalton: No.
+	Theo: What!?
+	Theo:  Seriously?
+	Theo: She was red as a tomato the entire time!
+	Theo: All ya did was stoke the fire, ya fox!
+	Dalton: Hmph...
+	Dalton: Let’s just go.
+	Dalton: We got some evidence at least.
+	Theo: ...?
+	Theo: Did we?
+	
+	

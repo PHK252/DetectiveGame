@@ -1,0 +1,35 @@
+set {Beginning.viewed_donuts} = true
+Dalton: Did you eat all the donuts?
+Isaac: Hmm? 
+Isaac: What?
+Dalton: ...
+Dalton: The donuts.
+Dalton: Did you eat them?
+Isaac: Ah...
+Isaac: Can’t hear you.
+Isaac: You’re breaking up.
+Isaac: Are you going through a tunnel or something?
+Dalton: Isaac...
+Isaac: Dalton!
+Dalton: ...
+Dalton: You couldn’t have saved one?
+Isaac: Well, someone decided to work overtime...
+Isaac: And I was starving. 
+Dalton: So it’s my fault.
+Isaac: Exactly!
+Dalton: You keep thinking that. 
+if {Beginning.viewed_board} == false:
+	Isaac: You know, if you’re hungry...
+	Isaac: We can go get dinner. 
+	Dalton: Five more minutes. 
+	Isaac: Fine. 
+else:
+	Isaac: You know if you’re hungry
+	Isaac: We.
+	Isaac: Can. 
+	Isaac: Go. 
+	Isaac: Get. 
+	Isaac: Dinner. 
+	Dalton: Yeah, yeah, quit your nagging. 
+	Isaac: Quit your double-checking, then.
+	Dalton: Hmmph.
