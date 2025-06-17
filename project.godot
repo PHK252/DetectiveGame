@@ -139,6 +139,8 @@ directories/dtl_directory={
 "Quincy_Office_door": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Office_door.dtl",
 "Quincy_Patio_Locked": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Patio_Locked.dtl",
 "Quincy_Questions": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Questions.dtl",
+"Quincy_bar": "res://Dialogue Stuff/Timelines/Quincy/Quincy_bar.dtl",
+"Quincy_bar_invite_enter_house": "res://Dialogue Stuff/Timelines/Quincy/Quincy_bar_invite_enter_house.dtl",
 "Quincy_book_distract": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_distract.dtl",
 "Quincy_greeting": "res://Dialogue Stuff/Timelines/Quincy/Quincy_greeting.dtl",
 "Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
@@ -231,13 +233,19 @@ variables={
 "Quincy": {
 "Quincy_asked_case": false,
 "asked_all": false,
+"caught": false,
 "finished_case_hammer": false,
 "finished_case_note": false,
+"first_faint": false,
+"first_greeting": false,
 "has_secret_coor": false,
 "in_bar_convo": false,
 "is_distracted": false,
 "needs_distraction": false,
 "out_of_bathroom": false,
+"second_faint": false,
+"second_greeting": false,
+"third_faint": false,
 "unlocked_office": false
 }
 }

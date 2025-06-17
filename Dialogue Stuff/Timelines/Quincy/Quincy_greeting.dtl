@@ -1,1 +1,89 @@
-Dalton: Hello.
+if {Quincy.caught} == true:
+	Dalton: Hello, Quincy.
+	Quincy: ...!
+	Quincy: D-Dalton?
+	Quincy: How-
+	Quincy: Why are you here?
+	Dalton: I’m here because you told me to...
+	Quincy: Wha...
+	Dalton: The case?
+	Dalton: Is something wrong?
+	Quincy: Ah!
+	Quincy: No!
+	Quincy: E-everything is fine. 
+	Quincy: C-come on in...
+	Dalton: Thank you.
+	Theo: Nice to meet you, Mayor Leonid.
+	Quincy: Likewise... 
+	[end_timeline]
+else:
+	Quincy: Hey Dalton!
+	Dalton: Hello.
+	if {Character Aff Points.Theo} > 3:
+		set {Quincy.first_greeting} = true
+		Theo: Hi! 
+		Theo: Wow! 
+		Theo: Your house is even more impressive than what the papers show!
+		Dalton: Theo!
+		Quincy: Haha! 
+		Quincy: You must be Arcadia Police's rookie. 
+		Quincy: It's nice to finally meet you.
+		Theo: Ah, y-yes! 
+		Theo: Detective Theo Lycus! 
+		Theo: At your service, Mayor Leonid!  
+		Quincy: Oh, there's no more need for formalities between us, Theo. 
+		Quincy: All they'll do is slow us down, won't they? 
+		Quincy: Just call me Quincy. 
+		Quincy: Now, why don't we head inside.
+		[signal arg= "walk_in"]
+		Theo: Woah...
+		Dalton: Come on. 
+		Dalton: Pick your jaw up off the ground.
+		[end_timeline]
+	else:
+		[wait time= "0.3"]
+		set {Quincy.second_greeting} = true
+		Dalton: ...
+		- Introduce Theo. 
+			set {Character Aff Points.Theo} += 1
+			Dalton: This is Detective Theo Lycus. 
+			Dalton: He is my partner for this case.
+			Theo: Hello!
+			Quincy: Well, you must be the rookie I've been hearing so much about. 
+			Quincy: It's nice to finally meet you.
+			Theo: Likewise, Mayor Leonid.
+			Quincy: Hmm... 
+			Quincy: Say...
+			Quincy: Dalton... 
+			Quincy: I haven't seen you with a partner since Isaac. 
+			Quincy: It's been over a year, hasn't it? 
+			Quincy: Did the Chief finally cave?
+			Dalton: Huuu...
+			Dalton: It seems.
+			Quincy: How has it been? 
+			Quincy: Working with a partner again.
+			Dalton: ... 
+			Dalton: It's- 
+			Dalton: It's different...
+			Quincy: It seems like you got big shoes to fill, Theo...
+			Theo: I try my best.
+			Quincy: Hmm... 
+			Quincy: Let's head in.
+			[signal arg= "walk_in"]
+			[end_timeline]
+		- Ask Quincy if everything is alright 
+			Dalton: Is everything alright? 
+			Quincy: It's fine, Dalton. 
+			Quincy: I told you yesterday...
+			Quincy: Nothing is too damaged to fix or replace. 
+			Quincy: It seems to be done more as a stunt than an actual attempt at harm or theft...
+			Quincy: Oh! 
+			Quincy: And may I ask who you are?
+			Theo: H-hi! 
+			Theo: Detective Theo Lycus!
+			Theo: At your service, Mayor Leonid!  
+			Quincy: Hm... 
+			Quincy: It's nice to finally meet the detective rookie I've been hearing so much about. 
+			Quincy: Why don't we chat more inside?
+			[signal arg= "walk_in"]
+			[end_timeline]

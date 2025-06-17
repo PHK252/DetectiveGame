@@ -1,0 +1,78 @@
+Quincy: Would you like a drink?
+Dalton: I shouldn’t. 
+Quincy: Come on, you’re so uptight around the rookie. 
+Quincy: Well...
+Quincy: Even more than usual. 
+Quincy: Loosen up a bit.
+- Sure.
+	Dalton: Fine...
+	Dalton: Why not.
+	Quincy: Mmm... 
+	Quincy: I was hoping you'd cave.
+	Dalton: Hmph.
+	Quincy: Would you like to invite the rookie as well?
+	if {Character Aff Points.Theo} > 3 and {Global.got_theo_ad} == true:
+		Dalton: I'll call him.
+		[signal arg_type= "call_queue"]
+		[end_timeline]
+		label Theo Call
+		Theo: Hello?
+		Dalton: Do you want a drink?
+		Theo: Like water...?
+		Dalton: No. 
+		Dalton: The bar kind.
+		Theo: Huh? 
+		Theo: Yeah! 
+		Theo: Sure! 
+		Theo: You didn’t seem too keen on it before, though.
+		Dalton: I changed my mind.
+		Dalton: Come down to the basement.
+		Theo: Already coming down.
+		[signal arg_type= "call_end"]
+		[end_timeline]
+		label Bar continue
+		Theo: Hello, esteemed mayor of Arcadia Springs! 
+		Theo: I see you’ve changed that stubborn fox’s mind.
+		Quincy: Ahh.
+		Quincy: It took a bit of light convincing. 
+		Quincy: And besides...
+		Quincy: A little bit of work time fun never killed anyone.
+		Quincy: What would you like?
+		- Beer. 
+			set {Quincy.third_faint} = true
+			Dalton: Just a beer would be fine. 
+			jump here
+		- Gin and tonic.
+			set {Quincy.second_faint} = true
+			Dalton: A gin and tonic.
+			jump here
+		- Whiskey.
+			set {Quincy.first_faint} = true
+			Dalton: Whiskey on the rocks.
+			jump here
+		- Water.
+			Quincy: Mmm....
+			Quincy: You're no fun. 
+			Quincy: Theo, what would you like?
+			Theo: I know, Mr. Party Pooper here. 
+			Theo: Hmm...
+			Theo: Can I get a margarita?
+			Quincy: Sure thing. 
+			Quincy: One margarita and one glass of water coming right up.
+		label here
+		Quincy: Here you go.
+		Theo: Thank you!
+		Dalton: Hmph.
+		Quincy: So... 
+		Quincy: Theo... 
+		Quincy: How's working with the grumpy old fox?
+		Dalton: Hey!
+		Theo: Oh! 
+
+- Nope.
+	Dalton: No, I'm fine.
+	Quincy: Hmm... 
+	Quincy: Well, you know where the drinks are.
+	Quincy: If you change your mind.
+
+

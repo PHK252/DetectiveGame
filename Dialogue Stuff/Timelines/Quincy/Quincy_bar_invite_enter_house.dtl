@@ -1,0 +1,34 @@
+Quincy: Feel free to look around and ask me anything. 
+Quincy: But...
+Quincy: If both of you want to take a little time to recharge, we can move this little party down to the bar.
+if {Character Aff Points.Theo} > 3:
+	Theo: Ooh! 
+	Theo: Yes, please!
+	Dalton: Hey.
+	Dalton: Theo.
+	Dalton: We are on the clock and on a case.
+	Dalton: We shouldn't.
+	if {Quincy.first_greeting} == true:
+		Theo: But May- 
+		Theo: Quincy said we can. 
+	else:
+		Theo: But Mayor Leonid said we can.
+	Theo: And he's like our boss's boss so...
+	- Refuse.
+		Dalton: This is the type of logic that will get you fired one day. 
+		Dalton: Thanks for the offer, Quincy, but not today. 
+		Dalton: Maybe after the case is closed.
+		Quincy: Hmm... 
+		Quincy: Your loss.
+		Theo: Huuu...
+		Theo: :(
+	- Accept.
+		Dalton: Fine. Just one glass. Got it?
+		Theo: Yes, sir!
+else:
+	Dalton: We are fine.
+	Theo: But-
+	Quincy: Come on... 
+	Quincy: Relax a little, Dalton. 
+	Quincy: You're scaring the rookie.
+	Dalton: I'm not scaring him.
