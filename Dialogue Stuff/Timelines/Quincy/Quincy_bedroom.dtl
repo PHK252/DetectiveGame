@@ -1,0 +1,27 @@
+label entrance
+Quincy: This is the master bedroom. 
+Quincy: It was left untouched, from what I can tell.
+[end_timeline]
+label needs distraction
+if {Quincy.bathroom_cycle} == 1:
+	Quincy: I'm sure nothing in here.
+	Quincy: Let's look somewhere else.
+	[end_timeline]
+elif {Quincy.bathroom_cycle} == 2:
+	Quincy: Nothing of use here.
+	[end_timeline]
+else:
+	Quincy: Come on. 
+	Quincy: Isn't it strange to snoop around someone’s bedroom?
+	[end_timeline]
+
+label distracted journal
+"Daltons Thoughts": What happened to you, Runa?
+
+label distracted phone
+"Daltons Thoughts": Huh. 
+"Daltons Thoughts": Interesting.
+
+
+
+

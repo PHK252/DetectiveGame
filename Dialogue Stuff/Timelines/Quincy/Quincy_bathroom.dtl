@@ -1,0 +1,27 @@
+label entrance
+if {Quincy.is_distracted} == false:
+	Dalton: Ahem...
+	Dalton: Do you mind?
+	Quincy: Ah. 
+	Quincy: Sorry.
+	if {Quincy.needs_distraction} == true:
+		Dalton: I wonder... 
+		Dalton: Can I clog it?
+	[end_timeline]
+
+label exit
+Dalton: I-
+Dalton: Uh...
+Dalton: Y-your toilet is acting up.
+Quincy: Oh, no need to be embarrassed. 
+Quincy: Everyone has accidents. 
+Quincy: Don’t worry about it. 
+Quincy: You go rest your little fox tail, and I’ll go clean it up.
+[signal arg_type= "quincy_clean"]
+set {Quincy.is_distracted} = true
+Dalton: That was...
+Dalton: That was surely something.
+[end_timeline]
+
+
+

@@ -1,0 +1,62 @@
+Dalton: Can I ask you a few questions?
+Quincy: Sure.
+- Location during the time of break in?
+	Dalton: Where were you during the break-in?
+	Quincy: I was having a night out in Midtown.
+	Dalton: Did you return home that night?
+	Quincy: Nope.
+	Quincy: I was preoccupied.
+	Dalton: When did you hear about the break in then?
+	Quincy: I got a call from the groundskeeper at around 7 a.m.
+	Quincy: By the time he looked through the security footage, it was already scrubbed, sneaky bastard.
+	if {Character Aff Points.Theo} > 3:
+		# #and Theo on ground floor
+		Theo: Don't worry, Quincy!
+		Theo: We'll catch whoever's responsible for this!
+		Quincy: Hah!
+		Quincy: I like your enthusiasm.
+	else:
+		Dalton: I see.
+- Anything missing?
+	Quincy: Nothing of importance.
+	Quincy: That bastard made a mess more than anything.
+- Any subjects with motive?
+	Dalton: Do you know of anyone who would want to break into your house?
+	Quincy: Hah!
+	Quincy: One of the many quirks of being a leader is that many people want you gone.
+	Dalton: ...
+	Dalton: Is there anyone in particular that comes to mind?
+	Quincy: Nope.
+	Quincy: None of them have the guts to pull something like this.
+- Connection to other victims.
+	- Show picture of Juniper.
+		Dalton: Do you recognize her?
+		Quincy: Nope.
+		Quincy: Not a clue.
+		Quincy: Quite the looker, though.
+		Dalton: ...
+		Dalton: Eugh.
+		Dalton: Not the time.
+	- Show picture of Micah.
+		Dalton: Do you recognize him?
+		Quincy: He looks a little familiar.
+		Quincy: Probably just a passing resemblance.
+		Dalton: Hmph.
+	- Ask about chocolate. | [if {Quincy.has_choco} == true] [else="hide"]
+		set {Quincy.kicked_out} = true
+		Dalton: I found this package.
+		Dalton: Do you care to explain?
+		Quincy: You cheeky fox…
+		[signal arg_type= "snatch"]
+		Quincy: Sometimes you're too nosy for your own good.
+		Quincy: If you still want a career, I suggest you keep your mouth shut.
+		Quincy: Do you understand?
+		Dalton: Quincy, I-
+		Quincy: Do you understand!?
+		Dalton: This is-
+		Quincy: It’s a yes or no question, Detective Reynard!
+		Dalton: ...
+		Quincy: Take your partner and leave.
+		Quincy: Now!
+		Dalton: Theo.
+		Dalton: Let’s go...

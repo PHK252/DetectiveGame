@@ -1,3 +1,65 @@
-Dalton: Woop
-Phone: Wee
-Quincy: hehe
+if {Character Aff Points.Theo} > 3:
+	Theo: Hello?
+	Dalton: Hey.
+	Theo: Oh! 
+	Theo: Dalton? 
+	Theo: Why are you calling?
+	Theo: Aren't you upstairs?
+	Dalton: Hmph. 
+	Dalton: Yes.
+	Dalton: I'm at the Mayor's house right now.
+	Theo: What? 
+	Theo: I know.
+	Theo: I'm here with you.
+	Dalton: Look. 
+	Dalton: I'm going to need a bit of time.
+	Dalton: I think I found something important.
+	Theo: Oh, I see. 
+	Theo: I'm on it.
+	Dalton: Hmph... 
+	Dalton: Thank you, see you at the station.
+	[signal arg_type= "end_call"]
+	Quincy: Who was that?
+	Dalton: Chief was asking for a check in.
+	Quincy: Hmm...
+	Quincy: Tell him I said- 
+	# play bottle crashing sound
+	Quincy: What the hell?
+	[signal arg_type= "bar_distract"]
+	set {Quincy.is_distracted} = true
+else:
+	Theo: Hello?
+	Dalton: Hey.
+	Theo: Oh! 
+	Theo: Dalton? 
+	Theo: Why are you calling?
+	Theo: Aren't you upstairs?
+	Dalton: Hmph. 
+	Dalton: Yes.
+	Dalton: I'm at the Mayor's house right now.
+	Theo: What? 
+	Theo: I know.
+	Theo: I'm here with you.
+	Dalton: Look. 
+	Dalton: I'm going to need a bit of time.
+	Dalton: I think I found something important.
+	Theo: What are you talking about? 
+	Theo: What did you find?
+	Theo: Do you want me to come up?
+	Dalton: Tsk. 
+	Dalton: No! 
+	Dalton: Alone.
+	Theo: Uhh.... 
+	Theo: You want to tell me when we are alone?
+	Dalton: No!
+	Dalton: Just- 
+	Dalton: Tsk. 
+	Dalton: I'll see you at the station.
+	Theo: Huh?
+	[signal arg_type= "end_call"]
+	Quincy: Who was that?
+	Dalton: Huu.... 
+	Dalton: Chief... was asking for a check in.
+	Quincy: Hmm... 
+	Quincy: Seems tense.
+	Dalton: Hmph.

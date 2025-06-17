@@ -1,0 +1,70 @@
+Dalton: ...
+Dalton: ...? 
+Dalton: What happened?
+Theo: You passed out after you took a sip of your drink. 
+Theo: If you can't drink, you should've just said so, you old fox. 
+Dalton: Mmmm.
+Dalton: How long was I out?
+Theo: Around 4 hours.
+Dalton: What?!
+if {Juniper.found_skylar} == true:
+	Theo: Hey! 
+	Theo: Chill!
+	Theo: I think I figured it out.
+	Dalton: The case?
+	Theo: Yeah. 
+	Dalton: Did you know that Skylar Aslan is Quincy's son?
+	Dalton: What?
+	Theo: Yeah, they aren't close, so Skylar took his mother's last name.
+	Dalton: Hmph. 
+	Dalton: I see.
+	Theo: I reported back to the station. 
+	Theo: They dispatched a unit to go search for Skylar. 
+	Theo: Hopefully we’ll be able to question him tomorrow.
+	Dalton: I see.
+	Quincy: If you're still not feeling well, you can stay here for a bit longer.
+	Dalton: Ah, no. 
+	Dalton: It's fine. 
+	Dalton: We should get back to the station.
+	Theo: Are you sure you can drive?
+	Theo: I can drive if you need me to.  
+	Dalton: It's fine. 
+	Dalton: I sobered up with the nap.
+	Theo: Okay.
+	Quincy: Ah... 
+	Quincy: I wish we had more time to talk, but I got to head to a meeting. 
+	Quincy: Let's go for dinner after you both close this case.
+	Theo: For sure! 
+	Theo: We'll make sure to knock some sense into that son of yours once we bring him in.  
+	Quincy: As you should. 
+	Quincy: And thank you for continuing to bring peace, safety, and justice to Arcadia Springs. 
+	Theo: Heh...
+	Theo: It is our job!
+	Theo: Well, we’re gonna head out now!
+	Theo: Bye!
+	Quincy: Goodbye!
+	Dalton: Bye
+	[end_timeline]
+else:
+	Theo: Well...
+	Theo: I looked around while you were asleep and I found a few things. 
+	Theo: All damage seems to have been done by hand or with a blunt object.
+	Theo: I wasn't able to crack the case, but I shook it a little, 
+	Theo: And it sounds like there's a piece of paper and a something metal inside of it.
+	Dalton: And this helps us how?
+	Theo: ...
+	Theo: I don't know...
+	if {Quincy.asked_Micah} == false or {Quincy.asked_Juniper} == false:
+		Dalton: Does Quincy even know who the other victims are?
+		Theo: No...
+		Theo: He doesn't.
+	Dalton: Huuu... 
+	Dalton: We should head back, it's late.
+	Theo: Yeah...
+	Dalton: Where's Quincy?
+	Theo: Uh.... 
+	Theo:  He left. 
+	Theo: Mayor business, I guess.
+	Dalton: Hmph. 
+	Dalton: Let's go.
+	[end_timeline]
