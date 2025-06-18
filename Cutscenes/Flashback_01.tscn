@@ -1,23 +1,91 @@
-[gd_scene load_steps=46 format=4 uid="uid://boda0uybnshug"]
+[gd_scene load_steps=94 format=4 uid="uid://boda0uybnshug"]
 
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="1_b3khi"]
+[ext_resource type="PackedScene" uid="uid://bqwijt8f7c5me" path="res://Cutscenes/dalton_fb2.glb" id="1_vw2sk"]
 [ext_resource type="Script" uid="uid://qmqj74pm4p5a" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_xpbji"]
 [ext_resource type="PackedScene" uid="uid://duo52kj56p5ty" path="res://Cutscenes/IsaacsBrotherTweaking.glb" id="1_ydyvw"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_ljtyw"]
 [ext_resource type="Material" uid="uid://bfj1cgrhw103b" path="res://ShaderScripts/Isaac.tres" id="2_uue3t"]
+[ext_resource type="PackedScene" uid="uid://crb0p5pqufvnc" path="res://Cutscenes/dalton_fb1.glb" id="2_voe0e"]
 [ext_resource type="Texture2D" uid="uid://cjn1rph2vj3cv" path="res://Cutscenes/IsaacsBrotherTweaking_Isaac2.png" id="2_xgt0d"]
+[ext_resource type="PackedScene" uid="uid://x47800d17go7" path="res://Cutscenes/dalton_fb3.glb" id="3_24duq"]
 [ext_resource type="Shader" uid="uid://du3qvml6xbpcu" path="res://ShaderScripts/pixel.gdshader" id="3_ldrmp"]
 [ext_resource type="Script" uid="uid://dqmq7sj03m4v6" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_gn7yl"]
 [ext_resource type="Script" uid="uid://dd46bmhjxhf3u" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_a0dnt"]
 [ext_resource type="Script" uid="uid://ba877ddbj17hy" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_fxagu"]
 [ext_resource type="PackedScene" uid="uid://bsgah3byqvu3m" path="res://Cutscenes/FirstFlashEnvironment.glb" id="7_j355y"]
+[ext_resource type="Script" uid="uid://dska4jm0o3xot" path="res://Cutscenes/IsaacController.gd" id="8_24duq"]
 [ext_resource type="PackedScene" uid="uid://cpv4qukow4new" path="res://SecondHouse/woodtryagain25.glb" id="8_a0dnt"]
+[ext_resource type="PackedScene" uid="uid://065g7k1ysem6" path="res://GeneralScripts/interaction/PlayerInteractor.tscn" id="9_3xeah"]
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="9_fxagu"]
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="10_j355y"]
 [ext_resource type="Shader" uid="uid://ioiiowkr1h2a" path="res://ShaderScripts/sky.gdshader" id="11_fxagu"]
 [ext_resource type="Material" uid="uid://cp0jkmt30p6sx" path="res://ShaderScripts/wood.tres" id="11_gcp7e"]
 [ext_resource type="Material" uid="uid://cgwa84pvtb52t" path="res://ShaderScripts/environment.tres" id="13_gcp7e"]
 [ext_resource type="PackedScene" uid="uid://c54sdu8cgo4gt" path="res://Cutscenes/DoorCutscene.glb" id="14_b3khi"]
+[ext_resource type="Script" uid="uid://b0tyfhwc3r006" path="res://Cutscenes/GeneralControls.gd" id="24_3xeah"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_krw4o"]
+animation = &"HallwayLookDoor"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g7hnq"]
+animation = &"HallwayLookIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gk0uv"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kihg0"]
+advance_mode = 2
+advance_condition = &"go_in"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vs82i"]
+states/HallwayLookDoor/node = SubResource("AnimationNodeAnimation_krw4o")
+states/HallwayLookDoor/position = Vector2(668.26, 87.3625)
+states/HallwayLookIdle/node = SubResource("AnimationNodeAnimation_g7hnq")
+states/HallwayLookIdle/position = Vector2(373, 77)
+transitions = ["Start", "HallwayLookIdle", SubResource("AnimationNodeStateMachineTransition_gk0uv"), "HallwayLookIdle", "HallwayLookDoor", SubResource("AnimationNodeStateMachineTransition_kihg0")]
+graph_offset = Vector2(73.26, 3.8625)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ps7mt"]
+animation = &"DaltonOutIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k4eyv"]
+animation = &"DaltonOutWindow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3q38s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jv4eo"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0lv26"]
+states/DaltonOutIdle/node = SubResource("AnimationNodeAnimation_ps7mt")
+states/DaltonOutIdle/position = Vector2(593.5, 91.5)
+states/DaltonOutWindow/node = SubResource("AnimationNodeAnimation_k4eyv")
+states/DaltonOutWindow/position = Vector2(384, 86)
+transitions = ["Start", "DaltonOutWindow", SubResource("AnimationNodeStateMachineTransition_3q38s"), "DaltonOutWindow", "DaltonOutIdle", SubResource("AnimationNodeStateMachineTransition_jv4eo")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gk0uv"]
+animation = &"DaltonSeizure_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kihg0"]
+animation = &"DaltonSeizure_start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vs82i"]
+advance_mode = 2
+advance_condition = &"seizure"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ps7mt"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k4eyv"]
+states/DaltonSeizure_idle/node = SubResource("AnimationNodeAnimation_gk0uv")
+states/DaltonSeizure_idle/position = Vector2(616, 77.5)
+states/DaltonSeizure_start/node = SubResource("AnimationNodeAnimation_kihg0")
+states/DaltonSeizure_start/position = Vector2(386.5, 89.5)
+transitions = ["Start", "DaltonSeizure_start", SubResource("AnimationNodeStateMachineTransition_vs82i"), "DaltonSeizure_start", "DaltonSeizure_idle", SubResource("AnimationNodeStateMachineTransition_ps7mt")]
 
 [sub_resource type="Shader" id="Shader_phslp"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
@@ -340,6 +408,75 @@ bind/31/name = &"PoleArm.R"
 bind/31/bone = -1
 bind/31/pose = Transform3D(-0.539394, 2.09577, 9.16091e-08, 0, -9.45946e-08, 2.16407, 2.09577, 0.539394, 2.35777e-08, -2.97715, -0.578705, 0.462783)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u4bml"]
+radius = 0.279652
+height = 1.58477
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xeah"]
+animation = &"WorriedIsaacIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0h3sq"]
+animation = &"WorriedIsaac"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ug0gq"]
+animation = &"CrouchCheckIsaac"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dp1ub"]
+animation = &"IsaacKitchen"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_24duq"]
+animation = &"WalkStairs"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_krw4o"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hlxb5"]
+animation = &"IdleIsaac"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0rqpd"]
+animation = &"WalkIsaac"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0h3sq"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_hlxb5")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_0rqpd")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_3xeah"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_dp1ub"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_krw4o"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_g7hnq"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ug0gq"]
+graph_offset = Vector2(-122.587, 115.885)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_24duq")
+nodes/Animation/position = Vector2(280, 290)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3xeah")
+"nodes/Animation 2/position" = Vector2(1190, 250)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_0h3sq")
+"nodes/Animation 3/position" = Vector2(800, 240)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_ug0gq")
+"nodes/Animation 4/position" = Vector2(1560, 270)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_dp1ub")
+"nodes/Animation 5/position" = Vector2(-60, 300)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_krw4o")
+nodes/Blend2/position = Vector2(130, 120)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_0h3sq")
+nodes/BlendSpace1D/position = Vector2(-240, 150)
+nodes/UpStairs/node = SubResource("AnimationNodeOneShot_3xeah")
+nodes/UpStairs/position = Vector2(490, 130)
+nodes/crouch/node = SubResource("AnimationNodeBlend2_dp1ub")
+nodes/crouch/position = Vector2(1790, 110)
+nodes/output/position = Vector2(2030, 130)
+nodes/worryStart/node = SubResource("AnimationNodeOneShot_krw4o")
+nodes/worryStart/position = Vector2(990, 100)
+nodes/worry_idle/node = SubResource("AnimationNodeBlend2_g7hnq")
+nodes/worry_idle/position = Vector2(1400, 100)
+node_connections = [&"Blend2", 0, &"BlendSpace1D", &"Blend2", 1, &"Animation 5", &"UpStairs", 0, &"Blend2", &"UpStairs", 1, &"Animation", &"crouch", 0, &"worry_idle", &"crouch", 1, &"Animation 4", &"output", 0, &"crouch", &"worryStart", 0, &"UpStairs", &"worryStart", 1, &"Animation 3", &"worry_idle", 0, &"worryStart", &"worry_idle", 1, &"Animation 2"]
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_5vl0h"]
 _surfaces = [{
 "aabb": AABB(-11.0164, -1, -13.5798, 84.1148, 2, 14.5799),
@@ -481,6 +618,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5vl0h")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_24duq"]
+size = Vector3(46.0884, 1, 8.84192)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xeah"]
+size = Vector3(5.09534, 107.053, 8.60358)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlxb5"]
+size = Vector3(33.3866, 107.053, 0.260757)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rqpd"]
+size = Vector3(43.1824, 107.053, 0.260757)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0h3sq"]
+size = Vector3(9.11683, 37.8958, 6.03296)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ug0gq"]
+size = Vector3(1.59174, 73.7765, 1.14001)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4n2im"]
 render_priority = 0
 shader = ExtResource("3_ldrmp")
@@ -526,7 +681,7 @@ cull_mask = 1048575
 h_offset = 0.0
 v_offset = 0.0
 projection = 0
-fov = 68.0
+fov = 58.8
 size = 1.0
 frustum_offset = Vector2(0, 0)
 near = 0.05
@@ -562,7 +717,7 @@ shader_parameter/clouds_shadow_intensity = 1.0
 shader_parameter/high_clouds_density = 0.0
 shader_parameter/top_color = Color(0.928701, 0.919026, 0.913568, 1)
 shader_parameter/bottom_color = Color(0, 0, 0, 1)
-shader_parameter/sun_scatter = Color(0.70582, 0.693145, 0.68343, 1)
+shader_parameter/sun_scatter = Color(0.49303, 0.479194, 0.46857, 1)
 shader_parameter/astro_tint = Color(0, 0, 0, 1)
 shader_parameter/astro_scale = 1.0
 shader_parameter/astro_intensity = 1.0
@@ -576,6 +731,7 @@ sky_material = SubResource("ShaderMaterial_j355y")
 [sub_resource type="Environment" id="Environment_b3khi"]
 background_mode = 2
 sky = SubResource("Sky_gcp7e")
+ambient_light_energy = 0.39
 tonemap_mode = 2
 tonemap_exposure = 0.8
 glow_enabled = true
@@ -586,6 +742,18 @@ glow_blend_mode = 4
 adjustment_enabled = true
 adjustment_contrast = 0.9
 adjustment_saturation = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dp1ub"]
+size = Vector3(6.34839, 1, 2.1521)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krw4o"]
+size = Vector3(0.295929, 64.6021, 1.06433)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7hnq"]
+size = Vector3(0.295929, 64.6021, 0.678528)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk0uv"]
+size = Vector3(1.98097, 64.6021, 0.0739441)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n5qt5"]
 _surfaces = [{
@@ -642,81 +810,131 @@ albedo_color = Color(1, 1, 1, 0.098)
 material = SubResource("StandardMaterial3D_b3khi")
 size = Vector2(0.2, 0.4)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kihg0"]
+size = Vector3(1.12781, 2.45105, 0.441772)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vs82i"]
+size = Vector3(0.810059, 1.27295, 0.803101)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 1
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stretch = true
 stretch_shrink = 6
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
 audio_listener_enable_3d = true
-size = Vector2i(6, 6)
+size = Vector2i(320, 180)
 render_target_update_mode = 4
 
 [node name="Characters" type="Node" parent="SubViewportContainer/SubViewport"]
 
+[node name="dalton_fb2" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("1_vw2sk")]
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/dalton_fb2/Armature_002" index="0"]
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
+bones/4/rotation = Quaternion(-0.0991393, 1.32676e-09, 1.68901e-10, 0.995074)
+bones/5/rotation = Quaternion(0.265247, -8.04907e-09, -1.16319e-09, 0.96418)
+bones/7/rotation = Quaternion(0.251585, 0.0036754, 0.0141376, 0.967725)
+bones/9/rotation = Quaternion(0.251585, 0.00367533, 0.014137, 0.967725)
+bones/11/rotation = Quaternion(-0.263317, -0.10466, -0.639998, 0.714222)
+bones/12/rotation = Quaternion(0.286127, 1.58325e-08, -0.0736413, 0.955358)
+bones/15/rotation = Quaternion(-0.247216, 0.108008, 0.618727, 0.737831)
+bones/16/rotation = Quaternion(0.170309, 1.88593e-08, 0.043833, 0.984415)
+bones/19/rotation = Quaternion(0.0260587, -0.00269244, -0.0170717, 0.999511)
+bones/23/rotation = Quaternion(0.0260583, 0.00269245, 0.0170717, 0.999511)
+bones/27/rotation = Quaternion(-0.0204547, 8.91648e-16, 0.999791, -1.97563e-09)
+bones/28/position = Vector3(0.725727, 0.295218, -1.49966)
+bones/29/position = Vector3(-0.738055, 0.156664, -1.42485)
+
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/dalton_fb2"]
+tree_root = SubResource("AnimationNodeStateMachine_vs82i")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/go_in = false
+
+[node name="dalton_fb1" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("2_voe0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0.38)
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/dalton_fb1/Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
+bones/4/rotation = Quaternion(0.111542, -7.42854e-09, -1.4092e-09, 0.99376)
+bones/5/rotation = Quaternion(-0.0113187, -0.0380191, 0.0185751, 0.99904)
+bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
+bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
+bones/11/rotation = Quaternion(-0.398748, -0.0951924, -0.663664, 0.625691)
+bones/12/rotation = Quaternion(0.483308, -1.39698e-09, -0.12439, 0.866568)
+bones/15/rotation = Quaternion(-0.388644, 0.116106, 0.642887, 0.649747)
+bones/16/rotation = Quaternion(0.443776, -1.86265e-08, 0.114216, 0.888829)
+bones/19/rotation = Quaternion(0.0260594, -0.00269245, -0.0170717, 0.999511)
+bones/23/rotation = Quaternion(0.0260592, 0.00269237, 0.0170716, 0.999511)
+bones/27/rotation = Quaternion(-0.0204547, 8.91648e-16, 0.999791, -1.97563e-09)
+bones/28/position = Vector3(0.613965, 0.0583076, -1.56875)
+bones/29/position = Vector3(-0.674982, 0.0111637, -1.54884)
+
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/dalton_fb1"]
+tree_root = SubResource("AnimationNodeStateMachine_0lv26")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="dalton_fb3" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("3_24duq")]
+
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/dalton_fb3"]
+tree_root = SubResource("AnimationNodeStateMachine_k4eyv")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/seizure = false
+
 [node name="IsaacsBrotherTweaking" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("1_ydyvw")]
 transform = Transform3D(-0.406035, 0, -0.913858, 0, 1, 0, 0.913858, 0, -0.406035, 4.41336, 1.88543, -6.15032)
-
-[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking/BrotherIsaac" index="0"]
-bones/0/position = Vector3(-0.0268606, -0.454063, -0.312532)
-bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
-bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19025e-08)
-bones/4/rotation = Quaternion(0.429465, -2.11267e-08, -3.42405e-09, 0.903084)
-bones/5/rotation = Quaternion(0.41287, -1.51973e-08, -8.45137e-11, 0.91079)
-bones/6/rotation = Quaternion(-1.83669e-09, 1.77579e-10, -0.143774, 0.989611)
-bones/8/rotation = Quaternion(-5.35712e-09, 2.88224e-09, 0.138841, 0.990315)
-bones/10/rotation = Quaternion(-0.162907, 0.0765871, -0.682801, 0.708081)
-bones/11/rotation = Quaternion(-0.0781472, -0.12988, -0.670348, 0.726401)
-bones/12/rotation = Quaternion(0.839531, 0.13771, -0.393773, 0.348091)
-bones/14/rotation = Quaternion(-0.170819, -0.0846773, 0.680521, 0.70749)
-bones/15/rotation = Quaternion(-0.177446, 0.107657, 0.667865, 0.714759)
-bones/16/rotation = Quaternion(0.851938, -0.123109, 0.402743, 0.311197)
-bones/19/rotation = Quaternion(0.80334, -0.0530618, 0.0184817, 0.592864)
-bones/20/rotation = Quaternion(-0.343003, 0.000129582, -0.00940894, 0.939287)
-bones/21/rotation = Quaternion(0.272639, -0.0405181, 0.00564346, 0.961246)
-bones/23/rotation = Quaternion(0.806468, 0.0310452, -0.0113466, 0.590353)
-bones/24/rotation = Quaternion(-0.349123, -0.000129268, 0.00957682, 0.937028)
-bones/25/rotation = Quaternion(0.272639, 0.0405181, -0.00564343, 0.961246)
-bones/26/position = Vector3(0.302293, 1.00651, -0.13186)
-bones/26/rotation = Quaternion(0.0204546, 8.67362e-19, 0.999791, 6.58544e-10)
-bones/26/scale = Vector3(1.10417, 1, 1.00018)
-bones/27/position = Vector3(-0.302293, 1.00651, -0.13186)
-bones/27/rotation = Quaternion(-0.0204547, 8.88612e-16, 0.999791, -1.31709e-09)
-bones/27/scale = Vector3(1.10417, 1, 1.00018)
-bones/28/position = Vector3(0.349432, 0.158841, -0.599476)
-bones/28/rotation = Quaternion(0.790332, 3.55271e-15, 0.612679, 5.56426e-08)
-bones/29/position = Vector3(-0.42566, 0.0801063, -0.629746)
 
 [node name="isaac" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking/BrotherIsaac/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_vw2sk")
 skin = SubResource("Skin_voe0e")
 
-[node name="IsaacFlashback_01" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("1_b3khi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64544, 0, -0.840007)
+[node name="IsaacMain" type="Node3D" parent="SubViewportContainer/SubViewport/Characters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42609, 0, -0.926975)
 
-[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01/Armature_001" index="0"]
+[node name="Isaac" type="Node3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac" node_paths=PackedStringArray("armature", "anim_tree", "camera", "force_rotate_list", "collision")]
+collision_mask = 6
+script = ExtResource("8_24duq")
+armature = NodePath("IsaacFlashback_01/Armature_001")
+anim_tree = NodePath("AnimationTree")
+camera = NodePath("../../../../CamSystem/Camera3D")
+force_rotate_list = [NodePath("../../../../ControlAreas/FaceKitchen"), NodePath("../../../../ControlAreas/Stair"), NodePath("../../../../ControlAreas/DoorMarker"), NodePath("../../../../ControlAreas/CheckMarker")]
+collision = NodePath("CollisionShape3D")
+
+[node name="PlayerInteractor" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" instance=ExtResource("9_3xeah")]
+
+[node name="IsaacFlashback_01" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" instance=ExtResource("1_b3khi")]
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01/Armature_001" index="0"]
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0755212, -3.00281e-16, 2.02666e-15, 0.997144)
-bones/5/rotation = Quaternion(0.0753579, -4.8828e-10, -9.11994e-11, 0.997157)
-bones/6/position = Vector3(0.256909, 0.65721, 0.0662163)
-bones/6/rotation = Quaternion(2.65866e-10, -5.7086e-10, -0.143774, 0.989611)
+bones/4/rotation = Quaternion(-0.0755207, -0.00369665, -0.000187204, 0.997137)
+bones/5/rotation = Quaternion(0.19936, -0.00677417, 0.000505734, 0.979903)
+bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
+bones/6/rotation = Quaternion(1.92867e-08, -2.67596e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898596, 0.0145798, 0.997999)
 bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
-bones/8/rotation = Quaternion(5.65646e-10, 3.92369e-10, 0.138842, 0.990315)
-bones/9/rotation = Quaternion(0.0615112, 0.000898608, 0.0145793, 0.997999)
+bones/8/rotation = Quaternion(-4.39494e-09, 2.33899e-09, 0.138842, 0.990315)
+bones/9/rotation = Quaternion(0.0615112, 0.000898602, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.275025, -0.0717647, -0.551085, 0.784548)
-bones/12/rotation = Quaternion(0.199671, 0.262387, -0.226526, 0.916499)
+bones/11/rotation = Quaternion(-0.393558, 0.0953538, -0.329948, 0.852733)
+bones/12/rotation = Quaternion(0.503192, 0.178565, -0.57087, 0.623714)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.274934, 0.0782332, 0.563341, 0.775202)
-bones/16/rotation = Quaternion(0.179206, -0.265036, 0.201851, 0.925687)
+bones/15/rotation = Quaternion(-0.378222, -0.0746047, 0.357734, 0.850534)
+bones/16/rotation = Quaternion(0.515296, -0.17356, 0.58041, 0.606193)
 bones/19/rotation = Quaternion(0.09865, 0.00997421, -0.00680437, 0.995049)
 bones/20/rotation = Quaternion(-0.245123, 0.000133744, -0.00672399, 0.969469)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
@@ -729,12 +947,31 @@ bones/26/scale = Vector3(1.10417, 1, 1.00018)
 bones/27/position = Vector3(-0.302293, -0.0768642, -0.13186)
 bones/27/rotation = Quaternion(-0.0204547, 8.89046e-16, 0.999791, -1.31709e-09)
 bones/27/scale = Vector3(1.10417, 1, 1.00018)
-bones/28/position = Vector3(0.536494, 0.0583778, -1.3241)
-bones/29/position = Vector3(-0.536494, 0.0583778, -1.3241)
+bones/28/position = Vector3(0.477751, -0.0886465, -1.76529)
+bones/29/position = Vector3(-0.477104, 0.00644107, -1.80556)
 
-[node name="isaac" parent="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01/Armature_001/Skeleton3D" index="0"]
+[node name="isaac" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01/Armature_001/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_phslp")
 skin = SubResource("Skin_gdngq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0168054, 0.77996, -0.0376161)
+shape = SubResource("CapsuleShape3D_u4bml")
+
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D"]
+root_node = NodePath("../IsaacFlashback_01")
+tree_root = SubResource("AnimationNodeBlendTree_ug0gq")
+anim_player = NodePath("../IsaacFlashback_01/AnimationPlayer")
+parameters/Blend2/blend_amount = 1.0
+parameters/BlendSpace1D/blend_position = 0.0
+parameters/UpStairs/active = false
+parameters/UpStairs/internal_active = false
+parameters/UpStairs/request = 0
+parameters/crouch/blend_amount = 0
+parameters/worryStart/active = false
+parameters/worryStart/internal_active = false
+parameters/worryStart/request = 0
+parameters/worry_idle/blend_amount = 0
 
 [node name="DoorCutscene" parent="SubViewportContainer/SubViewport" instance=ExtResource("14_b3khi")]
 
@@ -748,7 +985,35 @@ mesh = SubResource("ArrayMesh_xgt0d")
 transform = Transform3D(-0.00595153, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00595153, 0, -4.86395, 1.60643)
 
 [node name="Cube_005" parent="SubViewportContainer/SubViewport/woodtryagain25" index="0"]
+transform = Transform3D(0.0780816, 0, 0, 0, -0.022449, 0, 0, 0, 0.672965, -2.139, 4.869, 2.039)
 mesh = SubResource("ArrayMesh_ydyvw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/woodtryagain25/Cube_005" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/woodtryagain25/Cube_005/StaticBody3D"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 48.864, 0, -5.61285)
+shape = SubResource("BoxShape3D_24duq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/woodtryagain25/Cube_005/StaticBody3D"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 30.8871, -53.0265, -5.67755)
+shape = SubResource("BoxShape3D_3xeah")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/woodtryagain25/Cube_005/StaticBody3D"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 45.0328, -53.0265, -9.84896)
+shape = SubResource("BoxShape3D_hlxb5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/woodtryagain25/Cube_005/StaticBody3D"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 49.4898, -53.0265, -1.25415)
+shape = SubResource("BoxShape3D_0rqpd")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/woodtryagain25/Cube_005/StaticBody3D"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 66.5226, -18.4479, -6.92053)
+shape = SubResource("BoxShape3D_0h3sq")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/woodtryagain25/Cube_005/StaticBody3D"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 0, 0, 1, 70.2852, -36.3883, -3.85528)
+shape = SubResource("BoxShape3D_ug0gq")
 
 [node name="CamSystem" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("cameras")]
 script = ExtResource("1_xpbji")
@@ -779,14 +1044,14 @@ camera_3d_resource = SubResource("Resource_uue3t")
 metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
 
 [node name="HallCamIsaac" type="Node3D" parent="SubViewportContainer/SubViewport/CamSystem"]
-transform = Transform3D(0.989392, 0, -0.145271, 0, 1, 0, 0.145271, 0, 0.989392, 0.202008, 2.90536, -2.78431)
+transform = Transform3D(0.972102, 0.011645, -0.234268, 0.0185267, 0.991835, 0.126179, 0.233825, -0.126999, 0.963949, 0.113264, 3.28765, -4.32129)
 script = ExtResource("4_gn7yl")
 tween_resource = SubResource("Resource_ydyvw")
 camera_3d_resource = SubResource("Resource_xgt0d")
 metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
 
 [node name="BedroomIsaac" type="Node3D" parent="SubViewportContainer/SubViewport/CamSystem"]
-transform = Transform3D(-0.999725, 0, 0.0234725, 0.0100874, 0.902946, 0.429637, -0.0211944, 0.429755, -0.902697, 3.90964, 3.59851, -7.23608)
+transform = Transform3D(-0.999725, 0, 0.0234725, 0.0100874, 0.902946, 0.429637, -0.0211944, 0.429755, -0.902697, 3.90964, 3.59851, -7.53933)
 script = ExtResource("4_gn7yl")
 tween_resource = SubResource("Resource_phslp")
 camera_3d_resource = SubResource("Resource_gdngq")
@@ -844,6 +1109,28 @@ environment = SubResource("Environment_b3khi")
 
 [node name="FirstFlashEnvironment" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_j355y")]
 
+[node name="KitchenBase" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment" index="0"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
+transform = Transform3D(1, 0, -6.21867e-11, 0, 1, 0, 0, 0, 1, -2.33704, 0, 0.113648)
+shape = SubResource("BoxShape3D_dp1ub")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
+transform = Transform3D(1, 0, -1.28352e-10, 0, 1, 0, 0, 0, 1, 0.877365, 31.801, -0.430236)
+shape = SubResource("BoxShape3D_krw4o")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
+transform = Transform3D(1, 0, -1.49498e-10, 0, 1, 0, 0, 0, 1, -1.14159, 31.801, -0.623138)
+shape = SubResource("BoxShape3D_g7hnq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
+transform = Transform3D(1, 0, -1.54273e-10, 0, 1, 0, 0, 0, 1, 0.0348429, 31.801, 0.0649583)
+shape = SubResource("BoxShape3D_gk0uv")
+
 [node name="poster_001" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment" index="9"]
 transform = Transform3D(-0.286306, -8.06757e-08, -8.06757e-08, 4.66451e-08, -5.90306e-08, -0.495184, 4.66451e-08, -0.495184, 5.90306e-08, 2.37786, 3.27396, -4.58641)
 
@@ -884,8 +1171,42 @@ randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_gcp7e")
 draw_pass_1 = SubResource("QuadMesh_uue3t")
 
+[node name="ControlAreas" type="Node" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("24_3xeah")
+
+[node name="WalkUp" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467339, 0, -2.21453)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/WalkUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0488892, 0.725525, 0.261902)
+shape = SubResource("BoxShape3D_kihg0")
+
+[node name="EnterRoom" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33832, 2.76947, -7.14002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/EnterRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0949707, -0.136475, 0.0100708)
+shape = SubResource("BoxShape3D_vs82i")
+
+[node name="FaceKitchen" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43184, 0, -1.43623)
+
+[node name="DoorMarker" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59797, 1.87213, -7.18443)
+
+[node name="CheckMarker" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2321, 1.87213, -6.62671)
+
+[node name="Stair" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482575, 0, -2.12422)
+
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/WalkUp" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_walk_up_body_entered"]
+
+[editable path="SubViewportContainer/SubViewport/Characters/dalton_fb2"]
+[editable path="SubViewportContainer/SubViewport/Characters/dalton_fb1"]
+[editable path="SubViewportContainer/SubViewport/Characters/dalton_fb3"]
 [editable path="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking"]
-[editable path="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01"]
+[editable path="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01"]
 [editable path="SubViewportContainer/SubViewport/DoorCutscene"]
 [editable path="SubViewportContainer/SubViewport/woodtryagain26"]
 [editable path="SubViewportContainer/SubViewport/woodtryagain25"]

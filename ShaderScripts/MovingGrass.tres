@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d2gxu25w0pvvj"]
 
-[sub_resource type="Shader" id="Shader_3hj0s"]
+[sub_resource type="Shader" id="Shader_frku4"]
 code = "shader_type spatial;
 
 uniform vec3 color: source_color;
@@ -34,7 +34,7 @@ void fragment() {
 
 [resource]
 render_priority = 0
-shader = SubResource("Shader_3hj0s")
+shader = SubResource("Shader_frku4")
 shader_parameter/color = Color(0.440537, 0.636862, 0.311633, 1)
 shader_parameter/color2 = Color(0.822146, 0.858848, 0.496645, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_vv1rg")

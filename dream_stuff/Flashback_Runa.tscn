@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://c02ounmvlw1ww"]
+[gd_scene load_steps=13 format=4 uid="uid://c02ounmvlw1ww"]
 
 [ext_resource type="PackedScene" uid="uid://j12gmnq6waxl" path="res://dream_stuff/organizedOffice.glb" id="1_0s4oq"]
 [ext_resource type="PackedScene" uid="uid://cpv4qukow4new" path="res://SecondHouse/woodtryagain25.glb" id="2_otrhg"]
 [ext_resource type="Material" uid="uid://cp0jkmt30p6sx" path="res://ShaderScripts/wood.tres" id="3_6b7fn"]
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="4_5mks0"]
+[ext_resource type="PackedScene" uid="uid://c1e8y248ois5s" path="res://Cutscenes/dalton_fb2_2.glb" id="4_otrhg"]
 [ext_resource type="PackedScene" uid="uid://xjogktm15mo6" path="res://Cutscenes/runa.glb" id="5_os5ge"]
 [ext_resource type="Shader" uid="uid://ioiiowkr1h2a" path="res://ShaderScripts/sky.gdshader" id="6_7q87w"]
 
@@ -70,35 +71,89 @@ ambient_light_sky_contribution = 0.22
 ambient_light_energy = 0.6
 reflected_light_source = 1
 tonemap_mode = 2
+tonemap_exposure = 2.11
+tonemap_white = 1.5
 glow_enabled = true
+glow_normalized = true
 glow_strength = 0.99
 glow_mix = 0.214
 glow_bloom = 0.7
 glow_blend_mode = 4
+volumetric_fog_enabled = true
 adjustment_enabled = true
 adjustment_contrast = 0.9
 adjustment_saturation = 0.2
 
 [node name="Node3D" type="Node3D"]
 
-[node name="organizedOffice" parent="." instance=ExtResource("1_0s4oq")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 6
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="organizedOffice" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_0s4oq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424989, 0, 0.218493)
 
-[node name="Flooring" parent="organizedOffice" index="31"]
+[node name="Flooring" parent="SubViewportContainer/SubViewport/organizedOffice" index="31"]
 visible = false
 
-[node name="woodtryagain25" parent="organizedOffice" instance=ExtResource("2_otrhg")]
+[node name="woodtryagain25" parent="SubViewportContainer/SubViewport/organizedOffice" instance=ExtResource("2_otrhg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.91, 0)
 
-[node name="Cube_005" parent="organizedOffice/woodtryagain25" index="0"]
+[node name="Cube_005" parent="SubViewportContainer/SubViewport/organizedOffice/woodtryagain25" index="0"]
+transform = Transform3D(0.0588992, 0, 1.01615e-07, 0, -0.022449, 0, -8.89353e-09, 0, 0.672965, -2.13857, 4.75945, 0.917133)
 mesh = SubResource("ArrayMesh_v5c0l")
 
-[node name="Characters" type="Node" parent="."]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.999958, 7.59434e-09, -0.00919777, 0.00452473, 0.870631, -0.491916, 0.00800786, -0.491937, -0.870594, -0.375013, 0.640773, -0.676266)
+current = true
+fov = 89.9
 
-[node name="IsaacFlashback_01" parent="Characters" instance=ExtResource("4_5mks0")]
+[node name="Characters" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="dalton_fb2_2" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("4_otrhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.290234, 0.405137, 0)
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/dalton_fb2_2/Armature" index="0"]
+bones/0/position = Vector3(2.84217e-14, 0, -2.01189)
+bones/0/rotation = Quaternion(-3.55271e-15, 0.707107, 0.707107, -3.86673e-15)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
+bones/4/rotation = Quaternion(0.0103681, -3.34154e-09, 2.75694e-09, 0.999946)
+bones/5/rotation = Quaternion(0.415325, -0.000718036, -0.00183942, 0.909671)
+bones/6/position = Vector3(0.255908, 0.653836, 0.0887256)
+bones/6/rotation = Quaternion(0.152865, -0.0222088, -0.142048, 0.977733)
+bones/8/position = Vector3(-0.261278, 0.654172, 0.0880383)
+bones/8/rotation = Quaternion(0.152974, 0.0214469, 0.137175, 0.978428)
+bones/11/rotation = Quaternion(-0.342462, -0.0721989, -0.557036, 0.753139)
+bones/12/rotation = Quaternion(0.150673, -0.0154221, -0.2396, 0.958985)
+bones/15/rotation = Quaternion(-0.342961, 0.0720777, 0.575078, 0.739235)
+bones/16/rotation = Quaternion(0.0844516, 0.313669, 0.257182, 0.91013)
+bones/19/rotation = Quaternion(0.0260597, -0.00269246, -0.0170717, 0.999511)
+bones/23/rotation = Quaternion(0.02606, 0.00269248, 0.0170717, 0.999511)
+bones/26/position = Vector3(0.273732, -0.0768643, -0.349611)
+bones/27/position = Vector3(-0.273732, -0.0768643, -0.349611)
+bones/27/rotation = Quaternion(-0.0204547, 8.88178e-16, 0.999791, -1.97563e-09)
+bones/28/position = Vector3(0.538525, -0.135509, -1.66274)
+bones/29/position = Vector3(-0.515191, -0.118054, -1.65507)
+bones/30/position = Vector3(1.19023, 0.578705, -2.98559)
+bones/31/position = Vector3(-1.19023, 0.578705, -2.98559)
+
+[node name="IsaacFlashback_01" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("4_5mks0")]
 transform = Transform3D(-0.0756052, 0, -0.997138, 0, 1, 0, 0.997138, 0, -0.0756052, 0.339844, 0, 0.213811)
 
-[node name="Skeleton3D" parent="Characters/IsaacFlashback_01/Armature_001" index="0"]
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01/Armature_001" index="0"]
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
@@ -131,10 +186,10 @@ bones/27/scale = Vector3(1.10417, 1, 1.00018)
 bones/28/position = Vector3(0.536494, 0.0583778, -1.3241)
 bones/29/position = Vector3(-0.536494, 0.0583778, -1.3241)
 
-[node name="runa" parent="Characters" instance=ExtResource("5_os5ge")]
+[node name="runa" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("5_os5ge")]
 transform = Transform3D(-0.0206807, 0, 0.999786, 0, 1, 0, -0.999786, 0, -0.0206807, -1.0067, 0, 0.177566)
 
-[node name="Skeleton3D" parent="Characters/runa/RunaArmature" index="0"]
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/runa/RunaArmature" index="0"]
 bones/0/position = Vector3(0, -1.49012e-08, -1.79414)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
@@ -155,19 +210,21 @@ bones/27/rotation = Quaternion(-0.0204547, 8.89913e-16, 0.999791, -1.97563e-09)
 bones/28/position = Vector3(0.445655, 0.0258286, -1.82566)
 bones/29/position = Vector3(-0.434528, -0.0900155, -1.67399)
 
-[node name="lighting" type="Node" parent="."]
+[node name="lighting" type="Node" parent="SubViewportContainer/SubViewport"]
 
-[node name="officeLight" type="SpotLight3D" parent="lighting"]
-transform = Transform3D(1, 0, 0, 0, -0.205897, 0.978574, 0, -0.978574, -0.205897, -0.393236, 3.01395, 0)
+[node name="officeLight" type="SpotLight3D" parent="SubViewportContainer/SubViewport/lighting"]
+transform = Transform3D(1, 0, 0, 0, -0.205897, 0.978574, 0, -0.978574, -0.205897, -0.393236, 4.38866, 0)
 light_color = Color(0.972915, 0.924699, 0.751913, 1)
 light_energy = 2.52
+light_volumetric_fog_energy = 0.901
 shadow_enabled = true
 spot_attenuation = 0.26
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/lighting"]
 environment = SubResource("Environment_tawba")
 
-[editable path="organizedOffice"]
-[editable path="organizedOffice/woodtryagain25"]
-[editable path="Characters/IsaacFlashback_01"]
-[editable path="Characters/runa"]
+[editable path="SubViewportContainer/SubViewport/organizedOffice"]
+[editable path="SubViewportContainer/SubViewport/organizedOffice/woodtryagain25"]
+[editable path="SubViewportContainer/SubViewport/Characters/dalton_fb2_2"]
+[editable path="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01"]
+[editable path="SubViewportContainer/SubViewport/Characters/runa"]
