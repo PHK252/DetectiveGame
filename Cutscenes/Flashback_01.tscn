@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://boda0uybnshug"]
+[gd_scene load_steps=99 format=4 uid="uid://boda0uybnshug"]
 
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="1_b3khi"]
 [ext_resource type="PackedScene" uid="uid://bqwijt8f7c5me" path="res://Cutscenes/dalton_fb2.glb" id="1_vw2sk"]
@@ -24,6 +24,7 @@
 [ext_resource type="Material" uid="uid://cgwa84pvtb52t" path="res://ShaderScripts/environment.tres" id="13_gcp7e"]
 [ext_resource type="PackedScene" uid="uid://c54sdu8cgo4gt" path="res://Cutscenes/DoorCutscene.glb" id="14_b3khi"]
 [ext_resource type="Script" uid="uid://b0tyfhwc3r006" path="res://Cutscenes/GeneralControls.gd" id="24_3xeah"]
+[ext_resource type="PackedScene" uid="uid://bak8ltrhbmlv5" path="res://GeneralScripts/interaction/CSGStairMaker3D.tscn" id="25_hlxb5"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_krw4o"]
 animation = &"HallwayLookDoor"
@@ -40,7 +41,7 @@ advance_condition = &"go_in"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vs82i"]
 states/HallwayLookDoor/node = SubResource("AnimationNodeAnimation_krw4o")
-states/HallwayLookDoor/position = Vector2(668.26, 87.3625)
+states/HallwayLookDoor/position = Vector2(668.76, 68.3625)
 states/HallwayLookIdle/node = SubResource("AnimationNodeAnimation_g7hnq")
 states/HallwayLookIdle/position = Vector2(373, 77)
 transitions = ["Start", "HallwayLookIdle", SubResource("AnimationNodeStateMachineTransition_gk0uv"), "HallwayLookIdle", "HallwayLookDoor", SubResource("AnimationNodeStateMachineTransition_kihg0")]
@@ -288,6 +289,18 @@ bind/31/name = &"PoleArm.R"
 bind/31/bone = -1
 bind/31/pose = Transform3D(-0.539394, 2.09577, 9.16091e-08, 0, -9.45946e-08, 2.16407, 2.09577, 0.539394, 2.35777e-08, -2.97715, -0.578705, 0.462783)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vs82i"]
+animation = &"IsaacTweak_01"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k4eyv"]
+advance_mode = 2
+advance_condition = &"start_anim"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3q38s"]
+states/IsaacTweak_01/node = SubResource("AnimationNodeAnimation_vs82i")
+states/IsaacTweak_01/position = Vector2(402, 94.5)
+transitions = ["Start", "IsaacTweak_01", SubResource("AnimationNodeStateMachineTransition_k4eyv")]
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_phslp"]
 resource_name = "IsaacFlashback_01_Cube"
 _surfaces = [{
@@ -451,7 +464,7 @@ min_space = 0.0
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_g7hnq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ug0gq"]
-graph_offset = Vector2(-122.587, 115.885)
+graph_offset = Vector2(666.444, 49.0512)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_24duq")
 nodes/Animation/position = Vector2(280, 290)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3xeah")
@@ -671,7 +684,7 @@ far = 4000.0
 
 [sub_resource type="Resource" id="Resource_ydyvw"]
 script = ExtResource("5_a0dnt")
-duration = 1.0
+duration = 0.0
 transition = 0
 ease = 2
 
@@ -689,7 +702,7 @@ far = 4000.0
 
 [sub_resource type="Resource" id="Resource_phslp"]
 script = ExtResource("5_a0dnt")
-duration = 1.0
+duration = 0.0
 transition = 0
 ease = 2
 
@@ -744,7 +757,7 @@ adjustment_contrast = 0.9
 adjustment_saturation = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dp1ub"]
-size = Vector3(6.34839, 1, 2.1521)
+size = Vector3(6.34839, 1.88037, 2.1521)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_krw4o"]
 size = Vector3(0.295929, 64.6021, 1.06433)
@@ -754,6 +767,9 @@ size = Vector3(0.295929, 64.6021, 0.678528)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gk0uv"]
 size = Vector3(1.98097, 64.6021, 0.0739441)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps7mt"]
+size = Vector3(0.477539, 66.3288, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n5qt5"]
 _surfaces = [{
@@ -814,7 +830,7 @@ size = Vector2(0.2, 0.4)
 size = Vector3(1.12781, 2.45105, 0.441772)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vs82i"]
-size = Vector3(0.810059, 1.27295, 0.803101)
+size = Vector3(0.810059, 1.27295, 0.274216)
 
 [node name="Node3D" type="Node3D"]
 
@@ -843,7 +859,7 @@ render_target_update_mode = 4
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(-0.0991393, 1.32676e-09, 1.68901e-10, 0.995074)
-bones/5/rotation = Quaternion(0.265247, -8.04907e-09, -1.16319e-09, 0.96418)
+bones/5/rotation = Quaternion(0.261546, -8.82882e-09, -1.27781e-09, 0.965191)
 bones/7/rotation = Quaternion(0.251585, 0.0036754, 0.0141376, 0.967725)
 bones/9/rotation = Quaternion(0.251585, 0.00367533, 0.014137, 0.967725)
 bones/11/rotation = Quaternion(-0.263317, -0.10466, -0.639998, 0.714222)
@@ -868,7 +884,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0.38)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(0.111542, -7.42854e-09, -1.4092e-09, 0.99376)
-bones/5/rotation = Quaternion(-0.0113187, -0.0380191, 0.0185751, 0.99904)
+bones/5/rotation = Quaternion(-0.0258157, -0.0382847, 0.0180214, 0.998771)
 bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
 bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
 bones/11/rotation = Quaternion(-0.398748, -0.0951924, -0.663664, 0.625691)
@@ -893,14 +909,49 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/seizure = false
 
 [node name="IsaacsBrotherTweaking" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("1_ydyvw")]
-transform = Transform3D(-0.406035, 0, -0.913858, 0, 1, 0, 0.913858, 0, -0.406035, 4.41336, 1.88543, -6.15032)
+transform = Transform3D(-0.324828, 0, -0.731086, 0, 0.8, 0, 0.731086, 0, -0.324828, 4.41336, 1.88543, -6.15032)
+
+[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking/BrotherIsaac" index="0"]
+bones/0/position = Vector3(-0.0268606, -0.454063, -0.312532)
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19025e-08)
+bones/4/rotation = Quaternion(0.159836, -0.438658, 0.185046, 0.864748)
+bones/5/rotation = Quaternion(0.499865, 0.0867119, -0.0256313, 0.86137)
+bones/6/rotation = Quaternion(9.05455e-10, 6.23241e-09, -0.143774, 0.989611)
+bones/8/rotation = Quaternion(7.06873e-10, 5.01973e-09, 0.138841, 0.990315)
+bones/10/rotation = Quaternion(-0.162907, 0.0765871, -0.682801, 0.708081)
+bones/11/rotation = Quaternion(-0.382404, -0.503869, -0.682261, 0.366611)
+bones/12/rotation = Quaternion(0.325282, 0.343309, -0.15257, 0.867786)
+bones/14/rotation = Quaternion(-0.170819, -0.0846773, 0.680521, 0.70749)
+bones/15/rotation = Quaternion(0.386536, 0.173984, 0.256146, 0.86874)
+bones/16/rotation = Quaternion(0.190873, -0.222923, 0.72695, 0.620819)
+bones/19/rotation = Quaternion(0.680221, -0.0477172, 0.0451386, 0.730058)
+bones/20/rotation = Quaternion(-0.00265343, 0.000137952, -7.27971e-05, 0.999997)
+bones/21/rotation = Quaternion(0.272639, -0.0405181, 0.00564346, 0.961246)
+bones/23/rotation = Quaternion(0.872912, 0.0181311, -0.0485505, 0.485117)
+bones/24/rotation = Quaternion(-0.544564, -0.000115692, 0.014938, 0.838586)
+bones/25/rotation = Quaternion(0.272639, 0.0405181, -0.00564343, 0.961246)
+bones/26/position = Vector3(0.394156, 1.10721, -0.102617)
+bones/26/rotation = Quaternion(0.0204546, 8.67362e-19, 0.999791, 6.58544e-10)
+bones/26/scale = Vector3(1.10417, 1, 1.00018)
+bones/27/position = Vector3(-0.349609, 0.850629, -0.183843)
+bones/27/rotation = Quaternion(-0.0204547, 8.88612e-16, 0.999791, -1.31709e-09)
+bones/27/scale = Vector3(1.10417, 1, 1.00018)
+bones/28/position = Vector3(-0.0721096, 0.679701, -0.136818)
+bones/28/rotation = Quaternion(0.768704, 0.000177057, 0.638733, -0.0333889)
+bones/29/position = Vector3(-0.696521, -0.677377, -0.235684)
 
 [node name="isaac" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking/BrotherIsaac/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_vw2sk")
 skin = SubResource("Skin_voe0e")
 
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking"]
+tree_root = SubResource("AnimationNodeStateMachine_3q38s")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/start_anim = false
+
 [node name="IsaacMain" type="Node3D" parent="SubViewportContainer/SubViewport/Characters"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42609, 0, -0.926975)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -3.42609, 0, -0.926975)
 
 [node name="Isaac" type="Node3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain"]
 
@@ -921,8 +972,8 @@ collision = NodePath("CollisionShape3D")
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0755207, -0.00369665, -0.000187204, 0.997137)
-bones/5/rotation = Quaternion(0.19936, -0.00677417, 0.000505734, 0.979903)
+bones/4/rotation = Quaternion(-0.0755095, -0.017591, -0.000890838, 0.99699)
+bones/5/rotation = Quaternion(0.19926, -0.0323128, 0.00241236, 0.979411)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
 bones/6/rotation = Quaternion(1.92867e-08, -2.67596e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898596, 0.0145798, 0.997999)
@@ -930,11 +981,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-4.39494e-09, 2.33899e-09, 0.138842, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898602, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.393558, 0.0953538, -0.329948, 0.852733)
+bones/11/rotation = Quaternion(-0.41046, 0.0923801, -0.32544, 0.846804)
 bones/12/rotation = Quaternion(0.503192, 0.178565, -0.57087, 0.623714)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.378222, -0.0746047, 0.357734, 0.850534)
-bones/16/rotation = Quaternion(0.515296, -0.17356, 0.58041, 0.606193)
+bones/15/rotation = Quaternion(-0.361303, -0.0767187, 0.362707, 0.855581)
+bones/16/rotation = Quaternion(0.514908, -0.173759, 0.579973, 0.606885)
 bones/19/rotation = Quaternion(0.09865, 0.00997421, -0.00680437, 0.995049)
 bones/20/rotation = Quaternion(-0.245123, 0.000133744, -0.00672399, 0.969469)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
@@ -967,11 +1018,22 @@ parameters/BlendSpace1D/blend_position = 0.0
 parameters/UpStairs/active = false
 parameters/UpStairs/internal_active = false
 parameters/UpStairs/request = 0
-parameters/crouch/blend_amount = 0
+parameters/crouch/blend_amount = 0.0
 parameters/worryStart/active = false
 parameters/worryStart/internal_active = false
 parameters/worryStart/request = 0
-parameters/worry_idle/blend_amount = 0
+parameters/worry_idle/blend_amount = 0.0
+
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09691, 0.369819)
+target_position = Vector3(0, -1.25, 0)
+collision_mask = 2
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, -1.5, 0)
+collision_mask = 2
 
 [node name="DoorCutscene" parent="SubViewportContainer/SubViewport" instance=ExtResource("14_b3khi")]
 
@@ -1044,8 +1106,9 @@ camera_3d_resource = SubResource("Resource_uue3t")
 metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
 
 [node name="HallCamIsaac" type="Node3D" parent="SubViewportContainer/SubViewport/CamSystem"]
-transform = Transform3D(0.972102, 0.011645, -0.234268, 0.0185267, 0.991835, 0.126179, 0.233825, -0.126999, 0.963949, 0.113264, 3.28765, -4.32129)
+transform = Transform3D(0.972102, 0.011645, -0.234268, 0.0185267, 0.991835, 0.126179, 0.233825, -0.126999, 0.963949, 0.113264, 3.28765, -4.07829)
 script = ExtResource("4_gn7yl")
+priority = 30
 tween_resource = SubResource("Resource_ydyvw")
 camera_3d_resource = SubResource("Resource_xgt0d")
 metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
@@ -1109,14 +1172,11 @@ environment = SubResource("Environment_b3khi")
 
 [node name="FirstFlashEnvironment" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_j355y")]
 
-[node name="KitchenBase" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment" index="0"]
-visible = false
-
 [node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002" index="0"]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
-transform = Transform3D(1, 0, -6.21867e-11, 0, 1, 0, 0, 0, 1, -2.33704, 0, 0.113648)
+transform = Transform3D(1, 0, -9.02673e-11, 0, 1, 0, 0, 0, 1, -2.33704, 0.440186, 0.113648)
 shape = SubResource("BoxShape3D_dp1ub")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
@@ -1130,6 +1190,17 @@ shape = SubResource("BoxShape3D_g7hnq")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
 transform = Transform3D(1, 0, -1.54273e-10, 0, 1, 0, 0, 0, 1, 0.0348429, 31.801, 0.0649583)
 shape = SubResource("BoxShape3D_gk0uv")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
+transform = Transform3D(1, 0, -3.36513e-11, 0, 1, 0, 0, 0, 1, -0.905823, -3.85684, -1.34843)
+shape = SubResource("BoxShape3D_ps7mt")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
+transform = Transform3D(1, 0, -3.3765e-11, 0, 1, 0, 0, 0, 1, 1.02461, -3.85684, -1.34843)
+shape = SubResource("BoxShape3D_ps7mt")
+
+[node name="Cube_003" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment" index="5"]
+transform = Transform3D(0.790388, 0, 0, 0, 0.0732956, 0, 0, 0, 0.0920332, 0.4793, 0.12147, -2.02675)
 
 [node name="poster_001" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment" index="9"]
 transform = Transform3D(-0.286306, -8.06757e-08, -8.06757e-08, 4.66451e-08, -5.90306e-08, -0.495184, 4.66451e-08, -0.495184, 5.90306e-08, 2.37786, 3.27396, -4.58641)
@@ -1171,11 +1242,15 @@ randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_gcp7e")
 draw_pass_1 = SubResource("QuadMesh_uue3t")
 
-[node name="ControlAreas" type="Node" parent="SubViewportContainer/SubViewport"]
+[node name="ControlAreas" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("door_anim", "dalton_look", "dalton_room", "brother_anims")]
 script = ExtResource("24_3xeah")
+door_anim = NodePath("../DoorCutscene/AnimationPlayer")
+dalton_look = NodePath("../Characters/dalton_fb2/AnimationTree")
+dalton_room = NodePath("../Characters/dalton_fb3/AnimationTree")
+brother_anims = NodePath("../Characters/IsaacsBrotherTweaking/AnimationTree")
 
 [node name="WalkUp" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467339, 0, -2.21453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467339, 1.5694, -4.79712)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/WalkUp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0488892, 0.725525, 0.261902)
@@ -1185,7 +1260,7 @@ shape = SubResource("BoxShape3D_kihg0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33832, 2.76947, -7.14002)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/EnterRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0949707, -0.136475, 0.0100708)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0949707, -0.136475, -0.182747)
 shape = SubResource("BoxShape3D_vs82i")
 
 [node name="FaceKitchen" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
@@ -1195,12 +1270,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43184, 0, -1.43623)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59797, 1.87213, -7.18443)
 
 [node name="CheckMarker" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2321, 1.87213, -6.62671)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2321, 1.87213, -6.72687)
 
 [node name="Stair" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482575, 0, -2.12422)
 
+[node name="CSGStairMaker3D" parent="." instance=ExtResource("25_hlxb5")]
+transform = Transform3D(-0.00172783, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00172783, 0.461691, 0.976738, -3.20657)
+visible = false
+use_collision = true
+collision_layer = 2
+size = Vector3(2.71936, 1.95486, 1.57379)
+num_stairs = 70
+
+[node name="StairsSubtractCSG" parent="CSGStairMaker3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35968, -0.97743, 0.786895)
+polygon = PackedVector2Array(0, 0.0279266, 0.038848, 0.0279266, 0.038848, 0.0558531, 0.077696, 0.0558531, 0.077696, 0.0837797, 0.116544, 0.0837797, 0.116544, 0.111706, 0.155392, 0.111706, 0.155392, 0.139633, 0.19424, 0.139633, 0.19424, 0.167559, 0.233088, 0.167559, 0.233088, 0.195486, 0.271936, 0.195486, 0.271936, 0.223413, 0.310784, 0.223413, 0.310784, 0.251339, 0.349632, 0.251339, 0.349632, 0.279266, 0.38848, 0.279266, 0.38848, 0.307192, 0.427328, 0.307192, 0.427328, 0.335119, 0.466176, 0.335119, 0.466176, 0.363045, 0.505024, 0.363045, 0.505024, 0.390972, 0.543872, 0.390972, 0.543872, 0.418899, 0.58272, 0.418899, 0.58272, 0.446825, 0.621568, 0.446825, 0.621568, 0.474752, 0.660416, 0.474752, 0.660416, 0.502678, 0.699264, 0.502678, 0.699264, 0.530605, 0.738112, 0.530605, 0.738112, 0.558531, 0.77696, 0.558531, 0.77696, 0.586458, 0.815808, 0.586458, 0.815808, 0.614385, 0.854656, 0.614385, 0.854656, 0.642311, 0.893504, 0.642311, 0.893504, 0.670238, 0.932352, 0.670238, 0.932352, 0.698164, 0.9712, 0.698164, 0.9712, 0.726091, 1.01005, 0.726091, 1.01005, 0.754017, 1.0489, 0.754017, 1.0489, 0.781944, 1.08774, 0.781944, 1.08774, 0.809871, 1.12659, 0.809871, 1.12659, 0.837797, 1.16544, 0.837797, 1.16544, 0.865724, 1.20429, 0.865724, 1.20429, 0.89365, 1.24314, 0.89365, 1.24314, 0.921577, 1.28198, 0.921577, 1.28198, 0.949503, 1.32083, 0.949503, 1.32083, 0.97743, 1.35968, 0.97743, 1.35968, 1.00536, 1.39853, 1.00536, 1.39853, 1.03328, 1.43738, 1.03328, 1.43738, 1.06121, 1.47622, 1.06121, 1.47622, 1.08914, 1.51507, 1.08914, 1.51507, 1.11706, 1.55392, 1.11706, 1.55392, 1.14499, 1.59277, 1.14499, 1.59277, 1.17292, 1.63162, 1.17292, 1.63162, 1.20084, 1.67046, 1.20084, 1.67046, 1.22877, 1.70931, 1.22877, 1.70931, 1.2567, 1.74816, 1.2567, 1.74816, 1.28462, 1.78701, 1.28462, 1.78701, 1.31255, 1.82586, 1.31255, 1.82586, 1.34048, 1.8647, 1.34048, 1.8647, 1.3684, 1.90355, 1.3684, 1.90355, 1.39633, 1.9424, 1.39633, 1.9424, 1.42426, 1.98125, 1.42426, 1.98125, 1.45218, 2.0201, 1.45218, 2.0201, 1.48011, 2.05894, 1.48011, 2.05894, 1.50803, 2.09779, 1.50803, 2.09779, 1.53596, 2.13664, 1.53596, 2.13664, 1.56389, 2.17549, 1.56389, 2.17549, 1.59181, 2.21434, 1.59181, 2.21434, 1.61974, 2.25318, 1.61974, 2.25318, 1.64767, 2.29203, 1.64767, 2.29203, 1.67559, 2.33088, 1.67559, 2.33088, 1.70352, 2.36973, 1.70352, 2.36973, 1.73145, 2.40858, 1.73145, 2.40858, 1.75937, 2.44742, 1.75937, 2.44742, 1.7873, 2.48627, 1.7873, 2.48627, 1.81523, 2.52512, 1.81523, 2.52512, 1.84315, 2.56397, 1.84315, 2.56397, 1.87108, 2.60282, 1.87108, 2.60282, 1.89901, 2.64166, 1.89901, 2.64166, 1.92693, 2.68051, 1.92693, 2.68051, 1.95486, 0, 1.95486)
+depth = 1.57379
+
+[connection signal="activate_hall" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_activate_hall"]
+[connection signal="cam_bed" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_cam_bed"]
+[connection signal="check_on_isaac" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_control_areas_check_on_isaac"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/WalkUp" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_walk_up_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/EnterRoom" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_enter_room_body_entered"]
 
 [editable path="SubViewportContainer/SubViewport/Characters/dalton_fb2"]
 [editable path="SubViewportContainer/SubViewport/Characters/dalton_fb1"]
@@ -1211,3 +1303,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482575, 0, -2.12422)
 [editable path="SubViewportContainer/SubViewport/woodtryagain26"]
 [editable path="SubViewportContainer/SubViewport/woodtryagain25"]
 [editable path="SubViewportContainer/SubViewport/FirstFlashEnvironment"]
+[editable path="CSGStairMaker3D"]

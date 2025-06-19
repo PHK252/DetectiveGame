@@ -232,12 +232,9 @@ func _on_water_close_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(6)
 
-
-
 func _on_hall_close_cam_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(21)
-
 
 func _on_area_01_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -247,3 +244,9 @@ func _on_area_01_body_entered(body: Node3D) -> void:
 func _on_area_02_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(1)
+
+func _on_character_body_3d_activate_hall() -> void:
+	activate_camera(1)
+
+func _on_character_body_3d_cam_bed() -> void:
+	activate_camera(2)
