@@ -1,71 +1,97 @@
 set {Quincy.solved_case} = true
 if {Juniper.found_skylar} == true and {Quincy.talked_at_port} == true:
-	Dalton: Take a look at this.
-	Quincy: ...
-	Quincy: So it was that brat.
-	Dalton: It seems so.
-	Dalton: The contents of the note... 
-	Dalton: Is any of it true?
-	Quincy: Pfft.
-	Quincy: Not at all. 
-	Quincy: Just some angsty teen nonsense.
-	Dalton: Hmph. 
-	Dalton: What would you like us to do?
-	Quincy: Arrest him and take him in for questioning. 
-	Quincy: I'll take care of the rest.
-	Dalton: Okay.
-	Dalton: I'll send a search team out for Skylar Aslan.
+	if {Quincy.finished_case_note} == false:
+		set {Quincy.finished_case_note} = true
+		Dalton: Take a look at this.
+		Quincy: ...
+		Quincy: So it was that brat.
+		Dalton: It seems so.
+		Dalton: The contents of the note... 
+		Dalton: Is any of it true?
+		Quincy: Pfft.
+		Quincy: Not at all. 
+		Quincy: Just some angsty teen nonsense.
+		Dalton: Hmph. 
+		Dalton: What would you like us to do?
+		Quincy: Arrest him and take him in for questioning. 
+		Quincy: I'll take care of the rest.
+		Dalton: Okay.
+		Dalton: I'll send a search team out for Skylar Aslan.
+		jump Quincy_open_case_choice/
+	else:
+		Quincy: Hmph.
+		Quincy: I swear...
+		Quincy: Of all the times for the brat to come back...
+		Quincy: Why now?
+		jump Quincy_open_case_choice/
 elif {Juniper.found_skylar} == true and {Quincy.talked_at_port} == false:
-	Dalton: Take a look at this.
-	Quincy: ...
-	Quincy: That brat.
-	Dalton: ...
-	Dalton: Does your child go by the name of Skylar Aslan by any chance?
-	Quincy: Hmm...
-	Quincy: I believe so.
-	Dalton: Believe so?
-	Quincy: It's been a while.
-	Dalton: Hmph.
-	Dalton: We suspect that Skylar was behind the other two break-ins as well.
-	Dalton: What would you like us to do?
-	Quincy: Arrest him and take him in for questioning. 
-	Quincy: I'll take care of the rest.
-	Dalton: Okay.
-	Dalton: I'll send a search team out for Skylar Aslan immediately.
-	Dalton: ...
-	Dalton: What Skylar said in the note…
-	Dalton:  Is any of it true?
-	Quincy: Pfft.
-	Quincy: Not at all. 
-	Quincy: Just some angsty teen nonsense.
+	if {Quincy.finished_case_note} == false:
+		set {Quincy.finished_case_note} = true
+		Dalton: Take a look at this.
+		Quincy: ...
+		Quincy: That brat.
+		Dalton: ...
+		Dalton: Does your child go by the name of Skylar Aslan by any chance?
+		Quincy: Hmm...
+		Quincy: I believe so.
+		Dalton: Believe so?
+		Quincy: It's been a while.
+		Dalton: Hmph.
+		Dalton: We suspect that Skylar was behind the other two break-ins as well.
+		Dalton: What would you like us to do?
+		Quincy: Arrest him and take him in for questioning. 
+		Quincy: I'll take care of the rest.
+		Dalton: Okay.
+		Dalton: I'll send a search team out for Skylar Aslan immediately.
+		Dalton: ...
+		Dalton: What Skylar said in the note…
+		Dalton:  Is any of it true?
+		Quincy: Pfft.
+		Quincy: Not at all. 
+		Quincy: Just some angsty teen nonsense.
+		jump Quincy_open_case_choice/
+	else:
+		Quincy: Hmph.
+		Quincy: I would’ve never guessed that brat had the balls to pull something like this.
+		jump Quincy_open_case_choice/
 else:
-	Dalton: It was your son.
-	Quincy: What? 
-	Quincy: Impossible!
-	Dalton: Take a look at this.
-	Quincy: ...
-	Quincy: That brat.
-	Dalton: The contents of the note...
-	Dalton: Is it true?
-	Quincy: Pfft.
-	Quincy: Not at all. 
-	Quincy: Just some angsty teen nonsense.
-	Dalton: ...
-	Dalton: I'll take his name and see what we can do back at the station.
-	Dalton: ...
-	Quincy: ...
-	Dalton: His name.
-	Quincy: I-
-	Quincy: Uh...
-	Quincy: I don't know.
-	Dalton: You don't know?
-	Dalton: Do you have any documents or identification?
-	Quincy: Ah... 
-	Quincy: no.
-	Dalton: ...
-	Dalton: I see.
-	Dalton: I'll take his description and see what we can do. 
-	Dalton: It will take longer for us to track him down, though.
-	Quincy: Good. 
-	Quincy: Once you track him down, call me.
-	Dalton: Hmph.
+	if {Quincy.finished_case_note} == false:
+		set {Quincy.finished_case_note} = true
+		Dalton: It was your son.
+		Quincy: What? 
+		Quincy: Impossible!
+		Dalton: Take a look at this.
+		Quincy: ...
+		Quincy: That brat.
+		Dalton: The contents of the note...
+		Dalton: Is it true?
+		Quincy: Pfft.
+		Quincy: Not at all. 
+		Quincy: Just some angsty teen nonsense.
+		Dalton: ...
+		Dalton: I'll take his name and see what we can do back at the station.
+		Dalton: ...
+		Quincy: ...
+		Dalton: His name.
+		Quincy: I-
+		Quincy: Uh...
+		Quincy: I don't know.
+		Dalton: You don't know?
+		Dalton: Do you have any documents or identification?
+		Quincy: Ah... 
+		Quincy: no.
+		Dalton: ...
+		Dalton: I see.
+		Dalton: I'll take his description and see what we can do. 
+		Dalton: It will take longer for us to track him down, though.
+		Quincy: Good. 
+		Quincy: Once you track him down, call me.
+		Dalton: Hmph.
+		jump Quincy_open_case_choice/
+	else:
+		Dalton: Do you remember your kid’s name yet?
+		Quincy: Ah...
+		Quincy: no.
+		Dalton: Father of the year, you are.
+		jump Quincy_open_case_choice/
+

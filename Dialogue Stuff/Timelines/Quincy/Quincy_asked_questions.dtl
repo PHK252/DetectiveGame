@@ -1,47 +1,95 @@
 Dalton: Can I ask you a few questions?
 Quincy: Sure.
+label choices
+[wait time= "0.3"]
+Dalton: ...
 - Location during the time of break in?
-	Dalton: Where were you during the break-in?
-	Quincy: I was having a night out in Midtown.
-	Dalton: Did you return home that night?
-	Quincy: Nope.
-	Quincy: I was preoccupied.
-	Dalton: When did you hear about the break in then?
-	Quincy: I got a call from the groundskeeper at around 7 a.m.
-	Quincy: By the time he looked through the security footage, it was already scrubbed, sneaky bastard.
-	if {Character Aff Points.Theo} > 3:
-		# #and Theo on ground floor
-		Theo: Don't worry, Quincy!
-		Theo: We'll catch whoever's responsible for this!
-		Quincy: Hah!
-		Quincy: I like your enthusiasm.
+	if {Quincy.asked_location} == false:
+		set {Quincy.asked_location} = true
+		Dalton: Where were you here during the break-in?
+		Quincy: I was having a night out in Midtown.
+		Dalton: Did you return home that night?
+		Quincy: Nope.
+		Quincy: I was preoccupied.
+		Dalton: When did you hear about the break in then?
+		Quincy: I got a call from the groundskeeper at around 7 a.m.
+		Quincy: By the time he looked through the security footage, it was already scrubbed, sneaky bastard.
+		if {Character Aff Points.Theo} > 3:
+			# #and Theo on ground floor
+			Theo: Don't worry, Quincy!
+			Theo: We'll catch whoever's responsible for this!
+			Quincy: Hah!
+			Quincy: I like your enthusiasm.
+			jump choices
+		else:
+			Dalton: I see.
+			jump choices
 	else:
-		Dalton: I see.
+		Dalton: Where were you here during the break-in?
+		Quincy: Nope.
+		jump choices
 - Anything missing?
-	Quincy: Nothing of importance.
-	Quincy: That bastard made a mess more than anything.
+	if {Quincy.asked_missing} == false:
+		set {Quincy.asked_missing} = true
+		Quincy: Nothing of importance.
+		Quincy: That bastard made a mess more than anything.
+		jump choices
+	else:
+		Dalton: Besides the damage, was anything stolen?
+		Quincy: Not that I can tell.
+		jump choices
 - Any subjects with motive?
-	Dalton: Do you know of anyone who would want to break into your house?
-	Quincy: Hah!
-	Quincy: One of the many quirks of being a leader is that many people want you gone.
-	Dalton: ...
-	Dalton: Is there anyone in particular that comes to mind?
-	Quincy: Nope.
-	Quincy: None of them have the guts to pull something like this.
+	if {Quincy.ask motive} == false:
+		set {Quincy.ask motive} = true
+		Dalton: Do you know of anyone who would want to break into your house?
+		Quincy: Hah!
+		Quincy: One of the many quirks of being a leader is that many want you gone.
+		Dalton: ...
+		Dalton: Is there anyone in particular that comes to mind?
+		Quincy: Nope.
+		Quincy: None of them have the guts to pull something like this.
+		jump choices
+	else:
+		Dalton: Do you know of anyone who would want to break into your house?
+		Quincy: Do you want a list of the subjects that don’t?
+		Quincy: It would probably be shorter. 
+		Dalton: Hmph.
+		Dalton: Never mind.
+		jump choices
 - Connection to other victims.
 	- Show picture of Juniper.
-		Dalton: Do you recognize her?
-		Quincy: Nope.
-		Quincy: Not a clue.
-		Quincy: Quite the looker, though.
-		Dalton: ...
-		Dalton: Eugh.
-		Dalton: Not the time.
+		if {Quincy.asked_Juniper} == false:
+			set {Quincy.asked_Juniper} = true
+			Dalton: Do you recognize her?
+			Quincy: Nope.
+			Quincy: Not a clue.
+			Quincy: Quite the looker, though.
+			Dalton: ...
+			Dalton: Eugh.
+			Dalton: Not the time.
+			jump choices
+		else:
+			Dalton: Do you recognize her?
+			Quincy: Nope. 
+			Quincy: But if I can have her info...
+			Quincy: You may see a raise in your next paycheck.
+			Dalton: No.
+			Dalton: It’s confidential.
+			Quincy: Haa...
+			Quincy: Of course that wouldn’t work on you, Goody-Two-Shoes.
+			jump choices
 	- Show picture of Micah.
-		Dalton: Do you recognize him?
-		Quincy: He looks a little familiar.
-		Quincy: Probably just a passing resemblance.
-		Dalton: Hmph.
+		if {Quincy.asked_Micah} == false:
+			set {Quincy.asked_Micah} = true
+			Dalton: Do you recognize him?
+			Quincy: He looks a little familiar.
+			Quincy: Probably just a passing resemblance.
+			Dalton: Hmph.
+			jump choices
+		else:
+			Dalton: Do you recognize him?
+			Quincy: Still don’t. 
+			jump choices
 	- Ask about chocolate. | [if {Quincy.has_choco} == true] [else="hide"]
 		set {Quincy.kicked_out} = true
 		Dalton: I found this package.
@@ -60,3 +108,4 @@ Quincy: Sure.
 		Quincy: Now!
 		Dalton: Theo.
 		Dalton: Let’s go...
+		[end_timeline]
