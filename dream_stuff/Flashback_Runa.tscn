@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://c02ounmvlw1ww"]
+[gd_scene load_steps=43 format=4 uid="uid://c02ounmvlw1ww"]
 
 [ext_resource type="PackedScene" uid="uid://j12gmnq6waxl" path="res://dream_stuff/organizedOffice.glb" id="1_0s4oq"]
 [ext_resource type="PackedScene" uid="uid://cpv4qukow4new" path="res://SecondHouse/woodtryagain25.glb" id="2_otrhg"]
 [ext_resource type="Material" uid="uid://cp0jkmt30p6sx" path="res://ShaderScripts/wood.tres" id="3_6b7fn"]
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="4_5mks0"]
+[ext_resource type="Script" uid="uid://drkb12pv0fbbu" path="res://dream_stuff/control_fb2.gd" id="4_6b7fn"]
 [ext_resource type="PackedScene" uid="uid://c1e8y248ois5s" path="res://Cutscenes/dalton_fb2_2.glb" id="4_otrhg"]
 [ext_resource type="PackedScene" uid="uid://xjogktm15mo6" path="res://Cutscenes/runa.glb" id="5_os5ge"]
 [ext_resource type="Shader" uid="uid://ioiiowkr1h2a" path="res://ShaderScripts/sky.gdshader" id="6_7q87w"]
@@ -39,6 +40,153 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5vl0h")
+
+[sub_resource type="Animation" id="Animation_6b7fn"]
+resource_name = "CamAnim"
+length = 4.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCam")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.375013, 4.14539, -0.946943, 3.96667, 1, -0.375013, 1.69663, -0.946943)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainCam")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.1, 1, -0.000157008, 0.999407, 0.0341406, -0.00459625, 3.93333, 1, -0.00095534, 0.978175, 0.20773, -0.00449858)
+
+[sub_resource type="Animation" id="Animation_5mks0"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCam")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.375013, 4.14539, -0.946943)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_os5ge"]
+_data = {
+&"CamAnim": SubResource("Animation_6b7fn"),
+&"RESET": SubResource("Animation_5mks0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_otrhg"]
+animation = &"DaltonLookOffice"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6b7fn"]
+animation = &"DaltonLookOfficeIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5mks0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_os5ge"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7q87w"]
+states/DaltonLookOffice/node = SubResource("AnimationNodeAnimation_otrhg")
+states/DaltonLookOffice/position = Vector2(365, 99.5)
+states/DaltonLookOfficeIdle/node = SubResource("AnimationNodeAnimation_6b7fn")
+states/DaltonLookOfficeIdle/position = Vector2(615.59, 86.5375)
+transitions = ["Start", "DaltonLookOffice", SubResource("AnimationNodeStateMachineTransition_5mks0"), "DaltonLookOffice", "DaltonLookOfficeIdle", SubResource("AnimationNodeStateMachineTransition_os5ge")]
+graph_offset = Vector2(-93.48, 30.9)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tawba"]
+animation = &"IdleIsaac"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vano1"]
+animation = &"IdleIsaac"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v5c0l"]
+animation = &"IsaacSnapOut"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tbwyh"]
+animation = &"IsaacThinking"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8stji"]
+animation = &"IsaacYesNod"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tawba"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vano1"]
+advance_mode = 2
+advance_condition = &"snapOut"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bmjym"]
+advance_mode = 2
+advance_condition = &"nod"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ruteg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_scao6"]
+advance_mode = 2
+advance_condition = &"nod"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e3w8g"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ruteg"]
+states/End/position = Vector2(1053, 74)
+states/IdleIsaac/node = SubResource("AnimationNodeAnimation_vano1")
+states/IdleIsaac/position = Vector2(594.905, 190.875)
+"states/IdleIsaac 2/node" = SubResource("AnimationNodeAnimation_tawba")
+"states/IdleIsaac 2/position" = Vector2(843.66, 156.45)
+states/IsaacSnapOut/node = SubResource("AnimationNodeAnimation_v5c0l")
+states/IsaacSnapOut/position = Vector2(562.295, 79.5)
+states/IsaacThinking/node = SubResource("AnimationNodeAnimation_tbwyh")
+states/IsaacThinking/position = Vector2(362, 87.5)
+states/IsaacYesNod/node = SubResource("AnimationNodeAnimation_8stji")
+states/IsaacYesNod/position = Vector2(785.96, 66.9125)
+transitions = ["Start", "IsaacThinking", SubResource("AnimationNodeStateMachineTransition_tawba"), "IsaacThinking", "IsaacSnapOut", SubResource("AnimationNodeStateMachineTransition_vano1"), "IsaacSnapOut", "IsaacYesNod", SubResource("AnimationNodeStateMachineTransition_bmjym"), "IsaacSnapOut", "IdleIsaac", SubResource("AnimationNodeStateMachineTransition_ruteg"), "IdleIsaac", "IsaacYesNod", SubResource("AnimationNodeStateMachineTransition_scao6"), "IsaacYesNod", "IdleIsaac 2", SubResource("AnimationNodeStateMachineTransition_e3w8g")]
+graph_offset = Vector2(175.275, 15.45)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5mks0"]
+animation = &"CheckOnIsaac"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bmjym"]
+animation = &"IdleRuna"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_os5ge"]
+animation = &"IdleRuna"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7q87w"]
+animation = &"LookAround"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v5c0l"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tbwyh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8stji"]
+advance_mode = 2
+advance_condition = &"look_around"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6kju4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_scao6"]
+states/CheckOnIsaac/node = SubResource("AnimationNodeAnimation_5mks0")
+states/CheckOnIsaac/position = Vector2(369, 84.5)
+states/IdleRuna/node = SubResource("AnimationNodeAnimation_os5ge")
+states/IdleRuna/position = Vector2(531.66, 82.2063)
+"states/IdleRuna 2/node" = SubResource("AnimationNodeAnimation_bmjym")
+"states/IdleRuna 2/position" = Vector2(743.07, 194.713)
+states/LookAround/node = SubResource("AnimationNodeAnimation_7q87w")
+states/LookAround/position = Vector2(710, 83.3531)
+transitions = ["Start", "CheckOnIsaac", SubResource("AnimationNodeStateMachineTransition_v5c0l"), "CheckOnIsaac", "IdleRuna", SubResource("AnimationNodeStateMachineTransition_tbwyh"), "IdleRuna", "LookAround", SubResource("AnimationNodeStateMachineTransition_8stji"), "LookAround", "IdleRuna 2", SubResource("AnimationNodeStateMachineTransition_6kju4")]
+graph_offset = Vector2(6.80797e-07, -46.3499)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tbwyh"]
 shader = ExtResource("6_7q87w")
@@ -116,12 +264,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.91, 0)
 transform = Transform3D(0.0588992, 0, 1.01615e-07, 0, -0.022449, 0, -8.89353e-09, 0, 0.672965, -2.13857, 4.75945, 0.917133)
 mesh = SubResource("ArrayMesh_v5c0l")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.999958, 7.59434e-09, -0.00919777, 0.00452473, 0.870631, -0.491916, 0.00800786, -0.491937, -0.870594, -0.375013, 0.640773, -0.676266)
+[node name="MainCam" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.999958, 3.60888e-09, -0.0091977, -0.000627667, 0.997669, 0.0682392, 0.00917626, 0.0682421, -0.997627, -0.375013, 4.14539, -0.946943)
 current = true
 fov = 89.9
 
-[node name="Characters" type="Node" parent="SubViewportContainer/SubViewport"]
+[node name="DialogueCam1" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.696923, -0.54656, 0.464296, 0.0610618, 0.690295, 0.720947, -0.714542, -0.474093, 0.514456, 0.398323, 1.77072, 1.34932)
+h_offset = 0.23
+v_offset = 0.5
+size = 2.16
+near = 0.001
+far = 4007.19
+
+[node name="DialogueCam2" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.770767, 0.207092, -0.602521, 0.00994016, 0.949492, 0.313634, 0.63704, 0.235749, -0.733895, -1.1117, 1.44632, -0.815992)
+
+[node name="CamAnims" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_os5ge")
+}
+
+[node name="Characters" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("anim_I", "anim_r", "anim_c")]
+script = ExtResource("4_6b7fn")
+anim_I = NodePath("IsaacFlashback_01/AnimationTree")
+anim_r = NodePath("runa/AnimationTree")
+anim_c = NodePath("../CamAnims")
 
 [node name="dalton_fb2_2" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("4_otrhg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.290234, 0.405137, 0)
@@ -131,7 +299,7 @@ bones/0/position = Vector3(2.84217e-14, 0, -2.01189)
 bones/0/rotation = Quaternion(-3.55271e-15, 0.707107, 0.707107, -3.86673e-15)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(0.0103681, -3.34154e-09, 2.75694e-09, 0.999946)
-bones/5/rotation = Quaternion(0.415325, -0.000718036, -0.00183942, 0.909671)
+bones/5/rotation = Quaternion(0.427208, -0.000742074, -0.00182986, 0.904151)
 bones/6/position = Vector3(0.255908, 0.653836, 0.0887256)
 bones/6/rotation = Quaternion(0.152865, -0.0222088, -0.142048, 0.977733)
 bones/8/position = Vector3(-0.261278, 0.654172, 0.0880383)
@@ -149,6 +317,10 @@ bones/28/position = Vector3(0.538525, -0.135509, -1.66274)
 bones/29/position = Vector3(-0.515191, -0.118054, -1.65507)
 bones/30/position = Vector3(1.19023, 0.578705, -2.98559)
 bones/31/position = Vector3(-1.19023, 0.578705, -2.98559)
+
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/dalton_fb2_2"]
+tree_root = SubResource("AnimationNodeStateMachine_7q87w")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="IsaacFlashback_01" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("4_5mks0")]
 transform = Transform3D(-0.0756052, 0, -0.997138, 0, 1, 0, 0.997138, 0, -0.0756052, 0.339844, 0, 0.213811)
@@ -186,29 +358,40 @@ bones/27/scale = Vector3(1.10417, 1, 1.00018)
 bones/28/position = Vector3(0.536494, 0.0583778, -1.3241)
 bones/29/position = Vector3(-0.536494, 0.0583778, -1.3241)
 
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01"]
+tree_root = SubResource("AnimationNodeStateMachine_ruteg")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/nod = false
+parameters/conditions/snapOut = false
+
 [node name="runa" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("5_os5ge")]
 transform = Transform3D(-0.0206807, 0, 0.999786, 0, 1, 0, -0.999786, 0, -0.0206807, -1.0067, 0, 0.177566)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/runa/RunaArmature" index="0"]
-bones/0/position = Vector3(0, -1.49012e-08, -1.79414)
+bones/0/position = Vector3(-1.04295e-09, -1.49012e-08, -1.77028)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0125377, -2.61927e-09, -6.13743e-10, 0.999921)
-bones/5/rotation = Quaternion(0.185194, -0.00687212, 0.00123002, 0.982677)
-bones/11/rotation = Quaternion(-0.217501, -0.121514, -0.325394, 0.912166)
-bones/12/rotation = Quaternion(-0.35449, -0.242017, -0.61048, 0.665641)
-bones/13/rotation = Quaternion(0.00586478, -0.00230101, -0.0204733, 0.999771)
-bones/15/rotation = Quaternion(-0.283342, 0.0593578, 0.385837, 0.87597)
-bones/16/rotation = Quaternion(-0.202113, 0.236716, 0.536072, 0.784692)
-bones/19/rotation = Quaternion(0.026999, -0.0319201, -0.0398898, 0.998329)
-bones/20/rotation = Quaternion(-0.0876919, -0.00342697, 0.00796932, 0.99611)
-bones/21/rotation = Quaternion(0.738461, -0.0135495, 0.0307031, 0.673461)
-bones/23/rotation = Quaternion(0.026999, 0.0319202, 0.0398898, 0.998329)
-bones/24/rotation = Quaternion(-0.0876919, 0.00342697, -0.00796932, 0.99611)
-bones/25/rotation = Quaternion(0.738461, 0.0135495, -0.0307031, 0.673461)
+bones/4/rotation = Quaternion(-0.0740195, 1.32601e-11, -3.55225e-09, 0.997257)
+bones/5/rotation = Quaternion(0.069536, -0.00696859, 0.000421636, 0.997555)
+bones/11/rotation = Quaternion(-0.196911, -0.0901916, -0.301093, 0.928674)
+bones/12/rotation = Quaternion(-0.365534, -0.234286, -0.629499, 0.64438)
+bones/13/rotation = Quaternion(0.00586479, -0.00230101, -0.0204733, 0.999771)
+bones/15/rotation = Quaternion(-0.268807, 0.016541, 0.351276, 0.896702)
+bones/16/rotation = Quaternion(-0.215767, 0.228496, 0.572287, 0.757444)
+bones/19/rotation = Quaternion(0.0856825, -0.0341545, -0.0430249, 0.994807)
+bones/20/rotation = Quaternion(-0.188808, -0.00337794, 0.0171586, 0.981858)
+bones/21/rotation = Quaternion(0.776544, -0.0117326, 0.0314423, 0.629169)
+bones/23/rotation = Quaternion(0.0856825, 0.0341546, 0.0430249, 0.994807)
+bones/24/rotation = Quaternion(-0.188808, 0.00337794, -0.0171586, 0.981858)
+bones/25/rotation = Quaternion(0.776544, 0.0117326, -0.0314423, 0.629169)
 bones/27/rotation = Quaternion(-0.0204547, 8.89913e-16, 0.999791, -1.97563e-09)
 bones/28/position = Vector3(0.445655, 0.0258286, -1.82566)
 bones/29/position = Vector3(-0.434528, -0.0900155, -1.67399)
+
+[node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/runa"]
+tree_root = SubResource("AnimationNodeStateMachine_scao6")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/look_around = false
 
 [node name="lighting" type="Node" parent="SubViewportContainer/SubViewport"]
 
