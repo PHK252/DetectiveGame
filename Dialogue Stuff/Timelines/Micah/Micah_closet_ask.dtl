@@ -1,6 +1,6 @@
 Dalton: Do you notice anything different about your closet?
 if {Character Aff Points.Micah} > 2.0:
-	Micah: Honestly…
+	Micah: Honestly...
 	Micah: I wouldn’t know.
 else:
 	Micah: No…
@@ -38,6 +38,7 @@ Dalton: ...
 	- Take a closer look at the toolbox.
 		[signal arg="look"]
 	- Keep looking around Micah's house.
+		[signal arg="end"]
 		[end_timeline]
 - Keep looking around Micah's house.
 	[end_timeline]

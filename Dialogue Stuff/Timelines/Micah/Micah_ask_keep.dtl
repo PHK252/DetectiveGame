@@ -8,13 +8,13 @@ if {Character Aff Points.Micah} <= 2:
 	Micah: No...
 	Micah: Can I keep it?
 	Dalton: ...
-	- Negotiate 
+	- Negotiate. 
 		set {Character Aff Points.Micah} -= 1
 		set {Character Aff Points.Theo} -= 1
 		set {Asked Questions.has_letter} = true
 		Dalton: Why?
 		Micah: It’s-
-		Micah: Um…
+		Micah: Um...
 		Micah: ...
 		Dalton: Drop the act.
 		Dalton: I know you're hiding something.
@@ -26,7 +26,7 @@ if {Character Aff Points.Micah} <= 2:
 		Dalton: ...
 		Dalton: I'm taking the letter.
 		Dalton: You can come get it at the station once you're ready to talk.
-	- Relinquish
+	- Relinquish.
 		set {Character Aff Points.Micah} += 1
 		Dalton: Theo, did you take a picture of the letter?
 		Theo: Yep! It’s uploading right now.

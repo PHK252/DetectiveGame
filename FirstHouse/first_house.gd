@@ -1,6 +1,20 @@
 extends Node3D
 
+@export var interactables : Array[Interactable] = []
+@export var dialogue_file: String
+@export var load_Dalton_dialogue: String
+@export var load_Theo_dialogue: String
+@export var load_char_dialogue: String
 
+@export var dalton_marker: Marker2D
+@export var theo_marker: Marker2D
+@export var character_marker: Marker2D
+
+@export var player: CharacterBody3D
+@export var alert : Sprite3D
+
+@onready var timer = $UI/Timer
+@onready var time_out = false 
 @onready var note_interaction = $closet/Note
 @onready var pic_fall_interact = $"SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend/Pic fall Interact"
 @onready var pic_look_interact = $"SubViewportContainer/FirstHouseUpdated/FrameFalling/Armature_001/Skeleton3D/PictureFrameFriend/Picture Look"
@@ -22,6 +36,7 @@ func _ready():
 	pic_look_interact.hide()
 	tool_anim.play("NEWToolOpen")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	timer.start()
 	#var layout = Dialogic.start("Office_Donuts")
 	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
 	
@@ -32,3 +47,26 @@ func _process(delta):
 			get_tree().quit()
 	
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
+
+#timeout set to 10 minutes right now
+#NEEDS PROPER DEBUG
+func _on_timer_timeout():
+	disable_interaction(interactables)
+	time_out = true
+	print("timer" + str(time_out))
+	player.stop_player()
+	alert.hide()
+	var time_out_dialogue = Dialogic.start(dialogue_file)
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+	time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+	time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
+
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
+	player.start_player()
+
+func disable_interaction(arr: Array):
+	for i in arr:
+		i.set_monitorable(false)

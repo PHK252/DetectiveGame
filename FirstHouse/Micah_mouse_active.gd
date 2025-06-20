@@ -46,3 +46,9 @@ func _on_bookmark_interact_mouse_entered():
 
 func _on_bookmark_interact_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_id_card_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+func _on_id_card_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

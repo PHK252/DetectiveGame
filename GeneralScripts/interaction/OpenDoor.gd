@@ -2,10 +2,11 @@ extends Node3D
 
 @onready var animation_tree : AnimationTree = $bonedoor/AnimationDoor
 @export var collision : CollisionShape3D
+@export var alert : Sprite3D
 
-@onready var dalton_marker = $"../../../UI/Dalton_marker"
-@onready var micah_marker = $"../../../UI/Micah_marker"
-@onready var theo_marker = $"../../../UI/Theo_marker"
+@export var dalton_marker : Marker2D
+@export var micah_marker : Marker2D
+@export var theo_marker : Marker2D
 @export var player :CharacterBody3D
 var is_open: bool = false
 @onready var entered = false
@@ -54,19 +55,21 @@ func _process(delta: float) -> void:
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if cooldown == false:
 		cooldown = true
+		alert.hide()
 		emit_signal("general_interact")
 		print(is_open)
 		print(entered)
+	
 		#game code
 		#__________________
 		#player.stop_player()
 		#GlobalVars.in_dialogue = true
 		#Dialogic.timeline_ended.connect(_on_timeline_ended)
 		#Dialogic.signal_event.connect(doorOpen)
-		#var layout = Dialogic.start("Enter_house")
-		#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		#layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		#var enter = Dialogic.start("Enter_house")
+		#enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		#enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+		#enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		
 		#for debug
 		#__________________
@@ -76,10 +79,10 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			GlobalVars.in_dialogue == true
 			Dialogic.signal_event.connect(doorOpen)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			var layout = Dialogic.start("Micah_Leave")
-			layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-			layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			var exit = Dialogic.start("Micah_Leave")
+			exit.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			exit.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			exit.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		elif is_open == false and GlobalVars.in_dialogue == false:
 			#print("open")
 			#$Interactable.queue_free()

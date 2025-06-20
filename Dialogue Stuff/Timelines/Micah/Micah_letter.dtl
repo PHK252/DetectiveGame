@@ -10,8 +10,12 @@ if {Character Aff Points.Micah} <= 2:
 		Micah: No...
 		Micah: I don't know.
 		Dalton: ...hmmph.
+	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			set {Asked Questions.Micah_in_choice} = false
 			jump Micah_ask_keep/
+		else:
+			jump Micah_case_choice/
 
 if {Character Aff Points.Micah} > 2:
 	if {Asked Questions.Micah_asked_letter} == true:
@@ -33,5 +37,9 @@ if {Character Aff Points.Micah} > 2:
 			Theo: Do you think it could be Skylar?
 			Micah: Maybe...
 			Micah: But why would they come back just to leave again?
+	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			set {Asked Questions.Micah_in_choice} = false
 			jump Micah_ask_keep/
+		else:
+			jump Micah_case_choice/
