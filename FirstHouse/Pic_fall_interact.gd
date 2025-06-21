@@ -41,7 +41,7 @@ func _on_input_event(viewport, event, shape_idx):
 			player.start_player()
 			GlobalVars.in_interaction = ""
 			pic_fall.hide()
-			if GlobalVars.in_dialogue == false:
+			if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false:
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				var pic_fell_Dialogue = Dialogic.start("Micah_pic_fall")

@@ -74,16 +74,14 @@ func _process(delta):
 	
 	#print(closet_open)
 	if closet_open == true and tool_asked == true:
-		print("can")
 		close_door_1.set_monitorable(true)
 		close_door_2.set_monitorable(true)
 	else:
-		print("can't")
 		close_door_1.set_monitorable(false)
 		close_door_2.set_monitorable(false)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "":
+		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "" and GlobalVars.micah_time_out == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
@@ -136,7 +134,7 @@ func _on_interactable_interacted(interactor):
 		closet_open = true
 
 	tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.micah_time_out == false:
 		Exit_Cam.priority = 30
 		alert.hide()
 		if closet_open == false and tool_asked == false:
@@ -160,7 +158,6 @@ func _on_interactable_interacted(interactor):
 			closet_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			closet_dialogue.register_character(load(load_char_dialogue), character_marker)
 		elif closet_open == true and tool_asked == true:
-			print("enter_dialogue")
 			GlobalVars.in_dialogue = true
 			player.stop_player()
 			var closet_dialogue = Dialogic.start("Micah_closet_ask", "tool choices")

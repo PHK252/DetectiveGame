@@ -4,5 +4,5 @@ extends Label
 @onready var label = $"."
 
 func _process(delta):
-	debug_var = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
+	debug_var = GlobalVars.in_interaction
 	label.text = str(debug_var)

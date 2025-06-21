@@ -86,7 +86,7 @@ func _on_interactable_interacted(interactor):
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			game_dialogue.register_character(load(load_char_dialogue), character_marker)
-		elif GlobalVars.opened_jun_case == true:
+		elif GlobalVars.opened_micah_case == true:
 			show_open_case()
 			GlobalVars.in_interaction = interact_type
 			#print("look " + str(GlobalVars.in_look_screen))
@@ -131,6 +131,8 @@ func caseUI(argument: String):
 		main_cam.priority = 0 
 		cam_anim.play("Cam_Idle")
 		Dialogic.signal_event.disconnect(caseUI)
+	else:
+		Dialogic.signal_event.disconnect(caseUI)
 		
 
 
@@ -147,7 +149,7 @@ func _input(event):
 	var finished_letter = Dialogic.VAR.get_variable("Asked Questions.Micah_asked_letter")
 	var finished_key = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Key")
 	if GlobalVars.in_dialogue == false:
-		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "":
+		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and GlobalVars.micah_time_out == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30

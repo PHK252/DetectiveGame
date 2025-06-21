@@ -13,10 +13,11 @@ signal Tstart
 @onready var asked = false
 @onready var asked_dad = false
 @onready var asked_skylar = false
+@onready var time_out = false
 
 func _on_interactable_interacted(interactor):
 	emit_signal("Dquestion")
-	if GlobalVars.in_dialogue == false and asked == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false:
 		emit_signal("Tstop")
 		GlobalVars.in_dialogue = true
 		player.stop_player()
@@ -41,15 +42,16 @@ func _process(delta):
 	asked_dad =  Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde")
 	asked_skylar = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Skylar")
 	if asked == true:
-		if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false:
+		if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
 			$Interactable.set_monitorable(true)
-		elif Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false:
+		elif Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false and time_out == false:
 			$Interactable.set_monitorable(true)
 		else:
 			$Interactable.set_monitorable(false)
 	
 		
-		#
+		
+
 #func _on_character_body_3d_d_inside() -> void:
 	#if asked == false:
 		#print("asking")
@@ -60,3 +62,7 @@ func _process(delta):
 		#Dialogic.timeline_ended.connect(_on_timeline_ended)
 		#ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		#ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+
+
+func _on_timer_timeout():
+	time_out = true

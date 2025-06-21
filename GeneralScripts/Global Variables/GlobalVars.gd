@@ -10,6 +10,7 @@ signal open_micah_case
 signal open_juniper_case
 signal open_quincy_case
 
+@onready var micah_time_out = false
 
 @onready var day = ""
 

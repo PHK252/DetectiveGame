@@ -27,6 +27,7 @@ if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == f
 	- Inspect case.
 		[signal arg="look_case"]
 	-  Keep looking around Micah's house.
+		[signal arg="exit"]
 		[end_timeline]
 
 if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == false:
@@ -69,6 +70,7 @@ if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == fa
 	- Inspect case.
 		[signal arg="look_case"]
 	-  Keep looking around Micah's house.
+		[signal arg="exit"]
 		[end_timeline]
 
 if {Asked Questions.Micah_Theo_enter} == true:
@@ -92,4 +94,5 @@ if {Asked Questions.Micah_Theo_enter} == true:
 	- Inspect case.
 		[signal arg="look_case"]
 	-  Keep looking around Micah's house.
+		[signal arg="exit"]
 		[end_timeline]

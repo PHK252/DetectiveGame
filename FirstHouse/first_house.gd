@@ -11,6 +11,7 @@ extends Node3D
 @export var character_marker: Marker2D
 
 @export var player: CharacterBody3D
+@export var player_interactor: Interactor
 @export var alert : Sprite3D
 
 @onready var timer = $UI/Timer
@@ -24,6 +25,7 @@ extends Node3D
 @onready var bookmark_look = $UI/Bookmark
 @onready var tool_anim = $NewToolBoxTop/AnimationPlayer
 
+@onready var in_time_out_dialogue = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.current_level = "Micah"
@@ -46,27 +48,46 @@ func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
 			get_tree().quit()
 	
+	if time_out == true:
+		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Asked Questions.Micah_time_out_finished") == false:
+			alert.hide()
+			in_time_out_dialogue = true
+			var time_out_dialogue = Dialogic.start(dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
+			
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
 
 #timeout set to 10 minutes right now
 #NEEDS PROPER DEBUG
 func _on_timer_timeout():
+	GlobalVars.micah_time_out = true
 	disable_interaction(interactables)
 	time_out = true
-	print("timer" + str(time_out))
+	print("LEVEL TIMEOUT")
 	player.stop_player()
 	alert.hide()
-	var time_out_dialogue = Dialogic.start(dialogue_file)
-	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-	time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-	time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
+	if GlobalVars.in_interaction == "":
+		print("timeout_dialogue_entered")
+		var time_out_dialogue = Dialogic.start(dialogue_file)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+		time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
+	else:
+		pass
+		
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
+	alert.hide()
+	
 
 func disable_interaction(arr: Array):
 	for i in arr:
 		i.set_monitorable(false)
+		i.queue_free()
