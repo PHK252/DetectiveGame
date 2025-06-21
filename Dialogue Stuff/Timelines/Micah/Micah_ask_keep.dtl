@@ -12,6 +12,7 @@ if {Character Aff Points.Micah} <= 2:
 		set {Character Aff Points.Micah} -= 1
 		set {Character Aff Points.Theo} -= 1
 		set {Asked Questions.has_letter} = true
+		[wait time= "0.3"]
 		Dalton: Why?
 		Micah: It’s-
 		Micah: Um...

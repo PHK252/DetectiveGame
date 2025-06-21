@@ -5,14 +5,24 @@ if {Asked Questions.Micah_cab} == 1:
 	Micah: Ah, no...
 	Micah: It's fine...
 	Micah: I'll put them back later.
+	[end_timeline]
 elif {Asked Questions.Micah_cab} == 2:
+	if {Asked Questions.Micah_repeat_cab} == false
+		set {Asked Questions.Micah_repeat_cab} = true
+		set {Character Aff Points.Micah} -= 1
+		[wait time= "0.3"]
 	Dalton: ...
 	Micah: ...
 	Micah: You can have some...
 	Micah: If you want...
 	Dalton: ...
 	Dalton: I'm fine.
+	[end_timeline]
 elif {Asked Questions.Micah_cab} == 3:
+	if {Asked Questions.Micah_repeat_cab} == false
+		set {Asked Questions.Micah_repeat_cab} = true
+		set {Character Aff Points.Micah} -= 1
+		[wait time= "0.3"]
 	Micah: ...
 	Micah: Again?
 	Dalton: I'm just checking...
@@ -20,3 +30,4 @@ elif {Asked Questions.Micah_cab} == 3:
 	Dalton: Evidence.
 	Micah: Mhm.
 	Micah: Sure.
+	[end_timeline]

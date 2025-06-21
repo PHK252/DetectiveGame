@@ -17,7 +17,7 @@ signal Tstart
 
 func _on_interactable_interacted(interactor):
 	emit_signal("Dquestion")
-	if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
 		emit_signal("Tstop")
 		GlobalVars.in_dialogue = true
 		player.stop_player()

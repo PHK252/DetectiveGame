@@ -1,4 +1,8 @@
-Dalton: ...
+Dalton: Can I ask you a few questions?
+Micah: I guess.
+label choices
+[wait time= "0.3"]
+Dalton: ... 
 - Ask about other victims.
 	- Show Micah a picture of Juniper.
 		label juniper qs
@@ -33,7 +37,7 @@ Dalton: ...
 					[wait time="0.3"]
 					Dalton: ...
 					- Ask more questions
-						jump 
+						jump choices
 					- Continue investigation.
 						Dalton: That's all the questions I have for now.
 						[end_timeline]
@@ -56,7 +60,7 @@ Dalton: ...
 					[wait time="0.3"]
 					Dalton: ...
 					- Ask more questions
-						jump 
+						jump choices
 					- Continue investigation.
 						Dalton: That's all the questions I have for now.
 						[end_timeline]
@@ -97,7 +101,7 @@ Dalton: ...
 					[wait time="0.3"]
 					Dalton: ...
 					- Ask more questions
-						jump 
+						jump choices
 					- Continue investigation.
 						Dalton: That's all the questions I have for now.
 						[end_timeline]
@@ -121,7 +125,7 @@ Dalton: ...
 					[wait time="0.3"]
 					Dalton: ...
 					- Ask more questions
-						jump 
+						jump choices
 					- Continue investigation.
 						Dalton: That's all the questions I have for now.
 						[end_timeline]
@@ -156,7 +160,7 @@ Dalton: ...
 					[wait time="0.3"]
 					Dalton: ...
 					- Ask more questions
-						jump 
+						jump choices
 					- Continue investigation.
 						Dalton: That's all the questions I have for now.
 						[end_timeline]
@@ -176,7 +180,7 @@ Dalton: ...
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump 
+					jump choices
 				- Continue investigation.
 					Dalton: That's all the questions I have for now.
 					[end_timeline]
@@ -214,7 +218,7 @@ Dalton: ...
 			[wait time="0.3"]
 			Dalton: ...
 			- Ask more questions
-				jump 
+				jump choices
 			- Continue investigation.
 				Dalton: That's all the questions I have for now.
 				[end_timeline]
@@ -242,7 +246,7 @@ Dalton: ...
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump 
+					jump choices
 				- Continue investigation.
 					Dalton: That's all the questions I have for now.
 					[end_timeline]
@@ -250,7 +254,10 @@ Dalton: ...
 	label Clyde qs
 	if {Character Aff Points.Micah} <= 2:
 		if {Asked Questions.Micah_Asked_Clyde} == true:
-			set {Character Aff Points.Micah} -= 1
+			if {Asked Questions.Micah_repeat_Dad} == false
+				set {Asked Questions.Micah_repeat_Dad} = true
+				set {Character Aff Points.Micah} -= 1
+				[wait time= "0.3"]
 			Dalton: Clyde Procyon.
 			Micah: I told you to leave him out of this.
 			Dalton: Hmph.
@@ -279,7 +286,7 @@ Dalton: ...
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump 
+					jump choices
 				- Continue investigation.
 					Dalton: That's all the questions I have for now.
 					[end_timeline]
@@ -316,7 +323,7 @@ Dalton: ...
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump 
+					jump choices
 				- Continue investigation.
 					Dalton: That's all the questions I have for now.
 					[end_timeline]
@@ -349,7 +356,7 @@ Dalton: ...
 			[wait time="0.3"]
 			Dalton: ...
 			- Ask more questions
-				jump 
+				jump choices
 			- Continue investigation.
 				Dalton: That's all the questions I have for now.
 				[end_timeline]
@@ -383,7 +390,7 @@ Dalton: ...
 				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
-					jump 
+					jump choices
 				- Continue investigation.
 					Dalton: That's all the questions I have for now.
 					[end_timeline]

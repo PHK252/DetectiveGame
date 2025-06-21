@@ -1,7 +1,8 @@
 extends Node3D
 
 @export var interactables : Array[Interactable] = []
-@export var dialogue_file: String
+@export var timed_out_dialogue_file: String
+@export var kicked_out_dialogue_file: String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
@@ -11,7 +12,6 @@ extends Node3D
 @export var character_marker: Marker2D
 
 @export var player: CharacterBody3D
-@export var player_interactor: Interactor
 @export var alert : Sprite3D
 
 @onready var timer = $UI/Timer
@@ -26,6 +26,7 @@ extends Node3D
 @onready var tool_anim = $NewToolBoxTop/AnimationPlayer
 
 @onready var in_time_out_dialogue = false
+@onready var in_kicked_out_dialogue = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.current_level = "Micah"
@@ -48,46 +49,75 @@ func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
 			get_tree().quit()
 	
+	#Kicked out 
+	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:
+		GlobalVars.micah_kicked_out = true
+		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
+			disable_interaction(interactables)
+			alert.hide()
+			player.stop_player()
+			in_kicked_out_dialogue = true
+			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
+			kicked_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			kicked_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			kicked_out_dialogue.register_character(load(load_char_dialogue), character_marker)
+	
+	#timed out
 	if time_out == true:
-		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Asked Questions.Micah_time_out_finished") == false:
+		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Asked Questions.Micah_time_out_finished") == false and GlobalVars.micah_kicked_out == false:
 			alert.hide()
 			in_time_out_dialogue = true
-			var time_out_dialogue = Dialogic.start(dialogue_file)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
+	
+	
 			
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
 
 #timeout set to 10 minutes right now
 #NEEDS PROPER DEBUG
 func _on_timer_timeout():
-	GlobalVars.micah_time_out = true
-	disable_interaction(interactables)
-	time_out = true
-	print("LEVEL TIMEOUT")
-	player.stop_player()
-	alert.hide()
-	if GlobalVars.in_interaction == "":
-		print("timeout_dialogue_entered")
-		var time_out_dialogue = Dialogic.start(dialogue_file)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
-	else:
-		pass
-		
+	if GlobalVars.micah_kicked_out == false:
+		GlobalVars.micah_time_out = true
+		disable_interaction(interactables)
+		time_out = true
+		print("LEVEL TIMEOUT")
+		player.stop_player()
+		alert.hide()
+		if GlobalVars.in_interaction == "":
+			in_time_out_dialogue = true
+			print("timeout_dialogue_entered")
+			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
+			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
+		else:
+			pass
+		 
 
-func _on_timeline_ended():
-	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+func _on_timeline_ended_timed():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.hide()
 	
 
+func _on_timeline_ended_kicked():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended_kicked)
+	GlobalVars.in_dialogue = false
+	player.start_player()
+	alert.hide()
+
 func disable_interaction(arr: Array):
 	for i in arr:
 		i.set_monitorable(false)
 		i.queue_free()
+
+
+func _on_micah_visibility_changed():
+	pass # Replace with function body.

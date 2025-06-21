@@ -38,10 +38,11 @@ func _on_input_event(viewport, event, shape_idx):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			cam_anim.play("RESET")
 			player.show()
-			player.start_player()
+			player.stop_player()
 			GlobalVars.in_interaction = ""
 			pic_fall.hide()
-			if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false:
+			if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
+				print("pic entered")
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				var pic_fell_Dialogue = Dialogic.start("Micah_pic_fall")

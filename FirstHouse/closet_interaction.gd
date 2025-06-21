@@ -81,7 +81,7 @@ func _process(delta):
 		close_door_2.set_monitorable(false)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "" and GlobalVars.micah_time_out == false:
+		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "" and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
@@ -134,7 +134,7 @@ func _on_interactable_interacted(interactor):
 		closet_open = true
 
 	tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.micah_time_out == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
 		Exit_Cam.priority = 30
 		alert.hide()
 		if closet_open == false and tool_asked == false:
