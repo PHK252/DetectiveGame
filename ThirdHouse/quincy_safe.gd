@@ -22,10 +22,10 @@ extends Node3D
 #@export var character_marker: Marker2D
 
 @export var dialogue_file: String
-@export var in_case_thought_1 : String #News dialogue
-@export var in_case_thought_2 : String #proposal dialogue
-@export var in_case_thought_3 : String #Usb dialogue
-@export var in_case_thought_4 : String #pager dialogue
+#@export var in_case_thought_1 : String #News dialogue
+#@export var in_case_thought_2 : String #proposal dialogue
+#@export var in_case_thought_3 : String #Usb dialogue
+#@export var in_case_thought_4 : String #pager dialogue
 
 #Interaction Variables
 @export var interior_interact_area_1 : Area2D

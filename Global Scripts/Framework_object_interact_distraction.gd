@@ -117,6 +117,14 @@ func _on_interactable_interacted(interactor):
 			player.hide()
 			player.stop_player()
 		else:
+			FP_Cam.priority = 30
+			Exit_Cam.priority = 0 
+			player.hide()
+			player.stop_player()
+			await get_tree().create_timer(1.0).timeout
+			FP_Cam.priority = 0
+			Exit_Cam.priority = 30 
+			player.show()
 			var game_dialogue = Dialogic.start(regular_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)

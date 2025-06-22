@@ -1,0 +1,7 @@
+if {Quincy.needs_distraction} == true:
+	"Daltons Thoughts": I wonder... 
+	"Daltons Thoughts": Can I clog it?
+	- Try. 
+		[signal arg= "clog_time"]
+	- Don't.
+		"Daltons Thoughts": I shouldn't...
