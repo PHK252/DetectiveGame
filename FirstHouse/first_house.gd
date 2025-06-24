@@ -38,7 +38,7 @@ func _ready():
 	cab_interact.hide()
 	pic_look_interact.hide()
 	tool_anim.play("NEWToolOpen")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	timer.start()
 	#var layout = Dialogic.start("Office_Donuts")
 	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
@@ -79,7 +79,6 @@ func _process(delta):
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
 
 #timeout set to 10 minutes right now
-#NEEDS PROPER DEBUG
 func _on_timer_timeout():
 	if GlobalVars.micah_kicked_out == false:
 		GlobalVars.micah_time_out = true
@@ -117,7 +116,3 @@ func disable_interaction(arr: Array):
 	for i in arr:
 		i.set_monitorable(false)
 		i.queue_free()
-
-
-func _on_micah_visibility_changed():
-	pass # Replace with function body.

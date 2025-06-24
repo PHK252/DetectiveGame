@@ -60,21 +60,19 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		print(is_open)
 		print(entered)
 	
-		#game code
+		#Level enter
 		#__________________
-		#player.stop_player()
-		#GlobalVars.in_dialogue = true
-		#Dialogic.timeline_ended.connect(_on_timeline_ended)
-		#Dialogic.signal_event.connect(doorOpen)
-		#var enter = Dialogic.start("Enter_house")
-		#enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		#enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		#enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		player.stop_player()
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.signal_event.connect(doorOpen)
+		var enter = Dialogic.start("Enter_house")
+		enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+		enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		
-		#for debug
+		#level exit
 		#__________________
-		
-		
 		if is_open == false and entered == true and GlobalVars.in_dialogue == false:
 			GlobalVars.in_dialogue == true
 			Dialogic.signal_event.connect(doorOpen)
