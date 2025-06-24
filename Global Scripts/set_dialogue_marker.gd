@@ -1,0 +1,51 @@
+extends Marker2D
+
+@export var marker : Marker2D
+@export var cam : Camera3D
+@export var body_marker : Marker3D
+@export var sit_marker : Marker3D
+@export var rect : ColorRect
+
+@onready var sit = false
+@onready var pos
+
+
+func _process(delta):
+	positionMarker(6)
+
+func positionMarker(mult : int):
+	if sit_marker:
+		if sit == true:
+			pos = sit_marker.global_position
+		else:
+			pos = body_marker.global_position
+	else:
+		pos = body_marker.global_position
+	
+	var marker_pos = cam.unproject_position(pos)
+	marker_pos = marker_pos * mult
+	marker.position = marker_pos
+	rect.position = marker_pos
+	
+	if marker_pos.x > 1920:
+		marker_pos.x = 1920
+	
+	if marker_pos.y > 1080:
+		marker_pos.y = 1080
+	
+	if marker_pos.x < 0:
+		marker_pos.x = 0
+	
+	if marker_pos.y < 0:
+		marker_pos.y = 0
+	
+	marker.position = marker_pos
+	rect.position = marker_pos
+
+	
+func _on_body_sit_visibility_changed():
+	sit = true
+
+
+func _on_body_stand_visibility_changed():
+	sit = false
