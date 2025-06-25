@@ -61,6 +61,8 @@ var greeting_finished := false
 
 @export var note_timer: Timer
 
+signal dalton_enter_level
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -531,6 +533,7 @@ func _on_d_entered_body_exited(body: Node3D) -> void:
 		emit_signal("dINSIDE")
 		print("DaltonEntered")
 		dalton_entered = true
+		emit_signal("dalton_enter_level")
 		#animation_choice = rng.randi_range(0, 10)
 		#is_investigating = true
 		nav.target_position = marker_list[3].global_position

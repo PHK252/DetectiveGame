@@ -59,6 +59,7 @@ var wander_rotate = false
 signal sit_visible
 signal sit_invisible
 signal micah_open
+signal theo_level_enter
 
 func _ready() -> void:
 	add_to_group("micah")
@@ -256,9 +257,11 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if is_navigating:
 		move_and_slide()
 
+
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("theo"):
 		print("theoEnter")
+		emit_signal("theo_level_enter")
 		emit_signal("collision_danger")
 	
 	if body.is_in_group("player"):
@@ -272,6 +275,7 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 		
 	if body.is_in_group("player"):
 		print("notsee")
+		
 		#emit_signal("collision_safe")
 		see_player = false
 
@@ -366,3 +370,9 @@ func _on_door_micah_rotate() -> void:
 		is_wandering = false
 		_rotate_towards_dalton()
 		emit_signal("micah_open")
+
+
+#signal when theo leaves, body not registering
+#func _on_doorcamarea_body_entered(body):
+	#if body.is_in_group("theo"):
+		#print("theoleave")
