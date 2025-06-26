@@ -370,9 +370,3 @@ func _on_door_micah_rotate() -> void:
 		is_wandering = false
 		_rotate_towards_dalton()
 		emit_signal("micah_open")
-
-
-#signal when theo leaves, body not registering
-#func _on_doorcamarea_body_entered(body):
-	#if body.is_in_group("theo"):
-		#print("theoleave")

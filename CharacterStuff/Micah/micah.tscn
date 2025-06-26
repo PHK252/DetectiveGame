@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2ffunqvkd7nk"]
+[gd_scene load_steps=20 format=3 uid="uid://c2ffunqvkd7nk"]
 
 [ext_resource type="Script" uid="uid://h2hd5ibu8je7" path="res://NPC.gd" id="1_6e8qf"]
 [ext_resource type="PackedScene" uid="uid://c6cup7pxxiej2" path="res://CharacterStuff/Micah/micahExtraAnims.glb" id="2_nrh3r"]
+[ext_resource type="Script" uid="uid://bjctjn1lf0sa5" path="res://Global Scripts/marker_placement.gd" id="3_5li10"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c07kq"]
 animation = &"DrinkBeer"
@@ -84,31 +85,31 @@ script = ExtResource("1_6e8qf")
 [node name="micahExtraAnims" parent="MicahBody" instance=ExtResource("2_nrh3r")]
 
 [node name="Skeleton3D" parent="MicahBody/micahExtraAnims/micahArmature" index="0"]
-bones/1/position = Vector3(-2.30218e-10, -8.75576e-08, -2.00264)
+bones/1/position = Vector3(4.85148e-10, -8.50578e-08, -1.96182)
 bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
-bones/3/rotation = Quaternion(-0.0971328, -0.0419543, 0.924322, -0.366652)
-bones/4/rotation = Quaternion(-0.253995, 0.000244212, -0.0168385, 0.967059)
-bones/6/rotation = Quaternion(0.609356, 0.00505928, -0.00697682, 0.79285)
+bones/3/rotation = Quaternion(-0.112231, -0.00204839, 0.923997, -0.365554)
+bones/4/rotation = Quaternion(-0.332896, 0.000238061, -0.0220692, 0.942705)
+bones/6/rotation = Quaternion(0.652796, 0.00466064, -0.00724915, 0.757485)
 bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
-bones/8/rotation = Quaternion(0.0972797, -0.0420144, 0.924323, 0.366605)
-bones/9/rotation = Quaternion(-0.253995, -0.000244212, 0.0168385, 0.967059)
-bones/11/rotation = Quaternion(0.609356, -0.00505928, 0.00697682, 0.79285)
-bones/12/position = Vector3(-2.30218e-10, -1.44207e-07, -2.00264)
+bones/8/rotation = Quaternion(0.112365, -0.00210363, 0.924, 0.365505)
+bones/9/rotation = Quaternion(-0.332896, -0.00023806, 0.0220692, 0.942705)
+bones/11/rotation = Quaternion(0.652796, -0.00466064, 0.00724916, 0.757485)
+bones/12/position = Vector3(4.85148e-10, -1.52292e-07, -1.96182)
 bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
-bones/14/rotation = Quaternion(-0.185951, -1.31534e-10, -7.14056e-11, 0.982559)
-bones/16/rotation = Quaternion(-0.0127327, 1.57526e-10, 8.77999e-13, 0.999919)
-bones/17/rotation = Quaternion(-0.110548, -0.0308449, -0.682716, 0.721614)
+bones/14/rotation = Quaternion(-0.177265, -2.64681e-10, -6.79463e-11, 0.984163)
+bones/16/rotation = Quaternion(-0.00287221, -1.88466e-17, -8.78986e-17, 0.999996)
+bones/17/rotation = Quaternion(-0.111937, -0.028311, -0.692233, 0.712378)
 bones/18/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
 bones/19/rotation = Quaternion(0.0270153, -0.000167356, -0.0006591, 0.999635)
 bones/20/rotation = Quaternion(-0.0262147, -0.000682082, -0.0657145, 0.997494)
-bones/21/rotation = Quaternion(-0.110548, 0.0308449, 0.682716, 0.721614)
+bones/21/rotation = Quaternion(-0.111937, 0.028311, 0.692233, 0.712378)
 bones/22/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
 bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659107, 0.999635)
 bones/24/rotation = Quaternion(-0.0262147, 0.000682075, 0.0657145, 0.997494)
 bones/25/position = Vector3(-0.248814, -0.0867041, -0.109932)
 bones/25/rotation = Quaternion(-0.00589136, 4.24325e-08, 0.999983, -1.08131e-10)
 bones/27/position = Vector3(0.248814, -0.086704, -0.109932)
-bones/29/position = Vector3(-2.30218e-10, -1.1736e-07, -2.00264)
+bones/29/position = Vector3(4.85148e-10, -1.1486e-07, -1.96182)
 bones/29/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="MicahBody/micahExtraAnims"]
@@ -142,7 +143,9 @@ shape = SubResource("BoxShape3D_i8u1i")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="MicahBody"]
 
 [node name="Marker3D" type="Marker3D" parent="MicahBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.341275, 1.45963, 0.0187715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.298405, 1.42477, 0.0187715)
+script = ExtResource("3_5li10")
+x_pos = -0.298
 
 [connection signal="body_entered" from="MicahBody/InteractArea" to="MicahBody" method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="MicahBody/InteractArea" to="MicahBody" method="_on_interact_area_body_exited"]

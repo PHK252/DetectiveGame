@@ -3,7 +3,7 @@ extends Node3D
 @onready var animation_tree : AnimationTree = $bonedoor/AnimationDoor
 @export var collision : CollisionShape3D
 @export var alert : Sprite3D
-
+@export var interaction : Interactable
 @export var dalton_marker : Marker2D
 @export var micah_marker : Marker2D
 @export var theo_marker : Marker2D
@@ -16,6 +16,8 @@ var is_open: bool = false
 var introduction_happened = false
 var dalton_entered = false
 var theo_entered = false
+var dalton_left = false
+var theo_left = false
 
 signal micah_rotate
 signal greeting
@@ -115,6 +117,7 @@ func _on_timeline_ended():
 
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
+		Dialogic.signal_event.disconnect(doorOpen)
 		#$Interactable.queue_free()
 		open()
 		#collision.disabled = true
@@ -148,7 +151,7 @@ func _on_micah_body_micah_open() -> void:
 func _on_door_theo_entered():
 	if entered == false:
 		theo_entered = true
-		print("theo entered!" + str(theo_entered))
+		#print("theo entered!" + str(theo_entered))
 		if dalton_entered == true:
 			entered = true
 			close()
@@ -157,13 +160,29 @@ func _on_door_theo_entered():
 func _on_dalton_door_entered():
 	if entered == false: 
 		dalton_entered = true
-		print("dalton entered!"  + str(dalton_entered))
+		#print("dalton entered!"  + str(dalton_entered))
 		if theo_entered == true:
 			entered = true
 			close()
 
 
-func _on_door_theo_leave_body_entered(body):
-	if body == theo:
-		print("theoleft")
+func _on_door_dalton_leave_body_entered(body):
+	#print("dalt reg leave")
+	if entered == true:
+		if body.is_in_group("player"):
+			dalton_left = true
+			if theo_left == true:
+				close()
+				if interaction.monitorable == true:
+					interaction.set_deferred("monitorable", false)
 		
+#signal when theo leaves, body not registering
+func _on_doorcamarea_body_entered(body):
+	#print("theo reg leave")
+	if entered == true:
+		if body.is_in_group("theo"):
+			theo_left = true
+			if dalton_left == true:
+				close()
+				if interaction.monitorable == true:
+					interaction.set_deferred("monitorable", false)
