@@ -1,5 +1,5 @@
 if {Character Aff Points.Micah} <= 2:
-	DDalton: Have you read this book?
+	Dalton: Have you read this book?
 	Micah: Huh?
 	Micah: Oh.
 	Micah: I skimmed it a while back.
@@ -18,9 +18,10 @@ if {Character Aff Points.Micah} <= 2:
 		Micah: ...
 		Micah: Nope.
 		Dalton: Do you know who wrote it?
-		Micah: Really?
+		Micah: D'you really think I'd know?
 		Dalton: ...
 		Micah: No.
+		Micah: I don't.
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
 			jump choices
 	- Meaning of the note?
@@ -28,7 +29,7 @@ if {Character Aff Points.Micah} <= 2:
 		Dalton: Do you know what the note means?
 		Micah: ...
 		Micah: No...
-		Micah: How did it get there?
+		Micah: How'd it get there?
 		Dalton: I was hoping you would know.
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
 			jump choices

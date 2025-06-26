@@ -1,5 +1,5 @@
 extends Marker2D
-@onready var debug_label = $"../debug label"
+
 @onready var pos_x = 0
 @onready var pos_y = 0
 @onready var marker = $"."
@@ -21,7 +21,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	debug_label.text = str(sit_micah)
 	if live_cam.is_active() == true or kitchen.is_active() == true:
 		if sit_micah == true:
 			positionMarker(6, 75, 350)

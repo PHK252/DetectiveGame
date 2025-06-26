@@ -1,14 +1,20 @@
 extends Node3D
 
+@onready var debug_label = $"../../../../../../UI/debug label"
 @export var player : CharacterBody3D
+@export var player_interactor : Interactor
 @export var dalton_marker : Marker2D
 @export var micah_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var alert : Sprite3D
+@export var stand_interaction : Interactable
+@export var sit_interaction : Interactable
 signal Dquestion
 signal Dstopped
 signal Tstop
 signal Tstart
+@onready var sit_micah = false
+@export var sit_body : Node3D
 
 @onready var asked = false
 @onready var asked_dad = false
@@ -36,18 +42,18 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	asked = true
 
-#NEEDS PROPER DEBUGGING
 func _process(delta):
+	debug_label.text = str(sit_micah)
 	asked = Dialogic.VAR.get_variable("Asked Questions.Micah_asked_all")
 	asked_dad =  Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde")
 	asked_skylar = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Skylar")
 	if asked == true:
 		if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
-			$Interactable.set_monitorable(true)
+			stand_interaction.set_monitorable(true)
 		elif Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false and time_out == false:
-			$Interactable.set_monitorable(true)
+			stand_interaction.set_monitorable(true)
 		else:
-			$Interactable.set_monitorable(false)
+			stand_interaction.set_monitorable(false)
 	
 		
 		
@@ -66,3 +72,21 @@ func _process(delta):
 
 func _on_timer_timeout():
 	time_out = true
+
+
+
+func _on_micah_sit():
+	if sit_body.visible == true:
+		sit_micah = true
+		stand_interaction.set_monitorable(false)
+		sit_interaction.set_monitorable(true)
+		player_interactor.set_monitoring(false)
+		await get_tree().create_timer(.03)
+		player_interactor.set_monitoring(true)
+	else:
+		sit_micah = false
+		stand_interaction.set_monitorable(true)
+		sit_interaction.set_monitorable(false)
+		player_interactor.set_monitoring(false)
+		await get_tree().create_timer(.03)
+		player_interactor.set_monitoring(true)

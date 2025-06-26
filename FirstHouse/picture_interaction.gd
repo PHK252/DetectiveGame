@@ -59,7 +59,7 @@ func _process(delta):
 		FP_Cam.set_rotation_degrees(tilt_up_angle)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		if Input.is_action_just_pressed("Exit") and pic_fell == true and read_dialogue == false and GlobalVars.viewing == "" and GlobalVars.micah_kicked_out == false and GlobalVars.micah_time_out == false:
+		if Input.is_action_just_pressed("Exit") and GlobalVars.viewed_Micah_pic == true and pic_fell == true and read_dialogue == false and GlobalVars.viewing == "" and GlobalVars.micah_kicked_out == false and GlobalVars.micah_time_out == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0

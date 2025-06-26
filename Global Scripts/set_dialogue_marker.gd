@@ -4,6 +4,7 @@ extends Marker2D
 @export var cam : Camera3D
 @export var body_marker : Marker3D
 @export var sit_marker : Marker3D
+@export var sit_body : Node3D
 @export var rect : ColorRect
 
 @onready var sit = false
@@ -16,6 +17,7 @@ func _process(delta):
 func positionMarker(mult : int):
 	if sit_marker:
 		if sit == true:
+			#print("SITTING MARKER")
 			pos = sit_marker.global_position
 		else:
 			pos = body_marker.global_position
@@ -44,8 +46,12 @@ func positionMarker(mult : int):
 
 	
 func _on_body_sit_visibility_changed():
-	sit = true
+	if sit_marker:
+		if sit_body.visible == true:
+			sit = true
+		else:
+			sit = false
 
 
-func _on_body_stand_visibility_changed():
-	sit = false
+#func _on_body_stand_visibility_changed():
+	#sit = false
