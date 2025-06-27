@@ -45,12 +45,26 @@ signal general_interact
 signal general_quit
 signal juniper_wander
 
+var kicked = false
+var timed = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var read_dialogue : bool = GlobalVars.get(dialogue)
 	var viewed_item : bool = GlobalVars.get(view_item)
 	mouse_pos = get_viewport().get_mouse_position()
-	#print(mouse_pos) 
+	
+	#set kicked and timed out vars
+	if GlobalVars.current_level == "Quincy":
+		kicked = GlobalVars.quincy_kicked_out
+		timed = GlobalVars.quincy_time_out
+	elif GlobalVars.current_level == "Juniper":
+		kicked = GlobalVars.juniper_kicked_out
+		timed = GlobalVars.juniper_time_out
+	elif GlobalVars.current_level == "Micah":
+		kicked = GlobalVars.micah_kicked_out
+		timed = GlobalVars.micah_time_out
+		
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
@@ -63,7 +77,7 @@ func _process(delta):
 		FP_Cam.set_rotation_degrees(mid_angle)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		if dialogue_after == true and Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.micah_time_out == false  and GlobalVars.micah_kicked_out == false:
+		if dialogue_after == true and Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and kicked == false and timed == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0

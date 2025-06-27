@@ -49,9 +49,12 @@ func _on_greeting_ended():
 
 func _process(delta):
 	asked = Dialogic.VAR.get_variable("Quincy.asked_all")
-	if asked == true:
-		#print("hide")
-		alert.hide()
+	if Dialogic.VAR.get_variable("Quincy.solved_case") == false:
+		if asked == true and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+			#print("hide")
+			alert.hide()
+			$Interactable.set_monitorable(false)
+	else:
 		$Interactable.set_monitorable(false)
 
 #func _on_character_body_3d_d_inside() -> void:
@@ -74,8 +77,8 @@ func _on_greeting_third_q_dialogue() -> void: # Quincy is greeted outside, Playe
 		print("tryingtogrree")
 		GlobalVars.in_dialogue = true
 		player.stop_player()
-		var ask_victims = Dialogic.start("Quincy_greeting")
+		var greeting = Dialogic.start("Quincy_greeting")
 		Dialogic.timeline_ended.connect(_on_greeting_ended)
-		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+		greeting.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		greeting.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		greeting.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)

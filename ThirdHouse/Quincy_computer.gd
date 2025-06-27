@@ -18,6 +18,7 @@ extends Node3D
 @export var dalton_marker: Marker2D
 @export var interact_area: Area2D
 @export var dialogue_file: String
+@export var react_dialogue_file: String
 @export var load_Dalton_dialogue: String
 @onready var mouse_pos = Vector2(0,0)
 @export var interact_type: String
@@ -74,10 +75,13 @@ func compFP(argument: String):
 		
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "computer": 
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "computer" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false: 
 		FP_Cam.priority = 0
 		Exit_Cam.priority = 30
-		#print("funk")
+		var computer_react = Dialogic.start(react_dialogue_file)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		computer_react.register_character(load(load_Dalton_dialogue), dalton_marker)
+		GlobalVars.in_dialogue = true
 		interact_area.hide()
 		GlobalVars.Quincy_in_computer = false
 		player.start_player()

@@ -13,6 +13,12 @@ signal open_quincy_case
 @onready var micah_time_out = false
 @onready var micah_kicked_out = false
 
+@onready var quincy_time_out = false
+@onready var quincy_kicked_out = false
+
+@onready var juniper_kicked_out = false
+@onready var juniper_time_out = false
+
 @onready var day = ""
 
 @onready var in_call = false
