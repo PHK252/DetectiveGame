@@ -12,9 +12,12 @@ extends Node3D
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var character_marker : Marker2D
+@export var timer : Timer
 
 var time_out = false
 var in_time_out_dialogue = false
+
+var in_secret = false
 
 func _ready():
 	GlobalVars.current_level = "Quincy"
@@ -52,6 +55,8 @@ func _process(delta):
 func _on_timer_timeout():
 	if GlobalVars.quincy_kicked_out == false:
 		GlobalVars.quincy_time_out = true
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+			Dialogic.VAR.set_variable("Quincy.is_distracted", false)
 		disable_interaction(interactables)
 		time_out = true
 		print("LEVEL TIMEOUT")
@@ -85,3 +90,16 @@ func disable_interaction(arr: Array):
 	for i in arr:
 		i.set_monitorable(false)
 		i.queue_free()
+
+
+func _on_secret_entered(body):
+	if body == player:
+		if in_secret == false:
+			in_secret = true
+			timer.paused = true
+
+func _on_secret_exit(body):
+	if body == player:
+		if in_secret == true:
+			in_secret = false
+			timer.paused = false

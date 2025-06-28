@@ -57,7 +57,16 @@ func _on_input_event(viewport, event, shape_idx):
 func _on_exit_pressed():
 	if viewed_object == false and clicked_count == 1:
 		if is_there_thoughts == true:
-			object_in_scene.show()
+			if viewing == "coordinates":
+				if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == true:
+					object_interact.hide()
+					object_in_scene.hide()
+				else:
+					object_interact.show()
+					object_in_scene.show()
+			else:
+				object_interact.show()
+				object_in_scene.show()
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start(dialogue_file)
@@ -81,7 +90,16 @@ func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == viewing:
 		if viewed_object == false and clicked_count == 1:
 			if is_there_thoughts == true:
-				object_in_scene.show()
+				if viewing == "coordinates":
+					if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == true:
+						object_interact.hide()
+						object_in_scene.hide()
+					else:
+						object_interact.show()
+						object_in_scene.show()
+				else:
+					object_interact.show()
+					object_in_scene.show()
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				Dialogic.start(dialogue_file)

@@ -30,8 +30,8 @@ func _on_input_event(viewport, event, shape_idx):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	GlobalVars.viewing = ""
 	object_interact.show()
+	GlobalVars.viewing = ""
 	if extra_anim:
 		extra_anim.play(anim_track)
 		await extra_anim.animation_finished
