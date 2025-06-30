@@ -33,27 +33,29 @@ extends Area2D
 @export var note_swipe : AudioStreamPlayer3D
 @export var paper : AudioStreamPlayer
 
+
+
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				if is_there_anim == true:
-					if clicked_object == "clicked_book_note" or "clicked_bookmark_Juniper":
-						note_swipe.play()
-					anim.play(anim_track)
-					await anim.animation_finished
-					await get_tree().create_timer(.5).timeout
-					anim.play("RESET")
-				#if clicked_object == "clicked_Micah_pic" or "clicked_tool_note" or "clicked_coor_Quincy":
-						#paper.play()
-				object_in_scene.hide()
-				object_interact.hide()
-				UI_look.show()
-				GlobalVars.viewing = viewing
-				GlobalVars.in_look_screen = true
-				clicked_count += 1
-				GlobalVars.set(clicked_object, clicked_count)
-				
+				if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+					if is_there_anim == true:
+						if clicked_object == "clicked_book_note" or "clicked_bookmark_Juniper":
+							note_swipe.play()
+						anim.play(anim_track)
+						await anim.animation_finished
+						await get_tree().create_timer(.5).timeout
+						anim.play("RESET")
+					#if clicked_object == "clicked_Micah_pic" or "clicked_tool_note" or "clicked_coor_Quincy":
+							#paper.play()
+					object_in_scene.hide()
+					object_interact.hide()
+					UI_look.show()
+					GlobalVars.viewing = viewing
+					GlobalVars.in_look_screen = true
+					clicked_count += 1
+					GlobalVars.set(clicked_object, clicked_count)
 
 func _on_exit_pressed():
 	if viewed_object == false and clicked_count == 1:
@@ -91,16 +93,8 @@ func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == viewing:
 		if viewed_object == false and clicked_count == 1:
 			if is_there_thoughts == true:
-				if viewing == "coordinates":
-					if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == true:
-						object_interact.hide()
-						object_in_scene.hide()
-					else:
-						object_interact.show()
-						object_in_scene.show()
-				else:
-					object_interact.show()
-					object_in_scene.show()
+				object_interact.show()
+				object_in_scene.show()
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				Dialogic.start(dialogue_file)

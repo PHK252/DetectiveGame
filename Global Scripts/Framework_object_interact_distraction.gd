@@ -25,6 +25,7 @@ extends Node3D
 @export var interact_area: Area2D
 @export var viewed_dialogue_file: String
 @export var regular_dialogue_file: String
+@export var cue_distract_dialogue :String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
@@ -37,13 +38,17 @@ extends Node3D
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
 @onready var distracted : bool
+@onready var need_distraction : bool
+@onready var try_viewed = 0
 
 var kicked = false
 var timed = false
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
+	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
 	var read_dialogue : bool = GlobalVars.get(dialogue)
 	var viewed_item : bool = GlobalVars.get(view_item)
 	mouse_pos = get_viewport().get_mouse_position()
@@ -113,32 +118,55 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.show()
+	
+func _on_thoughts_ended():
+	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
+	GlobalVars.in_dialogue = false
+
 
 func _on_interactable_interacted(interactor):
-	if GlobalVars.in_interaction == "":
-		if distracted == true:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			alert.hide()
-			GlobalVars.in_interaction = interact_type
-			FP_Cam.priority = 30
-			Exit_Cam.priority = 0 
-			interact_area.show()
-			cam_anim.play("Cam_Idle")
-			player.hide()
-			player.stop_player()
-		else:
-			FP_Cam.priority = 30
-			Exit_Cam.priority = 0 
-			player.hide()
-			player.stop_player()
-			await get_tree().create_timer(1.0).timeout
-			FP_Cam.priority = 0
-			Exit_Cam.priority = 30 
-			player.show()
-			var game_dialogue = Dialogic.start(regular_dialogue_file)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			game_dialogue.register_character(load(load_char_dialogue), character_marker)
-			player.stop_player()
-			alert.hide()
+	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		alert.hide()
+		GlobalVars.in_interaction = interact_type
+		FP_Cam.priority = 30
+		Exit_Cam.priority = 0 
+		interact_area.show()
+		cam_anim.play("Cam_Idle")
+		player.hide()
+		player.stop_player()
+		
+
+
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+			if need_distraction == true:
+				GlobalVars.in_dialogue = true
+				Dialogic.start(cue_distract_dialogue)
+				Dialogic.timeline_ended.connect(_on_thoughts_ended)
+				FP_Cam.priority = 0
+				Exit_Cam.priority = 30 
+				player.show()
+				var game_dialogue = Dialogic.start(regular_dialogue_file)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+				game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+				game_dialogue.register_character(load(load_char_dialogue), character_marker)
+				player.stop_player()
+				alert.hide()
+			else:
+				try_viewed += 1
+				FP_Cam.priority = 0
+				Exit_Cam.priority = 30 
+				player.show()
+				var game_dialogue = Dialogic.start(regular_dialogue_file)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+				game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+				game_dialogue.register_character(load(load_char_dialogue), character_marker)
+				player.stop_player()
+				alert.hide()
+
+#Set try viewed --> needs distraction after 2 looks
+#set up cycling dialogue for cue thoughts and quincy dialogue for this and bookshelf
