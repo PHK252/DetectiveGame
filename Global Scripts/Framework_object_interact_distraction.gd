@@ -49,6 +49,8 @@ var timed = false
 func _process(delta):
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
 	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	if try_viewed == 2:
+		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
 	var read_dialogue : bool = GlobalVars.get(dialogue)
 	var viewed_item : bool = GlobalVars.get(view_item)
 	mouse_pos = get_viewport().get_mouse_position()
@@ -142,12 +144,14 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			if need_distraction == true:
+				choose_distract_thought_dialogue()
 				GlobalVars.in_dialogue = true
 				Dialogic.start(cue_distract_dialogue)
 				Dialogic.timeline_ended.connect(_on_thoughts_ended)
 				FP_Cam.priority = 0
 				Exit_Cam.priority = 30 
 				player.show()
+				choose_quincy_cycle_dialogue()
 				var game_dialogue = Dialogic.start(regular_dialogue_file)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -160,6 +164,7 @@ func _on_input_event(viewport, event, shape_idx):
 				FP_Cam.priority = 0
 				Exit_Cam.priority = 30 
 				player.show()
+				choose_quincy_cycle_dialogue()
 				var game_dialogue = Dialogic.start(regular_dialogue_file)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -168,5 +173,16 @@ func _on_input_event(viewport, event, shape_idx):
 				player.stop_player()
 				alert.hide()
 
+
+func choose_distract_thought_dialogue():
+	if Dialogic.VAR.get_variable("Quincy.first_cue") == true:
+		var rng = RandomNumberGenerator.new()
+		var random = rng.randi_range(1, 3)
+		Dialogic.VAR.set_variable("Quincy.cue_cycle", random)
+		
+func choose_quincy_cycle_dialogue():
+	var rng = RandomNumberGenerator.new()
+	var random = rng.randi_range(1, 3)
+	Dialogic.VAR.set_variable("Quincy.bedroom_cycle", random)
 #Set try viewed --> needs distraction after 2 looks
 #set up cycling dialogue for cue thoughts and quincy dialogue for this and bookshelf

@@ -1,19 +1,13 @@
-Quincy: This is the master bedroom. 
-Quincy: It was left untouched, from what I can tell.
-[end_timeline]
-label needs distraction
-if {Quincy.bathroom_cycle} == 1:
-	Quincy: I'm sure nothing in here.
+if {Quincy.bedroom_cycle} == 1:
+	Quincy: I'm sure nothing there's nothing of use here.
 	Quincy: Let's look somewhere else.
 	[end_timeline]
-elif {Quincy.bathroom_cycle} == 2:
-	Quincy: Nothing of use here.
+elif {Quincy.bedroom_cycle} == 2:
+	Quincy: There was no damage done here. 
+	Quincy: The living room's a mess. 
+	Quincy: You'll probably find some evidence there.
 	[end_timeline]
-else:
+elif {Quincy.bedroom_cycle} == 3:
 	Quincy: Come on. 
 	Quincy: Isn't it strange to snoop around someone’s bedroom?
 	[end_timeline]
-
-
-
-

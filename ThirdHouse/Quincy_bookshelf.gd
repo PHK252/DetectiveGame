@@ -32,6 +32,7 @@ extends Node3D
 @export var dialogue_file: String
 @export var react_file: String
 @export var thought_dialogue_file: String
+@export var cue_distract_dialogue: String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
@@ -42,14 +43,19 @@ extends Node3D
 
 #set defaults
 @onready var mouse_pos = Vector2(0,0)
-@onready var distracted = false
+@onready var distracted : bool
+@onready var need_distraction : bool
 @onready var cab_anim = false
 @onready var is_open = false
+var try_viewed : int
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
+	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	if try_viewed == 2:
+		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
@@ -100,50 +106,60 @@ func _on_reaction_ended():
 func _on_thoughts_ended():
 	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
 	GlobalVars.in_dialogue = false
-	interact_area.show()
+	#interact_area.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_interactable_interacted(interactor):
 	alert.hide()
 	GlobalVars.in_interaction = interact_type
-	interact_area.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#interact_area.hide()
 	FP_Cam.priority = 30
 	Exit_Cam.priority = 0 
 	cam_anim.play("Cam_Idle")
 	player.hide()
 	player.stop_player()
-	if distracted == true:
-		GlobalVars.in_dialogue = true
-		Dialogic.start(thought_dialogue_file)
-		Dialogic.timeline_ended.connect(_on_thoughts_ended)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
 				if distracted == false:
-					alert.hide()
-					Exit_Cam.set_tween_duration(0)
-					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-					GlobalVars.in_dialogue = true
-					FP_Cam.priority = 0
-					Exit_Cam.priority = 30
-					await get_tree().create_timer(.03).timeout
-					cam_anim.play("RESET")
-					player.show()
-					player.start_player()
-					GlobalVars.in_interaction = ""
-					var game_dialogue = Dialogic.start(dialogue_file)
-					#Dialogic.VAR.get("Asked Questions").Micah_cab = 1 #need quincy version
-					Dialogic.timeline_ended.connect(_on_timeline_ended)
-					game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-					game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-					game_dialogue.register_character(load(load_char_dialogue), character_marker)
-					#GlobalVars.set(view_item, true)
-					Exit_Cam.set_tween_duration(1)
-					interact_area.hide()
+					if need_distraction == true:
+						choose_distract_thought_dialogue()
+						GlobalVars.in_dialogue = true
+						Dialogic.start(cue_distract_dialogue)
+						Dialogic.timeline_ended.connect(_on_thoughts_ended)
+						FP_Cam.priority = 0
+						Exit_Cam.priority = 30 
+						player.show()
+						choose_quincy_cycle_dialogue()
+					else:
+						alert.hide()
+						Exit_Cam.set_tween_duration(0)
+						try_viewed += 1
+						GlobalVars.in_dialogue = true
+						Dialogic.start(thought_dialogue_file)
+						Dialogic.timeline_ended.connect(_on_thoughts_ended)
+						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+						GlobalVars.in_dialogue = true
+						FP_Cam.priority = 0
+						Exit_Cam.priority = 30
+						await get_tree().create_timer(.03).timeout
+						cam_anim.play("RESET")
+						player.show()
+						player.start_player()
+						GlobalVars.in_interaction = ""
+						choose_quincy_cycle_dialogue()
+						var game_dialogue = Dialogic.start(dialogue_file)
+						Dialogic.timeline_ended.connect(_on_timeline_ended)
+						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+						game_dialogue.register_character(load(load_char_dialogue), character_marker)
+						GlobalVars.set(view_item, true)
+						Exit_Cam.set_tween_duration(1)
+						interact_area.hide()
 				else:
 					Exit_Cam.set_tween_duration(0)
 					interact_area.hide()
@@ -196,3 +212,13 @@ func close() -> void:
 	collision.disabled = false
 	collision_2.disabled = false
 	
+func choose_distract_thought_dialogue():
+	if Dialogic.VAR.get_variable("Quincy.first_cue") == true:
+		var rng = RandomNumberGenerator.new()
+		var random = rng.randi_range(1, 3)
+		Dialogic.VAR.set_variable("Quincy.cue_cycle", random)
+		
+func choose_quincy_cycle_dialogue():
+	var rng = RandomNumberGenerator.new()
+	var random = rng.randi_range(1, 4)
+	Dialogic.VAR.set_variable("Quincy.bookshelf_cycle", random)

@@ -1,14 +1,13 @@
-if {Quincy.needs_distraction} == true:
-	if {Quincy.bookshelf_cycle} == 1
-		Quincy: It's been a while since we've caught up. 
-		Quincy: Why don't we go back downstairs and have a nice, long chat over a glass of wine?
-	elif {Quincy.bookshelf_cycle} == 2:
-		Quincy: Hey! 
-		Quincy: Why don't we go downstairs for a drink? 
-		Quincy: I got a bottle of 20-year-old whiskey with your name on it.
-	elif {Quincy.bookshelf_cycle} == 3:
-		Quincy: We've left the rookie downstairs for a while. 
-		Quincy: Maybe we should go back downstairs to see if he needs any help.
-	else:
-		Quincy: Are you hungry? 
-		Quincy: I got a cranberry tart downstairs if you want a bite.
+if {Quincy.bookshelf_cycle} == 1
+	Quincy: It's been a while since we've caught up. 
+	Quincy: Why don't we go back downstairs and have a nice, long chat over a glass of wine?
+elif {Quincy.bookshelf_cycle} == 2:
+	Quincy: Hey! 
+	Quincy: Why don't we go downstairs for a drink? 
+	Quincy: I got a bottle of 20-year-old whiskey with your name on it.
+elif {Quincy.bookshelf_cycle} == 3:
+	Quincy: We've left the rookie downstairs for a while. 
+	Quincy: Maybe we should go back downstairs to see if he needs any help.
+elif {Quincy.bookshelf_cycle} == 4:
+	Quincy: Aren't you hungry? 
+	Quincy: I got a cranberry tart downstairs if you want a bite.
