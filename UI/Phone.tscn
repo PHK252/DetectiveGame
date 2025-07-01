@@ -654,6 +654,7 @@ texture = ExtResource("37_e75gw")
 
 [node name="Buttons" type="Control" parent="GalleryScreen/ClosePics"]
 anchors_preset = 0
+mouse_filter = 2
 
 [node name="Back" type="TextureButton" parent="GalleryScreen/ClosePics/Buttons"]
 layout_mode = 0

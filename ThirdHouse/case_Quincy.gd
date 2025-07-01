@@ -76,8 +76,10 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	if GlobalVars.Quincy_in_case == false:
+		GlobalVars.in_interaction = ""
 		player.start_player()
 		alert.show()
+		
 #
 func caseUI(argument: String):
 	if argument == "look_case":
@@ -85,7 +87,6 @@ func caseUI(argument: String):
 		player.hide()
 		GlobalVars.Quincy_in_case = true
 		player.stop_player()
-		GlobalVars.viewing = "case_ui"
 		interact_area.show()
 		case_cam.priority = 30
 		main_cam.priority = 0 
@@ -114,7 +115,7 @@ func _input(event):
 			cam_anim.play("RESET")
 			#main_cam.set_tween_duration(1)
 			player.show()
-			if GlobalVars.opened_jun_case == true:
+			if GlobalVars.opened_quincy_case == true:
 				interior_interact_area_1.hide()
 				interior_interact_area_2.hide()
 				if finished_letter == true or finished_hammer == true:
@@ -150,7 +151,6 @@ func _input(event):
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif GlobalVars.viewed_Quincy_letter == true and GlobalVars.viewed_Quincy_hammer == false:
-						print("enteredddd else")
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()
@@ -161,7 +161,6 @@ func _input(event):
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif GlobalVars.viewed_Quincy_letter == false and GlobalVars.viewed_Quincy_hammer == true:
-						print("enteredddd")
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()
@@ -176,8 +175,8 @@ func _input(event):
 				player.start_player()
 				alert.show()
 				interact_area.hide()
-				interior_interact_area_1.hide()
-				interior_interact_area_2.hide()
+				#interior_interact_area_1.hide()
+				#interior_interact_area_2.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "case_ui": 
 			UI.hide()
 			GlobalVars.in_look_screen = false
@@ -193,6 +192,7 @@ func _on_input_event(viewport, event, shape_idx):
 				if GlobalVars.in_interaction == "":
 					GlobalVars.in_interaction = interact_type
 				UI.show()
+				GlobalVars.viewing = "case_ui"
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_case_Quincy = GlobalVars.clicked_case_Quincy + 1
 				interact_area.hide()

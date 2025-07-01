@@ -23,7 +23,7 @@ func _on_interactable_interacted(interactor):
 		GlobalVars.in_dialogue = true
 		player.stop_player()
 		alert.hide()
-		var ask_victims = Dialogic.start("Quincy_Questions")
+		var ask_victims = Dialogic.start("Quincy_asked_questions")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
