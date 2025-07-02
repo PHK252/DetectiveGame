@@ -23,7 +23,6 @@ extends Node3D
 
 #Interaction Variables
 @export var interact_area: Area2D
-@export var interact_area_2 : Area2D
 @export var dialogue_file: String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
@@ -88,8 +87,6 @@ func _process(delta):
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)
 			interact_area.hide()
-			if interact_area_2:
-				interact_area_2.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -104,19 +101,13 @@ func _process(delta):
 			#main_cam.set_tween_duration(1)
 			GlobalVars.in_interaction = ""
 			interact_area.hide()
-			if interact_area_2:
-				interact_area_2.hide()
 			alert.show()
 			#activate dialogue
 
 	if GlobalVars.in_look_screen == true:
 		interact_area.hide()
-		if interact_area_2:
-				interact_area_2.hide()
 	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
 		interact_area.show()
-		if interact_area_2:
-				interact_area_2.show()
 
 
 func _on_timeline_ended():
@@ -135,8 +126,6 @@ func _on_interactable_interacted(interactor):
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
 		interact_area.show()
-		if interact_area_2:
-			interact_area_2.show()
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()

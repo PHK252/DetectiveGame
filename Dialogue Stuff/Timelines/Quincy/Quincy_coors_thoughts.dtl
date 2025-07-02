@@ -1,11 +1,12 @@
-"Daltons Thoughts": Hmm?
-"Daltons Thoughts": What’s this? 
-"Daltons Thoughts": Coordinates?
-"Daltons Thoughts": ...
-- Take.
-	set {Quincy.has_secret_coor} = true
-	"Daltons Thoughts": I wonder where this is.
-	[end_timeline]
-- Leave.
-	"Daltons Thoughts": Better not to mess with it.
-	[end_timeline]
+if {Quincy.has_secret_coor} == false:
+	"Daltons Thoughts": Hmm?
+	"Daltons Thoughts": What’s this? 
+	"Daltons Thoughts": Coordinates?
+	"Daltons Thoughts": ...
+	- Take.
+		set {Quincy.has_secret_coor} = true
+		"Daltons Thoughts": I wonder where this is.
+		[end_timeline]
+	- Leave.
+		"Daltons Thoughts": Better not to mess with it.
+		[end_timeline]
