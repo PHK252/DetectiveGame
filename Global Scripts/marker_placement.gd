@@ -8,7 +8,7 @@ extends Marker3D
 @export var x_pos: float
 
 var place_pos
-var flip
+var flip = false
 func place_marker():
 	check_cam_orenination(cam_face_front, cam_face_back)
 	if GlobalVars.forward == true:
@@ -27,11 +27,12 @@ func check_cam_orenination(frontArr: Array, backArr: Array):
 	for j in backArr:
 		if j.is_active():
 			GlobalVars.forward = false
+	
 	if flip == true:
 		if flip_cam.is_active:
 			GlobalVars.forward = true
-	else:
-		GlobalVars.forward = false
+		else:
+			GlobalVars.forward = false
 		
 		
 func _process(delta):

@@ -19,7 +19,7 @@ signal open_quincy_case
 @onready var juniper_kicked_out = false
 @onready var juniper_time_out = false
 
-@onready var forward = false
+@onready var forward : bool
 @onready var day = ""
 
 @onready var in_call = false
