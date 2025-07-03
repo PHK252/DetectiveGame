@@ -49,14 +49,14 @@ signal juniper_wander
 func _process(delta):
 	if (Dialogic.VAR.get_variable("Quincy.talked_at_port_know_skylar") == true or Dialogic.VAR.get_variable("Quincy.talked_at_port_not_know_Skylar")) and Dialogic.VAR.get_variable("Quincy.asked_painting") == true:
 		if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == true:
-			if Dialogic.VAR.get_variable("{Quincy.show_coors_note") == true:
+			if Dialogic.VAR.get_variable("Quincy.show_coors_note") == true:
 				read_dialogue = true
 			else:
-				pass
+				read_dialogue = false
 		else:
 			read_dialogue = true
 	else:
-		pass
+		read_dialogue = false
 	var viewed_item : bool = GlobalVars.get(view_item)
 	mouse_pos = get_viewport().get_mouse_position()
 	kicked = GlobalVars.quincy_kicked_out
@@ -70,7 +70,7 @@ func _process(delta):
 			FP_Cam.set_rotation_degrees(mid_angle)
 				#pass
 	else:
-		if GlobalVars.viewing == "coordinates":
+		if GlobalVars.viewing == "coordinates" or Dialogic.VAR.get_variable("Quincy.in_coor_thoughts") == true:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		else:
 			FP_Cam.set_rotation_degrees(mid_angle)

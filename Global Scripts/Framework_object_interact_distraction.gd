@@ -43,7 +43,8 @@ extends Node3D
 
 var kicked = false
 var timed = false
-
+var in_thoughts = false
+signal thoughts_finished
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -116,14 +117,19 @@ func _process(delta):
 
 
 func _on_timeline_ended():
+	print("end time")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_interaction = ""
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.show()
 	
 func _on_thoughts_ended():
 	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
+	in_thoughts = false
 	GlobalVars.in_dialogue = false
+	emit_signal("thoughts_finished") 
+	print(in_thoughts)
 
 
 func _on_interactable_interacted(interactor):
@@ -143,28 +149,25 @@ func _on_interactable_interacted(interactor):
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			interact_area.hide()
+			choose_quincy_cycle_dialogue()
 			if need_distraction == true:
-				choose_distract_thought_dialogue()
+				print("end need distraction")
 				GlobalVars.in_dialogue = true
+				choose_distract_thought_dialogue()
+				in_thoughts = true
 				Dialogic.start(cue_distract_dialogue)
 				Dialogic.timeline_ended.connect(_on_thoughts_ended)
-				FP_Cam.priority = 0
-				Exit_Cam.priority = 30 
-				player.show()
-				choose_quincy_cycle_dialogue()
-				var game_dialogue = Dialogic.start(regular_dialogue_file)
-				Dialogic.timeline_ended.connect(_on_timeline_ended)
-				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-				game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-				game_dialogue.register_character(load(load_char_dialogue), character_marker)
-				player.stop_player()
-				alert.hide()
 			else:
 				try_viewed += 1
+			if in_thoughts == false:
+				Exit_Cam.set_tween_duration(0)
 				FP_Cam.priority = 0
 				Exit_Cam.priority = 30 
+				Exit_Cam.set_tween_duration(1)
 				player.show()
-				choose_quincy_cycle_dialogue()
+				GlobalVars.in_dialogue = true
 				var game_dialogue = Dialogic.start(regular_dialogue_file)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -179,6 +182,10 @@ func choose_distract_thought_dialogue():
 		var rng = RandomNumberGenerator.new()
 		var random = rng.randi_range(1, 3)
 		Dialogic.VAR.set_variable("Quincy.cue_cycle", random)
+		print("cue cycle " + str(random))
+	else:
+		Dialogic.VAR.set_variable("Quincy.first_cue", true)
+		Dialogic.VAR.set_variable("Quincy.cue_cycle", 1)
 		
 func choose_quincy_cycle_dialogue():
 	var rng = RandomNumberGenerator.new()
@@ -186,3 +193,22 @@ func choose_quincy_cycle_dialogue():
 	Dialogic.VAR.set_variable("Quincy.bedroom_cycle", random)
 #Set try viewed --> needs distraction after 2 looks
 #set up cycling dialogue for cue thoughts and quincy dialogue for this and bookshelf
+
+
+
+func _on_thoughts_finished():
+	if in_thoughts == false and GlobalVars.in_dialogue== false:
+		interact_area.hide()
+		Exit_Cam.set_tween_duration(0)
+		FP_Cam.priority = 0
+		Exit_Cam.priority = 30 
+		Exit_Cam.set_tween_duration(1)
+		player.show()
+		GlobalVars.in_dialogue = true
+		var game_dialogue = Dialogic.start(regular_dialogue_file)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+		game_dialogue.register_character(load(load_char_dialogue), character_marker)
+		player.stop_player()
+		alert.hide()

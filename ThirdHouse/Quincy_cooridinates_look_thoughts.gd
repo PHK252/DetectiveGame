@@ -31,8 +31,6 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				#if clicked_object == "clicked_Micah_pic" or "clicked_tool_note" or "clicked_coor_Quincy":
-						#paper.play()
 				object_in_scene.hide()
 				object_interact.hide()
 				UI_look.show()
@@ -47,6 +45,7 @@ func _on_exit_pressed():
 		object_interact.show()
 		object_in_scene.show()
 		GlobalVars.in_dialogue = true
+		Dialogic.signal_event.connect(take_coordinates)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start(dialogue_file)
 		if viewed_object == false: 
@@ -56,10 +55,6 @@ func _on_exit_pressed():
 		object_in_scene.hide()
 
 
-func _on_timeline_ended():
-	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-	GlobalVars.in_dialogue = false
-	object_interact.show()
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == viewing:
@@ -67,6 +62,7 @@ func _input(event):
 			object_interact.show()
 			object_in_scene.show()
 			GlobalVars.in_dialogue = true
+			Dialogic.signal_event.connect(take_coordinates)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start(dialogue_file)
 			if viewed_object == false: 
@@ -74,3 +70,23 @@ func _input(event):
 		else:
 			object_interact.hide()
 			object_in_scene.hide()
+
+
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_dialogue = false
+	Dialogic.VAR.set_variable("Quincy.in_coor_thoughts", false)
+	if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == false:
+		object_interact.show()
+		object_in_scene.show()
+	else:
+		object_interact.hide()
+		object_in_scene.hide()
+
+func take_coordinates(argument: String):
+	if argument == "take_coor":
+		Dialogic.signal_event.disconnect(take_coordinates)
+		object_interact.hide()
+		object_in_scene.hide()
+	elif argument == "leave":
+		Dialogic.signal_event.disconnect(take_coordinates)

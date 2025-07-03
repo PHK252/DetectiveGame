@@ -29,17 +29,24 @@ func positionMarker(mult : int):
 	marker.position = marker_pos
 	rect.position = marker_pos
 	
-	if marker_pos.x > 1920:
-		marker_pos.x = 1920
-	
-	if marker_pos.y > 1080:
-		marker_pos.y = 1080
-	
-	if marker_pos.x < 0:
-		marker_pos.x = 0
-	
-	if marker_pos.y < 0:
-		marker_pos.y = 0
+	if GlobalVars.forward == true:
+		if marker_pos.x > 1920:
+			marker_pos.x = 1920
+		if marker_pos.x < 0:
+			marker_pos.x = 0
+		if marker_pos.y > 900:
+			marker_pos.y = 900
+		if marker_pos.y < 180:
+			marker_pos.y = 180
+	else:
+		if marker_pos.x >= 1920:
+			marker_pos.x = 0
+		if marker_pos.x <= 0:
+			marker_pos.x = 1920
+		if marker_pos.y >= 900:
+			marker_pos.y = 180
+		if marker_pos.y <= 180:
+			marker_pos.y = 900
 	
 	marker.position = marker_pos
 	rect.position = marker_pos

@@ -1,3 +1,4 @@
+[wait time= ".03"]
 Dalton: ...
 - Ask about his family.
 	if {Juniper.found_skylar} == true:
@@ -103,7 +104,9 @@ Dalton: ...
 		Dalton: I'll take it in as evidence.
 		Quincy: Hold on. 
 		Quincy: Can I take a look at it?
-		- Sure.
+		[wait time=".03"]
+		Dalton: ...
+		- Yes.
 			set {Quincy.Quincy_saw_coors} = true
 			Dalton: Go ahead.
 			Quincy: Hmm...
@@ -122,7 +125,7 @@ Dalton: ...
 			Quincy: I wonder where that leads.
 		else:
 			set {Quincy.Quincy_saw_coors} = true:
-			Quincy: If it’s so confidential, why are you showing it to me again?
+			Quincy: If it’s so confidential, why are you showing it to me?
 			Dalton: Hmph.
 			Dalton: Sorry.
 - Continue investigation.

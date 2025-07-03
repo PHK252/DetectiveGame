@@ -103,3 +103,7 @@ func _on_secret_exit(body):
 		if in_secret == true:
 			in_secret = false
 			timer.paused = false
+
+
+func _on_flip_marker_closet_body_entered(body):
+	pass # Replace with function body.

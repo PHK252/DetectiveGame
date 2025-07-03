@@ -75,6 +75,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	#__________________
 	
 	if is_open == false and entered == true and GlobalVars.in_dialogue == false:
+		open()
 		#GlobalVars.in_dialogue == true
 		#Dialogic.signal_event.connect(doorOpen)
 		#Dialogic.timeline_ended.connect(_on_timeline_ended)

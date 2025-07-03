@@ -1,10 +1,14 @@
-if {Quincy.first_cue} == false or {Quincy.cue_cycle} == 1:
-	set {Quincy.first_cue} = true
-	"Daltons thoughts": I should find a way to distract him.
+if {Quincy.cue_cycle} == 1:
+	"Daltons Thoughts": I should find a way to distract him.
+	[end_timeline]
 elif {Quincy.cue_cycle} == 2:
-	"Daltons thoughts": Hmph.
-	"Daltons thoughts": I guess I’ll have to come back when he’s preoccupied.
+	"Daltons Thoughts": Hmph.
+	"Daltons Thoughts": I guess I’ll have to come back when he’s preoccupied.
+	[end_timeline]
 elif {Quincy.cue_cycle} == 3:
-	"Daltons thoughts": ...
-	"Daltons thoughts": Is he going to keep hounding me?
-	"Daltons thoughts": He’s really not going to get off my tail, huh.
+	"Daltons Thoughts": ...
+	"Daltons Thoughts": Is he going to keep hounding me?
+	"Daltons Thoughts": He’s really not going to get off my tail, huh.
+	[end_timeline]
+else:
+	[end_timeline]

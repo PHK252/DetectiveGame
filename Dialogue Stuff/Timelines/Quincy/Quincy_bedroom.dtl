@@ -1,10 +1,10 @@
 if {Quincy.bedroom_cycle} == 1:
-	Quincy: I'm sure nothing there's nothing of use here.
+	Quincy: I'm sure nothing of use is in there.
 	Quincy: Let's look somewhere else.
 	[end_timeline]
 elif {Quincy.bedroom_cycle} == 2:
-	Quincy: There was no damage done here. 
-	Quincy: The living room's a mess. 
+	Quincy: There is no damage in there. 
+	Quincy: The living room's a mess, though. 
 	Quincy: You'll probably find some evidence there.
 	[end_timeline]
 elif {Quincy.bedroom_cycle} == 3:

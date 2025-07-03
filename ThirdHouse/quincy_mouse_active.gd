@@ -3,7 +3,6 @@ extends Node
 
 
 func _on_mouse_entered():
-	print("mouse entered")
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_mouse_exited():
