@@ -11,31 +11,82 @@ extends Node3D
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
+@export var interactable : Interactable
+@export var interaction_type : String
+@export var phone_ui : CanvasLayer
 
 @export var dialogue_file : String
 
-#func _process(delta):
-	#if GlobalVars.bar_dialogue_Quincy_finsihed == true:
-		#interact_area.hide()
-	#else:
-		#interact_area.show()
+signal theo_bar_call
+
+func _process(delta):
+	if GlobalVars.bar_dialogue_Quincy_finsihed == true or GlobalVars.Quincy_Dalton_caught == true:
+		interactable.set_monitorable(false) 
+	else:
+		interactable.set_monitorable(true) 
 
 func _on_bar_interact_interacted(interactor):
-	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finsihed == false and GlobalVars.in_interaction == false:
-		GlobalVars.in_interaction = true
-		var game_dialogue = Dialogic.start(dialogue_file)
+	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finsihed == false and GlobalVars.in_interaction == "":
+		GlobalVars.in_interaction = interaction_type
+		var bar_dialogue = Dialogic.start(dialogue_file)
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		game_dialogue.register_character(load(load_char_dialogue), character_marker)
+		Dialogic.signal_event.connect(_faint_to_livingroom)
+		Dialogic.signal_event.connect(_make_drinks)
+		Dialogic.signal_event.connect(_call_theo)
+		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
 		player.stop_player()
 		alert.hide()
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	GlobalVars.in_interaction = ""
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.show()
 	GlobalVars.bar_dialogue_Quincy_finsihed = true
 	#switch cam and move characters
+
+func _faint_to_livingroom(argument: String):
+	if argument == "faint":
+		Dialogic.signal_event.disconnect(_faint_to_livingroom)
+		#Scene transtion 
+		#Play Cut scene
+		#signal to play ending dialogue
+		GlobalVars.in_dialogue = false
+		GlobalVars.in_interaction = ""
+		pass
+	elif argument == "disconnect":
+		Dialogic.signal_event.disconnect(_faint_to_livingroom)
+
+func _make_drinks(argument: String):
+	if argument == "make_drink":
+		Dialogic.signal_event.disconnect(_make_drinks)
+		#Play Cutscene
+		pass
+	elif argument == "disconnect":
+		Dialogic.signal_event.disconnect(_make_drinks)
+
+func _call_theo(argument: String):
+	if argument == "call_cue":
+		Dialogic.signal_event.disconnect(_call_theo)
+		GlobalVars.phone_up = true
+		phone_ui.show()
+		emit_signal("theo_bar_call")
+	elif argument == "disconnect":
+		Dialogic.signal_event.disconnect(_call_theo)
+
+
+
+func _on_bar_continue_convo():
+	if GlobalVars.in_dialogue == false:
+		#Theo enter bar
+		var bar_dialogue = Dialogic.start(dialogue_file, "Bar continue")
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
+	

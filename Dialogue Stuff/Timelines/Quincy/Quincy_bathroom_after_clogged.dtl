@@ -1,12 +1,16 @@
 Dalton: I-
 Dalton: Uh...
 Dalton: Y-your toilet is acting up.
-Quincy: Oh, no need to be embarrassed. 
-Quincy: Everyone has accidents. 
-Quincy: Don’t worry about it. 
+Quincy: Oh!
+Quincy: No need to be embarrassed.
+Quincy: Everyone has accidents...
+Quincy: Don’t worry about it.
 Quincy: You go rest your little fox tail, and I’ll go clean it up.
-[signal arg_type= "quincy_clean"]
+[signal arg= "quincy_clean"]
+set {Quincy.in_bathroom} = true
 set {Quincy.is_distracted} = true
+[wait time="2.0"]
+Dalton: ...
 Dalton: That was...
 Dalton: That was surely something.
 [end_timeline]

@@ -135,6 +135,7 @@ signal open_quincy_case
 @onready var Quincy_in_case = false
 @onready var Quincy_Safe_UI = false
 @onready var Quincy_in_computer = false
+@onready var Quincy_Dalton_caught = false 
 
 @onready var clicked_recipe_Juniper = 0
 @onready var clicked_letter_Juniper = 0

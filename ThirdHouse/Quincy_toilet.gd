@@ -28,7 +28,7 @@ extends Node3D
 @export var interact_area_1: Area2D
 @export var interact_area_2: Area2D
 @export var distraction_dialogue_file: String
-@export var regular_dialogue_file: String
+#@export var regular_dialogue_file: String
 @export var thought_dialogue_file: String
 
 #@export var flood_anim : AnimationPlayer
@@ -48,7 +48,7 @@ extends Node3D
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
-	distracted = Dialogic.VAR.get_variable("Quincy.out_of_bathroom") 
+	#distracted = Dialogic.VAR.get_variable("Quincy.in_bathroom") 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
@@ -102,46 +102,78 @@ func _process(delta):
 		interact_area_2.hide()
 
 
-func _on_thoughts_ended():
-	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
+func _on_distracted_thoughts_ended():
+	Dialogic.timeline_ended.disconnect(_on_distracted_thoughts_ended)
 	GlobalVars.in_dialogue = false
-	interact_area_1.show()
-	interact_area_2.show()
+	if Dialogic.VAR.get_variable("clogged_toilet") == true:
+		interact_area_1.hide()
+		interact_area_2.hide()
+	else:
+		interact_area_1.show()
+		interact_area_2.show()
+	
 
-func _on_timeline_ended():
-	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+func _on_regular_thoughts_ended():
+	Dialogic.timeline_ended.disconnect(_on_regular_thoughts_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.show()
 
 func _on_interactable_interacted(interactor):
-	if distracted == true:
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_thoughts_ended)
-		Dialogic.start(thought_dialogue_file)
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		alert.hide()
-		GlobalVars.in_interaction = interact_type
+	#if distracted == true:
+		#GlobalVars.in_dialogue = true
+		#Dialogic.timeline_ended.connect(_on_thoughts_ended)
+		#Dialogic.start(thought_dialogue_file)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#alert.hide()
+		#GlobalVars.in_interaction = interact_type
+		#FP_Cam.priority = 30
+		#Exit_Cam.priority = 0 
+		#cam_anim.play("Cam_Idle")
+		#player.hide()
+		#player.stop_player()
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		if need_distraction == true: 
+			player.hide()
+			player.stop_player()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			GlobalVars.in_interaction = interact_type
+			GlobalVars.in_dialogue = true
+			interact_area_1.show()
+			interact_area_2.show()
+		else:
+			player.hide()
+			player.stop_player()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			GlobalVars.in_dialogue = true
+			GlobalVars.in_interaction = interact_type
+			Dialogic.timeline_ended.connect(_on_regular_thoughts_ended)
+			Dialogic.start(distraction_dialogue_file)
+			player.stop_player()
+			alert.hide()
+
+func _clog_toilet(argument : String):
+	if argument == "clog_time":
+		Dialogic.signal_event.disconnect(_clog_toilet)
+		print("clogging")
+		#play clog anim
+		#await animation
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
-		cam_anim.play("Cam_Idle")
-		player.hide()
-		player.stop_player()
-	elif need_distraction == true: 
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		var game_dialogue = Dialogic.start(distraction_dialogue_file)
-		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		game_dialogue.register_character(load(load_char_dialogue), character_marker)
-		player.stop_player()
-		alert.hide()
+		GlobalVars.in_interaction = ""
+		GlobalVars.in_dialogue = false
+		GlobalVars.in_look_screen = false
+		cam_anim.play("RESET")
+		player.show()
+		player.start_player()
+		pass
 	else:
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		var game_dialogue = Dialogic.start(regular_dialogue_file)
-		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		game_dialogue.register_character(load(load_char_dialogue), character_marker)
-		player.stop_player()
-		alert.hide()
+		Dialogic.signal_event.disconnect(_clog_toilet)
+
+
+func _on_towels_input_event(viewport, event, shape_idx):
+	Dialogic.timeline_ended.connect(_on_distracted_thoughts_ended)
+	Dialogic.signal_event.connect(_clog_toilet)
+	Dialogic.start(distraction_dialogue_file)
+	player.stop_player()
+	alert.hide()

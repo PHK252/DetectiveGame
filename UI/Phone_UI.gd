@@ -218,6 +218,9 @@ func _on_left_hover_mouse_exited():
 @export var phone_marker : Marker2D
 @export var player : CharacterBody3D
 
+@onready var bar_call = false
+
+signal continue_convo
 func inputNum(num: int):
 	if len(num_input.text) <  11:
 		num_input.text += str(num)
@@ -275,7 +278,7 @@ func _on_delete_pressed():
 		pass
 
 func _on_call_pressed():
-	print("Calling")
+	#print("Calling")
 	phone_ui.hide()
 	GlobalVars.phone_up = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -288,8 +291,8 @@ func _on_call_pressed():
 	#print(at_bookshelf)
 	#print(needs_distraction)
 	#print(called_num)
-	if called_num == "034-2012":
-		if at_bookshelf == true and needs_distraction == true and GlobalVars.in_dialogue == false:
+	if called_num == "034-2012" and GlobalVars.in_dialogue == false :
+		if at_bookshelf == true and needs_distraction == true:
 			var book_distract = Dialogic.start("Quincy_book_distract")
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -297,6 +300,15 @@ func _on_call_pressed():
 			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 			book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+		elif bar_call == true:
+			var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
+			GlobalVars.in_dialogue = true
+			Dialogic.signal_event.connect(_end_call)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			bar_call.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			bar_call.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+			bar_call.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 	else:
 		if GlobalVars.in_dialogue == false:
 			var wrong_num = Dialogic.start("Phone_wrong_num")
@@ -353,3 +365,16 @@ func _on_decline_pressed():
 	phone_call.hide()
 	#await get_tree().create_timer(.3).timeout
 	GlobalVars.in_call = false
+
+
+func _on_bar_theo_bar_call():
+	bar_call = true
+
+func _end_call(argument : String):
+	if argument == "call_end":
+		GlobalVars.in_dialogue = false
+		Dialogic.signal_event.disconnect(_end_call)
+		emit_signal("continue_convo")
+	elif argument == "disconnect":
+		Dialogic.signal_event.disconnect(_end_call)
+	

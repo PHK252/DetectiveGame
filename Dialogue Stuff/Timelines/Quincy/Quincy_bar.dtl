@@ -14,7 +14,7 @@ Quincy: Loosen up a bit.
 	if {Character Aff Points.Theo} > 3 and {Global.got_theo_ad} == true:
 		- Call Theo
 			Dalton: I'll call him.
-			[signal arg_type= "call_queue"]
+			[signal arg= "call_cue"]
 			[end_timeline]
 			label Theo Call
 			Theo: Hello?
@@ -29,7 +29,7 @@ Quincy: Loosen up a bit.
 			Dalton: I changed my mind.
 			Dalton: Come down to the basement.
 			Theo: Already coming down.
-			[signal arg_type= "call_end"]
+			[signal arg= "call_end"]
 			[end_timeline]
 			label Bar continue
 			Theo: Hello, esteemed mayor of Arcadia Springs! 
@@ -60,7 +60,8 @@ Quincy: Loosen up a bit.
 				Theo: Can I get a margarita?
 				Quincy: Sure thing. 
 				Quincy: One margarita and one glass of water coming right up.
-			[signal arg_type= "make_drink"]
+			[signal arg= "make_drink"]
+			[wait time= "2.0"]
 			label here
 			Quincy: Here you go.
 			Theo: Thank you!
@@ -73,6 +74,7 @@ Quincy: Loosen up a bit.
 			Theo: It's been a dream come true! 
 			if {Quincy.first_faint} == true:
 				Theo: He was my childhood hero and one of the reasons I-
+				[signal arg= "disconnect"]
 				[signal arg= "faint"]
 				[end_timeline]
 			Theo: He was my childhood hero and one of the reasons I joined the force in the first place. 
@@ -82,6 +84,7 @@ Quincy: Loosen up a bit.
 			Quincy: You're the second person to say that about him.
 			Theo: Who's the first?
 			if {Quincy.second_faint} == true:
+				[signal arg= "disconnect"]
 				[signal arg= "faint"]
 				[end_timeline]
 			Dalton: Detective Usagi.
@@ -97,6 +100,7 @@ Quincy: Loosen up a bit.
 			Quincy: Mmm....
 			if {Quincy.third_faint} == true:
 				Quincy: Not really, it's a lot of-
+				[signal arg= "disconnect"]
 				[signal arg= "faint"]
 				[end_timeline]
 			Quincy: Not really, it's a lot of paperwork and meetings. 
@@ -113,7 +117,9 @@ Quincy: Loosen up a bit.
 			Dalton: Are you done with your drink?
 			Theo: Yeah!
 			Dalton: We should get back to work.
-			Theo: Okay.
+			Quincy: By all means...
+			[signal arg= "disconnect"]
+			[end_timeline]
 		- Drink with Quincy.
 			jump Bar no Theo
 	else:
@@ -159,6 +165,7 @@ Quincy: Loosen up a bit.
 		Quincy: He was one of the best, wasn't he?
 		if {Quincy.first_faint} == true:
 			[signal arg= "faint"]
+			[signal arg= "disconnect"]
 			[end_timeline]
 		Dalton: ...
 		Dalton: He was.
@@ -172,6 +179,7 @@ Quincy: Loosen up a bit.
 			Quincy: Makes sense, he's a spitting image of Isaac.
 			if {Quincy.second_faint} == true:
 				[signal arg= "faint"]
+				[signal arg= "disconnect"]
 				[end_timeline]
 			Dalton: Probably why Chief hired him. 
 			Dalton: It pissed me off when I first saw him. 
@@ -188,9 +196,10 @@ Quincy: Loosen up a bit.
 			Dalton: Mhmm... 
 			Dalton: I've seen his work, and he is a talented officer, but working with him...
 			Dalton: He's just so similar... 
-			if {Quincy.second_faint} == true:
+			if {Quincy.third_faint} == true:
 				Dalton: I can't...
 				[signal arg= "faint"]
+				[signal arg= "disconnect"]
 				[end_timeline]
 			Dalton: I can't...get it out of my head.
 			Quincy: Yeah, I get that. 
@@ -210,6 +219,7 @@ Quincy: Loosen up a bit.
 				Quincy: People vying for any ounce of my attention, 
 				if {Quincy.third_faint} == true:
 					Quincy: The occasional charity work to keep my image-
+					[signal arg= "disconnect"]
 					[signal arg= "faint"]
 					[end_timeline]
 				Quincy: The occasional charity work to keep my image up. 
@@ -233,6 +243,7 @@ Quincy: Loosen up a bit.
 				Quincy: Ahh... 
 				if {Quincy.third_faint} == true:
 					Quincy: Something-
+					[signal arg= "disconnect"]
 					[signal arg= "faint"]
 					[end_timeline]
 				Quincy: Something came up last minute.
@@ -249,8 +260,12 @@ Quincy: Loosen up a bit.
 			Quincy: By all means. 
 			Quincy: This case isn't going to solve itself, isn't it.
 			Dalton: None of them do.
+			[signal arg= "disconnect"]
+			[end_timeline]
 - Nope.
 	Dalton: No, I'm fine.
 	Quincy: Hmm... 
 	Quincy: Well, you know where the drinks are.
 	Quincy: If you change your mind.
+	[signal arg= "disconnect"]
+	[end_timeline]
