@@ -90,15 +90,15 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 				emit_signal("micah_rotate")
 				#Level enter
 				#__________________
-				#player.stop_player()
-				#GlobalVars.in_dialogue = true
+				player.stop_player()
+				GlobalVars.in_dialogue = true
 				introduction_happened = true
-				#Dialogic.timeline_ended.connect(_on_timeline_ended)
-				#Dialogic.signal_event.connect(doorOpen)
-				#var enter = Dialogic.start("Enter_house")
-				#enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-				#enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-				#enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				Dialogic.signal_event.connect(doorOpen)
+				var enter = Dialogic.start("Enter_house")
+				enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+				enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+				enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 				print("dalton_move_knock")
 			return
 				
