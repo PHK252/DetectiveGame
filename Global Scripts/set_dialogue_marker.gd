@@ -6,6 +6,7 @@ extends Marker2D
 @export var sit_marker : Marker3D
 @export var sit_body : Node3D
 @export var rect : ColorRect
+@export var edge_cam: PhantomCamera3D
 
 @onready var sit = false
 @onready var pos
@@ -29,24 +30,26 @@ func positionMarker(mult : int):
 	marker.position = marker_pos
 	rect.position = marker_pos
 	
-	if GlobalVars.forward == true:
-		if marker_pos.x > 1920:
-			marker_pos.x = 1920
-		if marker_pos.x < 0:
-			marker_pos.x = 0
-		if marker_pos.y > 900:
-			marker_pos.y = 900
-		if marker_pos.y < 180:
-			marker_pos.y = 180
-	else:
-		if marker_pos.x >= 1920:
-			marker_pos.x = 0
-		if marker_pos.x <= 0:
-			marker_pos.x = 1920
-		if marker_pos.y >= 900:
-			marker_pos.y = 180
-		if marker_pos.y <= 180:
-			marker_pos.y = 900
+	if edge_cam:
+		if edge_cam.is_active():
+			if GlobalVars.forward == true:
+				if marker_pos.x > 1920:
+					marker_pos.x = 1920
+				if marker_pos.x < 0:
+					marker_pos.x = 0
+				if marker_pos.y > 900:
+					marker_pos.y = 900
+				if marker_pos.y < 180:
+					marker_pos.y = 180
+			else:
+				if marker_pos.x >= 1920:
+					marker_pos.x = 0
+				if marker_pos.x <= 0:
+					marker_pos.x = 1920
+				if marker_pos.y >= 900:
+					marker_pos.y = 180
+				if marker_pos.y <= 180:
+					marker_pos.y = 900
 	
 	marker.position = marker_pos
 	rect.position = marker_pos

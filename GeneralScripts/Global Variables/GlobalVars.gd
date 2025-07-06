@@ -109,6 +109,7 @@ signal open_quincy_case
 @onready var viewed_Quincy_news = false
 @onready var viewed_Quincy_usb = false
 @onready var viewed_Quincy_proposal = false
+@onready var viewed_Quincy_chocolate = false
 
 
 @onready var offPic_dialogue_Quincy = false
@@ -121,6 +122,7 @@ signal open_quincy_case
 @onready var safe_dialogue_Quincy = false
 @onready var bar_dialogue_Quincy_finsihed = false
 @onready var Quincy_toilet_distracted = false
+@onready var chocolate_dialogue = false
 
 @onready var clicked_offPic_Quincy = 0
 @onready var clicked_journal_Quincy = 0

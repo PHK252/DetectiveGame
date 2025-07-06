@@ -14,6 +14,7 @@ extends Node3D
 @export var down_default: bool = false
 #Assign player body
 @export var player: CharacterBody3D
+@export var player_interactor: Interactor
 @export var alert: Sprite3D
 
 #Assign character markers (up to 3)
@@ -26,22 +27,27 @@ extends Node3D
 
 #Interaction Variables
 @export var interact_area_1: Area2D
-@export var interact_area_2: Area2D
+#@export var interact_area_2: Area2D
 @export var distraction_dialogue_file: String
-#@export var regular_dialogue_file: String
-@export var thought_dialogue_file: String
+
 
 #@export var flood_anim : AnimationPlayer
 #@export var anim_track : String
 #Load Global Variables
 @export var interact_type: String
 @export var view_item: String
-
+@export var interactable : Interactable
 
 #set defaults
 @onready var mouse_pos = Vector2(0,0)
 @onready var need_distraction : bool
 @onready var distracted : bool
+
+@export var towel: Node3D
+signal distraction
+
+func _ready() -> void:
+	towel.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,42 +81,47 @@ func _process(delta):
 			player.start_player()
 			GlobalVars.in_interaction = ""
 			interact_area_1.hide()
-			interact_area_2.hide()
+			#interact_area_2.hide()
 			alert.show()
-			#activate dialogue
-		if GlobalVars.get(view_item) == true:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			Exit_Cam.set_tween_duration(0)
-			FP_Cam.priority = 0
-			Exit_Cam.priority = 30
-			await get_tree().create_timer(.03).timeout
-			cam_anim.play("RESET")
-			player.show()
-			player.start_player()
-			GlobalVars.in_interaction = ""
-			interact_area_1.hide()
-			interact_area_2.hide()
-			alert.show()
-			#flood_anim.play(anim_track)
 			
+			#activate dialogue
+		#if GlobalVars.get(view_item) == true:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			#Exit_Cam.set_tween_duration(0)
+			#FP_Cam.priority = 0
+			#Exit_Cam.priority = 30
+			#await get_tree().create_timer(.03).timeout
+			#cam_anim.play("RESET")
+			#player.show()
+			#player.start_player()
+			#GlobalVars.in_interaction = ""
+			#interact_area_1.hide()
+			#interact_area_2.hide()
+			#alert.show()
+			#flood_anim.play(anim_track)
+	#if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
+		#interactable.set_monitorable(false)
+	#else:
+		#interactable.set_monitorable(true)
+	
 	if GlobalVars.in_look_screen == true:
 		interact_area_1.hide()
-		interact_area_2.hide()
-
-	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
-		interact_area_1.hide()
-		interact_area_2.hide()
+		#interact_area_2.hide()
+#
+	#elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
+		#interact_area_1.show()
+		#interact_area_2.show()
 
 
 func _on_distracted_thoughts_ended():
 	Dialogic.timeline_ended.disconnect(_on_distracted_thoughts_ended)
 	GlobalVars.in_dialogue = false
-	if Dialogic.VAR.get_variable("clogged_toilet") == true:
+	if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
 		interact_area_1.hide()
-		interact_area_2.hide()
+		#interact_area_2.hide()
 	else:
 		interact_area_1.show()
-		interact_area_2.show()
+		#interact_area_2.show()
 	
 
 func _on_regular_thoughts_ended():
@@ -120,6 +131,7 @@ func _on_regular_thoughts_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
+	#print("Clogged toilet? " + str(Dialogic.VAR.get_variable("Quincy.clogged_toilet")))
 	#if distracted == true:
 		#GlobalVars.in_dialogue = true
 		#Dialogic.timeline_ended.connect(_on_thoughts_ended)
@@ -129,51 +141,68 @@ func _on_interactable_interacted(interactor):
 		#GlobalVars.in_interaction = interact_type
 		#FP_Cam.priority = 30
 		#Exit_Cam.priority = 0 
-		#cam_anim.play("Cam_Idle")
+		#
 		#player.hide()
 		#player.stop_player()
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
-		if need_distraction == true: 
-			player.hide()
-			player.stop_player()
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			GlobalVars.in_interaction = interact_type
-			GlobalVars.in_dialogue = true
+		player.hide()
+		player.stop_player()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		FP_Cam.priority = 30
+		Exit_Cam.priority = 0
+		cam_anim.play("Cam_Idle")
+		GlobalVars.in_interaction = interact_type
+		if need_distraction == true and Dialogic.VAR.get_variable("Quincy.clogged_toilet") == false: 
+			#GlobalVars.in_dialogue = true
 			interact_area_1.show()
-			interact_area_2.show()
-		else:
-			player.hide()
-			player.stop_player()
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			#interact_area_2.show()
+		elif need_distraction == false and Dialogic.VAR.get_variable("Quincy.clogged_toilet") == false:
 			GlobalVars.in_dialogue = true
-			GlobalVars.in_interaction = interact_type
 			Dialogic.timeline_ended.connect(_on_regular_thoughts_ended)
 			Dialogic.start(distraction_dialogue_file)
 			player.stop_player()
 			alert.hide()
+		else:
+			pass
 
 func _clog_toilet(argument : String):
 	if argument == "clog_time":
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Dialogic.signal_event.disconnect(_clog_toilet)
 		print("clogging")
-		#play clog anim
-		#await animation
-		FP_Cam.priority = 30
-		Exit_Cam.priority = 0 
+		GlobalVars.set(view_item, true)
+		#emit_signal("distraction")
+		#await get_tree().create_timer(2).timeout
+		#towel.visible = true
+		#await get_tree().create_timer(3).timeout
+		#towel.visible = false
+		interactable.set_monitorable(false)
+		player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+		await get_tree().create_timer(.03).timeout
+		player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+		FP_Cam.priority = 0
+		Exit_Cam.priority = 30 
 		GlobalVars.in_interaction = ""
 		GlobalVars.in_dialogue = false
 		GlobalVars.in_look_screen = false
 		cam_anim.play("RESET")
 		player.show()
 		player.start_player()
+		#flood_anim.play(anim_track)
 		pass
 	else:
 		Dialogic.signal_event.disconnect(_clog_toilet)
 
 
 func _on_towels_input_event(viewport, event, shape_idx):
-	Dialogic.timeline_ended.connect(_on_distracted_thoughts_ended)
-	Dialogic.signal_event.connect(_clog_toilet)
-	Dialogic.start(distraction_dialogue_file)
-	player.stop_player()
-	alert.hide()
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				GlobalVars.in_dialogue = true
+				interact_area_1.hide()
+				#interact_area_2.hide()
+				Dialogic.timeline_ended.connect(_on_distracted_thoughts_ended)
+				Dialogic.signal_event.connect(_clog_toilet)
+				Dialogic.start(distraction_dialogue_file)
+				player.stop_player()
+				alert.hide()

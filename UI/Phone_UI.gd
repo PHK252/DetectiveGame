@@ -279,6 +279,7 @@ func _on_delete_pressed():
 
 func _on_call_pressed():
 	#print("Calling")
+	#emit signal(calling) for possible animation
 	phone_ui.hide()
 	GlobalVars.phone_up = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -295,6 +296,8 @@ func _on_call_pressed():
 		if at_bookshelf == true and needs_distraction == true:
 			var book_distract = Dialogic.start("Quincy_book_distract")
 			GlobalVars.in_dialogue = true
+			Dialogic.signal_event.connect(_bottle_fall_sound)
+			Dialogic.signal_event.connect(_end_call)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
@@ -303,7 +306,7 @@ func _on_call_pressed():
 		elif bar_call == true:
 			var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
 			GlobalVars.in_dialogue = true
-			Dialogic.signal_event.connect(_end_call)
+			Dialogic.signal_event.connect(_bar_end_call)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			bar_call.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
@@ -370,11 +373,25 @@ func _on_decline_pressed():
 func _on_bar_theo_bar_call():
 	bar_call = true
 
-func _end_call(argument : String):
+func _bar_end_call(argument : String):
 	if argument == "call_end":
 		GlobalVars.in_dialogue = false
-		Dialogic.signal_event.disconnect(_end_call)
+		Dialogic.signal_event.disconnect(_bar_end_call)
 		emit_signal("continue_convo")
 	elif argument == "disconnect":
-		Dialogic.signal_event.disconnect(_end_call)
+		Dialogic.signal_event.disconnect(_bar_end_call)
 	
+func _bottle_fall_sound(argument: String):
+	if argument == "bar_distract":
+		#play sound
+		Dialogic.signal_event.disconnect(_bottle_fall_sound)
+	elif argument == "end":
+		Dialogic.signal_event.disconnect(_bottle_fall_sound)
+
+func _end_call(argument: String):
+	if argument == "end_call":
+		#play sound
+		GlobalVars.in_dialogue = false
+		Dialogic.signal_event.disconnect(_end_call)
+	elif argument == "end":
+		Dialogic.signal_event.disconnect(_end_call)

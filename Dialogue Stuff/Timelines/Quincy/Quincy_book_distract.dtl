@@ -27,6 +27,8 @@ if {Character Aff Points.Theo} > 3:
 	# play bottle crashing sound
 	Quincy: What the hell?
 	set {Quincy.is_distracted} = true
+	[signal arg= "end"]
+	[end_timeline]
 else:
 	Theo: Hello?
 	Dalton: Hey.

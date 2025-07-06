@@ -17,9 +17,9 @@ var triggered = false
 @onready var greeting = false
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
-@onready var in_bathroom
-@onready var distracted
-@onready var player_in_bathroom
+@onready var in_bathroom 
+@onready var distracted 
+@onready var player_in_bathroom = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -27,10 +27,11 @@ func _ready() -> void:
 func open() -> void:
 	print("opening")
 	cooldown = true
+	collision.set_deferred("disabled", true)
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
-	emit_signal("j_door_open")
+	#emit_signal("j_door_open")
 	await get_tree().create_timer(2.0).timeout
 	cooldown = false
 	
@@ -40,8 +41,9 @@ func close() -> void:
 	cooldown = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
+	collision.set_deferred("disabled", false)
 	is_open = false
-	emit_signal("j_door_closed")
+	#emit_signal("j_door_closed")
 	await get_tree().create_timer(2.0).timeout
 	if quincy_house:
 		print("quickCLosing")
@@ -56,11 +58,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	print(is_open)
-	print(entered)
 	in_bathroom = Dialogic.VAR.get_variable("Quincy.in_bathroom")
-	distracted = Dialogic.VAR.get_variable("Quincy.Quincy.is_distracted")
-	
+	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted")
+	print("player " + str(player_in_bathroom))
+	print("distract "+ str(distracted))
 	if is_open == false and GlobalVars.in_dialogue == false:
 		if in_bathroom == false:
 			if distracted == false and player_in_bathroom == false:
@@ -68,16 +69,16 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 				player.stop_player()
 				alert.hide()
 				GlobalVars.in_dialogue = true
-				var bathroom = Dialogic.start("bathroom_enter_dialogue")
+				var bathroom = Dialogic.start(bathroom_enter_dialogue)
 				bathroom.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 				bathroom.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 				bathroom.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			else:
 				open()
 		else:
-			pass
+			close()
 	else:
-		close()
+		pass
 	
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
@@ -86,6 +87,11 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	open()
 	#asked = true
+func _on_exit_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_exit_timeline_ended)
+	player.start_player()
+	alert.show()
+	GlobalVars.in_dialogue = false
 
 
 func _on_bathroom_body_entered(body):
@@ -95,15 +101,22 @@ func _on_bathroom_body_entered(body):
 			player_in_bathroom = true
 
 
+
 func _on_bathroom_door_body_exited(body):
-	if player_in_bathroom == true:
-		if Dialogic.VAR.get_variable("clogged_toilet") == true:
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			Dialogic.signal_event.connect(_quincy_enter_bathroom)
-			var clogged = Dialogic.start(clog_exit_dialogue)
-			clogged.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			clogged.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
-			clogged.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+	if body.is_in_group("player"):
+		if player_in_bathroom == true:
+			if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
+				print("bathroom exit")
+				player_in_bathroom = false
+				GlobalVars.in_dialogue = true
+				player.stop_player()
+				alert.hide()
+				Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
+				Dialogic.signal_event.connect(_quincy_enter_bathroom)
+				var clogged = Dialogic.start(clog_exit_dialogue)
+				clogged.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+				clogged.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+				clogged.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			
 
 func _quincy_enter_bathroom(argument: String):
@@ -113,3 +126,11 @@ func _quincy_enter_bathroom(argument: String):
 		print("quincy clean")
 		close()
 		pass
+
+
+func _on_interactable_body_entered(body):
+	in_bathroom = Dialogic.VAR.get_variable("Quincy.in_bathroom")
+	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted")
+	if body.is_in_group("player"):
+		if distracted == true and in_bathroom == true:
+			alert.hide()

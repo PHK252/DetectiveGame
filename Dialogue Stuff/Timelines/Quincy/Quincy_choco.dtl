@@ -1,21 +1,26 @@
 "Daltons Thoughts": Hmm...
 "Daltons Thoughts": What's this?
+"Daltons Thoughts": ...
 - Open it.
 	[signal arg= "open_choco"]
 	"Daltons Thoughts": What?
 	"Daltons Thoughts": Is that chocolate?
 	"Daltons Thoughts": Dark...
-	"Daltons Thoughts": 70% too.
+	"Daltons Thoughts": 70 percent too.
 	"Daltons Thoughts": How did get his hands on this?
 	"Daltons Thoughts": We got rid of the supply during the Pavlov case.
 	"Daltons Thoughts": ...
 	- Take it
+		[signal arg= "take_choco"]
 		"Daltons Thoughts": I have to take this in for investigation. 
 		set {Quincy.has_choco} = true
+		[signal arg= "end"]
+		[end_timeline]
 	- Leave it 
 		"Daltons Thoughts": I’m sure he has his reasons.
 		"Daltons Thoughts": Better not to disrupt his business.
+		[signal arg= "end"]
+		[end_timeline]
 - Continue investigation.
 	"Daltons Thoughts": It's probably nothing.
 	[end_timeline]
-
