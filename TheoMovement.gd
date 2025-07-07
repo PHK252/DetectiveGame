@@ -878,3 +878,13 @@ func _on_painting_adjustment_body_exited(body: Node3D) -> void:
 		is_navigating = true
 		STOPPING_DISTANCE = 0.0
 		state = INVESTIGATE
+
+func _on_quincy_interact_finish_greeting() -> void:
+	animation_choice = rng.randi_range(0, 10)
+	investigate_choice = rng.randi_range(0, 2)
+	is_investigating = true
+	nav.target_position = marker_list[investigate_choice].global_position
+	is_navigating = true
+	STOPPING_DISTANCE = 0.0
+	state = INVESTIGATE
+	allow_activation = false

@@ -12,8 +12,10 @@ extends Node3D
 #signal Tstart
 
 @onready var asked = false
+var Q_greeting := false
 
 signal finish_greeting
+signal greet_cam
 
 func _on_interactable_interacted(interactor):
 	#print(asked)
@@ -45,7 +47,9 @@ func _on_greeting_ended():
 	alert.show()
 	Dialogic.timeline_ended.disconnect(_on_greeting_ended)
 	GlobalVars.in_dialogue = false
-	emit_signal("finish_greeting")
+	if Q_greeting == true:
+		emit_signal("finish_greeting")
+	
 
 func _process(delta):
 	asked = Dialogic.VAR.get_variable("Quincy.asked_all")
@@ -72,6 +76,7 @@ func _process(delta):
 func _on_greeting_third_q_dialogue() -> void: # Quincy is greeted outside, Player can't enter until Quincv is greeted
 	print("recieved")
 	if GlobalVars.in_dialogue == false and asked == false:
+		Q_greeting = true
 		#emit_signal("Tstop")
 		alert.hide()
 		print("tryingtogrree")
@@ -82,3 +87,8 @@ func _on_greeting_third_q_dialogue() -> void: # Quincy is greeted outside, Playe
 		greeting.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		greeting.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		greeting.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+
+func _on_theo_wander_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and Q_greeting == false:
+		emit_signal("greet_cam")
+		_on_greeting_third_q_dialogue()

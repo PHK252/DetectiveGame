@@ -163,3 +163,7 @@ func _on_character_body_3d_juniper_open_door() -> void:
 
 func _on_juniper_interact_finish_greeting() -> void:
 	greeting = true
+
+func _on_quincy_interact_finish_greeting() -> void:
+	open()
+	collision.disabled = true

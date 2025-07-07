@@ -511,3 +511,13 @@ func _on_exposition_theo_move() -> void:
 	number = 0
 	needs_rotation_forced = false
 	in_control = true
+
+func _on_quincy_stop_dalton() -> void:
+	needs_rotation_forced = true
+	in_control = false
+	number = 0
+	force_rotation = true
+	await get_tree().create_timer(2.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	in_control = true

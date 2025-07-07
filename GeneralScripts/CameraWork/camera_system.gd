@@ -11,9 +11,9 @@ func activate_camera(cam_index: int) -> void:
 		emit_signal("camera_changed")
 		for i in range(cameras.size()):
 			if i == cam_index:
-				cameras[i].set_priority(21)  # Highest priority for the active camera
+				cameras[i].set_priority(22)  # Highest priority for the active camera
 			else:
-				cameras[i].set_priority(20 - i)  # Set decreasing priority for other cameras
+				cameras[i].set_priority(21 - i)  # Set decreasing priority for other cameras
 
 func _on_hall_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -202,7 +202,8 @@ func _on_kitchen_door_area_body_entered(body: Node3D) -> void:
 
 func _on_wine_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		activate_camera(20)
+		pass
+		#activate_camera(20)
 
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
@@ -250,3 +251,9 @@ func _on_character_body_3d_activate_hall() -> void:
 
 func _on_character_body_3d_cam_bed() -> void:
 	activate_camera(2)
+
+func _on_quincy_interact_greet_cam() -> void:
+	activate_camera(22)
+
+func _on_quincy_interact_finish_greeting() -> void:
+	activate_camera(11)

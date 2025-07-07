@@ -1,4 +1,4 @@
-[gd_scene load_steps=1135 format=4 uid="uid://cqqnmstl4cse3"]
+[gd_scene load_steps=1136 format=4 uid="uid://cqqnmstl4cse3"]
 
 [ext_resource type="PackedScene" uid="uid://dfbv5oel5w2aw" path="res://ThirdHouse/ThirdHouseUpdate.glb" id="1_b3t2i"]
 [ext_resource type="Script" uid="uid://cpi47sa1wppw6" path="res://ThirdHouse/third_house.gd" id="1_g4lql"]
@@ -1756,8 +1756,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_td7ml")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0nmpj"]
-size = Vector3(1, 39.2932, 2.0083)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlsy3"]
+size = Vector3(1, 39.2932, 2.65259)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_71wkb"]
 _surfaces = [{
@@ -4483,7 +4483,7 @@ cull_mask = 1048575
 h_offset = 0.0
 v_offset = 0.0
 projection = 0
-fov = 75.0
+fov = 66.1
 size = 1.0
 frustum_offset = Vector2(0, 0)
 near = 0.05
@@ -4565,7 +4565,7 @@ size = Vector3(1, 2.22412, 1)
 size = Vector3(2.54932, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjj1s"]
-size = Vector3(0.754395, 2.17236, 0.877075)
+size = Vector3(1.3524, 2.17236, 3.80657)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2oxq"]
 size = Vector3(1.59479, 1, 3.64502)
@@ -5325,8 +5325,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xrihr")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h54si"]
-size = Vector3(1.81689, 1.43945, 1.4502)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ejcpe"]
+size = Vector3(1.81689, 1.43945, 1.9137)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tlecy"]
 radius = 1.32161
@@ -7653,8 +7653,8 @@ func _process(_delta):
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k60w3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kqeaq"]
-size = Vector3(1, 3.37695, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbmao"]
+size = Vector3(1.84192, 3.37695, 1.88385)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yh58k"]
 size = Vector3(4.20868, 2.38928, 8.17242)
@@ -7667,6 +7667,9 @@ size = Vector3(2.68414, 2.12695, 4.22473)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6a8t1"]
 size = Vector3(1.54596, 2.62475, 2.40466)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w0p4t"]
+size = Vector3(0.61377, 1.80554, 1.56097)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jrufo"]
 size = Vector3(9.97369, 1, 4.80627)
@@ -10082,12 +10085,13 @@ shape = SubResource("ConcavePolygonShape3D_skf6x")
 [node name="Dalton" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("57_uaya3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4338, -0.872209, -9.00097)
 
-[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport/Characters/Dalton" index="0" node_paths=PackedStringArray("armature", "camera", "idle_time", "idle_time_2", "sound_player")]
+[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport/Characters/Dalton" index="0" node_paths=PackedStringArray("armature", "camera", "idle_time", "idle_time_2", "force_rotate_list", "sound_player")]
 collision_mask = 150
 armature = NodePath("DaltonStepBack")
 camera = NodePath("../../../CameraSystem/Camera3D")
 idle_time = NodePath("Timer")
 idle_time_2 = NodePath("Idle2")
+force_rotate_list = [NodePath("../../../../../QuincyMarkers/ConversateWine")]
 sound_player = NodePath("../DaltonSoundPlayer")
 
 [node name="PlayerInteractor" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" index="0" node_paths=PackedStringArray("player")]
@@ -10351,22 +10355,23 @@ stream = SubResource("AudioStreamSynchronized_rji23")
 bus = &"SFX"
 
 [node name="Quincy" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("62_au34k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58086, 0.0317321, -8.85524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.45648, 0.0317321, -7.28298)
 
-[node name="Quincy" parent="SubViewportContainer/SubViewport/Characters/Quincy" index="0" node_paths=PackedStringArray("smoke", "smoke_release", "phone", "quincyTransform", "wineStatic", "wineAnim", "winepoint", "nav", "player", "marker_positions", "rotate_positions", "sound_player")]
+[node name="Quincy" parent="SubViewportContainer/SubViewport/Characters/Quincy" index="0" node_paths=PackedStringArray("smoke", "smoke_release", "phone", "quincyTransform", "timer_check", "wineStatic", "wineAnim", "winepoint", "nav", "player", "marker_positions", "rotate_positions", "sound_player")]
 collision_layer = 128
 collision_mask = 513
 smoke = NodePath("QuincyAnims/quincyrig/Skeleton3D/CigAttachment/GPUParticles3D")
 smoke_release = NodePath("QuincyAnims/quincyrig/Skeleton3D/BoneAttachment3D2/GPUParticles3D2")
 phone = NodePath("QuincyAnims/quincyrig/Skeleton3D/BoneAttachment3D3/QuincePhone")
 quincyTransform = NodePath(".")
+timer_check = NodePath("TimerCheck")
 wineStatic = NodePath("../../../../../Alcohol/WineGlass")
 wineAnim = NodePath("QuincyAnims/quincyrig/Skeleton3D/BoneAttachment3D/WineGlass")
 winepoint = NodePath("../../../../../Alcohol/winepoint")
 nav = NodePath("NavigationAgent3D")
 player = NodePath("../../Dalton/CharacterBody3D")
 marker_positions = [NodePath("../../../../../QuincyMarkers/WaitingDownstairs"), NodePath("../../../../../QuincyMarkers/Spill"), NodePath("../../../../../QuincyMarkers/WineConvo"), NodePath("../../../../../QuincyMarkers/BathroomWait"), NodePath("../../../../../QuincyMarkers/Bathroom"), NodePath("../../../../../QuincyMarkers/Snowmobile"), NodePath("../../../../../QuincyMarkers/SnowmobileRotate"), NodePath("../../../../../QuincyMarkers/poolRotate"), NodePath("../../../../../QuincyMarkers/HallwayWait"), NodePath("../../../AdditionsMay/AdjustmentAreas/QuincyLivingRoom"), NodePath("../../../AdditionsMay/AdjustmentAreas/QuincyPaintingWait")]
-rotate_positions = [NodePath("../../../../../TheoMarkers/GuitarMark"), NodePath("../../../../../TheoMarkers/PaintingMark")]
+rotate_positions = [NodePath("../../../../../TheoMarkers/GuitarMark"), NodePath("../../../../../TheoMarkers/PaintingMark"), NodePath("../../../../../QuincyMarkers/ConversateWine"), NodePath("../../../../../QuincyMarkers/StartArea")]
 sound_player = NodePath("../QuincySounds")
 
 [node name="Quincy Interact" type="Node3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" index="0" node_paths=PackedStringArray("player", "alert", "dalton_marker", "theo_marker", "quincy_marker")]
@@ -10521,6 +10526,10 @@ body = NodePath("..")
 cam_face_back = [NodePath("../../../../CameraSystem/PaintCam"), NodePath("../../../../CameraSystem/SecretCam"), NodePath("../../../../CameraSystem/OfficeCam"), NodePath("../../../../CameraSystem/OutsideCam"), NodePath("../../../../CameraSystem/BarCam"), NodePath("../../../../CameraSystem/SkiSlopeCam"), NodePath("../../../../CameraSystem/BathroomCam"), NodePath("../../../../CameraSystem/BackLivingCam"), NodePath("../../../../CameraSystem/Patio"), NodePath("../../../../CameraSystem/Wine"), NodePath("../../../../CameraSystem/FishCam"), NodePath("../../../../CameraSystem/SnowMobileCam"), NodePath("../../../../CameraSystem/TransitionLiving"), NodePath("../../../../CameraSystem/GreetingCamera"), NodePath("../../../../CameraSystem/LivingRoom"), NodePath("../../../../CameraSystem/BedroomClosetCam"), NodePath("../../../../CameraSystem/BedroomCam"), NodePath("../../../../CameraSystem/BedroomBedCam"), NodePath("../../../../CameraSystem/PoolTCam")]
 cam_face_front = [NodePath("../../../../CameraSystem/UpstairsCam"), NodePath("../../../../CameraSystem/PoolCam"), NodePath("../../../../CameraSystem/BookShelfCamCam"), NodePath("../../../../CameraSystem/DownstairsCam"), NodePath("../../../../CameraSystem/SecretAreaHall"), NodePath("../../../../CameraSystem/DoorCam"), NodePath("../../../../CameraSystem/HallClose")]
 
+[node name="TimerCheck" type="Timer" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" index="10"]
+wait_time = 0.3
+one_shot = true
+
 [node name="MarbleFootsteps" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Quincy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032177, -0.068641, 0.137105)
 stream = SubResource("AudioStreamSynchronized_rncfp")
@@ -10583,8 +10592,8 @@ mesh = SubResource("ArrayMesh_adoje")
 collision_layer = 4
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ThirdHouseUpdate/StairTop/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1.00002, 0, 3.93484e-08, 0, 1, 3.72739, -13.7446, -2.0854)
-shape = SubResource("BoxShape3D_0nmpj")
+transform = Transform3D(1, 0, 0, 0, 1.00003, 0, 5.6345e-08, 0, 1, 3.72739, -13.7446, -2.40754)
+shape = SubResource("BoxShape3D_dlsy3")
 
 [node name="tigerwall_001" parent="SubViewportContainer/SubViewport/ThirdHouseUpdate" index="9"]
 mesh = SubResource("ArrayMesh_ttpmo")
@@ -11011,7 +11020,7 @@ visible = false
 
 [node name="CameraSystem" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("cameras")]
 script = ExtResource("21_l4v6a")
-cameras = [NodePath("DoorCam"), NodePath("LivingRoom"), NodePath("PaintCam"), NodePath("PoolCam"), NodePath("UpstairsCam"), NodePath("PoolTCam"), NodePath("BookShelfCamCam"), NodePath("SecretAreaHall"), NodePath("SecretCam"), NodePath("OfficeCam"), NodePath("DownstairsCam"), NodePath("OutsideCam"), NodePath("SkiSlopeCam"), NodePath("BarCam"), NodePath("BathroomCam"), NodePath("BedroomCam"), NodePath("BedroomClosetCam"), NodePath("BedroomBedCam"), NodePath("BackLivingCam"), NodePath("Patio"), NodePath("Wine"), NodePath("HallClose")]
+cameras = [NodePath("DoorCam"), NodePath("LivingRoom"), NodePath("PaintCam"), NodePath("PoolCam"), NodePath("UpstairsCam"), NodePath("PoolTCam"), NodePath("BookShelfCamCam"), NodePath("SecretAreaHall"), NodePath("SecretCam"), NodePath("OfficeCam"), NodePath("DownstairsCam"), NodePath("OutsideCam"), NodePath("SkiSlopeCam"), NodePath("BarCam"), NodePath("BathroomCam"), NodePath("BedroomCam"), NodePath("BedroomClosetCam"), NodePath("BedroomBedCam"), NodePath("BackLivingCam"), NodePath("Patio"), NodePath("Wine"), NodePath("HallClose"), NodePath("GreetingCamera")]
 
 [node name="Paths" type="Node" parent="SubViewportContainer/SubViewport/CameraSystem"]
 
@@ -11280,7 +11289,7 @@ camera_3d_resource = SubResource("Resource_ug8yg")
 metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
 
 [node name="GreetingCamera" type="Node3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
-transform = Transform3D(0.311056, 0.25025, -0.916853, 0.049866, 0.959084, 0.278694, 0.949082, -0.132409, 0.28585, -9.53383, 2.4641, -6.79902)
+transform = Transform3D(-0.996843, -0.0134498, -0.0782464, -0.0313658, 0.972089, 0.232507, 0.0729352, 0.234228, -0.969442, -10.2002, 2.17104, -10.8539)
 script = ExtResource("24_vcf55")
 tween_resource = SubResource("Resource_rf0oc")
 camera_3d_resource = SubResource("Resource_squum")
@@ -11472,7 +11481,7 @@ shape = SubResource("BoxShape3D_jvv6m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862291, -2.92573, -1.76755)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CameraSystem/CamAreas/wineArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122803, 0.586182, -0.805969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176201, 0.586182, -0.69079)
 shape = SubResource("BoxShape3D_vjj1s")
 
 [node name="HallCloseCamArea" type="Area3D" parent="SubViewportContainer/SubViewport/CameraSystem/CamAreas"]
@@ -11853,8 +11862,8 @@ collision_layer = 516
 collision_mask = 135
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/BuildingBaseReplacement/barBase/StaticBody3D"]
-transform = Transform3D(1.00003, 0, 0, 0, 1, 0, 0, 0, 1, -0.0725133, 0.219727, -0.225098)
-shape = SubResource("BoxShape3D_h54si")
+transform = Transform3D(1.00003, 0, 0, 0, 1, 0, 0, 0, 1, -0.0725132, 0.219727, 0.00665128)
+shape = SubResource("BoxShape3D_ejcpe")
 
 [node name="Cube_133" parent="SubViewportContainer/SubViewport/BuildingBaseReplacement" index="135"]
 transform = Transform3D(0.0130398, 0, 0, 0, 0.419401, 0, 0, 0, 0.469307, 3.30208, -1.25037, 0.596041)
@@ -14018,11 +14027,11 @@ wait_time = 17.209
 [node name="ControlPoints" type="Node" parent="."]
 
 [node name="TheoWander" type="Area3D" parent="ControlPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.40848, 0, -7.80479)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9712, 0, -7.80479)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ControlPoints/TheoWander"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.957198, 1.18848, 0)
-shape = SubResource("BoxShape3D_kqeaq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536239, 1.18848, 0.585907)
+shape = SubResource("BoxShape3D_wbmao")
 
 [node name="WineTime" type="Area3D" parent="ControlPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38766, -2.95016, -1.57922)
@@ -14051,6 +14060,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.240092, -2.9866, -2.66266)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ControlPoints/QuincyAreas/WineAreaQuincy"]
 transform = Transform3D(0.999999, 0, -0.00141372, 0, 1, 0, 0.00141372, 0, 0.999999, -0.900787, 0.794555, 0.611877)
 shape = SubResource("BoxShape3D_6a8t1")
+
+[node name="ActivateQWander" type="Area3D" parent="ControlPoints/QuincyAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.08768, 0, -7.79643)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ControlPoints/QuincyAreas/ActivateQWander"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193115, 0.402771, -0.0657654)
+shape = SubResource("BoxShape3D_w0p4t")
 
 [node name="TheoMarkers" type="Node" parent="."]
 
@@ -14126,13 +14142,16 @@ shape = SubResource("BoxShape3D_sh43u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.969974, -2.91903, -2.52779)
 
 [node name="WaitingDownstairs" type="Marker3D" parent="QuincyMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0197, -2.87909, -3.68035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0263235, -2.87909, -3.60775)
 
 [node name="poolRotate" type="Marker3D" parent="QuincyMarkers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.562924, 4.34152, -9.44993)
 
 [node name="HallwayWait" type="Marker3D" parent="QuincyMarkers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02674, 0, -9.92919)
+
+[node name="StartArea" type="Marker3D" parent="QuincyMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0377, 0, -9.6878)
 
 [node name="SittingPpl" type="Node" parent="." node_paths=PackedStringArray("theo_sitting", "anim_player_theo", "dalton_bar", "anim_player_dB", "dalton_outside", "anim_player_dO", "theo_outside", "anim_player_tO", "cocktailAnim", "cocktailStatic", "alert")]
 script = ExtResource("66_ccimi")
@@ -16373,11 +16392,18 @@ shape = SubResource("BoxShape3D_62a50")
 [connection signal="velocity_computed" from="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D/NavigationAgent3D" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D" method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="SubViewportContainer/SubViewport/Characters/Theo/CoolDownTimer" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D" method="_on_cool_down_timer_timeout"]
 [connection signal="timeout" from="SubViewportContainer/SubViewport/Characters/Theo/InvestigateTimer" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D" method="_on_investigate_timer_timeout"]
+[connection signal="stop_dalton" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_quincy_stop_dalton"]
+[connection signal="finish_greeting" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D" method="_on_quincy_interact_finish_greeting"]
+[connection signal="finish_greeting" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_quincy_interact_finish_greeting"]
+[connection signal="finish_greeting" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_quincy_interact_finish_greeting"]
+[connection signal="finish_greeting" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact" to="SubViewportContainer/MainDoor" method="_on_quincy_interact_finish_greeting"]
+[connection signal="greet_cam" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_quincy_interact_greet_cam"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact" method="_on_interactable_interacted"]
 [connection signal="timeout" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/DistractionTime" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_distraction_time_timeout"]
 [connection signal="velocity_computed" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/NavigationAgent3D" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyOneShotTimer" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_quincy_one_shot_timer_timeout"]
 [connection signal="timeout" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/smoke_time" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_smoke_time_timeout"]
+[connection signal="timeout" from="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/TimerCheck" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_timer_check_timeout"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/OneMoreBookshelf/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_bookshelf_distract"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/OneMoreBookshelf/Interactable" to="InteractionAreas/Bookshelf" method="_on_interactable_interacted"]
 [connection signal="became_active" from="SubViewportContainer/SubViewport/CameraSystem/UpstairsCam" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_upstairs_cam_became_active"]
@@ -16411,7 +16437,9 @@ shape = SubResource("BoxShape3D_62a50")
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/MasterNotebook" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_master_notebook_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/SkiArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_ski_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/PatioArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_patio_area_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/wineArea" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_wine_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/wineArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_wine_area_body_entered"]
+[connection signal="body_exited" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/wineArea" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_wine_area_body_exited"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_hall_close_cam_area_body_entered"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/BuildingBaseReplacement/toilet_stuff/Interactable" to="SubViewportContainer/SubViewport/BuildingBaseReplacement/toilet_stuff" method="_on_interactable_interacted"]
 [connection signal="distraction" from="SubViewportContainer/SubViewport/Wine" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_fixed_wine_distraction"]
@@ -16437,12 +16465,12 @@ shape = SubResource("BoxShape3D_62a50")
 [connection signal="distraction" from="SubViewportContainer/snowmobile" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_snowmobile_distraction"]
 [connection signal="distraction" from="SubViewportContainer/snowmobile" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_snowmobile_distraction"]
 [connection signal="interacted" from="SubViewportContainer/Interactable" to="SubViewportContainer/snowmobile" method="_on_interactable_interacted"]
-[connection signal="body_entered" from="ControlPoints/TheoWander" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D" method="_on_theo_wander_body_entered"]
-[connection signal="body_entered" from="ControlPoints/TheoWander" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_theo_wander_body_entered"]
+[connection signal="body_entered" from="ControlPoints/TheoWander" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/Quincy Interact" method="_on_theo_wander_body_entered"]
 [connection signal="body_entered" from="ControlPoints/WineTime" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D" method="_on_wine_time_body_entered"]
 [connection signal="body_entered" from="ControlPoints/WineTime" to="SittingPpl/BlockExit" method="_on_wine_time_body_entered"]
 [connection signal="body_entered" from="ControlPoints/QuincyAreas/DaltonCaught" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_dalton_caught_body_entered"]
 [connection signal="body_entered" from="ControlPoints/QuincyAreas/WineAreaQuincy" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_wine_area_quincy_body_entered"]
+[connection signal="body_entered" from="ControlPoints/QuincyAreas/ActivateQWander" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_activate_q_wander_body_entered"]
 [connection signal="body_entered" from="TheoMarkers/TheoOut" to="SittingPpl" method="_on_theo_out_body_entered"]
 [connection signal="body_exited" from="TheoMarkers/TheoOut" to="SittingPpl" method="_on_theo_out_body_exited"]
 [connection signal="body_entered" from="TheoMarkers/TheoQuincyNoGo" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D" method="_on_theo_no_go_body_entered"]

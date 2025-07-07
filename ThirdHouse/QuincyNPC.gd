@@ -10,6 +10,9 @@ extends CharacterBody3D
 @export var quincyTransform: Node3D
 var transform_quincy := false
 var just_wentUp := false
+var dalton_clear := true
+signal stop_dalton
+@export var timer_check : Timer
 
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
@@ -56,6 +59,7 @@ var rotate_forced := false
 var fall_allowed := true
 var distraction_allowed := true
 var rotate_number := 0
+var is_activated := false
 
 #sounds
 @export var sound_player : AnimationPlayer
@@ -72,14 +76,19 @@ var state := IDLE
 
 func _ready() -> void:
 	add_to_group("quincy")
+	wander_choice = 11
 	packofcigs.visible = false
 	cig.visible = false
 	lighter.visible = false
 	wineAnim.visible = false
 	smoke.emitting = false 
 	phone.visible = false
+	rotate_number = 3
+	rotate_forced = true
+	await get_tree().create_timer(2.0).timeout
+	rotate_forced = false
+	rotate_number = 0
 	#is_navigating = false
-	
 
 func _process(delta: float) -> void:
 	#print(is_navigating)
@@ -195,7 +204,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 			#wander_choice = 0
 			#nav.target_position = marker_positions[0].global_position
 			#state = FOLLOW
-			wander_choice = 0
+			wander_choice = 11
 			is_distracted = false
 			is_navigating = true
 			state = FOLLOW
@@ -251,7 +260,12 @@ func _process_follow_state(distance_to_target: float) -> void:
 			if wander_choice == 10:
 				rotate_number = 1
 				rotate_forced = true
-				
+			
+			if wander_choice == 0:
+				rotate_number = 2
+				rotate_forced = true
+				timer_check.start()
+			
 			state = IDLE
 
 #entrance area
@@ -265,10 +279,10 @@ func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
 			if wine_fall == false: 
 				is_distracted = true
 				is_navigating = true
-				wander_choice = 2
-				nav.target_position = marker_positions[2].global_position
+				wander_choice = 0
+				nav.target_position = marker_positions[0].global_position
 				state = FOLLOW
-				distraction_allowed = false
+				#distraction_allowed = false
 		
 		if fall_allowed:
 			if wine_fall == true:
@@ -422,7 +436,7 @@ func _on_hallway_check_body_entered(body: Node3D) -> void:
 	state = FOLLOW
 
 func _on_hallway_check_body_exited(body: Node3D) -> void:
-	wander_choice = 0
+	wander_choice = 11
 	is_distracted = false
 	is_navigating = true
 	#state = FOLLOW
@@ -438,7 +452,7 @@ func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
 func _on_living_room_adjustment_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		rotate_forced = false
-		wander_choice = 0
+		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
 
@@ -453,7 +467,7 @@ func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 func _on_painting_adjustment_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		rotate_forced = false
-		wander_choice = 0
+		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
 
@@ -475,3 +489,47 @@ func _on_upstairs_cam_became_active() -> void:
 	if transform_quincy == true:
 		armature.position.y = armature.position.y + 0.12
 	transform_quincy = false
+
+func _on_wine_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		dalton_clear = false
+
+func _on_wine_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		dalton_clear = true
+		if distraction_allowed and dalton_clear:
+			if wine_fall == false: 
+				rotate_forced = false
+				rotate_number = 0
+				emit_signal("stop_dalton")
+				is_distracted = true
+				is_navigating = true
+				wander_choice = 2
+				nav.target_position = marker_positions[2].global_position
+				state = FOLLOW
+				distraction_allowed = false
+		
+
+func _on_timer_check_timeout() -> void:
+	if distraction_allowed and dalton_clear:
+			if wine_fall == false: 
+				rotate_forced = false
+				rotate_number = 0
+				emit_signal("stop_dalton")
+				is_distracted = true
+				is_navigating = true
+				wander_choice = 2
+				nav.target_position = marker_positions[2].global_position
+				state = FOLLOW
+				distraction_allowed = false
+
+func _on_quincy_interact_finish_greeting() -> void:
+	pass
+	#is_navigating = true
+
+func _on_activate_q_wander_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if is_activated == false:
+			is_activated = true
+			is_navigating = true
+		
