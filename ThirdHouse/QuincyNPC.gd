@@ -10,6 +10,9 @@ extends CharacterBody3D
 @export var quincyTransform: Node3D
 var transform_quincy := false
 var just_wentUp := false
+var dalton_clear := true
+signal stop_dalton
+@export var timer_check : Timer
 
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
@@ -251,7 +254,12 @@ func _process_follow_state(distance_to_target: float) -> void:
 			if wander_choice == 10:
 				rotate_number = 1
 				rotate_forced = true
-				
+			
+			if wander_choice == 0:
+				rotate_number = 2
+				rotate_forced = true
+				timer_check.start()
+			
 			state = IDLE
 
 #entrance area
@@ -265,10 +273,10 @@ func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
 			if wine_fall == false: 
 				is_distracted = true
 				is_navigating = true
-				wander_choice = 2
-				nav.target_position = marker_positions[2].global_position
+				wander_choice = 0
+				nav.target_position = marker_positions[0].global_position
 				state = FOLLOW
-				distraction_allowed = false
+				#distraction_allowed = false
 		
 		if fall_allowed:
 			if wine_fall == true:
@@ -475,3 +483,36 @@ func _on_upstairs_cam_became_active() -> void:
 	if transform_quincy == true:
 		armature.position.y = armature.position.y + 0.12
 	transform_quincy = false
+
+func _on_wine_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		dalton_clear = false
+
+func _on_wine_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		dalton_clear = true
+		if distraction_allowed and dalton_clear:
+			if wine_fall == false: 
+				rotate_forced = false
+				rotate_number = 0
+				emit_signal("stop_dalton")
+				is_distracted = true
+				is_navigating = true
+				wander_choice = 2
+				nav.target_position = marker_positions[2].global_position
+				state = FOLLOW
+				distraction_allowed = false
+		
+
+func _on_timer_check_timeout() -> void:
+	if distraction_allowed and dalton_clear:
+			if wine_fall == false: 
+				rotate_forced = false
+				rotate_number = 0
+				emit_signal("stop_dalton")
+				is_distracted = true
+				is_navigating = true
+				wander_choice = 2
+				nav.target_position = marker_positions[2].global_position
+				state = FOLLOW
+				distraction_allowed = false
