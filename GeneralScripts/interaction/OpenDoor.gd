@@ -82,24 +82,22 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		elif is_open == false and GlobalVars.in_dialogue == false:
 			#print("open")
 			#$Interactable.queue_free()
-			if introduction_happened:
-				open()
-				collision.disabled = true
-			else:
-				emit_signal("greeting")
-				emit_signal("micah_rotate")
-				#Level enter
-				#__________________
-				player.stop_player()
-				GlobalVars.in_dialogue = true
-				introduction_happened = true
-				Dialogic.timeline_ended.connect(_on_timeline_ended)
-				Dialogic.signal_event.connect(doorOpen)
-				var enter = Dialogic.start("Enter_house")
-				enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-				enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-				enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-				print("dalton_move_knock")
+			#if introduction_happened:
+				#open()
+				#collision.disabled = true
+			emit_signal("greeting")
+			emit_signal("micah_rotate")
+			#Level enter
+			#__________________
+			player.stop_player()
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.signal_event.connect(doorOpen)
+			var enter = Dialogic.start("Enter_house")
+			enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+			enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			print("dalton_move_knock")
 			return
 				
 			
@@ -114,10 +112,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	player.start_player()
 
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
 		Dialogic.signal_event.disconnect(doorOpen)
+		introduction_happened = true
 		#$Interactable.queue_free()
 		open()
 		#collision.disabled = true
@@ -141,10 +141,11 @@ func _on_character_body_3d_d_inside() -> void:
 	is_outside = false
 
 func _on_micah_body_micah_open() -> void:
-	await get_tree().create_timer(5).timeout
-	open()
-	collision.disabled = true
+	#await get_tree().create_timer(5).timeout
+	#open()
+	#collision.disabled = true
 	#introduction_happened = true
+	pass
 
 
 

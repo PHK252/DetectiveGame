@@ -57,9 +57,9 @@ Micah: ...
 Micah: Hello?
 [wait time="0.5"]
 Dalton: ...
-- Hello. We have a warrant to search your property.
+- Presesnt Warrant.
 	jump Warrant/
-- Good morning. Are you Micah Procyon?
+- Greet Micah.
 	jump Good_morning/
 - Have Theo answer. | [if {Character Aff Points.Theo} == 1] [else="hide"]
 	jump Micah_Theo_Answer/
