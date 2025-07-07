@@ -257,7 +257,6 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if is_navigating:
 		move_and_slide()
 
-
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("theo"):
 		print("theoEnter")
@@ -370,3 +369,12 @@ func _on_door_micah_rotate() -> void:
 		is_wandering = false
 		_rotate_towards_dalton()
 		emit_signal("micah_open")
+
+func _on_door_greet_done() -> void:
+	at_door = false
+	intDalton = false
+	wander_choice = 2
+	nav.target_position = marker_positions[wander_choice].global_position
+	is_navigating = true
+	is_wandering = true
+	state = WANDER

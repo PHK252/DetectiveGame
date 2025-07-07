@@ -257,3 +257,10 @@ func _on_quincy_interact_greet_cam() -> void:
 
 func _on_quincy_interact_finish_greeting() -> void:
 	activate_camera(11)
+
+
+func _on_door_door_open() -> void:
+	activate_camera(7)
+
+func _on_door_greeting() -> void:
+	activate_camera(8)

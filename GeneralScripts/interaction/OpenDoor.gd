@@ -22,9 +22,13 @@ var theo_left = false
 signal micah_rotate
 signal greeting
 signal general_interact
+
+signal door_open
 var is_outside = true
 
 var cooldown = false
+
+signal greet_done
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,8 +71,6 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		print(is_open)
 		print(entered)
 	
-		
-		
 		#level exit
 		#__________________
 		if is_open == false and entered == true and GlobalVars.in_dialogue == false:
@@ -110,12 +112,14 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 #game code
 #__________________
 func _on_timeline_ended():
+	emit_signal("greet_done")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
 
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
+		emit_signal("door_open")
 		Dialogic.signal_event.disconnect(doorOpen)
 		introduction_happened = true
 		#$Interactable.queue_free()

@@ -85,8 +85,6 @@ func _process(delta):
 func _on_timer_timeout():
 	time_out = true
 
-
-
 func _on_micah_sit():
 	if sit_body.visible == true:
 		sit_micah = true
