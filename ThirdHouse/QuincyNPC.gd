@@ -372,19 +372,29 @@ func _on_bathroom_q_body_entered(body: Node3D) -> void:
 			#state = FOLLOW
 
 func _on_bathroom_q_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		#if bathroom_distraction == false:
-			#is_distracted = false
+	#if body.is_in_group("player"):
+		##if bathroom_distraction == false:
+			##is_distracted = false
+			##is_navigating = true
+			##state = FOLLOW
+		#
+		#if bathroom_distraction == true:
 			#is_navigating = true
+			#wander_choice = 4
+			#nav.target_position = marker_positions[4].global_position
 			#state = FOLLOW
-		
-		if bathroom_distraction == true:
+			#distraction_timer.start()
+	pass
+
+func _on_door_bathroom_replace_quincy_enter_bathroom():
+	if bathroom_distraction == true:
 			is_navigating = true
 			wander_choice = 4
 			nav.target_position = marker_positions[4].global_position
 			state = FOLLOW
 			distraction_timer.start()
 
+		
 func _on_toilet_stuff_distraction() -> void:
 	bathroom_distraction = true
 
@@ -408,6 +418,16 @@ func _on_pool_table_stop_body_entered(body: Node3D) -> void:
 		poolTable = false
 
 func _on_bookshelf_distract(interactor: Interactor) -> void:
+	#is_distracted = true
+	#is_navigating = true
+	#wander_choice = 1
+	#nav.target_position = marker_positions[1].global_position
+	#state = FOLLOW
+	#distraction_timer.start()
+	#fall_allowed = false
+	pass
+
+func _on_phone_book_distract_quincy():
 	is_distracted = true
 	is_navigating = true
 	wander_choice = 1

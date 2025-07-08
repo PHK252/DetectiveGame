@@ -167,26 +167,26 @@ func _on_interactable_interacted(interactor):
 
 func _clog_toilet(argument : String):
 	if argument == "clog_time":
+		player.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		FP_Cam.priority = 0
+		Exit_Cam.priority = 30 
 		Dialogic.signal_event.disconnect(_clog_toilet)
 		print("clogging")
 		GlobalVars.set(view_item, true)
-		#emit_signal("distraction")
-		#await get_tree().create_timer(2).timeout
-		#towel.visible = true
-		#await get_tree().create_timer(3).timeout
-		#towel.visible = false
+		emit_signal("distraction")
+		await get_tree().create_timer(2).timeout
+		towel.visible = true
+		await get_tree().create_timer(3).timeout
+		towel.visible = false
 		interactable.set_monitorable(false)
 		player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 		await get_tree().create_timer(.03).timeout
 		player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-		FP_Cam.priority = 0
-		Exit_Cam.priority = 30 
 		GlobalVars.in_interaction = ""
 		GlobalVars.in_dialogue = false
 		GlobalVars.in_look_screen = false
 		cam_anim.play("RESET")
-		player.show()
 		player.start_player()
 		#flood_anim.play(anim_track)
 		pass

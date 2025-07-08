@@ -15,6 +15,7 @@ func _on_timeline_ended():
 
 func _on_bedroom_closet_cam_tween_completed():
 	if entered_room == false:
+		await get_tree().create_timer(2.0).timeout
 		entered_room = true
 		player.stop_player()
 		GlobalVars.in_dialogue = true

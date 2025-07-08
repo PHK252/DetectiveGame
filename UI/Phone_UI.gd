@@ -221,6 +221,7 @@ func _on_left_hover_mouse_exited():
 @onready var bar_call = false
 
 signal continue_convo
+signal Book_distract_quincy
 func inputNum(num: int):
 	if len(num_input.text) <  11:
 		num_input.text += str(num)
@@ -385,6 +386,7 @@ func _bottle_fall_sound(argument: String):
 	if argument == "bar_distract":
 		#play sound
 		Dialogic.signal_event.disconnect(_bottle_fall_sound)
+		emit_signal("Book_distract_quincy")
 	elif argument == "end":
 		Dialogic.signal_event.disconnect(_bottle_fall_sound)
 

@@ -20,6 +20,10 @@ var triggered = false
 @onready var in_bathroom 
 @onready var distracted 
 @onready var player_in_bathroom = false
+@onready var quincy_close_door = false
+
+signal Quincy_enter_bathroom
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -52,6 +56,7 @@ func close() -> void:
 		animation_tree["parameters/conditions/quick_close"] = false
 		animation_tree["parameters/conditions/is_closed"] = false
 	cooldown = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -119,11 +124,14 @@ func _on_bathroom_door_body_exited(body):
 				clogged.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			
 
+
 func _quincy_enter_bathroom(argument: String):
 	if argument == "quincy_clean":
 		Dialogic.signal_event.disconnect(_quincy_enter_bathroom)
-		#quincy walk into bathroom
+		emit_signal("Quincy_enter_bathroom")
 		print("quincy clean")
+		quincy_close_door = true
+		await get_tree().create_timer(3.0).timeout
 		close()
 		pass
 
