@@ -60,9 +60,9 @@ Quincy: Loosen up a bit.
 				Theo: Can I get a margarita?
 				Quincy: Sure thing. 
 				Quincy: One margarita and one glass of water coming right up.
-			[signal arg= "make_drink"]
-			[wait time= "2.0"]
 			label here
+			[signal arg= "make_drink"]
+			[wait time= "18.0"]
 			Quincy: Here you go.
 			Theo: Thank you!
 			Dalton: Hmph.
@@ -148,8 +148,8 @@ Quincy: Loosen up a bit.
 		label here2
 		Quincy: Sure thing. 
 		Quincy: Coming right up.
-		label make
 		[signal arg_type= "make_drink"]
+		[wait time= "18.0"]
 		Quincy: Here you go.
 		Dalton: Thanks.
 		Quincy: It's been a while since we've talked face to face like this, hmm?

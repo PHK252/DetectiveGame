@@ -15,6 +15,7 @@ signal open_quincy_case
 
 @onready var quincy_time_out = false
 @onready var quincy_kicked_out = false
+@onready var quincy_fainted = false
 
 @onready var juniper_kicked_out = false
 @onready var juniper_time_out = false

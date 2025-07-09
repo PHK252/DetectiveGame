@@ -10,26 +10,39 @@ extends Node3D
 #signal Dstopped
 #signal Tstop
 #signal Tstart
-
+@export var interactable : Interactable
 @onready var asked = false
 var Q_greeting := false
+var needs_close = false
+var dalton_entered = false
+var theo_entered = false
+var quincy_entered = false
 
 signal finish_greeting
 signal greet_cam
+signal close_door
 
 func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
 	if GlobalVars.in_dialogue == false and asked == false:
-		#emit_signal("Tstop")
-		GlobalVars.in_dialogue = true
-		player.stop_player()
-		alert.hide()
-		var ask_victims = Dialogic.start("Quincy_asked_questions")
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+		if Q_greeting == true:
+			#emit_signal("Tstop")
+			GlobalVars.in_dialogue = true
+			player.stop_player()
+			alert.hide()
+			var ask_victims = Dialogic.start("Quincy_asked_questions")
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			ask_victims.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+		else:
+			emit_signal("greet_cam")
+			_on_greeting_third_q_dialogue()
+
+func _ready():
+	if Q_greeting == false:
+		interactable.set_monitorable(false)
 
 func _on_timeline_ended():
 	#emit_signal("Dstopped")
@@ -49,6 +62,8 @@ func _on_greeting_ended():
 	GlobalVars.in_dialogue = false
 	if Q_greeting == true:
 		emit_signal("finish_greeting")
+		needs_close = true
+
 	
 
 func _process(delta):
@@ -90,5 +105,41 @@ func _on_greeting_third_q_dialogue() -> void: # Quincy is greeted outside, Playe
 
 func _on_theo_wander_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and Q_greeting == false:
-		emit_signal("greet_cam")
-		_on_greeting_third_q_dialogue()
+		pass
+
+
+func _on_close_door_body_entered(body):
+	#DEBUG
+	if needs_close == true:
+		if body.is_in_group("player") and Q_greeting == true:
+			dalton_entered = true
+			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				emit_signal("close_door")
+				await get_tree().create_timer(3.0).timeout
+				interactable.set_monitorable(true)
+		
+		if body.is_in_group("Theo") and Q_greeting == true:
+			theo_entered = true
+			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				emit_signal("close_door")
+				await get_tree().create_timer(3.0).timeout
+				interactable.set_monitorable(true)
+
+		if body.is_in_group("Quincy") and Q_greeting == true:
+			quincy_entered = true
+			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				emit_signal("close_door")
+				await get_tree().create_timer(3.0).timeout
+				interactable.set_monitorable(true)
+
+
+func _on_close_door_body_exited(body):
+	if needs_close == true:
+		if body.is_in_group("player") and Q_greeting == true:
+			dalton_entered = false
+		
+		if body.is_in_group("Theo") and Q_greeting == true:
+			theo_entered = false
+
+		if body.is_in_group("Quincy") and Q_greeting == true:
+			quincy_entered = false

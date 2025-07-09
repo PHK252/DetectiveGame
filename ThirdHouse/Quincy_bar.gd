@@ -18,6 +18,9 @@ extends Node3D
 @export var dialogue_file : String
 
 signal theo_bar_call
+signal faint_time
+signal make_drinks
+signal theo_enter_bar
 
 func _process(delta):
 	if GlobalVars.bar_dialogue_Quincy_finsihed == true or GlobalVars.Quincy_Dalton_caught == true:
@@ -53,7 +56,7 @@ func _faint_to_livingroom(argument: String):
 	if argument == "faint":
 		Dialogic.signal_event.disconnect(_faint_to_livingroom)
 		#Scene transtion 
-		#Play Cut scene
+		emit_signal("faint_time")
 		#signal to play ending dialogue
 		GlobalVars.in_dialogue = false
 		GlobalVars.in_interaction = ""
@@ -64,7 +67,7 @@ func _faint_to_livingroom(argument: String):
 func _make_drinks(argument: String):
 	if argument == "make_drink":
 		Dialogic.signal_event.disconnect(_make_drinks)
-		#Play Cutscene
+		emit_signal("make_drinks")
 		pass
 	elif argument == "disconnect":
 		Dialogic.signal_event.disconnect(_make_drinks)
@@ -82,7 +85,7 @@ func _call_theo(argument: String):
 
 func _on_bar_continue_convo():
 	if GlobalVars.in_dialogue == false:
-		#Theo enter bar
+		emit_signal("theo_enter_bar")
 		var bar_dialogue = Dialogic.start(dialogue_file, "Bar continue")
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)

@@ -39,7 +39,7 @@ func _process(delta):
 			#kicked_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			#kicked_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			#kicked_out_dialogue.register_character(load(load_char_dialogue), character_marker)
-	
+
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.timed_out") == false and GlobalVars.quincy_kicked_out == false:
@@ -103,3 +103,8 @@ func _on_secret_exit(body):
 		if in_secret == true:
 			in_secret = false
 			timer.paused = false
+
+
+func _on_cutscene_cams_faint_disable():
+	disable_interaction(interactables)
+	GlobalVars.quincy_fainted = false
