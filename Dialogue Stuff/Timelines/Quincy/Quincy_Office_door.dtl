@@ -6,19 +6,27 @@ if {Quincy.is_distracted} == true:
 	- Try using Micah's key. | [if {Asked Questions.has_key} == true]
 		"Daltons Thoughts": ...
 		"Daltons Thoughts": I guess it wouldn't hurt to try.
-		[wait time="1.5"]
-		# #wait for animation
 		[signal arg="open_door"]
+		[wait time="1.5"]
 		set {Quincy.unlocked_office} = true
+		[signal arg="end"]
+		[end_timeline]
 	- Try again.
 		[wait time="1.5"]
 		jump 
 	- Leave.
 		[signal arg="exit_door"]
-else:
+		[signal arg="end"]
+		[end_timeline]
+elif {Quincy.needs_distraction} == false and {Quincy.is_distracted} == false:
 	[signal arg="cut_cam"]
-	Quincy: Ah.
-	Quincy: It’s probably best you don’t look in there.
-	Quincy: Confidential mayor business, you know...
-	Dalton: Hmph.
+	#[signal arg="end"]
+	#[end_timeline]
 
+label quincy talk
+Quincy: Ah.
+Quincy: It’s probably best you don’t look in there.
+Quincy: Confidential mayor business, you know...
+Dalton: Hmph.
+[signal arg="end"]
+[end_timeline]
