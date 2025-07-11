@@ -2,3 +2,6 @@ if {Quincy.checked_email} == true:
 	Dalton: Future plans? 
 	Dalton: Operation Null? 
 	Dalton: Who is he talking to?
+	set {Quincy.got_mail} = true
+	if {Quincy.got_safe} == true and {Quincy.got_mail} == true and {Quincy.got_journal} == true:
+		set {Quincy.solved_rever} = true

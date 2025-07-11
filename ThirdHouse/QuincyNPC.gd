@@ -61,7 +61,9 @@ var distraction_allowed := true
 var rotate_number := 0
 var is_activated := false
 
-#sounds
+signal play_caught
+
+
 @export var sound_player : AnimationPlayer
 
 #
@@ -303,6 +305,8 @@ func _on_dalton_caught_body_entered(body: Node3D) -> void:
 		print("quincy_entered")
 		if catch_possibility:
 			print("quincy caught you")
+			emit_signal("play_caught")
+			
 
 func _on_distraction_time_timeout() -> void:
 	print("finished")
@@ -393,6 +397,7 @@ func _on_door_bathroom_replace_quincy_enter_bathroom():
 			nav.target_position = marker_positions[4].global_position
 			state = FOLLOW
 			distraction_timer.start()
+			toilet_distract_drop()
 
 		
 func _on_toilet_stuff_distraction() -> void:
@@ -434,6 +439,7 @@ func _on_phone_book_distract_quincy():
 	nav.target_position = marker_positions[1].global_position
 	state = FOLLOW
 	distraction_timer.start()
+	safe_distract_drop()
 	fall_allowed = false
 
 func _on_theo_quincy_no_go_body_entered(body: Node3D) -> void:
@@ -553,3 +559,22 @@ func _on_activate_q_wander_body_entered(body: Node3D) -> void:
 			is_activated = true
 			is_navigating = true
 		
+func safe_distract_drop():
+	if distraction_timer.time_left > 0:
+		if Dialogic.VAR.get_variable("Quincy.got_safe") == true:
+			drop_distract()
+
+func toilet_distract_drop():
+	if distraction_timer.time_left > 0:
+		if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.has_choco") == true and Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true:
+			drop_distract()
+
+func drop_distract():
+	distraction_timer.stop()
+	distraction_timer.emit_signal("timeout")
+	is_distracted = false
+	Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
+
+
+func _on_safe_ui_alarm():
+	drop_distract()

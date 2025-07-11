@@ -27,6 +27,8 @@ extends CanvasLayer
 @export var interior_interact_area_3 : Area2D
 @export var interior_interact_area_4 : Area2D
 
+signal alarm
+
 func _ready():
 	pass_enter.text = ""
 	blinker_anim.play("Blink")
@@ -108,6 +110,7 @@ func _on_enter_pressed():
 		pass_enter.text = "Exceeded amount of incorrect tries."
 		await get_tree().create_timer(1.5).timeout
 		pass_enter.text = "Sending alarm..."
+		emit_signal("alarm")
 		await get_tree().create_timer(1.5).timeout
 		$".".hide()
 		#exit to third cam
