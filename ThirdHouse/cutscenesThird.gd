@@ -4,11 +4,13 @@ extends Node
 @export var test_cutscene : bool
 
 @export var player : CharacterBody3D
+@export var quincy_norm_body : CharacterBody3D 
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var character_marker : Marker2D
 
 signal faint_disable
+signal continue_bar
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("interact") and test_cutscene:
 		#pass
@@ -19,10 +21,16 @@ signal faint_disable
 
 
 func _on_bar_make_drinks():
+	print("making drinks")
+	quincy_norm_body.hide()
 	anim_player.play("cocktail_cutscene")
+	await anim_player.animation_finished
+	quincy_norm_body.show()
+	emit_signal("continue_bar")
 
 
 func _on_bar_faint_time():
+	print("fainting")
 	emit_signal("faint_disable")
 	anim_player.play("fainting_cutscene")
 	await anim_player.animation_finished

@@ -17,9 +17,10 @@ Dalton: ...
 		[wait time=".03"]
 		Dalton: ...
 		- Call Theo
+			set {Quincy.drink_with_theo} = true
 			Dalton: I'll call him.
 			[signal arg= "call_cue"]
-			[end_timeline]
+			#[end_timeline]
 			label Theo Call
 			Theo: Hello?
 			Dalton: Do you want a drink?
@@ -34,7 +35,7 @@ Dalton: ...
 			Dalton: Come down to the basement.
 			Theo: Already coming down.
 			[signal arg= "call_end"]
-			[end_timeline]
+			#[end_timeline]
 			label Bar continue
 			Theo: Hello, esteemed mayor of Arcadia Springs! 
 			Theo: I see you’ve changed that stubborn fox’s mind.
@@ -69,6 +70,7 @@ Dalton: ...
 			label here
 			[signal arg= "make_drink"]
 			[wait time= "18.0"]
+			label continue1
 			Quincy: Here you go.
 			Theo: Thank you!
 			Dalton: Hmph.
@@ -130,6 +132,7 @@ Dalton: ...
 			jump Bar no Theo
 	else:
 		label Bar no Theo
+		set {Quincy.drink_with_theo} = false
 		Dalton: No.
 		Quincy: Hmm...
 		Quincy: What would you like to drink?
@@ -147,7 +150,7 @@ Dalton: ...
 			set {Quincy.first_faint} = true
 			Dalton: Whiskey on the rocks.
 			jump here2
-		-Water.
+		- Water.
 			Dalton: A glass of water.
 			Quincy: You sure you don't want anything stronger?
 			Dalton: Water's fine.
@@ -157,8 +160,9 @@ Dalton: ...
 		Quincy: Sure thing. 
 		Quincy: Coming right up.
 		label make
-		[signal arg_type= "make_drink"]
+		[signal arg = "make_drink"]
 		[wait time= "18.0"]
+		label continue2
 		Quincy: Here you go.
 		Dalton: Thanks.
 		Quincy: It's been a while since we've talked face to face like this, hmm?
@@ -264,7 +268,7 @@ Dalton: ...
 					Dalton: Why were you busy yesterday?
 					Quincy: Just had to take care of some business. 
 					jump Qs
-		-Get back to work.
+		- Get back to work.
 			Dalton: I should get back to work.
 			Quincy: Ah yes.
 			Quincy: By all means. 

@@ -16,6 +16,7 @@ extends Node3D
 @export var phone_ui : CanvasLayer
 
 @export var dialogue_file : String
+var fainted = false
 
 signal theo_bar_call
 signal faint_time
@@ -44,16 +45,23 @@ func _on_bar_interact_interacted(interactor):
 		alert.hide()
 
 func _on_timeline_ended():
-	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-	GlobalVars.in_interaction = ""
-	GlobalVars.in_dialogue = false
-	player.start_player()
-	alert.show()
-	GlobalVars.bar_dialogue_Quincy_finsihed = true
+	if fainted == false:
+		Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+		GlobalVars.in_interaction = ""
+		GlobalVars.in_dialogue = false
+		player.start_player()
+		alert.show()
+		GlobalVars.bar_dialogue_Quincy_finsihed = true
+	else:
+		Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+		GlobalVars.in_interaction = ""
+		GlobalVars.in_dialogue = false
+		GlobalVars.bar_dialogue_Quincy_finsihed = true
 	#switch cam and move characters
 
 func _faint_to_livingroom(argument: String):
 	if argument == "faint":
+		fainted = true
 		Dialogic.signal_event.disconnect(_faint_to_livingroom)
 		#Scene transtion 
 		emit_signal("faint_time")
@@ -93,3 +101,19 @@ func _on_bar_continue_convo():
 		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
 	
+
+
+func _on_cutscene_cams_continue_bar():
+	if Dialogic.VAR.get_variable("Quincy.drink_with_theo") == false:
+		var bar_dialogue = Dialogic.start(dialogue_file, "continue2")
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
+	else:
+		var bar_dialogue = Dialogic.start(dialogue_file, "continue1")
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
