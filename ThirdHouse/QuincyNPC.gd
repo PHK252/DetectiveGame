@@ -90,7 +90,7 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	rotate_forced = false
 	rotate_number = 0
-	#is_navigating = false
+
 
 func _process(delta: float) -> void:
 	#print(is_navigating)
@@ -300,9 +300,7 @@ func _on_fixed_wine_distraction() -> void:
 	wine_fall = true
 
 func _on_dalton_caught_body_entered(body: Node3D) -> void:
-	#print("quincy_entered")
 	if body.name == "Quincy":
-		print("quincy_entered")
 		if catch_possibility:
 			print("quincy caught you")
 			emit_signal("play_caught")
@@ -570,6 +568,7 @@ func toilet_distract_drop():
 			drop_distract()
 
 func drop_distract():
+	print("drop")
 	distraction_timer.stop()
 	distraction_timer.emit_signal("timeout")
 	is_distracted = false

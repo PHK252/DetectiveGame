@@ -147,10 +147,11 @@ func _on_side_enter_body_entered(body: Node3D) -> void:
 			collision.disabled = true
 
 func _on_main_enter_body_entered(body: Node3D) -> void:
-	if quincy_house:
-		if is_open == false:
-			open()
-			collision.disabled = true
+	#if quincy_house:
+		#if is_open == false:
+			#open()
+			#collision.disabled = true
+			pass
 			
 			
 #emit a signal on arrival to open
@@ -172,4 +173,4 @@ func _on_quincy_interact_finish_greeting() -> void:
 
 func _on_quincy_interact_close_door():
 	close()
-	collision.disabled = false
+	collision.set_deferred("disabled", false) 

@@ -62,7 +62,7 @@ func close() -> void:
 	cooldown = false
 
 func _process(delta):
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "office_door":
 		mouse_pos = get_viewport().get_mouse_position()
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
@@ -73,18 +73,24 @@ func _process(delta):
 		else:
 			FP_Cam.set_rotation_degrees(mid_angle)
 			tilt = "mid"
+	else:
+			FP_Cam.set_rotation_degrees(mid_angle)
 	if try_open == 2:
+		print("need_distract")
 		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
+
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	var unlocked = Dialogic.VAR.get_variable("Quincy.unlocked_office")
 	print(is_open)
 	print(entered)
 	if unlocked == true and is_open == false and cooldown == false:
-		open()
-		collision.disabled = true
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+			open()
+			collision.disabled = true
 	elif unlocked == true and is_open == true and cooldown == false:
-		close()
-		collision.disabled = false
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+			close()
+			collision.disabled = false
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()
@@ -101,7 +107,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		#collision.disabled = false
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "office_door": 
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "office_door" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false: 
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Exit_Cam.set_tween_duration(0)
 		FP_Cam.priority = 0
@@ -114,11 +120,14 @@ func _input(event):
 
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
+		Dialogic.signal_event.disconnect(doorOpen)
+		print("opening")
 		key.show()
 		key_animation.play("KeyOffice")
 		await key_animation.animation_finished
 		key.hide()
 		open()
+		await get_tree().create_timer(2.5).timeout
 		collision.disabled = true
 		is_open = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -130,7 +139,6 @@ func doorOpen(argument: String):
 		player.show()
 		alert.show()
 		GlobalVars.in_interaction = ""
-		Dialogic.signal_event.disconnect(doorOpen)
 	elif not is_open and argument == "end":
 		Dialogic.signal_event.disconnect(doorOpen)
 
@@ -149,26 +157,26 @@ func exitDoor(argument: String):
 	elif not is_open and argument == "end":
 			Dialogic.signal_event.disconnect(exitDoor)
 
-func switchCam(argument: String):
-	if not is_open and argument == "cut_cam":
-		Dialogic.signal_event.disconnect(switchCam)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		Exit_Cam.set_tween_duration(0)
-		FP_Cam.priority = 0
-		Exit_Cam.priority = 30
-		key_hole.hide()
-		player.show()
-		alert.hide()
-		GlobalVars.in_interaction = ""
-		GlobalVars.in_dialogue = true
-		var quincy_dialogue = Dialogic.start(thought_dialogue_file, "quincy talk")
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		quincy_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		quincy_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		quincy_dialogue.register_character(load("res://Dialogic Characters/Quincy.dch"), character_marker)
-		player.stop_player()
-	elif not is_open and argument == "end":
-			Dialogic.signal_event.disconnect(switchCam)
+#func switchCam(argument: String):
+	#if not is_open and argument == "cut_cam":
+		#Dialogic.signal_event.disconnect(switchCam)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#Exit_Cam.set_tween_duration(0)
+		#FP_Cam.priority = 0
+		#Exit_Cam.priority = 30
+		#key_hole.hide()
+		#player.show()
+		#alert.hide()
+		#GlobalVars.in_interaction = ""
+		#GlobalVars.in_dialogue = true
+		#var quincy_dialogue = Dialogic.start(thought_dialogue_file, "quincy talk")
+		#Dialogic.timeline_ended.connect(_on_timeline_ended)
+		#quincy_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		#quincy_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		#quincy_dialogue.register_character(load("res://Dialogic Characters/Quincy.dch"), character_marker)
+		#player.stop_player()
+	#elif not is_open and argument == "end":
+			#Dialogic.signal_event.disconnect(switchCam)
 
 func _on_thoughts_ended():
 	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
@@ -176,7 +184,7 @@ func _on_thoughts_ended():
 	#await get_tree().create_timer(.5).timeout
 
 func _on_cue_thoughts_ended():
-	Dialogic.timeline_ended.disconnect(_on_thoughts_ended)
+	Dialogic.timeline_ended.disconnect(_on_cue_thoughts_ended)
 	GlobalVars.in_dialogue = false
 	in_thoughts = false
 	cue_finished()
@@ -202,6 +210,7 @@ func _on_office_door_input_event(viewport, event, shape_idx):
 					Dialogic.timeline_ended.connect(_on_cue_thoughts_ended)
 				else:
 					try_open += 1
+					cue_finished()
 				
 
 func _on_timeline_ended():
@@ -222,7 +231,7 @@ func choose_distract_thought_dialogue():
 		Dialogic.VAR.set_variable("Quincy.cue_cycle", 1)
 		
 func cue_finished():
-	if in_thoughts == false and GlobalVars.in_dialogue == false:
+	if in_thoughts == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "office_door":
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Exit_Cam.set_tween_duration(0)
 		FP_Cam.priority = 0

@@ -5,6 +5,7 @@ extends Marker3D
 @export var cam_face_back: Array[PhantomCamera3D] = []
 @export var cam_face_front: Array[PhantomCamera3D] = []
 @export var flip_cam : PhantomCamera3D
+@export var flip_cam_2: PhantomCamera3D
 @export var x_pos: float
 
 var place_pos
@@ -29,8 +30,10 @@ func check_cam_orenination(frontArr: Array, backArr: Array):
 			GlobalVars.forward = false
 	
 	if flip == true:
-		if flip_cam.is_active:
+		if flip_cam.is_active(): 
 			GlobalVars.forward = true
+		elif flip_cam_2.is_active():
+			GlobalVars.forward = false
 		else:
 			GlobalVars.forward = false
 		
@@ -46,4 +49,24 @@ func _on_flip_marker_closet_body_entered(body):
 
 func _on_flip_marker_closet_body_exited(body):
 	if body.is_in_group("player"):
-			flip = false
+		flip = false
+
+
+
+
+func _on_flip_bar_marker_body_entered(body):
+	if body.is_in_group("player"):
+		flip = true
+	if body.is_in_group("theo"):
+		flip = true
+	if body.name == "Quincy":
+		flip = true
+
+
+func _on_flip_bar_marker_body_exited(body):
+	if body.is_in_group("player"):
+		flip = false
+	if body.is_in_group("theo"):
+		flip = false
+	if body.name == "Quincy":
+		flip = false

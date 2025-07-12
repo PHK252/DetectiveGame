@@ -4,6 +4,8 @@ Quincy: Come on, you’re so uptight around the rookie.
 Quincy: Well...
 Quincy: Even more than usual. 
 Quincy: Loosen up a bit.
+[wait time=".03"]
+Dalton: ...
 - Sure.
 	Dalton: Fine...
 	Dalton: Why not.
@@ -12,6 +14,8 @@ Quincy: Loosen up a bit.
 	Dalton: Hmph.
 	Quincy: Would you like to invite the rookie as well?
 	if {Character Aff Points.Theo} > 3 and {Global.got_theo_ad} == true:
+		[wait time=".03"]
+		Dalton: ...
 		- Call Theo
 			Dalton: I'll call him.
 			[signal arg= "call_cue"]
@@ -39,6 +43,8 @@ Quincy: Loosen up a bit.
 			Quincy: And besides...
 			Quincy: A little bit of work time fun never killed anyone.
 			Quincy: What would you like?
+			[wait time=".03"]
+			Dalton: ...
 			- Beer. 
 				set {Quincy.third_faint} = true
 				Dalton: Just a beer would be fine. 
@@ -127,6 +133,8 @@ Quincy: Loosen up a bit.
 		Dalton: No.
 		Quincy: Hmm...
 		Quincy: What would you like to drink?
+		[wait time=".03"]
+		Dalton: ...
 		- Beer. 
 			set {Quincy.third_faint} = true
 			Dalton: Just a beer would be fine. 
@@ -148,6 +156,7 @@ Quincy: Loosen up a bit.
 		label here2
 		Quincy: Sure thing. 
 		Quincy: Coming right up.
+		label make
 		[signal arg_type= "make_drink"]
 		[wait time= "18.0"]
 		Quincy: Here you go.
@@ -206,6 +215,7 @@ Quincy: Loosen up a bit.
 			Quincy: Even I got deja vu meeting him.
 			jump Qs
 		label Qs
+		[wait time=".03"]
 		Dalton: ...
 		- Catch up. 
 			if {Quincy.catch_up} == false:

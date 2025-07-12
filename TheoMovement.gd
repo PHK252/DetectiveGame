@@ -504,20 +504,21 @@ func _on_investigate_timer_timeout() -> void:
 			state = INVESTIGATE
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
-	print("entered")
-	if body.is_in_group("player"):
-		print("wine_time")
-		anim_tree.set("parameters/Scratch/request", 2)
-		anim_tree.set("parameters/NoteAlt/request", 2)
-		is_investigating = false
-		going_to_bar = true
-		is_navigating = true
-		investigate_choice = 3
-		nav.target_position = marker_list[investigate_choice].global_position
-		nav.path_desired_distance = 0.2
-		nav.target_desired_distance = 0.2
-		STOPPING_DISTANCE = 0.0
-		state = INVESTIGATE
+	#print("entered")
+	#if body.is_in_group("player"):
+		#print("wine_time")
+		#anim_tree.set("parameters/Scratch/request", 2)
+		#anim_tree.set("parameters/NoteAlt/request", 2)
+		#is_investigating = false
+		#going_to_bar = true
+		#is_navigating = true
+		#investigate_choice = 3
+		#nav.target_position = marker_list[investigate_choice].global_position
+		#nav.path_desired_distance = 0.2
+		#nav.target_desired_distance = 0.2
+		#STOPPING_DISTANCE = 0.0
+		#state = INVESTIGATE
+		pass
 
 
 func _on_bar_theo_enter_bar():

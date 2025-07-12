@@ -4,10 +4,8 @@ if {Quincy.is_distracted} == true:
 	label open
 	"Daltons Thoughts": ...
 	- Try using Micah's key. | [if {Asked Questions.has_key} == true]
-		"Daltons Thoughts": ...
 		"Daltons Thoughts": I guess it wouldn't hurt to try.
 		[signal arg="open_door"]
-		[wait time="1.5"]
 		set {Quincy.unlocked_office} = true
 		[signal arg="end"]
 		[end_timeline]
@@ -18,8 +16,8 @@ if {Quincy.is_distracted} == true:
 		[signal arg="exit_door"]
 		[signal arg="end"]
 		[end_timeline]
-elif {Quincy.needs_distraction} == false and {Quincy.is_distracted} == false:
-	[signal arg="cut_cam"]
+#elif {Quincy.needs_distraction} == false and {Quincy.is_distracted} == false:
+	#[signal arg="cut_cam"]
 	#[signal arg="end"]
 	#[end_timeline]
 

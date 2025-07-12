@@ -92,7 +92,6 @@ func _on_greeting_third_q_dialogue() -> void: # Quincy is greeted outside, Playe
 	print("recieved")
 	if GlobalVars.in_dialogue == false and asked == false:
 		Q_greeting = true
-		#emit_signal("Tstop")
 		alert.hide()
 		print("tryingtogrree")
 		GlobalVars.in_dialogue = true
@@ -107,39 +106,63 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and Q_greeting == false:
 		pass
 
+#func _on_close_door_body_exited(body):
+	#if needs_close == true:
+		#if body.is_in_group("player") and Q_greeting == true:
+			#dalton_entered = false
+		#
+		#if body.is_in_group("Theo") and Q_greeting == true:
+			#theo_entered = false
+#
+		#if body.is_in_group("Quincy") and Q_greeting == true:
+			#quincy_entered = false
 
-func _on_close_door_body_entered(body):
-	#DEBUG
+
+func _on_close_door_dalton_entered(body):
 	if needs_close == true:
+		#print("close_enter")
 		if body.is_in_group("player") and Q_greeting == true:
 			dalton_entered = true
+			print("dalton_enter")
 			if dalton_entered == true and theo_entered == true and quincy_entered == true:
 				emit_signal("close_door")
 				await get_tree().create_timer(3.0).timeout
 				interactable.set_monitorable(true)
-		
-		if body.is_in_group("Theo") and Q_greeting == true:
-			theo_entered = true
-			if dalton_entered == true and theo_entered == true and quincy_entered == true:
-				emit_signal("close_door")
-				await get_tree().create_timer(3.0).timeout
-				interactable.set_monitorable(true)
-
-		if body.is_in_group("Quincy") and Q_greeting == true:
-			quincy_entered = true
-			if dalton_entered == true and theo_entered == true and quincy_entered == true:
-				emit_signal("close_door")
-				await get_tree().create_timer(3.0).timeout
-				interactable.set_monitorable(true)
+				needs_close = false
 
 
-func _on_close_door_body_exited(body):
+func _on_close_door_theo_entered(body):
 	if needs_close == true:
-		if body.is_in_group("player") and Q_greeting == true:
-			dalton_entered = false
-		
-		if body.is_in_group("Theo") and Q_greeting == true:
-			theo_entered = false
+		if body.is_in_group("theo") and Q_greeting == true:
+			theo_entered = true
+			print("Theo_enter")
+			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				emit_signal("close_door")
+				await get_tree().create_timer(3.0).timeout
+				interactable.set_monitorable(true)
+				needs_close = false
 
-		if body.is_in_group("Quincy") and Q_greeting == true:
-			quincy_entered = false
+
+func _on_close_door_quincy_entered(body):
+	if needs_close == true:
+		if body.name == "Quincy" and Q_greeting == true:
+			quincy_entered = true
+			print("quincy_enter")
+			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				emit_signal("close_door")
+				await get_tree().create_timer(3.0).timeout
+				interactable.set_monitorable(true)
+				needs_close = false
+
+
+
+func _on_outside_snow_area_body_entered(body):
+	if body.is_in_group("player"):
+		dalton_entered = false
+	
+	if body.is_in_group("theo"):
+		theo_entered = false
+	
+	if body.name == "Quincy":
+		quincy_entered = false
+			
