@@ -4,6 +4,7 @@ extends Node
 @export var test_cutscene : bool
 
 @export var player : CharacterBody3D
+@export var sitting_Dalton : Node3D
 @export var quincy_norm_body : CharacterBody3D 
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
@@ -31,6 +32,8 @@ func _on_bar_make_drinks():
 
 func _on_bar_faint_time():
 	print("fainting")
+	sitting_Dalton.hide()
+	player.hide()
 	emit_signal("faint_disable")
 	anim_player.play("fainting_cutscene")
 	await anim_player.animation_finished

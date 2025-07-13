@@ -90,7 +90,6 @@ func _process(delta):
 		interactable.set_monitorable(true)
 	else:
 		#print("unmonitorable")
-		
 		if Dialogic.VAR.get_variable("Quincy.has_choco") == true and set_monitor == false:
 			print("unmonitorable")
 			set_monitor = true
@@ -98,8 +97,8 @@ func _process(delta):
 			player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 			await get_tree().create_timer(.03).timeout
 			player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-		else:
-			interactable.set_monitorable(false)
+		#else:
+			#interactable.set_monitorable(false)
 
 	
 func _on_timeline_ended():

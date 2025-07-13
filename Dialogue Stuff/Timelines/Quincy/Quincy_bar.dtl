@@ -1,54 +1,66 @@
 Quincy: Would you like a drink?
-Dalton: I shouldn’t. 
-Quincy: Come on, you’re so uptight around the rookie. 
+Dalton: I shouldn’t.
+Quincy: Come on, you’re so uptight around the rookie.
 Quincy: Well...
-Quincy: Even more than usual. 
+Quincy: Even more than usual.
 Quincy: Loosen up a bit.
-[wait time=".03"]
+[wait time="1.0"]
 Dalton: ...
 - Sure.
 	Dalton: Fine...
 	Dalton: Why not.
-	Quincy: Mmm... 
+	Quincy: Mmm...
 	Quincy: I was hoping you'd cave.
 	Dalton: Hmph.
 	Quincy: Would you like to invite the rookie as well?
 	if {Character Aff Points.Theo} > 3 and {Global.got_theo_ad} == true:
-		[wait time=".03"]
+		[wait time="1.0"]
 		Dalton: ...
-		- Call Theo
+		- Call Theo.
 			set {Quincy.drink_with_theo} = true
 			Dalton: I'll call him.
-			[signal arg= "call_cue"]
-			#[end_timeline]
+			set {Quincy.in_call} = true
+			[signal arg="call_cue"]
+			[end_timeline]
 			label Theo Call
 			Theo: Hello?
 			Dalton: Do you want a drink?
 			Theo: Like water...?
-			Dalton: No. 
+			Dalton: No.
 			Dalton: The bar kind.
-			Theo: Huh? 
-			Theo: Yeah! 
-			Theo: Sure! 
-			Theo: You didn’t seem too keen on it before, though.
-			Dalton: I changed my mind.
-			Dalton: Come down to the basement.
+			Theo: Huh?
+			Theo: Yeah!
+			Theo: Sure!
+			Theo: You don't seem like one to drink on the job.
+			Dalton: I'm not.
+			Dalton: Today's an expection. 
+			Theo: Hm...
+			Theo: Spoken like a true day drinker.
+			Dalton: Tsk.
+			Dalton: Go down to the basement.
 			Theo: Already coming down.
-			[signal arg= "call_end"]
-			#[end_timeline]
+			[signal arg="call_end"]
+			[end_timeline]
+			set {Quincy.in_call} = false
 			label Bar continue
-			Theo: Hello, esteemed mayor of Arcadia Springs! 
-			Theo: I see you’ve changed that stubborn fox’s mind.
+			Theo: Hello!
+			Theo: Esteemed Mayor of Arcadia Springs!
+			Theo: I see you’ve convince this fox to take up day drinking. 
 			Quincy: Ahh.
-			Quincy: It took a bit of light convincing. 
+			Quincy: No warm-blooded mammal would have the willpower to turn down a drink. 
 			Quincy: And besides...
 			Quincy: A little bit of work time fun never killed anyone.
+			Theo: Wise as always, Mr. Mayor.
+			Quincy: Hah.
+			Quincy: I like him already, Dalton.
+			Dalton: Hmph.
+			Quincy: Anyways...
 			Quincy: What would you like?
-			[wait time=".03"]
+			[wait time="1.0"]
 			Dalton: ...
-			- Beer. 
+			- Beer.
 				set {Quincy.third_faint} = true
-				Dalton: Just a beer would be fine. 
+				Dalton: Just a beer would be fine.
 				jump here
 			- Gin and tonic.
 				set {Quincy.second_faint} = true
@@ -60,73 +72,73 @@ Dalton: ...
 				jump here
 			- Water.
 				Quincy: Mmm....
-				Quincy: You're no fun. 
-				Quincy: Theo, what would you like?
-				Theo: I know, Mr. Party Pooper here. 
-				Theo: Hmm...
-				Theo: Can I get a margarita?
-				Quincy: Sure thing. 
-				Quincy: One margarita and one glass of water coming right up.
+				Quincy: You're no fun.
+				Theo: I know, Mr. Party Pooper here.
 			label here
-			[signal arg= "make_drink"]
-			[wait time= "18.0"]
+			Quincy: Theo, what would you like?
+			Theo: Hmm...
+			Theo: Can I get a margarita?
+			Quincy: Sure thing.
+			Quincy: One margarita and one glass of water coming right up.
+			[signal arg="make_drink"]
+			[wait time="18.0"]
 			label continue1
 			Quincy: Here you go.
 			Theo: Thank you!
 			Dalton: Hmph.
-			Quincy: So... 
-			Quincy: Theo... 
+			Quincy: So...
+			Quincy: Theo...
 			Quincy: How's working with the grumpy old fox?
 			Dalton: Hey!
-			Theo: Oh! 
-			Theo: It's been a dream come true! 
+			Theo: Oh!
+			Theo: It's been a dream come true!
 			if {Quincy.first_faint} == true:
 				Theo: He was my childhood hero and one of the reasons I-
-				[signal arg= "disconnect"]
-				[signal arg= "faint"]
+				[signal arg="faint"]
+				[signal arg="disconnect"]
 				[end_timeline]
-			Theo: He was my childhood hero and one of the reasons I joined the force in the first place. 
+			Theo: He was my childhood hero and one of the reasons I joined the force in the first place.
 			Theo: He's an amazing detective...
 			Theo: And honestly he's not that grumpy once you get to know him.
 			Quincy: Hah!
 			Quincy: You're the second person to say that about him.
 			Theo: Who's the first?
 			if {Quincy.second_faint} == true:
-				[signal arg= "disconnect"]
-				[signal arg= "faint"]
+				[signal arg="faint"]
+				[signal arg="disconnect"]
 				[end_timeline]
 			Dalton: Detective Usagi.
 			Theo: Oh.
 			Dalton: ...
 			Quincy: ...
-			Theo: Ahem... 
-			Theo: So... 
-			Theo: May- 
-			Theo: Quincy... 
-			Theo: How is life as a Mayor? 
+			Theo: Ahem...
+			Theo: So...
+			Theo: May-
+			Theo: Quincy...
+			Theo: How is life as a Mayor?
 			Theo: I bet it's pretty hectic.
 			Quincy: Mmm....
 			if {Quincy.third_faint} == true:
 				Quincy: Not really, it's a lot of-
-				[signal arg= "disconnect"]
-				[signal arg= "faint"]
+				[signal arg="faint"]
+				[signal arg="disconnect"]
 				[end_timeline]
-			Quincy: Not really, it's a lot of paperwork and meetings. 
+			Quincy: Not really, it's a lot of paperwork and meetings.
 			Quincy: There's the occasional speech or gala...
 			Quincy: But it's a lot of sitting, listening, reading and nodding along with people that think they have any right to make a difference.
 			Quincy: It’s quite irritating.
 			Theo: Hmm?
-			Theo: Really? 
-			Theo: In the papers, they say that you do so much for this town. 
+			Theo: Really?
+			Theo: In the papers, they say that you do so much for this town.
 			Theo: Helping out at food banks, reading to sick children, donating money and the such…
-			Quincy: Ahh... 
+			Quincy: Ahh...
 			Quincy: They flatter me.
 			Dalton: ...
 			Dalton: Are you done with your drink?
 			Theo: Yeah!
 			Dalton: We should get back to work.
 			Quincy: By all means...
-			[signal arg= "disconnect"]
+			[signal arg="disconnect"]
 			[end_timeline]
 		- Drink with Quincy.
 			jump Bar no Theo
@@ -136,11 +148,11 @@ Dalton: ...
 		Dalton: No.
 		Quincy: Hmm...
 		Quincy: What would you like to drink?
-		[wait time=".03"]
+		[wait time="1.0"]
 		Dalton: ...
-		- Beer. 
+		- Beer.
 			set {Quincy.third_faint} = true
-			Dalton: Just a beer would be fine. 
+			Dalton: Just a beer would be fine.
 			jump here2
 		- Gin and tonic.
 			set {Quincy.second_faint} = true
@@ -157,45 +169,45 @@ Dalton: ...
 			Quincy: Mmm...
 			jump make
 		label here2
-		Quincy: Sure thing. 
+		Quincy: Sure thing.
 		Quincy: Coming right up.
 		label make
-		[signal arg = "make_drink"]
-		[wait time= "18.0"]
+		[signal arg="make_drink"]
+		[wait time="18.0"]
 		label continue2
 		Quincy: Here you go.
 		Dalton: Thanks.
 		Quincy: It's been a while since we've talked face to face like this, hmm?
 		Dalton: Hmph.
 		Quincy: When was the last time?
-		Quincy: Wasn't it with Isaac? 
+		Quincy: Wasn't it with Isaac?
 		Quincy: About closing the Pavlov case?
 		Dalton: Hmph.
 		Quincy: Have you heard from him since?
 		Dalton: No.
-		Quincy: Hm.... 
+		Quincy: Hm....
 		Quincy: Damn shame.
 		Quincy: He was one of the best, wasn't he?
 		if {Quincy.first_faint} == true:
-			[signal arg= "faint"]
-			[signal arg= "disconnect"]
+			[signal arg="faint"]
+			[signal arg="disconnect"]
 			[end_timeline]
 		Dalton: ...
 		Dalton: He was.
-		Quincy: Mmm... 
-		Quincy: The rookie... 
+		Quincy: Mmm...
+		Quincy: The rookie...
 		Quincy: How is he?
 		if {Character Aff Points.Theo} > 3:
-			Dalton: He's... 
+			Dalton: He's...
 			Dalton: A bit clingy, but he'll go far.
-			Quincy: You seem to have already taken a liking to him. 
+			Quincy: You seem to have already taken a liking to him.
 			Quincy: Makes sense, he's a spitting image of Isaac.
 			if {Quincy.second_faint} == true:
-				[signal arg= "faint"]
-				[signal arg= "disconnect"]
+				[signal arg="faint"]
+				[signal arg="disconnect"]
 				[end_timeline]
-			Dalton: Probably why Chief hired him. 
-			Dalton: It pissed me off when I first saw him. 
+			Dalton: Probably why Chief hired him.
+			Dalton: It pissed me off when I first saw him.
 			Dalton: Doe-eyed and smiling without care.
 			Quincy: Hah!
 			Quincy: Are you talking about the rookie or Isaac?
@@ -203,50 +215,50 @@ Dalton: ...
 			Dalton: Point taken.
 			jump Qs
 		else:
-			Dalton: He's... 
+			Dalton: He's...
 			Dalton: He's fine.
 			Quincy: Is he?
-			Dalton: Mhmm... 
+			Dalton: Mhmm...
 			Dalton: I've seen his work, and he is a talented officer, but working with him...
-			Dalton: He's just so similar... 
+			Dalton: He's just so similar...
 			if {Quincy.third_faint} == true:
 				Dalton: I can't...
-				[signal arg= "faint"]
-				[signal arg= "disconnect"]
+				[signal arg="faint"]
+				[signal arg="disconnect"]
 				[end_timeline]
 			Dalton: I can't...get it out of my head.
-			Quincy: Yeah, I get that. 
+			Quincy: Yeah, I get that.
 			Quincy: Even I got deja vu meeting him.
 			jump Qs
 		label Qs
-		[wait time=".03"]
+		[wait time="1.0"]
 		Dalton: ...
-		- Catch up. 
+		- Catch up.
 			if {Quincy.catch_up} == false:
 				set {Quincy.catch_up} = true
-				Dalton: How are things with you? 
-				Quincy: Ah... 
-				Quincy: You know... 
-				Quincy: It’s all the same... 
-				Quincy: Boring budget meetings, 
-				Quincy: Tons of paperwork, 
-				Quincy: People vying for any ounce of my attention, 
+				Dalton: How are things with you?
+				Quincy: Ah...
+				Quincy: You know...
+				Quincy: It’s all the same...
+				Quincy: Boring budget meetings,
+				Quincy: Tons of paperwork,
+				Quincy: People vying for any ounce of my attention,
 				if {Quincy.third_faint} == true:
 					Quincy: The occasional charity work to keep my image-
-					[signal arg= "disconnect"]
-					[signal arg= "faint"]
+					[signal arg="faint"]
+					[signal arg="disconnect"]
 					[end_timeline]
-				Quincy: The occasional charity work to keep my image up. 
+				Quincy: The occasional charity work to keep my image up.
 				Quincy: At least the parties have booze and great views, if you catch my drift.
-				Dalton:...?
+				Dalton: ...?
 				Dalton: You have a wife...
-				Quincy: Mmm... 
-				Quincy: There's no harm in looking, is there. 
+				Quincy: Mmm...
+				Quincy: There's no harm in looking, is there.
 				Quincy: She's out doing her own thing anyway.
 				Dalton: Hmmph.
 				jump Qs
 			else:
-				Dalton: How are things with you? 
+				Dalton: How are things with you?
 				Quincy: Still the same as always.
 				Dalton: Hmph.
 				jump Qs
@@ -254,11 +266,11 @@ Dalton: ...
 			if {Quincy.ask_yesterday} == false:
 				set {Quincy.ask_yesterday} = true
 				Dalton: Why were you busy yesterday?
-				Quincy: Ahh... 
+				Quincy: Ahh...
 				if {Quincy.third_faint} == true:
 					Quincy: Something-
-					[signal arg= "disconnect"]
-					[signal arg= "faint"]
+					[signal arg="faint"]
+					[signal arg="disconnect"]
 					[end_timeline]
 				Quincy: Something came up last minute.
 				Quincy: Mayor business, you know.
@@ -266,20 +278,20 @@ Dalton: ...
 				jump Qs
 				else:
 					Dalton: Why were you busy yesterday?
-					Quincy: Just had to take care of some business. 
+					Quincy: Just had to take care of some business.
 					jump Qs
 		- Get back to work.
 			Dalton: I should get back to work.
 			Quincy: Ah yes.
-			Quincy: By all means. 
+			Quincy: By all means.
 			Quincy: This case isn't going to solve itself, isn't it.
 			Dalton: None of them do.
-			[signal arg= "disconnect"]
+			[signal arg="disconnect"]
 			[end_timeline]
 - Nope.
 	Dalton: No, I'm fine.
-	Quincy: Hmm... 
+	Quincy: Hmm...
 	Quincy: Well, you know where the drinks are.
 	Quincy: If you change your mind.
-	[signal arg= "disconnect"]
+	[signal arg="disconnect"]
 	[end_timeline]

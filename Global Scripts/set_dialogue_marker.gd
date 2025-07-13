@@ -3,12 +3,20 @@ extends Marker2D
 @export var marker : Marker2D
 @export var cam : Camera3D
 @export var body_marker : Marker3D
-@export var sit_marker : Marker3D
-@export var sit_body : Node3D
 @export var rect : ColorRect
 @export var edge_cam: PhantomCamera3D
 
+#Micah Edges
 @onready var sit = false
+@export var sit_marker : Marker3D
+@export var sit_body : Node3D
+
+#Quincy Edges
+@export var sit_dalton_quincy_bar : Marker3D
+@export var sit_theo_quincy_bar : Marker3D
+var bar_nudge = false
+var dalton_bar_sit = false
+var theo_bar_sit = false
 @onready var pos
 
 
@@ -24,6 +32,19 @@ func positionMarker(mult : int):
 			pos = body_marker.global_position
 	else:
 		pos = body_marker.global_position
+	
+	if sit_dalton_quincy_bar:
+		if dalton_bar_sit == true:
+			print("sitting_dalton")
+			pos = sit_dalton_quincy_bar.global_position
+		else:
+			pos = body_marker.global_position
+
+	if sit_theo_quincy_bar:
+		if theo_bar_sit == true:
+			pos = sit_theo_quincy_bar.global_position
+		else:
+			pos = body_marker.global_position
 	
 	var marker_pos = cam.unproject_position(pos)
 	marker_pos = marker_pos * mult
@@ -51,6 +72,9 @@ func positionMarker(mult : int):
 				if marker_pos.y <= 180:
 					marker_pos.y = 900
 	
+	if bar_nudge == true:
+		marker_pos.x += 50
+	
 	marker.position = marker_pos
 	rect.position = marker_pos
 
@@ -65,3 +89,23 @@ func _on_body_sit_visibility_changed():
 
 #func _on_body_stand_visibility_changed():
 	#sit = false
+
+
+func _on_bar_nudge_quincy_marker():
+	bar_nudge = true
+
+
+func _on_bar_switch_dalton_marker():
+	dalton_bar_sit = true
+
+
+
+func _on_bar_switch_theo_marker():
+	theo_bar_sit = true
+
+
+func _on_bar_return_norm_markers():
+	bar_nudge = false
+	dalton_bar_sit = false
+	theo_bar_sit = false
+	

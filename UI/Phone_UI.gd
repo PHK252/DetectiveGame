@@ -393,6 +393,7 @@ func _bottle_fall_sound(argument: String):
 func _end_call(argument: String):
 	if argument == "end_call":
 		#play sound
+		bar_call = false
 		GlobalVars.in_dialogue = false
 		Dialogic.signal_event.disconnect(_end_call)
 	elif argument == "end":
