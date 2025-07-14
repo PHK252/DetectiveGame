@@ -50,6 +50,7 @@ extends Node3D
 var try_viewed : int
 var in_thoughts = false
 
+signal book_thoughts_finished
 signal thoughts_finished
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -151,6 +152,10 @@ func _on_input_event(viewport, event, shape_idx):
 				else:
 					Exit_Cam.set_tween_duration(0)
 					interact_area.hide()
+					GlobalVars.in_dialogue = true
+					Dialogic.start(thought_dialogue_file)
+					Dialogic.timeline_ended.connect(_on_book_thoughts_ended)
+					await book_thoughts_finished
 					bookmark_anim.play("Bookmark_pull")
 					GlobalVars.set(view_item, true)
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -167,11 +172,8 @@ func _on_input_event(viewport, event, shape_idx):
 					interact_area.hide()
 					Exit_Cam.set_tween_duration(1)
 					var react_dialogue = Dialogic.start(react_file)
-					#Dialogic.VAR.get("Asked Questions").Micah_cab = 1 #need quincy version
 					Dialogic.timeline_ended.connect(_on_reaction_ended)
 					react_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-					react_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-					react_dialogue.register_character(load(load_char_dialogue), character_marker)
 					
 
 func open() -> void:
@@ -220,7 +222,11 @@ func _on_thoughts_ended():
 	in_thoughts = false
 	GlobalVars.in_dialogue = false
 	emit_signal("thoughts_finished") 
-	print(in_thoughts)
+
+func _on_book_thoughts_ended():
+	Dialogic.timeline_ended.disconnect(_on_book_thoughts_ended)
+	GlobalVars.in_dialogue = false
+	emit_signal("book_thoughts_finished")
 
 func _on_thoughts_finished():
 	if in_thoughts == false and GlobalVars.in_dialogue== false:

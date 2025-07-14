@@ -18,6 +18,8 @@ if {Character Aff Points.Theo} > 3:
 	Theo: I'm on it.
 	Dalton: Hmph... 
 	Dalton: Thank you, see you at the station.
+	Theo: Happy to help.
+	Theo: I just hope whatever you found was worth it.
 	[signal arg = "end_call"]
 	Quincy: Who was that?
 	Dalton: Chief was asking for a check in.
@@ -27,10 +29,6 @@ if {Character Aff Points.Theo} > 3:
 	Quincy: What the hell?
 	[signal arg = "bar_distract"]
 	set {Quincy.is_distracted} = true
-	Dalton: Thanks.
-	Theo: Happy to help.
-	Theo: I just hope whatever you found was worth it.
-	[signal arg = "end_call"]
 	[signal arg= "end"]
 	[end_timeline]
 else:
