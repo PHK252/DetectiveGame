@@ -61,8 +61,10 @@ var distraction_allowed := true
 var rotate_number := 0
 var is_activated := false
 
+var in_danger = false
 signal play_caught
-
+signal pause_timeout
+signal time_out_resume
 
 @export var sound_player : AnimationPlayer
 
@@ -105,6 +107,10 @@ func _process(delta: float) -> void:
 			_process_idle_state(distance_to_target, delta)
 		FOLLOW:
 			_process_follow_state(distance_to_target)
+	
+	if is_distracted == true:
+		safe_distract_drop()
+		toilet_distract_drop()
 	
 func _physics_process(delta: float) -> void:
 	if is_navigating:
@@ -293,7 +299,7 @@ func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
 				wander_choice = 1
 				nav.target_position = marker_positions[1].global_position
 				state = FOLLOW
-				distraction_timer.start()
+				#distraction_timer.start()
 				fall_allowed = false
 		
 func _on_fixed_wine_distraction() -> void:
@@ -301,13 +307,14 @@ func _on_fixed_wine_distraction() -> void:
 
 func _on_dalton_caught_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
-		if catch_possibility:
+		if catch_possibility and in_danger == true:
 			print("quincy caught you")
 			emit_signal("play_caught")
 			
 
 func _on_distraction_time_timeout() -> void:
 	print("finished")
+	emit_signal("time_out_resume")
 	catch_possibility = true
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
@@ -395,7 +402,8 @@ func _on_door_bathroom_replace_quincy_enter_bathroom():
 			nav.target_position = marker_positions[4].global_position
 			state = FOLLOW
 			distraction_timer.start()
-			toilet_distract_drop()
+			emit_signal("pause_timeout")
+			
 
 		
 func _on_toilet_stuff_distraction() -> void:
@@ -407,7 +415,7 @@ func _on_snowmobile_distraction() -> void:
 	wander_choice = 5
 	nav.target_position = marker_positions[5].global_position
 	state = FOLLOW
-	distraction_timer.start()
+	#distraction_timer.start()
 
 func _on_pool_table_stop_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
@@ -437,7 +445,7 @@ func _on_phone_book_distract_quincy():
 	nav.target_position = marker_positions[1].global_position
 	state = FOLLOW
 	distraction_timer.start()
-	safe_distract_drop()
+	emit_signal("pause_timeout")
 	fall_allowed = false
 
 func _on_theo_quincy_no_go_body_entered(body: Node3D) -> void:
@@ -566,6 +574,7 @@ func toilet_distract_drop():
 	if distraction_timer.time_left > 0:
 		if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.has_choco") == true and Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true:
 			drop_distract()
+			
 
 func drop_distract():
 	print("drop")
@@ -573,7 +582,21 @@ func drop_distract():
 	distraction_timer.emit_signal("timeout")
 	is_distracted = false
 	Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
+	emit_signal("time_out_resume")
 
 
 func _on_safe_ui_alarm():
 	drop_distract()
+
+
+
+func _on_danger_body_entered(body):
+	if body.is_in_group("player"):
+		if is_distracted == true: 
+			in_danger = true # Replace with function body.
+
+
+func _on_danger_body_exited(body):
+	if body.is_in_group("player"):
+		if is_distracted == true: 
+			in_danger = false

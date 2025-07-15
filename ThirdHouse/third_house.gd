@@ -108,3 +108,13 @@ func _on_secret_exit(body):
 func _on_cutscene_cams_faint_disable():
 	disable_interaction(interactables)
 	GlobalVars.quincy_fainted = false
+
+
+func _on_quincy_pause_timeout():
+	timer.paused = true
+	print("time out paused: " + str(timer.time_left)) 
+
+
+func _on_quincy_time_out_resume():
+	timer.paused = false
+	print("time out resume") 

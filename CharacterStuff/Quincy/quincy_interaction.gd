@@ -18,6 +18,7 @@ var dalton_entered = false
 var theo_entered = false
 var quincy_entered = false
 
+
 signal finish_greeting
 signal greet_cam
 signal close_door
