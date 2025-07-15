@@ -32,6 +32,7 @@ var door_scene := false
 var patio_sit := false
 var entered_junipers := false
 var living_room_nogo := false
+var quincy_greet := false
 
 const speed := 0.92
 const LERP_VAL := 0.15
@@ -286,7 +287,7 @@ func _process_idle_state(distance_to_target: float) -> void:
 	if going_to_bar or patio_sit:
 		state = SITTING
 
-	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false):
+	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and quincy_greet == false):
 		print("Switching to FOLLOW state")
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
@@ -319,8 +320,11 @@ func _process_idle_state(distance_to_target: float) -> void:
 # Handles behavior when NPC is in the FOLLOW state
 func _process_follow_state(distance_to_target: float) -> void:
 	# Update navigation target dynamically
-	nav.target_position = player.global_transform.origin
-
+	
+	if quincy_greet == false:
+		nav.target_position = player.global_transform.origin
+		
+	
 	if juniper_house:
 		nav.radius = 0.5
 		#nav.neighbor_distance = 50
@@ -476,16 +480,20 @@ func _on_micah_body_collision_safe() -> void:
 	#state = FOLLOW
 
 func _on_theo_wander_body_entered(body: Node3D) -> void:
-	if allow_activation:
-		print("ENTEREDWANDER")
-		animation_choice = rng.randi_range(0, 10)
-		investigate_choice = rng.randi_range(0, 2)
-		is_investigating = true
-		nav.target_position = marker_list[investigate_choice].global_position
-		is_navigating = true
+	if greeting_finished == false:
+		quincy_greet = true
+		nav.target_position = marker_list[6].global_position
 		STOPPING_DISTANCE = 0.0
-		state = INVESTIGATE
-		allow_activation = false
+	#if allow_activation:
+		#print("ENTEREDWANDER")
+		#animation_choice = rng.randi_range(0, 10)
+		#investigate_choice = rng.randi_range(0, 2)
+		#is_investigating = true
+		#nav.target_position = marker_list[investigate_choice].global_position
+		#is_navigating = true
+		#STOPPING_DISTANCE = 0.0
+		#state = INVESTIGATE
+		#allow_activation = false
 	
 
 func _on_investigate_timer_timeout() -> void:
@@ -897,6 +905,7 @@ func _on_painting_adjustment_body_exited(body: Node3D) -> void:
 		state = INVESTIGATE
 
 func _on_quincy_interact_finish_greeting() -> void:
+	greeting_finished = true
 	animation_choice = rng.randi_range(0, 10)
 	investigate_choice = rng.randi_range(0, 2)
 	is_investigating = true
@@ -905,3 +914,8 @@ func _on_quincy_interact_finish_greeting() -> void:
 	STOPPING_DISTANCE = 0.0
 	state = INVESTIGATE
 	allow_activation = false
+	
+func _on_theo_wander_body_exited(body: Node3D) -> void:
+	if greeting_finished == false:
+		quincy_greet = false
+		STOPPING_DISTANCE = 1.0
