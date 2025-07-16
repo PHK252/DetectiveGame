@@ -35,6 +35,8 @@ var living_room_nogo := false
 var quincy_greet := false
 var faint_dalton := false
 @export var drunk_marker : Marker3D
+@export var theo_node : CharacterBody3D
+@export var stairMarker : Marker3D
 
 const speed := 0.92
 const LERP_VAL := 0.15
@@ -90,6 +92,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
 
+	#teleportTest
+	#if Input.is_action_just_pressed("meeting_done"):
+		#_on_bar_theo_enter_bar()
 	# State management for smoother transitions
 	match state:
 		IDLE:
@@ -542,6 +547,7 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 
 func _on_bar_theo_enter_bar():
 	print("wine_time")
+	theo_node.global_position = stairMarker.global_position
 	anim_tree.set("parameters/Scratch/request", 2)
 	anim_tree.set("parameters/NoteAlt/request", 2)
 	is_investigating = false
@@ -952,7 +958,6 @@ func _on_cutscene_cams_theo_follow() -> void:
 
 func _on_dialogic_signal(argument: String):
 	if argument == "follow_dalton":
-		print("FOLLOWINGDL")
 		theo_adjustment = false
 		is_investigating = false
 		is_navigating = true 
