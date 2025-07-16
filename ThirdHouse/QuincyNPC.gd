@@ -55,6 +55,7 @@ var poolTable := false
 var poolPos
 var greeting := false
 var rotate_forced := false
+var drunk_dalton := false
 
 var fall_allowed := true
 var distraction_allowed := true
@@ -479,7 +480,7 @@ func _on_hallway_check_body_exited(body: Node3D) -> void:
 	#state = FOLLOW
 
 func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and drunk_dalton == false:
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 9
@@ -487,14 +488,14 @@ func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
 		state = FOLLOW
 
 func _on_living_room_adjustment_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and drunk_dalton == false:
 		rotate_forced = false
 		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
 
 func _on_painting_adjustment_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and drunk_dalton == false:
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 10
@@ -502,7 +503,7 @@ func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 		state = FOLLOW
 
 func _on_painting_adjustment_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and drunk_dalton == false:
 		rotate_forced = false
 		wander_choice = 11
 		is_distracted = false
@@ -609,3 +610,10 @@ func _on_danger_body_exited(body):
 
 func _on_caught_exit_interact():
 	emit_signal("play_caught")
+
+
+func _on_sitting_ppl_dalton_faint() -> void:
+	drunk_dalton = true
+	is_drinking = false
+	is_navigating = false
+	armature.visible = false

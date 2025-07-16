@@ -13,6 +13,8 @@ extends Node
 signal faint_disable
 signal continue_bar
 signal open_door
+signal after_faint
+signal theo_follow
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("interact") and test_cutscene:
 		#pass
@@ -34,7 +36,7 @@ func _on_bar_make_drinks():
 func _on_bar_faint_time():
 	print("fainting")
 	sitting_Dalton.hide()
-	player.hide()
+	#player.hide()
 	emit_signal("faint_disable")
 	anim_player.play("fainting_cutscene")
 	await anim_player.animation_finished
@@ -51,3 +53,4 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	emit_signal("open_door")
 	player.start_player()
+	emit_signal("theo_follow")

@@ -19,6 +19,7 @@ extends Node
 signal DaltonInvisible
 signal DaltonVisible
 signal theo_out
+signal DaltonFaint
 
 var out_sit = false
 
@@ -84,3 +85,8 @@ func _on_theo_out_body_entered(body: Node3D) -> void:
 func _on_theo_out_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		out_sit = false
+
+func _on_cutscene_cams_after_faint() -> void:
+	dalton_bar.visible = false
+	alert.show()
+	emit_signal("DaltonFaint")

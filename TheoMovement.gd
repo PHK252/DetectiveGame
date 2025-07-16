@@ -33,6 +33,8 @@ var patio_sit := false
 var entered_junipers := false
 var living_room_nogo := false
 var quincy_greet := false
+var faint_dalton := false
+@export var drunk_marker : Marker3D
 
 const speed := 0.92
 const LERP_VAL := 0.15
@@ -191,7 +193,7 @@ func _process_adjust_state() -> void:
 		nav.set_velocity(velocity)
 
 func _process_investigate_state(distance_to_target) -> void:
-	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false:
+	if (nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false) and faint_dalton == false:
 		if patio_sit:
 			armature.visible = false
 			collision_theo.disabled = true
@@ -499,7 +501,7 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 func _on_investigate_timer_timeout() -> void:
 	#print("timerCheck")
 	#print(investigate_choice)
-	if living_room_nogo == false:
+	if living_room_nogo == false and faint_dalton == false:
 		var choice = rng.randi_range(-10, 10)
 		investigate_choice = rng.randi_range(0, 2)
 		animation_choice = rng.randi_range(0, 10)
@@ -861,7 +863,7 @@ func _on_theo_no_go_body_exited(body: Node3D) -> void:
 			state = FOLLOW
 
 func _on_living_room_no_go_theo_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and faint_dalton == false:
 		living_room_nogo = true
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -872,7 +874,7 @@ func _on_living_room_no_go_theo_body_entered(body: Node3D) -> void:
 		state = INVESTIGATE
 
 func _on_living_room_no_go_theo_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and faint_dalton == false:
 		living_room_nogo = false
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -883,7 +885,7 @@ func _on_living_room_no_go_theo_body_exited(body: Node3D) -> void:
 		state = INVESTIGATE
 
 func _on_painting_adjustment_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and faint_dalton == false:
 		living_room_nogo = true
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -894,7 +896,7 @@ func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 		state = INVESTIGATE
 
 func _on_painting_adjustment_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and faint_dalton == false:
 		living_room_nogo = false
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -919,3 +921,20 @@ func _on_theo_wander_body_exited(body: Node3D) -> void:
 	if greeting_finished == false:
 		quincy_greet = false
 		STOPPING_DISTANCE = 1.0
+
+func _on_cutscene_cams_faint_disable() -> void:
+	InvestigateTime.stop()
+	faint_dalton = true
+	is_navigating = true
+	nav.target_position = drunk_marker.global_position
+	anim_tree.set("parameters/Scratch/request", 2)
+	anim_tree.set("parameters/NoteAlt/request", 2)
+	STOPPING_DISTANCE = 0.0
+	state = INVESTIGATE
+
+func _on_cutscene_cams_theo_follow() -> void:
+	if faint_dalton == true:
+		nav.path_desired_distance = 0.75
+		nav.target_desired_distance = 1.0
+		STOPPING_DISTANCE = 1.0
+		state = FOLLOW

@@ -11,6 +11,8 @@ var jogcheck := false
 var idle_timer_active: bool = false
 @export var force_rotate_list: Array[Marker3D]
 @export var sound_player : AnimationPlayer
+@export var wakeUpMarker : Marker3D
+@export var daltonParent : CharacterBody3D
 
 var gathered := false
 var walk_indicate := false
@@ -520,4 +522,9 @@ func _on_quincy_stop_dalton() -> void:
 	await get_tree().create_timer(2.5).timeout
 	force_rotation = false
 	needs_rotation_forced = false
+	in_control = true
+
+func _on_sitting_ppl_dalton_faint() -> void:
+	daltonParent.global_position = wakeUpMarker.global_position
+	armature.visible = true
 	in_control = true

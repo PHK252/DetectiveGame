@@ -264,3 +264,7 @@ func _on_door_door_open() -> void:
 
 func _on_door_greeting() -> void:
 	activate_camera(8)
+
+
+func _on_sitting_ppl_dalton_faint() -> void:
+	activate_camera(1)
