@@ -20,6 +20,7 @@ var leaving = false
 signal juniper_greeting
 signal cam_greeting
 signal j_dialogue
+signal activate_car
 
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
@@ -198,6 +199,7 @@ func _on_exit_house(body):
 			if dalton_left == true and theo_left == true:
 				close()
 				collision.set_deferred("disabled", false) 
+				emit_signal("activate_car")
 				is_open = false
 		
 		if body.is_in_group("theo"):
@@ -205,4 +207,5 @@ func _on_exit_house(body):
 			if dalton_left == true and theo_left == true:
 				close()
 				collision.set_deferred("disabled", false) 
+				emit_signal("activate_car")
 				is_open = false

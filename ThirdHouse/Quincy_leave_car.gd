@@ -1,6 +1,7 @@
 extends MeshInstance3D
 
 @export var interactable : Interactable
+@export var door_interactable : Interactable
 @export var map_ui : CanvasLayer
 
 @export var main_cam : PhantomCamera3D
@@ -56,3 +57,8 @@ func _input(event):
 			GlobalVars.viewing = ""
 			GlobalVars.in_look_screen = false
 			GlobalVars.in_interaction = ""
+
+
+func _on_main_door_activate_car():
+	door_interactable.set_monitorable(false)
+	interactable.set_monitorable(true)
