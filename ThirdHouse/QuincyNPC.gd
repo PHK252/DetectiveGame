@@ -65,6 +65,7 @@ var in_danger = false
 signal play_caught
 signal pause_timeout
 signal time_out_resume
+signal caught_in_view
 
 @export var sound_player : AnimationPlayer
 
@@ -310,7 +311,10 @@ func _on_dalton_caught_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
 		if catch_possibility and in_danger == true:
 			print("quincy caught you")
-			emit_signal("play_caught")
+			if GlobalVars.in_interaction != "":
+				emit_signal("caught_in_view")
+			else:
+				emit_signal("play_caught")
 			
 
 func _on_distraction_time_timeout() -> void:
@@ -601,3 +605,7 @@ func _on_danger_body_exited(body):
 	if body.is_in_group("player"):
 		if is_distracted == true: 
 			in_danger = false
+
+
+func _on_caught_exit_interact():
+	emit_signal("play_caught")

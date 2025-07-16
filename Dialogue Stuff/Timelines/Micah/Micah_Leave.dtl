@@ -1,56 +1,60 @@
-if {Character Aff Points.Micah} <= 2:
-	Dalton: I think that'll be all for now. 
-	Dalton: Theo, let's go. 
-	Theo: Sorry about that. 
-	Theo: He's just a little cranky. 
-	Dalton: Theo.
-	Dalton: We are leaving. 
-	Theo: Bye!!
-	Micah: bye... 
-	[signal arg="open_door"]
-	[end_timeline]
-elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 5:
-	Dalton: I think we're done with our search. 
-	Dalton: If you think of anything that may contribute to the case, please call us or report it to the station. 
-	Theo: Thank you for letting us in.
-	Theo: And sorry for taking up your bed time. 
-	Micah: Ehh... 
-	Micah: It's no big deal. 
-	Dalton: Yeah... 
-	Dalton: Thanks.
-	Theo: Bye!!
-	Micah: Bye!
-	[signal arg="open_door"]
-	[end_timeline]
-elif {Character Aff Points.Micah} >= 5 or {Asked Questions.Micah_Theo_enter} == true and {Global.first_house} == "Micah":
-	Theo: I think we're done with our search.
-	Theo: Thank you for letting us in.
-	Theo: And sorry for interrupting your bedtime
-	Micah: Ehh...
-	Micah: It's no big deal.
-	Dalton: Yeah...
-	Dalton: Thanks.
-	Theo: Bye!!
-	Micah: ...
-	Micah: Wait!
-	Theo: Hmm?
-	Micah: My friend...
-	Micah: They've been missing for weeks...
-	Micah: They won't pick up the phone or respond to any of my texts...
-	Micah: I think something happened to them.
-	Micah: Is there anything you guys can do?
-	Dalton: Hm...
-	Dalton: Has a missing person report been filed yet?
-	Micah: Yeah, I filed one a week ago.
-	Dalton: What's their name?
-	Micah: Skylar Aslan.
-	Dalton: I'll look into it.
-	Micah: Thank you...
-	Dalton: Is there anything else?
-	Micah: Uh...
-	Micah: No... that's it.
-	Theo: Well, see ya, Micah!
-	Micah: Bye!
-	Dalton: Bye.
-	[signal arg="open_door"]
+Dalton: Leave?
+- Yes.
+	if {Character Aff Points.Micah} <= 2:
+		Dalton: I think that'll be all for now. 
+		Dalton: Theo, let's go. 
+		Theo: Sorry about that. 
+		Theo: He's just a little cranky. 
+		Dalton: Theo.
+		Dalton: We are leaving. 
+		Theo: Bye!!
+		Micah: bye... 
+		[signal arg="open_door"]
+		[end_timeline]
+	elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 5:
+		Dalton: I think we're done with our search. 
+		Dalton: If you think of anything that may contribute to the case, please call us or report it to the station. 
+		Theo: Thank you for letting us in.
+		Theo: And sorry for taking up your bed time. 
+		Micah: Ehh... 
+		Micah: It's no big deal. 
+		Dalton: Yeah... 
+		Dalton: Thanks.
+		Theo: Bye!!
+		Micah: Bye!
+		[signal arg="open_door"]
+		[end_timeline]
+	elif {Character Aff Points.Micah} >= 5 or {Asked Questions.Micah_Theo_enter} == true and {Global.first_house} == "Micah":
+		Theo: I think we're done with our search.
+		Theo: Thank you for letting us in.
+		Theo: And sorry for interrupting your bedtime
+		Micah: Ehh...
+		Micah: It's no big deal.
+		Dalton: Yeah...
+		Dalton: Thanks.
+		Theo: Bye!!
+		Micah: ...
+		Micah: Wait!
+		Theo: Hmm?
+		Micah: My friend...
+		Micah: They've been missing for weeks...
+		Micah: They won't pick up the phone or respond to any of my texts...
+		Micah: I think something happened to them.
+		Micah: Is there anything you guys can do?
+		Dalton: Hm...
+		Dalton: Has a missing person report been filed yet?
+		Micah: Yeah, I filed one a week ago.
+		Dalton: What's their name?
+		Micah: Skylar Aslan.
+		Dalton: I'll look into it.
+		Micah: Thank you...
+		Dalton: Is there anything else?
+		Micah: Uh...
+		Micah: No... that's it.
+		Theo: Well, see ya, Micah!
+		Micah: Bye!
+		Dalton: Bye.
+		[signal arg="open_door"]
+		[end_timeline]
+- Not yet.
 	[end_timeline]

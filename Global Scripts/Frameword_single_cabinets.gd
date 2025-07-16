@@ -48,6 +48,7 @@ extends Node3D
 @export var open_sound : AudioStreamPlayer3D
 @export var close_sound : AudioStreamPlayer3D
 signal general_interact
+signal exit_interact
 
 var kicked = false
 var timed = false
@@ -68,7 +69,7 @@ func _process(delta):
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
 	mouse_pos = get_viewport().get_mouse_position()
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		elif mouse_pos.y < tilt_down_thres:
@@ -213,3 +214,14 @@ func _on_to_close_drawer_input_event(viewport, event, shape_idx):
 		if GlobalVars.in_look_screen == false:
 			if event is InputEventMouseButton:
 				close()
+
+
+func _on_quincy_caught_in_view():
+	interact_area.hide()
+	Exit_Cam.set_tween_duration(0)
+	FP_Cam.priority = 0
+	Exit_Cam.priority = 30 
+	Exit_Cam.set_tween_duration(1)
+	GlobalVars.in_interaction = ""
+	player.show()
+	emit_signal("exit_interact")

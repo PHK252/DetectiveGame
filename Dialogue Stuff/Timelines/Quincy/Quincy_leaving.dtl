@@ -1,112 +1,120 @@
-if {Quincy.solved_case} == true:
+Dalton: Leave?
+- Yes.
+	if {Quincy.solved_case} == true:
+		if {Quincy.solved_rever} == true:
+			Dalton: I- 
+			Dalton: Um...
+			Dalton: Uh...
+			Dalton: I think we’re done here.
+			Dalton: We should head back. 
+			Quincy: Well...
+			Quincy: Since you are done, why don’t you both stay here for a bit?
+			Quincy: We got some catching up to do, Dalton.
+			Quincy: And I’d love to know more about you, Theo. 
+			Dalton: ...!
+			Dalton: We sh-
+			Theo: That sounds amazing!
+			Quincy: Fantastic! 
+			Quincy: I’ll-
+			Dalton: Theo...
+			Dalton: We have to go…
+			Dalton: Please.
+			Theo: Why?
+			Dalton: Just-
+			Dalton: Let’s go. 
+			Dalton: I’m tired. 
+			Theo: Okay, ya old fox.
+			Theo: You don’t have to be so down in the dumps about it. 
+			Theo: Well...
+			Theo: We better head back, so Dalton can get his afternoon nap. 
+			Theo: He gets cranky when he doesn’t get them. 
+			Dalton: Hmph.
+			Quincy: Ah...
+			Quincy: Okay. 
+			Quincy: How about we can have a celebratory dinner after all this is done?
+			Theo: Definitely!
+			Theo: See ya, later!
+			Quincy: Goodbye!
+			Dalton: ...
+			Dalton: bye.
+			[signal arg= "open_door"]
+			[end_timeline]
+		else:
+			if {Character Aff Points.Theo} > 3:
+				Dalton: We are pretty much done here. 
+				Dalton: Pretty open and shut case. 
+				Dalton: Quincy, I’ll let you know once we apprehend and question Skylar.
+				Dalton: Is there anything else we can do for you?
+				Quincy: Nope, that’s pretty much it. 
+				Quincy: Thank you both for dedication and service to this city. 
+				Quincy: Arcadia Springs would not be the same without you.
+				Dalton: Hmph.
+				Theo: Thank you!
+				Theo: It was nice meeting you, Quincy!
+				Theo: We should all have dinner after this!
+				Quincy: Yes, of course.
+				Quincy: I know a place in Midtown that’ll explode your fur off.
+				Theo: Ooh...
+				Theo: I’ll look forward to it. 
+				Dalton: We should get going before Chief gets antsy. 
+				Theo: Yeah...
+				Theo: Definitely don’t want that. 
+				Theo: Bye, Quincy!
+				Quincy: Goodbye!
+				Quincy: Drive safe!
+				Quincy: Oh, and Dalton!
+				Quincy: We’ll catch up later, yeah?
+				Dalton: Hmph.
+				[signal arg= "open_door"]
+				[end_timeline]
+			else:
+				Dalton: I think we are pretty much done here. 
+				Dalton: Pretty open and shut case. 
+				Dalton: Quincy.
+				Dalton: I’ll let you know once we apprehend and question Skylar.
+				Dalton: Is there anything else we can do for you?
+				Quincy: Nope, that’s pretty much it. 
+				Quincy: Thank you both for dedication and service to this city. 
+				Quincy: Arcadia Springs would not be the same without you.
+				Dalton: Hmph.
+				Dalton: Thanks.
+				Dalton: We should get going before Chief gets antsy. 
+				Theo: Yeah...
+				Theo: Definitely don’t want that. 
+				Theo: Bye, Quincy!
+				Theo: It was nice meeting you!
+				Quincy: Goodbye!
+				Quincy: Drive safe!
+				Quincy: Oh, and Dalton!
+				Quincy: Try not to scare the rookie too much.
+				Dalton: Hmph.
+				[signal arg= "open_door"]
+				[end_timeline]
 	if {Quincy.solved_rever} == true:
 		Dalton: I- 
 		Dalton: Um...
 		Dalton: Uh...
-		Dalton: I think we’re done here.
-		Dalton: We should head back. 
-		Quincy: Well...
-		Quincy: Since you are done, why don’t you both stay here for a bit?
-		Quincy: We got some catching up to do, Dalton.
-		Quincy: And I’d love to know more about you, Theo. 
+		Dalton: We have to-
+		Dalton: Uh...
+		Dalton: S-something happened at the station. 
+		Dalton: We have to go. 
+		Theo: What?!
+		Theo: I didn’t get-
+		Dalton: NOW!
+		Dalton: We have to go now.
+		Dalton: please.
+		Theo: Okay, okay.
+		Quincy: Dalton, are you good?
+		Quincy: You seem...
 		Dalton: ...!
-		Dalton: We sh-
-		Theo: That sounds amazing!
-		Quincy: Fantastic! 
-		Quincy: I’ll-
-		Dalton: Theo...
-		Dalton: We have to go…
-		Dalton: Please.
-		Theo: Why?
-		Dalton: Just-
-		Dalton: Let’s go. 
-		Dalton: I’m tired. 
-		Theo: Okay, ya old fox.
-		Theo: You don’t have to be so down in the dumps about it. 
-		Theo: Well...
-		Theo: We better head back, so Dalton can get his afternoon nap. 
-		Theo: He gets cranky when he doesn’t get them. 
-		Dalton: Hmph.
-		Quincy: Ah...
-		Quincy: Okay. 
-		Quincy: How about we can have a celebratory dinner after all this is done?
-		Theo: Definitely!
-		Theo: See ya, later!
-		Quincy: Goodbye!
-		Dalton: ...
-		Dalton: bye.
+		Dalton: Ya-
+		Dalton: Yes.
+		Dalton: I’m not-
+		Dalton: I’m fine.
+		Dalton: We just have to go. 
+		[signal arg= "open_door"]
 		[end_timeline]
-	else:
-		if {Character Aff Points.Theo} > 3:
-			Dalton: We are pretty much done here. 
-			Dalton: Pretty open and shut case. 
-			Dalton: Quincy, I’ll let you know once we apprehend and question Skylar.
-			Dalton: Is there anything else we can do for you?
-			Quincy: Nope, that’s pretty much it. 
-			Quincy: Thank you both for dedication and service to this city. 
-			Quincy: Arcadia Springs would not be the same without you.
-			Dalton: Hmph.
-			Theo: Thank you!
-			Theo: It was nice meeting you, Quincy!
-			Theo: We should all have dinner after this!
-			Quincy: Yes, of course.
-			Quincy: I know a place in Midtown that’ll explode your fur off.
-			Theo: Ooh...
-			Theo: I’ll look forward to it. 
-			Dalton: We should get going before Chief gets antsy. 
-			Theo: Yeah...
-			Theo: Definitely don’t want that. 
-			Theo: Bye, Quincy!
-			Quincy: Goodbye!
-			Quincy: Drive safe!
-			Quincy: Oh, and Dalton!
-			Quincy: We’ll catch up later, yeah?
-			Dalton: Hmph.
-			[end_timeline]
-		else:
-			Dalton: I think we are pretty much done here. 
-			Dalton: Pretty open and shut case. 
-			Dalton: Quincy.
-			Dalton: I’ll let you know once we apprehend and question Skylar.
-			Dalton: Is there anything else we can do for you?
-			Quincy: Nope, that’s pretty much it. 
-			Quincy: Thank you both for dedication and service to this city. 
-			Quincy: Arcadia Springs would not be the same without you.
-			Dalton: Hmph.
-			Dalton: Thanks.
-			Dalton: We should get going before Chief gets antsy. 
-			Theo: Yeah...
-			Theo: Definitely don’t want that. 
-			Theo: Bye, Quincy!
-			Theo: It was nice meeting you!
-			Quincy: Goodbye!
-			Quincy: Drive safe!
-			Quincy: Oh, and Dalton!
-			Quincy: Try not to scare the rookie too much.
-			Dalton: Hmph.
-			[end_timeline]
-if {Quincy.solved_rever} == true:
-	Dalton: I- 
-	Dalton: Um...
-	Dalton: Uh...
-	Dalton: We have to-
-	Dalton: Uh...
-	Dalton: S-something happened at the station. 
-	Dalton: We have to go. 
-	Theo: What?!
-	Theo: I didn’t get-
-	Dalton: NOW!
-	Dalton: We have to go now.
-	Dalton: please.
-	Theo: Okay, okay.
-	Quincy: Dalton, are you good?
-	Quincy: You seem...
-	Dalton: ...!
-	Dalton: Ya-
-	Dalton: Yes.
-	Dalton: I’m not-
-	Dalton: I’m fine.
-	Dalton: We just have to go. 
+- Not yet.
 	[end_timeline]
 
 label solved case and rever after
@@ -131,5 +139,4 @@ Dalton: ...
 Dalton: ...
 Dalton: ...
 Dalton: I- 
-Dalton: I just need time. 
-
+Dalton: I just need time.

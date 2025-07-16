@@ -22,6 +22,8 @@ extends Node3D
 @export var load_Dalton_dialogue: String
 @onready var mouse_pos = Vector2(0,0)
 @export var interact_type: String
+
+signal exit_interact
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI.hide()
@@ -95,3 +97,14 @@ func _on_computer_input_event(viewport, event, shape_idx):
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				GlobalVars.Quincy_in_computer = true
 				UI.show()
+
+
+func _on_quincy_caught_in_view():
+	interact_area.hide()
+	Exit_Cam.set_tween_duration(0)
+	FP_Cam.priority = 0
+	Exit_Cam.priority = 30 
+	Exit_Cam.set_tween_duration(1)
+	GlobalVars.in_interaction = ""
+	player.show()
+	emit_signal("exit_interact")

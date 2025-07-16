@@ -12,6 +12,7 @@ extends Node
 
 signal faint_disable
 signal continue_bar
+signal open_door
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("interact") and test_cutscene:
 		#pass
@@ -48,4 +49,5 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_interaction = ""
 	GlobalVars.in_dialogue = false
+	emit_signal("open_door")
 	player.start_player()

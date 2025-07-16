@@ -45,6 +45,7 @@ var kicked = false
 var timed = false
 var in_thoughts = false
 signal thoughts_finished
+signal exit_interact
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -63,7 +64,7 @@ func _process(delta):
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
 	
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		elif mouse_pos.y < tilt_down_thres:
@@ -212,3 +213,15 @@ func _on_thoughts_finished():
 		game_dialogue.register_character(load(load_char_dialogue), character_marker)
 		player.stop_player()
 		alert.hide()
+
+
+
+func _on_quincy_caught_in_view():
+	interact_area.hide()
+	Exit_Cam.set_tween_duration(0)
+	FP_Cam.priority = 0
+	Exit_Cam.priority = 30 
+	Exit_Cam.set_tween_duration(1)
+	GlobalVars.in_interaction = ""
+	player.show()
+	emit_signal("exit_interact")

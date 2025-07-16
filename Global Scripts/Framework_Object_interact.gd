@@ -55,7 +55,7 @@ func _process(delta):
 	elif GlobalVars.current_level == "Juniper":
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		elif mouse_pos.y < tilt_down_thres:

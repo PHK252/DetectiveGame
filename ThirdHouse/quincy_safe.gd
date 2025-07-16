@@ -48,6 +48,7 @@ extends Node3D
 @onready var mouse_pos = Vector2(0,0) 
 @onready var tilt = ""
 
+signal exit_interact
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var viewed_item_1 : bool = GlobalVars.get(view_item_1)
@@ -142,3 +143,19 @@ func _on_interactable_interacted(interactor):
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()
+
+
+func _on_quincy_caught_in_view():
+	interior_interact_area_1.hide()
+	interior_interact_area_2.hide()
+	interior_interact_area_3.hide()
+	interior_interact_area_4.hide()
+	open_interact.hide()
+	close_interact.hide()
+	Exit_Cam.set_tween_duration(0)
+	FP_Cam.priority = 0
+	Exit_Cam.priority = 30 
+	Exit_Cam.set_tween_duration(1)
+	GlobalVars.in_interaction = ""
+	player.show()
+	emit_signal("exit_interact")
