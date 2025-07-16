@@ -13,7 +13,7 @@ var allow_activation := true
 @export var sound_player : AnimationPlayer
 @export var note_sound : AudioStreamPlayer3D
 @export var collision_theo : CollisionShape3D
-
+@export var fainted_player : Marker3D
 signal allow_stairs
 var animation_choice := 0
 @export var adjustment_list: Array[Node3D]
@@ -60,6 +60,8 @@ var dalton_entered := false
 var direct
 var greeting_finished := false
 
+@export var quincy_house := false 
+
 @export var juniper_house = false
 
 @export var note_timer: Timer
@@ -79,6 +81,8 @@ func _ready() -> void:
 	add_to_group("theo")
 	# Initialize the navigation target to the player's position
 	nav.target_position = player.global_transform.origin
+	if quincy_house:
+		Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func _physics_process(delta: float) -> void:
 	if is_investigating == true or going_to_bar == true:
@@ -285,11 +289,11 @@ func _process_idle_state(distance_to_target: float) -> void:
 	#else:
 		# Ensure blend position matches slight movement
 		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
-		
+	
 	if going_to_bar or patio_sit:
 		state = SITTING
 
-	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and quincy_greet == false):
+	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton)):
 		print("Switching to FOLLOW state")
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
@@ -322,10 +326,11 @@ func _process_idle_state(distance_to_target: float) -> void:
 # Handles behavior when NPC is in the FOLLOW state
 func _process_follow_state(distance_to_target: float) -> void:
 	# Update navigation target dynamically
-	
 	if quincy_greet == false:
 		nav.target_position = player.global_transform.origin
 		
+	if faint_dalton:
+		nav.target_position = player.global_transform.origin
 	
 	if juniper_house:
 		nav.radius = 0.5
@@ -373,8 +378,12 @@ func _rotate_towards_velocity() -> void:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(velocity.x, velocity.z), LERP_VAL)
 
 func _rotate_towards_player() -> void:
-	var direct = (player.global_position - armature.global_position).normalized()
-	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(direct.x, direct.z), LERP_VAL)
+	if faint_dalton == false:
+		var direct = (player.global_position - armature.global_position).normalized()
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(direct.x, direct.z), LERP_VAL)
+	else:
+		var direct = (fainted_player.global_position - armature.global_position).normalized()
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(direct.x, direct.z), LERP_VAL)
 
 func _on_interact_area_area_entered(area: Area3D) -> void:
 	if area.is_in_group("int_area") and theo_adjustment == false:
@@ -930,10 +939,23 @@ func _on_cutscene_cams_faint_disable() -> void:
 	anim_tree.set("parameters/Scratch/request", 2)
 	anim_tree.set("parameters/NoteAlt/request", 2)
 	STOPPING_DISTANCE = 0.0
+	theo_adjustment = true
 	state = INVESTIGATE
 
 func _on_cutscene_cams_theo_follow() -> void:
-	if faint_dalton == true:
+	pass
+	#if faint_dalton == true:
+		#nav.path_desired_distance = 0.75
+		#nav.target_desired_distance = 1.0
+		#STOPPING_DISTANCE = 1.0
+		#state = FOLLOW
+
+func _on_dialogic_signal(argument: String):
+	if argument == "follow_dalton":
+		print("FOLLOWINGDL")
+		theo_adjustment = false
+		is_investigating = false
+		is_navigating = true 
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0

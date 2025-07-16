@@ -267,4 +267,4 @@ func _on_door_greeting() -> void:
 
 
 func _on_sitting_ppl_dalton_faint() -> void:
-	activate_camera(1)
+	activate_camera(20)

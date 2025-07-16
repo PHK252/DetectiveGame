@@ -15,6 +15,7 @@ signal continue_bar
 signal open_door
 signal after_faint
 signal theo_follow
+signal reposition_dalton
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("interact") and test_cutscene:
 		#pass

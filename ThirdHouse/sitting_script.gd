@@ -87,6 +87,7 @@ func _on_theo_out_body_exited(body: Node3D) -> void:
 		out_sit = false
 
 func _on_cutscene_cams_after_faint() -> void:
+	dalton_outside.visible = false
 	dalton_bar.visible = false
 	alert.show()
 	emit_signal("DaltonFaint")

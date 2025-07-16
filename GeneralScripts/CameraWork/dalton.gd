@@ -526,5 +526,15 @@ func _on_quincy_stop_dalton() -> void:
 
 func _on_sitting_ppl_dalton_faint() -> void:
 	daltonParent.global_position = wakeUpMarker.global_position
+	needs_rotation_forced = true
+	in_control = false
+	number = 1
+	force_rotation = true
+	await get_tree().create_timer(0.2).timeout
+	force_rotation = false
+	needs_rotation_forced = false
 	armature.visible = true
 	in_control = true
+
+func _on_cutscene_cams_reposition_dalton() -> void:
+	daltonParent.global_position = wakeUpMarker.global_position

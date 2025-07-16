@@ -62,6 +62,8 @@ var distraction_allowed := true
 var rotate_number := 0
 var is_activated := false
 
+var sound_allowed := true
+
 var in_danger = false
 signal play_caught
 signal pause_timeout
@@ -132,7 +134,8 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(direction * SPEED, accel * delta)
 		quincy_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
 		if velocity.length() > 0.5 and rotate_forced == false:
-			floor_type_walk()
+			if sound_allowed:
+				floor_type_walk()
 			_rotate_towards_velocity()
 		nav.set_velocity(velocity)
 	
@@ -617,3 +620,9 @@ func _on_sitting_ppl_dalton_faint() -> void:
 	is_drinking = false
 	is_navigating = false
 	armature.visible = false
+
+func _on_cutscene_cams_reposition_dalton() -> void:
+	pass
+
+func _on_cutscene_cams_faint_disable() -> void:
+	sound_allowed = false
