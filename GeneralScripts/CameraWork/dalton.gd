@@ -19,6 +19,8 @@ var walk_indicate := false
 var finished_greet := false
 var needs_rotation_forced := false
 
+var forced_walk := false
+
 const MAX_STEP_HEIGHT := 1.2
 var _snapped_to_stairs_last_frame := false
 var _last_frame_was_on_floor = -INF
@@ -54,6 +56,14 @@ func _physics_process(delta: float) -> void:
 	
 	GlobalVars.player_pos = global_position
 	
+	#if Input.is_action_just_pressed("meeting_done"):
+		#_on_door_bathroom_replace_quincy_enter_bathroom()
+	
+	if forced_walk:
+		var dir_marker = (armature.global_position - force_rotate_list[2].global_position).normalized()
+		velocity.x = lerp(velocity.x, -dir_marker.x * SPEED, LERP_VAL)
+		velocity.z = lerp(velocity.z, -dir_marker.z * SPEED, LERP_VAL)
+		floor_type_walk()
 	
 	if move_back_in_progress:
 		move_back_progress += delta * 3.0  # Adjust multiplier for speed
@@ -538,3 +548,26 @@ func _on_sitting_ppl_dalton_faint() -> void:
 
 func _on_cutscene_cams_reposition_dalton() -> void:
 	daltonParent.global_position = wakeUpMarker.global_position
+
+func _on_door_bathroom_replace_quincy_enter_bathroom() -> void:
+	needs_rotation_forced = true
+	in_control = false
+	number = 2
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	forced_walk = true
+	await get_tree().create_timer(1.5).timeout
+	forced_walk = false
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = true
+	number = 3
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	in_control = true
+	
+	
+	
