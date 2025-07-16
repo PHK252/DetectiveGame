@@ -23,10 +23,10 @@ signal continue_bar
 
 func _on_bar_make_drinks():
 	print("making drinks")
-	quincy_norm_body.hide()
+	#quincy_norm_body.hide()
 	anim_player.play("cocktail_cutscene")
 	await anim_player.animation_finished
-	quincy_norm_body.show()
+	#quincy_norm_body.show()
 	emit_signal("continue_bar")
 
 

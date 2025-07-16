@@ -273,7 +273,8 @@ func _process_follow_state(distance_to_target: float) -> void:
 				rotate_number = 2
 				rotate_forced = true
 				timer_check.start()
-			
+					
+					
 			state = IDLE
 
 #entrance area
