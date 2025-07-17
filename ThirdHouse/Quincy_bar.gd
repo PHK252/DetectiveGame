@@ -152,6 +152,7 @@ func _on_cutscene_cams_continue_bar():
 
 
 func _on_office_a_body_entered(body):
-	if body.name == "Quincy":
-		quincy_at_bar = true
-		print("bar_active")
+	if Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
+		if body.name == "Quincy":
+			quincy_at_bar = true
+			print("bar_active")

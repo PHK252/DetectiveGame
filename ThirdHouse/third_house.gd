@@ -22,6 +22,7 @@ var in_secret = false
 func _ready():
 	GlobalVars.current_level = "Quincy"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	timer.start()
 
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
@@ -91,18 +92,18 @@ func disable_interaction(arr: Array):
 		i.set_monitorable(false)
 		i.queue_free()
 
-
-func _on_secret_entered(body):
-	if body == player:
-		if in_secret == false:
-			in_secret = true
-			timer.paused = true
-
-func _on_secret_exit(body):
-	if body == player:
-		if in_secret == true:
-			in_secret = false
-			timer.paused = false
+#
+#func _on_secret_entered(body):
+	#if body == player:
+		#if in_secret == false:
+			#in_secret = true
+			#timer.paused = true
+#
+#func _on_secret_exit(body):
+	#if body == player:
+		#if in_secret == true:
+			#in_secret = false
+			#timer.paused = false
 
 
 func _on_cutscene_cams_faint_disable():
@@ -111,10 +112,11 @@ func _on_cutscene_cams_faint_disable():
 
 
 func _on_quincy_pause_timeout():
-	timer.paused = true
 	print("time out paused: " + str(timer.time_left)) 
+	timer.paused = true
+	
 
 
 func _on_quincy_time_out_resume():
 	timer.paused = false
-	print("time out resume") 
+	print("time out resume: " + str(timer.time_left))

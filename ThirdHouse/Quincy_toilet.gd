@@ -127,8 +127,8 @@ func _on_distracted_thoughts_ended():
 func _on_regular_thoughts_ended():
 	Dialogic.timeline_ended.disconnect(_on_regular_thoughts_ended)
 	GlobalVars.in_dialogue = false
-	player.start_player()
-	alert.show()
+	#player.start_player()
+	#alert.show()
 
 func _on_interactable_interacted(interactor):
 	#print("Clogged toilet? " + str(Dialogic.VAR.get_variable("Quincy.clogged_toilet")))

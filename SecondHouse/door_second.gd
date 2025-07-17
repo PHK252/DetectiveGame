@@ -8,6 +8,7 @@ extends Node3D
 @export var theo_marker : Marker2D
 @export var player : CharacterBody3D
 @export var alert : Sprite3D
+@export var interior_door : bool
 var is_open: bool = false
 @onready var entered = false
 signal j_door_open
@@ -77,6 +78,16 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	
 	#for debug
 	#__________________
+	if interior_door == true:
+		if is_open == false:
+			open()
+			collision.disabled = true
+			return
+		else:
+			close()
+			collision.disabled = false
+			return
+	
 	if is_open == false and entered_quincy_house == true and GlobalVars.in_dialogue == false:
 		GlobalVars.in_dialogue == true
 		player.stop_player()

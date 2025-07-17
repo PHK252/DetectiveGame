@@ -8,7 +8,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		if entered_room == false:
 			entered_room = true
-			await get_tree().create_timer(1.2).timeout
+			await get_tree().create_timer(.5).timeout
 			player.stop_player()
 			GlobalVars.in_dialogue = true
 			var secret_enter = Dialogic.start("Quincy_Secret_room")

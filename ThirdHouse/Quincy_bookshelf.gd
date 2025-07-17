@@ -28,6 +28,7 @@ extends Node3D
 @export var character_marker: Marker2D
 
 #Interaction Variables
+@export var interactable : Interactable
 @export var interact_area: Area2D
 @export var dialogue_file: String
 @export var react_file: String
@@ -244,3 +245,12 @@ func _on_thoughts_finished():
 		game_dialogue.register_character(load(load_char_dialogue), character_marker)
 		player.stop_player()
 		alert.hide()
+
+
+func _on_toilet_distraction():
+	interactable.set_deferred("monitorable", false)
+
+
+func _on_quincy_time_out_resume():
+	if interactable.monitorable == false:
+		interactable.set_deferred("monitorable", true)

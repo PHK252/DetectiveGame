@@ -8,6 +8,7 @@ extends Node3D
 @export var quincy_marker : Marker2D
 @export var player = CharacterBody3D
 @export var alert : Sprite3D
+@export var interactable : Interactable
 var is_open: bool = false
 @onready var entered = false
 var cooldown = false
@@ -95,7 +96,7 @@ func _on_timeline_ended():
 func _on_exit_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_exit_timeline_ended)
 	player.start_player()
-	alert.show()
+	alert.hide()
 	GlobalVars.in_dialogue = false
 
 
@@ -122,6 +123,8 @@ func _on_bathroom_door_body_exited(body):
 				clogged.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 				clogged.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 				clogged.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			else:
+				close()
 			
 
 
@@ -142,3 +145,12 @@ func _on_interactable_body_entered(body):
 	if body.is_in_group("player"):
 		if distracted == true and in_bathroom == true:
 			alert.hide()
+
+
+func _on_phone_ui_book_distract_quincy():
+	interactable.set_deferred("monitorable", false)
+
+
+func _on_quincy_time_out_resume():
+	if interactable.monitorable == false:
+		interactable.set_deferred("monitorable", true)
