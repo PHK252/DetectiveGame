@@ -11,6 +11,7 @@ signal play_anim
 func _on_quincy_play_caught():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Dialogic.VAR.set_variable("Quincy.caught", true)
+	GlobalVars.Quincy_Dalton_caught = true
 	GlobalVars.in_dialogue = true
 	player.stop_player()
 	var caught_dialogue = Dialogic.start("Quincy_caught")

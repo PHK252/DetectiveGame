@@ -35,9 +35,6 @@ func _on_kitchen_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		activate_camera(4)  # Fifth camera
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_door_area_body_entered(body: Node3D) -> void:

@@ -121,7 +121,7 @@ signal open_quincy_case
 @onready var fish_dialogue_Quincy = false
 @onready var poker_thoughts_Quincy = false
 @onready var safe_dialogue_Quincy = false
-@onready var bar_dialogue_Quincy_finsihed = false
+@onready var bar_dialogue_Quincy_finished = false
 @onready var Quincy_toilet_distracted = false
 @onready var chocolate_dialogue = false
 

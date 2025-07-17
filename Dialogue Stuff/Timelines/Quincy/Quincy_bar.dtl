@@ -293,5 +293,6 @@ Dalton: ...
 	Quincy: Hmm...
 	Quincy: Well, you know where the drinks are.
 	Quincy: If you change your mind.
+	set {Quincy.refused_bar} = true
 	[signal arg="disconnect"]
 	[end_timeline]

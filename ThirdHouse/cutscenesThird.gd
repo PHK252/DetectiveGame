@@ -4,6 +4,7 @@ extends Node
 @export var test_cutscene : bool
 
 @export var player : CharacterBody3D
+@export var alert : Sprite3D
 @export var sitting_Dalton : Node3D
 @export var quincy_norm_body : CharacterBody3D 
 @export var dalton_marker : Marker2D
@@ -44,6 +45,7 @@ func _on_bar_faint_time():
 	var faint_dialogue = Dialogic.start("Quincy_faint")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	alert.hide()
 	faint_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 	faint_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 	faint_dialogue.register_character(load("res://Dialogic Characters/Quincy.dch"), character_marker)

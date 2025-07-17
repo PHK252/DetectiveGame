@@ -6,7 +6,8 @@ extends Node3D
 @export var dalton_marker : Marker2D
 @export var character_marker : Marker2D
 @export var theo_marker : Marker2D
-@export var player = CharacterBody3D
+@export var player : CharacterBody3D
+@export var alert : Sprite3D
 var is_open: bool = false
 @onready var entered = false
 signal j_door_open
@@ -76,8 +77,17 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	
 	#for debug
 	#__________________
-	
-	if is_open == false and entered == true and GlobalVars.in_dialogue == false:
+	if is_open == false and entered_quincy_house == true and GlobalVars.in_dialogue == false:
+		GlobalVars.in_dialogue == true
+		player.stop_player()
+		alert.hide()
+		Dialogic.signal_event.connect(doorOpen)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		var quincy_leave = Dialogic.start("Quincy_leaving")
+		quincy_leave.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		quincy_leave.register_character(load("res://Dialogic Characters/Quincy.dch"), character_marker)
+		quincy_leave.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+	elif is_open == false and entered == true and GlobalVars.in_dialogue == false:
 		open()
 		#GlobalVars.in_dialogue == true
 		#Dialogic.signal_event.connect(doorOpen)
@@ -108,15 +118,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		close()
 		collision.disabled = false
 	
-	if is_open == false and entered_quincy_house == true:
-		GlobalVars.in_dialogue == true
-		player.stop_player()
-		Dialogic.signal_event.connect(doorOpen)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		var quincy_leave = Dialogic.start("Quincy_leaving")
-		quincy_leave.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		quincy_leave.register_character(load("res://Dialogic Characters/Quincy.dch"), character_marker)
-		quincy_leave.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+	
 
 #game code
 #__________________
@@ -146,6 +148,7 @@ func _on_side_enter_body_entered(body: Node3D) -> void:
 		if is_open == false:
 			open()
 			collision.disabled = true
+			is_open = true
 
 func _on_main_enter_body_entered(body: Node3D) -> void:
 	#if quincy_house:
@@ -176,6 +179,7 @@ func _on_quincy_interact_close_door():
 	close()
 	collision.set_deferred("disabled", false) 
 	entered_quincy_house = true
+	is_open = false
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
@@ -196,16 +200,16 @@ func _on_exit_house(body):
 	if leaving == true:
 		if body.is_in_group("player"):
 			dalton_left = true
-			if dalton_left == true and theo_left == true:
+			if dalton_left == true:# and theo_left == true:
 				close()
 				collision.set_deferred("disabled", false) 
 				emit_signal("activate_car")
 				is_open = false
 		
-		if body.is_in_group("theo"):
-			theo_left = true
-			if dalton_left == true and theo_left == true:
-				close()
-				collision.set_deferred("disabled", false) 
-				emit_signal("activate_car")
-				is_open = false
+		#if body.is_in_group("theo"):
+			#theo_left = true
+			#if dalton_left == true and theo_left == true:
+				#close()
+				#collision.set_deferred("disabled", false) 
+				#emit_signal("activate_car")
+				#is_open = false

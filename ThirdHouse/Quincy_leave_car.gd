@@ -12,10 +12,11 @@ extends MeshInstance3D
 var is_open: bool = false
 
 func _ready():
-	interactable.set_monitorable(false)
+	interactable.set_deferred("monitorable", false)
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
+		print("map_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		main_cam.priority = 30
 		exit_cam.priority = 0
@@ -49,8 +50,10 @@ func _input(event):
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "map":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			map_ui.hide()
+			main_cam.set_tween_duration(0)
 			main_cam.priority = 0
 			exit_cam.priority = 30
+			main_cam.set_tween_duration(1)
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
@@ -60,5 +63,5 @@ func _input(event):
 
 
 func _on_main_door_activate_car():
-	door_interactable.set_monitorable(false)
-	interactable.set_monitorable(true)
+	door_interactable.set_deferred("monitorable", false)
+	interactable.set_deferred("monitorable", true)

@@ -90,6 +90,25 @@ Dalton: Leave?
 				Dalton: Hmph.
 				[signal arg= "open_door"]
 				[end_timeline]
+	else:
+		Dalton: I'm gonna head out now.
+		Quincy: That quick?
+		Theo: Dalton, are you sure?
+		Theo: We've barely checked anything.
+		Dalton: ...
+		- Leave.
+			Dalton: Yes. 
+			Dalton: I'm sure.
+			Dalton: Let go.
+			Theo: Okay...?
+			Theo: Goodbye, Mister Mayor.
+			Quincy: Take care. 
+			[signal arg= "open_door"]
+			[end_timeline]
+		- Stay. 
+			Dalton: You're right.  
+			Dalton: Let's continue. 
+			[end_timeline]
 	if {Quincy.solved_rever} == true:
 		Dalton: I- 
 		Dalton: Um...
@@ -114,7 +133,7 @@ Dalton: Leave?
 		Dalton: We just have to go. 
 		[signal arg= "open_door"]
 		[end_timeline]
-- Not yet.
+- Stay.
 	[end_timeline]
 
 label solved case and rever after

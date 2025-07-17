@@ -2,6 +2,7 @@ extends Node3D
 
 #Assign player body
 @export var player: CharacterBody3D
+@export var player_interactor : Interactor
 @export var alert: Sprite3D
 
 #Assign character markers (up to 3)
@@ -17,7 +18,8 @@ extends Node3D
 
 @export var dialogue_file : String
 var fainted = false
-
+var quincy_at_bar = false
+var set_monitor = false
 signal theo_bar_call
 signal faint_time
 signal make_drinks
@@ -27,15 +29,25 @@ signal Nudge_Quincy_marker
 signal return_norm_markers
 signal Switch_theo_marker
 
+func _ready():
+	interactable.set_monitorable(false) 
+
 func _process(delta):
+	#if first cycle:
 	if fainted == false:
-		if GlobalVars.bar_dialogue_Quincy_finsihed == true or GlobalVars.Quincy_Dalton_caught == true:
+		if GlobalVars.bar_dialogue_Quincy_finished == true or GlobalVars.Quincy_Dalton_caught == true:
 			interactable.set_monitorable(false) 
-		else:
-			interactable.set_monitorable(true) 
+		elif quincy_at_bar == true:
+			if set_monitor == false:
+				interactable.set_monitorable(true) 
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().create_timer(.03).timeout
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+				set_monitor = true
+	# else: interactable.set_monitorable(false) 
 
 func _on_bar_interact_interacted(interactor):
-	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finsihed == false and GlobalVars.in_interaction == "":
+	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finished == false and GlobalVars.in_interaction == "":
 		GlobalVars.in_interaction = interaction_type
 		var bar_dialogue = Dialogic.start(dialogue_file)
 		GlobalVars.in_dialogue = true
@@ -63,12 +75,16 @@ func _on_timeline_ended():
 			player.start_player()
 			alert.show()
 			emit_signal("return_norm_markers")
-			GlobalVars.bar_dialogue_Quincy_finsihed = true
+			if Dialogic.VAR.get_variable("Quincy.refused_bar") == false:
+				GlobalVars.bar_dialogue_Quincy_finished = true
+			else:
+				Dialogic.VAR.set_variable("Quincy.refused_bar", false)
+				
 	else:
 		Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 		GlobalVars.in_interaction = ""
 		GlobalVars.in_dialogue = false
-		GlobalVars.bar_dialogue_Quincy_finsihed = true
+		GlobalVars.bar_dialogue_Quincy_finished = true
 	
 	
 	#switch cam and move characters
@@ -133,3 +149,9 @@ func _on_cutscene_cams_continue_bar():
 		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
+
+
+func _on_office_a_body_entered(body):
+	if body.name == "Quincy":
+		quincy_at_bar = true
+		print("bar_active")
