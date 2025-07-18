@@ -168,7 +168,7 @@ func _on_input_event(viewport, event, shape_idx):
 					Exit_Cam.priority = 30
 					cam_anim.play("RESET")
 					player.show()
-					player.start_player()
+					player.stop_player()
 					GlobalVars.in_interaction = ""
 					interact_area.hide()
 					Exit_Cam.set_tween_duration(1)
