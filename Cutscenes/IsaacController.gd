@@ -36,6 +36,8 @@ var blend_target := 1.0
 var checking_start := true
 var not_stairs := true
 
+@export var crouch_sound : AudioStreamPlayer3D
+
 func _ready() -> void:
 	add_to_group("player")
 	in_control = false
@@ -46,6 +48,21 @@ func _ready() -> void:
 	force_rotation = false
 	in_control = true
 	checking_start = false
+
+func floor_type_walk():
+	if $FloorType.is_colliding():
+		var collider = $FloorType.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("FootstepsWood")
+		if collider.is_in_group("woodStairs"):
+			sound_player.play("FootstepsStairs")
+		
+func floor_type_gather():
+	if $FloorType.is_colliding():
+		var collider = $FloorType.get_collider()
+		if collider.is_in_group("wood"):
+			sound_player.play("FootstepsWood_gather")
+		
 
 func _process(delta: float) -> void:
 	if checking_start:
@@ -99,10 +116,12 @@ func _physics_process(delta: float) -> void:
 				#if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					#anim_tree["parameters/Blend3/blend_amount"] = 0
 				#sound_player.play("wood_walk")
+				floor_type_walk()
 				just_walked = true
 			else:
 				if just_walked:
 					#sound_player.play("wood_gather")
+					floor_type_gather()
 					just_walked = false
 				if not_stairs == true:
 					velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
@@ -114,6 +133,7 @@ func _physics_process(delta: float) -> void:
 			force_rotate(number)
 		
 		if move_out:
+			floor_type_walk()
 			var direction = (armature.global_position - force_rotate_list[3].global_position).normalized()
 			velocity.x = lerp(velocity.x, -direction.x * SPEED, LERP_VAL)
 			velocity.z = lerp(velocity.z, -direction.z * SPEED, LERP_VAL)
@@ -230,6 +250,7 @@ func _on_control_areas_check_on_isaac() -> void:
 	
 	blend_worry = true
 	await get_tree().create_timer(2.5).timeout
+	crouch_sound.play()
 	blend_worry = false
 	blend_crouch = true
 	

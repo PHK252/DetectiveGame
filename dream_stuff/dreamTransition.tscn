@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d2qmed24hoimf"]
+[gd_scene load_steps=49 format=3 uid="uid://d2qmed24hoimf"]
 
 [ext_resource type="PackedScene" uid="uid://cnei0gnqkka7" path="res://dream_stuff/DreamTransition.glb" id="1_q1hl2"]
 [ext_resource type="PackedScene" uid="uid://dpyd2ngef4s53" path="res://dream_stuff/FrameSep.glb" id="2_jm08a"]
@@ -9,9 +9,21 @@
 [ext_resource type="Script" uid="uid://dd46bmhjxhf3u" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_gseyv"]
 [ext_resource type="Script" uid="uid://ba877ddbj17hy" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_nv2et"]
 [ext_resource type="PackedScene" uid="uid://bqvssux5m1c" path="res://CharacterStuff/Dalton/Dalton.tscn" id="8_gseyv"]
+[ext_resource type="AudioStream" uid="uid://cecqxdho78btf" path="res://Audio/Footsteps/kick_1.wav" id="10_77a1m"]
 [ext_resource type="Script" uid="uid://b6ndfsf4fgjha" path="res://dream_stuff/DreamExit.gd" id="10_g1nns"]
 [ext_resource type="PackedScene" uid="uid://b27gr7j2hs4ok" path="res://Cutscenes/Bedroom.glb" id="10_nv2et"]
+[ext_resource type="AudioStream" uid="uid://cmhs6dh2xwlus" path="res://Audio/Footsteps/kick_2.wav" id="11_xcql8"]
 [ext_resource type="PackedScene" uid="uid://d1p7a1g58vmah" path="res://GeneralScripts/interaction/Interactable.tscn" id="12_oq3si"]
+[ext_resource type="AudioStream" uid="uid://chr3bet7li1cc" path="res://Audio/Flashbacks/dream_step_01.wav" id="12_ve050"]
+[ext_resource type="AudioStream" uid="uid://cds7ykk0q6eqe" path="res://Audio/Flashbacks/dream_step_02.wav" id="13_l56lf"]
+[ext_resource type="AudioStream" uid="uid://b44g65joi4cvf" path="res://Audio/Flashbacks/dream_step_03.wav" id="14_rgmv0"]
+[ext_resource type="AudioStream" uid="uid://cuqsv4e5ecrpe" path="res://Audio/Flashbacks/dream_step_04.wav" id="15_hf046"]
+[ext_resource type="AudioStream" uid="uid://buar36xiwi27g" path="res://Audio/Flashbacks/dream_step_05.wav" id="16_7678o"]
+[ext_resource type="AudioStream" uid="uid://c7m51jcy0tqcd" path="res://Audio/Flashbacks/dream_step_06.wav" id="17_rxvkm"]
+[ext_resource type="AudioStream" uid="uid://x6wtvh0m770t" path="res://Audio/Flashbacks/achievement.wav" id="21_rgmv0"]
+[ext_resource type="AudioStream" uid="uid://chs5hdnsyepfv" path="res://Audio/Flashbacks/errorDream.wav" id="22_hf046"]
+[ext_resource type="AudioStream" uid="uid://cmf6n1yr35n6f" path="res://Audio/Flashbacks/bed_rustle_01.wav" id="23_7678o"]
+[ext_resource type="AudioStream" uid="uid://xf6pgu203b2c" path="res://Audio/Flashbacks/bed_rustle_02.wav" id="24_rxvkm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nv2et"]
 shading_mode = 0
@@ -127,6 +139,27 @@ size = Vector3(1.1806, 1, 2.50983)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nv2et"]
 size = Vector3(1.25562, 3.20557, 8.35748)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ie6g1"]
+streams_count = 2
+stream_0/stream = ExtResource("10_77a1m")
+stream_1/stream = ExtResource("11_xcql8")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yuf04"]
+streams_count = 6
+stream_0/stream = ExtResource("12_ve050")
+stream_1/stream = ExtResource("13_l56lf")
+stream_2/stream = ExtResource("14_rgmv0")
+stream_3/stream = ExtResource("15_hf046")
+stream_4/stream = ExtResource("16_7678o")
+stream_5/stream = ExtResource("17_rxvkm")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_bvs2m"]
+stream_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_ie6g1")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_yuf04")
+stream_1/volume = 0.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ga30b"]
 size = Vector3(21.117, 0.487915, 9.3115)
 
@@ -141,6 +174,11 @@ size = Vector3(21.1001, 4.80273, 1.96093)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1nns"]
 size = Vector3(2.2699, 12.2983, 2.13974)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bvs2m"]
+streams_count = 2
+stream_0/stream = ExtResource("23_7678o")
+stream_1/stream = ExtResource("24_rxvkm")
 
 [node name="Main" type="Node3D"]
 
@@ -381,25 +419,25 @@ idle_time_2 = NodePath("Idle2")
 sound_player = NodePath("../DaltonSoundPlayer")
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(2.7214e-11, -5.39206e-08, -2.94061)
-bones/3/rotation = Quaternion(-0.000422903, 0.369188, 0.851791, -0.371689)
-bones/4/rotation = Quaternion(-0.331915, -0.00369791, -0.0338014, 0.942696)
-bones/5/rotation = Quaternion(0.545705, -0.0280275, 0.0598522, 0.835367)
-bones/8/rotation = Quaternion(0.000422926, 0.369188, 0.851791, 0.371689)
-bones/9/rotation = Quaternion(-0.331915, 0.00369791, 0.0338014, 0.942696)
-bones/10/rotation = Quaternion(0.545705, 0.0280275, -0.0598522, 0.835367)
-bones/12/position = Vector3(2.7214e-11, -2.6658e-07, -2.94061)
-bones/15/rotation = Quaternion(-0.0722417, 1.13608e-07, -1.22424e-08, 0.997387)
-bones/16/rotation = Quaternion(0.00984206, 8.69366e-09, 8.07666e-09, 0.999952)
-bones/18/rotation = Quaternion(0.0760842, 0.00987557, -0.010545, 0.996997)
-bones/20/rotation = Quaternion(0.0760842, -0.00987557, 0.010545, 0.996997)
-bones/22/rotation = Quaternion(-0.267759, -0.147987, -0.379421, 0.873181)
-bones/23/rotation = Quaternion(-0.00392369, -0.000433144, -0.360054, 0.932923)
-bones/26/rotation = Quaternion(-0.267759, 0.147987, 0.379421, 0.873181)
-bones/27/rotation = Quaternion(-0.0039239, 0.000433186, 0.360054, 0.932923)
-bones/31/position = Vector3(0.938414, -0.0311821, -2.17831)
-bones/33/position = Vector3(2.7214e-11, -1.13525e-07, -2.94061)
-bones/36/position = Vector3(-0.938414, -0.0311821, -2.17831)
+bones/1/position = Vector3(-1.07527e-10, -5.75171e-08, -3.01981)
+bones/3/rotation = Quaternion(0.020801, 0.31055, 0.878705, -0.361945)
+bones/4/rotation = Quaternion(-0.211091, 0.0915053, -0.037995, 0.972432)
+bones/5/rotation = Quaternion(0.491034, -0.113253, 0.104239, 0.857435)
+bones/8/rotation = Quaternion(-0.020801, 0.31055, 0.878705, 0.361945)
+bones/9/rotation = Quaternion(-0.211091, -0.0915053, 0.0379949, 0.972432)
+bones/10/rotation = Quaternion(0.491034, 0.113253, -0.104239, 0.857435)
+bones/12/position = Vector3(-1.07527e-10, -2.44907e-07, -3.01981)
+bones/15/rotation = Quaternion(-0.0855693, 1.14779e-07, -1.18853e-08, 0.996332)
+bones/16/rotation = Quaternion(0.0398981, 4.61179e-09, 1.24422e-08, 0.999204)
+bones/18/rotation = Quaternion(0.0163874, -0.0103871, -0.00961929, 0.999766)
+bones/20/rotation = Quaternion(0.0163874, 0.0103871, 0.00961931, 0.999766)
+bones/22/rotation = Quaternion(-0.2551, -0.149093, -0.405603, 0.864975)
+bones/23/rotation = Quaternion(-0.00305434, -0.000445685, -0.280277, 0.959914)
+bones/26/rotation = Quaternion(-0.2551, 0.149093, 0.405602, 0.864976)
+bones/27/rotation = Quaternion(-0.00305452, 0.000445682, 0.28028, 0.959913)
+bones/31/position = Vector3(0.991136, -0.0311821, -2.19331)
+bones/33/position = Vector3(-1.07527e-10, -1.17122e-07, -3.01981)
+bones/36/position = Vector3(-0.991136, -0.0311821, -2.19331)
 
 [node name="Idle" type="Timer" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D" index="8"]
 wait_time = 35.0
@@ -409,9 +447,15 @@ autostart = true
 wait_time = 5.0
 one_shot = true
 
+[node name="dream_steps" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Dalton2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0910112, 0)
+stream = SubResource("AudioStreamSynchronized_bvs2m")
+volume_db = -10.0
+bus = &"SFX"
+
 [node name="Colliders" type="Node" parent="SubViewportContainer/SubViewport"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Colliders"]
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Colliders" groups=["dream"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Colliders/StaticBody3D"]
@@ -491,6 +535,25 @@ visible = false
 
 [node name="Interactable" parent="SubViewportContainer/SubViewport/BedroomStuff" instance=ExtResource("12_oq3si")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52084, 0.949264, -1.79903)
+
+[node name="Sounds" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="ClickCase" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82171, 1.43519, 0)
+
+[node name="UnlockFlashback" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94177, 1.4135, 0)
+stream = ExtResource("21_rgmv0")
+bus = &"SFX"
+
+[node name="ErrorCase" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5386, 1.38146, 0)
+stream = ExtResource("22_hf046")
+bus = &"SFX"
+
+[node name="BedRustle" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94889, 0.964143, -1.47473)
+stream = SubResource("AudioStreamRandomizer_bvs2m")
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamSystem/CamAreas/Area_01" to="SubViewportContainer/SubViewport/CamSystem" method="_on_area_01_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CamSystem/CamAreas/Area_02" to="SubViewportContainer/SubViewport/CamSystem" method="_on_area_02_body_entered"]

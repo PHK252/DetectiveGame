@@ -194,6 +194,8 @@ func floor_type_walk():
 			sound_player.play("Footsteps_Metal")
 		if collider.is_in_group("marble"):
 			sound_player.play("Footsteps_Marble")
+		if collider.is_in_group("dream"):
+			sound_player.play("Footsteps_dream")
 		
 # floor type jog 
 func floor_type_jog():
@@ -217,6 +219,8 @@ func floor_type_jog():
 			sound_player.play("FootstepsJog_Metal")
 		if collider.is_in_group("marble"):
 			sound_player.play("FootstepsJog_Marble")
+		if collider.is_in_group("dream"):
+			sound_player.play("FootstepsJog_dream")
 		
 
 # floor type gather
@@ -241,6 +245,8 @@ func floor_type_gather():
 			sound_player.play("FootstepsGather_Metal")
 		if collider.is_in_group("marble"):
 			sound_player.play("FootstepsGather_Marble")
+		if collider.is_in_group("dream"):
+			sound_player.play("FootstepsGather_dream")
 		
 
 func force_rotate(number : int):
