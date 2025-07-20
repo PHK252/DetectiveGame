@@ -33,6 +33,12 @@ var triggered = false
 @onready var tilt = ""
 @onready var try_open = 0
 @onready var in_thoughts = false
+
+#sounds
+@export var open_door : AudioStreamPlayer3D
+@export var close_door : AudioStreamPlayer3D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -43,6 +49,7 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
+	open_door.play()
 	await get_tree().create_timer(2.0).timeout
 	cooldown = false
 	
@@ -54,6 +61,7 @@ func close() -> void:
 	animation_tree["parameters/conditions/is_opened"] = false
 	is_open = false
 	await get_tree().create_timer(2.0).timeout
+	close_door.play()
 	#print("quickCLosing")
 	#animation_tree["parameters/conditions/quick_close"] = true
 	#await get_tree().create_timer(0.5).timeout

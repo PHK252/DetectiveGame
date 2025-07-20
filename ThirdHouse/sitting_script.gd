@@ -23,6 +23,12 @@ signal DaltonFaint
 
 var out_sit = false
 
+@export var patio_sit : AudioStreamPlayer3D
+@export var patio_getup : AudioStreamPlayer3D
+
+@export var stool_sit : AudioStreamPlayer3D
+@export var stool_getup: AudioStreamPlayer3D
+
 func _ready() -> void:
 	theo_sitting.visible = false
 	theo_outside.visible = false
@@ -45,6 +51,9 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	if out_sit:
 		print("signaling")
 		emit_signal("theo_out")
+		patio_sit.play()
+	else:
+		stool_sit.play()
 	
 	#anim_player_dO.play("Sit_Outside")
 	#anim_player_dB.play("SitandDrinkWine")
@@ -63,8 +72,13 @@ func _process(delta: float) -> void:
 		dalton_outside.visible = false
 		dalton_bar.visible = false
 		alert.show()
+		stool_getup.play()
 		emit_signal("DaltonVisible")
 	elif Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
+		if out_sit:
+			patio_getup.play()
+		else:
+			stool_getup.play()
 		dalton_outside.visible = false
 		dalton_bar.visible = false
 		alert.show()
@@ -73,6 +87,7 @@ func _process(delta: float) -> void:
 		
 
 func _on_character_body_3d_theo_stand() -> void:
+	patio_getup.play()
 	theo_sitting.visible = false
 	theo_outside.visible = false
 	anim_player_theo.stop()

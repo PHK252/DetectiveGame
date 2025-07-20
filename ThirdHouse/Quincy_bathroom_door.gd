@@ -25,6 +25,10 @@ var triggered = false
 
 signal Quincy_enter_bathroom
 
+#sounds
+@export var open_sound : AudioStreamPlayer3D
+@export var close_sound : AudioStreamPlayer3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -36,6 +40,7 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
+	open_sound.play()
 	#emit_signal("j_door_open")
 	await get_tree().create_timer(2.0).timeout
 	cooldown = false
@@ -50,6 +55,7 @@ func close() -> void:
 	is_open = false
 	#emit_signal("j_door_closed")
 	await get_tree().create_timer(2.0).timeout
+	close_sound.play()
 	if quincy_house:
 		print("quickCLosing")
 		animation_tree["parameters/conditions/quick_close"] = true
