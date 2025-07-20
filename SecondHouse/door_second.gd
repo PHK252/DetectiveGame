@@ -27,6 +27,12 @@ signal activate_car
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
 
+#sounds
+@export var open_sound : AudioStreamPlayer3D
+@export var open_sound_int : AudioStreamPlayer3D
+@export var close_sound : AudioStreamPlayer3D
+@export var close_sound_int : AudioStreamPlayer3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -37,6 +43,10 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
+	if quincy_house:
+		open_sound.play()
+	if interior_door:
+		open_sound_int.play()
 	emit_signal("j_door_open")
 	await get_tree().create_timer(2.0).timeout
 	cooldown = false
@@ -51,11 +61,14 @@ func close() -> void:
 	emit_signal("j_door_closed")
 	await get_tree().create_timer(2.0).timeout
 	if quincy_house:
+		close_sound.play()
 		print("quickCLosing")
 		animation_tree["parameters/conditions/quick_close"] = true
 		await get_tree().create_timer(0.5).timeout
 		animation_tree["parameters/conditions/quick_close"] = false
 		animation_tree["parameters/conditions/is_closed"] = false
+	if interior_door:
+		close_sound_int.play()
 	cooldown = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
