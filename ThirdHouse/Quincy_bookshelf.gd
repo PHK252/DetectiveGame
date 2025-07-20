@@ -51,6 +51,9 @@ extends Node3D
 var try_viewed : int
 var in_thoughts = false
 
+@export var bookshelf_move_sound : AudioStreamPlayer3D
+@export var bookmark_sound : AudioStreamPlayer3D
+
 signal book_thoughts_finished
 signal thoughts_finished
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -158,6 +161,7 @@ func _on_input_event(viewport, event, shape_idx):
 					Dialogic.timeline_ended.connect(_on_book_thoughts_ended)
 					await book_thoughts_finished
 					bookmark_anim.play("Bookmark_pull")
+					bookmark_sound.play()
 					GlobalVars.set(view_item, true)
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					await bookmark_anim.animation_finished
@@ -178,7 +182,7 @@ func _on_input_event(viewport, event, shape_idx):
 					
 
 func open() -> void:
-	#open_sound.play()
+	bookshelf_move_sound.play()
 	cab_anim = true
 	doorL_anim["parameters/conditions/is_opened"] = true
 	doorL_anim["parameters/conditions/is_closed"] = false
@@ -191,7 +195,7 @@ func open() -> void:
 	collision_2.disabled = true
 	
 func close() -> void:
-	#close_sound.play()
+	bookshelf_move_sound.play()
 	cab_anim = true
 	doorL_anim["parameters/conditions/is_opened"] = false
 	doorL_anim["parameters/conditions/is_closed"] = true

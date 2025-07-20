@@ -46,6 +46,8 @@ extends Node3D
 @export var towel: Node3D
 signal distraction
 
+@export var flush : AudioStreamPlayer3D
+
 func _ready() -> void:
 	towel.visible = false
 
@@ -187,6 +189,8 @@ func _clog_toilet(argument : String):
 		GlobalVars.in_dialogue = false
 		GlobalVars.in_look_screen = false
 		cam_anim.play("RESET")
+		await get_tree().create_timer(1.2).timeout
+		flush.play()
 		player.start_player()
 		#flood_anim.play(anim_track)
 		pass

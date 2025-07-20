@@ -279,7 +279,9 @@ func _process_follow_state(distance_to_target: float) -> void:
 				rotate_forced = true
 				timer_check.start()
 					
-					
+			if wander_choice == 1:
+				sound_player.play("CleanUp")
+				
 			state = IDLE
 
 #entrance area
@@ -351,6 +353,7 @@ func _on_distraction_time_timeout() -> void:
 func _on_quincy_one_shot_timer_timeout() -> void:
 	if is_drinking:
 		quincy_tree.set("parameters/Wine/request", true)
+		sound_player.play("WineSounds")
 		await get_tree().create_timer(2.2).timeout
 		wineStatic.visible = false
 		wineAnim.visible = true
@@ -362,6 +365,7 @@ func _on_smoke_time_timeout() -> void:
 	if state == IDLE and is_distracted == false and is_navigating:
 		is_navigating = false
 		quincy_tree.set("parameters/Smoking/request", true)
+		sound_player.play("SmokeSounds")
 		await get_tree().create_timer(2.2).timeout
 		packofcigs.visible = true
 		await get_tree().create_timer(1.7).timeout

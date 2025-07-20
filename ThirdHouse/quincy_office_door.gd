@@ -37,6 +37,7 @@ var triggered = false
 #sounds
 @export var open_door : AudioStreamPlayer3D
 @export var close_door : AudioStreamPlayer3D
+@export var key_sound : AudioStreamPlayer3D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -50,6 +51,7 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
 	open_door.play()
+	key_sound.play()
 	await get_tree().create_timer(2.0).timeout
 	cooldown = false
 	

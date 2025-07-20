@@ -26,6 +26,11 @@ extends Node3D
 @export var load_char_dialogue: String
 
 @export var interact_type: String
+
+#sounds
+@export var case_pickup : AudioStreamPlayer3D
+@export var case_putdown : AudioStreamPlayer3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI.hide()
@@ -97,6 +102,7 @@ func caseUI(argument: String):
 
 func _on_exit_pressed():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	case_putdown.play()
 	GlobalVars.Quincy_in_case = false
 	GlobalVars.in_look_screen = false
 	UI.hide()
@@ -192,6 +198,7 @@ func _on_input_event(viewport, event, shape_idx):
 				if GlobalVars.in_interaction == "":
 					GlobalVars.in_interaction = interact_type
 				UI.show()
+				case_pickup.play()
 				GlobalVars.viewing = "case_ui"
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_case_Quincy = GlobalVars.clicked_case_Quincy + 1

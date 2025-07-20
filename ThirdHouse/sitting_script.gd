@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
 		if out_sit:
 			patio_getup.play()
-		else:
+		elif bar_convo:
 			stool_getup.play()
 		dalton_outside.visible = false
 		dalton_bar.visible = false

@@ -42,6 +42,10 @@ extends CanvasLayer
 @onready var current_button = ""
 @onready var pressed_button = "1"
 
+@export var case_locked : AudioStreamPlayer3D
+@export var case_unlocked : AudioStreamPlayer3D
+@export var case_click : AudioStreamPlayer3D
+
 func _ready():
 	label.text = ""
 	#blinker.size = Vector2(15, 3)
@@ -199,6 +203,7 @@ func _on_enter_pressed():
 		GlobalVars.emit_open_quincy_case()
 		await get_tree().create_timer(1.5).timeout
 	else:
+		case_locked.play()
 		print("very wrong")
 		label.text = "Wrong"
 		await get_tree().create_timer(.05).timeout
@@ -238,6 +243,7 @@ func _on_enter_pressed():
 
 func reset_when_switch():
 	print("entered")
+	case_click.play()
 	if pressed_button != "enter" and current_button != pressed_button:
 		current_button = pressed_button
 		print(current_button)
@@ -245,7 +251,7 @@ func reset_when_switch():
 
 
 func _open_case():
-	#case_unlocked.play()
+	case_unlocked.play()
 	#cam_anim.play("Case_look")
 	#hide_closed_case()
 	#show_open_case()

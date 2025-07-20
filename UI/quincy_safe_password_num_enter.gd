@@ -29,6 +29,11 @@ extends CanvasLayer
 
 signal alarm
 
+@export var safe_click : AudioStreamPlayer3D
+@export var safe_open : AudioStreamPlayer3D
+@export var safe_close : AudioStreamPlayer3D
+@export var safe_error : AudioStreamPlayer3D
+
 func _ready():
 	pass_enter.text = ""
 	blinker_anim.play("Blink")
@@ -97,6 +102,7 @@ func _on_enter_pressed():
 		
 	elif incorrect_times > 0:
 		#print("wrong")
+		safe_error.play()
 		array_pos = 0
 		pass_enter.text = "Incorrect. " + str(incorrect_times) + " tries remaining."
 		incorrect_times -= 1
@@ -118,6 +124,7 @@ func _on_enter_pressed():
 		pass_enter.text = input
 		
 func open() -> void:
+	safe_open.play()
 	safe_anim = true
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
@@ -133,6 +140,7 @@ func open() -> void:
 	safe_anim = false
 	
 func close() -> void:
+	safe_close.play()
 	safe_anim = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
