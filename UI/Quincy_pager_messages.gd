@@ -3,28 +3,39 @@ extends Control
 @export var scroll_container : ScrollContainer
 @export var line_edit : LineEdit
 @export var messages : Control
+@export var error : Control
 @export var shift_key : TextureButton
+@export var messages_arr : Array[Button]
+@export var home : Control
+@export var back_screen: Control
 
+@onready var focus_index : int
 @onready var shift = false
 @onready var max_scroll = scroll_container.get_v_scroll_bar().max_value
 @onready var allowed_characters: String = "[a-zA-Z0-9\\.\\?,]+"
+@onready var caret_column = 0
 var _reg_ex: RegEx = RegEx.new()
+var _v_scroll: VScrollBar
 
 func _ready():
 	_reg_ex.compile(allowed_characters)
 	line_edit.text_changed.connect(_on_text_changed)
+	scroll_container.call_deferred("set_v_scroll", max_scroll)
+	_v_scroll = scroll_container.get_node("_v_scroll")
 	
-
-func _process(delta):
-	if messages.visible == true:
-		scroll_container.call_deferred("set_v_scroll", max_scroll)
-
 func _button_press(key :String):
 	if messages.visible == true:
-		line_edit.text = line_edit.text + key
+		if caret_column < line_edit.text.length():
+			line_edit.text = line_edit.text.insert(caret_column, key)
+		else:
+			line_edit.text = line_edit.text + key
 		await get_tree().process_frame
 		line_edit.grab_focus()
-		line_edit.set_caret_column(line_edit.text.length() + 1)
+		if focus_index != 0:
+			focus_index = 0
+			line_edit.caret_force_displayed = true
+		line_edit.set_caret_column(caret_column + 1)
+		caret_column = line_edit.get_caret_column()
 		line_edit.release_focus()
 		
 func _num_press(key :String):
@@ -52,7 +63,6 @@ func _on_shift_toggled(toggled_on):
 
 func _on_text_changed(new_text: String) -> void:
 	# Remember the position of the caret.
-	var caret_column = line_edit.get_caret_column()
 	var caret_position: int = caret_column
 	
 	# Filter the new text according to the regular expession.
@@ -190,55 +200,104 @@ func _on_m_pressed():
 	_letter_press("M", "m")
 
 func _on_backspace_pressed():
-	if len(line_edit.text) > 0:
-		line_edit.text = line_edit.text.erase(len(line_edit.text)-1, 1)
-		line_edit.set_caret_column(line_edit.text.length() + 1)
-
-func _on_enter_pressed():
-	pass # Replace with function body.
+	if messages.visible == true:
+		if len(line_edit.text) > 0 and caret_column > 0:
+			if focus_index != 0:
+				messages_arr[focus_index - 1].release_focus()
+				focus_index = 0
+				line_edit.caret_force_displayed = true
+				caret_column = line_edit.text.length()
+				line_edit.set_caret_column(caret_column)
+			line_edit.text = line_edit.text.erase(caret_column - 1, 1)
+			line_edit.set_caret_column(caret_column - 1)
+			caret_column = line_edit.get_caret_column()
 
 func _on_right_pressed():
-	pass # Replace with function body.
+	if messages.visible == true:
+		if caret_column < len(line_edit.text):
+			caret_column += 1
+			line_edit.set_caret_column(caret_column)
+		elif caret_column == len(line_edit.text):
+			caret_column = line_edit.get_caret_column()
 
 func _on_left_pressed():
-	pass # Replace with function body.
+	if messages.visible == true:
+		if caret_column > 0:
+			caret_column -= 1
+			line_edit.set_caret_column(caret_column)
+		elif caret_column == 0:
+			caret_column = line_edit.get_caret_column()
 
 func _on_down_pressed():
-	pass # Replace with function body.
+	if messages.visible == true:
+		if focus_index > 0:
+			focus_index -= 1
+		else:
+			focus_index = 0 
+		if focus_index == 0:
+			line_edit.grab_focus()
+			line_edit.caret_force_displayed = true
+			caret_column = line_edit.text.length()
+			line_edit.set_caret_column(caret_column)
+			line_edit.release_focus()
+		else:
+			line_edit.caret_force_displayed = false
+			messages_arr[focus_index - 1].grab_focus()
 
 func _on_up_pressed():
-	pass # Replace with function body.
+	if messages.visible == true:
+		if focus_index < 16:
+			focus_index += 1
+		if focus_index == 0:
+			line_edit.grab_focus()
+			line_edit.caret_force_displayed = true
+			caret_column = line_edit.text.length()
+			line_edit.set_caret_column(caret_column)
+			line_edit.release_focus()
+		else:
+			line_edit.caret_force_displayed = false
+			messages_arr[focus_index - 1].grab_focus()
+
 
 func _on_check_pressed():
-	pass # Replace with function body.
+	if messages.visible == true:
+		_error()
 
-#func _on_next_pressed():
-	#input = label.text
-	#if len(input) == position + 1:
-		#position += 1
-		#position_blinker_forward(position - 1)
-	#reset_num()
-	##print(input)
-#
-#func _on_back_pressed():
-	#if len(input) > 0:
-		#position_blinker_backwards(position-1)
-		#label.text = label.text.erase(len(label.text)-1, 1)
-		#input = label.text
-		#position -= 1
-		#print(position)
-		#reset_num()
-#
-#func position_blinker_forward(pos : int):
-	#var offset = label.get_character_bounds(pos)
-	##print("Before " + str(blinker.position.x))
-	#blinker_x_pos = offset.size.x + blinker_x_pos
-	#blinker.position.x = blinker_x_pos
-	##print("After " + str(blinker.position.x))
-#
-#func position_blinker_backwards(pos : int):
-	#var offset = label.get_character_bounds(pos)
-	##print("Before " + str(blinker.position.x))
-	#blinker_x_pos =  blinker_x_pos - offset.size.x
-	#blinker.position.x = blinker_x_pos
-	##print("After " + str(blinker.position.x))
+func _on_enter_pressed():
+	if messages.visible == true:
+		_error()
+
+func _input(event: InputEvent) -> void:
+	if messages.visible == true:
+		if event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_WHEEL_DOWN || event.button_index == MOUSE_BUTTON_WHEEL_UP):
+			_v_scroll.set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
+
+func _error():
+	if line_edit.text != "":
+		messages.visible = false
+		error.visible = true
+		await get_tree().create_timer(2.5).timeout
+		scroll_container.call_deferred("set_v_scroll", max_scroll)
+		line_edit.text = ""
+		caret_column = 0
+		messages.visible = true
+		error.visible = false
+
+func _on_home_pressed():
+	if messages.visible == true:
+		messages.visible = false
+		home.visible = true
+
+
+
+func _on_back_pressed():
+	if messages.visible == true:
+		messages.visible = false
+		back_screen.visible = true
+
+
+
+func _on_pager_messages_default():
+	scroll_container.call_deferred("set_v_scroll", max_scroll)
+	line_edit.text = ""
+	caret_column = 0
