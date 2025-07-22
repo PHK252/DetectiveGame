@@ -17,6 +17,9 @@ extends Control
 var _reg_ex: RegEx = RegEx.new()
 var _v_scroll: VScrollBar
 
+signal home_default
+signal menu_default
+
 func _ready():
 	_reg_ex.compile(allowed_characters)
 	line_edit.text_changed.connect(_on_text_changed)
@@ -287,13 +290,13 @@ func _on_home_pressed():
 	if messages.visible == true:
 		messages.visible = false
 		home.visible = true
-
-
+		emit_signal("home_default")
 
 func _on_back_pressed():
 	if messages.visible == true:
 		messages.visible = false
 		back_screen.visible = true
+		emit_signal("menu_default")
 
 
 
