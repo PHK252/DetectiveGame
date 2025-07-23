@@ -1,5 +1,11 @@
 extends CanvasLayer
 
+#password
+@onready var password = "password"
+@onready var password_text = $Login/Pass
+@onready var incorrect = $Login/Wrong
+
+
 #screens
 @onready var login = $Login
 @onready var home = $Home
@@ -10,6 +16,7 @@ extends CanvasLayer
 @onready var Mail_face_id_overlay = $"Mail/Face ID"
 @onready var Mail_new_mail_overlay = $"Mail/New Message"
 @onready var Mail_error_overlay = $Mail/Error
+@onready var Mail_delete_overlay = $"Mail/Confirm Delete"
 
 #Home buttons
 @onready var Home_icon = $Home/Icon
@@ -34,7 +41,7 @@ extends CanvasLayer
 @onready var Mail_Read_lock = $Mail/Read/Lock
 @onready var Mail_message_1 = $Mail/Read/Message1
 @onready var Mail_message_2 = $Mail/Read/Message2
-
+signal return_default
 
 
 @onready var Mail_button_array = [Mail_Exit, Mail_New_Message, Mail_Inbox_Message_1, Mail_Inbox_Message_2, Mail_Inbox_Message_3,
@@ -49,11 +56,16 @@ func _ready():
 	Mail_face_id_overlay.hide()
 	Mail_new_mail_overlay.hide()
 	Mail_error_overlay.hide()
+	incorrect.hide()
 
 #Login
 func _on_enter_pressed():
-	login.hide()
-	home.show()
+	if password == password_text.text:
+		login.hide()
+		home.show()
+	else:
+		incorrect.show()
+		emit_signal("return_default")
 
 func _on_hint_pressed():
 	$Login/HintText.show()
@@ -144,16 +156,25 @@ func _on_new_message_pressed():
 
 func _on_confirm_pressed():
 	Mail_error_overlay.hide()
+	#Mail_new_mail_overlay.hide()
+	#enableMailButtons()
+
+func _on_delete_confirm_pressed():
+	Mail_delete_overlay.hide()
 	Mail_new_mail_overlay.hide()
 	enableMailButtons()
 
 func _on_exit_pressed():
+	Mail_error_overlay.hide()
 	Mail_new_mail_overlay.hide()
 	enableMailButtons()
 
 func _on_error_exit_pressed():
-	Mail_error_overlay.hide()
-	Mail_new_mail_overlay.hide()
+	if Mail_delete_overlay.visible == true:
+		Mail_delete_overlay.hide()
+	else:
+		Mail_error_overlay.hide()
+	#Mail_new_mail_overlay.hide()
 	
 func _on_send_pressed():
 	disableMailButtons()
@@ -162,7 +183,7 @@ func _on_send_pressed():
 func _on_delete_pressed():
 	disableMailButtons()
 	#change to confirm delete
-	Mail_error_overlay.show()
+	Mail_delete_overlay.show()
 
 #read
 
