@@ -51,3 +51,8 @@ func _on_menu_contact_default():
 	if contact.visible == true:
 		focus_index_contact = 0 
 		contact_arr[focus_index_contact].grab_focus()
+
+#Menu buttons keep focus when keyboard buttons are pressed
+func _on_unhandled_down():
+	if contact.visible == true:
+		contact_arr[focus_index_contact].grab_focus()

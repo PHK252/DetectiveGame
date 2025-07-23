@@ -51,9 +51,10 @@ func _on_back_pressed():
 
 
 
-#continue connecting tommorow
+#Menu buttons keep focus when keyboard buttons are pressed
 func _on_unhandled_down():
-	menu_arr[focus_index_menu].grab_focus()
+	if menu.visible == true:
+		menu_arr[focus_index_menu].grab_focus()
 
 
 func _on_enter_pressed():
