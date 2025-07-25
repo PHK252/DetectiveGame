@@ -3,10 +3,14 @@ if {Global.went_to_Micah} == false and {Global.went_to_Juniper} == false:
 	set {Global.went_to_Juniper} = true
 else:
 	set {Global.went_to_Juniper} = true
-# #Knock knock
+[signal arg="knock"]
 Dalton: ...
-- Hello! Is anybody home? ASPD!
+- Is anybody home? 
+	Dalton: Hello!?
+	Dalton: Is anybody home? 
+	Dalton: ASPD!
 	# #After a few seconds, you hear muffled hoove-steps(?)...
+	[wait time="2.0"]
 	Juniper: Yes!
 	Juniper: Coming!
 	[signal arg="open_door"]
@@ -16,10 +20,12 @@ Dalton: ...
 		jump Juniper_Greet_First_house/
 	else:
 		jump Juniper_Greet_Second_house/
-- ASPD! We're here to investigate a reported break in at this property!
-	#After a few seconds, you hear muffled hoove-steps(?)...
-	[signal arg="open_door"]
+- Investigate a reported break in.
+	Dalton: ASPD! 
+	Dalton: We're here to investigate a reported break in at this property!
+	[wait time="2.0"]
 	Juniper: Coming!
+	[signal arg="open_door"]
 	[end_timeline]
 	label continue
 	if {Global.first_house} == "Juniper":

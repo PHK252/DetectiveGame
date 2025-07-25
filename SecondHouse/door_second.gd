@@ -16,13 +16,19 @@ signal j_door_closed
 var cooldown = false
 var triggered = false
 var entered_quincy_house = false
+var entered_juniper_house = false
 var leaving = false
+var auto_close = false
+
+var dalton_entered = false
+var theo_entered = false
 
 @onready var greeting = false
 signal juniper_greeting
 signal cam_greeting
 signal j_dialogue
 signal activate_car
+signal dalton_knock
 
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
@@ -131,8 +137,10 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			triggered = true
 			GlobalVars.in_dialogue = true
 			player.stop_player()
+			alert.hide()
 			var knock = Dialogic.start("Juniper_Greeting")
 			Dialogic.signal_event.connect(open_door)
+			Dialogic.signal_event.connect(knock_dalton)
 			Dialogic.timeline_ended.connect(_on_knock_ended)
 			knock.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			knock.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
@@ -199,6 +207,7 @@ func _on_character_body_3d_juniper_open_door() -> void:
 
 func _on_juniper_interact_finish_greeting() -> void:
 	greeting = true
+	auto_close = true
 
 func _on_quincy_interact_finish_greeting() -> void:
 	open()
@@ -210,6 +219,12 @@ func _on_quincy_interact_close_door():
 	close()
 	collision.set_deferred("disabled", false) 
 	entered_quincy_house = true
+	is_open = false
+
+func _on_juniper_interact_close_door():
+	close()
+	collision.set_deferred("disabled", false) 
+	entered_juniper_house = true
 	is_open = false
 
 func _on_timeline_ended():
@@ -254,3 +269,25 @@ func open_door(arg : String):
 		Dialogic.signal_event.disconnect(open_door)
 		print("asking juniper to come")
 		emit_signal("juniper_greeting")
+
+func knock_dalton(arg : String):
+	if arg == "knock":
+		Dialogic.signal_event.disconnect(knock_dalton)
+		print("asking juniper to come")
+		emit_signal("dalton_knock")
+
+
+
+func _on_juniper_house_body_entered(body):
+	if auto_close == true:
+		if body.is_in_group("player") and greeting == true:
+			dalton_entered = true
+			if dalton_entered == true and theo_entered == true:
+				_on_juniper_interact_close_door()
+				auto_close = false
+		
+		if body.is_in_group("theo") and greeting == true:
+			theo_entered = true
+			if dalton_entered == true and theo_entered == true:
+				_on_juniper_interact_close_door()
+				auto_close = false
