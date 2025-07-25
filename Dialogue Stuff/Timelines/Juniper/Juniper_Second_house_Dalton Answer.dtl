@@ -35,7 +35,8 @@ Dalton: ...
 	Theo: Would you like to talk more inside?
 	Juniper: If y’all insist. 
 	Theo: Thanks...
-	[signal arg="open_door"]
+	set {Juniper.Greeted} = true
+	#[signal arg="open_door"]
 	# #jump Juniper Low 
 - Talk inside.
 	Dalton: Shall we take this conversation inside?
@@ -46,5 +47,6 @@ Dalton: ...
 	Juniper: Come inside.
 	Dalton: Thank you.
 	Theo: Thanks, ma'am.
-	[signal arg="open_door"]
+	set {Juniper.Greeted} = true
+	#[signal arg="open_door"]
 	# #jump Juniper Low

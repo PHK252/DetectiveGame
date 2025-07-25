@@ -9,13 +9,19 @@ Dalton: ...
 	# #After a few seconds, you hear muffled hoove-steps(?)...
 	Juniper: Yes!
 	Juniper: Coming!
+	[signal arg="open_door"]
+	[end_timeline]
+	label continue
 	if {Global.first_house} == "Juniper":
 		jump Juniper_Greet_First_house/
 	else:
 		jump Juniper_Greet_Second_house/
 - ASPD! We're here to investigate a reported break in at this property!
 	#After a few seconds, you hear muffled hoove-steps(?)...
+	[signal arg="open_door"]
 	Juniper: Coming!
+	[end_timeline]
+	label continue
 	if {Global.first_house} == "Juniper":
 		jump Juniper_Greet_First_house/
 	else:

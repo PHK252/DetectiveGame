@@ -21,7 +21,8 @@ if {Character Aff Points.Theo} > 0:
 	Dalton:  Is that alright with you?
 	Juniper: Of course!
 	Juniper: Come on in!
-	[signal arg="open_door"]
+	set {Juniper.Greeted} = true
+	#[signal arg="open_door"]
 else:
 	Juniper: Hello?
 	Dalton: Hello.
@@ -44,4 +45,5 @@ else:
 	Dalton: Is that alright with you?
 	Juniper: Of course!
 	Juniper: Come on in!
-	[signal arg="open_door"]
+	set {Juniper.Greeted} = true
+	#[signal arg="open_door"]

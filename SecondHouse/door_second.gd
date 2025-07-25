@@ -126,10 +126,17 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		#print("open")
 		#$Interactable.queue_free()
 		if greeting == false and quincy_house == false and triggered == false:
-			print("asking juniper to come")
-			emit_signal("juniper_greeting")
+			
 			emit_signal("cam_greeting")
 			triggered = true
+			GlobalVars.in_dialogue = true
+			player.stop_player()
+			var knock = Dialogic.start("Juniper_Greeting")
+			Dialogic.signal_event.connect(open_door)
+			Dialogic.timeline_ended.connect(_on_knock_ended)
+			knock.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			knock.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			knock.register_character(load("res://Dialogic Characters/Juniper.dch"), character_marker)
 			return
 			#play knocking sound
 		
@@ -210,6 +217,9 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 
+func _on_knock_ended():
+	Dialogic.timeline_ended.disconnect(_on_knock_ended)
+	GlobalVars.in_dialogue = false
 
 func _on_after_faint_open_door():
 	open()
@@ -237,3 +247,10 @@ func _on_exit_house(body):
 				#collision.set_deferred("disabled", false) 
 				#emit_signal("activate_car")
 				#is_open = false
+
+
+func open_door(arg : String):
+	if arg == "open_door":
+		Dialogic.signal_event.disconnect(open_door)
+		print("asking juniper to come")
+		emit_signal("juniper_greeting")

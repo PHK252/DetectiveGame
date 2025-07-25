@@ -25,7 +25,6 @@ func _on_down_pressed():
 		else:
 			focus_index_menu = 1
 			menu_arr[focus_index_menu].grab_focus()
-		print(focus_index_menu)
 
 func _on_up_pressed():
 	if menu.visible == true:

@@ -14,7 +14,8 @@ Juniper: Yes!
 Juniper: Where are my manners?
 Juniper: I'll get something brewing for ya both.
 Juniper: Come on in!
-[signal arg="open_door"]
+set {Juniper.Greeted} = true
+#[signal arg="open_door"]
 #Juniper walk in
 Dalton: ...
 Dalton: Thank you...
