@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://50vyga4jrdyo"]
+[gd_scene load_steps=116 format=3 uid="uid://50vyga4jrdyo"]
 
 [ext_resource type="Script" uid="uid://djah5l2fl35st" path="res://UI/computer_ui.gd" id="1_f0ejt"]
 [ext_resource type="Texture2D" uid="uid://2p5t8lxiacwk" path="res://UI/Assets/Computer/Computer Login Background.png" id="1_kyt61"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://0piwas6sbg1d" path="res://UI/Assets/Computer/Computer Home Dropdown Top Hovered.png" id="24_nsuay"]
 [ext_resource type="Texture2D" uid="uid://drgp0qou11be7" path="res://UI/Assets/Computer/Computer Home Dropdown Mid Normal.png" id="25_57383"]
 [ext_resource type="Texture2D" uid="uid://duthx5rbrucey" path="res://UI/Assets/Computer/Computer Home Dropdown Mid Hovered.png" id="26_plkja"]
+[ext_resource type="Script" uid="uid://dclk0oyqsupn5" path="res://UI/handle_clicks.gd" id="27_dyexy"]
 [ext_resource type="Texture2D" uid="uid://de0pvk4tr1bdg" path="res://UI/Assets/Computer/Computer Home Dropdown Bottom Normal.png" id="27_xv5u6"]
 [ext_resource type="Texture2D" uid="uid://cqmnt7gstgvuf" path="res://UI/Assets/Computer/Computer Home Dropdown Bottom Hovered.png" id="28_xsnxk"]
 [ext_resource type="Texture2D" uid="uid://b73haqe1x26gc" path="res://UI/Assets/Computer/Mail/Computer Mail Background.png" id="30_7ts5t"]
@@ -118,6 +119,9 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svnnl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyexy"]
+draw_center = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unfg3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -497,7 +501,6 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Incorrect. Try again."
 
 [node name="Home" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -544,8 +547,14 @@ texture_pressed = ExtResource("22_kq6sd")
 texture_hover = ExtResource("22_kq6sd")
 
 [node name="Dropdown" type="Control" parent="Home"]
-visible = false
 anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="Home/Dropdown"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dyexy")
+script = ExtResource("27_dyexy")
 
 [node name="Dropdown1" type="TextureButton" parent="Home/Dropdown"]
 layout_mode = 0
@@ -603,6 +612,7 @@ texture_pressed = ExtResource("28_xsnxk")
 texture_hover = ExtResource("28_xsnxk")
 
 [node name="Mail" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -689,6 +699,7 @@ texture_pressed = ExtResource("39_1244i")
 texture_hover = ExtResource("39_1244i")
 
 [node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+layout_mode = 0
 offset_left = 481.0
 offset_top = 11.0
 offset_right = 1167.0
@@ -704,6 +715,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+layout_mode = 0
 offset_left = 1458.0
 offset_top = 60.0
 offset_right = 1583.0
@@ -712,11 +724,12 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 30
-text = "11/01/XX20"
+text = "11/03/XX20"
 fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+layout_mode = 0
 offset_left = 142.0
 offset_top = 34.0
 offset_right = 399.0
@@ -730,12 +743,13 @@ fit_content = true
 scroll_active = false
 
 [node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+layout_mode = 0
 offset_left = 482.0
 offset_top = 47.0
 offset_right = 1415.0
 offset_bottom = 116.0
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
 text = "Rodbkq obnrbpq clo qeb zroobkq pqxqrp lc xppbq 03211805. Mibxpb obpmlka rmlk obzbfsfkd qefp jbppxdb. "
@@ -753,6 +767,7 @@ texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
 
 [node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+layout_mode = 0
 offset_left = 481.0
 offset_top = 11.0
 offset_right = 1035.0
@@ -767,6 +782,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+layout_mode = 0
 offset_left = 1458.0
 offset_top = 60.0
 offset_right = 1583.0
@@ -775,11 +791,12 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 30
-text = "11/01/XX20"
+text = "11/02/XX20"
 fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+layout_mode = 0
 offset_left = 142.0
 offset_top = 34.0
 offset_right = 399.0
@@ -793,12 +810,13 @@ fit_content = true
 scroll_active = false
 
 [node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+layout_mode = 0
 offset_left = 482.0
 offset_top = 47.0
 offset_right = 1415.0
 offset_bottom = 116.0
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
 text = "Qoxzb xjlrkqp lc Xppbq 03211805 abqbzqba lk qeb Molgbzq 18522518 pfqb. Buxzq ilzxqflk fp klq hkltk. Mibxpb ilzxqb xka objlsb fk..."
@@ -816,6 +834,7 @@ texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
 
 [node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+layout_mode = 0
 offset_left = 481.0
 offset_top = 11.0
 offset_right = 856.0
@@ -830,6 +849,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+layout_mode = 0
 offset_left = 1458.0
 offset_top = 60.0
 offset_right = 1583.0
@@ -843,6 +863,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+layout_mode = 0
 offset_left = 142.0
 offset_top = 34.0
 offset_right = 399.0
@@ -856,12 +877,13 @@ fit_content = true
 scroll_active = false
 
 [node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+layout_mode = 0
 offset_left = 482.0
 offset_top = 47.0
 offset_right = 1415.0
 offset_bottom = 116.0
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
 text = "Pqxqrp Obmloq Obnrbpqba clo Molgbzq 18522518. Xaafqflkxi fkclojxqflk obnrbpqba lk qeb prygbzqp colj Lmboxqflk KRII. Qexkh...
@@ -1446,6 +1468,7 @@ texture_pressed = ExtResource("75_fvigi")
 texture_hover = ExtResource("75_fvigi")
 
 [node name="Error Sub" type="RichTextLabel" parent="Mail/Error/Confirm"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 6.0
 offset_right = 185.0
@@ -1460,6 +1483,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Error" type="RichTextLabel" parent="Mail/Error"]
+layout_mode = 0
 offset_left = 824.0
 offset_top = 400.0
 offset_right = 1255.0
@@ -1473,6 +1497,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Error Sub" type="RichTextLabel" parent="Mail/Error"]
+layout_mode = 0
 offset_left = 691.0
 offset_top = 530.0
 offset_right = 1231.0
@@ -1532,6 +1557,7 @@ texture_pressed = ExtResource("75_fvigi")
 texture_hover = ExtResource("75_fvigi")
 
 [node name="Error Sub" type="RichTextLabel" parent="Mail/Confirm Delete/Delete Confirm"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 6.0
 offset_right = 185.0
@@ -1546,6 +1572,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Error" type="RichTextLabel" parent="Mail/Confirm Delete"]
+layout_mode = 0
 offset_left = 586.0
 offset_top = 433.0
 offset_right = 1335.0
@@ -1560,6 +1587,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Error Sub" type="RichTextLabel" parent="Mail/Confirm Delete"]
+layout_mode = 0
 offset_left = 585.0
 offset_top = 516.0
 offset_right = 1335.0
@@ -1612,6 +1640,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Verify" type="RichTextLabel" parent="Mail/Face ID/Control"]
+layout_mode = 0
 offset_left = -166.0
 offset_top = -273.0
 offset_right = 174.0
@@ -1634,6 +1663,7 @@ libraries = {
 [connection signal="return_default" from="." to="Login/Pass" method="_on_computer_ui_return_default"]
 [connection signal="pressed" from="Login/Enter" to="." method="_on_enter_pressed"]
 [connection signal="pressed" from="Login/Enter" to="Login" method="_on_clear_text"]
+[connection signal="pressed" from="Login/Enter" to="Login/Pass" method="_on_enter_pressed"]
 [connection signal="pressed" from="Login/Hint" to="." method="_on_hint_pressed"]
 [connection signal="pressed" from="Login/Sleep" to="." method="_on_sleep_pressed"]
 [connection signal="pressed" from="Login/Restart" to="." method="_on_restart_pressed"]
@@ -1642,6 +1672,7 @@ libraries = {
 [connection signal="focus_exited" from="Login/Pass" to="Login/Pass" method="_on_focus_exited"]
 [connection signal="pressed" from="Home/Mail" to="." method="_on_mail_pressed"]
 [connection signal="toggled" from="Home/Icon" to="." method="_on_icon_toggled"]
+[connection signal="gui_input" from="Home/Dropdown/Panel" to="Home/Dropdown/Panel" method="_on_gui_input"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown1" to="." method="_on_dropdown_1_pressed"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown2" to="." method="_on_dropdown_2_pressed"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown3" to="." method="_on_dropdown_3_pressed"]

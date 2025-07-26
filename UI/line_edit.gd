@@ -22,3 +22,8 @@ func _on_computer_ui_return_default():
 	placeholder_text = place_holder
 	wrong.hide()
 	
+
+
+func _on_enter_pressed():
+	release_focus()
+	placeholder_text = place_holder
