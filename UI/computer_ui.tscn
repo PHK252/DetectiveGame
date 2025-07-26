@@ -199,7 +199,7 @@ animations = [{
 [sub_resource type="Animation" id="Animation_rmg78"]
 resource_name = "Face-ID"
 length = 5.0
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -223,6 +223,76 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(960, 540), Vector2(960, 540), Vector2(945, 540), Vector2(930, 540), Vector2(945, 540), Vector2(930, 540), Vector2(960, 540), Vector2(975, 540), Vector2(990, 540), Vector2(975, 540), Vector2(960, 540)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Scan:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Scanning...
+
+", "Scanning.
+
+", "Scanning..
+
+", "Scanning...
+
+", "Scanning.
+
+", "Scanning..
+
+", "Scanning...
+
+", "Scanning.
+
+", "Scanning..
+
+", "Scanning...
+
+", "Scanning.
+
+", "Scanning..
+
+", "Scanning...
+
+", "Scanning.
+
+", "Scanning..
+
+", "Scanning...
+
+", "Scanning.
+
+", "Scanning..
+
+", "Scanning...
+
+", "Scanning.
+
+", "Scanning..
+
+", "Scanning...
+
+", "Scan Failed.
+
+"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Scan:theme_override_colors/default_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.2, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.392157, 0.431373, 0.513726, 1), Color(0.772549, 0.482353, 0.411765, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_melli"]
@@ -251,6 +321,32 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(965, 540)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Scan:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Scanning...
+
+"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Scan:theme_override_colors/default_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.392157, 0.431373, 0.513726, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbsdl"]
 _data = {
@@ -260,6 +356,7 @@ _data = {
 
 [node name="ComputerUI" type="CanvasLayer"]
 script = ExtResource("1_f0ejt")
+metadata/_edit_vertical_guides_ = [-229.0]
 
 [node name="Login" type="Control" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -506,7 +603,6 @@ texture_pressed = ExtResource("28_xsnxk")
 texture_hover = ExtResource("28_xsnxk")
 
 [node name="Mail" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -552,14 +648,14 @@ texture = ExtResource("46_w37nm")
 
 [node name="Time" type="RichTextLabel" parent="Mail"]
 layout_mode = 0
-offset_left = 1216.0
-offset_top = 306.0
-offset_right = 1338.0
-offset_bottom = 353.0
+offset_left = 1213.0
+offset_top = 304.0
+offset_right = 1360.0
+offset_bottom = 351.0
 theme_override_colors/default_color = Color(0.917647, 0.92549, 0.941176, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Send To:"
+text = "Recipient: "
 fit_content = true
 scroll_active = false
 
@@ -572,7 +668,7 @@ offset_bottom = 342.0
 theme_override_colors/default_color = Color(0.72549, 0.745098, 0.803922, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 50
-text = "XXXXXXXX"
+text = "NXXXXXXX"
 fit_content = true
 scroll_active = false
 
@@ -592,6 +688,59 @@ texture_normal = ExtResource("38_vg6mb")
 texture_pressed = ExtResource("39_1244i")
 texture_hover = ExtResource("39_1244i")
 
+[node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+offset_left = 481.0
+offset_top = 11.0
+offset_right = 1167.0
+offset_bottom = 53.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 40
+text = "RODBKQ: Xppbq Obmlppbppflk Pqxqrp Obnrbpq
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+offset_left = 1458.0
+offset_top = 60.0
+offset_right = 1583.0
+offset_bottom = 91.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "11/01/XX20"
+fit_content = true
+scroll_active = false
+
+[node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+offset_left = 142.0
+offset_top = 34.0
+offset_right = 399.0
+offset_bottom = 88.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 60
+text = "NXXXXXXX"
+fit_content = true
+scroll_active = false
+
+[node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message1"]
+offset_left = 482.0
+offset_top = 47.0
+offset_right = 1415.0
+offset_bottom = 116.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 40
+text = "Rodbkq obnrbpq clo qeb zroobkq pqxqrp lc xppbq 03211805. Mibxpb obpmlka rmlk obzbfsfkd qefp jbppxdb. "
+scroll_active = false
+
 [node name="Message2" type="TextureButton" parent="Mail/Inbox"]
 layout_mode = 0
 offset_left = 125.0
@@ -603,6 +752,58 @@ texture_normal = ExtResource("40_3jpml")
 texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
 
+[node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+offset_left = 481.0
+offset_top = 11.0
+offset_right = 1035.0
+offset_bottom = 53.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 40
+text = "RODBKQ: Xppbq 03211805 clrka lk pfqb.
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+offset_left = 1458.0
+offset_top = 60.0
+offset_right = 1583.0
+offset_bottom = 91.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "11/01/XX20"
+fit_content = true
+scroll_active = false
+
+[node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+offset_left = 142.0
+offset_top = 34.0
+offset_right = 399.0
+offset_bottom = 88.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 60
+text = "NXXXXXXX"
+fit_content = true
+scroll_active = false
+
+[node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message2"]
+offset_left = 482.0
+offset_top = 47.0
+offset_right = 1415.0
+offset_bottom = 116.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 40
+text = "Qoxzb xjlrkqp lc Xppbq 03211805 abqbzqba lk qeb Molgbzq 18522518 pfqb. Buxzq ilzxqflk fp klq hkltk. Mibxpb ilzxqb xka objlsb fk..."
+scroll_active = false
+
 [node name="Message3" type="TextureButton" parent="Mail/Inbox"]
 layout_mode = 0
 offset_left = 125.0
@@ -613,6 +814,59 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("40_3jpml")
 texture_pressed = ExtResource("41_223ni")
 texture_hover = ExtResource("41_223ni")
+
+[node name="Subject" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+offset_left = 481.0
+offset_top = 11.0
+offset_right = 856.0
+offset_bottom = 53.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 40
+text = "Pqxqrp Obmloq Obnrbpq
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Time" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+offset_left = 1458.0
+offset_top = 60.0
+offset_right = 1583.0
+offset_bottom = 91.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "11/01/XX20"
+fit_content = true
+scroll_active = false
+
+[node name="Sender" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+offset_left = 142.0
+offset_top = 34.0
+offset_right = 399.0
+offset_bottom = 88.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 60
+text = "NXXXXXXX"
+fit_content = true
+scroll_active = false
+
+[node name="Body" type="RichTextLabel" parent="Mail/Inbox/Message3"]
+offset_left = 482.0
+offset_top = 47.0
+offset_right = 1415.0
+offset_bottom = 116.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 40
+text = "Pqxqrp Obmloq Obnrbpqba clo Molgbzq 18522518. Xaafqflkxi fkclojxqflk obnrbpqba lk qeb prygbzqp colj Lmboxqflk KRII. Qexkh...
+"
+scroll_active = false
 
 [node name="Message4" type="TextureButton" parent="Mail/Inbox"]
 layout_mode = 0
@@ -635,7 +889,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Status Report Request"
+text = "Bug Report - REPLY"
 scroll_active = false
 autowrap_mode = 0
 
@@ -649,7 +903,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.772549, 0.482353, 0.411765, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 30
-text = "Deletion in 2 days"
+text = "Deletion in 1 day"
 fit_content = true
 scroll_active = false
 
@@ -663,7 +917,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 30
-text = "11/02/XX20"
+text = "11/01/XX20"
 fit_content = true
 scroll_active = false
 
@@ -677,7 +931,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 60
-text = "XXXXXXXX"
+text = "VXXXXXXXX"
 fit_content = true
 scroll_active = false
 
@@ -691,7 +945,8 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.72549, 0.745098, 0.803922, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Status Report Requested for Project 18522518. Additional information requested on the subjects from Operation NULL. Thank you for your..."
+text = "Hey Dr. Quincy, I’ve been looking into the report of the most recent scan of the system, and I found an anomaly that trips a hidden fail...
+"
 scroll_active = false
 
 [node name="Message5" type="TextureButton" parent="Mail/Inbox"]
@@ -758,7 +1013,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 60
-text = "XXXXXXXX"
+text = "NXXXXXXX"
 fit_content = true
 scroll_active = false
 
@@ -772,7 +1027,8 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.72549, 0.745098, 0.803922, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Answers to your inquiries: 1. Plans for future projects are going smoothly. We’ve found an ideal location and capped our participant..."
+text = "Answers to your inquiries: Plans for future projects are going smoothly. We’ve found an ideal location and capped our participant pool...
+"
 scroll_active = false
 
 [node name="ComputerUiMailInboxOutline" type="Sprite2D" parent="Mail"]
@@ -869,7 +1125,7 @@ offset_bottom = 538.0
 theme_override_colors/default_color = Color(0.72549, 0.745098, 0.803922, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "11/02/XX20 18:54"
+text = "11/01/XX20 18:54"
 fit_content = true
 scroll_active = false
 
@@ -882,7 +1138,7 @@ offset_bottom = 448.0
 theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 60
-text = "Status Report Request"
+text = "Bug Report - REPLY"
 fit_content = true
 scroll_active = false
 
@@ -895,7 +1151,7 @@ offset_bottom = 540.0
 theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 60
-text = "XXXXXXXX"
+text = "VXXXXXXXX"
 fit_content = true
 scroll_active = false
 
@@ -908,7 +1164,7 @@ offset_bottom = 598.0
 theme_override_colors/default_color = Color(0.72549, 0.745098, 0.803922, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Qleonid-aclab.edu"
+text = " Qleonid-nglab.nova.edu"
 fit_content = true
 scroll_active = false
 
@@ -921,7 +1177,7 @@ offset_bottom = 673.0
 theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Hello Director,"
+text = "Hey Dr. Quincy,"
 fit_content = true
 scroll_active = false
 
@@ -934,10 +1190,9 @@ offset_bottom = 882.0
 theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Status Report Requested for Project 18522518.
-Additional information requested on the subjects from Operation NULL.
+text = "I’ve been looking into the report of the most recent scan of the system, and I found an anomaly that trips a hidden fail state that stops any subject from resetting. Though the probability of this state triggering is basically 1 in a million, I thought it would be best to get your advice on how to proceed.
 
-Thank you for your hard work. Your cooperation is appreciated."
+- QA at Vertex"
 fit_content = true
 scroll_active = false
 
@@ -956,7 +1211,7 @@ offset_bottom = 538.0
 theme_override_colors/default_color = Color(0.72549, 0.745098, 0.803922, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "10/20/XX20 05:01"
+text = "11/01/XX20 05:01"
 fit_content = true
 scroll_active = false
 
@@ -983,7 +1238,7 @@ offset_bottom = 540.0
 theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 60
-text = "XXXXXXXX"
+text = "NXXXXXXX"
 fit_content = true
 scroll_active = false
 
@@ -996,7 +1251,7 @@ offset_bottom = 598.0
 theme_override_colors/default_color = Color(0.72549, 0.745098, 0.803922, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Qleonid-aclab.edu"
+text = " Qleonid-nglab.nova.edu"
 fit_content = true
 scroll_active = false
 
@@ -1033,6 +1288,7 @@ fit_content = true
 scroll_active = false
 
 [node name="New Message" type="Control" parent="Mail"]
+visible = false
 anchors_preset = 0
 script = ExtResource("61_unfg3")
 
@@ -1164,7 +1420,7 @@ texture = ExtResource("70_qk0rh")
 centered = false
 
 [node name="ComputerMailErrorErrorIcon" type="Sprite2D" parent="Mail/Error"]
-position = Vector2(700, 455)
+position = Vector2(738, 450)
 texture = ExtResource("71_8mcwh")
 
 [node name="Error Exit" type="TextureButton" parent="Mail/Error"]
@@ -1188,6 +1444,47 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("74_reckf")
 texture_pressed = ExtResource("75_fvigi")
 texture_hover = ExtResource("75_fvigi")
+
+[node name="Error Sub" type="RichTextLabel" parent="Mail/Error/Confirm"]
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 185.0
+offset_bottom = 54.0
+theme_override_colors/default_color = Color(0.917647, 0.92549, 0.941176, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[center]Confirm[/center]
+"
+fit_content = true
+scroll_active = false
+
+[node name="Error" type="RichTextLabel" parent="Mail/Error"]
+offset_left = 824.0
+offset_top = 400.0
+offset_right = 1255.0
+offset_bottom = 500.0
+theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 60
+text = "ERROR - Recipient line unreachable.
+"
+fit_content = true
+scroll_active = false
+
+[node name="Error Sub" type="RichTextLabel" parent="Mail/Error"]
+offset_left = 691.0
+offset_top = 530.0
+offset_right = 1231.0
+offset_bottom = 632.0
+theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[center]Recipient line is not connected or can not be found. Please contact your provider if you believe this is an error.[/center]
+"
+fit_content = true
+scroll_active = false
 
 [node name="Confirm Delete" type="Control" parent="Mail"]
 visible = false
@@ -1226,13 +1523,55 @@ texture_hover = SubResource("CompressedTexture2D_yd581")
 [node name="Delete Confirm" type="TextureButton" parent="Mail/Confirm Delete"]
 layout_mode = 0
 offset_left = 865.0
-offset_top = 660.0
+offset_top = 608.0
 offset_right = 1055.0
-offset_bottom = 715.0
+offset_bottom = 663.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("74_reckf")
 texture_pressed = ExtResource("75_fvigi")
 texture_hover = ExtResource("75_fvigi")
+
+[node name="Error Sub" type="RichTextLabel" parent="Mail/Confirm Delete/Delete Confirm"]
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 185.0
+offset_bottom = 62.0
+theme_override_colors/default_color = Color(0.917647, 0.92549, 0.941176, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[center]Confirm[/center]
+"
+fit_content = true
+scroll_active = false
+
+[node name="Error" type="RichTextLabel" parent="Mail/Confirm Delete"]
+offset_left = 586.0
+offset_top = 433.0
+offset_right = 1335.0
+offset_bottom = 533.0
+theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[center]Delete this message?[/center]
+"
+fit_content = true
+scroll_active = false
+
+[node name="Error Sub" type="RichTextLabel" parent="Mail/Confirm Delete"]
+offset_left = 585.0
+offset_top = 516.0
+offset_right = 1335.0
+offset_bottom = 618.0
+theme_override_colors/default_color = Color(0.67451, 0.698039, 0.760784, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[center]This action can not be undone.[/center]
+"
+fit_content = true
+scroll_active = false
 
 [node name="Face ID" type="Control" parent="Mail"]
 visible = false
@@ -1255,6 +1594,37 @@ texture = ExtResource("76_ck5k0")
 
 [node name="FaceID" type="AnimatedSprite2D" parent="Mail/Face ID/Control"]
 sprite_frames = SubResource("SpriteFrames_0n1dt")
+
+[node name="Scan" type="RichTextLabel" parent="Mail/Face ID/Control"]
+layout_mode = 0
+offset_left = -115.0
+offset_top = 212.0
+offset_right = 124.0
+offset_bottom = 282.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 60
+text = "Scanning...
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Verify" type="RichTextLabel" parent="Mail/Face ID/Control"]
+offset_left = -166.0
+offset_top = -273.0
+offset_right = 174.0
+offset_bottom = -203.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.392157, 0.431373, 0.513726, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 60
+text = "Verifying Identity
+
+"
+scroll_active = false
+autowrap_mode = 0
 
 [node name="FaceID Anim" type="AnimationPlayer" parent="Mail/Face ID"]
 libraries = {
