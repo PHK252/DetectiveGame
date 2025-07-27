@@ -132,7 +132,6 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		#print("open")
 		#$Interactable.queue_free()
 		if greeting == false and quincy_house == false and triggered == false:
-			
 			emit_signal("cam_greeting")
 			triggered = true
 			GlobalVars.in_dialogue = true
@@ -147,6 +146,16 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			knock.register_character(load("res://Dialogic Characters/Juniper.dch"), character_marker)
 			return
 			#play knocking sound
+		elif greeting == true and quincy_house == false and entered_juniper_house == true:
+			GlobalVars.in_dialogue == true
+			player.stop_player()
+			alert.hide()
+			Dialogic.signal_event.connect(doorOpen)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			var juniper_leave = Dialogic.start("Juniper_Leave")
+			juniper_leave.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+			juniper_leave.register_character(load("res://Dialogic Characters/Juniper.dch"), character_marker)
+			juniper_leave.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		
 		if (greeting == true and quincy_house == false) or quincy_house or quincy_house_inside:
 			open()
@@ -168,6 +177,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
 		if entered_quincy_house == true:
+			leaving = true
+		elif entered_juniper_house == true:
 			leaving = true
 		open()
 		collision.disabled = true
@@ -255,13 +266,13 @@ func _on_exit_house(body):
 				emit_signal("activate_car")
 				is_open = false
 		
-		#if body.is_in_group("theo"):
-			#theo_left = true
-			#if dalton_left == true and theo_left == true:
-				#close()
-				#collision.set_deferred("disabled", false) 
-				#emit_signal("activate_car")
-				#is_open = false
+		if body.is_in_group("theo"):
+			theo_left = true
+			if dalton_left == true and theo_left == true:
+				close()
+				collision.set_deferred("disabled", false) 
+				emit_signal("activate_car")
+				is_open = false
 
 
 func open_door(arg : String):
@@ -284,10 +295,12 @@ func _on_juniper_house_body_entered(body):
 			dalton_entered = true
 			if dalton_entered == true and theo_entered == true:
 				_on_juniper_interact_close_door()
+				entered_juniper_house = true
 				auto_close = false
 		
 		if body.is_in_group("theo") and greeting == true:
 			theo_entered = true
 			if dalton_entered == true and theo_entered == true:
 				_on_juniper_interact_close_door()
+				entered_juniper_house = true
 				auto_close = false

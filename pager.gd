@@ -16,9 +16,9 @@ var down = InputMap.action_get_events("ui_down")
 var disabled = false
 
 func _ready():
-	hide()
-	await get_tree().create_timer(2).timeout
-	show()
+	#hide()
+	#await get_tree().create_timer(2).timeout
+	#show()
 	home.visible = false
 	menu.visible = false
 	messages.visible = false

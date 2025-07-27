@@ -1,5 +1,4 @@
 [wait time="1.0"]
-set {Juniper.kicked_out} = true
 set {Character Aff Points.Theo} -= 2
 Juniper: Okay. 
 Juniper: That’s enough. 
@@ -15,6 +14,7 @@ Dalton: ...
 Dalton: ...
 Dalton: hmph. 
 Dalton: Let’s go...
+set {Juniper.kicked_out} = true
 [end_timeline]
 
 label exit
@@ -47,5 +47,3 @@ else:
 	Dalton: We got some evidence at least.
 	Theo: ...?
 	Theo: Did we?
-	
-	

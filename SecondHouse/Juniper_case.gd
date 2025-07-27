@@ -30,9 +30,14 @@ extends Node3D
 
 @export var interact_type: String
 
+var kicked = false
+var timed = false
+
 #sound
 @export var case_pickup : AudioStreamPlayer3D
 @export var case_pickup_2 : AudioStreamPlayer3D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI.hide()
@@ -113,10 +118,12 @@ func _on_exit_pressed():
 	GlobalVars.viewing = ""
 
 func _input(event):
+	kicked = GlobalVars.juniper_kicked_out
+	timed = GlobalVars.juniper_time_out
 	var finished_letter = Dialogic.VAR.get_variable("Juniper.finished_letter")
 	var finished_tag = Dialogic.VAR.get_variable("Juniper.finished_name_tag")
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
-		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "":
+		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and kicked == false and timed == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30

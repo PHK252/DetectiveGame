@@ -54,6 +54,9 @@ extends Node3D
 @onready var cab_anim = false
 @onready var tilt = ""
 
+var kicked = false
+var timed = false
+
 #sound 
 @export var close_cab_sound : AudioStreamPlayer3D
 @export var open_cab_sound : AudioStreamPlayer3D
@@ -72,6 +75,12 @@ func _process(delta):
 	var read_dialogue_2 : bool = GlobalVars.get(dialogue_2)
 	var viewed_item_2 : bool = GlobalVars.get(view_item_2)
 	
+	if GlobalVars.current_level == "Quincy":
+		kicked = GlobalVars.quincy_kicked_out
+		timed = GlobalVars.quincy_time_out
+	elif GlobalVars.current_level == "Juniper":
+		kicked = GlobalVars.juniper_kicked_out
+		timed = GlobalVars.juniper_time_out
 	#var immediate_exit = quick_exit# Dialogic.VAR.get("Immediate Exit").Micah_cab # set to true in Dialogic
 	#print(mouse_pos) 
 	
@@ -107,7 +116,7 @@ func _process(delta):
 				close_interact_2.hide()
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type and cab_anim == false:
-		if Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
+		if Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "" and kicked == false and timed == false:
 			print("cab exit_3")
 			print("V1 :" +  str(viewed_item_1))
 			print("V2 :" +  str(viewed_item_2))

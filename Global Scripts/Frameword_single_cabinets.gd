@@ -68,6 +68,7 @@ func _process(delta):
 	elif GlobalVars.current_level == "Juniper":
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
+
 	mouse_pos = get_viewport().get_mouse_position()
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if mouse_pos.y >= tilt_up_thres:

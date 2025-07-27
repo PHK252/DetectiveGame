@@ -49,12 +49,17 @@ func _process(delta):
 	var viewed_item : bool = GlobalVars.get(view_item)
 	mouse_pos = get_viewport().get_mouse_position()
 	
+	#set kicked and timed out vars
 	if GlobalVars.current_level == "Quincy":
 		kicked = GlobalVars.quincy_kicked_out
 		timed = GlobalVars.quincy_time_out
 	elif GlobalVars.current_level == "Juniper":
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
+	elif GlobalVars.current_level == "Micah":
+		kicked = GlobalVars.micah_kicked_out
+		timed = GlobalVars.micah_time_out
+
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
