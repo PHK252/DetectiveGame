@@ -17,6 +17,7 @@ if {Character Aff Points.Juniper} >= 0:
 		- Tea.
 			jump Juniper_Tea/
 	else:
+		[signal arg= "disconnect"]
 		[end_timeline]
 else:
 Juniper: Over there is the broken window and...
@@ -26,3 +27,5 @@ Juniper: A case appeared here too.
 Juniper: I tried to open it, but I couldn't figure out the passcode.
 Dalton: Hmph...
 Dalton: We'll take a look around.
+[signal arg= "disconnect"]
+[end_timeline]

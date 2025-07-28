@@ -14,6 +14,7 @@ extends Node3D
 
 
 signal finish_greeting
+signal tea_time
 
 func _on_interactable_interacted(interactor):
 	#print(asked)
@@ -66,3 +67,21 @@ func _on_door_second_j_dialogue() -> void:
 		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		ask_victims.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
+
+
+func _on_entered_juniper_house():
+	GlobalVars.in_dialogue = true
+	player.stop_player()
+	var ask_victims = Dialogic.start("Juniper_Enter_House")
+	Dialogic.signal_event.connect(_activate_tea)
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+	ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+	ask_victims.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
+
+func _activate_tea(argument : String):
+	if argument == "tea_time":
+		Dialogic.signal_event.disconnect(_activate_tea)
+		emit_signal("tea_time")
+	else:
+		Dialogic.signal_event.disconnect(_activate_tea)

@@ -547,6 +547,7 @@ texture_pressed = ExtResource("22_kq6sd")
 texture_hover = ExtResource("22_kq6sd")
 
 [node name="Dropdown" type="Control" parent="Home"]
+visible = false
 anchors_preset = 0
 
 [node name="Panel" type="Panel" parent="Home/Dropdown"]
@@ -567,6 +568,18 @@ texture_normal = ExtResource("23_jwgms")
 texture_pressed = ExtResource("24_nsuay")
 texture_hover = ExtResource("24_nsuay")
 
+[node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown1"]
+offset_left = 19.0
+offset_top = -5.0
+offset_right = 180.0
+offset_bottom = 24.0
+theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "Log Off "
+fit_content = true
+scroll_active = false
+
 [node name="Dropdown2" type="TextureButton" parent="Home/Dropdown"]
 layout_mode = 0
 offset_left = 10.0
@@ -577,6 +590,18 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_57383")
 texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
+
+[node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown2"]
+offset_left = 19.0
+offset_top = -5.0
+offset_right = 166.0
+offset_bottom = 26.0
+theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "Sleep"
+fit_content = true
+scroll_active = false
 
 [node name="Dropdown3" type="TextureButton" parent="Home/Dropdown"]
 layout_mode = 0
@@ -589,27 +614,40 @@ texture_normal = ExtResource("25_57383")
 texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
 
-[node name="Dropdown4" type="TextureButton" parent="Home/Dropdown"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 125.0
-offset_right = 190.0
-offset_bottom = 155.0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("25_57383")
-texture_pressed = ExtResource("26_plkja")
-texture_hover = ExtResource("26_plkja")
+[node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown3"]
+offset_left = 19.0
+offset_top = -3.0
+offset_right = 166.0
+offset_bottom = 28.0
+theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "Shut Down"
+fit_content = true
+scroll_active = false
 
 [node name="Dropdown5" type="TextureButton" parent="Home/Dropdown"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 155.0
+offset_top = 125.0
 offset_right = 190.0
-offset_bottom = 195.0
+offset_bottom = 165.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("27_xv5u6")
 texture_pressed = ExtResource("28_xsnxk")
 texture_hover = ExtResource("28_xsnxk")
+
+[node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown5"]
+offset_left = 19.0
+offset_top = -4.0
+offset_right = 166.0
+offset_bottom = 27.0
+theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "Restart"
+fit_content = true
+scroll_active = false
 
 [node name="Mail" type="Control" parent="."]
 visible = false
@@ -1676,7 +1714,6 @@ libraries = {
 [connection signal="pressed" from="Home/Dropdown/Dropdown1" to="." method="_on_dropdown_1_pressed"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown2" to="." method="_on_dropdown_2_pressed"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown3" to="." method="_on_dropdown_3_pressed"]
-[connection signal="pressed" from="Home/Dropdown/Dropdown4" to="." method="_on_dropdown_4_pressed"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown5" to="." method="_on_dropdown_5_pressed"]
 [connection signal="pressed" from="Mail/Mail exit" to="." method="_on_mail_exit_pressed"]
 [connection signal="pressed" from="Mail/NewMessage" to="." method="_on_new_message_pressed"]

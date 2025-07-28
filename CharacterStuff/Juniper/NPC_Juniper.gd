@@ -457,16 +457,16 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 		await get_tree().create_timer(1).timeout
 		outside_player = false
 
-#func _on_tea_activate_temp_interacted(interactor: Interactor) -> void:
-	#print("interactedTea")
-	#var current_anim = one_shots[wander_choice]
-	#anim_tree.set("parameters/" + current_anim + "/request", 2)
-	#cant_follow = true
-	#is_navigating = true
-	#is_wandering = true
-	#wander_choice = 3
-	#nav.target_position = marker_positions[3].global_position
-	#state = TEA
+func _on_tea_activated():
+	print("interactedTea")
+	var current_anim = one_shots[wander_choice]
+	anim_tree.set("parameters/" + current_anim + "/request", 2)
+	cant_follow = true
+	is_navigating = true
+	is_wandering = true
+	wander_choice = 3
+	nav.target_position = marker_positions[3].global_position
+	state = TEA
 
 func _on_door_second_juniper_greeting() -> void:
 	print("coming to door")

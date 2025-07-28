@@ -29,6 +29,7 @@ signal cam_greeting
 signal j_dialogue
 signal activate_car
 signal dalton_knock
+signal entered_juniper
 
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
@@ -297,6 +298,7 @@ func _on_juniper_house_body_entered(body):
 				_on_juniper_interact_close_door()
 				entered_juniper_house = true
 				auto_close = false
+				emit_signal("entered_juniper")
 		
 		if body.is_in_group("theo") and greeting == true:
 			theo_entered = true
@@ -304,3 +306,4 @@ func _on_juniper_house_body_entered(body):
 				_on_juniper_interact_close_door()
 				entered_juniper_house = true
 				auto_close = false
+				emit_signal("entered_juniper")

@@ -20,10 +20,10 @@ else:
 				Dalton: I’m afraid this is beyond my jurisdiction. 
 				Juniper: Darn.
 			- Sure. 
-				set {Character Aff Points.Juniper} += 1
 				Dalton: Uh...
 				Dalton: Sure. I’ll try.
 				label choices
+				set {Character Aff Points.Juniper} += 1
 				[wait time="0.3"]
 				Dalton: ...
 				- Milo’s resume
@@ -34,6 +34,7 @@ else:
 					Juniper: I’ll keep your suggestion in mind.
 					Junipers: Thanks!
 					Dalton: Yeah.
+					set {Juniper.picked_resume} = "Milo"
 				- Ash’s resume
 					Dalton: This one.
 					Juniper: Oh! 
@@ -41,6 +42,7 @@ else:
 					Juniper: Thank you!
 					Dalton: Yeah...
 					Dalton: No problem.
+					set {Juniper.picked_resume} = "Ash"
 				- Pippin’s resume
 					Dalton: This one. 
 					Juniper: Hm?
@@ -48,6 +50,7 @@ else:
 					Juniper: What a choice.
 					Juniper: I’ll keep it in mind.
 					Dalton: Hmph.
+					set {Juniper.picked_resume} = "Pippin"
 				- Take another look.
 					set {Character Aff Points.Juniper} -= 1
 					set {Juniper.reenter_resumes} = true
@@ -57,13 +60,18 @@ else:
 		else:
 			[end_timeline]
 	else:
-	Juniper: Did ya choose one?
-	[wait time="0.3"]
-	Dalton: ...
-	- Yes.
-		Dalton: Yeah…
-		jump choices
-	- No.
-		Dalton: No...
-		Dalton: I need more time.
-		Juniper: Of course!
+		Juniper: Did ya choose one?
+		[wait time="0.3"]
+		Dalton: ...
+		- Yes.
+			Dalton: Yeah...
+			jump choices
+		- No.
+			Dalton: No...
+			Dalton: I need more time.
+			Juniper: Of course!
+	if {Juniper.picked_resume} != "":
+		Juniper: Thank ya for the help!
+		Juniper: I really appreciate it. 
+		Dalton: Hmph.
+		Dalton: No problem.
