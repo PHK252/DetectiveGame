@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 #password
-@onready var password = "password"
+@onready var password = "NOVA1805220518"
 @onready var password_text = $Login/Pass
 @onready var incorrect = $Login/Wrong
 
@@ -24,6 +24,10 @@ extends CanvasLayer
 #Mail Screens
 @onready var Mail_inbox = $Mail/Inbox
 @onready var Mail_read = $Mail/Read
+
+#Postit
+@onready var computer_home_post_it = $Home/ComputerHomePostIt
+@onready var panel = $Home/Panel
 
 
 #Mail buttons
@@ -57,7 +61,9 @@ func _ready():
 	Mail_new_mail_overlay.hide()
 	Mail_error_overlay.hide()
 	incorrect.hide()
-
+	computer_home_post_it.hide()
+	panel.hide()
+	
 #Login
 func _on_enter_pressed():
 	if password == password_text.text:

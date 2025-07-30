@@ -3943,16 +3943,14 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_xbjvr")
 skeleton = NodePath("")
 
-[node name="corkboard_001" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice" node_paths=PackedStringArray("map", "main_cam", "cam_anim", "exit_cam", "map_click", "player")]
+[node name="corkboard_001" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/StartingOffice" node_paths=PackedStringArray("main_cam", "cam_anim", "exit_cam", "player")]
 transform = Transform3D(1.07723, 0, 0, 0, 0.840278, 0, 0, 0, 1, 0.109919, 0.224876, -0.0180356)
 mesh = SubResource("ArrayMesh_krh22")
 skeleton = NodePath("")
 script = ExtResource("17_yvedm")
-map = NodePath("../../../../UI/Map")
 main_cam = NodePath("../../CameraSystem/Map Cam")
 cam_anim = NodePath("../../CameraSystem/Map Cam/AnimationPlayer")
 exit_cam = NodePath("../../CameraSystem/PhantomCamera3D")
-map_click = NodePath("../../../../UI/Map_click")
 player = NodePath("../../Characters/Dalton/CharacterBody3D")
 
 [node name="Interactable" parent="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" instance=ExtResource("17_rbnfb")]

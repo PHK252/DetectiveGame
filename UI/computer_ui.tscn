@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://50vyga4jrdyo"]
+[gd_scene load_steps=121 format=3 uid="uid://50vyga4jrdyo"]
 
 [ext_resource type="Script" uid="uid://djah5l2fl35st" path="res://UI/computer_ui.gd" id="1_f0ejt"]
 [ext_resource type="Texture2D" uid="uid://2p5t8lxiacwk" path="res://UI/Assets/Computer/Computer Login Background.png" id="1_kyt61"]
@@ -28,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://drv5ye7cpygr7" path="res://UI/Assets/Computer/Computer Home Email Hovered.png" id="20_ci22u"]
 [ext_resource type="Texture2D" uid="uid://cmq6ja22cydck" path="res://UI/Assets/Computer/Computer Home Icon Normal.png" id="21_tm4ku"]
 [ext_resource type="Texture2D" uid="uid://cogx11p1d3bvl" path="res://UI/Assets/Computer/Computer Home Icon Hovered.png" id="22_kq6sd"]
+[ext_resource type="Script" uid="uid://vx0b875jhsjh" path="res://UI/Computer_post_pad.gd" id="23_j8k60"]
 [ext_resource type="Texture2D" uid="uid://2a646wdsicao" path="res://UI/Assets/Computer/Computer Home Dropdown Top Normal.png" id="23_jwgms"]
+[ext_resource type="Texture2D" uid="uid://cfs3uw1am52cp" path="res://UI/Assets/Computer/Compute Postit Close.png" id="23_xlb24"]
 [ext_resource type="Texture2D" uid="uid://0piwas6sbg1d" path="res://UI/Assets/Computer/Computer Home Dropdown Top Hovered.png" id="24_nsuay"]
 [ext_resource type="Texture2D" uid="uid://drgp0qou11be7" path="res://UI/Assets/Computer/Computer Home Dropdown Mid Normal.png" id="25_57383"]
 [ext_resource type="Texture2D" uid="uid://duthx5rbrucey" path="res://UI/Assets/Computer/Computer Home Dropdown Mid Hovered.png" id="26_plkja"]
@@ -39,8 +41,10 @@
 [ext_resource type="Texture2D" uid="uid://bnilsuqqjitxw" path="res://UI/Assets/Computer/Mail/Computer Mail Bar.png" id="31_toqvd"]
 [ext_resource type="Texture2D" uid="uid://c4lck8abonxfm" path="res://UI/Assets/Computer/Mail/Computer Mail Logo.png" id="33_ro1dv"]
 [ext_resource type="Texture2D" uid="uid://bqswn06l714ds" path="res://UI/Assets/Computer/Mail/Computer Mail Ecit Normal.png" id="34_d800q"]
+[ext_resource type="Texture2D" uid="uid://dxa72ncc6jrrg" path="res://UI/Assets/Computer/Compute Postit Close button normal.png" id="35_knsoa"]
 [ext_resource type="Texture2D" uid="uid://bis3kmblb706y" path="res://UI/Assets/Computer/Mail/Computer Mail Ecit Hovered.png" id="35_mu7qj"]
 [ext_resource type="Texture2D" uid="uid://cd7y5jqkck2if" path="res://UI/Assets/Computer/Mail/Computer Mail Write Message.png" id="36_042wk"]
+[ext_resource type="Texture2D" uid="uid://fexf4f50kmgg" path="res://UI/Assets/Computer/Compute Postit Close button pressed.png" id="36_j8k60"]
 [ext_resource type="Texture2D" uid="uid://bixfohf8uquck" path="res://UI/Assets/Computer/Mail/Computer Mail Write Message Hovered.png" id="37_ucggw"]
 [ext_resource type="Texture2D" uid="uid://bwaivca3pwc2e" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Top Normal.png" id="38_vg6mb"]
 [ext_resource type="Texture2D" uid="uid://b2a0kin27tgq2" path="res://UI/Assets/Computer/Mail/Computer Mail Inbox Top Hovered.png" id="39_1244i"]
@@ -122,6 +126,9 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyexy"]
 draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yein3"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.27451)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unfg3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -361,6 +368,7 @@ _data = {
 [node name="ComputerUI" type="CanvasLayer"]
 script = ExtResource("1_f0ejt")
 metadata/_edit_vertical_guides_ = [-229.0]
+metadata/_edit_horizontal_guides_ = [27.0]
 
 [node name="Login" type="Control" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -520,9 +528,90 @@ modulate = Color(1, 1, 1, 0.423529)
 texture = ExtResource("15_mowvd")
 centered = false
 
-[node name="ComputerHomePostIt" type="Sprite2D" parent="Home"]
-position = Vector2(1540, 555)
-texture = ExtResource("18_nsri6")
+[node name="Postit" type="TextureButton" parent="Home"]
+layout_mode = 0
+offset_left = 1315.0
+offset_top = 425.0
+offset_right = 1765.0
+offset_bottom = 685.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("18_nsri6")
+script = ExtResource("23_j8k60")
+
+[node name="Body" type="RichTextLabel" parent="Home/Postit"]
+offset_left = 14.0
+offset_top = 32.0
+offset_right = 440.0
+offset_bottom = 260.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.545098, 0.494118, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 20
+text = "To Do:
+Check in on Dalton
+Serve pending defamation lawsuits to forwarded list of subjects
+Weekly project check-ins
+Contact photographer for upcoming charity event
+Close the tab at Cheeky Tikki’s Bar
+
+Emergency Password list:
+
+Sinstagram: LeoQuin1234**
+Tender: QuinLeo4321***
+ScornsTub: 1234Quuinn!!
+Amazing Zon: Amaquin5678!
+Archived Laptop: 18522518
+Phone 1: 051074
+Phone 2: 091399
+Storage Cases 1: 123456
+Storage Cases 2: 0000000000
+Storage Cases 3:  a1b2c3d4e5f6g7h8i9"
+scroll_active = false
+
+[node name="Title" type="RichTextLabel" parent="Home/Postit"]
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 324.0
+offset_bottom = 25.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.545098, 0.494118, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 20
+text = "Post Pad"
+scroll_active = false
+
+[node name="Date" type="Label" parent="Home"]
+layout_mode = 0
+offset_left = 1818.0
+offset_top = 4.0
+offset_right = 1869.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.635294, 0.670588, 0.780392, 1)
+theme_override_fonts/font = ExtResource("16_7xr3t")
+theme_override_font_sizes/font_size = 30
+text = "XX:XX"
+
+[node name="User" type="Label" parent="Home"]
+layout_mode = 0
+offset_left = 1473.0
+offset_top = 4.0
+offset_right = 1603.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.635294, 0.670588, 0.780392, 1)
+theme_override_fonts/font = ExtResource("16_7xr3t")
+theme_override_font_sizes/font_size = 30
+text = "Quincy Leonid"
+
+[node name="Time" type="Label" parent="Home"]
+layout_mode = 0
+offset_left = 1682.0
+offset_top = 4.0
+offset_right = 1790.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.635294, 0.670588, 0.780392, 1)
+theme_override_fonts/font = ExtResource("16_7xr3t")
+theme_override_font_sizes/font_size = 30
+text = "11/03/XX20"
 
 [node name="Mail" type="TextureButton" parent="Home"]
 layout_mode = 0
@@ -547,7 +636,6 @@ texture_pressed = ExtResource("22_kq6sd")
 texture_hover = ExtResource("22_kq6sd")
 
 [node name="Dropdown" type="Control" parent="Home"]
-visible = false
 anchors_preset = 0
 
 [node name="Panel" type="Panel" parent="Home/Dropdown"]
@@ -564,18 +652,21 @@ offset_top = 35.0
 offset_right = 190.0
 offset_bottom = 65.0
 mouse_default_cursor_shape = 2
+toggle_mode = true
 texture_normal = ExtResource("23_jwgms")
 texture_pressed = ExtResource("24_nsuay")
 texture_hover = ExtResource("24_nsuay")
 
 [node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown1"]
+layout_mode = 0
 offset_left = 19.0
-offset_top = -5.0
+offset_top = 3.0
 offset_right = 180.0
-offset_bottom = 24.0
+offset_bottom = 43.0
+mouse_filter = 1
 theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 40
 text = "Log Off "
 fit_content = true
 scroll_active = false
@@ -583,22 +674,24 @@ scroll_active = false
 [node name="Dropdown2" type="TextureButton" parent="Home/Dropdown"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 65.0
-offset_right = 190.0
-offset_bottom = 95.0
+offset_top = 85.0
+offset_right = 260.0
+offset_bottom = 135.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_57383")
 texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
 
 [node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown2"]
+layout_mode = 0
 offset_left = 19.0
-offset_top = -5.0
+offset_top = 3.0
 offset_right = 166.0
-offset_bottom = 26.0
+offset_bottom = 44.0
+mouse_filter = 1
 theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 40
 text = "Sleep"
 fit_content = true
 scroll_active = false
@@ -606,22 +699,24 @@ scroll_active = false
 [node name="Dropdown3" type="TextureButton" parent="Home/Dropdown"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 95.0
-offset_right = 190.0
-offset_bottom = 125.0
+offset_top = 134.0
+offset_right = 260.0
+offset_bottom = 184.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_57383")
 texture_pressed = ExtResource("26_plkja")
 texture_hover = ExtResource("26_plkja")
 
 [node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown3"]
+layout_mode = 0
 offset_left = 19.0
-offset_top = -3.0
+offset_top = 3.0
 offset_right = 166.0
-offset_bottom = 28.0
+offset_bottom = 37.0
+mouse_filter = 1
 theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 40
 text = "Shut Down"
 fit_content = true
 scroll_active = false
@@ -629,25 +724,103 @@ scroll_active = false
 [node name="Dropdown5" type="TextureButton" parent="Home/Dropdown"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 125.0
-offset_right = 190.0
-offset_bottom = 165.0
+offset_top = 179.0
+offset_right = 260.0
+offset_bottom = 229.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("27_xv5u6")
 texture_pressed = ExtResource("28_xsnxk")
 texture_hover = ExtResource("28_xsnxk")
 
 [node name="Time" type="RichTextLabel" parent="Home/Dropdown/Dropdown5"]
+layout_mode = 0
 offset_left = 19.0
-offset_top = -4.0
+offset_top = 4.0
 offset_right = 166.0
-offset_bottom = 27.0
+offset_bottom = 38.0
+mouse_filter = 1
 theme_override_colors/default_color = Color(0.635294, 0.670588, 0.780392, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 40
 text = "Restart"
 fit_content = true
 scroll_active = false
+
+[node name="Panel" type="Panel" parent="Home"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yein3")
+
+[node name="ComputerHomePostIt" type="Sprite2D" parent="Home"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("23_xlb24")
+
+[node name="Body" type="RichTextLabel" parent="Home/ComputerHomePostIt"]
+offset_left = -668.0
+offset_top = -336.0
+offset_right = 567.0
+offset_bottom = 384.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.545098, 0.494118, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 40
+text = "To Do:
+
+Check in on Dalton
+Serve pending defamation lawsuits to forwarded list of subjects
+Weekly project check-ins
+Contact photographer for upcoming charity event
+Close the tab at Cheeky Tikki’s Bar
+
+Emergency Password list:
+
+Sinstagram: LeoQuin1234**
+Tender: QuinLeo4321***
+ScornsTub: 1234Quuinn!!
+Amazing Zon: Amaquin5678!
+Archived Laptop: 18522518
+Phone 1: 051074
+Phone 2: 091399
+Storage Cases 1: 123456
+Storage Cases 2: 0000000000
+Storage Cases 3:  a1b2c3d4e5f6g7h8i9"
+scroll_active = false
+
+[node name="Title" type="RichTextLabel" parent="Home/ComputerHomePostIt"]
+offset_left = -701.0
+offset_top = -415.0
+offset_right = -387.0
+offset_bottom = -372.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.545098, 0.494118, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 50
+text = "Post Pad"
+scroll_active = false
+
+[node name="Title2" type="RichTextLabel" parent="Home/ComputerHomePostIt"]
+offset_left = 476.0
+offset_top = 370.0
+offset_right = 702.0
+offset_bottom = 413.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.545098, 0.494118, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("16_7xr3t")
+theme_override_font_sizes/normal_font_size = 30
+text = "Last edited: 05/21/XX20"
+scroll_active = false
+
+[node name="Exit" type="TextureButton" parent="Home/ComputerHomePostIt"]
+offset_left = 677.0
+offset_top = -406.0
+offset_right = 702.0
+offset_bottom = -381.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("35_knsoa")
+texture_pressed = ExtResource("36_j8k60")
+texture_hover = ExtResource("36_j8k60")
 
 [node name="Mail" type="Control" parent="."]
 visible = false
@@ -1708,6 +1881,7 @@ libraries = {
 [connection signal="pressed" from="Login/Shutdown" to="." method="_on_shutdown_pressed"]
 [connection signal="focus_entered" from="Login/Pass" to="Login/Pass" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Login/Pass" to="Login/Pass" method="_on_focus_exited"]
+[connection signal="pressed" from="Home/Postit" to="Home/Postit" method="_on_pressed"]
 [connection signal="pressed" from="Home/Mail" to="." method="_on_mail_pressed"]
 [connection signal="toggled" from="Home/Icon" to="." method="_on_icon_toggled"]
 [connection signal="gui_input" from="Home/Dropdown/Panel" to="Home/Dropdown/Panel" method="_on_gui_input"]
@@ -1715,6 +1889,8 @@ libraries = {
 [connection signal="pressed" from="Home/Dropdown/Dropdown2" to="." method="_on_dropdown_2_pressed"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown3" to="." method="_on_dropdown_3_pressed"]
 [connection signal="pressed" from="Home/Dropdown/Dropdown5" to="." method="_on_dropdown_5_pressed"]
+[connection signal="gui_input" from="Home/Panel" to="Home/Postit" method="_on_panel_gui_input"]
+[connection signal="pressed" from="Home/ComputerHomePostIt/Exit" to="Home/Postit" method="_on_exit_pressed"]
 [connection signal="pressed" from="Mail/Mail exit" to="." method="_on_mail_exit_pressed"]
 [connection signal="pressed" from="Mail/NewMessage" to="." method="_on_new_message_pressed"]
 [connection signal="pressed" from="Mail/Inbox/Message1" to="." method="_on_message_1_pressed"]

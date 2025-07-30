@@ -49,7 +49,7 @@ func positionMarker(mult : int):
 	var marker_pos = cam.unproject_position(pos)
 	marker_pos = marker_pos * mult
 	marker.position = marker_pos
-	rect.position = marker_pos
+	#rect.position = marker_pos
 	
 	if edge_cam:
 		if edge_cam.is_active():
@@ -76,7 +76,7 @@ func positionMarker(mult : int):
 		marker_pos.x += 50
 	
 	marker.position = marker_pos
-	rect.position = marker_pos
+	#rect.position = marker_pos
 
 	
 func _on_body_sit_visibility_changed():
