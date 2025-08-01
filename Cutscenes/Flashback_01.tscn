@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://boda0uybnshug"]
+[gd_scene load_steps=126 format=4 uid="uid://boda0uybnshug"]
 
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="1_b3khi"]
 [ext_resource type="PackedScene" uid="uid://bqwijt8f7c5me" path="res://Cutscenes/dalton_fb2.glb" id="1_vw2sk"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://bak8ltrhbmlv5" path="res://GeneralScripts/interaction/CSGStairMaker3D.tscn" id="25_hlxb5"]
 [ext_resource type="AudioStream" uid="uid://ognsmvlpxfp7" path="res://Audio/Flashbacks/boil_water.wav" id="35_0lv26"]
 [ext_resource type="AudioStream" uid="uid://hoxqgu50jnon" path="res://Audio/Flashbacks/possible_breath.wav" id="36_ti67w"]
+[ext_resource type="PackedScene" uid="uid://doh80x0mvx2jp" path="res://Cutscenes/backwall.glb" id="36_uh4i3"]
 [ext_resource type="AudioStream" uid="uid://bux2fm1tusyht" path="res://Audio/ThirdHouse/AltDoorOpen_01.wav" id="38_rm74m"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_krw4o"]
@@ -861,7 +862,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_gdngq"]
 script = ExtResource("6_fxagu")
-cull_mask = 1048575
+cull_mask = 1048511
 h_offset = 0.0
 v_offset = 0.0
 projection = 1
@@ -1012,7 +1013,7 @@ render_target_update_mode = 4
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(-0.0991393, 1.32676e-09, 1.68901e-10, 0.995074)
-bones/5/rotation = Quaternion(0.274823, -8.82903e-09, -1.27784e-09, 0.961495)
+bones/5/rotation = Quaternion(0.278378, -8.8288e-09, -1.27781e-09, 0.960472)
 bones/7/rotation = Quaternion(0.251585, 0.0036754, 0.0141376, 0.967725)
 bones/9/rotation = Quaternion(0.251585, 0.00367533, 0.014137, 0.967725)
 bones/11/rotation = Quaternion(-0.263317, -0.10466, -0.639998, 0.714222)
@@ -1036,14 +1037,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0.38)
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/dalton_fb1/Armature" index="0"]
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(0.0761679, -5.03089e-09, -1.49787e-09, 0.997095)
-bones/5/rotation = Quaternion(0.0336183, -0.0414328, 0.0240219, 0.998287)
-bones/7/rotation = Quaternion(0.0615113, 0.000898597, 0.0145798, 0.997999)
-bones/9/rotation = Quaternion(0.0615113, 0.000898599, 0.0145793, 0.997999)
-bones/11/rotation = Quaternion(-0.396454, -0.0727211, -0.653789, 0.640387)
-bones/12/rotation = Quaternion(0.480494, 5.58794e-09, -0.123666, 0.868235)
-bones/15/rotation = Quaternion(-0.386577, 0.0914753, 0.633117, 0.664344)
-bones/16/rotation = Quaternion(0.443692, -1.44355e-08, 0.114194, 0.888874)
+bones/4/rotation = Quaternion(0.111542, -7.42854e-09, -1.4092e-09, 0.99376)
+bones/5/rotation = Quaternion(-0.0108629, -0.0380106, 0.0185925, 0.999045)
+bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
+bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
+bones/11/rotation = Quaternion(-0.398748, -0.0951924, -0.663664, 0.625691)
+bones/12/rotation = Quaternion(0.483308, -1.39698e-09, -0.12439, 0.866568)
+bones/15/rotation = Quaternion(-0.388644, 0.116106, 0.642887, 0.649747)
+bones/16/rotation = Quaternion(0.443776, -1.86265e-08, 0.114216, 0.888829)
 bones/19/rotation = Quaternion(0.0260594, -0.00269245, -0.0170717, 0.999511)
 bones/23/rotation = Quaternion(0.0260592, 0.00269237, 0.0170716, 0.999511)
 bones/27/rotation = Quaternion(-0.0204547, 8.91648e-16, 0.999791, -1.97563e-09)
@@ -1102,8 +1103,8 @@ crouch_sound = NodePath("../Crouch")
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0753678, -0.0636108, -0.00322135, 0.99512)
-bones/5/rotation = Quaternion(0.197993, -0.116783, 0.00871861, 0.973183)
+bones/4/rotation = Quaternion(-0.0754826, -0.0319124, -0.00161609, 0.996635)
+bones/5/rotation = Quaternion(0.19902, -0.0586306, 0.00437715, 0.97823)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
 bones/6/rotation = Quaternion(1.92867e-08, -2.67596e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898596, 0.0145798, 0.997999)
@@ -1111,11 +1112,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-4.39494e-09, 2.33899e-09, 0.138842, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898602, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.466522, 0.081017, -0.309587, 0.82459)
+bones/11/rotation = Quaternion(-0.42789, 0.0891004, -0.320669, 0.840323)
 bones/12/rotation = Quaternion(0.503192, 0.178565, -0.57087, 0.623714)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.305826, -0.0826009, 0.378485, 0.869711)
-bones/16/rotation = Quaternion(0.51287, -0.174792, 0.577677, 0.610494)
+bones/15/rotation = Quaternion(-0.343944, -0.0787259, 0.367725, 0.860397)
+bones/16/rotation = Quaternion(0.514353, -0.174041, 0.579347, 0.607871)
 bones/19/rotation = Quaternion(0.09865, 0.00997421, -0.00680437, 0.995049)
 bones/20/rotation = Quaternion(-0.245123, 0.000133744, -0.00672399, 0.969469)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
@@ -1429,6 +1430,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2321, 1.87213, -6.72687)
 [node name="Stair" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482575, 0, -2.12422)
 
+[node name="backwall" parent="SubViewportContainer/SubViewport" instance=ExtResource("36_uh4i3")]
+
+[node name="backWall" parent="SubViewportContainer/SubViewport/backwall" index="0"]
+layers = 64
+
 [node name="Sounds" type="Node" parent="SubViewportContainer/SubViewport"]
 
 [node name="Steam" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
@@ -1483,4 +1489,5 @@ depth = 1.57379
 [editable path="SubViewportContainer/SubViewport/woodtryagain26"]
 [editable path="SubViewportContainer/SubViewport/woodtryagain25"]
 [editable path="SubViewportContainer/SubViewport/FirstFlashEnvironment"]
+[editable path="SubViewportContainer/SubViewport/backwall"]
 [editable path="CSGStairMaker3D"]
