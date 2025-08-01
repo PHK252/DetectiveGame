@@ -17,6 +17,7 @@ signal stop_dalton
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
 @export var winepoint: Marker3D
+@export var after_clog: Node3D
 
 #Animation Controls
 @export var tail_anim: AnimationTree
@@ -50,7 +51,7 @@ var wine_fall := false
 var catch_possibility := false
 var is_drinking := false
 var snowmobile_distraction := false
-var bathroom_distraction := false
+var general_distraction := false
 var poolTable := false
 var poolPos
 var greeting := false
@@ -242,6 +243,10 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	if ((distance_to_target > FOLLOW_DISTANCE) and is_navigating and not is_distracted):
 		print("Switching to FOLLOW state")
 		quincy_tree.set("parameters/Smoking/request", 2)
+		smoke.emitting = false
+		packofcigs.visible = false
+		lighter.visible = false
+		cig.visible = false
 		state = FOLLOW
 		return
 	
@@ -329,17 +334,19 @@ func _on_distraction_time_timeout() -> void:
 	catch_possibility = true
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
-		wander_choice = 10
+		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
+		general_distraction = false
 		state = FOLLOW
 	
 	if wander_choice == 4:
+		after_clog.visible = false
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
-		wander_choice = 10
+		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
-		bathroom_distraction = false
+		general_distraction = false
 		state = FOLLOW
 		
 	if wander_choice == 5:
@@ -409,8 +416,9 @@ func _on_bathroom_q_body_exited(body: Node3D) -> void:
 	pass
 
 func _on_door_bathroom_replace_quincy_enter_bathroom():
-	if bathroom_distraction == true:
+	if general_distraction == true:
 			is_navigating = true
+			is_distracted = true
 			wander_choice = 4
 			nav.target_position = marker_positions[4].global_position
 			state = FOLLOW
@@ -420,7 +428,7 @@ func _on_door_bathroom_replace_quincy_enter_bathroom():
 
 		
 func _on_toilet_stuff_distraction() -> void:
-	bathroom_distraction = true
+	general_distraction = true
 
 func _on_snowmobile_distraction() -> void:
 	snowmobile_distraction = true
@@ -454,6 +462,7 @@ func _on_bookshelf_distract(interactor: Interactor) -> void:
 func _on_phone_book_distract_quincy():
 	is_distracted = true
 	is_navigating = true
+	general_distraction = true
 	wander_choice = 1
 	nav.target_position = marker_positions[1].global_position
 	state = FOLLOW
@@ -463,31 +472,33 @@ func _on_phone_book_distract_quincy():
 
 func _on_theo_quincy_no_go_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		if state == FOLLOW and is_distracted == false and is_navigating:
+		if state == FOLLOW and is_distracted == false and is_navigating and general_distraction == false:
 			is_navigating = false
 			state = IDLE
 
 func _on_theo_quincy_no_go_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		if state == IDLE and is_distracted == false and is_navigating == false and greeting == true:
+		if state == IDLE and is_distracted == false and is_navigating == false and greeting == true and general_distraction == false:
 			is_navigating = true
 			state = FOLLOW
 
 func _on_hallway_check_body_entered(body: Node3D) -> void:
-	is_distracted = true
-	is_navigating = true
-	wander_choice = 8
-	nav.target_position = marker_positions[8].global_position
-	state = FOLLOW
+	if general_distraction == false:
+		is_distracted = true
+		is_navigating = true
+		wander_choice = 8
+		nav.target_position = marker_positions[8].global_position
+		state = FOLLOW
 
 func _on_hallway_check_body_exited(body: Node3D) -> void:
-	wander_choice = 11
-	is_distracted = false
-	is_navigating = true
-	#state = FOLLOW
+	if general_distraction == false:
+		wander_choice = 11
+		is_distracted = false
+		is_navigating = true
+		#state = FOLLOW
 
 func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and drunk_dalton == false:
+	if body.is_in_group("player") and drunk_dalton == false and general_distraction == false:
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 9
@@ -495,14 +506,14 @@ func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
 		state = FOLLOW
 
 func _on_living_room_adjustment_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player") and drunk_dalton == false:
+	if body.is_in_group("player") and drunk_dalton == false and general_distraction == false:
 		rotate_forced = false
 		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
 
 func _on_painting_adjustment_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and drunk_dalton == false:
+	if body.is_in_group("player") and drunk_dalton == false and general_distraction == false:
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 10
@@ -510,7 +521,7 @@ func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 		state = FOLLOW
 
 func _on_painting_adjustment_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player") and drunk_dalton == false:
+	if body.is_in_group("player") and drunk_dalton == false and general_distraction == false:
 		rotate_forced = false
 		wander_choice = 11
 		is_distracted = false
@@ -536,11 +547,11 @@ func _on_upstairs_cam_became_active() -> void:
 	transform_quincy = false
 
 func _on_wine_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and general_distraction == false:
 		dalton_clear = false
 
 func _on_wine_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and general_distraction == false:
 		dalton_clear = true
 		if distraction_allowed and dalton_clear:
 			if wine_fall == false: 
@@ -556,7 +567,7 @@ func _on_wine_area_body_exited(body: Node3D) -> void:
 		
 
 func _on_timer_check_timeout() -> void:
-	if distraction_allowed and dalton_clear:
+	if distraction_allowed and dalton_clear and general_distraction == false:
 			if wine_fall == false: 
 				rotate_forced = false
 				rotate_number = 0
@@ -569,7 +580,7 @@ func _on_timer_check_timeout() -> void:
 				distraction_allowed = false
 
 func _on_quincy_interact_finish_greeting() -> void:
-	pass
+	greeting = true
 	#is_navigating = true
 
 func _on_activate_q_wander_body_entered(body: Node3D) -> void:

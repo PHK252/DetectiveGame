@@ -137,6 +137,7 @@ func _on_bathroom_door_body_exited(body):
 func _quincy_enter_bathroom(argument: String):
 	if argument == "quincy_clean":
 		Dialogic.signal_event.disconnect(_quincy_enter_bathroom)
+		player.start_player()
 		emit_signal("Quincy_enter_bathroom")
 		print("quincy clean")
 		quincy_close_door = true

@@ -13,6 +13,9 @@ var idle_timer_active: bool = false
 @export var sound_player : AnimationPlayer
 @export var wakeUpMarker : Marker3D
 @export var daltonParent : CharacterBody3D
+@export var towel : Node3D
+@export var after_clog : Node3D
+@export var bathroom_position : Marker3D
 
 var gathered := false
 var walk_indicate := false
@@ -125,13 +128,14 @@ func _physics_process(delta: float) -> void:
 				#if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					#anim_tree["parameters/Blend3/blend_amount"] = 0
 			else:
-				if gathered == false and walk_indicate == true:
-					sound_player.stop()
-					floor_type_gather()
-					gathered = true
-				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
-				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
-				jogcheck = false
+				if forced_walk == false:
+					if gathered == false and walk_indicate == true:
+						sound_player.stop()
+						floor_type_gather()
+						gathered = true
+					velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
+					velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
+					jogcheck = false
 				#idle_time.start()
 				#if not idle_timer_active:  # Start timer only if not already active
 					#anim_tree.set("parameters/Thinking/request", 2)
@@ -408,9 +412,21 @@ func _on_doughnut_001_time_to_eat() -> void:
 	in_control = true
 
 func _on_toilet_stuff_distraction() -> void:
+	global_position = bathroom_position.global_position
+	needs_rotation_forced = true
+	number = 4
+	force_rotation = true
 	anim_tree.set("parameters/StuffToilet/request", true)
 	in_control = false
-	await get_tree().create_timer(7).timeout
+	await get_tree().create_timer(2).timeout
+	towel.visible = true
+	await get_tree().create_timer(2).timeout
+	towel.visible = false
+	after_clog.visible = true
+	await get_tree().create_timer(3).timeout
+	needs_rotation_forced = false
+	number = 0
+	force_rotation = false
 	in_control = true
 
 func _on_snowmobile_distraction() -> void:
