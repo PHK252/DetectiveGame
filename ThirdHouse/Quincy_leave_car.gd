@@ -9,6 +9,13 @@ extends MeshInstance3D
 @export var exit_cam : PhantomCamera3D
 @export var player : CharacterBody3D
 
+#sitstuff
+@export var theo_car : Node3D
+@export var theo_player : AnimationPlayer
+@export var dalton_car : Node3D
+@export var dalton_player : AnimationPlayer
+@export var theo_norm : Node3D
+
 var is_open: bool = false
 
 func _ready():
@@ -18,6 +25,12 @@ func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
 		print("map_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		theo_norm.visible = false
+		dalton_player.play("SitNoDrink")
+		theo_player.play("SitOutside_001")
+		theo_car.visible = true
+		dalton_car.visible = true
+		
 		main_cam.priority = 30
 		exit_cam.priority = 0
 		player.stop_player()
@@ -39,6 +52,11 @@ func _on_exit_pressed():
 	GlobalVars.viewing = ""
 	GlobalVars.in_look_screen = false
 	GlobalVars.in_interaction = ""
+	theo_norm.visible = true
+	theo_car.visible = false
+	dalton_car.visible = false
+	dalton_player.stop()
+	theo_player.stop()
 	main_cam.priority = 0
 	exit_cam.priority = 30
 	cam_anim.play("RESET")

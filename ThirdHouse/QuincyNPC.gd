@@ -64,7 +64,7 @@ var rotate_number := 0
 var is_activated := false
 
 var sound_allowed := true
-
+@export var leave_position : Marker3D
 var in_danger = false
 signal play_caught
 signal pause_timeout
@@ -72,7 +72,7 @@ signal time_out_resume
 signal caught_in_view
 
 @export var sound_player : AnimationPlayer
-
+var end_time := false
 #
 
 enum {
@@ -105,7 +105,10 @@ func _process(delta: float) -> void:
 	if is_distracted == false:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
-		distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
+		if end_time == false:
+			distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
+		elif end_time:
+			distance_to_target = armature.global_transform.origin.distance_to(leave_position.global_position)
 
 	match state:
 		IDLE:
@@ -120,7 +123,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if is_navigating:
 		var direction = Vector3()
-		if is_distracted == false:
+		if is_distracted == false and end_time == false:
 			nav.path_desired_distance = 0.75
 			nav.target_desired_distance = 1.0
 			STOPPING_DISTANCE = 1.0
@@ -203,6 +206,9 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	quincy_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 	#if Input.is_action_just_pressed("meeting_done"):
+	if end_time:
+		is_navigating = false
+	
 	if wander_choice == 2:
 		is_navigating = false
 		var playPos = (winepoint.global_position - global_transform.origin).normalized()
@@ -223,7 +229,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 			is_navigating = true
 			state = FOLLOW
 			
-		
+
 	if wander_choice == 1: 
 		quincy_tree.set("parameters/Blend3/blend_amount", 1)
 		
@@ -240,7 +246,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 		poolPos = (marker_positions[7].global_position - global_transform.origin).normalized()
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(poolPos.x, poolPos.z), LERP_VAL)
 		
-	if ((distance_to_target > FOLLOW_DISTANCE) and is_navigating and not is_distracted):
+	if ((distance_to_target > FOLLOW_DISTANCE) and is_navigating and not is_distracted and not end_time):
 		print("Switching to FOLLOW state")
 		quincy_tree.set("parameters/Smoking/request", 2)
 		smoke.emitting = false
@@ -255,7 +261,6 @@ func _process_follow_state(distance_to_target: float) -> void:
 	#print(distance_to_target)
 	if poolTable:
 		state = IDLE
-	
 	if distance_to_target <= STOPPING_DISTANCE:
 			catch_possibility = false
 			#emit_signal("collision_safe")
@@ -263,6 +268,10 @@ func _process_follow_state(distance_to_target: float) -> void:
 			#cooldown_bool = true
 			#cooldown.start()
 			#wander_timer.start()
+			if end_time:
+				rotate_number = 4
+				rotate_forced = true
+			
 			if snowmobile_distraction:
 				quincy_tree.set("parameters/Call/request", true)
 				phone.visible = true
@@ -641,3 +650,18 @@ func _on_cutscene_cams_reposition_dalton() -> void:
 
 func _on_cutscene_cams_faint_disable() -> void:
 	sound_allowed = false
+
+func _on_main_door_quincy_reposition() -> void:
+	quincy_tree.set("parameters/Smoking/request", 2)
+	smoke.emitting = false
+	packofcigs.visible = false
+	lighter.visible = false
+	cig.visible = false
+	is_distracted = true
+	end_time = true
+	is_navigating = true
+	nav.path_desired_distance = 0.5
+	nav.target_desired_distance = 0.5
+	STOPPING_DISTANCE = 0.5
+	nav.target_position = leave_position.global_position
+	state = FOLLOW

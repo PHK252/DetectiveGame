@@ -30,6 +30,8 @@ signal j_dialogue
 signal activate_car
 signal dalton_knock
 signal entered_juniper
+signal quincy_reposition 
+signal theo_follow
 
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
@@ -179,6 +181,8 @@ func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
 		if entered_quincy_house == true:
 			leaving = true
+			emit_signal("quincy_reposition")
+			emit_signal("theo_follow")
 		elif entered_juniper_house == true:
 			leaving = true
 		open()
@@ -261,19 +265,26 @@ func _on_exit_house(body):
 	if leaving == true:
 		if body.is_in_group("player"):
 			dalton_left = true
-			if dalton_left == true:# and theo_left == true:
-				close()
-				collision.set_deferred("disabled", false) 
-				emit_signal("activate_car")
-				is_open = false
-		
+			#if dalton_left == true:# and theo_left == true:
+				#close()
+				#collision.set_deferred("disabled", false) 
+				#emit_signal("activate_car")
+				#is_open = false
+		print("DETEC")
 		if body.is_in_group("theo"):
 			theo_left = true
-			if dalton_left == true and theo_left == true:
-				close()
-				collision.set_deferred("disabled", false) 
-				emit_signal("activate_car")
-				is_open = false
+			await get_tree().create_timer(1.0).timeout
+			close()
+			collision.set_deferred("disabled", false) 
+			emit_signal("activate_car")
+			is_open = false	
+		
+		if dalton_left == true and theo_left == true:
+			print("CLOSEING")
+			close()
+			collision.set_deferred("disabled", false) 
+			emit_signal("activate_car")
+			is_open = false	
 
 
 func open_door(arg : String):

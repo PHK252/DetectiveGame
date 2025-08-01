@@ -965,3 +965,15 @@ func _on_dialogic_signal(argument: String):
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0
 		state = FOLLOW
+
+func _on_main_door_theo_follow() -> void:
+	anim_tree.set("parameters/Scratch/request", 2)
+	anim_tree.set("parameters/NoteAlt/request", 2)
+	faint_dalton = true #neededcondition
+	theo_adjustment = false
+	is_investigating = false
+	is_navigating = true 
+	nav.path_desired_distance = 0.75
+	nav.target_desired_distance = 1.0
+	STOPPING_DISTANCE = 1.0
+	state = FOLLOW
