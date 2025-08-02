@@ -4307,7 +4307,6 @@ sound_player = NodePath("../DaltonSoundPlayer")
 
 [node name="PlayerInteractor" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541894, 0)
-visible = true
 
 [node name="Alert" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
 visible = false

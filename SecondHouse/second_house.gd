@@ -53,8 +53,6 @@ func _process(delta):
 			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
-	
-	
 			
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
 
@@ -96,3 +94,8 @@ func disable_interaction(arr: Array):
 	for i in arr:
 		i.set_monitorable(false)
 		i.queue_free()
+
+
+func _on_entered_juniper():
+	timer.start()
+	print("level start!")

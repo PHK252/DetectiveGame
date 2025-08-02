@@ -539,6 +539,7 @@ texture_normal = ExtResource("18_nsri6")
 script = ExtResource("23_j8k60")
 
 [node name="Body" type="RichTextLabel" parent="Home/Postit"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 32.0
 offset_right = 440.0
@@ -569,6 +570,7 @@ Storage Cases 3:  a1b2c3d4e5f6g7h8i9"
 scroll_active = false
 
 [node name="Title" type="RichTextLabel" parent="Home/Postit"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 1.0
 offset_right = 324.0
@@ -748,6 +750,7 @@ scroll_active = false
 
 [node name="Panel" type="Panel" parent="Home"]
 visible = false
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yein3")

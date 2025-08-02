@@ -22,7 +22,6 @@ var in_secret = false
 func _ready():
 	GlobalVars.current_level = "Quincy"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	timer.start()
 
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
@@ -120,3 +119,8 @@ func _on_quincy_pause_timeout():
 func _on_quincy_time_out_resume():
 	timer.paused = false
 	print("time out resume: " + str(timer.time_left))
+
+
+func _on_quincy_entered():
+	timer.start()
+	print("level start!")

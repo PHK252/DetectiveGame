@@ -29,7 +29,7 @@ var is_outside = true
 var cooldown = false
 
 signal greet_done
-
+signal entered_micah
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -178,6 +178,7 @@ func _on_door_dalton_leave_body_entered(body):
 			dalton_left = true
 			if theo_left == true:
 				close()
+				emit_signal("entered_micah")
 				if interaction.monitorable == true:
 					interaction.set_deferred("monitorable", false)
 		
@@ -189,5 +190,6 @@ func _on_doorcamarea_body_entered(body):
 			theo_left = true
 			if dalton_left == true:
 				close()
+				emit_signal("entered_micah")
 				if interaction.monitorable == true:
 					interaction.set_deferred("monitorable", false)

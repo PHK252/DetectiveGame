@@ -4,6 +4,7 @@ if {Global.went_to_Micah} == false and {Global.went_to_Juniper} == false:
 else:
 	set {Global.went_to_Juniper} = true
 [signal arg="knock"]
+[wait time="5.0"]
 Dalton: ...
 - Is anybody home? 
 	Dalton: Hello!?

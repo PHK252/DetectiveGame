@@ -1,41 +1,59 @@
-if {Character Aff Points.Juniper} <= 0:
-	Dalton: I think we got everything we've come here for.
-	Dalton: Right, Detective Lycus?
-	Theo: Huh?
-	Theo: Uhh...
-	Theo: Yeah...
-	Juniper: Ok.
-	Dalton: Please call us if anything else happens.
-	Juniper: I'll keep that in mind.
-	Dalton: We'll be leaving now. Let's go, Theo.
-	Theo: Bye!
-	Juniper: Bye.
-else:
-	Dalton: I think we got everything we've come here for.
-	Dalton: Right, Detective Lycus?
-	Theo: Huh?
-	Theo: Uhh...
-	Theo: Yeah!
-	Theo: Thanks for the tea, Ms. Hartley.
-	Theo:It was amazing!
-	if {Juniper.drank} == true:
-		Dalton: It was delicious.
-	Juniper: Oh, it was no hassle at all...
-	Juniper: Y'all should come visit the cafe sometime...
-	Juniper: We'll keep a couple seats warm for y'all.
-	Dalton: Thank you.
-	Dalton: Don't hesitate to call us if anything else happens.
-	Juniper: Will do.
-	Theo: Thank you for letting us take up some of your time.
-	Theo: I know it must’ve been stressful for you.
-	Juniper: Oh, it's no problem at all.
-	Juniper: Also...
-	Juniper: If it does happen to be who I think it is...
-	Juniper: Take it easy on the kid.
-	Dalton: ...
-	Dalton: I'll keep that in mind.
-	Juniper: Thanks.
-	Juniper: Y'all take care!
-	Theo: You too!
-	Dalton: You too.
-
+Dalton: ...
+- Leave?
+	if {Character Aff Points.Juniper} <= 0:
+		Dalton: I think we got everything we've come here for.
+		Dalton: Right, Detective Lycus?
+		if {Juniper.viewed_bookmark} == false and {Juniper.asked_all} == false and {Juniper.Juniper_asked_case} == false:
+			Theo: Huh?
+			Theo: We just got here.
+			Theo: Are you sure?
+			Dalton: ...
+			- Yes.
+				Dalton: I'm sure.
+				[signal arg="open_door"]
+				jump continue
+			- No.
+				Dalton: ...
+				Dalton: Let's keep looking.
+				[end_timeline]
+		else:
+			Theo: Uhh...
+			Theo: Yeah...
+			Juniper: Ok.
+		label continue
+		Dalton: Please call us if anything else happens.
+		Juniper: I'll keep that in mind.
+		Dalton: We'll be leaving now. Let's go, Theo.
+		Theo: Bye!
+		Juniper: Bye.
+	else:
+		Dalton: I think we got everything we've come here for.
+		Dalton: Right, Detective Lycus?
+		Theo: Huh?
+		Theo: Uhh...
+		Theo: Yeah!
+		Theo: Thanks for the tea, Ms. Hartley.
+		Theo:It was amazing!
+		if {Juniper.drank} == true:
+			Dalton: It was delicious.
+		Juniper: Oh, it was no hassle at all...
+		Juniper: Y'all should come visit the cafe sometime...
+		Juniper: We'll keep a couple seats warm for y'all.
+		Dalton: Thank you.
+		Dalton: Don't hesitate to call us if anything else happens.
+		Juniper: Will do.
+		Theo: Thank you for letting us take up some of your time.
+		Theo: I know it must’ve been stressful for you.
+		Juniper: Oh, it's no problem at all.
+		Juniper: Also...
+		Juniper: If it does happen to be who I think it is...
+		Juniper: Take it easy on the kid.
+		Dalton: ...
+		Dalton: I'll keep that in mind.
+		Juniper: Thanks.
+		Juniper: Y'all take care!
+		Theo: You too!
+		Dalton: You too.
+		[signal arg="open_door"]
+- Stay.
+	[end_timeline]

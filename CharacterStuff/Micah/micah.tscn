@@ -85,31 +85,31 @@ script = ExtResource("1_6e8qf")
 [node name="micahExtraAnims" parent="MicahBody" instance=ExtResource("2_nrh3r")]
 
 [node name="Skeleton3D" parent="MicahBody/micahExtraAnims/micahArmature" index="0"]
-bones/1/position = Vector3(4.85148e-10, -8.50578e-08, -1.96182)
+bones/1/position = Vector3(-6.55002e-10, -8.75576e-08, -1.99293)
 bones/1/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
-bones/3/rotation = Quaternion(-0.112231, -0.00204839, 0.923997, -0.365554)
-bones/4/rotation = Quaternion(-0.332896, 0.000238061, -0.0220692, 0.942705)
-bones/6/rotation = Quaternion(0.652796, 0.00466064, -0.00724915, 0.757485)
+bones/3/rotation = Quaternion(-0.101144, -0.0314407, 0.924409, -0.3664)
+bones/4/rotation = Quaternion(-0.274983, 0.000242749, -0.0182298, 0.961276)
+bones/6/rotation = Quaternion(0.619871, 0.00496581, -0.00704364, 0.784656)
 bones/7/rotation = Quaternion(0.0416394, -0.145342, 0.924825, -0.349057)
-bones/8/rotation = Quaternion(0.112365, -0.00210363, 0.924, 0.365505)
-bones/9/rotation = Quaternion(-0.332896, -0.00023806, 0.0220692, 0.942705)
-bones/11/rotation = Quaternion(0.652796, -0.00466064, 0.00724916, 0.757485)
-bones/12/position = Vector3(4.85148e-10, -1.52292e-07, -1.96182)
+bones/8/rotation = Quaternion(0.101288, -0.0314997, 0.924411, 0.366352)
+bones/9/rotation = Quaternion(-0.274983, -0.000242751, 0.0182298, 0.961276)
+bones/11/rotation = Quaternion(0.619871, -0.00496581, 0.00704364, 0.784656)
+bones/12/position = Vector3(-6.55002e-10, -1.41567e-07, -1.99293)
 bones/12/rotation = Quaternion(-0.58471, -1.12845e-08, 8.45873e-09, 0.811242)
-bones/14/rotation = Quaternion(-0.177265, -2.64681e-10, -6.79463e-11, 0.984163)
-bones/16/rotation = Quaternion(-0.00287221, -1.88466e-17, -8.78986e-17, 0.999996)
-bones/17/rotation = Quaternion(-0.111937, -0.028311, -0.692233, 0.712378)
+bones/14/rotation = Quaternion(-0.184109, -9.92449e-11, -7.22452e-11, 0.982906)
+bones/16/rotation = Quaternion(-0.0109222, 1.88127e-10, 1.0487e-12, 0.99994)
+bones/17/rotation = Quaternion(-0.11088, -0.0302422, -0.684992, 0.719428)
 bones/18/rotation = Quaternion(-0.14053, 0.0123193, -0.591649, 0.793757)
 bones/19/rotation = Quaternion(0.0270153, -0.000167356, -0.0006591, 0.999635)
 bones/20/rotation = Quaternion(-0.0262147, -0.000682082, -0.0657145, 0.997494)
-bones/21/rotation = Quaternion(-0.111937, 0.028311, 0.692233, 0.712378)
+bones/21/rotation = Quaternion(-0.11088, 0.0302422, 0.684992, 0.719428)
 bones/22/rotation = Quaternion(-0.14053, -0.0123193, 0.591649, 0.793757)
 bones/23/rotation = Quaternion(0.0270153, 0.000167369, 0.000659107, 0.999635)
 bones/24/rotation = Quaternion(-0.0262147, 0.000682075, 0.0657145, 0.997494)
 bones/25/position = Vector3(-0.248814, -0.0867041, -0.109932)
 bones/25/rotation = Quaternion(-0.00589136, 4.24325e-08, 0.999983, -1.08131e-10)
 bones/27/position = Vector3(0.248814, -0.086704, -0.109932)
-bones/29/position = Vector3(4.85148e-10, -1.1486e-07, -1.96182)
+bones/29/position = Vector3(-6.55002e-10, -1.1736e-07, -1.99293)
 bones/29/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="MicahBody/micahExtraAnims"]
@@ -143,7 +143,7 @@ shape = SubResource("BoxShape3D_i8u1i")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="MicahBody"]
 
 [node name="Marker3D" type="Marker3D" parent="MicahBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.298405, 1.42477, 0.0187715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.298405, 1.41071, 0.161255)
 script = ExtResource("3_5li10")
 x_pos = -0.298
 

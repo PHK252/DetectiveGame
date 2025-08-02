@@ -3,6 +3,23 @@ Dalton: Leave?
 	if {Character Aff Points.Micah} <= 2:
 		Dalton: I think that'll be all for now. 
 		Dalton: Theo, let's go. 
+		if {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_Asked_Case}_asked_case} == false:
+			Theo: ...?
+			Theo: We haven't been here long.
+			Theo: Are you sure?
+			Dalton: ...
+			- Yes.
+				set {Character Aff Points.Theo} -= 1
+				Dalton: Don't talk back to me.
+				Dalton: Let's go.
+				Theo: ...
+				Theo: Fine.
+				[signal arg="open_door"]
+				[end_timeline]
+			- No.
+				Dalton: ...
+				Dalton: Let's keep looking.
+				[end_timeline]
 		Theo: Sorry about that. 
 		Theo: He's just a little cranky. 
 		Dalton: Theo.

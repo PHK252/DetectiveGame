@@ -11,10 +11,11 @@ extends Node3D
 #signal Tstart
 
 @onready var asked = false
-
+@onready var asked_entered = false
 
 signal finish_greeting
 signal tea_time
+signal reactivate_door
 
 func _on_interactable_interacted(interactor):
 	#print(asked)
@@ -62,22 +63,26 @@ func _on_door_second_j_dialogue() -> void:
 		print("tryingtogrree")
 		GlobalVars.in_dialogue = true
 		player.stop_player()
-		var ask_victims = Dialogic.start("Juniper_Greeting", "continue")
+		alert.hide()
+		var greeting = Dialogic.start("Juniper_Greeting", "continue")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		ask_victims.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
+		greeting.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		greeting.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		greeting.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 
 
 func _on_entered_juniper_house():
-	GlobalVars.in_dialogue = true
-	player.stop_player()
-	var ask_victims = Dialogic.start("Juniper_Enter_House")
-	Dialogic.signal_event.connect(_activate_tea)
-	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-	ask_victims.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
+	if GlobalVars.in_dialogue == false and asked_entered == false:
+		GlobalVars.in_dialogue = true
+		asked_entered = true
+		player.stop_player()
+		emit_signal("reactivate_door")
+		var in_house = Dialogic.start("Juniper_Enter_House")
+		Dialogic.signal_event.connect(_activate_tea)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		in_house.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		in_house.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		in_house.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 
 func _activate_tea(argument : String):
 	if argument == "tea_time":

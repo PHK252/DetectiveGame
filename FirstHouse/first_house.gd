@@ -39,7 +39,6 @@ func _ready():
 	pic_look_interact.hide()
 	tool_anim.play("NEWToolOpen")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	timer.start()
 	#var layout = Dialogic.start("Office_Donuts")
 	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
 	
@@ -116,3 +115,8 @@ func disable_interaction(arr: Array):
 	for i in arr:
 		i.set_monitorable(false)
 		i.queue_free()
+
+
+func _on_entered_micah():
+	timer.start()
+	print("level start!")

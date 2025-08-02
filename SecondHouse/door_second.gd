@@ -7,8 +7,11 @@ extends Node3D
 @export var character_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var player : CharacterBody3D
+@export var player_interactor : Interactor
 @export var alert : Sprite3D
 @export var interior_door : bool
+
+@export var interaction : Interactable
 var is_open: bool = false
 @onready var entered = false
 signal j_door_open
@@ -147,7 +150,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			knock.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			knock.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			knock.register_character(load("res://Dialogic Characters/Juniper.dch"), character_marker)
-			return
+			if interaction.monitorable == true:
+				print("disable door")
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				interaction.set_deferred("monitorable", false)
+				await get_tree().process_frame
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
 			#play knocking sound
 		elif greeting == true and quincy_house == false and entered_juniper_house == true:
 			GlobalVars.in_dialogue == true
@@ -160,7 +168,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			juniper_leave.register_character(load("res://Dialogic Characters/Juniper.dch"), character_marker)
 			juniper_leave.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		
-		if (greeting == true and quincy_house == false) or quincy_house or quincy_house_inside:
+		if quincy_house or quincy_house_inside:
 			open()
 			collision.disabled = true
 			return
@@ -243,6 +251,7 @@ func _on_juniper_interact_close_door():
 	entered_juniper_house = true
 	is_open = false
 
+
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
@@ -318,3 +327,9 @@ func _on_juniper_house_body_entered(body):
 				entered_juniper_house = true
 				auto_close = false
 				emit_signal("entered_juniper")
+
+
+func _on_juniper_interact_reactivate_door():
+	if interaction.monitorable == false:
+		print("enable door")
+		interaction.set_deferred("monitorable", true)

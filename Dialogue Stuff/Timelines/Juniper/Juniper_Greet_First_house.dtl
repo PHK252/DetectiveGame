@@ -1,6 +1,6 @@
 set {Character Aff Points.Juniper} += 1
 if {Character Aff Points.Theo} > 0:
-	Juniper: Hello?
+	Juniper: Hiya!
 	Dalton: Hello.
 	Dalton: Are you Juniper Hartley?
 	Juniper: Yes, Officer!
@@ -24,7 +24,7 @@ if {Character Aff Points.Theo} > 0:
 	set {Juniper.Greeted} = true
 	#[signal arg="open_door"]
 else:
-	Juniper: Hello?
+	Juniper: Hiya!
 	Dalton: Hello.
 	Dalton: Are you Juniper Hartley?
 	Juniper: Yes, Officer!

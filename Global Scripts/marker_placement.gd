@@ -6,16 +6,23 @@ extends Marker3D
 @export var cam_face_front: Array[PhantomCamera3D] = []
 @export var flip_cam : PhantomCamera3D
 @export var x_pos: float
+@export var close_cam : PhantomCamera3D
 
 var place_pos
 var flip = false
-
+var close_pos = -.25
+var old_x_pos = x_pos
 
 func place_marker():
+	if close_cam:
+		if close_cam.is_active():
+			x_pos = close_pos
+		else:
+			x_pos = old_x_pos
+	
 	check_cam_orenination(cam_face_front, cam_face_back)
 	if GlobalVars.forward == true:
 		place_pos = -x_pos
-		
 		marker.position.x = place_pos
 	else:
 		#print("facing back  label still on right? " + str(place_pos))
