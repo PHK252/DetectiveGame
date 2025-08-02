@@ -202,6 +202,17 @@ func _process_adjust_state() -> void:
 		nav.set_velocity(velocity)
 
 func _process_investigate_state(distance_to_target) -> void:
+	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE:
+		if investigate_choice == 7:
+			faint_dalton = true #neededcondition
+			theo_adjustment = false
+			is_investigating = false
+			is_navigating = true 
+			nav.path_desired_distance = 0.75
+			nav.target_desired_distance = 1.0
+			STOPPING_DISTANCE = 1.0
+			state = FOLLOW
+	
 	if (nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false) and faint_dalton == false:
 		if patio_sit:
 			armature.visible = false
@@ -967,13 +978,14 @@ func _on_dialogic_signal(argument: String):
 		state = FOLLOW
 
 func _on_main_door_theo_follow() -> void:
+	InvestigateTime.stop()
 	anim_tree.set("parameters/Scratch/request", 2)
 	anim_tree.set("parameters/NoteAlt/request", 2)
-	faint_dalton = true #neededcondition
-	theo_adjustment = false
-	is_investigating = false
-	is_navigating = true 
-	nav.path_desired_distance = 0.75
-	nav.target_desired_distance = 1.0
-	STOPPING_DISTANCE = 1.0
-	state = FOLLOW
+	is_investigating = true
+	investigate_choice = 7
+	nav.target_position = marker_list[investigate_choice].global_position
+	is_navigating = true
+	STOPPING_DISTANCE = 0.0
+	state = INVESTIGATE
+	
+	

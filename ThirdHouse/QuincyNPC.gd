@@ -13,6 +13,7 @@ var just_wentUp := false
 var dalton_clear := true
 signal stop_dalton
 @export var timer_check : Timer
+@export var entrance_timer : Timer
 
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
@@ -65,6 +66,8 @@ var is_activated := false
 
 var sound_allowed := true
 @export var leave_position : Marker3D
+@export var entrance_position : Marker3D
+
 var in_danger = false
 signal play_caught
 signal pause_timeout
@@ -73,6 +76,7 @@ signal caught_in_view
 
 @export var sound_player : AnimationPlayer
 var end_time := false
+var start_time := false
 #
 
 enum {
@@ -105,10 +109,12 @@ func _process(delta: float) -> void:
 	if is_distracted == false:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
-		if end_time == false:
+		if end_time == false and start_time == false:
 			distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
 		elif end_time:
 			distance_to_target = armature.global_transform.origin.distance_to(leave_position.global_position)
+		elif start_time:
+			distance_to_target = armature.global_transform.origin.distance_to(entrance_position.global_position)
 
 	match state:
 		IDLE:
@@ -123,7 +129,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if is_navigating:
 		var direction = Vector3()
-		if is_distracted == false and end_time == false:
+		if is_distracted == false and end_time == false and start_time == false:
 			nav.path_desired_distance = 0.75
 			nav.target_desired_distance = 1.0
 			STOPPING_DISTANCE = 1.0
@@ -209,6 +215,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	if end_time:
 		is_navigating = false
 	
+	
 	if wander_choice == 2:
 		is_navigating = false
 		var playPos = (winepoint.global_position - global_transform.origin).normalized()
@@ -259,6 +266,12 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 func _process_follow_state(distance_to_target: float) -> void:
 	#print("q_follow")
 	#print(distance_to_target)
+	quincy_tree.set("parameters/Smoking/request", 2)
+	smoke.emitting = false
+	packofcigs.visible = false
+	lighter.visible = false
+	cig.visible = false
+	
 	if poolTable:
 		state = IDLE
 	if distance_to_target <= STOPPING_DISTANCE:
@@ -271,6 +284,11 @@ func _process_follow_state(distance_to_target: float) -> void:
 			if end_time:
 				rotate_number = 4
 				rotate_forced = true
+			
+			if start_time:
+				rotate_number = 4
+				rotate_forced = true
+				entrance_timer.start()
 			
 			if snowmobile_distraction:
 				quincy_tree.set("parameters/Call/request", true)
@@ -301,7 +319,12 @@ func _process_follow_state(distance_to_target: float) -> void:
 #entrance area
 func _on_theo_wander_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		is_navigating = true
+		pass
+		#is_distracted = false
+		#rotate_number = 0
+		#rotate_forced = false
+		#start_time = false
+		
 
 func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -316,13 +339,14 @@ func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
 		
 		if fall_allowed:
 			if wine_fall == true:
-				is_distracted = true
-				is_navigating = true
-				wander_choice = 1
-				nav.target_position = marker_positions[1].global_position
-				state = FOLLOW
+				pass
+				#is_distracted = true
+				#is_navigating = true
+				#wander_choice = 1
+				#nav.target_position = marker_positions[1].global_position
+				#state = FOLLOW
 				#distraction_timer.start()
-				fall_allowed = false
+				#fall_allowed = false
 		
 func _on_fixed_wine_distraction() -> void:
 	wine_fall = true
@@ -590,7 +614,11 @@ func _on_timer_check_timeout() -> void:
 
 func _on_quincy_interact_finish_greeting() -> void:
 	greeting = true
-	#is_navigating = true
+	start_time = true
+	is_distracted = true
+	is_navigating = true
+	nav.target_position = entrance_position.global_position
+	state = FOLLOW
 
 func _on_activate_q_wander_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -665,3 +693,11 @@ func _on_main_door_quincy_reposition() -> void:
 	STOPPING_DISTANCE = 0.5
 	nav.target_position = leave_position.global_position
 	state = FOLLOW
+
+func _on_timer_start_timeout() -> void:
+	is_distracted = false
+	rotate_number = 0
+	rotate_forced = false
+	start_time = false
+	
+	

@@ -44,6 +44,7 @@ var interaction := false
 var in_control := true
 var control_area := false
 var force_rotation := false
+var walk_number = 2
 
 var number := 0
 
@@ -63,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		#_on_door_bathroom_replace_quincy_enter_bathroom()
 	
 	if forced_walk:
-		var dir_marker = (armature.global_position - force_rotate_list[2].global_position).normalized()
+		var dir_marker = (armature.global_position - force_rotate_list[walk_number].global_position).normalized()
 		velocity.x = lerp(velocity.x, -dir_marker.x * SPEED, LERP_VAL)
 		velocity.z = lerp(velocity.z, -dir_marker.z * SPEED, LERP_VAL)
 		floor_type_walk()
@@ -592,4 +593,26 @@ func _on_door_bathroom_replace_quincy_enter_bathroom() -> void:
 	in_control = true
 	
 	
+	
+func _on_quincy_interact_finish_greeting() -> void:
+	walk_number = 5
+	in_control = false
+	needs_rotation_forced = true
+	number = 5
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	forced_walk = true
+	await get_tree().create_timer(2.5).timeout
+	forced_walk = false
+	needs_rotation_forced = true
+	number = 6
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	walk_number = 2
+	needs_rotation_forced = false
+	number = 0
+	force_rotation = false
+	in_control = true
 	
