@@ -327,19 +327,25 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 		
 
 func _on_wine_area_quincy_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		if distraction_allowed:
-			if wine_fall == false: 
-				is_distracted = true
-				is_navigating = true
-				wander_choice = 0
-				nav.target_position = marker_positions[0].global_position
-				state = FOLLOW
+	pass
+	#if body.is_in_group("player"):
+		#is_distracted = true
+		#is_navigating = true
+		#wander_choice = 0
+		#nav.target_position = marker_positions[0].global_position
+		#state = FOLLOW
+		#if distraction_allowed:
+			#if wine_fall == false: 
+				#is_distracted = true
+				#is_navigating = true
+				#wander_choice = 0
+				#nav.target_position = marker_positions[0].global_position
+				#state = FOLLOW
 				#distraction_allowed = false
 		
-		if fall_allowed:
-			if wine_fall == true:
-				pass
+		#if fall_allowed:
+			#if wine_fall == true:
+				#pass
 				#is_distracted = true
 				#is_navigating = true
 				#wander_choice = 1
@@ -588,29 +594,31 @@ func _on_wine_area_body_exited(body: Node3D) -> void:
 		dalton_clear = true
 		if distraction_allowed and dalton_clear:
 			if wine_fall == false: 
-				rotate_forced = false
-				rotate_number = 0
-				emit_signal("stop_dalton")
-				is_distracted = true
-				is_navigating = true
-				wander_choice = 2
-				nav.target_position = marker_positions[2].global_position
-				state = FOLLOW
-				distraction_allowed = false
+				pass
+				#rotate_forced = false
+				#rotate_number = 0
+				#emit_signal("stop_dalton")
+				#is_distracted = true
+				#is_navigating = true
+				#wander_choice = 2
+				#nav.target_position = marker_positions[2].global_position
+				#state = FOLLOW
+				#distraction_allowed = false
 		
 
 func _on_timer_check_timeout() -> void:
 	if distraction_allowed and dalton_clear and general_distraction == false:
 			if wine_fall == false: 
-				rotate_forced = false
-				rotate_number = 0
-				emit_signal("stop_dalton")
-				is_distracted = true
-				is_navigating = true
-				wander_choice = 2
-				nav.target_position = marker_positions[2].global_position
-				state = FOLLOW
-				distraction_allowed = false
+				pass
+				#rotate_forced = false
+				#rotate_number = 0
+				#emit_signal("stop_dalton")
+				#is_distracted = true
+				#is_navigating = true
+				#wander_choice = 2
+				#nav.target_position = marker_positions[2].global_position
+				#state = FOLLOW
+				#distraction_allowed = false
 
 func _on_quincy_interact_finish_greeting() -> void:
 	greeting = true
@@ -701,3 +709,31 @@ func _on_timer_start_timeout() -> void:
 	start_time = false
 	
 	
+func _on_bar_interaction_interacted(interactor: Interactor) -> void:
+	rotate_forced = false
+	rotate_number = 0
+	is_distracted = true
+	is_navigating = true
+	wander_choice = 2
+	nav.target_position = marker_positions[2].global_position
+	state = FOLLOW
+	distraction_allowed = false
+
+func _on_wine_time_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		quincy_tree.set("parameters/Wine/request", 2)
+		is_drinking = false
+		rotate_number = 0
+		rotate_forced = false
+		wander_choice = 11
+		is_distracted = false
+		is_navigating = true
+		state = FOLLOW
+
+func _on_wine_time_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		is_distracted = true
+		is_navigating = true
+		wander_choice = 0
+		nav.target_position = marker_positions[0].global_position
+		state = FOLLOW
