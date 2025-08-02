@@ -33,7 +33,7 @@ Dalton: ...
 			Theo: Sure!
 			Theo: You don't seem like one to drink on the job.
 			Dalton: I'm not.
-			Dalton: Today's an expection. 
+			Dalton: Today's an expection.
 			Theo: Hm...
 			Theo: Spoken like a true day drinker.
 			Dalton: Tsk.
@@ -45,9 +45,9 @@ Dalton: ...
 			label Bar continue
 			Theo: Hello!
 			Theo: Esteemed Mayor of Arcadia Springs!
-			Theo: I see you’ve convince this fox to take up day drinking. 
+			Theo: I see you’ve convince this fox to take up day drinking.
 			Quincy: Ahh.
-			Quincy: No warm-blooded mammal would have the willpower to turn down a drink. 
+			Quincy: No warm-blooded mammal would have the willpower to turn down a drink.
 			Quincy: And besides...
 			Quincy: A little bit of work time fun never killed anyone.
 			Theo: Wise as always, Mr. Mayor.
@@ -59,18 +59,22 @@ Dalton: ...
 			[wait time="1.0"]
 			Dalton: ...
 			- Beer.
+				[signal arg="beer"]
 				set {Quincy.third_faint} = true
 				Dalton: Just a beer would be fine.
 				jump here
 			- Gin and tonic.
+				[signal arg="gin"]
 				set {Quincy.second_faint} = true
 				Dalton: A gin and tonic.
 				jump here
 			- Whiskey.
+				[signal arg="whiskey"]
 				set {Quincy.first_faint} = true
 				Dalton: Whiskey on the rocks.
 				jump here
 			- Water.
+				[signal arg="water"]
 				Quincy: Mmm....
 				Quincy: You're no fun.
 				Theo: I know, Mr. Party Pooper here.
@@ -151,18 +155,22 @@ Dalton: ...
 		[wait time="1.0"]
 		Dalton: ...
 		- Beer.
+			[signal arg="beer"]
 			set {Quincy.third_faint} = true
 			Dalton: Just a beer would be fine.
 			jump here2
 		- Gin and tonic.
+			[signal arg="gin"]
 			set {Quincy.second_faint} = true
 			Dalton: A gin and tonic.
 			jump here2
 		- Whiskey.
+			[signal arg="whiskey"]
 			set {Quincy.first_faint} = true
 			Dalton: Whiskey on the rocks.
 			jump here2
 		- Water.
+			[signal arg="water"]
 			Dalton: A glass of water.
 			Quincy: You sure you don't want anything stronger?
 			Dalton: Water's fine.

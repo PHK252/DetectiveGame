@@ -10,6 +10,7 @@ extends Node
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var character_marker : Marker2D
+var cutscene : String
 
 signal faint_disable
 signal continue_bar
@@ -24,16 +25,16 @@ signal reposition_dalton
 	#if Input.is_action_just_pressed("meeting_done") and test_cutscene:	
 		#anim_player.play("fainting_cutscene")
 	
-
+func _ready() -> void:
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func _on_bar_make_drinks():
 	print("making drinks")
 	#quincy_norm_body.hide()
-	anim_player.play("cocktail_cutscene")
+	anim_player.play(cutscene)
 	await anim_player.animation_finished
 	#quincy_norm_body.show()
 	emit_signal("continue_bar")
-
 
 func _on_bar_faint_time():
 	print("fainting")
@@ -57,3 +58,15 @@ func _on_timeline_ended():
 	emit_signal("open_door")
 	player.start_player()
 	emit_signal("theo_follow")
+	
+func _on_dialogic_signal(argument: String):
+	print("signal")
+	if argument == "water":
+		print("assigned_water")
+		cutscene = "cocktail_cutscene_water"
+	if argument == "gin":
+		cutscene = "cocktail_cutscene_gin"
+	if argument == "beer":
+		cutscene = "cocktail_cutscene_beer"
+	if argument == "whiskey":
+		cutscene = "cocktail_cutscene_whiskey"

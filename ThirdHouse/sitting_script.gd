@@ -35,6 +35,7 @@ func _ready() -> void:
 	dalton_bar.visible = false
 	dalton_outside.visible = false
 	cocktailAnim.visible = false
+	cocktailStatic.visible = false
 
 func _on_character_body_3d_theo_sit() -> void:
 	theo_sitting.visible = true
