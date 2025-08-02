@@ -45,17 +45,19 @@ func _on_character_body_3d_theo_sit() -> void:
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	alert.hide()
+	
+	
+	if dalton_bar.visible == false:
+		if out_sit:
+			print("signaling")
+			emit_signal("theo_out")
+			patio_sit.play()
+		else:
+			stool_sit.play()
+	
 	emit_signal("DaltonInvisible")
 	dalton_outside.visible = true
 	dalton_bar.visible = true
-	
-	if out_sit:
-		print("signaling")
-		emit_signal("theo_out")
-		patio_sit.play()
-	else:
-		stool_sit.play()
-	
 	#anim_player_dO.play("Sit_Outside")
 	#anim_player_dB.play("SitandDrinkWine")
 	#await get_tree().create_timer(4.0).timeout
@@ -79,6 +81,8 @@ func _process(delta: float) -> void:
 		if out_sit:
 			patio_getup.play()
 		elif bar_convo:
+			stool_getup.play()
+		elif dalton_bar.visible == true:
 			stool_getup.play()
 		dalton_outside.visible = false
 		dalton_bar.visible = false
