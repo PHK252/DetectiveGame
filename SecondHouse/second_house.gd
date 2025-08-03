@@ -22,6 +22,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	disable_interaction_beginning(interactables)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalVars.current_level = "Juniper"
 
@@ -95,6 +96,16 @@ func disable_interaction(arr: Array):
 		i.set_monitorable(false)
 		i.queue_free()
 
+func disable_interaction_beginning(arr: Array):
+	for i in arr:
+		i.set_monitorable(false)
+
+func enable_interaction(arr: Array):
+	for i in arr:
+		i.set_monitorable(true)
+
+func can_interact():
+	enable_interaction(interactables)
 
 func _on_entered_juniper():
 	timer.start()

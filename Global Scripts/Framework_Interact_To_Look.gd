@@ -92,8 +92,14 @@ func _input(event):
 			else:
 				object_in_scene.show()
 				object_interact.show() # might not need?
+				#if viewing == "resume" and Dialogic.VAR.get_variable("Juniper.reenter_resumes") == true:
+					#GlobalVars.set(view_object, false)
+				
 				GlobalVars.set(view_object, true)
 		else:
 			object_in_scene.show()
 			object_interact.show() # might not need?
+			#if viewing == "resume" and Dialogic.VAR.get_variable("Juniper.reenter_resumes") == true:
+				#GlobalVars.set(view_object, false)
+
 			GlobalVars.set(view_object, true)

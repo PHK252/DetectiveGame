@@ -16,6 +16,7 @@ extends Node3D
 signal finish_greeting
 signal tea_time
 signal reactivate_door
+signal enable_interaction
 
 func _on_interactable_interacted(interactor):
 	#print(asked)
@@ -30,32 +31,34 @@ func _on_interactable_interacted(interactor):
 		ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		ask_victims.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 
+func _on_greeting_ended():
+	#emit_signal("Dstopped")
+	#emit_signal("Tstart")
+	player.start_player()
+	Dialogic.timeline_ended.disconnect(_on_greeting_ended)
+	GlobalVars.in_dialogue = false
+	emit_signal("finish_greeting")
+	#asked = true
 func _on_timeline_ended():
 	#emit_signal("Dstopped")
 	#emit_signal("Tstart")
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	emit_signal("finish_greeting")
-	#asked = true
+
+func _on_tea_ended():
+	#emit_signal("Dstopped")
+	#emit_signal("Tstart")
+	player.start_player()
+	Dialogic.timeline_ended.disconnect(_on_tea_ended)
+	GlobalVars.in_dialogue = false
+	emit_signal("enable_interaction")
 
 func _process(delta):
 	asked = Dialogic.VAR.get_variable("Juniper.asked_all")
 	if asked == true:
 		#print("hide")
 		$Interactable.set_monitorable(false)
-
-#func _on_character_body_3d_d_inside() -> void:
-	#if asked == false:
-		#print("asking")
-		#emit_signal("Tstop")
-		#GlobalVars.in_dialogue = true
-		#player.stop_player()
-		#var ask_victims = Dialogic.start("Micah_Ask_Victims")
-		#Dialogic.timeline_ended.connect(_on_timeline_ended)
-		#ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		#ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), theo_marker)
-		#ask_victims.register_character(load("res://Dialogic Characters/Micah.dch"), juniper_marker)
 
 func _on_door_second_j_dialogue() -> void:
 	if GlobalVars.in_dialogue == false and asked == false:
@@ -65,7 +68,7 @@ func _on_door_second_j_dialogue() -> void:
 		player.stop_player()
 		alert.hide()
 		var greeting = Dialogic.start("Juniper_Greeting", "continue")
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.timeline_ended.connect(_on_greeting_ended)
 		greeting.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		greeting.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		greeting.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
@@ -79,7 +82,7 @@ func _on_entered_juniper_house():
 		emit_signal("reactivate_door")
 		var in_house = Dialogic.start("Juniper_Enter_House")
 		Dialogic.signal_event.connect(_activate_tea)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.timeline_ended.connect(_on_tea_ended)
 		in_house.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		in_house.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		in_house.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)

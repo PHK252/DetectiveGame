@@ -208,3 +208,6 @@ func _on_interactable_interacted(interactor):
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()
+		if GlobalVars.in_interaction == "Resume" and Dialogic.VAR.get_variable("Juniper.reenter_resumes") == true:
+			GlobalVars.set(dialogue_1, false)
+			GlobalVars.set(view_item_1, false)
