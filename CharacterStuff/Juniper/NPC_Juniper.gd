@@ -71,7 +71,8 @@ enum {
 	SITTING,
 	TEA,
 	TEADOWN,
-	ANIMPROCESS
+	ANIMPROCESS,
+	DIALOGUE
 }
 
 var state = IDLE
@@ -120,6 +121,8 @@ func _process(delta: float) -> void:
 			_process_teaDown_state(distance_to_target, wander_choice)
 		ANIMPROCESS:
 			_process_anim()
+		DIALOGUE:
+			_process_dialogue(distance_to_target, wander_choice)
 			
 	
 func _physics_process(delta: float) -> void:
@@ -136,7 +139,6 @@ func _physics_process(delta: float) -> void:
 			else:
 				STOPPING_DISTANCE = 1.0
 				nav.target_position = marker_positions[5].global_position
-				
 		else:
 			STOPPING_DISTANCE = 0.0
 		direction = nav.get_next_path_position() - global_position
@@ -197,7 +199,7 @@ func _process_tea_state(distance_to_target: float, wander_choice) -> void:
 		anim_tree.set("parameters/Pour/request", true)
 		pour = true
 		state = ANIMPROCESS
-		
+
 func _process_teaDown_state(distance_to_target: float, wander_choice) -> void:
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 		tray.visible = false
@@ -285,6 +287,12 @@ func _process_follow_state(distance_to_target: float) -> void:
 		floor_type_gather()
 		state = IDLE
 
+func _process_dialogue(distance_to_target: float, wander_choice: int) -> void:
+	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
+		is_navigating = false
+		wander_rotate = true
+		state = IDLE
+
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
 	#print("wandering")
 	var current_anim 
@@ -349,6 +357,11 @@ func _rotate_towards_object(wander_choice) -> void:
 		
 	elif wander_choice == 4:
 		var obj_direction = tea_living.global_position - global_position
+		obj_direction = obj_direction.normalized()
+		obj_direction.y = 0
+		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
+	elif wander_choice == 7:
+		var obj_direction = marker_positions[8].global_position - global_position
 		obj_direction = obj_direction.normalized()
 		obj_direction.y = 0
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(obj_direction.x, obj_direction.z), LERP_VAL)
@@ -461,6 +474,8 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 
 func _on_tea_activated():
 	print("interactedTea")
+	wander_rotate = false
+	wander_choice = 0
 	var current_anim = one_shots[wander_choice]
 	anim_tree.set("parameters/" + current_anim + "/request", 2)
 	cant_follow = true
@@ -487,14 +502,14 @@ func _on_juniper_interact_finish_greeting() -> void:
 	if greeting == false:
 		greet_rotation = false
 		greeting = true
-		
-		wander_choice = rng.randi_range(0, 2)
+		#wander_choice = rng.randi_range(0, 2)
+		wander_choice = 7 
 		wander_rotate = false
 		#if choice > 0:
 		nav.target_position = marker_positions[wander_choice].global_position
 		is_navigating = true
 		is_wandering = true
-		state = WANDER
+		state = DIALOGUE
 		#print("interactedTea")
 		#var current_anim = one_shots[wander_choice]
 		#anim_tree.set("parameters/" + current_anim + "/request", 2)
@@ -504,7 +519,6 @@ func _on_juniper_interact_finish_greeting() -> void:
 		#wander_choice = 3
 		#nav.target_position = marker_positions[3].global_position
 		#state = TEA
-
 
 func _on_house_interact_general_interact() -> void:
 	pass # Replace with function body.
