@@ -62,6 +62,7 @@ var bookshelf = false
 #sounds and footsteps
 @export var sound_player : AnimationPlayer
 
+signal activate_drink
 
 enum {
 	IDLE, 
@@ -241,6 +242,7 @@ func _process_anim():
 		await get_tree().create_timer(1.5).timeout
 		tray_anim_player.play("trayDown")
 		await get_tree().create_timer(1.7).timeout
+		emit_signal("activate_drink")
 		tray_anim.visible = false
 		tray_static.visible = true
 		#tea_walking = false
