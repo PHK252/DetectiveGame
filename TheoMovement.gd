@@ -34,6 +34,7 @@ var entered_junipers := false
 var living_room_nogo := false
 var quincy_greet := false
 var faint_dalton := false
+var waterfall_scene := false
 @export var drunk_marker : Marker3D
 @export var theo_node : CharacterBody3D
 @export var stairMarker : Marker3D
@@ -89,6 +90,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_investigating == true or going_to_bar == true:
 		distance_to_target = global_transform.origin.distance_to(marker_list[investigate_choice].global_transform.origin)
+	elif waterfall_scene:
+		distance_to_target = global_transform.origin.distance_to(marker_list[0].global_transform.origin)
 	else:
 		distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
 
@@ -190,6 +193,8 @@ func _process_adjust_state() -> void:
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0
+		if waterfall_scene:
+			theo_adjustment = true
 		state = IDLE
 		
 	if not nav.is_navigation_finished():
@@ -309,7 +314,7 @@ func _process_idle_state(distance_to_target: float) -> void:
 	if going_to_bar or patio_sit:
 		state = SITTING
 
-	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton)):
+	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton) and waterfall_scene == false):
 		print("Switching to FOLLOW state")
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
@@ -989,3 +994,17 @@ func _on_main_door_theo_follow() -> void:
 	state = INVESTIGATE
 	
 	
+func _on_waterfall_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		state = IDLE
+		waterfall_scene = true
+		nav.target_position = marker_list[0].global_transform.origin
+		state = ADJUST
+
+func _on_waterfall_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		#follow
+		waterfall_scene = false
+		theo_adjustment = false
+		is_navigating = true
+		state = FOLLOW
