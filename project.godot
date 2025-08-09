@@ -199,7 +199,7 @@ directories/dtl_directory={
 "Warrant_property": "res://Dialogue Stuff/Timelines/Micah/Warrant_property.dtl",
 "isaac": "res://Dialogue Stuff/Timelines/Beginning/isaac.dtl"
 }
-layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres", "res://Dialogue Stuff/Thoughts.tres"]
+layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres", "res://Dialogue Stuff/Thoughts.tres", "res://Dialogue Stuff/Dalton Box.tres", "res://Dialogue Stuff/Isaac Box.tres"]
 layout/default_style="res://Dialogue Stuff/Text_Bubble.tres"
 variables={
 "Asked Questions": {
@@ -349,11 +349,11 @@ text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.5
-animations/join_default_wait=true
-animations/leave_default_length=0.5
-animations/leave_default_wait=true
-animations/cross_fade_default_length=0.5
+animations/join_default_length=0.0
+animations/join_default_wait=false
+animations/leave_default_length=0.0
+animations/leave_default_wait=false
+animations/cross_fade_default_length=0.0
 choices/autofocus_first=true
 choices/delay=0.2
 choices/reveal_delay=0
@@ -364,6 +364,7 @@ text/autopauses={}
 save/autosave=false
 choices/hotkey_behaviour=0
 timer/process_in_physics=false
+portraits/default_portrait=""
 
 [display]
 

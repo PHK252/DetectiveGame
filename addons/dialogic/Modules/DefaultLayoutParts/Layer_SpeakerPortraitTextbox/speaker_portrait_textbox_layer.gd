@@ -103,27 +103,27 @@ func _apply_export_overrides() -> void:
 
 	portrait_panel.get_parent().move_child(portrait_panel, portrait_position)
 
-	## NAME LABEL SETTINGS
-	var name_label: DialogicNode_NameLabel = %DialogicNode_NameLabel
-	if name_label_use_global_size:
-		name_label.add_theme_font_size_override(&"font_size", get_global_setting(&'font_size', name_label_custom_size) as int)
-	else:
-		name_label.add_theme_font_size_override(&"font_size", name_label_custom_size)
-
-	var name_label_font: String = name_label_customfont
-	if name_label_use_global_font and ResourceLoader.exists(get_global_setting(&'font', '') as String):
-		name_label_font = get_global_setting(&'font', '')
-	if !name_label_font.is_empty():
-		name_label.add_theme_font_override(&'font', load(name_label_font) as Font)
-
-	name_label.use_character_color = false
-	match name_label_color_mode:
-		NameLabelColorModes.GLOBAL_COLOR:
-			name_label.add_theme_color_override(&"font_color", get_global_setting(&'font_color', name_label_custom_color) as Color)
-		NameLabelColorModes.CUSTOM_COLOR:
-			name_label.add_theme_color_override(&"font_color", name_label_custom_color)
-		NameLabelColorModes.CHARACTER_COLOR:
-			name_label.use_character_color = true
-
-	name_label.horizontal_alignment = name_label_alignment as HorizontalAlignment
-	name_label.hide_when_empty = name_label_hide_when_no_character
+	### NAME LABEL SETTINGS
+	#var name_label: DialogicNode_NameLabel = %DialogicNode_NameLabel
+	#if name_label_use_global_size:
+		#name_label.add_theme_font_size_override(&"font_size", get_global_setting(&'font_size', name_label_custom_size) as int)
+	#else:
+		#name_label.add_theme_font_size_override(&"font_size", name_label_custom_size)
+#
+	#var name_label_font: String = name_label_customfont
+	#if name_label_use_global_font and ResourceLoader.exists(get_global_setting(&'font', '') as String):
+		#name_label_font = get_global_setting(&'font', '')
+	#if !name_label_font.is_empty():
+		#name_label.add_theme_font_override(&'font', load(name_label_font) as Font)
+#
+	#name_label.use_character_color = false
+	#match name_label_color_mode:
+		#NameLabelColorModes.GLOBAL_COLOR:
+			#name_label.add_theme_color_override(&"font_color", get_global_setting(&'font_color', name_label_custom_color) as Color)
+		#NameLabelColorModes.CUSTOM_COLOR:
+			#name_label.add_theme_color_override(&"font_color", name_label_custom_color)
+		#NameLabelColorModes.CHARACTER_COLOR:
+			#name_label.use_character_color = true
+#
+	#name_label.horizontal_alignment = name_label_alignment as HorizontalAlignment
+	#name_label.hide_when_empty = name_label_hide_when_no_character

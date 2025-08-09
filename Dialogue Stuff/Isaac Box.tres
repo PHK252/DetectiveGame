@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=4 format=3 uid="uid://wxa37wfl6gow"]
+
+[ext_resource type="Script" uid="uid://cqeyrtvogqus0" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_cj0pq"]
+[ext_resource type="PackedScene" uid="uid://hownnduqeg5" path="res://Dialogue Stuff/CustomDaltonBox/custom_dalton_box.tscn" id="1_xktt5"]
+[ext_resource type="Script" uid="uid://ce5ibptrpye5v" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_xktt5"]
+
+[resource]
+script = ExtResource("2_xktt5")
+name = "Isaac Box"
+base_scene = ExtResource("1_xktt5")
+base_overrides = {
+"global_bg_color": "Color(0.176471, 0.239216, 0.196078, 1)",
+"global_font": "\"res://Dialogue Stuff/Fonts/Pixel Font V2.ttf\"",
+"global_font_size": "35.0"
+}
+layers = Array[ExtResource("1_cj0pq")]([])
+metadata/_latest_layer = -1

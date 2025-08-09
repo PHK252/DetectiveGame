@@ -81,9 +81,16 @@ Dalton: ...
 			label here
 			Quincy: Theo, what would you like?
 			Theo: Hmm...
-			Theo: Can I get a margarita?
-			Quincy: Sure thing.
-			Quincy: One margarita and one glass of water coming right up.
+			Theo: Just your company will be enough for me.
+			Quincy: Well, if you put it like that...
+			if {Quincy.first_faint} == true:
+				Quincy: One whiskey on the rocks coming right up for our special little fox detective.
+			elif {Quincy.second_faint} == true:
+				Quincy: One gin and tonic coming right up for our special little fox detective.
+			elif {Quincy.third_faint} == true:
+				Quincy: One beer coming right up for our special little fox detective.
+			else:
+				Quincy: One glass of water coming right up for our special little fox detective.
 			[signal arg="make_drink"]
 			[wait time="18.0"]
 			label continue1

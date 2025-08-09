@@ -19,7 +19,6 @@ func _on_interactable_interacted(interactor):
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 		game_dialogue.register_character(load(load_Theo_dialogue), isaac_marker)
-		GlobalVars.in_interaction = ""
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
 		player.stop_player()
@@ -30,3 +29,4 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.show()
+	GlobalVars.in_interaction = ""

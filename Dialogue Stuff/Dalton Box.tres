@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=4 format=3 uid="uid://roal542ddvyf"]
+
+[ext_resource type="PackedScene" uid="uid://hownnduqeg5" path="res://Dialogue Stuff/CustomDaltonBox/custom_dalton_box.tscn" id="1_k61x3"]
+[ext_resource type="Script" uid="uid://cqeyrtvogqus0" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_mn48u"]
+[ext_resource type="Script" uid="uid://ce5ibptrpye5v" path="res://addons/dialogic/Resources/dialogic_style.gd" id="9_kclgs"]
+
+[resource]
+script = ExtResource("9_kclgs")
+name = "Dalton Box"
+base_scene = ExtResource("1_k61x3")
+base_overrides = {
+"global_bg_color": "Color(0.14902, 0.184314, 0.372549, 1)",
+"global_font": "\"res://Dialogue Stuff/Fonts/Pixel Font V2.ttf\"",
+"global_font_size": "35.0"
+}
+layers = Array[ExtResource("1_mn48u")]([])
+metadata/_latest_layer = -1

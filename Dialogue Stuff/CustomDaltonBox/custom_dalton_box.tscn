@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://hownnduqeg5"]
+
+[ext_resource type="Script" uid="uid://dkh1dbhc88o25" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
+[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="2_jhfko"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="4_n000n"]
+[ext_resource type="PackedScene" uid="uid://by6waso0mjpjp" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/textbox_with_speaker_portrait.tscn" id="6_fqv7a"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="8_535rr"]
+
+[node name="Custom" type="CanvasLayer"]
+script = ExtResource("1_ifsho")
+
+[node name="BackgroundLayer" parent="." instance=ExtResource("2_jhfko")]
+apply_overrides_on_ready = true
+
+[node name="FullAdvanceInputLayer" parent="." instance=ExtResource("4_n000n")]
+apply_overrides_on_ready = true
+
+[node name="TextboxWithSpeakerPortrait" parent="." instance=ExtResource("6_fqv7a")]
+text_custom_size = 35
+custom_normal_font = "uid://3ccjbmqoi4bc"
+box_modulate_custom_color = Color(0.14902, 0.184314, 0.372549, 1)
+box_size = Vector2(800, 160)
+apply_overrides_on_ready = true
+
+[node name="VN_ChoiceLayer" parent="." instance=ExtResource("8_535rr")]
+font_custom = "uid://3ccjbmqoi4bc"
+font_size_custom = 35
+apply_overrides_on_ready = true

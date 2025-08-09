@@ -8,12 +8,76 @@
 "sound_moods": {},
 "style": "Text_Bubble"
 },
-&"default_portrait": "",
+&"default_portrait": "Default",
 &"description": "",
 &"display_name": "Isaac",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"Default": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Isaac/Isaac Default.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"Doubt": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Isaac/Isaac Doubt.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Happy": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Isaac/Isaac Happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Roll": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Isaac/Isaac Roll.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Serious": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Isaac/Isaac Serious.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Sigh": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Isaac/Isaac Sigh.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Threat": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Isaac/Isaac Threat.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

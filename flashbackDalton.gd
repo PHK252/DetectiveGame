@@ -40,7 +40,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var current_blend = anim_tree.get("parameters/Blend2/blend_amount")
 	var speed = 2.0  # how fast it fades out
-	var new_blend = lerp(current_blend, blend_target, delta * speed)
+	var new_blend = blend_target #lerp(current_blend, blend_target, delta * speed)
 	anim_tree.set("parameters/Blend2/blend_amount", new_blend)
 	#doughnut.visible = false
 
