@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=139 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -89,6 +89,9 @@
 [ext_resource type="Texture2D" uid="uid://cnpra4xqpcd2b" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim2.png" id="83_w3bvj"]
 [ext_resource type="Texture2D" uid="uid://d4nt8urd7hwhw" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim3.png" id="84_7dtax"]
 [ext_resource type="Texture2D" uid="uid://0m28j84dbbn8" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim4.png" id="85_rd8x5"]
+[ext_resource type="Texture2D" uid="uid://d076epilfmw5p" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Details.png" id="87_m7akq"]
+[ext_resource type="Texture2D" uid="uid://em8jsgypcx8y" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Home.png" id="88_1sd4w"]
+[ext_resource type="Texture2D" uid="uid://bsg5ha0dra3ln" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Back.png" id="89_6iy3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
@@ -435,6 +438,7 @@ fit_content = true
 scroll_active = false
 
 [node name="GalleryScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -580,6 +584,7 @@ texture_pressed = ExtResource("32_i7ff1")
 texture_hover = ExtResource("32_i7ff1")
 
 [node name="ClosePics" type="Control" parent="GalleryScreen"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -706,6 +711,7 @@ position = Vector2(763, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="PhoneScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1012,6 +1018,18 @@ scroll_active = false
 [node name="NotesScreen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="Notes Back" type="Sprite2D" parent="NotesScreen"]
+position = Vector2(960, 513)
+texture = ExtResource("87_m7akq")
+
+[node name="Notes Back2" type="Sprite2D" parent="NotesScreen"]
+position = Vector2(960, 513)
+texture = ExtResource("88_1sd4w")
+
+[node name="Notes Back3" type="Sprite2D" parent="NotesScreen"]
+position = Vector2(960, 513)
+texture = ExtResource("89_6iy3u")
 
 [node name="PhoneFrame" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
