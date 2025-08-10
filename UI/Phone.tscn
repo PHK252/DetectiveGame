@@ -1703,6 +1703,7 @@ script = ExtResource("100_y6d0m")
 text_label = NodePath("ScrollContainer/VBoxContainer/RichTextLabel")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Micah"]
+layout_mode = 0
 offset_left = 738.0
 offset_top = 164.0
 offset_right = 1174.0
@@ -1734,6 +1735,7 @@ text = "ADD NOTES HERE"
 fit_content = true
 
 [node name="Back" type="TextureButton" parent="NotesScreen/Micah"]
+layout_mode = 0
 offset_left = 739.0
 offset_top = 903.0
 offset_right = 757.0
@@ -1749,6 +1751,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Juniper"]
+layout_mode = 0
 offset_left = 738.0
 offset_top = 164.0
 offset_right = 1174.0
@@ -1759,6 +1762,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "2 - J. HARTLEY"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotesScreen/Juniper"]
+layout_mode = 0
 offset_left = 738.0
 offset_top = 242.0
 offset_right = 1182.0
@@ -1779,6 +1783,7 @@ text = "ADD NOTES HERE"
 fit_content = true
 
 [node name="Back" type="TextureButton" parent="NotesScreen/Juniper"]
+layout_mode = 0
 offset_left = 739.0
 offset_top = 903.0
 offset_right = 757.0
@@ -1794,6 +1799,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Quincy"]
+layout_mode = 0
 offset_left = 738.0
 offset_top = 164.0
 offset_right = 1174.0
@@ -1804,6 +1810,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "3 - MAYOR Q. LEONID"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotesScreen/Quincy"]
+layout_mode = 0
 offset_left = 738.0
 offset_top = 242.0
 offset_right = 1182.0
@@ -1824,6 +1831,7 @@ text = "ADD NOTES HERE"
 fit_content = true
 
 [node name="Back" type="TextureButton" parent="NotesScreen/Quincy"]
+layout_mode = 0
 offset_left = 739.0
 offset_top = 903.0
 offset_right = 757.0

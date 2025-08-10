@@ -104,14 +104,35 @@ libraries = {
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
 visible = false
 
-[node name="Title" parent="CanvasLayer/Phone UI/NotesScreen/Control" index="1"]
+[node name="Title" parent="CanvasLayer/Phone UI/NotesScreen/Micah" index="0"]
 layout_mode = 0
 
-[node name="Date" parent="CanvasLayer/Phone UI/NotesScreen/Control" index="2"]
+[node name="Back" parent="CanvasLayer/Phone UI/NotesScreen/Micah" index="2"]
 layout_mode = 0
 
-[node name="Time2" parent="CanvasLayer/Phone UI/NotesScreen" index="3"]
+[node name="Title" parent="CanvasLayer/Phone UI/NotesScreen/Juniper" index="0"]
 layout_mode = 0
+
+[node name="ScrollContainer" parent="CanvasLayer/Phone UI/NotesScreen/Juniper" index="1"]
+layout_mode = 0
+
+[node name="Back" parent="CanvasLayer/Phone UI/NotesScreen/Juniper" index="2"]
+layout_mode = 0
+
+[node name="Title" parent="CanvasLayer/Phone UI/NotesScreen/Quincy" index="0"]
+layout_mode = 0
+
+[node name="ScrollContainer" parent="CanvasLayer/Phone UI/NotesScreen/Quincy" index="1"]
+layout_mode = 0
+
+[node name="Back" parent="CanvasLayer/Phone UI/NotesScreen/Quincy" index="2"]
+layout_mode = 0
+
+[node name="Time2" parent="CanvasLayer/Phone UI/NotesScreen" index="6"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 140.0
+offset_bottom = 59.0
 
 [node name="CanvasLayer" parent="CanvasLayer" instance=ExtResource("12_15hi7")]
 visible = false
