@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=154 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -89,9 +89,21 @@
 [ext_resource type="Texture2D" uid="uid://cnpra4xqpcd2b" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim2.png" id="83_w3bvj"]
 [ext_resource type="Texture2D" uid="uid://d4nt8urd7hwhw" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim3.png" id="84_7dtax"]
 [ext_resource type="Texture2D" uid="uid://0m28j84dbbn8" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Anim4.png" id="85_rd8x5"]
+[ext_resource type="Script" uid="uid://bdgfqcdtnefyk" path="res://UI/notes_screen.gd" id="87_fo3me"]
 [ext_resource type="Texture2D" uid="uid://d076epilfmw5p" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Details.png" id="87_m7akq"]
 [ext_resource type="Texture2D" uid="uid://em8jsgypcx8y" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Home.png" id="88_1sd4w"]
 [ext_resource type="Texture2D" uid="uid://bsg5ha0dra3ln" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Back.png" id="89_6iy3u"]
+[ext_resource type="Texture2D" uid="uid://c0lbpl7ehqhfs" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Profile.png" id="89_ic4nm"]
+[ext_resource type="Texture2D" uid="uid://bx5sbkj4ku2ho" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Home Blank.png" id="90_6iy3u"]
+[ext_resource type="Texture2D" uid="uid://dfgnmjkak64c2" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Button.png" id="90_66dn3"]
+[ext_resource type="Texture2D" uid="uid://bry4vtc4m2fhw" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Button Pressed.png" id="91_ic4nm"]
+[ext_resource type="Texture2D" uid="uid://dde4lgjpkl11" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Battery.png" id="91_lct15"]
+[ext_resource type="Texture2D" uid="uid://c3f75stftrna3" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Victim Button.png" id="94_2h6vk"]
+[ext_resource type="Texture2D" uid="uid://7kopsehreshr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Victim Button Clicked.png" id="95_5dqt7"]
+[ext_resource type="Texture2D" uid="uid://dnc2wc8wv2upd" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow.png" id="95_a6fec"]
+[ext_resource type="Texture2D" uid="uid://ox8yi4qc7e3a" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow pressed.png" id="96_5dqt7"]
+[ext_resource type="Script" uid="uid://c7dlgmju6sbtp" path="res://UI/victim_button.gd" id="97_diagc"]
+[ext_resource type="Script" uid="uid://367sfxpxuqjw" path="res://UI/micah_add_notes.gd" id="100_y6d0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
@@ -370,8 +382,22 @@ _data = {
 &"RESET": SubResource("Animation_ud7wl")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hu0ud"]
+bg_color = Color(0.584314, 0.580392, 0.529412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltpiu"]
+content_margin_left = 5.0
+bg_color = Color(0.407843, 0.403922, 0.388235, 1)
+
+[sub_resource type="Theme" id="Theme_1v3be"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_hu0ud")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_hu0ud")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_hu0ud")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ltpiu")
+
 [node name="Phone UI" type="CanvasLayer"]
 script = ExtResource("1_eli2p")
+metadata/_edit_vertical_guides_ = [2472.0]
 
 [node name="HomeScreen" type="Control" parent="."]
 layout_mode = 3
@@ -1015,21 +1041,813 @@ text = "XX:XX"
 fit_content = true
 scroll_active = false
 
-[node name="NotesScreen" type="Control" parent="."]
+[node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy")]
 layout_mode = 3
 anchors_preset = 0
-
-[node name="Notes Back" type="Sprite2D" parent="NotesScreen"]
-position = Vector2(960, 513)
-texture = ExtResource("87_m7akq")
-
-[node name="Notes Back2" type="Sprite2D" parent="NotesScreen"]
-position = Vector2(960, 513)
-texture = ExtResource("88_1sd4w")
+script = ExtResource("87_fo3me")
+home = NodePath("Home")
+case = NodePath("Case")
+micah = NodePath("Micah")
+juniper = NodePath("Juniper")
+quincy = NodePath("Quincy")
 
 [node name="Notes Back3" type="Sprite2D" parent="NotesScreen"]
 position = Vector2(960, 513)
 texture = ExtResource("89_6iy3u")
+
+[node name="Home" type="Control" parent="NotesScreen"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Profile" type="Sprite2D" parent="NotesScreen/Home"]
+position = Vector2(1159, 165)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("89_ic4nm")
+
+[node name="Notes Back4" type="Sprite2D" parent="NotesScreen/Home"]
+position = Vector2(960, 513)
+texture = ExtResource("90_6iy3u")
+
+[node name="Title" type="RichTextLabel" parent="NotesScreen/Home"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 208.0
+offset_right = 1129.0
+offset_bottom = 284.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 70
+text = "ASPD CASE LOG"
+
+[node name="Case Number" type="RichTextLabel" parent="NotesScreen/Home"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 300.0
+offset_right = 875.0
+offset_bottom = 337.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE NUMBER"
+
+[node name="Name" type="RichTextLabel" parent="NotesScreen/Home"]
+layout_mode = 0
+offset_left = 919.0
+offset_top = 152.0
+offset_right = 1128.0
+offset_bottom = 189.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "DET. DALTON REYNARD"
+
+[node name="Date" type="RichTextLabel" parent="NotesScreen/Home"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 301.0
+offset_right = 1000.0
+offset_bottom = 338.0
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "DATE"
+
+[node name="Status" type="RichTextLabel" parent="NotesScreen/Home"]
+layout_mode = 0
+offset_left = 1092.0
+offset_top = 301.0
+offset_right = 1172.0
+offset_bottom = 338.0
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "STATUS"
+
+[node name="Notes" type="TextureButton" parent="NotesScreen/Home"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 354.0
+offset_right = 1182.0
+offset_bottom = 420.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("90_66dn3")
+texture_pressed = ExtResource("91_ic4nm")
+texture_hover = ExtResource("91_ic4nm")
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10008302"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "11/02/XX20"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.337255, 0.435294, 0.360784, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "ACTIVE"
+
+[node name="Notes Back2" type="Sprite2D" parent="NotesScreen/Home/Notes"]
+visible = false
+position = Vector2(222, 159)
+texture = ExtResource("88_1sd4w")
+
+[node name="Fill1" type="Control" parent="NotesScreen/Home"]
+anchors_preset = 0
+offset_left = 738.0
+offset_top = 426.0
+offset_right = 1182.0
+offset_bottom = 492.0
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10005823"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "11/11/XX19"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CLOSED"
+
+[node name="Fill2" type="Control" parent="NotesScreen/Home"]
+anchors_preset = 0
+offset_left = 738.0
+offset_top = 498.0
+offset_right = 1182.0
+offset_bottom = 564.0
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10007289"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "08/02/XX19"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CLOSED"
+
+[node name="Fill3" type="Control" parent="NotesScreen/Home"]
+anchors_preset = 0
+offset_left = 738.0
+offset_top = 570.0
+offset_right = 1182.0
+offset_bottom = 636.0
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10007146"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "07/14/XX19"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CLOSED"
+
+[node name="Fill4" type="Control" parent="NotesScreen/Home"]
+anchors_preset = 0
+offset_left = 738.0
+offset_top = 642.0
+offset_right = 1182.0
+offset_bottom = 708.0
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10007220"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "06/06/XX19"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CLOSED"
+
+[node name="Fill5" type="Control" parent="NotesScreen/Home"]
+anchors_preset = 0
+offset_left = 738.0
+offset_top = 714.0
+offset_right = 1182.0
+offset_bottom = 780.0
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10007122"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "05/31/XX19"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CLOSED"
+
+[node name="Fill6" type="Control" parent="NotesScreen/Home"]
+anchors_preset = 0
+offset_left = 738.0
+offset_top = 786.0
+offset_right = 1182.0
+offset_bottom = 852.0
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10007160"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "05/15/XX19"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CLOSED"
+
+[node name="Fill7" type="Control" parent="NotesScreen/Home"]
+anchors_preset = 0
+offset_left = 738.0
+offset_top = 858.0
+offset_right = 1182.0
+offset_bottom = 924.0
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 166.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE 10007111"
+
+[node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 18.0
+offset_right = 310.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "04/02/XX19"
+
+[node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 55.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CLOSED"
+
+[node name="Case" type="Control" parent="NotesScreen"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Notes Back" type="Sprite2D" parent="NotesScreen/Case"]
+visible = false
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(960, 513)
+texture = ExtResource("87_m7akq")
+
+[node name="Title" type="RichTextLabel" parent="NotesScreen/Case"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 159.0
+offset_right = 1129.0
+offset_bottom = 235.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 70
+text = "CASE 10008302"
+
+[node name="Date" type="RichTextLabel" parent="NotesScreen/Case"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 225.0
+offset_right = 1058.0
+offset_bottom = 277.0
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "CASE ASSIGNMENT: DET. DALTON REYNARD, DET. THEO LYCUS"
+fit_content = true
+
+[node name="Victim1" type="TextureButton" parent="NotesScreen/Case" node_paths=PackedStringArray("title", "sub1", "sub2")]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 318.0
+offset_right = 936.0
+offset_bottom = 516.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("94_2h6vk")
+texture_pressed = ExtResource("95_5dqt7")
+texture_hover = ExtResource("95_5dqt7")
+script = ExtResource("97_diagc")
+title = NodePath("Case Number2")
+sub1 = NodePath("Case Number3")
+sub2 = NodePath("Case Number4")
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 18.0
+offset_right = 181.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "VICTIM 1 -
+MICAH PROCYON"
+fit_content = true
+
+[node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 110.0
+offset_right = 182.0
+offset_bottom = 147.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "ADDRESS - 234 SUNSTONE AVE, INDUSTRY CENTER"
+fit_content = true
+
+[node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 87.0
+offset_right = 182.0
+offset_bottom = 124.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "SPECIES - RACCOON"
+fit_content = true
+
+[node name="Victim2" type="TextureButton" parent="NotesScreen/Case" node_paths=PackedStringArray("title", "sub1", "sub2")]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 318.0
+offset_right = 1182.0
+offset_bottom = 516.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("94_2h6vk")
+texture_pressed = ExtResource("95_5dqt7")
+texture_hover = ExtResource("95_5dqt7")
+script = ExtResource("97_diagc")
+title = NodePath("Case Number2")
+sub1 = NodePath("Case Number3")
+sub2 = NodePath("Case Number4")
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 18.0
+offset_right = 181.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "VICTIM 2 -
+JUNIPER HARTLEY"
+fit_content = true
+
+[node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 110.0
+offset_right = 182.0
+offset_bottom = 147.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "ADDRESS - 234 615 PINELY STREET, SYLVAN DISTRICT
+"
+fit_content = true
+
+[node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 87.0
+offset_right = 182.0
+offset_bottom = 124.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "SPECIES - DEER"
+fit_content = true
+
+[node name="Victim3" type="TextureButton" parent="NotesScreen/Case" node_paths=PackedStringArray("title", "sub1", "sub2")]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 563.0
+offset_right = 937.0
+offset_bottom = 761.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("94_2h6vk")
+texture_pressed = ExtResource("95_5dqt7")
+texture_hover = ExtResource("95_5dqt7")
+script = ExtResource("97_diagc")
+title = NodePath("Case Number2")
+sub1 = NodePath("Case Number3")
+sub2 = NodePath("Case Number4")
+
+[node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 18.0
+offset_right = 194.0
+offset_bottom = 70.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "VICTIM 3 - 
+MAYOR QUINCY LEONID"
+fit_content = true
+
+[node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 136.0
+offset_right = 193.0
+offset_bottom = 187.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "ADDRESS - 234 SILVERFROST COURT, WHITECAP BOROUGH"
+fit_content = true
+
+[node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 113.0
+offset_right = 182.0
+offset_bottom = 150.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "SPECIES - CAT"
+fit_content = true
+
+[node name="Back" type="TextureButton" parent="NotesScreen/Case"]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 903.0
+offset_right = 757.0
+offset_bottom = 933.0
+texture_normal = ExtResource("95_a6fec")
+texture_pressed = ExtResource("96_5dqt7")
+texture_hover = ExtResource("96_5dqt7")
+
+[node name="Micah" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("100_y6d0m")
+text_label = NodePath("ScrollContainer/VBoxContainer/RichTextLabel")
+
+[node name="Title" type="RichTextLabel" parent="NotesScreen/Micah"]
+offset_left = 738.0
+offset_top = 164.0
+offset_right = 1174.0
+offset_bottom = 240.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 60
+text = "1 - M. PROCYON"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NotesScreen/Micah"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 242.0
+offset_right = 1182.0
+offset_bottom = 885.0
+theme = SubResource("Theme_1v3be")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesScreen/Micah/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NotesScreen/Micah/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "ADD NOTES HERE"
+fit_content = true
+
+[node name="Back" type="TextureButton" parent="NotesScreen/Micah"]
+offset_left = 739.0
+offset_top = 903.0
+offset_right = 757.0
+offset_bottom = 933.0
+texture_normal = ExtResource("95_a6fec")
+texture_pressed = ExtResource("96_5dqt7")
+texture_hover = ExtResource("96_5dqt7")
+
+[node name="Juniper" type="Control" parent="NotesScreen"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="RichTextLabel" parent="NotesScreen/Juniper"]
+offset_left = 738.0
+offset_top = 164.0
+offset_right = 1174.0
+offset_bottom = 240.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 60
+text = "2 - J. HARTLEY"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NotesScreen/Juniper"]
+offset_left = 738.0
+offset_top = 242.0
+offset_right = 1182.0
+offset_bottom = 885.0
+theme = SubResource("Theme_1v3be")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesScreen/Juniper/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NotesScreen/Juniper/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "ADD NOTES HERE"
+fit_content = true
+
+[node name="Back" type="TextureButton" parent="NotesScreen/Juniper"]
+offset_left = 739.0
+offset_top = 903.0
+offset_right = 757.0
+offset_bottom = 933.0
+texture_normal = ExtResource("95_a6fec")
+texture_pressed = ExtResource("96_5dqt7")
+texture_hover = ExtResource("96_5dqt7")
+
+[node name="Quincy" type="Control" parent="NotesScreen"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="RichTextLabel" parent="NotesScreen/Quincy"]
+offset_left = 738.0
+offset_top = 164.0
+offset_right = 1174.0
+offset_bottom = 240.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 60
+text = "3 - MAYOR Q. LEONID"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NotesScreen/Quincy"]
+offset_left = 738.0
+offset_top = 242.0
+offset_right = 1182.0
+offset_bottom = 885.0
+theme = SubResource("Theme_1v3be")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesScreen/Quincy/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NotesScreen/Quincy/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "ADD NOTES HERE"
+fit_content = true
+
+[node name="Back" type="TextureButton" parent="NotesScreen/Quincy"]
+offset_left = 739.0
+offset_top = 903.0
+offset_right = 757.0
+offset_bottom = 933.0
+texture_normal = ExtResource("95_a6fec")
+texture_pressed = ExtResource("96_5dqt7")
+texture_hover = ExtResource("96_5dqt7")
+
+[node name="Time2" type="RichTextLabel" parent="NotesScreen"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 74.0
+offset_right = 872.0
+offset_bottom = 133.0
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 45
+text = "XX:XX"
+fit_content = true
+scroll_active = false
+
+[node name="Battery" type="Sprite2D" parent="NotesScreen"]
+position = Vector2(1161, 96)
+texture = ExtResource("91_lct15")
 
 [node name="PhoneFrame" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -1078,4 +1896,19 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Decline" to="." method="_on_decline_pressed"]
+[connection signal="visibility_changed" from="NotesScreen" to="NotesScreen" method="_on_visibility_changed"]
+[connection signal="pressed" from="NotesScreen/Home/Notes" to="NotesScreen" method="_on_notes_pressed"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_exited"]
+[connection signal="pressed" from="NotesScreen/Case/Victim1" to="NotesScreen" method="_on_victim_1_pressed"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Victim2" to="NotesScreen/Case/Victim2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Case/Victim2" to="NotesScreen/Case/Victim2" method="_on_mouse_exited"]
+[connection signal="pressed" from="NotesScreen/Case/Victim2" to="NotesScreen" method="_on_victim_2_pressed"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_exited"]
+[connection signal="pressed" from="NotesScreen/Case/Victim3" to="NotesScreen" method="_on_victim_3_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Back" to="NotesScreen" method="_on_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Micah/Back" to="NotesScreen" method="_on_micah_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Juniper/Back" to="NotesScreen" method="_on_Juniper_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]

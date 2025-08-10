@@ -104,6 +104,15 @@ libraries = {
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
 visible = false
 
+[node name="Title" parent="CanvasLayer/Phone UI/NotesScreen/Control" index="1"]
+layout_mode = 0
+
+[node name="Date" parent="CanvasLayer/Phone UI/NotesScreen/Control" index="2"]
+layout_mode = 0
+
+[node name="Time2" parent="CanvasLayer/Phone UI/NotesScreen" index="3"]
+layout_mode = 0
+
 [node name="CanvasLayer" parent="CanvasLayer" instance=ExtResource("12_15hi7")]
 visible = false
 
