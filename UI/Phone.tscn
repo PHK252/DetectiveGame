@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=158 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -105,6 +105,7 @@
 [ext_resource type="Texture2D" uid="uid://ox8yi4qc7e3a" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow pressed.png" id="96_5dqt7"]
 [ext_resource type="Script" uid="uid://c7dlgmju6sbtp" path="res://UI/victim_button.gd" id="97_diagc"]
 [ext_resource type="Script" uid="uid://367sfxpxuqjw" path="res://UI/micah_add_notes.gd" id="100_y6d0m"]
+[ext_resource type="Texture2D" uid="uid://df0mmtrgrqum0" path="res://UI/Assets/Phone/Phone Home Phone.png" id="102_1v3be"]
 [ext_resource type="Script" uid="uid://dfcir5whmgiib" path="res://UI/juniper_add_notes.gd" id="102_ltpiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
@@ -396,6 +397,8 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_hu0ud")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_hu0ud")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_hu0ud")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ltpiu")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_1v3be"]
 
 [node name="Phone UI" type="CanvasLayer"]
 script = ExtResource("1_eli2p")
@@ -1735,8 +1738,14 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
 theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
 text = "ADD NOTES HERE"
 fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_1v3be")]
+meta_underlined = false
+hint_underlined = false
 
 [node name="Back" type="TextureButton" parent="NotesScreen/Micah"]
 layout_mode = 0
@@ -1747,6 +1756,11 @@ offset_bottom = 933.0
 texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
+
+[node name="test" type="Sprite2D" parent="NotesScreen/Micah"]
+visible = false
+position = Vector2(949, 522)
+texture = ExtResource("102_1v3be")
 
 [node name="Juniper" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label")]
 visible = false
@@ -1923,6 +1937,9 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim3" to="NotesScreen" method="_on_victim_3_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Back" to="NotesScreen" method="_on_back_pressed"]
+[connection signal="meta_clicked" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_RichTextLabel_meta_clicked"]
+[connection signal="meta_hover_ended" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_ended"]
+[connection signal="meta_hover_started" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_started"]
 [connection signal="pressed" from="NotesScreen/Micah/Back" to="NotesScreen" method="_on_micah_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Juniper/Back" to="NotesScreen" method="_on_Juniper_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
