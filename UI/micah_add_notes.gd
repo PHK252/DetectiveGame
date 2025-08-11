@@ -4,9 +4,9 @@ var text = "REVER: The town is a quarantine site for an experiment to combine hu
 var text2 = "hwllooo"
 
 @export var text_label : RichTextLabel
-
-func _ready():
-	_add_note(text)
+#
+#func _ready():
+	#_add_note(text)
 
 func _add_note(text : String):
 	if text_label.text == "ADD NOTES HERE":

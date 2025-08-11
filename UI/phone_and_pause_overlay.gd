@@ -1,7 +1,7 @@
 extends Control
 
 @onready var phone_ui = $"CanvasLayer/Phone UI"
-@onready var pause = $CanvasLayer/CanvasLayer
+@onready var pause = $"CanvasLayer/Pause Screen"
 @onready var call_anim = $CanvasLayer/AnimationPlayer
 @onready var call_normal = $"CanvasLayer/Call Normal"
 @onready var receiving_call = $"CanvasLayer/Receiving call"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=156 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -99,11 +99,13 @@
 [ext_resource type="Texture2D" uid="uid://bry4vtc4m2fhw" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Button Pressed.png" id="91_ic4nm"]
 [ext_resource type="Texture2D" uid="uid://dde4lgjpkl11" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Battery.png" id="91_lct15"]
 [ext_resource type="Texture2D" uid="uid://c3f75stftrna3" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Victim Button.png" id="94_2h6vk"]
+[ext_resource type="Script" uid="uid://bgr1sdno4v3f" path="res://UI/Phone_note_Char_sep.gd" id="94_hu0ud"]
 [ext_resource type="Texture2D" uid="uid://7kopsehreshr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Victim Button Clicked.png" id="95_5dqt7"]
 [ext_resource type="Texture2D" uid="uid://dnc2wc8wv2upd" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow.png" id="95_a6fec"]
 [ext_resource type="Texture2D" uid="uid://ox8yi4qc7e3a" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow pressed.png" id="96_5dqt7"]
 [ext_resource type="Script" uid="uid://c7dlgmju6sbtp" path="res://UI/victim_button.gd" id="97_diagc"]
 [ext_resource type="Script" uid="uid://367sfxpxuqjw" path="res://UI/micah_add_notes.gd" id="100_y6d0m"]
+[ext_resource type="Script" uid="uid://dfcir5whmgiib" path="res://UI/juniper_add_notes.gd" id="102_ltpiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
@@ -1483,6 +1485,7 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("94_hu0ud")
 
 [node name="Notes Back" type="Sprite2D" parent="NotesScreen/Case"]
 visible = false
@@ -1712,6 +1715,7 @@ theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
 theme_override_font_sizes/normal_font_size = 60
 text = "1 - M. PROCYON"
+scroll_active = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotesScreen/Micah"]
 layout_mode = 0
@@ -1744,11 +1748,13 @@ texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
 
-[node name="Juniper" type="Control" parent="NotesScreen"]
+[node name="Juniper" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("102_ltpiu")
+text_label = NodePath("ScrollContainer/VBoxContainer/RichTextLabel")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Juniper"]
 layout_mode = 0
@@ -1906,6 +1912,7 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Decline" to="." method="_on_decline_pressed"]
 [connection signal="visibility_changed" from="NotesScreen" to="NotesScreen" method="_on_visibility_changed"]
 [connection signal="pressed" from="NotesScreen/Home/Notes" to="NotesScreen" method="_on_notes_pressed"]
+[connection signal="add_juniper_note" from="NotesScreen/Case" to="NotesScreen/Juniper" method="_on_case_add_juniper_note"]
 [connection signal="mouse_entered" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim1" to="NotesScreen" method="_on_victim_1_pressed"]

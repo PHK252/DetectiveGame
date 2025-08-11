@@ -41,6 +41,8 @@ func default_screen():
 
 func _on_home_pressed():
 	default_screen()
+	await get_tree().process_frame
+	$Home.release_focus()
 
 
 func _on_gallery_pressed():

@@ -164,6 +164,12 @@ signal open_quincy_case
 @onready var has_secret = false
 @onready var has_contact = false
 @onready var current_level = ""
+
+#for phone notes
+var note_char = ""
+var note_event = ""
+var note_condition = ""
+
 var player_pos
 var first_house_path = "res://FirstHouse/first_house.tscn"
 var second_house_path = "res://SecondHouse/second_house.tscn"
@@ -208,3 +214,8 @@ func emit_open_jun_case():
 func emit_open_quincy_case():
 	emit_signal("open_quincy_case")
 	opened_quincy_case = true
+
+func emit_add_note(char : String, event : String, condition : String):
+	note_char = char
+	note_event = event
+	note_condition = condition
