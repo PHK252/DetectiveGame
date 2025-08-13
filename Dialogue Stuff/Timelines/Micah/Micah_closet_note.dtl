@@ -10,6 +10,7 @@ if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == f
 	Micah: Ah... 
 	Micah: P-pa talks weird sometimes...
 	Dalton: Hmph.
+	do GlobalVars.emit_add_note("micah", "tool_note", "low")
 	[end_timeline]
 if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == false:
 	Dalton: It seems like someone stole your hammer.
@@ -30,6 +31,7 @@ if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == fa
 	Micah: Heh...
 	Theo: Ah...
 	Theo: That makes sense. 
+	do GlobalVars.emit_add_note("micah", "tool_note", "high")
 	[end_timeline]
 if {Asked Questions.Micah_Theo_enter} == true:
 	Dalton: It seems like someone stole your hammer.
@@ -41,6 +43,7 @@ if {Asked Questions.Micah_Theo_enter} == true:
 	Dalton: Do you know who might have left the note?
 	Theo: Or needed a hammer?
 	Micah: I...
-	Micah: I need time to think…
+	Micah: I need time to think...
 	Theo: Yeah, take your time.
+	do GlobalVars.emit_add_note("micah", "tool_note", "theo")
 	[end_timeline]

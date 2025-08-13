@@ -10,6 +10,7 @@ if {Character Aff Points.Micah} <= 2:
 		Micah: No...
 		Micah: I don't know.
 		Dalton: ...hmmph.
+		do GlobalVars.emit_add_note("micah", "case_letter", "low")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
 			set {Asked Questions.Micah_in_choice} = false
@@ -37,6 +38,9 @@ if {Character Aff Points.Micah} > 2:
 			Theo: Do you think it could be Skylar?
 			Micah: Maybe...
 			Micah: But why would they come back just to leave again?
+				do GlobalVars.emit_add_note("micah", "case_letter", "skylar")
+		else:
+				do GlobalVars.emit_add_note("micah", "case_letter", "high")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
 			set {Asked Questions.Micah_in_choice} = false

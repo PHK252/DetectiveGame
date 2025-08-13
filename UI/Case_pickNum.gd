@@ -93,7 +93,7 @@ func _process(delta):
 			print("Open")
 			GlobalVars.emit_open_micah_case()
 			await get_tree().create_timer(1.5).timeout
-			#print("opened case " + str(GlobalVars.opened_jun_case))
+			GlobalVars.emit_add_note("micah", "case", "unlock")
 			password = ""
 			pos1.hideArrows()
 			pos2.hideArrows()

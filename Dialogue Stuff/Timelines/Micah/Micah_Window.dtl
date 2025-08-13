@@ -7,4 +7,4 @@ if {Character Aff Points.Micah} > 2:
 else:
 	Micah: I don’t remember.
 Dalton: Hmph.
-
+do GlobalVars.emit_add_note("micah", "window", "")

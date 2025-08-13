@@ -21,6 +21,7 @@ if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == f
 	Micah: :/
 	Dalton: Hmph.
 	Dalton: Tsk...
+	do GlobalVars.emit_add_note("micah", "case", "low")
 	[wait time="0.3"]
 	label choices
 	Dalton: ...
@@ -64,6 +65,7 @@ if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == fa
 	Micah: I just woke up.
 	Dalton: Hmph...
 	Dalton: I see.
+	do GlobalVars.emit_add_note("micah", "case", "high")
 	[wait time="0.3"]
 	label choices
 	Dalton: ...
@@ -88,6 +90,7 @@ if {Asked Questions.Micah_Theo_enter} == true:
 	Theo: Time to do some detective work, sir Dalton.
 	Dalton: Hmmph.
 	Dalton: ...
+	do GlobalVars.emit_add_note("micah", "case", "theo")
 	[wait time="0.3"]
 	label choices
 	Dalton: ...

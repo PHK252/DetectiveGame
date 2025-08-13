@@ -71,6 +71,7 @@ Dalton: Leave?
 		Theo: Well, see ya, Micah!
 		Micah: Bye!
 		Dalton: Bye.
+		do GlobalVars.emit_add_note("micah", "leave_missing", "")
 		[signal arg="open_door"]
 		[end_timeline]
 - Not yet.

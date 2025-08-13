@@ -29,6 +29,7 @@ Dalton: ...
 					Dalton: ...
 					Micah: ...
 					Dalton: Hmmph.
+					do GlobalVars.emit_add_note("micah", "juniper", "connection_low")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -52,6 +53,7 @@ Dalton: ...
 					Micah: I don't...
 					Micah: ...know her?
 					Dalton: Hmph.
+					do GlobalVars.emit_add_note("micah", "juniper", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -89,10 +91,14 @@ Dalton: ...
 					Dalton: So you know her.
 					Micah: Uhh...
 					Micah: Not personally.
+					do GlobalVars.emit_add_note("micah", "juniper", "connection_high")
 					if {Asked Questions.Micah_Theo_enter} == true or {Juniper.found_skylar} == true:
+						Dalton: Do you recognize her?
+						Micah: ...
 						Micah: My friend does-
 						Micah: Uh...
 						Micah: Did work there before.
+						do GlobalVars.emit_add_note("micah", "juniper", "connection_high_repeated")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -117,6 +123,7 @@ Dalton: ...
 					Dalton: Do you know anybody who would have a reason to target her?
 					Micah: I-
 					Micah: I don't know her enough to know that.
+					do GlobalVars.emit_add_note("micah", "juniper", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -152,6 +159,7 @@ Dalton: ...
 					Micah: Nope.
 					Micah: I’ve only seen him on the news.
 					Micah: It's quite hard to miss him.
+					do GlobalVars.emit_add_note("micah", "quincy", "connection")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -172,6 +180,7 @@ Dalton: ...
 					set {Asked Questions.Micah_Quincy_Q2} = true
 					Dalton: Do you know anybody who would target him?
 					Micah: Not specifically... no.
+					do GlobalVars.emit_add_note("micah", "quincy", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -210,6 +219,7 @@ Dalton: ...
 				Micah: Nope.
 				Micah: But it’s impossible to avoid him on the news.
 				Micah: His face is on every page.
+				do GlobalVars.emit_add_note("micah", "quincy", "connection")
 			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 				set {Asked Questions.Micah_asked_all} = true
 				Dalton: That's all the questions I have for now.
@@ -238,6 +248,7 @@ Dalton: ...
 				Micah: He's not the greatest person...
 				Micah: So...
 				Micah: I don't know.
+				do GlobalVars.emit_add_note("micah", "quincy", "motive")
 			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 				set {Asked Questions.Micah_asked_all} = true
 				Dalton: That's all the questions I have for now.
@@ -279,6 +290,7 @@ Dalton: ...
 			Micah: My father has nothing to do with whatever this is, I swear.
 			Micah: Please, just leave him out of this.
 			Dalton: Hmph.
+			do GlobalVars.emit_add_note("micah", "clyde", "")
 			if {Asked Questions.Micah_asked_all} == true:
 				Dalton: That's all the questions I have for now.
 				[end_timeline]
@@ -316,6 +328,7 @@ Dalton: ...
 			Dalton: You might want to return it to him.
 			Micah: Huu...
 			Micah: Yeah.
+			do GlobalVars.emit_add_note("micah", "clyde", "")
 			if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Skylar} == false:
 				Dalton: That's all the questions I have for now.
 				[end_timeline]
@@ -349,6 +362,7 @@ Dalton: ...
 			Micah: Ah...
 			Micah: Sorry...
 			Micah: I don’t think I can help you.
+			do GlobalVars.emit_add_note("micah", "skylar", "low")
 		if {Asked Questions.Micah_asked_all} == true:
 			Dalton: That's all the questions I have for now.
 			[end_timeline]
@@ -382,7 +396,8 @@ Dalton: ...
 			Micah: That’s Skylar.
 			Micah: But I don’t know where they are. 
 			Micah: Sorry.
-			Theo: No need to apologize, you already helped us tons. 
+			Theo: No need to apologize, you already helped us tons.
+			do GlobalVars.emit_add_note("micah", "skylar", "high")
 			if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Clyde} == true:
 				Dalton: That's all the questions I have for now.
 				[end_timeline]

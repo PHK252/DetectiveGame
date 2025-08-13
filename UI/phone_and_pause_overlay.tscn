@@ -112,12 +112,6 @@ libraries = {
 
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
 
-[node name="VBoxContainer" parent="CanvasLayer/Phone UI/NotesScreen/Micah/Control" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 480.0
-offset_bottom = 700.0
-
 [node name="Pause Screen" parent="CanvasLayer" instance=ExtResource("12_15hi7")]
 visible = false
 
@@ -126,4 +120,4 @@ visible = false
 [connection signal="pressed" from="CanvasLayer/Call Normal" to="." method="_on_call_normal_pressed"]
 
 [editable path="CanvasLayer/Phone UI"]
-[editable path="CanvasLayer/Phone UI/NotesScreen/Micah/Control"]
+[editable path="CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note"]

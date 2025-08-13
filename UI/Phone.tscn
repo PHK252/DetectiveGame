@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=168 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -109,6 +109,14 @@
 [ext_resource type="Script" uid="uid://dfcir5whmgiib" path="res://UI/juniper_add_notes.gd" id="102_ltpiu"]
 [ext_resource type="Texture2D" uid="uid://df8whaxumgihh" path="res://FirstHouse/Close Assets/Micah Tool Front@2x.png" id="103_bnvcj"]
 [ext_resource type="Texture2D" uid="uid://0nexdem16x5x" path="res://FirstHouse/Close Assets/Micah Tool Back@2x.png" id="104_hu8kh"]
+[ext_resource type="Texture2D" uid="uid://d2j0smd12ba7w" path="res://FirstHouse/Close Assets/Micah ID Front@2x.png" id="105_p4c1p"]
+[ext_resource type="Texture2D" uid="uid://wjvbpcachqv" path="res://FirstHouse/Close Assets/Micah ID Back@2x.png" id="106_ce3nd"]
+[ext_resource type="Texture2D" uid="uid://du4syfn2s10fe" path="res://FirstHouse/Close Assets/Micah Pic Front@2x.png" id="107_vbsje"]
+[ext_resource type="Texture2D" uid="uid://dyoechipf8dwo" path="res://FirstHouse/Close Assets/Micah Pic Back@2x.png" id="108_qn5tb"]
+[ext_resource type="Texture2D" uid="uid://hyudl2is500c" path="res://FirstHouse/Close Assets/Micah Bookmark front@2x.png" id="109_4na7x"]
+[ext_resource type="Texture2D" uid="uid://qpvmdtt3g3af" path="res://FirstHouse/Close Assets/Micah Bookmark Back@2x.png" id="110_jyrqf"]
+[ext_resource type="Texture2D" uid="uid://cj40rxcjvp760" path="res://FirstHouse/Close Assets/Micah Note Front@2x.png" id="111_abwpn"]
+[ext_resource type="Texture2D" uid="uid://dtted2phs4lr7" path="res://FirstHouse/Close Assets/Micah Note Back@2x.png" id="112_nkqwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
@@ -1703,7 +1711,7 @@ texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
 
-[node name="Micah" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_tool_notes")]
+[node name="Micah" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_tool_notes", "show_ID_card", "show_picture", "show_bookmark", "show_letter")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1712,6 +1720,10 @@ text_label = NodePath("ScrollContainer/VBoxContainer/RichTextLabel")
 title = NodePath("Title")
 back_button = NodePath("Back")
 show_tool_notes = NodePath("View Tool Note")
+show_ID_card = NodePath("View ID Card")
+show_picture = NodePath("View Picture")
+show_bookmark = NodePath("View bookmark")
+show_letter = NodePath("View letter")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Micah"]
 layout_mode = 0
@@ -1782,6 +1794,86 @@ offset_bottom = 504.0
 rotation = 1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("104_hu8kh")
+
+[node name="View ID Card" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Micah/View ID Card" index="1"]
+visible = false
+offset_left = 762.0
+offset_top = 250.0
+offset_right = 1763.0
+offset_bottom = 1551.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("105_p4c1p")
+
+[node name="Back" parent="NotesScreen/Micah/View ID Card" index="2"]
+visible = false
+offset_left = 762.0
+offset_top = 250.0
+offset_right = 1763.0
+offset_bottom = 1551.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("106_ce3nd")
+
+[node name="View Picture" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Micah/View Picture" index="1"]
+offset_left = 762.0
+offset_top = 227.0
+offset_right = 1763.0
+offset_bottom = 1628.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("107_vbsje")
+
+[node name="Back" parent="NotesScreen/Micah/View Picture" index="2"]
+offset_left = 762.0
+offset_top = 227.0
+offset_right = 1763.0
+offset_bottom = 1628.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("108_qn5tb")
+
+[node name="View bookmark" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Micah/View bookmark" index="1"]
+offset_left = 879.0
+offset_top = 199.0
+offset_right = 1180.0
+offset_bottom = 1200.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("109_4na7x")
+
+[node name="Back" parent="NotesScreen/Micah/View bookmark" index="2"]
+offset_left = 879.0
+offset_top = 199.0
+offset_right = 1180.0
+offset_bottom = 1200.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("110_jyrqf")
+
+[node name="View letter" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Micah/View letter" index="1"]
+offset_left = 1135.6
+offset_top = 204.0
+offset_right = 2136.6
+offset_bottom = 805.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("111_abwpn")
+
+[node name="Back" parent="NotesScreen/Micah/View letter" index="2"]
+offset_left = 1135.6
+offset_top = 204.0
+offset_right = 2136.6
+offset_bottom = 805.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("112_nkqwo")
 
 [node name="Juniper" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label")]
 visible = false
@@ -1964,8 +2056,16 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="meta_hover_started" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_started"]
 [connection signal="pressed" from="NotesScreen/Micah/Back" to="NotesScreen" method="_on_micah_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Micah/View Tool Note/Exit" to="NotesScreen/Micah" method="_on_exit_photo_tool_pressed"]
+[connection signal="pressed" from="NotesScreen/Micah/View ID Card/Exit" to="NotesScreen/Micah" method="_on_exit_ID_pressed"]
+[connection signal="pressed" from="NotesScreen/Micah/View Picture/Exit" to="NotesScreen/Micah" method="_on_exit_picture_pressed"]
+[connection signal="pressed" from="NotesScreen/Micah/View bookmark/Exit" to="NotesScreen/Micah" method="_on_exit_bookmark_pressed"]
+[connection signal="pressed" from="NotesScreen/Micah/View letter/Exit" to="NotesScreen/Micah" method="_on_exit_letter_pressed"]
 [connection signal="pressed" from="NotesScreen/Juniper/Back" to="NotesScreen" method="_on_Juniper_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
 
 [editable path="NotesScreen/Micah/View Tool Note"]
+[editable path="NotesScreen/Micah/View ID Card"]
+[editable path="NotesScreen/Micah/View Picture"]
+[editable path="NotesScreen/Micah/View bookmark"]
+[editable path="NotesScreen/Micah/View letter"]

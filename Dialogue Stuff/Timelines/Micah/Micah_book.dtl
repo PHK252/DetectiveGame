@@ -22,6 +22,7 @@ if {Character Aff Points.Micah} <= 2:
 		Dalton: ...
 		Micah: No.
 		Micah: I don't.
+		do GlobalVars.emit_add_note("micah", "bookmark", "wrote_low")
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
 			jump choices
 	- Meaning of the note?
@@ -31,6 +32,7 @@ if {Character Aff Points.Micah} <= 2:
 		Micah: No...
 		Micah: How'd it get there?
 		Dalton: I was hoping you would know.
+		do GlobalVars.emit_add_note("micah", "bookmark", "meaning_low")
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
 			jump choices
 if {Character Aff Points.Micah} > 2:
@@ -50,6 +52,7 @@ if {Character Aff Points.Micah} > 2:
 		Dalton: Do you know who might’ve written it?
 		Micah: ...
 		Micah: No idea.
+		do GlobalVars.emit_add_note("micah", "bookmark", "wrote_high")
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
 			jump choices
 	- Meaning of the note?
@@ -62,5 +65,6 @@ if {Character Aff Points.Micah} > 2:
 		Micah: Oh...
 		Micah: Weird.
 		Micah: I haven't touched that book in ages.
+		do GlobalVars.emit_add_note("micah", "bookmark", "meaning_high")
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
 			jump choices

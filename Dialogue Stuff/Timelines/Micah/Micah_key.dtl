@@ -1,6 +1,11 @@
 if {Character Aff Points.Micah} <= 2:
 	if {Asked Questions.Micah_Asked_Key} == true:
 		Dalton: Is this key yours?
+		Micah: ...?
+		Micah: If you want it to be, it can.
+	else:
+		set {Asked Questions.Micah_Asked_Key} = true
+		Dalton: Is this key yours?
 		Micah: Hm?
 		Micah: Uh...
 		Micah: Maybe.
@@ -9,11 +14,7 @@ if {Character Aff Points.Micah} <= 2:
 		Micah: Where did you get that?
 		Dalton: From the case...
 		Micah: Oh.
-	else:
-		set {Asked Questions.Micah_Asked_Key} = true
-		Dalton: Do you know that this key is used for?
-		Micah: No... 
-		Micah: I don't think I have anything that requires a key.
+		do GlobalVars.emit_add_note("micah", "case_key", "low")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
 			set {Asked Questions.Micah_in_choice} = false
@@ -35,6 +36,7 @@ if {Character Aff Points.Micah} > 2:
 		Dalton: Do you know what it belongs to?
 		Micah: Nope.
 		Micah: Never seen it before.
+		do GlobalVars.emit_add_note("micah", "case_key", "high")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
 			set {Asked Questions.Micah_in_choice} = false
