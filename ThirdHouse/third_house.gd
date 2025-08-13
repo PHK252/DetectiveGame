@@ -20,7 +20,7 @@ var in_time_out_dialogue = false
 var in_secret = false
 
 func _ready():
-	GlobalVars.current_level = "Quincy"
+	GlobalVars.current_level = "quincy"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):

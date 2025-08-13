@@ -9,24 +9,25 @@ Dalton: Theo, what?
 Micah: Huh?
 Theo: For your snack?
 Micah: Oh!
-Micah: Uhh… Timber Grove.
+Micah: Uhh... Timber Grove.
 Theo: Dude, I love that place.
 Theo: Their pastrami sandwiches are amazing!!
 Micah: Yeah! That’s my go to.
 Micah: The owner also gives me a discount since I go there so often.
 Theo: Damn, lucky you.
-Theo: I’d die for one of those sandwiches right now…
-Dalton: Theo…
+Theo: I’d die for one of those sandwiches right now...
+Dalton: Theo...
 Dalton: What are you doing?
-Theo: Oh! Sorry…
+Theo: Oh! Sorry..
 Theo: I’m a bit hungry.
 Theo: Haven’t had breakfast yet.
-Dalton: Not the time…
+Dalton: Not the time...
 Theo: :)
-Dalton: …
+Dalton: ...
 Dalton: Fine.
 Dalton: We can stop by to get food after this.
 Theo: Yah!!
+do GlobalVars.emit_add_note("micah", "theo_asked_dinner", "")
 set {Asked Questions.Micah_Asked_Theo_Question} = true
 if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:
 	jump Good_morning/Questions

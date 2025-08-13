@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv3113xuon5pg"]
+
+[ext_resource type="Texture2D" uid="uid://df0mmtrgrqum0" path="res://UI/Assets/Phone/Phone Home Phone.png" id="1_ddx7p"]
+[ext_resource type="Script" uid="uid://cbhuamoego3te" path="res://UI/notes_view_photo_flip.gd" id="1_u6c5w"]
+[ext_resource type="Texture2D" uid="uid://dnc2wc8wv2upd" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow.png" id="2_18eir"]
+[ext_resource type="Texture2D" uid="uid://xeu6o4sq4ykh" path="res://UI/Assets/Phone/Phone Home Gallery.png" id="2_u6c5w"]
+[ext_resource type="Texture2D" uid="uid://ox8yi4qc7e3a" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow pressed.png" id="3_u6c5w"]
+[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="6_f3rrp"]
+
+[node name="View photo" type="Control" node_paths=PackedStringArray("back", "front", "back_label", "front_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_u6c5w")
+back = NodePath("Back")
+front = NodePath("Front")
+back_label = NodePath("BackLabel")
+front_label = NodePath("FrontLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 159.0
+offset_right = 1200.0
+offset_bottom = 859.0
+pivot_offset = Vector2(240, 350)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.215686, 0.211765, 0.203922, 1)
+
+[node name="Front" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 910.0
+offset_top = 450.0
+offset_right = 1010.0
+offset_bottom = 550.0
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_ddx7p")
+
+[node name="Back" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 910.0
+offset_top = 450.0
+offset_right = 1010.0
+offset_bottom = 550.0
+mouse_default_cursor_shape = 2
+texture = ExtResource("2_u6c5w")
+
+[node name="Exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 903.0
+offset_right = 757.0
+offset_bottom = 933.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_18eir")
+texture_pressed = ExtResource("3_u6c5w")
+texture_hover = ExtResource("3_u6c5w")
+
+[node name="FrontLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1138.0
+offset_top = 859.0
+offset_right = 1200.0
+offset_bottom = 890.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("6_f3rrp")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]FRONT[/center]"
+fit_content = true
+
+[node name="BackLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1138.0
+offset_top = 859.0
+offset_right = 1200.0
+offset_bottom = 890.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_fonts/normal_font = ExtResource("6_f3rrp")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]BACK[/center]"
+fit_content = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="gui_input" from="Front" to="." method="_on_object_front_gui_input"]
+[connection signal="gui_input" from="Back" to="." method="_on_object_back_gui_input"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -29,7 +29,7 @@ extends Node3D
 @onready var in_kicked_out_dialogue = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalVars.current_level = "Micah"
+	GlobalVars.current_level = "micah"
 	note_interaction.hide()
 	pic_fall_interact.hide()
 	bookmark_interact.hide()
