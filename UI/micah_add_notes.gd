@@ -47,9 +47,9 @@ var micah_window = "- The victim's window was open during the time of the crime,
 var micah_juniper_connection_low = "- The victim claims to recognize Ms. Hartley, but doesn't know where he has seen her."
 var micah_juniper_connection_high = "- The victim recognizes Ms. Hartley, and claims to have gone to her Cafe on occasion."
 var micah_juniper_connection_high_repeated = "- A friend of the victim worked at Ms. Hartley's Cafe/"
-var micah_juniper_motive = "- The victim does not have a close enough connection to Ms. Hartley to know any subjects with motive against her."
+#var micah_juniper_motive = "- The victim does not have a close enough connection to Ms. Hartley to know any subjects with motive against her."
 var micah_quincy_connection = "- The victim claims to have no connection to the Mayor."
-var micah_quincy_motive = "- The victim does not have a close enough connection to the Mayor to know any subjects with motive against him."
+#var micah_quincy_motive = "- The victim does not have a close enough connection to the Mayor to know any subjects with motive against him."
 var micah_dad = "- The victim's father may have connections to the Mayor."
 var micah_skylar_low = "- The victim claims not to know Skylar Aslan."
 var micah_skylar_high = "- Skylar Aslan and the victim are friends, but the victim claims not to know of their whereabouts.\n- Skylar Aslan is the other child in the picture."
@@ -204,13 +204,13 @@ func _on_case_add_micah_note():
 			_add_note(micah_juniper_connection_high.to_upper())
 		elif GlobalVars.note_condition == "connection_high_repeated":
 			_add_note(micah_juniper_connection_high_repeated.to_upper())
-		elif GlobalVars.note_condition == "motive":
-			_add_note(micah_juniper_motive.to_upper())
+		#elif GlobalVars.note_condition == "motive":
+			#_add_note(micah_juniper_motive.to_upper())
 	elif GlobalVars.note_event == "quincy":
 		if GlobalVars.note_condition == "connection":
 			_add_note(micah_quincy_connection.to_upper())
-		elif GlobalVars.note_condition == "motive":
-			_add_note(micah_quincy_motive.to_upper())
+		#elif GlobalVars.note_condition == "motive":
+			#_add_note(micah_quincy_motive.to_upper())
 	elif GlobalVars.note_event == "clyde":
 		_add_note(micah_dad.to_upper())
 	elif GlobalVars.note_event == "skylar":

@@ -53,7 +53,7 @@ Dalton: ...
 					Micah: I don't...
 					Micah: ...know her?
 					Dalton: Hmph.
-					do GlobalVars.emit_add_note("micah", "juniper", "motive")
+					#do GlobalVars.emit_add_note("micah", "juniper", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -123,7 +123,7 @@ Dalton: ...
 					Dalton: Do you know anybody who would have a reason to target her?
 					Micah: I-
 					Micah: I don't know her enough to know that.
-					do GlobalVars.emit_add_note("micah", "juniper", "motive")
+					#do GlobalVars.emit_add_note("micah", "juniper", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -180,7 +180,7 @@ Dalton: ...
 					set {Asked Questions.Micah_Quincy_Q2} = true
 					Dalton: Do you know anybody who would target him?
 					Micah: Not specifically... no.
-					do GlobalVars.emit_add_note("micah", "quincy", "motive")
+					#do GlobalVars.emit_add_note("micah", "quincy", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton: That's all the questions I have for now.
@@ -248,7 +248,7 @@ Dalton: ...
 				Micah: He's not the greatest person...
 				Micah: So...
 				Micah: I don't know.
-				do GlobalVars.emit_add_note("micah", "quincy", "motive")
+				#do GlobalVars.emit_add_note("micah", "quincy", "motive")
 			if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 				set {Asked Questions.Micah_asked_all} = true
 				Dalton: That's all the questions I have for now.
