@@ -5,6 +5,7 @@ if {Character Aff Points.Juniper} < 0:
 	Dalton: Their name... it's Skylar?
 	Juniper: That's what the name tag says.
 	Dalton: Hmmph.
+	do GlobalVars.emit_add_note("juniper", "nametag", "response")
 	set {Juniper.found_skylar} = true
 	set {Juniper.finished_name_tag} = true
 elif {Character Aff Points.Juniper} > 1:
@@ -20,5 +21,6 @@ elif {Character Aff Points.Juniper} > 1:
 	Juniper: Yeah...
 	Juniper: At least that's what they went by...
 	Dalton: I see...
+	do GlobalVars.emit_add_note("juniper", "nametag", "response")
 	set {Juniper.found_skylar} = true
 	set {Juniper.finished_name_tag} = true

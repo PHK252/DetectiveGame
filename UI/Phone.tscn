@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=176 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -119,6 +119,12 @@
 [ext_resource type="Texture2D" uid="uid://dtted2phs4lr7" path="res://FirstHouse/Close Assets/Micah Note Back@2x.png" id="112_nkqwo"]
 [ext_resource type="Texture2D" uid="uid://c1r4313ytbx3t" path="res://SecondHouse/Close Assets/Juniper Bookmark Front@2x.png" id="114_nkqwo"]
 [ext_resource type="Texture2D" uid="uid://6skvb61811ku" path="res://SecondHouse/Close Assets/Juniper Bookmark Back@2x.png" id="115_rhqre"]
+[ext_resource type="Texture2D" uid="uid://cn0tnuqtmavie" path="res://SecondHouse/Close Assets/Juniper Employee Info@2x.png" id="116_6tnik"]
+[ext_resource type="Texture2D" uid="uid://cecwxhb43wdpr" path="res://SecondHouse/Close Assets/Juniper Note Front@2x.png" id="117_cg0nv"]
+[ext_resource type="Texture2D" uid="uid://dle4lql1q76l1" path="res://SecondHouse/Close Assets/Juniper Note Back@2x.png" id="118_k5yqg"]
+[ext_resource type="Texture2D" uid="uid://mqdhhmjuj4nv" path="res://SecondHouse/Close Assets/Juniper Name Tag Front@2x.png" id="118_pu2n2"]
+[ext_resource type="Texture2D" uid="uid://b8tt7b07ea0l" path="res://SecondHouse/Close Assets/Juniper Name Tag Back@2x.png" id="119_k5yqg"]
+[ext_resource type="Script" uid="uid://daq812xbkauwq" path="res://UI/quincy_add_notes.gd" id="121_k5yqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
@@ -1878,7 +1884,7 @@ rotation = 1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("112_nkqwo")
 
-[node name="Juniper" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_bookmark")]
+[node name="Juniper" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_name_tag", "show_letter", "show_bookmark", "show_info")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1886,7 +1892,10 @@ script = ExtResource("102_ltpiu")
 text_label = NodePath("ScrollContainer/VBoxContainer/RichTextLabel")
 title = NodePath("Title")
 back_button = NodePath("Back")
+show_name_tag = NodePath("View Name Tag")
+show_letter = NodePath("View Letter")
 show_bookmark = NodePath("View bookmark")
+show_info = NodePath("View Info")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Juniper"]
 layout_mode = 0
@@ -1952,11 +1961,78 @@ offset_bottom = 1200.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("115_rhqre")
 
-[node name="Quincy" type="Control" parent="NotesScreen"]
+[node name="View Info" parent="NotesScreen/Juniper" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Juniper/View Info" index="1"]
+offset_left = 1165.4
+offset_top = 252.0
+offset_right = 2366.4
+offset_bottom = 1253.0
+rotation = 1.5708
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("116_6tnik")
+
+[node name="Back" parent="NotesScreen/Juniper/View Info" index="2"]
+offset_left = 766.0
+offset_top = 731.0
+offset_right = 1967.0
+offset_bottom = 1732.0
+rotation = 4.71239
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("116_6tnik")
+
+[node name="View Letter" parent="NotesScreen/Juniper" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Juniper/View Letter" index="1"]
+offset_left = 1170.6
+offset_top = 210.0
+offset_right = 2171.6
+offset_bottom = 911.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("117_cg0nv")
+
+[node name="Back" parent="NotesScreen/Juniper/View Letter" index="2"]
+offset_left = 1170.6
+offset_top = 210.0
+offset_right = 2171.6
+offset_bottom = 911.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("118_k5yqg")
+
+[node name="View Name Tag" parent="NotesScreen/Juniper" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Juniper/View Name Tag" index="1"]
+offset_left = 1112.6
+offset_top = 204.0
+offset_right = 2113.6
+offset_bottom = 705.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("118_pu2n2")
+
+[node name="Back" parent="NotesScreen/Juniper/View Name Tag" index="2"]
+offset_left = 1112.6
+offset_top = 204.0
+offset_right = 2113.6
+offset_bottom = 705.0
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("119_k5yqg")
+
+[node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("121_k5yqg")
+text_label = NodePath("ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("Title")
+back_button = NodePath("Back")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Quincy"]
 layout_mode = 0
@@ -1987,6 +2063,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
 theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
 text = "ADD NOTES HERE"
 fit_content = true
 
@@ -2068,6 +2145,7 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="pressed" from="NotesScreen/Home/Notes" to="NotesScreen" method="_on_notes_pressed"]
 [connection signal="add_juniper_note" from="NotesScreen/Case" to="NotesScreen/Juniper" method="_on_case_add_juniper_note"]
 [connection signal="add_micah_note" from="NotesScreen/Case" to="NotesScreen/Micah" method="_on_case_add_micah_note"]
+[connection signal="add_quincy_note" from="NotesScreen/Case" to="NotesScreen/Quincy" method="_on_case_add_quincy_note"]
 [connection signal="mouse_entered" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim1" to="NotesScreen" method="_on_victim_1_pressed"]
@@ -2090,6 +2168,10 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="meta_clicked" from="NotesScreen/Juniper/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Juniper" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="pressed" from="NotesScreen/Juniper/Back" to="NotesScreen" method="_on_Juniper_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Juniper/View bookmark/Exit" to="NotesScreen/Juniper" method="_on_exit_bookmark_pressed"]
+[connection signal="pressed" from="NotesScreen/Juniper/View Info/Exit" to="NotesScreen/Juniper" method="_on_exit_info_pressed"]
+[connection signal="pressed" from="NotesScreen/Juniper/View Letter/Exit" to="NotesScreen/Juniper" method="_on_exit_letter_pressed"]
+[connection signal="pressed" from="NotesScreen/Juniper/View Name Tag/Exit" to="NotesScreen/Juniper" method="_on_exit_name_tag_pressed"]
+[connection signal="meta_clicked" from="NotesScreen/Quincy/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Quincy" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
 
@@ -2099,3 +2181,6 @@ texture_hover = ExtResource("9_valq1")
 [editable path="NotesScreen/Micah/View bookmark"]
 [editable path="NotesScreen/Micah/View letter"]
 [editable path="NotesScreen/Juniper/View bookmark"]
+[editable path="NotesScreen/Juniper/View Info"]
+[editable path="NotesScreen/Juniper/View Letter"]
+[editable path="NotesScreen/Juniper/View Name Tag"]

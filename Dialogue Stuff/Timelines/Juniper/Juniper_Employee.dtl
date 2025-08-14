@@ -20,6 +20,7 @@ if {Character Aff Points.Juniper} <= 0:
 	Juniper: Oh, hell no. 
 	Juniper: Heard he found another job that has even more bread.
 	set {Juniper.found_last_name} = true
+	do GlobalVars.emit_add_note("juniper", "info", "low")
 else:
 	Dalton: Is this a list of all your employees?
 	Juniper: Woah!
@@ -43,4 +44,5 @@ else:
 	Juniper: It's been a tough few weeks without them.
 	Dalton: Hmph.
 	Dalton: I see.
+	do GlobalVars.emit_add_note("juniper", "info", "high")
 	set {Juniper.found_last_name} = true

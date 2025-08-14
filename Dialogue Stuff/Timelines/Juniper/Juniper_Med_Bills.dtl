@@ -12,6 +12,7 @@ if {Character Aff Points.Juniper} <= 0:
 	Dalton: And it’s Detective Reynard still.
 	Theo: Huu...
 	Theo: Yeah, yeah.
+	do GlobalVars.emit_add_note("juniper", "med", "")
 else:
 	set {Juniper.ask_mom_rever} = true
 	set {Character Aff Points.Juniper} -= 1
@@ -55,3 +56,5 @@ else:
 	Theo: I can only imagine how tough it must have been on you and your mom.
 	Juniper: It was.  
 	Juniper: I’m just glad that she’s finally found some peace.
+	do GlobalVars.emit_add_note("juniper", "med", "")
+	[end_timeline]
