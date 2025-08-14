@@ -6,6 +6,7 @@ if {Character Aff Points.Juniper} <= 0:
 		Dalton: When did you leave for the cafe?
 		Juniper: Yesterday Noon.
 		Dalton: Hmph.
+		do GlobalVars.emit_add_note("juniper", "location", "low")
 	else:
 		Dalton: Were you present when the break-in happened?
 		Juniper: Really?
@@ -38,6 +39,7 @@ else:
 		Juniper: I am...
 		Dalton: I'll try not to take up more of your time
 		Juniper: Thanks.
+		do GlobalVars.emit_add_note("juniper", "location", "high")
 	else:
 		Dalton: Were you present when the break-in happened?
 		Juniper: Nah...

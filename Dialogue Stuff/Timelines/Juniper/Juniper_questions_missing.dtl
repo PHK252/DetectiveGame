@@ -8,6 +8,7 @@ if {Character Aff Points.Juniper} <= 0:
 		Dalton: Hmph.
 		Dalton: Any other damage besides the window?
 		Juniper: None that I noticed.
+		do GlobalVars.emit_add_note("juniper", "missing", "low")
 	else:
 		Dalton: Did you notice if anything was stolen?
 		Juniper: Hm?
@@ -39,6 +40,7 @@ else:
 		Theo: It's true, isn't it?
 		Dalton: Hmph...
 		Dalton: I guess...
+		do GlobalVars.emit_add_note("juniper", "missing", "high")
 	else:
 		Dalton: Did you notice if anything was stolen?
 		Juniper: Still haven’t.  

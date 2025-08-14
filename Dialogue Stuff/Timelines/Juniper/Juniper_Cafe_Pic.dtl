@@ -7,10 +7,13 @@ if {Character Aff Points.Juniper} <= 0:
 	Dalton: Was she here during the break in?
 	Juniper: She's...
 	Juniper: No.
+	do GlobalVars.emit_add_note("juniper", "cafe", "neutral")
 	if {Character Aff Points.Juniper} < 0:
 		Juniper: She wasn't...
 		Juniper: She's out of town right now.
+		do GlobalVars.emit_add_note("juniper", "cafe", "low")
 	else:
+		
 		[end_timeline]
 else:
 	Dalton: Is this you in the photo?
@@ -48,3 +51,4 @@ else:
 	Juniper: It's been a while now...
 	Juniper: The cafe is doing better than ever. 
 	Juniper: It's what she would've wanted.
+	do GlobalVars.emit_add_note("juniper", "cafe", "high")

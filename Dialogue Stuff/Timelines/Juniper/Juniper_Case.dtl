@@ -4,6 +4,7 @@ if {Character Aff Points.Juniper} < 0:
 	Juniper: Nope.
 	Juniper: I think the intruder left it.
 	Dalton: Hmph.
+	do GlobalVars.emit_add_note("juniper", "case", "low")
 	[wait time="0.3"]
 	label choices
 	Dalton: ...
@@ -26,6 +27,7 @@ else:
 	Juniper: See if there's a limit to the numbers you can put in...
 	Dalton: Hmmph...
 	Dalton: Thanks.
+	do GlobalVars.emit_add_note("juniper", "case", "high")
 	[wait time="0.3"]
 	label choices
 	Dalton: ...

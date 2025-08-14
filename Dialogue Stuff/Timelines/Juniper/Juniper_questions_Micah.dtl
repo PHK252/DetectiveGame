@@ -15,6 +15,7 @@ if {Character Aff Points.Juniper} <= 0:
 			Juniper: I don't know him...
 			Juniper: It's not like I keep tabs with all my costumers.
 			Dalton: Hmph.
+			do GlobalVars.emit_add_note("juniper", "micah", "recognized")
 		else:
 			Dalton: Do you know him?
 			Juniper: Ya don’t trust me?
@@ -35,6 +36,7 @@ if {Character Aff Points.Juniper} <= 0:
 			Juniper: You dectectives and your vagueries.
 			Juniper: He probably mistook me for somebody else.
 			Juniper: I've never seen him before...
+			do GlobalVars.emit_add_note("juniper", "micah", "not_recognized")
 		else:
 			Dalton: Do you know him?
 			Juniper: Are ya deaf or something?
@@ -49,6 +51,7 @@ if {Character Aff Points.Juniper} <= 0:
 			Juniper: ...
 			Juniper: I don’t know what to tell ya...
 			Juniper: I don't know him.
+			do GlobalVars.emit_add_note("juniper", "micah", "first")
 		else:
 			Dalton: Do you know him?
 			Juniper: Still don’t.
@@ -80,6 +83,7 @@ else:
 			Juniper: I'm sorry...
 			Dalton: Oh...
 			Dalton: ...it's fine.
+			do GlobalVars.emit_add_note("juniper", "micah", "recognized")
 		else:
 			Dalton: Do you know him?
 			Juniper: ...
@@ -102,6 +106,7 @@ else:
 			Juniper: Or maybe we crossed paths on the street one day...
 			Juniper: But no, I don't know him personally.
 			Dalton: Hmph.
+			do GlobalVars.emit_add_note("juniper", "micah", "not_recognized")
 		else:
 			Dalton: Do you know him?
 			Juniper: Nope. 
@@ -119,6 +124,7 @@ else:
 			Juniper: I'm sorry...
 			Dalton: Hmmph.
 			Dalton: It's fine...
+			do GlobalVars.emit_add_note("juniper", "micah", "first")
 		else:
 			Dalton: Do you know him?
 			Juniper: Still don’t, sorry.
