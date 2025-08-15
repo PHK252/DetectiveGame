@@ -720,7 +720,7 @@ func _on_bar_interaction_interacted(interactor: Interactor) -> void:
 	distraction_allowed = false
 
 func _on_wine_time_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and general_distraction == false:
 		quincy_tree.set("parameters/Wine/request", 2)
 		is_drinking = false
 		rotate_number = 0
@@ -731,7 +731,7 @@ func _on_wine_time_body_exited(body: Node3D) -> void:
 		state = FOLLOW
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and general_distraction == false:
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 0
