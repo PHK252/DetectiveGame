@@ -15,6 +15,7 @@ Dalton: ...
 			Dalton: When did you hear about the break in then?
 			Quincy: I got a call from the groundskeeper at around 7 a.m.
 			Quincy: By the time he looked through the security footage, it was already scrubbed, sneaky bastard.
+			do GlobalVars.emit_add_note("quincy", "location", "")
 			if {Character Aff Points.Theo} > 3:
 				# #and Theo on ground floor
 				Theo: Don't worry, Quincy!
@@ -34,6 +35,7 @@ Dalton: ...
 			set {Quincy.asked_missing} = true
 			Quincy: Nothing of importance.
 			Quincy: That bastard made a mess more than anything.
+			do GlobalVars.emit_add_note("quincy", "missing", "")
 			jump choices
 		else:
 			Dalton: Besides the damage, was anything stolen?
@@ -45,11 +47,18 @@ Dalton: ...
 			Dalton: Do you know of anyone who would want to break into your house?
 			Quincy: Hah!
 			Quincy: One of the many quirks of being a leader is that many want you gone.
-			Dalton: ...
-			Dalton: Is there anyone in particular that comes to mind?
-			Quincy: Nope.
-			Quincy: None of them have the guts to pull something like this.
-			jump choices
+			if {Quincy.talked_at_port_know_skylar} == true:
+				Quincy: But-
+				Quincy: Hah!
+				Quincy: Never in a million years did I think that brat had the guts to pull this.
+				jump choices
+			else:
+				Dalton: ...
+				Dalton: Is there anyone in particular that comes to mind?
+				Quincy: Nope.
+				Quincy: None of them have the guts to pull something like this.
+				do GlobalVars.emit_add_note("quincy", "motive", "")
+				jump choices
 		else:
 			Dalton: Do you know of anyone who would want to break into your house?
 			Quincy: Do you want a list of the subjects that don’t?
@@ -70,6 +79,7 @@ Dalton: ...
 			Dalton: ...
 			Dalton: Eugh.
 			Dalton: Not the time.
+			do GlobalVars.emit_add_note("quincy", "juniper", "")
 			jump choices
 		else:
 			Dalton: Do you recognize her?
@@ -88,6 +98,7 @@ Dalton: ...
 			Quincy: He looks a little familiar.
 			Quincy: Probably just a passing resemblance.
 			Dalton: Hmph.
+			do GlobalVars.emit_add_note("quincy", "micah", "")
 			jump choices
 		else:
 			Dalton: Do you recognize him?
@@ -123,4 +134,4 @@ Dalton: ...
 	else:
 		Dalton: That's all for now.
 		Quincy: Hm...
-		Quincy: Was a pleasure to assit, Dectective. 
+		Quincy: Was a pleasure to assit, Dectective.

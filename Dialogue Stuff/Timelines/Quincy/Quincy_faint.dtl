@@ -44,6 +44,7 @@ if {Juniper.found_skylar} == true:
 	Theo: Bye!
 	Quincy: Goodbye!
 	Dalton: Bye.
+	do GlobalVars.emit_add_note("quincy", "faint", "skylar")
 	[end_timeline]
 else:
 	Theo: Well...
@@ -67,5 +68,9 @@ else:
 	Theo: Mayor business, I guess.
 	Dalton: Hmph.
 	Dalton: Let's go.
+	if {Quincy.Quincy_asked_case} == true:
+		do GlobalVars.emit_add_note("quincy", "faint", "asked_case")
+	else:
+		do GlobalVars.emit_add_note("quincy", "faint", "no_asked_case")
 	[signal arg="follow_dalton"]
 	[end_timeline]

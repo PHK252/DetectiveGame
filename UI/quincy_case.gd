@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var blinker = $Blink
 
 
-@onready var password = "56423"
+@onready var password = "a1b2c3d4e5f6g7h8i9"
 @onready var input = ""
 
 @onready var abc_pos = -1
@@ -200,6 +200,7 @@ func _on_enter_pressed():
 		label.text = "Opening..."
 		GlobalVars.open_quincy_case.connect(_open_case) 
 		print("Open")
+		GlobalVars.emit_add_note("quincy", "case", "unlocked")
 		GlobalVars.emit_open_quincy_case()
 		await get_tree().create_timer(1.5).timeout
 	else:

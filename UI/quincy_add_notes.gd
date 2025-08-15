@@ -9,8 +9,23 @@ extends Control
 #@export var show_bookmark : Control
 #@export var show_info : Control
 
+#All Notes
+var quincy_location = "- The Mayor was not present during the break-in.\n- The security footage of the break-in was scrubbed."
+var quincy_missing = "- Similar to the other break-ins, nothing of note was taken.\n -However, the intruder did make a mess."
+var quincy_motive_no_skylar = "- The Mayor claims to have too many subjects with motive."
+var quincy_micah = "- The Mayor does not recognize Micah Prycon."
+var quincy_juniper = "- The Mayor does not recognize Juniper Hartley."
+var quincy_fam_portrait_name = "- The Mayor confirmed that Skylar Aslan is his child."
+var quincy_fam_portrait_no_name = "- The Mayor's wife and his child were not present during the time of the break-in."
+var quincy_case_found = "- Much like the other two break-ins, a case appeared in the Mayor's Manor as well."
+var quincy_case_unlocked = "- The password was found on the Mayor’s computer.\n- A hammer and note were found in the case."
+var quincy_faint = "- Detective Dalton was MIA for most of this investigation :/"
+var quincy_faint_skylar = "- Upon asking the Mayor about Skylar Aslan, he remembered that Skylar is his son, after much deliberation.\n- The Mayor doesn't seem to have a great relationship with his son, as Skylar took his mother's last name.\n- This fractured relationship may be a motive behind Skylar's trespassing and vandalism of the Mayor's Manor, but doesn't provide a solid motive for the other two break-ins."
+var quincy_faint_no_case_asked = "- The damage done to the Mayor's Manor seems to be done by a blunt object and/or by hand.\n- Despite the mess, nothing of note was taken, but a locked case was left in the living room.\n- Although I wasn't able to open it, the case seems to contain a piece of paper and a heavy metal object in it." 
+var quincy_faint_case_asked = "- The damage done to the Mayor's Manor seems to be done by a blunt object and/or by hand.\n- Although I wasn't able to open the case, it seems to contain a piece of paper and a heavy metal object in it."
+
 func _ready():
-	#_add_note(juniper_case_letter)
+	_add_note((quincy_faint + "\n" + quincy_faint_skylar).to_upper())
 	#_add_note(juniper_case_name_tag_found)
 	#_add_note(juniper_bookmark_found)
 	pass
@@ -77,4 +92,30 @@ func show_notes():
 	back_button.show()
 
 func _on_case_add_quincy_note():
-	pass # Replace with function body.
+	if GlobalVars.note_event == "location":
+		_add_note(quincy_location.to_upper())
+	elif GlobalVars.note_event == "missing":
+		_add_note(quincy_missing.to_upper())
+	elif GlobalVars.note_event == "motive":
+		_add_note(quincy_motive_no_skylar.to_upper())
+	elif GlobalVars.note_event == "juniper":
+		_add_note(quincy_juniper.to_upper())
+	elif GlobalVars.note_event == "micah":
+		_add_note(quincy_micah.to_upper())
+	elif GlobalVars.note_event == "fam_portrait":
+		if GlobalVars.note_condition == "name":
+			_add_note(quincy_fam_portrait_name.to_upper())
+		elif GlobalVars.note_condition == "no_name":
+			_add_note(quincy_fam_portrait_no_name.to_upper())
+	elif GlobalVars.note_event == "case":
+		if GlobalVars.note_condition == "found":
+			_add_note(quincy_case_found.to_upper())
+		elif GlobalVars.note_condition == "unlocked":
+			_add_note(quincy_case_unlocked.to_upper())
+	elif GlobalVars.note_event == "faint":
+		if GlobalVars.note_condition == "skylar":
+			_add_note((quincy_faint + "\n" + quincy_faint_skylar).to_upper())
+		if GlobalVars.note_condition == "asked_case":
+			_add_note((quincy_faint + "\n" + quincy_faint_case_asked).to_upper())
+		if GlobalVars.note_condition == "no_asked_case":
+			_add_note((quincy_faint + "\n" + quincy_faint_no_case_asked).to_upper())

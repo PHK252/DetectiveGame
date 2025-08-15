@@ -83,7 +83,7 @@ func _on_enter_pressed():
 		print("Open")
 		GlobalVars.emit_open_jun_case()
 		await get_tree().create_timer(1.5).timeout
-		#print("opened case " + str(GlobalVars.opened_jun_case))
+		GlobalVars.emit_add_note("juniper", "case", "open")
 		text_edit.text = ""
 	else:
 		emit_signal("locked_sound")

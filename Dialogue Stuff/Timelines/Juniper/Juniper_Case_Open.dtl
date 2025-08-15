@@ -16,7 +16,7 @@ if {Character Aff Points.Juniper} >= 1:
 	Theo: It's not worth the time, Dalton...
 	Dalton: It’s Detective Reynard. 
 	Theo: Yeah, yeah.
-	do GlobalVars.emit_add_note("juniper", "case", "open")
+	#do GlobalVars.emit_add_note("juniper", "case", "open")
 	set {Juniper.Juniper_case_interlude_finished} = true
 	[end_timeline]
 else:

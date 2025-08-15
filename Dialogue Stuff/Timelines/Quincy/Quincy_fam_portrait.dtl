@@ -35,6 +35,7 @@ Dalton: ...
 			Quincy: Hmm... 
 			Quincy: I’ll see what I can do to hi-
 			Quincy: I’ll see what I can do to find him. 
+			do GlobalVars.emit_add_note("quincy", "fam_portrait", "name")
 			jump 
 		else:
 			Dalton: How's the family?
@@ -60,6 +61,7 @@ Dalton: ...
 			Quincy: Bold words from a fox with no family.
 			Dalton: ...
 			Dalton: Hmph.
+			do GlobalVars.emit_add_note("quincy", "fam_portrait", "no_name")
 			jump 
 		else:
 			Dalton: How's the family?
