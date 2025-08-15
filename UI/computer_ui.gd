@@ -47,10 +47,14 @@ extends CanvasLayer
 @onready var Mail_message_2 = $Mail/Read/Message2
 signal return_default
 
+#Edit Text
+@onready var subject = $"Mail/New Message/Subject"
+@onready var message = $"Mail/New Message/Message"
 
 @onready var Mail_button_array = [Mail_Exit, Mail_New_Message, Mail_Inbox_Message_1, Mail_Inbox_Message_2, Mail_Inbox_Message_3,
 Mail_Inbox_Message_4, Mail_Inbox_Message_5, Mail_Read_back, Mail_Read_forward, Mail_Read_delete, Mail_Read_download, Mail_Read_lock]
 
+@onready var edit_text_array = [subject, message]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	login.show()
@@ -129,6 +133,9 @@ func _on_mail_pressed():
 #Mail
 
 #inbox
+
+var viewed_message1 = false
+var viewed_message2 = false
 func _on_mail_exit_pressed():
 	mail.hide()
 	Mail_inbox.hide()
@@ -149,11 +156,17 @@ func _on_message_4_pressed():
 	Mail_inbox.hide()
 	Mail_read.show()
 	Mail_message_1.show()
+	viewed_message1 = true
+	if viewed_message1 == true and viewed_message2 == true:
+		Dialogic.VAR.set_variable("Quincy.checked_email", true)
 
 func _on_message_5_pressed():
 	Mail_inbox.hide()
 	Mail_read.show()
 	Mail_message_2.show()
+	viewed_message2 = true
+	if viewed_message1 == true and viewed_message2 == true:
+		Dialogic.VAR.set_variable("Quincy.checked_email", true)
 
 #new message
 func _on_new_message_pressed():
@@ -166,7 +179,8 @@ func _on_confirm_pressed():
 	#enableMailButtons()
 
 func _on_delete_confirm_pressed():
-	Mail_delete_overlay.hide()
+	if Mail_delete_overlay.visible == true:
+		Mail_delete_overlay.hide()
 	Mail_new_mail_overlay.hide()
 	enableMailButtons()
 
@@ -215,8 +229,16 @@ func _on_forward_pressed():
 func disableMailButtons():
 	for i in Mail_button_array:
 		i.mouse_filter = 2 
-		
+
+func disableTextEdit():
+	for i in Mail_button_array:
+		i.mouse_filter = 2 
+
 func enableMailButtons():
+	for i in Mail_button_array:
+		i.mouse_filter = 0
+
+func enableTextEdit():
 	for i in Mail_button_array:
 		i.mouse_filter = 0
 

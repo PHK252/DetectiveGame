@@ -367,8 +367,6 @@ _data = {
 
 [node name="ComputerUI" type="CanvasLayer"]
 script = ExtResource("1_f0ejt")
-metadata/_edit_vertical_guides_ = [-229.0]
-metadata/_edit_horizontal_guides_ = [27.0]
 
 [node name="Login" type="Control" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -408,7 +406,7 @@ shortcut = SubResource("Shortcut_xlb24")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("5_x1bqo")
 texture_pressed = ExtResource("6_f1k30")
-texture_hover = ExtResource("5_x1bqo")
+texture_hover = ExtResource("6_f1k30")
 texture_disabled = ExtResource("6_f1k30")
 
 [node name="Hint" type="TextureButton" parent="Login"]
@@ -470,16 +468,16 @@ scroll_active = false
 
 [node name="Pass" type="LineEdit" parent="Login"]
 layout_mode = 0
-offset_left = 715.0
-offset_top = 632.0
-offset_right = 1141.0
-offset_bottom = 687.0
+offset_left = 714.0
+offset_top = 634.0
+offset_right = 1140.0
+offset_bottom = 689.0
 theme_override_colors/caret_color = Color(0.698039, 0.733333, 0.823529, 1)
 theme_override_colors/font_placeholder_color = Color(0.635294, 0.682353, 0.792157, 1)
 theme_override_colors/font_color = Color(0.698039, 0.733333, 0.823529, 1)
 theme_override_constants/caret_width = 6
 theme_override_fonts/font = ExtResource("16_7xr3t")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 45
 theme_override_styles/focus = SubResource("StyleBoxFlat_b78mw")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_svnnl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_svnnl")
@@ -494,6 +492,8 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 caret_blink = true
+secret = true
+secret_character = "*"
 script = ExtResource("18_dyexy")
 
 [node name="Wrong" type="RichTextLabel" parent="Login"]
@@ -509,6 +509,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Incorrect. Try again."
 
 [node name="Home" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1273,7 +1274,6 @@ texture = ExtResource("16_12xh7")
 centered = false
 
 [node name="Read" type="Control" parent="Mail"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1347,7 +1347,6 @@ texture_pressed = ExtResource("58_eisv5")
 texture_hover = ExtResource("58_eisv5")
 
 [node name="Message1" type="Control" parent="Mail/Read"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1413,7 +1412,7 @@ offset_bottom = 673.0
 theme_override_colors/default_color = Color(0.32549, 0.360784, 0.435294, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 40
-text = "Hey Dr. Quincy,"
+text = "Hey Dir. Quincy,"
 fit_content = true
 scroll_active = false
 
@@ -1645,6 +1644,12 @@ anchors_preset = 0
 texture = ExtResource("60_rkk8e")
 centered = false
 
+[node name="Panel" type="Panel" parent="Mail/Error"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="ComputerMailErrorBox" type="Sprite2D" parent="Mail/Error"]
 position = Vector2(960, 540)
 texture = ExtResource("69_rxu2g")
@@ -1687,6 +1692,7 @@ offset_left = 5.0
 offset_top = 6.0
 offset_right = 185.0
 offset_bottom = 54.0
+mouse_filter = 1
 theme_override_colors/default_color = Color(0.917647, 0.92549, 0.941176, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 35
@@ -1728,6 +1734,11 @@ scroll_active = false
 [node name="Confirm Delete" type="Control" parent="Mail"]
 visible = false
 anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="Mail/Confirm Delete"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="ComputerMailNewWindowBackground" type="Sprite2D" parent="Mail/Confirm Delete"]
 texture = ExtResource("60_rkk8e")
@@ -1776,6 +1787,7 @@ offset_left = 5.0
 offset_top = 6.0
 offset_right = 185.0
 offset_bottom = 62.0
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.917647, 0.92549, 0.941176, 1)
 theme_override_fonts/normal_font = ExtResource("16_7xr3t")
 theme_override_font_sizes/normal_font_size = 35
@@ -1906,6 +1918,9 @@ libraries = {
 [connection signal="pressed" from="Mail/Read/Lock" to="." method="_on_lock_pressed"]
 [connection signal="pressed" from="Mail/Read/Mail Delete" to="." method="_on_mail_delete_pressed"]
 [connection signal="pressed" from="Mail/Read/Download" to="." method="_on_download_pressed"]
+[connection signal="placeholder" from="Mail/New Message" to="Mail/New Message/Subject" method="_on_focus_exited"]
+[connection signal="placeholder" from="Mail/New Message" to="Mail/New Message/Message" method="_on_focus_exited"]
+[connection signal="visibility_changed" from="Mail/New Message" to="Mail/New Message" method="_on_visibility_changed"]
 [connection signal="pressed" from="Mail/New Message/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Mail/New Message/Exit" to="Mail/New Message" method="_on_clear_text"]
 [connection signal="pressed" from="Mail/New Message/Send" to="." method="_on_send_pressed"]

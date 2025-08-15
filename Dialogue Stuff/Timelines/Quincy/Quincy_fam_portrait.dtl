@@ -1,7 +1,7 @@
 [wait time= ".03"]
 Dalton: ...
 - Ask about his family.
-	if {Juniper.found_skylar} == true:
+	if {Juniper.found_skylar} == true and {Quincy.finished_case_note} == false:
 		if {Quincy.talked_at_port_know_skylar} == false:
 			set {Quincy.talked_at_port_know_skylar} = true
 			set {Quincy.talked_at_port} = true
@@ -48,8 +48,13 @@ Dalton: ...
 			set {Quincy.talked_at_port_not_know_Skylar} = true
 			Dalton: How's the family?
 			Quincy: The wife's out of town.
-			Quincy: My kid's at boarding school...
-			Quincy: So I've been having my fun.
+			if {Quincy.finished_case_note} == false:
+				Quincy: My kid's at boarding school...
+				Quincy: So I've been having my fun.
+			else:
+				Quincy: That brat has been causing trouble...
+				Quincy: As you can see...
+				Quincy: But I've been having my fun. 
 			Dalton: When's the last time you've seen both of them?
 			Quincy: About a year ago.
 			Dalton: Do you miss them?

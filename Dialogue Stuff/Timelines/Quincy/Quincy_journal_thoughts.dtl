@@ -1,4 +1,5 @@
 "Daltons Thoughts": What happened to you, Runa?
+do GlobalVars.emit_add_note("quincy", "runa", "")
 set {Quincy.got_journal} = true
 if {Quincy.got_safe} == true and {Quincy.got_mail} == true and {Quincy.got_journal} == true:
 	set {Quincy.solved_rever} = true

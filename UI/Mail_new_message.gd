@@ -7,12 +7,20 @@ extends Control
 @onready var allowed_characters: String = "[a-zA-Z0-9\\.\\?,]+"
 var _reg_ex: RegEx = RegEx.new()
 
+signal placeholder
+
+func _on_visibility_changed():
+	if visible == true:
+		send.disabled = true
+		delete.disabled = true
+		_reg_ex.compile(allowed_characters)
+		subject.text_changed.connect(_on_subject_text_changed)
+		emit_signal("placeholder")
+	else:
+		subject.text_changed.disconnect(_on_subject_text_changed)
 func _ready():
-	send.disabled = true
-	delete.disabled = true
-	_reg_ex.compile(allowed_characters)
-	subject.text_changed.connect(_on_subject_text_changed)
-	#message.text_changed.connect(_on_message_text_changed)
+	pass
+	
 
 func _input(event):
 	if subject.text != "" and message.text != "":
@@ -62,3 +70,5 @@ func _on_message_text_changed() -> void:
 func _on_clear_text():
 	subject.text = "" 
 	message.text = ""
+	subject.release_focus()
+	message.release_focus()

@@ -3,6 +3,7 @@ if {Quincy.has_secret_coor} == false:
 	"Daltons Thoughts": Hmm?
 	"Daltons Thoughts": What’s this? 
 	"Daltons Thoughts": Coordinates?
+	do GlobalVars.emit_add_note("quincy", "found", "coordinates")
 	"Daltons Thoughts": ...
 	- Take.
 		set {Quincy.has_secret_coor} = true

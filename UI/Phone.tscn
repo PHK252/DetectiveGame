@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=186 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -125,6 +125,16 @@
 [ext_resource type="Texture2D" uid="uid://mqdhhmjuj4nv" path="res://SecondHouse/Close Assets/Juniper Name Tag Front@2x.png" id="118_pu2n2"]
 [ext_resource type="Texture2D" uid="uid://b8tt7b07ea0l" path="res://SecondHouse/Close Assets/Juniper Name Tag Back@2x.png" id="119_k5yqg"]
 [ext_resource type="Script" uid="uid://daq812xbkauwq" path="res://UI/quincy_add_notes.gd" id="121_k5yqg"]
+[ext_resource type="Texture2D" uid="uid://di7a15x05to1v" path="res://ThirdHouse/Assets/Coordinates front@2x.png" id="122_4o7ly"]
+[ext_resource type="Texture2D" uid="uid://cor4365x733t0" path="res://ThirdHouse/Assets/Coordinates back@2x.png" id="123_c1v7q"]
+[ext_resource type="Texture2D" uid="uid://d4ideo8if7hoh" path="res://ThirdHouse/Assets/Phone front@2x.png" id="124_los0y"]
+[ext_resource type="Texture2D" uid="uid://5osqxagmyn80" path="res://ThirdHouse/Assets/Phone back@2x.png" id="125_4k6t1"]
+[ext_resource type="Texture2D" uid="uid://cwg146rew2mt8" path="res://ThirdHouse/Assets/Note front@2x.png" id="126_ci535"]
+[ext_resource type="Texture2D" uid="uid://sdgm61dpt61a" path="res://ThirdHouse/Assets/Note back@2x.png" id="127_6o44q"]
+[ext_resource type="Texture2D" uid="uid://djgf0yvl621pv" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame1@2x.png" id="128_6o44q"]
+[ext_resource type="Texture2D" uid="uid://tk8fnydqh8f0" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame1@2x.png" id="128_mtbcp"]
+[ext_resource type="Texture2D" uid="uid://b13m4uusn5low" path="res://ThirdHouse/Assets/Sciencepic front@2x.png" id="130_hqjxk"]
+[ext_resource type="Texture2D" uid="uid://c4wvalrot4e50" path="res://ThirdHouse/Assets/Sciencepic back@2x.png" id="131_sykof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
@@ -1885,6 +1895,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("112_nkqwo")
 
 [node name="Juniper" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_name_tag", "show_letter", "show_bookmark", "show_info")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2024,8 +2035,7 @@ rotation = 1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("119_k5yqg")
 
-[node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button")]
-visible = false
+[node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_coordinates", "show_letter", "show_journal", "show_phone", "show_lab_pic", "show_proposal")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2033,6 +2043,12 @@ script = ExtResource("121_k5yqg")
 text_label = NodePath("ScrollContainer/VBoxContainer/RichTextLabel")
 title = NodePath("Title")
 back_button = NodePath("Back")
+show_coordinates = NodePath("View Coordinates")
+show_letter = NodePath("View letter")
+show_journal = NodePath("View journal")
+show_phone = NodePath("View phone")
+show_lab_pic = NodePath("View Lab Pic")
+show_proposal = NodePath("View proposal")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Quincy"]
 layout_mode = 0
@@ -2066,6 +2082,8 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "ADD NOTES HERE"
 fit_content = true
+meta_underlined = false
+hint_underlined = false
 
 [node name="Back" type="TextureButton" parent="NotesScreen/Quincy"]
 layout_mode = 0
@@ -2076,6 +2094,107 @@ offset_bottom = 933.0
 texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
+
+[node name="View Coordinates" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Quincy/View Coordinates" index="1"]
+offset_left = 710.0
+offset_top = 432.0
+offset_right = 1711.0
+offset_bottom = 733.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("122_4o7ly")
+
+[node name="Back" parent="NotesScreen/Quincy/View Coordinates" index="2"]
+offset_left = 710.0
+offset_top = 432.0
+offset_right = 1711.0
+offset_bottom = 733.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("123_c1v7q")
+
+[node name="View phone" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Quincy/View phone" index="1"]
+offset_left = 756.0
+offset_top = 172.0
+offset_right = 1757.0
+offset_bottom = 1873.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("124_los0y")
+
+[node name="Back" parent="NotesScreen/Quincy/View phone" index="2"]
+visible = false
+offset_left = 760.0
+offset_top = 168.0
+offset_right = 1761.0
+offset_bottom = 1869.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("125_4k6t1")
+
+[node name="View letter" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Quincy/View letter" index="1"]
+offset_left = 736.0
+offset_top = 274.0
+offset_right = 1737.0
+offset_bottom = 1275.0
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("126_ci535")
+
+[node name="Back" parent="NotesScreen/Quincy/View letter" index="2"]
+offset_left = 736.0
+offset_top = 274.0
+offset_right = 1737.0
+offset_bottom = 1275.0
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("127_6o44q")
+
+[node name="View journal" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Quincy/View journal" index="1"]
+offset_left = 1181.4
+offset_top = 210.0
+offset_right = 2682.4
+offset_bottom = 1311.0
+rotation = 1.5708
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("128_6o44q")
+
+[node name="Back" parent="NotesScreen/Quincy/View journal" index="2"]
+offset_left = 1181.4
+offset_top = 210.0
+offset_right = 2682.4
+offset_bottom = 1311.0
+rotation = 1.5708
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("128_mtbcp")
+
+[node name="View Lab Pic" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+visible = false
+
+[node name="Front" parent="NotesScreen/Quincy/View Lab Pic" index="1"]
+offset_left = 762.0
+offset_top = 250.0
+offset_right = 1763.0
+offset_bottom = 1551.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("130_hqjxk")
+
+[node name="Back" parent="NotesScreen/Quincy/View Lab Pic" index="2"]
+offset_left = 762.0
+offset_top = 250.0
+offset_right = 1763.0
+offset_bottom = 1551.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("131_sykof")
+
+[node name="View proposal" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+visible = false
 
 [node name="Time2" type="RichTextLabel" parent="NotesScreen"]
 layout_mode = 0
@@ -2173,6 +2292,12 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="pressed" from="NotesScreen/Juniper/View Name Tag/Exit" to="NotesScreen/Juniper" method="_on_exit_name_tag_pressed"]
 [connection signal="meta_clicked" from="NotesScreen/Quincy/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Quincy" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/View Coordinates/Exit" to="NotesScreen/Quincy" method="_on_exit_coordinates_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/View phone/Exit" to="NotesScreen/Quincy" method="_on_exit_phone_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/View letter/Exit" to="NotesScreen/Quincy" method="_on_exit_letter_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/View journal/Exit" to="NotesScreen/Quincy" method="_on_exit_journal_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/View Lab Pic/Exit" to="NotesScreen/Quincy" method="_on_exit_lab_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/View proposal/Exit" to="NotesScreen/Quincy" method="_on_exit_proposal_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
 
 [editable path="NotesScreen/Micah/View Tool Note"]
@@ -2184,3 +2309,9 @@ texture_hover = ExtResource("9_valq1")
 [editable path="NotesScreen/Juniper/View Info"]
 [editable path="NotesScreen/Juniper/View Letter"]
 [editable path="NotesScreen/Juniper/View Name Tag"]
+[editable path="NotesScreen/Quincy/View Coordinates"]
+[editable path="NotesScreen/Quincy/View phone"]
+[editable path="NotesScreen/Quincy/View letter"]
+[editable path="NotesScreen/Quincy/View journal"]
+[editable path="NotesScreen/Quincy/View Lab Pic"]
+[editable path="NotesScreen/Quincy/View proposal"]
