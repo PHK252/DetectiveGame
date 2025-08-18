@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=208 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -105,22 +105,40 @@
 [ext_resource type="Texture2D" uid="uid://ox8yi4qc7e3a" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow pressed.png" id="96_5dqt7"]
 [ext_resource type="Script" uid="uid://c7dlgmju6sbtp" path="res://UI/victim_button.gd" id="97_diagc"]
 [ext_resource type="Script" uid="uid://367sfxpxuqjw" path="res://UI/micah_add_notes.gd" id="100_y6d0m"]
+[ext_resource type="Texture2D" uid="uid://b78mjjw0v5fil" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidence.png" id="101_f75o4"]
 [ext_resource type="PackedScene" uid="uid://dv3113xuon5pg" path="res://UI/notes_view_photo.tscn" id="102_1v3be"]
 [ext_resource type="Script" uid="uid://dfcir5whmgiib" path="res://UI/juniper_add_notes.gd" id="102_ltpiu"]
+[ext_resource type="Texture2D" uid="uid://bfryl2rsfiwd5" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidence pressed.png" id="102_nsy64"]
 [ext_resource type="Texture2D" uid="uid://df8whaxumgihh" path="res://FirstHouse/Close Assets/Micah Tool Front@2x.png" id="103_bnvcj"]
+[ext_resource type="Script" uid="uid://cnboe78tqwojj" path="res://UI/Note_Evidence.gd" id="103_kyc1s"]
 [ext_resource type="Texture2D" uid="uid://0nexdem16x5x" path="res://FirstHouse/Close Assets/Micah Tool Back@2x.png" id="104_hu8kh"]
+[ext_resource type="Texture2D" uid="uid://c3exc6dl3as8d" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc Letter normal.png" id="104_q62cm"]
+[ext_resource type="Texture2D" uid="uid://drhbje22kbxiw" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc Letter.png" id="105_4llm7"]
 [ext_resource type="Texture2D" uid="uid://d2j0smd12ba7w" path="res://FirstHouse/Close Assets/Micah ID Front@2x.png" id="105_p4c1p"]
+[ext_resource type="Script" uid="uid://fstlqp3v3uox" path="res://UI/Evidence_Info.gd" id="106_cbewn"]
 [ext_resource type="Texture2D" uid="uid://wjvbpcachqv" path="res://FirstHouse/Close Assets/Micah ID Back@2x.png" id="106_ce3nd"]
+[ext_resource type="Texture2D" uid="uid://mxscck8idwdr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key normal.png" id="106_gus2y"]
+[ext_resource type="Texture2D" uid="uid://64fukljo3wxa" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key.png" id="107_cbewn"]
 [ext_resource type="Texture2D" uid="uid://du4syfn2s10fe" path="res://FirstHouse/Close Assets/Micah Pic Front@2x.png" id="107_vbsje"]
 [ext_resource type="Texture2D" uid="uid://dyoechipf8dwo" path="res://FirstHouse/Close Assets/Micah Pic Back@2x.png" id="108_qn5tb"]
+[ext_resource type="Texture2D" uid="uid://dfh3tjo11mdf0" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc hair normal.png" id="108_xqvf3"]
 [ext_resource type="Texture2D" uid="uid://hyudl2is500c" path="res://FirstHouse/Close Assets/Micah Bookmark front@2x.png" id="109_4na7x"]
+[ext_resource type="Texture2D" uid="uid://btl2uyjwpr86t" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc hair.png" id="109_ojyj0"]
+[ext_resource type="Texture2D" uid="uid://cp7a41jpohfnc" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc pie normal.png" id="110_1hlbs"]
 [ext_resource type="Texture2D" uid="uid://qpvmdtt3g3af" path="res://FirstHouse/Close Assets/Micah Bookmark Back@2x.png" id="110_jyrqf"]
+[ext_resource type="Texture2D" uid="uid://qqjp5pu054lo" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc pie.png" id="111_7rxyx"]
 [ext_resource type="Texture2D" uid="uid://cj40rxcjvp760" path="res://FirstHouse/Close Assets/Micah Note Front@2x.png" id="111_abwpn"]
+[ext_resource type="Texture2D" uid="uid://b67nc1784q801" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc hammer normal.png" id="112_ca35y"]
 [ext_resource type="Texture2D" uid="uid://dtted2phs4lr7" path="res://FirstHouse/Close Assets/Micah Note Back@2x.png" id="112_nkqwo"]
+[ext_resource type="Texture2D" uid="uid://drsbbhf3qeiuf" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc hammer.png" id="113_t6hk1"]
+[ext_resource type="Texture2D" uid="uid://d22dbmgac47bg" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidence coors normal.png" id="114_8rgu2"]
 [ext_resource type="Texture2D" uid="uid://c1r4313ytbx3t" path="res://SecondHouse/Close Assets/Juniper Bookmark Front@2x.png" id="114_nkqwo"]
+[ext_resource type="Texture2D" uid="uid://d2wm1kll0t34j" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidence coorsl.png" id="115_h1u1y"]
 [ext_resource type="Texture2D" uid="uid://6skvb61811ku" path="res://SecondHouse/Close Assets/Juniper Bookmark Back@2x.png" id="115_rhqre"]
 [ext_resource type="Texture2D" uid="uid://cn0tnuqtmavie" path="res://SecondHouse/Close Assets/Juniper Employee Info@2x.png" id="116_6tnik"]
+[ext_resource type="Texture2D" uid="uid://c2bl1o6walsul" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidence choco normal.png" id="116_cs8vq"]
 [ext_resource type="Texture2D" uid="uid://cecwxhb43wdpr" path="res://SecondHouse/Close Assets/Juniper Note Front@2x.png" id="117_cg0nv"]
+[ext_resource type="Texture2D" uid="uid://cyeosnanfv6w0" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidence choco.png" id="117_k0hhp"]
 [ext_resource type="Texture2D" uid="uid://dle4lql1q76l1" path="res://SecondHouse/Close Assets/Juniper Note Back@2x.png" id="118_k5yqg"]
 [ext_resource type="Texture2D" uid="uid://mqdhhmjuj4nv" path="res://SecondHouse/Close Assets/Juniper Name Tag Front@2x.png" id="118_pu2n2"]
 [ext_resource type="Texture2D" uid="uid://b8tt7b07ea0l" path="res://SecondHouse/Close Assets/Juniper Name Tag Back@2x.png" id="119_k5yqg"]
@@ -413,6 +431,18 @@ _data = {
 &"RESET": SubResource("Animation_ud7wl")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x6dlt"]
+load_path = "res://.godot/imported/Phone Notes Evidenc Letter normal.png-e9a1f56783f471a20533ea38f0e62ee0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgvdf"]
+load_path = "res://.godot/imported/Phone Notes Evidenc Letter.png-53672f87977383b5822eb8f54d9ccd7e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ku2bu"]
+load_path = "res://.godot/imported/Phone Notes Evidenc Letter normal.png-e9a1f56783f471a20533ea38f0e62ee0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1bwhb"]
+load_path = "res://.godot/imported/Phone Notes Evidenc Letter.png-53672f87977383b5822eb8f54d9ccd7e.ctex"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hu0ud"]
 bg_color = Color(0.584314, 0.580392, 0.529412, 1)
 
@@ -430,7 +460,8 @@ VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ltpiu")
 
 [node name="Phone UI" type="CanvasLayer"]
 script = ExtResource("1_eli2p")
-metadata/_edit_vertical_guides_ = [2472.0]
+metadata/_edit_vertical_guides_ = [2472.0, 1182.0, 738.0]
+metadata/_edit_horizontal_guides_ = [1774.0, 274.0]
 
 [node name="HomeScreen" type="Control" parent="."]
 layout_mode = 3
@@ -1074,7 +1105,7 @@ text = "XX:XX"
 fit_content = true
 scroll_active = false
 
-[node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy")]
+[node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy", "evidence")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("87_fo3me")
@@ -1083,6 +1114,7 @@ case = NodePath("Case")
 micah = NodePath("Micah")
 juniper = NodePath("Juniper")
 quincy = NodePath("Quincy")
+evidence = NodePath("Evidence")
 
 [node name="Notes Back3" type="Sprite2D" parent="NotesScreen"]
 position = Vector2(960, 513)
@@ -1725,6 +1757,231 @@ offset_left = 739.0
 offset_top = 903.0
 offset_right = 757.0
 offset_bottom = 933.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("95_a6fec")
+texture_pressed = ExtResource("96_5dqt7")
+texture_hover = ExtResource("96_5dqt7")
+
+[node name="Evidence" type="TextureButton" parent="NotesScreen/Case"]
+layout_mode = 0
+offset_left = 1107.0
+offset_top = 858.0
+offset_right = 1182.0
+offset_bottom = 933.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("101_f75o4")
+texture_pressed = ExtResource("102_nsy64")
+texture_hover = ExtResource("102_nsy64")
+
+[node name="Evidence" type="Control" parent="NotesScreen" node_paths=PackedStringArray("row_1", "row_2", "micah_letter", "micah_key", "micah_fur", "juniper_letter", "juniper_pie", "quincy_letter", "quincy_hammer", "quincy_coors", "quincy_choco")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("103_kyc1s")
+row_1 = NodePath("VBoxContainer/Row 1")
+row_2 = NodePath("VBoxContainer/Row 2")
+micah_letter = NodePath("Micah Letter")
+micah_key = NodePath("Micah Key")
+micah_fur = NodePath("Micah fur")
+juniper_letter = NodePath("Juniper Letter")
+juniper_pie = NodePath("Juniper Pie")
+quincy_letter = NodePath("Quincy Letter")
+quincy_hammer = NodePath("Quincy Hammer")
+quincy_coors = NodePath("Quincy Coors")
+quincy_choco = NodePath("Quincy Choco")
+
+[node name="Title" type="RichTextLabel" parent="NotesScreen/Evidence"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 159.0
+offset_right = 1156.0
+offset_bottom = 235.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 70
+text = "EVIDENCE"
+
+[node name="Description" type="RichTextLabel" parent="NotesScreen/Evidence"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 532.0
+offset_right = 1058.0
+offset_bottom = 584.0
+theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+text = "DESCRIPTION:"
+fit_content = true
+
+[node name="Body" type="RichTextLabel" parent="NotesScreen/Evidence"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 571.0
+offset_right = 1182.0
+offset_bottom = 623.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "ADDITIONAL INFORMATION WILL APPEAR HERE."
+fit_content = true
+scroll_active = false
+
+[node name="Micah Letter" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 738.0
+offset_top = 275.0
+offset_right = 813.0
+offset_bottom = 366.0
+texture_normal = ExtResource("104_q62cm")
+texture_pressed = ExtResource("105_4llm7")
+texture_hover = ExtResource("105_4llm7")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A letter that was found in the case at Mr. Procyon’s apartment."
+
+[node name="Micah Key" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 830.0
+offset_top = 275.0
+offset_right = 905.0
+offset_bottom = 366.0
+texture_normal = ExtResource("106_gus2y")
+texture_pressed = ExtResource("107_cbewn")
+texture_hover = ExtResource("107_cbewn")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A KEY WAS FOUND IN THE CASE AT MR. PROCYON’S APARTMENT. [p]ITS USE IS UNKNOWN."
+need_upper = false
+
+[node name="Micah fur" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 922.0
+offset_top = 275.0
+offset_right = 997.0
+offset_bottom = 366.0
+texture_normal = ExtResource("108_xqvf3")
+texture_pressed = ExtResource("109_ojyj0")
+texture_hover = ExtResource("109_ojyj0")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A STRAND OF FUR WAS FOUND IN THE CASE AT MR. PROCYON’S APARTMENT. [p]TO BE SENT TO FORENSICS FOR EXAMINATION."
+need_upper = false
+
+[node name="Juniper Letter" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 1014.0
+offset_top = 275.0
+offset_right = 1089.0
+offset_bottom = 366.0
+texture_normal = SubResource("CompressedTexture2D_x6dlt")
+texture_pressed = SubResource("CompressedTexture2D_bgvdf")
+texture_hover = SubResource("CompressedTexture2D_bgvdf")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A letter was found in the case at Ms. Hartley’s house."
+
+[node name="Juniper Pie" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 1106.0
+offset_top = 275.0
+offset_right = 1181.0
+offset_bottom = 366.0
+texture_normal = ExtResource("110_1hlbs")
+texture_pressed = ExtResource("111_7rxyx")
+texture_hover = ExtResource("111_7rxyx")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A PARTIALLY EATEN PASTRY THAT WAS FOUND IN MS. HARTLEY’S TOASTER OVEN. [p]THE SAMPLE WAS COLLECTED AND WILL BE SENT TO FORENSICS FOR EXAMINATION. "
+need_upper = false
+
+[node name="Quincy Letter" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 738.0
+offset_top = 376.0
+offset_right = 813.0
+offset_bottom = 468.0
+texture_normal = SubResource("CompressedTexture2D_ku2bu")
+texture_pressed = SubResource("CompressedTexture2D_1bwhb")
+texture_hover = SubResource("CompressedTexture2D_1bwhb")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A letter that was found in the case at Mayor Leonid’s Manor."
+
+[node name="Quincy Hammer" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 830.0
+offset_top = 376.0
+offset_right = 905.0
+offset_bottom = 468.0
+texture_normal = ExtResource("112_ca35y")
+texture_pressed = ExtResource("113_t6hk1")
+texture_hover = ExtResource("113_t6hk1")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "The crime weapon was found in a case at Mayor Leonid’s Manor."
+
+[node name="Quincy Coors" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 922.0
+offset_top = 376.0
+offset_right = 997.0
+offset_bottom = 468.0
+texture_normal = ExtResource("114_8rgu2")
+texture_pressed = ExtResource("115_h1u1y")
+texture_hover = ExtResource("115_h1u1y")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A set of coordinates that was found at Mayor Leonid’s Manor."
+
+[node name="Quincy Choco" type="TextureButton" parent="NotesScreen/Evidence" node_paths=PackedStringArray("label")]
+visible = false
+layout_mode = 2
+offset_left = 1014.0
+offset_top = 376.0
+offset_right = 1089.0
+offset_bottom = 468.0
+toggle_mode = true
+texture_normal = ExtResource("116_cs8vq")
+texture_pressed = ExtResource("117_k0hhp")
+texture_hover = ExtResource("117_k0hhp")
+script = ExtResource("106_cbewn")
+label = NodePath("../Body")
+info = "A BOX OF CHOCOLATE. [p]MARKED FOR DISPOSAL."
+need_upper = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesScreen/Evidence"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 275.0
+offset_right = 1182.0
+offset_bottom = 436.0
+theme_override_constants/separation = 17
+
+[node name="Row 1" type="HBoxContainer" parent="NotesScreen/Evidence/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 17
+
+[node name="Row 2" type="HBoxContainer" parent="NotesScreen/Evidence/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 17
+
+[node name="Back" type="TextureButton" parent="NotesScreen/Evidence"]
+offset_left = 739.0
+offset_top = 903.0
+offset_right = 757.0
+offset_bottom = 933.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
@@ -2036,6 +2293,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("119_k5yqg")
 
 [node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_coordinates", "show_letter", "show_journal", "show_phone", "show_lab_pic", "show_proposal")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2275,6 +2533,26 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim3" to="NotesScreen" method="_on_victim_3_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Back" to="NotesScreen" method="_on_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen" method="_on_evidence_pressed"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Micah Letter" to="NotesScreen/Evidence/Micah Letter" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Micah Letter" to="NotesScreen/Evidence/Micah Letter" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Micah Key" to="NotesScreen/Evidence/Micah Key" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Micah Key" to="NotesScreen/Evidence/Micah Key" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Micah fur" to="NotesScreen/Evidence/Micah fur" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Micah fur" to="NotesScreen/Evidence/Micah fur" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Juniper Letter" to="NotesScreen/Evidence/Juniper Letter" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Juniper Letter" to="NotesScreen/Evidence/Juniper Letter" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Juniper Pie" to="NotesScreen/Evidence/Juniper Pie" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Juniper Pie" to="NotesScreen/Evidence/Juniper Pie" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Quincy Letter" to="NotesScreen/Evidence/Quincy Letter" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Quincy Letter" to="NotesScreen/Evidence/Quincy Letter" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Quincy Hammer" to="NotesScreen/Evidence/Quincy Hammer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Quincy Hammer" to="NotesScreen/Evidence/Quincy Hammer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Quincy Coors" to="NotesScreen/Evidence/Quincy Coors" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Quincy Coors" to="NotesScreen/Evidence/Quincy Coors" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Quincy Choco" to="NotesScreen/Evidence/Quincy Choco" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NotesScreen/Evidence/Quincy Choco" to="NotesScreen/Evidence/Quincy Choco" method="_on_mouse_exited"]
+[connection signal="pressed" from="NotesScreen/Evidence/Back" to="NotesScreen" method="_on_evidence_back_pressed"]
 [connection signal="meta_clicked" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="meta_hover_ended" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_ended"]
 [connection signal="meta_hover_started" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_started"]

@@ -6,6 +6,7 @@ extends Control
 @export var micah: Control
 @export var juniper: Control
 @export var quincy: Control
+@export var evidence : Control
 
 #button behavior
 func _on_visibility_changed():
@@ -17,6 +18,7 @@ func set_default():
 	juniper.hide()
 	quincy.hide()
 	case.hide()
+	evidence.hide()
 	home.show()
 
 
@@ -55,3 +57,13 @@ func _on_Juniper_back_pressed():
 func _on_quincy_back_pressed():
 	quincy.hide()
 	case.show()
+
+
+func _on_evidence_pressed():
+	case.hide()
+	evidence.show()
+
+
+func _on_evidence_back_pressed():
+	case.show()
+	evidence.hide()
