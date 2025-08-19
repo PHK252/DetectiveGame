@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-@onready var pages = [$Page1, $Page2, $Page3, $Page4, $Page5]
+@onready var pages = [$Page1, $Page2, $Page3, $Page4, $Page5, $Page6, $Page7]
 @onready var pCount = 0
-@export var pageCount = 5
+@export var pageCount = 7
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
