@@ -48,7 +48,7 @@ func _ready():
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Juniper.Juniper_asked_case")
 	print(case_asked)
-	if GlobalVars.in_dialogue == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_tea_time == false:
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
 			GlobalVars.in_interaction = interact_type
@@ -84,6 +84,13 @@ func _on_interactable_interacted(interactor):
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			game_dialogue.register_character(load(load_char_dialogue), character_marker)
+	else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			alert.hide()
+			player.stop_player()
+			case_cam.priority = 30
+			main_cam.priority = 0 
+			cam_anim.play("Cam_Idle")
 
 
 func _on_timeline_ended():

@@ -137,7 +137,7 @@ func _on_interactable_interacted(interactor):
 		if is_player_visible == false:
 			player.hide()
 		player.stop_player()
-		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false: #Juniper is in tea
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false or GlobalVars.in_tea_time == false:
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_thoughts_ended)
 			Dialogic.start(thought_dialogue_file)

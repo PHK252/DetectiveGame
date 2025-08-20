@@ -138,16 +138,18 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()
-		
-		if is_open == false:
-			open_interact.show()
-			close_interact.hide()
-			interact_area.hide()
-			
-		if is_open == true: 
-			open_interact.hide()
-			close_interact.show()
-			interact_area.show()
+		if GlobalVars.in_tea_time == false:
+			if is_open == false:
+				open_interact.show()
+				close_interact.hide()
+				interact_area.hide()
+				
+			if is_open == true: 
+				open_interact.hide()
+				close_interact.show()
+				interact_area.show()
+		else:
+			return
 
 
 func open() -> void:

@@ -54,6 +54,7 @@ func _on_timeline_ended():
 
 #connected via signal when Juniper is done setting drinks down
 func _activate_drink():
+	GlobalVars.in_tea_time = false
 	interactable.set_deferred("monitorable", true)
 	#var game_dialogue = Dialogic.start(dialogue_file)
 	#game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
