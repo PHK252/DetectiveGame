@@ -42,6 +42,7 @@ directories/dch_directory={
 "Micah": "res://Dialogic Characters/Micah.dch",
 "Phone": "res://Dialogic Characters/Phone.dch",
 "Quincy": "res://Dialogic Characters/Quincy.dch",
+"Skylar": "res://Dialogic Characters/Skylar.dch",
 "Theo": "res://Dialogic Characters/Theo.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
@@ -190,6 +191,16 @@ directories/dtl_directory={
 "Quincy_poker_thoughts": "res://Dialogue Stuff/Timelines/Quincy/Quincy_poker_thoughts.dtl",
 "Quincy_time_out_leaving": "res://Dialogue Stuff/Timelines/Quincy/Quincy_time_out_leaving.dtl",
 "Quincy_toilet_thoughts": "res://Dialogue Stuff/Timelines/Quincy/Quincy_toilet_thoughts.dtl",
+"Secret_After_case": "res://Dialogue Stuff/Timelines/Secret Location/Secret_After_case.dtl",
+"Secret_Case_Thoughts": "res://Dialogue Stuff/Timelines/Secret Location/Secret_Case_Thoughts.dtl",
+"Secret_Cure_Thoughts": "res://Dialogue Stuff/Timelines/Secret Location/Secret_Cure_Thoughts.dtl",
+"Secret_Isaac_Letter_Thoughts": "res://Dialogue Stuff/Timelines/Secret Location/Secret_Isaac_Letter_Thoughts.dtl",
+"Secret_Runa_Letter_Thoughts": "res://Dialogue Stuff/Timelines/Secret Location/Secret_Runa_Letter_Thoughts.dtl",
+"Secret_Skylar_meet": "res://Dialogue Stuff/Timelines/Secret Location/Secret_Skylar_meet.dtl",
+"Secret_To_Location": "res://Dialogue Stuff/Timelines/Secret Location/Secret_To_Location.dtl",
+"Secret_USB_thoughts": "res://Dialogue Stuff/Timelines/Secret Location/Secret_USB_thoughts.dtl",
+"Secret_arrived": "res://Dialogue Stuff/Timelines/Secret Location/Secret_arrived.dtl",
+"Secret_trash_thoughts": "res://Dialogue Stuff/Timelines/Secret Location/Secret_trash_thoughts.dtl",
 "Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
 "Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl",
 "Warrant_home": "res://Dialogue Stuff/Timelines/Micah/Warrant_home.dtl",
@@ -339,6 +350,15 @@ variables={
 "third_faint": false,
 "timed_out": false,
 "unlocked_office": false
+},
+"Secret Location": {
+"finish_case": false,
+"left_case": false,
+"took_case": false,
+"viewed_cure": false,
+"viewed_isaac_letter": false,
+"viewed_runa_letter": false,
+"viewed_usb": false
 }
 }
 glossary/default_case_sensitive=true
