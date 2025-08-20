@@ -16,6 +16,7 @@ signal to_walk_out
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
+		GlobalVars.in_dialogue = true
 		var game_dialogue = Dialogic.start(dialogue_file)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.signal_event.connect(_walk_out)

@@ -165,6 +165,13 @@ signal open_quincy_case
 @onready var has_contact = false
 @onready var current_level = ""
 
+@onready var view_secret_cure = false
+@onready var view_secret_usb = false
+@onready var view_secret_runa_letter = false
+@onready var view_secret_isaac_letter = false
+@onready var clicked_isaac_letter = false
+@onready var clicked_runa_letter = false
+
 #for phone notes
 var note_char = ""
 var note_event = ""

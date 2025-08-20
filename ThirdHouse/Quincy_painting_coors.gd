@@ -34,6 +34,7 @@ extends Node3D
 @export var dialogue: String
 @export var view_item: String
 
+#@export var in_pause : bool
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
 
@@ -95,7 +96,7 @@ func _process(delta):
 			interact_area.hide()
 			interact_area_2.hide()
 			alert.hide()
-		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
+		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "" or Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
@@ -135,9 +136,12 @@ func _on_interactable_interacted(interactor):
 		GlobalVars.in_interaction = interact_type
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
-		interact_area.show()
-		if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == false:
-			interact_area_2.show()
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false: #Juniper is in tea
+			interact_area.show()
+			if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == false:
+				interact_area_2.show()
+		else:
+			return

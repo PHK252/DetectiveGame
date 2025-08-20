@@ -28,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 				animplay.play("Alert_Animation_Juniper")
 			elif GlobalVars.current_level == "Quincy":
 				animplay.play("Alert_Animation_Quincy")
-			elif GlobalVars.current_level == "Beginning":
+			elif GlobalVars.current_level == "Beginning" or GlobalVars.current_level == "secret":
 				animplay.play("Alert_Animation_Beginning")
 		cached_closest = new_closest
 

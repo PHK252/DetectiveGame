@@ -95,7 +95,7 @@ func _process(delta):
 			GlobalVars.set(dialogue, true)
 			alert.hide()
 			thoughts = false
-		elif dialogue_after == false and Input.is_action_just_pressed("Exit"):
+		elif dialogue_after == false and Input.is_action_just_pressed("Exit") or Dialogic.VAR.get_variable("Quincy.is_distracted") == false: #Juniper is in tea:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
@@ -137,7 +137,10 @@ func _on_interactable_interacted(interactor):
 		if is_player_visible == false:
 			player.hide()
 		player.stop_player()
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_thoughts_ended)
-		Dialogic.start(thought_dialogue_file)
-		GlobalVars.set(view_item, true)
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false: #Juniper is in tea
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_thoughts_ended)
+			Dialogic.start(thought_dialogue_file)
+			GlobalVars.set(view_item, true)
+		else:
+			return

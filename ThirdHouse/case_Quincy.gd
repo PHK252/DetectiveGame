@@ -41,7 +41,7 @@ func _ready():
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Quincy.Quincy_asked_case")
 	print(case_asked)
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
 			GlobalVars.in_interaction = interact_type
@@ -75,6 +75,13 @@ func _on_interactable_interacted(interactor):
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			game_dialogue.register_character(load(load_char_dialogue), character_marker)
+	else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			alert.hide()
+			player.stop_player()
+			case_cam.priority = 30
+			main_cam.priority = 0 
+			cam_anim.play("Cam_Idle")
 
 
 func _on_timeline_ended():
@@ -121,7 +128,7 @@ func _input(event):
 			cam_anim.play("RESET")
 			#main_cam.set_tween_duration(1)
 			player.show()
-			if GlobalVars.opened_quincy_case == true:
+			if GlobalVars.opened_quincy_case == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
 				interior_interact_area_1.hide()
 				interior_interact_area_2.hide()
 				if finished_letter == true or finished_hammer == true:

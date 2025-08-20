@@ -15,6 +15,7 @@ extends Node3D
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
+		GlobalVars.in_dialogue = true
 		var game_dialogue = Dialogic.start(dialogue_file)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
