@@ -1,27 +1,33 @@
 Isaac: You ready to leave?
-Dalton: Yes. 
-Isaac: Tsk. 
-Isaac: Took you long enough. 
-Dalton: Oh. 
-Dalton: Do you want me to keep going?
-Isaac: Nuh uh. 
-Isaac: You are getting out of here even if I have to knock you out and drag you out. 
-Dalton: I'd like to see you try.
-Isaac: Seriously, though.
-Isaac: How are you still able to function? 
-Isaac: All you had today was half a sandwich I had to shove down your throat. 
-Isaac: Huu...
-Isaac: What would you do without me? 
 Dalton: ...
-Dalton: I don’t know. 
-Isaac: Heh. 
-Isaac: ...
-#start walking out
-Dalton: Don’t you have to take care of Kale today?
-Isaac: Hm? 
-Isaac: Ah no, Ma is looking after him today. 
-Isaac: So you know what that means! 
-Isaac: Drinks!
-Dalton: ...
-Dalton: I’ll just watch. 
-
+- Yes.
+	Dalton: Yeah.
+	Isaac: Tsk.
+	Isaac: Took you long enough.
+	Dalton: Oh.
+	Dalton: Do you want me to keep going?
+	Isaac: Nuh uh.
+	Isaac: You are getting out of here even if I have to knock you out and drag you out.
+	Dalton: I'd like to see you try.
+	Isaac: Seriously, though.
+	Isaac: How are you still able to function?
+	Isaac: All you had today was half a sandwich I had to shove down your throat.
+	Isaac: Huu...
+	Isaac: What would you do without me?
+	Dalton: ...
+	Dalton: I don’t know.
+	Isaac: Heh.
+	Isaac: ...
+	Dalton: Don’t you have to take care of Kale today?
+	Isaac: Hm?
+	Isaac: Ah no, Ma is looking after him today.
+	Isaac: So you know what that means!
+	Isaac: Drinks!
+	Dalton: ...
+	Dalton: I’ll just watch.
+	[signal arg="walk_out"]
+- Not Yet.
+	Dalton: Nope.
+	Isaac: Eurgh.
+	Isaac: Hurry upp!
+	[signal arg="disconnect"]

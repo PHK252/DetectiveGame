@@ -113,7 +113,10 @@ libraries = {
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
 
 [node name="Back" parent="CanvasLayer/Phone UI/NotesScreen/Evidence" index="13"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 18.0
+offset_bottom = 30.0
 
 [node name="Pause Screen" parent="CanvasLayer" instance=ExtResource("12_15hi7")]
 visible = false

@@ -125,19 +125,32 @@ func _on_player_interactor_interacted_now() -> void:
 	await get_tree().create_timer(0.45).timeout
 	interaction = false
 
-func _on_interactable_interacted(interactor: Interactor) -> void:
+#func _on_interactable_interacted(interactor: Interactor) -> void:
+	#number = 0
+	#force_rotation = true
+	#in_control = false
+	#await get_tree().create_timer(6).timeout
+	#force_rotation = false
+	#SPEED = 1.5
+	#collision.disabled = true
+	#number = 1
+	#force_rotate(number)
+	#move_out = true
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		paperSound.play()
+		
+
+
+func _on_dalton_to_walk_out():
 	number = 0
 	force_rotation = true
 	in_control = false
-	await get_tree().create_timer(6).timeout
+	await get_tree().create_timer(4.5).timeout
 	force_rotation = false
 	SPEED = 1.5
 	collision.disabled = true
 	number = 1
 	force_rotate(number)
 	move_out = true
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		paperSound.play()
-		

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq02bh8j18wtu"]
+
+[ext_resource type="PackedScene" uid="uid://brgrsxnh5tkr2" path="res://CharacterStuff/Isaac/Isaac.glb" id="1_gwqon"]
+
+[node name="Isaac" instance=ExtResource("1_gwqon")]
+
+[node name="Marker3D" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.221859, 1.48997, 0.873913)
