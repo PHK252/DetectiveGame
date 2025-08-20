@@ -8,6 +8,7 @@ if {Quincy.has_secret_coor} == false:
 	- Take.
 		set {Quincy.has_secret_coor} = true
 		"Daltons Thoughts": I wonder where this is.
+		do GlobalVars.emit_add_evidence("quincy", "coors")
 		[signal arg= "take_coor"]
 		[end_timeline]
 	- Leave.

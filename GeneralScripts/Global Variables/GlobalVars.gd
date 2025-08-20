@@ -170,6 +170,10 @@ var note_char = ""
 var note_event = ""
 var note_condition = ""
 
+#for evidence collection
+var evi_char = ""
+var evidence = ""
+
 var player_pos
 var first_house_path = "res://FirstHouse/first_house.tscn"
 var second_house_path = "res://SecondHouse/second_house.tscn"
@@ -185,6 +189,7 @@ var phone_up = false
 var master_volume : int
 var music_volume : int
 var effect_volume : int
+
 
 func set_mouse_default():
 	#print("set default")
@@ -219,3 +224,7 @@ func emit_add_note(char : String, event : String, condition : String):
 	note_char = char
 	note_event = event
 	note_condition = condition
+
+func emit_add_evidence(char : String, evi : String):
+	evi_char = char
+	evidence = evi

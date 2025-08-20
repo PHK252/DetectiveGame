@@ -17,6 +17,10 @@ if {Juniper.found_skylar} == true and {Quincy.talked_at_port} == true:
 		Quincy: I'll take care of the rest.
 		Dalton: Okay.
 		Dalton: I'll send a search team out for Skylar Aslan.
+		Dalton: Okay.
+		Dalton: I’ll send a search team out for Skylar Aslan...
+		Dalton: And I'll take the note in for examination.
+		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_portrait")
 		jump Quincy_open_case_choice/
 	else:
@@ -50,6 +54,10 @@ elif {Juniper.found_skylar} == true and {Quincy.talked_at_port} == false:
 		Quincy: Pfft.
 		Quincy: Not at all. 
 		Quincy: Just some angsty teen nonsense.
+		Dalton: Hm...
+		Dalton: I’ll take the note and see if we can do anything to further your case. 
+		Quincy: Mm...
+		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_no_portrait")
 		jump Quincy_open_case_choice/
 	else:
@@ -84,11 +92,12 @@ else:
 		Quincy: no.
 		Dalton: ...
 		Dalton: I see.
-		Dalton: I'll take his description and see what we can do. 
+		Dalton: I'll collect the note and take his description to see what we can do. 
 		Dalton: It will take longer for us to track him down, though.
 		Quincy: Good. 
 		Quincy: Once you track him down, call me.
 		Dalton: Hmph.
+		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "no_name_no_portrait")
 		jump Quincy_open_case_choice/
 	else:

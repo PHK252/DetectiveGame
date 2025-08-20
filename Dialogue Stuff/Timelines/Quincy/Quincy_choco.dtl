@@ -14,6 +14,7 @@
 		[signal arg= "take_choco"]
 		"Daltons Thoughts": I have to take this in for investigation. 
 		set {Quincy.has_choco} = true
+		do GlobalVars.emit_add_evidence("quincy", "choco")
 		[signal arg= "end"]
 		[end_timeline]
 	- Leave it 
