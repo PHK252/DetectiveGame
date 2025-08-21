@@ -1008,3 +1008,14 @@ func _on_waterfall_area_body_exited(body: Node3D) -> void:
 		theo_adjustment = false
 		is_navigating = true
 		state = FOLLOW
+
+
+func _on_sc_nogo_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		is_navigating = false
+		#theo_adjustment = true
+
+func _on_sc_nogo_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		#theo_adjustment = false
+		is_navigating = true

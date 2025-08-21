@@ -5,9 +5,11 @@ extends Node3D
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var skylar_marker : Marker2D
+signal dalton_rotate
 
 
 func _ready():
+	emit_signal("dalton_rotate")
 	GlobalVars.current_level = "secret"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#await walk in

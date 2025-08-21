@@ -616,3 +616,14 @@ func _on_quincy_interact_finish_greeting() -> void:
 	force_rotation = false
 	in_control = true
 	
+
+func _on_main_dalton_rotate() -> void:
+	in_control = false
+	needs_rotation_forced = true
+	number = 0
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	in_control = true
+	
