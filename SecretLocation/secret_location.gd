@@ -35,10 +35,16 @@ func _on_enter_skylar(body):
 		GlobalVars.in_dialogue = true
 		var exit_dialogue = Dialogic.start("Secret_Skylar_meet")
 		Dialogic.timeline_ended.connect(_exit_scene)
+		Dialogic.signal_event.connect(_enter_skylar)
 		exit_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 		exit_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		exit_dialogue.register_character(load("res://Dialogic Characters/Skylar.dch"), skylar_marker)
 		player.stop_player()
+		pass
+
+func _enter_skylar(arg : String):
+	if arg == "skylar_enter":
+		#ENTER SKYLAR CODE GOES HERE
 		pass
 
 func _exit_scene():
