@@ -658,17 +658,21 @@ func _on_safe_ui_alarm():
 	drop_distract()
 
 
+func _on_time_out_drop_distract():
+	drop_distract()
+	in_danger = false
 
 func _on_danger_body_entered(body):
 	if body.is_in_group("player"):
-		if is_distracted == true: 
+		if catch_possibility == true: 
 			in_danger = true # Replace with function body.
 
 
 func _on_danger_body_exited(body):
 	if body.is_in_group("player"):
-		if is_distracted == true: 
+		if catch_possibility == true: 
 			in_danger = false
+			catch_possibility == false 
 
 
 func _on_caught_exit_interact():

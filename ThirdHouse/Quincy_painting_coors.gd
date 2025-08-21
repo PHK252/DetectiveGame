@@ -96,7 +96,7 @@ func _process(delta):
 			interact_area.hide()
 			interact_area_2.hide()
 			alert.hide()
-		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "" or Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
+		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
@@ -139,9 +139,6 @@ func _on_interactable_interacted(interactor):
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()
-		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false: #Juniper is in tea
-			interact_area.show()
-			if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == false:
-				interact_area_2.show()
-		else:
-			return
+		interact_area.show()
+		if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == false:
+			interact_area_2.show()

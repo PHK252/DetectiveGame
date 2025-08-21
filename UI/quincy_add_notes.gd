@@ -38,10 +38,10 @@ var quincy_pager = "- REVER, Operation NULL REV2\n- Turn off your phone when you
 var quincy_proposal = "- TRANSCRIPT: [color=#64635f]transcript[/color][p][color=#566f5c][url=show_proposal]VIEW PHOTO[/url][/color]\n- DALTON...\n- WHAT IS THIS?\n- WHERE ARE YOU?\n\n- WE HAVE TO GO THEO."
 
 func _ready():
-	_add_note(quincy_email)
-	_add_note(quincy_lab)
-	_add_note(quincy_pager.to_upper())
-	_add_note(quincy_proposal)
+	#_add_note(quincy_email)
+	#_add_note(quincy_lab)
+	#_add_note(quincy_pager.to_upper())
+	#_add_note(quincy_proposal)
 	pass
 
 #Handling Notes
@@ -69,24 +69,6 @@ func _on_RichTextLabel_meta_clicked(meta):
 		_show_photo(show_journal)
 	elif meta == "show_proposal":
 		_show_photo(show_proposal)
-#Handling Buttons and Screens
-func _on_exit_journal_pressed():
-	_hide_photo(show_journal)
-
-func _on_exit_coordinates_pressed():
-	_hide_photo(show_coordinates)
-
-func _on_exit_letter_pressed():
-	_hide_photo(show_letter)
-
-func _on_exit_lab_pressed():
-	_hide_photo(show_lab_pic)
-
-func _on_exit_phone_pressed():
-	_hide_photo(show_phone)
-
-func _on_exit_proposal_pressed():
-	_hide_photo(show_proposal)
 
 func _show_photo(photo : Control):
 	if photo.visible == false:
@@ -95,19 +77,11 @@ func _show_photo(photo : Control):
 	else:
 		return
 
-func _hide_photo(photo : Control):
-	show_notes()
-	photo.hide()
-
 func hide_notes():
 	text_label.hide()
 	title.hide()
 	back_button.hide()
 
-func show_notes():
-	text_label.show()
-	title.show()
-	back_button.show()
 
 func _on_case_add_quincy_note():
 	if GlobalVars.note_event == "location":

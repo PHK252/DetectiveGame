@@ -21,6 +21,7 @@ extends Node3D
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
 
+signal enable_after_tea_interaction
 
 func _ready():
 	interactable.set_deferred("monitorable", false)
@@ -56,6 +57,7 @@ func _on_timeline_ended():
 func _activate_drink():
 	GlobalVars.in_tea_time = false
 	interactable.set_deferred("monitorable", true)
+	emit_signal("enable_after_tea_interaction")
 	#var game_dialogue = Dialogic.start(dialogue_file)
 	#game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 	#game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)

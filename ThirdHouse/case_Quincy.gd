@@ -41,7 +41,7 @@ func _ready():
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Quincy.Quincy_asked_case")
 	print(case_asked)
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
 			GlobalVars.in_interaction = interact_type
@@ -128,7 +128,7 @@ func _input(event):
 			cam_anim.play("RESET")
 			#main_cam.set_tween_duration(1)
 			player.show()
-			if GlobalVars.opened_quincy_case == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
+			if GlobalVars.opened_quincy_case == true:
 				interior_interact_area_1.hide()
 				interior_interact_area_2.hide()
 				if finished_letter == true or finished_hammer == true:

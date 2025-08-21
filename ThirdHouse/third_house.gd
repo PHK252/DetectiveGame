@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var interactables : Array[Interactable] = []
+@export var distract_interactables : Array[Interactable] = []
 @export var player : CharacterBody3D
 @export var alert : Sprite3D
 @export var timed_out_dialogue_file : String
@@ -18,6 +19,8 @@ var time_out = false
 var in_time_out_dialogue = false
 
 var in_secret = false
+var locked = false
+signal time_out_drop_distract
 
 func _ready():
 	GlobalVars.current_level = "quincy"
@@ -50,13 +53,24 @@ func _process(delta):
 			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
-
+	
+	
+	if Dialogic.VAR.get_variable("Quincy.is_distracted") == true and locked == false:
+		disable_distraction_interaction(distract_interactables)
+		locked == true
+	elif Dialogic.VAR.get_variable("Quincy.is_distracted") == false and locked == true:
+		enable_distraction_interaction(distract_interactables)
+		locked == false
+	else:
+		return
+		
 #timeout set to 10 minutes right now
 func _on_timer_timeout():
 	if GlobalVars.quincy_kicked_out == false:
 		GlobalVars.quincy_time_out = true
 		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 			Dialogic.VAR.set_variable("Quincy.is_distracted", false)
+		emit_signal("time_out_drop_distract")
 		disable_interaction(interactables)
 		time_out = true
 		print("LEVEL TIMEOUT")
@@ -91,6 +105,13 @@ func disable_interaction(arr: Array):
 		i.set_monitorable(false)
 		i.queue_free()
 
+func enable_distraction_interaction(arr: Array):
+	for i in arr:
+		i.set_monitorable(true)
+
+func disable_distraction_interaction(arr: Array):
+	for i in arr:
+		i.set_monitorable(false)
 #
 #func _on_secret_entered(body):
 	#if body == player:

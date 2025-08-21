@@ -474,7 +474,6 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 
 func _on_tea_activated():
 	print("interactedTea")
-	GlobalVars.in_tea_time = true
 	wander_rotate = false
 	wander_choice = 0
 	var current_anim = one_shots[wander_choice]

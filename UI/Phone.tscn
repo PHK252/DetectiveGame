@@ -2051,8 +2051,11 @@ texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
 
-[node name="View Tool Note" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+[node name="View Tool Note" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Micah/View Tool Note" index="1"]
 offset_left = 1037.0
@@ -2072,8 +2075,11 @@ rotation = 1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("104_hu8kh")
 
-[node name="View ID Card" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+[node name="View ID Card" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Micah/View ID Card" index="1"]
 visible = false
@@ -2093,8 +2099,11 @@ offset_bottom = 1551.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("106_ce3nd")
 
-[node name="View Picture" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+[node name="View Picture" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Micah/View Picture" index="1"]
 offset_left = 762.0
@@ -2112,8 +2121,11 @@ offset_bottom = 1628.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("108_qn5tb")
 
-[node name="View bookmark" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+[node name="View bookmark" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Micah/View bookmark" index="1"]
 offset_left = 879.0
@@ -2131,8 +2143,11 @@ offset_bottom = 1200.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("110_jyrqf")
 
-[node name="View letter" parent="NotesScreen/Micah" instance=ExtResource("102_1v3be")]
+[node name="View letter" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Micah/View letter" index="1"]
 offset_left = 1135.6
@@ -2211,8 +2226,11 @@ texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
 
-[node name="View bookmark" parent="NotesScreen/Juniper" instance=ExtResource("102_1v3be")]
+[node name="View bookmark" parent="NotesScreen/Juniper" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Juniper/View bookmark" index="1"]
 offset_left = 879.0
@@ -2230,8 +2248,11 @@ offset_bottom = 1200.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("115_rhqre")
 
-[node name="View Info" parent="NotesScreen/Juniper" instance=ExtResource("102_1v3be")]
+[node name="View Info" parent="NotesScreen/Juniper" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Juniper/View Info" index="1"]
 offset_left = 1165.4
@@ -2251,8 +2272,11 @@ rotation = 4.71239
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("116_6tnik")
 
-[node name="View Letter" parent="NotesScreen/Juniper" instance=ExtResource("102_1v3be")]
+[node name="View Letter" parent="NotesScreen/Juniper" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Juniper/View Letter" index="1"]
 offset_left = 1170.6
@@ -2272,8 +2296,11 @@ rotation = 1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("118_k5yqg")
 
-[node name="View Name Tag" parent="NotesScreen/Juniper" instance=ExtResource("102_1v3be")]
+[node name="View Name Tag" parent="NotesScreen/Juniper" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Juniper/View Name Tag" index="1"]
 offset_left = 1112.6
@@ -2354,8 +2381,11 @@ texture_normal = ExtResource("95_a6fec")
 texture_pressed = ExtResource("96_5dqt7")
 texture_hover = ExtResource("96_5dqt7")
 
-[node name="View Coordinates" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+[node name="View Coordinates" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Quincy/View Coordinates" index="1"]
 offset_left = 710.0
@@ -2373,8 +2403,11 @@ offset_bottom = 733.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("123_c1v7q")
 
-[node name="View phone" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+[node name="View phone" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Quincy/View phone" index="1"]
 offset_left = 756.0
@@ -2393,8 +2426,11 @@ offset_bottom = 1869.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("125_4k6t1")
 
-[node name="View letter" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+[node name="View letter" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Quincy/View letter" index="1"]
 offset_left = 736.0
@@ -2412,8 +2448,11 @@ offset_bottom = 1275.0
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("127_6o44q")
 
-[node name="View journal" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+[node name="View journal" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Quincy/View journal" index="1"]
 offset_left = 1181.4
@@ -2433,8 +2472,11 @@ rotation = 1.5708
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("128_mtbcp")
 
-[node name="View Lab Pic" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+[node name="View Lab Pic" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Quincy/View Lab Pic" index="1"]
 offset_left = 762.0
@@ -2452,8 +2494,11 @@ offset_bottom = 1551.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("131_sykof")
 
-[node name="View proposal" parent="NotesScreen/Quincy" instance=ExtResource("102_1v3be")]
+[node name="View proposal" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
+text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
+title = NodePath("../Title")
+back_button = NodePath("../Back")
 
 [node name="Time2" type="RichTextLabel" parent="NotesScreen"]
 layout_mode = 0
@@ -2558,25 +2603,10 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="meta_hover_ended" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_ended"]
 [connection signal="meta_hover_started" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_started"]
 [connection signal="pressed" from="NotesScreen/Micah/Back" to="NotesScreen" method="_on_micah_back_pressed"]
-[connection signal="pressed" from="NotesScreen/Micah/View Tool Note/Exit" to="NotesScreen/Micah" method="_on_exit_photo_tool_pressed"]
-[connection signal="pressed" from="NotesScreen/Micah/View ID Card/Exit" to="NotesScreen/Micah" method="_on_exit_ID_pressed"]
-[connection signal="pressed" from="NotesScreen/Micah/View Picture/Exit" to="NotesScreen/Micah" method="_on_exit_picture_pressed"]
-[connection signal="pressed" from="NotesScreen/Micah/View bookmark/Exit" to="NotesScreen/Micah" method="_on_exit_bookmark_pressed"]
-[connection signal="pressed" from="NotesScreen/Micah/View letter/Exit" to="NotesScreen/Micah" method="_on_exit_letter_pressed"]
 [connection signal="meta_clicked" from="NotesScreen/Juniper/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Juniper" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="pressed" from="NotesScreen/Juniper/Back" to="NotesScreen" method="_on_Juniper_back_pressed"]
-[connection signal="pressed" from="NotesScreen/Juniper/View bookmark/Exit" to="NotesScreen/Juniper" method="_on_exit_bookmark_pressed"]
-[connection signal="pressed" from="NotesScreen/Juniper/View Info/Exit" to="NotesScreen/Juniper" method="_on_exit_info_pressed"]
-[connection signal="pressed" from="NotesScreen/Juniper/View Letter/Exit" to="NotesScreen/Juniper" method="_on_exit_letter_pressed"]
-[connection signal="pressed" from="NotesScreen/Juniper/View Name Tag/Exit" to="NotesScreen/Juniper" method="_on_exit_name_tag_pressed"]
 [connection signal="meta_clicked" from="NotesScreen/Quincy/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Quincy" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
-[connection signal="pressed" from="NotesScreen/Quincy/View Coordinates/Exit" to="NotesScreen/Quincy" method="_on_exit_coordinates_pressed"]
-[connection signal="pressed" from="NotesScreen/Quincy/View phone/Exit" to="NotesScreen/Quincy" method="_on_exit_phone_pressed"]
-[connection signal="pressed" from="NotesScreen/Quincy/View letter/Exit" to="NotesScreen/Quincy" method="_on_exit_letter_pressed"]
-[connection signal="pressed" from="NotesScreen/Quincy/View journal/Exit" to="NotesScreen/Quincy" method="_on_exit_journal_pressed"]
-[connection signal="pressed" from="NotesScreen/Quincy/View Lab Pic/Exit" to="NotesScreen/Quincy" method="_on_exit_lab_pressed"]
-[connection signal="pressed" from="NotesScreen/Quincy/View proposal/Exit" to="NotesScreen/Quincy" method="_on_exit_proposal_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
 
 [editable path="NotesScreen/Micah/View Tool Note"]

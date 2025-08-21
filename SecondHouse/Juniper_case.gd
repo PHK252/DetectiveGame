@@ -48,7 +48,7 @@ func _ready():
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Juniper.Juniper_asked_case")
 	print(case_asked)
-	if GlobalVars.in_dialogue == false and GlobalVars.in_tea_time == false:
+	if GlobalVars.in_dialogue == false:
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
 			GlobalVars.in_interaction = interact_type

@@ -22,11 +22,11 @@ func _physics_process(_delta: float) -> void:
 			if GlobalVars.current_level == "Office":
 				animplay.play("Alert_Animation_Office")
 				#print("office_interact")
-			elif GlobalVars.current_level == "Micah":
+			elif GlobalVars.current_level == "micah":
 				animplay.play("Alert_Animation_Micah")
-			elif GlobalVars.current_level == "Juniper":
+			elif GlobalVars.current_level == "juniper":
 				animplay.play("Alert_Animation_Juniper")
-			elif GlobalVars.current_level == "Quincy":
+			elif GlobalVars.current_level == "quincy":
 				animplay.play("Alert_Animation_Quincy")
 			elif GlobalVars.current_level == "Beginning" or GlobalVars.current_level == "secret":
 				animplay.play("Alert_Animation_Beginning")

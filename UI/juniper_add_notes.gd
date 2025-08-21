@@ -45,8 +45,8 @@ var juniper_case_name_tag_found = "- NAME TAG TRANSCRIPT: [color=#64635f]SKYLAR 
 var juniper_case_name_tag_response = "- The full name of the missing employee is Skylar Aslan.\n- They left their name tag and apron in the case.\n- Skylar Aslan is now the primary suspect of this break-in."
 
 func _ready():
-	_add_note(juniper_case_letter)
-	_add_note(juniper_case_name_tag_found)
+	#_add_note(juniper_case_letter)
+	#_add_note(juniper_case_name_tag_found)
 	#_add_note(juniper_bookmark_found)
 	pass
 
@@ -74,21 +74,6 @@ func _on_RichTextLabel_meta_clicked(meta):
 		_show_photo(show_letter)
 	elif meta == "show_name_tag":
 		_show_photo(show_name_tag)
-#Handling Buttons and Screens
-#func _on_exit_photo_tool_pressed():
-	#_hide_photo(show_tool_notes)
-#
-func _on_exit_name_tag_pressed():
-	_hide_photo(show_name_tag)
-#
-func _on_exit_letter_pressed():
-	_hide_photo(show_letter)
-
-func _on_exit_bookmark_pressed():
-	_hide_photo(show_bookmark)
-
-func _on_exit_info_pressed():
-	_hide_photo(show_info)
 
 func _show_photo(photo : Control):
 	if photo.visible == false:
@@ -97,19 +82,11 @@ func _show_photo(photo : Control):
 	else:
 		return
 
-func _hide_photo(photo : Control):
-	show_notes()
-	photo.hide()
-
 func hide_notes():
 	text_label.hide()
 	title.hide()
 	back_button.hide()
 
-func show_notes():
-	text_label.show()
-	title.show()
-	back_button.show()
 
 #Handling Adding Notes Signals
 func _on_case_add_juniper_note():

@@ -104,22 +104,19 @@ func _process(delta):
 		elif tilt == "up" and cab_anim == false:
 			FP_Cam.set_rotation_degrees(tilt_down_angle)
 			interact_area_2.hide()
-			if GlobalVars.in_tea_time == false:
-				if is_open == true:
-					open_interact.hide()
-					interact_area_1.show()
-					close_interact_1.show()
-					close_interact_2.show()
-				else:
-					open_interact.show()
-					interact_area_1.hide()
-					close_interact_1.hide()
-					close_interact_2.hide()
+			if is_open == true:
+				open_interact.hide()
+				interact_area_1.show()
+				close_interact_1.show()
+				close_interact_2.show()
 			else:
-				return
+				open_interact.show()
+				interact_area_1.hide()
+				close_interact_1.hide()
+				close_interact_2.hide()
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type and cab_anim == false:
-		if kicked == false and timed == false and GlobalVars.in_tea_time == false:
+		if kicked == false and timed == false:
 			if Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
 				print("cab exit_3")
 				print("V1 :" +  str(viewed_item_1))

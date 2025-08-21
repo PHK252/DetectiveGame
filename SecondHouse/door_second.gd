@@ -333,3 +333,7 @@ func _on_juniper_interact_reactivate_door():
 	if interaction.monitorable == false:
 		print("enable door")
 		interaction.set_deferred("monitorable", true)
+
+
+func _on_tea_time():
+	interaction.set_deferred("monitorable", false)

@@ -52,7 +52,8 @@ func _on_tea_ended():
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_tea_ended)
 	GlobalVars.in_dialogue = false
-	emit_signal("enable_interaction")
+	if GlobalVars.in_tea_time == false:
+		emit_signal("enable_interaction")
 
 func _process(delta):
 	asked = Dialogic.VAR.get_variable("Juniper.asked_all")
@@ -90,6 +91,7 @@ func _on_entered_juniper_house():
 func _activate_tea(argument : String):
 	if argument == "tea_time":
 		Dialogic.signal_event.disconnect(_activate_tea)
+		GlobalVars.in_tea_time = true
 		emit_signal("tea_time")
 	else:
 		Dialogic.signal_event.disconnect(_activate_tea)

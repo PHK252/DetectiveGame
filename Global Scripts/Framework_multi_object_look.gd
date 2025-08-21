@@ -84,9 +84,9 @@ func _process(delta):
 			interact_area_1.hide()
 		elif tilt_hide == true and tilt == "up":
 			interact_area_2.hide()
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		if kicked == false and timed == false and GlobalVars.in_tea_time == false:
-			if Input.is_action_just_pressed("Exit") and viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+		if kicked == false and timed == false:
+			if viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
 				print("cab exit_1")
 				print("V1 :" +  str(viewed_item_1))
 				print("V2 :" +  str(viewed_item_2))
@@ -111,7 +111,7 @@ func _process(delta):
 				interact_area_1.hide()
 				interact_area_2.hide()
 				alert.hide()
-			elif Input.is_action_just_pressed("Exit") and read_dialogue_1 == false and GlobalVars.viewing == "" and ((viewed_item_1 == true and viewed_item_2 == false) or (viewed_item_1 == true and viewed_item_2 == true)):
+			elif read_dialogue_1 == false and GlobalVars.viewing == "" and ((viewed_item_1 == true and viewed_item_2 == false) or (viewed_item_1 == true and viewed_item_2 == true)):
 				print("cab exit_2")
 				print("V1 :" +  str(viewed_item_1))
 				print("V2 :" +  str(viewed_item_2))
@@ -136,7 +136,7 @@ func _process(delta):
 				interact_area_1.hide()
 				interact_area_2.hide()
 				alert.hide()
-			elif Input.is_action_just_pressed("Exit") and read_dialogue_2 == false and GlobalVars.viewing == "" and ((viewed_item_1 == false and viewed_item_2 == true) or (viewed_item_1 == true and viewed_item_2 == true)):
+			elif read_dialogue_2 == false and GlobalVars.viewing == "" and ((viewed_item_1 == false and viewed_item_2 == true) or (viewed_item_1 == true and viewed_item_2 == true)):
 				print("cab exit_3")
 				print("V1 :" +  str(viewed_item_1))
 				print("V2 :" +  str(viewed_item_2))
@@ -161,7 +161,7 @@ func _process(delta):
 				interact_area_1.hide()
 				interact_area_2.hide()
 				alert.hide()
-			elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
+			elif GlobalVars.viewing == "":
 				print("cab exit_4")
 				print("V1 :" +  str(viewed_item_1))
 				print("V2 :" +  str(viewed_item_2))
@@ -180,7 +180,7 @@ func _process(delta):
 				interact_area_1.hide()
 				interact_area_2.hide()
 				alert.show()
-		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":
+		elif GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
@@ -219,12 +219,9 @@ func _on_interactable_interacted(interactor):
 		Exit_Cam.priority = 0 
 		cam_anim.play("Cam_Idle")
 		player.hide()
-		player.stop_player()		
+		player.stop_player()
+		interact_area_1.show()
+		interact_area_2.show()
 		if GlobalVars.in_interaction == "Resume" and Dialogic.VAR.get_variable("Juniper.reenter_resumes") == true:
 			GlobalVars.set(dialogue_1, false)
 			GlobalVars.set(view_item_1, false)
-		if GlobalVars.in_tea_time == false:
-			interact_area_1.show()
-			interact_area_2.show()
-		else:
-			return

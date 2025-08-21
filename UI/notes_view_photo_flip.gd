@@ -2,6 +2,10 @@ extends Control
 
 @export var back : TextureRect
 @export var front : TextureRect
+#notes
+@export var text_label : RichTextLabel
+@export var title : RichTextLabel
+@export var back_button : TextureButton
 
 @export var back_label: RichTextLabel
 @export var front_label: RichTextLabel
@@ -30,8 +34,14 @@ func _on_visibility_changed():
 		back.hide()
 		front_label.show()
 		back_label.hide()
-
-
-
+#
+#
+#
 func _on_exit_pressed():
 	hide()
+	show_notes()
+
+func show_notes():
+	text_label.show()
+	title.show()
+	back_button.show()
