@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2j6soqwoeud8"]
+
+[ext_resource type="Texture2D" uid="uid://djoarkvmmmqlk" path="res://dream_stuff/Assets/Flashback_tile textures_off.png" id="1_u0mf1"]
+[ext_resource type="Texture2D" uid="uid://b2fbef48q6no6" path="res://dream_stuff/Assets/Flashback_tile textures_on.png" id="2_0acv1"]
+[ext_resource type="Script" uid="uid://ijb0scbjnibp" path="res://dream_stuff/dream_tiles.gd" id="3_u0mf1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuf04"]
+albedo_texture = ExtResource("1_u0mf1")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sfly0"]
+_surfaces = [{
+"aabb": AABB(-8.88178e-16, 0, -2.98023e-08, 0.333333, 1e-05, 0.333333),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bvs2m"]
+resource_name = "DreamTransition_Plane_026"
+_surfaces = [{
+"aabb": AABB(-8.88178e-16, 0, -2.98023e-08, 0.333333, 1e-05, 0.333333),
+"attribute_data": PackedByteArray(255, 127, 169, 170, 169, 170, 255, 127, 169, 170, 169, 170, 255, 127, 255, 127),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_yuf04"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sfly0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdxto"]
+albedo_texture = ExtResource("2_0acv1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jplcn"]
+size = Vector3(0.312073, 0.337036, 0.294418)
+
+[node name="Tile" type="MeshInstance3D"]
+transform = Transform3D(2.8751, 0, 0, 0, 2.41636, 0, 0, 0, 2.88106, 0, 0, 0)
+layers = 512
+mesh = SubResource("ArrayMesh_bvs2m")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_mdxto")
+script = ExtResource("3_u0mf1")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.347814, 0, 0, 0, -1.5172e-08, 0.413846, 0, -0.347095, -1.27248e-08, 0.179319, 0.892313, 0.149739)
+visible = false
+light_color = Color(0.995391, 0.991357, 0.875618, 1)
+light_energy = 0.699
+light_indirect_energy = 1.356
+light_volumetric_fog_energy = 1.07
+light_size = 0.097
+light_specular = 2.141
+spot_range = 3.446
+spot_attenuation = -1.91
+spot_angle = 22.53
+spot_angle_attenuation = 1.68179
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165154, 0.152405, 0.160393)
+shape = SubResource("BoxShape3D_jplcn")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
