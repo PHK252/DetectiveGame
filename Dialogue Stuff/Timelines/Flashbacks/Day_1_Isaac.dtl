@@ -1,0 +1,55 @@
+label kitchen
+Isaac: Kale!
+Isaac: Diner’s ready!
+#[sound effect]
+[wait time="2.0"]
+Isaac: Kale!
+Isaac: Come down!
+Isaac: Ma’s gonna get mad if you don’t eat!
+#[sound effect but louder]
+[wait time="2.5"]
+Isaac: Huuu...
+Isaac: If you don’t come down, I’m gonna come up and drag you down here!!
+[wait time="1.5"]
+Isaac: Tsk.
+Isaac: Guess I better check on him.
+[end_timeline]
+
+label bedroom_open
+Isaac: Kale!
+Isaac: Diner’s-
+Isaac: Kale? 
+Isaac: What’s wrong?
+[end_timeline]
+
+label bedroom_check
+Isaac: Hey...
+Isaac: Ka-
+Kale: AHH!!
+Kale: AAHHH!!!
+Kale: WHAT ARE YOU??
+Kale: STOP!!
+Kale: Please...
+Kale: It hurts...
+Kale: Hgh...
+Isaac: Hey, hey, calm down...
+Isaac: Breathe...
+Isaac: Can you tell wha-
+Kale: Stop!
+Kale: LET ME GO!
+Kale: WHAT ARE YOU GOING TO DO TO ME?
+Kale: IT HURTS!
+Kale: It hurts...
+Isaac: Kale...
+Isaac: Just look at me and breathe...
+Isaac: You are safe here.
+Isaac: What's wrong?
+Isaac: Can you tell me?
+Isaac: Are you hurt?
+Kale: Ngh!
+Kale: Ah!
+Kale: No.
+Kale: Who are you?
+Kale: Get away from me!
+[signal arg="to_office"]
+[end_timeline]

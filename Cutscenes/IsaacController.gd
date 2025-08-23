@@ -23,6 +23,9 @@ signal moving
 signal stopped
 signal activate_hall
 signal cam_bed
+
+signal start_kitchen_dialogue
+
 var move_back := false
 var is_interacting := false
 
@@ -42,12 +45,20 @@ func _ready() -> void:
 	add_to_group("player")
 	in_control = false
 	force_rotation = true
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(.5).timeout
 	blend_target = 0.0
+	emit_signal("start_kitchen_dialogue")
+	#await get_tree().create_timer(1).timeout
+	#force_rotation = false
+	#in_control = true
+	#checking_start = false
+
+func _on_start_isaac():
 	await get_tree().create_timer(1).timeout
 	force_rotation = false
 	in_control = true
 	checking_start = false
+
 
 func floor_type_walk():
 	if $FloorType.is_colliding():
@@ -242,16 +253,15 @@ func _snap_up_stairs_check(delta) -> bool:
 
 func _on_control_areas_check_on_isaac() -> void:
 	in_control = false
-	move_out = true
-	await get_tree().create_timer(1.0).timeout
-	emit_signal("cam_bed")
-	await get_tree().create_timer(1.5).timeout
-	move_out = false
-	
-	blend_worry = true
-	await get_tree().create_timer(2.5).timeout
+	#move_out = true
+#	await get_tree().create_timer(1.0).timeout
+	#emit_signal("cam_bed")
+	#await get_tree().create_timer(1.5).timeout
+	#move_out = false
+	#blend_worry = true
+	#await get_tree().create_timer(2.5).timeout
 	crouch_sound.play()
-	blend_worry = false
+	#blend_worry = false
 	blend_crouch = true
 	
 	

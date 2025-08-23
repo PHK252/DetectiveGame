@@ -1,6 +1,7 @@
-[gd_scene load_steps=126 format=4 uid="uid://boda0uybnshug"]
+[gd_scene load_steps=130 format=4 uid="uid://boda0uybnshug"]
 
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="1_b3khi"]
+[ext_resource type="Script" uid="uid://myg4wd0041pt" path="res://Cutscenes/flashback_01.gd" id="1_di5mf"]
 [ext_resource type="PackedScene" uid="uid://bqwijt8f7c5me" path="res://Cutscenes/dalton_fb2.glb" id="1_vw2sk"]
 [ext_resource type="Script" uid="uid://qmqj74pm4p5a" path="res://GeneralScripts/CameraWork/camera_system.gd" id="1_xpbji"]
 [ext_resource type="PackedScene" uid="uid://duo52kj56p5ty" path="res://Cutscenes/IsaacsBrotherTweaking.glb" id="1_ydyvw"]
@@ -35,11 +36,13 @@
 [ext_resource type="AudioStream" uid="uid://com6arqtclsla" path="res://Audio/Footsteps/shoe_wood_1.wav" id="21_l3x18"]
 [ext_resource type="AudioStream" uid="uid://ucbkajwnr7qa" path="res://Audio/ThirdHouse/crouch_01.wav" id="22_uh4i3"]
 [ext_resource type="Script" uid="uid://b0tyfhwc3r006" path="res://Cutscenes/GeneralControls.gd" id="24_3xeah"]
+[ext_resource type="Script" uid="uid://bjctjn1lf0sa5" path="res://Global Scripts/marker_placement.gd" id="24_x25mo"]
 [ext_resource type="PackedScene" uid="uid://bak8ltrhbmlv5" path="res://GeneralScripts/interaction/CSGStairMaker3D.tscn" id="25_hlxb5"]
 [ext_resource type="AudioStream" uid="uid://ognsmvlpxfp7" path="res://Audio/Flashbacks/boil_water.wav" id="35_0lv26"]
 [ext_resource type="AudioStream" uid="uid://hoxqgu50jnon" path="res://Audio/Flashbacks/possible_breath.wav" id="36_ti67w"]
 [ext_resource type="PackedScene" uid="uid://doh80x0mvx2jp" path="res://Cutscenes/backwall.glb" id="36_uh4i3"]
 [ext_resource type="AudioStream" uid="uid://bux2fm1tusyht" path="res://Audio/ThirdHouse/AltDoorOpen_01.wav" id="38_rm74m"]
+[ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="42_mnrbd"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_krw4o"]
 animation = &"HallwayLookDoor"
@@ -516,7 +519,7 @@ min_space = 0.0
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_g7hnq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ug0gq"]
-graph_offset = Vector2(666.444, 49.0512)
+graph_offset = Vector2(-274.941, 80.5583)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_24duq")
 nodes/Animation/position = Vector2(280, 290)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3xeah")
@@ -981,12 +984,16 @@ material = SubResource("StandardMaterial3D_b3khi")
 size = Vector2(0.2, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kihg0"]
-size = Vector3(1.12781, 2.45105, 0.441772)
+size = Vector3(1.19489, 2.06049, 1.54689)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vs82i"]
-size = Vector3(0.810059, 1.27295, 0.274216)
+size = Vector3(0.512329, 0.858155, 0.363793)
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mnrbd"]
+size = Vector3(0.263672, 0.483887, 2.20569)
+
+[node name="Isaac_house_flash" type="Node3D"]
+script = ExtResource("1_di5mf")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 1
@@ -1013,7 +1020,7 @@ render_target_update_mode = 4
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(-0.0991393, 1.32676e-09, 1.68901e-10, 0.995074)
-bones/5/rotation = Quaternion(0.264793, -8.82902e-09, -1.27784e-09, 0.964305)
+bones/5/rotation = Quaternion(0.269055, -8.04916e-09, -1.1632e-09, 0.963125)
 bones/7/rotation = Quaternion(0.251585, 0.0036754, 0.0141376, 0.967725)
 bones/9/rotation = Quaternion(0.251585, 0.00367533, 0.014137, 0.967725)
 bones/11/rotation = Quaternion(-0.263317, -0.10466, -0.639998, 0.714222)
@@ -1038,7 +1045,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0.38)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(0.111542, -7.42854e-09, -1.4092e-09, 0.99376)
-bones/5/rotation = Quaternion(-0.0268566, -0.0383034, 0.0179815, 0.998743)
+bones/5/rotation = Quaternion(-0.0258837, -0.0382859, 0.0180188, 0.998769)
 bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
 bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
 bones/11/rotation = Quaternion(-0.398748, -0.0951924, -0.663664, 0.625691)
@@ -1079,6 +1086,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_mnrbd")
 }
 
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking"]
+transform = Transform3D(1, 0, -7.7486e-07, 0, 0.999999, 0, 7.7486e-07, 0, 1, -0.0570812, 0.632579, 0.0885825)
+
 [node name="IsaacMain" type="Node3D" parent="SubViewportContainer/SubViewport/Characters"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -3.42609, 0, -0.926975)
 
@@ -1097,14 +1107,17 @@ crouch_sound = NodePath("../Crouch")
 
 [node name="PlayerInteractor" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" instance=ExtResource("9_3xeah")]
 
+[node name="Alert" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
+visible = false
+
 [node name="IsaacFlashback_01" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" instance=ExtResource("1_b3khi")]
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01/Armature_001" index="0"]
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0754653, -0.038417, -0.0019455, 0.996406)
-bones/5/rotation = Quaternion(0.198865, -0.0705976, 0.00527057, 0.977467)
+bones/4/rotation = Quaternion(-0.0753258, -0.071794, -0.00363576, 0.994564)
+bones/5/rotation = Quaternion(0.19761, -0.13203, 0.00985686, 0.971299)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
 bones/6/rotation = Quaternion(1.92867e-08, -2.67596e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898596, 0.0145798, 0.997999)
@@ -1112,11 +1125,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-4.39494e-09, 2.33899e-09, 0.138842, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898602, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.435824, 0.0875336, -0.318453, 0.837247)
+bones/11/rotation = Quaternion(-0.476668, 0.0786994, -0.306547, 0.820136)
 bones/12/rotation = Quaternion(0.503192, 0.178565, -0.57087, 0.623714)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.336076, -0.0795837, 0.369973, 0.862461)
-bones/16/rotation = Quaternion(0.514078, -0.17418, 0.579038, 0.608358)
+bones/15/rotation = Quaternion(-0.295903, -0.083499, 0.381234, 0.871854)
+bones/16/rotation = Quaternion(0.512519, -0.174968, 0.577282, 0.611111)
 bones/19/rotation = Quaternion(0.09865, 0.00997421, -0.00680437, 0.995049)
 bones/20/rotation = Quaternion(-0.245123, 0.000133744, -0.00672399, 0.969469)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
@@ -1170,6 +1183,15 @@ collision_mask = 2
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261649, 0)
 collision_mask = 134217728
+
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" node_paths=PackedStringArray("marker", "body", "cam_face_front", "Jun_Book_cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220988, 1.30545, 0)
+script = ExtResource("24_x25mo")
+marker = NodePath(".")
+body = NodePath("..")
+cam_face_front = [NodePath("../../../../../CamSystem/BedroomIsaac"), NodePath("../../../../../CamSystem/KitchenCam"), NodePath("../../../../../CamSystem/HallCamIsaac")]
+x_pos = -0.15
+Jun_Book_cam = NodePath("../../../../../CamSystem/HallCamIsaac")
 
 [node name="FootstepsWood" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac"]
 stream = SubResource("AudioStreamSynchronized_j8wcf")
@@ -1259,7 +1281,7 @@ camera_3d_resource = SubResource("Resource_uue3t")
 metadata/_custom_type_script = "uid://dqmq7sj03m4v6"
 
 [node name="HallCamIsaac" type="Node3D" parent="SubViewportContainer/SubViewport/CamSystem"]
-transform = Transform3D(0.972102, 0.011645, -0.234268, 0.0185267, 0.991835, 0.126179, 0.233825, -0.126999, 0.963949, 0.113264, 3.28765, -4.07829)
+transform = Transform3D(0.970295, 0.061798, -0.233896, 0, 0.966824, 0.255446, 0.241922, -0.247858, 0.938105, 0.159719, 3.37174, -2.79284)
 script = ExtResource("4_gn7yl")
 priority = 30
 tween_resource = SubResource("Resource_ydyvw")
@@ -1395,12 +1417,15 @@ randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_gcp7e")
 draw_pass_1 = SubResource("QuadMesh_uue3t")
 
-[node name="ControlAreas" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("door_anim", "dalton_look", "dalton_room", "brother_anims", "doorSound", "seizure_sound")]
+[node name="ControlAreas" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("door_anim", "dalton_look", "dalton_room", "brother_anims", "isaac_marker", "kale_marker", "player", "doorSound", "seizure_sound")]
 script = ExtResource("24_3xeah")
 door_anim = NodePath("../DoorCutscene/AnimationPlayer")
 dalton_look = NodePath("../Characters/dalton_fb2/AnimationTree")
 dalton_room = NodePath("../Characters/dalton_fb3/AnimationTree")
 brother_anims = NodePath("../Characters/IsaacsBrotherTweaking/AnimationTree")
+isaac_marker = NodePath("../UI/Isaac")
+kale_marker = NodePath("../UI/Kale")
+player = NodePath("../Characters/IsaacMain/Isaac/CharacterBody3D")
 doorSound = NodePath("../Sounds/DoorOpen")
 seizure_sound = NodePath("../Characters/IsaacsBrotherTweaking/BrotherTweak")
 
@@ -1408,14 +1433,14 @@ seizure_sound = NodePath("../Characters/IsaacsBrotherTweaking/BrotherTweak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467339, 1.5694, -4.79712)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/WalkUp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0488892, 0.725525, 0.261902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015351, 0.920807, 0.814461)
 shape = SubResource("BoxShape3D_kihg0")
 
 [node name="EnterRoom" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33832, 2.76947, -7.14002)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/EnterRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0949707, -0.136475, -0.182747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243836, 0.0709226, -0.137959)
 shape = SubResource("BoxShape3D_vs82i")
 
 [node name="FaceKitchen" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
@@ -1429,6 +1454,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2321, 1.87213, -6.72687)
 
 [node name="Stair" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482575, 0, -2.12422)
+
+[node name="Check_Kale" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/Check_Kale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03007, 2.25806, -6.88922)
+shape = SubResource("BoxShape3D_mnrbd")
 
 [node name="backwall" parent="SubViewportContainer/SubViewport" instance=ExtResource("36_uh4i3")]
 
@@ -1461,6 +1492,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85721, 2.76176, -7.1785)
 stream = ExtResource("38_rm74m")
 bus = &"SFX"
 
+[node name="UI" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="Isaac" type="Marker2D" parent="SubViewportContainer/SubViewport/UI" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+script = ExtResource("42_mnrbd")
+marker = NodePath(".")
+cam = NodePath("../../CamSystem/Camera3D")
+body_marker = NodePath("../../Characters/IsaacMain/Isaac/CharacterBody3D/Marker3D")
+
+[node name="Kale" type="Marker2D" parent="SubViewportContainer/SubViewport/UI" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+position = Vector2(0, -2)
+script = ExtResource("42_mnrbd")
+marker = NodePath(".")
+cam = NodePath("../../CamSystem/Camera3D")
+body_marker = NodePath("../../Characters/IsaacsBrotherTweaking/Marker3D")
+
 [node name="CSGStairMaker3D" parent="." groups=["woodStairs"] instance=ExtResource("25_hlxb5")]
 transform = Transform3D(-0.00172783, 0, 0.999999, 0, 1, 0, -0.999999, 0, -0.00172783, 0.461691, 0.976738, -3.20657)
 visible = false
@@ -1476,14 +1522,19 @@ depth = 1.57379
 
 [connection signal="activate_hall" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_activate_hall"]
 [connection signal="cam_bed" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_cam_bed"]
+[connection signal="start_kitchen_dialogue" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_start_kitchen_dialogue"]
 [connection signal="check_on_isaac" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_control_areas_check_on_isaac"]
+[connection signal="start_Isaac" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_start_isaac"]
+[connection signal="switch_cam_bed" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_cam_bed"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/WalkUp" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_walk_up_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/EnterRoom" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_enter_room_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/Check_Kale" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_check_kale_body_entered"]
 
 [editable path="SubViewportContainer/SubViewport/Characters/dalton_fb2"]
 [editable path="SubViewportContainer/SubViewport/Characters/dalton_fb1"]
 [editable path="SubViewportContainer/SubViewport/Characters/dalton_fb3"]
 [editable path="SubViewportContainer/SubViewport/Characters/IsaacsBrotherTweaking"]
+[editable path="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/PlayerInteractor"]
 [editable path="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01"]
 [editable path="SubViewportContainer/SubViewport/DoorCutscene"]
 [editable path="SubViewportContainer/SubViewport/woodtryagain26"]
