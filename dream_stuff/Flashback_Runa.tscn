@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://c02ounmvlw1ww"]
+[gd_scene load_steps=44 format=4 uid="uid://c02ounmvlw1ww"]
 
 [ext_resource type="PackedScene" uid="uid://j12gmnq6waxl" path="res://dream_stuff/organizedOffice.glb" id="1_0s4oq"]
 [ext_resource type="PackedScene" uid="uid://cpv4qukow4new" path="res://SecondHouse/woodtryagain25.glb" id="2_otrhg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1e8y248ois5s" path="res://Cutscenes/dalton_fb2_2.glb" id="4_otrhg"]
 [ext_resource type="PackedScene" uid="uid://xjogktm15mo6" path="res://Cutscenes/runa.glb" id="5_os5ge"]
 [ext_resource type="Shader" uid="uid://ioiiowkr1h2a" path="res://ShaderScripts/sky.gdshader" id="6_7q87w"]
+[ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="7_5mks0"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5vl0h"]
 _surfaces = [{
@@ -135,7 +136,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ruteg"]
-states/End/position = Vector2(1053, 74)
+states/End/position = Vector2(1054, 74)
 states/IdleIsaac/node = SubResource("AnimationNodeAnimation_vano1")
 states/IdleIsaac/position = Vector2(594.905, 190.875)
 "states/IdleIsaac 2/node" = SubResource("AnimationNodeAnimation_tawba")
@@ -278,18 +279,20 @@ near = 0.001
 far = 4007.19
 
 [node name="DialogueCam2" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.770767, 0.207092, -0.602521, 0.00994016, 0.949492, 0.313634, 0.63704, 0.235749, -0.733895, -1.1117, 1.44632, -0.815992)
+transform = Transform3D(-0.822231, 0.467373, -0.324804, 0.0060512, 0.577826, 0.816138, 0.569121, 0.669089, -0.477935, -1.37514, 2.44871, -0.815992)
 
 [node name="CamAnims" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
 libraries = {
 &"": SubResource("AnimationLibrary_os5ge")
 }
 
-[node name="Characters" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("anim_I", "anim_r", "anim_c")]
+[node name="Characters" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("anim_I", "anim_r", "anim_c", "isaac_marker", "runa_marker")]
 script = ExtResource("4_6b7fn")
 anim_I = NodePath("IsaacFlashback_01/AnimationTree")
 anim_r = NodePath("runa/AnimationTree")
 anim_c = NodePath("../CamAnims")
+isaac_marker = NodePath("IsaacFlashback_01/Isaac Marker")
+runa_marker = NodePath("runa/Runa Marker")
 
 [node name="dalton_fb2_2" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("4_otrhg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.290234, 0.405137, 0)
@@ -299,7 +302,7 @@ bones/0/position = Vector3(2.84217e-14, 0, -2.01189)
 bones/0/rotation = Quaternion(-3.55271e-15, 0.707107, 0.707107, -3.86673e-15)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(0.0103681, -3.34154e-09, 2.75694e-09, 0.999946)
-bones/5/rotation = Quaternion(0.423473, -0.000734517, -0.00183291, 0.905906)
+bones/5/rotation = Quaternion(0.42159, -0.000730706, -0.00183443, 0.906785)
 bones/6/position = Vector3(0.255908, 0.653836, 0.0887256)
 bones/6/rotation = Quaternion(0.152865, -0.0222088, -0.142048, 0.977733)
 bones/8/position = Vector3(-0.261278, 0.654172, 0.0880383)
@@ -364,26 +367,35 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/nod = false
 parameters/conditions/snapOut = false
 
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347348, 1.38388, 0.170369)
+
+[node name="Isaac Marker" type="Marker2D" parent="SubViewportContainer/SubViewport/Characters/IsaacFlashback_01" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+script = ExtResource("7_5mks0")
+marker = NodePath(".")
+cam = NodePath("../../../MainCam")
+body_marker = NodePath("../Marker3D")
+
 [node name="runa" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("5_os5ge")]
 transform = Transform3D(-0.0206807, 0, 0.999786, 0, 1, 0, -0.999786, 0, -0.0206807, -1.0067, 0, 0.177566)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/runa/RunaArmature" index="0"]
-bones/0/position = Vector3(-4.10146e-10, -1.49012e-08, -1.78475)
+bones/0/position = Vector3(-2.65375e-11, -1.49012e-08, -1.79353)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(-0.0740195, 1.32601e-11, -3.55225e-09, 0.997257)
 bones/5/rotation = Quaternion(0.069536, -0.00696859, 0.000421636, 0.997555)
-bones/11/rotation = Quaternion(-0.198033, -0.090519, -0.308277, 0.926042)
-bones/12/rotation = Quaternion(-0.360388, -0.23795, -0.620636, 0.654455)
+bones/11/rotation = Quaternion(-0.198678, -0.0907217, -0.312451, 0.924484)
+bones/12/rotation = Quaternion(-0.357215, -0.240155, -0.615172, 0.66052)
 bones/13/rotation = Quaternion(0.00586479, -0.00230101, -0.0204733, 0.999771)
-bones/15/rotation = Quaternion(-0.269058, 0.0189753, 0.360227, 0.89302)
-bones/16/rotation = Quaternion(-0.21075, 0.231613, 0.558979, 0.767777)
-bones/19/rotation = Quaternion(0.0553306, -0.0330045, -0.041425, 0.997062)
-bones/20/rotation = Quaternion(-0.136645, -0.0034078, 0.0124181, 0.990536)
-bones/21/rotation = Quaternion(0.753742, -0.0128403, 0.0310064, 0.656313)
-bones/23/rotation = Quaternion(0.0553306, 0.0330046, 0.041425, 0.997062)
-bones/24/rotation = Quaternion(-0.136645, 0.0034078, -0.0124181, 0.990536)
-bones/25/rotation = Quaternion(0.753742, 0.0128403, -0.0310064, 0.656313)
+bones/15/rotation = Quaternion(-0.269196, 0.0203994, 0.365456, 0.89082)
+bones/16/rotation = Quaternion(-0.20763, 0.233494, 0.550704, 0.774012)
+bones/19/rotation = Quaternion(0.0277768, -0.03195, -0.0399324, 0.998305)
+bones/20/rotation = Quaternion(-0.0890381, -0.00342656, 0.00809166, 0.99599)
+bones/21/rotation = Quaternion(0.738888, -0.01353, 0.0307117, 0.672992)
+bones/23/rotation = Quaternion(0.0277768, 0.0319501, 0.0399324, 0.998305)
+bones/24/rotation = Quaternion(-0.0890381, 0.00342656, -0.00809167, 0.99599)
+bones/25/rotation = Quaternion(0.738888, 0.01353, -0.0307117, 0.672992)
 bones/27/rotation = Quaternion(-0.0204547, 8.89913e-16, 0.999791, -1.97563e-09)
 bones/28/position = Vector3(0.445655, 0.0258286, -1.82566)
 bones/29/position = Vector3(-0.434528, -0.0900155, -1.67399)
@@ -392,6 +404,15 @@ bones/29/position = Vector3(-0.434528, -0.0900155, -1.67399)
 tree_root = SubResource("AnimationNodeStateMachine_scao6")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/look_around = false
+
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/runa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.209035, 1.23476, -0.244134)
+
+[node name="Runa Marker" type="Marker2D" parent="SubViewportContainer/SubViewport/Characters/runa" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+script = ExtResource("7_5mks0")
+marker = NodePath(".")
+cam = NodePath("../../../MainCam")
+body_marker = NodePath("../Marker3D")
 
 [node name="lighting" type="Node" parent="SubViewportContainer/SubViewport"]
 

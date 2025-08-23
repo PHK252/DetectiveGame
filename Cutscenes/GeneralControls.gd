@@ -55,10 +55,12 @@ func _on_start_kitchen_dialogue():
 	kitchen_dialogue.register_character(load("res://Dialogic Characters/Isaac.dch"), isaac_marker)
 
 func _on_kitchen_ended():
+	Dialogic.timeline_ended.disconnect(_on_kitchen_ended)
 	GlobalVars.in_dialogue = false
 	emit_signal("start_Isaac")
 
 func _on_open_ended():
+	Dialogic.timeline_ended.disconnect(_on_open_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	dalton_look["parameters/conditions/go_in"] = true
@@ -69,6 +71,7 @@ func _on_open_ended():
 
 
 func _on_flash_ended():
+	Dialogic.timeline_ended.disconnect(_on_flash_ended)
 	GlobalVars.in_dialogue = false
 	player.stop_player()
 	#transition to office
