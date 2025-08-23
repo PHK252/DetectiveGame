@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://bawb6xy2v8wo"]
+[gd_scene load_steps=86 format=4 uid="uid://bawb6xy2v8wo"]
 
 [ext_resource type="PackedScene" uid="uid://decqoin6bioax" path="res://Cutscenes/Flashback_02_base.glb" id="1_0r6ac"]
 [ext_resource type="PackedScene" uid="uid://cwntuls5h8ih5" path="res://Cutscenes/Flashback_02_case.glb" id="2_voq18"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bkik4ot1d4dnf" path="res://Cutscenes/Flashback_02_CIA2.glb" id="4_15a1p"]
 [ext_resource type="PackedScene" uid="uid://cwjneudsh1hky" path="res://Cutscenes/Flashback_02_branches.glb" id="4_iiww1"]
 [ext_resource type="AudioStream" uid="uid://6p0d8nw57oj0" path="res://Audio/Footsteps/Soil/soilSteps_04.wav" id="5_7utkt"]
+[ext_resource type="Script" uid="uid://bjctjn1lf0sa5" path="res://Global Scripts/marker_placement.gd" id="5_c5kvm"]
 [ext_resource type="PackedScene" uid="uid://cmwt84lyo0ry2" path="res://Cutscenes/Flashback_02_Isaac.glb" id="5_frku4"]
 [ext_resource type="PackedScene" uid="uid://dj5ke37swekqw" path="res://Cutscenes/Flashback_02_phone.glb" id="6_2t034"]
+[ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="6_lpps4"]
 [ext_resource type="AudioStream" uid="uid://cq8eaqrab33d2" path="res://Audio/Footsteps/Soil/soilSteps_05.wav" id="6_pbqp2"]
 [ext_resource type="AudioStream" uid="uid://dqj5kc4fitm6m" path="res://Audio/Footsteps/Soil/soilSteps_06.wav" id="7_c5kvm"]
 [ext_resource type="PackedScene" uid="uid://cppl062pghgm0" path="res://Cutscenes/Flashback_02_whistleblower.glb" id="7_iiww1"]
@@ -492,6 +494,11 @@ _data = {
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gllma"]
 animation = &"WhistleBlowerEnter"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_budpr"]
 animation = &"WhistleBlowerExit"
@@ -501,6 +508,7 @@ animation = &"WhistleBlowerIdle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_em3pn"]
 advance_mode = 2
+advance_condition = &"enter"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qcn5r"]
 switch_mode = 2
@@ -513,7 +521,7 @@ advance_condition = &"handover"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kseyv"]
 states/End/position = Vector2(1071.5, 100)
 states/WhistleBlowerEnter/node = SubResource("AnimationNodeAnimation_gllma")
-states/WhistleBlowerEnter/position = Vector2(387.5, 99.75)
+states/WhistleBlowerEnter/position = Vector2(387.5, 100.125)
 states/WhistleBlowerExit/node = SubResource("AnimationNodeAnimation_budpr")
 states/WhistleBlowerExit/position = Vector2(806.715, 99.875)
 states/WhistleBlowerIdle/node = SubResource("AnimationNodeAnimation_56133")
@@ -740,6 +748,18 @@ mesh = SubResource("ArrayMesh_iiww1")
 [node name="Armature_001" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA1/Armature_001" index="1" node_paths=PackedStringArray("marker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382929, 0, -3.58496)
+script = ExtResource("5_c5kvm")
+marker = NodePath(".")
+x_pos = -0.1
+
+[node name="MM1" type="Marker2D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA1/Armature_001" index="2" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+script = ExtResource("6_lpps4")
+marker = NodePath(".")
+cam = NodePath("../../../../Cam/Camera3D")
+body_marker = NodePath("../Marker3D")
+
 [node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA1"]
 tree_root = SubResource("AnimationNodeStateMachine_dr0fd")
 anim_player = NodePath("../AnimationPlayer")
@@ -761,6 +781,18 @@ bus = &"SFX"
 
 [node name="Armature" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA2/Armature" index="1" node_paths=PackedStringArray("marker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.353436, 0, -3.57695)
+script = ExtResource("5_c5kvm")
+marker = NodePath(".")
+x_pos = -0.1
+
+[node name="MM2" type="Marker2D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA2/Armature" index="2" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+script = ExtResource("6_lpps4")
+marker = NodePath(".")
+cam = NodePath("../../../../Cam/Camera3D")
+body_marker = NodePath("../Marker3D")
 
 [node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA2"]
 tree_root = SubResource("AnimationNodeStateMachine_kvkgf")
@@ -791,7 +823,7 @@ bus = &"SFX"
 transform = Transform3D(-0.0124662, 0.461924, -2.01913e-08, 0, -2.01987e-08, -0.462092, -0.461924, -0.0124662, 5.44915e-10, 0, 0.316403, -0.899646)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_Isaac/Armature_002" index="0"]
-bones/0/position = Vector3(-5.96046e-08, 0, -1.7933)
+bones/0/position = Vector3(-5.96046e-08, 0, -1.77714)
 bones/0/rotation = Quaternion(-0.4719, 0.526603, 0.526603, -0.4719)
 bones/1/rotation = Quaternion(1.25411e-08, 0.129933, 0.991523, -1.30457e-08)
 bones/4/rotation = Quaternion(-0.0755212, -2.43548e-09, 1.16257e-09, 0.997144)
@@ -803,17 +835,17 @@ bones/8/position = Vector3(-0.262217, 0.657452, 0.0662161)
 bones/8/rotation = Quaternion(3.93493e-09, 5.47231e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.308277, 0.00450352, 0.0138954, 0.951184)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.390492, 0.0777783, -0.450813, 0.798895)
-bones/12/rotation = Quaternion(0.134049, -0.284561, -0.641402, 0.699757)
+bones/11/rotation = Quaternion(-0.392895, 0.0818974, -0.445838, 0.800097)
+bones/12/rotation = Quaternion(0.13658, -0.28045, -0.653511, 0.689649)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.336807, -0.0101349, 0.425015, 0.840131)
-bones/16/rotation = Quaternion(0.0871443, 0.217094, 0.569018, 0.788349)
-bones/19/rotation = Quaternion(0.0285868, -0.00275485, -0.0169823, 0.999443)
-bones/20/rotation = Quaternion(-0.106368, 0.00013717, -0.00291779, 0.994323)
-bones/21/rotation = Quaternion(0.749681, -0.0310093, 0.026683, 0.660534)
-bones/23/rotation = Quaternion(0.0285869, 0.00275517, 0.0169827, 0.999443)
-bones/24/rotation = Quaternion(-0.106368, -0.000137172, 0.00291779, 0.994323)
-bones/25/rotation = Quaternion(0.749681, 0.0310093, -0.0266831, 0.660534)
+bones/15/rotation = Quaternion(-0.33958, -0.0136837, 0.417955, 0.842504)
+bones/16/rotation = Quaternion(0.0894563, 0.214182, 0.584115, 0.777775)
+bones/19/rotation = Quaternion(0.0645738, -0.00373591, -0.0156098, 0.997784)
+bones/20/rotation = Quaternion(-0.178073, 0.000135752, -0.00488472, 0.984005)
+bones/21/rotation = Quaternion(0.778871, -0.0297671, 0.0280622, 0.625849)
+bones/23/rotation = Quaternion(0.0645739, 0.003736, 0.0156104, 0.997784)
+bones/24/rotation = Quaternion(-0.178073, -0.000135742, 0.00488473, 0.984005)
+bones/25/rotation = Quaternion(0.778871, 0.0297671, -0.0280621, 0.625849)
 bones/26/position = Vector3(0.106307, 0.263697, -0.13186)
 bones/26/rotation = Quaternion(0.0152332, 0.0136507, 0.744573, -0.667228)
 bones/27/position = Vector3(0.0465011, -0.28049, -0.13186)
@@ -826,6 +858,18 @@ bones/30/position = Vector3(-0.445218, 1.24633, -2.76784)
 bones/30/rotation = Quaternion(0.527442, -0.588583, 0.408881, 0.456279)
 bones/31/position = Vector3(-0.705265, -1.11989, -2.76784)
 bones/31/rotation = Quaternion(-0.527442, 0.588583, 0.408882, 0.45628)
+
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_Isaac/Armature_002" index="1" node_paths=PackedStringArray("marker")]
+transform = Transform3D(1, -3.72529e-09, 2.22045e-16, 3.72529e-09, 1, 1.41206e-15, -2.22045e-16, 1.4086e-15, 1, 0.00938344, -0.347696, -2.91177)
+script = ExtResource("5_c5kvm")
+marker = NodePath(".")
+x_pos = -0.1
+
+[node name="Isaac" type="Marker2D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_Isaac/Armature_002" index="2" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+script = ExtResource("6_lpps4")
+marker = NodePath(".")
+cam = NodePath("../../../../Cam/Camera3D")
+body_marker = NodePath("../Marker3D")
 
 [node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_Isaac"]
 tree_root = SubResource("AnimationNodeStateMachine_em3pn")
@@ -840,49 +884,29 @@ libraries = {
 [node name="Flashback_02_phone" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("6_2t034")]
 
 [node name="Cube_013" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_phone" index="0"]
-transform = Transform3D(-0.00147138, -0.000406862, 0.00194247, -0.000911123, 0.000806187, 0.000475978, -0.00104888, -0.000129554, -0.00313838, 0.299808, 1.18314, -0.716387)
+transform = Transform3D(-0.00147138, -0.000406862, 0.00194247, -0.00138628, 0.000383824, -0.00221331, 9.23575e-05, -0.000720694, -0.00227536, -0.0134784, -0.142912, -0.80287)
 
 [node name="Flashback_02_whistleblower" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("7_iiww1")]
 
 [node name="WhistleBlower" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_whistleblower" index="0"]
-transform = Transform3D(-0.432953, -1.68598e-07, 7.36965e-15, 0, -1.8925e-08, -0.432953, 1.68598e-07, -0.432953, 1.8925e-08, 0, 0.294625, 3.81866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_whistleblower/WhistleBlower" index="0"]
-bones/0/position = Vector3(2.27374e-13, 0, -1.79414)
-bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
-bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0838662, -3.58817e-16, 1.08111e-15, 0.996477)
-bones/5/rotation = Quaternion(-0.021469, -0.0358701, 0.00521082, 0.999112)
-bones/6/rotation = Quaternion(-0.114923, 0.0414622, -0.697659, 0.705936)
-bones/7/rotation = Quaternion(-0.173336, -0.236497, -0.649254, 0.701778)
-bones/8/rotation = Quaternion(-0.0027868, 0.000260472, -0.0018899, 0.999994)
-bones/10/rotation = Quaternion(-0.167653, -0.0931899, 0.678946, 0.708689)
-bones/11/rotation = Quaternion(-0.24512, 0.000452124, 0.470734, 0.847541)
-bones/12/rotation = Quaternion(0.0518732, -0.0737259, 0.302219, 0.948966)
-bones/15/rotation = Quaternion(0.0700137, 0.0475627, 0.0261985, 0.996067)
-bones/16/rotation = Quaternion(-0.464133, 0.000115926, -0.0301818, 0.885251)
-bones/17/rotation = Quaternion(0.735595, -0.0296425, 0.0271392, 0.676229)
-bones/19/rotation = Quaternion(0.0798464, 0.00328622, 0.0161587, 0.996671)
-bones/20/rotation = Quaternion(-0.00294228, -0.000130955, 0.000191331, 0.999996)
-bones/21/rotation = Quaternion(0.735595, 0.0296424, -0.0271392, 0.676229)
-bones/22/position = Vector3(0.388127, -0.521932, -0.38283)
-bones/22/rotation = Quaternion(0.0204546, 3.46945e-18, 0.999791, 1.97563e-09)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/position = Vector3(-0.281805, 0.246652, -0.100251)
-bones/23/rotation = Quaternion(-0.0204547, 8.89913e-16, 0.999791, -1.97563e-09)
-bones/23/scale = Vector3(1, 1, 1)
-bones/24/position = Vector3(0.568429, 0.339823, -1.52051)
-bones/24/rotation = Quaternion(0.790332, 8.88178e-16, 0.612679, 2.29697e-08)
-bones/25/position = Vector3(-0.545686, -0.213742, -1.55116)
-bones/25/rotation = Quaternion(0.790332, -8.88178e-16, -0.612679, 2.29697e-08)
-bones/26/position = Vector3(1.03353, 0.578705, -2.76784)
-bones/26/rotation = Quaternion(3.67491e-23, -0.790332, 1.69407e-21, 0.612679)
-bones/27/position = Vector3(-1.0457, 0.578705, -2.80488)
-bones/27/rotation = Quaternion(3.55271e-15, 0.790332, 4.21469e-08, 0.612679)
+[node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_whistleblower/WhistleBlower" index="1" node_paths=PackedStringArray("marker")]
+transform = Transform3D(1, 1.98952e-13, -1.69407e-20, -1.98952e-13, 1, -1.42109e-14, -6.77626e-21, 1.42109e-14, 1, -0.429865, 0.366474, -3.21868)
+script = ExtResource("5_c5kvm")
+marker = NodePath(".")
+x_pos = -0.1
+
+[node name="Marcus" type="Marker2D" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_whistleblower/WhistleBlower" index="2" node_paths=PackedStringArray("marker", "cam", "body_marker")]
+script = ExtResource("6_lpps4")
+marker = NodePath(".")
+cam = NodePath("../../../../Cam/Camera3D")
+body_marker = NodePath("../Marker3D")
 
 [node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_whistleblower"]
 tree_root = SubResource("AnimationNodeStateMachine_kseyv")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/enter = false
 parameters/conditions/handover = false
 
 [node name="WhistleblowerSounds" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Characters/Flashback_02_whistleblower"]
@@ -912,7 +936,7 @@ bones/0/position = Vector3(2.38419e-07, -1.49012e-08, -1.79414)
 bones/0/rotation = Quaternion(3.82333e-15, 0.707107, 0.707107, 3.51068e-15)
 bones/1/rotation = Quaternion(1.42688e-08, 0.129933, 0.991523, -1.18427e-08)
 bones/4/rotation = Quaternion(-0.0755212, -4.39621e-12, -1.28375e-10, 0.997144)
-bones/5/rotation = Quaternion(0.170649, -0.052336, -0.0173095, 0.983789)
+bones/5/rotation = Quaternion(0.170638, -0.0523359, -0.0173096, 0.983791)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
 bones/6/rotation = Quaternion(5.533e-10, 6.23693e-10, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
@@ -981,7 +1005,7 @@ transform = Transform3D(-0.00120587, -0.441427, 0.897296, -0.00059323, 0.897297,
 projection = 1
 size = 4.78
 
-[node name="ControlNode" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("anim_case", "anim_phone", "isaac_anim", "whistleblower_anim", "CIA_anim", "CIA_02_anim", "watching_dalton", "CIA_01", "CIA_02", "isaac_sounds", "wb_sounds", "CIA2_sounds", "CIA1_sounds")]
+[node name="ControlNode" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("anim_case", "anim_phone", "isaac_anim", "whistleblower_anim", "CIA_anim", "CIA_02_anim", "watching_dalton", "CIA_01", "CIA_02", "isaac_marker", "marcus_marker", "man1_marker", "man2_marker", "isaac_sounds", "wb_sounds", "CIA2_sounds", "CIA1_sounds")]
 script = ExtResource("11_th87f")
 anim_case = NodePath("../Characters/Flashback_02_case/AnimationPlayer")
 anim_phone = NodePath("../Characters/Flashback_02_phone/AnimationPlayer")
@@ -992,6 +1016,10 @@ CIA_02_anim = NodePath("../Characters/Flashback_02_CIA2/AnimationTree")
 watching_dalton = NodePath("../Characters/Flashback_02_Dalt/AnimationTree")
 CIA_01 = NodePath("../Characters/Flashback_02_CIA1")
 CIA_02 = NodePath("../Characters/Flashback_02_CIA2")
+isaac_marker = NodePath("../Characters/Flashback_02_Isaac/Armature_002/Isaac")
+marcus_marker = NodePath("../Characters/Flashback_02_whistleblower/WhistleBlower/Marcus")
+man1_marker = NodePath("../Characters/Flashback_02_CIA1/Armature_001/MM1")
+man2_marker = NodePath("../Characters/Flashback_02_CIA2/Armature/MM2")
 isaac_sounds = NodePath("../Characters/Flashback_02_Isaac/IsaacSounds")
 wb_sounds = NodePath("../Characters/Flashback_02_whistleblower/WhistleblowerSounds")
 CIA2_sounds = NodePath("../Characters/Flashback_02_CIA2/CIA2Sounds")
