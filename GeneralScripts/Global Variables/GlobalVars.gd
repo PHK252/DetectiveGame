@@ -2,8 +2,9 @@ extends Node
 
 #Global
 #subject to lengthen
-var default_cursor = preload("res://UI/Assets/Cursors/Default Cursor.png") 
-var pointing_hand = preload("res://UI/Assets/Cursors/Pointing Cursor.png")
+var default_cursor = preload("res://UI/Assets/Cursors/Default Cursor small.png") 
+var pointing_hand = preload("res://UI/Assets/Cursors/Pointing hand small.png")
+var i_beam = preload("res://UI/Assets/Cursors/I beam dark small.png")
 
 signal phone_call_receiving 
 signal open_micah_case
