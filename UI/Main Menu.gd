@@ -23,4 +23,4 @@ func _on_quit_pressed():
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
+	Loading.load_scene(self, "res://StartingOffice/starting_office.tscn", false, "", "")
