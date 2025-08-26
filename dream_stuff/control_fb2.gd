@@ -8,6 +8,7 @@ extends Node
 @export var runa_marker : Marker2D
 
 func _ready() -> void:
+	
 	anim_c.play("CamAnim")
 	await anim_c.animation_finished
 	#anim_r["parameters/conditions/look_around"] = true
