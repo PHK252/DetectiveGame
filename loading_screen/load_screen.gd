@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-@onready var loading_scene = preload("res://loading_screen/load_screen.tscn")
+var loading_scene = preload("res://loading_screen/load_screen.tscn")
 signal loading_screen_has_full_coverage
 #@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 ##Driving animation
@@ -31,6 +31,8 @@ var current_anim : AnimationPlayer
 	#self.queue_free()
 
 func load_scene(current_scene, next_scene, driving : bool, time : String, dialogue : String):
+	SceneTransitions.fade_to_load()
+	await SceneTransitions.fade.animation_finished
 	var scene_instance = loading_scene.instantiate()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().get_root().add_child(scene_instance)
@@ -57,11 +59,12 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 			current_anim = drive_anim
 			drive_anim.play("Day_anim")
 	else:
-		#print("play")
+		
 		toggle_drive(false)
 		toggle_default(true)
 		current_anim = d_loading_anim
 		current_anim.play("Load")
+		print("play")
 
 	#if dialogue != "":
 			##play dialogue
@@ -79,7 +82,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 			toggle_drive(false)
 			toggle_default(false)
 			var new_scene = ResourceLoader.load_threaded_get(next_scene)
-			get_tree().change_scene_to_packed(new_scene)
+			SceneTransitions.fade_change_packed_scene(new_scene)
 			scene_instance.queue_free()
 		#elif load_status == 0 or 2:
 			#print_debug("Error: Loading failed")

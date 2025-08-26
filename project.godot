@@ -32,6 +32,7 @@ SaveLoad="*res://GeneralScripts/Save System/Save_Load.gd"
 GlobalVars="*res://GeneralScripts/Global Variables/GlobalVars.gd"
 LoadManager="*res://Autoloads/load_manager.gd"
 Loading="*res://loading_screen/load_screen.gd"
+SceneTransitions="*res://UI/scene_transitions.tscn"
 
 [dialogic]
 
@@ -568,3 +569,4 @@ Question={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.156863, 0.156863, 0.160784, 1)
