@@ -221,7 +221,7 @@ directories/dtl_directory={
 "Warrant_property": "res://Dialogue Stuff/Timelines/Micah/Warrant_property.dtl",
 "isaac": "res://Dialogue Stuff/Timelines/Beginning/isaac.dtl"
 }
-layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres", "res://Dialogue Stuff/Thoughts.tres", "res://Dialogue Stuff/Dalton Box.tres", "res://Dialogue Stuff/Isaac Box.tres", "res://Dialogue Stuff/Text_Bubble_flipped.tres"]
+layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres", "res://Dialogue Stuff/Thoughts.tres", "res://Dialogue Stuff/Dalton Box.tres", "res://Dialogue Stuff/Isaac Box.tres"]
 layout/default_style="res://Dialogue Stuff/Text_Bubble.tres"
 variables={
 "Asked Questions": {
@@ -278,6 +278,7 @@ variables={
 },
 "Global": {
 "first_house": "",
+"flip_bubble": false,
 "got_theo_ad": false,
 "went_to_Juniper": false,
 "went_to_Micah": false,

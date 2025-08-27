@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="DialogicStyle" load_steps=4 format=3 uid="uid://dfqke6npa0lcj"]
 
-[ext_resource type="PackedScene" uid="uid://1qevnq7nrwwj" path="res://Dialogue Stuff/CustomTextBubble/custom_text_bubble.tscn" id="1_y0lwm"]
+[ext_resource type="PackedScene" uid="uid://1qevnq7nrwwj" path="res://Dialogue Stuff/CustomTextBubble/CustomTextBubble/custom_text_bubble.tscn" id="1_4lbvi"]
 [ext_resource type="Script" uid="uid://cqeyrtvogqus0" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_6cgjh"]
 [ext_resource type="Script" uid="uid://ce5ibptrpye5v" path="res://addons/dialogic/Resources/dialogic_style.gd" id="5_00bx6"]
 
 [resource]
 script = ExtResource("5_00bx6")
 name = "Text_Bubble"
-base_scene = ExtResource("1_y0lwm")
+base_scene = ExtResource("1_4lbvi")
 base_overrides = {}
 layers = Array[ExtResource("2_6cgjh")]([])
 metadata/_latest_layer = -1

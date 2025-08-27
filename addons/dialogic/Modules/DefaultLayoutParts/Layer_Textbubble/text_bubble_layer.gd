@@ -117,7 +117,10 @@ func bubble_apply_overrides(bubble:TextBubble) -> void:
 
 	## BEHAVIOUR
 	bubble.safe_zone = behaviour_distance
-	bubble.base_direction = behaviour_direction
+	if Dialogic.VAR.get_variable("Global.flip_bubble") == true:
+		bubble.base_direction = Vector2(-1, -1)
+	else:
+		bubble.base_direction = behaviour_direction
 
 
 	## NAME LABEL SETTINGS

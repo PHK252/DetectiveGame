@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvb0id5xli5a5"]
+
+[ext_resource type="PackedScene" uid="uid://b27gr7j2hs4ok" path="res://Cutscenes/Bedroom.glb" id="1_nsusl"]
+
+[node name="Bedroom" instance=ExtResource("1_nsusl")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(1.46083e-08, 0.129933, 0.991523, -1.17395e-08)
+bones/4/rotation = Quaternion(-0.169677, 0.318233, -0.0893867, 0.928411)
+bones/4/scale = Vector3(1.00448, 1.00448, 1.00448)
+bones/5/rotation = Quaternion(0.0630539, 4.64229e-09, 7.75873e-09, 0.99801)
+bones/11/rotation = Quaternion(0.192691, 0.00714143, -0.638964, 0.744677)
+bones/12/rotation = Quaternion(0.148612, 0.121989, -0.112283, 0.974898)
+bones/15/rotation = Quaternion(-0.55103, 0.296161, 0.402206, 0.668495)
+bones/16/rotation = Quaternion(0.151503, 1.88593e-08, 0.0389927, 0.987687)
+bones/19/rotation = Quaternion(0.0711476, 0.992653, 0.0475489, 0.0855447)
+bones/20/rotation = Quaternion(-0.592011, 0.000111163, -0.0162395, 0.805767)
+bones/23/rotation = Quaternion(-0.0245924, 0.998645, 0.0457269, 0.00348848)
+bones/24/rotation = Quaternion(-0.594351, -0.000110918, 0.0163037, 0.804041)
+bones/26/position = Vector3(0.298753, 0.837016, -0.747157)
+bones/27/position = Vector3(-0.248711, 0.837016, -0.747157)
+bones/27/rotation = Quaternion(-0.0204547, 5.63785e-16, 0.999791, -1.97563e-09)
+bones/28/position = Vector3(0.811699, 0.381712, -1.59048)
+bones/29/position = Vector3(-0.909525, 0.268867, -1.5791)
