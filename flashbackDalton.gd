@@ -30,8 +30,8 @@ var blend_target = 1.0
 func _ready() -> void:
 	add_to_group("player")
 	anim_tree.set("parameters/Blend2/blend_amount", blend_target)
-	in_control = false
-	await get_tree().create_timer(10).timeout
+	#in_control = false
+	#await get_tree().create_timer(10).timeout
 	# Start lerping to 0
 	blend_target = 0.0
 	await get_tree().create_timer(1).timeout
@@ -154,3 +154,5 @@ func _on_dalton_to_walk_out():
 	number = 1
 	force_rotate(number)
 	move_out = true
+	await get_tree().create_timer(3.5).timeout
+	Loading.load_scene(self, GlobalVars.office_path, false, "", "")

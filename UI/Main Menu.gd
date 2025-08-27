@@ -24,4 +24,4 @@ func _on_quit_pressed():
 
 func _on_start_pressed():
 	#SceneTransitions.glitch_change_scene("res://StartingOffice/starting_office.tscn")
-	Loading.load_scene(self, "res://StartingOffice/starting_office.tscn", false, "", "adfadsf")
+	Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")

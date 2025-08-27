@@ -185,11 +185,19 @@ var evi_char = ""
 var evidence = ""
 
 var player_pos
-var first_house_path = "res://FirstHouse/first_house.tscn"
-var second_house_path = "res://SecondHouse/second_house.tscn"
-var third_house_path = "res://ThirdHouse/third_house.tscn"
-var secret_path = "res://SecretLocation/secret_location.tscn"
-var office_path = "res://StartingOffice/starting_office.tscn"
+var first_house_path := "res://FirstHouse/first_house.tscn"
+var second_house_path := "res://SecondHouse/second_house.tscn"
+var third_house_path := "res://ThirdHouse/third_house.tscn"
+var secret_path := "res://SecretLocation/secret_location.tscn"
+var office_path := "res://StartingOffice/starting_office.tscn"
+var beginning_office := "res://Cutscenes/cluttered_office.tscn"
+var dream_trans := "res://dream_stuff/dreamTransition.tscn"
+var flashback_1_1 := "res://Cutscenes/Flashback_01.tscn"
+var flashback_1_2 := "res://dream_stuff/Flashback_Runa.tscn"
+var flashback_2 := "res://Cutscenes/Flashback_02.tscn"
+
+
+
 var cam_changed = false
 var clue_progress = 1
 var ghost_open = false

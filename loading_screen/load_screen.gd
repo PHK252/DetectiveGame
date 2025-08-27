@@ -14,13 +14,13 @@ var drive_anim : AnimationPlayer
 var d_back_loading : Node2D
 var d_loading_anim : AnimationPlayer
  
-var d_loading_sprite : Sprite2D
+var d_loading_sprite : AnimatedSprite2D
 
 #@onready var progressBar : ProgressBar = $AnimationPlayer/Panel/ProgressBar
 var _progress: Array = []
 var loaded = false
 var load_status = 0
-
+var in_loading : bool
 var current_anim : AnimationPlayer    
 
 
@@ -35,6 +35,7 @@ var current_anim : AnimationPlayer
 	#self.queue_free()
 
 func load_scene(current_scene, next_scene, driving : bool, time : String, dialogue : String):
+	in_loading = true
 	SceneTransitions.fade_to_load()
 	await SceneTransitions.fade.animation_finished
 	var loading_scene = load(loading_scene_file)
@@ -42,6 +43,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().get_root().add_child(scene_instance)
 	current_scene.queue_free()
+	#
 	ResourceLoader.load_threaded_request(next_scene)
 	#driving
 	drive_loading = scene_instance.get_node("Drinving Loading/Morning/Driving")
@@ -84,16 +86,22 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 		load_status = ResourceLoader.load_threaded_get_status(next_scene, _progress)
 		if load_status == ResourceLoader.THREAD_LOAD_LOADED: 
 			loaded = true
-			await get_tree().create_timer(5.0).timeout
+			await get_tree().create_timer(3.0).timeout
 			if GlobalVars.in_dialogue == true:
 				await Signal(self, "end_dialogue") 
 				print("awaiting")
+			var new_scene = ResourceLoader.load_threaded_get(next_scene)
+			SceneTransitions.fade_change_packed_scene(new_scene)
+			await get_tree().create_timer(.5).timeout
 			current_anim.stop()
 			toggle_drive(false)
 			toggle_default(false)
-			var new_scene = ResourceLoader.load_threaded_get(next_scene)
-			SceneTransitions.fade_change_packed_scene(new_scene)
 			scene_instance.queue_free()
+			in_loading = false
+			loaded = false
+			return
+		elif load_status == ResourceLoader.THREAD_LOAD_FAILED:
+			print_debug("ERROR: Loading Failed")
 			return
 	
 func toggle_default(state : bool):

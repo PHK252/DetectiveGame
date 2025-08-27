@@ -21,30 +21,34 @@ var theo_bar_sit = false
 
 
 func _process(delta):
-	positionMarker(6)
+	if Loading.in_loading == false:
+		positionMarker(6)
+	else:
+		return
 
 func positionMarker(mult : int):
-	if sit_marker:
-		if sit == true:
-			#print("SITTING MARKER")
-			pos = sit_marker.global_position
+	if is_instance_valid(body_marker):
+		if sit_marker:
+			if sit == true:
+				#print("SITTING MARKER")
+				pos = sit_marker.global_position
+			else:
+				pos = body_marker.global_position
 		else:
 			pos = body_marker.global_position
-	else:
-		pos = body_marker.global_position
-	
-	if sit_dalton_quincy_bar:
-		if dalton_bar_sit == true:
-			print("sitting_dalton")
-			pos = sit_dalton_quincy_bar.global_position
-		else:
-			pos = body_marker.global_position
+		
+		if sit_dalton_quincy_bar:
+			if dalton_bar_sit == true:
+				print("sitting_dalton")
+				pos = sit_dalton_quincy_bar.global_position
+			else:
+				pos = body_marker.global_position
 
-	if sit_theo_quincy_bar:
-		if theo_bar_sit == true:
-			pos = sit_theo_quincy_bar.global_position
-		else:
-			pos = body_marker.global_position
+		if sit_theo_quincy_bar:
+			if theo_bar_sit == true:
+				pos = sit_theo_quincy_bar.global_position
+			else:
+				pos = body_marker.global_position
 	
 	var marker_pos = cam.unproject_position(pos)
 	marker_pos = marker_pos * mult
