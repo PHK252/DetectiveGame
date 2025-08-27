@@ -1297,8 +1297,9 @@ layers = 512
 mesh = SubResource("ArrayMesh_7fx7n")
 skeleton = NodePath("")
 
-[node name="Tile Matrix" type="Node" parent="SubViewportContainer/SubViewport/DreamTransition"]
+[node name="Tile Matrix" type="Node" parent="SubViewportContainer/SubViewport/DreamTransition" node_paths=PackedStringArray("player")]
 script = ExtResource("8_n1bx6")
+player = NodePath("../../Dalton2/CharacterBody3D")
 
 [node name="Tile_1_1" parent="SubViewportContainer/SubViewport/DreamTransition/Tile Matrix" instance=ExtResource("3_rxvkm")]
 transform = Transform3D(2.8751, 0, 0, 0, 2.41636, 0, 0, 0, 2.88106, 5.156, 0.027, -2.429)
@@ -1706,25 +1707,25 @@ sound_player = NodePath("../DaltonSoundPlayer")
 visible = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(3.41458e-09, -5.39206e-08, -3.01811)
-bones/3/rotation = Quaternion(0.0202061, 0.312177, 0.878045, -0.36218)
-bones/4/rotation = Quaternion(-0.2144, 0.0894078, -0.0382231, 0.971894)
-bones/5/rotation = Quaternion(0.492541, -0.111387, 0.103413, 0.856914)
-bones/8/rotation = Quaternion(-0.0202061, 0.312177, 0.878045, 0.36218)
-bones/9/rotation = Quaternion(-0.2144, -0.0894078, 0.0382231, 0.971894)
-bones/10/rotation = Quaternion(0.492541, 0.111387, -0.103413, 0.856914)
-bones/12/position = Vector3(3.41458e-09, -2.45869e-07, -3.01811)
-bones/15/rotation = Quaternion(-0.0859794, 1.13841e-07, -1.06162e-08, 0.996297)
-bones/16/rotation = Quaternion(0.0393855, 9.20294e-09, 8.10088e-09, 0.999224)
-bones/18/rotation = Quaternion(0.0176712, -0.00995203, -0.00963961, 0.999748)
-bones/20/rotation = Quaternion(0.0176712, 0.00995203, 0.00963963, 0.999748)
-bones/22/rotation = Quaternion(-0.255323, -0.149064, -0.405075, 0.865162)
-bones/23/rotation = Quaternion(-0.00307584, -0.000445417, -0.282251, 0.959336)
-bones/26/rotation = Quaternion(-0.255323, 0.149064, 0.405074, 0.865162)
-bones/27/rotation = Quaternion(-0.00307602, 0.000445403, 0.282253, 0.959335)
-bones/31/position = Vector3(0.990003, -0.0311821, -2.19299)
-bones/33/position = Vector3(3.41458e-09, -1.13525e-07, -3.01811)
-bones/36/position = Vector3(-0.990003, -0.0311821, -2.19299)
+bones/1/position = Vector3(-1.22957e-09, -5.75171e-08, -2.99414)
+bones/3/rotation = Quaternion(0.012729, 0.332705, 0.869308, -0.365308)
+bones/4/rotation = Quaternion(-0.256333, 0.0601341, -0.0395504, 0.963905)
+bones/5/rotation = Quaternion(0.511669, -0.0853266, 0.0910532, 0.850072)
+bones/8/rotation = Quaternion(-0.012729, 0.332705, 0.869308, 0.365308)
+bones/9/rotation = Quaternion(-0.256333, -0.0601341, 0.0395504, 0.963905)
+bones/10/rotation = Quaternion(0.511669, 0.0853267, -0.0910532, 0.850072)
+bones/12/position = Vector3(-1.22957e-09, -3.20405e-07, -2.99414)
+bones/15/rotation = Quaternion(-0.0816554, 1.15471e-07, -1.33264e-08, 0.996661)
+bones/16/rotation = Quaternion(0.0301516, 4.07391e-09, 1.27849e-08, 0.999545)
+bones/18/rotation = Quaternion(0.035753, -0.00382089, -0.00992369, 0.999304)
+bones/20/rotation = Quaternion(0.035753, 0.00382089, 0.0099237, 0.999304)
+bones/22/rotation = Quaternion(-0.259293, -0.14861, -0.396103, 0.868208)
+bones/23/rotation = Quaternion(-0.00336372, -0.000441601, -0.308669, 0.951164)
+bones/26/rotation = Quaternion(-0.259293, 0.14861, 0.396103, 0.868207)
+bones/27/rotation = Quaternion(-0.0033639, 0.000441642, 0.308669, 0.951164)
+bones/31/position = Vector3(0.974047, -0.0311821, -2.18845)
+bones/33/position = Vector3(-1.22957e-09, -1.17122e-07, -2.99414)
+bones/36/position = Vector3(-0.974047, -0.0311821, -2.18845)
 
 [node name="Idle" type="Timer" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D" index="8"]
 wait_time = 35.0

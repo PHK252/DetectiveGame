@@ -12,6 +12,7 @@ extends MeshInstance3D
 
 var just_interacted := false
 signal theo_move
+signal activate_map
 
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:
@@ -57,7 +58,7 @@ func _on_timeline_ended():
 	player.start_player()
 	alert.show()
 	GlobalVars.in_dialogue = false
-	print("dialogic timeline ended")
+	emit_signal("activate_map")
 	GlobalVars.in_interaction = ""
 	GlobalVars.intro_dialogue = true
 	

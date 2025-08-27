@@ -156,3 +156,4 @@ func _on_dalton_to_walk_out():
 	move_out = true
 	await get_tree().create_timer(3.5).timeout
 	Loading.load_scene(self, GlobalVars.office_path, false, "", "")
+	GlobalVars.day = "Day 1"

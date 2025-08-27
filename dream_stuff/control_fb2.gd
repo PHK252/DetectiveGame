@@ -25,7 +25,10 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	Dialogic.signal_event.disconnect(_isaac_movement)
 	GlobalVars.in_dialogue = false
-	#transtion to Day 2
+	SceneTransitions.glitch_change_scene(GlobalVars.office_path)
+	GlobalVars.day = "Day 2"
+	await get_tree().create_timer(6.0).timeout
+	self.queue_free()
 
 func _isaac_movement(arg : String):
 	if arg == "nod":

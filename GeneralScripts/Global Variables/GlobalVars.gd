@@ -22,7 +22,7 @@ signal open_quincy_case
 @onready var juniper_time_out = false
 
 @onready var forward : bool
-@onready var day = ""
+@onready var day = "Day 2"
 
 @onready var in_call = false
 @onready var calling = false

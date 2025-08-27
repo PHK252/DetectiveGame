@@ -268,7 +268,6 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Drinving Loading" type="Node2D" parent="."]
-visible = false
 
 [node name="Morning" type="AnimationPlayer" parent="Drinving Loading"]
 root_node = NodePath("../..")
@@ -277,9 +276,14 @@ libraries = {
 }
 
 [node name="Driving" type="AnimatedSprite2D" parent="Drinving Loading/Morning"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_5qj7b")
 centered = false
+
+[node name="Dalton" type="Marker2D" parent="Drinving Loading"]
+position = Vector2(637, 472)
+
+[node name="Theo" type="Marker2D" parent="Drinving Loading"]
+position = Vector2(1366, 501)
 
 [node name="Default Loading" type="Node2D" parent="."]
 visible = false
@@ -295,5 +299,6 @@ libraries = {
 }
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Default Loading/AnimationPlayer"]
+visible = false
 position = Vector2(1738, 988)
 sprite_frames = SubResource("SpriteFrames_1wxyu")

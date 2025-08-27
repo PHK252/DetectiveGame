@@ -73,3 +73,5 @@ func _end_movement(arg : String):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	Dialogic.signal_event.disconnect(_end_movement)
+	SceneTransitions.glitch_change_scene(GlobalVars.office_path)
+	GlobalVars.day = "Day 3"

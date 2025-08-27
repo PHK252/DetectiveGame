@@ -74,4 +74,8 @@ func _on_flash_ended():
 	Dialogic.timeline_ended.disconnect(_on_flash_ended)
 	GlobalVars.in_dialogue = false
 	player.stop_player()
-	#transition to office
+	SceneTransitions.glitch_change_scene(GlobalVars.flashback_1_2)
+	await get_tree().create_timer(3.0).timeout
+	player.start_player()
+	await get_tree().create_timer(3.0).timeout
+	self.queue_free()

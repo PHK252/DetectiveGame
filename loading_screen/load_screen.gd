@@ -13,7 +13,8 @@ var drive_anim : AnimationPlayer
 #Default
 var d_back_loading : Node2D
 var d_loading_anim : AnimationPlayer
- 
+var d_loading_Dalton_marker : Marker2D
+var d_loading_theo_marker : Marker2D
 var d_loading_sprite : AnimatedSprite2D
 
 #@onready var progressBar : ProgressBar = $AnimationPlayer/Panel/ProgressBar
@@ -42,42 +43,49 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 	var scene_instance = loading_scene.instantiate()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().get_root().add_child(scene_instance)
+	
 	current_scene.queue_free()
 	#
 	ResourceLoader.load_threaded_request(next_scene)
 	#driving
 	drive_loading = scene_instance.get_node("Drinving Loading/Morning/Driving")
 	drive_anim = scene_instance.get_node("Drinving Loading/Morning")
+	d_loading_theo_marker = scene_instance.get_node("Drinving Loading/Theo")
+	d_loading_Dalton_marker = scene_instance.get_node("Drinving Loading/Dalton")
 	
 	# default
-	
 	d_back_loading = scene_instance.get_node("Default Loading")
 	d_loading_anim = scene_instance.get_node("Default Loading/AnimationPlayer")
 	d_loading_sprite = scene_instance.get_node("Default Loading/AnimationPlayer/Sprite2D")
+	
 	if driving == true:
 		if time:
 			toggle_drive(true)
 			toggle_default(false)
 			current_anim = drive_anim
 			current_anim.play("Day_anim")
+			#await get_tree().create_timer(.2).timeout
 		else:
 			toggle_drive(true)
 			toggle_default(false)
 			current_anim = drive_anim
-			drive_anim.play("Day_anim")
+			current_anim.play("Day_anim")
+			#await get_tree().create_timer(.2).timeout
 	else:
 		toggle_drive(false)
 		toggle_default(true)
 		current_anim = d_loading_anim
 		current_anim.play("Load")
 		print("play")
-
+	
 	if dialogue != "":
-		Dialogic.start("PLACEHOLDER THOUGHTS")
+		await get_tree().create_timer(1.0).timeout
+		var driving_dialogue = Dialogic.start("PLACEHOLDER")
+		driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
+		driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		GlobalVars.in_dialogue = true
-		await get_tree().create_timer(.5).timeout
-		pass
+		await get_tree().create_timer(.2).timeout
 	else:
 		pass
 	

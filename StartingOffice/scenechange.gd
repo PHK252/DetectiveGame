@@ -1,69 +1,63 @@
 extends CanvasLayer
 
+@export var micah : TextureButton
+@export var juniper : TextureButton
+@export var quincy : TextureButton
+@export var office : TextureButton
+@export var secret : TextureButton
+
+var went_Micah : bool
+var went_Juniper : bool
+var went_Quincy : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 func _on_firsthouse_button_pressed() -> void:
-	var went_Micah = Dialogic.VAR.get_variable("Global.went_to_Micah")
-	if went_Micah == true:
-		if GlobalVars.day == "Day 1":
-			#load Dalton thoughts to redirect to Juniper
-			pass
-		elif GlobalVars.day == "Day 2":
-			#load Dalton thoughts to redirect to Quincy
-			pass
+	if GlobalVars.day == "Day 1":
+		if went_Juniper == true:
+			Loading.load_scene(self, GlobalVars.first_house_path, true, "afternoon", "yes")
 		else:
-			#load Dalton thoughts to redirect to endings or secret
-			pass
-	else:
-		if GlobalVars.day == "Day 1":
-			LoadManager.load_scene(GlobalVars.first_house_path)
-	#get_tree().change_scene_to_file("res://FirstHouse/first_house.tscn")
+			if Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Theo_Question") == true:
+				Loading.load_scene(self, GlobalVars.first_house_path, true, "morning", "yes_diner")
+			else:
+				Loading.load_scene(self, GlobalVars.first_house_path, true, "morning", "yes_diner")
 
 
 func _on_secondhouse_button_pressed() -> void:
-	var went_Juniper = Dialogic.VAR.get_variable("Global.went_to_Juniper")
-	if went_Juniper == true:
-		if GlobalVars.day == "Day 1":
-			#load Dalton thoughts to redirect to Micah
-			pass
-		elif GlobalVars.day == "Day 2":
-			#load Dalton thoughts to redirect to Quincy
-			pass
-		else:
-			#load Dalton thoughts to redirect to endings or secret
-			pass
+	if went_Micah == true:
+		Loading.load_scene(self, GlobalVars.second_house_path, true, "afternoon", "yes")
 	else:
-		if GlobalVars.day == "Day 1":
-			LoadManager.load_scene(GlobalVars.second_house_path)
+		Loading.load_scene(self, GlobalVars.second_house_path, true, "morning", "yes")
 	#get_tree().change_scene_to_file("res://SecondHouse/second_house.tscn")
 
 
 func _on_thirdhouse_button_pressed() -> void:
-	if GlobalVars.current_level == "Quincy":
-		$Quincy.disabled = true
-	else:
-		$Quincy.disabled = false
 	if GlobalVars.day == "Day 1":
-		#Go to load dialogue and choice to redirect during load cutscene
-		pass
-	elif GlobalVars.day == "Day 3":
-		#load Dalton thoughts to redirect to endings or secret
+		#exit to phone call
 		pass
 	else:
-		LoadManager.load_scene(GlobalVars.third_house_path)
+		Loading.load_scene(self, GlobalVars.third_house_path, true, "morning", "yes")
 		#get_tree().change_scene_to_file("res://ThirdHouse/third_house.tscn")
 
 
 func _on_office_button_pressed() -> void:
-	LoadManager.load_scene(GlobalVars.office_path)
+	if GlobalVars.day == "Day 1": 
+		if went_Juniper and went_Micah == false:
+			#thought to go to next house
+			pass
+		else:
+			Loading.load_scene(self, GlobalVars.office_path, true, "night", "yes_day_1")
+	if GlobalVars.day == "Day 2": 
+		Loading.load_scene(self, GlobalVars.office_path, true, "night", "yes_day_1")
+	if GlobalVars.day == "Day 3": 
+		Loading.load_scene(self, GlobalVars.office_path, true, "afternoon", "yes_day_1")
 	#get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
 
 
 func _on_secret_button_pressed() -> void:
-	LoadManager.load_scene(GlobalVars.secret_path)
+	Loading.load_scene(self, GlobalVars.secret_path, true, "morning", "yes_secret")
 	#get_tree().change_scene_to_file("res://SecretLocation/secret_location.tscn")
 
 
@@ -73,28 +67,43 @@ func _on_exit_pressed():
 
 
 func _on_check_day():
+	went_Micah = Dialogic.VAR.get_variable("Global.went_to_Micah")
+	went_Juniper = Dialogic.VAR.get_variable("Global.went_to_Juniper")
+	went_Quincy = Dialogic.VAR.get_variable("Global.went_to_Quincy")
+	if went_Juniper == true and juniper.disabled == false:
+		juniper.disabled = true
+	if went_Micah == true and micah.disabled == false:
+		micah.disabled = true
+	if went_Quincy == true and quincy.disabled == false:
+		quincy.disabled = true
 	if GlobalVars.current_level == "Micah":
-		$Micah.disabled = true
+		micah.disabled = true
 	else:
-		$Micah.disabled = false
+		micah.disabled = false
 	if GlobalVars.current_level == "Juniper":
-		$Juniper.disabled = true
+		juniper.disabled = true
 	else:
-		$Juniper.disabled = false
+		juniper.disabled = false
 	if GlobalVars.current_level == "Quincy":
-		$Quincy.disabled = true
+		quincy.disabled = true
 	else:
-		$Quincy.disabled = false
+		quincy.disabled = false
 	if GlobalVars.current_level == "Office":
-		$Office.disabled = true
+		office.disabled = true
 	else:
-		$Office.disabled = false
+		office.disabled = false
+	
 	if GlobalVars.current_level == "Secret":
-		$Secret.disabled = true
+		secret.disabled = true
 	else:
-		$Secret.disabled = false
-	var secret = Dialogic.VAR.get_variable("Quincy.has_secret_coor")
-	if secret == true and GlobalVars.day == "Day 3":
-		$"Secret Location".show()
+		secret.disabled = false
+	var secret_coor = Dialogic.VAR.get_variable("Quincy.has_secret_coor")
+	if secret_coor == true and GlobalVars.day == "Day 3":
+		secret.show()
 	else:
-		$"Secret Location".hide()
+		secret.hide()
+
+
+func _on_visibility_changed():
+	if visible:
+		_on_check_day()
