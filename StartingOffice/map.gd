@@ -16,6 +16,7 @@ func _ready():
 		interactable.set_deferred("monitorable", false)
 	else:
 		interactable.set_deferred("monitorable", true)
+
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
 		print("map_interact")
@@ -65,7 +66,6 @@ func _input(event):
 func _on_main_door_activate_car():
 	door_interactable.set_deferred("monitorable", false)
 	interactable.set_deferred("monitorable", true)
-	Dialogic.VAR.set_variable("Global.went_to_Juniper", true)
 
 func _office_activate_map():
 	interactable.set_deferred("monitorable", true)

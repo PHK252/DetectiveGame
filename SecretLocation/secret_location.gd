@@ -11,6 +11,8 @@ signal dalton_rotate
 func _ready():
 	emit_signal("dalton_rotate")
 	GlobalVars.current_level = "secret"
+	Dialogic.VAR.set_variable("Global.went_to_secret", true)
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#await walk in
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:

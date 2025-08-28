@@ -24,6 +24,7 @@ signal time_out_drop_distract
 
 func _ready():
 	GlobalVars.current_level = "quincy"
+	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):

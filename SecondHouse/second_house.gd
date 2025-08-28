@@ -25,6 +25,7 @@ func _ready():
 	disable_interaction_beginning(interactables)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalVars.current_level = "juniper"
+	Dialogic.VAR.set_variable("Global.went_to_Juniper", true)
 
 
 func _process(delta):

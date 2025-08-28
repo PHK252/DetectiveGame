@@ -9,6 +9,8 @@ signal loading_screen_has_full_coverage
 var drive_loading : AnimatedSprite2D
 var drive_anim : AnimationPlayer
 
+#var style: DialogicStyle = load("res://Dialogue Stuff/Text_Bubble.tres")
+#var my_timeline_resource = load("res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER.dtl")
 
 #Default
 var d_back_loading : Node2D
@@ -78,26 +80,32 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 		current_anim.play("Load")
 		print("play")
 	
-	if dialogue != "":
-		await get_tree().create_timer(1.0).timeout
-		var driving_dialogue = Dialogic.start("PLACEHOLDER")
-		driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
-		driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		GlobalVars.in_dialogue = true
-		await get_tree().create_timer(.2).timeout
-	else:
-		pass
+
 	
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(.3).timeout
 	while loaded == false:
 		load_status = ResourceLoader.load_threaded_get_status(next_scene, _progress)
 		if load_status == ResourceLoader.THREAD_LOAD_LOADED: 
 			loaded = true
-			await get_tree().create_timer(3.0).timeout
+			if dialogue != "":
+				#await get_tree().create_timer(1.0).timeout
+				#Dialogic.preload_timeline(my_timeline_resource)
+				#await Dialogic.preload_timeline(my_timeline_resource)
+				#style.prepare()
+				#await get_tree().create_timer(0.3).timeout
+				#print("loaded timeline")
+				var driving_dialogue = Dialogic.start("PLACEHOLDER")
+				driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
+				driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				GlobalVars.in_dialogue = true
+				await get_tree().create_timer(.2).timeout
+			else:
+				pass
 			if GlobalVars.in_dialogue == true:
 				await Signal(self, "end_dialogue") 
 				print("awaiting")
+			await get_tree().create_timer(3.0).timeout
 			var new_scene = ResourceLoader.load_threaded_get(next_scene)
 			SceneTransitions.fade_change_packed_scene(new_scene)
 			await get_tree().create_timer(.5).timeout

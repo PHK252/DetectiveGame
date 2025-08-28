@@ -81,7 +81,6 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			exit.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			exit.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			exit.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-			Dialogic.VAR.set_variable("Global.went_to_Micah", true)
 		elif is_open == false and GlobalVars.in_dialogue == false:
 			#print("open")
 			#$Interactable.queue_free()

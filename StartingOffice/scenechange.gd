@@ -9,6 +9,7 @@ extends CanvasLayer
 var went_Micah : bool
 var went_Juniper : bool
 var went_Quincy : bool
+var went_secret : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -38,7 +39,7 @@ func _on_thirdhouse_button_pressed() -> void:
 		#exit to phone call
 		pass
 	else:
-		Loading.load_scene(self, GlobalVars.third_house_path, true, "morning", "yes")
+		Loading.load_scene(self, GlobalVars.third_house_path, false, "", "")
 		#get_tree().change_scene_to_file("res://ThirdHouse/third_house.tscn")
 
 
@@ -70,33 +71,36 @@ func _on_check_day():
 	went_Micah = Dialogic.VAR.get_variable("Global.went_to_Micah")
 	went_Juniper = Dialogic.VAR.get_variable("Global.went_to_Juniper")
 	went_Quincy = Dialogic.VAR.get_variable("Global.went_to_Quincy")
+	went_Quincy = Dialogic.VAR.get_variable("Global.went_to_Quincy")
 	if went_Juniper == true and juniper.disabled == false:
 		juniper.disabled = true
 	if went_Micah == true and micah.disabled == false:
 		micah.disabled = true
 	if went_Quincy == true and quincy.disabled == false:
 		quincy.disabled = true
-	if GlobalVars.current_level == "Micah":
-		micah.disabled = true
-	else:
-		micah.disabled = false
-	if GlobalVars.current_level == "Juniper":
-		juniper.disabled = true
-	else:
-		juniper.disabled = false
-	if GlobalVars.current_level == "Quincy":
-		quincy.disabled = true
-	else:
-		quincy.disabled = false
+	if went_secret == true and secret.disabled == false:
+		secret.disabled = true
+	#if GlobalVars.current_level == "Micah":
+		#micah.disabled = true
+	#else:
+		#micah.disabled = false
+	#if GlobalVars.current_level == "Juniper":
+		#juniper.disabled = true
+	#else:
+		#juniper.disabled = false
+	#if GlobalVars.current_level == "Quincy":
+		#quincy.disabled = true
+	#else:
+		#quincy.disabled = false
 	if GlobalVars.current_level == "Office":
 		office.disabled = true
 	else:
 		office.disabled = false
 	
-	if GlobalVars.current_level == "Secret":
-		secret.disabled = true
-	else:
-		secret.disabled = false
+	#if GlobalVars.current_level == "Secret":
+		#secret.disabled = true
+	#else:
+		#secret.disabled = false
 	var secret_coor = Dialogic.VAR.get_variable("Quincy.has_secret_coor")
 	if secret_coor == true and GlobalVars.day == "Day 3":
 		secret.show()

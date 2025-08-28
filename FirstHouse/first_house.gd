@@ -30,6 +30,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.current_level = "micah"
+	Dialogic.VAR.set_variable("Global.went_to_Micah", true)
 	note_interaction.hide()
 	pic_fall_interact.hide()
 	bookmark_interact.hide()
@@ -61,7 +62,7 @@ func _process(delta):
 			kicked_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			kicked_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			kicked_out_dialogue.register_character(load(load_char_dialogue), character_marker)
-			Dialogic.VAR.set_variable("Global.went_to_Micah", true)
+			
 	
 	#timed out
 	if time_out == true:
@@ -73,7 +74,6 @@ func _process(delta):
 			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
-			Dialogic.VAR.set_variable("Global.went_to_Micah", true)
 	
 			
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)

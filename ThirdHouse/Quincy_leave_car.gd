@@ -83,4 +83,3 @@ func _input(event):
 func _on_main_door_activate_car():
 	door_interactable.set_deferred("monitorable", false)
 	interactable.set_deferred("monitorable", true)
-	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
