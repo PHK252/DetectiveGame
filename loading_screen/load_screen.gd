@@ -25,7 +25,7 @@ var loaded = false
 var load_status = 0
 var in_loading : bool
 var current_anim : AnimationPlayer    
-
+var percent_label : Label
 
 #func _update_progress_bar(new_value: float) -> void:
 	#progressBar.set_value_no_signal(new_value * 100)
@@ -48,7 +48,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 	
 	current_scene.queue_free()
 	#
-	ResourceLoader.load_threaded_request(next_scene)
+	ResourceLoader.load_threaded_request(next_scene, "", true)
 	#driving
 	drive_loading = scene_instance.get_node("Drinving Loading/Morning/Driving")
 	drive_anim = scene_instance.get_node("Drinving Loading/Morning")
@@ -60,6 +60,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 	d_loading_anim = scene_instance.get_node("Default Loading/AnimationPlayer")
 	d_loading_sprite = scene_instance.get_node("Default Loading/AnimationPlayer/Sprite2D")
 	
+	percent_label = scene_instance.get_node("Label")
 	if driving == true:
 		if time:
 			toggle_drive(true)
@@ -82,43 +83,51 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 	
 
 	
-	await get_tree().create_timer(.3).timeout
+	await get_tree().create_timer(.5).timeout
+	set_process(true)
 	while loaded == false:
+		#var progress = _progress[0]
+		#percent_label.text = str(int(progress * 100)) + "%"
 		load_status = ResourceLoader.load_threaded_get_status(next_scene, _progress)
-		if load_status == ResourceLoader.THREAD_LOAD_LOADED: 
-			loaded = true
-			if dialogue != "":
-				#await get_tree().create_timer(1.0).timeout
-				#Dialogic.preload_timeline(my_timeline_resource)
-				#await Dialogic.preload_timeline(my_timeline_resource)
-				#style.prepare()
-				#await get_tree().create_timer(0.3).timeout
-				#print("loaded timeline")
-				var driving_dialogue = Dialogic.start("PLACEHOLDER")
-				driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
-				driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
-				Dialogic.timeline_ended.connect(_on_timeline_ended)
-				GlobalVars.in_dialogue = true
-				await get_tree().create_timer(.2).timeout
-			else:
-				pass
-			if GlobalVars.in_dialogue == true:
-				await Signal(self, "end_dialogue") 
-				print("awaiting")
-			await get_tree().create_timer(3.0).timeout
-			var new_scene = ResourceLoader.load_threaded_get(next_scene)
-			SceneTransitions.fade_change_packed_scene(new_scene)
-			await get_tree().create_timer(.5).timeout
-			current_anim.stop()
-			toggle_drive(false)
-			toggle_default(false)
-			scene_instance.queue_free()
-			in_loading = false
-			loaded = false
-			return
-		elif load_status == ResourceLoader.THREAD_LOAD_FAILED:
-			print_debug("ERROR: Loading Failed")
-			return
+		print(load_status)
+		match load_status:
+			0,2:
+				print_debug("ERROR: Loading Failed")
+				percent_label.text = "failed"
+				return
+			1:
+				var progress = _progress[0]
+				await get_tree().process_frame
+				percent_label.text = str(int(progress * 100)) + "%"
+				print(str(int(progress * 100)) + "%")
+			3:
+				loaded = true
+				if dialogue != "":
+					var driving_dialogue = Dialogic.start("PLACEHOLDER")
+					driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
+					driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
+					Dialogic.timeline_ended.connect(_on_timeline_ended)
+					GlobalVars.in_dialogue = true
+					await get_tree().create_timer(.2).timeout
+				else:
+					pass
+				if GlobalVars.in_dialogue == true:
+					await Signal(self, "end_dialogue") 
+					print("awaiting")
+				await get_tree().create_timer(3.0).timeout
+				var new_scene = ResourceLoader.load_threaded_get(next_scene)
+				SceneTransitions.fade_change_packed_scene(new_scene)
+				await get_tree().create_timer(.5).timeout
+				current_anim.stop()
+				toggle_drive(false)
+				toggle_default(false)
+				scene_instance.queue_free()
+				in_loading = false
+				loaded = false
+				return
+
+
+
 	
 func toggle_default(state : bool):
 	d_back_loading.visible = state
