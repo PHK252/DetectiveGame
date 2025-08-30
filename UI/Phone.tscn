@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=213 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://o5b4bopoyvoj" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Pic5 Hovered.png" id="28_qan61"]
 [ext_resource type="Texture2D" uid="uid://djw3lgiwjiaft" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Close Outline.png" id="29_heq63"]
 [ext_resource type="Texture2D" uid="uid://djts6a8mqec2k" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Pic6.png" id="29_vnvpy"]
+[ext_resource type="Texture2D" uid="uid://dems6uylrposv" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery fill.png" id="29_xqvf3"]
 [ext_resource type="Texture2D" uid="uid://vb5fsp82fwp5" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Pic6 Hovered.png" id="30_uue8b"]
 [ext_resource type="Texture2D" uid="uid://bjmbf2h88cdtv" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Pic1 Close.png" id="30_xqgcs"]
 [ext_resource type="Texture2D" uid="uid://dh2qw0w2xggtb" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Pic2 Close.png" id="31_76gf4"]
@@ -47,7 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://boy6dosj0rbiw" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Left Hovered.png" id="41_6rj6l"]
 [ext_resource type="Texture2D" uid="uid://cpp223s5wf56g" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Right.png" id="42_p2812"]
 [ext_resource type="Texture2D" uid="uid://bik7uq8xvmh4u" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Right Hovered.png" id="43_g4h4a"]
-[ext_resource type="Texture2D" uid="uid://bc1c6ey4l5hh6" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Outline.png" id="45_0pifn"]
+[ext_resource type="Texture2D" uid="uid://dceiw27de1qy7" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Nums outline update.png" id="46_ojyj0"]
 [ext_resource type="Texture2D" uid="uid://ckskllrp26bg4" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Batteries.png" id="46_q2t4u"]
 [ext_resource type="Texture2D" uid="uid://dwkben2v4thrv" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Num Space.png" id="47_hk3kd"]
 [ext_resource type="FontFile" uid="uid://bykxh0wor3kd4" path="res://Dialogue Stuff/Fonts/Phone Num Font.ttf" id="48_7adlf"]
@@ -92,10 +93,14 @@
 [ext_resource type="Script" uid="uid://bdgfqcdtnefyk" path="res://UI/notes_screen.gd" id="87_fo3me"]
 [ext_resource type="Texture2D" uid="uid://d076epilfmw5p" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Details.png" id="87_m7akq"]
 [ext_resource type="Texture2D" uid="uid://em8jsgypcx8y" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Home.png" id="88_1sd4w"]
+[ext_resource type="Texture2D" uid="uid://wh2uw2kahuk5" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Contact normal.png" id="88_ca35y"]
 [ext_resource type="Texture2D" uid="uid://bsg5ha0dra3ln" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Back.png" id="89_6iy3u"]
 [ext_resource type="Texture2D" uid="uid://c0lbpl7ehqhfs" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Profile.png" id="89_ic4nm"]
+[ext_resource type="Texture2D" uid="uid://rtius46ugeak" path="res://UI/Assets/Phone/Updated/Phone/Phone Call Contact pressed.png" id="89_t6hk1"]
 [ext_resource type="Texture2D" uid="uid://bx5sbkj4ku2ho" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Home Blank.png" id="90_6iy3u"]
+[ext_resource type="Texture2D" uid="uid://d4hkspbcpcei2" path="res://UI/Assets/Phone/Updated/Phone/Phone Call keypad normal.png" id="90_8rgu2"]
 [ext_resource type="Texture2D" uid="uid://dfgnmjkak64c2" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Button.png" id="90_66dn3"]
+[ext_resource type="Texture2D" uid="uid://75ifh7cwjxjd" path="res://UI/Assets/Phone/Updated/Phone/Phone Call keypad pressed.png" id="91_h1u1y"]
 [ext_resource type="Texture2D" uid="uid://bry4vtc4m2fhw" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Case Button Pressed.png" id="91_ic4nm"]
 [ext_resource type="Texture2D" uid="uid://dde4lgjpkl11" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Battery.png" id="91_lct15"]
 [ext_resource type="Texture2D" uid="uid://c3f75stftrna3" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Victim Button.png" id="94_2h6vk"]
@@ -528,7 +533,6 @@ fit_content = true
 scroll_active = false
 
 [node name="GalleryScreen" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -567,7 +571,6 @@ position = Vector2(960, 513)
 texture = ExtResource("7_wibdo")
 
 [node name="GalleryList" type="Control" parent="GalleryScreen"]
-visible = false
 anchors_preset = 0
 
 [node name="Gallery Title" type="RichTextLabel" parent="GalleryScreen/GalleryList"]
@@ -672,6 +675,10 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("31_k6abh")
 texture_pressed = ExtResource("32_i7ff1")
 texture_hover = ExtResource("32_i7ff1")
+
+[node name="Sprite2D" type="Sprite2D" parent="GalleryScreen/GalleryList"]
+position = Vector2(957, 672)
+texture = ExtResource("29_xqvf3")
 
 [node name="ClosePics" type="Control" parent="GalleryScreen"]
 visible = false
@@ -801,21 +808,20 @@ position = Vector2(763, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="PhoneScreen" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PhoneCallBack" type="Sprite2D" parent="PhoneScreen"]
+visible = false
 position = Vector2(960, 513)
 texture = ExtResource("5_rujx7")
 
 [node name="PhoneCallBackOutline" type="Sprite2D" parent="PhoneScreen"]
-visible = false
 modulate = Color(1, 1, 1, 0.847059)
-position = Vector2(960, 513)
-texture = ExtResource("45_0pifn")
+position = Vector2(960, 540)
+texture = ExtResource("46_ojyj0")
 
 [node name="PhoneBar" type="Sprite2D" parent="PhoneScreen"]
 visible = false
@@ -828,6 +834,8 @@ texture = ExtResource("46_q2t4u")
 
 [node name="PhoneNum" type="Control" parent="PhoneScreen"]
 anchors_preset = 0
+offset_top = -48.0
+offset_bottom = -48.0
 
 [node name="PhoneCallNumSpace2" type="Sprite2D" parent="PhoneScreen/PhoneNum"]
 position = Vector2(960, 247)
@@ -1105,7 +1113,28 @@ text = "XX:XX"
 fit_content = true
 scroll_active = false
 
+[node name="Contact" type="TextureButton" parent="PhoneScreen"]
+layout_mode = 0
+offset_left = 828.0
+offset_top = 888.0
+offset_right = 870.0
+offset_bottom = 930.0
+texture_normal = ExtResource("88_ca35y")
+texture_pressed = ExtResource("89_t6hk1")
+texture_hover = ExtResource("89_t6hk1")
+
+[node name="Keypad" type="TextureButton" parent="PhoneScreen"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 888.0
+offset_right = 1092.0
+offset_bottom = 930.0
+texture_normal = ExtResource("90_8rgu2")
+texture_pressed = ExtResource("91_h1u1y")
+texture_hover = ExtResource("91_h1u1y")
+
 [node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy", "evidence")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("87_fo3me")
@@ -1773,7 +1802,7 @@ texture_normal = ExtResource("101_f75o4")
 texture_pressed = ExtResource("102_nsy64")
 texture_hover = ExtResource("102_nsy64")
 
-[node name="Evidence" type="Control" parent="NotesScreen" node_paths=PackedStringArray("row_1", "row_2", "micah_letter", "micah_key", "micah_fur", "juniper_letter", "juniper_pie", "quincy_letter", "quincy_hammer", "quincy_coors", "quincy_choco")]
+[node name="Evidence" type="Control" parent="NotesScreen" node_paths=PackedStringArray("row_1", "row_2", "micah_letter", "micah_key", "micah_fur", "juniper_letter", "juniper_pie", "quincy_letter", "quincy_hammer", "quincy_coors", "quincy_choco", "no_evidence", "description", "description_body")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1789,6 +1818,9 @@ quincy_letter = NodePath("Quincy Letter")
 quincy_hammer = NodePath("Quincy Hammer")
 quincy_coors = NodePath("Quincy Coors")
 quincy_choco = NodePath("Quincy Choco")
+no_evidence = NodePath("No evidence")
+description = NodePath("Description")
+description_body = NodePath("Body")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Evidence"]
 layout_mode = 0
@@ -1825,6 +1857,20 @@ theme_override_fonts/normal_font = ExtResource("14_vsnqy")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "ADDITIONAL INFORMATION WILL APPEAR HERE."
+fit_content = true
+scroll_active = false
+
+[node name="No evidence" type="RichTextLabel" parent="NotesScreen/Evidence"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 274.0
+offset_right = 1182.0
+offset_bottom = 326.0
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "NO EVIDENCE HAS BEEN COLLECTED."
 fit_content = true
 scroll_active = false
 
@@ -2582,8 +2628,10 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="mouse_entered" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim3" to="NotesScreen" method="_on_victim_3_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Victim3" to="NotesScreen/Evidence" method="_on_victim_3_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Back" to="NotesScreen" method="_on_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen" method="_on_evidence_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen/Evidence" method="_on_evidence_pressed"]
 [connection signal="mouse_entered" from="NotesScreen/Evidence/Micah Letter" to="NotesScreen/Evidence/Micah Letter" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="NotesScreen/Evidence/Micah Letter" to="NotesScreen/Evidence/Micah Letter" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="NotesScreen/Evidence/Micah Key" to="NotesScreen/Evidence/Micah Key" method="_on_mouse_entered"]

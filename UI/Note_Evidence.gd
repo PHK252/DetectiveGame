@@ -13,7 +13,9 @@ extends Control
 @export var quincy_coors : TextureButton
 @export var quincy_choco : TextureButton
 
-
+@export var no_evidence: RichTextLabel
+@export var description: RichTextLabel
+@export var description_body: RichTextLabel
 #func _ready():
 	#_add_evidence(micah_letter)
 	#_add_evidence(micah_key)
@@ -26,8 +28,11 @@ extends Control
 	#_add_evidence(quincy_choco)
 
 func _process(delta):
-	if GlobalVars.evi_char != "":
-		_recieve_evidence()
+	if GlobalVars.evi_char == "":
+		return
+	_recieve_evidence()
+	
+	
 
 func _add_evidence(evidence : TextureButton):
 	if row_1.get_child_count() < 5:
@@ -77,3 +82,14 @@ func _recieve_evidence():
 			print_debug("Quincy recieving evidence in trouble")
 	else:
 		print_debug("Recieving evidence in trouble")
+
+
+func _on_evidence_pressed():
+	if row_1.get_child_count() == 0:
+		no_evidence.show()
+		description.hide()
+		description_body.hide()
+	else:
+		no_evidence.hide()
+		description.show()
+		description_body.show()
