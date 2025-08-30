@@ -12,6 +12,7 @@ extends CanvasLayer
 #phone 
 @onready var phone_num = $PhoneScreen/PhoneNum
 @onready var phone_call = $PhoneScreen/PhoneCall
+@onready var phone_contact = $PhoneScreen/ContactScreen
 
 #Gallery 
 @onready var gallery_list = $GalleryScreen/GalleryList
@@ -51,6 +52,7 @@ func _on_gallery_pressed():
 	notes.hide()
 	gallery.show()
 	gallery_list.show()
+	emit_signal("add_contact", "skylar")
 
 func _on_notes_pressed():
 	home.hide()
@@ -73,6 +75,7 @@ func _on_phone_pressed():
 		notes.hide()
 		phone.show()
 		phone_num.show()
+		phone_contact.hide()
 
 func hideEverything():
 	home.hide()
@@ -224,6 +227,8 @@ func _on_left_hover_mouse_exited():
 
 signal continue_convo
 signal Book_distract_quincy
+signal add_contact(char : String)
+
 func inputNum(num: int):
 	if len(num_input.text) <  11:
 		num_input.text += str(num)
@@ -283,18 +288,18 @@ func _on_delete_pressed():
 func _on_call_pressed():
 	#print("Calling")
 	#emit signal(calling) for possible animation
-	phone_ui.hide()
-	GlobalVars.phone_up = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	var called_num = num_input.text
+	if called_num == "":
+		#error sfx
+		return
+	exit_phone()
 	num_input.text = ""
-	phone.hide()
-	home.show()
 	
 	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
 	#print(at_bookshelf)
 	#print(needs_distraction)
 	#print(called_num)
+	
 	if called_num == "034-2012" and GlobalVars.in_dialogue == false :
 		if at_bookshelf == true and needs_distraction == true:
 			var book_distract = Dialogic.start("Quincy_book_distract")
@@ -321,12 +326,93 @@ func _on_call_pressed():
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-
+	if called_num == "194-108":
+		emit_signal("add_contact", "juniper")
+	if called_num == "093-316":
+		emit_signal("add_contact", "clyde")
 func _on_bookshelf_area_body_entered(body):
 	at_bookshelf = true
 
 func _on_bookshelf_area_body_exited(body):
 	at_bookshelf = false
+
+
+func _on_isaac_pressed(): #UPDATE TIMELINE
+	exit_phone()
+	var book_distract = Dialogic.start("PLACEHOLDER")
+	GlobalVars.in_dialogue = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+
+
+func _on_quincy_pressed(): #UPDATE TIMELINE
+	exit_phone()
+	var book_distract = Dialogic.start("PLACEHOLDER")
+	GlobalVars.in_dialogue = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+
+func _on_juniper_pressed(): #UPDATE TIMELINE
+	exit_phone()
+	var book_distract = Dialogic.start("PLACEHOLDER")
+	GlobalVars.in_dialogue = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+
+func _on_clyde_pressed(): #UPDATE TIMELINE
+	exit_phone()
+	var book_distract = Dialogic.start("PLACEHOLDER")
+	GlobalVars.in_dialogue = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+
+func _on_skylar_pressed(): #UPDATE TIMELINE
+	exit_phone()
+	var book_distract = Dialogic.start("PLACEHOLDER")
+	GlobalVars.in_dialogue = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+
+func _on_theo_pressed(): #UPDATE TIMELINE
+	exit_phone()
+	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	if at_bookshelf == true and needs_distraction == true:
+		var book_distract = Dialogic.start("Quincy_book_distract")
+		GlobalVars.in_dialogue = true
+		Dialogic.signal_event.connect(_bottle_fall_sound)
+		Dialogic.signal_event.connect(_end_call)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+		book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+	elif bar_call == true:
+		var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
+		GlobalVars.in_dialogue = true
+		Dialogic.signal_event.connect(_bar_end_call)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		bar_call.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		bar_call.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+		bar_call.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+	else:
+		if GlobalVars.in_dialogue == false:
+			var wrong_num = Dialogic.start("Phone_wrong_num")
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+
+func exit_phone():
+	phone_ui.hide()
+	GlobalVars.phone_up = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	phone.hide()
+	home.show()
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
