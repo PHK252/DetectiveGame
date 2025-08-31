@@ -1,0 +1,71 @@
+Dalton: Huh?
+Dalton: What is that?
+[end_timeline]
+
+#= after read
+[signal arg = "start_call"]
+Chief: [shake rate=10.0 level=4 connected=2]H-[/shake]
+Dalton: What is this?
+Dalton: I failed to solve one case, and now you fire me!
+Chief: [shake rate=10.0 level=4 connected=2]Detective Reynard, you and I both know that this was a long time coming.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]You can barely handle cases on your own now.[/shake]
+if {Juniper.kicked_out} == true and {Asked Questions.Micah_kicked_out} == true:
+	Chief: [shake rate=10.0 level=4 connected=2]And after talking to Detective Lycus...[/shake]
+	Chief: [shake rate=10.0 level=4 connected=2]Your actions during this case were...[/shake]
+	Chief: [shake rate=10.0 level=4 connected=2]Subpar to say the least.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]Look...[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]I kept you on paperwork for a year now in hopes you would get over what happened to Isaac.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]But I can’t justify keeping you around anymore when I can easily hire an intern to do your job.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]I put you on this case to see if you were ready to get back out there...[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]But I don’t think you’re ready.[/shake]
+Dalton: Then just-
+Dalton: Just give me more time!
+Dalton: please.
+Dalton: I need-
+Chief: [shake rate=10.0 level=5 connected=2]I GAVE YOU A YEAR![/shake]
+Chief: [shake rate=10.0 level=4 connected=2]That should’ve been more than enough time.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]Huu...[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]Look.[/shake] 
+Chief: [shake rate=10.0 level=4 connected=2]This wasn’t by any means an easy decision.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]You were one of the star detectives of this precinct.[/shake] 
+Chief: [shake rate=10.0 level=4 connected=2]But...[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]You need to move on, Dalton.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]I don’t think you will be able to do that here.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]Good luck with your future endeavors.[/shake]
+Dalton: Wai-
+[signal arg = "end_call"]
+#[end_timeline]
+Dalton: F*ck!
+Dalton: Haah...
+Dalton: You and I both know, my ass...
+[signal arg = "theo_walk_in"]
+Dalton: You!
+Dalton: How dare you rat me out to Chief!
+Theo: What did you want me to do?
+Theo: Lie to him?
+Dalton: We were partners.
+Dalton: We’re supposed to have each other’s backs
+Theo: Hah!
+Theo: That’s rich coming from you!
+Dalton: Huu...
+Dalton: What am I going to do now?
+Theo: Knowing Chief he’ll put you on a few weeks of paperwork and he’ll let you back out.
+Dalton: What?
+Dalton: I got fired.
+Theo: What!
+Dalton: Termination letter is right there.
+Theo: oh.
+Theo: Uh...
+Theo: D-do you need help packing up?
+Dalton: Get out.
+Theo: Hey, you don’t need to take-
+Dalton: GET OUT!
+Theo: Okay, okay.
+Theo: See y-
+Theo: I mean-
+Theo: Uh...
+Theo: Bye?
+Dalton: Huu...
+Dalton: Just leave.
+[signal arg = "theo_exit"]
+[end_timeline]

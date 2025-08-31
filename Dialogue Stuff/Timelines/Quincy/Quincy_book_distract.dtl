@@ -1,29 +1,29 @@
 if {Character Aff Points.Theo} > 3:
-	Theo: [shake rate=10.0 level=2 connected=0]Hello?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Hello?[/shake]
 	Dalton: Hey.
-	Theo: [shake rate=10.0 level=2 connected=0]Oh![/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Dalton?[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Why are you calling?[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Aren't you upstairs?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Oh![/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Dalton?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Why are you calling?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Aren't you upstairs?[/shake]
 	Dalton: Hmph. 
 	Dalton: Yes.
 	Dalton: I'm at the Mayor's house right now.
-	Theo: [shake rate=10.0 level=2 connected=0]What?[/shake] 
-	Theo: [shake rate=10.0 level=2 connected=0]I know.[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Oh no.[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Is your old age catching up to you?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]What?[/shake] 
+	Theo: [shake rate=10.0 level=4 connected=2]I know.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Oh no.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Is your old age catching up to you?[/shake]
 	Dalton: Haah...
 	Dalton: Look. 
 	Dalton: I'm going to need a bit of time alone.
 	Dalton: I think I found something important.
-	Theo: [shake rate=10.0 level=2 connected=0]...?[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Oh.[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]I see.[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]I'm on it.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]...?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Oh.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]I see.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]I'm on it.[/shake]
 	Dalton: Hmph... 
 	Dalton: Thank you, see you at the station.
-	Theo: [shake rate=10.0 level=2 connected=0]Happy to help.[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]I just hope whatever you found was worth it.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Happy to help.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]I just hope whatever you found was worth it.[/shake]
 	[signal arg = "end_call"]
 	Quincy: Who was that?
 	Dalton: Chief was asking for a check in.
@@ -36,34 +36,34 @@ if {Character Aff Points.Theo} > 3:
 	[signal arg= "end"]
 	[end_timeline]
 else:
-	Theo: [shake rate=10.0 level=2 connected=0]Hello?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Hello?[/shake]
 	Dalton: Hey.
-	Theo: [shake rate=10.0 level=2 connected=0]Oh![/shake] 
-	Theo: [shake rate=10.0 level=2 connected=0]Dalton?[/shake] 
-	Theo: [shake rate=10.0 level=2 connected=0]Why are you calling?[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Aren't you upstairs?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Oh![/shake] 
+	Theo: [shake rate=10.0 level=4 connected=2]Dalton?[/shake] 
+	Theo: [shake rate=10.0 level=4 connected=2]Why are you calling?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Aren't you upstairs?[/shake]
 	Dalton: Hmph. 
 	Dalton: Yes.
 	Dalton: I'm at the Mayor's house right now.
-	Theo: [shake rate=10.0 level=2 connected=0]What?[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]I know.[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]I'm here with you.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]What?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]I know.[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]I'm here with you.[/shake]
 	Dalton: Look. 
 	Dalton: I'm going to need a bit of time.
 	Dalton: I think I found something important.
-	Theo: [shake rate=10.0 level=2 connected=0]What are you talking about?[/shake] 
-	Theo: [shake rate=10.0 level=2 connected=0]What did you find?[/shake]
-	Theo: [shake rate=10.0 level=2 connected=0]Do you want me to come up?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]What are you talking about?[/shake] 
+	Theo: [shake rate=10.0 level=4 connected=2]What did you find?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Do you want me to come up?[/shake]
 	Dalton: Tsk. 
 	Dalton: No! 
 	Dalton: Alone.
-	Theo: [shake rate=10.0 level=2 connected=0]Uhh....[/shake] 
-	Theo: [shake rate=10.0 level=2 connected=0]You want to tell me when we are alone?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Uhh....[/shake] 
+	Theo: [shake rate=10.0 level=4 connected=2]You want to tell me when we are alone?[/shake]
 	Dalton: No...
 	Dalton: Just- 
 	Dalton: Tsk. 
 	Dalton: I'll see you at the station.
-	Theo: [shake rate=10.0 level=2 connected=0]Huh?[/shake]
+	Theo: [shake rate=10.0 level=4 connected=2]Huh?[/shake]
 	[signal arg = "end_call"]
 	Quincy: Who was that?
 	Dalton: Huu.... 
