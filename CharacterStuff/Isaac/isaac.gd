@@ -15,7 +15,8 @@ extends Node3D
 	
 
 func _on_isaac_idle_timeout() -> void:
-	anim_tree["parameters/conditions/time_elapsed"] = true
+	pass
+	#anim_tree["parameters/conditions/time_elapsed"] = true
 
 
 func _on_isaac_to_walk_out():
