@@ -263,5 +263,7 @@ func _on_control_areas_check_on_isaac() -> void:
 	crouch_sound.play()
 	#blend_worry = false
 	blend_crouch = true
+	await get_tree().create_timer(7.625).timeout
+	anim_tree["parameters/CrouchIdle/blend_amount"] = 1
 	
 	
