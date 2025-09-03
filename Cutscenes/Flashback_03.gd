@@ -26,10 +26,10 @@ var blend := false
 @export var wb_sounds : AnimationPlayer
 @export var CIA2_sounds : AnimationPlayer
 @export var CIA1_sounds : AnimationPlayer
+@export var rustle : AudioStreamPlayer3D
 
 func _ready() -> void:
 	isaac_sounds.play("IsaacStart")
-	wb_sounds.play("WalkIn")
 	CIA_01.visible = false
 	CIA_02.visible = false
 	anim_phone.play("Phone")
@@ -50,10 +50,12 @@ func _process(delta: float) -> void:
 	if blend:
 		watching_dalton["parameters/BlendSpace1D/blend_position"] = lerp(watching_dalton["parameters/BlendSpace1D/blend_position"], 1.0, delta * 2.0) 
 
-
 func _end_movement(arg : String):
 	if arg == "marc_walk_in":
 		whistleblower_anim["parameters/conditions/enter"] = true
+		wb_sounds.play("WalkIn")
+	if arg == "rustle":
+		rustle.play()
 	elif arg == "marc_give_and_runs":
 		isaac_sounds.play("IsaacHandover")
 		isaac_anim["parameters/conditions/handover"] = true
@@ -61,8 +63,10 @@ func _end_movement(arg : String):
 		anim_case.play("CasePickup")
 		wb_sounds.play("RunOut")
 	elif arg == "mm_enter":
-		CIA_anim["parameters/conditions/handover"] = true
-		CIA_02_anim["parameters/conditions/handover"] = true
+		isaac_sounds.play("IsaacFight")
+		isaac_anim["parameters/conditions/fight"] = true
+		CIA_anim["parameters/conditions/fight"] = true
+		CIA_02_anim["parameters/conditions/fight"] = true
 		watching_dalton["parameters/conditions/handover"] = true
 		CIA1_sounds.play("WalkCIA1")
 		CIA2_sounds.play("WalkCIA2")
