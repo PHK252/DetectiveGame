@@ -1,4 +1,5 @@
-if {Character Aff Points.Theo} > 3:
+if {Character Aff Points.Theo} < 3:
+	set{Interogation.low_theo_case_rever_quincy} = true
 	Dalton: ...
 	Dalton: Are you Skylar Aslan?
 	Skylar: ...
@@ -11,74 +12,8 @@ if {Character Aff Points.Theo} > 3:
 	Dalton: Anything you say or do can be used against you in court. 
 	Dalton: Do you understand?
 	Skylar: yes.
-	label choices
-	if {Interogation.asked_where} and {Interogation.asked_Quincy} and {Interogation.asked_Juniper} and {Interogation.asked_Micah} == true:
-		jump continue
-	[wait time=".3"]
-	Dalton: ...
-	- Location on 11/01
-		if {Interogation.asked_where} == false:
-			Dalton: Where were you on the night of 11/01?
-			Skylar: I was...
-			Skylar: Wandering around...
-			Skylar: Finishing some business...
-			Dalton: Where specifically did this “business”  take place?
-			Skylar: Um...
-			Skylar: Uh...
-			Skylar: Just around.
-			Dalton: Hmph. 
-			set {Interogation.asked_where} = true
-			jump choices
-		else: 
-			Dalton: Where were you on the night of 11/01?
-			Skylar: Um...
-			Skylar: Uh...
-			Skylar: Around.
-			Dalton: Hmmph.
-	- Micah
-		if {Interogation.asked_Micah} == false:
-			Dalton: Do you know Micah Pycron?
-			Skylar: y-yes.
-			Dalton: What is your relation to him?
-			Skylar: ...
-			Skylar: Just a friend. 
-			Dalton: Hmph.
-			set {Interogation.asked_Micah} = true
-			jump choices
-		else:
-			Dalton: Do you know Micah Pycron?
-			Skylar: ...
-			Skylar: Just a friend.
-			jump choices
-	- Juniper
-		if {Interogation.asked_Juniper} == false:
-			Dalton: Do you know Juniper Hartley?
-			Skylar: Mm...
-			Dalton: How?
-			Skylar: ...
-			Skylar: Was my boss. 
-			Dalton: Hmph.
-			set {Interogation.asked_Juniper} = true
-			jump choices
-		else:
-			Dalton: Do you know Juniper Hartley?
-			Skylar: ...
-			Skylar: Was my boss. 
-	- Quincy
-		if {Interogation.asked_Quincy} == false:
-			Dalton: Do you know Quincy Leonid?
-			Skylar: He...
-			Skylar: ...is the mayor.
-			Dalton: ...
-			Dalton: Any further relation?
-			Skylar: No.
-			jump choices
-		else:
-			Dalton: Do you know Quincy Leonid?
-			Skylar: He...
-			Skylar: ...is the mayor.
-			jump choices
-	label continue
+	jump Day_3_questions/choices
+	label low_theo continue
 	Dalton: Look.
 	Dalton: I know you’re hiding something.
 	Dalton: If you confess now, I may be able to negotiate a shorter sentence for you.
@@ -117,6 +52,68 @@ if {Character Aff Points.Theo} > 3:
 	Skylar: ...
 	Dalton: Hmph. 
 	Dalton: Theo, I think we are done here. 
-	Dalton: Cuff him and take him to holding.
+	Dalton: Take him to holding.
 	Theo: O-okay.
+	[end_timeline]
+else:
+	set{Interogation.high_theo_case_rever_quincy} = true
+	Dalton: ...
+	Theo: Hey!
+	Theo: Are you Skylar Aslan?
+	Skylar: ...
+	Skylar: yes.
+	Theo: I am Detective Lycus and this old fox right here is Detective Reynard. 
+	Theo: It’s nice to meet you!
+	Skylar: ...
+	Theo: Hah, I guess you can’t say likewise...
+	Dalton: Ahem.
+	Dalton: We are currently investigating a string of consecutive break-ins...
+	Dalton: You are currently the main suspect in this case. 
+	Dalton: Do you understand?
+	Skylar: yes. 
+	Dalton: Anything you say or do can be used against you in court. 
+	Dalton: Do you understand?
+	Skylar: yes.
+	jump Day_3_questions/choices
+	label high_theo continue
+	Theo: Hey...
+	Theo: I get that you’re nervous, but...
+	Theo: If you tell us your side of these events...
+	Dalton: We may be able to negotiate a shorter sentence for you.
+	Skylar: ...
+	Dalton: ...
+	Dalton: Huu...
+	Dalton: Just answer this question.
+	Dalton: Were you behind these three break-ins?
+	Skylar: rever.
+	Dalton: What was that?
+	Skylar: Rever.
+	Dalton: Huh?
+	Skylar: REVER.
+	Skylar: Do you-
+	Theo: What?
+	Dalton: You know about it?
+	Skylar: ...
+	Skylar: ...
+	Skylar: ...
+	Skylar: Hu...
+	Skylar: yes.
+	Dalton: ...
+	Dalton: ...
+	Dalton: I think it’ll be best all that...
+	Dalton: Stays buried.
+	Dalton: You know how your father is. 
+	Skylar: ...
+	Skylar: ...
+	Skylar: ...
+	Skylar: Fine.
+	Skylar: Let me go then. 
+	Dalton: That is not a choice for me to make.
+	Dalton: We’ll move you to holding for now. 
+	Dalton: It’s up to the victims now if they want to file a claim against you. 
+	Theo: If you have any additional information that you want to tell us...
+	Theo: Just ask for Detective Lycus or Reynard. 
+	Skylar: ...
+	Skylar: ...
+	Dalton: Hmph.
 	[end_timeline]

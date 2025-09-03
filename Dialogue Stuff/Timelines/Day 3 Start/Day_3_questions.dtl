@@ -1,0 +1,90 @@
+label choices
+[wait time=".03"]
+Dalton: ...
+- Location on 11/01
+	if {Interogation.asked_where} == false:
+		Dalton: Where were you on the night of 11/01?
+		Skylar: I was...
+		Skylar: Wandering around...
+		Skylar: Finishing some business...
+		Dalton: Where specifically did this “business”  take place?
+		Skylar: Um...
+		Skylar: Uh...
+		Skylar: Just around.
+		Dalton: Hmph. 
+		set {Interogation.asked_where} = true
+		if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
+			jump continue
+		else:
+			jump choices
+	else: 
+		Dalton: Where were you on the night of 11/01?
+		Skylar: Um...
+		Skylar: Uh...
+		Skylar: Around.
+		Dalton: Hmmph.
+		jump choices
+- Relation to victims
+	- Micah 
+		if {Interogation.asked_Micah} == false:
+			Dalton: Do you know Micah Pycron?
+			Skylar: y-yes.
+			Dalton: What is your relation to him?
+			Skylar: ...
+			Skylar: Just a friend. 
+			Dalton: Hmph.
+			set {Interogation.asked_Micah} = true
+			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
+				jump continue
+			else:
+				jump choices
+		else:
+			Dalton: Do you know Micah Pycron?
+			Skylar: ...
+			Skylar: Just a friend.
+			jump choices
+	- Juniper
+		if {Interogation.asked_Juniper} == false:
+			Dalton: Do you know Juniper Hartley?
+			Skylar: Mm...
+			Dalton: How?
+			Skylar: ...
+			Skylar: Was my boss. 
+			Dalton: Hmph.
+			set {Interogation.asked_Juniper} = true
+			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
+				jump continue
+			else:
+				jump choices
+		else:
+			Dalton: Do you know Juniper Hartley?
+			Skylar: ...
+			Skylar: Was my boss. 
+			jump choices
+	- Quincy
+		if {Interogation.asked_Quincy} == false:
+			Dalton: Do you know Quincy Leonid?
+			Skylar: He...
+			Skylar: ...is the mayor.
+			Dalton: ...
+			Dalton: Any further relation?
+			Skylar: No.
+			set {Interogation.asked_Quincy} = true
+			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
+				jump continue
+			else:
+				jump choices
+		else:
+			Dalton: Do you know Quincy Leonid?
+			Skylar: He...
+			Skylar: ...is the mayor.
+			jump choices
+- Continue
+	if {Interogation.low_theo_case_rever_quincy} == true:
+		jump Day_3_intero_case_rever_quincy/low_theo continue
+	elif {Interogation.low_theo_case_rever_quincy} == true:
+		jump Day_3_intero_case_rever_quincy/high_theo continue
+	elif {Interogation.low_theo_case} == true:
+		jump Day_3_intero_case/low_theo continue
+	elif {Interogation.high_theo_case} == true:
+		jump Day_3_intero_case/high_theo continue
