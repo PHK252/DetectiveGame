@@ -4,13 +4,17 @@ Dalton: ...
 - Location on 11/01
 	if {Interogation.asked_where} == false:
 		Dalton: Where were you on the night of 11/01?
+		set {Global.flip_bubble} = true
 		Skylar: I was...
 		Skylar: Wandering around...
 		Skylar: Finishing some business...
-		Dalton: Where specifically did this “business”  take place?
+		set {Global.flip_bubble} = false
+		Dalton: Where specifically did this “business” take place?
+		set {Global.flip_bubble} = true
 		Skylar: Um...
 		Skylar: Uh...
 		Skylar: Just around.
+		set {Global.flip_bubble} = false
 		Dalton: Hmph. 
 		set {Interogation.asked_where} = true
 		if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
@@ -19,19 +23,25 @@ Dalton: ...
 			jump choices
 	else: 
 		Dalton: Where were you on the night of 11/01?
+		set {Global.flip_bubble} = true
 		Skylar: Um...
 		Skylar: Uh...
 		Skylar: Around.
+		set {Global.flip_bubble} = false
 		Dalton: Hmmph.
 		jump choices
 - Relation to victims
 	- Micah 
 		if {Interogation.asked_Micah} == false:
 			Dalton: Do you know Micah Pycron?
+			set {Global.flip_bubble} = true
 			Skylar: y-yes.
+			set {Global.flip_bubble} = false
 			Dalton: What is your relation to him?
+			set {Global.flip_bubble} = true
 			Skylar: ...
 			Skylar: Just a friend. 
+			set {Global.flip_bubble} =  false
 			Dalton: Hmph.
 			set {Interogation.asked_Micah} = true
 			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
@@ -40,16 +50,22 @@ Dalton: ...
 				jump choices
 		else:
 			Dalton: Do you know Micah Pycron?
+			set {Global.flip_bubble} = true
 			Skylar: ...
 			Skylar: Just a friend.
+			set {Global.flip_bubble} = false
 			jump choices
 	- Juniper
 		if {Interogation.asked_Juniper} == false:
 			Dalton: Do you know Juniper Hartley?
+			set {Global.flip_bubble} = true
 			Skylar: Mm...
+			set {Global.flip_bubble} = false
 			Dalton: How?
+			set {Global.flip_bubble} = true
 			Skylar: ...
 			Skylar: Was my boss. 
+			set {Global.flip_bubble} = false
 			Dalton: Hmph.
 			set {Interogation.asked_Juniper} = true
 			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
@@ -58,17 +74,23 @@ Dalton: ...
 				jump choices
 		else:
 			Dalton: Do you know Juniper Hartley?
+			set {Global.flip_bubble} = true
 			Skylar: ...
 			Skylar: Was my boss. 
+			set {Global.flip_bubble} = false
 			jump choices
 	- Quincy
 		if {Interogation.asked_Quincy} == false:
 			Dalton: Do you know Quincy Leonid?
+			set {Global.flip_bubble} = true
 			Skylar: He...
 			Skylar: ...is the mayor.
+			set {Global.flip_bubble} = false
 			Dalton: ...
 			Dalton: Any further relation?
+			set {Global.flip_bubble} = true
 			Skylar: No.
+			set {Global.flip_bubble} = false
 			set {Interogation.asked_Quincy} = true
 			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
 				jump continue
@@ -76,8 +98,10 @@ Dalton: ...
 				jump choices
 		else:
 			Dalton: Do you know Quincy Leonid?
+			set {Global.flip_bubble} = true
 			Skylar: He...
 			Skylar: ...is the mayor.
+			set {Global.flip_bubble} = false
 			jump choices
 - Continue
 	if {Interogation.low_theo_case_rever_quincy} == true:

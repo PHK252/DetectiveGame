@@ -21,6 +21,7 @@ extends Node3D
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
 
+@export var anim_drink : AnimationPlayer
 signal enable_after_tea_interaction
 
 func _ready():
@@ -68,7 +69,8 @@ func _on_tea_drink_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false :
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				#add soundFX
+				anim_drink.play("dalton_drink")
+				await anim_drink.animation_finished
 				GlobalVars.in_dialogue = true
 				choose_drink_thought_dialogue()
 				var game_dialogue = Dialogic.start(dialogue_file)

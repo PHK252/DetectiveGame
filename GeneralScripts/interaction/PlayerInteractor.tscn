@@ -115,6 +115,7 @@ script = ExtResource("2_y2xxv")
 
 [node name="Alert" type="Sprite3D" parent="CollisionShape3D" index="0"]
 offset = Vector2(0, 135)
+texture_filter = 0
 texture = ExtResource("3_xn67x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape3D" index="1"]

@@ -95,7 +95,8 @@ func _process(delta):
 			GlobalVars.set(dialogue, true)
 			alert.hide()
 			thoughts = false
-		elif dialogue_after == false and Input.is_action_just_pressed("Exit"):# or Dialogic.VAR.get_variable("Quincy.is_distracted") == false: #Juniper is in tea:
+			dialogue_after = false
+		elif dialogue_after == false and Input.is_action_just_pressed("Exit"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0

@@ -471,6 +471,14 @@ script = ExtResource("1_eli2p")
 metadata/_edit_vertical_guides_ = [2472.0, 2245.0]
 metadata/_edit_horizontal_guides_ = [1774.0]
 
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.294118)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="HomeScreen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -2816,6 +2824,7 @@ texture_pressed = ExtResource("9_valq1")
 texture_hover = ExtResource("9_valq1")
 
 [connection signal="add_contact" from="." to="PhoneScreen/ContactScreen" method="_on_phone_ui_add_contact"]
+[connection signal="visibility_changed" from="." to="Panel" method="_on_visibility_changed"]
 [connection signal="pressed" from="HomeScreen/Gallery" to="." method="_on_gallery_pressed"]
 [connection signal="pressed" from="HomeScreen/Notes" to="." method="_on_notes_pressed"]
 [connection signal="pressed" from="HomeScreen/Phone" to="." method="_on_phone_pressed"]

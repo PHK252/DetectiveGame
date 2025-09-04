@@ -45,5 +45,5 @@ func _on_visibility_changed():
 	else:
 		if disabled == true:
 			print("enable")
-			InputMap.action_add_event("ui_up", up)
-			InputMap.action_add_event("ui_down", down)
+			InputMap.action_add_event("ui_up", up[0])
+			InputMap.action_add_event("ui_down", down[0])

@@ -11,6 +11,9 @@ extends Control
 @onready var called = false
 @onready var phone_up = false
 
+var prev_mouse_mode : int
+var exit = InputMap.action_get_events("Exit")
+var interact = InputMap.action_get_events("interact")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# phone call code
@@ -39,12 +42,23 @@ func _on_receiving_call_pressed():
 func _on_call_normal_pressed():
 	if GlobalVars.in_dialogue == false and GlobalVars.in_look_screen == false:
 		if GlobalVars.phone_up == false:
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				prev_mouse_mode = 2
+			elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				prev_mouse_mode = 0
+			await get_tree().process_frame
+			InputMap.action_erase_events("Exit")
+			InputMap.action_erase_events("interact")
+			#print(prev_mouse_mode)
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			phone_ui.show()
 			GlobalVars.phone_up = true
 			player.stop_player() 
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			#print(prev_mouse_mode)
+			InputMap.action_add_event("Exit", exit[0])
+			InputMap.action_add_event("interact", interact[0])
+			Input.set_mouse_mode(prev_mouse_mode)
 			phone_ui.hide()
 			GlobalVars.phone_up = false
 			if GlobalVars.in_interaction == "":

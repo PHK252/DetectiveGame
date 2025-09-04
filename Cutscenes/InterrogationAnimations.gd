@@ -44,20 +44,7 @@ func _ready() -> void:
 	intero_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 	intero_dialogue.register_character(load("res://Dialogic Characters/Skylar.dch"), skylar_maker)
 	
-#func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("interact"):
-		#soundplayer.play("SoundsKey")
-		#cuffs_closed.visible = false
-		#cuffs_open.visible = true
-		#KeyAnim.play("Key")
-		#DoorAnim.play("DoorOpen")
-		#D_anim["parameters/conditions/release_skylar"] = true
-		#S_anim["parameters/conditions/release_skylar"] = true
-		#T_anim["parameters/conditions/release_skylar"] = true
-		#cam_anims.play("OutroAnimation")
-	#
-	#if Input.is_action_just_pressed("meeting_done"):
-		#cam_anims.play("ChocoCam")
+
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

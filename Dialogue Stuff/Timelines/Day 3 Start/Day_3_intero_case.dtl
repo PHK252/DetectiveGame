@@ -2,64 +2,89 @@ if {Character Aff Points.Theo} < 3:
 	set {Interogation.low_theo_case} = true
 	Dalton: ...
 	Dalton: Are you Skylar Aslan?
+	set {Global.flip_bubble} = true
 	Skylar: ...
 	Skylar: yes.
+	set {Global.flip_bubble} = false
 	Dalton: I am Detective Reynard and this is Detective Lycus. 
 	Dalton: We are currently investigating a string of consecutive break-ins...
 	Dalton: You are currently the main suspect in this case. 
 	Dalton: Do you understand?
+	set {Global.flip_bubble} = true
 	Skylar: yes. 
+	set {Global.flip_bubble} = false
 	Dalton: Anything you say or do can be used against you in court. 
 	Dalton: Do you understand?
+	set {Global.flip_bubble} = true
 	Skylar: yes.
+	set {Global.flip_bubble} = false
 	jump Day_3_questions/choices
 	label low_theo continue
 	Dalton: Look.
 	Dalton: I know you’re hiding something.
 	Dalton: If you confess now, I may be able to negotiate a shorter sentence for you.
+	set {Global.flip_bubble} = true
 	Skylar: ...
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Huu...
 	Dalton: Just answer this question.
 	Dalton: Were you behind these three break-ins?
+	set {Global.flip_bubble} = true
 	Skylar: rever.
+	set {Global.flip_bubble} = false
 	Dalton: What was that?
+	set {Global.flip_bubble} = true
 	Skylar: Rever.
+	set {Global.flip_bubble} = false
 	Dalton: Huh?
+	set {Global.flip_bubble} = true
 	Skylar: REVER.
 	Skylar: Do you-
+	set {Global.flip_bubble} = false
 	Dalton: Stop spitting nonsense and just answer the question.
+	set {Global.flip_bubble} = true
 	Skylar: ...
 	Skylar: ...
 	Skylar: ...
 	Skylar: Hu...
 	Skylar: yes.
 	Skylar: I was. 
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Why?
 	Dalton: Why did you do it?
+	set {Global.flip_bubble} = true
 	Skylar: Like I said...
 	Skylar: Unfinished business. 
+	set {Global.flip_bubble} = false
 	Dalton: Hmph.
 	Dalton: Do you care to elaborate?
+	set {Global.flip_bubble} = true
 	Skylar: No. 
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Fine. 
 	Dalton: We’ll move you to holding for now. 
 	Dalton: It’s up to the victims now if they want to press charges against you. 
 	Dalton: But if you have any additional information you think will help your case...
 	Dalton: You better tell me now. 
+	set {Global.flip_bubble} = true
 	Skylar: ...
 	Skylar: ...
 	Skylar: ...
+	set {Global.flip_bubble} = false
 	Dalton: Hmph. 
 	Dalton: Theo, I think we are done here. 
 	Dalton: Take him to holding.
+	set {Global.flip_bubble} = true
 	Theo: O-okay.
+	set {Global.flip_bubble} = false
 	[end_timeline]
 else:
 	set {Interogation.high_theo_case} = true
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: Hey!
 	Theo: Are you Skylar Aslan?
 	Skylar: ...
@@ -68,53 +93,76 @@ else:
 	Theo: It’s nice to meet you!
 	Skylar: ...
 	Theo: Hah, I guess you can’t say likewise...
+	set {Global.flip_bubble} = false
 	Dalton: Ahem.
 	Dalton: We are currently investigating a string of consecutive break-ins...
 	Dalton: You are currently the main suspect in this case. 
 	Dalton: Do you understand?
+	set {Global.flip_bubble} = true
 	Skylar: yes. 
+	set {Global.flip_bubble} = false
 	Dalton: Anything you say or do can be used against you in court. 
 	Dalton: Do you understand?
+	set {Global.flip_bubble} = true
 	Skylar: yes.
+	set {Global.flip_bubble} = false
 	jump Day_3_questions/choices
 	label high_theo continue
+	set {Global.flip_bubble} = true
 	Theo: Hey...
 	Theo: I get that you’re nervous, but...
 	Theo: If you tell us your side of these events...
+	set {Global.flip_bubble} = false
 	Dalton: We may be able to negotiate a shorter sentence for you.
+	set {Global.flip_bubble} = true
 	Skylar: ...
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Huu...
 	Dalton: Just answer this question.
 	Dalton: Were you behind these three break-ins?
+	set {Global.flip_bubble} = ture
 	Skylar: rever.
+	set {Global.flip_bubble} = false
 	Dalton: What was that?
+	set {Global.flip_bubble} = true
 	Skylar: Rever.
+	set {Global.flip_bubble} = false
 	Dalton: Huh?
+	set {Global.flip_bubble} = true
 	Skylar: REVER.
 	Skylar: Do you-
+	set {Global.flip_bubble} = false
 	Dalton: Stop spitting nonsense and just answer the question.
+	set {Global.flip_bubble} = true
 	Skylar: ...
 	Skylar: ...
 	Skylar: ...
 	Skylar: Hu...
 	Skylar: yes.
 	Skylar: I was. 
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Why?
 	Dalton: Why did you do it?
+	set {Global.flip_bubble} = true
 	Skylar: Like I said...
 	Skylar: Unfinished business. 
+	set {Global.flip_bubble} = false
 	Dalton: Hmph.
 	Dalton: Do you care to elaborate?
+	set {Global.flip_bubble} = true
 	Skylar: No. 
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Fine. 
 	Dalton: We’ll move you to holding for now. 
 	Dalton: It’s up to the victims now if they want to press charges against you. 
+	set {Global.flip_bubble} = true
 	Theo: If you have any additional information that you want to tell us...
 	Theo: Just ask for Detective Lycus or Reynard. 
 	Skylar: ...
 	Skylar: ...
+	set {Global.flip_bubble} = false
 	Dalton: Hmph.
 	[end_timeline]
