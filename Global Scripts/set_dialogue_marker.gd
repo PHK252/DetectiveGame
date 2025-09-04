@@ -53,6 +53,7 @@ func positionMarker(mult : int):
 	var marker_pos = cam.unproject_position(pos)
 	marker_pos = marker_pos * mult
 	marker.position = marker_pos
+	#print(marker_pos)
 	#rect.position = marker_pos
 	
 	if edge_cam:
@@ -78,7 +79,7 @@ func positionMarker(mult : int):
 	
 	if bar_nudge == true:
 		marker_pos.x += 50
-	
+	#print(marker_pos)
 	marker.position = marker_pos
 	#rect.position = marker_pos
 
