@@ -1,0 +1,683 @@
+[gd_scene load_steps=32 format=3 uid="uid://djiit5o2pgoy7"]
+
+[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="1_eamh7"]
+[ext_resource type="Texture2D" uid="uid://uut7ggpjbkbi" path="res://UI/Assets/tutorial/Notes_arrow_right.png" id="2_pwpa5"]
+[ext_resource type="Texture2D" uid="uid://cqhd1lc1d0edu" path="res://UI/Assets/tutorial/Notes_arrow_left.png" id="3_om0r0"]
+[ext_resource type="Texture2D" uid="uid://cwohdgtm3ywwn" path="res://UI/Assets/tutorial/Notes_arrow_up.png" id="4_c481p"]
+[ext_resource type="Texture2D" uid="uid://djoemkon3d760" path="res://UI/Assets/tutorial/Notes_arrow_down.png" id="5_en25p"]
+[ext_resource type="Texture2D" uid="uid://f5cq6gld5hxb" path="res://UI/Assets/tutorial/Notes_w_up.png" id="6_2whfq"]
+[ext_resource type="Texture2D" uid="uid://cq3n6r4emapo3" path="res://UI/Assets/tutorial/Notes_a_left.png" id="7_gc8pi"]
+[ext_resource type="Texture2D" uid="uid://bd3ohdy8yhmdm" path="res://UI/Assets/tutorial/Notes_s_down.png" id="8_n3cvu"]
+[ext_resource type="Texture2D" uid="uid://dvup6hsfbeywu" path="res://UI/Assets/tutorial/Notes_d_right.png" id="9_hey4w"]
+[ext_resource type="Texture2D" uid="uid://dt2pgjcoj4po2" path="res://UI/Assets/tutorial/Notes_shift.png" id="10_fcm1x"]
+[ext_resource type="Texture2D" uid="uid://bfve7ho7jfvh7" path="res://UI/Assets/tutorial/Notes_interact_e.png" id="11_pxagh"]
+[ext_resource type="Texture2D" uid="uid://c5jhnu1avga8o" path="res://UI/Assets/tutorial/Notes_exit_q.png" id="12_76whn"]
+[ext_resource type="Texture2D" uid="uid://cts0evds0qj5h" path="res://UI/Assets/tutorial/Notes_esc.png" id="13_dc2xy"]
+[ext_resource type="Texture2D" uid="uid://4lsqhothskw8" path="res://UI/Assets/tutorial/Notes_tab.png" id="14_iu1ku"]
+[ext_resource type="Texture2D" uid="uid://dy7fg7fs132wd" path="res://UI/Assets/tutorial/Notes_click1.png" id="15_na8nk"]
+[ext_resource type="Texture2D" uid="uid://01mxte662mjj" path="res://UI/Assets/tutorial/Notes_click2.png" id="16_h6ssu"]
+[ext_resource type="Texture2D" uid="uid://bua4guet3old6" path="res://UI/Assets/tutorial/Notes_click3.png" id="17_xj8md"]
+[ext_resource type="Texture2D" uid="uid://ctq7n8td3k6wi" path="res://UI/Assets/tutorial/Notes_click4.png" id="18_rqcy7"]
+[ext_resource type="Texture2D" uid="uid://mwv1s1kh646e" path="res://UI/Assets/tutorial/Notes_click5.png" id="19_bacir"]
+[ext_resource type="Texture2D" uid="uid://crdtikc7dkfnv" path="res://UI/Assets/tutorial/Notes_click6.png" id="20_cjvdg"]
+[ext_resource type="Texture2D" uid="uid://cqj6k0t3e2d4s" path="res://UI/Assets/tutorial/Notes_click Blank.png" id="21_pwpa5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5sc0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_na8nk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_h6ssu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xj8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_rqcy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_bacir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_cjvdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pwpa5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pwpa5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_tvhgf"]
+resource_name = "Blink Move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Movement:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+
+[sub_resource type="Animation" id="Animation_0g1k3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Movement:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Run:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Interact:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Phone:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Exit:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pause:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Flip/TO RUN:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ttlim"]
+resource_name = "Blink Run"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Run:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+
+[sub_resource type="Animation" id="Animation_oypdc"]
+resource_name = "Blink Interact"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+
+[sub_resource type="Animation" id="Animation_cr2mm"]
+resource_name = "Blink Phone"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Phone:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+
+[sub_resource type="Animation" id="Animation_l4ptw"]
+resource_name = "Blink Exit"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+
+[sub_resource type="Animation" id="Animation_8krtd"]
+resource_name = "Blink Pause"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pause:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+
+[sub_resource type="Animation" id="Animation_om0r0"]
+resource_name = "Blink Click"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/TO RUN:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kbvhg"]
+_data = {
+&"Blink Click": SubResource("Animation_om0r0"),
+&"Blink Exit": SubResource("Animation_l4ptw"),
+&"Blink Interact": SubResource("Animation_oypdc"),
+&"Blink Move": SubResource("Animation_tvhgf"),
+&"Blink Pause": SubResource("Animation_8krtd"),
+&"Blink Phone": SubResource("Animation_cr2mm"),
+&"Blink Run": SubResource("Animation_ttlim"),
+&"RESET": SubResource("Animation_0g1k3")
+}
+
+[node name="Control" type="CanvasLayer"]
+metadata/_edit_horizontal_guides_ = [994.0, 943.0]
+metadata/_edit_vertical_guides_ = [960.0]
+
+[node name="Movement" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OR" type="RichTextLabel" parent="Movement"]
+texture_filter = 2
+offset_left = 700.0
+offset_top = 918.0
+offset_right = 887.0
+offset_bottom = 1001.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]OR[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="TO MOVE" type="RichTextLabel" parent="Movement"]
+texture_filter = 2
+offset_left = 1126.0
+offset_top = 918.0
+offset_right = 1410.0
+offset_bottom = 1001.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "TO MOVE"
+fit_content = true
+scroll_active = false
+
+[node name="Right" type="Sprite2D" parent="Movement"]
+position = Vector2(672.5, 968)
+texture = ExtResource("2_pwpa5")
+
+[node name="Left" type="Sprite2D" parent="Movement"]
+position = Vector2(542.5, 968)
+texture = ExtResource("3_om0r0")
+
+[node name="Up" type="Sprite2D" parent="Movement"]
+position = Vector2(607.5, 908)
+texture = ExtResource("4_c481p")
+
+[node name="Down" type="Sprite2D" parent="Movement"]
+position = Vector2(607.5, 968)
+texture = ExtResource("5_en25p")
+
+[node name="W" type="Sprite2D" parent="Movement"]
+position = Vector2(979.5, 908)
+texture = ExtResource("6_2whfq")
+
+[node name="A" type="Sprite2D" parent="Movement"]
+position = Vector2(914.5, 968)
+texture = ExtResource("7_gc8pi")
+
+[node name="S" type="Sprite2D" parent="Movement"]
+position = Vector2(979.5, 968)
+texture = ExtResource("8_n3cvu")
+
+[node name="D" type="Sprite2D" parent="Movement"]
+position = Vector2(1044.5, 968)
+texture = ExtResource("9_hey4w")
+
+[node name="Run" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shift" type="Sprite2D" parent="Run"]
+position = Vector2(842, 968)
+texture = ExtResource("10_fcm1x")
+
+[node name="Panel2" type="Panel" parent="Run"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -137.0
+offset_right = 188.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Run"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 404.0
+offset_right = -11.0
+offset_bottom = 455.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TO RUN" type="RichTextLabel" parent="Run"]
+texture_filter = 2
+offset_left = 946.0
+offset_top = 923.0
+offset_right = 1221.0
+offset_bottom = 1006.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO RUN"
+fit_content = true
+scroll_active = false
+
+[node name="Interact" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="E" type="Sprite2D" parent="Interact"]
+position = Vector2(757, 968)
+texture = ExtResource("11_pxagh")
+
+[node name="Panel2" type="Panel" parent="Interact"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -231.5
+offset_top = 941.0
+offset_right = 231.5
+offset_bottom = 992.0
+grow_horizontal = 2
+
+[node name="TO RUN" type="RichTextLabel" parent="Interact"]
+texture_filter = 2
+offset_left = 819.0
+offset_top = 923.0
+offset_right = 1219.0
+offset_bottom = 1006.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO INTERACT"
+fit_content = true
+scroll_active = false
+
+[node name="Panel" type="Panel" parent="Interact"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 403.0
+offset_right = -54.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Exit" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Q" type="Sprite2D" parent="Exit"]
+position = Vector2(830, 968)
+texture = ExtResource("12_76whn")
+
+[node name="Panel2" type="Panel" parent="Exit"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -137.0
+offset_right = 158.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TO RUN" type="RichTextLabel" parent="Exit"]
+texture_filter = 2
+offset_left = 892.0
+offset_top = 923.0
+offset_right = 1292.0
+offset_bottom = 1006.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO EXIT"
+fit_content = true
+scroll_active = false
+
+[node name="Panel" type="Panel" parent="Exit"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 403.0
+offset_right = -54.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Esc" type="Sprite2D" parent="Pause"]
+position = Vector2(816, 968)
+texture = ExtResource("13_dc2xy")
+
+[node name="Panel2" type="Panel" parent="Pause"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -135.0
+offset_right = 176.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TO RUN" type="RichTextLabel" parent="Pause"]
+texture_filter = 2
+offset_left = 878.0
+offset_top = 923.0
+offset_right = 1278.0
+offset_bottom = 1006.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO PAUSE"
+fit_content = true
+scroll_active = false
+
+[node name="Panel" type="Panel" parent="Pause"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 403.0
+offset_right = -54.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Phone" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tab" type="Sprite2D" parent="Phone"]
+position = Vector2(688, 968)
+texture = ExtResource("14_iu1ku")
+
+[node name="Panel2" type="Panel" parent="Phone"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.5
+offset_top = -137.0
+offset_right = 326.5
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TO RUN" type="RichTextLabel" parent="Phone"]
+texture_filter = 2
+offset_left = 776.0
+offset_top = 923.0
+offset_right = 1317.0
+offset_bottom = 1006.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO TOGGLE PHONE"
+fit_content = true
+scroll_active = false
+
+[node name="Panel" type="Panel" parent="Phone"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 403.0
+offset_right = -113.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Flip" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Click" type="AnimatedSprite2D" parent="Flip"]
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_5sc0d")
+frame = 7
+frame_progress = 0.697845
+
+[node name="Panel2" type="Panel" parent="Flip"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.5
+offset_top = -137.0
+offset_right = 326.5
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TO RUN" type="RichTextLabel" parent="Flip"]
+texture_filter = 2
+offset_left = 690.0
+offset_top = 923.0
+offset_right = 1231.0
+offset_bottom = 1006.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[center]CLICK TO FLIP[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Panel" type="Panel" parent="Flip"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 403.0
+offset_right = -113.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kbvhg")
+}

@@ -34,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="32_l4c5b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r62oi"]
-font_size = 35
+font_size = 40
 font_color = Color(0.4, 0.454902, 0.380392, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_4bu4b"]
@@ -240,14 +240,15 @@ position = Vector2(960, 538)
 texture = ExtResource("3_v1fju")
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 offset_left = 444.0
-offset_top = 794.0
+offset_top = 789.0
 offset_right = 687.0
-offset_bottom = 824.0
+offset_bottom = 823.0
 theme_override_colors/font_color = Color(0.4, 0.454902, 0.380392, 1)
 theme_override_fonts/font = ExtResource("4_4bu4b")
 theme_override_font_sizes/font_size = 45
-text = "1"
+text = "w"
 label_settings = SubResource("LabelSettings_r62oi")
 vertical_alignment = 1
 justification_flags = 129
@@ -440,7 +441,7 @@ texture_hover = ExtResource("31_4bu4b")
 visible = false
 offset_left = 444.0
 offset_top = 821.0
-offset_right = 464.0
+offset_right = 466.0
 offset_bottom = 824.0
 color = Color(0.4, 0.454902, 0.380392, 1)
 
