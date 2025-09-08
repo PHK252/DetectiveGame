@@ -58,8 +58,7 @@ var micah_leave_missing = "- The victim mentioned that his friend by the name of
 func _ready():
 	#_add_note(micah_case_letter_skylar)
 	#_add_note(micah_pic_high_found)
-	#_add_note(text)
-	_add_note(micah_tool_note_found)
+	#_add_note(micah_tool_note_found)
 	pass
 
 #handling notes
@@ -71,8 +70,8 @@ func _add_note(text : String):
 		text_label.text = text
 	else:
 		text_label.text += "\n" + text
-	pass
-
+	GlobalVars.micah_notes = text_label.text
+	#print(GlobalVars.micah_notes)
 #handling photos
 func _on_RichTextLabel_meta_clicked(meta):
 	if meta == "show_tool_note":

@@ -2143,11 +2143,12 @@ texture_normal = ExtResource("101_f75o4")
 texture_pressed = ExtResource("102_nsy64")
 texture_hover = ExtResource("102_nsy64")
 
-[node name="Evidence" type="Control" parent="NotesScreen" node_paths=PackedStringArray("row_1", "row_2", "micah_letter", "micah_key", "micah_fur", "juniper_letter", "juniper_pie", "quincy_letter", "quincy_hammer", "quincy_coors", "quincy_choco", "no_evidence", "description", "description_body")]
+[node name="Evidence" type="Control" parent="NotesScreen" node_paths=PackedStringArray("container", "row_1", "row_2", "micah_letter", "micah_key", "micah_fur", "juniper_letter", "juniper_pie", "quincy_letter", "quincy_hammer", "quincy_coors", "quincy_choco", "no_evidence", "description", "description_body")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("103_kyc1s")
+container = NodePath("VBoxContainer")
 row_1 = NodePath("VBoxContainer/Row 1")
 row_2 = NodePath("VBoxContainer/Row 2")
 micah_letter = NodePath("Micah Letter")

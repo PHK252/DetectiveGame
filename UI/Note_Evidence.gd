@@ -1,5 +1,6 @@
 extends Control
 
+@export var container : VBoxContainer
 @export var row_1: HBoxContainer
 @export var row_2: HBoxContainer
 
@@ -16,10 +17,10 @@ extends Control
 @export var no_evidence: RichTextLabel
 @export var description: RichTextLabel
 @export var description_body: RichTextLabel
-#func _ready():
-	#_add_evidence(micah_letter)
-	#_add_evidence(micah_key)
-	#_add_evidence(micah_fur)
+func _ready():
+	_add_evidence(micah_letter)
+	_add_evidence(micah_key)
+	_add_evidence(micah_fur)
 	#_add_evidence(juniper_letter)
 	#_add_evidence(juniper_pie)
 	#_add_evidence(quincy_letter)
@@ -51,6 +52,7 @@ func _attach_button(evidence : TextureButton, row_num : HBoxContainer):
 	remove_child(evidence)
 	row_num.add_child(evidence)
 	evidence.show()
+	GlobalVars.evidence_container = container
 
 func _recieve_evidence():
 	if GlobalVars.evi_char == "micah":

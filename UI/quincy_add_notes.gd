@@ -53,7 +53,7 @@ func _add_note(text : String):
 		text_label.text = text
 	else:
 		text_label.text += "\n" + text
-	pass
+	GlobalVars.quincy_notes = text_label.text
 
 #handling photos
 func _on_RichTextLabel_meta_clicked(meta):

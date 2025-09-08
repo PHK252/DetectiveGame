@@ -21,13 +21,31 @@ signal open_quincy_case
 @onready var in_interaction = ""
 @onready var viewing = ""
 
-
+## The actual Globals
 @onready var forward : bool
 @onready var day : int 
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = ""
 
+##Phone stuff
+#for contacts
+@onready var phone_contacts: Array[TextureButton] = []
+
+#for phone notes
+@onready var micah_notes : String
+@onready var juniper_notes : String
+@onready var quincy_notes : String
+# don't save these
+var note_char = ""
+var note_event = ""
+var note_condition = ""
+
+#for evidence collection
+@onready var evidence_container : VBoxContainer
+#don't save these
+var evi_char = ""
+var evidence = ""
 
 ##Office Vars
 @onready var intro_dialogue = false
@@ -61,11 +79,11 @@ signal open_quincy_case
 @onready var closet_dialogue = false
 @onready var viewed_tool_note = false
 @onready var viewed_id_card = false
-#Book
+#bookshelf
 @onready var clicked_book_note = 0
 @onready var book_dialogue = false
 @onready var viewed_Micah_bookmark = false
-#Cab
+#Cabinet
 @onready var clicked_cab = 0
 @onready var opened_cab = false
 #Pic
@@ -106,10 +124,10 @@ signal open_quincy_case
 @onready var clicked_bookmark_Juniper = 0
 #Employee + Resumes table
 @onready var viewed_Juniper_employee = false
+@onready var viewed_Juniper_resume = false
 @onready var resume_dialogue_Juniper = false
 @onready var employee_dialogue_Juniper = false
-@onready var viewed_Juniper_resume = false
-@onready var viewed_Juniper_empinfo = false
+#@onready var viewed_Juniper_empinfo = false
 @onready var clicked_employee_Juniper = 0
 @onready var clicked_resume_Juniper = 0
 #Med bills
@@ -208,14 +226,6 @@ signal open_quincy_case
 @onready var clicked_isaac_letter = 0
 
 
-#for phone notes
-var note_char = ""
-var note_event = ""
-var note_condition = ""
-
-#for evidence collection
-var evi_char = ""
-var evidence = ""
 
 ###Save Up until Here?
 var player_pos

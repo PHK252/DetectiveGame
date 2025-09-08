@@ -24,6 +24,7 @@ extends Node
 @export var skylar_maker : Marker2D
 
 func _ready() -> void:
+	GlobalVars.current_level = "interrogation"
 	if Dialogic.VAR.get_variable("Interogation.Case_Intero", true):
 		dialogic_file = "Day_3_intero_case"
 	elif Dialogic.VAR.get_variable("Interogation.Case_Rever_Quincy_intero", true):

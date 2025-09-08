@@ -52,7 +52,7 @@ func _on_gallery_pressed():
 	notes.hide()
 	gallery.show()
 	gallery_list.show()
-	emit_signal("add_contact", "skylar")
+	#emit_signal("add_contact", "skylar")
 
 func _on_notes_pressed():
 	home.hide()
