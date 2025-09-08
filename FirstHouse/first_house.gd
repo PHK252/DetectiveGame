@@ -30,7 +30,6 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.current_level = "micah"
-	Dialogic.VAR.set_variable("Global.went_to_Micah", true)
 	note_interaction.hide()
 	pic_fall_interact.hide()
 	bookmark_interact.hide()
@@ -40,9 +39,9 @@ func _ready():
 	pic_look_interact.hide()
 	tool_anim.play("NEWToolOpen")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#var layout = Dialogic.start("Office_Donuts")
-	#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), Micah_marker)
-	
+	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
+		Dialogic.VAR.set_variable("Global.first_house", "Micah")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

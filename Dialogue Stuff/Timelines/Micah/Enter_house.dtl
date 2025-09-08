@@ -1,9 +1,4 @@
-if {Global.went_to_Micah} == false and {Global.went_to_Juniper} == false:
-	set {Global.first_house} = "Micah"
-	set {Global.went_to_Micah} = true
-else:
-	set {Global.went_to_Micah} = true
-
+set {Global.went_to_Micah} = true
 # #knock
 Dalton: Hello!
 Dalton: Is anybody home?

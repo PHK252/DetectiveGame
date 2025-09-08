@@ -22,7 +22,8 @@ signal open_quincy_case
 @onready var juniper_time_out = false
 
 @onready var forward : bool
-@onready var day = ""
+@onready var day : int = 1
+@onready var time : String 
 
 @onready var in_call = false
 @onready var calling = false
@@ -165,7 +166,7 @@ signal open_quincy_case
 #@onready var second_house = ""
 @onready var has_secret = false
 @onready var has_contact = false
-@onready var current_level = ""
+@onready var current_level = "Office"
 
 
 @onready var view_secret_cure = false

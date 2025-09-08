@@ -35,7 +35,7 @@ func _on_secondhouse_button_pressed() -> void:
 
 
 func _on_thirdhouse_button_pressed() -> void:
-	if GlobalVars.day == "Day 1":
+	if GlobalVars.day == 1:
 		#exit to phone call
 		pass
 	else:
@@ -44,15 +44,15 @@ func _on_thirdhouse_button_pressed() -> void:
 
 
 func _on_office_button_pressed() -> void:
-	if GlobalVars.day == "Day 1": 
+	if GlobalVars.day == 1: 
 		if went_Juniper and went_Micah == false:
 			#thought to go to next house
 			pass
 		else:
 			Loading.load_scene(self, GlobalVars.office_path, true, "night", "yes_day_1")
-	if GlobalVars.day == "Day 2": 
+	if GlobalVars.day == 2: 
 		Loading.load_scene(self, GlobalVars.office_path, true, "night", "yes_day_1")
-	if GlobalVars.day == "Day 3": 
+	if GlobalVars.day == 2: 
 		Loading.load_scene(self, GlobalVars.office_path, true, "afternoon", "yes_day_1")
 	#get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
 
@@ -102,7 +102,7 @@ func _on_check_day():
 	#else:
 		#secret.disabled = false
 	var secret_coor = Dialogic.VAR.get_variable("Quincy.has_secret_coor")
-	if secret_coor == true and GlobalVars.day == "Day 3":
+	if secret_coor == true and GlobalVars.day == 3:
 		secret.show()
 	else:
 		secret.hide()

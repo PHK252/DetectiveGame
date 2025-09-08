@@ -1,10 +1,5 @@
-if {Global.went_to_Micah} == false and {Global.went_to_Juniper} == false:
-	#first juniper
-	set {Global.first_house} = "Juniper"
-	set {Global.went_to_Juniper} = true
-else:
-	#second juniper
-	set {Global.went_to_Juniper} = true
+set {Global.went_to_Juniper} = true
+
 [signal arg="knock"]
 [wait time="5.0"]
 Dalton: ...

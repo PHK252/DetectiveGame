@@ -26,7 +26,7 @@ func _on_timeline_ended():
 	Dialogic.signal_event.disconnect(_isaac_movement)
 	GlobalVars.in_dialogue = false
 	SceneTransitions.glitch_change_scene(GlobalVars.office_path)
-	GlobalVars.day = "Day 2"
+	GlobalVars.day = 2
 	await get_tree().create_timer(6.0).timeout
 	self.queue_free()
 

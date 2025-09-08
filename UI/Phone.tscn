@@ -1,4 +1,4 @@
-[gd_scene load_steps=216 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=217 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://co6fvylov3hvl" path="res://UI/Assets/Phone/Updated/Home/Phone Gallery Button Normal.png" id="10_pvk2c"]
 [ext_resource type="Texture2D" uid="uid://ci23sjyon4su2" path="res://UI/Assets/Phone/Updated/Home/Phone Gallery Button Hovered.png" id="11_ao5dl"]
 [ext_resource type="Texture2D" uid="uid://cldl3xmci7njh" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Background.png" id="11_iukwx"]
+[ext_resource type="Script" uid="uid://b5l8rsscdog1o" path="res://UI/time.gd" id="12_cs8vq"]
 [ext_resource type="Texture2D" uid="uid://chwmk4ym37t4k" path="res://UI/Assets/Phone/Updated/Home/Phone Notes Button Normal.png" id="12_k8qp8"]
 [ext_resource type="Texture2D" uid="uid://djiexmxvw6q3n" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Battery.png" id="12_qpmkw"]
 [ext_resource type="Texture2D" uid="uid://bombd5fmy4xwy" path="res://UI/Assets/Phone/Updated/Home/Phone Note Button Hovered.png" id="13_ckxde"]
@@ -562,7 +563,7 @@ texture_normal = ExtResource("14_yny11")
 texture_pressed = ExtResource("15_4x8ww")
 texture_hover = ExtResource("15_4x8ww")
 
-[node name="Time" type="RichTextLabel" parent="HomeScreen"]
+[node name="Time" type="RichTextLabel" parent="HomeScreen" node_paths=PackedStringArray("global_timer")]
 texture_filter = 2
 layout_mode = 0
 offset_left = 732.0
@@ -572,9 +573,12 @@ offset_bottom = 133.0
 theme_override_colors/default_color = Color(0.780392, 0.85098, 0.890196, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
 theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
 text = "XX:XX"
 fit_content = true
 scroll_active = false
+script = ExtResource("12_cs8vq")
+global_timer = NodePath("../../Timer")
 
 [node name="GalleryScreen" type="Control" parent="."]
 layout_mode = 3
@@ -595,7 +599,7 @@ texture = ExtResource("16_vgsq4")
 position = Vector2(1161, 96)
 texture = ExtResource("12_qpmkw")
 
-[node name="Time" type="RichTextLabel" parent="GalleryScreen"]
+[node name="Time" type="RichTextLabel" parent="GalleryScreen" node_paths=PackedStringArray("global_timer")]
 texture_filter = 2
 layout_mode = 0
 offset_left = 732.0
@@ -608,6 +612,8 @@ theme_override_font_sizes/normal_font_size = 45
 text = "XX:XX"
 fit_content = true
 scroll_active = false
+script = ExtResource("12_cs8vq")
+global_timer = NodePath("../../Timer")
 
 [node name="GalleryOutline" type="Sprite2D" parent="GalleryScreen"]
 visible = false
@@ -1390,7 +1396,7 @@ theme_override_fonts/normal_font = ExtResource("14_vsnqy")
 theme_override_font_sizes/normal_font_size = 30
 text = "093-191"
 
-[node name="Time" type="RichTextLabel" parent="PhoneScreen"]
+[node name="Time" type="RichTextLabel" parent="PhoneScreen" node_paths=PackedStringArray("global_timer")]
 texture_filter = 2
 layout_mode = 0
 offset_left = 732.0
@@ -1403,6 +1409,8 @@ theme_override_font_sizes/normal_font_size = 45
 text = "XX:XX"
 fit_content = true
 scroll_active = false
+script = ExtResource("12_cs8vq")
+global_timer = NodePath("../../Timer")
 
 [node name="Contact" type="TextureButton" parent="PhoneScreen"]
 layout_mode = 0
@@ -2983,7 +2991,7 @@ texture_filter = 2
 [node name="BackLabel" parent="NotesScreen/Quincy/View proposal" index="5"]
 texture_filter = 2
 
-[node name="Time2" type="RichTextLabel" parent="NotesScreen"]
+[node name="Time2" type="RichTextLabel" parent="NotesScreen" node_paths=PackedStringArray("global_timer")]
 texture_filter = 2
 layout_mode = 0
 offset_left = 732.0
@@ -2996,6 +3004,8 @@ theme_override_font_sizes/normal_font_size = 45
 text = "XX:XX"
 fit_content = true
 scroll_active = false
+script = ExtResource("12_cs8vq")
+global_timer = NodePath("../../Timer")
 
 [node name="Battery" type="Sprite2D" parent="NotesScreen"]
 position = Vector2(1161, 96)
@@ -3014,6 +3024,12 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_wrr1c")
 texture_pressed = ExtResource("9_valq1")
 texture_hover = ExtResource("9_valq1")
+
+[node name="Debug" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
 
 [connection signal="add_contact" from="." to="PhoneScreen/ContactScreen" method="_on_phone_ui_add_contact"]
 [connection signal="visibility_changed" from="." to="Panel Left" method="_on_visibility_changed"]
@@ -3104,6 +3120,7 @@ texture_hover = ExtResource("9_valq1")
 [connection signal="meta_clicked" from="NotesScreen/Quincy/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Quincy" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
+[connection signal="timeout" from="Timer" to="HomeScreen/Time" method="_on_timer_timeout"]
 
 [editable path="NotesScreen/Micah/View Tool Note"]
 [editable path="NotesScreen/Micah/View ID Card"]
