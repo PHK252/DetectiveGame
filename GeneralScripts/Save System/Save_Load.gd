@@ -32,6 +32,7 @@ func saveGame(path: String):
 			"juniper_notes": GlobalVars.juniper_notes,
 			"quincy_notes": GlobalVars.quincy_notes,
 			"evidence": GlobalVars.evidence_container,
+			"clock_time" : GlobalVars.clock_time,
 		},
 		"Office_Vars":{
 			"theo_entrance" : GlobalVars.intro_dialogue,

@@ -31,7 +31,8 @@ signal open_quincy_case
 ##Phone stuff
 #for contacts
 @onready var phone_contacts: Array[TextureButton] = []
-
+# clock
+@onready var clock_time : Array[int] = [] 
 #for phone notes
 @onready var micah_notes : String
 @onready var juniper_notes : String

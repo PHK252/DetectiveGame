@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _on_firsthouse_button_pressed() -> void:
-	if GlobalVars.day == "Day 1":
+	if GlobalVars.day == 1:
 		if went_Juniper == true:
 			Loading.load_scene(self, GlobalVars.first_house_path, true, "afternoon", "yes")
 		else:

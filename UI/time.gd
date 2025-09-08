@@ -73,6 +73,7 @@ func set_time(cur_hour : int, cur_minute : int):
 	var str_hour = ""
 	var str_min = ""
 	time = [cur_hour, cur_minute]
+	GlobalVars.clock_time = time
 	#setting hour
 	if cur_hour < 10:
 		str_hour = str(time[0]).pad_zeros(2)
