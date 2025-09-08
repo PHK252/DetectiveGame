@@ -1,13 +1,20 @@
 extends Node
 
 # Global
-const SAVE_PATH = "user://savegame.save"
+const SAVE_DIR = "user://savegame/"
+const SAVE_FILE_NAME = "save.json"
+const SECURITY_KEY = "hdksfa42442"
 
-func saveGame():
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+func _ready():
+	verify_save_directory(SAVE_DIR)
+	
+func verify_save_directory(path : String):
+	DirAccess.make_dir_absolute(path)
+
+func saveGame(path: String):
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
 	var data: Dictionary = {
 		#Stores Variables
-		
 		"TheoPoints" : Dialogic.VAR.Theo,
 		"MicahPoints": Dialogic.VAR.Micah,
 		"JuniperPoints": Dialogic.VAR.Juniper,
@@ -23,8 +30,8 @@ func saveGame():
 
 func loadGame():
 	print("load")
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	if FileAccess.file_exists(SAVE_PATH) == true:
+	var file = FileAccess.open(SAVE_DIR, FileAccess.READ)
+	if FileAccess.file_exists(SAVE_DIR) == true:
 		if not file.eof_reached():
 			var current_line = JSON.parse_string(file.get_line())
 			if current_line:
@@ -56,4 +63,4 @@ func clearSave():
 	#EndingManager.ending3 = false
 	#EndingManager.ending4 = false
 	#print("clear")
-	saveGame()
+	saveGame(SAVE_DIR)

@@ -11,170 +11,202 @@ signal open_micah_case
 signal open_juniper_case
 signal open_quincy_case
 
-@onready var micah_time_out = false
-@onready var micah_kicked_out = false
-
-@onready var quincy_time_out = false
-@onready var quincy_kicked_out = false
-@onready var quincy_fainted = false
-
-@onready var juniper_kicked_out = false
-@onready var juniper_time_out = false
-
-@onready var forward : bool
-@onready var day : int = 1
-@onready var time : String 
-
+#don't save/ false on load
 @onready var in_call = false
 @onready var calling = false
 @onready var player_move = true
 @onready var in_look_screen = false
 @onready var in_dialogue = false
+@onready var phone_up = false
+@onready var in_interaction = ""
+@onready var viewing = ""
+
+
+@onready var forward : bool
+@onready var day : int 
+@onready var time : String 
+@onready var current_level = ""
+@onready var first_house = ""
+
+
+##Office Vars
 @onready var intro_dialogue = false
+#contact
 @onready var clicked_contact = 0
+@onready var viewed_contact = false
+@onready var has_contact = false
+#Isaac
 @onready var clicked_partner = 0
+@onready var viewed_partner = false
+#News
 @onready var clicked_news = 0
+@onready var viewed_news = false
+#Team
 @onready var clicked_team = 0
+@onready var viewed_team = false
+#Missing
 @onready var clicked_missing = 0
+@onready var viewed_missing = false
+#Case File
+@onready var clicked_case_file = 0
+@onready var viewed_case_file = false
+
+
+##Micah Vars
+@onready var micah_time_out = false
+@onready var micah_kicked_out = false
+#Closet
 @onready var clicked_tool_note = 0
 @onready var clicked_id_card = 0
-@onready var clicked_book_note = 0
-@onready var clicked_case_letter_note = 0
-@onready var clicked_cab = 0
-@onready var viewed_case_file = false
-@onready var clicked_case_file = 0
-@onready var clicked_Micah_pic = 0
-@onready var clicked_case_Micah = 0
-
 @onready var closet_dialogue = false
-@onready var Micah_pic_dialogue = false
-@onready var book_dialogue = false
-@onready var window_dialogue = false
-@onready var viewed_contact = false
-@onready var viewed_partner = false
-@onready var viewed_news = false
-@onready var viewed_team = false
-@onready var viewed_missing = false
 @onready var viewed_tool_note = false
 @onready var viewed_id_card = false
+#Book
+@onready var clicked_book_note = 0
+@onready var book_dialogue = false
 @onready var viewed_Micah_bookmark = false
+#Cab
+@onready var clicked_cab = 0
+@onready var opened_cab = false
+#Pic
+@onready var pic_fell = false
+@onready var clicked_Micah_pic = 0
+@onready var Micah_pic_dialogue = false
 @onready var viewed_Micah_pic = false
+#Fridge
 @onready var viewed_Micah_fridge = false
+#Window
+@onready var window_dialogue = false
 @onready var viewed_Micah_window = false
+#Case
+@onready var opened_micah_case = false
+@onready var Micah_in_case = false
+@onready var clicked_case_Micah = 0
+@onready var clicked_case_letter_note = 0
 @onready var viewed_Micah_letter = false
 @onready var viewed_Micah_key = false
 @onready var viewed_Micah_hair = false
 
+##Juniper Vars
+@onready var juniper_kicked_out = false
+@onready var juniper_time_out = false
 @onready var in_tea_time = false
+#House
 @onready var viewed_Juniper_house_pic = false
-@onready var viewed_Juniper_cafe_pic = false
-@onready var viewed_Juniper_window = false
-@onready var viewed_Juniper_Bookmark = false
-@onready var viewed_Juniper_employee = false
-@onready var clicked_bookmark_Juniper = 0
-@onready var book_dialogue_Juniper = false
 @onready var house_dialogue_Juniper = false
+#Cafe
+@onready var viewed_Juniper_cafe_pic = false
 @onready var cafe_dialogue_Juniper = false
+#Window
+@onready var viewed_Juniper_window = false
 @onready var window_thoughts_Juniper = false
-@onready var bills_dialogue_Juniper = false
-@onready var pills_dialogue_Juniper = false
-@onready var pie_dialogue_Juniper = false
-@onready var cran_dialogue_Juniper = false
-@onready var recipe_dialogue_Juniper = false
+#Bookmark
+@onready var viewed_Juniper_Bookmark = false
+@onready var book_dialogue_Juniper = false
+@onready var clicked_bookmark_Juniper = 0
+#Employee + Resumes table
+@onready var viewed_Juniper_employee = false
 @onready var resume_dialogue_Juniper = false
 @onready var employee_dialogue_Juniper = false
-
-@onready var viewed_recipe_juniper = false
-@onready var viewed_cran_juniper = false
-@onready var viewed_pills_juniper = false
-#@onready var viewed_Juniper_case = false
-@onready var viewed_pie_juniper = false
-@onready var viewed_bills_juniper = false
 @onready var viewed_Juniper_resume = false
 @onready var viewed_Juniper_empinfo = false
+@onready var clicked_employee_Juniper = 0
+@onready var clicked_resume_Juniper = 0
+#Med bills
+@onready var bills_dialogue_Juniper = false
+@onready var view_bills_juniper = false
+@onready var clicked_bills_Juniper = 0
+#Cab 2 (close to window)
+@onready var pills_dialogue_Juniper = false
+@onready var pie_dialogue_Juniper = false
+@onready var viewed_pills_juniper = false
+@onready var viewed_pie_juniper = false
+#Cab 1 (Far from window)
+@onready var cran_dialogue_Juniper = false
+@onready var recipe_dialogue_Juniper = false
+@onready var viewed_cran_juniper = false
+@onready var viewed_recipe_juniper = false
+@onready var clicked_recipe_Juniper = 0
+#Case
+@onready var opened_jun_case = false
 @onready var Juniper_in_case = false
-
 @onready var view_apron_juniper = false
 @onready var view_letter_juniper = false
-@onready var view_bills_juniper = false
 @onready var view_nametag_juniper = false
-
-@onready var viewed_Quincy_offPic = false
-@onready var viewed_Quincy_famPic = false
-@onready var viewed_Quincy_coor = false
-@onready var viewed_Quincy_journal = false
-@onready var viewed_Quincy_phone = false
-@onready var viewed_Quincy_fish = false
-@onready var viewed_Quincy_poker = false
-@onready var viewed_Quincy_letter = false
-@onready var viewed_Quincy_hammer = false
-@onready var viewed_Quincy_bookmark = false
-@onready var viewed_Quincy_pager = false
-@onready var viewed_Quincy_news = false
-@onready var viewed_Quincy_usb = false
-@onready var viewed_Quincy_proposal = false
-@onready var viewed_Quincy_chocolate = false
-
-
-@onready var offPic_dialogue_Quincy = false
-@onready var famPic_dialogue_Quincy = false
-@onready var coor_dialogue_Quincy = false
-@onready var journal_dialogue_Quincy = false
-@onready var phone_dialogue_Quincy = false
-@onready var fish_dialogue_Quincy = false
-@onready var poker_thoughts_Quincy = false
-@onready var safe_dialogue_Quincy = false
-@onready var bar_dialogue_Quincy_finished = false
-@onready var Quincy_toilet_distracted = false
-@onready var chocolate_dialogue = false
-
-@onready var clicked_offPic_Quincy = 0
-@onready var clicked_journal_Quincy = 0
-@onready var clicked_proposal_Quincy = 0
-@onready var clicked_coor_Quincy = 0
-@onready var clicked_pager_Quincy = 0
-@onready var clicked_news_Quincy = 0
-@onready var clicked_phone_Quincy = 0
-@onready var clicked_case_Quincy = 0
-@onready var clicked_letter_Quincy = 0
-
-@onready var Quincy_in_case = false
-@onready var Quincy_Safe_UI = false
-@onready var Quincy_in_computer = false
-@onready var Quincy_Dalton_caught = false 
-
-@onready var clicked_recipe_Juniper = 0
 @onready var clicked_letter_Juniper = 0
 @onready var clicked_case_Juniper = 0
-@onready var clicked_bills_Juniper = 0
 @onready var clicked_nametag_Juniper = 0
-#@onready var case_dialogue_Juniper = false
-@onready var clicked_resume_Juniper = 0
-@onready var clicked_employee_Juniper = 0
 
-@onready var opened_cab = false
-@onready var pic_fell = false
-@onready var Micah_in_case = false
-@onready var in_interaction = ""
-@onready var viewing = ""
-@onready var first_house = ""
-
-@onready var opened_jun_case = false
-@onready var opened_micah_case = false
+##Quincy Vars
+@onready var quincy_time_out = false
+@onready var quincy_kicked_out = false
+@onready var quincy_fainted = false
+@onready var Quincy_toilet_distracted = false
+@onready var Quincy_Dalton_caught = false 
+#Fam Portrait
+@onready var viewed_Quincy_famPic = false
+@onready var famPic_dialogue_Quincy = false
+@onready var viewed_Quincy_coor = false
+@onready var coor_dialogue_Quincy = false
+@onready var clicked_coor_Quincy = 0
+#Fish
+@onready var fish_dialogue_Quincy = false
+@onready var viewed_Quincy_fish = false
+#Poker
+@onready var poker_thoughts_Quincy = false
+@onready var viewed_Quincy_poker = false
+#Journal
+@onready var journal_dialogue_Quincy = false
+@onready var viewed_Quincy_journal = false
+@onready var clicked_journal_Quincy = 0
+#Phone
+@onready var viewed_Quincy_phone = false
+@onready var phone_dialogue_Quincy = false
+@onready var clicked_phone_Quincy = 0
+#Case
+@onready var Quincy_in_case = false
 @onready var opened_quincy_case = false
-#not quite sure if we need this one
-#@onready var second_house = ""
+@onready var viewed_Quincy_letter = false
+@onready var viewed_Quincy_hammer = false
+@onready var clicked_case_Quincy = 0
+@onready var clicked_letter_Quincy = 0
+#bar
+@onready var bar_dialogue_Quincy_finished = false
+#Office Pic
+@onready var viewed_Quincy_offPic = false
+@onready var clicked_offPic_Quincy = 0
+@onready var offPic_dialogue_Quincy = false
+#computer
+@onready var Quincy_in_computer = false
+#Safe
+@onready var Quincy_Safe_UI = false
+@onready var safe_dialogue_Quincy = false
+@onready var viewed_Quincy_bookmark = false
+@onready var viewed_Quincy_pager = false
+@onready var clicked_pager_Quincy = 0
+@onready var viewed_Quincy_news = false
+@onready var clicked_news_Quincy = 0
+@onready var viewed_Quincy_usb = false
+@onready var viewed_Quincy_proposal = false
+@onready var clicked_proposal_Quincy = 0
+#chocolate
+@onready var viewed_Quincy_chocolate = false
+@onready var chocolate_dialogue = false
+
+
+##Secret Vars
 @onready var has_secret = false
-@onready var has_contact = false
-@onready var current_level = "Office"
-
-
+#Cure
 @onready var view_secret_cure = false
+#USB
 @onready var view_secret_usb = false
+#Runa Letter
 @onready var view_secret_runa_letter = false
+@onready var clicked_runa_letter = 0
+#Isaac Letter
 @onready var view_secret_isaac_letter = false
-@onready var clicked_isaac_letter = false
-@onready var clicked_runa_letter = false
+@onready var clicked_isaac_letter = 0
+
 
 #for phone notes
 var note_char = ""
@@ -185,6 +217,7 @@ var note_condition = ""
 var evi_char = ""
 var evidence = ""
 
+###Save Up until Here?
 var player_pos
 var first_house_path := "res://FirstHouse/first_house.tscn"
 var second_house_path := "res://SecondHouse/second_house.tscn"
@@ -202,8 +235,6 @@ var flashback_2 := "res://Cutscenes/Flashback_02.tscn"
 var cam_changed = false
 var clue_progress = 1
 var ghost_open = false
-
-var phone_up = false
 
 var master_volume : int
 var music_volume : int
