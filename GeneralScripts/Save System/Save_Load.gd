@@ -158,7 +158,73 @@ func saveGame(path: String):
 				"clicked_nametag_Juniper": GlobalVars.clicked_nametag_Juniper,
 			},
 		},
-		#Quincy's here
+		"Quincy_Vars":{
+			"quincy_time_out" : GlobalVars.quincy_time_out,
+			"quincy_kicked_out" : GlobalVars.quincy_kicked_out,
+			"quincy_fainted" : GlobalVars.quincy_fainted,
+			"Quincy_toilet_distracted" : GlobalVars.Quincy_toilet_distracted,
+			"Quincy_Dalton_caught" : GlobalVars.Quincy_Dalton_caught,
+			"fam_portrait":{
+				"viewed_Quincy_famPic": GlobalVars.viewed_Quincy_famPic,
+				"famPic_dialogue_Quincy": GlobalVars.famPic_dialogue_Quincy,
+				"viewed_Quincy_coor": GlobalVars.viewed_Quincy_coor,
+				"coor_dialogue_Quincy": GlobalVars.coor_dialogue_Quincy,
+				"clicked_coor_Quincy": GlobalVars.clicked_coor_Quincy,
+			},
+			"fish":{
+				"viewed_Quincy_fish": GlobalVars.viewed_Quincy_fish,
+				"fish_dialogue_Quincy": GlobalVars.fish_dialogue_Quincy,
+			},
+			"poker":{
+				"viewed_Quincy_poker": GlobalVars.viewed_Quincy_poker,
+				"poker_thoughts_Quincy": GlobalVars.poker_thoughts_Quincy,
+			},
+			"journal":{
+				"viewed_Juniper_employee": GlobalVars.viewed_Juniper_employee,
+				"viewed_Juniper_resume": GlobalVars.viewed_Juniper_resume,
+				"clicked_resume_Juniper": GlobalVars.clicked_resume_Juniper,
+			},
+			"phone":{
+				"viewed_Quincy_phone": GlobalVars.viewed_Quincy_phone,
+				"phone_dialogue_Quincy": GlobalVars.phone_dialogue_Quincy,
+				"clicked_phone_Quincy": GlobalVars.clicked_phone_Quincy,
+			},
+			"bar":{
+				"bar_dialogue_Quincy_finished": GlobalVars.bar_dialogue_Quincy_finished,
+			},
+			"Office pic":{
+				"viewed_Quincy_offPic": GlobalVars.viewed_Quincy_offPic,
+				"clicked_offPic_Quincy": GlobalVars.clicked_offPic_Quincy,
+				"offPic_dialogue_Quincy": GlobalVars.offPic_dialogue_Quincy,
+			},
+			"computer":{
+				"Quincy_in_computer": GlobalVars.Quincy_in_computer,
+			},
+			"Safe":{
+				"Quincy_Safe_UI": GlobalVars.Quincy_Safe_UI,
+				"safe_dialogue_Quincy": GlobalVars.safe_dialogue_Quincy,
+				"viewed_Quincy_bookmark": GlobalVars.viewed_Quincy_bookmark,
+				"viewed_Quincy_pager": GlobalVars.viewed_Quincy_pager,
+				"clicked_pager_Quincy": GlobalVars.clicked_pager_Quincy,
+				"viewed_Quincy_news": GlobalVars.viewed_Quincy_news,
+				"clicked_news_Quincy": GlobalVars.clicked_news_Quincy,
+				"viewed_Quincy_usb": GlobalVars.viewed_Quincy_usb,
+				"viewed_Quincy_proposal": GlobalVars.viewed_Quincy_proposal,
+				"clicked_proposal_Quincy": GlobalVars.clicked_proposal_Quincy,
+			},
+			"Quincy_Case":{
+				"Quincy_in_case": GlobalVars.Quincy_in_case,
+				"opened_quincy_case": GlobalVars.opened_quincy_case,
+				"viewed_Quincy_letter": GlobalVars.viewed_Quincy_letter,
+				"viewed_Quincy_hammer": GlobalVars.viewed_Quincy_hammer,
+				"clicked_case_Quincy": GlobalVars.clicked_case_Quincy,
+				"clicked_letter_Quincy": GlobalVars.clicked_letter_Quincy,
+			},
+			"chocolate":{
+				"viewed_Quincy_chocolate": GlobalVars.viewed_Quincy_chocolate,
+				"chocolate_dialogue": GlobalVars.chocolate_dialogue,
+			},
+		},
 		"Secret_Vars":{
 			"has_secret" : GlobalVars.has_secret,
 			"Cure":{
@@ -176,11 +242,10 @@ func saveGame(path: String):
 				"clicked_runa_letter": GlobalVars.clicked_runa_letter,
 			},
 		}
-			
-		
 	}
-	var jstr = JSON.stringify((data))
-	file.store_line(jstr)
+	var json_string = JSON.stringify(data, "\t")
+	file.store_line(json_string)
+	file.close()
 
 func _get_char_pos():
 	match GlobalVars.current_level:
@@ -222,24 +287,37 @@ func _get_char_pos():
 		"interrogation":
 			return
 			
-func loadGame():
-	print("load")
-	var file = FileAccess.open(SAVE_DIR, FileAccess.READ)
-	if FileAccess.file_exists(SAVE_DIR) == true:
-		if not file.eof_reached():
-			var current_line = JSON.parse_string(file.get_line())
-			if current_line:
-				#Calls Variables
-				
-				Dialogic.VAR.Theo = current_line["TheoPoints"]
-				Dialogic.VAR.Micah = current_line["MicahPoints"]
-				Dialogic.VAR.Juniper = current_line["JuniperPoints"]
-				Dialogic.VAR.Quincy = current_line["QuincyPoints"]
-				Dialogic.VAR.Skylar = current_line["SkylarPoints"]
-				GlobalVars.first_house = current_line["first_house"]
-				GlobalVars.has_secret = current_line["has_secret"]
-				GlobalVars.has_contact = current_line["has_contact"]
-				pass
+func loadGame(path : String):
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open_encrypted_with_pass(SAVE_DIR, FileAccess.READ, SECURITY_KEY)
+		if file == null:
+			print(FileAccess.get_open_error())
+			return
+		
+		var content = file.get_as_text()
+		file.close()
+		
+		var data = JSON.parse_string(content)
+		if data == null:
+			printerr("Cannot parse %s as a json_string : (%s)" % [path, content])
+		
+		#load here
+		_load_arr(data, "Globals", GlobalVars.load_global_arr) #To debug
+		
+	else:
+		printerr("Cannot open non_existent file at %s!" % [path])
+
+
+func _load_arr(main_dic: Dictionary, sub_dic: String, load_arr : Array):
+	if main_dic.sub_dic.size != load_arr.size():
+		print("Mismatch load arr to dic size")
+		return
+	var accessed_dictionary = main_dic[sub_dic]
+	var keyed_dic = accessed_dictionary.keys()
+	for variable in load_arr:
+		load_arr[variable] = keyed_dic[variable]
+	print(sub_dic + " loaded successfully")
+
 
 func clearSave():
 	#Reset to Default

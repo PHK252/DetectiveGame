@@ -28,6 +28,8 @@ signal open_quincy_case
 @onready var current_level = ""
 @onready var first_house = ""
 
+@onready var load_global_arr = [forward, day, time, current_level, first_house]
+
 ##Phone stuff
 #for contacts
 @onready var phone_contacts: Array[TextureButton] = []
@@ -47,6 +49,7 @@ var note_condition = ""
 #don't save these
 var evi_char = ""
 var evidence = ""
+
 
 ##Office Vars
 @onready var intro_dialogue = false
