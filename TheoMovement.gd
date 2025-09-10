@@ -562,6 +562,19 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 		#state = INVESTIGATE
 		pass
 
+func _sofa_drink_dalton():
+	theo_adjustment = true
+	in_kitchen = true
+	nav.target_position = adjustment_list[2].global_position
+	is_navigating = true
+	STOPPING_DISTANCE = 0.0
+	nav.path_desired_distance = 0.2
+	nav.target_desired_distance = 0.4
+	state = ADJUST
+	
+func _sofa_exit_dalton():
+	theo_adjustment = false
+	in_kitchen = false 
 
 func _on_bar_theo_enter_bar():
 	print("wine_time")

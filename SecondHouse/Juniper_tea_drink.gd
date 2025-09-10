@@ -24,6 +24,9 @@ extends Node3D
 @export var anim_drink : AnimationPlayer
 signal enable_after_tea_interaction
 
+signal theo_reposition_start
+signal theo_reposition_end
+
 func _ready():
 	interactable.set_deferred("monitorable", false)
 
@@ -37,6 +40,7 @@ func choose_drink_thought_dialogue():
 
 func _on_tea_activate_temp_interacted(interactor):
 	if GlobalVars.in_interaction == "":
+		emit_signal("theo_reposition_start")
 		#emit_signal("general_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()
@@ -80,6 +84,7 @@ func _on_tea_drink_input_event(viewport, event, shape_idx):
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type:
+		emit_signal("theo_reposition_end")
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Exit_Cam.set_tween_duration(0)
 		FP_Cam.priority = 0
