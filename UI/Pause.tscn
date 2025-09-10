@@ -70,4 +70,6 @@ texture_pressed = ExtResource("10_lc5u0")
 texture_hover = ExtResource("10_lc5u0")
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="VBoxContainer/Save" to="." method="_on_save_pressed"]

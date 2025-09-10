@@ -28,8 +28,11 @@ signal open_quincy_case
 @onready var current_level = ""
 @onready var first_house = ""
 
-@onready var load_global_arr = [forward, day, time, current_level, first_house]
-
+var load_global_arr = []
+var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house"]
+func _load_global_arr():
+	load_global_arr = [GlobalVars.forward, GlobalVars.day, GlobalVars.time, GlobalVars.current_level, GlobalVars.first_house]
+	return load_global_arr
 ##Phone stuff
 #for contacts
 @onready var phone_contacts: Array[TextureButton] = []

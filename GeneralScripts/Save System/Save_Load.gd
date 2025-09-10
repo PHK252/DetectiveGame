@@ -15,7 +15,6 @@ func verify_save_directory(path : String):
 func saveGame(path: String):
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
 	var data: Dictionary = {
-		
 		#"Character_positions": {
 				#"dalton_pos" : dalton.global_position,
 		#}
@@ -243,7 +242,7 @@ func saveGame(path: String):
 			},
 		}
 	}
-	var json_string = JSON.stringify(data, "\t")
+	var json_string = JSON.stringify(data, "\t", false)
 	file.store_line(json_string)
 	file.close()
 
@@ -289,9 +288,9 @@ func _get_char_pos():
 			
 func loadGame(path : String):
 	if FileAccess.file_exists(path):
-		var file = FileAccess.open_encrypted_with_pass(SAVE_DIR, FileAccess.READ, SECURITY_KEY)
+		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
 		if file == null:
-			print(FileAccess.get_open_error())
+			printerr(FileAccess.get_open_error())
 			return
 		
 		var content = file.get_as_text()
@@ -300,23 +299,26 @@ func loadGame(path : String):
 		var data = JSON.parse_string(content)
 		if data == null:
 			printerr("Cannot parse %s as a json_string : (%s)" % [path, content])
+			return
 		
 		#load here
-		_load_arr(data, "Globals", GlobalVars.load_global_arr) #To debug
+		GlobalVars._load_global_arr()
+		_load_arr(data, "Globals", GlobalVars.load_global_name_arr) #To debug
 		
 	else:
 		printerr("Cannot open non_existent file at %s!" % [path])
+		return
 
 
-func _load_arr(main_dic: Dictionary, sub_dic: String, load_arr : Array):
-	if main_dic.sub_dic.size != load_arr.size():
-		print("Mismatch load arr to dic size")
+func _load_arr(main_dic: Dictionary, sub_dic: String, load_name : Array):
+	if main_dic[sub_dic].size() != load_name.size():
+		printerr("Mismatch load arr to dic size")
 		return
 	var accessed_dictionary = main_dic[sub_dic]
 	var keyed_dic = accessed_dictionary.keys()
-	for variable in load_arr:
-		load_arr[variable] = keyed_dic[variable]
-	print(sub_dic + " loaded successfully")
+	for variable in range(load_name.size()):
+		GlobalVars.set(load_name[variable], main_dic[sub_dic][keyed_dic[variable]]) 
+	print_debug(sub_dic + " loaded successfully")
 
 
 func clearSave():
