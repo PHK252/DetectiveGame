@@ -127,6 +127,7 @@ func _process(delta: float) -> void:
 		toilet_distract_drop()
 	
 func _physics_process(delta: float) -> void:
+	GlobalVars.quincy_pos = global_position
 	if is_navigating:
 		var direction = Vector3()
 		if is_distracted == false and end_time == false and start_time == false:

@@ -94,7 +94,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	GlobalVars.player_pos = global_position
-	
+	GlobalVars.isaac_pos = global_position
 	# Add the gravity.
 	if GlobalVars.player_move == true:
 		emit_signal("moving")

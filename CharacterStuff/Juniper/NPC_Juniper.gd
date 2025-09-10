@@ -126,7 +126,7 @@ func _process(delta: float) -> void:
 			
 	
 func _physics_process(delta: float) -> void:
-
+	GlobalVars.juniper_pos = global_position
 	if is_navigating:
 		var direction = Vector3()
 		if not is_wandering:

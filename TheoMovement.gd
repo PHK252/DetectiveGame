@@ -88,6 +88,8 @@ func _ready() -> void:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func _physics_process(delta: float) -> void:
+	GlobalVars.theo_pos = global_position
+	
 	if is_investigating == true or going_to_bar == true:
 		distance_to_target = global_transform.origin.distance_to(marker_list[investigate_choice].global_transform.origin)
 	elif waterfall_scene:

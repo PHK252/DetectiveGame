@@ -53,6 +53,7 @@ var note_condition = ""
 var evi_char = ""
 var evidence = ""
 
+var load_phone_name_arr = ["phone_contacts", "clock_time", "micah_notes", "juniper_notes", "quincy_notes", "evidence_container"]
 
 ##Office Vars
 @onready var intro_dialogue = false
@@ -76,10 +77,12 @@ var evidence = ""
 @onready var clicked_case_file = 0
 @onready var viewed_case_file = false
 
+var load_Office_name_arr = ["intro_dialogue", "clicked_contact", "viewed_contact", "has_contact", "clicked_partner", "viewed_partner",
+"clicked_news", "viewed_news", "clicked_team", "viewed_team", "clicked_missing", "viewed_missing", "clicked_case_file", "viewed_case_file"]
 
 ##Micah Vars
-@onready var micah_time_out = false
 @onready var micah_kicked_out = false
+@onready var micah_time_out = false
 #Closet
 @onready var clicked_tool_note = 0
 @onready var clicked_id_card = 0
@@ -111,6 +114,10 @@ var evidence = ""
 @onready var viewed_Micah_letter = false
 @onready var viewed_Micah_key = false
 @onready var viewed_Micah_hair = false
+
+var load_Micah_name_arr = ["micah_kicked_out", "micah_time_out", "clicked_tool_note", "clicked_id_card", "closet_dialogue", "viewed_tool_note",
+"viewed_id_card", "clicked_book_note", "book_dialogue", "viewed_Micah_bookmark", "clicked_cab", "opened_cab", "pic_fell", "clicked_Micah_pic", "Micah_pic_dialogue", "viewed_Micah_pic", "viewed_Micah_fridge", "window_dialogue", "viewed_Micah_window", 
+"opened_micah_case", "Micah_in_case", "clicked_case_Micah", "clicked_case_letter_note", "viewed_Micah_letter", "viewed_Micah_key", "viewed_Micah_hair"]
 
 ##Juniper Vars
 @onready var juniper_kicked_out = false
@@ -161,6 +168,11 @@ var evidence = ""
 @onready var clicked_letter_Juniper = 0
 @onready var clicked_case_Juniper = 0
 @onready var clicked_nametag_Juniper = 0
+
+var load_Juniper_name_arr =  ["juniper_kicked_out", "juniper_time_out", "in_tea_time", "viewed_Juniper_house_pic", "house_dialogue_Juniper", "viewed_Juniper_cafe_pic", "cafe_dialogue_Juniper", "viewed_Juniper_window", "window_thoughts_Juniper", "viewed_Juniper_employee",
+"viewed_Juniper_resume", "resume_dialogue_Juniper", "employee_dialogue_Juniper", "clicked_employee_Juniper", "clicked_resume_Juniper", "bills_dialogue_Juniper", "view_bills_juniper", "clicked_bills_Juniper", "pills_dialogue_Juniper", "pie_dialogue_Juniper", 
+"viewed_pills_juniper", "viewed_pie_juniper", "cran_dialogue_Juniper", "recipe_dialogue_Juniper", "viewed_cran_juniper", "viewed_recipe_juniper", "clicked_recipe_Juniper", "opened_jun_case", "Juniper_in_case", "view_apron_juniper", 
+"view_letter_juniper", "view_nametag_juniper", "clicked_letter_Juniper", "clicked_case_Juniper", "clicked_nametag_Juniper"]
 
 ##Quincy Vars
 @onready var quincy_time_out = false
@@ -218,6 +230,58 @@ var evidence = ""
 @onready var viewed_Quincy_chocolate = false
 @onready var chocolate_dialogue = false
 
+var load_Quincy_name_arr = ["quincy_time_out", "quincy_kicked_out", "quincy_fainted", "Quincy_toilet_distracted", "Quincy_Dalton_caught", "viewed_Quincy_famPic", "famPic_dialogue_Quincy", "viewed_Quincy_coor", "coor_dialogue_Quincy", "clicked_coor_Quincy",
+"viewed_Quincy_fish", "fish_dialogue_Quincy", "viewed_Quincy_poker", "poker_thoughts_Quincy", "viewed_Juniper_employee", "viewed_Juniper_resume", "clicked_resume_Juniper", "viewed_Quincy_phone", "phone_dialogue_Quincy", "clicked_phone_Quincy",
+"bar_dialogue_Quincy_finished", "viewed_Quincy_offPic", "clicked_offPic_Quincy", "offPic_dialogue_Quincy", "Quincy_in_computer", "Quincy_Safe_UI", "safe_dialogue_Quincy", "viewed_Quincy_bookmark", "viewed_Quincy_pager", "clicked_pager_Quincy",
+"viewed_Quincy_news", "clicked_news_Quincy", "viewed_Quincy_usb", "viewed_Quincy_proposal", "clicked_proposal_Quincy", "Quincy_in_case", "opened_quincy_case", "viewed_Quincy_letter", "viewed_Quincy_hammer", "clicked_case_Quincy",
+ "clicked_letter_Quincy", "viewed_Quincy_chocolate", "chocolate_dialogue"]
+
+func _dalton_caught_clear_state():
+	Quincy_Dalton_caught = true 
+	
+	quincy_time_out = false
+	quincy_kicked_out = false
+	quincy_fainted = false
+	Quincy_toilet_distracted = false
+	viewed_Quincy_famPic = false
+	famPic_dialogue_Quincy = false
+	viewed_Quincy_coor = false
+	coor_dialogue_Quincy = false
+	clicked_coor_Quincy = 0
+	fish_dialogue_Quincy = false
+	viewed_Quincy_fish = false
+	poker_thoughts_Quincy = false
+	viewed_Quincy_poker = false
+	journal_dialogue_Quincy = false
+	viewed_Quincy_journal = false
+	clicked_journal_Quincy = 0
+	viewed_Quincy_phone = false
+	phone_dialogue_Quincy = false
+	clicked_phone_Quincy = 0
+	Quincy_in_case = false
+	opened_quincy_case = false
+	viewed_Quincy_letter = false
+	viewed_Quincy_hammer = false
+	clicked_case_Quincy = 0
+	clicked_letter_Quincy = 0
+	bar_dialogue_Quincy_finished = false
+	viewed_Quincy_offPic = false
+	clicked_offPic_Quincy = 0
+	offPic_dialogue_Quincy = false
+	Quincy_in_computer = false
+	Quincy_Safe_UI = false
+	safe_dialogue_Quincy = false
+	viewed_Quincy_bookmark = false
+	viewed_Quincy_pager = false
+	clicked_pager_Quincy = 0
+	viewed_Quincy_news = false
+	clicked_news_Quincy = 0
+	viewed_Quincy_usb = false
+	viewed_Quincy_proposal = false
+	clicked_proposal_Quincy = 0
+	viewed_Quincy_chocolate = false
+	chocolate_dialogue = false
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 
 ##Secret Vars
 @onready var has_secret = false
@@ -232,6 +296,15 @@ var evidence = ""
 @onready var view_secret_isaac_letter = false
 @onready var clicked_isaac_letter = 0
 
+var load_Secret_name_arr = ["has_secret", "view_secret_cure", "view_secret_usb", "view_secret_runa_letter", "clicked_runa_letter", "view_secret_isaac_letter", "clicked_isaac_letter"]
+
+## Character positions
+@onready var dalton_pos : Vector3
+@onready var theo_pos : Vector3
+@onready var micah_pos : Vector3
+@onready var juniper_pos : Vector3
+@onready var quincy_pos : Vector3
+@onready var isaac_pos : Vector3
 
 
 ###Save Up until Here?

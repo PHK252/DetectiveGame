@@ -74,7 +74,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	#print(is_wandering)
-
+	
 	if not is_wandering:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
@@ -89,7 +89,8 @@ func _process(delta: float) -> void:
 			
 	
 func _physics_process(delta: float) -> void:
-
+	GlobalVars.micah_pos = global_position
+	
 	if is_navigating:
 		var direction = Vector3()
 		if not is_wandering:

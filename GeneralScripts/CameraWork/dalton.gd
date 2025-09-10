@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames() 
 	
 	GlobalVars.player_pos = global_position
+	GlobalVars.dalton_pos = global_position
 	
 	#if Input.is_action_just_pressed("meeting_done"):
 		#_on_door_bathroom_replace_quincy_enter_bathroom()
