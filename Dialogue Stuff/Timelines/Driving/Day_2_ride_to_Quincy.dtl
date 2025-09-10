@@ -1,0 +1,25 @@
+Theo: Eeee!
+Theo: I can’t believe I get to meet the mayor!
+Theo: At his Manor, too!
+Theo: Lil ol’ me!
+Theo: Can you believe that, Dalton?
+Dalton: Hmph.
+Theo: Mm.
+Theo: Of course, you wouldn’t care.
+Theo: You’re his bestie, after all.
+Dalton: I am not his “bestie”. 
+if {Beginning.quincy_called} == true:
+	Theo: You have his personal cell!
+	Dalton: It’s for work. 
+	Dalton: He calls for favors sometimes.
+	Theo: Ooh...
+	Theo: Favors...
+	Dalton: Keep it professional, Detective Lycus. 
+else:
+	Theo: Why else would he personally beg Chief for you to take this case?
+	Dalton: He did not beg.
+	Theo: You don’t know that. 
+	Dalton: And you do?
+	Theo: I was there.
+	Theo: Chief was in quite the tizzy when he showed up.
+[end_timeline]

@@ -10,6 +10,7 @@ if {Juniper.found_skylar} == true:
 		Theo: Thank you for your time!
 		Juniper: Yeah...
 		Dalton: Hmph.
+		set {Juniper.timed_out} = true
 		[end_timeline]
 	else:
 		Juniper: Ah!
@@ -30,6 +31,7 @@ if {Juniper.found_skylar} == true:
 		Theo: Bye!!
 		Juniper: Take care, y’all!
 		Dalton: Yeah.
+		set {Juniper.timed_out} = true
 		[end_timeline]
 else:
 	if {Character Aff Points.Juniper} < 0:
@@ -42,6 +44,7 @@ else:
 		Theo: Thank you for your time!
 		Juniper: Yeah...
 		Dalton: Hmph.
+		set {Juniper.timed_out} = true
 		[end_timeline]
 	else:
 		Juniper: Ah!
@@ -62,33 +65,5 @@ else:
 		Theo: Bye!!
 		Juniper: Take care, y’all!
 		Dalton: Yeah.
+		set {Juniper.timed_out} = true
 		[end_timeline]
-label exit
-if {Juniper.found_skylar} == true:
-	Dalton: Why did you do that?
-	Dalton: I was still check for-
-	Theo: Checking, Smecking.
-	Theo: We found the perpetrator’s name! 
-	Theo: We’re already doing fine without whatever Schrodinger’s evidence ya got going on up there. 
-	Dalton: Hmph. 
-	Dalton: Whatever. 
-	Dalton: Let’s go.
-else:
-	set {Character Aff Points.Theo} -= 1
-	Dalton: Why did you do that?
-	Dalton: I was still check for-
-	Theo: And what?
-	Theo: You want her to stand around as her cafe empire crumbles? 
-	Dalton: You’re being dramatic.
-	Theo: Dalton-
-	Dalton: It’s Detective Reynard.
-	Theo: Huu...
-	Theo: Fine.
-	Theo: Detective Reynard, we took an oath to serve the subjects of this city...
-	Theo: If they want us out of their house, we get out of their house.
-	Dalton: I don’t need a rookie to lecture me on my duties.
-	Theo: Hah!
-	Theo: Oh, my bad.
-	Theo: It really seemed like you forgot.
-	Dalton: Hmph.
-	Dalton: Let’s go.

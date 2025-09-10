@@ -48,7 +48,7 @@ func _process(delta):
 	
 	#timed out
 	if time_out == true:
-		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Juniper.kicked_out") == false and GlobalVars.juniper_kicked_out == false:
+		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Juniper.timed_out") == false and GlobalVars.juniper_kicked_out == false:
 			alert.hide()
 			in_time_out_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
