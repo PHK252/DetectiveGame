@@ -16,6 +16,8 @@ var idle_timer_active: bool = false
 @export var towel : Node3D
 @export var after_clog : Node3D
 @export var bathroom_position : Marker3D
+@export var charac_body : CharacterBody3D
+@export var coll_wall : CollisionShape3D
 
 var gathered := false
 var walk_indicate := false
@@ -49,10 +51,13 @@ var walk_number = 2
 var number := 0
 
 @export var tea_wait_marker : Marker3D
+@export var office_return = false
 var tea_time = false
 
 func _ready() -> void:
 	add_to_group("player")
+	if office_return == true:
+		_return_office()
 	#doughnut.visible = false
 
 func _physics_process(delta: float) -> void:
@@ -628,3 +633,22 @@ func _on_main_dalton_rotate() -> void:
 	force_rotation = false
 	in_control = true
 	
+func _return_office():
+	in_control = false
+	charac_body.global_position = force_rotate_list[2].global_position
+	#rotate
+	needs_rotation_forced = true
+	number = 3
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	#walk
+	walk_number = 3
+	forced_walk = true
+	await get_tree().create_timer(1.0).timeout
+	forced_walk = false
+	walk_number = 2
+	number = 0
+	in_control = true
+	#done
