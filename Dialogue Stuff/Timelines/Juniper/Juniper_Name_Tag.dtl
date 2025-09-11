@@ -1,10 +1,20 @@
 if {Character Aff Points.Juniper} < 0:
-	Dalton: Did these belong to that missing employee?
-	Juniper: ...
-	Juniper: Yeah.
-	Dalton: Their name... it's Skylar?
-	Juniper: That's what the name tag says.
-	Dalton: Hmmph.
+	if {Juniper.found_last_name} == true:
+		Dalton: Did these belong to that missing employee?
+		Juniper: ...
+		Juniper: Yeah.
+		Dalton: Their name... it's Skylar?
+		Juniper: That's what the name tag says.
+		Dalton: Hmmph.
+	else:
+		Dalton: Who did this belong to?
+		Juniper: Can ya not read?
+		Dalton: ...
+		Dalton: Who is Skylar?
+		Juniper: ...
+		Juniper: Was an employee. 
+		Dalton: Was?
+		Juniper: They quit.
 	do GlobalVars.emit_add_note("juniper", "nametag", "response")
 	set {Juniper.found_skylar} = true
 	set {Juniper.finished_name_tag} = true

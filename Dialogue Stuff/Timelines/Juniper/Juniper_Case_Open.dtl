@@ -1,6 +1,22 @@
 if {Character Aff Points.Juniper} >= 1:
-	Dalton: It was the employee code of Aslan, S...
-	Juniper: What!?
+	if {Juniper.found_last_name} == true:
+		Dalton: It was the employee code of Aslan, S...
+		Juniper: What!?
+	else:
+		Dalton: I unlocked it.
+		Juniper: Hot damn!
+		Juniper: That quick?
+		Dalton: I just fiddled around with the numbers. 
+		Dalton: ...
+	 	Dalton: Does 8008569420 ring a bell for you?
+		Juniper: Hm...
+		Juniper: ...!
+		Juniper: It’s Skylar’s code!
+		Dalton: Skylar?
+		Juniper: They were one of my employees. 
+		Juniper: Went missing a while back...
+		Juniper: They were fine one day, then radio silence. 
+		Dalton: ...
 	Dalton: Do you know anyone who would've known it beside you and Aslan?
 	Juniper: ...
 	Juniper: No?
