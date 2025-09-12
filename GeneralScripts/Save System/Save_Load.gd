@@ -5,6 +5,8 @@ const SAVE_DIR = "user://savegame/"
 const SAVE_FILE_NAME = "save.json"
 const SECURITY_KEY = "hdksfa42442"
 
+signal loaded
+
 @onready var char_pos = {}
 func _ready():
 	verify_save_directory(SAVE_DIR)
@@ -14,7 +16,9 @@ func verify_save_directory(path : String):
 
 func saveGame(path: String):
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+	print(_get_char_pos())
 	var chars_pos : Dictionary = _get_char_pos()
+	
 	var data: Dictionary = {
 		"Globals":{
 			"dialogue_flip" : GlobalVars.forward, 
@@ -214,56 +218,104 @@ func saveGame(path: String):
 func _get_char_pos():
 	match GlobalVars.current_level:
 		"Beginning":
-			return {"dalton_pos": GlobalVars.dalton_pos}
+			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
+			return {"dalton_pos": split_dalton_pos}
 		"Office":
-			return {"dalton_pos": GlobalVars.dalton_pos, "theo_pos" : GlobalVars.theo_pos}
+			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
+			var split_theo_pos : Dictionary = _split_pos_vector(GlobalVars.theo_pos)
+			return {"dalton_pos": split_dalton_pos, "theo_pos" : split_theo_pos}
 		"micah":
-			return {"dalton_pos": GlobalVars.dalton_pos, "theo_pos" : GlobalVars.theo_pos, "micah_pos" : GlobalVars.micah_pos}
+			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
+			var split_theo_pos : Dictionary = _split_pos_vector(GlobalVars.theo_pos)
+			var split_micah_pos : Dictionary = _split_pos_vector(GlobalVars.micah_pos)
+			return {"dalton_pos": split_dalton_pos, "theo_pos" : split_theo_pos, "micah_pos" : split_micah_pos}
 		"juniper":
-			return {"dalton_pos": GlobalVars.dalton_pos, "theo_pos" : GlobalVars.theo_pos, "juniper_pos" : GlobalVars.juniper_pos}
+			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
+			var split_theo_pos : Dictionary = _split_pos_vector(GlobalVars.theo_pos)
+			var split_juniper_pos : Dictionary = _split_pos_vector(GlobalVars.juniper_pos)
+			return {"dalton_pos": split_dalton_pos, "theo_pos" : split_theo_pos, "juniper_pos" : split_juniper_pos}
 		"quincy":
-			return {"dalton_pos": GlobalVars.dalton_pos, "theo_pos" : GlobalVars.theo_pos, "quincy_pos" : GlobalVars.quincy_pos}
+			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
+			var split_theo_pos : Dictionary = _split_pos_vector(GlobalVars.theo_pos)
+			var split_quincy_pos : Dictionary = _split_pos_vector(GlobalVars.quincy_pos)
+			return {"dalton_pos": split_dalton_pos, "theo_pos" : split_theo_pos, "juniper_pos" : split_quincy_pos}
 		"secret":
-			return {"dalton_pos": GlobalVars.dalton_pos, "theo_pos" : GlobalVars.theo_pos}
+			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
+			var split_theo_pos : Dictionary = _split_pos_vector(GlobalVars.theo_pos)
+			return {"dalton_pos": split_dalton_pos, "theo_pos" : split_theo_pos}
 		"Transition":
-			return {"dalton_pos": GlobalVars.dalton_pos}
+			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
+			return {"dalton_pos": split_dalton_pos}
 		"Flashback_day_1":
-			return {"isaac_pos": GlobalVars.isaac_pos}
+			var split_isaac_pos : Dictionary = _split_pos_vector(GlobalVars.isaac_pos)
+			return {"isaac_pos": split_isaac_pos}
 		"Flashback_day_2":
 			return {}
 		"interrogation":
 			return {}
-
+		"loading":
+			return {}
+	return {}
+func _split_pos_vector(char_pos : Vector3):
+	return {"x" : char_pos.x, "y" : char_pos.y, "z" : char_pos.z}
+	
+func _load_pos_vector(main_dic : Dictionary, char_pos_dic : String):
+	var x_pos = float(main_dic["character_positions"][char_pos_dic]["x"])
+	var y_pos = float(main_dic["character_positions"][char_pos_dic]["y"])
+	var z_pos = float(main_dic["character_positions"][char_pos_dic]["z"])
+	return Vector3(x_pos, y_pos, z_pos)
+	
 func _load_char_pos(main_dic : Dictionary):
+	print(main_dic["character_positions"])
+	print("From load" + str(typeof(_load_pos_vector(main_dic, "dalton_pos"))))
 	match GlobalVars.current_level:
 		"Beginning":
-			GlobalVars.dalton_pos = main_dic.character_positions.dalton_pos
+			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
+			GlobalVars.dalton_pos = loaded_dalt_pos
 		"Office":
-			GlobalVars.dalton_pos = main_dic.character_positions.dalton_pos
-			GlobalVars.theo_pos = main_dic.character_positions.theo_pos
+			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
+			var loaded_theo_pos = _load_pos_vector(main_dic, "theo_pos")
+			GlobalVars.dalton_pos = loaded_dalt_pos
+			GlobalVars.theo_pos = loaded_theo_pos
 		"micah":
-			GlobalVars.dalton_pos = main_dic.character_positions.dalton_pos
-			GlobalVars.theo_pos = main_dic.character_positions.theo_pos
-			GlobalVars.micah_pos = main_dic.character_positions.micah_pos
+			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
+			var loaded_theo_pos = _load_pos_vector(main_dic, "theo_pos")
+			var loaded_micah_pos = _load_pos_vector(main_dic, "micah_pos")
+			GlobalVars.dalton_pos = loaded_dalt_pos
+			GlobalVars.theo_pos = loaded_theo_pos
+			GlobalVars.micah_pos = loaded_micah_pos 
 		"juniper":
-			GlobalVars.dalton_pos = main_dic.character_positions.dalton_pos
-			GlobalVars.theo_pos = main_dic.character_positions.theo_pos
-			GlobalVars.juniper_pos = main_dic.character_positions.juniper_pos
+			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
+			var loaded_theo_pos = _load_pos_vector(main_dic, "theo_pos")
+			var loaded_juniper_pos = _load_pos_vector(main_dic, "juniper_pos")
+			GlobalVars.dalton_pos = loaded_dalt_pos
+			GlobalVars.theo_pos = loaded_theo_pos
+			GlobalVars.micah_pos = loaded_juniper_pos
 		"quincy":
-			GlobalVars.dalton_pos = main_dic.character_positions.dalton_pos
-			GlobalVars.theo_pos = main_dic.character_positions.theo_pos
-			GlobalVars.quincy_pos = main_dic.character_positions.quincy_pos
+			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
+			var loaded_theo_pos = _load_pos_vector(main_dic, "theo_pos")
+			var loaded_quincy_pos = _load_pos_vector(main_dic, "quincy_pos")
+			GlobalVars.dalton_pos = loaded_dalt_pos
+			GlobalVars.theo_pos = loaded_theo_pos
+			GlobalVars.quincy_pos = loaded_quincy_pos
 		"secret":
-			GlobalVars.dalton_pos = main_dic.character_positions.dalton_pos
-			GlobalVars.theo_pos = main_dic.character_positions.theo_pos
+			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
+			var loaded_theo_pos = _load_pos_vector(main_dic, "theo_pos")
+			GlobalVars.dalton_pos = loaded_dalt_pos
+			GlobalVars.theo_pos = loaded_theo_pos
 		"Transition":
-			GlobalVars.dalton_pos = main_dic.character_positions.dalton_pos
+			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
+			GlobalVars.dalton_pos = loaded_dalt_pos
 		"Flashback_day_1":
-			GlobalVars.isaac_pos = main_dic.character_positions.isaac_pos
+			var loaded_isaac_pos = _load_pos_vector(main_dic, "isaac_pos")
+			GlobalVars.isaac_pos = loaded_isaac_pos
 		"Flashback_day_2":
 			return 
 		"interrogation":
 			return 
+		"loading":
+			return
+	return
 func loadGame(path : String):
 	if FileAccess.file_exists(path):
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
@@ -287,6 +339,8 @@ func loadGame(path : String):
 		_load_arr(data, "Juniper_Vars", GlobalVars.load_Juniper_name_arr)
 		_load_char_pos(data) #TO DEBUG
 		
+		emit_signal("loaded")
+		
 	else:
 		printerr("Cannot open non_existent file at %s!" % [path])
 		return
@@ -294,7 +348,7 @@ func loadGame(path : String):
 
 func _load_arr(main_dic: Dictionary, sub_dic: String, load_name : Array):
 	if main_dic[sub_dic].size() != load_name.size():
-		printerr("Mismatch load arr to dic size")
+		printerr("Mismatch load arr to dic size: " + str(load_name))
 		return
 	var accessed_dictionary = main_dic[sub_dic]
 	var keyed_dic = accessed_dictionary.keys()
@@ -303,20 +357,12 @@ func _load_arr(main_dic: Dictionary, sub_dic: String, load_name : Array):
 	print_debug(sub_dic + " loaded successfully")
 
 
-func clearSave():
-	#Reset to Default 
-	
-	#Inventory.flower = false
-	#Inventory.string = false
-	#Inventory.batteries = false
-	#Inventory.has_anything = false
-	#Inventory.unlock_fourth = false
-	#LevelManager.level1_complete = false
-	#LevelManager.level2_complete = false
-	#LevelManager.level3_complete = false
-	#EndingManager.ending1 = false
-	#EndingManager.ending2 = false
-	#EndingManager.ending3 = false
-	#EndingManager.ending4 = false
-	#print("clear")
-	saveGame(SAVE_DIR)
+func clearSave(path : String):
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+		if file == null:
+			printerr("File does not exist" + str(FileAccess.get_open_error()))
+			return
+		file.store_string(JSON.stringify({}))
+		file.close()
+		print("Save cleared successfully.")

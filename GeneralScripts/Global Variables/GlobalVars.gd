@@ -37,7 +37,7 @@ func _load_global_arr():
 #for contacts
 @onready var phone_contacts: Array[TextureButton] = []
 # clock
-@onready var clock_time : Array[int] = [] 
+@onready var clock_time : Array[int]
 #for phone notes
 @onready var micah_notes : String
 @onready var juniper_notes : String
@@ -305,6 +305,8 @@ var load_Secret_name_arr = ["has_secret", "view_secret_cure", "view_secret_usb",
 @onready var juniper_pos : Vector3
 @onready var quincy_pos : Vector3
 @onready var isaac_pos : Vector3
+
+
 
 
 ###Save Up until Here?

@@ -88,6 +88,7 @@ var wander_rotate = false
 
 func _ready() -> void:
 	add_to_group("juniper")
+	global_position = GlobalVars.juniper_pos
 	anim_player.play("idle_chain")
 	state = IDLE
 	#var target_position = player.global_position

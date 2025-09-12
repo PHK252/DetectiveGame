@@ -7,7 +7,7 @@ extends RichTextLabel
 
 @onready var hour : int = 0
 @onready var minute : int = 0
-@onready var time = [hour, minute]
+@onready var time : Array[int] = [hour, minute]
 #@onready var change : bool
 func _ready():
 	if in_level == true:

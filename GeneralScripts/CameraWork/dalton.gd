@@ -56,6 +56,11 @@ var tea_time = false
 
 func _ready() -> void:
 	add_to_group("player")
+	await SaveLoad.loaded
+	#if GlobalVars.dalton_pos:
+	#print("place?")
+	global_position = GlobalVars.dalton_pos
+	#print("placed " + str(GlobalVars.dalton_pos))
 	if office_return == true:
 		_return_office()
 	#doughnut.visible = false
