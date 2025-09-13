@@ -79,7 +79,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 		toggle_default(true)
 		current_anim = d_loading_anim
 		current_anim.play("Load")
-		print("play")
+		#print("play")
 	
 
 	
@@ -89,7 +89,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 		#var progress = _progress[0]
 		#percent_label.text = str(int(progress * 100)) + "%"
 		load_status = ResourceLoader.load_threaded_get_status(next_scene, _progress)
-		print(load_status)
+		#print(load_status)
 		match load_status:
 			0,2:
 				print_debug("ERROR: Loading Failed")

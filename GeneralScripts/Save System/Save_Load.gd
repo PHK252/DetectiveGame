@@ -15,6 +15,7 @@ func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
 
 func saveGame(path: String):
+	#var file = FileAccess.open(path, FileAccess.WRITE)
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
 	print(_get_char_pos())
 	var chars_pos : Dictionary = _get_char_pos()
@@ -266,8 +267,8 @@ func _load_pos_vector(main_dic : Dictionary, char_pos_dic : String):
 	return Vector3(x_pos, y_pos, z_pos)
 	
 func _load_char_pos(main_dic : Dictionary):
-	print(main_dic["character_positions"])
-	print("From load" + str(typeof(_load_pos_vector(main_dic, "dalton_pos"))))
+	#print(main_dic["character_positions"])
+	#print("From load" + str(typeof(_load_pos_vector(main_dic, "dalton_pos"))))
 	match GlobalVars.current_level:
 		"Beginning":
 			var loaded_dalt_pos = _load_pos_vector(main_dic, "dalton_pos")
@@ -318,6 +319,7 @@ func _load_char_pos(main_dic : Dictionary):
 	return
 func loadGame(path : String):
 	if FileAccess.file_exists(path):
+		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
 		if file == null:
 			printerr(FileAccess.get_open_error())
@@ -359,6 +361,7 @@ func _load_arr(main_dic: Dictionary, sub_dic: String, load_name : Array):
 
 func clearSave(path : String):
 	if FileAccess.file_exists(path):
+		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
 		if file == null:
 			printerr("File does not exist" + str(FileAccess.get_open_error()))
@@ -366,3 +369,13 @@ func clearSave(path : String):
 		file.store_string(JSON.stringify({}))
 		file.close()
 		print("Save cleared successfully.")
+
+func check_save_file_empty(path : String):
+	#var file = FileAccess.open(path, FileAccess.WRITE)
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+	if file == null:
+		printerr("File does not exist" + str(FileAccess.get_open_error()))
+		return
+	var is_empty = file.get_length() == 0
+	file.close()
+	return is_empty
