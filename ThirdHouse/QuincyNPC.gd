@@ -88,7 +88,8 @@ enum {
 var state := IDLE
 
 func _ready() -> void:
-	global_position = GlobalVars.quincy_pos
+	if GlobalVars.quincy_pos != Vector3(0.0, 0.0, 0.0):
+		global_position = GlobalVars.quincy_pos
 	add_to_group("quincy")
 	wander_choice = 11
 	packofcigs.visible = false

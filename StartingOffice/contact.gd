@@ -8,10 +8,16 @@ extends Area2D
 @export var click : AudioStreamPlayer
 @onready var ad_took = false
 
+signal _show_tut(tut_type : String)
+
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				print(GlobalVars.flip_tut)
+				if GlobalVars.flip_tut == false:
+					print("flip")
+					emit_signal("_show_tut", "flip")
 				ad_took = Dialogic.VAR.get_variable("Global.got_theo_ad")
 				click.play()
 				object.hide()
@@ -27,6 +33,9 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	check_ripped()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if GlobalVars.exit_tut == false:
+		emit_signal("_show_tut", "exit")
 
 func _on_exit_pressed():
 	if ad_took == false:

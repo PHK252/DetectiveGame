@@ -61,7 +61,7 @@ loop_mode = 2
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Flip/TO RUN:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -69,7 +69,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.694118)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -94,6 +94,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Flip/ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.694118)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flip/TO RUN:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Flip/ColorRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_l4ptw"]
@@ -302,6 +338,42 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Flip/ColorRect:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Flip/TO RUN:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Flip/ColorRect:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbvhg"]
 _data = {
@@ -316,7 +388,6 @@ _data = {
 }
 
 [node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut")]
-visible = false
 script = ExtResource("1_om0r0")
 animationplayer = NodePath("AnimationPlayer")
 movement_tut = NodePath("Movement")
@@ -345,7 +416,7 @@ offset_left = 700.0
 offset_top = 918.0
 offset_right = 887.0
 offset_bottom = 1001.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
@@ -360,7 +431,7 @@ offset_left = 1126.0
 offset_top = 918.0
 offset_right = 1410.0
 offset_bottom = 1001.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
@@ -420,7 +491,7 @@ offset_left = 946.0
 offset_top = 923.0
 offset_right = 1221.0
 offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -448,7 +519,7 @@ offset_left = 819.0
 offset_top = 923.0
 offset_right = 1219.0
 offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -476,7 +547,7 @@ offset_left = 892.0
 offset_top = 923.0
 offset_right = 1292.0
 offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -504,7 +575,7 @@ offset_left = 878.0
 offset_top = 923.0
 offset_right = 1278.0
 offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -532,7 +603,7 @@ offset_left = 776.0
 offset_top = 923.0
 offset_right = 1317.0
 offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -541,7 +612,6 @@ fit_content = true
 scroll_active = false
 
 [node name="Flip" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -555,14 +625,23 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_5sc0d")
 frame = 1
 
+[node name="ColorRect" type="ColorRect" parent="Flip"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 704.0
+offset_right = 1182.0
+offset_bottom = 782.0
+mouse_filter = 2
+color = Color(0.980392, 0.945098, 0.823529, 1)
+
 [node name="TO RUN" type="RichTextLabel" parent="Flip"]
 texture_filter = 2
 layout_mode = 0
 offset_left = 690.0
-offset_top = 923.0
+offset_top = 697.0
 offset_right = 1231.0
-offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+offset_bottom = 780.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true

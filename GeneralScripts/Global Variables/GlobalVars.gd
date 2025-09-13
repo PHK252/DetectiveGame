@@ -23,10 +23,10 @@ signal open_quincy_case
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int 
+@onready var day : int = 1
 @onready var time : String 
 @onready var current_level = ""
-@onready var first_house = ""
+@onready var first_house = "" # might not need
 
 var load_global_arr = []
 var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house"]
@@ -307,9 +307,16 @@ var load_Secret_name_arr = ["has_secret", "view_secret_cure", "view_secret_usb",
 @onready var isaac_pos : Vector3
 
 #add to save
+#handled in beginning office
 var movement_tut = false
 var interact_tut = false
 var dialogue_tut = false
+#handled in office
+var flip_tut = false
+var exit_tut = false
+var phone_tut = false # or first level
+#handled in first level
+var run_tut = false
 
 
 ###Save Up until Here?
@@ -325,8 +332,34 @@ var dream_trans := "res://dream_stuff/dreamTransition.tscn"
 var flashback_1_1 := "res://Cutscenes/Flashback_01.tscn"
 var flashback_1_2 := "res://dream_stuff/Flashback_Runa.tscn"
 var flashback_2 := "res://Cutscenes/Flashback_02.tscn"
+var interrogation := "res://Cutscenes/Interrogation.tscn"
 
 #get current level path for loading
+func get_current_level_path(level : String):
+	match level:
+		"Beginning":
+			return beginning_office
+		"Office":
+			return office_path
+		"micah":
+			return first_house_path
+		"juniper":
+			return second_house_path
+		"quincy":
+			return third_house_path
+		"secret":
+			return secret_path
+		"Transition":
+			return dream_trans
+		"Flashback_day_1":
+			return flashback_1_1
+		"Flashback_day_2":
+			return flashback_2
+		"interrogation":
+			return interrogation
+		_:
+			print_debug("Level does not exist")
+		
 
 var cam_changed = false
 var clue_progress = 1

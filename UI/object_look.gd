@@ -4,10 +4,10 @@ extends CanvasLayer
 @onready var back = $"Object Back"
 signal paper_sound
 
-
 func _ready():
 	front.show()
 	back.hide()
+
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit"):
@@ -15,6 +15,7 @@ func _input(event):
 		GlobalVars.in_look_screen = false
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_object_front_gui_input(event):
 	if event is InputEventMouseButton:
@@ -34,3 +35,4 @@ func _on_exit_pressed():
 	$".".hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.viewing = ""
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

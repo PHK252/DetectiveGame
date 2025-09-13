@@ -6,16 +6,18 @@ extends Node3D
 @onready var contact = $UI/Contact
 @onready var missing = $"UI/Missing Persons"
 @onready var alert = $SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
+	GlobalVars.current_level = "Office"
 #	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	team_pic.hide()
 	partner_pic.hide()
 	news.hide()
 	contact.hide()
 	missing.hide()
-	GlobalVars.current_level = "Office"
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	#$"UI/TeamPic Look".hide()
@@ -36,3 +38,11 @@ func _input(event):
 	if Input.is_key_pressed(KEY_L):
 		SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		print("Dalton " + str(GlobalVars.dalton_pos))
+
+
+func _on_input_event(viewport, event, shape_idx):
+	pass # Replace with function body.
+
+
+func _show_tut(tut_type):
+	pass # Replace with function body.

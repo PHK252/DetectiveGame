@@ -16,6 +16,7 @@ extends Area2D
 @onready var clicked_count = GlobalVars.get(clicked_object)
 @onready var viewed_object = GlobalVars.get(view_object)
 
+signal _show_tut(tut_type : String)
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
@@ -31,9 +32,9 @@ func _on_input_event(viewport, event, shape_idx):
 				
 
 func _on_exit_pressed():
-	print("exit")
+	#print("exit")
 	if viewed_object == false and clicked_count == 1:
-		print("set")
+		#print("set")
 		GlobalVars.set(view_object, true)
 	else:
 		GlobalVars.set(view_object, true)

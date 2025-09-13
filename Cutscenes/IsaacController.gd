@@ -42,7 +42,8 @@ var not_stairs := true
 @export var crouch_sound : AudioStreamPlayer3D
 
 func _ready() -> void:
-	global_position = GlobalVars.isaac_pos
+	if GlobalVars.isaac_pos != Vector3(0.0, 0.0, 0.0):
+		global_position = GlobalVars.isaac_pos
 	add_to_group("player")
 	in_control = false
 	force_rotation = true

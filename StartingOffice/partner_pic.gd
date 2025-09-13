@@ -4,6 +4,8 @@ extends Area2D
 @onready var look = $"../Partner Look"
 @export var click : AudioStreamPlayer
 
+signal _show_tut(tut_type : String)
+
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
@@ -14,11 +16,16 @@ func _on_input_event(viewport, event, shape_idx):
 				GlobalVars.viewing = "partner"
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_partner = GlobalVars.clicked_partner + 1
+				if GlobalVars.flip_tut == false:
+					emit_signal("_show_tut", "flip")
 				
 				
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if GlobalVars.exit_tut == false:
+		emit_signal("_show_tut", "exit")
 
 
 func _on_exit_pressed():
@@ -28,6 +35,7 @@ func _on_exit_pressed():
 		Dialogic.start("Office_Partner_Picture")
 		GlobalVars.viewed_partner == true
 		GlobalVars.viewing = ""
+		
 
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "partner":

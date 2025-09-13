@@ -15,6 +15,7 @@ func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
 
 func saveGame(path: String):
+	Dialogic.Save.save()
 	#var file = FileAccess.open(path, FileAccess.WRITE)
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
 	print(_get_char_pos())
@@ -318,6 +319,7 @@ func _load_char_pos(main_dic : Dictionary):
 			return
 	return
 func loadGame(path : String):
+	Dialogic.Save.load()
 	if FileAccess.file_exists(path):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
@@ -360,6 +362,7 @@ func _load_arr(main_dic: Dictionary, sub_dic: String, load_name : Array):
 
 
 func clearSave(path : String):
+	Dialogic.Save.delete_slot("Default")
 	if FileAccess.file_exists(path):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
@@ -372,7 +375,7 @@ func clearSave(path : String):
 
 func check_save_file_empty(path : String):
 	#var file = FileAccess.open(path, FileAccess.WRITE)
-	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
 	if file == null:
 		printerr("File does not exist" + str(FileAccess.get_open_error()))
 		return

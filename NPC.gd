@@ -65,7 +65,8 @@ func _ready() -> void:
 	add_to_group("micah")
 	anim_player.play("basketball_default")
 	state = IDLE
-	global_position = GlobalVars.micah_pos
+	if GlobalVars.micah_pos != Vector3(0.0, 0.0, 0.0):
+		global_position = GlobalVars.micah_pos
 	#var target_position = player.global_position
 	#var target_direction = (target_position - global_transform.origin).normalized()
 	#look_at(global_transform.origin + -target_direction, Vector3.UP)

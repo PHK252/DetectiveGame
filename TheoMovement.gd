@@ -82,7 +82,9 @@ enum {
 
 func _ready() -> void:
 	add_to_group("theo")
-	global_position = GlobalVars.theo_pos
+	if GlobalVars.theo_pos != Vector3(0.0, 0.0, 0.0):
+		global_position = GlobalVars.theo_pos
+	#global_position = GlobalVars.theo_pos
 	# Initialize the navigation target to the player's position
 	nav.target_position = player.global_transform.origin
 	if quincy_house:

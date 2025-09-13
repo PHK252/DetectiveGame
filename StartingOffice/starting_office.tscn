@@ -1,4 +1,4 @@
-[gd_scene load_steps=385 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=386 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -134,6 +134,7 @@
 [ext_resource type="Texture2D" uid="uid://b3n05him78b1o" path="res://StartingOffice/Close Assets/Missing/News Front Revised@4x.png" id="129_01533"]
 [ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="133_xye0y"]
 [ext_resource type="PackedScene" uid="uid://b4fmk8hkjnh1v" path="res://UI/phone_and_pause_overlay.tscn" id="135_kjarc"]
+[ext_resource type="PackedScene" uid="uid://djiit5o2pgoy7" path="res://UI/Tutorial.tscn" id="136_58g4l"]
 [ext_resource type="PackedScene" uid="uid://cjrv3kmqym4e1" path="res://UI/Map_Ui.tscn" id="137_01533"]
 
 [sub_resource type="Curve3D" id="Curve3D_acv4t"]
@@ -4321,32 +4322,32 @@ billboard = 2
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-4.47138e-11, -5.75171e-08, -3.02125)
-bones/3/rotation = Quaternion(0.0213091, 0.309161, 0.879265, -0.361744)
-bones/4/rotation = Quaternion(-0.208266, 0.093277, -0.0377909, 0.97288)
-bones/5/rotation = Quaternion(0.489747, -0.114829, 0.104931, 0.857876)
-bones/8/rotation = Quaternion(-0.0213091, 0.309161, 0.879265, 0.361744)
-bones/9/rotation = Quaternion(-0.208266, -0.093277, 0.0377909, 0.97288)
-bones/10/rotation = Quaternion(0.489747, 0.114829, -0.104931, 0.857876)
-bones/12/position = Vector3(-4.47139e-11, -2.3827e-07, -3.02125)
-bones/15/rotation = Quaternion(-0.0858069, 1.1455e-07, -1.1556e-08, 0.996312)
-bones/16/rotation = Quaternion(0.0400134, 5.74893e-09, 1.1371e-08, 0.999199)
-bones/18/rotation = Quaternion(0.0153035, -0.0107544, -0.00960214, 0.999779)
-bones/20/rotation = Quaternion(0.0153035, 0.0107544, 0.00960216, 0.999779)
-bones/22/rotation = Quaternion(-0.25505, -0.1491, -0.405721, 0.864933)
-bones/23/rotation = Quaternion(-0.00303606, -0.000445899, -0.278601, 0.960402)
-bones/26/rotation = Quaternion(-0.25505, 0.149099, 0.405721, 0.864933)
-bones/27/rotation = Quaternion(-0.00303624, 0.00044592, 0.278603, 0.960401)
-bones/31/position = Vector3(0.992093, -0.0311821, -2.19358)
-bones/33/position = Vector3(-4.47138e-11, -1.17122e-07, -3.02125)
-bones/36/position = Vector3(-0.992093, -0.0311821, -2.19358)
+bones/1/position = Vector3(-1.59146e-09, -5.75171e-08, -2.98586)
+bones/3/rotation = Quaternion(0.0104182, 0.339067, 0.866448, -0.366325)
+bones/4/rotation = Quaternion(-0.269308, 0.0500935, -0.039293, 0.960948)
+bones/5/rotation = Quaternion(0.517578, -0.0763645, 0.0864763, 0.847823)
+bones/8/rotation = Quaternion(-0.0104182, 0.339067, 0.866448, 0.366325)
+bones/9/rotation = Quaternion(-0.269308, -0.0500935, 0.039293, 0.960948)
+bones/10/rotation = Quaternion(0.517578, 0.0763645, -0.0864763, 0.847822)
+bones/12/position = Vector3(-1.59147e-09, -2.86317e-07, -2.98586)
+bones/15/rotation = Quaternion(-0.0801827, 1.15446e-07, -1.35008e-08, 0.99678)
+bones/16/rotation = Quaternion(0.0269416, 4.01863e-09, 1.27824e-08, 0.999637)
+bones/18/rotation = Quaternion(0.0419985, -0.00170182, -0.010021, 0.999066)
+bones/20/rotation = Quaternion(0.0419985, 0.00170182, 0.010021, 0.999066)
+bones/22/rotation = Quaternion(-0.260642, -0.148486, -0.39323, 0.869131)
+bones/23/rotation = Quaternion(-0.00345696, -0.000440311, -0.317225, 0.948344)
+bones/26/rotation = Quaternion(-0.260649, 0.148489, 0.393244, 0.869122)
+bones/27/rotation = Quaternion(-0.00345716, 0.00044034, 0.317225, 0.948344)
+bones/31/position = Vector3(0.968536, -0.0311821, -2.18688)
+bones/33/position = Vector3(-1.59147e-09, -1.17122e-07, -2.98586)
+bones/36/position = Vector3(-0.968536, -0.0311821, -2.18688)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.633334, -0.0184315, 0.773659, 0.740539, 0.275835, 0.612793, -0.224697, 0.961028, -0.161047, 0.99385, -0.0358865, -2.19406)
+transform = Transform3D(-0.622382, -0.0511626, 0.78104, 0.734878, 0.305298, 0.605596, -0.269434, 0.950881, -0.152414, 0.968553, -0.0312187, -2.1868)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -4438,42 +4439,42 @@ path = NodePath("..")
 transform = Transform3D(0.98487, -9.09495e-13, -0.173293, 2.47087e-06, 1, 1.40426e-05, 0.173293, -1.42583e-05, 0.98487, 0.110734, 0.0839252, -0.0822144)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(-4.47138e-11, -5.75171e-08, -3.02125)
+bones/1/position = Vector3(-1.59147e-09, -5.75171e-08, -2.98586)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.021309, 0.309161, 0.879265, -0.361744)
-bones/4/rotation = Quaternion(-0.208267, 0.093277, -0.0377909, 0.97288)
-bones/5/rotation = Quaternion(0.489747, -0.114829, 0.104931, 0.857876)
+bones/3/rotation = Quaternion(0.0104183, 0.339067, 0.866448, -0.366325)
+bones/4/rotation = Quaternion(-0.269308, 0.0500935, -0.039293, 0.960948)
+bones/5/rotation = Quaternion(0.517578, -0.0763645, 0.0864764, 0.847823)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.021309, 0.309161, 0.879265, 0.361744)
-bones/9/rotation = Quaternion(-0.208267, -0.093277, 0.037791, 0.97288)
-bones/10/rotation = Quaternion(0.489747, 0.114829, -0.104931, 0.857876)
+bones/8/rotation = Quaternion(-0.0104182, 0.339067, 0.866448, 0.366324)
+bones/9/rotation = Quaternion(-0.269308, -0.0500935, 0.039293, 0.960948)
+bones/10/rotation = Quaternion(0.517578, 0.0763645, -0.0864764, 0.847822)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-4.47138e-11, -2.79317e-07, -3.02125)
+bones/12/position = Vector3(-1.59147e-09, -2.10035e-07, -2.98586)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0858069, 1.1455e-07, -1.1556e-08, 0.996312)
-bones/16/rotation = Quaternion(0.0400134, 5.74893e-09, 1.1371e-08, 0.999199)
+bones/15/rotation = Quaternion(-0.0801827, 1.15446e-07, -1.35008e-08, 0.99678)
+bones/16/rotation = Quaternion(0.0269416, 4.01862e-09, 1.27824e-08, 0.999637)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.434686, 0.0695087, -0.141777, 0.886632)
-bones/18/rotation = Quaternion(0.0153035, -0.0107544, -0.00960215, 0.999779)
+bones/17/rotation = Quaternion(0.465699, 0.0744679, -0.139237, 0.870742)
+bones/18/rotation = Quaternion(0.0419985, -0.00170182, -0.010021, 0.999066)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.435363, -0.0696173, 0.141724, 0.8863)
-bones/20/rotation = Quaternion(0.0153035, 0.0107544, 0.00960216, 0.999779)
+bones/19/rotation = Quaternion(0.48933, -0.0782469, 0.137149, 0.857685)
+bones/20/rotation = Quaternion(0.0419985, 0.00170182, 0.010021, 0.999066)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.25505, -0.149099, -0.405721, 0.864933)
-bones/23/rotation = Quaternion(-0.00303606, -0.000445929, -0.278601, 0.960402)
+bones/22/rotation = Quaternion(-0.260648, -0.148487, -0.393226, 0.86913)
+bones/23/rotation = Quaternion(-0.00345695, -0.000440321, -0.317224, 0.948344)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.25505, 0.149099, 0.405721, 0.864933)
-bones/27/rotation = Quaternion(-0.00303622, 0.000445899, 0.278603, 0.960402)
+bones/26/rotation = Quaternion(-0.260649, 0.148489, 0.393244, 0.869121)
+bones/27/rotation = Quaternion(-0.00345715, 0.000440351, 0.317225, 0.948344)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.992093, -0.0311821, -2.19358)
-bones/33/position = Vector3(-4.47138e-11, -1.17122e-07, -3.02125)
+bones/31/position = Vector3(0.968536, -0.0311821, -2.18688)
+bones/33/position = Vector3(-1.59147e-09, -1.17122e-07, -2.98586)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.992093, -0.0311821, -2.19358)
+bones/36/position = Vector3(-0.968536, -0.0311821, -2.18688)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129358, 0.956745, -0.075851)
@@ -4967,6 +4968,19 @@ player = NodePath("../../SubViewportContainer/SubViewport/Characters/Dalton/Char
 [node name="Phone UI" parent="UI/Phone and Pause Overlay/CanvasLayer" index="4"]
 visible = false
 
+[node name="Tutorial" parent="." instance=ExtResource("136_58g4l")]
+layer = 100
+
+[node name="Exit" parent="Tutorial" index="3"]
+mouse_filter = 2
+
+[node name="Phone" parent="Tutorial" index="5"]
+mouse_filter = 2
+
+[node name="Flip" parent="Tutorial" index="6"]
+visible = false
+mouse_filter = 2
+
 [connection signal="became_active" from="SubViewportContainer/SubViewport/CameraSystem/Corkboard cam" to="SubViewportContainer/SubViewport/StartingOffice/Corkboard_002" method="_on_corkboard_cam_became_active"]
 [connection signal="time_to_eat" from="SubViewportContainer/SubViewport/StartingOffice/doughnut_001" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_doughnut_001_time_to_eat"]
 [connection signal="time_to_eat" from="SubViewportContainer/SubViewport/StartingOffice/doughnut_001" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_doughnut_001_time_to_eat"]
@@ -4992,31 +5006,42 @@ visible = false
 [connection signal="DaltonInvisible" from="SubViewportContainer/SubViewport/SittingDalton/Detective_Anims" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_detective_anims_dalton_invisible"]
 [connection signal="DaltonVisible" from="SubViewportContainer/SubViewport/SittingDalton/Detective_Anims" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_detective_anims_dalton_visible"]
 [connection signal="DaltonVisible" from="SubViewportContainer/SubViewport/SittingDalton/Detective_Anims" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_detective_anims_dalton_visible"]
+[connection signal="_show_tut" from="UI/TeamPic" to="Tutorial" method="_show_tut"]
 [connection signal="input_event" from="UI/TeamPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_input_event"]
 [connection signal="input_event" from="UI/TeamPic" to="UI/TeamPic" method="_on_input_event"]
+[connection signal="input_event" from="UI/TeamPic" to="Tutorial" method="_on_input_event"]
 [connection signal="mouse_entered" from="UI/TeamPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/TeamPic" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/TeamPic" to="UI" method="_on_mouse_exited"]
+[connection signal="_show_tut" from="UI/PartnerPic" to="Tutorial" method="_show_tut"]
 [connection signal="input_event" from="UI/PartnerPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_partner_pic_input_event"]
 [connection signal="input_event" from="UI/PartnerPic" to="UI/PartnerPic" method="_on_input_event"]
+[connection signal="input_event" from="UI/PartnerPic" to="Tutorial" method="_on_input_event"]
 [connection signal="mouse_entered" from="UI/PartnerPic" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/PartnerPic" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/PartnerPic" to="UI" method="_on_mouse_exited"]
+[connection signal="_show_tut" from="UI/News" to="Tutorial" method="_show_tut"]
 [connection signal="input_event" from="UI/News" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_news_input_event"]
 [connection signal="input_event" from="UI/News" to="UI/News" method="_on_input_event"]
+[connection signal="input_event" from="UI/News" to="Tutorial" method="_on_input_event"]
 [connection signal="mouse_entered" from="UI/News" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/News" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/News" to="UI" method="_on_mouse_exited"]
+[connection signal="_show_tut" from="UI/Contact" to="Tutorial" method="_show_tut"]
 [connection signal="input_event" from="UI/Contact" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_contact_input_event"]
 [connection signal="input_event" from="UI/Contact" to="UI/Contact" method="_on_input_event"]
+[connection signal="input_event" from="UI/Contact" to="Tutorial" method="_on_input_event"]
 [connection signal="mouse_entered" from="UI/Contact" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/Contact" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Contact" to="UI" method="_on_mouse_exited"]
+[connection signal="_show_tut" from="UI/Missing Persons" to="Tutorial" method="_show_tut"]
 [connection signal="input_event" from="UI/Missing Persons" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_missing_persons_input_event"]
 [connection signal="input_event" from="UI/Missing Persons" to="UI/Missing Persons" method="_on_input_event"]
+[connection signal="input_event" from="UI/Missing Persons" to="Tutorial" method="_on_input_event"]
 [connection signal="mouse_entered" from="UI/Missing Persons" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="mouse_entered" from="UI/Missing Persons" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Missing Persons" to="UI" method="_on_mouse_exited"]
+[connection signal="_show_tut" from="UI/Casefile" to="Tutorial" method="_show_tut"]
 [connection signal="input_event" from="UI/Casefile" to="UI/Casefile" method="_on_input_event"]
 [connection signal="mouse_entered" from="UI/Casefile" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Casefile" to="UI" method="_on_mouse_exited"]
@@ -5054,8 +5079,8 @@ visible = false
 [connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_pressed"]
 [connection signal="pressed" from="UI/Case Look/Back" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_back_arrow_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
-[connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_forward_pressed"]
+[connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
 [connection signal="visibility_changed" from="UI/Map" to="UI/Map" method="_on_visibility_changed"]
 [connection signal="pressed" from="UI/Map/Exit" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_exit_pressed"]
 
@@ -5098,3 +5123,4 @@ visible = false
 [editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View journal"]
 [editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View Lab Pic"]
 [editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View proposal"]
+[editable path="Tutorial"]

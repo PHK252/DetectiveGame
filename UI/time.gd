@@ -16,6 +16,7 @@ func _ready():
 	else:
 		global_timer.wait_time = 60
 	global_timer.start()
+	await get_tree().process_frame
 	start_time()
 
 func start_time():
@@ -27,6 +28,7 @@ func start_time():
 						hour = 9
 						minute = 0
 					else:
+						
 						hour = 4
 						minute = 45
 				"micah":
