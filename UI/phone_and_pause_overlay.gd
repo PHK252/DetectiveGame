@@ -11,6 +11,9 @@ extends Control
 @onready var called = false
 @onready var phone_up = false
 
+signal start_dialogue
+
+var accepted = false
 var prev_mouse_mode : int
 var exit = InputMap.action_get_events("Exit")
 var interact = InputMap.action_get_events("interact")
@@ -21,13 +24,14 @@ func _ready():
 	#GlobalVars.emit_phone_call()
 	pass
 func _process(delta):
-	if GlobalVars.in_dialogue == true and GlobalVars.in_look_screen == true:
+	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true:
 		call_normal.disabled = true
-	if GlobalVars.in_call == false and called == false:
-		GlobalVars.phone_call_receiving.connect(_on_call_received)
-		GlobalVars.in_call = true
+	#if GlobalVars.in_call == false and called == false:
+		#print("calling	")
+		#GlobalVars.phone_call_receiving.connect(_on_call_received)
+		#
 	else:
-		pass
+		return
 
 
 func _on_pause_pressed():
@@ -65,6 +69,7 @@ func _on_call_normal_pressed():
 				player.start_player() 
 
 func _on_call_received():
+	GlobalVars.calling = true
 	call_anim.play("Shake")
 	call_normal.hide()
 	receiving_call.show()
@@ -78,7 +83,16 @@ func call_end():
 
 
 func _on_accept_pressed():
+	GlobalVars.calling = false
+	GlobalVars.in_call = true
 	call_end()
+	emit_signal("start_dialogue")
+	if GlobalVars.day == 1:
+		GlobalVars.Day_1_Quincy_call = true
+	if GlobalVars.day == 3:
+		GlobalVars.Day_3_Chief_call = true
+
 
 func _on_decline_pressed():
+	GlobalVars.calling = false
 	call_end()   

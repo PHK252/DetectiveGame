@@ -48,7 +48,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 	
 	current_scene.queue_free()
 	#
-	ResourceLoader.load_threaded_request(next_scene, "", true)
+	ResourceLoader.load_threaded_request(next_scene, "", false)
 	#driving
 	drive_loading = scene_instance.get_node("Drinving Loading/Morning/Driving")
 	drive_anim = scene_instance.get_node("Drinving Loading/Morning")
@@ -84,12 +84,11 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 
 	
 	await get_tree().create_timer(.5).timeout
-	set_process(true)
 	while loaded == false:
 		#var progress = _progress[0]
 		#percent_label.text = str(int(progress * 100)) + "%"
 		load_status = ResourceLoader.load_threaded_get_status(next_scene, _progress)
-		#print(load_status)
+		print(load_status)
 		match load_status:
 			0,2:
 				print_debug("ERROR: Loading Failed")
@@ -123,6 +122,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 				toggle_default(false)
 				scene_instance.queue_free()
 				in_loading = false
+				print(GlobalVars.current_level)
 				loaded = false
 				return
 

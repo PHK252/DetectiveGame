@@ -58,10 +58,11 @@ func _ready() -> void:
 	add_to_group("player")
 	#await SaveLoad.loaded
 	#if GlobalVars.dalton_pos:
-	#print("place?")
-	global_position = GlobalVars.dalton_pos
+	if GlobalVars.from_save_file == true:
+		global_position = GlobalVars.dalton_pos
+		GlobalVars.from_save_file == false
 	#print("placed " + str(GlobalVars.dalton_pos))
-	if office_return == true:
+	if GlobalVars.current_level == "Office":
 		_return_office()
 	#doughnut.visible = false
 

@@ -38,11 +38,3 @@ func _input(event):
 	if Input.is_key_pressed(KEY_L):
 		SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		print("Dalton " + str(GlobalVars.dalton_pos))
-
-
-func _on_input_event(viewport, event, shape_idx):
-	pass # Replace with function body.
-
-
-func _show_tut(tut_type):
-	pass # Replace with function body.

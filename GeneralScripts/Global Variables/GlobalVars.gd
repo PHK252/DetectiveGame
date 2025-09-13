@@ -23,7 +23,7 @@ signal open_quincy_case
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int = 1
+@onready var day : int = 2
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need
@@ -318,8 +318,11 @@ var phone_tut = false # or first level
 #handled in first level
 var run_tut = false
 
+var Day_1_Quincy_call = false
+var Day_3_Chief_call = false
 
 ###Save Up until Here?
+var from_save_file = false
 var player_pos
 var main_menu := "res://UI/Main Menu.tscn"
 var first_house_path := "res://FirstHouse/first_house.tscn"
@@ -383,9 +386,9 @@ func _ready():
 	set_mouse_default()
 	set_mouse_pointing()
 
-func emit_phone_call():
-	emit_signal("phone_call_receiving")
-	calling = true
+#func emit_phone_call():
+	#emit_signal("phone_call_receiving")
+	#calling = true
 
 func emit_open_micah_case():
 	emit_signal("open_micah_case")

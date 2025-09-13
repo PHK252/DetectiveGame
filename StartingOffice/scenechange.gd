@@ -10,6 +10,9 @@ var went_Micah : bool
 var went_Juniper : bool
 var went_Quincy : bool
 var went_secret : bool
+
+signal Quincy_call_recieve
+signal _show_tut(tut_type : String)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -36,8 +39,12 @@ func _on_secondhouse_button_pressed() -> void:
 
 func _on_thirdhouse_button_pressed() -> void:
 	if GlobalVars.day == 1:
-		#exit to phone call
-		pass
+		if GlobalVars.Day_1_Quincy_call == false:
+			emit_signal("Quincy_call_recieve")
+			emit_signal("_show_tut", "phone")
+			visible = false
+		else:
+			return
 	else:
 		Loading.load_scene(self, GlobalVars.third_house_path, false, "", "")
 		#get_tree().change_scene_to_file("res://ThirdHouse/third_house.tscn")
@@ -80,8 +87,11 @@ func _on_check_day():
 		quincy.disabled = true
 	if went_secret == true and secret.disabled == false:
 		secret.disabled = true
-	#if GlobalVars.current_level == "Micah":
-		#micah.disabled = true
+	if GlobalVars.Day_1_Quincy_call == true:
+		if GlobalVars.day == 1:
+			quincy.visible = false
+		else:
+			quincy.visible = true
 	#else:
 		#micah.disabled = false
 	#if GlobalVars.current_level == "Juniper":
@@ -111,3 +121,7 @@ func _on_check_day():
 func _on_visibility_changed():
 	if visible:
 		_on_check_day()
+
+
+func _on_Quincy_call_start_dialogue():
+	pass # Replace with function body.

@@ -13,6 +13,7 @@ func _ready():
 		continue_butt.hide()
 	else:
 		SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+		GlobalVars.from_save_file = true
 		start_butt.hide()
 		continue_butt.show()
 
@@ -34,5 +35,7 @@ func _on_start_pressed():
 
 
 func _on_continue_pressed():
+	#GlobalVars.current_level = "quincy"
+	#Loading.load_scene(self, GlobalVars.third_house_path, false, "", "")
 	var level_to_load = GlobalVars.get_current_level_path(GlobalVars.current_level)
 	Loading.load_scene(self, level_to_load, false, "", "")
