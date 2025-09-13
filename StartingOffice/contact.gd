@@ -14,10 +14,6 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				print(GlobalVars.flip_tut)
-				if GlobalVars.flip_tut == false:
-					print("flip")
-					emit_signal("_show_tut", "flip")
 				ad_took = Dialogic.VAR.get_variable("Global.got_theo_ad")
 				click.play()
 				object.hide()

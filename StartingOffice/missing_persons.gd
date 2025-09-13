@@ -16,8 +16,7 @@ func _on_input_event(viewport, event, shape_idx):
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_missing += 1
 				GlobalVars.viewing = "missing"
-				if GlobalVars.flip_tut == false:
-					emit_signal("_show_tut", "flip")
+
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

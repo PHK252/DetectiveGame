@@ -16,8 +16,6 @@ func _on_input_event(viewport, event, shape_idx):
 				GlobalVars.viewing = "partner"
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_partner = GlobalVars.clicked_partner + 1
-				if GlobalVars.flip_tut == false:
-					emit_signal("_show_tut", "flip")
 				
 				
 func _on_timeline_ended():

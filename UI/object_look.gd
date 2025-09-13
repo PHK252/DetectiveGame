@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var back = $"Object Back"
 signal paper_sound
 
+signal _show_tut(tut_type : String)
+
 func _ready():
 	front.show()
 	back.hide()
@@ -36,3 +38,9 @@ func _on_exit_pressed():
 	GlobalVars.in_look_screen = false
 	GlobalVars.viewing = ""
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _on_visibility_changed():
+	if visible == true:
+		if GlobalVars.flip_tut == false:
+			emit_signal("_show_tut", "flip")

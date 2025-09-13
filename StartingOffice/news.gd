@@ -15,8 +15,7 @@ func _on_input_event(viewport, event, shape_idx):
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_news += 1
 				GlobalVars.viewing = "news"
-				if GlobalVars.flip_tut == false:
-					emit_signal("_show_tut", "flip")
+
 				
 
 
