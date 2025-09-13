@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://dstnxb7ix56qs"]
+[gd_scene load_steps=111 format=4 uid="uid://dstnxb7ix56qs"]
 
 [ext_resource type="Script" uid="uid://cp55wg45ukg5b" path="res://Cutscenes/Beginning.gd" id="1_0y78j"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_kshh4"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="42_ykiv2"]
 [ext_resource type="Script" uid="uid://dlwblcw07py1" path="res://Global Scripts/Framework_Interact_to_dialogue.gd" id="43_6vflx"]
 [ext_resource type="Script" uid="uid://cjlifhj0otjg6" path="res://Cutscenes/Dialogue_to_walkout.gd" id="45_ykiv2"]
+[ext_resource type="PackedScene" uid="uid://djiit5o2pgoy7" path="res://UI/Tutorial.tscn" id="46_6vflx"]
 
 [sub_resource type="Shader" id="Shader_mijsm"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
@@ -903,7 +904,7 @@ size = Vector3(0.731626, 0.999512, 0.181488)
 size = Vector3(0.437175, 1.2019, 0.328365)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y3y4c"]
-size = Vector3(0.0352377, 0.772217, 0.189556)
+size = Vector3(0.251959, 0.772217, 0.189556)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0y78j")
@@ -938,30 +939,30 @@ getUp = NodePath("Armature_001/GetUpSound")
 transform = Transform3D(-0.462092, -1.79945e-07, 7.86566e-15, 0, -2.01987e-08, -0.462092, 1.79945e-07, -0.462092, 2.01987e-08, 0, 0.000947615, 0.93657)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001" index="0"]
-bones/0/position = Vector3(-1.0444e-10, 2.38419e-07, -1.80881)
+bones/0/position = Vector3(-1.82836e-11, 2.38419e-07, -1.83651)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19025e-08)
-bones/4/rotation = Quaternion(-0.162689, 3.23344e-09, -3.09562e-09, 0.986677)
+bones/4/rotation = Quaternion(-0.18988, 0.00468822, 0.000793877, 0.981796)
 bones/5/rotation = Quaternion(0.355955, -7.6485e-09, 2.60517e-08, 0.934503)
-bones/6/position = Vector3(0.251918, 0.641052, 0.112221)
-bones/6/rotation = Quaternion(0.321394, 0.0064133, -0.156027, 0.933981)
+bones/6/position = Vector3(0.251919, 0.641125, 0.112047)
+bones/6/rotation = Quaternion(0.322085, 0.00629792, -0.156032, 0.933743)
 bones/7/rotation = Quaternion(0.150191, 0.00219412, 0.0144416, 0.988549)
-bones/8/position = Vector3(-0.25753, 0.641438, 0.110824)
-bones/8/rotation = Quaternion(0.325734, 0.0160465, 0.142362, 0.934544)
+bones/8/position = Vector3(-0.25753, 0.641486, 0.110614)
+bones/8/rotation = Quaternion(0.326424, 0.0161517, 0.142351, 0.934303)
 bones/9/rotation = Quaternion(0.150191, 0.00219409, 0.0144413, 0.988549)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.324745, 0.0286037, -0.48305, 0.812641)
-bones/12/rotation = Quaternion(0.472938, 0.313576, -0.222941, 0.792652)
+bones/11/rotation = Quaternion(-0.314695, 0.0419878, -0.483402, 0.815798)
+bones/12/rotation = Quaternion(0.450665, 0.318955, -0.212441, 0.806249)
 bones/13/rotation = Quaternion(0.0184011, 0.637816, -0.0116091, 0.769881)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.325435, -0.0162269, 0.540758, 0.775506)
-bones/16/rotation = Quaternion(0.460078, -0.316862, 0.215503, 0.800928)
+bones/15/rotation = Quaternion(-0.326767, -0.0229428, 0.536749, 0.777558)
+bones/16/rotation = Quaternion(0.437016, -0.322204, 0.204701, 0.814432)
 bones/17/rotation = Quaternion(0.0182237, -0.626127, 0.0118857, 0.779418)
-bones/19/rotation = Quaternion(0.604814, 0.0987301, 0.102767, 0.783512)
-bones/20/rotation = Quaternion(-0.821136, 0.00618779, -0.229304, 0.522605)
+bones/19/rotation = Quaternion(0.59366, 0.098898, 0.0995471, 0.792387)
+bones/20/rotation = Quaternion(-0.811566, 0.00637574, -0.226632, 0.538477)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
-bones/23/rotation = Quaternion(0.581133, -0.0858651, -0.0103214, 0.8092)
-bones/24/rotation = Quaternion(-0.821575, -0.00104578, 0.0512041, 0.567795)
+bones/23/rotation = Quaternion(0.569717, -0.0861482, -0.00866902, 0.817268)
+bones/24/rotation = Quaternion(-0.810153, -0.0010757, 0.0504922, 0.58404)
 bones/25/rotation = Quaternion(0.841715, 0.0265733, -0.0311034, 0.53837)
 bones/26/position = Vector3(0.302293, 0.237652, -0.922289)
 bones/26/rotation = Quaternion(0.0204546, -4.33681e-19, 0.999791, 6.58544e-10)
@@ -1010,7 +1011,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150295, 1.44985, 0.899318)
 
 [node name="FlashbackDalton" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("13_w5hpx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52111, -0.0685094, 0.988114)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4588, -0.0685094, 0.274761)
 
 [node name="CharacterBody3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton" index="0" node_paths=PackedStringArray("armature", "anim_tree", "camera", "force_rotate_list", "collision", "sound_player", "paperSound", "think")]
 armature = NodePath("Flashback")
@@ -1029,24 +1030,47 @@ shape = SubResource("BoxShape3D_2g7hf")
 [node name="Alert" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
 visible = false
 
+[node name="FlashBackDalton" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback" index="0"]
+transform = Transform3D(0.423249, 0, 0, 0, -1.85008e-08, -0.423249, 0, 0.423249, -1.85008e-08, 0, 0, 0)
+
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton" index="0"]
-bones/0/position = Vector3(4.6646e-10, -1.10713e-08, -1.71719)
-bones/4/rotation = Quaternion(-0.0602925, -7.62139e-10, -3.00194e-10, 0.998181)
-bones/5/rotation = Quaternion(0.0658891, -2.90823e-16, 1.28552e-15, 0.997827)
-bones/11/rotation = Quaternion(-0.370073, 0.0196887, -0.496804, 0.784758)
-bones/12/rotation = Quaternion(0.431496, 0.27845, -0.327574, 0.793077)
-bones/15/rotation = Quaternion(-0.364604, -0.0138336, 0.496445, 0.787664)
-bones/16/rotation = Quaternion(0.411114, -0.276092, 0.332789, 0.802503)
-bones/19/rotation = Quaternion(0.137871, 0.00853481, -0.00513114, 0.9904)
-bones/20/rotation = Quaternion(-0.321883, 0.000130606, -0.0088296, 0.946738)
-bones/21/rotation = Quaternion(0.809032, -0.0283346, 0.0295078, 0.586339)
-bones/23/rotation = Quaternion(0.137871, -0.00853477, 0.00513113, 0.9904)
-bones/24/rotation = Quaternion(-0.321883, -0.000130608, 0.0088296, 0.946738)
-bones/25/rotation = Quaternion(0.809032, 0.0283346, -0.0295078, 0.586339)
-bones/28/position = Vector3(0.503496, 0.0425234, -1.51807)
-bones/28/scale = Vector3(1.01029, 1, 1.15867)
-bones/29/position = Vector3(-0.505151, 0.0368557, -1.5062)
-bones/29/scale = Vector3(1.01029, 1, 1.15867)
+bones/0/position = Vector3(7.35382e-11, -1.10713e-08, -1.7082)
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
+bones/4/rotation = Quaternion(-0.0568493, -7.02535e-10, -2.76717e-10, 0.998383)
+bones/5/rotation = Quaternion(0.0642314, -2.12183e-10, -3.96295e-11, 0.997935)
+bones/6/position = Vector3(0.256909, 0.65721, 0.0662163)
+bones/6/rotation = Quaternion(2.65866e-10, -5.70862e-10, -0.143774, 0.989611)
+bones/7/rotation = Quaternion(0.0615113, 0.000898594, 0.0145798, 0.997999)
+bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
+bones/8/rotation = Quaternion(-3.7282e-10, 3.78358e-10, 0.138842, 0.990315)
+bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
+bones/10/rotation = Quaternion(-0.14247, 0.0557454, -0.688243, 0.709166)
+bones/11/rotation = Quaternion(-0.374897, 0.0235573, -0.490068, 0.786594)
+bones/12/rotation = Quaternion(0.440529, 0.280132, -0.330858, 0.786125)
+bones/13/rotation = Quaternion(0.00671636, -0.00228499, -0.0206946, 0.999761)
+bones/14/rotation = Quaternion(-0.14247, -0.0557454, 0.688243, 0.709166)
+bones/15/rotation = Quaternion(-0.374042, -0.0226397, 0.489979, 0.787084)
+bones/16/rotation = Quaternion(0.437361, -0.279781, 0.331807, 0.787618)
+bones/17/rotation = Quaternion(0.00671635, 0.00228496, 0.0206946, 0.999761)
+bones/19/rotation = Quaternion(0.146318, 0.00818563, -0.00471337, 0.989193)
+bones/20/rotation = Quaternion(-0.338262, 0.000129819, -0.0092789, 0.941006)
+bones/21/rotation = Quaternion(0.815291, -0.0280156, 0.0298108, 0.577604)
+bones/23/rotation = Quaternion(0.146318, -0.00818559, 0.00471336, 0.989193)
+bones/24/rotation = Quaternion(-0.338262, -0.000129817, 0.0092789, 0.941006)
+bones/25/rotation = Quaternion(0.815291, 0.0280156, -0.0298108, 0.577604)
+bones/26/position = Vector3(0.302293, -0.0768642, -0.13186)
+bones/26/rotation = Quaternion(0.0204546, 0, 0.999791, 6.58544e-10)
+bones/26/scale = Vector3(1.10417, 1, 1.00018)
+bones/27/position = Vector3(-0.302293, -0.0768642, -0.13186)
+bones/27/rotation = Quaternion(-0.0204547, 8.89046e-16, 0.999791, -1.31709e-09)
+bones/27/scale = Vector3(1.10417, 1, 1.00018)
+bones/28/position = Vector3(0.507111, 0.0289846, -1.5171)
+bones/28/rotation = Quaternion(0.790332, -2.10734e-08, 0.612679, -7.76605e-08)
+bones/28/scale = Vector3(1.01178, 1, 1.18239)
+bones/29/position = Vector3(-0.507372, 0.0280911, -1.51523)
+bones/29/rotation = Quaternion(0.790332, 2.10734e-08, -0.612679, -7.76605e-08)
+bones/29/scale = Vector3(1.01178, 1, 1.18239)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_45o54")
@@ -1407,6 +1431,8 @@ load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
 
 [node name="Interactable" parent="Interaction Boxes/CorkRight" instance=ExtResource("16_qmgvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24706, 0)
+collision_layer = 14
+collision_mask = 1
 
 [node name="CollisionShape3D" parent="Interaction Boxes/CorkRight/Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25397, 0, 1.33673)
@@ -1424,6 +1450,8 @@ load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
 load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
 
 [node name="Interactable" parent="Interaction Boxes/CorkMid" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
 
 [node name="CollisionShape3D" parent="Interaction Boxes/CorkMid/Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549823, 1.0016, 1.43545)
@@ -1441,6 +1469,8 @@ load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
 load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
 
 [node name="Interactable" parent="Interaction Boxes/CorkLeft" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
 
 [node name="CollisionShape3D" parent="Interaction Boxes/CorkLeft/Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66644, 1.15972, 1.46438)
@@ -1458,6 +1488,8 @@ load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
 load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
 
 [node name="Interactable" parent="Interaction Boxes/Donuts" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
 
 [node name="CollisionShape3D" parent="Interaction Boxes/Donuts/Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.615878, 0.376342, 0.794035)
@@ -1475,18 +1507,39 @@ load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
 load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
 
 [node name="Interactable" parent="Interaction Boxes/Isaac" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
 
 [node name="CollisionShape3D" parent="Interaction Boxes/Isaac/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.570618, 0.694319, 0.687699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462257, 0.694319, 0.687699)
 shape = SubResource("BoxShape3D_y3y4c")
 
+[node name="Tutorial" parent="." instance=ExtResource("46_6vflx")]
+visible = true
+
+[connection signal="_show_tut" from="." to="Tutorial" method="_show_tut"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/PaperSounds/Area3D" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" method="_on_area_3d_body_entered"]
+[connection signal="_show_tut" from="Interaction Boxes/CorkRight" to="Tutorial" method="_show_tut"]
+[connection signal="body_entered" from="Interaction Boxes/CorkRight/Interactable" to="Interaction Boxes/CorkRight" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="Interaction Boxes/CorkRight/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
 [connection signal="interacted" from="Interaction Boxes/CorkRight/Interactable" to="Interaction Boxes/CorkRight" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="Interaction Boxes/CorkMid" to="Tutorial" method="_show_tut"]
+[connection signal="body_entered" from="Interaction Boxes/CorkMid/Interactable" to="Interaction Boxes/CorkMid" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="Interaction Boxes/CorkMid/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
 [connection signal="interacted" from="Interaction Boxes/CorkMid/Interactable" to="Interaction Boxes/CorkMid" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="Interaction Boxes/CorkLeft" to="Tutorial" method="_show_tut"]
+[connection signal="body_entered" from="Interaction Boxes/CorkLeft/Interactable" to="Interaction Boxes/CorkLeft" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="Interaction Boxes/CorkLeft/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
 [connection signal="interacted" from="Interaction Boxes/CorkLeft/Interactable" to="Interaction Boxes/CorkLeft" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="Interaction Boxes/Donuts" to="Tutorial" method="_show_tut"]
+[connection signal="body_entered" from="Interaction Boxes/Donuts/Interactable" to="Interaction Boxes/Donuts" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="Interaction Boxes/Donuts/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
 [connection signal="interacted" from="Interaction Boxes/Donuts/Interactable" to="Interaction Boxes/Donuts" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="Interaction Boxes/Isaac" to="Tutorial" method="_show_tut"]
 [connection signal="to_walk_out" from="Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/Isaac" method="_on_isaac_to_walk_out"]
 [connection signal="to_walk_out" from="Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" method="_on_dalton_to_walk_out"]
+[connection signal="body_entered" from="Interaction Boxes/Isaac/Interactable" to="Interaction Boxes/Isaac" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="Interaction Boxes/Isaac/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
 [connection signal="interacted" from="Interaction Boxes/Isaac/Interactable" to="Interaction Boxes/Isaac" method="_on_interactable_interacted"]
 
 [editable path="SubViewportContainer/SubViewport/Characters/Isaac"]
@@ -1500,3 +1553,4 @@ shape = SubResource("BoxShape3D_y3y4c")
 [editable path="Interaction Boxes/CorkLeft/Interactable"]
 [editable path="Interaction Boxes/Donuts/Interactable"]
 [editable path="Interaction Boxes/Isaac/Interactable"]
+[editable path="Tutorial"]

@@ -25,5 +25,9 @@ func _on_quit_pressed():
 func _on_start_pressed():
 	#SceneTransitions.glitch_change_scene("res://StartingOffice/starting_office.tscn")
 	#LoadManager.load_scene(GlobalVars.first_house_path)
-	Loading.load_scene(self, GlobalVars.first_house_path, true, "morning", "yes_diner")
-	#Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")
+	#Loading.load_scene(self, GlobalVars.first_house_path, true, "morning", "yes_diner")
+	Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")
+
+
+func _on_continue_pressed():
+	Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")

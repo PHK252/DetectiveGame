@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+class_name Tutorial
 #@export var tut_type : String
 @export var animationplayer : AnimationPlayer
 @export var movement_tut : Node
@@ -8,10 +9,13 @@ extends CanvasLayer
 @export var exit_tut : Node
 @export var phone_tut : Node
 @export var flip_tut : Node
+@export var dialogue_tut : Node
 
 @onready var timer = $Timer
 @onready var current_tut : Node
 @onready var current_anim : String
+
+var interact = false
 
 func _ready():
 	set_process(false)
@@ -19,6 +23,8 @@ func _ready():
 	#_show_tut("flip")
 
 func _show_tut(tut_type : String):
+	if current_tut:
+		current_tut.visible = false
 	if tut_type == "movement":
 		current_tut = movement_tut
 		current_anim = "Blink Move"
@@ -37,8 +43,12 @@ func _show_tut(tut_type : String):
 	elif tut_type == "flip":
 		current_tut = flip_tut
 		current_anim = "Blink Click"
+	elif tut_type == "dialogue":
+		current_tut = dialogue_tut
+		current_anim = "Blink Pause"
 	else:
 		print_debug("Tutorial Loading Failed")
+		return
 	_handle_tut()
 
 func _handle_tut():
@@ -58,6 +68,7 @@ func _process(delta):
 				_hide_tut()
 		if current_tut == interact_tut:
 			if Input.is_action_pressed("interact"):
+				GlobalVars.interact_tut = true 
 				_hide_tut()
 		if current_tut == exit_tut:
 			if Input.is_action_pressed("Exit"):
@@ -67,6 +78,10 @@ func _process(delta):
 				_hide_tut()
 		if current_tut == flip_tut:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				_hide_tut()
+		if current_tut == dialogue_tut:
+			if Input.is_action_pressed("dialogic_default_action"):
+				GlobalVars.dialogue_tut = true
 				_hide_tut()
 	else:
 		_hide_tut()
@@ -78,3 +93,8 @@ func _hide_tut():
 	animationplayer.play("RESET")
 	set_process(false)
 	return
+
+
+
+func _on_interactable_body_exited(body):
+	_hide_tut()

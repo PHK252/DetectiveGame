@@ -315,7 +315,7 @@ _data = {
 &"RESET": SubResource("Animation_0g1k3")
 }
 
-[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut")]
+[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut")]
 visible = false
 script = ExtResource("1_om0r0")
 animationplayer = NodePath("AnimationPlayer")
@@ -325,6 +325,7 @@ interact_tut = NodePath("Interact")
 exit_tut = NodePath("Exit")
 phone_tut = NodePath("Phone")
 flip_tut = NodePath("Flip")
+dialogue_tut = NodePath("Pause")
 metadata/_edit_horizontal_guides_ = [994.0, 943.0]
 metadata/_edit_vertical_guides_ = [960.0]
 

@@ -13,6 +13,7 @@ extends Node3D
 @export var load_Isaac_dialogue: String
 
 signal to_walk_out
+signal _show_tut(tut_type : String)
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
@@ -24,6 +25,10 @@ func _on_interactable_interacted(interactor):
 		game_dialogue.register_character(load(load_Isaac_dialogue), isaac_marker)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
+		if GlobalVars.dialogue_tut == false:
+			emit_signal("_show_tut", "dialogue")
+			if GlobalVars.interact_tut == false:
+				GlobalVars.interact_tut = true
 		player.stop_player()
 
 func _walk_out(arg : String):
@@ -39,3 +44,9 @@ func _on_timeline_ended():
 	player.start_player()
 	#alert.show()
 	GlobalVars.in_interaction = ""
+
+
+func _on_interactable_body_entered(body):
+	if body.is_in_group("player"):
+		if GlobalVars.interact_tut == false: 
+			emit_signal("_show_tut", "interact")

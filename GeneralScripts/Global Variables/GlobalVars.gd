@@ -306,11 +306,15 @@ var load_Secret_name_arr = ["has_secret", "view_secret_cure", "view_secret_usb",
 @onready var quincy_pos : Vector3
 @onready var isaac_pos : Vector3
 
-
+#add to save
+var movement_tut = false
+var interact_tut = false
+var dialogue_tut = false
 
 
 ###Save Up until Here?
 var player_pos
+var main_menu := "res://UI/Main Menu.tscn"
 var first_house_path := "res://FirstHouse/first_house.tscn"
 var second_house_path := "res://SecondHouse/second_house.tscn"
 var third_house_path := "res://ThirdHouse/third_house.tscn"
@@ -322,7 +326,7 @@ var flashback_1_1 := "res://Cutscenes/Flashback_01.tscn"
 var flashback_1_2 := "res://dream_stuff/Flashback_Runa.tscn"
 var flashback_2 := "res://Cutscenes/Flashback_02.tscn"
 
-
+#get current level path for loading
 
 var cam_changed = false
 var clue_progress = 1

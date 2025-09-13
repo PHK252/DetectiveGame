@@ -9,27 +9,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-
 func _on_save_pressed():
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	#print(GlobalVars._load_global_arr())
-	#get_tree().change_scene_to_file("res://UI/Main Menu.tscn")
-
-
-func _on_exit_pressed():
-	$".".hide()
-	pass # Replace with function body.
-
+	SceneTransitions.fade_change_scene(GlobalVars.main_menu)
 
 func _on_resume_pressed():
+	get_tree().paused = false
+	visible = false
 	#$".".hide()
-	GlobalVars.forward = true
-	GlobalVars.day = 2
-	GlobalVars.time = "morning"
-	GlobalVars.current_level = "micah"
-	GlobalVars.first_house = "juniper"
+	#GlobalVars.forward = true
+	#GlobalVars.day = 2
+	#GlobalVars.time = "morning"
+	#GlobalVars.current_level = "micah"
+	#GlobalVars.first_house = "juniper"
 	#print(GlobalVars._load_global_arr())
 	#await get_tree().process_frame
 	#print(GlobalVars.load_global_arr)
@@ -37,13 +29,14 @@ func _on_resume_pressed():
 
 
 func _on_options_pressed():
-	SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	print(GlobalVars._load_global_arr())
+	print("options")
 
 
 func _on_controls_pressed():
-	GlobalVars.forward = false
-	GlobalVars.day = 0
-	GlobalVars.time = ""
-	GlobalVars.current_level = ""
-	GlobalVars.first_house = ""
+	print("controls")
+
+func _on_visibility_changed():
+	#debug
+	if visible == true:
+		get_tree().paused = true
+	pass # Replace with function body.

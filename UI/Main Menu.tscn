@@ -182,5 +182,5 @@ texture = ExtResource("27_j3mhs")
 stretch_mode = 3
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Continue" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
