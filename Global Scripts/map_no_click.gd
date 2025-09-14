@@ -5,26 +5,11 @@ extends MeshInstance3D
 @export var cam_anim : AnimationPlayer
 @export var exit_cam : PhantomCamera3D
 @export var player : CharacterBody3D
+@export var interactable : Interactable
 var is_open: bool = false
-
-signal check_day
 	
-func open() -> void:
-	print("Opening map UI")
-	map.visible = !map.visible
-	
-func change_scene() -> void:
-	print("scenechanged")
-	
-func add_highlight() -> void:
-	pass
-	
-func remove_highlight() -> void:
-	pass
-	
-#func _on_interactable_focused(interactor) -> void:
-	#if not is_open:
-		#add_highlight()
+func _ready():
+	interactable.set_deferred("monitorable", false)
 		
 func _on_interactable_interacted(interactor) -> void:
 	if GlobalVars.in_interaction == "":
@@ -70,3 +55,7 @@ func _input(event):
 			GlobalVars.viewing = ""
 			GlobalVars.in_look_screen = false
 			GlobalVars.in_interaction = ""
+
+
+func _on_activate_leave():
+	interactable.set_deferred("monitorable", true)

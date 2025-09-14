@@ -12,10 +12,10 @@ extends MeshInstance3D
 var is_open: bool = false
 
 func _ready():
-	#if GlobalVars.day == 1:
-		#interactable.set_deferred("monitorable", false)
-	#else:
-		#interactable.set_deferred("monitorable", true)
+	if GlobalVars.day == 1:
+		interactable.set_deferred("monitorable", false)
+	else:
+		interactable.set_deferred("monitorable", true)
 	pass
 
 func _on_map_leave_interacted(interactor):

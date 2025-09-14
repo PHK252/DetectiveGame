@@ -24,6 +24,7 @@ signal greeting
 signal general_interact
 
 signal door_open
+signal activate_leave
 var is_outside = true
 
 var cooldown = false
@@ -159,6 +160,7 @@ func _on_door_theo_entered():
 		#print("theo entered!" + str(theo_entered))
 		if dalton_entered == true:
 			entered = true
+			emit_signal("entered_micah")
 			close()
 
 
@@ -168,6 +170,7 @@ func _on_dalton_door_entered():
 		#print("dalton entered!"  + str(dalton_entered))
 		if theo_entered == true:
 			entered = true
+			emit_signal("entered_micah")
 			close()
 
 
@@ -178,7 +181,8 @@ func _on_door_dalton_leave_body_entered(body):
 			dalton_left = true
 			if theo_left == true:
 				close()
-				emit_signal("entered_micah")
+				entered = false
+				emit_signal("activate_leave")
 				if interaction.monitorable == true:
 					interaction.set_deferred("monitorable", false)
 		
@@ -190,6 +194,7 @@ func _on_doorcamarea_body_entered(body):
 			theo_left = true
 			if dalton_left == true:
 				close()
-				emit_signal("entered_micah")
+				entered = false
+				emit_signal("activate_leave")
 				if interaction.monitorable == true:
 					interaction.set_deferred("monitorable", false)
