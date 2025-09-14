@@ -1,4 +1,4 @@
-[gd_scene load_steps=386 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=385 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -29,7 +29,6 @@
 [ext_resource type="Material" uid="uid://ct5ccdodxwgbu" path="res://ShaderScripts/case_file.tres" id="26_771f8"]
 [ext_resource type="Texture2D" uid="uid://bsmsq634p0ytd" path="res://UniversalEnvironmentPalette/Universal_Environment_Palette.png" id="29_lobvy"]
 [ext_resource type="Script" uid="uid://djh7345pdktkc" path="res://StartingOffice/Clues.gd" id="30_enl4g"]
-[ext_resource type="Texture2D" uid="uid://cyeifxl34accu" path="res://UI/Assets/Interactions/Eye orange.png" id="31_vcd54"]
 [ext_resource type="PackedScene" uid="uid://cnullf4810qb3" path="res://StartingOffice/threading.glb" id="31_yvawl"]
 [ext_resource type="Script" uid="uid://dc1iiylo7abbi" path="res://StartingOffice/team_pic.gd" id="34_4bfs2"]
 [ext_resource type="PackedScene" uid="uid://22d8wsirr1dd" path="res://UI/Object_Look.tscn" id="35_id4dn"]
@@ -4322,32 +4321,32 @@ billboard = 2
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(6.87218e-11, -5.39206e-08, -2.94156)
-bones/3/rotation = Quaternion(-0.000219629, 0.368619, 0.852085, -0.371579)
-bones/4/rotation = Quaternion(-0.330311, -0.00219622, -0.0340494, 0.943255)
-bones/5/rotation = Quaternion(0.544995, -0.0293871, 0.0606459, 0.835726)
-bones/8/rotation = Quaternion(0.000219652, 0.368619, 0.852085, 0.371579)
-bones/9/rotation = Quaternion(-0.330311, 0.00219622, 0.0340494, 0.943255)
-bones/10/rotation = Quaternion(0.544995, 0.0293871, -0.0606459, 0.835726)
-bones/12/position = Vector3(6.87218e-11, -2.89556e-07, -2.94156)
-bones/15/rotation = Quaternion(-0.0725697, 1.13614e-07, -1.22036e-08, 0.997363)
-bones/16/rotation = Quaternion(0.0102646, 8.701e-09, 8.07706e-09, 0.999947)
-bones/18/rotation = Quaternion(0.0753702, 0.00963284, -0.0105342, 0.997053)
-bones/20/rotation = Quaternion(0.0753702, -0.00963283, 0.0105342, 0.997053)
-bones/22/rotation = Quaternion(-0.267585, -0.147997, -0.379733, 0.873097)
-bones/23/rotation = Quaternion(-0.00391455, -0.000433295, -0.359215, 0.933247)
-bones/26/rotation = Quaternion(-0.267586, 0.147996, 0.379733, 0.873097)
-bones/27/rotation = Quaternion(-0.00391476, 0.000433317, 0.359215, 0.933247)
-bones/31/position = Vector3(0.939046, -0.0311821, -2.17849)
-bones/33/position = Vector3(6.87218e-11, -1.13525e-07, -2.94156)
-bones/36/position = Vector3(-0.939046, -0.0311821, -2.17849)
+bones/1/position = Vector3(8.70944e-11, -5.39206e-08, -2.94198)
+bones/3/rotation = Quaternion(-0.000129318, 0.368366, 0.852216, -0.37153)
+bones/4/rotation = Quaternion(-0.329789, -0.00170949, -0.0341283, 0.943436)
+bones/5/rotation = Quaternion(0.544764, -0.0298276, 0.0609023, 0.835843)
+bones/8/rotation = Quaternion(0.000129334, 0.368366, 0.852216, 0.37153)
+bones/9/rotation = Quaternion(-0.329789, 0.00170949, 0.0341283, 0.943436)
+bones/10/rotation = Quaternion(0.544764, 0.0298276, -0.0609023, 0.835843)
+bones/12/position = Vector3(8.70944e-11, -2.88785e-07, -2.94198)
+bones/15/rotation = Quaternion(-0.0726284, 1.13615e-07, -1.21967e-08, 0.997359)
+bones/16/rotation = Quaternion(0.0103401, 8.70231e-09, 8.07713e-09, 0.999947)
+bones/18/rotation = Quaternion(0.0750541, 0.00952539, -0.0105294, 0.997078)
+bones/20/rotation = Quaternion(0.0750541, -0.00952539, 0.0105294, 0.997078)
+bones/22/rotation = Quaternion(-0.267554, -0.147998, -0.379789, 0.873082)
+bones/23/rotation = Quaternion(-0.0039105, -0.000433361, -0.358842, 0.93339)
+bones/26/rotation = Quaternion(-0.267555, 0.147998, 0.379789, 0.873082)
+bones/27/rotation = Quaternion(-0.00391071, 0.000433381, 0.358843, 0.93339)
+bones/31/position = Vector3(0.939326, -0.0311821, -2.17857)
+bones/33/position = Vector3(8.70944e-11, -1.13525e-07, -2.94198)
+bones/36/position = Vector3(-0.939326, -0.0311821, -2.17857)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.606803, -0.0867303, 0.790106, 0.728907, 0.335708, 0.596653, -0.316993, 0.937964, -0.14049, 0.938353, -0.0288162, -2.1782)
+transform = Transform3D(-0.606925, -0.0863251, 0.790057, 0.729048, 0.335322, 0.596697, -0.316433, 0.93814, -0.14058, 0.938791, -0.0291281, -2.1783)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -4439,42 +4438,42 @@ path = NodePath("..")
 transform = Transform3D(0.98487, -9.09495e-13, -0.173293, 2.47087e-06, 1, 1.40426e-05, 0.173293, -1.42583e-05, 0.98487, 0.110734, 0.0839252, -0.0822144)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(6.87218e-11, -5.39206e-08, -2.94156)
+bones/1/position = Vector3(8.70944e-11, -5.39206e-08, -2.94198)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(-0.000219613, 0.368618, 0.852085, -0.371579)
-bones/4/rotation = Quaternion(-0.330311, -0.00219623, -0.0340494, 0.943255)
-bones/5/rotation = Quaternion(0.544995, -0.0293871, 0.0606459, 0.835726)
+bones/3/rotation = Quaternion(-0.00012931, 0.368366, 0.852216, -0.37153)
+bones/4/rotation = Quaternion(-0.329789, -0.00170949, -0.0341283, 0.943436)
+bones/5/rotation = Quaternion(0.544764, -0.0298276, 0.0609023, 0.835843)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(0.000219636, 0.368619, 0.852085, 0.371579)
-bones/9/rotation = Quaternion(-0.330311, 0.00219622, 0.0340494, 0.943255)
-bones/10/rotation = Quaternion(0.544995, 0.0293872, -0.0606459, 0.835726)
+bones/8/rotation = Quaternion(0.000129333, 0.368366, 0.852216, 0.37153)
+bones/9/rotation = Quaternion(-0.329789, 0.00170949, 0.0341283, 0.943436)
+bones/10/rotation = Quaternion(0.544764, 0.0298277, -0.0609023, 0.835843)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(6.87218e-11, -2.73542e-07, -2.94156)
+bones/12/position = Vector3(8.70944e-11, -2.72515e-07, -2.94198)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0725697, 1.13614e-07, -1.22036e-08, 0.997363)
-bones/16/rotation = Quaternion(0.0102646, 8.701e-09, 8.07707e-09, 0.999947)
+bones/15/rotation = Quaternion(-0.0726283, 1.13615e-07, -1.21967e-08, 0.997359)
+bones/16/rotation = Quaternion(0.0103401, 8.70231e-09, 8.07714e-09, 0.999947)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.503707, 0.0805455, -0.135811, 0.849322)
-bones/18/rotation = Quaternion(0.0753701, 0.00963283, -0.0105342, 0.997053)
+bones/17/rotation = Quaternion(0.503351, 0.0804886, -0.135845, 0.849533)
+bones/18/rotation = Quaternion(0.0750541, 0.00952538, -0.0105294, 0.997078)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.554253, -0.0886283, 0.13068, 0.817234)
-bones/20/rotation = Quaternion(0.0753702, -0.00963284, 0.0105341, 0.997053)
+bones/19/rotation = Quaternion(0.553653, -0.0885325, 0.130745, 0.81764)
+bones/20/rotation = Quaternion(0.0750541, -0.00952539, 0.0105293, 0.997078)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.267585, -0.147997, -0.379734, 0.873097)
-bones/23/rotation = Quaternion(-0.00391454, -0.000433343, -0.359214, 0.933247)
+bones/22/rotation = Quaternion(-0.267554, -0.147998, -0.379789, 0.873082)
+bones/23/rotation = Quaternion(-0.00391047, -0.000433408, -0.358842, 0.93339)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.267586, 0.147996, 0.379733, 0.873097)
-bones/27/rotation = Quaternion(-0.00391475, 0.000433311, 0.359215, 0.933247)
+bones/26/rotation = Quaternion(-0.267555, 0.147998, 0.379789, 0.873082)
+bones/27/rotation = Quaternion(-0.00391069, 0.000433383, 0.358843, 0.93339)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.939046, -0.0311821, -2.17849)
-bones/33/position = Vector3(6.87218e-11, -1.13525e-07, -2.94156)
+bones/31/position = Vector3(0.939326, -0.0311821, -2.17857)
+bones/33/position = Vector3(8.70944e-11, -1.13525e-07, -2.94198)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.939046, -0.0311821, -2.17849)
+bones/36/position = Vector3(-0.939326, -0.0311821, -2.17857)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129358, 0.956745, -0.075851)
@@ -4643,31 +4642,6 @@ bus = &"Ambience"
 
 [node name="UI" type="Node" parent="."]
 script = ExtResource("112_01533")
-
-[node name="PartnerHover" type="Sprite3D" parent="UI"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.301, 1.156, 1.528)
-visible = false
-texture = ExtResource("31_vcd54")
-
-[node name="NewsHover" type="Sprite3D" parent="UI"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.351, 1.538, 1.528)
-visible = false
-texture = ExtResource("31_vcd54")
-
-[node name="ContactHover" type="Sprite3D" parent="UI"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.6068, 1.02348, 1.528)
-visible = false
-texture = ExtResource("31_vcd54")
-
-[node name="MissingHover" type="Sprite3D" parent="UI"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.793, 1.62, 1.522)
-visible = false
-texture = ExtResource("31_vcd54")
-
-[node name="TeamHover" type="Sprite3D" parent="UI"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.824, 1.318, 1.492)
-visible = false
-texture = ExtResource("31_vcd54")
 
 [node name="TeamPic" type="Area2D" parent="UI" node_paths=PackedStringArray("click")]
 visible = false
@@ -4935,13 +4909,19 @@ cam = NodePath("../../SubViewportContainer/SubViewport/CameraSystem/Camera3D")
 body_marker = NodePath("../../SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/Dialogue Marker")
 rect = NodePath("../Theo Debug Rect")
 
-[node name="Map" parent="UI" node_paths=PackedStringArray("micah", "juniper", "quincy", "office", "secret") instance=ExtResource("137_01533")]
+[node name="Map" parent="UI" node_paths=PackedStringArray("micah", "juniper", "quincy", "office", "secret", "map_cam", "exit_cam", "player", "dalton_marker", "theo_marker", "alert") instance=ExtResource("137_01533")]
 visible = false
 micah = NodePath("Micah")
 juniper = NodePath("Juniper")
 quincy = NodePath("Quincy")
 office = NodePath("Office")
 secret = NodePath("Secret")
+map_cam = NodePath("../../SubViewportContainer/SubViewport/CameraSystem/Map Cam")
+exit_cam = NodePath("../../SubViewportContainer/SubViewport/CameraSystem/PhantomCamera3D")
+player = NodePath("../../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
+dalton_marker = NodePath("../Dalton\'s Marker")
+theo_marker = NodePath("../Theo\'s Marker")
+alert = NodePath("../../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
 
 [node name="Map" parent="UI/Map" index="1"]
 anchors_preset = 8
@@ -4962,8 +4942,13 @@ offset_bottom = 40.0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Phone and Pause Overlay" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("135_kjarc")]
-player = NodePath("../../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
+[node name="Phone and Pause Overlay" parent="." node_paths=PackedStringArray("player") instance=ExtResource("135_kjarc")]
+player = NodePath("../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
+
+[node name="Phone UI" parent="Phone and Pause Overlay/CanvasLayer" index="4" node_paths=PackedStringArray("dalton_marker", "phone_marker", "player")]
+dalton_marker = NodePath("../../../UI/Dalton\'s Marker")
+phone_marker = NodePath("../../../UI/Dalton\'s Marker")
+player = NodePath("../../../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
 
 [node name="Tutorial" parent="." instance=ExtResource("136_58g4l")]
 layer = 100
@@ -5025,6 +5010,7 @@ mouse_filter = 2
 [connection signal="mouse_entered" from="UI/News" to="UI" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/News" to="UI" method="_on_mouse_exited"]
 [connection signal="_show_tut" from="UI/Contact" to="Tutorial" method="_show_tut"]
+[connection signal="add_contact" from="UI/Contact" to="Phone and Pause Overlay/CanvasLayer/Phone UI/PhoneScreen/ContactScreen" method="_on_phone_ui_add_contact"]
 [connection signal="input_event" from="UI/Contact" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_contact_input_event"]
 [connection signal="input_event" from="UI/Contact" to="UI/Contact" method="_on_input_event"]
 [connection signal="input_event" from="UI/Contact" to="Tutorial" method="_on_input_event"]
@@ -5089,11 +5075,14 @@ mouse_filter = 2
 [connection signal="mouse_entered" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_forward_pressed"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
-[connection signal="Quincy_call_recieve" from="UI/Map" to="UI/Phone and Pause Overlay" method="_on_call_received"]
+[connection signal="Quincy_call_recieve" from="UI/Map" to="Phone and Pause Overlay" method="_on_call_received"]
 [connection signal="_show_tut" from="UI/Map" to="Tutorial" method="_show_tut"]
 [connection signal="visibility_changed" from="UI/Map" to="UI/Map" method="_on_visibility_changed"]
 [connection signal="pressed" from="UI/Map/Exit" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_exit_pressed"]
-[connection signal="start_dialogue" from="UI/Phone and Pause Overlay" to="UI/Map" method="_on_Quincy_call_start_dialogue"]
+[connection signal="declined_call" from="Phone and Pause Overlay" to="UI/Map" method="_on_Quincy_declined_call"]
+[connection signal="start_dialogue" from="Phone and Pause Overlay" to="UI/Map" method="_on_Quincy_call_start_dialogue"]
+[connection signal="pressed" from="Phone and Pause Overlay/CanvasLayer/Phone UI/PhoneScreen/PhoneCall/Accept" to="Phone and Pause Overlay" method="_on_accept_pressed"]
+[connection signal="pressed" from="Phone and Pause Overlay/CanvasLayer/Phone UI/PhoneScreen/PhoneCall/Decline" to="Phone and Pause Overlay" method="_on_decline_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/StartingOffice/flooring"]
 [editable path="SubViewportContainer/SubViewport/StartingOffice/doughnut_001/Interactable"]
@@ -5117,21 +5106,21 @@ mouse_filter = 2
 [editable path="UI/Missing Look"]
 [editable path="UI/Case Look"]
 [editable path="UI/Map"]
-[editable path="UI/Phone and Pause Overlay"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View ID Card"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View Picture"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View bookmark"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View letter"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View bookmark"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View Info"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View Letter"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View Name Tag"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View Coordinates"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View phone"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View letter"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View journal"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View Lab Pic"]
-[editable path="UI/Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View proposal"]
+[editable path="Phone and Pause Overlay"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View ID Card"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View Picture"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View bookmark"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View letter"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View bookmark"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View Info"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View Letter"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Juniper/View Name Tag"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View Coordinates"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View phone"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View letter"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View journal"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View Lab Pic"]
+[editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Quincy/View proposal"]
 [editable path="Tutorial"]

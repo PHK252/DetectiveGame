@@ -80,9 +80,15 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 		current_anim = d_loading_anim
 		current_anim.play("Load")
 		#print("play")
-	
-
-	
+	if dialogue != "":
+		var driving_dialogue = Dialogic.start(dialogue)
+		driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
+		driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		GlobalVars.in_dialogue = true
+		await get_tree().create_timer(.2).timeout
+	else:
+		pass
 	await get_tree().create_timer(.5).timeout
 	while loaded == false:
 		#var progress = _progress[0]
@@ -101,15 +107,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 				print(str(int(progress * 100)) + "%")
 			3:
 				loaded = true
-				if dialogue != "":
-					var driving_dialogue = Dialogic.start("PLACEHOLDER")
-					driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
-					driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
-					Dialogic.timeline_ended.connect(_on_timeline_ended)
-					GlobalVars.in_dialogue = true
-					await get_tree().create_timer(.2).timeout
-				else:
-					pass
+				
 				if GlobalVars.in_dialogue == true:
 					await Signal(self, "end_dialogue") 
 					print("awaiting")
@@ -122,7 +120,9 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 				toggle_default(false)
 				scene_instance.queue_free()
 				in_loading = false
-				print(GlobalVars.current_level)
+				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+				#await get_tree().process_frame
+				#print(GlobalVars.current_level)
 				loaded = false
 				return
 

@@ -1,32 +1,45 @@
 set {Character Aff Points.Theo} -= 1
-if {Asked Questions.Micah_kicked_out} == true
+if {Asked Questions.Micah_kicked_out} == true:
+	set {Global.flip_bubble} = true
 	Theo: Again?
 	Theo: Seriously?
+	set {Global.flip_bubble} = false
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: Huuu...
 	Theo: I’m starting to believe you’re a lost cause.
 	Theo: How the hell did you last ten years in this goddamn job?
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Isaac.
+	set {Global.flip_bubble} = true
 	Theo: ...?
 	Theo: oh.
 	Theo: He must’ve had the patience of a saint. 
+	set {Global.flip_bubble} = false
 	Dalton: ...
-	Dalton: Let’s go back to the station. 
+	Dalton: Let’s go back to the station.
+	set {Global.flip_bubble} = true
 	Theo: Yeah.
 	Theo: Chief’s gonna have a field day with this.
+	set {Global.flip_bubble} = false
 else:
+	set {Global.flip_bubble} = true
 	Theo: What the hell was that?
 	Theo: Was that on purpose?
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: No.
+	set {Global.flip_bubble} = true
 	Theo: What!?
 	Theo:  Seriously?
 	Theo: She was red as a tomato the entire time!
 	Theo: All ya did was stoke the fire!
+	set {Global.flip_bubble} = false
 	Dalton: Hmph...
 	Dalton: We...
 	Dalton: Got some evidence.
+	set {Global.flip_bubble} = true
 	Theo: ...?
 	Theo: Did we?
-
+	set {Global.flip_bubble} = false

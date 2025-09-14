@@ -12,6 +12,7 @@ extends Control
 @onready var phone_up = false
 
 signal start_dialogue
+signal declined_call
 
 var accepted = false
 var prev_mouse_mode : int
@@ -24,14 +25,13 @@ func _ready():
 	#GlobalVars.emit_phone_call()
 	pass
 func _process(delta):
-	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true:
+	if GlobalVars.in_dialogue == true or  GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "":
 		call_normal.disabled = true
+	else:
+		call_normal.disabled = false
 	#if GlobalVars.in_call == false and called == false:
 		#print("calling	")
 		#GlobalVars.phone_call_receiving.connect(_on_call_received)
-		#
-	else:
-		return
 
 
 func _on_pause_pressed():
@@ -39,6 +39,8 @@ func _on_pause_pressed():
 
 
 func _on_receiving_call_pressed():
+	GlobalVars.phone_up = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	phone_ui.show()
 	phone_ui.set_receiving_call()
 
@@ -67,6 +69,13 @@ func _on_call_normal_pressed():
 			GlobalVars.phone_up = false
 			if GlobalVars.in_interaction == "":
 				player.start_player() 
+	else:
+		print("error")
+
+func exit_call_screen():
+	InputMap.action_add_event("Exit", exit[0])
+	InputMap.action_add_event("interact", interact[0])
+	Input.set_mouse_mode(prev_mouse_mode)
 
 func _on_call_received():
 	GlobalVars.calling = true
@@ -75,15 +84,17 @@ func _on_call_received():
 	receiving_call.show()
 
 func call_end():
-	GlobalVars.phone_call_receiving.disconnect(_on_call_received)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	GlobalVars.phone_up = false
+	GlobalVars.calling = false
 	call_anim.stop()
 	call_normal.show()
 	receiving_call.hide()
+	phone_ui.hide()
 	called = true
 
 
 func _on_accept_pressed():
-	GlobalVars.calling = false
 	GlobalVars.in_call = true
 	call_end()
 	emit_signal("start_dialogue")
@@ -94,5 +105,5 @@ func _on_accept_pressed():
 
 
 func _on_decline_pressed():
-	GlobalVars.calling = false
+	emit_signal("declined_call")
 	call_end()   

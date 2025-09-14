@@ -70,31 +70,35 @@ func _process(delta):
 		if Input.is_action_just_pressed("Exit"):
 			_hide_tut()
 			#print(GlobalVars.flip_tut)
-
-	if timer.time_left > 0:
-		if current_tut == movement_tut:
-			if Input.is_action_pressed("Up") or Input.is_action_pressed("Down") or Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
-				_hide_tut()
-		if current_tut == run_tut:
-			if Input.is_action_pressed("jog"):
-				_hide_tut()
-		if current_tut == interact_tut:
-			if Input.is_action_pressed("interact"):
-				GlobalVars.interact_tut = true 
-				_hide_tut()
-		if current_tut == exit_tut:
-			if Input.is_action_just_pressed("Exit"):
-				_hide_tut()
-		if current_tut == phone_tut:
-			if Input.is_action_pressed("Phone"):
-				_hide_tut()
-		if current_tut == dialogue_tut:
-			if Input.is_action_pressed("dialogic_default_action"):
-				GlobalVars.dialogue_tut = true
-				_hide_tut()
-	else:
-		if current_tut != flip_tut:
+	if current_tut == movement_tut:
+		if Input.is_action_just_pressed("Up") or Input.is_action_just_pressed("Down") or Input.is_action_just_pressed("Left") or Input.is_action_just_pressed("Right"):
+			GlobalVars.movement_tut = true 
 			_hide_tut()
+	if current_tut == run_tut:
+		if Input.is_action_just_pressed("jog"):
+			GlobalVars.run_tut = true 
+			_hide_tut()
+	if current_tut == interact_tut:
+		if Input.is_action_just_pressed("interact"):
+			GlobalVars.interact_tut = true 
+			_hide_tut()
+	if current_tut == exit_tut:
+		if Input.is_action_just_pressed("Exit"):
+			GlobalVars.exit_tut = true 
+			_hide_tut()
+	if current_tut == phone_tut:
+		if Input.is_action_just_pressed("Phone"):
+			GlobalVars.phone_tut = true 
+			_hide_tut()
+	if current_tut == dialogue_tut:
+		if Input.is_action_just_pressed("dialogic_default_action"):
+			GlobalVars.dialogue_tut = true
+			_hide_tut()
+	#if timer.time_left > 0:
+		#
+	#else:
+		#if current_tut != flip_tut:
+			#_hide_tut()
 	
 
 
@@ -110,9 +114,6 @@ func _hide_tut():
 
 func _on_interactable_body_exited(body):
 	_hide_tut()
-
-
-
 
 
 func _on_input_event(viewport, event, shape_idx):

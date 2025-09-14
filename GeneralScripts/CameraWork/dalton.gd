@@ -56,7 +56,7 @@ var tea_time = false
 
 func _ready() -> void:
 	add_to_group("player")
-	#await SaveLoad.loaded
+	await get_tree().process_frame
 	#if GlobalVars.dalton_pos:
 	if GlobalVars.from_save_file == true:
 		global_position = GlobalVars.dalton_pos

@@ -13,6 +13,7 @@ extends CanvasLayer
 @onready var phone_num = $PhoneScreen/PhoneNum
 @onready var phone_call = $PhoneScreen/PhoneCall
 @onready var phone_contact = $PhoneScreen/ContactScreen
+@onready var phone_bottom = $"PhoneScreen/Phone Bottom"
 
 #Gallery 
 @onready var gallery_list = $GalleryScreen/GalleryList
@@ -62,7 +63,7 @@ func _on_notes_pressed():
 
 
 func _on_phone_pressed():
-	print(GlobalVars.in_call)
+	#print(GlobalVars.in_call)
 	if GlobalVars.in_call == true and GlobalVars.calling == true:
 		home.hide()
 		gallery.hide()
@@ -75,6 +76,7 @@ func _on_phone_pressed():
 		notes.hide()
 		phone.show()
 		phone_num.show()
+		phone_bottom.show()
 		phone_contact.hide()
 
 func hideEverything():
@@ -224,11 +226,12 @@ func _on_left_hover_mouse_exited():
 @export var player : CharacterBody3D
 
 @onready var bar_call = false
-
+@onready var called_juniper = false
+@onready var called_clyde = false
 signal continue_convo
 signal Book_distract_quincy
 signal add_contact(char : String)
-
+signal enable_interact
 func inputNum(num: int):
 	if len(num_input.text) <  11:
 		num_input.text += str(num)
@@ -327,9 +330,23 @@ func _on_call_pressed():
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 	if called_num == "194-108":
-		emit_signal("add_contact", "juniper")
+		if called_juniper == false:
+			called_juniper = true
+			emit_signal("add_contact", "juniper")
+		var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 	if called_num == "093-316":
-		emit_signal("add_contact", "clyde")
+		if called_clyde == false:
+			called_clyde = true
+			emit_signal("add_contact", "clyde")
+		var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 func _on_bookshelf_area_body_entered(body):
 	at_bookshelf = true
 
@@ -339,16 +356,16 @@ func _on_bookshelf_area_body_exited(body):
 
 func _on_isaac_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER")
+	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), dalton_marker)
 
 
 func _on_quincy_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER")
+	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
@@ -356,7 +373,7 @@ func _on_quincy_pressed(): #UPDATE TIMELINE
 
 func _on_juniper_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER")
+	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
@@ -364,7 +381,7 @@ func _on_juniper_pressed(): #UPDATE TIMELINE
 
 func _on_clyde_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER")
+	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
@@ -372,7 +389,7 @@ func _on_clyde_pressed(): #UPDATE TIMELINE
 
 func _on_skylar_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER")
+	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
@@ -409,6 +426,7 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 
 func exit_phone():
 	phone_ui.hide()
+	emit_signal("enable_interact")
 	GlobalVars.phone_up = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	phone.hide()
@@ -429,6 +447,9 @@ func set_receiving_call():
 	notes.hide()
 	gallery.hide()
 	phone.show()
+	phone_num.hide()
+	phone_contact.hide()
+	phone_bottom.hide()
 	phone_call_receiving.show()
 	phone_anim.play("Call")
 
@@ -439,6 +460,8 @@ func set_nums():
 	gallery.hide()
 	phone.show()
 	phone_num.show()
+	phone_call_receiving.hide()
+	phone_bottom.show()
 
 
 func _on_accept_pressed():

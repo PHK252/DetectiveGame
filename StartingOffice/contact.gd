@@ -9,6 +9,7 @@ extends Area2D
 @onready var ad_took = false
 
 signal _show_tut(tut_type : String)
+signal add_contact(char : String)
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
@@ -32,6 +33,8 @@ func _on_timeline_ended():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if GlobalVars.exit_tut == false:
 		emit_signal("_show_tut", "exit")
+	if Dialogic.VAR.get_variable("Global.got_theo_ad") == true:
+		emit_signal("add_contact", "theo")
 
 func _on_exit_pressed():
 	if ad_took == false:

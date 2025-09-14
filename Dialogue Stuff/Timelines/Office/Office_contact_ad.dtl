@@ -5,7 +5,8 @@
 if {Global.got_theo_ad} == false:
 	"Daltons Thoughts": Take One?
 	- Yes.
-		"Daltons Thoughts": It wouldn’t hurt to have.
+		set {Character Aff Points.Theo} += 1
+		"Daltons Thoughts": I guess it wouldn’t hurt to have.
 		set {Global.got_theo_ad} = true
 	- No.
 		"Daltons Thoughts": I don’t need it.

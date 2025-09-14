@@ -1,25 +1,39 @@
+set {Global.flip_bubble} = true
 Theo: Eeee!
 Theo: I can’t believe I get to meet the mayor!
 Theo: At his Manor, too!
 Theo: Lil ol’ me!
 Theo: Can you believe that, Dalton?
+set {Global.flip_bubble} = false
 Dalton: Hmph.
+set {Global.flip_bubble} = true
 Theo: Mm.
 Theo: Of course, you wouldn’t care.
 Theo: You’re his bestie, after all.
+set {Global.flip_bubble} = false
 Dalton: I am not his “bestie”. 
 if {Beginning.quincy_called} == true:
+	set {Global.flip_bubble} = true
 	Theo: You have his personal cell!
+	set {Global.flip_bubble} = false
 	Dalton: It’s for work. 
 	Dalton: He calls for favors sometimes.
+	set {Global.flip_bubble} = true
 	Theo: Ooh...
 	Theo: Favors...
+	set {Global.flip_bubble} = false
 	Dalton: Keep it professional, Detective Lycus. 
 else:
+	set {Global.flip_bubble} = true
 	Theo: Why else would he personally beg Chief for you to take this case?
+	set {Global.flip_bubble} = false
 	Dalton: He did not beg.
-	Theo: You don’t know that. 
+	set {Global.flip_bubble} = true
+	Theo: You don’t know that.
+	set {Global.flip_bubble} = false
 	Dalton: And you do?
+	set {Global.flip_bubble} = true
 	Theo: I was there.
 	Theo: Chief was in quite the tizzy when he showed up.
+	set {Global.flip_bubble} = false
 [end_timeline]

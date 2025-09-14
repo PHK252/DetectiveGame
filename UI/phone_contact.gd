@@ -20,9 +20,10 @@ func _ready():
 		GlobalVars.phone_contacts = visible_contacts
 	else:
 		visible_contacts = GlobalVars.phone_contacts
-
-	for contacts in visible_contacts:
-		contacts.visible = true
+	
+	if is_instance_valid(visible_contacts):
+		for contacts in visible_contacts:
+			contacts.visible = true
 	
 	#print(GlobalVars.phone_contacts)
 func _on_phone_ui_add_contact(char):

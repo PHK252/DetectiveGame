@@ -1,35 +1,46 @@
 if {Asked Questions.Micah_Solved_Case} == true:
 	Dalton: Detective Lycus...
 	Dalton: It’s not in your best interest to undermine my authority like that.
+	set {Global.flip_bubble} = true
 	Theo: Yeah, so?
 	Theo: The poor guy was about to pass out in the middle of his room.
 	Theo: And besides...
 	Theo: We got everything we need.
+	set {Global.flip_bubble} = false
 	Dalton: How would you know?
 	Dalton: There might’ve been a lead-
+	set {Global.flip_bubble} = true
 	Theo: Dalton.
 	Theo: I say this as a fellow officer and not your rookie partner.
 	Theo: We searched every nook and cranny of that raccoon’s house.
-	Theo: We got everything we needed. 
+	Theo: We got everything we needed.
+	set {Global.flip_bubble} = false 
 	Dalton: Hmph.
 	Dalton: Fine.
 	[end_timeline]
 else:
 	Dalton: Detective Lycus...
 	Dalton: It’s not in your best interest to undermine my authority like that.
+	set {Global.flip_bubble} = true
 	Theo: Yeah, and?
 	Theo: The poor guy was about to pass out in the middle of his room.
+	set {Global.flip_bubble} = false
 	Dalton: But the case!
 	Dalton: We didn’t solve the one thing that is related to the report!
+	set {Global.flip_bubble} = true
 	Theo: And what did you want us to do?
 	Theo: Hold Micah hostage in his own home until we figure out how to open a mysterious briefcase?
+	set {Global.flip_bubble} = false
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: Dalton, it’s fine.
 	Theo: Surely we’ll find some evidence elsewhere. 
 	Theo: And besides, the report we got for this location was a bit suspicious anyway.
 	Theo: It might not even be related to the other two...
+	set {Global.flip_bubble} = false
 	Dalton: Hmph. 
 	Dalton: Fine.
-	Dalton: Let’s go. 
+	set {Global.flip_bubble} = true
 	Theo: :)
+	set {Global.flip_bubble} = false
 	[end_timeline]

@@ -1,37 +1,57 @@
 set {Character Aff Points.Theo} -= 1
-if {Juniper.kicked_out} == true
+if {Juniper.kicked_out} == true:
+	set {Global.flip_bubble} = true
 	Theo: Again?
 	Theo: Seriously?
+	set {Global.flip_bubble} = false
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: Huuu...
 	Theo: I’m starting to believe you’re a lost cause.
 	Theo: How the hell did you last ten years in this goddamn job?
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: Isaac.
+	set {Global.flip_bubble} = true
 	Theo: ...?
 	Theo: oh.
-	Theo: He must’ve had the patience of a saint. 
+	Theo: He must’ve had the patience of a saint.
+	set {Global.flip_bubble} = false
 	Dalton: ...
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: Huu...
 	Theo: Chief’s gonna have a field day with this.
+	set {Global.flip_bubble} = false
 	[end_timeline]
 else:
+	set {Global.flip_bubble} = true
 	Theo: Dalton, what the hell happened?
 	Theo: That was a disaster.
+	set {Global.flip_bubble} = false
 	Dalton: It’s Detective Reynard-
+	set {Global.flip_bubble} = true
 	Theo: Now is NOT the time.
 	Theo: We absolutely botched that investigation.
 	Theo: Could you not tell that he was uncomfortable!?
 	Theo: All you did was scare him into giving useless information!
+	set {Global.flip_bubble} = false
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: You know...
 	Theo: I used to look up to you.
+	set {Global.flip_bubble} = false
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: Tsk...
 	Theo: I guess I know why Chief doesn’t send you out anymore.
+	set {Global.flip_bubble} = false
 	Dalton: Hmph. 
+	set {Global.flip_bubble} = true
 	Theo: You're not gonna say anything??
+	set {Global.flip_bubble} = false
 	Dalton: ...
+	set {Global.flip_bubble} = true
 	Theo: Fine, let’s go.
+	set {Global.flip_bubble} = false
 	[end_timeline]
