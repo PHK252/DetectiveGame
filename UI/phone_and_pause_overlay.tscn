@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4fmk8hkjnh1v"]
+[gd_scene load_steps=20 format=3 uid="uid://b4fmk8hkjnh1v"]
 
 [ext_resource type="Texture2D" uid="uid://b4innf3vttv8k" path="res://UI/Assets/Pause overlay/Pause Normal.png" id="1_7dng0"]
 [ext_resource type="Script" uid="uid://bo4tbw36hrcsa" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
@@ -10,6 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://d0ggfyvlq2ylq" path="res://UI/Assets/Pause overlay/Updated/Phone disabled.png" id="8_i8x5r"]
 [ext_resource type="PackedScene" uid="uid://coi3wnw75drw1" path="res://UI/Phone.tscn" id="11_wwlkg"]
 [ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="12_15hi7"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ygsle"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_0704h"]
+events = [SubResource("InputEventKey_ygsle")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_uxvkf"]
 device = -1
@@ -81,6 +88,7 @@ offset_top = 30.0
 offset_right = 1879.0
 offset_bottom = 70.0
 mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_0704h")
 texture_normal = ExtResource("1_7dng0")
 texture_pressed = ExtResource("2_ml51c")
 texture_hover = ExtResource("2_ml51c")

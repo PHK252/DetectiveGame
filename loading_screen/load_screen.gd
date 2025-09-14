@@ -120,10 +120,14 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 				toggle_default(false)
 				scene_instance.queue_free()
 				in_loading = false
+				loaded = false
+				print(GlobalVars.dalton_pos)
+				if GlobalVars.from_save_file == true:
+					return
 				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				#await get_tree().process_frame
 				#print(GlobalVars.current_level)
-				loaded = false
+				
 				return
 
 

@@ -15,6 +15,7 @@ func fade_change_packed_scene(target : PackedScene):
 
 
 func fade_change_scene(target : String):
+	print(fade)
 	fade.play("Dissolve")
 	await fade.animation_finished
 	get_tree().change_scene_to_file(target)

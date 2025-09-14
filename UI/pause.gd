@@ -10,10 +10,15 @@ func _ready():
 func _process(delta):
 	pass
 func _on_save_pressed():
+	print("save_pressed")
+	get_tree().paused = false
+	await get_tree().process_frame
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	GlobalVars.to_quit = true
 	SceneTransitions.fade_change_scene(GlobalVars.main_menu)
 
 func _on_resume_pressed():
+	print("resume_pressed")
 	get_tree().paused = false
 	visible = false
 	#$".".hide()

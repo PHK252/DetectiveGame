@@ -323,6 +323,7 @@ var Day_3_Chief_call = false
 
 ###Save Up until Here?
 var from_save_file = false
+var to_quit = false
 var player_pos
 var main_menu := "res://UI/Main Menu.tscn"
 var first_house_path := "res://FirstHouse/first_house.tscn"

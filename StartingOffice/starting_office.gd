@@ -37,9 +37,9 @@ func _ready():
 		return
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("Quit"):
-			get_tree().quit()
+#func _process(delta):
+	#if Input.is_action_just_pressed("Quit"):
+			#get_tree().quit()
 
 #func _input(event):
 	#if Input.is_key_pressed(KEY_S):

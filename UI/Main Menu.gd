@@ -16,6 +16,7 @@ func _ready():
 		GlobalVars.from_save_file = true
 		start_butt.hide()
 		continue_butt.show()
+		#GlobalVars.to_quit = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,5 +38,6 @@ func _on_start_pressed():
 func _on_continue_pressed():
 	#GlobalVars.current_level = "quincy"
 	#Loading.load_scene(self, GlobalVars.third_house_path, false, "", "")
+	print(GlobalVars.dalton_pos)
 	var level_to_load = GlobalVars.get_current_level_path(GlobalVars.current_level)
 	Loading.load_scene(self, level_to_load, false, "", "")
