@@ -35,7 +35,7 @@ func _process(delta):
 
 
 func _on_pause_pressed():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pause.show()
 
 

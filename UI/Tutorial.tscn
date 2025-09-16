@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dt2pgjcoj4po2" path="res://UI/Assets/tutorial/Notes_shift.png" id="10_fcm1x"]
 [ext_resource type="Texture2D" uid="uid://bfve7ho7jfvh7" path="res://UI/Assets/tutorial/Notes_interact_e.png" id="11_pxagh"]
 [ext_resource type="Texture2D" uid="uid://c5jhnu1avga8o" path="res://UI/Assets/tutorial/Notes_exit_q.png" id="12_76whn"]
-[ext_resource type="Texture2D" uid="uid://cts0evds0qj5h" path="res://UI/Assets/tutorial/Notes_esc.png" id="13_dc2xy"]
 [ext_resource type="Texture2D" uid="uid://4lsqhothskw8" path="res://UI/Assets/tutorial/Notes_tab.png" id="14_iu1ku"]
+[ext_resource type="Texture2D" uid="uid://cefkmi8nvx7y5" path="res://UI/Assets/tutorial/Notes_dialogue.png" id="14_om0r0"]
 [ext_resource type="Texture2D" uid="uid://dy7fg7fs132wd" path="res://UI/Assets/tutorial/Notes_click1.png" id="15_na8nk"]
 [ext_resource type="Texture2D" uid="uid://01mxte662mjj" path="res://UI/Assets/tutorial/Notes_click2.png" id="16_h6ssu"]
 [ext_resource type="Texture2D" uid="uid://bua4guet3old6" path="res://UI/Assets/tutorial/Notes_click3.png" id="17_xj8md"]
@@ -565,21 +565,22 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Esc" type="Sprite2D" parent="Pause"]
-position = Vector2(816, 968)
-texture = ExtResource("13_dc2xy")
+texture_filter = 1
+position = Vector2(747, 968)
+texture = ExtResource("14_om0r0")
 
 [node name="TO RUN" type="RichTextLabel" parent="Pause"]
 texture_filter = 2
 layout_mode = 0
-offset_left = 878.0
+offset_left = 865.0
 offset_top = 923.0
-offset_right = 1278.0
+offset_right = 1265.0
 offset_bottom = 1006.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "TO PAUSE"
+text = "TO CONTINUE"
 fit_content = true
 scroll_active = false
 
@@ -612,6 +613,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Flip" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -641,7 +643,7 @@ offset_left = 690.0
 offset_top = 697.0
 offset_right = 1231.0
 offset_bottom = 780.0
-theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
