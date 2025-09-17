@@ -1,13 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4fmk8hkjnh1v"]
+[gd_scene load_steps=30 format=3 uid="uid://b4fmk8hkjnh1v"]
 
 [ext_resource type="Texture2D" uid="uid://b4innf3vttv8k" path="res://UI/Assets/Pause overlay/Pause Normal.png" id="1_7dng0"]
 [ext_resource type="Script" uid="uid://bo4tbw36hrcsa" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
 [ext_resource type="Texture2D" uid="uid://dmnejgno72ng4" path="res://UI/Assets/Pause overlay/Pause Hovered.png" id="2_ml51c"]
 [ext_resource type="Texture2D" uid="uid://b6c7lhul6o2dq" path="res://UI/Assets/Pause overlay/Phone call normal.tres" id="4_ixe56"]
 [ext_resource type="Texture2D" uid="uid://b61sxnpf7cfwd" path="res://UI/Assets/Pause overlay/Phone call hovered.tres" id="5_uxvkf"]
+[ext_resource type="Texture2D" uid="uid://i4je4rghurdy" path="res://UI/Assets/Pause overlay/Updated/Notes_update1.png" id="6_jrkgh"]
 [ext_resource type="Texture2D" uid="uid://bbwfruyq4lwyn" path="res://UI/Assets/Pause overlay/Updated/Phone normal Call1.png" id="6_ygsle"]
+[ext_resource type="Texture2D" uid="uid://c2u6d2i0kshxx" path="res://UI/Assets/Pause overlay/Updated/Notes_update2.png" id="7_6qw27"]
 [ext_resource type="Texture2D" uid="uid://b0rjlrsk8lobi" path="res://UI/Assets/Pause overlay/Updated/Phone Hovered Call1.png" id="7_0704h"]
 [ext_resource type="Texture2D" uid="uid://d0ggfyvlq2ylq" path="res://UI/Assets/Pause overlay/Updated/Phone disabled.png" id="8_i8x5r"]
+[ext_resource type="Texture2D" uid="uid://befk2ssat00bw" path="res://UI/Assets/Pause overlay/Updated/Notes_update3.png" id="8_uw6w6"]
+[ext_resource type="Texture2D" uid="uid://cn8luwacgowps" path="res://UI/Assets/Pause overlay/Updated/Notes_update4.png" id="9_n0p28"]
+[ext_resource type="Texture2D" uid="uid://c11jucn5hdsv5" path="res://UI/Assets/Pause overlay/Updated/Notes_update5.png" id="10_2x4wm"]
+[ext_resource type="Texture2D" uid="uid://cnjte26mtleo2" path="res://UI/Assets/Pause overlay/Updated/Notes_update6.png" id="11_hq3yt"]
 [ext_resource type="PackedScene" uid="uid://coi3wnw75drw1" path="res://UI/Phone.tscn" id="11_wwlkg"]
 [ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="12_15hi7"]
 
@@ -24,6 +30,95 @@ keycode = 4194306
 
 [sub_resource type="Shortcut" id="Shortcut_ygsle"]
 events = [SubResource("InputEventKey_uxvkf")]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ral7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jrkgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6qw27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uw6w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n0p28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2x4wm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hq3yt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_jrkgh"]
+resource_name = "Notes_added"
+length = 1.2
+loop_mode = 2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="Animation" id="Animation_6qw27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw6w6"]
+_data = {
+&"Notes_added": SubResource("Animation_jrkgh"),
+&"RESET": SubResource("Animation_6qw27")
+}
 
 [sub_resource type="InputEventKey" id="InputEventKey_ixe56"]
 device = -1
@@ -108,6 +203,17 @@ texture_pressed = ExtResource("5_uxvkf")
 texture_hover = ExtResource("5_uxvkf")
 stretch_mode = 3
 
+[node name="Evidence" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(1858, 926)
+sprite_frames = SubResource("SpriteFrames_ral7j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Evidence"]
+libraries = {
+&"": SubResource("AnimationLibrary_uw6w6")
+}
+
 [node name="Call Normal" type="TextureButton" parent="CanvasLayer"]
 offset_left = 1808.0
 offset_top = 956.0
@@ -136,6 +242,7 @@ visible = false
 [connection signal="pressed" from="CanvasLayer/Receiving call" to="." method="_on_receiving_call_pressed"]
 [connection signal="pressed" from="CanvasLayer/Call Normal" to="." method="_on_call_normal_pressed"]
 [connection signal="enable_interact" from="CanvasLayer/Phone UI" to="." method="exit_call_screen"]
+[connection signal="added_notes_overlay" from="CanvasLayer/Phone UI/NotesScreen/Case" to="." method="_on_case_added_notes_overlay"]
 
 [editable path="CanvasLayer/Phone UI"]
 [editable path="CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note"]

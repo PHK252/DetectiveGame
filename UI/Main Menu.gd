@@ -7,6 +7,8 @@ extends Node2D
 var new_game : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	#print(GlobalVars.current_level)
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("New Game: " + str(new_game))
 	if new_game == true:
@@ -49,5 +51,5 @@ func _on_continue_pressed():
 func _on_new_game_pressed():
 	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")

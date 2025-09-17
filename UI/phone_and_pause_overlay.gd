@@ -5,6 +5,8 @@ extends Control
 @onready var call_anim = $CanvasLayer/AnimationPlayer
 @onready var call_normal = $"CanvasLayer/Call Normal"
 @onready var receiving_call = $"CanvasLayer/Receiving call"
+@onready var evidence = $CanvasLayer/Evidence
+@onready var evidence_anim = $CanvasLayer/Evidence/AnimationPlayer
 
 @export var player : CharacterBody3D
 #temp var to check if called
@@ -13,6 +15,7 @@ extends Control
 
 signal start_dialogue
 signal declined_call
+signal _show_tut(tut_type : String)
 
 var accepted = false
 var prev_mouse_mode : int
@@ -108,3 +111,18 @@ func _on_accept_pressed():
 func _on_decline_pressed():
 	emit_signal("declined_call")
 	call_end()   
+
+
+func _on_case_added_notes_overlay():
+	print("added")
+	evidence.visible = true
+	if call_normal.disabled == true:
+		evidence.modulate.a = 0.365
+	else:
+		evidence.modulate.a = 0.784
+	if GlobalVars.phone_tut == false:
+		emit_signal("_show_tut", "phone")
+	evidence_anim.play("Notes_added")
+	await get_tree().create_timer(3.6).timeout
+	evidence_anim.stop()
+	evidence.visible = false

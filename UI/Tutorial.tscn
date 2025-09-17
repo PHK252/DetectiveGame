@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dvup6hsfbeywu" path="res://UI/Assets/tutorial/Notes_d_right.png" id="9_hey4w"]
 [ext_resource type="Texture2D" uid="uid://dt2pgjcoj4po2" path="res://UI/Assets/tutorial/Notes_shift.png" id="10_fcm1x"]
 [ext_resource type="Texture2D" uid="uid://bfve7ho7jfvh7" path="res://UI/Assets/tutorial/Notes_interact_e.png" id="11_pxagh"]
-[ext_resource type="Texture2D" uid="uid://c5jhnu1avga8o" path="res://UI/Assets/tutorial/Notes_exit_q.png" id="12_76whn"]
-[ext_resource type="Texture2D" uid="uid://4lsqhothskw8" path="res://UI/Assets/tutorial/Notes_tab.png" id="14_iu1ku"]
+[ext_resource type="Texture2D" uid="uid://7i4meclxyb01" path="res://UI/Assets/tutorial/Notes_exit_q_darker.png" id="13_om0r0"]
 [ext_resource type="Texture2D" uid="uid://cefkmi8nvx7y5" path="res://UI/Assets/tutorial/Notes_dialogue.png" id="14_om0r0"]
+[ext_resource type="Texture2D" uid="uid://cmmchhxdna8h" path="res://UI/Assets/tutorial/Notes_tab_darker.png" id="15_c481p"]
 [ext_resource type="Texture2D" uid="uid://dy7fg7fs132wd" path="res://UI/Assets/tutorial/Notes_click1.png" id="15_na8nk"]
 [ext_resource type="Texture2D" uid="uid://01mxte662mjj" path="res://UI/Assets/tutorial/Notes_click2.png" id="16_h6ssu"]
 [ext_resource type="Texture2D" uid="uid://bua4guet3old6" path="res://UI/Assets/tutorial/Notes_click3.png" id="17_xj8md"]
@@ -61,15 +61,15 @@ loop_mode = 2
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Flip/TO RUN:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.694118)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -98,34 +98,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("Flip/ColorRect:modulate")
+tracks/3/path = NodePath("Flip/TO RUN:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.694118)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Flip/TO RUN:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Flip/ColorRect:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -142,7 +118,7 @@ tracks/0/path = NodePath("Exit:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
@@ -158,7 +134,7 @@ tracks/0/path = NodePath("Interact:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
@@ -174,7 +150,7 @@ tracks/0/path = NodePath("Movement:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
@@ -190,7 +166,7 @@ tracks/0/path = NodePath("Pause:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
@@ -206,7 +182,7 @@ tracks/0/path = NodePath("Phone:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
@@ -222,7 +198,7 @@ tracks/0/path = NodePath("Run:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
@@ -341,34 +317,10 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Flip/ColorRect:modulate")
+tracks/9/path = NodePath("Flip/TO RUN:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Flip/TO RUN:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Flip/ColorRect:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -528,7 +480,6 @@ fit_content = true
 scroll_active = false
 
 [node name="Exit" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -538,16 +489,16 @@ grow_vertical = 2
 
 [node name="Q" type="Sprite2D" parent="Exit"]
 position = Vector2(830, 968)
-texture = ExtResource("12_76whn")
+texture = ExtResource("13_om0r0")
 
 [node name="TO RUN" type="RichTextLabel" parent="Exit"]
 texture_filter = 2
 layout_mode = 0
 offset_left = 892.0
 offset_top = 923.0
-offset_right = 1292.0
+offset_right = 1144.0
 offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_colors/default_color = Color(0.909804, 0.698039, 0.219608, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -595,7 +546,7 @@ grow_vertical = 2
 
 [node name="Tab" type="Sprite2D" parent="Phone"]
 position = Vector2(688, 968)
-texture = ExtResource("14_iu1ku")
+texture = ExtResource("15_c481p")
 
 [node name="TO RUN" type="RichTextLabel" parent="Phone"]
 texture_filter = 2
@@ -604,7 +555,7 @@ offset_left = 776.0
 offset_top = 923.0
 offset_right = 1317.0
 offset_bottom = 1006.0
-theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_colors/default_color = Color(0.909804, 0.698039, 0.219608, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -628,6 +579,7 @@ sprite_frames = SubResource("SpriteFrames_5sc0d")
 frame = 1
 
 [node name="ColorRect" type="ColorRect" parent="Flip"]
+visible = false
 layout_mode = 0
 offset_left = 737.0
 offset_top = 704.0

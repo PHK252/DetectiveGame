@@ -370,6 +370,7 @@ func clearSave(path : String):
 			printerr("File does not exist" + str(FileAccess.get_open_error()))
 			return
 		file.store_string(JSON.stringify({}))
+		print("length: " + str(file.get_length()))
 		file.close()
 		print("Save cleared successfully.")
 
@@ -379,6 +380,6 @@ func check_save_file_empty(path : String):
 	if file == null:
 		printerr("File does not exist" + str(FileAccess.get_open_error()))
 		return
-	var is_empty = file.get_length() == 0
+	var is_empty = file.get_length() == 2
 	file.close()
 	return is_empty
