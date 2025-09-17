@@ -1,18 +1,24 @@
-[gd_scene load_steps=47 format=3 uid="uid://b4hwa6q2nro5o"]
+[gd_scene load_steps=56 format=3 uid="uid://b4hwa6q2nro5o"]
 
 [ext_resource type="Script" uid="uid://c0ljt443mhj4a" path="res://UI/Main Menu.gd" id="1_avvtg"]
 [ext_resource type="Texture2D" uid="uid://d3kvej03xuxeb" path="res://UI/Assets/Main Menu/Updated/Start Board.png" id="2_8wcpv"]
 [ext_resource type="Texture2D" uid="uid://shfjwh4ih0h3" path="res://UI/Assets/Main Menu/Updated/Title.png" id="3_eyaea"]
+[ext_resource type="Texture2D" uid="uid://dor7xjkhq26fc" path="res://UI/Assets/Main Menu/Updated/Start control normal2.png" id="4_ai0fs"]
+[ext_resource type="Texture2D" uid="uid://dkbk4mc238o3a" path="res://UI/Assets/Main Menu/Updated/Start control normal3.png" id="5_awi3q"]
 [ext_resource type="Texture2D" uid="uid://i83748b817ou" path="res://UI/Assets/Main Menu/Updated/Button_anim.tres" id="5_j3mhs"]
+[ext_resource type="Texture2D" uid="uid://dypgel5qmwtbb" path="res://UI/Assets/Main Menu/Updated/Start control normal4.png" id="6_2cndb"]
 [ext_resource type="Texture2D" uid="uid://b8ykhchp3wnmu" path="res://UI/Assets/Main Menu/Updated/Start continue normal1.png" id="6_ayupa"]
+[ext_resource type="Texture2D" uid="uid://bk62roepwhr6p" path="res://UI/Assets/Main Menu/Updated/Start control normal5.png" id="7_0u83w"]
 [ext_resource type="Texture2D" uid="uid://d12ctikq50tpy" path="res://UI/Assets/Main Menu/Updated/Start credits normal1.png" id="7_denou"]
 [ext_resource type="Texture2D" uid="uid://cncqfbo33qe8q" path="res://UI/Assets/Main Menu/Updated/Start continue normal2.png" id="7_r180l"]
 [ext_resource type="Texture2D" uid="uid://wadtbeqkw7g7" path="res://UI/Assets/Main Menu/Updated/Start continue normal3.png" id="8_0rrox"]
 [ext_resource type="Texture2D" uid="uid://bktiapcmdkqmq" path="res://UI/Assets/Main Menu/Updated/Start credits normal2.png" id="8_i6ihp"]
+[ext_resource type="Texture2D" uid="uid://dlwriif4amvc8" path="res://UI/Assets/Main Menu/Updated/Start control normal6.png" id="8_tuwsj"]
 [ext_resource type="Texture2D" uid="uid://cm8bow762s0mu" path="res://UI/Assets/Main Menu/Updated/Start credits normal3.png" id="9_4vk8k"]
 [ext_resource type="Texture2D" uid="uid://bdnm64gli2x3r" path="res://UI/Assets/Main Menu/Updated/Start continue normal4.png" id="9_8fl2w"]
+[ext_resource type="Texture2D" uid="uid://cjl0hh5sn2nwo" path="res://UI/Assets/Main Menu/Updated/Start control normal1.png" id="9_ekdv6"]
 [ext_resource type="Texture2D" uid="uid://cy04u6hpeabsj" path="res://UI/Assets/Main Menu/Updated/Start credits normal4.png" id="10_6ydh6"]
-[ext_resource type="Texture2D" uid="uid://2fdioxx6yxot" path="res://UI/Assets/Main Menu/Updated/Start start hovered.png" id="10_qrmy8"]
+[ext_resource type="Texture2D" uid="uid://us6v1uk5gsps" path="res://UI/Assets/Main Menu/Updated/Start controls hovered.png" id="10_ai0fs"]
 [ext_resource type="Texture2D" uid="uid://dy4tntr7cip7u" path="res://UI/Assets/Main Menu/Updated/Start continue normal5.png" id="10_wy3qf"]
 [ext_resource type="Texture2D" uid="uid://duk00cvghu7uy" path="res://UI/Assets/Main Menu/Updated/Start credits normal5.png" id="11_4fspa"]
 [ext_resource type="Texture2D" uid="uid://bl5am3uoy2334" path="res://UI/Assets/Main Menu/Updated/Start continue normal6.png" id="11_wh7un"]
@@ -39,8 +45,70 @@
 [ext_resource type="Texture2D" uid="uid://bb6nkd40n5n8y" path="res://UI/Assets/Main Menu/Updated/Start quit normal4.png" id="24_k647a"]
 [ext_resource type="Texture2D" uid="uid://bjg5vvhq4fchr" path="res://UI/Assets/Main Menu/Updated/Start quit normal5.png" id="25_32v3w"]
 [ext_resource type="Texture2D" uid="uid://dptshyo0ncl27" path="res://UI/Assets/Main Menu/Updated/Start quit normal6.png" id="26_jjxcq"]
+[ext_resource type="Texture2D" uid="uid://b0yjs8uqxrwtj" path="res://UI/Assets/Main Menu/Updated/Start start long hovered.png" id="27_5dry5"]
 [ext_resource type="Texture2D" uid="uid://cuisnnlbsn0ft" path="res://UI/Assets/Main Menu/Updated/Start quit hovered.png" id="27_8hnc3"]
 [ext_resource type="Texture2D" uid="uid://bljobscvtdjmy" path="res://UI/Assets/Main Menu/Updated/Start Light.png" id="27_j3mhs"]
+[ext_resource type="PackedScene" uid="uid://todl2n23or4m" path="res://UI/Controls.tscn" id="42_5dry5"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_prttk"]
+frames = 6
+frame_0/texture = ExtResource("4_ai0fs")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("5_awi3q")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("6_2cndb")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("7_0u83w")
+frame_3/duration = 0.25
+frame_4/texture = ExtResource("8_tuwsj")
+frame_4/duration = 0.25
+frame_5/texture = ExtResource("9_ekdv6")
+frame_5/duration = 0.25
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ai0fs"]
+frames = 6
+frame_0/texture = ExtResource("16_0rrox")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("17_8fl2w")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("18_wy3qf")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("19_wh7un")
+frame_3/duration = 0.25
+frame_4/texture = ExtResource("14_ayupa")
+frame_4/duration = 0.25
+frame_5/texture = ExtResource("15_r180l")
+frame_5/duration = 0.25
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0pxxe"]
+frames = 6
+frame_0/texture = ExtResource("8_i6ihp")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("9_4vk8k")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("10_6ydh6")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("11_4fspa")
+frame_3/duration = 0.25
+frame_4/texture = ExtResource("12_l3myb")
+frame_4/duration = 0.25
+frame_5/texture = ExtResource("7_denou")
+frame_5/duration = 0.25
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_awi3q"]
+frames = 6
+frame_0/texture = ExtResource("24_k647a")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("25_32v3w")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("26_jjxcq")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("21_eyaea")
+frame_3/duration = 0.25
+frame_4/texture = ExtResource("22_5dry5")
+frame_4/duration = 0.25
+frame_5/texture = ExtResource("23_lnwth")
+frame_5/duration = 0.25
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_eyaea"]
 frames = 6
@@ -72,51 +140,6 @@ frame_4/duration = 0.25
 frame_5/texture = ExtResource("18_8hnc3")
 frame_5/duration = 0.25
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_0pxxe"]
-frames = 6
-frame_0/texture = ExtResource("8_i6ihp")
-frame_0/duration = 0.25
-frame_1/texture = ExtResource("9_4vk8k")
-frame_1/duration = 0.25
-frame_2/texture = ExtResource("10_6ydh6")
-frame_2/duration = 0.25
-frame_3/texture = ExtResource("11_4fspa")
-frame_3/duration = 0.25
-frame_4/texture = ExtResource("12_l3myb")
-frame_4/duration = 0.25
-frame_5/texture = ExtResource("7_denou")
-frame_5/duration = 0.25
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_ai0fs"]
-frames = 6
-frame_0/texture = ExtResource("16_0rrox")
-frame_0/duration = 0.25
-frame_1/texture = ExtResource("17_8fl2w")
-frame_1/duration = 0.25
-frame_2/texture = ExtResource("18_wy3qf")
-frame_2/duration = 0.25
-frame_3/texture = ExtResource("19_wh7un")
-frame_3/duration = 0.25
-frame_4/texture = ExtResource("14_ayupa")
-frame_4/duration = 0.25
-frame_5/texture = ExtResource("15_r180l")
-frame_5/duration = 0.25
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_awi3q"]
-frames = 6
-frame_0/texture = ExtResource("24_k647a")
-frame_0/duration = 0.25
-frame_1/texture = ExtResource("25_32v3w")
-frame_1/duration = 0.25
-frame_2/texture = ExtResource("26_jjxcq")
-frame_2/duration = 0.25
-frame_3/texture = ExtResource("21_eyaea")
-frame_3/duration = 0.25
-frame_4/texture = ExtResource("22_5dry5")
-frame_4/duration = 0.25
-frame_5/texture = ExtResource("23_lnwth")
-frame_5/duration = 0.25
-
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_avvtg")
 
@@ -131,69 +154,45 @@ grow_vertical = 2
 texture = ExtResource("2_8wcpv")
 stretch_mode = 3
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="Start" type="CanvasLayer" parent="."]
+
+[node name="Title" type="TextureRect" parent="Start"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 144.0
-offset_top = 198.0
-offset_right = 1284.0
-offset_bottom = 858.0
+offset_left = -816.0
+offset_top = -480.0
+offset_right = 324.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_eyaea")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Start"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 1380.0
-offset_top = 84.0
-offset_right = 1794.0
-offset_bottom = 1004.0
+offset_left = -540.0
+offset_top = -456.0
+offset_right = -126.0
+offset_bottom = 464.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 3
 
-[node name="Start" type="TextureButton" parent="VBoxContainer"]
-visible = false
+[node name="Controls" type="TextureButton" parent="Start/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("5_j3mhs")
-texture_pressed = ExtResource("10_qrmy8")
-texture_hover = ExtResource("10_qrmy8")
+texture_normal = SubResource("AnimatedTexture_prttk")
+texture_pressed = ExtResource("10_ai0fs")
+texture_hover = ExtResource("10_ai0fs")
 
-[node name="Continue" type="TextureButton" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-texture_normal = SubResource("AnimatedTexture_eyaea")
-texture_pressed = ExtResource("12_h1rrj")
-texture_hover = ExtResource("12_h1rrj")
-
-[node name="New Game" type="TextureButton" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-texture_normal = SubResource("AnimatedTexture_2cndb")
-texture_pressed = ExtResource("19_0pxxe")
-texture_hover = ExtResource("19_0pxxe")
-
-[node name="Credits" type="TextureButton" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-texture_normal = SubResource("AnimatedTexture_0pxxe")
-texture_pressed = ExtResource("13_h1ltv")
-texture_hover = ExtResource("13_h1ltv")
-
-[node name="Options" type="TextureButton" parent="VBoxContainer"]
+[node name="Options" type="TextureButton" parent="Start/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -201,7 +200,15 @@ texture_normal = SubResource("AnimatedTexture_ai0fs")
 texture_pressed = ExtResource("20_h1rrj")
 texture_hover = ExtResource("20_h1rrj")
 
-[node name="Quit" type="TextureButton" parent="VBoxContainer"]
+[node name="Credits" type="TextureButton" parent="Start/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_0pxxe")
+texture_pressed = ExtResource("13_h1ltv")
+texture_hover = ExtResource("13_h1ltv")
+
+[node name="Quit" type="TextureButton" parent="Start/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -209,7 +216,7 @@ texture_normal = SubResource("AnimatedTexture_awi3q")
 texture_pressed = ExtResource("27_8hnc3")
 texture_hover = ExtResource("27_8hnc3")
 
-[node name="Background2" type="TextureRect" parent="."]
+[node name="Background2" type="TextureRect" parent="Start"]
 visible = false
 modulate = Color(1, 1, 1, 0.435294)
 anchors_preset = 15
@@ -223,7 +230,48 @@ mouse_filter = 2
 texture = ExtResource("27_j3mhs")
 stretch_mode = 3
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Start" type="TextureButton" parent="Start"]
+visible = false
+offset_left = 372.0
+offset_top = 776.0
+offset_right = 1058.0
+offset_bottom = 956.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_j3mhs")
+texture_pressed = ExtResource("27_5dry5")
+texture_hover = ExtResource("27_5dry5")
+
+[node name="Continue" type="HBoxContainer" parent="Start"]
+offset_left = 271.0
+offset_top = 776.0
+offset_right = 1159.0
+offset_bottom = 956.0
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Continue" type="TextureButton" parent="Start/Continue"]
+layout_mode = 2
+size_flags_vertical = 11
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_eyaea")
+texture_pressed = ExtResource("12_h1rrj")
+texture_hover = ExtResource("12_h1rrj")
+
+[node name="New Game" type="TextureButton" parent="Start/Continue"]
+layout_mode = 2
+size_flags_vertical = 11
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_2cndb")
+texture_pressed = ExtResource("19_0pxxe")
+texture_hover = ExtResource("19_0pxxe")
+
+[node name="Controls" parent="." instance=ExtResource("42_5dry5")]
+visible = false
+
+[connection signal="pressed" from="Start/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Start/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Start/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Start/Continue/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Start/Continue/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="show_start" from="Controls" to="." method="_on_controls_show_start"]

@@ -1,26 +1,25 @@
 extends Node2D
 
-@onready var start_butt = $VBoxContainer/Start
-@onready var continue_butt = $VBoxContainer/Continue
-@onready var new_game_butt = $"VBoxContainer/New Game"
+@onready var start_butt = $Start/Start
+@onready var continue_new_cont = $Start/Continue
+@onready var start = $Start
+@onready var controls = $Controls
+
 
 var new_game : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#print(GlobalVars.current_level)
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("New Game: " + str(new_game))
 	if new_game == true:
 		start_butt.show()
-		continue_butt.hide()
-		new_game_butt.hide()
+		continue_new_cont.hide()
 	else:
 		SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.from_save_file = true
 		start_butt.hide()
-		continue_butt.show()
-		new_game_butt.show()
+		continue_new_cont.show()
 		#GlobalVars.to_quit = false
 
 
@@ -53,3 +52,12 @@ func _on_new_game_pressed():
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")
+
+
+func _on_controls_pressed():
+	start.visible = false
+	controls.visible = true
+
+
+func _on_controls_show_start():
+	start.visible = true

@@ -1,0 +1,326 @@
+[gd_scene load_steps=22 format=3 uid="uid://todl2n23or4m"]
+
+[ext_resource type="Texture2D" uid="uid://uut7ggpjbkbi" path="res://UI/Assets/tutorial/Notes_arrow_right.png" id="1_4tcpl"]
+[ext_resource type="Script" uid="uid://cf1t8srbdwwty" path="res://UI/controls_exit.gd" id="1_sohyj"]
+[ext_resource type="Texture2D" uid="uid://cqhd1lc1d0edu" path="res://UI/Assets/tutorial/Notes_arrow_left.png" id="2_xb0ch"]
+[ext_resource type="Texture2D" uid="uid://cwohdgtm3ywwn" path="res://UI/Assets/tutorial/Notes_arrow_up.png" id="3_lq0n6"]
+[ext_resource type="Texture2D" uid="uid://djoemkon3d760" path="res://UI/Assets/tutorial/Notes_arrow_down.png" id="4_l7b6d"]
+[ext_resource type="Texture2D" uid="uid://f5cq6gld5hxb" path="res://UI/Assets/tutorial/Notes_w_up.png" id="5_h3qm0"]
+[ext_resource type="Texture2D" uid="uid://cq3n6r4emapo3" path="res://UI/Assets/tutorial/Notes_a_left.png" id="6_1s86v"]
+[ext_resource type="Texture2D" uid="uid://bd3ohdy8yhmdm" path="res://UI/Assets/tutorial/Notes_s_down.png" id="7_86ypn"]
+[ext_resource type="Texture2D" uid="uid://dvup6hsfbeywu" path="res://UI/Assets/tutorial/Notes_d_right.png" id="8_v81m6"]
+[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="9_efqf6"]
+[ext_resource type="Texture2D" uid="uid://dt2pgjcoj4po2" path="res://UI/Assets/tutorial/Notes_shift.png" id="10_xb0ch"]
+[ext_resource type="Texture2D" uid="uid://bfve7ho7jfvh7" path="res://UI/Assets/tutorial/Notes_interact_e.png" id="11_lq0n6"]
+[ext_resource type="Texture2D" uid="uid://c5jhnu1avga8o" path="res://UI/Assets/tutorial/Notes_exit_q.png" id="12_l7b6d"]
+[ext_resource type="Texture2D" uid="uid://cefkmi8nvx7y5" path="res://UI/Assets/tutorial/Notes_dialogue.png" id="13_h3qm0"]
+[ext_resource type="Texture2D" uid="uid://4lsqhothskw8" path="res://UI/Assets/tutorial/Notes_tab.png" id="14_1s86v"]
+[ext_resource type="Texture2D" uid="uid://cts0evds0qj5h" path="res://UI/Assets/tutorial/Notes_esc.png" id="15_yt2g5"]
+[ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="16_sohyj"]
+[ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="17_3pplw"]
+[ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="18_i1aip"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pimcf"]
+device = -1
+keycode = 81
+unicode = 113
+
+[sub_resource type="Shortcut" id="Shortcut_y4fe5"]
+events = [SubResource("InputEventKey_pimcf")]
+
+[node name="Controls" type="CanvasLayer"]
+script = ExtResource("1_sohyj")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Movement" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -445.5
+offset_top = 117.0
+offset_right = 445.5
+offset_bottom = 227.0
+grow_horizontal = 2
+
+[node name="OR" type="RichTextLabel" parent="Movement"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 184.0
+offset_top = 35.0
+offset_right = 371.0
+offset_bottom = 118.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]OR[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="TO MOVE" type="RichTextLabel" parent="Movement"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 610.0
+offset_top = 35.0
+offset_right = 894.0
+offset_bottom = 118.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "TO MOVE"
+fit_content = true
+scroll_active = false
+
+[node name="Right" type="Sprite2D" parent="Movement"]
+position = Vector2(156.5, 85)
+texture = ExtResource("1_4tcpl")
+
+[node name="Left" type="Sprite2D" parent="Movement"]
+position = Vector2(26.5, 85)
+texture = ExtResource("2_xb0ch")
+
+[node name="Up" type="Sprite2D" parent="Movement"]
+position = Vector2(91.5, 25)
+texture = ExtResource("3_lq0n6")
+
+[node name="Down" type="Sprite2D" parent="Movement"]
+position = Vector2(91.5, 85)
+texture = ExtResource("4_l7b6d")
+
+[node name="W" type="Sprite2D" parent="Movement"]
+position = Vector2(463.5, 25)
+texture = ExtResource("5_h3qm0")
+
+[node name="A" type="Sprite2D" parent="Movement"]
+position = Vector2(398.5, 85)
+texture = ExtResource("6_1s86v")
+
+[node name="S" type="Sprite2D" parent="Movement"]
+position = Vector2(463.5, 85)
+texture = ExtResource("7_86ypn")
+
+[node name="D" type="Sprite2D" parent="Movement"]
+position = Vector2(528.5, 85)
+texture = ExtResource("8_v81m6")
+
+[node name="Run" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -239.0
+offset_right = 155.0
+offset_bottom = -189.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shift" type="Sprite2D" parent="Run"]
+position = Vector2(70, 25)
+texture = ExtResource("10_xb0ch")
+
+[node name="TO RUN" type="RichTextLabel" parent="Run"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 174.0
+offset_top = -20.0
+offset_right = 449.0
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO RUN"
+fit_content = true
+scroll_active = false
+
+[node name="Interact" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.5
+offset_top = -116.0
+offset_right = 231.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="E" type="Sprite2D" parent="Interact"]
+position = Vector2(27.5, 25)
+texture = ExtResource("11_lq0n6")
+
+[node name="TO RUN" type="RichTextLabel" parent="Interact"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 89.5
+offset_top = -20.0
+offset_right = 489.5
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO INTERACT"
+fit_content = true
+scroll_active = false
+
+[node name="Exit" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = 7.0
+offset_right = 158.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Q" type="Sprite2D" parent="Exit"]
+position = Vector2(27.5, 25)
+texture = ExtResource("12_l7b6d")
+
+[node name="TO RUN" type="RichTextLabel" parent="Exit"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 89.5
+offset_top = -20.0
+offset_right = 341.5
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO EXIT"
+fit_content = true
+scroll_active = false
+
+[node name="Dialogue" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -417.0
+offset_top = -410.0
+offset_right = 417.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Esc" type="Sprite2D" parent="Dialogue"]
+texture_filter = 1
+position = Vector2(82.5, 25)
+texture = ExtResource("13_h3qm0")
+
+[node name="TO RUN" type="RichTextLabel" parent="Dialogue"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 200.5
+offset_top = -20.0
+offset_right = 922.5
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO ADVANCE DIALOGUE"
+fit_content = true
+scroll_active = false
+
+[node name="Phone" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -327.0
+offset_top = -287.0
+offset_right = 327.0
+offset_bottom = -237.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Tab" type="Sprite2D" parent="Phone"]
+position = Vector2(52.5, 25)
+texture = ExtResource("14_1s86v")
+
+[node name="TO RUN" type="RichTextLabel" parent="Phone"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 140.5
+offset_top = -20.0
+offset_right = 681.5
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO TOGGLE PHONE"
+fit_content = true
+scroll_active = false
+
+[node name="Pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -179.5
+offset_top = -165.0
+offset_right = 179.5
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Tab" type="Sprite2D" parent="Pause"]
+position = Vector2(32.5, 25)
+texture = ExtResource("15_yt2g5")
+
+[node name="TO RUN" type="RichTextLabel" parent="Pause"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 101.0
+offset_top = -20.0
+offset_right = 370.0
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("9_efqf6")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "TO PAUSE"
+fit_content = true
+scroll_active = false
+
+[node name="Exit_button" type="TextureButton" parent="."]
+offset_left = 50.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 146.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_y4fe5")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("16_sohyj")
+texture_pressed = ExtResource("17_3pplw")
+texture_hover = ExtResource("17_3pplw")
+texture_disabled = ExtResource("18_i1aip")
+
+[connection signal="pressed" from="Exit_button" to="." method="_on_exit_button_pressed"]
