@@ -380,6 +380,7 @@ func check_save_file_empty(path : String):
 	if file == null:
 		printerr("File does not exist" + str(FileAccess.get_open_error()))
 		return
+	print(file.get_length())
 	var is_empty = file.get_length() == 2
 	file.close()
 	return is_empty

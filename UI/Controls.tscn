@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://todl2n23or4m"]
+[gd_scene load_steps=39 format=3 uid="uid://todl2n23or4m"]
 
 [ext_resource type="Texture2D" uid="uid://uut7ggpjbkbi" path="res://UI/Assets/tutorial/Notes_arrow_right.png" id="1_4tcpl"]
 [ext_resource type="Script" uid="uid://cf1t8srbdwwty" path="res://UI/controls_exit.gd" id="1_sohyj"]
@@ -19,11 +19,32 @@
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="16_sohyj"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="17_3pplw"]
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="18_i1aip"]
+[ext_resource type="Texture2D" uid="uid://bvut6op7bp6sb" path="res://UI/Assets/Pause/Pause Exit normal.png" id="20_2hir6"]
+[ext_resource type="Texture2D" uid="uid://b37trk6c6htp1" path="res://UI/Assets/Pause/Pause Exit Hover.png" id="21_08f8l"]
+[ext_resource type="Texture2D" uid="uid://b0ojsgbm4dycv" path="res://UI/Assets/tutorial/Paper/Tutorial_movement_shadow.png" id="22_jqmcg"]
+[ext_resource type="Texture2D" uid="uid://c3tihx0kwfte7" path="res://UI/Assets/tutorial/Paper/Tutorial_Run.png" id="23_r5yew"]
+[ext_resource type="Texture2D" uid="uid://cs35orjcyodn6" path="res://UI/Assets/tutorial/Paper/Tutorial_Interact_shadow.png" id="24_xu7vx"]
+[ext_resource type="Texture2D" uid="uid://y3nh4lhiht2w" path="res://UI/Assets/tutorial/Paper/Tutorial_Exit_shadow.png" id="25_bmdj3"]
+[ext_resource type="Texture2D" uid="uid://r3rk22sunnr4" path="res://UI/Assets/tutorial/Paper/Tutorial_Pause_shadow.png" id="26_nf1ak"]
+[ext_resource type="Texture2D" uid="uid://iumjtf8311mq" path="res://UI/Assets/tutorial/Paper/Tutorial_Dialogue_shadow.png" id="27_e4c5h"]
+[ext_resource type="Texture2D" uid="uid://mjh04kte17w1" path="res://UI/Assets/tutorial/Paper/Tutorial_Phone_shadow.png" id="28_7cwdk"]
+[ext_resource type="Texture2D" uid="uid://b6lookf1d2ffh" path="res://UI/Assets/tutorial/Paper/Tutorial_movement.png" id="29_nf1ak"]
+[ext_resource type="Texture2D" uid="uid://c53u78dqindn8" path="res://UI/Assets/tutorial/Paper/Tutorial_Dialogue.png" id="30_e4c5h"]
+[ext_resource type="Texture2D" uid="uid://b1jxd44jw2gj4" path="res://UI/Assets/tutorial/Paper/Tutorial_Phone.png" id="31_7cwdk"]
+[ext_resource type="Texture2D" uid="uid://c337tqrsfxbvd" path="res://UI/Assets/tutorial/Paper/Tutorial_Exit.png" id="32_t84ej"]
+[ext_resource type="Texture2D" uid="uid://d2nlv1i7cvc5w" path="res://UI/Assets/tutorial/Paper/Tutorial_Interact.png" id="33_i8i4t"]
+[ext_resource type="Texture2D" uid="uid://cmas2q68a3j36" path="res://UI/Assets/tutorial/Paper/Tutorial_Pause.png" id="34_rafrd"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_pimcf"]
 device = -1
 keycode = 81
 unicode = 113
+
+[sub_resource type="Shortcut" id="Shortcut_t84ej"]
+events = [SubResource("InputEventKey_pimcf")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i8i4t"]
+load_path = "res://.godot/imported/Back orange disabled.png-89ed0491149aa21fffedaf6ad21b8684.ctex"
 
 [sub_resource type="Shortcut" id="Shortcut_y4fe5"]
 events = [SubResource("InputEventKey_pimcf")]
@@ -31,14 +52,90 @@ events = [SubResource("InputEventKey_pimcf")]
 [node name="Controls" type="CanvasLayer"]
 script = ExtResource("1_sohyj")
 
-[node name="Panel" type="Panel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Main Menu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Main_exit_button" type="TextureButton" parent="Main Menu"]
+offset_left = 53.0
+offset_top = 44.0
+offset_right = 188.0
+offset_bottom = 204.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_t84ej")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("20_2hir6")
+texture_pressed = ExtResource("21_08f8l")
+texture_hover = ExtResource("21_08f8l")
+texture_disabled = SubResource("CompressedTexture2D_i8i4t")
+
+[node name="Controls with shadow" type="HBoxContainer" parent="Main Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -732.0
+offset_top = -361.0
+offset_right = 732.0
+offset_bottom = 401.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/Controls with shadow"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 72
+
+[node name="Movement" type="TextureRect" parent="Main Menu/Controls with shadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("22_jqmcg")
+stretch_mode = 2
+
+[node name="Dialogue" type="TextureRect" parent="Main Menu/Controls with shadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("27_e4c5h")
+stretch_mode = 2
+
+[node name="Phone" type="TextureRect" parent="Main Menu/Controls with shadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("28_7cwdk")
+stretch_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main Menu/Controls with shadow"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Exit" type="TextureRect" parent="Main Menu/Controls with shadow/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("25_bmdj3")
+stretch_mode = 2
+
+[node name="Run" type="TextureRect" parent="Main Menu/Controls with shadow/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("23_r5yew")
+stretch_mode = 2
+
+[node name="Interact" type="TextureRect" parent="Main Menu/Controls with shadow/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("24_xu7vx")
+stretch_mode = 2
+
+[node name="Paused" type="TextureRect" parent="Main Menu/Controls with shadow/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("26_nf1ak")
+stretch_mode = 2
 
 [node name="Movement" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -112,6 +209,7 @@ position = Vector2(528.5, 85)
 texture = ExtResource("8_v81m6")
 
 [node name="Run" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -145,6 +243,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Interact" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -178,6 +277,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Exit" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -211,6 +311,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Dialogue" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -245,6 +346,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Phone" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -278,6 +380,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Pause" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -310,11 +413,22 @@ text = "TO PAUSE"
 fit_content = true
 scroll_active = false
 
-[node name="Exit_button" type="TextureButton" parent="."]
+[node name="Pause _menu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="Pause _menu"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Exit_button" type="TextureButton" parent="Pause _menu"]
 offset_left = 50.0
 offset_top = 30.0
 offset_right = 150.0
-offset_bottom = 146.0
+offset_bottom = 130.0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_y4fe5")
 shortcut_in_tooltip = false
@@ -323,4 +437,71 @@ texture_pressed = ExtResource("17_3pplw")
 texture_hover = ExtResource("17_3pplw")
 texture_disabled = ExtResource("18_i1aip")
 
-[connection signal="pressed" from="Exit_button" to="." method="_on_exit_button_pressed"]
+[node name="Controls" type="HBoxContainer" parent="Pause _menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -732.0
+offset_top = -324.0
+offset_right = 732.0
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause _menu/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 72
+
+[node name="Movement" type="TextureRect" parent="Pause _menu/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("29_nf1ak")
+stretch_mode = 2
+
+[node name="Dialogue" type="TextureRect" parent="Pause _menu/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("30_e4c5h")
+stretch_mode = 2
+
+[node name="Phone" type="TextureRect" parent="Pause _menu/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("31_7cwdk")
+stretch_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Pause _menu/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Exit" type="TextureRect" parent="Pause _menu/Controls/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("32_t84ej")
+stretch_mode = 2
+
+[node name="Run" type="TextureRect" parent="Pause _menu/Controls/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("23_r5yew")
+stretch_mode = 2
+
+[node name="Interact" type="TextureRect" parent="Pause _menu/Controls/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("33_i8i4t")
+stretch_mode = 2
+
+[node name="Paused" type="TextureRect" parent="Pause _menu/Controls/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("34_rafrd")
+stretch_mode = 2
+
+[connection signal="pressed" from="Main Menu/Main_exit_button" to="." method="_on_main_exit_button_pressed"]
+[connection signal="pressed" from="Pause _menu/Exit_button" to="." method="_on_exit_button_pressed"]

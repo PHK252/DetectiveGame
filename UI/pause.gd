@@ -1,8 +1,12 @@
 extends CanvasLayer
 
+@onready var controls = $Controls
 @onready var prev_mouse_mode : int
+@onready var pause_buttons = $VBoxContainer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = true
 	pass # Replace with function body.
 
 
@@ -40,7 +44,12 @@ func _on_options_pressed():
 
 
 func _on_controls_pressed():
-	print("controls")
+	print("pressed")
+	pause_buttons.visible = false
+	controls.visible = true
+
+func _on_controls_show_pause():
+	pause_buttons.visible = true
 
 func _on_visibility_changed():
 	#debug

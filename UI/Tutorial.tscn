@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://djiit5o2pgoy7"]
+[gd_scene load_steps=34 format=3 uid="uid://djiit5o2pgoy7"]
 
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="1_eamh7"]
 [ext_resource type="Script" uid="uid://b40nwl7y7u2wi" path="res://UI/tutorial.gd" id="1_om0r0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bd3ohdy8yhmdm" path="res://UI/Assets/tutorial/Notes_s_down.png" id="8_n3cvu"]
 [ext_resource type="Texture2D" uid="uid://dvup6hsfbeywu" path="res://UI/Assets/tutorial/Notes_d_right.png" id="9_hey4w"]
 [ext_resource type="Texture2D" uid="uid://dt2pgjcoj4po2" path="res://UI/Assets/tutorial/Notes_shift.png" id="10_fcm1x"]
+[ext_resource type="Texture2D" uid="uid://b6lookf1d2ffh" path="res://UI/Assets/tutorial/Paper/Tutorial_movement.png" id="11_c481p"]
 [ext_resource type="Texture2D" uid="uid://bfve7ho7jfvh7" path="res://UI/Assets/tutorial/Notes_interact_e.png" id="11_pxagh"]
 [ext_resource type="Texture2D" uid="uid://7i4meclxyb01" path="res://UI/Assets/tutorial/Notes_exit_q_darker.png" id="13_om0r0"]
 [ext_resource type="Texture2D" uid="uid://cefkmi8nvx7y5" path="res://UI/Assets/tutorial/Notes_dialogue.png" id="14_om0r0"]
@@ -143,13 +144,26 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_tvhgf"]
 resource_name = "Blink Move"
 loop_mode = 2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Movement:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.215686)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Movement/Movement:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -326,6 +340,18 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Movement/Movement:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbvhg"]
 _data = {
@@ -353,7 +379,6 @@ metadata/_edit_horizontal_guides_ = [994.0, 943.0]
 metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Movement" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -422,6 +447,23 @@ texture = ExtResource("8_n3cvu")
 [node name="D" type="Sprite2D" parent="Movement"]
 position = Vector2(1044.5, 968)
 texture = ExtResource("9_hey4w")
+
+[node name="Movement" type="TextureRect" parent="Movement"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = -309.0
+offset_right = 462.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("11_c481p")
+stretch_mode = 2
 
 [node name="Run" type="Control" parent="."]
 visible = false
