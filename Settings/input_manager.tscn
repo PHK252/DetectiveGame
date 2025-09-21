@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b253y8mj70rqy"]
+
+[ext_resource type="Script" uid="uid://dwh6gxq0voi3g" path="res://Settings/input_manager.gd" id="1_p10u8"]
+[ext_resource type="Script" uid="uid://dhlis6qxmrbao" path="res://Settings/controller_manager.gd" id="2_bfcwd"]
+
+[node name="InputManager" type="Node"]
+script = ExtResource("1_p10u8")
+
+[node name="ControllerManager" type="Node" parent="."]
+script = ExtResource("2_bfcwd")

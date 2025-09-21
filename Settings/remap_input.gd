@@ -34,6 +34,9 @@ func _unhandled_input(event):
 	if event.pressed:
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, event)
+		#when adding controller need to add event to index 0
+		# key on index 0 and controller index 1
+		# + not erase all events
 		button_pressed = false
 		release_focus()
 		update_text()

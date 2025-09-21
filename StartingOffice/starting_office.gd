@@ -15,6 +15,7 @@ extends Node3D
 @export var subviewport : SubViewportContainer
 @export var lights : Array[Light3D]
 @export var world_env : WorldEnvironment
+@export var inputManager : InputManager
 
 func _ready():
 	GlobalVars.current_level = "Office"

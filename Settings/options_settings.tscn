@@ -93,9 +93,10 @@ text = "Controls"
 [node name="TabContainer" type="TabContainer" parent="Panel/AspectRatioContainer"]
 layout_mode = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 
 [node name="Sound" type="TabBar" parent="Panel/AspectRatioContainer/TabContainer" node_paths=PackedStringArray("ambience", "amb_label", "master", "master_label", "sfx", "sfx_label", "music", "music_label")]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 0
 script = ExtResource("1_6ko55")
@@ -448,7 +449,6 @@ theme_override_font_sizes/font_size = 50
 text = "X"
 
 [node name="Controls" type="TabBar" parent="Panel/AspectRatioContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
