@@ -10,8 +10,15 @@ extends Node3D
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 
+#settings
+@export var sub_v_container : SubViewportContainer
+@export var subviewport : SubViewportContainer
+@export var lights : Array[Light3D]
+@export var world_env : WorldEnvironment
+
 func _ready():
 	GlobalVars.current_level = "Office"
+	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
 #	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	team_pic.hide()
@@ -20,7 +27,7 @@ func _ready():
 	contact.hide()
 	missing.hide()
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	#$"UI/TeamPic Look".hide()
 	var dialogue_file = choose_office_dialogue()
@@ -40,7 +47,7 @@ func _ready():
 #func _process(delta):
 	#if Input.is_action_just_pressed("Quit"):
 			#get_tree().quit()
-
+	
 #func _input(event):
 	#if Input.is_key_pressed(KEY_S):
 		#SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
@@ -103,3 +110,18 @@ func choose_office_dialogue():
 		_:
 			print_debug("Day does not exist")
 			return ""
+
+#settings changes
+
+func _set_pixelation() -> void:
+	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
+
+func _set_shadow() -> void:
+	world_env.environment.ssao_enabled = GlobalVars.optional_shadow
+	#optional lights for other levels
+	#for light in lights:
+		#light.shadow_enabled = GlobalVars.optional_shadow
+	
+
+func _on_brightness_brightness_shift() -> void:
+	world_env.environment.adjustment_brightness = GlobalVars.brightness

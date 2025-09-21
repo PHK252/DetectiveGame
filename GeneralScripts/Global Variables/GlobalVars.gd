@@ -28,6 +28,11 @@ signal open_quincy_case
 @onready var current_level = ""
 @onready var first_house = "" # might not need
 
+#settings variables
+var stretch_factor : int = 6
+var optional_shadow := true
+var brightness := 1.0
+
 var load_global_arr = []
 var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house"]
 func _load_global_arr():

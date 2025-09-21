@@ -473,7 +473,7 @@ portraits/default_portrait=""
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=1
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 mouse_cursor/tooltip_position_offset=Vector2(-16, -18)
 
 [editor_plugins]
@@ -640,4 +640,8 @@ Question={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/default_filters/anisotropic_filtering_level=0
+textures/light_projectors/filter=0
+environment/subsurface_scattering/subsurface_scattering_quality=0
+environment/volumetric_fog/use_filter=0
 environment/defaults/default_clear_color=Color(0.156863, 0.156863, 0.160784, 1)
