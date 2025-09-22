@@ -901,3 +901,132 @@ func _on_Jdrawer_interacted(interactor: Interactor) -> void:
 	needs_rotation_forced = false
 	number = 0
 	in_control = true
+
+func _on_drawerQ_interacted(interactor: Interactor) -> void:
+	number = 11
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_paintQ_interacted(interactor: Interactor) -> void:
+	number = 18
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_guitarQ_interacted(interactor: Interactor) -> void:
+	number = 16
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_phoneQ_interacted(interactor: Interactor) -> void:
+	number = 13
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_fishQ_interacted(interactor: Interactor) -> void:
+	number = 9
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_computerQ_interacted(interactor: Interactor) -> void:
+	number = 10
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_caseQ_interacted(interactor: Interactor) -> void:
+	number = 17
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_pokerQ_interacted(interactor: Interactor) -> void:
+	number = 8
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_toiletQ_interacted(interactor: Interactor) -> void:
+	number = 12
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_safeQ_interacted(interactor: Interactor) -> void:
+	number = 15
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_ShelfQ_interacted(interactor: Interactor) -> void:
+	number = 14
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
