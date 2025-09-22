@@ -25,6 +25,7 @@ var finished_greet := false
 var needs_rotation_forced := false
 
 var forced_walk := false
+var micahSitting := false
 
 const MAX_STEP_HEIGHT := 1.2
 var _snapped_to_stairs_last_frame := false
@@ -700,3 +701,203 @@ func _return_office():
 	number = 0
 	in_control = true
 	#done
+
+
+func _on_Quincy_interacted(interactor: Interactor) -> void:
+	number = 7
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_Juniper_interacted(interactor: Interactor) -> void:
+	number = 3
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_Micah_interacted(interactor: Interactor) -> void:
+	number = 2
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_Fridge_interacted(interactor: Interactor) -> void:
+	number = 6
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_Shelf_interacted(interactor: Interactor) -> void:
+	number = 5
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_Window_interacted(interactor: Interactor) -> void:
+	number = 4
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_photo_interacted(interactor: Interactor) -> void:
+	number = 3
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_sit_interactMicah_interacted(interactor: Interactor) -> void:
+	number = 7
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_JHousePic_interacted(interactor: Interactor) -> void:
+	number = 4
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_CafeJ_interacted(interactor: Interactor) -> void:
+	number = 8
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_BookJ_interacted(interactor: Interactor) -> void:
+	number = 5
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_caseJ_interacted(interactor: Interactor) -> void:
+	number = 7
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_WindowJ_interacted(interactor: Interactor) -> void:
+	number = 10
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_JCabone_interacted(interactor: Interactor) -> void:
+	number = 11
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_Jcabtwo_interacted(interactor: Interactor) -> void:
+	number = 12
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_resumeJ_interacted(interactor: Interactor) -> void:
+	number = 9
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_Jdrawer_interacted(interactor: Interactor) -> void:
+	number = 6
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
