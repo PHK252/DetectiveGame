@@ -488,13 +488,15 @@ func _on_timer_timeout() -> void:
 func _on_door_second_juniper_greeting() -> void:
 	number = 0
 	in_control = false
+	needs_rotation_forced = true
 	force_rotation = true
 	#knock anim
 	anim_tree.set("parameters/Knock/request", true)
 	await get_tree().create_timer(2).timeout
 	emit_signal("knocking")
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(2).timeout
 	force_rotation = false
+	needs_rotation_forced = false
 	in_control = true
 
 #signal for dialogue done back in control
@@ -516,6 +518,34 @@ func _on_door_greeting() -> void:
 	
 func _on_juniper_interact_finish_greeting() -> void:
 	finished_greet = true
+	# forced walk towards dalton wait marker (3 seconds)
+	# move to idle state
+	# stay out of control for 4 seconds (until theo inside)
+	#
+	in_control = false
+	#rotate
+	number = 1
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.2).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	#walk
+	walk_number = 1
+	forced_walk = true
+	await get_tree().create_timer(2.0).timeout
+	forced_walk = false
+	walk_number = 0
+	number = 2
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(1.0).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	await get_tree().create_timer(4.0).timeout
+	in_control = true
+	#done
+
 	#in_control = false
 	#SPEED = 2.0
 	#tea_time = true

@@ -28,7 +28,7 @@ func _ready():
 	contact.hide()
 	missing.hide()
 	
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	#$"UI/TeamPic Look".hide()
 	var dialogue_file = choose_office_dialogue()
