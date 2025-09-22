@@ -9,6 +9,7 @@ Dalton: ASPD!
 Dalton: ...
 - Knock Again.
 	# #Knock knock
+	[signal arg="knock"]
 	Dalton: Hello?
 	Dalton: We are here to investigate a break in that happened last night.
 	# #knock 
@@ -36,14 +37,14 @@ Dalton: ...
 		set {Character Aff Points.Micah} += 1
 		# #Knock
 		Dalton: XPD!
-    	Dalton: We are here to investi-
-		# #A loud thud comes from inside the apartment, followed by tired groan and a curse
-		# #Faint footsteps can be heard through the door
-		Theo: Someone’s not having a good day.
-    	Dalton: Shh.
-		jump Micah Open
-	- Wait.
-		jump Wait
+		Dalton: We are here to investi-
+# #A loud thud comes from inside the apartment, followed by tired groan and a curse
+# #Faint footsteps can be heard through the door
+Theo: Someone’s not having a good day.
+Dalton: Shh.
+jump Micah Open
+- Wait.
+	jump Wait
 
 label Micah Open
 [signal arg="open_door"]

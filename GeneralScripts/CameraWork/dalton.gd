@@ -53,10 +53,13 @@ var number := 0
 @export var tea_wait_marker : Marker3D
 @export var office_return = false
 var tea_time = false
+@export var MicahHouse := false
 
 func _ready() -> void:
 	add_to_group("player")
 	#
+	if MicahHouse:
+		Dialogic.signal_event.connect(_on_dialogic_signal)
 	#if GlobalVars.dalton_pos:
 	if GlobalVars.from_save_file == true:
 		print(GlobalVars.dalton_pos)
@@ -68,6 +71,10 @@ func _ready() -> void:
 	if GlobalVars.current_level == "Office":
 		_return_office()
 	#doughnut.visible = false
+
+func _on_dialogic_signal(argument: String):
+	if argument == "knock":
+		anim_tree.set("parameters/Knock/request", true)
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames() 
@@ -507,12 +514,14 @@ func _on_door_micah_rotate() -> void:
 func _on_door_greeting() -> void:
 	number = 1
 	in_control = false
+	needs_rotation_forced = true
 	force_rotation = true
 	#knock anim
 	anim_tree.set("parameters/Knock/request", true)
 	emit_signal("knocking")
 	await get_tree().create_timer(4).timeout
 	force_rotation = false
+	needs_rotation_forced = false
 	in_control = true
 	
 	

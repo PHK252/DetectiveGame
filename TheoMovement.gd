@@ -1050,3 +1050,16 @@ func _on_sc_nogo_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		#theo_adjustment = false
 		is_navigating = true
+
+
+func _on_MicahDoor_greeting() -> void:
+	theo_adjustment = true
+	nav.target_position = adjustment_list[7].global_position
+	is_navigating = true
+	STOPPING_DISTANCE = 0.0
+	nav.path_desired_distance = 0.2
+	nav.target_desired_distance = 0.4
+	state = ADJUST
+
+func _on_door_greet_done() -> void:
+	theo_adjustment = false
