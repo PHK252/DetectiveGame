@@ -13,6 +13,7 @@ var stop_walk := false
 var come_in := false
 var dalton_rotation := false
 var blend_speed := 5.0
+signal look_dalton
 
 enum {
 	IDLE, 
@@ -65,7 +66,7 @@ func _rotate_dalton(delta):
 	
 
 func _process(delta):
-	print(state)
+	#print(state)
 	if state == WALK:
 		var flipped_basis = path.global_transform.basis
 		flipped_basis.x = -flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
@@ -109,8 +110,10 @@ func _process(delta):
 						print("checked for stop")
 						stop_walk = true
 						#path.progress_ratio = 0.95
+						emit_signal("look_dalton")
 						state = IDLE
 				else:
+					emit_signal("look_dalton")
 					state = IDLE
 		OUT:
 			pass
