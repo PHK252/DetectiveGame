@@ -27,3 +27,5 @@ func _on_isaac_to_walk_out():
 	sounds.play("walk_gather")
 	await get_tree().create_timer(2.5).timeout
 	sounds.play("walk_wood")
+	await get_tree().create_timer(4.0).timeout
+	sounds.stop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://dstnxb7ix56qs"]
+[gd_scene load_steps=119 format=4 uid="uid://dstnxb7ix56qs"]
 
 [ext_resource type="Script" uid="uid://cp55wg45ukg5b" path="res://Cutscenes/Beginning.gd" id="1_0y78j"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_kshh4"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://cp0jkmt30p6sx" path="res://ShaderScripts/wood.tres" id="7_14hys"]
 [ext_resource type="AudioStream" uid="uid://seurfr0qrc6t" path="res://Audio/Footsteps/Kick2_01.wav" id="7_qp3f0"]
 [ext_resource type="AudioStream" uid="uid://qjg5g1q6pw12" path="res://Audio/Footsteps/Kick2_02.wav" id="8_dqp2b"]
+[ext_resource type="Script" uid="uid://h5vfo1f0636i" path="res://GeneralScripts/Settings/NPCLookAtMod.gd" id="8_k78u7"]
 [ext_resource type="AudioStream" uid="uid://cecqxdho78btf" path="res://Audio/Footsteps/kick_1.wav" id="9_8bohg"]
 [ext_resource type="AudioStream" uid="uid://cmhs6dh2xwlus" path="res://Audio/Footsteps/kick_2.wav" id="10_nphpj"]
 [ext_resource type="AudioStream" uid="uid://maft6p22ri3" path="res://Audio/Footsteps/kick_3.wav" id="11_2v68m"]
@@ -41,7 +42,13 @@
 [ext_resource type="AudioStream" uid="uid://7cruyjdkfks8" path="res://Audio/FirstHouse/fall_impact_02.wav" id="22_dqp2b"]
 [ext_resource type="AudioStream" uid="uid://dmbp61y7n6gng" path="res://Audio/StartOffice/thinking_sound.wav" id="28_bjqar"]
 [ext_resource type="AudioStream" uid="uid://dhtooci6dtyw5" path="res://Audio/Ambience/ACnoise.wav" id="34_kshh4"]
+[ext_resource type="Script" uid="uid://ce65wpgqyu531" path="res://GeneralScripts/AudioScripts/audio_manager.gd" id="37_kpa27"]
+[ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="38_k78u7"]
 [ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="38_r0nol"]
+[ext_resource type="AudioStream" uid="uid://dlmukgdrndsxy" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_2.wav" id="39_cnt7s"]
+[ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="40_j0egg"]
+[ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="41_m53ye"]
+[ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="42_i5g4t"]
 [ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="42_ykiv2"]
 [ext_resource type="Script" uid="uid://dlwblcw07py1" path="res://Global Scripts/Framework_Interact_to_dialogue.gd" id="43_6vflx"]
 [ext_resource type="Script" uid="uid://cjlifhj0otjg6" path="res://Cutscenes/Dialogue_to_walkout.gd" id="45_ykiv2"]
@@ -681,11 +688,29 @@ far = 4007.19
 [sub_resource type="BoxShape3D" id="BoxShape3D_8hs7i"]
 size = Vector3(0.252045, 0.28418, 0.216187)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0y78j"]
+size = Vector3(0.297307, 0.999512, 0.418137)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ykiv2"]
+size = Vector3(1.07902, 0.905059, 0.195216)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6vflx"]
+size = Vector3(0.731626, 0.999512, 0.181488)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xiqjf"]
+size = Vector3(0.437175, 1.2019, 0.328365)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3y4c"]
+size = Vector3(0.251959, 0.772217, 0.189556)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_14hys"]
 size = Vector3(1, 1, 0.812134)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yor6a"]
 size = Vector3(1.65997, 1.12708, 0.774902)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ceh46"]
+size = Vector3(0.389942, 1.12708, 1.07153)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sumwa"]
 size = Vector3(4.74042, 1, 0.400635)
@@ -891,21 +916,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6mukk")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0y78j"]
-size = Vector3(0.297307, 0.999512, 0.418137)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ykiv2"]
-size = Vector3(1.07902, 0.905059, 0.195216)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6vflx"]
-size = Vector3(0.731626, 0.999512, 0.181488)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xiqjf"]
-size = Vector3(0.437175, 1.2019, 0.328365)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_y3y4c"]
-size = Vector3(0.251959, 0.772217, 0.189556)
-
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0y78j")
 
@@ -939,30 +949,30 @@ getUp = NodePath("Armature_001/GetUpSound")
 transform = Transform3D(-0.462092, -1.79945e-07, 7.86566e-15, 0, -2.01987e-08, -0.462092, 1.79945e-07, -0.462092, 2.01987e-08, 0, 0.000947615, 0.93657)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001" index="0"]
-bones/0/position = Vector3(-3.52031e-11, 2.38419e-07, -1.83612)
+bones/0/position = Vector3(-9.92784e-11, 2.38419e-07, -1.80893)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19025e-08)
-bones/4/rotation = Quaternion(-0.189656, 0.00469614, 0.000795218, 0.981839)
+bones/4/rotation = Quaternion(-0.159711, 3.23341e-09, -3.0956e-09, 0.987164)
 bones/5/rotation = Quaternion(0.355955, -7.6485e-09, 2.60517e-08, 0.934503)
-bones/6/position = Vector3(0.251919, 0.641113, 0.112076)
-bones/6/rotation = Quaternion(0.322443, 0.00623801, -0.156034, 0.933619)
+bones/6/position = Vector3(0.251917, 0.640998, 0.112353)
+bones/6/rotation = Quaternion(0.322381, 0.0062484, -0.156034, 0.933641)
 bones/7/rotation = Quaternion(0.150191, 0.00219412, 0.0144416, 0.988549)
-bones/8/position = Vector3(-0.25753, 0.64148, 0.110641)
-bones/8/rotation = Quaternion(0.326783, 0.0162063, 0.142344, 0.934178)
+bones/8/position = Vector3(-0.25753, 0.641409, 0.110952)
+bones/8/rotation = Quaternion(0.326721, 0.0161968, 0.142345, 0.9342)
 bones/9/rotation = Quaternion(0.150191, 0.00219409, 0.0144413, 0.988549)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.314655, 0.041812, -0.48353, 0.815747)
-bones/12/rotation = Quaternion(0.450802, 0.318923, -0.212506, 0.806168)
+bones/11/rotation = Quaternion(-0.324661, 0.0265823, -0.484264, 0.81202)
+bones/12/rotation = Quaternion(0.472273, 0.313741, -0.222627, 0.793071)
 bones/13/rotation = Quaternion(0.0184011, 0.637816, -0.0116091, 0.769881)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.326717, -0.0226865, 0.536905, 0.777479)
-bones/16/rotation = Quaternion(0.437269, -0.322148, 0.204819, 0.814289)
+bones/15/rotation = Quaternion(-0.325313, -0.0143651, 0.541811, 0.774859)
+bones/16/rotation = Quaternion(0.459677, -0.316958, 0.215315, 0.801171)
 bones/17/rotation = Quaternion(0.0182237, -0.626127, 0.0118857, 0.779418)
-bones/19/rotation = Quaternion(0.593819, 0.0988945, 0.0995911, 0.792263)
-bones/20/rotation = Quaternion(-0.811671, 0.00637372, -0.226661, 0.538306)
+bones/19/rotation = Quaternion(0.604705, 0.0987314, 0.102736, 0.7836)
+bones/20/rotation = Quaternion(-0.821059, 0.00618934, -0.229283, 0.522736)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
-bones/23/rotation = Quaternion(0.56987, -0.0861441, -0.00869044, 0.817161)
-bones/24/rotation = Quaternion(-0.810271, -0.0010754, 0.0504995, 0.583875)
+bones/23/rotation = Quaternion(0.581025, -0.0858675, -0.0103052, 0.809278)
+bones/24/rotation = Quaternion(-0.821499, -0.00104598, 0.0511993, 0.567906)
 bones/25/rotation = Quaternion(0.841715, 0.0265733, -0.0311034, 0.53837)
 bones/26/position = Vector3(0.302293, 0.237652, -0.922289)
 bones/26/rotation = Quaternion(0.0204546, -4.33681e-19, 0.999791, 6.58544e-10)
@@ -973,9 +983,28 @@ bones/27/scale = Vector3(1.10417, 1, 1.00018)
 bones/28/position = Vector3(0.619309, 0.140514, -1.54198)
 bones/29/position = Vector3(-0.511044, 0.245713, -1.55885)
 
-[node name="isaac" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D" index="0"]
+[node name="HeadIsaac" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(-2.16407, 1.09523e-20, 8.4272e-07, -8.4272e-07, -9.45945e-08, -2.16407, 3.68365e-14, -2.16407, 9.45945e-08, 2.36838e-08, -0.0608191, -2.82417)
+
+[node name="isaac" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D" index="1"]
 mesh = SubResource("ArrayMesh_jbsbr")
 skin = SubResource("Skin_8mjxo")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D" index="2"]
+active = false
+influence = 0.493
+target_node = NodePath("../../../../FlashbackDalton/Dalton/CharacterBody3D/HeadDalton")
+bone_name = "DEF_Head"
+bone = 5
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.58249
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.17174
+secondary_damp_threshold = 1.0
+script = ExtResource("8_k78u7")
+amplitude = 0.01
+character_string = "Isaac"
 
 [node name="WalkSound" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001" index="1"]
 stream = SubResource("AudioStreamSynchronized_r0nol")
@@ -1013,7 +1042,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150295, 1.44985, 0.899318)
 [node name="FlashbackDalton" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("13_w5hpx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4588, -0.0685094, 0.274761)
 
-[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton" index="0" node_paths=PackedStringArray("armature", "anim_tree", "camera", "force_rotate_list", "collision", "sound_player", "paperSound", "think")]
+[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton" index="0" node_paths=PackedStringArray("armature", "anim_tree", "camera", "force_rotate_list", "collision", "sound_player", "paperSound", "think", "coll_shape")]
 armature = NodePath("Flashback")
 anim_tree = NodePath("FlashBackAnims")
 camera = NodePath("../../../../CameraSystem/Camera3D")
@@ -1022,6 +1051,10 @@ collision = NodePath("../../../../../../Stuff/ClutteredOffice/Desk/StaticBody3D/
 sound_player = NodePath("SoundPlayerDalton")
 paperSound = NodePath("PaperWalk")
 think = NodePath("Think")
+coll_shape = NodePath("../../../../../../Stuff/ClutteredOffice/Desk/StaticBody3D/CollisionShape3D6")
+
+[node name="HeadDalton" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37314, 0)
 
 [node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00259769, 0, 0.067627)
@@ -1030,57 +1063,100 @@ shape = SubResource("BoxShape3D_2g7hf")
 [node name="Alert" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
 visible = false
 
+[node name="FlashBackDalton" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback" index="0"]
+transform = Transform3D(0.423249, 0, 0, 0, -1.85008e-08, -0.423249, 0, 0.423249, -1.85008e-08, 0, 0, 0)
+
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton" index="0"]
-bones/0/position = Vector3(2.21317e-10, -1.10713e-08, -1.71158)
-bones/4/rotation = Quaternion(-0.0578957, -7.62127e-10, -3.00188e-10, 0.998323)
-bones/5/rotation = Quaternion(0.064732, -6.9747e-11, -1.30254e-11, 0.997903)
-bones/11/rotation = Quaternion(-0.373078, 0.0221262, -0.492598, 0.78592)
-bones/12/rotation = Quaternion(0.437176, 0.279499, -0.329661, 0.788721)
-bones/15/rotation = Quaternion(-0.370494, -0.0193547, 0.492369, 0.787358)
-bones/16/rotation = Quaternion(0.427581, -0.278423, 0.33237, 0.793212)
-bones/19/rotation = Quaternion(0.14319, 0.00831651, -0.00487054, 0.989648)
-bones/20/rotation = Quaternion(-0.332204, 0.000130116, -0.00911272, 0.943163)
-bones/21/rotation = Quaternion(0.812948, -0.028136, 0.0296973, 0.580897)
-bones/23/rotation = Quaternion(0.14319, -0.00831647, 0.00487053, 0.989648)
-bones/24/rotation = Quaternion(-0.332204, -0.000130116, 0.00911271, 0.943163)
-bones/25/rotation = Quaternion(0.812948, 0.028136, -0.0296973, 0.580897)
-bones/28/position = Vector3(0.505751, 0.0340766, -1.51746)
-bones/28/scale = Vector3(1.01122, 1, 1.17347)
-bones/29/position = Vector3(-0.506537, 0.0313875, -1.51183)
-bones/29/scale = Vector3(1.01122, 1, 1.17347)
+bones/0/position = Vector3(-6.75998e-10, -1.30962e-08, -1.73738)
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
+bones/4/rotation = Quaternion(-0.0689176, 1.44643e-16, 2.0209e-15, 0.997622)
+bones/5/rotation = Quaternion(0.0711824, -4.88289e-10, -9.12008e-11, 0.997463)
+bones/6/position = Vector3(0.256909, 0.65721, 0.0662163)
+bones/6/rotation = Quaternion(2.65866e-10, -5.70862e-10, -0.143774, 0.989611)
+bones/7/rotation = Quaternion(0.0615113, 0.000898594, 0.0145798, 0.997999)
+bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
+bones/8/rotation = Quaternion(-3.7282e-10, 3.78358e-10, 0.138842, 0.990315)
+bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
+bones/10/rotation = Quaternion(-0.14247, 0.0557454, -0.688243, 0.709166)
+bones/11/rotation = Quaternion(-0.359398, 0.0102557, -0.512022, 0.780103)
+bones/12/rotation = Quaternion(0.409813, 0.274652, -0.318953, 0.809252)
+bones/13/rotation = Quaternion(0.00671636, -0.00228499, -0.0206946, 0.999761)
+bones/14/rotation = Quaternion(-0.14247, -0.0557454, 0.688243, 0.709166)
+bones/15/rotation = Quaternion(-0.34338, 0.00681335, 0.512581, 0.786959)
+bones/16/rotation = Quaternion(0.349387, -0.266897, 0.327933, 0.836155)
+bones/17/rotation = Quaternion(0.00671635, 0.00228496, 0.0206946, 0.999761)
+bones/19/rotation = Quaternion(0.117007, 0.00933631, -0.0060716, 0.993069)
+bones/20/rotation = Quaternion(-0.281186, 0.000132386, -0.00771322, 0.959622)
+bones/21/rotation = Quaternion(0.79463, -0.0290393, 0.0288146, 0.605714)
+bones/23/rotation = Quaternion(0.117007, -0.00933626, 0.00607159, 0.993069)
+bones/24/rotation = Quaternion(-0.281186, -0.000132386, 0.00771323, 0.959622)
+bones/25/rotation = Quaternion(0.79463, 0.0290393, -0.0288146, 0.605714)
+bones/26/position = Vector3(0.302293, -0.0768642, -0.13186)
+bones/26/rotation = Quaternion(0.0204546, 0, 0.999791, 6.58544e-10)
+bones/26/scale = Vector3(1.10417, 1, 1.00018)
+bones/27/position = Vector3(-0.302293, -0.0768642, -0.13186)
+bones/27/rotation = Quaternion(-0.0204547, 8.89046e-16, 0.999791, -1.31709e-09)
+bones/27/scale = Vector3(1.10417, 1, 1.00018)
+bones/28/position = Vector3(0.495377, 0.0729293, -1.52026)
+bones/28/rotation = Quaternion(0.790332, -2.10734e-08, 0.612679, -7.76605e-08)
+bones/28/scale = Vector3(1.00696, 1, 1.1054)
+bones/29/position = Vector3(-0.500162, 0.0565397, -1.48593)
+bones/29/rotation = Quaternion(0.790332, 2.10734e-08, -0.612679, -7.76605e-08)
+bones/29/scale = Vector3(1.00696, 1, 1.1054)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_45o54")
 skin = SubResource("Skin_6k4rj")
 
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D" index="1"]
+influence = 0.775
+target_node = NodePath("../../../../../../../Isaac/Armature_001/Skeleton3D/HeadIsaac")
+bone_name = "DEF_Head"
+bone = 5
+duration = 2.0
+transition_type = 7
+ease_type = 2
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 2.09457
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.113446
+secondary_damp_threshold = 1.0
+script = ExtResource("8_k78u7")
+amplitude = 0.01
+limit_angle = 6.5
+character_string = "Dalton"
+influence_target = 0.785
+
 [node name="AnimationPlayer" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback" index="1"]
 speed_scale = 1.6
 
-[node name="WalkDalton" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="4"]
+[node name="WalkDalton" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="5"]
 stream = SubResource("AudioStreamSynchronized_gvaq2")
 bus = &"SFX"
 
-[node name="SoundPlayerDalton" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="5"]
+[node name="SoundPlayerDalton" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="6"]
 libraries = {
 &"": SubResource("AnimationLibrary_ns0oc")
 }
 
-[node name="PaperWalk" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="6"]
+[node name="PaperWalk" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15276, 0)
 stream = SubResource("AudioStreamRandomizer_5tk2m")
 volume_db = -15.0
 bus = &"SFX"
 
-[node name="AudioListener3D" type="AudioListener3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="7"]
+[node name="AudioListener3D" type="AudioListener3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="8"]
 current = true
 
-[node name="Think" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="8"]
+[node name="Think" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="9"]
 stream = ExtResource("28_bjqar")
 volume_db = -10.0
 pitch_scale = 1.5
 bus = &"SFX"
 
-[node name="Marker3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="9" node_paths=PackedStringArray("cam_face_back")]
+[node name="Marker3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" index="10" node_paths=PackedStringArray("cam_face_back")]
 cam_face_back = [NodePath("../../../../../CameraSystem/PhantomCamera3D")]
 
 [node name="MarkersFlashback" type="Node" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton"]
@@ -1168,6 +1244,128 @@ stream = ExtResource("34_kshh4")
 autoplay = true
 bus = &"Ambience"
 
+[node name="Interaction Boxes" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="CorkRight" type="Node3D" parent="SubViewportContainer/SubViewport/Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
+script = ExtResource("43_6vflx")
+player = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D")
+alert = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../../../../Markers/Dalton")
+isaac_marker = NodePath("../../../../Markers/Isaac")
+dialogue_file = "Corkboard_Map"
+interact_type = "Corkboard_Right"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" instance=ExtResource("16_qmgvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24706, 0)
+collision_layer = 14
+collision_mask = 1
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25397, 0, 1.33673)
+shape = SubResource("BoxShape3D_0y78j")
+
+[node name="CorkMid" type="Node3D" parent="SubViewportContainer/SubViewport/Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
+script = ExtResource("43_6vflx")
+player = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D")
+alert = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../../../../Markers/Dalton")
+isaac_marker = NodePath("../../../../Markers/Isaac")
+dialogue_file = "Big_board"
+interact_type = "Cork_mid"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549823, 1.0016, 1.43545)
+shape = SubResource("BoxShape3D_ykiv2")
+
+[node name="CorkLeft" type="Node3D" parent="SubViewportContainer/SubViewport/Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
+script = ExtResource("43_6vflx")
+player = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D")
+alert = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../../../../Markers/Dalton")
+isaac_marker = NodePath("../../../../Markers/Isaac")
+dialogue_file = "Corkboard_Case_Files"
+interact_type = "Cork_Left"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66644, 1.15972, 1.46438)
+shape = SubResource("BoxShape3D_6vflx")
+
+[node name="Donuts" type="Node3D" parent="SubViewportContainer/SubViewport/Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
+script = ExtResource("43_6vflx")
+player = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D")
+alert = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../../../../Markers/Dalton")
+isaac_marker = NodePath("../../../../Markers/Isaac")
+dialogue_file = "Donuts"
+interact_type = "Donuts"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Interaction Boxes/Donuts/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.615878, 0.376342, 0.794035)
+shape = SubResource("BoxShape3D_xiqjf")
+
+[node name="Isaac" type="Node3D" parent="SubViewportContainer/SubViewport/Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
+script = ExtResource("45_ykiv2")
+player = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D")
+alert = NodePath("../../Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
+dalton_marker = NodePath("../../../../Markers/Dalton")
+isaac_marker = NodePath("../../../../Markers/Isaac")
+dialogue_file = "isaac"
+interact_type = "Isaac"
+load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
+load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
+
+[node name="Interactable" parent="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" instance=ExtResource("16_qmgvm")]
+collision_layer = 14
+collision_mask = 1
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Interaction Boxes/Isaac/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462257, 0.694319, 0.687699)
+shape = SubResource("BoxShape3D_y3y4c")
+
+[node name="Sounds" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("audio_master")]
+script = ExtResource("37_kpa27")
+audio_master = [NodePath("Blip(start?)"), NodePath("Blip(back?)"), NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Hiss02(back?)")]
+
+[node name="Blip(start?)" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = ExtResource("38_k78u7")
+bus = &"SFX"
+
+[node name="Blip(back?)" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = ExtResource("39_cnt7s")
+bus = &"SFX"
+
+[node name="Click(select)" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = ExtResource("40_j0egg")
+bus = &"SFX"
+
+[node name="Hiss(hover)" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = ExtResource("41_m53ye")
+bus = &"SFX"
+
+[node name="Hiss02(back?)" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
+stream = ExtResource("42_i5g4t")
+bus = &"SFX"
+
 [node name="Stuff" type="Node" parent="."]
 
 [node name="ClutteredOffice" parent="Stuff" instance=ExtResource("1_s0xgw")]
@@ -1188,6 +1386,10 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stuff/ClutteredOffice/Desk/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128204, 0.0635376, 1.18147)
 shape = SubResource("BoxShape3D_yor6a")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Stuff/ClutteredOffice/Desk/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00422853, 0.0635376, 1.03315)
+shape = SubResource("BoxShape3D_ceh46")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Stuff/ClutteredOffice/Desk/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00613403, 0, 1.83058)
@@ -1393,140 +1595,67 @@ marker = NodePath(".")
 cam = NodePath("../../SubViewportContainer/SubViewport/CameraSystem/Camera3D")
 body_marker = NodePath("../../SubViewportContainer/SubViewport/Characters/Isaac/Marker3D")
 
-[node name="Interaction Boxes" type="Node" parent="."]
-
-[node name="CorkRight" type="Node3D" parent="Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
-script = ExtResource("43_6vflx")
-player = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D")
-alert = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
-dalton_marker = NodePath("../../Markers/Dalton")
-isaac_marker = NodePath("../../Markers/Isaac")
-dialogue_file = "Corkboard_Map"
-interact_type = "Corkboard_Right"
-load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
-load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
-
-[node name="Interactable" parent="Interaction Boxes/CorkRight" instance=ExtResource("16_qmgvm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24706, 0)
-collision_layer = 14
-collision_mask = 1
-
-[node name="CollisionShape3D" parent="Interaction Boxes/CorkRight/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25397, 0, 1.33673)
-shape = SubResource("BoxShape3D_0y78j")
-
-[node name="CorkMid" type="Node3D" parent="Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
-script = ExtResource("43_6vflx")
-player = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D")
-alert = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
-dalton_marker = NodePath("../../Markers/Dalton")
-isaac_marker = NodePath("../../Markers/Isaac")
-dialogue_file = "Big_board"
-interact_type = "Cork_mid"
-load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
-load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
-
-[node name="Interactable" parent="Interaction Boxes/CorkMid" instance=ExtResource("16_qmgvm")]
-collision_layer = 14
-collision_mask = 1
-
-[node name="CollisionShape3D" parent="Interaction Boxes/CorkMid/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549823, 1.0016, 1.43545)
-shape = SubResource("BoxShape3D_ykiv2")
-
-[node name="CorkLeft" type="Node3D" parent="Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
-script = ExtResource("43_6vflx")
-player = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D")
-alert = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
-dalton_marker = NodePath("../../Markers/Dalton")
-isaac_marker = NodePath("../../Markers/Isaac")
-dialogue_file = "Corkboard_Case_Files"
-interact_type = "Cork_Left"
-load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
-load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
-
-[node name="Interactable" parent="Interaction Boxes/CorkLeft" instance=ExtResource("16_qmgvm")]
-collision_layer = 14
-collision_mask = 1
-
-[node name="CollisionShape3D" parent="Interaction Boxes/CorkLeft/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66644, 1.15972, 1.46438)
-shape = SubResource("BoxShape3D_6vflx")
-
-[node name="Donuts" type="Node3D" parent="Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
-script = ExtResource("43_6vflx")
-player = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D")
-alert = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
-dalton_marker = NodePath("../../Markers/Dalton")
-isaac_marker = NodePath("../../Markers/Isaac")
-dialogue_file = "Donuts"
-interact_type = "Donuts"
-load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
-load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
-
-[node name="Interactable" parent="Interaction Boxes/Donuts" instance=ExtResource("16_qmgvm")]
-collision_layer = 14
-collision_mask = 1
-
-[node name="CollisionShape3D" parent="Interaction Boxes/Donuts/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.615878, 0.376342, 0.794035)
-shape = SubResource("BoxShape3D_xiqjf")
-
-[node name="Isaac" type="Node3D" parent="Interaction Boxes" node_paths=PackedStringArray("player", "alert", "dalton_marker", "isaac_marker")]
-script = ExtResource("45_ykiv2")
-player = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D")
-alert = NodePath("../../SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert")
-dalton_marker = NodePath("../../Markers/Dalton")
-isaac_marker = NodePath("../../Markers/Isaac")
-dialogue_file = "isaac"
-interact_type = "Isaac"
-load_Dalton_dialogue = "res://Dialogic Characters/Dalton.dch"
-load_Isaac_dialogue = "res://Dialogic Characters/Isaac.dch"
-
-[node name="Interactable" parent="Interaction Boxes/Isaac" instance=ExtResource("16_qmgvm")]
-collision_layer = 14
-collision_mask = 1
-
-[node name="CollisionShape3D" parent="Interaction Boxes/Isaac/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462257, 0.694319, 0.687699)
-shape = SubResource("BoxShape3D_y3y4c")
-
 [node name="Tutorial" parent="." instance=ExtResource("46_6vflx")]
 
 [connection signal="_show_tut" from="." to="Tutorial" method="_show_tut"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/PaperSounds/Area3D" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" method="_on_area_3d_body_entered"]
-[connection signal="_show_tut" from="Interaction Boxes/CorkRight" to="Tutorial" method="_show_tut"]
-[connection signal="body_entered" from="Interaction Boxes/CorkRight/Interactable" to="Interaction Boxes/CorkRight" method="_on_interactable_body_entered"]
-[connection signal="body_exited" from="Interaction Boxes/CorkRight/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
-[connection signal="interacted" from="Interaction Boxes/CorkRight/Interactable" to="Interaction Boxes/CorkRight" method="_on_interactable_interacted"]
-[connection signal="_show_tut" from="Interaction Boxes/CorkMid" to="Tutorial" method="_show_tut"]
-[connection signal="body_entered" from="Interaction Boxes/CorkMid/Interactable" to="Interaction Boxes/CorkMid" method="_on_interactable_body_entered"]
-[connection signal="body_exited" from="Interaction Boxes/CorkMid/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
-[connection signal="interacted" from="Interaction Boxes/CorkMid/Interactable" to="Interaction Boxes/CorkMid" method="_on_interactable_interacted"]
-[connection signal="_show_tut" from="Interaction Boxes/CorkLeft" to="Tutorial" method="_show_tut"]
-[connection signal="body_entered" from="Interaction Boxes/CorkLeft/Interactable" to="Interaction Boxes/CorkLeft" method="_on_interactable_body_entered"]
-[connection signal="body_exited" from="Interaction Boxes/CorkLeft/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
-[connection signal="interacted" from="Interaction Boxes/CorkLeft/Interactable" to="Interaction Boxes/CorkLeft" method="_on_interactable_interacted"]
-[connection signal="_show_tut" from="Interaction Boxes/Donuts" to="Tutorial" method="_show_tut"]
-[connection signal="body_entered" from="Interaction Boxes/Donuts/Interactable" to="Interaction Boxes/Donuts" method="_on_interactable_body_entered"]
-[connection signal="body_exited" from="Interaction Boxes/Donuts/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
-[connection signal="interacted" from="Interaction Boxes/Donuts/Interactable" to="Interaction Boxes/Donuts" method="_on_interactable_interacted"]
-[connection signal="_show_tut" from="Interaction Boxes/Isaac" to="Tutorial" method="_show_tut"]
-[connection signal="to_walk_out" from="Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/Isaac" method="_on_isaac_to_walk_out"]
-[connection signal="to_walk_out" from="Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" method="_on_dalton_to_walk_out"]
-[connection signal="body_entered" from="Interaction Boxes/Isaac/Interactable" to="Interaction Boxes/Isaac" method="_on_interactable_body_entered"]
-[connection signal="body_exited" from="Interaction Boxes/Isaac/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
-[connection signal="interacted" from="Interaction Boxes/Isaac/Interactable" to="Interaction Boxes/Isaac" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" to="Tutorial" method="_show_tut"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" to="SubViewportContainer/SubViewport/Sounds" method="_on_start_click"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" to="Tutorial" method="_show_tut"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" to="SubViewportContainer/SubViewport/Sounds" method="_on_start_click"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" to="Tutorial" method="_show_tut"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" to="SubViewportContainer/SubViewport/Sounds" method="_on_start_click"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" to="Tutorial" method="_show_tut"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="dalton_disactivateLook" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" to="SubViewportContainer/SubViewport/Sounds" method="_on_start_click"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/Interaction Boxes/Donuts/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/Donuts" method="_on_interactable_interacted"]
+[connection signal="_show_tut" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" to="Tutorial" method="_show_tut"]
+[connection signal="gen_interact" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Sounds" method="_on_start_click"]
+[connection signal="look_activation" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="look_disactivation" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="to_walk_out" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/Isaac" method="_on_isaac_to_walk_out"]
+[connection signal="to_walk_out" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" method="_on_dalton_to_walk_out"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac/Interactable" to="Tutorial" method="_on_interactable_body_exited"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac/Interactable" to="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D" method="_on_Isaac_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac/Interactable" to="SubViewportContainer/SubViewport/Interaction Boxes/Isaac" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/Interaction Boxes/Isaac/Interactable" to="SubViewportContainer/SubViewport/Sounds" method="_on_start_click"]
 
 [editable path="SubViewportContainer/SubViewport/Characters/Isaac"]
 [editable path="SubViewportContainer/SubViewport/Characters/FlashbackDalton"]
 [editable path="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor"]
 [editable path="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback"]
+[editable path="SubViewportContainer/SubViewport/Interaction Boxes/CorkRight/Interactable"]
+[editable path="SubViewportContainer/SubViewport/Interaction Boxes/CorkMid/Interactable"]
+[editable path="SubViewportContainer/SubViewport/Interaction Boxes/CorkLeft/Interactable"]
+[editable path="SubViewportContainer/SubViewport/Interaction Boxes/Donuts/Interactable"]
+[editable path="SubViewportContainer/SubViewport/Interaction Boxes/Isaac/Interactable"]
 [editable path="Stuff/ClutteredOffice"]
 [editable path="Stuff/OfficeItems"]
-[editable path="Interaction Boxes/CorkRight/Interactable"]
-[editable path="Interaction Boxes/CorkMid/Interactable"]
-[editable path="Interaction Boxes/CorkLeft/Interactable"]
-[editable path="Interaction Boxes/Donuts/Interactable"]
-[editable path="Interaction Boxes/Isaac/Interactable"]
 [editable path="Tutorial"]

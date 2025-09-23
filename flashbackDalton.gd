@@ -11,6 +11,7 @@ const LERP_VAL = .15
 var just_walked : bool = false
 @export var paperSound : AudioStreamPlayer3D
 @export var think : AudioStreamPlayer3D
+@export var coll_shape : CollisionShape3D
 
 signal moving
 signal stopped
@@ -23,6 +24,8 @@ var in_control = true
 var force_rotation = false
 var move_out = false
 var number = 0
+var spec_rotate := false
+var sound_allowed := true
 
 var blend_target = 1.0
 
@@ -33,6 +36,7 @@ func _ready() -> void:
 	#in_control = false
 	#await get_tree().create_timer(10).timeout
 	# Start lerping to 0
+	sound_allowed = true
 	blend_target = 0.0
 	await get_tree().create_timer(1).timeout
 	in_control = true
@@ -48,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	GlobalVars.player_pos = global_position
 	GlobalVars.dalton_pos = global_position
 	# Add the gravity.
-	if GlobalVars.player_move == true:
+	if GlobalVars.player_move == true or spec_rotate:
 		emit_signal("moving")
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -78,11 +82,13 @@ func _physics_process(delta: float) -> void:
 				armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-rotated_dir.x, -rotated_dir.z), LERP_VAL)
 				#if anim_tree["parameters/Blend3/blend_amount"] < 0:
 					#anim_tree["parameters/Blend3/blend_amount"] = 0
-				sound_player.play("wood_walk")
+				if sound_allowed:
+					sound_player.play("wood_walk")
 				just_walked = true
 			else:
 				if just_walked:
-					sound_player.play("wood_gather")
+					if sound_allowed:
+						sound_player.play("wood_gather")
 					just_walked = false
 				velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 				velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
@@ -142,8 +148,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		paperSound.play()
 		
 
-
 func _on_dalton_to_walk_out():
+	coll_shape.disabled = true
 	number = 0
 	force_rotation = true
 	in_control = false
@@ -155,5 +161,17 @@ func _on_dalton_to_walk_out():
 	force_rotate(number)
 	move_out = true
 	await get_tree().create_timer(3.5).timeout
+	sound_allowed = false
 	Loading.load_scene(self, GlobalVars.office_path, false, "", "")
 	GlobalVars.day = 1
+
+
+func _on_Isaac_interacted(interactor: Interactor) -> void:
+	number = 0
+	spec_rotate = true
+	force_rotation = true
+	in_control = false
+	await get_tree().create_timer(4.5).timeout
+	force_rotation = false
+	spec_rotate = false
+	in_control = true

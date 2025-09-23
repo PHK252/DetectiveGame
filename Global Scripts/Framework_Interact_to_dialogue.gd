@@ -13,9 +13,12 @@ extends Node3D
 @export var load_Isaac_dialogue: String
 
 signal _show_tut(tut_type : String)
+signal gen_interact
+signal dalton_disactivateLook
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
+		emit_signal("gen_interact")
 		GlobalVars.in_dialogue = true
 		var game_dialogue = Dialogic.start(dialogue_file)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -32,6 +35,7 @@ func _on_interactable_interacted(interactor):
 
 
 func _on_timeline_ended():
+	emit_signal("dalton_disactivateLook")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()

@@ -14,9 +14,14 @@ extends Node3D
 
 signal to_walk_out
 signal _show_tut(tut_type : String)
+signal gen_interact
+signal look_activation
+signal look_disactivation
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
+		emit_signal("gen_interact")
+		emit_signal("look_activation")
 		GlobalVars.in_dialogue = true
 		var game_dialogue = Dialogic.start(dialogue_file)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -32,6 +37,7 @@ func _on_interactable_interacted(interactor):
 		player.stop_player()
 
 func _walk_out(arg : String):
+	emit_signal("look_disactivation")
 	if arg == "walk_out":
 		Dialogic.signal_event.disconnect(_walk_out)
 		emit_signal("to_walk_out")
@@ -39,6 +45,7 @@ func _walk_out(arg : String):
 		Dialogic.signal_event.disconnect(_walk_out)
 
 func _on_timeline_ended():
+	emit_signal("look_disactivation")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
