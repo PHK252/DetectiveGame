@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		# use angle here
 		secondary_limit_angle = angle
 	else:
-		secondary_limit_angle = lerp(secondary_limit_angle, 4.82, delta * 0.15)
+		secondary_limit_angle = lerp(secondary_limit_angle, 4.82, delta * 0.015)
 
 func _on_character_body_3d_look_dalton() -> void:
 	active = true

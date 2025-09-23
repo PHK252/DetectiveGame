@@ -387,6 +387,7 @@ func _on_interact_area_body_entered(body: Node3D) -> void:
 		print("waiting for interact")
 		see_player = true
 		state = IDLE
+		#Possibly causing freezing in certain scenarios, need to be careful
 		
 	if body.is_in_group("micah") and theo_adjustment:
 		print("abort")

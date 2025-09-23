@@ -142,3 +142,18 @@ func _on_cab_interact_general_quit() -> void:
 
 func _on_character_body_3d_knocking_juniper() -> void:
 	audio[9].play()
+
+func _on_menuHover() -> void:
+	audio_master[3].play()
+
+func _on_menuClick() -> void:
+	audio_master[2].play()
+
+func _on_start_click() -> void:
+	audio_master[1].play()
+
+func _on_menu_exit() -> void:
+	audio_master[0].play()
+
+func _on_hover_exit() -> void:
+	audio_master[4].play()

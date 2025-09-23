@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnu1071bx7xsa"]
+[gd_scene load_steps=21 format=3 uid="uid://cnu1071bx7xsa"]
 
 [ext_resource type="Texture2D" uid="uid://sr60ubjrdhtv" path="res://UI/Assets/Pause/Pause Board.png" id="1_3uscu"]
 [ext_resource type="Script" uid="uid://2ix3jmv1wutb" path="res://UI/pause.gd" id="1_k7vu6"]
@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://cw1bw0wk0nvtd" path="res://UI/Assets/Pause/Update/Pause Quit Normal.png" id="9_sln6w"]
 [ext_resource type="Texture2D" uid="uid://dfsq6ft81ehkn" path="res://UI/Assets/Pause/Update/Pause Quit Hovered.png" id="10_lc5u0"]
 [ext_resource type="PackedScene" uid="uid://todl2n23or4m" path="res://UI/Controls.tscn" id="11_8vpyk"]
+[ext_resource type="Script" uid="uid://ce65wpgqyu531" path="res://GeneralScripts/AudioScripts/audio_manager.gd" id="12_lc5u0"]
+[ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="13_74tmv"]
+[ext_resource type="AudioStream" uid="uid://dlmukgdrndsxy" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_2.wav" id="14_a2krg"]
+[ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="15_v2tnu"]
+[ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="16_021is"]
+[ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="17_4muie"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_74tmv"]
 
@@ -92,10 +98,41 @@ process_mode = 3
 visible = false
 pause = true
 
+[node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
+script = ExtResource("12_lc5u0")
+audio_master = [NodePath("Blip(start?)"), NodePath("Blip(back?)"), NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Hiss02(back?)")]
+
+[node name="Blip(start?)" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("13_74tmv")
+bus = &"SFX"
+
+[node name="Blip(back?)" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("14_a2krg")
+bus = &"SFX"
+
+[node name="Click(select)" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("15_v2tnu")
+bus = &"SFX"
+
+[node name="Hiss(hover)" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("16_021is")
+bus = &"SFX"
+
+[node name="Hiss02(back?)" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("17_4muie")
+bus = &"SFX"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/Resume" to="Sounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Resume" to="Sounds" method="_on_start_click"]
+[connection signal="mouse_entered" from="VBoxContainer/Options" to="Sounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="Sounds" method="_on_menuClick"]
+[connection signal="mouse_entered" from="VBoxContainer/Controls" to="Sounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls" to="Sounds" method="_on_menuClick"]
+[connection signal="mouse_entered" from="VBoxContainer/Save" to="Sounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="show_pause" from="Controls" to="." method="_on_controls_show_pause"]
 [connection signal="visibility_changed" from="Controls" to="Controls" method="_on_visibility_changed"]
