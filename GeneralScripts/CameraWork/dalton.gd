@@ -76,6 +76,7 @@ func _ready() -> void:
 func _on_dialogic_signal(argument: String):
 	if argument == "knock":
 		anim_tree.set("parameters/Knock/request", true)
+		emit_signal("knocking")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames() 
@@ -193,7 +194,7 @@ func _physics_process(delta: float) -> void:
 		
 		if not _snap_up_stairs_check(delta):
 			if force_rotation:
-				print("rotating")
+				#print("rotating")
 				force_rotate(number)
 			move_and_slide()
 			_snap_down_to_stairs_check()
@@ -467,7 +468,7 @@ func _on_phone_call_phone_call() -> void:
 
 func _on_idle_2_timeout() -> void:
 	if velocity.length() == 0: 
-		if anim_tree["parameters/Thinking/request"] != 1:
+		if anim_tree["parameters/Thinking/request"] != 1 and GlobalVars.in_dialogue == false:
 			sound_player.play("thinking")
 			anim_tree.set("parameters/Thinking/request", true)
 

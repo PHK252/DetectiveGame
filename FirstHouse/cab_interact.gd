@@ -24,6 +24,9 @@ extends Node3D
 signal general_interact
 signal general_quit
 
+signal enable_look
+signal disable_look
+
 #@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,6 +68,7 @@ func _process(delta):
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
+			emit_signal("enable_look")
 			#player.start_player()
 			GlobalVars.in_interaction = ""
 			var cab_dialogue = Dialogic.start("Micah_cabinet")
@@ -84,6 +88,7 @@ func _process(delta):
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
+			emit_signal("enable_look")
 			GlobalVars.in_interaction = ""
 			var cab_dialogue = Dialogic.start("Micah_cabinet")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -132,6 +137,7 @@ func _on_cab_input_event(viewport, event, shape_idx):
 		
 func _on_timeline_ended():
 	#print("cab_dialog_end")
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()

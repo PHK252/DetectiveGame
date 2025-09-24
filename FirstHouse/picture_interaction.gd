@@ -41,6 +41,9 @@ extends Node3D
 signal general_interact
 signal general_quit
 
+signal enable_look
+signal disable_look
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pic_fell : bool = GlobalVars.get(pic_status)
@@ -68,6 +71,7 @@ func _process(delta):
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
+			emit_signal("enable_look")
 			var book_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			book_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -102,6 +106,7 @@ func _process(delta):
 
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()

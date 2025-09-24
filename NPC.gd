@@ -178,8 +178,8 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 	anim_tree.set("parameters/Scratch/request", 2)
 	yawn.stop()
 	scratch.stop()
-	print("wandering")
-	print(wander_choice)
+	#print("wandering")
+	#print(wander_choice)
 	
 	if wander_choice < 2:
 		current_anim = one_shots[wander_choice]
@@ -282,7 +282,7 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 		see_player = false
 
 func _on_timer_timeout() -> void:
-	print(cooldown_bool)
+	#print(cooldown_bool)
 	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and intDalton == false:
 		var choice = rng.randi_range(-10, 10)
 		wander_choice = rng.randi_range(0, 2)

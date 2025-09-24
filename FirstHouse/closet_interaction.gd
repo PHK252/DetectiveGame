@@ -53,6 +53,9 @@ signal stepback
 signal general_interact
 signal general_quit
 
+signal enable_look
+signal disable_look
+
 @onready var tool_asked
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -89,6 +92,7 @@ func _process(delta):
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
+			emit_signal("enable_look")
 			var closet_dialogue = Dialogic.start(end_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			closet_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -141,6 +145,7 @@ func _on_interactable_interacted(interactor):
 			GlobalVars.in_dialogue = true
 			player.stop_player()
 			#Dialogue start
+			emit_signal("enable_look")
 			var closet_dialogue = Dialogic.start(start_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.signal_event.connect(closetLook)
@@ -151,6 +156,7 @@ func _on_interactable_interacted(interactor):
 		elif closet_open == true and tool_asked == false:
 			GlobalVars.in_dialogue = true
 			player.stop_player()
+			emit_signal("enable_look")
 			var closet_dialogue = Dialogic.start("Micah_closet_ask", "choices")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.signal_event.connect(closetLook)
@@ -160,6 +166,7 @@ func _on_interactable_interacted(interactor):
 		elif closet_open == true and tool_asked == true:
 			GlobalVars.in_dialogue = true
 			player.stop_player()
+			emit_signal("enable_look")
 			var closet_dialogue = Dialogic.start("Micah_closet_ask", "tool choices")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.signal_event.connect(closetLook)
@@ -169,6 +176,7 @@ func _on_interactable_interacted(interactor):
 			
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()

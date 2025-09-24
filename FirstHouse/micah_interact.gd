@@ -13,6 +13,8 @@ signal Dquestion
 signal Dstopped
 signal Tstop
 signal Tstart
+signal activate_look
+signal deactivate_look
 @onready var sit_micah = false
 @export var sit_body : Node3D
 
@@ -25,6 +27,7 @@ func _on_interactable_interacted(interactor):
 	emit_signal("Dquestion")
 	if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
 		emit_signal("Tstop")
+		emit_signal("activate_look")
 		GlobalVars.in_dialogue = true
 		player.stop_player()
 		alert.hide()
@@ -37,6 +40,7 @@ func _on_interactable_interacted(interactor):
 func _on_timeline_ended():
 	emit_signal("Dstopped")
 	emit_signal("Tstart")
+	emit_signal("deactivate_look")
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false

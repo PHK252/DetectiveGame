@@ -41,6 +41,9 @@ extends Node3D
 
 @export var case_pickup : AudioStreamPlayer3D
 signal general_quit
+
+signal disable_look
+signal enable_look
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI.hide()
@@ -80,6 +83,7 @@ func _on_interactable_interacted(interactor):
 			GlobalVars.in_interaction = interact_type
 			alert.hide()
 			player.stop_player()
+			emit_signal("enable_look")
 			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.signal_event.connect(caseUI)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -104,6 +108,7 @@ func _on_interactable_interacted(interactor):
 			GlobalVars.in_dialogue = true
 			alert.hide()
 			player.stop_player()
+			emit_signal("enable_look")
 			var game_dialogue = Dialogic.start(dialogue_file, "choices")
 			Dialogic.signal_event.connect(caseUI)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -113,6 +118,7 @@ func _on_interactable_interacted(interactor):
 
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	if GlobalVars.Micah_in_case == false:

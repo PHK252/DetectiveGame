@@ -48,7 +48,6 @@ func _on_about_to_show_text(info:Dictionary):
 		if character != "Dalton":
 			head_jitter = true
 		elif making_choice == false:
-			print("allowingJitterDalton")
 			head_jitter = true
 		
 func _on_about_to_end_text(info:Dictionary):
@@ -74,9 +73,15 @@ func _process(delta: float) -> void:
 		
 func _activate_lookAt():
 	activate_look = true
+	#if character_string == "Micah":
+		#print(activate_look)
+		#print(head_jitter)
 	
 func _disactivate_lookAt():
 	activate_look = false
+	#if character_string == "Micah":
+		#print(activate_look)
+		#print(head_jitter)
 
 func target_change(target: int):
 	if target == 1:
