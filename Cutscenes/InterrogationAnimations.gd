@@ -23,7 +23,10 @@ extends Node
 @export var theo_marker : Marker2D
 @export var skylar_maker : Marker2D
 
+@onready var pause = $"../../../Pause"
+
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalVars.current_level = "interrogation"
 	if Dialogic.VAR.get_variable("Interogation.Case_Intero", true):
 		dialogic_file = "Day_3_intero_case"
@@ -31,6 +34,9 @@ func _ready() -> void:
 		dialogic_file = "Day_3_intero_case_rever_quincy"
 	elif Dialogic.VAR.get_variable("Interogation.Secret_intero", true):
 		dialogic_file = "Secret_intero"
+	else:
+		print_debug("How you get here?")
+		return
 
 	cam_anims.play("IntroAnimation_revised")
 	await get_tree().create_timer(3).timeout
@@ -45,6 +51,10 @@ func _ready() -> void:
 	intero_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 	intero_dialogue.register_character(load("res://Dialogic Characters/Skylar.dch"), skylar_maker)
 	
+func _input(event):
+	if Input.is_action_just_pressed("Quit"):
+		if pause.visible == false:
+			pause.visible = true
 
 
 func _on_timeline_ended():

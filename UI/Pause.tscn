@@ -23,7 +23,7 @@
 [sub_resource type="Shortcut" id="Shortcut_8vpyk"]
 
 [node name="Pause" type="CanvasLayer"]
-layer = 0
+layer = 5
 script = ExtResource("1_k7vu6")
 
 [node name="Background2" type="TextureRect" parent="."]
@@ -91,7 +91,7 @@ texture_hover = ExtResource("10_lc5u0")
 
 [node name="Controls" parent="." instance=ExtResource("11_8vpyk")]
 process_mode = 3
-layer = 50
+layer = 6
 visible = false
 pause = true
 

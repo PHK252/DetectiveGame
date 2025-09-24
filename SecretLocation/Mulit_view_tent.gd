@@ -136,6 +136,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		player.hide()
 		player.stop_player()
 		if is_open == false:
+			print("entered")
 			open_interact.show()
 			interact_area_1.hide()
 			interact_area_2.hide()
@@ -198,3 +199,13 @@ func _open_case(arg : String):
 		open()
 	else:
 		Dialogic.signal_event.disconnect(_open_case)
+
+func _on_show_other_areas():
+	interact_area_1.show()
+	interact_area_2.show()
+	interact_area_3.show()
+	interact_area_4.show()
+	if Dialogic.VAR.get_variable("Secret Location.viewed_trash") == false:
+		trash_area.show()
+	else:
+		trash_area.hide()

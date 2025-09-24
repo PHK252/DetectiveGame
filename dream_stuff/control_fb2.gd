@@ -6,8 +6,10 @@ extends Node
 
 @export var isaac_marker : Marker2D
 @export var runa_marker : Marker2D
+@onready var pause = $"../../../Pause"
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	anim_c.play("CamAnim")
 	await anim_c.animation_finished
 	#anim_r["parameters/conditions/look_around"] = true
@@ -35,3 +37,7 @@ func _isaac_movement(arg : String):
 	else:
 		anim_I["parameters/conditions/snapOut"] = true
 		
+func _input(event):
+	if Input.is_action_just_pressed("Quit"):
+		if pause.visible == false:
+			pause.visible = true

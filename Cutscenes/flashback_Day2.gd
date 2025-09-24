@@ -1,9 +1,13 @@
 extends Node3D
 
+@onready var pause = $Pause
+
+
 func _ready():
 	GlobalVars.current_level = "Flashback_day_2"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta):
+func _input(event):
 	if Input.is_action_just_pressed("Quit"):
-			get_tree().quit()
+		if pause.visible == false:
+			pause.visible = true

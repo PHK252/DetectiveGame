@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://boda0uybnshug"]
+[gd_scene load_steps=137 format=4 uid="uid://boda0uybnshug"]
 
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="1_b3khi"]
 [ext_resource type="Script" uid="uid://ch1vyj8unrgyi" path="res://Cutscenes/flashback_Day1.gd" id="1_mnrbd"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://doh80x0mvx2jp" path="res://Cutscenes/backwall.glb" id="36_uh4i3"]
 [ext_resource type="AudioStream" uid="uid://bux2fm1tusyht" path="res://Audio/ThirdHouse/AltDoorOpen_01.wav" id="38_rm74m"]
 [ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="42_mnrbd"]
+[ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="46_0jwys"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_krw4o"]
 animation = &"HallwayLookDoor"
@@ -1080,7 +1081,7 @@ render_target_update_mode = 4
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(-0.0991393, 1.32676e-09, 1.68901e-10, 0.995074)
-bones/5/rotation = Quaternion(0.264357, -8.04903e-09, -1.16318e-09, 0.964425)
+bones/5/rotation = Quaternion(0.271077, -8.04916e-09, -1.1632e-09, 0.962558)
 bones/7/rotation = Quaternion(0.251585, 0.0036754, 0.0141376, 0.967725)
 bones/9/rotation = Quaternion(0.251585, 0.00367533, 0.014137, 0.967725)
 bones/11/rotation = Quaternion(-0.263317, -0.10466, -0.639998, 0.714222)
@@ -1105,7 +1106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0.38)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(0.111542, -7.42854e-09, -1.4092e-09, 0.99376)
-bones/5/rotation = Quaternion(-0.0113456, -0.0380196, 0.0185741, 0.99904)
+bones/5/rotation = Quaternion(-0.0161513, -0.0381085, 0.018391, 0.998974)
 bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
 bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
 bones/11/rotation = Quaternion(-0.398748, -0.0951924, -0.663664, 0.625691)
@@ -1185,8 +1186,8 @@ visible = false
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0753726, -0.0626146, -0.0031709, 0.995183)
-bones/5/rotation = Quaternion(0.198036, -0.114969, 0.00858316, 0.973391)
+bones/4/rotation = Quaternion(-0.0753863, -0.0596632, -0.00302144, 0.995363)
+bones/5/rotation = Quaternion(0.198158, -0.109562, 0.0081795, 0.973993)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
 bones/6/rotation = Quaternion(1.92867e-08, -2.67596e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898596, 0.0145798, 0.997999)
@@ -1194,11 +1195,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-4.39494e-09, 2.33899e-09, 0.138842, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898602, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.465288, 0.0812928, -0.309953, 0.825123)
+bones/11/rotation = Quaternion(-0.46168, 0.0820928, -0.311018, 0.826668)
 bones/12/rotation = Quaternion(0.503192, 0.178565, -0.57087, 0.623714)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.306999, -0.0824921, 0.378158, 0.86945)
-bones/16/rotation = Quaternion(0.512918, -0.174767, 0.577731, 0.610408)
+bones/15/rotation = Quaternion(-0.310532, -0.0821599, 0.377174, 0.868654)
+bones/16/rotation = Quaternion(0.513078, -0.174687, 0.577911, 0.610127)
 bones/19/rotation = Quaternion(0.09865, 0.00997421, -0.00680437, 0.995049)
 bones/20/rotation = Quaternion(-0.245123, 0.000133744, -0.00672399, 0.969469)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
@@ -1594,6 +1595,9 @@ num_stairs = 70
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35968, -0.97743, 0.786895)
 polygon = PackedVector2Array(0, 0.0279266, 0.038848, 0.0279266, 0.038848, 0.0558531, 0.077696, 0.0558531, 0.077696, 0.0837797, 0.116544, 0.0837797, 0.116544, 0.111706, 0.155392, 0.111706, 0.155392, 0.139633, 0.19424, 0.139633, 0.19424, 0.167559, 0.233088, 0.167559, 0.233088, 0.195486, 0.271936, 0.195486, 0.271936, 0.223413, 0.310784, 0.223413, 0.310784, 0.251339, 0.349632, 0.251339, 0.349632, 0.279266, 0.38848, 0.279266, 0.38848, 0.307192, 0.427328, 0.307192, 0.427328, 0.335119, 0.466176, 0.335119, 0.466176, 0.363045, 0.505024, 0.363045, 0.505024, 0.390972, 0.543872, 0.390972, 0.543872, 0.418899, 0.58272, 0.418899, 0.58272, 0.446825, 0.621568, 0.446825, 0.621568, 0.474752, 0.660416, 0.474752, 0.660416, 0.502678, 0.699264, 0.502678, 0.699264, 0.530605, 0.738112, 0.530605, 0.738112, 0.558531, 0.77696, 0.558531, 0.77696, 0.586458, 0.815808, 0.586458, 0.815808, 0.614385, 0.854656, 0.614385, 0.854656, 0.642311, 0.893504, 0.642311, 0.893504, 0.670238, 0.932352, 0.670238, 0.932352, 0.698164, 0.9712, 0.698164, 0.9712, 0.726091, 1.01005, 0.726091, 1.01005, 0.754017, 1.0489, 0.754017, 1.0489, 0.781944, 1.08774, 0.781944, 1.08774, 0.809871, 1.12659, 0.809871, 1.12659, 0.837797, 1.16544, 0.837797, 1.16544, 0.865724, 1.20429, 0.865724, 1.20429, 0.89365, 1.24314, 0.89365, 1.24314, 0.921577, 1.28198, 0.921577, 1.28198, 0.949503, 1.32083, 0.949503, 1.32083, 0.97743, 1.35968, 0.97743, 1.35968, 1.00536, 1.39853, 1.00536, 1.39853, 1.03328, 1.43738, 1.03328, 1.43738, 1.06121, 1.47622, 1.06121, 1.47622, 1.08914, 1.51507, 1.08914, 1.51507, 1.11706, 1.55392, 1.11706, 1.55392, 1.14499, 1.59277, 1.14499, 1.59277, 1.17292, 1.63162, 1.17292, 1.63162, 1.20084, 1.67046, 1.20084, 1.67046, 1.22877, 1.70931, 1.22877, 1.70931, 1.2567, 1.74816, 1.2567, 1.74816, 1.28462, 1.78701, 1.28462, 1.78701, 1.31255, 1.82586, 1.31255, 1.82586, 1.34048, 1.8647, 1.34048, 1.8647, 1.3684, 1.90355, 1.3684, 1.90355, 1.39633, 1.9424, 1.39633, 1.9424, 1.42426, 1.98125, 1.42426, 1.98125, 1.45218, 2.0201, 1.45218, 2.0201, 1.48011, 2.05894, 1.48011, 2.05894, 1.50803, 2.09779, 1.50803, 2.09779, 1.53596, 2.13664, 1.53596, 2.13664, 1.56389, 2.17549, 1.56389, 2.17549, 1.59181, 2.21434, 1.59181, 2.21434, 1.61974, 2.25318, 1.61974, 2.25318, 1.64767, 2.29203, 1.64767, 2.29203, 1.67559, 2.33088, 1.67559, 2.33088, 1.70352, 2.36973, 1.70352, 2.36973, 1.73145, 2.40858, 1.73145, 2.40858, 1.75937, 2.44742, 1.75937, 2.44742, 1.7873, 2.48627, 1.7873, 2.48627, 1.81523, 2.52512, 1.81523, 2.52512, 1.84315, 2.56397, 1.84315, 2.56397, 1.87108, 2.60282, 1.87108, 2.60282, 1.89901, 2.64166, 1.89901, 2.64166, 1.92693, 2.68051, 1.92693, 2.68051, 1.95486, 0, 1.95486)
 depth = 1.57379
+
+[node name="Pause" parent="." instance=ExtResource("46_0jwys")]
+visible = false
 
 [connection signal="activate_hall" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_activate_hall"]
 [connection signal="cam_bed" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_cam_bed"]

@@ -11,12 +11,11 @@ var activate := false
 var pre_walk := false
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
-		pre_walk = true
-		await get_tree().create_timer(2.5).timeout
-		pre_walk = false
-		activate = true
-	
+	#if Input.is_action_just_pressed("interact"):
+		#pre_walk = true
+		#await get_tree().create_timer(2.5).timeout
+		#pre_walk = false
+		#activate = true
 	if pre_walk:
 		sound_player.play("walk_skylar")
 	
@@ -31,3 +30,10 @@ func _process(delta: float) -> void:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
 	else:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
+
+
+func _on_walk_skylar():
+	pre_walk = true
+	await get_tree().create_timer(1.5).timeout
+	pre_walk = false
+	activate = true

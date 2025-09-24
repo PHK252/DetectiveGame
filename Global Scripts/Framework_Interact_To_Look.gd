@@ -33,6 +33,8 @@ extends Area2D
 @export var note_swipe : AudioStreamPlayer3D
 @export var paper : AudioStreamPlayer
 
+signal show_others
+
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
@@ -62,6 +64,7 @@ func _on_exit_pressed():
 			object_in_scene.show()
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			Dialogic.start(dialogue_file)
 			GlobalVars.set(view_object, true)
 		else:
@@ -78,6 +81,7 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	object_interact.show()
+	emit_signal("show_others")
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == viewing:
@@ -87,6 +91,7 @@ func _input(event):
 				object_in_scene.show()
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				Dialogic.start(dialogue_file)
 				GlobalVars.set(view_object, true)
 			else:

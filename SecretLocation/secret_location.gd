@@ -6,7 +6,7 @@ extends Node3D
 @export var theo_marker : Marker2D
 @export var skylar_marker : Marker2D
 signal dalton_rotate
-
+signal  walk_skylar
 @onready var pause = $Pause
 
 func _ready():
@@ -50,7 +50,7 @@ func _on_enter_skylar(body):
 
 func _enter_skylar(arg : String):
 	if arg == "skylar_enter":
-		#ENTER SKYLAR CODE GOES HERE
+		emit_signal("walk_skylar")
 		pass
 
 func _exit_scene():
