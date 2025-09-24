@@ -12,19 +12,44 @@ var activate_look := false
 @export var lookat_speed: float = 0.4
 @export var lookaway_speed: float = 0.7
 
+# 2 target handling for convos and door scenes
+@export var two_target_needed := false
+@export var main_target : Marker3D
+@export var secondary_target : Marker3D
+var making_choice := false
+
 func _ready() -> void:
 	secondary_limit_angle = limit_angle
 	influence = 0 
-	active = true
+	if two_target_needed:
+		target_node = main_target.get_path()
+	active = true 
 	Dialogic.Text.about_to_show_text.connect(_on_about_to_show_text)
 	Dialogic.Text.text_finished.connect(_on_about_to_end_text)
+	Dialogic.Choices.choice_selected.connect(_on_choice_selected)
+	Dialogic.Choices.question_shown.connect(_on_question_shown)
+
+func _on_choice_selected(info:Dictionary):
+	#print(info)
+	#print(making_choice)
+	#await get_tree().create_timer(0.2).timeout
+	making_choice = false
+	
+func _on_question_shown(info:Dictionary):
+	#print(info)
+	#print(making_choice)
+	making_choice = true
 
 func _on_about_to_show_text(info:Dictionary):
 	var character = info.get("character")
 	character = str(character)
 	character = character.split(":")[0].lstrip("[")
 	if character == character_string:
-		head_jitter = true
+		if character != "Dalton":
+			head_jitter = true
+		elif making_choice == false:
+			print("allowingJitterDalton")
+			head_jitter = true
 		
 func _on_about_to_end_text(info:Dictionary):
 	var character = info.get("character")
@@ -52,4 +77,10 @@ func _activate_lookAt():
 	
 func _disactivate_lookAt():
 	activate_look = false
+
+func target_change(target: int):
+	if target == 1:
+		target_node = main_target.get_path()
+	elif target == 2:
+		target_node = secondary_target.get_path()
 		

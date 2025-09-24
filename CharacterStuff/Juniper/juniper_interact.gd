@@ -18,6 +18,11 @@ signal tea_time
 signal reactivate_door
 signal enable_interaction
 
+#look signals
+signal enable_look
+signal disable_look
+signal retarget(target: int)
+
 func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
@@ -25,6 +30,7 @@ func _on_interactable_interacted(interactor):
 		#emit_signal("Tstop")
 		GlobalVars.in_dialogue = true
 		player.stop_player()
+		emit_signal("enable_look")
 		var ask_victims = Dialogic.start("Juniper_questions")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
@@ -42,6 +48,7 @@ func _on_greeting_ended():
 func _on_timeline_ended():
 	#emit_signal("Dstopped")
 	#emit_signal("Tstart")
+	emit_signal("disable_look")
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
@@ -90,6 +97,8 @@ func _on_entered_juniper_house():
 
 func _activate_tea(argument : String):
 	if argument == "tea_time":
+		emit_signal("disable_look")
+		emit_signal("retarget", 1)
 		Dialogic.signal_event.disconnect(_activate_tea)
 		GlobalVars.in_tea_time = true
 		emit_signal("tea_time")

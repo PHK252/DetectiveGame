@@ -37,6 +37,9 @@ var timed = false
 @export var case_pickup : AudioStreamPlayer3D
 @export var case_pickup_2 : AudioStreamPlayer3D
 
+#lookat
+signal enable_look
+signal disable_look
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

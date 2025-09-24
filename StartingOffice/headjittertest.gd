@@ -4,10 +4,14 @@ var head_jitter := false
 var time_passed: float = 0.0
 @export var amplitude: float = 0.05  # head rotation 0.05 base
 @export var speed: float = 15.0       # oscillations per second 20 base
+var activate_look := false
+
 
 func _ready() -> void:
 	secondary_limit_angle = 4.82
-	active = false
+	influence = 0
+	active = true
+	activate_look = false
 	Dialogic.Text.about_to_show_text.connect(_on_about_to_show_text)
 	Dialogic.Text.text_finished.connect(_on_about_to_end_text)
 
@@ -26,7 +30,6 @@ func _on_about_to_end_text(info:Dictionary):
 	if name == "Theo":
 		print("TheoDoneSpeaking(StopNod)")
 		head_jitter = false
-		secondary_limit_angle = 4.82
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
@@ -41,7 +44,12 @@ func _process(delta: float) -> void:
 		# use angle here
 		secondary_limit_angle = angle
 	else:
-		secondary_limit_angle = lerp(secondary_limit_angle, 4.82, delta * 0.015)
+		secondary_limit_angle = lerp(secondary_limit_angle, 4.82, delta * 0.2)
+
+	if activate_look:
+		influence = lerp(influence, 1.0, delta * 0.4) #lerp to influence
+	else:
+		influence = lerp(influence, 0.0, delta * 0.7)
 
 func _on_character_body_3d_look_dalton() -> void:
-	active = true
+	activate_look = true

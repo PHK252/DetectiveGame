@@ -35,6 +35,7 @@ signal dalton_knock
 signal entered_juniper
 signal quincy_reposition 
 signal theo_follow
+signal retarget(target: int)
 
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
@@ -228,6 +229,7 @@ func _on_character_body_3d_juniper_open_door() -> void:
 	collision.disabled = true
 	await get_tree().create_timer(2.0).timeout
 	emit_signal("j_dialogue")
+	emit_signal("retarget", 2)
 
 func _on_juniper_interact_finish_greeting() -> void:
 	greeting = true

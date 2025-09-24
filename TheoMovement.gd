@@ -35,6 +35,7 @@ var living_room_nogo := false
 var quincy_greet := false
 var faint_dalton := false
 var waterfall_scene := false
+var sofa_scene := false
 @export var drunk_marker : Marker3D
 @export var theo_node : CharacterBody3D
 @export var stairMarker : Marker3D
@@ -70,6 +71,8 @@ var greeting_finished := false
 @export var note_timer: Timer
 
 signal dalton_enter_level
+signal look_at_activate
+signal look_at_disactivate
 
 enum {
 	IDLE, 
@@ -198,8 +201,10 @@ func _process_adjust_state() -> void:
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0
-		if waterfall_scene:
-			theo_adjustment = true
+		if waterfall_scene or sofa_scene:
+			emit_signal("look_at_activate")
+			#theo_adjustment = true
+			quick_adjust()
 		state = IDLE
 		
 	if not nav.is_navigation_finished():
@@ -210,6 +215,11 @@ func _process_adjust_state() -> void:
 		anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
 		floor_type_walk()
 		nav.set_velocity(velocity)
+
+func quick_adjust():
+	theo_adjustment = true
+	await get_tree().create_timer(1.0).timeout
+	theo_adjustment = false
 
 func _process_investigate_state(distance_to_target) -> void:
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE:
@@ -823,7 +833,8 @@ func _on_right_porch_body_entered(body: Node3D) -> void:
 func _on_sofa_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		#print("adjustMiddle")
-		theo_adjustment = true
+		#theo_adjustment = true
+		sofa_scene = true
 		in_kitchen = true
 		nav.target_position = adjustment_list[2].global_position
 		is_navigating = true
@@ -839,7 +850,9 @@ func _on_left_porch_body_exited(body: Node3D) -> void:
 	theo_adjustment = false
 
 func _on_sofa_area_body_exited(body: Node3D) -> void:
-	theo_adjustment = false
+	#theo_adjustment = false
+	emit_signal("look_at_disactivate")
+	sofa_scene = false
 	in_kitchen = false 
 
 func _on_interactable_interacted_Juniper(interactor: Interactor) -> void:	
@@ -1037,7 +1050,8 @@ func _on_waterfall_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		#follow
 		waterfall_scene = false
-		theo_adjustment = false
+		#theo_adjustment = false
+		emit_signal("look_at_disactivate")
 		is_navigating = true
 		state = FOLLOW
 

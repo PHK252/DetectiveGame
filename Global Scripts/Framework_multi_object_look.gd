@@ -51,6 +51,10 @@ signal general_interact
 signal general_quit
 signal juniper_wander
 
+#lookat
+signal enable_look
+signal disable_look
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var read_dialogue_1 : bool = GlobalVars.get(dialogue_1)
@@ -99,6 +103,7 @@ func _process(delta):
 				#await get_tree().create_timer(.03).timeout
 				cam_anim.play("RESET")
 				player.show()
+				emit_signal("enable_look")
 				var game_dialogue = Dialogic.start(choice)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -122,6 +127,7 @@ func _process(delta):
 				FP_Cam.priority = 0
 				Exit_Cam.priority = 30
 				emit_signal("general_quit")
+				emit_signal("enable_look")
 				#await get_tree().create_timer(.03).timeout
 				cam_anim.play("RESET")
 				player.show()
@@ -147,6 +153,7 @@ func _process(delta):
 				FP_Cam.priority = 0
 				Exit_Cam.priority = 30
 				emit_signal("general_quit")
+				emit_signal("enable_look")
 				#await get_tree().create_timer(.03).timeout
 				cam_anim.play("RESET")
 				player.show()
@@ -203,6 +210,7 @@ func _process(delta):
 
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	emit_signal("juniper_wander")
