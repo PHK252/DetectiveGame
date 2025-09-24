@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=4 uid="uid://boda0uybnshug"]
+[gd_scene load_steps=138 format=4 uid="uid://boda0uybnshug"]
 
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="1_b3khi"]
 [ext_resource type="Script" uid="uid://ch1vyj8unrgyi" path="res://Cutscenes/flashback_Day1.gd" id="1_mnrbd"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://bi1ul65herrfw" path="res://ShaderScripts/Flashback_01_brother.tres" id="6_1p66a"]
 [ext_resource type="Script" uid="uid://ba877ddbj17hy" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_fxagu"]
 [ext_resource type="PackedScene" uid="uid://bsgah3byqvu3m" path="res://Cutscenes/FirstFlashEnvironment.glb" id="7_j355y"]
+[ext_resource type="Script" uid="uid://h5vfo1f0636i" path="res://GeneralScripts/Settings/NPCLookAtMod.gd" id="7_oronr"]
 [ext_resource type="Script" uid="uid://dska4jm0o3xot" path="res://Cutscenes/IsaacController.gd" id="8_24duq"]
 [ext_resource type="PackedScene" uid="uid://cpv4qukow4new" path="res://SecondHouse/woodtryagain25.glb" id="8_a0dnt"]
 [ext_resource type="PackedScene" uid="uid://065g7k1ysem6" path="res://GeneralScripts/interaction/PlayerInteractor.tscn" id="9_3xeah"]
@@ -1081,7 +1082,7 @@ render_target_update_mode = 4
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(-0.0991393, 1.32676e-09, 1.68901e-10, 0.995074)
-bones/5/rotation = Quaternion(0.271077, -8.04916e-09, -1.1632e-09, 0.962558)
+bones/5/rotation = Quaternion(0.277803, -8.82885e-09, -1.27782e-09, 0.960638)
 bones/7/rotation = Quaternion(0.251585, 0.0036754, 0.0141376, 0.967725)
 bones/9/rotation = Quaternion(0.251585, 0.00367533, 0.014137, 0.967725)
 bones/11/rotation = Quaternion(-0.263317, -0.10466, -0.639998, 0.714222)
@@ -1106,7 +1107,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0.38)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(0.111542, -7.42854e-09, -1.4092e-09, 0.99376)
-bones/5/rotation = Quaternion(-0.0161513, -0.0381085, 0.018391, 0.998974)
+bones/5/rotation = Quaternion(-0.0174028, -0.0381315, 0.0183432, 0.998953)
 bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
 bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
 bones/11/rotation = Quaternion(-0.398748, -0.0951924, -0.663664, 0.625691)
@@ -1136,6 +1137,26 @@ transform = Transform3D(-0.325389, 0, -0.730836, 0, 0.8, 0, 0.730836, 0, -0.3253
 [node name="isaac" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherIdling/BrotherIsaac/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_1qa6y")
 skin = SubResource("Skin_0jwys")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherIdling/BrotherIsaac/Skeleton3D" index="1"]
+target_node = NodePath("../../../../IsaacMain/Isaac/CharacterBody3D/IsaacHead")
+bone_name = "DEF_Head"
+bone = 5
+duration = 2.0
+transition_type = 7
+ease_type = 2
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.0472
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.0872665
+secondary_damp_threshold = 1.0
+script = ExtResource("7_oronr")
+character_string = "Kale"
+influence_target = 0.8
+
+[node name="BrotherHead" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/IsaacsBrotherIdling/BrotherIsaac/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.30926e-14, 0, 2.30926e-14, 1, 0, 0, -3.03991)
 
 [node name="IsaacsBrotherTweaking" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("1_ydyvw")]
 transform = Transform3D(-0.324828, 0, -0.731086, 0, 0.8, 0, 0.731086, 0, -0.324828, 4.41336, 1.88543, -6.15032)
@@ -1175,6 +1196,8 @@ collision = NodePath("CollisionShape3D")
 sound_player = NodePath("../IsaacSteps")
 crouch_sound = NodePath("../Crouch")
 
+[node name="IsaacHead" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D"]
+
 [node name="PlayerInteractor" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" instance=ExtResource("9_3xeah")]
 
 [node name="Alert" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
@@ -1186,8 +1209,8 @@ visible = false
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0753863, -0.0596632, -0.00302144, 0.995363)
-bones/5/rotation = Quaternion(0.198158, -0.109562, 0.0081795, 0.973993)
+bones/4/rotation = Quaternion(-0.0753325, -0.0705497, -0.00357274, 0.994653)
+bones/5/rotation = Quaternion(0.197657, -0.130259, 0.00972468, 0.97153)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
 bones/6/rotation = Quaternion(1.92867e-08, -2.67596e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898596, 0.0145798, 0.997999)
@@ -1195,11 +1218,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-4.39494e-09, 2.33899e-09, 0.138842, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898602, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.46168, 0.0820928, -0.311018, 0.826668)
+bones/11/rotation = Quaternion(-0.475438, 0.0789847, -0.306919, 0.820683)
 bones/12/rotation = Quaternion(0.503192, 0.178565, -0.57087, 0.623714)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.310532, -0.0821599, 0.377174, 0.868654)
-bones/16/rotation = Quaternion(0.513078, -0.174687, 0.577911, 0.610127)
+bones/15/rotation = Quaternion(-0.297024, -0.0833996, 0.380924, 0.871618)
+bones/16/rotation = Quaternion(0.512722, -0.174866, 0.577511, 0.610753)
 bones/19/rotation = Quaternion(0.09865, 0.00997421, -0.00680437, 0.995049)
 bones/20/rotation = Quaternion(-0.245123, 0.000133744, -0.00672399, 0.969469)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
@@ -1218,6 +1241,23 @@ bones/29/position = Vector3(-0.477104, 0.00644107, -1.80556)
 [node name="isaac" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01/Armature_001/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_phslp")
 skin = SubResource("Skin_gdngq")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01/Armature_001/Skeleton3D" index="1"]
+target_node = NodePath("../../../../../../../IsaacsBrotherIdling/BrotherIsaac/Skeleton3D/BrotherHead")
+bone_name = "DEF_Head"
+bone = 5
+duration = 2.0
+transition_type = 7
+ease_type = 2
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.22173
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.0872665
+secondary_damp_threshold = 1.0
+script = ExtResource("7_oronr")
+character_string = "Isaac"
+influence_target = 0.3
 
 [node name="AnimationPlayer" parent="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01" index="1"]
 libraries = {
@@ -1603,6 +1643,10 @@ visible = false
 [connection signal="cam_bed" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_cam_bed"]
 [connection signal="start_kitchen_dialogue" from="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_start_kitchen_dialogue"]
 [connection signal="check_on_isaac" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_control_areas_check_on_isaac"]
+[connection signal="look_activate" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="look_activate" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacsBrotherIdling/BrotherIsaac/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="look_deactivate" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D/IsaacFlashback_01/Armature_001/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
+[connection signal="look_deactivate" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacsBrotherIdling/BrotherIsaac/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
 [connection signal="start_Isaac" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_start_isaac"]
 [connection signal="switch_cam_bed" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_cam_bed"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/WalkUp" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_walk_up_body_entered"]

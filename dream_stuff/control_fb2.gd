@@ -8,9 +8,13 @@ extends Node
 @export var runa_marker : Marker2D
 @onready var pause = $"../../../Pause"
 
+signal activate_look
+signal activate_look_runa
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	anim_c.play("CamAnim")
+	emit_signal("activate_look_runa")
 	await anim_c.animation_finished
 	#anim_r["parameters/conditions/look_around"] = true
 	GlobalVars.in_dialogue = true
@@ -36,6 +40,7 @@ func _isaac_movement(arg : String):
 		anim_I["parameters/conditions/nod"] = true
 	else:
 		anim_I["parameters/conditions/snapOut"] = true
+		emit_signal("activate_look")
 		
 func _input(event):
 	if Input.is_action_just_pressed("Quit"):

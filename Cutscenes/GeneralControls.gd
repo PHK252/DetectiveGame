@@ -19,8 +19,12 @@ signal start_Isaac
 signal check_on_isaac
 signal switch_cam_bed
 
+signal look_activate
+signal look_deactivate
+
 func _on_enter_room_body_entered(body: Node3D) -> void:
 	if stop_repeat == false and GlobalVars.in_dialogue == false:
+		emit_signal("look_activate")
 		door_anim.play("DoorOpen")
 		doorSound.play()
 		stop_repeat = true
@@ -39,6 +43,7 @@ func _on_check_kale_body_entered(body):
 		check_repeat = true
 		player.stop_player()
 		await get_tree().create_timer(1.8).timeout
+		emit_signal("look_activate")
 		var bedroom_open_dialogue = Dialogic.start("Day_1_Isaac", "bedroom_check")
 		Dialogic.timeline_ended.connect(_on_flash_ended)
 		bedroom_open_dialogue.register_character(load("res://Dialogic Characters/Kale.dch"), kale_marker)
@@ -49,12 +54,14 @@ func _on_check_kale_body_entered(body):
 
 func _on_start_kitchen_dialogue():
 	GlobalVars.in_dialogue = true
+	emit_signal("look_activate")
 	var kitchen_dialogue = Dialogic.start("Day_1_Isaac", "kitchen")
 	Dialogic.timeline_ended.connect(_on_kitchen_ended)
 	kitchen_dialogue.register_character(load("res://Dialogic Characters/Kale.dch"), kale_marker)
 	kitchen_dialogue.register_character(load("res://Dialogic Characters/Isaac.dch"), isaac_marker)
 
 func _on_kitchen_ended():
+	emit_signal("look_deactivate")
 	Dialogic.timeline_ended.disconnect(_on_kitchen_ended)
 	GlobalVars.in_dialogue = false
 	emit_signal("start_Isaac")

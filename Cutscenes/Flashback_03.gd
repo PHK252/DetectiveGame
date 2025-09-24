@@ -28,12 +28,19 @@ var blend := false
 @export var CIA1_sounds : AnimationPlayer
 @export var rustle : AudioStreamPlayer3D
 
+#headbob signals
+signal activate_look_general
+signal activate_look_isaac
+signal deactivate_look
+
 func _ready() -> void:
+	emit_signal("activate_look_general")
 	isaac_sounds.play("IsaacStart")
 	CIA_01.visible = false
 	CIA_02.visible = false
 	anim_phone.play("Phone")
 	await anim_phone.animation_finished
+	emit_signal("activate_look_isaac")
 	GlobalVars.in_dialogue = true
 	var end_dialogue = Dialogic.start("Day_2_Secret")
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -57,6 +64,7 @@ func _end_movement(arg : String):
 	if arg == "rustle":
 		rustle.play()
 	elif arg == "marc_give_and_runs":
+		emit_signal("deactivate_look")
 		isaac_sounds.play("IsaacHandover")
 		isaac_anim["parameters/conditions/handover"] = true
 		whistleblower_anim["parameters/conditions/handover"] = true
