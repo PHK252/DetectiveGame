@@ -1,8 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://b4fmk8hkjnh1v"]
+[gd_scene load_steps=31 format=3 uid="uid://b4fmk8hkjnh1v"]
 
-[ext_resource type="Texture2D" uid="uid://b4innf3vttv8k" path="res://UI/Assets/Pause overlay/Pause Normal.png" id="1_7dng0"]
 [ext_resource type="Script" uid="uid://bo4tbw36hrcsa" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
-[ext_resource type="Texture2D" uid="uid://dmnejgno72ng4" path="res://UI/Assets/Pause overlay/Pause Hovered.png" id="2_ml51c"]
 [ext_resource type="Texture2D" uid="uid://b6c7lhul6o2dq" path="res://UI/Assets/Pause overlay/Phone call normal.tres" id="4_ixe56"]
 [ext_resource type="Texture2D" uid="uid://b61sxnpf7cfwd" path="res://UI/Assets/Pause overlay/Phone call hovered.tres" id="5_uxvkf"]
 [ext_resource type="Texture2D" uid="uid://i4je4rghurdy" path="res://UI/Assets/Pause overlay/Updated/Notes_update1.png" id="6_jrkgh"]
@@ -15,20 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://c11jucn5hdsv5" path="res://UI/Assets/Pause overlay/Updated/Notes_update5.png" id="10_2x4wm"]
 [ext_resource type="Texture2D" uid="uid://cnjte26mtleo2" path="res://UI/Assets/Pause overlay/Updated/Notes_update6.png" id="11_hq3yt"]
 [ext_resource type="PackedScene" uid="uid://coi3wnw75drw1" path="res://UI/Phone.tscn" id="11_wwlkg"]
-[ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="12_15hi7"]
 [ext_resource type="Script" uid="uid://ce65wpgqyu531" path="res://GeneralScripts/AudioScripts/audio_manager.gd" id="17_ral7j"]
 [ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="18_jrc8q"]
 [ext_resource type="AudioStream" uid="uid://dlmukgdrndsxy" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_2.wav" id="19_1y2uo"]
 [ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="20_ltpo8"]
 [ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="21_gbn7m"]
 [ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="22_ftt10"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_ygsle"]
-device = -1
-keycode = 4194305
-
-[sub_resource type="Shortcut" id="Shortcut_0704h"]
-events = [SubResource("InputEventKey_ygsle")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_uxvkf"]
 device = -1
@@ -183,17 +173,6 @@ script = ExtResource("1_m3hpa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Pause" type="TextureButton" parent="CanvasLayer"]
-offset_left = 1839.0
-offset_top = 30.0
-offset_right = 1879.0
-offset_bottom = 70.0
-mouse_default_cursor_shape = 2
-shortcut = SubResource("Shortcut_0704h")
-texture_normal = ExtResource("1_7dng0")
-texture_pressed = ExtResource("2_ml51c")
-texture_hover = ExtResource("2_ml51c")
-
 [node name="Receiving call" type="TextureButton" parent="CanvasLayer"]
 visible = false
 offset_left = 1808.0
@@ -241,9 +220,6 @@ libraries = {
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
 visible = false
 
-[node name="Pause Screen" parent="CanvasLayer" instance=ExtResource("12_15hi7")]
-visible = false
-
 [node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
 script = ExtResource("17_ral7j")
 audio_master = [NodePath("Blip(start?)"), NodePath("Blip(back?)"), NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Hiss02(back?)")]
@@ -268,7 +244,6 @@ bus = &"SFX"
 stream = ExtResource("22_ftt10")
 bus = &"SFX"
 
-[connection signal="pressed" from="CanvasLayer/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="CanvasLayer/Receiving call" to="." method="_on_receiving_call_pressed"]
 [connection signal="pressed" from="CanvasLayer/Call Normal" to="." method="_on_call_normal_pressed"]
 [connection signal="enable_interact" from="CanvasLayer/Phone UI" to="." method="exit_call_screen"]

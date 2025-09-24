@@ -7,6 +7,7 @@ extends Node3D
 @export var skylar_marker : Marker2D
 signal dalton_rotate
 
+@onready var pause = $Pause
 
 func _ready():
 	emit_signal("dalton_rotate")
@@ -23,9 +24,10 @@ func _ready():
 		arrived_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		player.stop_player()
 
-func _process(delta):
+func _input(event):
 	if Input.is_action_just_pressed("Quit"):
-			get_tree().quit()
+		if pause.visible == false:
+			pause.visible = true
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

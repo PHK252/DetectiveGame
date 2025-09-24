@@ -9,6 +9,7 @@ extends Node3D
 @export var player : CharacterBody3D
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
+@onready var pause = $Pause
 
 #settings
 @export var sub_v_container : SubViewportContainer
@@ -34,6 +35,7 @@ func _ready():
 	var dialogue_file = choose_office_dialogue()
 	if dialogue_file != "":
 		if GlobalVars.in_dialogue == false:
+			await get_tree().create_timer(4.0).timeout
 			player.stop_player()
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -45,9 +47,10 @@ func _ready():
 		return
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#if Input.is_action_just_pressed("Quit"):
-			#get_tree().quit()
+func _input(event):
+	if Input.is_action_just_pressed("Quit"):
+		if pause.visible == false:
+			pause.visible = true
 	
 #func _input(event):
 	#if Input.is_key_pressed(KEY_S):

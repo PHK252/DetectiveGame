@@ -91,8 +91,8 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
-			emit_signal("general_quit")
-			#await get_tree().create_timer(.03).timeout
+			#emit_signal("general_quit")
+			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
 			GlobalVars.in_interaction = ""
@@ -104,8 +104,9 @@ func _process(delta):
 			open_interact.hide()
 			trash_area.hide()
 			alert.show()
-		else:
-			print_debug("Exit Tent case interaction went wrong")
+			player.start_player()
+		#else:
+			#print_debug("Exit Tent case interaction went wrong")
 
 	if GlobalVars.in_look_screen == true:
 		interact_area_1.hide()
@@ -125,13 +126,13 @@ func _process(delta):
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
-		emit_signal("general_interact")
+		#emit_signal("general_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
-		cam_anim.play("Cam_Idle")
+		cam_anim.play("Cam_idle")
 		player.hide()
 		player.stop_player()
 		if is_open == false:

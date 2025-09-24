@@ -388,7 +388,7 @@ func set_mouse_pointing():
 	Input.set_custom_mouse_cursor(GlobalVars.pointing_hand, Input.CURSOR_POINTING_HAND, Vector2(20,22.5))
 
 func _ready():
-	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	set_mouse_default()
 	set_mouse_pointing()
 

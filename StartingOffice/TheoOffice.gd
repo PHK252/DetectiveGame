@@ -28,11 +28,13 @@ func _ready() -> void:
 	state = OUT
 	path.progress_ratio = 0
 	
+	if GlobalVars.day == 1 and Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
+		return
 	_return_office()
 	
 func _return_office():
 	print("returningTheo")
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	state = WALK
 	come_in = true
 	

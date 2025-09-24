@@ -52,7 +52,6 @@ func _on_controls_show_pause():
 	pause_buttons.visible = true
 
 func _on_visibility_changed():
-	#debug
 	if visible == true:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			prev_mouse_mode = 2

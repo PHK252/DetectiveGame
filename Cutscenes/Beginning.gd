@@ -2,6 +2,8 @@ extends Node3D
 
 signal _show_tut(tut_type : String)
 
+@onready var pause = $Pause
+
 func _ready():
 	GlobalVars.current_level = "Beginning"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -10,4 +12,5 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
-			get_tree().quit()
+		if pause.visible == false:
+			pause.visible = true

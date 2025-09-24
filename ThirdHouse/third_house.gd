@@ -15,6 +15,8 @@ extends Node3D
 @export var character_marker : Marker2D
 @export var timer : Timer
 
+@onready var pause = $Pause
+
 var time_out = false
 var in_time_out_dialogue = false
 
@@ -27,10 +29,12 @@ func _ready():
 	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta):
+func _input(event):
 	if Input.is_action_just_pressed("Quit"):
-			get_tree().quit()
+		if pause.visible == false:
+			pause.visible = true
 
+func _process(delta):
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
 		GlobalVars.quincy_kicked_out = true

@@ -16,6 +16,7 @@ extends Node3D
 
 @export var timer : Timer
 @onready var time_out = false 
+@onready var pause = $Pause
 
 @onready var in_time_out_dialogue = false
 @onready var in_kicked_out_dialogue = false
@@ -28,10 +29,12 @@ func _ready():
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Juniper")
 
+func _input(event):
+	if Input.is_action_just_pressed("Quit"):
+		if pause.visible == false:
+			pause.visible = true
 
 func _process(delta):
-	if Input.is_action_just_pressed("Quit"):
-			get_tree().quit()
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Character Aff Points.Juniper") <= -3:
 		GlobalVars.juniper_kicked_out = true

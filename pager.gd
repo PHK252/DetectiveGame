@@ -26,22 +26,20 @@ func _ready():
 	error.visible = false
 	bottom.visible = false
 	
-	intro.show()
-	intro_anim.play("Intro")
-	await intro_anim.animation_finished
-	intro.hide()
-	home.visible = true
-	bottom.visible = true
-	battery_anim.play("Flashing Battery")
-
-
-
 func _on_visibility_changed():
 	if visible == true:
 		print("disable")
 		InputMap.action_erase_events("ui_up")
 		InputMap.action_erase_events("ui_down")
 		disabled = true
+		#start animation
+		intro.show()
+		intro_anim.play("Intro")
+		await intro_anim.animation_finished
+		intro.hide()
+		home.visible = true
+		bottom.visible = true
+		battery_anim.play("Flashing Battery")
 	else:
 		if disabled == true:
 			print("enable")

@@ -25,6 +25,9 @@ extends Node3D
 @onready var bookmark_look = $UI/Bookmark
 @onready var tool_anim = $NewToolBoxTop/AnimationPlayer
 
+@onready var pause = $Pause
+
+
 @onready var in_time_out_dialogue = false
 @onready var in_kicked_out_dialogue = false
 # Called when the node enters the scene tree for the first time.
@@ -43,10 +46,11 @@ func _ready():
 		Dialogic.VAR.set_variable("Global.first_house", "Micah")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+func _input(event):
 	if Input.is_action_just_pressed("Quit"):
-			get_tree().quit()
+		if pause.visible == false:
+			pause.visible = true
 	
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:

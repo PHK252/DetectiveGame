@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnu1071bx7xsa"]
+[gd_scene load_steps=20 format=3 uid="uid://cnu1071bx7xsa"]
 
 [ext_resource type="Texture2D" uid="uid://sr60ubjrdhtv" path="res://UI/Assets/Pause/Pause Board.png" id="1_3uscu"]
 [ext_resource type="Script" uid="uid://2ix3jmv1wutb" path="res://UI/pause.gd" id="1_k7vu6"]
@@ -20,14 +20,10 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_74tmv"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_nxs1w"]
-device = -1
-keycode = 4194305
-
 [sub_resource type="Shortcut" id="Shortcut_8vpyk"]
-events = [SubResource("InputEventKey_nxs1w")]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Pause" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_k7vu6")
 
 [node name="Background2" type="TextureRect" parent="."]
@@ -95,6 +91,7 @@ texture_hover = ExtResource("10_lc5u0")
 
 [node name="Controls" parent="." instance=ExtResource("11_8vpyk")]
 process_mode = 3
+layer = 50
 visible = false
 pause = true
 

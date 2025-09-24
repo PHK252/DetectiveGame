@@ -1,7 +1,6 @@
 extends Control
 
 @onready var phone_ui = $"CanvasLayer/Phone UI"
-@onready var pause = $"CanvasLayer/Pause Screen"
 @onready var call_anim = $CanvasLayer/AnimationPlayer
 @onready var call_normal = $"CanvasLayer/Call Normal"
 @onready var receiving_call = $"CanvasLayer/Receiving call"
@@ -32,14 +31,6 @@ func _process(delta):
 		call_normal.disabled = true
 	else:
 		call_normal.disabled = false
-	#if GlobalVars.in_call == false and called == false:
-		#print("calling	")
-		#GlobalVars.phone_call_receiving.connect(_on_call_received)
-
-
-func _on_pause_pressed():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	pause.show()
 
 
 func _on_receiving_call_pressed():
