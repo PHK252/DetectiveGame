@@ -1,11 +1,15 @@
-[gd_scene load_steps=45 format=3 uid="uid://todl2n23or4m"]
+[gd_scene load_steps=47 format=3 uid="uid://todl2n23or4m"]
 
 [ext_resource type="Texture2D" uid="uid://uut7ggpjbkbi" path="res://UI/Assets/tutorial/Notes_arrow_right.png" id="1_4tcpl"]
 [ext_resource type="Script" uid="uid://cf1t8srbdwwty" path="res://UI/controls_exit.gd" id="1_sohyj"]
+[ext_resource type="Texture2D" uid="uid://bbo5a8xafagsh" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal1.png" id="2_urfeb"]
 [ext_resource type="Texture2D" uid="uid://cqhd1lc1d0edu" path="res://UI/Assets/tutorial/Notes_arrow_left.png" id="2_xb0ch"]
 [ext_resource type="Texture2D" uid="uid://cwohdgtm3ywwn" path="res://UI/Assets/tutorial/Notes_arrow_up.png" id="3_lq0n6"]
+[ext_resource type="Texture2D" uid="uid://dp4clp4nr26k" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal2.png" id="3_s427r"]
+[ext_resource type="Texture2D" uid="uid://bsuvkl2rdc76p" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal3.png" id="4_iok3x"]
 [ext_resource type="Texture2D" uid="uid://djoemkon3d760" path="res://UI/Assets/tutorial/Notes_arrow_down.png" id="4_l7b6d"]
 [ext_resource type="Texture2D" uid="uid://f5cq6gld5hxb" path="res://UI/Assets/tutorial/Notes_w_up.png" id="5_h3qm0"]
+[ext_resource type="Texture2D" uid="uid://bwi1rk4c3liau" path="res://UI/Assets/tutorial/Paper/Controls_Exit_hovered.png" id="5_ouscq"]
 [ext_resource type="Texture2D" uid="uid://cq3n6r4emapo3" path="res://UI/Assets/tutorial/Notes_a_left.png" id="6_1s86v"]
 [ext_resource type="Texture2D" uid="uid://bd3ohdy8yhmdm" path="res://UI/Assets/tutorial/Notes_s_down.png" id="7_86ypn"]
 [ext_resource type="Texture2D" uid="uid://dvup6hsfbeywu" path="res://UI/Assets/tutorial/Notes_d_right.png" id="8_v81m6"]
@@ -19,8 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="16_sohyj"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="17_3pplw"]
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="18_i1aip"]
-[ext_resource type="Texture2D" uid="uid://bvut6op7bp6sb" path="res://UI/Assets/Pause/Pause Exit normal.png" id="20_2hir6"]
-[ext_resource type="Texture2D" uid="uid://b37trk6c6htp1" path="res://UI/Assets/Pause/Pause Exit Hover.png" id="21_08f8l"]
 [ext_resource type="Texture2D" uid="uid://b0ojsgbm4dycv" path="res://UI/Assets/tutorial/Paper/Tutorial_movement_shadow.png" id="22_jqmcg"]
 [ext_resource type="Texture2D" uid="uid://c3tihx0kwfte7" path="res://UI/Assets/tutorial/Paper/Tutorial_Run.png" id="23_r5yew"]
 [ext_resource type="Texture2D" uid="uid://cs35orjcyodn6" path="res://UI/Assets/tutorial/Paper/Tutorial_Interact_shadow.png" id="24_xu7vx"]
@@ -49,8 +51,16 @@ unicode = 113
 [sub_resource type="Shortcut" id="Shortcut_t84ej"]
 events = [SubResource("InputEventKey_pimcf")]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i8i4t"]
-load_path = "res://.godot/imported/Back orange disabled.png-89ed0491149aa21fffedaf6ad21b8684.ctex"
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vukbl"]
+frames = 4
+frame_0/texture = ExtResource("2_urfeb")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("3_s427r")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("4_iok3x")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("3_s427r")
+frame_3/duration = 0.25
 
 [sub_resource type="Shortcut" id="Shortcut_y4fe5"]
 events = [SubResource("InputEventKey_pimcf")]
@@ -69,10 +79,9 @@ offset_bottom = 204.0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_t84ej")
 shortcut_in_tooltip = false
-texture_normal = ExtResource("20_2hir6")
-texture_pressed = ExtResource("21_08f8l")
-texture_hover = ExtResource("21_08f8l")
-texture_disabled = SubResource("CompressedTexture2D_i8i4t")
+texture_normal = SubResource("AnimatedTexture_vukbl")
+texture_pressed = ExtResource("5_ouscq")
+texture_hover = ExtResource("5_ouscq")
 
 [node name="Controls with shadow" type="HBoxContainer" parent="Main Menu"]
 anchors_preset = 8
