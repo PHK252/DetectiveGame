@@ -3121,6 +3121,9 @@ wait_time = 60.0
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
 [connection signal="timeout" from="Timer" to="HomeScreen/Time" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="GalleryScreen/Time" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="PhoneScreen/Time" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="NotesScreen/Time2" method="_on_timer_timeout"]
 
 [editable path="NotesScreen/Micah/View Tool Note"]
 [editable path="NotesScreen/Micah/View ID Card"]

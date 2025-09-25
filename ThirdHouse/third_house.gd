@@ -23,11 +23,13 @@ var in_time_out_dialogue = false
 var in_secret = false
 var locked = false
 signal time_out_drop_distract
+signal phone_time_start
 
 func _ready():
 	GlobalVars.current_level = "quincy"
 	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	emit_signal("phone_time_start")
 
 func _input(event):
 	if Input.is_action_just_pressed("Quit"):
@@ -149,4 +151,5 @@ func _on_quincy_time_out_resume():
 
 func _on_quincy_entered():
 	timer.start()
+	emit_signal("phone_time_start")
 	print("level start!")

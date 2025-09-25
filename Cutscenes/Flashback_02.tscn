@@ -1282,8 +1282,8 @@ bus = &"SFX"
 [node name="Pause" parent="." instance=ExtResource("36_216me")]
 visible = false
 
-[connection signal="activate_look_general" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA2/Armature/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
 [connection signal="activate_look_general" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA1/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="activate_look_general" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA2/Armature/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
 [connection signal="activate_look_general" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/Flashback_02_whistleblower/WhistleBlower/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
 [connection signal="activate_look_isaac" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/IsaacFB2Changes/Armature_002/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
 [connection signal="deactivate_look" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/IsaacFB2Changes/Armature_002/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]

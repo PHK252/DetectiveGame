@@ -21,6 +21,8 @@ extends Node3D
 @onready var in_time_out_dialogue = false
 @onready var in_kicked_out_dialogue = false
 
+signal phone_time_start
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	disable_interaction_beginning(interactables)
@@ -28,6 +30,10 @@ func _ready():
 	GlobalVars.current_level = "juniper"
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Juniper")
+	#await get_tree().create_timer(1.0).timeout
+	#GlobalVars.emit_add_evidence("juniper", "letter")
+	#await get_tree().create_timer(10.0).timeout
+	#GlobalVars.emit_add_note("juniper", "letter", "found")
 
 func _input(event):
 	if Input.is_action_just_pressed("Quit"):
@@ -114,4 +120,5 @@ func can_interact():
 
 func _on_entered_juniper():
 	timer.start()
+	emit_signal("phone_time_start")
 	print("level start!")

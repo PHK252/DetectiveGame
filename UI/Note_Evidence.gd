@@ -17,10 +17,12 @@ extends Control
 @export var no_evidence: RichTextLabel
 @export var description: RichTextLabel
 @export var description_body: RichTextLabel
-func _ready():
-	_add_evidence(micah_letter)
-	_add_evidence(micah_key)
-	_add_evidence(micah_fur)
+
+signal added_notes_overlay
+#func _ready():
+	#_add_evidence(micah_letter)
+	#_add_evidence(micah_key)
+	#_add_evidence(micah_fur)
 	#_add_evidence(juniper_letter)
 	#_add_evidence(juniper_pie)
 	#_add_evidence(quincy_letter)
@@ -84,6 +86,7 @@ func _recieve_evidence():
 			print_debug("Quincy recieving evidence in trouble")
 	else:
 		print_debug("Recieving evidence in trouble")
+	emit_signal("added_notes_overlay")
 
 
 func _on_evidence_pressed():

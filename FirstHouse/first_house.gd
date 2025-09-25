@@ -27,9 +27,10 @@ extends Node3D
 
 @onready var pause = $Pause
 
-
 @onready var in_time_out_dialogue = false
 @onready var in_kicked_out_dialogue = false
+
+signal phone_time_start
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.current_level = "micah"
@@ -44,7 +45,10 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Micah")
-
+	
+	#await get_tree().create_timer(10.0).timeout
+	#emit_signal("phone_time_start")
+	#GlobalVars.emit_add_note("micah", "window", "")
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
@@ -123,4 +127,5 @@ func disable_interaction(arr: Array):
 
 func _on_entered_micah():
 	timer.start()
+	emit_signal("phone_time_start")
 	print("level start!")

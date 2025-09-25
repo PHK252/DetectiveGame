@@ -105,7 +105,6 @@ func _on_decline_pressed():
 
 
 func _on_case_added_notes_overlay():
-	print("added")
 	evidence.visible = true
 	if call_normal.disabled == true:
 		evidence.modulate.a = 0.365

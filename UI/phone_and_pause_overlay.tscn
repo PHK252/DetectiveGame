@@ -248,6 +248,7 @@ bus = &"SFX"
 [connection signal="pressed" from="CanvasLayer/Call Normal" to="." method="_on_call_normal_pressed"]
 [connection signal="enable_interact" from="CanvasLayer/Phone UI" to="." method="exit_call_screen"]
 [connection signal="added_notes_overlay" from="CanvasLayer/Phone UI/NotesScreen/Case" to="." method="_on_case_added_notes_overlay"]
+[connection signal="added_notes_overlay" from="CanvasLayer/Phone UI/NotesScreen/Evidence" to="." method="_on_case_added_notes_overlay"]
 
 [editable path="CanvasLayer/Phone UI"]
 [editable path="CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note"]

@@ -23,7 +23,7 @@ signal open_quincy_case
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int = 1
+@onready var day : int = 2
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need

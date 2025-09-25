@@ -15,7 +15,7 @@ func _ready():
 		global_timer.wait_time = level_time_mins
 	else:
 		global_timer.wait_time = 60
-	global_timer.start()
+		global_timer.start()
 	await get_tree().process_frame
 	start_time()
 
@@ -100,3 +100,6 @@ func _on_timer_timeout():
 		else:
 			hour = 0
 		set_time(hour, minute)
+
+func _level_timer_start():
+	global_timer.start()
