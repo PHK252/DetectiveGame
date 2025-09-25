@@ -56,6 +56,9 @@ var in_thoughts = false
 
 signal book_thoughts_finished
 signal thoughts_finished
+
+signal enable_look
+signal disable_look
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
@@ -100,6 +103,7 @@ func _process(delta):
 
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_interaction = ""
 	GlobalVars.in_dialogue = false
@@ -107,6 +111,7 @@ func _on_timeline_ended():
 	alert.show()
 	
 func _on_reaction_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_reaction_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
@@ -145,6 +150,7 @@ func _on_input_event(viewport, event, shape_idx):
 						Exit_Cam.priority = 30 
 						Exit_Cam.set_tween_duration(1)
 						player.show()
+						emit_signal("enable_look")
 						GlobalVars.in_dialogue = true
 						var game_dialogue = Dialogic.start(dialogue_file)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -241,6 +247,7 @@ func _on_thoughts_finished():
 		Exit_Cam.priority = 30 
 		Exit_Cam.set_tween_duration(1)
 		player.show()
+		emit_signal("enable_look")
 		GlobalVars.in_dialogue = true
 		var game_dialogue = Dialogic.start(dialogue_file)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)

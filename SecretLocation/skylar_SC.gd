@@ -10,6 +10,8 @@ extends CharacterBody3D
 var activate := false
 var pre_walk := false
 
+signal activate_look
+
 func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("interact"):
 		#pre_walk = true
@@ -33,6 +35,7 @@ func _process(delta: float) -> void:
 
 
 func _on_walk_skylar():
+	emit_signal("activate_look")
 	pre_walk = true
 	await get_tree().create_timer(1.5).timeout
 	pre_walk = false

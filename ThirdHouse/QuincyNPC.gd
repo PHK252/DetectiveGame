@@ -78,6 +78,8 @@ signal caught_in_view
 var end_time := false
 var start_time := false
 #
+signal enable_look
+signal disable_look
 
 enum {
 	IDLE, 
@@ -401,6 +403,7 @@ func _on_distraction_time_timeout() -> void:
 		
 func _on_quincy_one_shot_timer_timeout() -> void:
 	if is_drinking:
+		emit_signal("disable_look")
 		quincy_tree.set("parameters/Wine/request", true)
 		sound_player.play("WineSounds")
 		await get_tree().create_timer(2.2).timeout
@@ -409,9 +412,11 @@ func _on_quincy_one_shot_timer_timeout() -> void:
 		await get_tree().create_timer(4.0).timeout
 		wineStatic.visible = true
 		wineAnim.visible = false
+		emit_signal("enable_look")
 
 func _on_smoke_time_timeout() -> void:
-	if state == IDLE and is_distracted == false and is_navigating:
+	if state == IDLE and is_distracted == false and is_navigating and GlobalVars.in_dialogue == false:
+		emit_signal("disable_look")
 		is_navigating = false
 		quincy_tree.set("parameters/Smoking/request", true)
 		sound_player.play("SmokeSounds")
@@ -431,6 +436,7 @@ func _on_smoke_time_timeout() -> void:
 		lighter.visible = false
 		cig.visible = false
 		is_navigating = true
+		emit_signal("enable_look")
 
 func _on_bathroom_q_body_entered(body: Node3D) -> void:
 	pass
@@ -515,17 +521,20 @@ func _on_phone_book_distract_quincy():
 func _on_theo_quincy_no_go_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if state == FOLLOW and is_distracted == false and is_navigating and general_distraction == false:
+			emit_signal("enable_look")
 			is_navigating = false
 			state = IDLE
 
 func _on_theo_quincy_no_go_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if state == IDLE and is_distracted == false and is_navigating == false and greeting == true and general_distraction == false:
+			emit_signal("disable_look")
 			is_navigating = true
 			state = FOLLOW
 
 func _on_hallway_check_body_entered(body: Node3D) -> void:
 	if general_distraction == false:
+		emit_signal("enable_look")
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 8
@@ -534,6 +543,7 @@ func _on_hallway_check_body_entered(body: Node3D) -> void:
 
 func _on_hallway_check_body_exited(body: Node3D) -> void:
 	if general_distraction == false:
+		emit_signal("disable_look")
 		wander_choice = 11
 		is_distracted = false
 		is_navigating = true

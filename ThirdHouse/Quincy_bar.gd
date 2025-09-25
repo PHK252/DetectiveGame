@@ -28,6 +28,8 @@ signal Switch_Dalton_marker
 signal Nudge_Quincy_marker
 signal return_norm_markers
 signal Switch_theo_marker
+signal enable_look
+signal disable_look
 
 func _ready():
 	interactable.set_monitorable(false) 
@@ -48,6 +50,7 @@ func _process(delta):
 
 func _on_bar_interact_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finished == false and GlobalVars.in_interaction == "":
+		emit_signal("enable_look")
 		GlobalVars.in_interaction = interaction_type
 		var bar_dialogue = Dialogic.start(dialogue_file)
 		GlobalVars.in_dialogue = true
@@ -64,6 +67,7 @@ func _on_bar_interact_interacted(interactor):
 		alert.hide()
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	if fainted == false:
 		if Dialogic.VAR.get_variable("Quincy.in_call") == true:
 			Dialogic.timeline_ended.disconnect(_on_timeline_ended)

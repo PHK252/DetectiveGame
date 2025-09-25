@@ -46,6 +46,10 @@ signal retarget(target: int)
 @export var close_sound : AudioStreamPlayer3D
 @export var close_sound_int : AudioStreamPlayer3D
 
+#lookat Q signals
+signal enable_look
+signal disable_look
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -118,6 +122,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		GlobalVars.in_dialogue == true
 		player.stop_player()
 		alert.hide()
+		emit_signal("enable_look")
 		Dialogic.signal_event.connect(doorOpen)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		var quincy_leave = Dialogic.start("Quincy_leaving")
@@ -236,6 +241,7 @@ func _on_juniper_interact_finish_greeting() -> void:
 	auto_close = true
 
 func _on_quincy_interact_finish_greeting() -> void:
+	emit_signal("disable_look")
 	open()
 	collision.disabled = true
 	
@@ -255,6 +261,7 @@ func _on_juniper_interact_close_door():
 
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()

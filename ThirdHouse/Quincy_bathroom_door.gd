@@ -29,6 +29,9 @@ signal Quincy_enter_bathroom
 @export var open_sound : AudioStreamPlayer3D
 @export var close_sound : AudioStreamPlayer3D
 
+signal enable_look
+signal disable_look
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -80,6 +83,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				player.stop_player()
 				alert.hide()
+				emit_signal("enable_look")
 				GlobalVars.in_dialogue = true
 				var bathroom = Dialogic.start(bathroom_enter_dialogue)
 				bathroom.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
@@ -93,6 +97,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		pass
 	
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	player.start_player()
 	alert.show()
@@ -100,6 +105,7 @@ func _on_timeline_ended():
 	open()
 	#asked = true
 func _on_exit_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_exit_timeline_ended)
 	player.start_player()
 	alert.hide()
@@ -123,6 +129,7 @@ func _on_bathroom_door_body_exited(body):
 				GlobalVars.in_dialogue = true
 				player.stop_player()
 				alert.hide()
+				emit_signal("enable_look")
 				Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
 				Dialogic.signal_event.connect(_quincy_enter_bathroom)
 				var clogged = Dialogic.start(clog_exit_dialogue)

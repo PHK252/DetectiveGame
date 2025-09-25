@@ -18,9 +18,13 @@ var activate_look := false
 @export var secondary_target : Marker3D
 var making_choice := false
 
+@export var automatic_activation := false
+
 func _ready() -> void:
 	secondary_limit_angle = limit_angle
 	influence = 0 
+	if automatic_activation:
+		activate_look = true
 	if two_target_needed:
 		target_node = main_target.get_path()
 	active = true 

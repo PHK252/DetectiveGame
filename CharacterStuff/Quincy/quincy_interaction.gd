@@ -23,6 +23,9 @@ signal finish_greeting
 signal greet_cam
 signal close_door
 
+signal enable_look
+signal disable_look
+
 func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
@@ -32,6 +35,7 @@ func _on_interactable_interacted(interactor):
 			GlobalVars.in_dialogue = true
 			player.stop_player()
 			alert.hide()
+			emit_signal("enable_look")
 			var ask_victims = Dialogic.start("Quincy_asked_questions")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
@@ -48,6 +52,7 @@ func _ready():
 func _on_timeline_ended():
 	#emit_signal("Dstopped")
 	#emit_signal("Tstart")
+	emit_signal("disable_look")
 	player.start_player()
 	alert.show()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
