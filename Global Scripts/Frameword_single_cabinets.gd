@@ -52,6 +52,9 @@ signal exit_interact
 
 var kicked = false
 var timed = false
+
+signal enable_look
+signal disable_look
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if extra_animation:
@@ -94,6 +97,7 @@ func _process(delta):
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()
+			emit_signal("enable_look")
 			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -199,6 +203,7 @@ func close() -> void:
 	
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()

@@ -84,6 +84,8 @@ func _physics_process(delta: float) -> void:
 	GlobalVars.player_pos = global_position
 	GlobalVars.dalton_pos = global_position
 	
+	if GlobalVars.in_dialogue == true:
+		anim_tree.set("parameters/Thinking/request", 2)
 	#if Input.is_action_just_pressed("meeting_done"):
 		#_on_door_bathroom_replace_quincy_enter_bathroom()
 	

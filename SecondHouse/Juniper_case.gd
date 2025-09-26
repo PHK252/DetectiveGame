@@ -57,6 +57,7 @@ func _on_interactable_interacted(interactor):
 			GlobalVars.in_interaction = interact_type
 			alert.hide()
 			player.stop_player()
+			emit_signal("enable_look")
 			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.signal_event.connect(caseUI)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -81,6 +82,7 @@ func _on_interactable_interacted(interactor):
 			GlobalVars.in_dialogue = true
 			alert.hide()
 			player.stop_player()
+			emit_signal("enable_look")
 			var game_dialogue = Dialogic.start(dialogue_file, "choices")
 			Dialogic.signal_event.connect(caseUI)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -97,6 +99,7 @@ func _on_interactable_interacted(interactor):
 
 
 func _on_timeline_ended():
+	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	if GlobalVars.Juniper_in_case == false:
@@ -152,6 +155,7 @@ func _input(event):
 						GlobalVars.in_dialogue = true
 						alert.hide()
 						player.stop_player()
+						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_1)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -162,6 +166,7 @@ func _input(event):
 						GlobalVars.in_dialogue = true
 						alert.hide()
 						player.stop_player()
+						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_2)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -173,6 +178,7 @@ func _input(event):
 						GlobalVars.in_dialogue = true
 						alert.hide()
 						player.stop_player()
+						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_choices)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -184,6 +190,7 @@ func _input(event):
 						GlobalVars.in_dialogue = true
 						alert.hide()
 						player.stop_player()
+						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_1)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -195,6 +202,7 @@ func _input(event):
 						GlobalVars.in_dialogue = true
 						alert.hide()
 						player.stop_player()
+						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_2)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)

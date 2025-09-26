@@ -6,24 +6,24 @@ extends CharacterBody3D
 @export var armature = CharacterBody3D
 #@export var WaitTimer : Timer
 @export var NPC : String
-@onready var object_interaction = false
+@onready var object_interaction := false
 @export var nav: NavigationAgent3D
 @export var one_shots: Array[String]
 var rng = RandomNumberGenerator.new()
 @export var cooldown: Timer
 @export var wander_timer: Timer
-var cooldown_bool = false
+var cooldown_bool := false
 signal collision_danger
 signal collision_safe
 @export var Coffee_Static: Node3D
 @export var FirePlace: Node3D
 @export var BookShelf: Node3D
 @export var Coffee_Anim: Node3D
-var outside_player = false
-var cant_follow = false
-var tea_walking = false
-var pour = false
-var putDown = false
+var outside_player := false
+var cant_follow := false
+var tea_walking := false
+var pour := false
+var putDown := false
 @export var tea_kitchen: Node3D
 @export var tea_living: Node3D
 @export var door_marker: Marker3D
@@ -41,23 +41,23 @@ var putDown = false
 @export var tray_static: Node3D
 @export var tray_static_initial: Node3D
 
-var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
+var STOPPING_DISTANCE := 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
 const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
 #const FOLLOW_DISTANCE = 1.2 
 
-var idle_blend = 0.0
-var is_navigating = false
-var targ_reach = false
-var accel = 10
+var idle_blend := 0.0
+var is_navigating := false
+var targ_reach := false
+var accel := 10
 @export var marker_positions: Array[Node3D]
 var wander_choice = 0
-var sharply_turn = false
-var greeting = false
-var greet_rotation = false
+var sharply_turn := false
+var greeting := false
+var greet_rotation := false
 signal juniper_open_door
 var interaction : bool = false
-var bookshelf = false
+var bookshelf := false
 
 #sounds and footsteps
 @export var sound_player : AnimationPlayer
@@ -76,15 +76,16 @@ enum {
 }
 
 var state = IDLE
-var see_player = false
-var at_door = false
-var SPEED = 0.8
-var LERP_VAL = 0.1
-var rotation_speed = 70
-var is_wandering = false
+var see_player := false
+var at_door := false
+var SPEED := 0.8
+var LERP_VAL := 0.1
+var rotation_speed := 70
+var is_wandering := false
 var distance_to_target
-var wander_rotate = false
-
+var wander_rotate := false
+var case_handling := false
+var case_handle_rotation := false
 
 func _ready() -> void:
 	add_to_group("juniper")
@@ -101,7 +102,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 
-	if not is_wandering:
+	if not is_wandering and case_handling == false:
 		if greeting == true:
 			distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 		else:
@@ -163,7 +164,7 @@ func _physics_process(delta: float) -> void:
 	if wander_rotate == true:
 		_rotate_towards_object(wander_choice)
 	
-	if greet_rotation:
+	if greet_rotation or case_handle_rotation:
 		_rotate_towards_dalton()
 		
 
@@ -283,6 +284,10 @@ func _process_follow_state(distance_to_target: float) -> void:
 			cooldown.start()
 			wander_timer.start()
 			floor_type_gather()
+			if case_handling:
+				#case_handling = false
+				case_handle_rotation = true
+				wander_choice = 0
 			state = IDLE
 	
 	if outside_player and greeting == true:
@@ -403,8 +408,17 @@ func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
 	if greeting == true:
-		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false:
+		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false and case_handling == false:
+			if wander_choice < 3:
+				var current_anim = one_shots[wander_choice]
+				anim_tree.set("parameters/" + current_anim + "/request", 2)
+			var previous_choice = wander_choice
 			wander_choice = rng.randi_range(0, 2)
+			if previous_choice == wander_choice:
+				if (previous_choice + 1) != 3:
+					wander_choice = previous_choice + 1
+				else:
+					wander_choice = 1
 			wander_rotate = false
 			#if choice > 0:
 			nav.target_position = marker_positions[wander_choice].global_position
@@ -458,12 +472,16 @@ func _on_resumes_interacted(interactor: Interactor) -> void:
 	state = FOLLOW
 
 func _on_case_interacted(interactor: Interactor) -> void:
+	print("CASEINTERACTION")
+	case_handling = true
 	wander_rotate = false
 	#emit_signal("collision_danger")
 	if wander_choice < 3:
 		var current_anim = one_shots[wander_choice]
 		anim_tree.set("parameters/" + current_anim + "/request", 2)
+	wander_choice = 9 #edgecase
 	#set all one shots to abort
+	nav.target_position = marker_positions[wander_choice].global_position
 	is_navigating = true
 	is_wandering = false
 	state = FOLLOW
@@ -541,3 +559,14 @@ func _on_resume_interact_juniper_wander() -> void:
 
 func _on_resume_interact_general_interact() -> void:
 	interaction = true
+
+func _on_case_interact_disable_look() -> void:
+	case_handling = false
+	case_handle_rotation = false
+	wander_choice = rng.randi_range(0, 2)
+	wander_rotate = false
+	#if choice > 0:
+	nav.target_position = marker_positions[wander_choice].global_position
+	is_navigating = true
+	is_wandering = true
+	state = WANDER

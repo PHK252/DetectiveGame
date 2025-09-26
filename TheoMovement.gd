@@ -36,6 +36,7 @@ var quincy_greet := false
 var faint_dalton := false
 var waterfall_scene := false
 var sofa_scene := false
+var juniper_clear := true
 @export var drunk_marker : Marker3D
 @export var theo_node : CharacterBody3D
 @export var stairMarker : Marker3D
@@ -872,12 +873,13 @@ func _on_interactable_interacted_Juniper(interactor: Interactor) -> void:
 	#is_navigating = true
 	
 func _on_interactable_interacted_cafe(interactor: Interactor) -> void:
-	nav.target_position = adjustment_list[3].global_position
-	is_navigating = true
-	STOPPING_DISTANCE = 0.0
-	nav.path_desired_distance = 0.2
-	nav.target_desired_distance = 0.4
-	state = ADJUST
+	if juniper_clear == true:
+		nav.target_position = adjustment_list[3].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.4
+		state = ADJUST
 
 func _on_cam_books_became_active() -> void:
 	#await get_tree().create_timer(1.5).timeout
@@ -1078,3 +1080,21 @@ func _on_MicahDoor_greeting() -> void:
 
 func _on_door_greet_done() -> void:
 	theo_adjustment = false
+
+
+func _on_JuniperEnterTeaArea(body: Node3D) -> void:
+	if body.is_in_group("juniper"):
+		print("clearingJFalse")
+		juniper_clear = false
+		if sofa_scene:
+			nav.target_position = adjustment_list[6].global_position
+			is_navigating = true
+			STOPPING_DISTANCE = 0.0
+			nav.path_desired_distance = 0.2
+			nav.target_desired_distance = 0.4
+			state = ADJUST
+
+func _on_JuniperExitTeaArea(body: Node3D) -> void:
+	if body.is_in_group("juniper"):
+		print("clearingJ")
+		juniper_clear = true
