@@ -53,9 +53,12 @@ func _on_visibility_changed():
 func _on_exit_pressed():
 	visible = false
 	GlobalVars.viewing = ""
+	GlobalVars.in_look_screen = false
 	home.visible = false
 	menu.visible = false
 	messages.visible = false
 	contact.visible = false
 	error.visible = false
 	bottom.visible = false
+	intro.visible = false
+	intro_anim.stop()

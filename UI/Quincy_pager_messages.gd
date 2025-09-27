@@ -304,3 +304,8 @@ func _on_pager_messages_default():
 	scroll_container.call_deferred("set_v_scroll", max_scroll)
 	line_edit.text = ""
 	caret_column = 0
+
+
+func _on_messages_visibility_changed():
+	if Dialogic.VAR.get_variable("Quincy.saw_pager_texts") == false:
+		Dialogic.VAR.set_variable("Quincy.saw_pager_texts", true)

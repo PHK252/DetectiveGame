@@ -48,5 +48,6 @@ func _input(event):
 		GlobalVars.in_look_screen = false
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""
+		
 
 	

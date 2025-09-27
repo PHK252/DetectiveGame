@@ -50,6 +50,8 @@ extends Node3D
 @onready var is_open = false
 var try_viewed : int
 var in_thoughts = false
+var in_secret = false
+var react = false
 
 @export var bookshelf_move_sound : AudioStreamPlayer3D
 @export var bookmark_sound : AudioStreamPlayer3D
@@ -111,6 +113,7 @@ func _on_timeline_ended():
 	alert.show()
 	
 func _on_reaction_ended():
+	react = true
 	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_reaction_ended)
 	GlobalVars.in_dialogue = false
@@ -174,6 +177,7 @@ func _on_input_event(viewport, event, shape_idx):
 					open()
 					bookmark.hide()
 					await doorL_anim.animation_finished
+					bookmark_anim.play("RESET")
 					FP_Cam.priority = 0
 					Exit_Cam.priority = 30
 					cam_anim.play("RESET")
@@ -182,9 +186,12 @@ func _on_input_event(viewport, event, shape_idx):
 					GlobalVars.in_interaction = ""
 					interact_area.hide()
 					Exit_Cam.set_tween_duration(1)
-					var react_dialogue = Dialogic.start(react_file)
-					Dialogic.timeline_ended.connect(_on_reaction_ended)
-					react_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+					if react == false:
+						var react_dialogue = Dialogic.start(react_file)
+						Dialogic.timeline_ended.connect(_on_reaction_ended)
+						react_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+					else:
+						player.start_player()
 					
 
 func open() -> void:
@@ -199,6 +206,7 @@ func open() -> void:
 	cab_anim = false
 	collision.disabled = true
 	collision_2.disabled = true
+	interactable.set_deferred("monitorable", false)
 	
 func close() -> void:
 	bookshelf_move_sound.play()
@@ -208,10 +216,12 @@ func close() -> void:
 	doorR_anim["parameters/conditions/is_opened"] = false
 	doorR_anim["parameters/conditions/is_closed"] = true
 	is_open = false
-	await get_tree().create_timer(2.1).timeout
-	cab_anim = false
+	await get_tree().create_timer(1.1).timeout
 	collision.disabled = false
 	collision_2.disabled = false
+	await get_tree().create_timer(1.0).timeout
+	cab_anim = false
+	bookmark.show()
 	
 func choose_distract_thought_dialogue():
 	if Dialogic.VAR.get_variable("Quincy.first_cue") == true:
@@ -265,3 +275,17 @@ func _on_toilet_distraction():
 func _on_quincy_time_out_resume():
 	if interactable.monitorable == false:
 		interactable.set_deferred("monitorable", true)
+
+
+func _on_secret_exit(body):
+	if body == player:
+		if in_secret == true:
+			in_secret = false
+			close()
+			interactable.set_deferred("monitorable", true)
+
+
+func _on_secret_entered(body):
+	if body == player:
+		if in_secret == false:
+			in_secret = true

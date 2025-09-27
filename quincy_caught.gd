@@ -11,11 +11,13 @@ extends Node2D
 
 @onready var anim_finished = false
 
+var pause = InputMap.action_get_events("Quit")
 func _ready():
 	quincy_caught.hide()
 
 
 func _on_dalton_caught_play_anim():
+	InputMap.action_erase_events("Quit")
 	phone_pause.hide()
 	quincy_caught.show()
 	#pause process
@@ -32,6 +34,14 @@ func _input(event):
 	if anim_finished == true:
 		if event is InputEventKey and event.is_pressed():
 			anim_finished = false
-			#restart level
+			GlobalVars._dalton_caught_clear_state()
+			#teleport to start
 			print("restarting...")
+			await get_tree().create_timer(2.0)
+			hide()
 			pass
+
+
+func _on_visibility_changed():
+	if visible == false:
+		InputMap.action_add_event("Quit", pause[0])

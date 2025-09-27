@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var input_array = ["", "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", 
 "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", 
 "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-@onready var password = "REVER"
+@onready var password = "a"
 
 @onready var input = ""
 @onready var array_pos = 0
@@ -35,7 +35,7 @@ signal alarm
 @export var safe_error : AudioStreamPlayer3D
 
 func _ready():
-	pass_enter.text = "REVER"
+	pass_enter.text = ""
 	blinker_anim.play("Blink")
 
 func _on_down_pressed():
@@ -93,8 +93,10 @@ func _on_enter_pressed():
 		GlobalVars.in_look_screen = false
 		GlobalVars.Quincy_Safe_UI = false
 		#print("correct")
+		pass_enter.label_settings.font_size = 30
 		pass_enter.text = "Opening..."
 		await get_tree().create_timer(1.5).timeout
+		pass_enter.label_settings.font_size = 50
 		open()
 		array_pos = 0
 		input = ""
@@ -102,24 +104,27 @@ func _on_enter_pressed():
 		
 	elif incorrect_times > 0:
 		#print("wrong")
-		safe_error.play()
+		#safe_error.play()
 		array_pos = 0
+		pass_enter.label_settings.font_size = 30
 		pass_enter.text = "Incorrect. " + str(incorrect_times) + " tries remaining."
 		incorrect_times -= 1
 		await get_tree().create_timer(1.5).timeout
+		pass_enter.label_settings.font_size = 50
 		blinker_anim.play("Blink")
 		input = ""
 		pass_enter.text = input
 	else:
 		#print("very wrong")
 		array_pos = 0
-		pass_enter.text = "Exceeded amount of incorrect tries."
+		pass_enter.label_settings.font_size = 30
+		pass_enter.text = "Too many incorrect attempts."
 		await get_tree().create_timer(1.5).timeout
 		pass_enter.text = "Sending alarm..."
-		emit_signal("alarm")
 		await get_tree().create_timer(1.5).timeout
+		pass_enter.label_settings.font_size = 50
 		$".".hide()
-		#exit to third cam
+		emit_signal("alarm")
 		input = ""
 		pass_enter.text = input
 		
@@ -193,13 +198,13 @@ func _input(event):
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""
 		open_interact.show()
-	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "proposal" or GlobalVars.viewing == "newspaper" or  GlobalVars.viewing == "pager":
-		open_interact.hide()
-		close_interact.show()
-		interior_interact_area_1.show()
-		interior_interact_area_2.show()
-		interior_interact_area_3.show()
-		interior_interact_area_4.show()
+	#if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "proposal" or GlobalVars.viewing == "newspaper":
+		#open_interact.hide()
+		#close_interact.show()
+		#interior_interact_area_1.show()
+		#interior_interact_area_2.show()
+		#interior_interact_area_3.show()
+		#interior_interact_area_4.show()
 
 
 
@@ -229,3 +234,4 @@ func _on_object_exit_pressed():
 	interior_interact_area_2.show()
 	interior_interact_area_3.show()
 	interior_interact_area_4.show()
+	print(interior_interact_area_4.visible)

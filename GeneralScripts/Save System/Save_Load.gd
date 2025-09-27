@@ -240,7 +240,7 @@ func _get_char_pos():
 			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
 			var split_theo_pos : Dictionary = _split_pos_vector(GlobalVars.theo_pos)
 			var split_quincy_pos : Dictionary = _split_pos_vector(GlobalVars.quincy_pos)
-			return {"dalton_pos": split_dalton_pos, "theo_pos" : split_theo_pos, "juniper_pos" : split_quincy_pos}
+			return {"dalton_pos": split_dalton_pos, "theo_pos" : split_theo_pos, "quincy_pos" : split_quincy_pos}
 		"secret":
 			var split_dalton_pos : Dictionary = _split_pos_vector(GlobalVars.dalton_pos)
 			var split_theo_pos : Dictionary = _split_pos_vector(GlobalVars.theo_pos)

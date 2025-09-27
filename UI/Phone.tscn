@@ -1,4 +1,4 @@
-[gd_scene load_steps=218 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=219 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -162,6 +162,7 @@
 [ext_resource type="Texture2D" uid="uid://tk8fnydqh8f0" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame1@2x.png" id="128_mtbcp"]
 [ext_resource type="Texture2D" uid="uid://b13m4uusn5low" path="res://ThirdHouse/Assets/Sciencepic front@2x.png" id="130_hqjxk"]
 [ext_resource type="Texture2D" uid="uid://c4wvalrot4e50" path="res://ThirdHouse/Assets/Sciencepic back@2x.png" id="131_sykof"]
+[ext_resource type="Texture2D" uid="uid://wghfnjybiaak" path="res://ThirdHouse/Assets/Project Proposal_1@2x.png" id="159_k0hhp"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cs8vq"]
 
@@ -1445,7 +1446,6 @@ texture_pressed = ExtResource("91_h1u1y")
 texture_hover = ExtResource("91_h1u1y")
 
 [node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy", "evidence")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("87_fo3me")
@@ -2154,6 +2154,7 @@ texture_pressed = ExtResource("102_nsy64")
 texture_hover = ExtResource("102_nsy64")
 
 [node name="Evidence" type="Control" parent="NotesScreen" node_paths=PackedStringArray("container", "row_1", "row_2", "micah_letter", "micah_key", "micah_fur", "juniper_letter", "juniper_pie", "quincy_letter", "quincy_hammer", "quincy_coors", "quincy_choco", "no_evidence", "description", "description_body")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2784,7 +2785,6 @@ texture_filter = 2
 texture_filter = 2
 
 [node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_coordinates", "show_letter", "show_journal", "show_phone", "show_lab_pic", "show_proposal")]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2995,6 +2995,22 @@ visible = false
 text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
 title = NodePath("../Title")
 back_button = NodePath("../Back")
+
+[node name="Front" parent="NotesScreen/Quincy/View proposal" index="1"]
+offset_left = 760.0
+offset_top = 205.0
+offset_right = 1761.0
+offset_bottom = 1706.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("159_k0hhp")
+
+[node name="Back" parent="NotesScreen/Quincy/View proposal" index="2"]
+offset_left = 760.0
+offset_top = 205.0
+offset_right = 1761.0
+offset_bottom = 1706.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("159_k0hhp")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View proposal" index="4"]
 texture_filter = 2

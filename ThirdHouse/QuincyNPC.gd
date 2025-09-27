@@ -69,6 +69,7 @@ var sound_allowed := true
 @export var entrance_position : Marker3D
 
 var in_danger = false
+var alarm_active = false
 signal play_caught
 signal pause_timeout
 signal time_out_resume
@@ -375,7 +376,8 @@ func _on_dalton_caught_body_entered(body: Node3D) -> void:
 
 func _on_distraction_time_timeout() -> void:
 	print("finished")
-	emit_signal("time_out_resume")
+	if in_danger == false:
+		emit_signal("time_out_resume")
 	catch_possibility = true
 	print("catch_possibility")
 	if wander_choice == 1:
@@ -671,6 +673,8 @@ func drop_distract():
 
 func _on_safe_ui_alarm():
 	drop_distract()
+	alarm_active = true
+	in_danger = true
 
 
 func _on_time_out_drop_distract():
@@ -686,9 +690,14 @@ func _on_danger_body_entered(body):
 
 func _on_danger_body_exited(body):
 	if body.is_in_group("player"):
-		if is_distracted == true: 
+		if is_distracted == true and alarm_active == false: 
 			in_danger = false
 			print("out of danger")
+			if catch_possibility == true:
+				emit_signal("time_out_resume")
+				Dialogic.VAR.set_variable("Quincy.needs_distraction", false) 
+		else:
+			in_danger = false
 			#catch_possibility = false 
 
 

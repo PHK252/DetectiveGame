@@ -34,6 +34,7 @@ extends Area2D
 @export var paper : AudioStreamPlayer
 
 signal show_others
+signal check_pager_text 
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
@@ -71,6 +72,8 @@ func _on_exit_pressed():
 			GlobalVars.set(view_object, true)
 			object_in_scene.show()
 			object_interact.show() # might not need?
+		if add_note == true:
+			GlobalVars.emit_add_note(GlobalVars.current_level, viewing, "found")
 	else:
 		GlobalVars.set(view_object, true)
 		object_in_scene.show()
@@ -83,6 +86,7 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	object_interact.show()
 	emit_signal("show_others")
+	emit_signal("check_pager_text")
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == viewing:
@@ -105,3 +109,9 @@ func _input(event):
 			object_in_scene.show()
 			object_interact.show() # might not need?
 			GlobalVars.set(view_object, true)
+
+
+func _on_check_pager_text():
+	if GlobalVars.viewed_Quincy_pager == true and Dialogic.VAR.get_variable("Quincy.saw_pager_texts") == false:
+		clicked_count = 0
+		GlobalVars.viewed_Quincy_pager = false
