@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=3 uid="uid://cwe7ysx8hp5yv"]
+[gd_scene load_steps=220 format=3 uid="uid://cwe7ysx8hp5yv"]
 
 [ext_resource type="Texture2D" uid="uid://bsqf2cesb1tcy" path="res://ThirdHouse/Runa Journal Frames/First Page Frames/First Page Frame1@2x.png" id="1_28p4s"]
 [ext_resource type="Script" uid="uid://m3mlhke1j1s2" path="res://ThirdHouse/runa_journal.gd" id="1_nyd47"]
@@ -115,6 +115,8 @@
 [ext_resource type="Texture2D" uid="uid://x40pjfxkl1yx" path="res://UI/Assets/Journal/Next Hovered.png" id="111_31bv6"]
 [ext_resource type="Texture2D" uid="uid://cqxlwu25g6cyt" path="res://UI/Assets/Journal/Back Normal.png" id="112_jjlkw"]
 [ext_resource type="Texture2D" uid="uid://bpqp33c00w4vr" path="res://UI/Assets/Journal/Back Hovered.png" id="113_ea8c0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kbkql"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h61mm"]
 animations = [{
@@ -1396,6 +1398,15 @@ events = [SubResource("InputEventKey_rsvsu")]
 
 [node name="Journal" type="CanvasLayer"]
 script = ExtResource("1_nyd47")
+
+[node name="Background2" type="TextureRect" parent="."]
+modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_kbkql")
 
 [node name="Page Frames" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 540)

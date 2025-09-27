@@ -33,6 +33,7 @@ signal disable_look
 
 func _ready():
 	interactable.set_monitorable(false) 
+	pass
 
 func _process(delta):
 	#if first cycle:
@@ -46,7 +47,14 @@ func _process(delta):
 				await get_tree().create_timer(.03).timeout
 				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
 				set_monitor = true
-	# else: interactable.set_monitorable(false) 
+		else:
+			if set_monitor == true:
+				interactable.set_monitorable(false) 
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().create_timer(.03).timeout
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+				set_monitor = false
+	else: interactable.set_monitorable(false) 
 
 func _on_bar_interact_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finished == false and GlobalVars.in_interaction == "":
@@ -160,3 +168,9 @@ func _on_office_a_body_entered(body):
 		if body.name == "Quincy":
 			quincy_at_bar = true
 			print("bar_active")
+
+func _on_office_a_body_exited(body):
+	if Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
+		if body.name == "Quincy":
+			quincy_at_bar = false
+			print("bar_deactive")

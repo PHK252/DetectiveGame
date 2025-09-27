@@ -1,8 +1,7 @@
-[gd_scene load_steps=70 format=3 uid="uid://d20gyimd1igid"]
+[gd_scene load_steps=69 format=3 uid="uid://d20gyimd1igid"]
 
 [ext_resource type="Script" uid="uid://bbe6vtj5l3q80" path="res://UI/juniper_case.gd" id="1_ki4mg"]
 [ext_resource type="Texture2D" uid="uid://nof1cgm8yj12" path="res://UI/Assets/Juniper Case/Juniper_case.png" id="1_mytjr"]
-[ext_resource type="Texture2D" uid="uid://djsgyqrrljk18" path="res://UI/Assets/Juniper Case/Juniper_case_UI_mockup.png" id="2_kptl3"]
 [ext_resource type="Texture2D" uid="uid://qockmtfnijcy" path="res://UI/Assets/Juniper Case/Juniper_case_textbox.png" id="3_rli8t"]
 [ext_resource type="Texture2D" uid="uid://mna0dqurhv8k" path="res://UI/Assets/Juniper Case/Juniper_case_0_normal.png" id="4_nvduj"]
 [ext_resource type="Texture2D" uid="uid://bnwfyu83uvtji" path="res://UI/Assets/Juniper Case/Juniper_case_0_pressed.png" id="5_shlga"]
@@ -33,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="31_fgvgu"]
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="32_i68tx"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_xxd5l"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_6io2w"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_5l50q"]
 device = -1
@@ -190,14 +189,14 @@ events = [SubResource("InputEventKey_63fle"), SubResource("InputEventKey_hlg01")
 [node name="Case UI" type="CanvasLayer"]
 script = ExtResource("1_ki4mg")
 
-[node name="Background2" type="TextureRect" parent="."]
+[node name="Background3" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_xxd5l")
+texture = SubResource("CanvasTexture_6io2w")
 
 [node name="Case" type="TextureRect" parent="."]
 offset_left = 375.0
@@ -205,12 +204,6 @@ offset_top = 175.0
 offset_right = 1545.0
 offset_bottom = 890.0
 texture = ExtResource("1_mytjr")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.243137)
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("2_kptl3")
 
 [node name="TextBox" type="TextureRect" parent="."]
 offset_left = 415.0

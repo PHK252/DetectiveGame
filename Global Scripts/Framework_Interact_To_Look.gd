@@ -64,7 +64,7 @@ func _on_exit_pressed():
 			object_in_scene.show()
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Dialogic.start(dialogue_file)
 			GlobalVars.set(view_object, true)
 		else:
@@ -79,6 +79,7 @@ func _on_exit_pressed():
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GlobalVars.in_dialogue = false
 	object_interact.show()
 	emit_signal("show_others")
@@ -91,7 +92,7 @@ func _input(event):
 				object_in_scene.show()
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				Dialogic.start(dialogue_file)
 				GlobalVars.set(view_object, true)
 			else:
@@ -103,5 +104,4 @@ func _input(event):
 		else:
 			object_in_scene.show()
 			object_interact.show() # might not need?
-
 			GlobalVars.set(view_object, true)

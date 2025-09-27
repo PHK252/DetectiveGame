@@ -364,6 +364,7 @@ func _on_fixed_wine_distraction() -> void:
 
 func _on_dalton_caught_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
+		print("entered catch")
 		if catch_possibility and in_danger == true:
 			print("quincy caught you")
 			if GlobalVars.in_interaction != "":
@@ -376,6 +377,7 @@ func _on_distraction_time_timeout() -> void:
 	print("finished")
 	emit_signal("time_out_resume")
 	catch_possibility = true
+	print("catch_possibility")
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
 		wander_choice = 11
@@ -677,15 +679,17 @@ func _on_time_out_drop_distract():
 
 func _on_danger_body_entered(body):
 	if body.is_in_group("player"):
-		if catch_possibility == true: 
+		if is_distracted == true: 
 			in_danger = true # Replace with function body.
+			print("in danger")
 
 
 func _on_danger_body_exited(body):
 	if body.is_in_group("player"):
-		if catch_possibility == true: 
+		if is_distracted == true: 
 			in_danger = false
-			catch_possibility == false 
+			print("out of danger")
+			#catch_possibility = false 
 
 
 func _on_caught_exit_interact():

@@ -35,7 +35,7 @@ signal alarm
 @export var safe_error : AudioStreamPlayer3D
 
 func _ready():
-	pass_enter.text = ""
+	pass_enter.text = "REVER"
 	blinker_anim.play("Blink")
 
 func _on_down_pressed():
@@ -222,6 +222,7 @@ func _on_safe_interact_interacted(interactor):
 
 
 func _on_object_exit_pressed():
+	print("reactivate")
 	open_interact.hide()
 	close_interact.show()
 	interior_interact_area_1.show()

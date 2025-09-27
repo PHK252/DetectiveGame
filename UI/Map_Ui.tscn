@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cjrv3kmqym4e1"]
+[gd_scene load_steps=28 format=3 uid="uid://cjrv3kmqym4e1"]
 
 [ext_resource type="Script" uid="uid://bxm3brlgnve21" path="res://StartingOffice/scenechange.gd" id="1_n4a1j"]
 [ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="2_ek0q2"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://bxpueclt77ud8" path="res://UI/Assets/Map/Office Pin Hovered2.png" id="18_cctyf"]
 [ext_resource type="Texture2D" uid="uid://bkvt3v0npsc6k" path="res://UI/Assets/Map/Office Pin Hovered3.png" id="19_sw58j"]
 [ext_resource type="Texture2D" uid="uid://blgdcrq1b3ecx" path="res://UI/Assets/Map/Office Pin Hovered4.png" id="20_7ob01"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1pcwa"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ek0q2"]
 
@@ -68,7 +70,17 @@ frame_3/duration = 0.25
 [node name="Map" type="CanvasLayer"]
 script = ExtResource("1_n4a1j")
 
+[node name="Background2" type="TextureRect" parent="."]
+modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_1pcwa")
+
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0.0980392)
 anchors_preset = 15
 anchor_right = 1.0

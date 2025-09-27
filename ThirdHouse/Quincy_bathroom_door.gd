@@ -149,6 +149,7 @@ func _quincy_enter_bathroom(argument: String):
 		print("quincy clean")
 		quincy_close_door = true
 		await get_tree().create_timer(3.0).timeout
+		player.stop_player()
 		close()
 		pass
 

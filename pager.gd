@@ -13,6 +13,7 @@ extends CanvasLayer
 
 var up = InputMap.action_get_events("ui_up")
 var down = InputMap.action_get_events("ui_down")
+var exit = InputMap.action_get_events("Exit")
 var disabled = false
 
 func _ready():
@@ -31,6 +32,7 @@ func _on_visibility_changed():
 		print("disable")
 		InputMap.action_erase_events("ui_up")
 		InputMap.action_erase_events("ui_down")
+		InputMap.action_erase_events("Exit")
 		disabled = true
 		#start animation
 		intro.show()
@@ -45,3 +47,15 @@ func _on_visibility_changed():
 			print("enable")
 			InputMap.action_add_event("ui_up", up[0])
 			InputMap.action_add_event("ui_down", down[0])
+			InputMap.action_add_event("Exit", exit[0])
+
+
+func _on_exit_pressed():
+	visible = false
+	GlobalVars.viewing = ""
+	home.visible = false
+	menu.visible = false
+	messages.visible = false
+	contact.visible = false
+	error.visible = false
+	bottom.visible = false

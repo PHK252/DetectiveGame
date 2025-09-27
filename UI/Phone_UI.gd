@@ -312,7 +312,7 @@ func _on_call_pressed():
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-			book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+			book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), phone_marker)
 			book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 		elif bar_call == true:
 			var bar_call = Dialogic.start("Quincy_bar", "Theo Call")

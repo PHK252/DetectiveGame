@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=218 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -162,6 +162,8 @@
 [ext_resource type="Texture2D" uid="uid://tk8fnydqh8f0" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame1@2x.png" id="128_mtbcp"]
 [ext_resource type="Texture2D" uid="uid://b13m4uusn5low" path="res://ThirdHouse/Assets/Sciencepic front@2x.png" id="130_hqjxk"]
 [ext_resource type="Texture2D" uid="uid://c4wvalrot4e50" path="res://ThirdHouse/Assets/Sciencepic back@2x.png" id="131_sykof"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cs8vq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayhbp"]
 size = Vector2(110, 834)
@@ -471,6 +473,15 @@ VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ltpiu")
 script = ExtResource("1_eli2p")
 metadata/_edit_vertical_guides_ = [2472.0, 2245.0]
 metadata/_edit_horizontal_guides_ = [1774.0]
+
+[node name="Background2" type="TextureRect" parent="."]
+modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_cs8vq")
 
 [node name="Panel Left" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0.294118)
