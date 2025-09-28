@@ -86,7 +86,7 @@ func bubble_apply_overrides(bubble:TextBubble) -> void:
 	rtl.add_theme_font_size_override(&"italics_font_size", text_size)
 	rtl.add_theme_font_size_override(&"bold_italics_font_size", text_size)
 
-	rtl.add_theme_color_override(&"default_color", text_color)
+	rtl.add_theme_color_override(&"default_color", bubble.current_character.color)
 
 	if !normal_font.is_empty():
 		rtl.add_theme_font_override(&"normal_font", load(normal_font) as Font)
@@ -183,7 +183,7 @@ func bubble_apply_overrides(bubble:TextBubble) -> void:
 
 	choice_theme.set_font_size(&'font_size', &'Button', choices_text_size)
 	choice_theme.set_color(&'font_color', &'Button', choices_text_color)
-	choice_theme.set_color(&'font_pressed_color', &'Button', choices_text_color)
+	choice_theme.set_color(&'font_pressed_color', &'Button', choices_text_color_hover)
 	choice_theme.set_color(&'font_hover_color', &'Button', choices_text_color_hover)
 	choice_theme.set_color(&'font_focus_color', &'Button', choices_text_color_focus)
 	choice_theme.set_color(&'font_disabled_color', &'Button', choices_text_color_disabled)
