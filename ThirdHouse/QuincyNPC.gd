@@ -149,7 +149,7 @@ func _physics_process(delta: float) -> void:
 		#direction.y = 0
 		velocity = velocity.lerp(direction * SPEED, accel * delta)
 		quincy_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / SPEED)
-		if velocity.length() > 0.5 and rotate_forced == false:
+		if velocity.length() > 0.05 and rotate_forced == false:
 			if sound_allowed:
 				floor_type_walk()
 			_rotate_towards_velocity()
