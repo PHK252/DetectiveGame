@@ -13,12 +13,13 @@ point_count = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60xbe"]
 resource_local_to_scene = true
 shader = ExtResource("2_1mhvf")
-shader_parameter/radius = 25.0
+shader_parameter/radius = 19.35
 shader_parameter/box_size = Vector2(100, 100)
 shader_parameter/box_padding = 15.0
 shader_parameter/wobble_amount = 0.2
 shader_parameter/wobble_speed = 1.0
 shader_parameter/wobble_detail = 0.5
+shader_parameter/pixel_density = 32.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6ls0"]
 content_margin_left = 5.0
@@ -41,11 +42,12 @@ script = ExtResource("1_jdhpk")
 [node name="Tail" type="Line2D" parent="Group"]
 unique_name_in_owner = true
 points = PackedVector2Array(-9, 7, -29, 118, -95, 174, -193, 195)
-width = 96.0
+width = 60.0
 width_curve = SubResource("Curve_0j8nu")
 
 [node name="Background" type="ColorRect" parent="Group"]
 unique_name_in_owner = true
+texture_filter = 1
 material = SubResource("ShaderMaterial_60xbe")
 offset_left = -115.0
 offset_top = -69.0
