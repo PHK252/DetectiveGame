@@ -76,7 +76,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	#print(is_wandering)
-	
+	#print(wander_choice)
 	if not is_wandering:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
@@ -100,7 +100,10 @@ func _physics_process(delta: float) -> void:
 			nav.target_position = player.global_position
 		else:
 			if wander_choice != 3:
-				STOPPING_DISTANCE = 0.0
+				if wander_choice != 2:
+					STOPPING_DISTANCE = 0.0
+				else:
+					STOPPING_DISTANCE = 0.3
 			else:
 				STOPPING_DISTANCE = 0.5
 		direction = nav.get_next_path_position() - global_position
@@ -185,7 +188,7 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		current_anim = one_shots[wander_choice]
 
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
-		#print("gotthere")
+		print("gotthere")
 		if wander_choice != 2 and wander_choice != 3:
 			if current_anim == "Basketball":
 				print("gotintoB")
@@ -207,7 +210,11 @@ func _process_wander_state(distance_to_target: float, wander_choice: int) -> voi
 		cooldown_bool = true
 		cooldown.start()
 		wander_timer.start()
+		#print("CHOICE:")
+		#print(wander_choice)
+		#print("ENTER:")
 		if wander_choice == 2:
+			#print("ENTERED_CORRECT_CHOICE")
 			anim_player.play("basketball_default")
 			emit_signal("sit_visible")
 			armature.visible = false
@@ -283,6 +290,7 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 
 func _on_timer_timeout() -> void:
 	#print(cooldown_bool)
+	#print("TIMERINTERFERENCE")
 	if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and intDalton == false:
 		var choice = rng.randi_range(-10, 10)
 		wander_choice = rng.randi_range(0, 2)
@@ -374,8 +382,10 @@ func _on_door_micah_rotate() -> void:
 		emit_signal("micah_open")
 
 func _on_door_greet_done() -> void:
+	print("FINISHINGDOOR")
 	at_door = false
 	intDalton = false
+	wander_rotate = false
 	wander_choice = 2
 	nav.target_position = marker_positions[wander_choice].global_position
 	is_navigating = true

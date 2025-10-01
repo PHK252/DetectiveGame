@@ -64,6 +64,7 @@ var cooldown := false
 var dalton_entered := false
 var direct
 var greeting_finished := false
+var force_idle_closet := false
 
 @export var secret_location := false
 
@@ -513,6 +514,13 @@ func _on_k_control_body_entered(body: Node3D) -> void:
 		in_kitchen = true
 		is_navigating = false
 		state = IDLE
+	if body.is_in_group("theo"):
+		if micahBack == false:
+			nav.target_position = adjustment_list[8].global_position
+			is_navigating = true
+			state = ADJUST
+		#force_idle_closet = true
+		#if around sofa then force idle and look at dalton
 
 func _on_k_control_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -520,6 +528,8 @@ func _on_k_control_body_exited(body: Node3D) -> void:
 		if anim_tree["parameters/Blend2/blend_amount"] == 0:
 			is_navigating = true
 			state = FOLLOW
+	#if body.is_in_group("theo"):
+		#force_idle_closet = false
 
 func _on_micah_body_collision_danger() -> void:
 	print("micahCollide")
@@ -1105,6 +1115,22 @@ func _on_JuniperExitTeaArea(body: Node3D) -> void:
 		print("clearingJ")
 		juniper_clear = true
 
-
 func _on_SecretLocationStart() -> void:
 	is_navigating = true
+
+# edge case handling sofa area repos to behind
+# so theo doesn't run into micah
+func _on_Micahcloset_interacted(interactor: Interactor) -> void:
+	pass
+	#if force_idle_closet == true:
+		#in_kitchen = true
+		#is_navigating = false
+		#state = IDLE
+		
+func _on_closet_quit() -> void:
+	pass
+	#if force_idle_closet == true:
+		#force_idle_closet = false
+		#in_kitchen = false
+		#is_navigating = true
+		#state = FOLLOW
