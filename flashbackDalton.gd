@@ -175,3 +175,38 @@ func _on_Isaac_interacted(interactor: Interactor) -> void:
 	force_rotation = false
 	spec_rotate = false
 	in_control = true
+
+
+func _on_interact_rightCork(interactor: Interactor) -> void:
+	number = 3
+	spec_rotate = true
+	force_rotation = true
+	in_control = false
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	spec_rotate = false
+	in_control = true
+	number = 0
+
+func _on_interact_LeftCork(interactor: Interactor) -> void:
+	number = 2
+	spec_rotate = true
+	force_rotation = true
+	in_control = false
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	spec_rotate = false
+	in_control = true
+	number = 0
+
+
+func _on_doughnut_interacted(interactor: Interactor) -> void:
+	number = 4
+	spec_rotate = true
+	force_rotation = true
+	in_control = false
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	spec_rotate = false
+	in_control = true
+	number = 0
