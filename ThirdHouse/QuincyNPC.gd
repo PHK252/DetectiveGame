@@ -58,6 +58,7 @@ var poolPos
 var greeting := false
 var rotate_forced := false
 var drunk_dalton := false
+var entered_catch_zone := false
 
 var fall_allowed := true
 var distraction_allowed := true
@@ -209,7 +210,6 @@ func floor_type_gather():
 			sound_player.play("WoodFootsteps_Gather")
 
 
-
 #States
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	# Prevent old path issues
@@ -277,6 +277,12 @@ func _process_follow_state(distance_to_target: float) -> void:
 	packofcigs.visible = false
 	lighter.visible = false
 	cig.visible = false
+	
+	if entered_catch_zone and catch_possibility:
+		print("StopQuincyCuzHeCaughtU")
+		emit_signal("enable_look")
+		is_navigating = false
+		state = IDLE
 	
 	if poolTable:
 		state = IDLE
@@ -767,3 +773,12 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 		wander_choice = 0
 		nav.target_position = marker_positions[0].global_position
 		state = FOLLOW
+
+#handling quincy stoppage after distraction
+func _on_catch_navigation_stop_body_entered(body: Node3D) -> void:
+	if body.name == "Quincy": #and catch_possibility:
+		entered_catch_zone = true
+
+func _on_catch_navigation_stop_body_exited(body: Node3D) -> void:
+	if body.name == "Quincy": #and catch_possibility:
+		entered_catch_zone = false

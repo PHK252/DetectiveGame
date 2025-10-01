@@ -65,6 +65,8 @@ var dalton_entered := false
 var direct
 var greeting_finished := false
 
+@export var secret_location := false
+
 @export var quincy_house := false 
 
 @export var juniper_house = false
@@ -93,6 +95,10 @@ func _ready() -> void:
 	nav.target_position = player.global_transform.origin
 	if quincy_house:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
+	
+	if secret_location:
+		global_position = marker_list[0].global_position
+		is_navigating = false
 
 func _physics_process(delta: float) -> void:
 	GlobalVars.theo_pos = global_position
@@ -394,7 +400,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 		state = IDLE
 
 func _on_interact_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and is_investigating == false and going_to_bar == false and greeting_finished:
+	if body.is_in_group("player") and is_investigating == false and going_to_bar == false and greeting_finished and secret_location == false:
 		print("waiting for interact")
 		see_player = true
 		state = IDLE
@@ -1098,3 +1104,7 @@ func _on_JuniperExitTeaArea(body: Node3D) -> void:
 	if body.is_in_group("juniper"):
 		print("clearingJ")
 		juniper_clear = true
+
+
+func _on_SecretLocationStart() -> void:
+	is_navigating = true

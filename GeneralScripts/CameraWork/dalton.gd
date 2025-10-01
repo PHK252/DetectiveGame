@@ -18,6 +18,7 @@ var idle_timer_active: bool = false
 @export var bathroom_position : Marker3D
 @export var charac_body : CharacterBody3D
 @export var coll_wall : CollisionShape3D
+@export var secret_location_walkin := false
 
 var gathered := false
 var walk_indicate := false
@@ -35,6 +36,7 @@ signal stopped
 signal theo_adjustment
 signal theo_reset
 signal knocking
+signal theo_walk_in
 var move_back := false
 var is_interacting := false
 
@@ -55,10 +57,15 @@ var number := 0
 @export var office_return = false
 var tea_time = false
 @export var MicahHouse := false
+@export var block_secretLocation_left : CollisionShape3D
 
 func _ready() -> void:
 	add_to_group("player")
 	#
+	if secret_location_walkin:
+		global_position = force_rotate_list[1].global_position
+		enter_secretLocation()
+
 	if MicahHouse:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	#if GlobalVars.dalton_pos:
@@ -704,6 +711,35 @@ func _return_office():
 	number = 0
 	in_control = true
 	#done
+
+func enter_secretLocation():
+	in_control = false
+	#rotate
+	needs_rotation_forced = true
+	number = 2
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	#walk
+	walk_number = 2
+	forced_walk = true
+	await get_tree().create_timer(1.0).timeout
+	emit_signal("theo_walk_in")
+	await get_tree().create_timer(2.5).timeout
+	forced_walk = false
+	walk_number = 2
+	needs_rotation_forced = true
+	number = 3
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	number = 0
+	in_control = true
+	block_secretLocation_left.disabled = false
+	#done
+
 
 
 func _on_Quincy_interacted(interactor: Interactor) -> void:

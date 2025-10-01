@@ -16,6 +16,7 @@ func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#await walk in
+	await get_tree().create_timer(4).timeout
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
 		GlobalVars.in_dialogue = true
 		var arrived_dialogue = Dialogic.start("Secret_arrived")
