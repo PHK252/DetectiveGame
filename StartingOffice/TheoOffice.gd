@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var armature = Node3D
 @export var path : PathFollow3D
 @export var walk_target : Marker3D
+@export var sound_anims : AnimationPlayer
 
 const speed = 0.3
 const LERP_VAL = 0.15
@@ -70,10 +71,10 @@ func _rotate_dalton(delta):
 func _process(delta):
 	#print(state)
 	if state == WALK:
+		sound_anims.play("WoodWalk")
 		var flipped_basis = path.global_transform.basis
 		flipped_basis.x = -flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
 		flipped_basis.z = -flipped_basis.z  # Flip the Z basis vector to mirror rotation on the Y-axis
-
 	# Apply the flipped basis to the NPC
 		global_transform.basis = flipped_basis
 	
@@ -112,9 +113,11 @@ func _process(delta):
 						print("checked for stop")
 						stop_walk = true
 						#path.progress_ratio = 0.95
+						sound_anims.play("WalkGather")
 						emit_signal("look_dalton")
 						state = IDLE
 				else:
+					sound_anims.stop()
 					emit_signal("look_dalton")
 					state = IDLE
 		OUT:

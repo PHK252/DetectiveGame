@@ -1069,3 +1069,39 @@ func _on_ShelfQ_interacted(interactor: Interactor) -> void:
 	needs_rotation_forced = false
 	number = 0
 	in_control = true
+
+
+func _on_rightCork_rotation(interactor: Interactor) -> void:
+	number = 6
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_LeftCorkRotation(interactor: Interactor) -> void:
+	number = 5
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_paper_rotation(interactor: Interactor) -> void:
+	number = 4
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true

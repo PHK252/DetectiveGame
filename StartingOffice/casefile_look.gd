@@ -16,11 +16,14 @@ extends Area2D
 @onready var clicked_count = GlobalVars.get(clicked_object)
 @onready var viewed_object = GlobalVars.get(view_object)
 
+#paper sound
+@export var case_sound : AudioStreamPlayer
 
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				case_sound.play()
 				object_in_scene.hide()
 				object_interact.hide()
 				UI_look.show()

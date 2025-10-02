@@ -20,12 +20,15 @@ var went_secret : bool
 
 signal Quincy_call_recieve
 signal _show_tut(tut_type : String)
+signal select_level_sound
+signal leave_map_sound
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 func _on_firsthouse_button_pressed() -> void:
+	emit_signal("select_level_sound")
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
 		if went_Juniper == true:
@@ -39,6 +42,7 @@ func _on_firsthouse_button_pressed() -> void:
 
 
 func _on_secondhouse_button_pressed() -> void:
+	emit_signal("select_level_sound")
 	GlobalVars.in_look_screen = false
 	if went_Micah == true:
 		Loading.load_scene(self, GlobalVars.second_house_path, true, "afternoon", Loading.choose_drive_dialogue())
@@ -51,6 +55,7 @@ func _on_secondhouse_button_pressed() -> void:
 
 
 func _on_thirdhouse_button_pressed() -> void:
+	emit_signal("select_level_sound")
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
 		if GlobalVars.Day_1_Quincy_call == false:
@@ -72,6 +77,7 @@ func _on_thirdhouse_button_pressed() -> void:
 
 func _on_office_button_pressed() -> void:
 	#print("office_pressed")
+	emit_signal("select_level_sound")
 	if GlobalVars.day == 1: 
 		if went_Juniper == false or went_Micah == false:
 			#thought to go to next house
@@ -95,6 +101,7 @@ func _on_office_button_pressed() -> void:
 
 
 func _on_secret_button_pressed() -> void:
+	emit_signal("select_level_sound")
 	GlobalVars.in_look_screen = false
 	Loading.load_scene(self, GlobalVars.secret_path, true, "morning", Loading.choose_drive_dialogue())
 	player.start_player()
@@ -104,6 +111,7 @@ func _on_secret_button_pressed() -> void:
 
 
 func _on_exit_pressed():
+	emit_signal("leave_map_sound")
 	$".".hide()
 
 

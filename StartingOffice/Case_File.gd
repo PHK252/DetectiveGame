@@ -14,6 +14,8 @@ var just_interacted := false
 signal theo_move
 signal activate_map
 
+signal paper_exit
+
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -39,6 +41,7 @@ func _on_exit_pressed():
 		alert.hide()
 		object.show()
 		player.show()
+		emit_signal("paper_exit")
 		await get_tree().create_timer(.05).timeout
 		if GlobalVars.intro_dialogue == false and GlobalVars.viewed_case_file == true:
 			GlobalVars.in_dialogue = true
@@ -74,6 +77,7 @@ func _process(delta):
 			alert.hide()
 			object.show()
 			player.show()
+			emit_signal("paper_exit")
 			#await get_tree().create_timer(.5).timeout
 			if GlobalVars.intro_dialogue == false and GlobalVars.viewed_case_file == true:
 				GlobalVars.in_dialogue = true

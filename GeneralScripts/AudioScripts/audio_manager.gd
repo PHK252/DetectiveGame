@@ -157,3 +157,11 @@ func _on_menu_exit() -> void:
 
 func _on_hover_exit() -> void:
 	audio_master[4].play()
+
+func _on_map_select_level_sound() -> void:
+	audio_master[2].play()
+
+func _on_secret_focus_entered() -> void:
+	var secret_coor = Dialogic.VAR.get_variable("Quincy.has_secret_coor")
+	if secret_coor == true and GlobalVars.day == 3:
+		audio[4].play()
