@@ -38,6 +38,7 @@ var sloth_speed : float = 0.05
 @export var slothSounds : AnimationPlayer
 @export var slothcast : RayCast3D
 @export var click_sound : AudioStreamPlayer3D
+@export var cardboard_collision : CollisionShape3D
 
 #panda control
 @export var panda : Node3D
@@ -53,6 +54,7 @@ func _ready():
 	cardboard_anim.visible = true
 	sloth.visible = false
 	panda.visible = false
+	cardboard_collision.disabled = true
 	panda_timer.start()
 
 func _on_window_close_became_active() -> void:
@@ -164,6 +166,7 @@ func _on_delivery_door_body_entered(body: Node3D) -> void:
 	anim_box.play("box_drop")
 	sloth_anims.set("parameters/blendHold/blend_amount", 1)
 	sloth_anims.set("parameters/BlendSpaceNone/blend_position", 0)
+	cardboard_collision.disabled = false
 	await get_tree().create_timer(10.5).timeout
 	cardboard_static.visible = true
 	cardboard_anim.visible = false
