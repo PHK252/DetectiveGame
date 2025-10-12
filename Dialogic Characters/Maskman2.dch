@@ -4,8 +4,19 @@
 &"_translation_id": "",
 &"color": Color(0.156863, 0.156863, 0.160784, 1),
 &"custom_info": {
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Talking",
+"sound_moods": {
+"Talking": {
+"mode": 0,
+"name": "Talking",
+"pitch_base": 0.2,
+"pitch_variance": -0.1,
+"skip_characters": 1.0,
+"sound_path": "res://Audio/Voices/800",
+"volume_base": 1.0,
+"volume_variance": 0.6
+}
+},
 "style": ""
 },
 &"default_portrait": "",
