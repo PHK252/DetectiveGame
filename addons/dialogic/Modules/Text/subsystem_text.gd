@@ -25,6 +25,7 @@ signal meta_clicked(meta:Variant)
 var character_colors := {}
 var color_regex := RegEx.new()
 var text_already_read := false
+var current_text_node
 
 var text_effects := {}
 var parsed_text_effect_info: Array[Dictionary] = []
@@ -122,7 +123,6 @@ func update_textbox(text: String, instant := false) -> void:
 ## If additional is true, the previous text will be kept.
 func update_dialog_text(text: String, instant := false, additional := false) -> String:
 	update_text_speed()
-
 	if !instant: dialogic.current_state = dialogic.States.REVEALING_TEXT
 
 	if additional:
@@ -132,9 +132,9 @@ func update_dialog_text(text: String, instant := false, additional := false) -> 
 
 	for text_node in get_tree().get_nodes_in_group('dialogic_dialog_text'):
 		connect_meta_signals(text_node)
-
+		current_text_node = text_node
 		if text_node.enabled and (text_node == text_node.textbox_root or text_node.textbox_root.is_visible_in_tree()):
-
+			
 			if instant:
 				text_node.text = text
 
@@ -179,6 +179,7 @@ func update_name_label(character:DialogicCharacter):
 		if character:
 			if !'use_character_color' in name_label or name_label.use_character_color:
 				name_label.self_modulate = character.color
+				current_text_node.self_modulate = character.color
 		else:
 			name_label.self_modulate = Color(1,1,1,1)
 

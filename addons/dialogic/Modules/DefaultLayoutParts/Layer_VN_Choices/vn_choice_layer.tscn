@@ -17,51 +17,80 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kurgw")
+text_color_custom = Color(0.596078, 0.639216, 0.662745, 1)
+text_color_pressed = Color(0.247059, 0.294118, 0.396078, 1)
+text_color_hovered = Color(0.247059, 0.294118, 0.396078, 1)
+text_color_disabled = Color(0.596078, 0.639216, 0.662745, 1)
+text_color_focused = Color(0.247059, 0.294118, 0.396078, 1)
+boxes_stylebox_hovered = "uid://xs2s6euq5stw"
+boxes_stylebox_pressed = "uid://xs2s6euq5stw"
 
-[node name="Choices" type="VBoxContainer" parent="."]
+[node name="Choices" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -172.0
-offset_right = 43.0
-offset_bottom = -1.0
+offset_left = -40.0
+offset_top = -150.0
+offset_right = 136.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 alignment = 1
 metadata/_edit_layout_mode = 1
 
-[node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices"]
+[node name="Column1" type="VBoxContainer" parent="Choices"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices/Column1"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../DialogicNode_ChoiceButton2")
+focus_next = NodePath("../DialogicNode_ChoiceButton2")
+focus_previous = NodePath(".")
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="DialogicNode_ChoiceButton2" type="Button" parent="Choices/Column1"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../DialogicNode_ChoiceButton1")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Column2/DialogicNode_ChoiceButton3")
+focus_next = NodePath("../../Column2/DialogicNode_ChoiceButton3")
+focus_previous = NodePath("../DialogicNode_ChoiceButton1")
+text = "Some text"
+script = ExtResource("1_w632k")
+
+[node name="Column2" type="VBoxContainer" parent="Choices"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices/Column2"]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton2" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton4" type="Button" parent="Choices/Column2"]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices"]
+[node name="Column3" type="VBoxContainer" parent="Choices"]
+layout_mode = 2
+
+[node name="DialogicNode_ChoiceButton5" type="Button" parent="Choices/Column3"]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton4" type="Button" parent="Choices"]
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton5" type="Button" parent="Choices"]
-layout_mode = 2
-text = "Some text"
-script = ExtResource("1_w632k")
-
-[node name="DialogicNode_ChoiceButton6" type="Button" parent="Choices"]
-visible = false
+[node name="DialogicNode_ChoiceButton6" type="Button" parent="Choices/Column3"]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
