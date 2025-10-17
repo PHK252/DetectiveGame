@@ -8,10 +8,10 @@ set {Asked Questions.Micah_Asked_Night} = true
 do GlobalVars.emit_add_note("micah", "location", "")
 label Questions
 [wait time="0.3"]
-Dalton: ...
+Dalton: Ask about...
 - Time of return?
 	jump Morning_night_time/
 - Suspicious activity?
 	jump Morning_night_sus/
-- Have Theo ask a question. | [if {Asked Questions.Micah_Morning_enough_Theo} == true] [else="hide"]
+- Let Theo ask. | [if {Asked Questions.Micah_Morning_enough_Theo} == true] [else="hide"]
 	jump Theo_answer_morning/

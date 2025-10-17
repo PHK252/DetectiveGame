@@ -10,12 +10,12 @@ Dalton: Can we ask you a few questions?
 Micah: S-sure...
 label Questions
 [wait time="0.3"]
-Dalton: ...
-- Location during the time of break in?
+Dalton: Ask about...
+- Location.
 	jump Morning_night/
-- Damage in property?
+- Damage.
 	jump Morning_Property/
-- Any subjects with motive?
+- Motive.
 	jump Morning_home/
-- Ask to enter Micah's apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
+- Enter apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
 	jump Micah_ask_enter/

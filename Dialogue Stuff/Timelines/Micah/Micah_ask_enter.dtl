@@ -5,14 +5,14 @@ Micah: I...
 Micah: I don't...
 [wait time="0.3"]
 Dalton: ...
-- Reassure Micah.
+- Reassure.
 	set {Character Aff Points.Micah} += 1
 	Dalton: If you're not ready today, we can come back tomorrow if you'd like.
 	Micah: ...
 	Micah: I just wasn't expecting company today.
 	Micah: It's a bit messy…
 	[signal arg="open_door"]
-- Pressure Micah.
+- Pressure.
 	set {Character Aff Points.Micah} -= 1
 	set {Character Aff Points.Theo} -= 1
 	Dalton: We have a warrant.
@@ -25,7 +25,7 @@ Dalton: ...
 	Micah: You can come in...
 	Micah: I guess.
 	[signal arg="open_door"]
-- Have Theo talk to Micah. | [if {Character Aff Points.Micah} >= 2 and {Character Aff Points.Theo} >= 1]
+- Let Theo answer. | [if {Character Aff Points.Micah} >= 2 and {Character Aff Points.Theo} >= 1]
 	set {Character Aff Points.Micah} += 1
 	set {Character Aff Points.Theo} += 1
 	Theo: We're sorry for interrupting like this, but we gotta do our job.
