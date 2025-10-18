@@ -8,12 +8,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmg1w"]
 bg_color = Color(0.254902, 0.254902, 0.254902, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 
 [node name="TextboxWithSpeakerPortrait" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +20,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_7jt4d")
 name_label_color_mode = 1
-box_panel = "uid://cmpf1qxjh5tuw"
+box_panel = "res://Dialogue Stuff/VisualNovelTextbox/vn_textbox_default_panel.tres"
+box_modulate_global_color = false
 box_size = Vector2(500, 200)
 
 [node name="Anchor" type="Control" parent="."]
@@ -81,9 +79,10 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.231373)
+color = Color(0, 0, 0, 0)
 
 [node name="DialogicNode_PortraitContainer" type="Control" parent="Anchor/Panel/HBox/PortraitPanel/PortraitBackgroundColor"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

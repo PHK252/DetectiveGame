@@ -217,13 +217,15 @@ text_use_global_color = false
 text_custom_color = Color(0.247059, 0.294118, 0.396078, 1)
 box_panel = "res://Dialogue Stuff/VisualNovelTextbox/vn_textbox_default_panel.tres"
 box_color_use_global = false
-box_color_custom = Color(0.968627, 0.960784, 0.901961, 1)
+box_color_custom = Color(0.980392, 0.945098, 0.823529, 1)
 box_size = Vector2(800, 180)
 box_margin_bottom = 20
 box_animation_in = 0
 box_animation_out = 0
 name_label_box_panel = "res://Dialogue Stuff/VisualNovelTextbox/vn_textbox_name_label_panel.tres"
 name_label_box_modulate = Color(0, 0, 0, 1)
+next_indicator_enabled = false
+next_indicator_show_on_questions = false
 next_indicator_size = Vector2(27, 15)
 
 [node name="Animations" type="AnimationPlayer" parent="."]
