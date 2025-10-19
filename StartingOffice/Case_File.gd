@@ -3,6 +3,8 @@ extends MeshInstance3D
 @export var casefilecam : PhantomCamera3D
 @export var exitcam : PhantomCamera3D
 @export var camanim : AnimationPlayer
+@export var theo_theme : AudioStreamPlayer
+@export var office_theme : AudioStreamPlayer
 @onready var object = $"."
 @onready var look_click = $"../../../../UI/Casefile"
 @onready var player = $"../../Characters/Dalton/CharacterBody3D"
@@ -60,6 +62,8 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	player.start_player()
 	alert.show()
+	office_theme.play()
+	theo_theme.stop()
 	GlobalVars.in_dialogue = false
 	emit_signal("activate_map")
 	GlobalVars.in_interaction = ""
@@ -97,4 +101,6 @@ func enter_Theo(argument: String):
 		print("Theo enters")
 		emit_signal("theo_move")
 		Dialogic.signal_event.disconnect(enter_Theo)
+		office_theme.stop()
+		theo_theme.play()
 		pass
