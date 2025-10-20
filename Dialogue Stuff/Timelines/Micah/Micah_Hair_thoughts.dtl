@@ -1,8 +1,9 @@
 "Daltons Thoughts": Hmm.
 "Daltons Thoughts": Seems like a job for the forensics team. 
+"Daltons Thoughts": ...
 - Take.
 	"Daltons Thoughts": Wouldn't hurt to try.
-	set {Asked Questions.has_hair}
+	set {Asked Questions.has_hair} = true
 	do GlobalVars.emit_add_evidence("micah", "fur")
 - Leave.
 	"Daltons Thoughts": Eh.
