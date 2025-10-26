@@ -26,13 +26,22 @@
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
+"Angry": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Dalton/Dalton Angry.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
 "Default": {
 "export_overrides": {
 "image": "\"res://UI/Dialogue Portraits/Dalton/Dalton Default.png\""
 },
 "mirror": false,
 "offset": Vector2(0, -3),
-"scale": 1.0,
+"scale": 1,
 "scene": ""
 },
 "Doubt1": {
@@ -62,9 +71,27 @@
 "scale": 1,
 "scene": ""
 },
+"Hmph": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Dalton/Dalton Hmph.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
 "Roll Eyes": {
 "export_overrides": {
 "image": "\"res://UI/Dialogue Portraits/Dalton/Dalton Roll Eyes.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Dalton/Dalton Sad.png\""
 },
 "mirror": false,
 "offset": Vector2(0, -3),
@@ -95,7 +122,7 @@
 },
 "mirror": false,
 "offset": Vector2(0, -3),
-"scale": 1.0,
+"scale": 1,
 "scene": ""
 }
 },

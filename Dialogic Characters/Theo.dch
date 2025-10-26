@@ -9,22 +9,140 @@
 "Talking": {
 "mode": 0,
 "name": "Talking",
-"pitch_base": 0.3,
-"pitch_variance": 0.1,
+"pitch_base": 0.6,
+"pitch_variance": 0.2,
 "skip_characters": 1.0,
-"sound_path": "res://Audio/Voices/800",
+"sound_path": "res://Audio/Voices/600",
 "volume_base": 0.9,
 "volume_variance": 0.6
 }
 },
 "style": "Text_Bubble"
 },
-&"default_portrait": "",
+&"default_portrait": "Default",
 &"description": "",
 &"display_name": "Theo",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"Akward": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Akward.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Call": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Call.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Default": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Default.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Doubt": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Doubt.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Eye Roll": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Eye Roll.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Happy": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Laugh": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Laugh.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Mad": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Mad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Puppy Eyes": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Puppy Eyes.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Resting": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Resting.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sigh": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Sigh.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Silly": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Theo/Theo Silly.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

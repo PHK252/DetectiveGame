@@ -27,7 +27,6 @@ manager/music/bus="Music"
 
 [autoload]
 
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SaveLoad="*res://GeneralScripts/Save System/Save_Load.gd"
 GlobalVars="*res://GeneralScripts/Global Variables/GlobalVars.gd"
@@ -39,6 +38,7 @@ SceneTransitions="*res://UI/scene_transitions.tscn"
 
 directories/dch_directory={
 "Chief": "res://Dialogic Characters/Chief.dch",
+"Clyde": "res://Dialogic Characters/Clyde.dch",
 "Dalton": "res://Dialogic Characters/Dalton.dch",
 "Daltons Thoughts": "res://Dialogic Characters/Daltons Thoughts.dch",
 "Isaac": "res://Dialogic Characters/Isaac.dch",

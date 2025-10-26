@@ -2,7 +2,7 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 &"_translation_id": "",
-&"color": Color(1, 1, 1, 1),
+&"color": Color(0.431373, 0.223529, 0.164706, 1),
 &"custom_info": {
 "sound_mood_default": "Talking",
 "sound_moods": {
@@ -19,12 +19,85 @@
 },
 "style": "Text_Bubble"
 },
-&"default_portrait": "",
+&"default_portrait": "Default",
 &"description": "",
 &"display_name": "Micah",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"Akward": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Akward.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Default": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Default.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Happy": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sigh": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Sigh.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sleepy": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Sleepy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Stare": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Stare.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sus": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Sus.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Threat": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Micah/Micah Threat.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

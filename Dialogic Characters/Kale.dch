@@ -19,12 +19,58 @@
 },
 "style": ""
 },
-&"default_portrait": "",
+&"default_portrait": "Default",
 &"description": "",
 &"display_name": "Kale",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"Default": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Kale/Kale Default.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Happy": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Kale/Kale Happy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Kale/Kale Sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Serious": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Kale/Kale Serious.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Sigh": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Kale/Kale Sigh.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }
