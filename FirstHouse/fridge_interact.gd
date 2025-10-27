@@ -14,6 +14,11 @@ extends Node3D
 @export var fridge_close_sound : AudioStreamPlayer3D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _ready() -> void:
+	#reset
+	fridge_anim.play_backwards("NEWfridgeopen")
+
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	#print(mouse_pos) 
@@ -27,6 +32,9 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "fridge":
 		if Input.is_action_just_pressed("Exit") and in_anim == false:
+			if fridge_open == true:
+				fridge_anim.play_backwards("NEWfridgeopen")
+				fridge_open = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			fridge_open_area.hide()
 			fridge_close_area.hide()
@@ -37,6 +45,7 @@ func _process(delta):
 			player.show()
 			player.start_player()
 			GlobalVars.in_interaction = ""
+			
 
 
 func _on_interactable_interacted(interactor):

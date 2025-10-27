@@ -14,6 +14,7 @@ extends MeshInstance3D
 @onready var tilt = ""
 
 var is_open: bool = false
+signal general_interaction 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#cork_cam.set_rotation_degrees(Vector3(-3, 179.1, .4))
@@ -25,6 +26,7 @@ func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position() 
 	#print(mouse_pos)
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cork":
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if mouse_pos.y >= 150:
 			cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
 			tilt = "down"
@@ -81,6 +83,8 @@ func _process(delta):
 	
 
 func _on_interactable_interacted(interactor):
+	if cork_cam.priority != 5:
+		emit_signal("general_interaction")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
 	cork_cam.priority = 5

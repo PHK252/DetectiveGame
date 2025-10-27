@@ -10,6 +10,7 @@ extends MeshInstance3D
 @export var player : CharacterBody3D
 
 var is_open: bool = false
+signal general_interaction
 
 func _ready():
 	if GlobalVars.day == 1:
@@ -20,8 +21,9 @@ func _ready():
 
 func _on_map_leave_interacted(interactor):
 	print(GlobalVars.in_interaction)
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and main_cam.priority != 30:
 		print("map_interact")
+		emit_signal("general_interaction")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		main_cam.priority = 30
 		exit_cam.priority = 0

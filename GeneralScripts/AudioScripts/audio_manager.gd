@@ -165,3 +165,7 @@ func _on_secret_focus_entered() -> void:
 	var secret_coor = Dialogic.VAR.get_variable("Quincy.has_secret_coor")
 	if secret_coor == true and GlobalVars.day == 3:
 		audio[4].play()
+
+
+func _on_non_interact_general_interaction() -> void:
+	audio[3].play()

@@ -82,7 +82,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			exit.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			exit.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			exit.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		elif is_open == false and GlobalVars.in_dialogue == false:
+		elif is_open == false and GlobalVars.in_dialogue == false and introduction_happened == false:
 			#print("open")
 			#$Interactable.queue_free()
 			#if introduction_happened:
@@ -102,8 +102,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			print("dalton_move_knock")
 			return
+		
+		
+		if is_open == false: 
+			open()
+			return
 				
-			
 		if is_open == true: 
 			close()
 		#	collision.disabled = false

@@ -17,9 +17,11 @@ signal theo_move
 signal activate_map
 
 signal paper_exit
+signal general_interaction
 
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:
+		emit_signal("general_interaction")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		casefilecam.priority = 5
 		exitcam.priority = 0
