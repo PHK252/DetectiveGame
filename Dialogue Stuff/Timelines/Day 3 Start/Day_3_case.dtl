@@ -1,28 +1,29 @@
-Theo: Hi Dalton!
-Dalton: Hey.
+Theo (Happy): Hi Dalton!
+Dalton (Talk): Hey.
 [wait time="1.5"]
-Theo: So...
-Theo: What now?
-Dalton: Hm?
-Dalton: I’m going to make a few calls...
-Dalton: See what I can find on Sky-
+Theo (Thinking): So...
+Theo (Concerned): What now?
+Dalton (Squint): Hm?
+Dalton (Talk): I’m going to make a few calls...
+Dalton (Resting): See what I can find on Sky-
+Dalton (Surprised): ..!
 [signal arg = "start_call"]
-Dalton: Good morning, sir. 
+Dalton (Talk): Good morning, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]Good morning, Detective Reynard.[/shake]
 Chief: [shake rate=10.0 level=4 connected=2]We have a Skylar Aslan in holding right now.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]I believe he is the primary suspect in your case?[/shake] 
-Dalton: Yes, sir. 
+Dalton (Default): Yes, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]He was brought in this morning.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]Found loitering around a store at the edge of town.[/shake] 
-Dalton: Thank you, sir. 
+Dalton (Talk): Thank you, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]We’ll move Aslan to the interrogation room when you and Detective Lycus are ready.[/shake]
-Dalton: Thank you, s-
+Dalton (Talk): Thank you, s-
 [signal arg = "end_call"]
-Dalton: Huu...
-Dalton: The suspect’s in holding already. 
-Theo: Hah!
-Theo: It’s like we manifested it. 
-Dalton: Hmph. 
-Dalton: Let’s go. 
-Theo: Right behind ya!
+Dalton (Sigh): Huu...
+Dalton (Talk): The suspect’s in holding already. 
+Theo (Laugh): Hah!
+Theo (Happy): It’s like we manifested it. 
+Dalton (Resting): Hmph. 
+Dalton (Talk): Let’s go. 
+Theo (Talk): Right behind ya!
 set {Interogation.Case_Intero} = true

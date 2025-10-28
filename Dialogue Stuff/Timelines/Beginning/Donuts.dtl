@@ -3,25 +3,25 @@ Dalton (Talk): Did you eat all the donuts?
 Isaac (Hmph): Hmm? 
 Isaac (Awkward): What?
 Dalton (Squint): ...
-Dalton (Hmph): The donuts.
-Dalton: Did you eat them?
+Dalton (Resting): The donuts.
+Dalton (Hmph): Did you eat them?
 Isaac (Talk): Ah...
 Isaac (Awkward): Can’t hear you.
 Isaac: You’re breaking up.
 Isaac: Are you going through a tunnel or something?
-Dalton (Hmph): Isaac...
-Isaac (Default): Dalton!
+Dalton (Resting): Isaac...
+Isaac (Happy): Dalton!
 Dalton: ...
 Dalton (Sigh): You couldn’t have saved one?
 Isaac (Threat): Well, someone decided to work overtime...
 Isaac (Hmph): And I was starving. 
-Dalton  (Hmph): So it’s my fault.
+Dalton  (Resting): So it’s my fault.
 Isaac (Happy): Exactly!
 Dalton (Roll Eyes): You keep thinking that. 
 if {Beginning.viewed_board} == false:
 	Isaac (Talk): You know, if you’re hungry...
 	Isaac (Default): We can go get dinner. 
-	Dalton (Talk): Five more minutes. 
+	Dalton (Resting): Five more minutes. 
 	Isaac (Doubt): Fine. 
 else:
 	Isaac (Talk): You know if you’re hungry

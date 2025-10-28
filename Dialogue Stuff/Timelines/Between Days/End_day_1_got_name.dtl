@@ -1,23 +1,23 @@
-Theo: Haah...
-Theo: What a day.
-Theo: I’d say we are making decent progress. 
-Theo: What’cu think, Dalton?
-Dalton: It’s Detective Reynard.  
-Theo: If you insist, Mr. Fox.
-Dalton: Hmph. 
+Theo (Sigh): Haah...
+Theo (Happy): What a day.
+Theo (Awkward): I’d say we are making decent progress. 
+Theo (Default): What’cu think, Dalton?
+Dalton (Resting): It’s Detective Reynard.  
+Theo (Talk): If you insist, Mr. Fox.
+Dalton (Hmph): Hmph. 
 if {Asked Questions.Micah_Asked_Skylar} == true
-	Dalton: We got a possible name and connection between two of the victims.
+	Dalton (Talk): We got a possible name and connection between two of the victims.
 else:
-	Dalton: We got a name for a potential suspect. 
-Dalton: But both victims seem to be on good terms with the suspect. 
-Dalton: Which doesn’t align with the damage reported at the manor. 
-Dalton: We also don’t have a motive. 
-Theo: Hmm...
-Theo: Hopefully a visit to the Mayor’s will bring us some answers. 
-Dalton: Hmph. 
+	Dalton (Talk): We got a name for a potential suspect. 
+Dalton (Awkward): But both victims seem to be on good terms with the suspect. 
+Dalton (Talk): Which doesn’t align with the damage reported at the manor. 
+Dalton (Default): We also don’t have a motive. 
+Theo (Thinking): Hmm...
+Theo (Talk): Hopefully a visit to the Mayor’s will bring us some answers. 
+Dalton (Default): Hmph. 
 if {Asked Questions.has_hair} == true
-	Theo: I’m gonna head out after I bring the fur sample to Forensics. 
+	Theo (Happy): I’m gonna head out after I bring the fur sample to Forensics. 
 else:
-	Theo: Alright, I’m gonna head out. 
-Theo: See ya, tomorrow!
-Dalton: Yeah.
+	Theo (Happy): Alright, I’m gonna head out. 
+Theo (Laugh): See ya, tomorrow!
+Dalton (Talk): Yeah.
