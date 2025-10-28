@@ -36,6 +36,8 @@ extends Area2D
 signal show_others
 signal check_pager_text 
 
+var played_anim := false
+
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
@@ -43,12 +45,15 @@ func _on_input_event(viewport, event, shape_idx):
 				if is_there_anim == true:
 					if clicked_object == "clicked_book_note" or "clicked_bookmark_Juniper":
 						note_swipe.play()
-					anim.play(anim_track)
-					await anim.animation_finished
-					await get_tree().create_timer(.5).timeout
-					anim.play("RESET")
+					if played_anim == false:
+						anim.play(anim_track)
+						played_anim = true 
+						await anim.animation_finished
+						await get_tree().create_timer(.5).timeout
+						anim.play("RESET")
 				#if clicked_object == "clicked_Micah_pic" or "clicked_tool_note" or "clicked_coor_Quincy":
 						#paper.play()
+				print("showingbookmark")
 				object_in_scene.hide()
 				object_interact.hide()
 				UI_look.show()
@@ -78,7 +83,6 @@ func _on_exit_pressed():
 		GlobalVars.set(view_object, true)
 		object_in_scene.show()
 		object_interact.show() # might not need?
-
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

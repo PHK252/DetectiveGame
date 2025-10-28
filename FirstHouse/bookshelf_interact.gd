@@ -49,7 +49,8 @@ func _process(delta):
 	var viewed_item : bool = GlobalVars.get(view_item)
 	mouse_pos = get_viewport().get_mouse_position()
 	#print(mouse_pos) 
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and FP_Cam.priority == 30:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		elif mouse_pos.y < tilt_down_thres:
