@@ -26,7 +26,7 @@
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
-"Akward": {
+"Awkward": {
 "export_overrides": {
 "image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Akward.png\""
 },
@@ -44,6 +44,15 @@
 "scale": 1,
 "scene": ""
 },
+"Concern": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Doubt.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
 "Default": {
 "export_overrides": {
 "image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Default Call.png\""
@@ -53,18 +62,9 @@
 "scale": 1,
 "scene": ""
 },
-"Doubt": {
+"Happy": {
 "export_overrides": {
-"image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Doubt.png\""
-},
-"mirror": false,
-"offset": Vector2(0, -3),
-"scale": 1,
-"scene": ""
-},
-"Doubt2": {
-"export_overrides": {
-"image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Doubt2.png\""
+"image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Resting Happy.png\""
 },
 "mirror": false,
 "offset": Vector2(0, -3),
@@ -74,15 +74,6 @@
 "Laugh": {
 "export_overrides": {
 "image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Laugh.png\""
-},
-"mirror": false,
-"offset": Vector2(0, -3),
-"scale": 1,
-"scene": ""
-},
-"Resting Happy": {
-"export_overrides": {
-"image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Resting Happy.png\""
 },
 "mirror": false,
 "offset": Vector2(0, -3),
@@ -107,7 +98,7 @@
 "scale": 1,
 "scene": ""
 },
-"Smug1": {
+"Smug": {
 "export_overrides": {
 "image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Smug1.png\""
 },
@@ -116,7 +107,16 @@
 "scale": 1,
 "scene": ""
 },
-"Smug2": {
+"Squint": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Doubt2.png\""
+},
+"mirror": false,
+"offset": Vector2(0, -3),
+"scale": 1,
+"scene": ""
+},
+"Squint Smug": {
 "export_overrides": {
 "image": "\"res://UI/Dialogue Portraits/Quincy/Quincy Smug2.png\""
 },
