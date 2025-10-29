@@ -7,7 +7,7 @@ Dalton (Default): ...
 		Skylar (Awkward): I was...
 		Skylar (Talk): Wandering around...
 		Skylar (Awkward): Finishing some business...
-		Dalton (Squint): Where did this “business” take place?
+		Dalton (Resting): Where did this “business” take place?
 		Skylar (Sad): Um...
 		Skylar (Awkward): Uh...
 		Skylar (Talk): Just around.
@@ -79,12 +79,15 @@ Dalton (Default): ...
 			Skylar (Sad): He...
 			Skylar (Talk): ...is the mayor.
 			jump choices
-- Continue
-	if {Interogation.low_theo_case_rever_quincy} == true:
-		jump Day_3_intero_case_rever_quincy/low_theo continue
-	elif {Interogation.low_theo_case_rever_quincy} == true:
-		jump Day_3_intero_case_rever_quincy/high_theo continue
-	elif {Interogation.low_theo_case} == true:
-		jump Day_3_intero_case/low_theo continue
-	elif {Interogation.high_theo_case} == true:
-		jump Day_3_intero_case/high_theo continue
+#- Continue
+label continue
+if {Interogation.low_theo_case_rever_quincy} == true:
+	jump Day_3_intero_case_rever_quincy/low_theo continue
+elif {Interogation.high_theo_case_rever_quincy} == true:
+	jump Day_3_intero_case_rever_quincy/high_theo continue
+elif {Interogation.low_theo_case} == true:
+	jump Day_3_intero_case/low_theo continue
+elif {Interogation.high_theo_case} == true:
+	jump Day_3_intero_case/high_theo continue
+else:
+	jump Day_3_intero_case/low_theo continue
