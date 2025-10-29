@@ -1,63 +1,63 @@
-Dalton: Huh?
-Dalton: What is this?
+Dalton (Surprised): Huh?
+Dalton (Squint): What is this?
 [end_timeline]
 #= after read
 [signal arg = "start_call"]
 Chief: [shake rate=10.0 level=4 connected=2]H-[/shake]
-Dalton: What is this?
+Dalton (Angry): What is this?
 Dalton: I’ve nearly solved this case, why are you terminating-
-Chief: [shake rate=10.0 level=4 connected=2]Detective Reynard, what happened at the Mayor’s Manor?[/shake]
-Dalton: Nothing much I just looked around like he asked me too.
+Chief: [shake rate=10.0 level=4 connected=2]Detective Reynard, what the hell happened at the Mayor’s Manor?[/shake]
+Dalton (Doubt1): Nothing much I just looked around like he asked me too.
 Chief: [shake rate=10.0 level=4 connected=2]I’m sorry, Reynard.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]But this is out of my hands now.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]Even I can’t overrule the Mayor’s orders.[/shake]
-Dalton: Heh!?
+Dalton (Angry): Heh!?
 Dalton: What?!
-Dalton: Why did he-
+Dalton (Squint): Why did he-
 Chief: [shake rate=10.0 level=4 connected=2]I don’t know, Dalton.[/shake]
 Chief: [shake rate=10.0 level=4 connected=2]I don’t know.[/shake] 
-Dalton: Haah...
-Dalton: Just.
-Dalton: Let me talk to him.
-Dalton: This must be some misunderstanding. 
+Dalton (Sigh): Haah...
+Dalton (Resting): Just.
+Dalton (Talk): Let me talk to him.
+Dalton (Sad): This must be some misunderstanding. 
 Chief: [shake rate=10.0 level=4 connected=2]Huu...[/shake]
 Chief: [shake rate=10.0 level=4 connected=2]Dalton, do you really think I haven’t been trying to reach him?[/shake]
 Chief: [shake rate=10.0 level=4 connected=2]He won’t answer.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]I’m sorry.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]I truly am.[/shake]
-Dalton: ... 
-Dalton: ... 
-Dalton: It’s-
-Dalton: ...
-Dalton: I’ll start packing my stuff.
+Dalton (Awkward): ... 
+Dalton (Resting): ... 
+Dalton (Talk): It’s-
+Dalton (Sigh): ...
+Dalton (Sad): I’ll start packing my stuff.
 Chief: [shake rate=10.0 level=4 connected=2]Dal-[/shake]
 [signal arg = "end_call"]
-Dalton: F*ck!
-Dalton: Haah...
-Dalton: What am I going to do now?
+Dalton (Angry): F*ck!
+Dalton (Sigh): Haah...
+Dalton (Awkward): What am I going to do now?
 [signal arg="theo_walk_in"]
-Dalton: ... 
-Theo: ...?
-Theo: Did ya catch a cold or something?
-Theo: Why the sullen face?
-Dalton: I got fired.
-Dalton: Termination letter is right there.
-Theo: What!
-Theo: Why?
-Dalton: I don’t know.
-Dalton: Direct orders from the Mayor.
-Theo: ...!
-Theo: What did you do to him!?
-Dalton: Nothing!
-Dalton: I just did what he asked.
-Theo: Uh...
-Theo: What about the case?
-Dalton: It’s up to you to finish it now.
-Theo: ...
-Theo: ...
-Dalton: ...
-Theo: D-do you need help packing up?
-Dalton: ...
-Dalton: Huu...
-Dalton: yeah.
+Dalton (Default): ... 
+Theo (Happy): ...?
+Theo (Talk): Did ya catch a cold or something?
+Theo (Concerned): Why the sullen face?
+Dalton (Awkward): Got fired.
+Dalton (Resting): Termination letter is right there.
+Theo (Surprised): What!
+Theo (Concerned): Why?
+Dalton (Sigh): I don’t know.
+Dalton (Awkward): Direct orders from the Mayor.
+Theo (Mad): ...!
+Theo (Concerned): What did you do to him!?
+Dalton (Angry): Nothing!
+Dalton (Talk): I just did what he asked.
+Theo (Thinking): Uh...
+Theo (Awkward): What about the case?
+Dalton (Talk): It’s up to you to finish it now.
+Theo (Concerned): ...
+Theo (Thinking): ...
+Dalton (Awkward): ...
+Theo (Concerned): D-do you need help packing up?
+Dalton (Awkward): ...
+Dalton (Sigh): Huu...
+Dalton (Sad): yeah.
 [end_timeline]

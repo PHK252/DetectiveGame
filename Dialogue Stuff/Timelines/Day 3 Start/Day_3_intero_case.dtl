@@ -1,85 +1,85 @@
 if {Character Aff Points.Theo} < 3:
 	set {Interogation.low_theo_case} = true
-	Dalton: ...
-	Dalton: Are you Skylar Aslan?
-	set {Global.flip_bubble} = true
-	Skylar: ...
-	Skylar: yes.
-	set {Global.flip_bubble} = false
-	Dalton: I am Detective Reynard and this is Detective Lycus. 
-	Dalton: We are currently investigating a string of consecutive break-ins...
-	Dalton: You are currently the main suspect in this case. 
-	Dalton: Do you understand?
-	set {Global.flip_bubble} = true
-	Skylar: yes. 
-	set {Global.flip_bubble} = false
-	Dalton: Anything you say or do can be used against you in court. 
-	Dalton: Do you understand?
-	set {Global.flip_bubble} = true
-	Skylar: yes.
-	set {Global.flip_bubble} = false
+	Dalton (Resting): ...
+	Dalton (Talk): Are you Skylar Aslan?
+	#set {Global.flip_bubble} = true
+	Skylar (Awkward): ...
+	Skylar (Talk): yes.
+	#set {Global.flip_bubble} = false
+	Dalton (Talk): I am Detective Reynard and this is Detective Lycus. 
+	Dalton (Squint): We are currently investigating a string of consecutive break-ins...
+	Dalton (Default): You are currently the main suspect in this case. 
+	Dalton (Talk): Do you understand?
+	#set {Global.flip_bubble} = true
+	Skylar (Talk): yes. 
+	#set {Global.flip_bubble} = false
+	Dalton (Squint): Anything you say or do can be used against you in court. 
+	Dalton (Squint): Do you understand?
+	#set {Global.flip_bubble} = true
+	Skylar (Awkward): yes.
+	#set {Global.flip_bubble} = false
 	jump Day_3_questions/choices
 	label low_theo continue
-	Dalton: Look.
-	Dalton: I know you’re hiding something.
-	Dalton: If you confess now, I may be able to negotiate a shorter sentence for you.
-	set {Global.flip_bubble} = true
-	Skylar: ...
-	set {Global.flip_bubble} = false
-	Dalton: ...
-	Dalton: Huu...
-	Dalton: Just answer this question.
-	Dalton: Were you behind these three break-ins?
-	set {Global.flip_bubble} = true
-	Skylar: rever.
-	set {Global.flip_bubble} = false
-	Dalton: What was that?
-	set {Global.flip_bubble} = true
-	Skylar: Rever.
-	set {Global.flip_bubble} = false
-	Dalton: Huh?
-	set {Global.flip_bubble} = true
-	Skylar: REVER.
-	Skylar: Do you-
-	set {Global.flip_bubble} = false
-	Dalton: Stop spitting nonsense and just answer the question.
-	set {Global.flip_bubble} = true
-	Skylar: ...
-	Skylar: ...
-	Skylar: ...
-	Skylar: Hu...
-	Skylar: yes.
-	Skylar: I was. 
-	set {Global.flip_bubble} = false
-	Dalton: ...
-	Dalton: Why?
-	Dalton: Why did you do it?
-	set {Global.flip_bubble} = true
-	Skylar: Like I said...
-	Skylar: Unfinished business. 
-	set {Global.flip_bubble} = false
-	Dalton: Hmph.
-	Dalton: Do you care to elaborate?
-	set {Global.flip_bubble} = true
-	Skylar: No. 
-	set {Global.flip_bubble} = false
-	Dalton: ...
-	Dalton: Fine. 
-	Dalton: We’ll move you to holding for now. 
-	Dalton: It’s up to the victims now if they want to press charges against you. 
-	Dalton: But if you have any additional information you think will help your case...
-	Dalton: You better tell me now. 
-	set {Global.flip_bubble} = true
-	Skylar: ...
-	Skylar: ...
-	Skylar: ...
-	set {Global.flip_bubble} = false
-	Dalton: Hmph. 
-	Dalton: Theo, I think we are done here. 
-	Dalton: Take him to holding.
-	set {Global.flip_bubble} = true
-	Theo: O-okay.
-	set {Global.flip_bubble} = false
+	Dalton (Resting): Look.
+	Dalton (Doubt2): I know you’re hiding something.
+	Dalton (Squint): If you confess now, I may be able to negotiate a shorter sentence for you.
+	#set {Global.flip_bubble} = true
+	Skylar (Awkward): ...
+	#set {Global.flip_bubble} = false
+	Dalton (Resting): ...
+	Dalton (Sigh): Huu...
+	Dalton (Talk): Just answer this question.
+	Dalton (Default): Were you behind these three break-ins?
+	#set {Global.flip_bubble} = true
+	Skylar (Resting): rever.
+	#set {Global.flip_bubble} = false
+	Dalton (Squint): What was that?
+	#set {Global.flip_bubble} = true
+	Skylar (Talk): Rever.
+	#set {Global.flip_bubble} = false
+	Dalton (Doubt1): Huh?
+	#set {Global.flip_bubble} = true
+	Skylar (Mad): REVER.
+	Skylar (Talk): Do you-
+	#set {Global.flip_bubble} = false
+	Dalton (Angry): Stop spitting nonsense and just answer the question.
+	#set {Global.flip_bubble} = true
+	Skylar (Awkward): ...
+	Skylar (Sad): ...
+	Skylar (Resting): ...
+	Skylar (Sigh): Hu...
+	Skylar (Resting): yes.
+	Skylar (Talk): I was. 
+	#set {Global.flip_bubble} = false
+	Dalton (Resting): ...
+	Dalton (Talk): Why?
+	Dalton (Squint): Why did you do it?
+	#set {Global.flip_bubble} = true
+	Skylar (Sigh): Like I said...
+	Skylar (Talk): Unfinished business. 
+	#set {Global.flip_bubble} = false
+	Dalton (Hmph): Hmph.
+	Dalton (Squint): Do you care to elaborate?
+	#set {Global.flip_bubble} = true
+	Skylar (Sad): No. 
+	#set {Global.flip_bubble} = false
+	Dalton (Sigh): ...
+	Dalton (Resting): Fine. 
+	Dalton (Talk): We’ll move you to holding for now. 
+	Dalton (Awkward): It’s up to the victims if they want to press charges against you. 
+	Dalton (Doubt2): But if you have any additional information you think will help your case...
+	Dalton (Squint): You better tell me now. 
+	#set {Global.flip_bubble} = true
+	Skylar (Sad): ...
+	Skylar (Squint): ...
+	Skylar (Awkward): ...
+	#set {Global.flip_bubble} = false
+	Dalton (Awkward): Hmph. 
+	Dalton (Sigh): Theo, I think we are done here. 
+	Dalton (Talk): Take him to holding.
+	#set {Global.flip_bubble} = true
+	Theo (Resting): O-okay.
+	#set {Global.flip_bubble} = false
 	[end_timeline]
 else:
 	set {Interogation.high_theo_case} = true

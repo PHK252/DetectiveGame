@@ -1,26 +1,26 @@
-Dalton: Good morning, sir. 
+Dalton (Talk): Good morning, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]Good morning, Detective Reynard.[/shake]
 Chief: [shake rate=10.0 level=4 connected=2]We have a Skylar Aslan in holding right now.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]I believe he is the primary suspect in your case?[/shake] 
-Dalton: Yes, sir. 
+Dalton (Default): Yes, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]He was brought in this morning.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]He’s a little roughed up, but still responsive.[/shake]
-Dalton: Thank you, sir. 
+Dalton (Talk): Thank you, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]Hah![/shake]
 Chief: [shake rate=10.0 level=4 connected=2]You ought to be thanking the mayor.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]It was quite the sight this morning.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]We’ll move Aslan to the interrogation room when you and Detective Lycus are ready.[/shake]
-Dalton: Thank you, s-
+Dalton (Talk): Thank you, s-
 [signal arg = "end_call"]
-Dalton: Quincy was here?
-Dalton: How did he find-
+Dalton (Squint): Quincy was here?
+Dalton (Doubt1): How did he find-
 [signal arg = "theo_enter"]
-Theo: Hi Dalton!
-Dalton: Suspect is in holding. 
-Dalton: We should go talk to them. 
-Theo: Oh!
-Theo: That quick?
-Dalton: It was the mayor’s doing. 
-Theo: Interesting...
-Theo: Let’s go.
+Theo (Laugh): Hi Dalton!
+Dalton (Talk): Suspect is in holding. 
+Dalton (Default): We should go talk to them. 
+Theo (Surprised): Oh!
+Theo (Happy): That quick?
+Dalton (Awkward): It was the mayor’s doing. 
+Theo (Talk): Interesting...
+Theo (Happy): Let’s go.
 set {Interogation.Case_Intero} = true
