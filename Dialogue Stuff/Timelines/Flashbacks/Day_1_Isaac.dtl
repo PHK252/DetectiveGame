@@ -1,55 +1,55 @@
 label kitchen
-Isaac: Kale!
+Isaac (Talk): Kale!
 Isaac: Diner’s ready!
 #[sound effect]
 [wait time="2.0"]
-Isaac: Kale!
+Isaac (Angry): Kale!
 Isaac: Come down!
-Isaac: Ma’s gonna get mad if you don’t eat!
+Isaac (Talk): Ma’s gonna get mad if you don’t eat!
 #[sound effect but louder]
 [wait time="2.5"]
-Isaac: Huuu...
-Isaac: If you don’t come down, I’m gonna come up and drag you down here!!
+Isaac (Sigh): Huuu...
+Isaac (Threat): If you don’t come down, I’m gonna come up and drag you down here!!
 [wait time="1.5"]
-Isaac: Tsk.
-Isaac: Guess I better check on him.
+Isaac (Hmph): Tsk.
+Isaac (Resting): Guess I better check on him.
 [end_timeline]
 
 label bedroom_open
-Isaac: Kale!
-Isaac: Diner’s-
-Isaac: Kale? 
-Isaac: What’s wrong?
+Isaac (Hmph): Kale!
+Isaac (Talk): Diner’s-
+Isaac (Resting): Kale? 
+Isaac (Concerned): What’s wrong?
 [end_timeline]
 
 label bedroom_check
-Isaac: Hey...
-Isaac: Ka-
-Kale: AHH!!
-Kale: AAHHH!!!
-Kale: WHAT ARE YOU??
-Kale: STOP!!
-Kale: Please...
-Kale: It hurts...
+Isaac (Doubt): Hey...
+Isaac (Concerned): Ka-
+Kale (TweakYell1): AHH!!
+Kale (TweakYell2): AAHHH!!!
+Kale (TweakMad): WHAT ARE YOU??
+Kale (TweakYell1): STOP!!
+Kale (Tweak2): Please...
+Kale (Tweak1): It hurts...
 Kale: Hgh...
-Isaac: Hey, hey, calm down...
-Isaac: Breathe...
-Isaac: Can you tell wha-
-Kale: Stop!
+Isaac (ConcernedSad): Hey, hey, calm down...
+Isaac (Doubt): Breathe...
+Isaac (Concerned): Can you tell wha-
+Kale (TweakYell1): Stop!
 Kale: LET ME GO!
-Kale: WHAT ARE YOU GOING TO DO TO ME?
+Kale (TweakYell2): WHAT ARE YOU GOING TO DO TO ME?
 Kale: IT HURTS!
-Kale: It hurts...
-Isaac: Kale...
-Isaac: Just look at me and breathe...
-Isaac: You are safe here.
-Isaac: What's wrong?
-Isaac: Can you tell me?
-Isaac: Are you hurt?
-Kale: Ngh!
-Kale: Ah!
-Kale: No.
+Kale (Tweak1): It hurts...
+Isaac (Concerned): Kale...
+Isaac (Doubt): Just look at me and breathe...
+Isaac (Talk): You are safe here.
+Isaac (ConcernedSad): What's wrong?
+Isaac (Doubt): Can you tell me?
+Isaac (Concerned): Are you hurt?
+Kale (Tweak2): Ngh!
+Kale (TweakMad): Ah!
+Kale (Tweak1): No.
 Kale: Who are you?
-Kale: Get away from me!
+Kale (TweakYell1): Get away from me!
 [signal arg="to_office"]
 [end_timeline]
