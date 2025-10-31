@@ -1,61 +1,61 @@
 set {Global.went_to_Micah} = true
 # #knock
-Dalton: Hello!
-Dalton: Is anybody home?
+Dalton (Talk): Hello!
+Dalton (Resting): Is anybody home?
 # #knock
 [wait time="1.0"]
-Dalton: ASPD!
+Dalton  (Talk): ASPD!
 [wait time="3.0"]
-Dalton: ...
+Dalton (Default): ...
 - Knock Again.
 	# #Knock knock
 	[signal arg="knock"]
-	Dalton: Hello?
-	Dalton: We are here to investigate a break in that happened last night.
+	Dalton (Squint): Hello?
+	Dalton (Talk): We are here to investigate a break in that happened last night.
 	# #knock 
 	[wait time="2.0"]
 	# #knock
-	Dalton: Is anybody home?!
-	Dalton: XPD!
+	Dalton (Angry): Is anybody home?!
+	Dalton (Angry): ASPD!
 	[wait time="2.0"]
 	# #foot steps
-	Dalton: Open up!
-	Dalton: XPD!
-	Theo: Dude!!
-	Theo: Chill!
-	Theo: They're coming.
+	Dalton (Angry): Open up!
+	Dalton: ASPD!
+	Theo (Surprised): Dude!!
+	Theo (Concerned): Chill!
+	Theo (Concerned): They're coming.
 	[wait time="2.0"]
 	jump Micah Open
 - Wait.
 	label Wait
 	[wait time="4.0"]
-	Dalton: ...
-	Theo: ...
+	Dalton (Hmph): ...
+	Theo (Awkward): ...
 	[wait time="0.5"]
-	Dalton: ...
+	Dalton (Default): ...
 	- Knock Again.
 		set {Character Aff Points.Micah} += 1
 		# #Knock
-		Dalton: XPD!
+		Dalton (Angry): XPD!
 		Dalton: We are here to investi-
-# #A loud thud comes from inside the apartment, followed by tired groan and a curse
-# #Faint footsteps can be heard through the door
-Theo: Someone’s not having a good day.
-Dalton: Shh.
-jump Micah Open
-- Wait.
-	jump Wait
+		# #A loud thud comes from inside the apartment, followed by tired groan and a curse
+		# #Faint footsteps can be heard through the door
+		Theo (Thinking): Someone’s not having a good day.
+		Dalton (Resting): Shh.
+		jump Micah Open
+	- Wait.
+		jump Wait
 
 label Micah Open
 [signal arg="open_door"]
 [wait time="1.5"]
-Micah: ...
-Micah: Hello?
+Micah (Sleepy): ...
+Micah (Sleepy1): Hello?
 [wait time="0.5"]
 Dalton: ...
 - Presesnt Warrant.
 	jump Warrant/
 - Greet Micah.
 	jump Good_morning/
-- Have Theo answer. | [if {Character Aff Points.Theo} == 1] [else="hide"]
+- Have Theo answer. | [if {Character Aff Points.Theo} >= 1] [else="hide"]
 	jump Micah_Theo_Answer/
