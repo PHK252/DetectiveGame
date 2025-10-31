@@ -1,41 +1,43 @@
-Dalton: Hello?
-Quincy: [shake rate=10.0 level=4 connected=2]Hey Dalton![/shake]
+Dalton (Squint): Hello?
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Hey Dalton![/shake]
 Quincy: [shake rate=10.0 level=4 connected=2]How are things?[/shake]
-Dalton: Mayor Leonid? 
-Dalton: I'm doing fine... 
-Dalton: But how are you? 
-Dalton: The case-
-Quincy: [shake rate=10.0 level=4 connected=2]Oh, I'm doing fine and dandy.[/shake]
-Quincy: [shake rate=10.0 level=4 connected=2]You got the case I assigned, right?[/shake]
-Dalton: Yeah, I'm on the way-
-Quincy: [shake rate=10.0 level=4 connected=2]Can you do me a favor and come by the manor tomorrow?[/shake]
-Quincy: [shake rate=10.0 level=4 connected=2]I have to take care of some business today.[/shake]
-Dalton: ...?
-Dalton: I guess I can. 
-Dalton: But... Are you sure? 
-Dalton: I heard the damage was pretty bad-
-Quincy: [shake rate=10.0 level=4 connected=2]Ah, it's nothing money can't fix.[/shake] 
-Quincy: [shake rate=10.0 level=4 connected=2]Good luck on the case.[/shake]
-Quincy: [shake rate=10.0 level=4 connected=2]I heard you were itching to get back out there.[/shake]
-Quincy: [shake rate=10.0 level=4 connected=2]It should be a walk in the park for a star detective like you.[/shake]
-Dalton: We'll see. 
-Dalton: I never know with these types. 
-Quincy: [shake rate=10.0 level=4 connected=2]Mhm.[/shake]
-Quincy: [shake rate=10.0 level=4 connected=2]Well, I have to go now.[/shake]
-Quincy: [shake rate=10.0 level=4 connected=2]Urgent mayor business, you know.[/shake]
-Quincy: [shake rate=10.0 level=4 connected=2]See you soon.[/shake]
-Dalton: Bye.
+Dalton (Surprised): Quincy?! 
+Dalton (Resting): I'm doing fine... 
+Dalton (Doubt1): But how are you? 
+Dalton (Talk): The case-
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Oh, I'm doing fine and dandy.[/shake]
+Quincy (Call): [shake rate=10.0 level=4 connected=2]You got the case I assigned, right?[/shake]
+Dalton (Default): Yeah, I'm on the way-
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Can you do me a favor and come by the manor tomorrow?[/shake]
+Quincy (Call): [shake rate=10.0 level=4 connected=2]I have to take care of some business today.[/shake]
+Dalton (Doubt1): ...?
+Dalton (Hmph): I guess I can. 
+Dalton (Awkward): But... Are you sure? 
+Dalton (Resting): I heard the damage was pretty bad-
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Ah, it's nothing money can't fix.[/shake] 
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Good luck on the case.[/shake]
+Quincy (Call): [shake rate=10.0 level=4 connected=2]I heard you were itching to get back out there.[/shake]
+Quincy (Call): [shake rate=10.0 level=4 connected=2]It should be a walk in the park for a star detective like you.[/shake]
+Dalton (Sigh): We'll see. 
+Dalton (Awkward): I never know with these types. 
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Mhm.[/shake]
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Well, I have to go now.[/shake]
+Quincy (Call): [shake rate=10.0 level=4 connected=2]Urgent mayor business, you know.[/shake]
+Quincy (Call): [shake rate=10.0 level=4 connected=2]See you soon.[/shake]
+Dalton (Resting): Bye.
 [signal arg="end_call"]
 [wait time=".3"]
-Theo: Was that the Mayor?
-Dalton: Yeah.
-Theo: Ooo... 
-Theo: You have his personal number? 
-Theo: Can I have it? 
-Theo: What did he say?
-Dalton: Yes, no, we can't visit his house today. 
-Dalton: We have to go tomorrow.
-Theo: Aww... 
-Theo: I was looking forward to seeing it today.
+Theo (Happy): Was that the Mayor?
+Dalton (Resting): Yeah.
+Theo (Silly): Ooo... 
+Theo (Talk): You have his personal number? 
+Theo (Happy): Can I have it? 
+Theo (Default): What did he say?
+Dalton (Squint): Yes.
+Dalton (Sigh): No.
+Dalton (Resting): We can't visit his house today. 
+Dalton (Awkward): We have to go tomorrow.
+Theo (Sad): Aww... 
+Theo (Awkward): I was looking forward to seeing it today.
 set {Beginning.quincy_called} = true
 [end_timeline]
