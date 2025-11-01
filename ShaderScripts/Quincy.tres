@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="1_kh7rd"]
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="2_7igyj"]
-[ext_resource type="Texture2D" uid="uid://c4c1fts5w3bse" path="res://CharacterStuff/Quincy/QuincyAnims_QuincyTexture.png" id="3_lb4gg"]
+[ext_resource type="Texture2D" uid="uid://ikjior6rwne8" path="res://CharacterStuff/Colorchangetextures_everyone/QuincyTextureUpdate copy.png" id="3_6rlou"]
 
 [sub_resource type="Shader" id="Shader_fftdp"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
@@ -69,7 +69,7 @@ resource_name = "Fox"
 render_priority = 0
 shader = SubResource("Shader_fftdp")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("3_lb4gg")
+shader_parameter/texture_albedo = ExtResource("3_6rlou")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)

@@ -3,14 +3,14 @@
 [ext_resource type="Shader" uid="uid://dpri1y5s822lu" path="res://ShaderScripts/Dalton.gdshader" id="1_rfukt"]
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_ixl57"]
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_brqi2"]
-[ext_resource type="Texture2D" uid="uid://62hfcaihgb8v" path="res://CharacterStuff/Dalton/DaltonStepBack_Fox1.png" id="4_hch48"]
+[ext_resource type="Texture2D" uid="uid://ttb0ccdnbgqj" path="res://CharacterStuff/Colorchangetextures_everyone/Dalton_PortraitTexture copy.png" id="4_5pyv5"]
 
 [resource]
 resource_name = "Fox"
 render_priority = 0
 shader = ExtResource("1_rfukt")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("4_hch48")
+shader_parameter/texture_albedo = ExtResource("4_5pyv5")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
