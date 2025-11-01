@@ -1,9 +1,9 @@
-Dalton: Did you overhear or see anything suspicious happen during your shift?
-Micah: Uh…
-Micah: No...?
-Micah: It was pretty normal.
-Micah: J-just the normal amount of weird you get from working the night shift at a convenience store.
-Micah: Conspiracies about our tap water and such...
+Dalton (Resting): Did you overhear or see anything suspicious happen during your shift?
+Micah (Awkward): Uh...
+Micah (Default): No...?
+Micah (Talk): It was pretty normal.
+Micah (Awkward): J-just the normal amount of weird you get from working the night shift at a convenience store.
+Micah (Talk): Conspiracies about our tap water and such...
 do GlobalVars.emit_add_note("micah", "suspicious", "high")
 set {Asked Questions.Micah_Asked_Night_Sus} = true
 if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:

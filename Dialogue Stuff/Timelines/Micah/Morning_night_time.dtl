@@ -1,8 +1,8 @@
-Dalton: What time did you come back from your shift?
-Micah: Um…
-Micah: I think around 8 a.m.
-Dalton: What did you do after going home?
-Micah: I had a snack and went to bed.
+Dalton (Talk): What time did you come back from your shift?
+Micah (Awkward): Um...
+Micah (Talk): I think around 8 a.m.
+Dalton (Resting): What did you do after going home?
+Micah  (Yawn): I had a snack and went to bed.
 do GlobalVars.emit_add_note("micah", "time_return", "")
 set {Asked Questions.Micah_Asked_Night_Time} = true
 if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:

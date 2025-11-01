@@ -1,9 +1,9 @@
-Dalton: Did you notice any damage or changes in your property?
-Micah: ...
-Micah: Not really.
-Micah: I came home from work and crashed on the couch.
-Dalton: Nothing out of place or missing?
-Micah: Not that I noticed.
+Dalton (Talk): Did you notice any damage or changes in your property?
+Micah (Sleepy): ...
+Micah (Talk): Not really.
+Micah (Awkward): I came home from work and crashed on the couch.
+Dalton (Resting): Nothing out of place or missing?
+Micah (Stare): Not that I noticed.
 do GlobalVars.emit_add_note("micah", "damage", "")
 set {Asked Questions.Micah_Asked_Property} = true
 jump Good_morning/Questions
