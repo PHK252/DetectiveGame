@@ -3,14 +3,14 @@
 [ext_resource type="Shader" uid="uid://bih85upphistd" path="res://ShaderScripts/Juniper.gdshader" id="1_yslpy"]
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_nt52k"]
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_gc1t0"]
-[ext_resource type="Texture2D" uid="uid://c0p30ktt12qin" path="res://CharacterStuff/Juniper/Juniper_Anims_deer.png" id="4_kij7l"]
+[ext_resource type="Texture2D" uid="uid://bcisi3e0v27nv" path="res://CharacterStuff/Colorchangetextures_everyone/JuniperFixColor copy.png" id="4_pnexg"]
 
 [resource]
 resource_name = "Material"
 render_priority = 0
 shader = ExtResource("1_yslpy")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("4_kij7l")
+shader_parameter/texture_albedo = ExtResource("4_pnexg")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
