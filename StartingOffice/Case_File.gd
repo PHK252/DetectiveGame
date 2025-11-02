@@ -73,7 +73,7 @@ func _on_timeline_ended():
 	
 func _process(delta):
 	if GlobalVars.in_interaction == "case file":
-		if Input.is_action_just_pressed("Exit"):
+		if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			just_interacted = false
 			look_click.hide()

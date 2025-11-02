@@ -38,6 +38,7 @@ var targ_reach = false
 var accel = 10
 @export var marker_positions: Array[Node3D]
 var wander_choice = 0
+var front_rotation := false
 
 enum {
 	IDLE, 
@@ -152,6 +153,8 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+	if front_rotation:
+		_rotate_towards_dalton()
 	#if wander_choice == 2:
 			#state = SITTING
 
@@ -175,7 +178,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 				
 
 func _process_wander_state(distance_to_target: float, wander_choice: int) -> void:
-	
+	front_rotation = false
 	anim_player.play("basketball_default")
 	anim_tree.set("parameters/Yawn/request", 2)
 	anim_tree.set("parameters/Scratch/request", 2)
@@ -260,6 +263,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	#set all one shots to abort
 	is_navigating = true
 	is_wandering = false
+	#print("interactableTrig")
 	state = FOLLOW
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
@@ -323,19 +327,24 @@ func _on_cooldown_timeout() -> void:
 	cooldown_bool = false
 
 func _on_character_body_3d_theo_adjustment() -> void:
-	intDalton = true
-	is_wandering = false
+	#print("THEOADJ")
+	if GlobalVars.phone_up == false:
+		intDalton = true
+		is_wandering = false
 
 func _on_character_body_3d_theo_reset() -> void:
 	#print("RESETING")
-	intDalton = false
-	wander_choice = 2
-	nav.target_position = marker_positions[wander_choice].global_position
-	is_navigating = true
-	is_wandering = true
-	state = WANDER
+	if GlobalVars.phone_up == false:
+		#print("thruPhone")
+		intDalton = false
+		wander_choice = 2
+		nav.target_position = marker_positions[wander_choice].global_position
+		is_navigating = true
+		is_wandering = true
+		state = WANDER
 
 func _on_micah_interact_dquestion() -> void:
+	#print("DQ")
 	intDalton = true
 	is_wandering = false
 
@@ -393,3 +402,7 @@ func _on_door_greet_done() -> void:
 	is_navigating = true
 	is_wandering = true
 	state = WANDER
+
+
+func _on_caseorpic_rotationneeded(interactor: Interactor) -> void:
+	front_rotation = true

@@ -44,7 +44,7 @@ func open() -> void:
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
 	is_open = true
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	collision.disabled = true
 	cooldown = false
 	
