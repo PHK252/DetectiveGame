@@ -408,7 +408,7 @@ func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
 	if greeting == true:
-		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false and case_handling == false:
+		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false and case_handling == false and GlobalVars.in_dialogue == false:
 			if wander_choice < 3:
 				var current_anim = one_shots[wander_choice]
 				anim_tree.set("parameters/" + current_anim + "/request", 2)
@@ -545,6 +545,7 @@ func _on_house_interact_general_interact() -> void:
 
 func _on_resume_interact_juniper_wander() -> void:
 	interaction = false
+	#print("EXITINGTOWANDER")
 	var choice = rng.randi_range(-10, 10)
 	if greeting == true:
 		if cant_follow == false:
@@ -561,6 +562,7 @@ func _on_resume_interact_general_interact() -> void:
 	interaction = true
 
 func _on_case_interact_disable_look() -> void:
+	#print("EXITINGTOWANDERLOOK")
 	case_handling = false
 	case_handle_rotation = false
 	wander_choice = rng.randi_range(0, 2)

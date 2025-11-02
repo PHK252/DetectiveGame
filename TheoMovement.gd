@@ -404,7 +404,7 @@ func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and is_investigating == false and going_to_bar == false and greeting_finished and secret_location == false:
 		print("waiting for interact")
 		see_player = true
-		state = IDLE
+		#state = IDLE
 		#Possibly causing freezing in certain scenarios, need to be careful
 		
 	if body.is_in_group("micah") and theo_adjustment:
@@ -1137,3 +1137,17 @@ func _on_closet_quit() -> void:
 		#in_kitchen = false
 		#is_navigating = true
 		#state = FOLLOW
+
+func _on_resume_interact_theo_reposition_start() -> void:
+	theo_adjustment = true
+	in_kitchen = true
+	nav.target_position = adjustment_list[7].global_position
+	is_navigating = true
+	STOPPING_DISTANCE = 0.0
+	nav.path_desired_distance = 0.2
+	nav.target_desired_distance = 0.4
+	state = ADJUST
+
+func _on_resume_interact_theo_reposition_end() -> void:
+	theo_adjustment = false
+	in_kitchen = false

@@ -55,6 +55,9 @@ signal juniper_wander
 signal enable_look
 signal disable_look
 
+signal theo_reposition_start
+signal theo_reposition_end
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var read_dialogue_1 : bool = GlobalVars.get(dialogue_1)
@@ -89,6 +92,7 @@ func _process(delta):
 		elif tilt_hide == true and tilt == "up":
 			interact_area_2.hide()
 	if Input.is_action_just_pressed("Exit") and GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+		emit_signal("theo_reposition_end")
 		if kicked == false and timed == false:
 			if viewed_item_1 == true and viewed_item_2 == true and read_dialogue_1 == false and read_dialogue_2 == false and GlobalVars.viewing == "":
 				print("cab exit_1")
@@ -211,6 +215,7 @@ func _process(delta):
 
 func _on_timeline_ended():
 	emit_signal("disable_look")
+	emit_signal("theo_reposition_end")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	emit_signal("juniper_wander")
@@ -220,6 +225,7 @@ func _on_timeline_ended():
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "":
 		emit_signal("general_interact")
+		emit_signal("theo_reposition_start")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
