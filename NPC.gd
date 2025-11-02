@@ -327,6 +327,7 @@ func _on_character_body_3d_theo_adjustment() -> void:
 	is_wandering = false
 
 func _on_character_body_3d_theo_reset() -> void:
+	#print("RESETING")
 	intDalton = false
 	wander_choice = 2
 	nav.target_position = marker_positions[wander_choice].global_position
@@ -339,6 +340,7 @@ func _on_micah_interact_dquestion() -> void:
 	is_wandering = false
 
 func _on_micah_interact_dstopped() -> void:
+	#print("DSTOPPED")
 	at_door = false
 	intDalton = false
 	wander_choice = 2

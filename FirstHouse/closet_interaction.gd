@@ -179,8 +179,9 @@ func _on_timeline_ended():
 	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	player.start_player()
-	alert.show()
+	if FP_Cam.priority == 0:
+		player.start_player()
+		alert.show()
 
 func closetLook(argument: String):
 	if argument == "look":
@@ -192,7 +193,7 @@ func closetLook(argument: String):
 		interact_area_1.show()
 		interact_area_2.show()
 		cam_anim.play("Cam_Idle")
-		player.start_player()
+		player.stop_player()
 		alert.hide()
 		player.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

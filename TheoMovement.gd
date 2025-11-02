@@ -453,7 +453,8 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 						nav.target_position = adjustment_list[6].global_position
 					else:
 						print("thischoice")
-						nav.target_position = adjustment_list[0].global_position
+						return
+						#nav.target_position = adjustment_list[0].global_position
 					is_navigating = true
 					#STOPPING_DISTANCE = 0.2
 					#nav.path_desired_distance = 0.4
@@ -701,9 +702,11 @@ func _on_character_body_3d_theo_adjustment() -> void:
 				#print("dangerhere")
 				is_navigating = true
 				state = IDLE
+				return
 				#nav.target_position = adjustment_list[6].global_position
 			else:
-				nav.target_position = adjustment_list[0].global_position
+				return
+				#nav.target_position = adjustment_list[0].global_position
 			is_navigating = true
 			#STOPPING_DISTANCE = 0.2
 			#nav.path_desired_distance = 0.4

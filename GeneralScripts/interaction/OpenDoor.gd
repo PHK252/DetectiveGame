@@ -105,8 +105,9 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		
 		
 		if is_open == false: 
-			open()
-			return
+			if is_outside == true:
+				open()
+				return
 				
 		if is_open == true: 
 			close()
