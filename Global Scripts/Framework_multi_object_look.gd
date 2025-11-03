@@ -74,6 +74,8 @@ func _process(delta):
 		timed = GlobalVars.juniper_time_out
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+		if FP_Cam.priority == 30:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		mouse_pos = get_viewport().get_mouse_position()
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)

@@ -99,7 +99,8 @@ func _on_interactable_interacted(interactor):
 
 
 func _on_timeline_ended():
-	emit_signal("disable_look")
+	if case_cam.priority == 0:
+		emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	if GlobalVars.Juniper_in_case == false:
@@ -120,7 +121,10 @@ func caseUI(argument: String):
 		cam_anim.play("Cam_Idle")
 		Dialogic.signal_event.disconnect(caseUI)
 		
-
+func _process(delta: float) -> void:
+	if case_cam.priority == 30:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#should be removed later one issue figured out
 
 func _on_exit_pressed():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -137,6 +141,7 @@ func _input(event):
 	var finished_tag = Dialogic.VAR.get_variable("Juniper.finished_name_tag")
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and kicked == false and timed == false:
+			#case exit issue is that we not entering this logic for some reason
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30
@@ -209,6 +214,7 @@ func _input(event):
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			else:
+				emit_signal("disable_look")
 				GlobalVars.in_interaction = ""
 				player.start_player()
 				alert.show()
