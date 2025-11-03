@@ -1,10 +1,10 @@
-Dalton: Did you leave the window open before going to work?
-Micah: ...?
-Micah: Maybe?
+Dalton (Resting): Did you leave the window open before going to work?
+Micah (Default): ...?
+Micah (Awkward): Maybe?
 if {Character Aff Points.Micah} > 2:
-	Micah: I usually keep it open ‘cause it helps with the smell.
-	Micah: But sometimes I forget to close it before I leave.
+	Micah (Talk): I usually keep it open ‘cause it helps with the smell.
+	Micah (Awkward): But sometimes I forget to close it before I leave.
 else:
-	Micah: I don’t remember.
-Dalton: Hmph.
+	Micah (Awkward): I don’t remember.
+Dalton (Resting): Hmph.
 do GlobalVars.emit_add_note("micah", "window", "")

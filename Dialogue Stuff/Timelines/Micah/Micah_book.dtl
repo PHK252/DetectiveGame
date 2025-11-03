@@ -1,70 +1,69 @@
 if {Character Aff Points.Micah} <= 2:
-	Dalton: Have you read this book?
-	Micah: Huh?
-	Micah: Oh.
-	Micah: I skimmed it a while back.
-	Micah: Don't remember much, though.
-	label choices
+	Dalton (Resting): Have you read this book?
+	Micah (Talk): Huh?
+	Micah (Awkward): Oh.
+	Micah (Awkward): I skimmed it a while back.
+	Micah (Default): Don't remember much, though.
+	label low choices
 	[wait time="0.3"]
-	Dalton: ...
-	- Who wrote the note?
+	Dalton (Default): ...
+	- Author of the note?
 		set {Asked Questions.Micah_Book_Asked_wrote} = true
-		Dalton: Did you write this note?
-		Micah: What note?
-		Dalton: The one on the bookmark?
-		Micah: Bookmark?
-		Dalton: ...
-		Dalton: So no.
-		Micah: ...
-		Micah: Nope.
-		Dalton: Do you know who wrote it?
-		Micah: D'you really think I'd know?
-		Dalton: ...
-		Micah: No.
+		Dalton (Doubt1): Did you write this note?
+		Micah (Awkward): What note?
+		Dalton (Resting): The one on the bookmark?
+		Micah (Stare): Bookmark?
+		Dalton (Hmph): ...
+		Dalton (Talk): So no.
+		Micah (Awkward): ...
+		Micah (Talk): Nope.
+		Dalton (Default): Do you know who wrote it?
+		Micah (Sus): D'you really think I'd know?
+		Dalton (Resting): ...
+		Micah (Awkward): No.
 		Micah: I don't.
 		do GlobalVars.emit_add_note("micah", "bookmark", "wrote_low")
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
-			jump choices
+			jump low choices
 	- Meaning of the note?
 		set {Asked Questions.Micah_Book_Asked_meaning} = true
-		Dalton: Do you know what the note means?
-		Micah: ...
-		Micah: No...
-		Micah: How'd it get there?
-		Dalton: I was hoping you would know.
+		Dalton (Resting): Do you know what the note means?
+		Micah (Yawn): ...
+		Micah (Sleepy): No...
+		Micah (Stare): How'd it get there?
+		Dalton (Hmph): I was hoping you would know.
 		do GlobalVars.emit_add_note("micah", "bookmark", "meaning_low")
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
-			jump choices
-if {Character Aff Points.Micah} > 2:
-	Dalton: Have you read this book?
-	Micah: I read it when I was a kid.
-	Micah: A friend gave it to me.
-	Micah: Don't remember much, though.
-	label choices
+			jump low choices
+else:
+	Dalton (Talk): Have you read this book?
+	Micah (Default): I read it when I was a kid.
+	Micah (Talk): A friend gave it to me.
+	Micah (Awkward): Don't remember much, though.
+	label high choices
 	[wait time="0.3"]
-	- Who wrote the note?
+	Dalton (Default): ...
+	- Author of the note?
 		set {Asked Questions.Micah_Book_Asked_wrote} = true
-		Dalton: Did you write this note?
-		Micah: Huh?
-		Micah: ...
-		Micah: I don't think so.
-		Micah: If I did, I don't remember.
-		Dalton: Do you know who might’ve written it?
-		Micah: ...
-		Micah: No idea.
+		Dalton (Default): Did you write this note?
+		Micah (Stare): Huh?
+		Micah (Talk): I don't think so.
+		Micah (Awkward): If I did, I don't remember.
+		Dalton (Resting): Do you know who might’ve written it?
+		Micah (Yawn): ...
+		Micah (Stare): No idea.
 		do GlobalVars.emit_add_note("micah", "bookmark", "wrote_high")
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
-			jump choices
+			jump high choices
 	- Meaning of the note?
 		set {Asked Questions.Micah_Book_Asked_meaning} = true
-		Dalton: Do you know that the note means?
-		Micah: ...
-		Micah: No?
-		Micah: Where did you find that?
-		Dalton: It was in the book.
-		Micah: Oh...
-		Micah: Weird.
-		Micah: I haven't touched that book in ages.
+		Dalton (Talk): Do you know that the note means?
+		Micah (Awkward): No?
+		Micah (Talk): Where did you find that?
+		Dalton (Resting): It was in the book.
+		Micah (Stare): Oh...
+		Micah (Sleepy): Weird.
+		Micah (Awkward): I haven't touched that book in ages.
 		do GlobalVars.emit_add_note("micah", "bookmark", "meaning_high")
 		if {Asked Questions.Micah_Book_Asked_wrote} == false:
-			jump choices
+			jump high choices
