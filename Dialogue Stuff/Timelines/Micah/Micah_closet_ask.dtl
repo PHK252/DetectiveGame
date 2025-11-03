@@ -1,44 +1,45 @@
-Dalton: Do you notice anything different about your closet?
-if {Character Aff Points.Micah} > 2.0:
-	Micah: Honestly...
-	Micah: I wouldn’t know.
+Dalton (Resting): Do you notice anything different about your closet?
+if {Character Aff Points.Micah} > 2:
+	Micah (Awkward): Honestly...
+	Micah (Stare): I wouldn’t know.
 else:
-	Micah: No...
-Dalton: I see.
+	Micah (Awkward): No...
+Dalton (Resting): I see.
 [wait time="0.3"]
 label choices
-Dalton: ...
+Dalton (Default): ...
 - Ask about toolbox.
 	set {Asked Questions.Micah_Closet_Asked} = true
-	Dalton: Do you usually keep a toolbox in your closet?
-	if {Character Aff Points.Micah} > 2.0:
-		Theo: Is that not where you put a toolbox?
-		Dalton: ...
-		Micah: I...
-		Micah: I just keep it there so it's out of the way.
-		Micah: I don't really use it though...
-		Dalton: Did you use it recently?
-		Micah: No?
-		Dalton: Did you leave it open?
-		Micah: Huh?
-		Dalton: ...
+	Dalton (Resting): Do you usually keep a toolbox in your closet?
+	if {Character Aff Points.Micah} > 2:
+		Theo (Thinking): Is that not where you put a toolbox?
+		Dalton (Squint): ...
+		Micah (Awkward): I...
+		Micah (Talk): I just keep it there so it's out of the way.
+		Micah (Talk): I don't really use it though...
+		Dalton (Resting): Did you use it recently?
+		Micah (Talk): No?
+		Dalton (Hmph): Did you leave it open?
+		Micah (Stare): Huh?
+		Dalton (Sigh): ...
 	else:
-		Theo: Hey! Don't judge a raccoon's toolbox placement.
-		Dalton: I’m not. I-
-		Micah: I just keep it there so it's out of the way.
-		Micah: I don't really use it though...
-		Dalton: Did you use it recently?
-		Micah: No?
-		Dalton: Why is it open, then?
-		Micah: Huh?
-		Dalton: ...
+		Theo (Concerned): Hey!
+		Theo (Concerned): Don't judge where a raccoon keeps his toolbox.
+		Dalton (Squint): I’m not. I-
+		Micah (Awkward): I just keep it there so it's out of the way.
+		Micah (Talk): I don't really use it though...
+		Dalton (Resting): Did you use it recently?
+		Micah (Talk): No?
+		Dalton (Hmph): Why is it open, then?
+		Micah (Stare): Huh?
+		Dalton (Sigh): ...
 	label tool choices
 	[wait time="0.3"]
-	Dalton: ...
-	- Take a closer look at the toolbox.
+	Dalton (Default): ...
+	- Take a closer look.
 		[signal arg="look"]
-	- Keep looking around Micah's house.
+	- Continue investigation.
 		[signal arg="end"]
 		[end_timeline]
-- Keep looking around Micah's house.
+- Continue investigation.
 	[end_timeline]

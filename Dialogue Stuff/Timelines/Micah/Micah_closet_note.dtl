@@ -1,49 +1,49 @@
 if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == false:
-	Dalton: Do you know who wrote this note?
-	Micah: Huh?
-	Micah: Oh, Pa must've left it when he gave the toolbox to me...
-	Micah: heh...
-	Dalton: ...
-	Dalton: Then who is this “Pa” then?
-	Micah: ...!
-	Micah: Um... 
+	Dalton (Resting): Do you know who wrote this note?
+	Micah (Stare): Huh?
+	Micah (Talk): Oh, Pa must've left it when he gave the toolbox to me...
+	Micah (Awkward): heh...
+	Dalton (Squint): ...
+	Dalton (Resting): Then who is this “Pa” then?
+	Micah (Sus): ...!
+	Micah (Awkward): Um... 
 	Micah: Ah... 
-	Micah: P-pa talks weird sometimes...
-	Dalton: Hmph.
+	Micah (Stare): P-pa talks weird sometimes...
+	Dalton (Resting): Hmph.
 	do GlobalVars.emit_add_note("micah", "tool_note", "low")
 	[end_timeline]
 if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == false:
-	Dalton: It seems like someone stole your hammer.
-	Micah: Hmm?
-	Dalton: Read this.
-	Micah: Oh.
-	Micah: Ah...
+	Dalton (Talk): It seems like someone stole your hammer.
+	Micah (Stare): Hmm?
+	Dalton (Resting): Read this.
+	Micah (Talk): Oh.
+	Micah (Awkward): Ah...
 	Micah: That's fine.
-	Micah: I don't use it anyway.
-	Dalton: Do you know who might have left the note?
-	Theo: Or needed a hammer?
-	Micah: I don't know.
-	Theo: You seem quite unbothered by this.
-	Micah: ...!
-	Micah: I-
+	Micah (Talk): I don't use it anyway.
+	Dalton (Default): Do you know who might have left the note?
+	Theo (Thinking): Or needed a hammer?
+	Micah (Stare): I don't know.
+	Theo (Concerned): You seem quite unbothered by this.
+	Micah (Sus): ...!
+	Micah (Awkward): I-
 	Micah: Uh...
-	Micah: I mean it doesn’t affect me that much, so why worry about it...
-	Micah: Heh...
-	Theo: Ah...
-	Theo: That makes sense. 
+	Micah (Default): I mean it doesn’t affect me that much, so why worry about it...
+	Micah (Talk): Heh...
+	Theo (Awkward): Ah...
+	Theo (Thinking): That makes sense. 
 	do GlobalVars.emit_add_note("micah", "tool_note", "high")
 	[end_timeline]
 if {Asked Questions.Micah_Theo_enter} == true:
-	Dalton: It seems like someone stole your hammer.
-	Micah: What?
-	Dalton: Read this.
-	Micah: Oh.
+	Dalton (Talk): It seems like someone stole your hammer.
+	Micah (Talk): What?
+	Dalton (Resting): Read this.
+	Micah (Awkward): Oh.
 	Micah: That's fine.
-	Micah: I don't use it anyway.
-	Dalton: Do you know who might have left the note?
-	Theo: Or needed a hammer?
-	Micah: I...
-	Micah: I need time to think...
-	Theo: Yeah, take your time.
+	Micah (Talk): I don't use it anyway.
+	Dalton (Default): Do you know who might have left the note?
+	Theo (Concerned): Or needed a hammer?
+	Micah (Talk): I...
+	Micah (Awkward): I need time to think...
+	Theo (Silly): Take your time.
 	do GlobalVars.emit_add_note("micah", "tool_note", "theo")
 	[end_timeline]
