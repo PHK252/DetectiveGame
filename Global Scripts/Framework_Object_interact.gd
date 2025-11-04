@@ -104,6 +104,7 @@ func _process(delta):
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
 			emit_signal("general_quit")
+			emit_signal("juniper_wander")
 			await get_tree().create_timer(.03).timeout
 			cam_anim.play("RESET")
 			player.show()

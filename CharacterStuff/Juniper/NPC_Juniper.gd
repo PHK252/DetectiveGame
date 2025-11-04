@@ -439,6 +439,7 @@ func _on_bookshelf_interacted(interactor: Interactor) -> void:
 	state = FOLLOW
 
 func _on_house_pic_interacted(interactor: Interactor) -> void:
+	#gate for if dialogue needed?
 	wander_rotate = false
 	#emit_signal("collision_danger")
 	if wander_choice < 3:

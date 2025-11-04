@@ -184,6 +184,7 @@ func _process(delta):
 				Exit_Cam.set_tween_duration(0)
 				FP_Cam.priority = 0
 				Exit_Cam.priority = 30
+				emit_signal("juniper_wander")
 				emit_signal("general_quit")
 				cam_anim.play("RESET")
 				player.show()
@@ -198,6 +199,7 @@ func _process(delta):
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
+			emit_signal("juniper_wander")
 			emit_signal("general_quit")
 			cam_anim.play("RESET")
 			player.show()
