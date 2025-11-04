@@ -1,76 +1,76 @@
-Dalton: Leave?
+Dalton (Default): Leave?
 - Yes.
 	if {Character Aff Points.Micah} <= 2:
-		Dalton: I think that'll be all for now. 
-		Dalton: Theo, let's go. 
-		if {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_Asked_Case}_asked_case} == false:
-			Theo: ...?
-			Theo: We haven't been here long.
-			Theo: Are you sure?
-			Dalton: ...
+		Dalton (Resting): I think that'll be all for now. 
+		Dalton (Talk): Theo, let's go. 
+		if {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_Asked_Case} == false:
+			Theo (Concerned): ...?
+			Theo (Thinking): We haven't been here long.
+			Theo (Doubt): Are you sure?
+			Dalton (Default): ...
 			- Yes.
 				set {Character Aff Points.Theo} -= 1
-				Dalton: Don't talk back to me.
-				Dalton: Let's go.
-				Theo: ...
-				Theo: Fine.
+				Dalton (Resting): Don't talk back to me.
+				Dalton (Talk): Let's go.
+				Theo (Concerned): ...
+				Theo (Thinking): Fine.
 				[signal arg="open_door"]
 				[end_timeline]
 			- No.
-				Dalton: ...
-				Dalton: Let's keep looking.
+				Dalton (Awkward): ...
+				Dalton (Hmph): Let's keep looking.
 				[end_timeline]
-		Theo: Sorry about that. 
-		Theo: He's just a little cranky. 
-		Dalton: Theo.
-		Dalton: We are leaving. 
-		Theo: Bye!!
-		Micah: bye... 
+		Theo (Awkward): Sorry about that. 
+		Theo (Talk): He's just a little cranky. 
+		Dalton (Resting): Theo.
+		Dalton (Hmph): We are leaving. 
+		Theo (Laugh): Bye!!
+		Micah (Awkward): bye... 
 		[signal arg="open_door"]
 		[end_timeline]
 	elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 5:
-		Dalton: I think we're done with our search. 
-		Dalton: If you think of anything that may contribute to the case, please call us or report it to the station. 
-		Theo: Thank you for letting us in.
-		Theo: And sorry for taking up your bed time. 
-		Micah: Ehh... 
-		Micah: It's no big deal. 
-		Dalton: Yeah... 
-		Dalton: Thanks.
-		Theo: Bye!!
-		Micah: Bye!
+		Dalton (Awkward): I think we're done with our search. 
+		Dalton (Talk): If you think of anything that may contribute to the case, please call us or report it to the station. 
+		Theo (Laugh): Thank you for letting us in.
+		Theo (Awkward): And sorry for taking up your bed time. 
+		Micah (Awkward): Ehh... 
+		Micah (Talk): It's no big deal. 
+		Dalton (Talk): Yeah... 
+		Dalton  (Awkward): Thanks.
+		Theo (Laugh): Bye!!
+		Micah (Talk): Bye.
 		[signal arg="open_door"]
 		[end_timeline]
 	elif {Character Aff Points.Micah} >= 5 or {Asked Questions.Micah_Theo_enter} == true and {Global.first_house} == "Micah":
-		Theo: I think we're done with our search.
-		Theo: Thank you for letting us in.
-		Theo: And sorry for interrupting your bedtime
-		Micah: Ehh...
-		Micah: It's no big deal.
-		Dalton: Yeah...
-		Dalton: Thanks.
-		Theo: Bye!!
-		Micah: ...
-		Micah: Wait!
-		Theo: Hmm?
-		Micah: My friend...
-		Micah: They've been missing for weeks...
-		Micah: They won't pick up the phone or respond to any of my texts...
-		Micah: I think something happened to them.
-		Micah: Is there anything you guys can do?
-		Dalton: Hm...
-		Dalton: Has a missing person report been filed yet?
-		Micah: Yeah, I filed one a week ago.
-		Dalton: What's their name?
-		Micah: Skylar Aslan.
-		Dalton: I'll look into it.
-		Micah: Thank you...
-		Dalton: Is there anything else?
-		Micah: Uh...
-		Micah: No... that's it.
-		Theo: Well, see ya, Micah!
-		Micah: Bye!
-		Dalton: Bye.
+		Theo (Talk): I think we're done with our search.
+		Theo (Laugh): Thank you for letting us in.
+		Theo (Awkward): And sorry for interrupting your bedtime
+		Micah (Awkward): Ehh...
+		Micah (Talk): It's no big deal.
+		Dalton (Talk): Yeah...
+		Dalton (Awkward): Thanks.
+		Theo (Laugh): Bye!!
+		Micah (Awkward): ...
+		Micah (Talk): Wait!
+		Theo (Concerned): Hmm?
+		Micah (Awkward): My friend...
+		Micah (Default): They've been missing for weeks...
+		Micah (Talk): They won't pick up the phone or respond to any of my texts...
+		Micah (Awkward): I think something happened to them.
+		Micah (Stare): Is there anything you guys can do?
+		Dalton (Awkward): Hm...
+		Dalton (Talk): Has a missing person report been filed yet?
+		Micah (Talk): Yeah, I filed one a week ago.
+		Dalton (Squint): What's their name?
+		Micah (Awkward): Skylar Aslan.
+		Dalton (Default): I'll look into it.
+		Micah (Happy): Thank you...
+		Dalton (Talk): Is there anything else?
+		Micah (Awkward): Uh...
+		Micah (Stare): No... that's it.
+		Theo (Laugh): Well, see ya, Micah!
+		Micah (Talk): Bye!
+		Dalton (Resting): Bye.
 		do GlobalVars.emit_add_note("micah", "leave_missing", "")
 		[signal arg="open_door"]
 		[end_timeline]

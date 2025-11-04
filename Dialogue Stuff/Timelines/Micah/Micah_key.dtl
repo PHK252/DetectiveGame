@@ -1,19 +1,19 @@
 if {Character Aff Points.Micah} <= 2:
 	if {Asked Questions.Micah_Asked_Key} == true:
-		Dalton: Is this key yours?
-		Micah: ...?
-		Micah: If you want it to be, it can.
+		Dalton (Resting): Is this key yours?
+		Micah (Default): ...?
+		Micah (Awkward): If you want it to be, it can.
 	else:
 		set {Asked Questions.Micah_Asked_Key} = true
-		Dalton: Is this key yours?
-		Micah: Hm?
-		Micah: Uh...
-		Micah: Maybe.
-		Dalton: Do you know that this key is used for?
-		Micah: No...
-		Micah: Where did you get that?
-		Dalton: From the case...
-		Micah: Oh.
+		Dalton (Resting): Is this key yours?
+		Micah (Stare): Hm?
+		Micah (Awkward): Uh...
+		Micah (Talk): Maybe.
+		Dalton (Doubt1): Do you know that this key is used for?
+		Micah (Awkward): No...
+		Micah (Stare): Where did you get that?
+		Dalton (Hmph): From the case...
+		Micah (Talk): Oh.
 		do GlobalVars.emit_add_note("micah", "case_key", "low")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
@@ -23,19 +23,19 @@ if {Character Aff Points.Micah} <= 2:
 			jump Micah_case_choice/
 if {Character Aff Points.Micah} > 2:
 	if {Asked Questions.Micah_Asked_Key} == true:
-		Dalton: Are you missing a key by any chance?
-		Micah: Not that one. 
+		Dalton (Talk): Are you missing a key by any chance?
+		Micah (Awkward): Not that one. 
 	else:
 		set {Asked Questions.Micah_Asked_Key} = true
-		Dalton: Are you missing a key by any chance?
-		Micah: What?
-		Dalton: This was in the case.
-		Micah: That's...
-		Micah: ...not 
-		Micah: ...mine...?
-		Dalton: Do you know what it belongs to?
-		Micah: Nope.
-		Micah: Never seen it before.
+		Dalton (Default): Are you missing a key by any chance?
+		Micah (Talk): What?
+		Dalton (Talk): This was in the case.
+		Micah (Stare): That's...
+		Micah (Talk): ...not 
+		Micah (Default): ...mine?
+		Dalton (Doubt1): Do you know what it belongs to?
+		Micah (Awkward): Nope.
+		Micah (Talk): Never seen it before.
 		do GlobalVars.emit_add_note("micah", "case_key", "high")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:

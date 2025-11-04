@@ -1,15 +1,15 @@
 if {Character Aff Points.Micah} <= 2:
 	if {Asked Questions.Micah_asked_letter} == true:
-		Dalton: Do you know who could've written this?
-		Micah: Ah.
-		Micah: No.
+		Dalton (Resting): Do you know who could've written this?
+		Micah (Talk): Ah.
+		Micah (Awkward): No.
 	else:
 		set {Asked Questions.Micah_asked_letter} = true
-		Dalton: Do you know who could've written this?
-		Micah: I...
-		Micah: No...
-		Micah: I don't know.
-		Dalton: ...hmmph.
+		Dalton (Resting): Do you know who could've written this?
+		Micah (Awkward): I...
+		Micah (Talk): No...
+		Micah (Default): I don't know.
+		Dalton (Resting): ...hmmph.
 		do GlobalVars.emit_add_note("micah", "case_letter", "low")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
@@ -20,27 +20,27 @@ if {Character Aff Points.Micah} <= 2:
 
 if {Character Aff Points.Micah} > 2:
 	if {Asked Questions.Micah_asked_letter} == true:
-		Dalton: Do you know who could've written this?
-		Micah: I don't know... 
-		Micah: Sorry.
+		Dalton (Talk): Do you know who could've written this?
+		Micah (Awkward): I don't know... 
+		Micah (Talk): Sorry.
 	else:
 		set {Asked Questions.Micah_asked_letter} = true
-		Dalton: Do you know who could've written this?
-		Micah: ...!
-		Micah: I-I don't know.
-		Theo: The writer seems to be addressing you, Micah.
-		Theo: Are you sure you don't know?
-		Micah: It...
+		Dalton (Default): Do you know who could've written this?
+		Micah (Stare): ...!
+		Micah (Awkward): I-I don't know.
+		Theo (Concerned): The writer seems to be addressing you, Micah.
+		Theo (Resting): Are you sure you don't know?
+		Micah (Awkward): It...
 		Micah: Maybe...
-		Micah: No...
-		Micah: I don't know.
+		Micah (Stare): No...
+		Micah (Talk): I don't know.
 		if {Asked Questions.Micah_Asked_Skylar} == true:
-			Theo: Do you think it could be Skylar?
-			Micah: Maybe...
-			Micah: But why would they come back just to leave again?
-				do GlobalVars.emit_add_note("micah", "case_letter", "skylar")
+			Theo (Concerned): Do you think it could be Skylar?
+			Micah (Awkward): Maybe...
+			Micah (Default): But why would they come back just to leave again?
+			do GlobalVars.emit_add_note("micah", "case_letter", "skylar")
 		else:
-				do GlobalVars.emit_add_note("micah", "case_letter", "high")
+			do GlobalVars.emit_add_note("micah", "case_letter", "high")
 	if {Asked Questions.Micah_in_choice} == true:
 		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
 			set {Asked Questions.Micah_in_choice} = false
