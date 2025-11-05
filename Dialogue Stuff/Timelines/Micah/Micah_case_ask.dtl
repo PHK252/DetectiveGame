@@ -1,4 +1,4 @@
-if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} < 2 and {Asked Questions.Micah_Theo_enter} == false:
 	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton (Resting): Is this yours?
 	Micah (Talk): Ah...
@@ -31,7 +31,7 @@ if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == f
 		[signal arg="exit"]
 		[end_timeline]
 
-if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} >= 2 and {Asked Questions.Micah_Theo_enter} == false:
 	set {Asked Questions.Micah_Asked_Case} = true
 	Dalton (Talk): Is this yours?
 	Micah (Awkward): Ah...

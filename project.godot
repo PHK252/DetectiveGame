@@ -269,6 +269,7 @@ layout/style_list=["res://Dialogue Stuff/Text_Bubble.tres", "res://Dialogue Stuf
 layout/default_style="res://Dialogue Stuff/Text_Bubble.tres"
 variables={
 "Asked Questions": {
+"Juniper_connection_repeated": false,
 "Micah_Asked_Case": false,
 "Micah_Asked_Clyde": false,
 "Micah_Asked_Key": false,
@@ -305,7 +306,9 @@ variables={
 "Micah_viewed_bookmark": false,
 "has_hair": false,
 "has_key": false,
-"has_letter": false
+"has_letter": false,
+"num_asked": 0,
+"viewed_pic": false
 },
 "Beginning": {
 "quincy_called": false,
@@ -319,10 +322,10 @@ variables={
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
-"Theo": 0
+"Theo": 1
 },
 "Global": {
-"first_house": "",
+"first_house": "0",
 "flip_bubble": false,
 "got_theo_ad": false,
 "went_to_Juniper": false,

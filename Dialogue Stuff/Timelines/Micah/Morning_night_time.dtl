@@ -3,11 +3,11 @@ Micah (Awkward): Um...
 Micah (Talk): I think around 8 a.m.
 Dalton (Resting): What did you do after going home?
 Micah  (Yawn): I had a snack and went to bed.
-do GlobalVars.emit_add_note("micah", "time_return", "")
+if {Asked Questions.Micah_Asked_Night_Time} == false:
+	do GlobalVars.emit_add_note("micah", "time_return", "")
+	#emit note
 set {Asked Questions.Micah_Asked_Night_Time} = true
-if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:
-	jump Good_morning/Questions
-elif {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true: 
+if {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true: 
 	jump Good_morning/Questions
 else:
 	jump Morning_night/Questions

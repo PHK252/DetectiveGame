@@ -1,5 +1,5 @@
 Dalton (Resting): Do you notice anything different about your closet?
-if {Character Aff Points.Micah} > 2:
+if {Character Aff Points.Micah} >= 2:
 	Micah (Awkward): Honestly...
 	Micah (Stare): I wouldn’t know.
 else:
@@ -11,7 +11,7 @@ Dalton (Default): ...
 - Ask about toolbox.
 	set {Asked Questions.Micah_Closet_Asked} = true
 	Dalton (Resting): Do you usually keep a toolbox in your closet?
-	if {Character Aff Points.Micah} > 2:
+	if {Character Aff Points.Micah} >= 2:
 		Theo (Thinking): Is that not where you put a toolbox?
 		Dalton (Squint): ...
 		Micah (Awkward): I...

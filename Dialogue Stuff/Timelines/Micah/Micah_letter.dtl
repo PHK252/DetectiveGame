@@ -1,4 +1,4 @@
-if {Character Aff Points.Micah} <= 2:
+if {Character Aff Points.Micah} < 2:
 	if {Asked Questions.Micah_asked_letter} == true:
 		Dalton (Resting): Do you know who could've written this?
 		Micah (Talk): Ah.
@@ -18,7 +18,7 @@ if {Character Aff Points.Micah} <= 2:
 		else:
 			jump Micah_case_choice/
 
-if {Character Aff Points.Micah} > 2:
+if {Character Aff Points.Micah} >= 2:
 	if {Asked Questions.Micah_asked_letter} == true:
 		Dalton (Talk): Do you know who could've written this?
 		Micah (Awkward): I don't know... 
@@ -29,7 +29,7 @@ if {Character Aff Points.Micah} > 2:
 		Micah (Stare): ...!
 		Micah (Awkward): I-I don't know.
 		Theo (Concerned): The writer seems to be addressing you, Micah.
-		Theo (Resting): Are you sure you don't know?
+		Theo (Concerned): Are you sure you don't know?
 		Micah (Awkward): It...
 		Micah: Maybe...
 		Micah (Stare): No...

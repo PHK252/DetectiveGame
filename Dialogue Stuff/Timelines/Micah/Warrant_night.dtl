@@ -2,7 +2,11 @@ Dalton (Resting): What were you doing last night between 3a.m. to 7a.m.?
 Micah (Stare): I...
 Micah (Awkward): Uh...
 Micah (Talk): I was on my shift at the Hustle and Bustle down the street.
-do GlobalVars.emit_add_note("micah", "location", "")
+if {Asked Questions.Micah_Asked_Night} == false:
+	do GlobalVars.emit_add_note("micah", "location", "")
+	#emit note
+else:
+	jump Warrant/Questions
 set {Asked Questions.Micah_Asked_Night} = true
 [wait time="0.3"]
 label Questions

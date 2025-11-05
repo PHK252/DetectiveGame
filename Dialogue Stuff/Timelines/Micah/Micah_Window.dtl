@@ -1,7 +1,7 @@
 Dalton (Resting): Did you leave the window open before going to work?
 Micah (Default): ...?
 Micah (Awkward): Maybe?
-if {Character Aff Points.Micah} > 2:
+if {Character Aff Points.Micah} >= 2:
 	Micah (Talk): I usually keep it open ‘cause it helps with the smell.
 	Micah (Awkward): But sometimes I forget to close it before I leave.
 else:

@@ -4,11 +4,12 @@ Micah (Default): No...?
 Micah (Talk): It was pretty normal.
 Micah (Awkward): J-just the normal amount of weird you get from working the night shift at a convenience store.
 Micah (Talk): Conspiracies about our tap water and such...
-do GlobalVars.emit_add_note("micah", "suspicious", "high")
+if {Asked Questions.Micah_Asked_Night_Sus} == false:
+	do GlobalVars.emit_add_note("micah", "suspicious", "high")
+	#emit note
 set {Asked Questions.Micah_Asked_Night_Sus} = true
-if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:
+if {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true: 
 	jump Good_morning/Questions
-elif {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true: 
-	jump Good_morning/Questions
+	set {Asked Questions.finished_location_qs} = true
 else:
 	jump Morning_night/Questions

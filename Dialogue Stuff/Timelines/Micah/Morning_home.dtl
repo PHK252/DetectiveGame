@@ -4,6 +4,8 @@ Micah (Awkward): Not since...
 Micah (Sigh): No.
 Dalton (Resting): ...
 Dalton: Hmph.
-do GlobalVars.emit_add_note("micah", "motive", "")
+if {Asked Questions.Micah_Asked_home} == false:
+	do GlobalVars.emit_add_note("micah", "motive", "")
+	#emit note
 set {Asked Questions.Micah_Asked_home} = true
 jump Good_morning/Questions

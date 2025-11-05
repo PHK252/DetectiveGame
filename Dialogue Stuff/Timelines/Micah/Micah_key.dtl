@@ -1,4 +1,4 @@
-if {Character Aff Points.Micah} <= 2:
+if {Character Aff Points.Micah} < 2:
 	if {Asked Questions.Micah_Asked_Key} == true:
 		Dalton (Resting): Is this key yours?
 		Micah (Default): ...?
@@ -21,7 +21,7 @@ if {Character Aff Points.Micah} <= 2:
 			jump Micah_ask_keep/
 		else:
 			jump Micah_case_choice/
-if {Character Aff Points.Micah} > 2:
+if {Character Aff Points.Micah} >= 2:
 	if {Asked Questions.Micah_Asked_Key} == true:
 		Dalton (Talk): Are you missing a key by any chance?
 		Micah (Awkward): Not that one. 

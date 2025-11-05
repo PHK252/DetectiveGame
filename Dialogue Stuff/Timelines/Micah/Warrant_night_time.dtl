@@ -3,7 +3,9 @@ Micah (Awkward): Um...
 Micah (Talk): Around 8 a.m.
 Dalton (Resting): What did you do after coming home?
 Micah (Yawn): I went to bed.
-do GlobalVars.emit_add_note("micah", "time_return", "")
+if {Asked Questions.Micah_Asked_Night_Time} == false:
+	do GlobalVars.emit_add_note("micah", "time_return", "")
+	#emit note
 set {Asked Questions.Micah_Asked_Night_Time} = true
 if {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true:
 	jump Warrant/Questions

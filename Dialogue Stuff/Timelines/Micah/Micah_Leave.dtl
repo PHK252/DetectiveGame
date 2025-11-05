@@ -1,9 +1,9 @@
 Dalton (Default): Leave?
 - Yes.
-	if {Character Aff Points.Micah} <= 2:
+	if {Character Aff Points.Micah} < 2:
 		Dalton (Resting): I think that'll be all for now. 
 		Dalton (Talk): Theo, let's go. 
-		if {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_viewed_bookmark} == false and {Asked Questions.Micah_Asked_Case} == false:
+		if {Asked Questions.Micah_Closet_Asked} == false and {Asked Questions.viewed_pic} == false and {Asked Questions.Micah_Asked_Case} == false:
 			Theo (Concerned): ...?
 			Theo (Thinking): We haven't been here long.
 			Theo (Doubt): Are you sure?
@@ -22,23 +22,10 @@ Dalton (Default): Leave?
 				[end_timeline]
 		Theo (Awkward): Sorry about that. 
 		Theo (Talk): He's just a little cranky. 
-		Dalton (Resting): Theo.
-		Dalton (Hmph): We are leaving. 
+		Dalton (Talk): Theo.
+		Dalton (Resting): We are leaving. 
 		Theo (Laugh): Bye!!
 		Micah (Awkward): bye... 
-		[signal arg="open_door"]
-		[end_timeline]
-	elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 5:
-		Dalton (Awkward): I think we're done with our search. 
-		Dalton (Talk): If you think of anything that may contribute to the case, please call us or report it to the station. 
-		Theo (Laugh): Thank you for letting us in.
-		Theo (Awkward): And sorry for taking up your bed time. 
-		Micah (Awkward): Ehh... 
-		Micah (Talk): It's no big deal. 
-		Dalton (Talk): Yeah... 
-		Dalton  (Awkward): Thanks.
-		Theo (Laugh): Bye!!
-		Micah (Talk): Bye.
 		[signal arg="open_door"]
 		[end_timeline]
 	elif {Character Aff Points.Micah} >= 5 or {Asked Questions.Micah_Theo_enter} == true and {Global.first_house} == "Micah":
@@ -52,7 +39,7 @@ Dalton (Default): Leave?
 		Theo (Laugh): Bye!!
 		Micah (Awkward): ...
 		Micah (Talk): Wait!
-		Theo (Concerned): Hmm?
+		Theo (Silly): Hmm?
 		Micah (Awkward): My friend...
 		Micah (Default): They've been missing for weeks...
 		Micah (Talk): They won't pick up the phone or respond to any of my texts...
@@ -72,6 +59,19 @@ Dalton (Default): Leave?
 		Micah (Talk): Bye!
 		Dalton (Resting): Bye.
 		do GlobalVars.emit_add_note("micah", "leave_missing", "")
+		[signal arg="open_door"]
+		[end_timeline]
+	elif {Character Aff Points.Micah} >= 2 and {Character Aff Points.Micah} < 5:
+		Dalton (Awkward): I think we're done with our search. 
+		Dalton (Talk): If you think of anything that may contribute to the case, please call us or report it to the station. 
+		Theo (Laugh): Thank you for letting us in.
+		Theo (Awkward): And sorry for taking up your bed time. 
+		Micah (Awkward): Ehh... 
+		Micah (Talk): It's no big deal. 
+		Dalton (Talk): Yeah... 
+		Dalton  (Awkward): Thanks.
+		Theo (Laugh): Bye!!
+		Micah (Talk): Bye.
 		[signal arg="open_door"]
 		[end_timeline]
 - Not yet.

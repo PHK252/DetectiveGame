@@ -1,4 +1,5 @@
-if {Character Aff Points.Micah} <= 2:
+if {Character Aff Points.Micah} < 2:
+	set {Asked Questions.viewed_pic} = true
 	Dalton (Resting): Who's this?
 	Micah (Talk): Oh...
 	Micah (Awkward): Just a friend.
@@ -8,6 +9,7 @@ if {Character Aff Points.Micah} <= 2:
 	do GlobalVars.emit_add_note("micah", "picture", "low_found")
 	[end_timeline]
 else:
+	set {Asked Questions.viewed_pic} = true
 	Dalton (Talk): Who's this?
 	Micah (Awkward): Oh...
 	Micah (Talk): A childhood friend.

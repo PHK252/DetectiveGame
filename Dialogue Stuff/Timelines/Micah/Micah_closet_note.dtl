@@ -1,4 +1,4 @@
-if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} < 2 and {Asked Questions.Micah_Theo_enter} == false:
 	Dalton (Resting): Do you know who wrote this note?
 	Micah (Stare): Huh?
 	Micah (Talk): Oh, Pa must've left it when he gave the toolbox to me...
@@ -12,7 +12,7 @@ if {Character Aff Points.Micah} <= 2 and {Asked Questions.Micah_Theo_enter} == f
 	Dalton (Resting): Hmph.
 	do GlobalVars.emit_add_note("micah", "tool_note", "low")
 	[end_timeline]
-if {Character Aff Points.Micah} > 2 and {Asked Questions.Micah_Theo_enter} == false:
+if {Character Aff Points.Micah} >= 2 and {Asked Questions.Micah_Theo_enter} == false:
 	Dalton (Talk): It seems like someone stole your hammer.
 	Micah (Stare): Hmm?
 	Dalton (Resting): Read this.

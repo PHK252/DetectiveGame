@@ -30,11 +30,12 @@ Dalton (Sigh): Haa...
 Dalton (Awkward): Fine.
 Dalton (Talk): We can stop by to get food after this.
 Theo (Laugh): Yah!!
-do GlobalVars.emit_add_note("micah", "theo_asked_dinner", "")
+if {Asked Questions.Micah_Asked_Theo_Question} == false:
+	do GlobalVars.emit_add_note("micah", "theo_asked_dinner", "")
+	#emit note
 set {Asked Questions.Micah_Asked_Theo_Question} = true
-if {Asked Questions.Micah_Morning_enough_Theo} == true and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true and {Asked Questions.Micah_Asked_Theo_Question} == true:
-	jump Good_morning/Questions
-elif {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true:
+set {Asked Questions.Micah_Morning_enough_Theo} = false
+if {Asked Questions.Micah_Morning_enough_Theo} == false and {Asked Questions.Micah_Asked_Night_Time} == true and {Asked Questions.Micah_Asked_Night_Sus} == true:
 	jump Good_morning/Questions
 else:
 	jump Morning_night/Questions

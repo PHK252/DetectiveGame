@@ -1,4 +1,4 @@
-if {Character Aff Points.Micah} <= 2:
+if {Character Aff Points.Micah} < 2:
 	Dalton: Can I take the key in as evidence?
 	Micah: ... 
 	Micah: I-I think that might be mine.
@@ -37,8 +37,7 @@ if {Character Aff Points.Micah} <= 2:
 		Dalton: You can keep it.
 		Micah: ...!
 		Micah: Thank you.
-
-if {Character Aff Points.Micah} > 2:
+else:
 	set {Asked Questions.has_key} = true
 	Dalton: Can we take the key in as evidence?
 	Micah: Sure...

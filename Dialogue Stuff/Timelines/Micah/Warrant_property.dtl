@@ -4,6 +4,8 @@ Micah (Awkward): Not really...
 Dalton (Resting): Nothing out of place or missing?
 Micah (Awkward): ...
 Micah (Talk): No...?
-do GlobalVars.emit_add_note("micah", "damage", "")
+if {Asked Questions.Micah_Asked_Property} == false:
+	do GlobalVars.emit_add_note("micah", "damage", "")
+	#emit note
 set {Asked Questions.Micah_Asked_Property} = true
 jump Warrant/Questions
