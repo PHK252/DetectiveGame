@@ -14,6 +14,7 @@ extends Control
 
 signal start_dialogue
 signal declined_call
+signal buzz
 signal _show_tut(tut_type : String)
 
 var accepted = false
@@ -75,6 +76,7 @@ func exit_call_screen():
 func _on_call_received():
 	GlobalVars.calling = true
 	call_anim.play("Shake")
+	emit_signal("buzz")
 	call_normal.hide()
 	receiving_call.show()
 
