@@ -31,7 +31,7 @@ Dalton (Default): Ask about...
 					Micah (Default): Around?
 					Dalton (Resting): ...
 					Micah (Yawn): ...
-					Dalton (Doubt1): Hmmph.
+					Dalton (Hmph): Hmmph.
 					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "juniper", "connection_low")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
@@ -40,7 +40,7 @@ Dalton (Default): Ask about...
 					[end_timeline]
 				else:
 					[wait time="0.3"]
-					Dalton: ...
+					Dalton (Default): ...
 					- Ask more questions
 						jump choices
 					- Continue investigation.
@@ -72,7 +72,7 @@ Dalton (Default): Ask about...
 					- Continue investigation.
 						Dalton (Resting): That's all the questions I have for now.
 						[end_timeline]
-		elif {Character Aff Points.Micah} >= 2:
+		else:
 			[wait time="0.3"]
 			Dalton (Default): ...
 			- Connection to Juniper?
@@ -83,18 +83,19 @@ Dalton (Default): Ask about...
 						Micah (Stare): My friend works-
 						Micah (Awkward): Uh...
 						Micah (Talk): Worked there before.
+						set {Asked Questions.num_asked} += 1
 						if {Asked Questions.Juniper_connection_repeated} == false:
 							do GlobalVars.emit_add_note("micah", "juniper", "connection_high_repeated")
 							# emit note
-						set {Asked Questions.Juniper_connection_repeated} = true
+							set {Asked Questions.Juniper_connection_repeated} = true
 					else:
 						Dalton (Talk): Do you recognize her?
 						Micah (Sus): Cafe owner in Midtown, right?
 						Micah (Default): Is this a test?
 						Dalton (Awkward): Hmph.
-						Micah (Awkward): ...?
 						Theo (Thinking): Ah, don’t worry about him.
 						Theo (Talk): His old age is catching up to him, I fear.
+						set {Asked Questions.num_asked} += 1
 				else:
 					set {Asked Questions.Micah_know_Juniper} = true
 					set {Asked Questions.Micah_Juniper_Q1} = true
@@ -102,12 +103,13 @@ Dalton (Default): Ask about...
 					Micah (Awkward): ...
 					Micah (Stare): Hmm...
 					Micah (Talk): I think so?
-					Micah (Awkward): Doesn't she run a café near Midtown?
+					Micah (Awkward): Doesn't she run a cafe near Midtown?
 					Micah (Default): I think I went there a few times with a friend.
 					Dalton (Awkward): Hmph.
 					Dalton (Resting): So you know her.
 					Micah (Awkward): Uhh...
 					Micah (Talk): Not personally.
+					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "juniper", "connection_high")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
@@ -128,11 +130,13 @@ Dalton (Default): Ask about...
 					Micah (Talk): Mad customers?
 					Micah (Sus): What do you want me to say?
 					Dalton (Hmph): Hmph.
+					set {Asked Questions.num_asked} += 1
 				else:
 					set {Asked Questions.Micah_Juniper_Q2} = true
 					Dalton (Talk): Do you know anybody who would have a reason to target her?
 					Micah (Awkward): I-
 					Micah (Talk): I don't know her enough to know that.
+					set {Asked Questions.num_asked} += 1
 					#do GlobalVars.emit_add_note("micah", "juniper", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
@@ -158,6 +162,7 @@ Dalton (Default): Ask about...
 					Dalton (Awkward): ...
 					Micah: It’s the mayor.
 					Micah (Talk): Never met the guy though.
+					set {Asked Questions.num_asked} += 1
 				else:
 					set {Asked Questions.Micah_Quincy_Q1} = true
 					Dalton (Resting): Do you recognize him?
@@ -168,7 +173,8 @@ Dalton (Default): Ask about...
 					Dalton (Resting): Have you met or spoken with him before?
 					Micah (Talk): Nope.
 					Micah (Default): I’ve only seen him on the news.
-					Micah (Awkward): It's quite hard to miss him.
+					Micah (Awkward): It's kinda hard to miss him.
+					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "quincy", "connection")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
@@ -186,10 +192,12 @@ Dalton (Default): Ask about...
 				if {Asked Questions.Micah_Quincy_Q2} == true:
 					Dalton (Resting): Do you know anybody who would target him?
 					Micah (Yawn): Nope...
+					set {Asked Questions.num_asked} += 1
 				else:
 					set {Asked Questions.Micah_Quincy_Q2} = true
 					Dalton (Resting): Do you know anybody who would target him?
 					Micah (Awkward): Not specifically... no.
+					set {Asked Questions.num_asked} += 1
 					#do GlobalVars.emit_add_note("micah", "quincy", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
@@ -203,7 +211,7 @@ Dalton (Default): Ask about...
 					- Continue investigation.
 						Dalton (Resting): That's all the questions I have for now.
 						[end_timeline]
-		elif {Character Aff Points.Micah} >= 2:
+		else:
 			[wait time="0.3"]
 			Dalton (Default): ...
 			- Connection to Quincy?
@@ -213,13 +221,14 @@ Dalton (Default): Ask about...
 					Micah (Sus): Do you recognize him?
 					Dalton (Hmph): ...Hmph.
 					Dalton (Awkward): I do.
-					Theo (Laugh): Oh, yeah!
+					Theo (Laugh): Of course he would!
 					Theo: They’re besties.
 					Theo (Happy): Got each other’s numbers on speed dial and everything.
-					Dalton (Angry): Theo!
+					Dalton (Surprised): Theo!
 					Dalton (Resting): Shut.
 					Theo (Silly): It’s true though...
 					Dalton (Hmph): Hmph.
+					set {Asked Questions.num_asked} += 1
 				else:
 					set {Asked Questions.Micah_Quincy_Q1} = true
 					Dalton (Talk): Do you recognize him?
@@ -229,19 +238,20 @@ Dalton (Default): Ask about...
 					Micah (Stare): Nope.
 					Micah (Talk): It’s impossible to avoid him on the news, though.
 					Micah (Awkward): His face is on every page.
+					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "quincy", "connection")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton (Talk): That's all the questions I have for now.
 					[end_timeline]
-			else:
-				[wait time="0.3"]
-				Dalton (Default): ...
-				- Ask more questions
-					jump choices
-				- Continue investigation.
-					Dalton (Talk): That's all the questions I have for now.
-					[end_timeline]
+				else:
+					[wait time="0.3"]
+					Dalton (Default): ...
+					- Ask more questions
+						jump choices
+					- Continue investigation.
+						Dalton (Talk): That's all the questions I have for now.
+						[end_timeline]
 			- Any motives against Quincy?
 				if {Asked Questions.Micah_Quincy_Q2} == true:
 					Dalton (Talk): Do you know anybody who would want to target him?
@@ -250,6 +260,7 @@ Dalton (Default): Ask about...
 					Dalton (Hmph): Hmph.
 					Dalton (Resting): Don’t answer my questions with questions.
 					Theo (Thinking): He’s got a point though.
+					set {Asked Questions.num_asked} += 1
 				else:
 					set {Asked Questions.Micah_Quincy_Q2} = true
 					Dalton (Talk): Do you know anybody who would want to target him?
@@ -258,6 +269,7 @@ Dalton (Default): Ask about...
 					Micah (Talk): He's not the most liked...
 					Micah (Awkward): So...
 					Micah (Talk): I don't know.
+					set {Asked Questions.num_asked} += 1
 					#do GlobalVars.emit_add_note("micah", "quincy", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
 					set {Asked Questions.Micah_asked_all} = true
@@ -282,6 +294,7 @@ Dalton (Default): Ask about...
 			Dalton (Resting): Clyde Procyon.
 			Micah (Sus): I told you to leave him out of this.
 			Dalton (Awkward): Hmph.
+			set {Asked Questions.num_asked} += 1
 		else:
 			set {Asked Questions.Micah_Asked_Clyde} = true
 			Dalton (Resting): Clyde Procyon.
@@ -300,6 +313,7 @@ Dalton (Default): Ask about...
 			Micah (Threat): My father has nothing to do with whatever this is, I swear.
 			Micah (Awkward): Please, just leave him out of this.
 			Dalton: Hmph.
+			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "clyde", "")
 			if {Asked Questions.Micah_asked_all} == true:
 				Dalton (Resting): That's all the questions I have for now.
@@ -312,11 +326,12 @@ Dalton (Default): Ask about...
 				- Continue investigation.
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
-	elif {Character Aff Points.Micah} >= 2:
+	else:
 		if {Asked Questions.Micah_Asked_Clyde} == true:
 			Dalton (Talk): Clyde Procyon.
 			Micah (Sus): Still covering your bases?
 			Dalton (Hmph): Hmph.
+			set {Asked Questions.num_asked} += 1
 		else:
 			set {Asked Questions.Micah_Asked_Clyde} = true
 			Dalton (Resting): Clyde Procyon.
@@ -329,8 +344,8 @@ Dalton (Default): Ask about...
 			Micah (Awkward): Um...
 			Micah (Talk): Not often?
 			Dalton (Resting): Hmph.
-			Micah (Sus): Why are you asking about Pa!? 
-			Micah (Threat): I-Is he in trouble!?
+			Micah (Threat): Why are you asking about Pa!? 
+			Micah (Sus): I-Is he in trouble!?
 			Dalton (Sigh): No.
 			Dalton (Awkward): I’m just covering my bases.
 			Micah (Awkward): Then...
@@ -338,6 +353,7 @@ Dalton (Default): Ask about...
 			Dalton (Squint): His ID badge was in your closet.
 			Dalton (Awkward): You might want to return it to him.
 			Micah (Awkward): Oh.
+			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "clyde", "")
 			if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Skylar} == false:
 				Dalton: That's all the questions I have for now.
@@ -361,17 +377,19 @@ Dalton (Default): Ask about...
 			Micah (Awkward): I didn’t quite catch that.
 			Dalton (Resting): Hmph. 
 			Dalton (Awkward): Nevermind.
+			set {Asked Questions.num_asked} += 1
 		else:
 			set {Asked Questions.Micah_Asked_Skylar} = true
 			Dalton (Resting): Do you know of a Skylar Aslan?
 			Micah (Sus): ...!
 			Micah (Awkward): N-no.
 			Micah (Talk): Why?
-			Dalton (Hmph): We have reason to believe that he is the one behind these break-ins.
-			Dalton (Doubt1): If you have any information about his appearance or whereabouts, we would greatly appreciate it. 
+			Dalton (Doubt1): We have reason to believe that he is the one behind these break-ins.
+			Dalton (Resting): If you have any information about his appearance or whereabouts, we would greatly appreciate it. 
 			Micah (Talk): Ah...
 			Micah (Awkward): Sorry...
 			Micah: I don’t think I can help you.
+			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "skylar", "low")
 		if {Asked Questions.Micah_asked_all} == true:
 			Dalton (Resting): That's all the questions I have for now.
@@ -384,13 +402,14 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Resting): That's all the questions I have for now.
 				[end_timeline]
-	elif {Character Aff Points.Micah} >= 2:
+	else:
 		if {Asked Questions.Micah_Asked_Skylar} == true:
 			Dalton (Talk): Do you know of a Skylar Aslan?
-			Micah (Talk): Yeah...
+			Micah (Sus): Yeah...
 			Micah (Sus): We’ve been over this.
 			Dalton (Awkward): Hmph.
 			Dalton (Resting): Sorry.
+			set {Asked Questions.num_asked} += 1
 		else:
 			set {Asked Questions.Micah_Asked_Skylar} = true
 			Dalton (Talk): Do you know of a Skylar Aslan?
@@ -407,23 +426,24 @@ Dalton (Default): Ask about...
 			Micah (Awkward): But I don’t know where they are. 
 			Micah: Sorry.
 			Theo (Talk): No need to apologize, you already helped us tons.
+			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "skylar", "high")
-			if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Clyde} == true:
+		if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Clyde} == true:
+			Dalton (Talk): That's all the questions I have for now.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton: ...
+			- Ask more questions
+				jump choices
+			- Continue investigation.
 				Dalton (Talk): That's all the questions I have for now.
 				[end_timeline]
-			else:
-				[wait time="0.3"]
-				Dalton: ...
-				- Ask more questions
-					jump choices
-				- Continue investigation.
-					Dalton (Talk): That's all the questions I have for now.
-					[end_timeline]
-- Continue investigation.
+- Continue.
 	if {Asked Questions.num_asked} == 0:
 		Dalton (Awkward): Um.
 		Dalton (Resting): Nevermind.
-		Micah (Yawn): Hm...
+		Micah (Yawn): Ahhn...
 		[end_timeline]
 	else:
 		Dalton (Talk): That's all the questions I have for now.

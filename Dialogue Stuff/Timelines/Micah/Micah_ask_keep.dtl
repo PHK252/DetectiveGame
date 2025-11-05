@@ -1,60 +1,64 @@
 if {Character Aff Points.Micah} < 2:
-	Dalton: Can I take the key in as evidence?
-	Micah: ... 
-	Micah: I-I think that might be mine.
-	Dalton: Fine.
-	Dalton: Then I'll be taking the letter.
-	Micah: Wait!
-	Micah: No...
-	Micah: Can I keep it?
-	Dalton: ...
+	Dalton (Resting): Can I take the key in as evidence?
+	Micah (Awkward): ... 
+	Micah (Talk): I-I think that might be mine.
+	Dalton (Hmph): Fine.
+	Dalton (Resting): Then I'll be taking the letter.
+	Micah (Threat): Wait!
+	Micah (Sus): ...
+	Micah (Awkward): Can I keep it?
+	Dalton (Default): ...
 	- Negotiate. 
 		set {Character Aff Points.Micah} -= 1
 		set {Character Aff Points.Theo} -= 1
 		set {Asked Questions.has_letter} = true
 		[wait time= "0.3"]
-		Dalton: Why?
-		Micah: It’s-
-		Micah: Um...
-		Micah: ...
-		Dalton: Drop the act.
-		Dalton: I know you're hiding something.
-		Micah: ...
-		Dalton: You're not going to tell us?
-		Micah: ...
-		Theo: Hey, Dalton...
-		Theo: Lay off him.
-		Dalton: ...
-		Dalton: I'm taking the letter.
-		Dalton: You can come get it at the station once you're ready to talk.
+		Dalton (Resting): Why?
+		Micah (Stare): It’s-
+		Micah (Talk): Um...
+		Micah (Awkward): ...
+		Dalton (Angry): Drop the act.
+		Dalton (Resting): I know you're hiding something.
+		Micah (Awkward): ...
+		Dalton (Talk): You're not going to tell us?
+		Micah (Awkward): ...
+		Theo (Thinking): Hey, Dalton...
+		Theo (Concerned): Lay off him.
+		Dalton (Hmph): ...
+		Dalton (Talk): I'll be taking the letter.
+		Dalton (Resting): You can come get it at the station once you're ready to talk.
 		do GlobalVars.emit_add_evidence("micah", "letter")
 	- Relinquish.
 		set {Character Aff Points.Micah} += 1
-		Dalton: Theo, did you take a picture of the letter?
-		Theo: Yep! It’s uploading right now.
-		Dalton: ...
-		Dalton: Fine.
-		Dalton: You can keep it.
-		Micah: ...!
-		Micah: Thank you.
+		Dalton (Sigh): ...
+		Dalton (Talk): Theo, did you take a picture of the letter?
+		Theo (Happy): Yep! It’s uploading right now.
+		Dalton (Awkward): ...
+		Dalton (Talk): Fine.
+		Dalton (Resting): You can keep it.
+		Micah (Happy): ...!
+		Micah (Talk): Thank you.
 else:
 	set {Asked Questions.has_key} = true
-	Dalton: Can we take the key in as evidence?
-	Micah: Sure...
-	Micah: I wouldn't know what to do with it anyway.
+	Dalton (Talk): Can we take the key in as evidence?
+	Micah (Awkward): Sure...
+	Micah (Talk): I wouldn't know what to do with it anyway.
 	do GlobalVars.emit_add_evidence("micah", "key")
-	Dalton: The letter?
-	Micah: ...
+	Dalton (Resting): The letter?
+	Micah (Awkward): ...
 	Micah: Can...
-	Micah: Can I keep it?
-	Dalton: Hmph.
-	Dalton: Theo, did you take a picture of the letter?
-	Theo: Yep! It’s uploading right now.
-	Dalton: Did-
-	Theo: Yes, I took notes and pictures of the other pieces of evidence too.
-	Dalton: ...
-	Dalton: Hmph.
-	Dalton: Thanks.
-	Theo: Anything for you, ya old fox.
-	Dalton: It’s still Detective Reynard to you.
-	Theo: Yeah, yeah.
+	Micah (Talk): Can I keep it?
+	Dalton (Hmph): Hmph.
+	Dalton (Awkward): Theo, did you take a picture of the letter?
+	Theo (Happy): Yep! It’s uploading right now.
+	Dalton (Resting): Did-
+	Theo (Laugh): Yes, I took notes and pictures of the other pieces of evidence too.
+	Dalton (Awkward): ...
+	Dalton (Resting): Hmph.
+	Dalton (Talk): Thanks.
+	Theo (Silly): Anything for you, ya old fox.
+	Dalton (Hmph): It’s still Detective Reynard to you.
+	Theo (Roll Eyes): Yeah, yeah.
+	Dalton (Talk): You can keep it.
+	Micah (Happy): ...!
+	Micah (Talk): Thank you.
