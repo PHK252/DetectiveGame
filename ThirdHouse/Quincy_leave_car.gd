@@ -18,12 +18,17 @@ extends MeshInstance3D
 
 var is_open: bool = false
 
+signal door_open
+signal door_close
+
 func _ready():
+	#pass to test
 	interactable.set_deferred("monitorable", false)
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
 		print("map_interact")
+		emit_signal("door_open")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		theo_norm.visible = false
 		dalton_player.play("SitNoDrink")
@@ -47,6 +52,7 @@ func _on_map_leave_interacted(interactor):
 
 
 func _on_exit_pressed():
+	emit_signal("door_close")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	map_ui.hide()
 	GlobalVars.viewing = ""
@@ -66,6 +72,7 @@ func _on_exit_pressed():
 func _input(event):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "level change":
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "map":
+			emit_signal("door_close")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			map_ui.hide()
 			main_cam.set_tween_duration(0)

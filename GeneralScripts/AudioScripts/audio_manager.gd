@@ -229,3 +229,15 @@ func _on_view_sound() -> void:
 
 func _on_flip_sound() -> void:
 	audio_master[17].play()
+
+func _on_map_leave_second() -> void:
+	audio[5].play()
+
+func _on_map_select_second() -> void:
+	audio_master[5].play()
+
+func _on_exit_hover_second() -> void:
+	audio[2].play()
+
+func _on_map_hover_second() -> void:
+	audio[4].play()

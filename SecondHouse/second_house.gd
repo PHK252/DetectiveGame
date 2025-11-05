@@ -23,6 +23,7 @@ extends Node3D
 
 signal phone_time_start
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	disable_interaction_beginning(interactables)
