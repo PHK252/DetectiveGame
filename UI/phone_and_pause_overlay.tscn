@@ -232,7 +232,7 @@ visible = false
 
 [node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
 script = ExtResource("17_ral7j")
-audio_master = [NodePath("phone_back"), NodePath("phone_hover"), NodePath("ring"), NodePath("buzz"), NodePath("select"), NodePath("decline_call"), NodePath("accept_call"), NodePath("num_01"), NodePath("num_02"), NodePath("num_03"), NodePath("Hiss"), NodePath("altClick"), NodePath("phone_hover_high"), NodePath("ArrowClick"), NodePath("Phone_back_02"), NodePath("buzz"), NodePath("delete")]
+audio_master = [NodePath("phone_back"), NodePath("phone_hover"), NodePath("ring"), NodePath("buzz"), NodePath("select"), NodePath("decline_call"), NodePath("accept_call"), NodePath("num_01"), NodePath("num_02"), NodePath("num_03"), NodePath("Hiss"), NodePath("altClick"), NodePath("phone_hover_high"), NodePath("ArrowClick"), NodePath("Phone_back_02"), NodePath("buzz"), NodePath("delete"), NodePath("flip"), NodePath("selectPhoto")]
 
 [node name="num_01" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("15_jrc8q")
@@ -298,6 +298,17 @@ bus = &"SFX"
 [node name="delete" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("29_wljcx")
 volume_db = -20.0
+bus = &"SFX"
+
+[node name="flip" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("29_wljcx")
+volume_db = -5.868
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="selectPhoto" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("25_ltpo8")
+pitch_scale = 1.2
 bus = &"SFX"
 
 [connection signal="buzz" from="." to="Sounds" method="_on_phone_buzz"]
@@ -375,10 +386,70 @@ bus = &"SFX"
 [connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Evidence/Back" to="Sounds" method="_on_back_pressed_phone"]
 [connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Micah/Back" to="Sounds" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Micah/Back" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View ID Card" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View ID Card" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Micah/View ID Card/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Micah/View ID Card/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Picture" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Picture" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Picture/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Micah/View Picture/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View bookmark" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View bookmark" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Micah/View bookmark/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Micah/View bookmark/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View letter" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Micah/View letter" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Micah/View letter/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Micah/View letter/Exit" to="Sounds" method="_on_back_pressed_phone"]
 [connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Juniper/Back" to="Sounds" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Juniper/Back" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View bookmark" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View bookmark" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View bookmark/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View bookmark/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Info" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Info" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Info/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Info/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Letter" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Letter" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Letter/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Letter/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Name Tag" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Name Tag" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Name Tag/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Juniper/View Name Tag/Exit" to="Sounds" method="_on_back_pressed_phone"]
 [connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Quincy/Back" to="Sounds" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Quincy/Back" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Coordinates" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Coordinates" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Coordinates/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Coordinates/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View phone" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View phone" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View phone/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View phone/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View letter" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View letter" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View letter/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View letter/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View journal" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View journal" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View journal/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View journal/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Lab Pic" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Lab Pic" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Lab Pic/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View Lab Pic/Exit" to="Sounds" method="_on_back_pressed_phone"]
+[connection signal="flip_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View proposal" to="Sounds" method="_on_flip_sound"]
+[connection signal="vis_sound" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View proposal" to="Sounds" method="_on_view_sound"]
+[connection signal="mouse_entered" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View proposal/Exit" to="Sounds" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="CanvasLayer/Phone UI/NotesScreen/Quincy/View proposal/Exit" to="Sounds" method="_on_back_pressed_phone"]
 [connection signal="pressed" from="CanvasLayer/Phone UI/Home" to="Sounds" method="_on_home_pressed"]
 
 [editable path="CanvasLayer/Phone UI"]

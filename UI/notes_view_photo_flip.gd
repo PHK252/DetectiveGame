@@ -10,10 +10,13 @@ extends Control
 @export var back_label: RichTextLabel
 @export var front_label: RichTextLabel
 
+signal vis_sound
+signal flip_sound
 
 func _on_object_front_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+			emit_signal("flip_sound")
 			back.show()
 			back_label.show()
 			front.hide()
@@ -22,6 +25,7 @@ func _on_object_front_gui_input(event):
 func _on_object_back_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+			emit_signal("flip_sound")
 			back.hide()
 			back_label.hide()
 			front.show()
@@ -30,6 +34,7 @@ func _on_object_back_gui_input(event):
 
 func _on_visibility_changed():
 	if visible == true:
+		emit_signal("vis_sound")
 		front.show()
 		back.hide()
 		front_label.show()

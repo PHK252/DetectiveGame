@@ -44,3 +44,8 @@ func _on_visibility_changed():
 	if visible == true:
 		if GlobalVars.flip_tut == false:
 			emit_signal("_show_tut", "flip")
+
+
+func _on_paper_sound_needed() -> void:
+	if visible == true:
+		emit_signal("paper_sound")

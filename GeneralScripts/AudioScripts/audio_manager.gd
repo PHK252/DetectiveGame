@@ -221,3 +221,11 @@ func _on_stop_buzz() -> void:
 
 func _on_delete_pressed() -> void:
 	audio_master[16].play()
+
+
+func _on_view_sound() -> void:
+	audio_master[18].play()
+
+
+func _on_flip_sound() -> void:
+	audio_master[17].play()

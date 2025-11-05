@@ -328,6 +328,12 @@ func _on_cooldown_timeout() -> void:
 
 func _on_character_body_3d_theo_adjustment() -> void:
 	#print("THEOADJ")
+	#if wander_choice < 2:
+			#var current_anim = one_shots[wander_choice]
+			#anim_tree.set("parameters/" + current_anim + "/request", 2)
+			#anim_player.play("basketball_default")
+			#Beer_Static.visible = true
+			#Beer_Anim.visible = false
 	if GlobalVars.phone_up == false:
 		intDalton = true
 		is_wandering = false
@@ -335,6 +341,12 @@ func _on_character_body_3d_theo_adjustment() -> void:
 func _on_character_body_3d_theo_reset() -> void:
 	#print("RESETING")
 	if GlobalVars.phone_up == false:
+		if wander_choice < 2:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+			anim_player.play("basketball_default")
+			Beer_Static.visible = true
+			Beer_Anim.visible = false
 		#print("thruPhone")
 		intDalton = false
 		wander_choice = 2
