@@ -1,37 +1,37 @@
 if {Character Aff Points.Juniper} < 0:
 	set {Juniper.Juniper_asked_case} = true
-	Dalton: Is this yours?
-	Juniper: Nope.
-	Juniper: I think the intruder left it.
-	Dalton: Hmph.
+	Dalton (Resting): Is this yours?
+	Juniper (Doubt): Nope.
+	Juniper (Squint): I think the intruder left it.
+	Dalton (Resting): Hmph.
 	do GlobalVars.emit_add_note("juniper", "case", "low")
 	[wait time="0.3"]
 	label choices
-	Dalton: ...
+	Dalton (Default): ...
 	- Inspect case.
 		[signal arg="look_case"]
-	-  Keep looking around Juniper's house.
+	- Continue investigation.
 		[end_timeline]
 else:
 	set {Juniper.Juniper_asked_case} = true
-	Dalton: Is this yours?
-	Juniper: Nah.
-	Juniper: It just showed up after I came back...
-	Juniper: I assume the intruder left it.
-	Dalton: Do you know what the combo could be?
-	Juniper: No?
-	Juniper: Should I?
-	Dalton: It was worth asking...
-	Juniper: Hmm...
-	Juniper: Maybe...
-	Juniper: See if there's a limit to the numbers you can put in...
-	Dalton: Hmmph...
-	Dalton: Thanks.
+	Dalton (Talk): Is this yours?
+	Juniper (Hmph): Nah.
+	Juniper (Sigh): It just showed up after I came back...
+	Juniper (Awkward): I assume the intruder left it.
+	Dalton (Squint): Do you know what the combo could be?
+	Juniper (Doubt): No?
+	Juniper (Squint): Should I?
+	Dalton (Awkward): It was worth asking...
+	Juniper (Hmph): Hmm...
+	Juniper (Awkward): Maybe...
+	Juniper (Default): See if there's a limit to the numbers you can put in...
+	Dalton (Hmph): Hmmph...
+	Dalton (Resting): Thanks.
 	do GlobalVars.emit_add_note("juniper", "case", "high")
 	[wait time="0.3"]
 	label choices
-	Dalton: ...
+	Dalton (Default): ...
 	- Inspect case.
 		[signal arg="look_case"]
-	-  Keep looking around Juniper's house.
+	- Continue investigation.
 		[end_timeline]
