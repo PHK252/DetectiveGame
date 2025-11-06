@@ -1,5 +1,5 @@
-Dalton: ...
-- Leave?
+Dalton: Leave?
+- Yes.
 	if {Character Aff Points.Juniper} <= 0:
 		Dalton: I think we got everything we've come here for.
 		Dalton: Right, Detective Lycus?
@@ -55,5 +55,5 @@ Dalton: ...
 		Theo: You too!
 		Dalton: You too.
 		[signal arg="open_door"]
-- Stay.
+- Not yet.
 	[end_timeline]

@@ -1,48 +1,48 @@
 if {Character Aff Points.Juniper} <= 0:
 	set {Character Aff Points.Juniper} -= 1
-	Dalton: Is this a list of all your employees?
-	Juniper: Hey!
-	Juniper: Put that down!
+	Dalton (Talk): Is this a list of all your employees?
+	Juniper (Surprise): Hey!
+	Juniper (Angry): Put that down!
 	Juniper: Why are ya looking through my stuff!?
-	Dalton: What happened to your last employee?
-	Dalton: Aslan, S.
-	Juniper: Huuuu...
-	Juniper: If I knew y’all would be snooping around all my stuff for a goddamn window, I would’ve never called ya.
-	Dalton: ...
-	Juniper: Tsk...
-	Juniper: They stopped showing up.
-	Juniper: Don't know why.
-	Juniper: Why are ya asking, anyway?
-	Dalton: Motive.
-	Juniper: Hah! 
-	Juniper: If ya want a person with motive, y’all should’ve asked about Brutus. 
-	Dalton: Do you think he did this?
-	Juniper: Oh, hell no. 
-	Juniper: Heard he found another job that has even more bread.
+	Dalton (Resting): What happened to your last employee?
+	Dalton (Talk): Aslan, S.
+	Juniper (Sigh): Huuuu...
+	Juniper (Doubt): If I knew y’all would be snooping around all my stuff for a goddamn window, I would’ve never called ya.
+	Dalton (Awkward): ...
+	Juniper (Squint): Tsk...
+	Juniper (Doubt): They stopped showing up.
+	Juniper (Sad): Don't know why.
+	Juniper (Doubt): Why are ya asking, anyway?
+	Dalton (Resting): Motive.
+	Juniper (Roll Eyes): Hah! 
+	Juniper (Hmph): If ya want a person with motive, y’all should’ve asked about Brutus. 
+	Dalton (Doubt1): Do you think he did this?
+	Juniper (Doubt): Oh, hell no. 
+	Juniper (Hmph): Heard he found another job that has even more bread.
 	set {Juniper.found_last_name} = true
 	do GlobalVars.emit_add_note("juniper", "info", "low")
 else:
-	Dalton: Is this a list of all your employees?
-	Juniper: Woah!
+	Dalton (Talk): Is this a list of all your employees?
+	Juniper (Surprise): Woah!
 	Juniper: What are ya doing, looking at that?
-	Dalton: Oh. 
-	Dalton: Sorry, is this confidential? 
-	Juniper: It isn’t now.
-	Dalton: ...
-	Juniper: Well, ask away. 
-	Juniper: I can see those gears turning in that lil fox head of yours. 
-	Dalton: Hmph. 
-	Dalton: Aslan, S.
-	Dalton: Your last employee...
-	Dalton: It says that they are missing. 
-	Dalton: What happened?
-	Juniper: Ah.
-	Juniper: I don’t quite know, actually. 
-	Juniper: They just suddenly stopped showing up to shifts
-	Juniper: It's odd since they were a pretty reliable and diligent worker...
-	Juniper: I tried contacting them, but they never replied.
-	Juniper: It's been a tough few weeks without them.
-	Dalton: Hmph.
-	Dalton: I see.
+	Dalton (Awkward): Oh. 
+	Dalton (Resting): Sorry, is this confidential? 
+	Juniper (Hmph): It isn’t now.
+	Dalton (Awkward): ...
+	Juniper (Default): Well, ask away. 
+	Juniper (Happy): I can see those gears turning in that lil fox head of yours. 
+	Dalton (Hmph): Hmph. 
+	Dalton (Talk): Aslan, S.
+	Dalton (Default): Your last employee...
+	Dalton (Resting): It says that they are missing. 
+	Dalton (Squint): What happened?
+	Juniper (Hmph): Ah.
+	Juniper (Awkward): I don’t quite know, actually. 
+	Juniper (Sad): They just suddenly stopped showing up to shifts
+	Juniper (Happy): It's odd since they were a pretty reliable and diligent worker...
+	Juniper (Default): I tried contacting them, but they never replied.
+	Juniper (Sad): It's been a tough few weeks without them.
+	Dalton (Resting): Hmph.
+	Dalton (Talk): I see.
 	do GlobalVars.emit_add_note("juniper", "info", "high")
 	set {Juniper.found_last_name} = true

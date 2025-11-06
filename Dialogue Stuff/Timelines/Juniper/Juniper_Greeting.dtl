@@ -1,16 +1,15 @@
 set {Global.went_to_Juniper} = true
-
 [signal arg="knock"]
 [wait time="5.0"]
-Dalton: ...
-- Is anybody home? 
-	Dalton: Hello!?
-	Dalton: Is anybody home? 
-	Dalton: ASPD!
+Dalton (Default): ...
+- Greet. 
+	Dalton (Angry): Hello!?
+	Dalton (Doubt1): Is anybody home? 
+	Dalton (Angry): ASPD!
 	# #After a few seconds, you hear muffled hoove-steps(?)...
 	[wait time="2.0"]
-	Juniper: Yes!
-	Juniper: Coming!
+	Juniper (Default): Yes!
+	Juniper (Happy): Coming!
 	[signal arg="open_door"]
 	[end_timeline]
 	label continue
@@ -18,11 +17,11 @@ Dalton: ...
 		jump Juniper_Greet_First_house/
 	else:
 		jump Juniper_Greet_Second_house/
-- Investigate a reported break in.
-	Dalton: ASPD! 
-	Dalton: We're here to investigate a reported break in at this property!
+- State Purpose.
+	Dalton (Talk): ASPD! 
+	Dalton (Angry): We're here to investigate a reported break in at this property!
 	[wait time="2.0"]
-	Juniper: Coming!
+	Juniper (Surprise): Coming!
 	[signal arg="open_door"]
 	[end_timeline]
 	label continue

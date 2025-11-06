@@ -4,39 +4,44 @@
 - Yes
 	if {Character Aff Points.Juniper} <= 0:
 		set {Character Aff Points.Juniper} -= 1
-		Juniper: Is snooping around not enough?
-		Juniper: Now ya wanna steal my food.
-		Dalton: I- 
-		Dalton: Um...
-		Juniper: Y’all are supposed to solve crime, not commit them.
-		Juniper: Even I know that. 
+		Juniper (Doubt): Is snooping around not enough?
+		Juniper (Squint): Now ya wanna steal my food.
+		Dalton (Squint): I- 
+		Dalton (Awkward): Um...
+		Juniper (Roll Eyes): Y’all are supposed to solve crime, not commit them.
+		Juniper (Doubt): Even I know that. 
 	else:
-		Juniper: Ya want some?
-		Dalton: ...!
-		Dalton: I- 
-		Dalton: Um...
-		Dalton: I’m hungry...
-		Juniper: Well then take some, ya sly fox. 
-		Dalton: Hmph.
-		Dalton: Thanks.
-		if {Juniper.Cran_repeat} == 1:
-			Juniper: Ya still hungry?
-			Dalton: ...!
-			Dalton: Yeah...
-			Juniper: Hm.
-			Juniper: Go ahead.
+		if {Juniper.Cran_repeat} == false:
+			Juniper (Happy): Ya want some?
+			Dalton (Surprised): ...!
+			Dalton (Awkward): I- 
+			Dalton (Hmph): Um...
+			Dalton (Resting): I’m hungry...
+			Juniper (Default): Well then take some, ya sly fox. 
+			Dalton (Resting): Hmph.
+			Dalton (Awkward): Thanks.
+			set {Juniper.Cran_repeat} = true
 		else:
-			Juniper: Back for more?
-			Dalton: ...!
-			Dalton: Yeah...
-			Juniper: Do ya just want the bag?
-			Dalton: No, it’s fine.
-			Juniper: Heh...
-			Juniper: Whatever ya say.
+			
+			if {Juniper.Cran_repeat_choice} == 0:
+				Juniper (Default): Ya still hungry?
+				Dalton (Surprised): ...!
+				Dalton (Awkward): Yeah...
+				Juniper (Happy): Hm.
+				Juniper (Laugh): Go ahead.
+				set {Juniper.Cran_repeat_choice} = 1
+			else:
+				Juniper (Default): Back for more?
+				Dalton (Surprised): ...!
+				Dalton (Resting): Yeah...
+				Juniper (Happy): Do ya just want the bag?
+				Dalton (Awkward): No, it’s fine.
+				Juniper (Laugh): Heh...
+				Juniper (Happy): Whatever ya say.
+				set {Juniper.Cran_repeat_choice} = 0
 - No
 	"Daltons Thoughts": I shouldn’t... 
 	"Daltons Thoughts": But-
 	"Daltons Thoughts": No.
 	"Daltons Thoughts": Huu...
 	"Daltons Thoughts": Self control.
-

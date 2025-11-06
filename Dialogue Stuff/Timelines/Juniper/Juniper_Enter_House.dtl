@@ -1,17 +1,17 @@
 if {Character Aff Points.Juniper} >= 0:
-	Juniper: Here, here.
-	Juniper: Y'all can sit on the couch...
-	Juniper: Ah, no!
+	Juniper (Default): Here, here.
+	Juniper (Happy): Y'all can sit on the couch...
+	Juniper (Surprise): Ah, no!
 	Juniper: There’s glass on it!
-	Juniper: Hmm…
-	Juniper: Y’all are welcome to sit on the floor.
-	Juniper: Or ya can look around...
-	Juniper: Whatever ya want!
+	Juniper (Hmph): Hmm...
+	Juniper (Happy): Y’all are welcome to sit on the floor.
+	Juniper (Default): Or ya can look around...
+	Juniper (Laugh): Whatever ya want!
 	if {Character Aff Points.Juniper} >= 1:
-		Juniper: Oh!
-		Juniper: I almost forgot!
-		Juniper: Are y'all coffee or tea canines?
-		Dalton: ...
+		Juniper (Surprise): Oh!
+		Juniper (Default): I almost forgot!
+		Juniper (Happy): Are y'all coffee or tea canines?
+		Dalton (Default): ...
 		- Coffee.
 			jump Juniper_Coffee/
 		- Tea.
@@ -20,12 +20,12 @@ if {Character Aff Points.Juniper} >= 0:
 		[signal arg= "disconnect"]
 		[end_timeline]
 else:
-Juniper: Over there is the broken window and...
-Juniper: Oh!
-Juniper: I forgot to mention...
-Juniper: A case appeared here too.
-Juniper: I tried to open it, but I couldn't figure out the passcode.
-Dalton: Hmph...
-Dalton: We'll take a look around.
-[signal arg= "disconnect"]
-[end_timeline]
+	Juniper (Hmph): Over there is broken window and...
+	Juniper (Surprise): Oh!
+	Juniper (Happy): I forgot to mention...
+	Juniper (Default): A case appeared here too.
+	Juniper (Hmph): I tried to open it, but I couldn't figure out the passcode.
+	Dalton (Resting): Hmph...
+	Dalton (Talk): We'll take a look around.
+	[signal arg= "disconnect"]
+	[end_timeline]
