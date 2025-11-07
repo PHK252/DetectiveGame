@@ -1,4 +1,5 @@
 if {Character Aff Points.Juniper} < 0:
+	set {Juniper.saw_pie} = true
 	Dalton: Did you take a bite out of this pastry?
 	Juniper: Hm?
 	Juniper: What pastry?
@@ -9,6 +10,7 @@ if {Character Aff Points.Juniper} < 0:
 	Dalton: I see.
 	do GlobalVars.emit_add_note("juniper", "pastry", "low")
 else:
+	set {Juniper.saw_pie} = true
 	Dalton: I think I found some damage. 
 	Juniper: What?!
 	Dalton: Someone took a bite out of your pastry. 
@@ -27,18 +29,18 @@ else:
 	Juniper: Why did you have to scare me like that!?
 	Theo: That old fox got jokes sometimes.
 	Theo: It’s scary when he does.
-	Juniper: Huu…
+	Juniper: Huu...
 	Juniper: Well, I hope they got their money's worth. 
 	Juniper: That pastry’s been out for days.
 	Dalton: ...
 	- Take as evidence.
-	Dalton:  Can I take the pastry in for examination?
-	Juniper: Oh! 
-	Juniper: Of course!
-	Juniper: I was just gonna throw it anyway.
-	Dalton: Hmph.
-	Dalton: Thanks.
-	do GlobalVars.emit_add_evidence("juniper", "pie")
+		Dalton:  Can I take the pastry in for examination?
+		Juniper: Oh! 
+		Juniper: Of course!
+		Juniper: I was just gonna throw it anyway.
+		Dalton: Hmph.
+		Dalton: Thanks.
+		set {Juniper.has_pie} = true
+		do GlobalVars.emit_add_evidence("juniper", "pie")
 	- Leave it.
-	Dalton: Hmph.
-
+		Dalton: Hmph.

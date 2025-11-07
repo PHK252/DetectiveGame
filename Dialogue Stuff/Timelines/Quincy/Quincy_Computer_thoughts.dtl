@@ -1,7 +1,7 @@
 if {Quincy.checked_email} == true:
-	Dalton: Future plans? 
-	Dalton: Operation Null? 
-	Dalton: Who is he talking to?
+	"Daltons Thoughts": Future plans? 
+	"Daltons Thoughts": Operation Null? 
+	"Daltons Thoughts": Who is he talking to?
 	do GlobalVars.emit_add_note("quincy", "email", "")
 	set {Quincy.got_mail} = true
 	if {Quincy.got_safe} == true and {Quincy.got_mail} == true and {Quincy.got_journal} == true:

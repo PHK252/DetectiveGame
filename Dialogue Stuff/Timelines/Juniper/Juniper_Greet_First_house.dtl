@@ -1,49 +1,49 @@
 set {Character Aff Points.Juniper} += 1
 if {Character Aff Points.Theo} > 0:
-	Juniper: Hiya!
-	Dalton: Hello.
-	Dalton: Are you Juniper Hartley?
-	Juniper: Yes, Officer!
-	Dalton: ...?
-	Dalton: I’m Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
-	Dalton: You called in this morning to report a break-in, is that correct?
-	Juniper: Yes, Officer!
-	Dalton: ...
-	Dalton: There's no need for such strict formalities, Ms. Hartley.
-	Juniper: Oh...
-	Juniper: My apologies...
-	Theo: Kehe...
-	Theo: He just doesn't like being called "Officer" because he's a detect-
-	Dalton: Theo, shut!
-	Dalton: Ahem.
-	Dalton: It seems that the break-in you reported this morning is part of a series of break-ins that happened last night.
-	Dalton: We would like to come in and take a look around and ask you a few questions.
-	Dalton:  Is that alright with you?
-	Juniper: Of course!
-	Juniper: Come on in!
+	Juniper (Laugh): Hiya!
+	Dalton (Default): Hello.
+	Dalton (Talk): Are you Juniper Hartley?
+	Juniper (Happy): Yes, Officer!
+	Dalton (Resting): ...?
+	Dalton (Talk): I’m Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
+	Dalton (Default): You called in this morning to report a break-in, is that correct?
+	Juniper (Default): Yes, Officer!
+	Dalton (Awkward): ...
+	Dalton (Resting): There's no need for such strict formalities, Ms. Hartley.
+	Juniper (Hmph): Oh...
+	Juniper (Awkward): My apologies...
+	Theo (Laugh): Kehe...
+	Theo (Talk): He just doesn't like being called "Officer" because he's a detect-
+	Dalton (Angry): Theo, shut!
+	Dalton (Resting): Ahem.
+	Dalton (Talk): It seems that the break-in you reported this morning is part of a series of break-ins that happened last night.
+	Dalton (Default): We would like to come in and take a look around and ask you a few questions.
+	Dalton (Resting): Is that alright with you?
+	Juniper (Laugh): Of course!
+	Juniper (Happy): Come on in!
 	set {Juniper.Greeted} = true
 	#[signal arg="open_door"]
 else:
-	Juniper: Hiya!
-	Dalton: Hello.
-	Dalton: Are you Juniper Hartley?
-	Juniper: Yes, Officer!
-	Dalton: ...?
-	Dalton: I’m Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
-	Dalton: You called in this morning to report a break-in, is that correct?
-	Juniper: Yes, Officer!
-	Dalton: ...
-	Dalton: There's no need for such strict formalities, Ms. Hartley.
-	Juniper: Oh...
-	Juniper: Sorry...
-	Theo: You never tell me that...
-	Dalton: It's because you're never formal, Detective Lycus.
-	Juniper: Pfft...
-	Dalton: Ahem.
-	Dalton: It seems that the break-in you reported this morning is part of a series of break-ins that happened last night.
-	Dalton: We would like to come in and take a look around and ask you a few questions.
-	Dalton: Is that alright with you?
-	Juniper: Of course!
-	Juniper: Come on in!
+	Juniper (Laugh): Hiya!
+	Dalton (Default): Hello.
+	Dalton (Talk): Are you Juniper Hartley?
+	Juniper (Default): Yes, Officer!
+	Dalton (Resting): ...?
+	Dalton (Talk): I’m Detective Dalton Reynard and this is my partner for the case, Detective Theo Lycus.
+	Dalton (Default): You called in this morning to report a break-in, is that correct?
+	Juniper (Happy): Yes, Officer!
+	Dalton (Awkward): ...
+	Dalton (Resting): There's no need for such strict formalities, Ms. Hartley.
+	Juniper (Hmph): Oh...
+	Juniper (Awkward): Sorry...
+	Theo (Thinking): You never tell me that...
+	Dalton (Hmph): That's because you're never formal, Detective Lycus.
+	Juniper (Laugh): Keke...
+	Dalton (Resting): Ahem.
+	Dalton (Talk): It seems that the break-in you reported this morning is part of a series of break-ins that happened last night.
+	Dalton (Default): We would like to come in and take a look around and ask you a few questions.
+	Dalton (Resting): Is that alright with you?
+	Juniper (Default): Of course!
+	Juniper (Happy): Come on in!
 	set {Juniper.Greeted} = true
 	#[signal arg="open_door"]

@@ -1,59 +1,61 @@
-Dalton: Leave?
+Dalton (Default): Leave?
 - Yes.
 	if {Character Aff Points.Juniper} <= 0:
-		Dalton: I think we got everything we've come here for.
-		Dalton: Right, Detective Lycus?
-		if {Juniper.viewed_bookmark} == false and {Juniper.asked_all} == false and {Juniper.Juniper_asked_case} == false:
-			Theo: Huh?
-			Theo: We just got here.
-			Theo: Are you sure?
-			Dalton: ...
+		Dalton (Talk): I think we got everything we've come here for.
+		Dalton (Awkward): Right, Detective Lycus?
+		if {Juniper.found_last_name} == false and {Juniper.saw_pie} == false and {Juniper.Juniper_asked_case} == false:
+			Theo (Surprised): Huh?
+			Theo (Thinking): We just got here.
+			Theo (Concerned): Are you sure?
+			Dalton (Default): ...
 			- Yes.
-				Dalton: I'm sure.
+				Dalton (Resting): I'm sure.
 				[signal arg="open_door"]
 				jump continue
 			- No.
-				Dalton: ...
-				Dalton: Let's keep looking.
+				Dalton (Awkward): ...
+				Dalton (Resting): Let's keep looking.
 				[end_timeline]
 		else:
-			Theo: Uhh...
-			Theo: Yeah...
-			Juniper: Ok.
+			Theo (Thinking): Uhh...
+			Theo (Concerned): Yeah?
+			Juniper (Hmph): Ok.
 		label continue
-		Dalton: Please call us if anything else happens.
-		Juniper: I'll keep that in mind.
-		Dalton: We'll be leaving now. Let's go, Theo.
-		Theo: Bye!
-		Juniper: Bye.
+		Dalton (Default): Please call us if anything else happens.
+		Juniper (Squint): I'll keep that in mind.
+		Dalton (Talk): We'll be leaving now. 
+		Dalton (Resting): Let's go, Theo.
+		Theo (Default): Bye!
+		Juniper (Doubt): Bye.
+		[end_timeline]
 	else:
-		Dalton: I think we got everything we've come here for.
-		Dalton: Right, Detective Lycus?
-		Theo: Huh?
-		Theo: Uhh...
-		Theo: Yeah!
-		Theo: Thanks for the tea, Ms. Hartley.
-		Theo:It was amazing!
+		Dalton (Talk): I think we got everything we've come here for.
+		Dalton (Resting): Right, Detective Lycus?
+		Theo (Thinking): Huh?
+		Theo (Awkward): Uhh...
+		Theo (Silly): Yeah!
+		Theo (Happy): Thanks for the tea, Ms. Hartley.
+		Theo (Laugh): It was amazing!
 		if {Juniper.drank} == true:
-			Dalton: It was delicious.
-		Juniper: Oh, it was no hassle at all...
-		Juniper: Y'all should come visit the cafe sometime...
-		Juniper: We'll keep a couple seats warm for y'all.
-		Dalton: Thank you.
-		Dalton: Don't hesitate to call us if anything else happens.
-		Juniper: Will do.
-		Theo: Thank you for letting us take up some of your time.
-		Theo: I know it must’ve been stressful for you.
-		Juniper: Oh, it's no problem at all.
-		Juniper: Also...
-		Juniper: If it does happen to be who I think it is...
-		Juniper: Take it easy on the kid.
-		Dalton: ...
-		Dalton: I'll keep that in mind.
-		Juniper: Thanks.
-		Juniper: Y'all take care!
-		Theo: You too!
-		Dalton: You too.
+			Dalton (Satisfied): It was delicious.
+		Juniper (Hmph): Oh, it was no hassle at all...
+		Juniper (Default): Y'all should come visit the cafe sometime...
+		Juniper (Laugh): We'll keep a couple seats warm for y'all.
+		Dalton (Talk): Don't hesitate to call us if anything else happens.
+		Juniper (Default): Will do.
+		Theo (Default): Thank you for letting us take up some of your time.
+		Theo (Concerned): I know it must’ve been stressful for you.
+		Juniper (Happy): Oh, it's no problem at all.
+		Juniper (Awkward): Also...
+		Juniper (Hmph): If it does happen to be who I think it is...
+		Juniper (Default): Take it easy on the kid.
+		Dalton (Awkward): ...
+		Dalton (Talk): I'll keep that in mind.
+		Juniper (Happy): Thanks.
+		Juniper (Default): Y'all take care!
+		Theo (Happy): You too!
+		Dalton (Awkward): Yeah.
 		[signal arg="open_door"]
+		[end_timeline]
 - Not yet.
 	[end_timeline]
