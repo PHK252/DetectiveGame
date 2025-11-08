@@ -1,23 +1,24 @@
 set {Character Aff Points.Juniper} += 1
 set {Character Aff Points.Theo} += 1
-Theo: We are very sorry for causing you so much distress, ma'am.
-Theo: This case has become larger than we anticipated, so we are busier than usual.
-Juniper: Larger?
-Juniper: In what way?
-Dalton: Two other break-ins that happened last night.
-Dalton: They seem to have happened back to back.
-Juniper: Oh...
-Juniper: That's...
-Theo: How about we talk about this inside?
-Juniper: Oh! 
-Juniper: Yes!
-Juniper: Where are my manners?
-Juniper: I'll get something brewing for ya both.
-Juniper: Come on in!
+Theo (Concerned): We are very sorry for causing you so much distress, ma'am.
+Theo (Thinking): This case has become larger than we anticipated, so we are busier than usual.
+Juniper (Hmph): Larger?
+Juniper (Squint): In what way?
+Dalton (Talk): Two other break-ins that happened last night.
+Dalton (Awkward): They seem to have happened back to back.
+Juniper (Awkward): Oh...
+Juniper (Hmph): That's...
+Theo (Default): How about we talk about this inside?
+Juniper (Surprise): Oh! 
+Juniper (Default): Yes!
+Juniper (Happy): Where are my manners?
+Juniper (Default): I'll get something brewing for ya both.
+Juniper (Laugh): Come on in!
 set {Juniper.Greeted} = true
 #[signal arg="open_door"]
 #Juniper walk in
-Dalton: ...
-Dalton: Thank you...
-Theo: No problem.
+[wait time="1.0"]
+Dalton (Awkward): ...
+Dalton (Resting): Thank you...
+Theo (Silly): No problem.
 # signal enter house

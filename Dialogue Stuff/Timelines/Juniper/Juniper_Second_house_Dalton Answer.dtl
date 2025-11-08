@@ -1,52 +1,51 @@
-Dalton: I'm sorry about the wait, ma'am...
-Dalton: Your report has been linked to a larger scale case, so we had to investigate other leads first.
-Juniper: Huff...
-Juniper: The ASPD couldn't send anyone else here? 
-Juniper: Y'all understaffed or something?
-Dalton: ...
-Dalton: Yes.
-Juniper: ...
-Juniper: oh.
-Juniper: But still...
-Juniper: It's dangerous out here.
-Juniper: What if someone tries to break in again?
-Juniper: It'll be so easy with a broken window.
-Juniper: What if it was a targeted attack?
-Juniper: Am I going to be the next person to go?
-Juniper: Gosh, I still have so much to do!
-Juniper: I don't wanna die yet!
-Juniper: Oh gosh! What if they are trying to steal-
-Dalton: Ma'am?
-Juniper: Hmm?
-Dalton: ...
+Dalton (Resting): I'm sorry about the wait, ma'am...
+Dalton (Talk): Your report has been linked to a larger scale case, so we had to investigate other leads first.
+Juniper (Sigh): Huff...
+Juniper (Squint): The ASPD couldn't send anyone else here? 
+Juniper (Doubt): Y'all understaffed or something?
+Dalton (Default): ...
+Dalton (Resting): Yes.
+Juniper (Doubt): ...
+Juniper (Hmph): oh.
+Juniper (Sigh): But still...
+Juniper (Doubt): It's dangerous out here.
+Juniper (Sad): What if someone tries to break in again?
+Juniper (Surprise): It'll be so easy with a broken window.
+Juniper (Squint): What if it was a targeted attack?
+Juniper (Sad): Am I going to be the next person to go?
+Juniper (Surprise): Gosh, I still have so much to do!
+Juniper (Surprise): I don't wanna die yet!
+Juniper (Angry): Oh gosh! What if they are trying to steal-
+Dalton (Squint): Ma'am?
+Juniper (Doubt): Hmm?
+Dalton (Default): ...
 - Calm Down.
 	set {Character Aff Points.Juniper} -= 1
 	set {Character Aff Points.Theo} -= 1
-	Dalton: Stop.
-	Dalton: Please.
-	Dalton: Calm down.
-	Juniper: Excuse me!?
-	Juniper: This is a matter of my safety, and you tell me to calm down!?
-	Theo: Huuuf...
-	Dalton: what?
-	Theo: I'm sorry for my partner's...
-	Theo: ...attitude.
-	Theo: We are truly here to help.
-	Theo: Would you like to talk more inside?
-	Juniper: If y’all insist. 
-	Theo: Thanks...
+	Dalton (Resting): Stop.
+	Dalton (Awkward): Please.
+	Dalton (Talk): Calm down.
+	Juniper (Surprise): Excuse me!?
+	Juniper (Angry): This is a matter of my safety, and you tell me to calm down!?
+	Theo (Sigh): Huuuf...
+	Dalton (Squint): what?
+	Theo (Doubt): I'm sorry for my partner's...
+	Theo (Resting): ...attitude.
+	Theo (Concerned): We are truly here to help.
+	Theo (Default): Would you like to talk more inside?
+	Juniper (Hmph): If y’all insist. 
+	Theo (Happy): Thanks...
 	set {Juniper.Greeted} = true
 	#[signal arg="open_door"]
 	# #jump Juniper Low 
 - Talk inside.
-	Dalton: Shall we take this conversation inside?
-	Juniper: Oh!
-	Juniper: Yes!
-	Juniper: Gosh!
-	Juniper: I didn't mean to have y'all standing around like that!
-	Juniper: Come inside.
-	Dalton: Thank you.
-	Theo: Thanks, ma'am.
+	Dalton (Awkward): Shall we take this conversation inside?
+	Juniper (Surprise): Oh!
+	Juniper (Default): Yes!
+	Juniper (Hmph): I didn't mean to have y'all standing around like that...
+	Juniper (Happy): Come inside.
+	Dalton (Talk): Thank you.
+	Theo (Silly): Thanks, ma'am.
 	set {Juniper.Greeted} = true
 	#[signal arg="open_door"]
 	# #jump Juniper Low

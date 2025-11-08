@@ -1,35 +1,36 @@
 set {Character Aff Points.Theo} += 1
 set {Character Aff Points.Juniper} += 1
-Dalton: Tea.
-Juniper: Do you have any preferences?
-Juniper: Green, black, oolong?
-Juniper: Sugar?
-Juniper: Cream?
-Dalton: Hmm...
-Dalton: Surprise me.
-Juniper: Yes, sir!
-Juniper: Oh...
-Juniper: Sorry.
-Dalton: Hmph...
-Dalton: It's fine.
-Juniper: How about you?
-Theo: Can I please have black tea with six sugars?
-Juniper: What an...
-Juniper: ...interesting choice.
-Dalton: Just ask for straight-up syrup, why don't you.
-Theo: What!
-Theo: I like sugar!
-Theo: Sue me!
-Dalton: I just might...
-Dalton: Wait...
-Dalton: It's you!
-Dalton: You've been eating all my donuts, haven't y-
-Juniper: I'm going to go make y'alls drinks, I'll be back in a minute!
-Theo: Thank you, Ma'am!
-Dalton: Yeah, thanks...
+Dalton (Default): Tea.
+Juniper (Happy): Do you have any preferences?
+Juniper (Hmph): Green, black, oolong?
+Juniper (Default): Sugar?
+Juniper (Happy): Cream?
+Dalton (Awkward): Hmm...
+Dalton (Talk): Surprise me.
+Juniper (Laugh): Yes, sir!
+Juniper (Hmph): Oh...
+Juniper (Awkward): Sorry.
+Dalton (Resting): Hmph...
+Dalton (Awkward): It's fine.
+Juniper (Default): How about you?
+Theo (Laugh): Can I please have black tea with six sugars?
+Juniper (Hmph): What an...
+Juniper (Awkward): ...interesting choice.
+Dalton (Roll Eyes): Just ask for straight-up syrup, why don't you.
+Theo (Surprised): What!
+Theo (Concerned): I like sugar!
+Theo (Laugh): Sue me!
+Dalton (Roll Eyes): I just might...
+[wait time="0.5"]
+Dalton (Resting): Wait...
+Dalton (Surprised): It's you!
+Dalton (Angry): You've been eating all my donuts, haven't y-
+Juniper (Laugh): I'm going to go make y'alls drinks, I'll be back in a minute!
+Theo (Silly): Thank you, Ma'am!
+Dalton (Resting): Yeah, thanks...
 [signal arg= "tea_time"]
-Dalton: This is not over, Detective Lycus.
+Dalton (Resting): This is not over, Detective Lycus.
 Dalton: I swear, if it's you-
-Theo: We better start detectiving, Detective Reynard.
-Dalton: Hmph!
+Theo (Default): We better start detectiving, Detective Reynard.
+Dalton (Hmph): Hmph!
 [end_timeline]

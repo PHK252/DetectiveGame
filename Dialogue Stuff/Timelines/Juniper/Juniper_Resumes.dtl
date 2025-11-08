@@ -1,77 +1,78 @@
 if {Character Aff Points.Juniper} < 0:
-	Dalton: These resumes...
-	Dalton: What are they for?
-	Juniper: That's none of your business.
+	Dalton (Talk): These resumes...
+	Dalton (Resting): What are they for?
+	Juniper (Squint): That's none of your business.
 else:
 	if {Juniper.reenter_resumes} == false:
-		Dalton: These resumes...
-		Dalton: What are they for?
-		Juniper: There has been a...
-		Juniper: ...sudden opening at the cafe.
-		Juniper: We've been understaffed and swamped for the past few weeks.
-		Juniper: I've been trying to fill it as soon as possible, but I haven’t had the time to look over them.
+		Dalton (Talk): These resumes...
+		Dalton (Resting): What are they for?
+		Juniper (Hmph): There has been a...
+		Juniper (Awkward): ...sudden opening at the cafe.
+		Juniper (Sigh): We've been understaffed and swamped for the past few weeks.
+		Juniper (Awkward): I've been trying to fill it as soon as possible, but I haven’t had the time to look over them.
 		if {Character Aff Points.Juniper} >= 1:
-			Juniper: ...
-			Juniper: Wanna help?
+			Juniper (Hmph): ...
+			Juniper (Happy): Wanna help?
 			[wait time="0.3"]
 			Dalton: ...
-			- Nope.
-				Dalton: Uh...
-				Dalton: I’m afraid this is beyond my jurisdiction.
-				Juniper: Darn.
-			- Sure.
-				Dalton: Uh...
-				Dalton: Sure. I’ll try.
+			- Yes.
+				Dalton (Awkward): Uh...
+				Dalton (Talk): Sure. 
+				Dalton (Squint): I can try.
 				label choices
 				set {Character Aff Points.Juniper} += 1
 				[wait time="0.3"]
-				Dalton: ...
-				- Milo’s resume
-					Dalton: This one.
-					Juniper: Hmm...
-					Juniper: Seems like a smart kid.
-					Dalton: Yeah...
-					Juniper: I’ll keep your suggestion in mind.
-					Thanks!
-					Dalton: Yeah.
+				Dalton (Default): ...
+				- Milo
+					Dalton (Awkward): This one.
+					Juniper (Hmph): Hmm...
+					Juniper (Happy): Seems like a smart kid.
+					Dalton (Awkward): Yeah...
+					Juniper (Default): I’ll keep your suggestion in mind.
+					Juniper (Laugh): Thanks!
+					Dalton (Awkward): Yeah.
 					set {Juniper.picked_resume} = "Milo"
-				- Ash’s resume
-					Dalton: This one.
-					Juniper: Oh!
-					Juniper: They seem perfect for us.
-					Juniper: Thank you!
-					Dalton: Yeah...
-					Dalton: No problem.
+				- Ash
+					Dalton (Awkward): This one.
+					Juniper (Surprise): Oh!
+					Juniper (Laugh): They seem perfect for us.
+					Juniper (Default): Thank you!
+					Dalton (Awkward): Yeah...
+					Dalton (Resting): No problem.
 					set {Juniper.picked_resume} = "Ash"
-				- Pippin’s resume
-					Dalton: This one.
-					Juniper: Hm?
-					Juniper: What...
-					Juniper: What a choice.
-					Juniper: I’ll keep it in mind.
-					Dalton: Hmph.
+				- Pippin
+					Dalton (Awkward): This one.
+					Juniper (Squint): Hm?
+					Juniper (Hmph): What...
+					Juniper (Doubt): What a choice.
+					Juniper (Squint): I’ll keep it in mind.
+					Dalton (Awkward): Hmph.
 					set {Juniper.picked_resume} = "Pippin"
-				- Take another look. | [if {Juniper.relooked_resumes} == false] [else="hide"]
+				- Re-read. | [if {Juniper.relooked_resumes} == false] [else="hide"]
 					set {Character Aff Points.Juniper} -= 1
 					set {Juniper.reenter_resumes} = true
-					Dalton: Let me take another look at those resumes.
-					Juniper: Sure.
-					Juniper: Go ahead.
+					Dalton (Talk): Let me take another look at those resumes.
+					Juniper (Happy): Sure.
+					Juniper (Default): Go ahead.
+			- No.
+				Dalton (Awkward): Uh...
+				Dalton (Resting): I’m afraid this is beyond my jurisdiction.
+				Juniper (Sad) : Darn.
 		else:
 			[end_timeline]
 	else:
-		Juniper: Did ya choose one?
+		Juniper (Happy): Did ya choose one?
 		[wait time="0.3"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Yes.
 			set {Juniper.reenter_resumes} = false
 			set {Juniper.relooked_resumes} = true
-			Dalton: Yeah...
+			Dalton (Awkward): Yeah...
 			jump choices
 		- No.
-			Dalton: No...
-			Dalton: I need more time.
-			Juniper: Of course!
+			Dalton (Awkward): No...
+			Dalton (Resting): I need more time.
+			Juniper (Default): Of course!
 	
 #	if {Juniper.picked_resume} != "":
 #		Juniper: Thank ya for the help!
