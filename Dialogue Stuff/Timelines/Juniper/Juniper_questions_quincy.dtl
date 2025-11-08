@@ -1,4 +1,4 @@
-if {Character Aff Points.Juniper} <= 0:
+if {Character Aff Points.Juniper} < 0:
 	if {Juniper.asked_Quincy} == false:
 		set {Juniper.asked_Quincy} = true
 		Juniper: Hm?

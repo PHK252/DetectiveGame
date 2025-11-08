@@ -1,61 +1,61 @@
-if {Character Aff Points.Juniper} <= 0:
+if {Character Aff Points.Juniper} < 0:
 	if {Juniper.asked_time} == false:
 		set {Juniper.asked_time} = true
-		Dalton: Were you present when the break-in happened?
-		Juniper: No, I was at the cafe when it happened.
-		Dalton: When did you leave for the cafe?
-		Juniper: Yesterday Noon.
-		Dalton: Hmph.
+		Dalton (Resting): Were you present when the break-in happened?
+		Juniper (Doubt): No, I was at the cafe when it happened.
+		Dalton (Talk): When did you leave for the cafe?
+		Juniper (Squint): Yesterday Noon.
+		Dalton (Resting): Hmph.
 		do GlobalVars.emit_add_note("juniper", "location", "low")
 	else:
-		Dalton: Were you present when the break-in happened?
-		Juniper: Really?
-		Juniper: Again?
-		Dalton: Hmph.
+		Dalton (Resting): Were you present when the break-in happened?
+		Juniper (Squint): Really?
+		Juniper (Doubt): Again?
+		Dalton (Resting): Hmph.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
-		Dalton: That's all the questions I have right now.
+		Dalton (Resting): That's all the questions I have right now.
 		[end_timeline]
 	else:
 		[wait time="0.3"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Ask more questions.
 			jump Juniper_questions/questions
-		- Continue looking around the house.
-			Dalton: That's all the questions I have right now.
+		- Continue investigation.
+			Dalton (Resting): That's all the questions I have right now.
 			[end_timeline]
 else:
 	if {Juniper.asked_time} == false:
 		set {Juniper.asked_time} = true
-		Dalton: Were you present when the break-in happened?
-		Juniper: Nah, I had to take care of some stuff at the cafe.
-		Juniper: So I got home pretty late...
-		Juniper: But when I saw the smashed window, I freaked out and called in to report it...
-		Dalton: When did you leave for the cafe?
-		Juniper: Around noon yesterday.
-		Dalton: ...
-		Theo: You must be exhausted...
-		Juniper: Yeah...
-		Juniper: I am...
-		Dalton: I'll try not to take up more of your time
-		Juniper: Thanks.
+		Dalton (Talk): Were you present when the break-in happened?
+		Juniper (Happy): Nah, I had to take care of some stuff at the cafe.
+		Juniper (Default): So I got home pretty late...
+		Juniper (Hmph): But when I saw the smashed window, I freaked out and called in to report it...
+		Dalton (Talk): When did you leave for the cafe?
+		Juniper (Awkward): Around noon yesterday.
+		Dalton (Awkward): ...
+		Theo (Concerned): You must be exhausted...
+		Juniper (Hmph): Yeah...
+		Juniper (Sad): I am...
+		Dalton (Awkward): I'll try not to take up more of your time
+		Juniper (Happy): Thanks.
 		do GlobalVars.emit_add_note("juniper", "location", "high")
 	else:
-		Dalton: Were you present when the break-in happened?
-		Juniper: Nah...
-		Juniper: I was at the cafe...
-		Juniper: ...
-		Juniper: Are you also getting a weird sense of deja vu?
-		Dalton: Hmph.
+		Dalton (Talk): Were you present when the break-in happened?
+		Juniper (Happy): Nah...
+		Juniper (Default): I was at the cafe...
+		Juniper (Hmph): ...
+		Juniper (Default): Are you also getting a weird sense of deja vu?
+		Dalton (Resting): Hmph.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
-		Dalton: That's all the questions I have right now.
+		Dalton (Talk): That's all the questions I have right now.
 		[end_timeline]
 	else:
 		[wait time="0.3"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Ask more questions.
 			jump Juniper_questions/questions
-		- Continue looking around the house.
-			Dalton: That's all the questions I have right now.
+		- Continue investigation.
+			Dalton (Talk): That's all the questions I have right now.
 			[end_timeline]

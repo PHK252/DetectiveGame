@@ -1,61 +1,61 @@
-if {Character Aff Points.Juniper} <= 0:
+if {Character Aff Points.Juniper} < 0:
 	if {Juniper.asked_missing} == false:
 		set {Juniper.asked_missing} = true
-		Dalton: Did you notice if anything was stolen?
-		Juniper: Nah...
-		Juniper: Don't think the intruder stole anything...
-		Juniper: Just broke the window and left the case.
-		Dalton: Hmph.
-		Dalton: Any other damage besides the window?
-		Juniper: None that I noticed.
+		Dalton (Resting): Did you notice if anything was stolen?
+		Juniper (Default): Nah...
+		Juniper (Hmph): Don't think the intruder stole anything...
+		Juniper (Happy): Just broke the window and left the case.
+		Dalton (Resting): Hmph.
+		Dalton (Talk): Any other damage besides the window?
+		Juniper (Hmph): None that I noticed.
 		do GlobalVars.emit_add_note("juniper", "missing", "low")
 	else:
-		Dalton: Did you notice if anything was stolen?
-		Juniper: Hm?
-		Juniper: Ah, nope.
+		Dalton (Resting): Did you notice if anything was stolen?
+		Juniper (Hmph): Hm?
+		Juniper (Default): Ah, nope.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
-		Dalton: That's all the questions I have right now.
+		Dalton (Resting): That's all the questions I have right now.
 		[end_timeline]
 	else:
 		[wait time="0.3"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Ask more questions.
 			jump Juniper_questions/questions
-		- Continue looking around the house.
+		- Continue investigation.
 			Dalton: That's all the questions I have right now.
 			[end_timeline]
 else:
 	if {Juniper.asked_missing} == false:
 		set {Juniper.asked_missing} = true
-		Dalton: Did you notice if anything was stolen?
-		Juniper: Nope.
-		Juniper: I checked all the important places
-		Juniper: Except for the window, everything else seems to be left untouched...
-		Juniper: It's strange...
-		Juniper: Why would someone go through all that trouble to break in only to leave empty-handed...
-		Theo: It's what we aim to answer, ma'am!
-		Dalton: Theo...
-		Theo: What?
-		Theo: It's true, isn't it?
-		Dalton: Hmph...
-		Dalton: I guess...
+		Dalton (Talk): Did you notice if anything was stolen?
+		Juniper (Happy): Nope.
+		Juniper (Default): I checked all the important places
+		Juniper (Hmph): Except for the window, everything else seems to be left untouched...
+		Juniper (Squint): It's strange...
+		Juniper (Doubt): Why would someone go through all that trouble to break in only to leave empty-handed...
+		Theo (Laugh): It's what we aim to answer, ma'am!
+		Dalton (Awkward): Theo...
+		Theo (Talk): What?
+		Theo (Happy): It's true, isn't it?
+		Dalton (Resting): Hmph...
+		Dalton (Awkward): I guess...
 		do GlobalVars.emit_add_note("juniper", "missing", "high")
 	else:
-		Dalton: Did you notice if anything was stolen?
-		Juniper: Still haven’t.  
-		Juniper: I can keep looking if you want me to.
-		Dalton: No. 
-		Dalton: It’s fine.
+		Dalton (Talk): Did you notice if anything was stolen?
+		Juniper (Hmph): Still haven’t.  
+		Juniper (Default): I can keep looking if you want me to.
+		Dalton (Awkward): No. 
+		Dalton (Resting): It’s fine.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
-		Dalton: That's all the questions I have right now.
+		Dalton (Talk): That's all the questions I have right now.
 		[end_timeline]
 	else:
 		[wait time="0.3"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Ask more questions.
 			jump Juniper_questions/questions
-		- Continue looking around the house.
+		- Continue investigation.
 			Dalton: That's all the questions I have right now.
 			[end_timeline]

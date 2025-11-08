@@ -1,28 +1,28 @@
-if {Character Aff Points.Juniper} <= 0:
-	Dalton: Can I ask you a few questions?
-	Juniper: Sure...
-	Juniper: Make it quick.
+if {Character Aff Points.Juniper} < 0:
+	Dalton (Resting): Can I ask you a few questions?
+	Juniper (Hmph): Sure...
+	Juniper (Squint): Make it quick.
 	[wait time="0.3"]
 	label questions
-	Dalton: ...
-	- Ask preliminary questions.
+	Dalton (Default): Ask...
+	- Preliminary questions.
 		[wait time="0.3"]
 		Dalton: ...
-		- Were you here when the break-in happened?
+		- Location.
 			jump Juniper_questions_time/
-		- Anything missing?
+		- Damage.
 			jump Juniper_questions_missing/
-		- Do you know of anyone who would want to break-in?
+		- Motive.
 			jump Juniper_questions_who/
-	- Ask about her connection to other victims
+	- About possible connections.
 		[wait time="0.3"]
-		Dalton: ...
-		- Show picture of Micah
+		Dalton (Default): Show picture of...
+		- Micah
 			jump Juniper_questions_Micah/
-		- Show picture of Quincy
+		- Quincy
 			jump Juniper_questions_quincy/
-	- Continue looking around the house.
-		Dalton: That's all the questions I have right now.
+	- Continue investigation.
+		Dalton (Resting): That's all the questions I have right now.
 		[end_timeline]
 else:
 	Dalton: Can I ask you a few questions?
@@ -30,23 +30,23 @@ else:
 	Juniper: Ask away!
 	label questions
 	[wait time="0.3"]
-	Dalton: ...
-	- Ask about preliminary questions
+	Dalton (Default): ...
+	- Preliminary questions.
 		[wait time="0.3"]
 		Dalton: ...
-		- Were you here when the break-in happened?
+		- Location.
 			jump Juniper_questions_time/
-		- Anything missing?
+		- Damage.
 			jump Juniper_questions_missing/
-		- Do you know of anyone who would want to break-in?
+		- Motive.
 			jump Juniper_questions_who/
-	- Connection to other victims
+	- About possible connections.
 		[wait time="0.3"]
-		Dalton: ...
-		- Show picture of Micah
+		Dalton (Default): Show picture of...
+		- Micah
 			jump Juniper_questions_Micah/
-		- Show picture of Quincy
+		- Quincy
 			jump Juniper_questions_quincy/
-	- Continue looking around the house.
-		Dalton: That's all the questions I have right now.
+	- Continue investigation.
+		Dalton (Talk): That's all the questions I have right now.
 		[end_timeline]

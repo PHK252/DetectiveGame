@@ -1,143 +1,143 @@
-if {Character Aff Points.Juniper} <= 0:
+if {Character Aff Points.Juniper} < 0:
 	if {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == true and {Asked Questions.Micah_asked_juniper} == true:
 		if {Juniper.asked_Micah} == false:
 			set {Juniper.asked_Micah} = true
-			Dalton: Do you know him?
-			Juniper: Who is this?
-			Dalton: I was hoping you would tell me.
-			Juniper: No.
-			Juniper: I don't know him.
-			Dalton: He mentioned that he recognized you... 
-			Dalton: He said he visited to your cafe a few times.
-			Juniper: What are you trying to say?
-			Dalton: I'm just telling you what I know.
-			Juniper: Well, I'm no liar.
-			Juniper: I don't know him...
-			Juniper: It's not like I keep tabs with all my costumers.
-			Dalton: Hmph.
+			Dalton (Resting): Do you know him?
+			Juniper (Doubt): Who is this?
+			Dalton (Awkward): I was hoping you would tell me.
+			Juniper (Squint): No.
+			Juniper (Doubt): I don't know him.
+			Dalton (Resting): He mentioned that he recognized you... 
+			Dalton (Awkward): He said he visited to your cafe a few times.
+			Juniper (Squint): What are you trying to say?
+			Dalton (Resting): I'm just telling you what I know.
+			Juniper (Roll Eyes): Well, I'm no liar.
+			Juniper (Doubt): I don't know him...
+			Juniper (Hmph): It's not like I keep tabs with all my costumers.
+			Dalton (Resting): Hmph.
 			do GlobalVars.emit_add_note("juniper", "micah", "recognized")
 		else:
-			Dalton: Do you know him?
-			Juniper: Ya don’t trust me?
-			Juniper: Well, I don’t know him. 
-			Juniper: No amount of poking and probing will change that.
+			Dalton (Resting): Do you know him?
+			Juniper (Squint): Ya don’t trust me?
+			Juniper (Hmph): Well, I don’t know him. 
+			Juniper (Doubt): No amount of poking and probing will change that.
 	elif {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == false and {Asked Questions.Micah_asked_juniper} == true:
 		if {Juniper.asked_Micah} == false:
 			set {Juniper.asked_Micah} = true
-			Dalton: Do you know him?
-			Juniper: Who is this?
-			Dalton: I was hoping you would tell me.
-			Juniper: No.
-			Juniper: I don't know him.
-			Dalton: He said you recognized you from...
-			Dalton: "around"?
-			Juniper: Huh? 
-			Juniper: Tsk.
-			Juniper: You dectectives and your vagueries.
-			Juniper: He probably mistook me for somebody else.
-			Juniper: I've never seen him before...
+			Dalton (Resting): Do you know him?
+			Juniper (Doubt): Who is this?
+			Dalton (Resting): I was hoping you would tell me.
+			Juniper (Squint): No.
+			Juniper (Doubt): I don't know him.
+			Dalton (Talk): He said you recognized you from...
+			Dalton (Awkward): ..."around"?
+			Juniper (Squint): Huh? 
+			Juniper (Sigh): Tsk.
+			Juniper (Roll Eyes): You dectectives and your vagueries.
+			Juniper (Squint): He probably mistook me for somebody else.
+			Juniper (Doubt): I've never seen him before...
 			do GlobalVars.emit_add_note("juniper", "micah", "not_recognized")
 		else:
-			Dalton: Do you know him?
-			Juniper: Are ya deaf or something?
-			Juniper: No! 
-			Juniper: I got no clue who he is.
+			Dalton (Resting): Do you know him?
+			Juniper (Squint): Are ya deaf or something?
+			Juniper (Angry): No! 
+			Juniper (Doubt): I got no clue who he is.
 	else:
 		if {Juniper.asked_Micah} == false:
 			set {Juniper.asked_Micah} = true
-			Dalton: Do you know him?
-			Juniper: Who is this?
-			Dalton: I was hoping you would tell me.
-			Juniper: ...
-			Juniper: I don’t know what to tell ya...
-			Juniper: I don't know him.
+			Dalton (Resting): Do you know him?
+			Juniper (Doubt): Who is this?
+			Dalton (Resting): I was hoping you would tell me.
+			Juniper (Hmph): ...
+			Juniper (Awkward): I don’t know what to tell ya...
+			Juniper (Doubt): I don't know him.
 			do GlobalVars.emit_add_note("juniper", "micah", "first")
 		else:
-			Dalton: Do you know him?
-			Juniper: Still don’t.
+			Dalton (Resting): Do you know him?
+			Juniper (Squint): Still don’t.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
-		Dalton: That's all the questions I have right now.
+		Dalton (Resting): That's all the questions I have right now.
 		[end_timeline]
 	else:
 		[wait time="0.3"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Ask more questions.
 			jump Juniper_questions/questions
-		- Continue looking around the house.
-			Dalton: That's all the questions I have right now.
+		- Continue investigation.
+			Dalton (Resting): That's all the questions I have right now.
 			[end_timeline]
 else:
 	if {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == true and {Asked Questions.Micah_asked_juniper} == true:
 		if {Juniper.asked_Micah} == false:
 			set {Juniper.asked_Micah} = true
-			Dalton: Do you know him?
-			Juniper: ... 
-			Juniper: No? 
-			Juniper: Who is it?
-			Dalton: He is one of the other victims whose house was broken into last night.
-			Dalton: He mentioned that he recognized you...
-			Dalton: He said he visited your cafe a few times.
-			Juniper: ...!
-			Juniper: That's possible, but I'm not one to keep track of my customers' faces.
-			Juniper: I'm sorry...
-			Dalton: Oh...
-			Dalton: ...it's fine.
+			Dalton (Talk): Do you know him?
+			Juniper (Hmph): ... 
+			Juniper (Squint): No? 
+			Juniper (Awkward): Who is it?
+			Dalton (Default): He's one of the other victims whose house was broken into last night.
+			Dalton (Awkward): He mentioned that he recognized you...
+			Dalton (Resting): He said he visited your cafe a few times.
+			Juniper (Suprised): ...!
+			Juniper (Hmph): That's possible, but I'm not one to keep track of my customers' faces.
+			Juniper (Sigh): I'm sorry...
+			Dalton (Talk): Oh...
+			Dalton (Awkward): ...it's fine.
 			do GlobalVars.emit_add_note("juniper", "micah", "recognized")
 		else:
-			Dalton: Do you know him?
-			Juniper: ...
-			Juniper: Nope.
-			Juniper: Sorry, I’m bad at remembering faces.
+			Dalton (Talk): Do you know him?
+			Juniper (Hmph): ...
+			Juniper (Awkward): Nope.
+			Juniper (Sad): Sorry, I’m bad at remembering faces.
 	elif {Global.first_house} == "Micah" and {Asked Questions.Micah_know_Juniper} == false and {Asked Questions.Micah_asked_juniper} == true:
 		if {Juniper.asked_Micah} == false:
 			set {Juniper.asked_Micah} = true
-			Dalton: Do you know him?
-			Juniper: ... 
-			Juniper: No? 
-			Juniper: Who is it?
-			Dalton: He is one of the other victims whose house was broken into last night.
-			Dalton: He said you recognized you from...
-			Dalton: ..."around".
-			Juniper: Huh?
-			Dalton: His words, not mine.
-			Juniper: Hmm...
-			Juniper: I mean, it's possible that he came to the cafe...
-			Juniper: Or maybe we crossed paths on the street one day...
-			Juniper: But no, I don't know him personally.
-			Dalton: Hmph.
+			Dalton (Talk): Do you know him?
+			Juniper (Hmph): ... 
+			Juniper (Squint): No? 
+			Juniper (Awkward): Who is it?
+			Dalton (Default): He's one of the other victims whose house was broken into last night.
+			Dalton (Talk): He mentioned that he recognized you...
+			Dalton (Sigh): ..."around".
+			Juniper (Squint): Huh?
+			Dalton (Awkward): His words, not mine.
+			Juniper (Hmph): Hmm...
+			Juniper (Default): I mean, it's possible that he came to the cafe...
+			Juniper (Awkward): Or maybe we crossed paths on the street one day...
+			Juniper (Hmph): But no, I don't know him personally.
+			Dalton (Resting): Hmph.
 			do GlobalVars.emit_add_note("juniper", "micah", "not_recognized")
 		else:
-			Dalton: Do you know him?
-			Juniper: Nope. 
-			Juniper: I unfortunately don’t recognize him from “around”.
+			Dalton (Talk): Do you know him?
+			Juniper (Hmph): Nope. 
+			Juniper (Default): I unfortunately don’t recognize him from “around”.
 	else:
 		if {Juniper.asked_Micah} == false:
 			set {Juniper.asked_Micah} = true
-			Dalton: Do you know him?
-			Juniper: ... 
-			Juniper: No? 
-			Juniper: Who is it?
-			Dalton: He is one of the other victims whose house was broken into last night.
-			Juniper: Oh...
-			Juniper: I don't know who that is...
-			Juniper: I'm sorry...
-			Dalton: Hmmph.
-			Dalton: It's fine...
+			Dalton (Talk): Do you know him?
+			Juniper (Hmph): ... 
+			Juniper (Squint): No? 
+			Juniper (Awkward): Who is it?
+			Dalton (Default): He's one of the other victims whose house was broken into last night.
+			Juniper (Awkward): Oh...
+			Juniper (Hmph): I don't know who that is...
+			Juniper (Sigh): I'm sorry...
+			Dalton (Resting): Hmmph.
+			Dalton (Talk): It's fine...
 			do GlobalVars.emit_add_note("juniper", "micah", "first")
 		else:
-			Dalton: Do you know him?
-			Juniper: Still don’t, sorry.
-			Dalton: Hmph.
+			Dalton (Talk): Do you know him?
+			Juniper (Hmph): Still don’t, sorry.
+			Dalton (Resting): Hmph.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
-		Dalton: That's all the questions I have right now.
+		Dalton (Talk): That's all the questions I have right now.
 		[end_timeline]
 	else:
 		[wait time="0.3"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Ask more questions.
 			jump Juniper_questions/questions
-		- Continue looking around the house.
-			Dalton: That's all the questions I have right now.
+		- Continue investigation.
+			Dalton (Talk): That's all the questions I have right now.
 			[end_timeline]
