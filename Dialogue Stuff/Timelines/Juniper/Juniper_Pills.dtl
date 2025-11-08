@@ -1,24 +1,26 @@
 if {Character Aff Points.Juniper} > 0:
 	if {Juniper.ask_mom_rever} == true:
-		Dalton: These pills were for your mom?
-		Juniper: Yeah...
-		Juniper: I probably shoulda flushed them a while ago, but...
+		Dalton (Doubt1): These pills were for your mom?
+		Juniper (Sad): Yeah...
+		Juniper (Hmph): I probably shoulda flushed them a while ago, but...
 	else:
-		Dalton: Are these pills yours?
-		Juniper: ...!
-		Juniper: Oh...
-		Juniper: Those were my Ma’s pills.
-		Dalton: I see.
+		Dalton (Resting): Are these pills yours?
+		Juniper (Surprise): ...!
+		Juniper (Hmph): Oh...
+		Juniper (Sad): Those were my Ma’s pills.
+		Dalton (Awkward): I see.
+		Dalton (Talk): It looks like they're expired.
+		Dalton (Default): You should get rid of them.
+		Juniper (Sigh): Yeah...
 else:
-	Dalton: Are these pills yours?
-	Juniper: ...!
-	Juniper: Put those back right now!
-	Dalton: Who’s were they?
-	Juniper: They were my Ma’s!
-	Juniper: Ya happy now?
-	Dalton: Were?
-	Juniper: Yeah, she doesn’t need them anymore.
-	Dalton: Why do you still have them, then?
-	Juniper: Just in case.
-	Dalton: Hmph.
-
+	Dalton (Doubt1): Are these pills yours?
+	Juniper (Surprise): ...!
+	Juniper (Angry): Put those back right now!
+	Dalton (Squint): Who’s were they?
+	Juniper (Angry): They were my Ma’s!
+	Juniper (Squint): Ya happy now?
+	Dalton (Doubt1): Were?
+	Juniper (Roll Eyes): Yeah, she doesn’t need them anymore.
+	Dalton (Resting): Why do you still have them, then?
+	Juniper (Squint): Just in case.
+	Dalton (Resting): Hmph.

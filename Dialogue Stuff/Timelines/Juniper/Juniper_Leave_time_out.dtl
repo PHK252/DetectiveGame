@@ -1,69 +1,69 @@
 [wait time="1.0"]
 if {Juniper.found_skylar} == true:
 	if {Character Aff Points.Juniper} < 0:
-		Juniper: Huu...
-		Juniper: Y’all are gonna have to wrap this up soon.
-		Juniper: I gotta run to the cafe. 
-		Dalton: Just a-
-		Theo: Of course, ma’am!
-		Theo: We’re gonna head out right now.
-		Theo: Thank you for your time!
-		Juniper: Yeah...
-		Dalton: Hmph.
+		Juniper (Sigh): Huu...
+		Juniper (Squint): Y’all are gonna have to wrap this up soon.
+		Juniper (Doubt): I gotta run to the cafe. 
+		Dalton (Doubt1): Just a-
+		Theo (Laugh): Of course, ma’am!
+		Theo (Silly): We’re gonna head out right now.
+		Theo (Talk): Thank you for your time!
+		Juniper (Hmph): Yeah...
+		Dalton (Awkward): Hmph.
 		set {Juniper.timed_out} = true
 		[end_timeline]
 	else:
-		Juniper: Ah!
-		Juniper: Sorry to interrupt y’all, but I gotta run to the cafe.
-		Juniper: Workplace emergency.
-		Theo: Of course, ma’am!
-		Dalton: Wait!
-		Dalton: Theo-
-		Theo: We’re gonna head out right now.
-		Theo: Thank you for your time!
-		Juniper: No problem!
-		Juniper: Sorry to spring this on y’all.
-		Theo: Ah, it’s fine. 
-		Theo: Ya gotta do what ya gotta do.
-		Theo: And we’re just about finished anyway. 
-		Theo: Let’s go, ya grumpy fox.
-		Dalton: Hmph. 
-		Theo: Bye!!
-		Juniper: Take care, y’all!
-		Dalton: Yeah.
+		Juniper (Surprise): Ah!
+		Juniper (Awkward): Sorry to interrupt y’all, but I gotta run to the cafe.
+		Juniper (Sad): Workplace emergency.
+		Theo (Laugh): Of course, ma’am!
+		Dalton (Surprised): Wait!
+		Dalton (Resting): Theo-
+		Theo (Talk): We’re gonna head out right now.
+		Theo (Silly): Thank you for your time!
+		Juniper (Laugh): No problem!
+		Juniper (Hmph): Sorry to spring this on y’all.
+		Theo (Default): Ah, it’s fine. 
+		Theo (Happy): Ya gotta do what ya gotta do.
+		Theo (Thinking): And we’re just about finished anyway. 
+		Theo (Talk): Let’s go, ya grumpy fox.
+		Dalton (Awkward): Hmph. 
+		Theo (Laugh): Bye!!
+		Juniper (Default): Take care, y’all!
+		Dalton (Sigh): Yeah.
 		set {Juniper.timed_out} = true
 		[end_timeline]
 else:
 	if {Character Aff Points.Juniper} < 0:
-		Juniper: Huu...
-		Juniper: Y’all are gonna have to wrap this up soon.
-		Juniper: I gotta run to the cafe. 
-		Dalton: Just a-
-		Theo: Of course, ma’am!
-		Theo: We’re gonna head out right now.
-		Theo: Thank you for your time!
-		Juniper: Yeah...
-		Dalton: Hmph.
+		Juniper (Sigh): Huu...
+		Juniper (Squint): Y’all are gonna have to wrap this up soon.
+		Juniper (Doubt): I gotta run to the cafe. 
+		Dalton (Doubt1): Just a-
+		Theo (Laugh): Of course, ma’am!
+		Theo (Silly): We’re gonna head out right now.
+		Theo (Talk): Thank you for your time!
+		Juniper (Hmph): Yeah...
+		Dalton (Awkward): Hmph.
 		set {Juniper.timed_out} = true
 		[end_timeline]
 	else:
-		Juniper: Ah!
-		Juniper: Sorry to interrupt y’all, but I gotta run to the cafe.
-		Juniper: Workplace emergency.
-		Dalton: Can I have-
-		Theo: Of course, ma’am!
-		Dalton: Wait!
-		Dalton: Theo-
-		Theo: We’re gonna head out right now.
-		Theo: Thank you for your time!
-		Juniper: No problem!
-		Juniper: Sorry to spring this on y’all.
-		Theo: Ah, it’s fine. 
-		Theo: Ya gotta do what ya gotta do.
-		Theo: Let’s go, ya grumpy fox.
-		Dalton: Hmph. 
-		Theo: Bye!!
-		Juniper: Take care, y’all!
-		Dalton: Yeah.
+		Juniper (Surprise): Ah!
+		Juniper (Awkward): Sorry to interrupt y’all, but I gotta run to the cafe.
+		Juniper (Sad): Workplace emergency.
+		Dalton (Squint): Can I have-
+		Theo (Laugh): Of course, ma’am!
+		Dalton (Surprised): Wait!
+		Dalton (Resting): Theo-
+		Theo (Talk): We’re gonna head out right now.
+		Theo (Silly): Thank you for your time!
+		Juniper (Laugh): No problem!
+		Juniper (Hmph): Sorry to spring this on y’all.
+		Theo (Default): Ah, it’s fine. 
+		Theo (Happy): Ya gotta do what ya gotta do.
+		Theo (Silly): Let’s go, ya grumpy fox.
+		Dalton (Awkward): Hmph. 
+		Theo (Laugh): Bye!!
+		Juniper (Default): Take care, y’all!
+		Dalton (Sigh): Yeah.
 		set {Juniper.timed_out} = true
 		[end_timeline]

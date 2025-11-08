@@ -1,46 +1,35 @@
 if {Character Aff Points.Juniper} < 0:
 	set {Juniper.saw_pie} = true
-	Dalton: Did you take a bite out of this pastry?
-	Juniper: Hm?
-	Juniper: What pastry?
-	Juniper: Oh, that one.
+	Dalton (Resting): Did you take a bite out of this pastry?
+	Juniper (Doubt): Hm?
+	Juniper (Awkward): What pastry?
+	Juniper (Hmph): Oh, that one.
 	Juniper: Uh...
-	Juniper: Yeah, I was in a rush yesterday.
-	Dalton: ...
-	Dalton: I see.
+	Juniper (Awkward): Yeah, I was in a rush yesterday.
+	Dalton (Doubt1): ...
+	Dalton (Talk): I see.
 	do GlobalVars.emit_add_note("juniper", "pastry", "low")
 else:
 	set {Juniper.saw_pie} = true
-	Dalton: I think I found some damage. 
-	Juniper: What?!
-	Dalton: Someone took a bite out of your pastry. 
-	Juniper: Bah!
-	Juniper: Why did you have to scare me like that!?
-	Theo: That old fox got jokes sometimes.
-	Theo: It’s scary when he does.
-	Juniper: Huu...
-	Juniper: Well, I hope they got their money's worth. 
-	Juniper: That pastry’s been out for days.
+	Dalton (Talk): I found some damage. 
+	Juniper (Surprise): What?!
+	Dalton (Silly): Someone took a bite out of your pastry. 
+	Juniper (Surprise): Bah!
+	Juniper (Default): Why did you have to scare me like that!?
+	Theo (Laugh): That old fox got jokes sometimes.
+	Theo (Concerned): It’s scary when he does.
+	Juniper (Sigh): Huu...
+	Juniper (Roll Eyes): Well, I hope they got their money's worth. 
+	Juniper (Hmph): That pastry’s been out for days.
 	do GlobalVars.emit_add_note("juniper", "pastry", "high")
-	Dalton: I think I found some damage. 
-	Juniper: What?!
-	Dalton: Someone took a bite out of your pastry. 
-	Juniper: Bah!
-	Juniper: Why did you have to scare me like that!?
-	Theo: That old fox got jokes sometimes.
-	Theo: It’s scary when he does.
-	Juniper: Huu...
-	Juniper: Well, I hope they got their money's worth. 
-	Juniper: That pastry’s been out for days.
-	Dalton: ...
 	- Take as evidence.
-		Dalton:  Can I take the pastry in for examination?
-		Juniper: Oh! 
-		Juniper: Of course!
-		Juniper: I was just gonna throw it anyway.
-		Dalton: Hmph.
-		Dalton: Thanks.
+		Dalton (Talk):  Can I take the pastry in for examination?
+		Juniper (Happy): Oh! 
+		Juniper (Default): Of course!
+		Juniper (Hmph): I was just gonna throw it anyway.
+		Dalton (Resting): Hmph.
+		Dalton (Awkward): Thanks.
 		set {Juniper.has_pie} = true
 		do GlobalVars.emit_add_evidence("juniper", "pie")
 	- Leave it.
-		Dalton: Hmph.
+		Dalton (Resting): Hmph.
