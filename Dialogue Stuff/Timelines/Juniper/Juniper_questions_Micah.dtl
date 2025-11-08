@@ -74,11 +74,11 @@ else:
 			Dalton (Talk): Do you know him?
 			Juniper (Hmph): ... 
 			Juniper (Squint): No? 
-			Juniper (Awkward): Who is it?
+			Juniper (Hmph): Who is it?
 			Dalton (Default): He's one of the other victims whose house was broken into last night.
 			Dalton (Awkward): He mentioned that he recognized you...
 			Dalton (Resting): He said he visited your cafe a few times.
-			Juniper (Suprised): ...!
+			Juniper (Surprise): ...!
 			Juniper (Hmph): That's possible, but I'm not one to keep track of my customers' faces.
 			Juniper (Sigh): I'm sorry...
 			Dalton (Talk): Oh...
@@ -95,7 +95,7 @@ else:
 			Dalton (Talk): Do you know him?
 			Juniper (Hmph): ... 
 			Juniper (Squint): No? 
-			Juniper (Awkward): Who is it?
+			Juniper (Hmph): Who is it?
 			Dalton (Default): He's one of the other victims whose house was broken into last night.
 			Dalton (Talk): He mentioned that he recognized you...
 			Dalton (Sigh): ..."around".
@@ -110,14 +110,14 @@ else:
 		else:
 			Dalton (Talk): Do you know him?
 			Juniper (Hmph): Nope. 
-			Juniper (Default): I unfortunately don’t recognize him from “around”.
+			Juniper (Squint): I unfortunately don’t recognize him from “around”.
 	else:
 		if {Juniper.asked_Micah} == false:
 			set {Juniper.asked_Micah} = true
 			Dalton (Talk): Do you know him?
 			Juniper (Hmph): ... 
 			Juniper (Squint): No? 
-			Juniper (Awkward): Who is it?
+			Juniper (Hmph): Who is it?
 			Dalton (Default): He's one of the other victims whose house was broken into last night.
 			Juniper (Awkward): Oh...
 			Juniper (Hmph): I don't know who that is...

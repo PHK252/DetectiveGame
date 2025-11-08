@@ -305,7 +305,7 @@ variables={
 "Micah_viewed_ID": false,
 "Micah_viewed_bookmark": false,
 "has_hair": false,
-"has_key": false,
+"has_key": true,
 "has_letter": false,
 "num_asked": 0,
 "viewed_pic": false
@@ -318,14 +318,14 @@ variables={
 "viewed_map_cork": false
 },
 "Character Aff Points": {
-"Juniper": -1,
+"Juniper": 0,
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
 "Theo": 0
 },
 "Global": {
-"first_house": "0",
+"first_house": "",
 "flip_bubble": false,
 "got_theo_ad": false,
 "went_to_Juniper": false,
@@ -367,6 +367,7 @@ variables={
 "found_skylar": false,
 "has_pie": false,
 "kicked_out": false,
+"num_questions_asked": 0,
 "picked_resume": "",
 "reenter_resumes": false,
 "relooked_resumes": false,
@@ -412,7 +413,7 @@ variables={
 "in_bathroom": false,
 "in_call": false,
 "in_coor_thoughts": false,
-"is_distracted": true,
+"is_distracted": false,
 "kicked_out": false,
 "needs_distraction": true,
 "refused_bar": false,

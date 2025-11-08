@@ -3,7 +3,7 @@
 if {Quincy.is_distracted} == true:
 	label open
 	"Daltons Thoughts": ...
-	- Try using Micah's key. | [if {Asked Questions.has_key} == true]
+	- Use Micah's key. | [if {Asked Questions.has_key} == true]
 		"Daltons Thoughts": I guess it wouldn't hurt to try.
 		[signal arg="open_door"]
 		set {Quincy.unlocked_office} = true
@@ -22,9 +22,9 @@ if {Quincy.is_distracted} == true:
 	#[end_timeline]
 
 label quincy talk
-Quincy: Ah.
-Quincy: It’s probably best you don’t look in there.
-Quincy: Confidential mayor business, you know...
-Dalton: Hmph.
+Quincy (Surprise): Ah.
+Quincy (Awkward): It’s probably best you don’t look in there.
+Quincy (Happy): Confidential mayor business, you know...
+Dalton (Resting): Hmph.
 [signal arg="end"]
 [end_timeline]

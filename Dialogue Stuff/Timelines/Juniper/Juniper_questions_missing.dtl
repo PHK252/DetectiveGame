@@ -2,9 +2,9 @@ if {Character Aff Points.Juniper} < 0:
 	if {Juniper.asked_missing} == false:
 		set {Juniper.asked_missing} = true
 		Dalton (Resting): Did you notice if anything was stolen?
-		Juniper (Default): Nah...
+		Juniper (Doubt): Nah...
 		Juniper (Hmph): Don't think the intruder stole anything...
-		Juniper (Happy): Just broke the window and left the case.
+		Juniper (Awkward): Just broke the window and left the case.
 		Dalton (Resting): Hmph.
 		Dalton (Talk): Any other damage besides the window?
 		Juniper (Hmph): None that I noticed.
@@ -12,7 +12,7 @@ if {Character Aff Points.Juniper} < 0:
 	else:
 		Dalton (Resting): Did you notice if anything was stolen?
 		Juniper (Hmph): Hm?
-		Juniper (Default): Ah, nope.
+		Juniper (Doubt): Ah, nope.
 	if {Juniper.asked_Micah} == true and {Juniper.asked_Quincy} == true and {Juniper.asked_missing} == true and {Juniper.asked_time} == true and {Juniper.asked_who} == true:
 		set {Juniper.asked_all} = true
 		Dalton (Resting): That's all the questions I have right now.

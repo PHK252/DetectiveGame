@@ -1,52 +1,50 @@
+set {Juniper.num_questions_asked} = 0
 if {Character Aff Points.Juniper} < 0:
 	Dalton (Resting): Can I ask you a few questions?
-	Juniper (Hmph): Sure...
+	Juniper (Sigh): Sure...
 	Juniper (Squint): Make it quick.
-	[wait time="0.3"]
-	label questions
-	Dalton (Default): Ask...
-	- Preliminary questions.
-		[wait time="0.3"]
-		Dalton: ...
-		- Location.
-			jump Juniper_questions_time/
-		- Damage.
-			jump Juniper_questions_missing/
-		- Motive.
-			jump Juniper_questions_who/
-	- About possible connections.
-		[wait time="0.3"]
-		Dalton (Default): Show picture of...
-		- Micah
-			jump Juniper_questions_Micah/
-		- Quincy
-			jump Juniper_questions_quincy/
-	- Continue investigation.
-		Dalton (Resting): That's all the questions I have right now.
-		[end_timeline]
 else:
-	Dalton: Can I ask you a few questions?
-	Juniper: Of course!
-	Juniper: Ask away!
-	label questions
+	Dalton (Talk): Can I ask you a few questions?
+	Juniper (Happy): Of course!
+	Juniper (Default): Ask away!
+
+label questions
+[wait time="0.3"]
+Dalton (Default): Ask about the...
+- Break-in.
 	[wait time="0.3"]
-	Dalton (Default): ...
-	- Preliminary questions.
-		[wait time="0.3"]
-		Dalton: ...
-		- Location.
-			jump Juniper_questions_time/
-		- Damage.
-			jump Juniper_questions_missing/
-		- Motive.
-			jump Juniper_questions_who/
-	- About possible connections.
-		[wait time="0.3"]
-		Dalton (Default): Show picture of...
-		- Micah
-			jump Juniper_questions_Micah/
-		- Quincy
-			jump Juniper_questions_quincy/
-	- Continue investigation.
-		Dalton (Talk): That's all the questions I have right now.
-		[end_timeline]
+	Dalton: Ask about...
+	- Location.
+		set {Juniper.num_questions_asked} += 1
+		jump Juniper_questions_time/
+	- Damage.
+		set {Juniper.num_questions_asked} += 1
+		jump Juniper_questions_missing/
+	- Motive.
+		set {Juniper.num_questions_asked} += 1
+		jump Juniper_questions_who/
+	- Go back
+		jump questions
+- Other victims.
+	[wait time="0.3"]
+	Dalton (Default): Show picture of...
+	- Micah
+		set {Juniper.num_questions_asked} += 1
+		jump Juniper_questions_Micah/
+	- Quincy
+		set {Juniper.num_questions_asked} += 1
+		jump Juniper_questions_quincy/
+	- Go back
+		jump questions
+- Continue.
+	if {Juniper.num_questions_asked} == 0:
+		Dalton (Awkward): Um...
+		Dalton (Resting): Nevermind.
+		if {Character Aff Points.Juniper} < 0:
+			Juniper (Squint): Tsk.
+		else:
+			Juniper (Default): heh.
+			Juniper (Happy): Okay.
+	else:
+		Dalton (Resting): That's all the questions I have right now.
+	[end_timeline]
