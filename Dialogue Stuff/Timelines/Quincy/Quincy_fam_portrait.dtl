@@ -1,139 +1,143 @@
 [wait time= ".03"]
-Dalton: ...
-- Ask about his family.
+Dalton (Default): Ask about...
+- His family.
 	if {Juniper.found_skylar} == true and {Quincy.finished_case_note} == false:
 		if {Quincy.talked_at_port_know_skylar} == false:
 			set {Quincy.talked_at_port_know_skylar} = true
 			set {Quincy.talked_at_port} = true
-			Dalton: How's the family?
-			Quincy: Ah... 
-			Quincy: You know... 
-			Quincy: The wife's out of town.
-			Quincy: My kid's at boarding school...
-			Quincy: So I've been having my fun.
-			Dalton: Your kid's name. It's Skylar, isn't it?
-			Quincy: Probably...
-			Dalton: :/
-			Dalton: Skylar Aslan. 
-			Dalton: Does that ring a bell?
-			Quincy: ...!
-			Quincy: What did that brat do now?
-			Dalton: We have reason to believe that they are behind at least one of the break-ins.
-			Quincy: Damn it. 
-			Quincy: Okay, look.
-			Quincy: I'll give you however much you want to settle-
-			Dalton: What? 
-			Dalton: No. 
-			Dalton: I'm telling you this for your sake. 
-			Dalton: The other two... 
-			Dalton: Didn't seem to have malicious intent behind them. 
-			Dalton: This one... 
-			Dalton: Not so much.
-			Quincy: Huff…
-			Quincy: So you're saying that kid did this.
-			Dalton: Or someone connected to them.
-			Quincy: Hmm... 
-			Quincy: I’ll see what I can do to hi-
-			Quincy: I’ll see what I can do to find him. 
+			Dalton (Talk): How's the family?
+			Quincy (Awkward): Ah... 
+			Quincy (Squint Smug): You know... 
+			Quincy (Happy): The wife's out of town.
+			Quincy (Smug): The kid's at boarding school...
+			Quincy (Smirk): So I've been having my fun.
+			Dalton (Awkward): Your kid's name...
+			Dalton (Talk): It's Skylar, isn't it?
+			Quincy (Awkward): Probably...
+			Dalton (Doubt1): ...?
+			Dalton (Resting): Skylar Aslan. 
+			Dalton (Hmph): Does that ring a bell?
+			Quincy (Surprise): ...!
+			Quincy (Squint): What did that brat do now?
+			Dalton (Talk): We have reason to believe that they are behind at least one of the break-ins.
+			Quincy (Sigh): Damn it. 
+			Quincy (Squint): Okay, look.
+			Quincy (Concern): I'll give you however much you want to settle-
+			Dalton (Doubt1): What? 
+			Dalton (Squint): No. 
+			Dalton (Talk): I'm telling you this for your sake. 
+			Dalton (Awkward): The other two... 
+			Dalton (Resting): Didn't seem to have malicious intent behind them. 
+			Dalton (Talk): This one... 
+			Dalton (Squint): Not so much.
+			Quincy (Awkward): Huff...
+			Quincy (Sigh): So you're saying that kid did this.
+			Dalton (Awkward): Or someone connected to them.
+			Quincy (Squint): Hmm... 
+			Quincy (Sigh): I’ll see what I can do to hi-
+			Quincy (Default): I’ll see what I can do to find him. 
 			do GlobalVars.emit_add_note("quincy", "fam_portrait", "name")
 			jump 
 		else:
-			Dalton: How's the family?
-			Quincy: Ah... 
-			Quincy: You know... 
-			Quincy: Same old, same old...
+			Dalton (Doubt): How's the family?
+			Quincy (Awkward): Ah... 
+			Quincy (Squint Smug): You know... 
+			Quincy (Happy): Same old, same old...
 			jump
 	else:
 		if {Quincy.talked_at_port_not_know_Skylar} == false:
 			set {Quincy.talked_at_port_not_know_Skylar} = true
-			Dalton: How's the family?
-			Quincy: The wife's out of town.
+			Dalton (Talk): How's the family?
+			Quincy (Happy): The wife's out of town.
 			if {Quincy.finished_case_note} == false:
-				Quincy: My kid's at boarding school...
-				Quincy: So I've been having my fun.
+				Quincy (Smug): The kid's at boarding school...
+				Quincy (Smirk): So I've been having my fun.
 			else:
-				Quincy: That brat has been causing trouble...
-				Quincy: As you can see...
-				Quincy: But I've been having my fun. 
-			Dalton: When's the last time you've seen both of them?
-			Quincy: About a year ago.
-			Dalton: Do you miss them?
-			Quincy: Not really.
-			Quincy: No.
-			Dalton: ...
-			Dalton: I would.
-			Quincy: Hah!
-			Quincy: Bold words from a fox with no family.
-			Dalton: ...
-			Dalton: Hmph.
+				Quincy (Squint): That brat has been causing trouble...
+				Quincy (Sigh): As you can see...
+				Quincy (Squint Smug): But I've been having my fun. 
+			Dalton (Default): When's the last time you've seen both of them?
+			Quincy (Squint): ...
+			Quincy (Smug): About a year ago.
+			Dalton (Awkward): Do you miss them?
+			Quincy (Happy): Not really.
+			Quincy (Smug): No.
+			Dalton (Awkward): ...
+			Dalton (Sad): I would.
+			Quincy (Laugh): Hah!
+			Quincy (Squint Smug): Bold words from a fox with no family.
+			Dalton (Doubt1): ...
+			Dalton (Awkward): Hmph.
 			do GlobalVars.emit_add_note("quincy", "fam_portrait", "no_name")
 			jump 
 		else:
-			Dalton: How's the family?
-			Quincy: Ah... 
-			Quincy: You know... 
-			Quincy: Same old, same old...
-			Quincy: Off doing their own thing.
+			Dalton (Talk): How's the family?
+			Quincy (Awkward): Ah... 
+			Quincy (Squint Smug): You know... 
+			Quincy (Happy): Same old, same old...
+			Quincy (Smug): Off doing their own thing.
 			jump
-- Ask about the painting.
+- The painting.
 	if {Quincy.asked_painting} == false:
 		set {Quincy.asked_painting} = true
-		Dalton: How much was it?
-		Quincy: Ah, not much.
-		Quincy:Just a few grand.
-		Dalton: Not much?
-		Quincy: Yeah... 
-		Quincy: Oh well. 
-		Quincy: I was thinking of getting rid of it anyway. 
-		Quincy: Runa insisted on keeping it up, but she's gone now.
-		Dalton: Gone?
-		Quincy: Gone...
-		Quincy: Away...
-		Quincy: Same thing in my book.
+		Dalton (Talk): How much was it?
+		Quincy (Smug): Ah, not much.
+		Quincy (Happy): Just a few grand.
+		Dalton (Doubt2): Not much?
+		Quincy (Sigh): Yeah... 
+		Quincy (Awkward): Oh well. 
+		Quincy (Happy): I was thinking of getting rid of it anyway. 
+		Quincy (Smug): Runa insisted on keeping it up, but she's gone now.
+		Dalton (Hmph): Gone?
+		Quincy (Awkward): Gone...
+		Quincy (Happy): Away...
+		Quincy (Squint Smug): Same thing in my book.
 		jump
 	else:
-		Dalton: How long have you had it?
-		Quincy: Hmm...
-		Quincy: It feels like forever.
-		Quincy: Maybe 10?
-		Quincy: 15 years?
-		Quincy: It’s quite haunting, don’t you think?
-		Dalton: Hmph.
+		Dalton (Talk): How long have you had it?
+		Quincy (Squint): Hmm...
+		Quincy (Sigh): It feels like forever.
+		Quincy (Awkward): Maybe 10?
+		Quincy (Smug): 15 years?
+		Quincy (Squint Smug): It’s quite haunting, don’t you think?
+		Dalton (Resting): Hmph.
 		jump 
-- Show Quincy the note | [if {Quincy.has_secret_coor} == true] [else="hide"]
+- The note | [if {Quincy.has_secret_coor} == true] [else="hide"]
 	if {Quincy.show_coors_note} == false:
 		set {Quincy.show_coors_note} = true
-		Quincy: What is that?
-		Dalton: A note. 
-		Dalton: Did you put it there?
-		Quincy: No.
-		Dalton: Hmph...
-		Dalton: I'll take it in as evidence.
-		Quincy: Hold on. 
-		Quincy: Can I take a look at it?
+		Quincy (Sigh): What is that?
+		Dalton (Default): A note. 
+		Dalton (Resting): Did you put it there?
+		Quincy (Awkward): No.
+		Dalton (Resting): Hmph...
+		Dalton (Awkward): I'll take it in as evidence.
+		Quincy (Sigh): Hold on. 
+		Quincy (Happy): Can I take a look at it?
 		[wait time=".03"]
-		Dalton: ...
+		Dalton (Default): ...
 		- Yes.
 			set {Quincy.Quincy_saw_coors} = true
-			Dalton: Go ahead.
-			Quincy: Hmm...
-			Quincy: Interesting.
+			Dalton (Talk): Go ahead.
+			Quincy (Squint): Hmm...
+			Quincy (Sigh): Interesting.
 			jump
 		- No.
-			Dalton: Ah...
-			Dalton: It’s official evidence now...
-			Dalton: So it’s confidential until the case closes.
-			Quincy: Tsk.
-			Quincy: Whatever you say.
+			Dalton (Awkward): Ah...
+			Dalton (Resting): It’s official evidence now...
+			Dalton (Talk): So it’s confidential until the case closes.
+			Quincy (Awkward): Tsk.
+			Quincy (Squint): Whatever you say.
 			jump
 	else:
 		if {Quincy.Quincy_saw_coors} == true:
-			Quincy: Hmm...
-			Quincy: I wonder where that leads.
+			Quincy (Squint): Hmm...
+			Quincy (Sigh): I wonder where that leads.
+			jump 
 		else:
 			set {Quincy.Quincy_saw_coors} = true:
-			Quincy: If it’s so confidential, why are you showing it to me?
-			Dalton: Hmph.
-			Dalton: Sorry.
-- Continue investigation.
+			Quincy (Happy): If it’s so confidential, why are you showing it to me?
+			Dalton (Awkward): Hmph.
+			Dalton (Resting): Sorry.
+			jump 
+- Continue.
 	[end_timeline]

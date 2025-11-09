@@ -1,8 +1,8 @@
 label hammer
-Dalton: Well, I found the crime weapon.
-Quincy: Hmm...
-Dalton: I’ll take it in for investigation. 
-Quincy: Yeah. 
-Quincy: You do that.
+Dalton (Talk): Well, I found the crime weapon.
+Quincy (Default): Hmm...
+Dalton (Default): I’ll take it in for investigation. 
+Quincy (Smug): Yeah. 
+Quincy (Smirk): You do that.
 do GlobalVars.emit_add_evidence("quincy", "hammer")
 jump Quincy_open_case_choice/

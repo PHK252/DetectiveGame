@@ -2,107 +2,106 @@ set {Quincy.solved_case} = true
 if {Juniper.found_skylar} == true and {Quincy.talked_at_port} == true:
 	if {Quincy.finished_case_note} == false:
 		set {Quincy.finished_case_note} = true
-		Dalton: Take a look at this.
-		Quincy: ...
-		Quincy: So it was that brat.
-		Dalton: It seems so.
-		Dalton: The contents of the note... 
-		Dalton: Is any of it true?
-		Quincy: Pfft.
-		Quincy: Not at all. 
-		Quincy: Just some angsty teen nonsense.
-		Dalton: Hmph. 
-		Dalton: What would you like us to do?
-		Quincy: Arrest him and take him in for questioning. 
-		Quincy: I'll take care of the rest.
-		Dalton: Okay.
-		Dalton: I'll send a search team out for Skylar Aslan.
-		Dalton: Okay.
-		Dalton: I’ll send a search team out for Skylar Aslan...
-		Dalton: And I'll take the note in for examination.
+		Dalton (Resting): Take a look at this.
+		Quincy (Squint): ...
+		Quincy (Sigh): So it was that brat.
+		Dalton (Doubt1): It seems so.
+		Dalton (Awkward): The contents of the note... 
+		Dalton (Resting): Is any of it true?
+		Quincy (Laugh): Hahaha.
+		Quincy (Squint Smug): Not at all. 
+		Quincy (Smug): Just some angsty teen nonsense.
+		Dalton (Awkward): Hmph. 
+		Dalton (Squint) : What would you like us to do?
+		Quincy (Squint): Arrest him and take him in for questioning. 
+		Quincy (Sigh): I'll take care of the rest.
+		Dalton (Squint): Okay.
+		Dalton (Talk): I'll send a search team out for Skylar Aslan...
+		Dalton (Default): And I'll take the note in for examination.
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_portrait")
 		jump Quincy_open_case_choice/
 	else:
-		Quincy: Hmph.
-		Quincy: I swear...
-		Quincy: Of all the times for the brat to come back...
-		Quincy: Why now?
+		Quincy (Squint): Hmph.
+		Quincy (Sigh): I swear...
+		Quincy (Awkward): Of all the times for the brat to come back...
+		Quincy (Squint): Why now?
 		jump Quincy_open_case_choice/
 elif {Juniper.found_skylar} == true and {Quincy.talked_at_port} == false:
 	if {Quincy.finished_case_note} == false:
 		set {Quincy.finished_case_note} = true
-		Dalton: Take a look at this.
-		Quincy: ...
-		Quincy: That brat.
-		Dalton: ...
-		Dalton: Does your child go by the name of Skylar Aslan by any chance?
-		Quincy: Hmm...
-		Quincy: I believe so.
-		Dalton: Believe so?
-		Quincy: It's been a while.
-		Dalton: Hmph.
-		Dalton: We suspect that Skylar was behind the other two break-ins as well.
-		Dalton: What would you like us to do?
-		Quincy: Arrest him and take him in for questioning. 
-		Quincy: I'll take care of the rest.
-		Dalton: Okay.
-		Dalton: I'll send a search team out for Skylar Aslan immediately.
-		Dalton: ...
-		Dalton: What Skylar said in the note...
-		Dalton:  Is any of it true?
-		Quincy: Pfft.
-		Quincy: Not at all. 
-		Quincy: Just some angsty teen nonsense.
-		Dalton: Hm...
-		Dalton: I’ll take the note and see if we can do anything to further your case. 
-		Quincy: Mm...
+		Dalton (Talk): Take a look at this.
+		Quincy (Squint): ...
+		Quincy (Sigh): That brat.
+		Dalton (Awkward): ...
+		Dalton (Resting): Does your child go by the name of Skylar Aslan by any chance?
+		Quincy (Squint): Hmm...
+		Quincy (Sigh): I believe so.
+		Dalton (Hmph): Believe so?
+		Quincy (Awkward): It's been a while.
+		Dalton (Resting): Hmph.
+		Dalton (Talk): We suspect that Skylar was behind the other two break-ins as well.
+		Dalton (Squint): What would you like us to do?
+		Quincy (Squint): Arrest him and take him in for questioning. 
+		Quincy (Sigh): I'll take care of the rest.
+		Dalton (Default): Okay.
+		Dalton (Talk): I'll send a search team out for Skylar Aslan immediately.
+		Dalton (Awkward): ...
+		Dalton (Talk): What Skylar said in the note...
+		Dalton (Resting): Is any of it true?
+		Quincy (Laugh): Hahaha.
+		Quincy (Squint Smug): Not at all. 
+		Quincy (Smirk): Just some angsty teen nonsense.
+		Dalton (Awkward): Hm...
+		Dalton (Squint): I’ll take the note and see if we can do anything to further your case. 
+		Quincy (Happy): Mm...
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_no_portrait")
 		jump Quincy_open_case_choice/
 	else:
-		Quincy: Hmph.
-		Quincy: I would’ve never guessed that brat had the balls to pull something like this.
+		Quincy (Squint): Hmph.
+		Quincy (Sigh): I would’ve never guessed that brat had the balls to pull something like this.
 		jump Quincy_open_case_choice/
 else:
 	if {Quincy.finished_case_note} == false:
 		set {Quincy.finished_case_note} = true
-		Dalton: It was your son.
-		Quincy: What? 
-		Quincy: Impossible!
-		Dalton: Take a look at this.
-		Quincy: ...
-		Quincy: That brat.
-		Dalton: The contents of the note...
-		Dalton: Is it true?
-		Quincy: Pfft.
-		Quincy: Not at all. 
-		Quincy: Just some angsty teen nonsense.
-		Dalton: ...
-		Dalton: I'll take his name and see what we can do back at the station.
-		Dalton: ...
-		Quincy: ...
-		Dalton: His name.
-		Quincy: I-
-		Quincy: Uh...
-		Quincy: I don't know.
-		Dalton: You don't know?
-		Dalton: Do you have any documents or identification?
-		Quincy: Ah... 
-		Quincy: no.
-		Dalton: ...
-		Dalton: I see.
-		Dalton: I'll collect the note and take his description to see what we can do. 
-		Dalton: It will take longer for us to track him down, though.
-		Quincy: Good. 
-		Quincy: Once you track him down, call me.
-		Dalton: Hmph.
+		Dalton (Talk): It was your child.
+		Quincy (Surprise): What? 
+		Quincy (Sigh): Impossible!
+		Dalton (Awkward): Take a look at this.
+		Quincy (Sigh): That brat.
+		Dalton (Awkward): ...
+		Dalton (Talk): The contents of the note...
+		Dalton (Resting): Is any of it true?
+		Quincy (Laugh): Hahaha.
+		Quincy (Squint Smug): Not at all. 
+		Quincy (Smirk): Just some angsty teen nonsense.
+		Dalton (Resting): ...
+		Dalton (Talk): I'll take your child's name and see what we can do back at the station.
+		Quincy (Awkward): ...
+		Dalton (Resting): ...
+		Dalton (Doubt1): Their name?
+		Quincy (Concern): I-
+		Quincy (Awkward): Uh...
+		Quincy (Squint): I don't know.
+		Dalton (Resting): You don't know?
+		Dalton (Sigh): Huu...
+		Dalton (Awkward): Do you have any documents or identification?
+		Quincy (Awkward): Ah... 
+		Quincy (Squint): no.
+		Dalton (Sigh): ...
+		Dalton (Resting): I see.
+		Dalton (Talk): I'll collect the note and take his description to see what we can do. 
+		Dalton (Awkward): It will take longer for us to track him down, though.
+		Quincy (Sigh): Good. 
+		Quincy (Smug): Once you track him down, call me.
+		Dalton (Resting): Hmph.
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "no_name_no_portrait")
 		jump Quincy_open_case_choice/
 	else:
-		Dalton: Do you remember your kid’s name yet?
-		Quincy: Ah...
-		Quincy: no.
-		Dalton: Father of the year, you are.
+		Dalton (Doubt1): Do you remember your kid’s name yet?
+		Quincy (Squint): Ah...
+		Quincy (Awkward): no.
+		Dalton (Roll Eyes): Father of the year, you are.
 		jump Quincy_open_case_choice/

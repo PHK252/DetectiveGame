@@ -1,8 +1,7 @@
 set {Global.went_to_Micah} = true
-# #knock
+[wait time="3.0"]
 Dalton (Talk): Hello!
 Dalton (Resting): Is anybody home?
-# #knock
 [wait time="1.0"]
 Dalton  (Talk): ASPD!
 [wait time="3.0"]
@@ -36,7 +35,7 @@ Dalton (Default): ...
 	- Knock Again.
 		set {Character Aff Points.Micah} += 1
 		# #Knock
-		Dalton (Angry): XPD!
+		Dalton (Angry): ASPD!
 		Dalton: We are here to investi-
 		# #A loud thud comes from inside the apartment, followed by tired groan and a curse
 		# #Faint footsteps can be heard through the door
