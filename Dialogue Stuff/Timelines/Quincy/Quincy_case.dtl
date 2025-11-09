@@ -1,17 +1,17 @@
 set {Quincy.Quincy_asked_case} = true
-Dalton: Is this case yours?
-Quincy: Yes...
-Quincy: But now that you mention it...
-Quincy: I don’t think I ever retrieved it from storage. 
-Dalton: Do you remember if it was there before the break in?
-Quincy: Hmm...
-Quincy:I don’t think so. 
-Dalton: Interesting.
+Dalton (Doubt1): Is this case yours?
+Quincy (Happy): Yes.
+Quincy (Awkward): But now that you mention it...
+Quincy (Concern): I don’t think I ever retrieved it from storage. 
+Dalton (Resting): Do you remember if it was there before the break in?
+Quincy (Awkward): Hmm...
+Quincy (Sigh): I don’t think so. 
+Dalton (Squint): Interesting.
 do GlobalVars.emit_add_note("quincy", "case", "found")
 label choices
 [wait time= ".03"]
-Dalton: ...
-	- Take a look. 
+Dalton (Default): ...
+	- Inspect case.
 		[signal arg ="look_case"]
 		[end_timeline]
 	- Continue investigation.
