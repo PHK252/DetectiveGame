@@ -1,137 +1,202 @@
-Dalton: Can I ask you a few questions?
-Quincy: Sure.
+set {Quincy.num_question_asked} = 0
+Dalton (Doubt1): Can I ask you a few questions?
+Quincy (Happy): Sure.
 label choices
 [wait time= "0.3"]
-Dalton: ...
-- Ask about break in.
-	- Location during break in?
+Dalton (Default): Ask about...
+- Break-in.
+	- Location.
+		set {Quincy.num_question_asked} += 1
 		if {Quincy.asked_location} == false:
 			set {Quincy.asked_location} = true
-			Dalton: Where were you here during the break-in?
-			Quincy: I was having a night out in Midtown.
-			Dalton: Did you return home that night?
-			Quincy: Nope.
-			Quincy: I was preoccupied.
-			Dalton: When did you hear about the break in then?
-			Quincy: I got a call from the groundskeeper at around 7 a.m.
-			Quincy: By the time he looked through the security footage, it was already scrubbed, sneaky bastard.
+			Dalton (Talk): Where were you here during the break-in?
+			Quincy (Smug): Nope.
+			Quincy (Happy): I was having a night out in Midtown.
+			Dalton (Doubt1): Did you return home that night?
+			Quincy (Squint Smug): Nope.
+			Quincy (Smirk): I was preoccupied.
+			Dalton (Resting): When did you hear about the break in then?
+			Quincy (Sigh): I got a call from the groundskeeper at around 7 a.m.
+			Quincy (Squint): It was already scrubbed by the time he looked through the security footage, sneaky bastard.
+			Dalton (Talk): I see.
 			do GlobalVars.emit_add_note("quincy", "location", "")
-			if {Character Aff Points.Theo} > 3:
-				# #and Theo on ground floor
-				Theo: Don't worry, Quincy!
-				Theo: We'll catch whoever's responsible for this!
-				Quincy: Hah!
-				Quincy: I like your enthusiasm.
-				jump choices
-			else:
-				Dalton: I see.
-				jump choices
 		else:
-			Dalton: Where were you here during the break-in?
-			Quincy: Nope.
-			jump choices
-	- Anything missing?
+			Dalton (Talk): Where were you here during the break-in?
+			Quincy (Smug): Nope.
+		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			Dalton (Talk): That's all the questions I have right now.
+			Quincy (Happy): Hm...
+			Quincy (Smug): Was a pleasure to assit, Dectective.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton (Default): ...
+			- Ask more questions.
+				jump choices
+			- Continue investigation.
+				Dalton (Talk): That's all the questions I have right now.
+				Quincy (Happy): Hm...
+				Quincy (Smug): Was a pleasure to assit, Dectective.
+				[end_timeline]
+	- Damage.
+		set {Quincy.num_question_asked} += 1
 		if {Quincy.asked_missing} == false:
 			set {Quincy.asked_missing} = true
-			Quincy: Nothing of importance.
-			Quincy: That bastard made a mess more than anything.
+			Dalton (Talk): Besides the damage, was anything stolen?
+			Quincy (Sigh): Nothing of importance.
+			Quincy (Squint): That bastard made a mess more than anything.
 			do GlobalVars.emit_add_note("quincy", "missing", "")
-			jump choices
 		else:
-			Dalton: Besides the damage, was anything stolen?
-			Quincy: Not that I can tell.
-			jump choices
-	- Any subjects with motive?
+			Dalton (Talk): Besides the damage, was anything stolen?
+			Quincy (Sigh): Not that I can tell.
+		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			Dalton (Talk): That's all the questions I have right now.
+			Quincy (Happy): Hm...
+			Quincy (Smug): Was a pleasure to assit, Dectective.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton (Default): ...
+			- Ask more questions.
+				jump choices
+			- Continue investigation.
+				Dalton (Talk): That's all the questions I have right now.
+				Quincy (Happy): Hm...
+				Quincy (Smug): Was a pleasure to assit, Dectective.
+				[end_timeline]
+	- Motive.
+		set {Quincy.num_question_asked} += 1
 		if {Quincy.ask motive} == false:
 			set {Quincy.ask motive} = true
-			Dalton: Do you know of anyone who would want to break into your house?
-			Quincy: Hah!
-			Quincy: One of the many quirks of being a leader is that many want you gone.
+			Dalton (Squint): Do you know of anyone who would want to break into your house?
+			Quincy (Squint Smug): Hah!
+			Quincy (Smug): One of the many quirks of being a leader is that many want you gone.
 			if {Quincy.talked_at_port_know_skylar} == true:
-				Quincy: But-
-				Quincy: Hah!
-				Quincy: Never in a million years did I think that brat had the guts to pull this.
-				jump choices
+				Quincy (Sigh): But-
+				Quincy (Laugh): Hah!
+				Quincy (Squint): Never in a million years did I think that brat had the guts to pull this.
 			else:
-				Dalton: ...
-				Dalton: Is there anyone in particular that comes to mind?
-				Quincy: Nope.
-				Quincy: None of them have the guts to pull something like this.
+				Dalton (Awkward): ...
+				Dalton (Resting): Is there anyone in particular that comes to mind?
+				Quincy (Smug): Nope.
+				Quincy (Smirk): None of them have the guts to pull something like this.
 				do GlobalVars.emit_add_note("quincy", "motive", "")
-				jump choices
 		else:
-			Dalton: Do you know of anyone who would want to break into your house?
-			Quincy: Do you want a list of the subjects that don’t?
-			Quincy: It would probably be shorter. 
-			Dalton: Hmph.
-			Dalton: Never mind.
-			jump choices
-	- Continue investigation.
-		Dalton: That's the questions I have for now.
-- Connection to other victims.
-	- Show picture of Juniper.
+			Dalton (Squint): Do you know of anyone who would want to break into your house?
+			Quincy (Smug): Do you want a list of the subjects that don’t?
+			Quincy (Smirk): It would probably be shorter. 
+			Dalton (Resting): Hmph.
+			Dalton (Awkward): Never mind.
+		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			Dalton (Talk): That's all the questions I have right now.
+			Quincy (Happy): Hm...
+			Quincy (Smug): Was a pleasure to assit, Dectective.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton (Default): ...
+			- Ask more questions.
+				jump choices
+			- Continue investigation.
+				Dalton (Talk): That's all the questions I have right now.
+				Quincy (Happy): Hm...
+				Quincy (Smug): Was a pleasure to assit, Dectective.
+				[end_timeline]
+	- Go back
+		jump choices
+- Other victims.
+	Dalton (Default): Show picture of...
+	- Juniper Hartley.
+		set {Quincy.num_question_asked} += 1
 		if {Quincy.asked_Juniper} == false:
 			set {Quincy.asked_Juniper} = true
-			Dalton: Do you recognize her?
-			Quincy: Nope.
-			Quincy: Not a clue.
-			Quincy: Quite the looker, though.
-			Dalton: ...
-			Dalton: Eugh.
-			Dalton: Not the time.
+			Dalton (Talk): Do you recognize her?
+			Quincy (Concern): Nope.
+			Quincy (Awkward): Not a clue.
+			Quincy (Squint Smug): Quite the looker, though.
+			Dalton (Hmph): ...
+			Dalton (Sigh): Eugh.
+			Dalton (Resting): Not the time.
 			do GlobalVars.emit_add_note("quincy", "juniper", "")
-			jump choices
 		else:
-			Dalton: Do you recognize her?
-			Quincy: Nope. 
-			Quincy: But if I can have her info...
-			Quincy: You may see a raise in your next paycheck.
-			Dalton: No.
-			Dalton: It’s confidential.
-			Quincy: Haa...
-			Quincy: Of course that wouldn’t work on you, Goody-Two-Shoes.
-			jump choices
-	- Show picture of Micah.
+			Dalton (Talk): Do you recognize her?
+			Quincy (Smug): Nope. 
+			Quincy (Smirk): But if I can have her info...
+			Quincy (Squint Smug): You may see a raise in your next paycheck.
+			Dalton (Sigh): No.
+			Dalton (Resting): It’s confidential.
+			Quincy (Laugh): Hah!
+			Quincy (Squint Smug): Of course that wouldn’t work on you, Goody-Two-Shoes.
+		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			Dalton (Talk): That's all the questions I have right now.
+			Quincy (Happy): Hm...
+			Quincy (Smug): Was a pleasure to assit, Dectective.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton (Default): ...
+			- Ask more questions.
+				jump choices
+			- Continue investigation.
+				Dalton (Talk): That's all the questions I have right now.
+				Quincy (Happy): Hm...
+				Quincy (Smug): Was a pleasure to assit, Dectective.
+				[end_timeline]
+	- Micah Procyon.
+		set {Quincy.num_question_asked} += 1
 		if {Quincy.asked_Micah} == false:
 			set {Quincy.asked_Micah} = true
-			Dalton: Do you recognize him?
-			Quincy: He looks a little familiar.
-			Quincy: Probably just a passing resemblance.
-			Dalton: Hmph.
+			Dalton (Talk): Do you recognize him?
+			Quincy (Concern): He looks a little familiar.
+			Quincy (Happy): Probably just a passing resemblance.
+			Dalton (Resting): Hmph.
 			do GlobalVars.emit_add_note("quincy", "micah", "")
-			jump choices
 		else:
-			Dalton: Do you recognize him?
-			Quincy: Still don’t. 
-			jump choices
-	- Continue investigation.
-		Dalton: That's the questions I have for now.
-- Ask about chocolate. | [if {Quincy.has_choco} == true] [else="hide"]
+			Dalton (Talk): Do you recognize him?
+			Quincy (Awkward): Still don’t. 
+		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			Dalton (Talk): That's all the questions I have right now.
+			Quincy (Happy): Hm...
+			Quincy (Smug): Was a pleasure to assit, Dectective.
+			[end_timeline]
+		else:
+			[wait time="0.3"]
+			Dalton (Default): ...
+			- Ask more questions.
+				jump choices
+			- Continue investigation.
+				Dalton (Talk): That's all the questions I have right now.
+				Quincy (Happy): Hm...
+				Quincy (Smug): Was a pleasure to assit, Dectective.
+				[end_timeline]
+	- Go back.
+		jump choices
+- Chocolate. | [if {Quincy.has_choco} == true] [else="hide"]
 	set {Quincy.kicked_out} = true
-	Dalton: I found this package.
-	Dalton: Do you care to explain?
-	Quincy: You cheeky fox…
+	Dalton (Resting): I found this package.
+	Dalton (Hmph): Do you care to explain?
+	Quincy (Squint): You cheeky fox...
 	[signal arg_type= "snatch"]
-	Quincy: Sometimes you're too nosy for your own good.
-	Quincy: If you still want a career, I suggest you keep your mouth shut.
-	Quincy: Do you understand?
-	Dalton: Quincy, I-
-	Quincy: Do you understand!?
-	Dalton: This is-
-	Quincy: It’s a yes or no question, Detective Reynard!
-	Dalton: ...
-	Quincy: Take your partner and leave.
-	Quincy: Now!
-	Dalton: Theo.
-	Dalton: Let’s go...
+	Quincy (Sigh): Sometimes you're too nosy for your own good.
+	Quincy (Surprise): If you still want a career, I suggest you keep your mouth shut.
+	Quincy (Squint): Do you understand?
+	Dalton (Doubt2): Quincy, I-
+	Quincy (Surprise): Do you understand!?
+	Dalton (Awkward): This is-
+	Quincy (Sigh): It’s a yes or no question, Detective Reynard!
+	Dalton (Sad): ...
+	Quincy (Squint): Take your partner and leave.
+	Quincy (Surprise): Now!
+	Dalton (Awkward): Theo.
+	Dalton (Sigh): Let’s go...
 	[end_timeline]
-- Continue investigation.
-	if {Quincy.asked_missing} == false and {Quincy.asked_Micah} == false and {Quincy.asked_Juniper} == false and {Quincy.asked_location} == false and {Quincy.ask motive} == false:
-		Dalton: ...
-		Dalton: I changed my mind.
-		Quincy: Hah. 
-		Quincy: Okay.
+- Continue.
+	if {Quincy.num_question_asked} == 0:
+		Dalton (Awkward): ...
+		Dalton (Resting): I changed my mind.
+		Quincy (Laugh): Hah. 
+		Quincy (Smug): Okay.
 	else:
-		Dalton: That's all for now.
-		Quincy: Hm...
-		Quincy: Was a pleasure to assit, Dectective.
+		Dalton (Talk): That's all for now.
+		Quincy (Happy): Hm...
+		Quincy (Smug): Was a pleasure to assit, Dectective.
