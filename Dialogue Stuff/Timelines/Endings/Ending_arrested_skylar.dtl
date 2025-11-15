@@ -1,20 +1,25 @@
-Theo: ...
-Theo: That’s it?
-Theo: I mean, we got the perp, but it seems like there was a lot that was left unsaid.
-Dalton: We’ll have some more time to get them to talk...
-Dalton: Quincy will definitely push charges on them.
-Theo: Anyways, our job here is done!
-Theo: Why don’t we go celebr-
-[end_timeline]
+jump call
+Theo (Awkward): ...
+Theo (Talk): Is that it?
+Theo (Thinking): I mean, we got the perp, but it seems like there was a lot that was left unsaid.
+Dalton (Awkward): We’ll have some more time to get them to talk...
+Dalton (Talk): Quincy will definitely push charges on them.
+Theo (Thinking): I see.
+Theo (Awkward): But...
+Theo (Laugh): Our job here is done!
+Dalton (Sigh): Mostly.
+Theo (Happy): Why don’t we go celebr-
 [signal arg="start_call"]
-Chief: A missing person was reported. 
-Chief: They were last seen at a convenience store in Industry.
-Chief: Head out there to see if anyone knows anything about it. 
-Dalton: Yes, sir!
+[end_timeline]
+label call
+Chief: [shake rate=10.0 level=4 connected=2]A missing citizen was reported.[/shake] 
+Chief: [shake rate=10.0 level=4 connected=2]They were last seen at the Hustle and Bustle in Industry.[/shake]
+Chief: [shake rate=10.0 level=4 connected=2]Head out there to see if anyone knows anything about it.[/shake] 
+Dalton (Talk): Yes, sir!
 [signal arg="end_call"]
-Dalton: We got a call to investigate a missing persons report. 
-Theo: ...? 
-Theo: In-person?
-Theo: Seems serious.
-Dalton: Hmph. 
-Dalton: Let’s roll out. 
+Dalton (Awkward): We got a call to investigate a missing citizens report. 
+Theo (Surprised): ...? 
+Theo (Concerned): In-person?
+Theo (Thinking): Seems serious.
+Dalton (Hmph): Hmph. 
+Dalton (Talk): Let’s roll out.

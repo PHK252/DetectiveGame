@@ -7,10 +7,20 @@ Theo (Talk): If you insist, Mr. Fox.
 Dalton (Hmph): Hmph.
 Dalton (Talk): We didn’t get much information about possible suspects. 
 Dalton (Awkward): Or a motive.
-Dalton (Default): But I found a fur sample that may belong to the suspect.  
+if {Asked Questions.has_hair} == true and {Juniper.has_pie} == true:
+	Dalton (Default): But I found a partially-eaten pie that the suspect may have eaten and a fur sample that may belong to the suspect.  
+elif {Asked Questions.has_hair} == false and {Juniper.has_pie} == true:
+	Dalton (Default): But I found a partially-eaten pie that the suspect may have eaten.  
+else:
+	Dalton (Default): But I found a fur sample that may belong to the suspect.
 Theo (Thinking): Hmm...
 Theo (Talk): Hopefully a visit to the Mayor’s will bring us some answers. 
 Dalton (Sigh): Hmph. 
-Theo (Default): I’m gonna head out after I bring the fur sample to Forensics.  
+if {Asked Questions.has_hair} == true and {Juniper.has_pie} == true:
+	Theo (Default): I’m gonna head out after I bring the fur and pie sample to Forensics. 
+elif {Asked Questions.has_hair} == false and {Juniper.has_pie} == true:
+	Theo (Default): I’m gonna head out after I bring the pie sample to Forensics. 
+else:
+	Theo (Default): I’m gonna head out after I bring the fur sample to Forensics. 
 Theo (Laugh): See ya, tomorrow!
 Dalton (Talk): Yeah.

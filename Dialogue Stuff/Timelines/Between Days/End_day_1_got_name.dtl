@@ -5,7 +5,7 @@ Theo (Default): What’cu think, Dalton?
 Dalton (Resting): It’s Detective Reynard.  
 Theo (Talk): If you insist, Mr. Fox.
 Dalton (Hmph): Hmph. 
-if {Asked Questions.Micah_Asked_Skylar} == true
+if {Asked Questions.Micah_Asked_Skylar} == true:
 	Dalton (Talk): We got a possible name and connection between two of the victims.
 else:
 	Dalton (Talk): We got a name for a potential suspect. 
@@ -14,8 +14,12 @@ Dalton (Talk): Which doesn’t align with the damage reported at the manor.
 Dalton (Default): We also don’t have a motive. 
 Theo (Thinking): Hmm...
 Theo (Talk): Hopefully a visit to the Mayor’s will bring us some answers. 
-Dalton (Default): Hmph. 
-if {Asked Questions.has_hair} == true
+Dalton (Awkward): Hmph. 
+if {Asked Questions.has_hair} == true and {Juniper.has_pie} == true:
+	Theo (Happy): I’m gonna head out after I bring the fur and pie sample to Forensics. 
+elif {Asked Questions.has_hair} == false and {Juniper.has_pie} == true:
+	Theo (Happy): I’m gonna head out after I bring the pie sample to Forensics. 
+elif {Asked Questions.has_hair} == true and {Juniper.has_pie} == false:
 	Theo (Happy): I’m gonna head out after I bring the fur sample to Forensics. 
 else:
 	Theo (Happy): Alright, I’m gonna head out. 

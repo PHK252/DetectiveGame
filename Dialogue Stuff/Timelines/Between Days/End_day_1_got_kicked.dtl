@@ -1,7 +1,11 @@
 Theo (Sigh): Urgh...
 Theo (Doubt): What a day...
-if {Asked Questions.has_hair} == true:
-Theo (Resting): I’m gonna head out after I bring the fur sample to Forensics. 
+if {Asked Questions.has_hair} == true and {Juniper.has_pie} == true:
+	Theo (Resting): I’m gonna head out after I bring the fur and pie sample to Forensics. 
+elif {Asked Questions.has_hair} == false and {Juniper.has_pie} == true:
+	Theo (Resting): I’m gonna head out after I bring the pie sample to Forensics. 
+elif {Asked Questions.has_hair} == true and {Juniper.has_pie} == false:
+	Theo (Resting): I’m gonna head out after I bring the fur sample to Forensics. 
 else:
 	Theo (Resting): I’m gonna head out.
 Dalton (Resting): Hmph.
