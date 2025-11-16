@@ -1,16 +1,18 @@
-[gd_scene load_steps=132 format=4 uid="uid://d2qmed24hoimf"]
+[gd_scene load_steps=138 format=4 uid="uid://d2qmed24hoimf"]
 
 [ext_resource type="PackedScene" uid="uid://cnei0gnqkka7" path="res://dream_stuff/DreamTransition.glb" id="1_q1hl2"]
 [ext_resource type="Script" uid="uid://dsypdrktaglxw" path="res://dream_stuff/dream_transition.gd" id="1_vwkit"]
 [ext_resource type="Texture2D" uid="uid://7kopsehreshr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Victim Button Clicked.png" id="2_hf046"]
 [ext_resource type="PackedScene" uid="uid://dpyd2ngef4s53" path="res://dream_stuff/FrameSep.glb" id="2_jm08a"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_ouh8g"]
+[ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="3_5p5rk"]
 [ext_resource type="Texture2D" uid="uid://dw0cqk76h75eb" path="res://dream_stuff/Assets/Transition_clue_1.png" id="3_bvs2m"]
 [ext_resource type="Shader" uid="uid://du3qvml6xbpcu" path="res://ShaderScripts/pixel.gdshader" id="3_fxi6b"]
 [ext_resource type="Script" uid="uid://qmqj74pm4p5a" path="res://GeneralScripts/CameraWork/camera_system.gd" id="3_gseyv"]
 [ext_resource type="PackedScene" uid="uid://d2j6soqwoeud8" path="res://dream_stuff/Tiles.tscn" id="3_rxvkm"]
 [ext_resource type="Script" uid="uid://dqmq7sj03m4v6" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_jm08a"]
 [ext_resource type="Texture2D" uid="uid://uqmuqwvgq515" path="res://dream_stuff/Assets/Transition_Note_4.png" id="4_mdxto"]
+[ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="4_sqg1u"]
 [ext_resource type="Script" uid="uid://dd46bmhjxhf3u" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_gseyv"]
 [ext_resource type="Texture2D" uid="uid://bq2o4t2dugy4g" path="res://dream_stuff/Assets/Transition_Note_1.png" id="5_rxw8w"]
 [ext_resource type="Script" uid="uid://ba877ddbj17hy" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_nv2et"]
@@ -39,6 +41,110 @@
 [ext_resource type="AudioStream" uid="uid://xf6pgu203b2c" path="res://Audio/Flashbacks/bed_rustle_02.wav" id="24_rxvkm"]
 [ext_resource type="Texture2D" uid="uid://bskvwa4dtmvky" path="res://CharacterStuff/Colorchangetextures_everyone/Dalton_Dreamland.png" id="34_4pxu4"]
 [ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="38_616vu"]
+
+[sub_resource type="Shader" id="Shader_tt18j"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+uniform sampler2D color_gradient;
+uniform sampler2D fresnel_gradient;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+
+void fragment() {
+	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
+	ALBEDO = albedo.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+
+void light() {
+	float dotproduct = clamp(dot(NORMAL, LIGHT), -0.9, 0.9);
+	float sample = clamp((dotproduct + 1.0) * ATTENUATION / 2.1, 0.05, 0.95);
+	vec4 shaded = texture(color_gradient, vec2(sample, 0.0));
+	DIFFUSE_LIGHT += clamp((shaded.rgb * LIGHT_COLOR), 0.0, 1.0);
+	//DIFFUSE_LIGHT += (shaded.rgb * LIGHT_COLOR);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2hqc"]
+resource_name = "Environment"
+render_priority = 0
+shader = SubResource("Shader_tt18j")
+shader_parameter/albedo = Color(0.0705882, 0.0705882, 0.0862745, 1)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = ExtResource("3_5p5rk")
+shader_parameter/fresnel_gradient = ExtResource("4_sqg1u")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5nkeo"]
+_surfaces = [{
+"aabb": AABB(-1, -9.82444, -37.6853, 476.85, 21.0951, 60.6347),
+"format": 34359742465,
+"index_count": 312,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEAAwAGAAUAAgABAAcABgAIAAUABgAJAAgACQAKAAgACQAEAAoABAACAAoABQAIAAsACAAMAAsACAAKAAwABQALAA0ADQALAAwADQAOAAUABQAPAAEABQAOAA8AEAABAA8AEAAHAAEADwARABAAAgAHABIACgACABIACgASAAwAEwASAAcAEwAMABIABwAQABQABwAUABMAFQAQABEAFQAUABAADwAWABEAFgAVABEAFwAWAA8AGAAXAA8AFwAZABYAGAAPAA4AGgAYAA4AGQAbABYAFgAbABUAGQAcABsAGgAOAB0AHAAaAB0AHQAOAB4ADQAeAA4AHAAdABsAEwAeAA0ADQAMABMAEwAUAB4AHQAeAB8AGwAdAB8AHwAeABQAGwAfABUAHwAUABUAFAAgABMADAAgABMAFAAhACAADAAiACAAFAAjABUAFAAhACMAIQAkACAAIAAkACIAJAAhACMADAAlACIAIgAkACUADAAmACUACgAmAAwACgAnACYABAAnAAoABAAoACcABAApACgABAAqACkAKwAqACkAKwApACwABAAtACoAKgArAC0AKwAsAC4ABAAcAC0ALQArAC8AHAAtAC8AKwAuADAALwArADAAMAAuADEAHAAvADIALwAwADIAMAAxADMAMgAwADMAMwAxADQAHAAyADUAMgAzADUAHAA1ABsAMwA0ADYANQAzADYANwA0ADYANwAkADQAGwA1ADgANQA2ADgAGwA4ABUAIwA4ABUAJAA5ADcAJAAjADkAOQA3ADYAIwA5ADgAOQA2ADgA"),
+"name": "envPalette",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 58,
+"vertex_data": PackedByteArray("AACAvwAAgL8AAIA/AACAv7JSaz/DLU8/AACAv7JSaz8AAIA/AACAvwAAgL/DLU8/AAAAAAAAgL8AAIA/AACAP7JSaz/DLU8/AACAPwAAgL/DLU8/AACAvwAAgD/DLU8/AACAP7JSaz8AAIA/AACAPwAAgL8AAIA/AAAAALJSaz8AAIA/AACAPwAAgD8AAIA/AAAAAAAAgD8AAIA/AACAPwAAgD/DLU8/AACAP7JSaz/DLU+/AACAv7JSaz/DLU+/AACAvwAAgD/DLU+/AACAvwAAgD8AAIC/AACAvwAAgD8AAIA/AAAAAAAAgD/DLU8/AAAAAAAAgD/DLU+/AAAAAAAAgD8AAIC/AACAv7JSaz8AAIC/AACAvwAAgL/DLU+/AACAPwAAgL/DLU+/AACAvwAAgL8AAIC/AACAPwAAgL8AAIC/AAAAALJSaz8AAIC/AAAAAAAAgL8AAIC/AACAP7JSaz8AAIC/AACAPwAAgD/DLU+/AACAPwAAgD8AAIC/AAAAAJZUNEHDLU8/AAAAAJZUNEHDLU+/AAAAAJZUNEEAAIA/AAAAAJZUNEEAAIC/2+ztQ5ZUNEGOIrNBAAAAAJZUNEFsmLdBAAAAAAAAgD9smLdBAAAAALJSaz9smLdBAAAAAAAAgL9smLdBAAAAAOwwHcFsmLdBAAAAAOwwHcEAAIA/2+ztQ+wwHcG+vRbC2+ztQ+wwHcGOIrNBAAAAAOwwHcEAAIC/2+ztQwAAgL+OIrNBAAAAAOwwHcG+vRbC2+ztQwAAgL++vRbC2+ztQ7JSaz+OIrNBAAAAAAAAgL++vRbC2+ztQ7JSaz++vRbC2+ztQwAAgD+OIrNBAAAAALJSaz++vRbC2+ztQwAAgD++vRbC2+ztQ5ZUNEG+vRbCAAAAAAAAgD++vRbCAAAAAJZUNEG+vRbC")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7xv2s"]
+resource_name = "DreamTransition_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -9.82444, -37.6853, 476.85, 21.0951, 60.6347),
+"attribute_data": PackedByteArray("15QUPyynPz4EdRI/VH9APgR1Ej8spz8+15QUP1R/QD4hXhI/VH9APiFeEj8spz8+IV4SP+CpRz4EdRI/4KlHPiFeEj8Igkg+BHUSPwiCSD7XlBQ/4KlHPteUFD8Igkg+BHUSPySlXj4hXhI/kBJjPiFeEj8kpV4+BHUSP5ASYz4EdRI/uDdaPiFeEj+4N1o+15QUP7g3Wj7XlBQ/JKVePteUFD+QEmM+BHUSP5BfWT4hXhI/uDdaPiFeEj+QX1k+BHUSP7g3Wj7XlBQ/kF9ZPteUFD+4N1o+BHUSPwg1Uj4hXhI/CDVSPgR1Ej/gXFE+IV4SP+BcUT7XlBQ/4FxRPteUFD8INVI+xkIRP+BcUT5rJxA/CDVSPmsnED/gXFE+xkIRPwg1Uj4hXhI/4FxRPmsnED+QX1k+IV4SPwg1Uj7GQhE/kF9ZPmsnED+4N1o+IV4SP5BfWT7GQhE/uDdaPiFeEj+4N1o+BHUSP3TvTD4hXhI/4FxRPiFeEj9070w+BHUSP+BcUT4EdRI/CIJIPiFeEj8Igkg+15QUPwiCSD7XlBQ/dO9MPteUFD/gXFE+BHUSP5BfWT4EdRI/4KlHPgR1Ej9Uf0A+BHUSPwg1Uj7XlBQ/VH9APgR1Ej+QX1k+BHUSP1R/QD7XlBQ/kF9ZPteUFD8INVI+BHUSP+CpRz4EdRI/CDVSPteUFD/gqUc+xkIRPwg1Uj7GQhE/4FxRPsZCET/gXFE+xkIRPwg1Uj7GQhE/4FxRPsZCET/gXFE+xkIRP7g3Wj7GQhE/kF9ZPsZCET+QX1k+xkIRP7g3Wj7GQhE/uDdaPsZCET+4N1o+xkIRPwg1Uj7GQhE/kF9ZPsZCET+QX1k+xkIRPwg1Uj4EdRI/dO9MPiFeEj9070w+IV4SP3TvTD4EdRI/dO9MPteUFD9070w+15QUP3TvTD7XlBQ/dO9MPteUFD9070w+BHUSPySlXj4hXhI/JKVePiFeEj8kpV4+BHUSPySlXj7XlBQ/JKVePteUFD8kpV4+15QUPySlXj7XlBQ/JKVePteUFD9070w+15QUP3TvTD4EdRI/dO9MPiFeEj9070w+IV4SP3TvTD4EdRI/dO9MPteUFD9070w+15QUP3TvTD7XlBQ/dO9MPteUFD9070w+xkIRP+BcUT7GQhE/4FxRPsZCET/gXFE+xkIRP+BcUT7XlBQ/dO9MPteUFD9070w+15QUP3TvTD7XlBQ/dO9MPgR1Ej9070w+BHUSP3TvTD4hXhI/dO9MPiFeEj9070w+xkIRP+BcUT7GQhE/4FxRPsZCET/gXFE+xkIRP+BcUT7XlBQ/dO9MPteUFD9070w+15QUP3TvTD7XlBQ/JKVePteUFD8kpV4+15QUP3TvTD7GQhE/uDdaPsZCET/gXFE+xkIRP7g3Wj7GQhE/kF9ZPsZCET8INVI+xkIRP+BcUT7GQhE/4FxRPsZCET/gXFE+"),
+"format": 34359742487,
+"index_count": 312,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABgAEAAEABgABAAcABwAIAAYABwAJAAgACgAJAAcACgALAAkADAANAA4ADAAPAA0AEAAMAA4AEAAOABEAEgAMABAAEgATAAwAEwAPAAwAEwAUAA8AFQAWABcAFQAYABYAGQAYABUAGQAaABgAFwAbABUAFwAcABsAHQAbABwAHQAcAB4AHwAbAB0AHwAgABsAIQAiACMAIQAkACIAJQAkACEAJgAiACQAJQAnACQAJgAkACgAKAAkACcAKAApACYAKAAnACoAKAArACkAKgArACgAKgAsACsALQAuAC8ALQAwAC4AMQAtAC8AMQAvADIAMwAtADEAMwA0AC0ANAAwAC0ANAA1ADAANgA3ADgANgA5ADcAOgA7ADwAOgA9ADsAPgA/AEAAPgBBAD8AQgBDAEQAQgBFAEMAQwBGAEQAQwBHAEYASABJAEoASABLAEkASABMAEsASABNAEwATgBPAFAATgBRAE8AUgBTAFQAUgBVAFMAVgBVAFIAVgBXAFUAVgBYAFcAVgBZAFgAWgBbAFwAWgBdAFsAXgBdAFoAXgBfAF0AXgBgAF8AXgBhAGAAXgBiAGEAXgBjAGIAZABlAGYAZABnAGUAaABnAGQAaABpAGcAagBpAGgAagBrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAcgBxAHQAcgB0AHUAdQB0AHYAdQB2AHcAeAB5AHoAeAB7AHkAfAB9AH4AfwB9AHwAfQB/AIAAfQCAAIEAggCDAIQAhQCDAIIAhgCDAIUAgwCGAIcAgwCHAIgAgwCIAIkA"),
+"material": SubResource("ShaderMaterial_x2hqc"),
+"name": "envPalette",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 138,
+"vertex_data": PackedByteArray("AACAvwAAgL8AAIA/AACAv7JSaz/DLU8/AACAv7JSaz8AAIA/AACAvwAAgL/DLU8/AACAvwAAgD/DLU8/AACAvwAAgD8AAIA/AACAvwAAgD/DLU+/AACAv7JSaz/DLU+/AACAvwAAgD8AAIC/AACAv7JSaz8AAIC/AACAvwAAgL/DLU+/AACAvwAAgL8AAIC/AAAAALJSaz8AAIA/AACAvwAAgD8AAIA/AAAAAAAAgD8AAIA/AACAv7JSaz8AAIA/AACAP7JSaz8AAIA/AACAPwAAgD8AAIA/AACAPwAAgL8AAIA/AAAAAAAAgL8AAIA/AACAvwAAgL8AAIA/AACAP7JSaz/DLU8/AACAPwAAgD8AAIA/AACAPwAAgD/DLU8/AACAP7JSaz8AAIA/AACAPwAAgL/DLU8/AACAPwAAgL8AAIA/AACAP7JSaz/DLU+/AACAPwAAgD/DLU+/AACAP7JSaz8AAIC/AACAPwAAgD8AAIC/AACAPwAAgL8AAIC/AACAPwAAgL/DLU+/AAAAAAAAgD8AAIC/AACAvwAAgD/DLU+/AACAvwAAgD8AAIC/AAAAAAAAgD/DLU+/AACAPwAAgD8AAIC/AACAvwAAgD/DLU8/AACAPwAAgD/DLU+/AAAAAAAAgD/DLU8/AACAvwAAgD8AAIA/AACAPwAAgD/DLU8/AAAAAAAAgD8AAIA/AACAPwAAgD8AAIA/AAAAALJSaz8AAIC/AACAPwAAgD8AAIC/AAAAAAAAgD8AAIC/AACAP7JSaz8AAIC/AACAv7JSaz8AAIC/AACAvwAAgD8AAIC/AACAvwAAgL8AAIC/AAAAAAAAgL8AAIC/AACAPwAAgL8AAIC/AACAP7JSaz/DLU8/AACAv7JSaz/DLU+/AACAv7JSaz/DLU8/AACAP7JSaz/DLU+/AACAvwAAgL/DLU8/AACAP7JSaz/DLU8/AACAv7JSaz/DLU8/AACAPwAAgL/DLU8/AACAPwAAgL/DLU+/AACAv7JSaz/DLU+/AACAP7JSaz/DLU+/AACAvwAAgL/DLU+/AAAAAAAAgD/DLU+/AAAAAJZUNEEAAIC/AAAAAAAAgD8AAIC/AAAAAJZUNEHDLU+/AAAAAAAAgD++vRbCAAAAAJZUNEG+vRbCAAAAAAAAgD8AAIA/AAAAAJZUNEHDLU8/AAAAAAAAgD/DLU8/AAAAAJZUNEEAAIA/AAAAAJZUNEFsmLdBAAAAAAAAgD9smLdBAAAAAAAAgD/DLU+/AAAAAJZUNEHDLU8/AAAAAAAAgD/DLU8/AAAAAJZUNEHDLU+/AAAAALJSaz8AAIC/AAAAAAAAgD++vRbCAAAAAAAAgD8AAIC/AAAAALJSaz++vRbCAAAAAAAAgL8AAIC/AAAAAAAAgL++vRbCAAAAAOwwHcG+vRbCAAAAAOwwHcEAAIC/AAAAALJSaz8AAIA/AAAAAAAAgD9smLdBAAAAAAAAgD8AAIA/AAAAALJSaz9smLdBAAAAAAAAgL8AAIA/AAAAAAAAgL9smLdBAAAAAOwwHcFsmLdBAAAAAOwwHcEAAIA/AAAAAOwwHcEAAIC/AAAAAAAAgL8AAIC/AAAAALJSaz++vRbC2+ztQwAAgD++vRbCAAAAAAAAgD++vRbC2+ztQ7JSaz++vRbCAAAAAAAAgL++vRbC2+ztQwAAgL++vRbCAAAAAOwwHcG+vRbC2+ztQ+wwHcG+vRbCAAAAAJZUNEG+vRbC2+ztQwAAgD++vRbCAAAAAAAAgD++vRbC2+ztQ5ZUNEG+vRbC2+ztQ+wwHcG+vRbC2+ztQwAAgL+OIrNB2+ztQwAAgL++vRbC2+ztQ+wwHcGOIrNB2+ztQ7JSaz+OIrNB2+ztQ7JSaz++vRbC2+ztQwAAgD+OIrNB2+ztQwAAgD++vRbC2+ztQ5ZUNEG+vRbC2+ztQwAAgD+OIrNB2+ztQwAAgD++vRbC2+ztQ5ZUNEGOIrNBAAAAAOwwHcEAAIC/2+ztQ+wwHcG+vRbCAAAAAOwwHcG+vRbCAAAAAOwwHcEAAIA/AAAAAOwwHcFsmLdB2+ztQ+wwHcGOIrNBAAAAAJZUNEEAAIA/2+ztQ5ZUNEGOIrNBAAAAAJZUNEFsmLdBAAAAAJZUNEHDLU8/AAAAAJZUNEHDLU+/AAAAAJZUNEEAAIC/AAAAAJZUNEG+vRbC2+ztQ5ZUNEG+vRbCAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA/3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+///////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/38AAP///7//fwAA////v/9/AAD///+//38AAP///7///////38AgP//////fwCA//////9/AID//////38AgP9//3//f/5//3//f/9//n//f/9//3/+f/9//3//f/5/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7//////////v/////////+//////////7//////////v/////////+//////////7//////////v/////////+//3//f////z//f/9/////P/9//3////8//3//f////z////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5nkeo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksa4m"]
 
@@ -515,7 +621,7 @@ material = SubResource("StandardMaterial3D_nv2et")
 
 [sub_resource type="Environment" id="Environment_q1hl2"]
 background_mode = 1
-background_color = Color(1, 1, 1, 1)
+background_color = Color(0.909804, 0.901961, 0.882353, 1)
 background_energy_multiplier = 1.2
 ambient_light_energy = 0.0
 reflected_light_source = 1
@@ -998,6 +1104,7 @@ render_target_update_mode = 4
 [node name="doorFrame" parent="SubViewportContainer/SubViewport/DreamTransition" index="0"]
 layers = 512
 gi_mode = 0
+mesh = SubResource("ArrayMesh_7xv2s")
 
 [node name="Clue" parent="SubViewportContainer/SubViewport/DreamTransition" index="1"]
 transform = Transform3D(0.17, 0, 0, 0, -9.83506e-09, -0.225, 0, 0.225, -9.83506e-09, -2.5532, 1.93023, -1.25448)
@@ -1847,25 +1954,45 @@ shape = SubResource("BoxShape3D_bkanq")
 visible = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(1.96149e-09, -5.39206e-08, -2.98486)
-bones/3/rotation = Quaternion(0.0101516, 0.339804, 0.866111, -0.366447)
-bones/4/rotation = Quaternion(-0.270911, 0.0489311, -0.0393351, 0.960555)
-bones/5/rotation = Quaternion(0.5183, -0.0753319, 0.085982, 0.847524)
-bones/8/rotation = Quaternion(-0.0101524, 0.339797, 0.866116, 0.36644)
-bones/9/rotation = Quaternion(-0.270911, -0.0489311, 0.0393351, 0.960555)
-bones/10/rotation = Quaternion(0.5183, 0.075332, -0.085982, 0.847524)
-bones/12/position = Vector3(1.96149e-09, -2.69376e-07, -2.98486)
-bones/15/rotation = Quaternion(-0.0800008, 1.13742e-07, -1.13244e-08, 0.996795)
-bones/16/rotation = Quaternion(0.026577, 8.98306e-09, 8.09124e-09, 0.999647)
-bones/18/rotation = Quaternion(0.04275, -0.00144677, -0.0100327, 0.999034)
-bones/20/rotation = Quaternion(0.04275, 0.00144677, 0.0100327, 0.999034)
-bones/22/rotation = Quaternion(-0.260811, -0.148472, -0.392887, 0.869237)
-bones/23/rotation = Quaternion(-0.00346819, -0.000440141, -0.318257, 0.947998)
-bones/26/rotation = Quaternion(-0.260804, 0.148471, 0.392889, 0.869238)
-bones/27/rotation = Quaternion(-0.00346838, 0.000440136, 0.318258, 0.947998)
-bones/31/position = Vector3(0.967873, -0.0311821, -2.18669)
-bones/33/position = Vector3(1.96149e-09, -1.13525e-07, -2.98486)
-bones/36/position = Vector3(-0.967873, -0.0311821, -2.18669)
+bones/1/position = Vector3(6.46246e-10, -5.39206e-08, -2.95478)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.0027014, 0.360458, 0.856234, -0.370034)
+bones/4/rotation = Quaternion(-0.313467, 0.0131883, -0.0363124, 0.948813)
+bones/5/rotation = Quaternion(0.537499, -0.0432806, 0.0686248, 0.839352)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.00270138, 0.360458, 0.856234, 0.370034)
+bones/9/rotation = Quaternion(-0.313467, -0.0131883, 0.0363124, 0.948813)
+bones/10/rotation = Quaternion(0.537499, 0.0432806, -0.0686248, 0.839353)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(6.46246e-10, -2.23247e-07, -2.95478)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0745062, 1.13648e-07, -1.19746e-08, 0.997221)
+bones/16/rotation = Quaternion(0.0149792, 8.78275e-09, 8.08137e-09, 0.999888)
+bones/18/rotation = Quaternion(0.0654286, 0.00625412, -0.0103825, 0.997784)
+bones/20/rotation = Quaternion(0.0654286, -0.00625412, 0.0103825, 0.997784)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.265642, -0.148112, -0.383305, 0.872109)
+bones/23/rotation = Quaternion(-0.0037849, -0.000435401, -0.347317, 0.93774)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.265642, 0.148112, 0.383304, 0.872109)
+bones/27/rotation = Quaternion(-0.0037851, 0.000435361, 0.347318, 0.93774)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.947841, -0.0311821, -2.18099)
+bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
+bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
+bones/33/position = Vector3(6.46246e-10, -1.13525e-07, -2.95478)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
+bones/36/position = Vector3(-0.947841, -0.0311821, -2.18099)
+bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
+bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 
 [node name="Idle" type="Timer" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D" index="8"]
 wait_time = 35.0
