@@ -13,10 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://c11jucn5hdsv5" path="res://UI/Assets/Pause overlay/Updated/Notes_update5.png" id="10_2x4wm"]
 [ext_resource type="Texture2D" uid="uid://cnjte26mtleo2" path="res://UI/Assets/Pause overlay/Updated/Notes_update6.png" id="11_hq3yt"]
 [ext_resource type="PackedScene" uid="uid://coi3wnw75drw1" path="res://UI/Phone.tscn" id="11_wwlkg"]
+[ext_resource type="Script" uid="uid://dqhhjmkechlf" path="res://GeneralScripts/AudioScripts/audio_manager_phone.gd" id="14_wljcx"]
 [ext_resource type="AudioStream" uid="uid://oiijkhxhm8r6" path="res://Audio/misc_sounds/num_01.wav" id="15_jrc8q"]
 [ext_resource type="AudioStream" uid="uid://bp3cervcm2od7" path="res://Audio/misc_sounds/num_02.wav" id="16_1y2uo"]
 [ext_resource type="AudioStream" uid="uid://deuqrd0umjhpj" path="res://Audio/misc_sounds/num_03.wav" id="17_ltpo8"]
-[ext_resource type="Script" uid="uid://ce65wpgqyu531" path="res://GeneralScripts/AudioScripts/audio_manager.gd" id="17_ral7j"]
 [ext_resource type="AudioStream" uid="uid://bp6cy33wpsa5i" path="res://Audio/misc_sounds/PhoneSelectAlt.wav" id="18_gbn7m"]
 [ext_resource type="AudioStream" uid="uid://bg2un2dokyydw" path="res://Audio/misc_sounds/decline_call copy.wav" id="19_ftt10"]
 [ext_resource type="AudioStream" uid="uid://quq8ugrtqynq" path="res://Audio/misc_sounds/phoneSelect.wav" id="20_ahsod"]
@@ -231,7 +231,7 @@ libraries = {
 visible = false
 
 [node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
-script = ExtResource("17_ral7j")
+script = ExtResource("14_wljcx")
 audio_master = [NodePath("phone_back"), NodePath("phone_hover"), NodePath("ring"), NodePath("buzz"), NodePath("select"), NodePath("decline_call"), NodePath("accept_call"), NodePath("num_01"), NodePath("num_02"), NodePath("num_03"), NodePath("Hiss"), NodePath("altClick"), NodePath("phone_hover_high"), NodePath("ArrowClick"), NodePath("Phone_back_02"), NodePath("buzz"), NodePath("delete"), NodePath("flip"), NodePath("selectPhoto")]
 
 [node name="num_01" type="AudioStreamPlayer" parent="Sounds"]
