@@ -95,41 +95,41 @@ layer = 6
 visible = false
 pause = true
 
-[node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
+[node name="PauseSounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
 script = ExtResource("12_lc5u0")
 audio_master = [NodePath("Blip(start?)"), NodePath("Blip(back?)"), NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Hiss02(back?)")]
 
-[node name="Blip(start?)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Blip(start?)" type="AudioStreamPlayer" parent="PauseSounds"]
 stream = ExtResource("13_74tmv")
 bus = &"SFX"
 
-[node name="Blip(back?)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Blip(back?)" type="AudioStreamPlayer" parent="PauseSounds"]
 stream = ExtResource("14_a2krg")
 bus = &"SFX"
 
-[node name="Click(select)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Click(select)" type="AudioStreamPlayer" parent="PauseSounds"]
 stream = ExtResource("15_v2tnu")
 bus = &"SFX"
 
-[node name="Hiss(hover)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Hiss(hover)" type="AudioStreamPlayer" parent="PauseSounds"]
 stream = ExtResource("16_021is")
 bus = &"SFX"
 
-[node name="Hiss02(back?)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Hiss02(back?)" type="AudioStreamPlayer" parent="PauseSounds"]
 stream = ExtResource("17_4muie")
 bus = &"SFX"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="VBoxContainer/Resume" to="Sounds" method="_on_menuHover"]
+[connection signal="mouse_entered" from="VBoxContainer/Resume" to="PauseSounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="VBoxContainer/Resume" to="Sounds" method="_on_start_click"]
-[connection signal="mouse_entered" from="VBoxContainer/Options" to="Sounds" method="_on_menuHover"]
+[connection signal="pressed" from="VBoxContainer/Resume" to="PauseSounds" method="_on_start_click"]
+[connection signal="mouse_entered" from="VBoxContainer/Options" to="PauseSounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="Sounds" method="_on_menuClick"]
-[connection signal="mouse_entered" from="VBoxContainer/Controls" to="Sounds" method="_on_menuHover"]
+[connection signal="pressed" from="VBoxContainer/Options" to="PauseSounds" method="_on_menuClick"]
+[connection signal="mouse_entered" from="VBoxContainer/Controls" to="PauseSounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="VBoxContainer/Controls" to="Sounds" method="_on_menuClick"]
-[connection signal="mouse_entered" from="VBoxContainer/Save" to="Sounds" method="_on_menuHover"]
+[connection signal="pressed" from="VBoxContainer/Controls" to="PauseSounds" method="_on_menuClick"]
+[connection signal="mouse_entered" from="VBoxContainer/Save" to="PauseSounds" method="_on_menuHover"]
 [connection signal="pressed" from="VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="show_pause" from="Controls" to="." method="_on_controls_show_pause"]
 [connection signal="visibility_changed" from="Controls" to="Controls" method="_on_visibility_changed"]
