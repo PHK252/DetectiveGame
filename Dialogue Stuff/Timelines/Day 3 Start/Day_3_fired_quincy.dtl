@@ -1,8 +1,11 @@
 Dalton (Surprised): Huh?
 Dalton (Squint): What is this?
 [end_timeline]
-#= after read
-[signal arg = "start_call"]
+
+label call_talk
+[signal arg="start_call"]
+[end_timeline]
+label call
 Chief: [shake rate=10.0 level=4 connected=2]H-[/shake]
 Dalton (Angry): What is this?
 Dalton: I’ve nearly solved this case, why are you terminating-

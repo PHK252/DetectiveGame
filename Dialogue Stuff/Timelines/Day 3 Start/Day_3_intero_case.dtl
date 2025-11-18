@@ -57,6 +57,8 @@ if {Character Aff Points.Theo} < 3:
 	Dalton (Sigh): Theo, I think we are done here. 
 	Dalton (Talk): Take him to holding.
 	Theo (Resting): O-okay.
+	set {Endings.Ending_type} = "Arrested Skylar"
+	set {Interogation.ending} = true
 	[end_timeline]
 else:
 	set {Interogation.high_theo_case} = true
@@ -118,4 +120,6 @@ else:
 	Skylar (Squint): ...
 	Skylar (Sad): ...
 	Dalton (Resting): Hmph.
+	set {Endings.Ending_type} = "Arrested Skylar"
+	set {Interogation.ending} = true
 	[end_timeline]

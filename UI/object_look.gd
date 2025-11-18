@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var front = $"Object front"
 @onready var back = $"Object Back"
+@export var just_front : bool = false
 signal paper_sound
 
 signal _show_tut(tut_type : String)
@@ -21,17 +22,23 @@ func _input(event):
 
 func _on_object_front_gui_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			emit_signal("paper_sound")
-			back.show()
-			front.hide()
+		if just_front == false:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				emit_signal("paper_sound")
+				back.show()
+				front.hide()
+		else:
+			return
 
 func _on_object_back_gui_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			emit_signal("paper_sound")
-			back.hide()
-			front.show()
+		if just_front == false:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				emit_signal("paper_sound")
+				back.hide()
+				front.show()
+		else:
+			return
 
 func _on_exit_pressed():
 	$".".hide()

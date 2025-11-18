@@ -6,7 +6,10 @@ Theo (Talk): What now?
 Dalton (Squint): Hm?
 Dalton (Talk): I’m going to make a few calls...
 Dalton (Awkward): See what other evidence I can-
-[signal arg = "start_call"]
+[signal arg="start_call"]
+[end_timeline]
+
+label call
 Dalton (Default): Good morning, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]Good morning, Detective Reynard.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]The forensics team came back with a matching result.[/shake]
@@ -24,4 +27,5 @@ Theo (Happy): Really?!
 Dalton (Default): Forensics found a match.
 Theo (Talk): Oh, nice!
 Dalton (Sigh): Let’s just hope it’s the actual perpetrator.
+[signal arg = "To_Intero"]
 set {Interogation.Case_Intero} = true

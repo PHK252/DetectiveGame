@@ -32,6 +32,7 @@ script = ExtResource("1_y328m")
 
 [node name="Background2" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,6 +42,7 @@ texture = SubResource("CanvasTexture_gc5uo")
 
 [node name="Page7" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,6 +60,7 @@ texture = ExtResource("1_s7gga")
 
 [node name="Page6" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -75,6 +78,7 @@ texture = ExtResource("1_s7gga")
 
 [node name="Page5" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -92,6 +96,7 @@ texture = ExtResource("1_s7gga")
 
 [node name="Page4" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -109,6 +114,7 @@ texture = ExtResource("2_afs6b")
 
 [node name="Page3" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -126,6 +132,7 @@ texture = ExtResource("3_ba42s")
 
 [node name="Page2" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -143,6 +150,7 @@ texture = ExtResource("4_knxsk")
 
 [node name="Page1" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

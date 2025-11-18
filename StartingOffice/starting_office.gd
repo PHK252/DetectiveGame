@@ -10,7 +10,7 @@ extends Node3D
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 @onready var pause = $Pause
-
+var dialogue_file: String
 #settings
 @export var sub_v_container : SubViewportContainer
 @export var subviewport : SubViewportContainer
@@ -18,6 +18,7 @@ extends Node3D
 @export var world_env : WorldEnvironment
 @export var inputManager : InputManager
 
+signal change_texture(texture: String)
 func _ready():
 	GlobalVars.current_level = "Office"
 	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
@@ -32,13 +33,17 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	#$"UI/TeamPic Look".hide()
-	var dialogue_file = choose_office_dialogue()
+	if Dialogic.VAR.get_variable("Interogation.ending") == true:
+		choose_ending()
+	dialogue_file = choose_office_dialogue()
 	if dialogue_file != "":
 		if GlobalVars.in_dialogue == false:
 			await get_tree().create_timer(4.0).timeout
 			player.stop_player()
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.signal_event.connect(enter_Theo)
+			Dialogic.signal_event.connect(walk_out)
 			var layout = Dialogic.start(dialogue_file)
 			layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			layout.register_character(load("res://Dialogic Characters/Chief.dch"), dalton_marker)
@@ -77,14 +82,14 @@ func choose_office_dialogue():
 				return ""
 			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 				return "End_day_1_got_name"
-			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
+			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
 				return "End_day_1_got_hair_no_name"
 			if Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true and Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
 				return "End_day_1_got_kicked"
 			return "End_day_1_got_nothing"
 		2: 
 			if Dialogic.VAR.get_variable("Global.went_to_Quincy") == false:
-				if Dialogic.VAR.get_variable("Juniper.found_skylar") == true or Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
+				if Dialogic.VAR.get_variable("Juniper.found_skylar") == true or Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
 					return "Beginning_day_2_got_name_or_hair"
 				if Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true and Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
 					return "Beginning_day_2_got_kicked"
@@ -106,15 +111,81 @@ func choose_office_dialogue():
 				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
 					return "Day_3_gave_coor_case"
 				return "Day_3_case"
-			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
+			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
 				return "Day_3_hair"
 			if Dialogic.VAR.get_variable("Quincy.caught") == true:
+				Dialogic.VAR.set_variable("Endings.Ending_type", "Quincy fired")
+				emit_signal("change_texture", "res://UI/Assets/Endings/Quincy Fire@2x.png")
 				return "Day_3_fired_quincy"
+			Dialogic.VAR.set_variable("Endings.Ending_type", "Chief fired")
+			emit_signal("change_texture", "res://UI/Assets/Endings/Chief Fire@2x.png")
 			return "Day_3_fired_not_solved_case"
 		_:
 			print_debug("Day does not exist")
 			return ""
 
+func choose_ending():
+	emit_signal("change_texture", "res://UI/Assets/Endings/Give Kale Cure Choco P1@2x.png")
+	#match Dialogic.VAR.get_variable("Endings.Ending_type"):
+		#"Arrested Skylar":
+			#return "Ending_arrested_skylar"
+		#"Keep Confidential":
+			#return "Keep_confidential"
+		#"Give Skylar Cure":
+			#return "Ending_Give_Skylar_Cure"
+		#"Give Skylar Cure And Choco":
+			#return "Ending_Give_Skylar_Cure_choco"
+		#"Give Kale Cure":
+			#return "Ending_Give_Kale_Cure"
+		#"Give Kale Cure And Choco":
+			#return "Ending_Give_Kale_Cure_choco"
+		#_:
+			#print_debug("No Ending Uh Oh")
+			#return
+##Dialogue Signals
+func enter_Theo(argument: String):
+	if argument == "theo_walk_in":
+		#Prompt theo to walk through the door
+		print("Theo enters")
+		emit_signal("theo_move")
+		Dialogic.signal_event.disconnect(enter_Theo)
+		pass
+func exit_Theo(argument: String):
+	if argument == "theo_exit":
+		#Prompt theo to walk through the door
+		print("Theo exits")
+		#emit_signal("theo_move")
+		Dialogic.signal_event.disconnect(exit_Theo)
+		pass
+#add anims
+func walk_out(argument: String):
+	if argument == "To_Intero":
+		#Prompt theo to walk through the door
+		#print("Both exit")
+		#emit_signal("Both_walk out")
+		Dialogic.signal_event.disconnect(walk_out)
+		Loading.load_scene(self, GlobalVars.interrogation, false, "", "")
+		pass
+	elif argument == "walk_out":
+		#Prompt theo to walk through the door
+		#print("Both exit")
+		#emit_signal("Both_walk out")
+		Dialogic.signal_event.disconnect(walk_out)
+
+func calling(argument: String):
+	if argument == "start_call":
+		emit_signal("call_recieve")
+		GlobalVars.in_dialogue = false
+		Dialogic.signal_event.disconnect(calling)
+
+
+func _on_call_start_dialogue():
+		GlobalVars.in_dialogue = true
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Dialogic.start(dialogue_file, "call")
+		#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		#layout.register_character(load("res://Dialogic Characters/Quincy.dch"), dalton_marker)
+		#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 #settings changes
 
 func _set_pixelation() -> void:

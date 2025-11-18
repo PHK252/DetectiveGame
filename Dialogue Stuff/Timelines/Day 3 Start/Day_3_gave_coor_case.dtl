@@ -1,3 +1,4 @@
+label call
 Dalton (Talk): Good morning, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]Good morning, Detective Reynard.[/shake]
 Chief: [shake rate=10.0 level=4 connected=2]We have a Skylar Aslan in holding right now.[/shake] 
@@ -14,7 +15,7 @@ Dalton (Talk): Thank you, s-
 [signal arg = "end_call"]
 Dalton (Squint): Quincy was here?
 Dalton (Doubt1): How did he find-
-[signal arg = "theo_enter"]
+[signal arg = "theo_walk_in"]
 Theo (Laugh): Hi Dalton!
 Dalton (Talk): Suspect is in holding. 
 Dalton (Default): We should go talk to them. 
@@ -23,4 +24,5 @@ Theo (Happy): That quick?
 Dalton (Awkward): It was the mayor’s doing. 
 Theo (Talk): Interesting...
 Theo (Happy): Let’s go.
+[signal arg = "To_Intero"]
 set {Interogation.Case_Intero} = true
