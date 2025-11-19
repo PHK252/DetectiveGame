@@ -228,6 +228,26 @@ libraries = {
 }
 
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
+
+[node name="Accept" parent="CanvasLayer/Phone UI/PhoneScreen/PhoneCall" index="2"]
+offset_left = 907.0
+offset_top = 679.0
+offset_right = 1015.0
+offset_bottom = 787.0
+
+[node name="Decline" parent="CanvasLayer/Phone UI/PhoneScreen/PhoneCall" index="3"]
+visible = false
+
+[node name="AcceptAnim" parent="CanvasLayer/Phone UI/PhoneScreen/PhoneCall" index="4"]
+position = Vector2(961, 733)
+
+[node name="DeclineAnim" parent="CanvasLayer/Phone UI/PhoneScreen/PhoneCall" index="5"]
+visible = false
+
+[node name="ContactScreen" parent="CanvasLayer/Phone UI/PhoneScreen" index="6"]
+visible = true
+
+[node name="NotesScreen" parent="CanvasLayer/Phone UI" index="8"]
 visible = false
 
 [node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]

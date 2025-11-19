@@ -2,12 +2,12 @@ extends CanvasLayer
 
 @onready var phone_ui = $"."
 
-
 #screen
 @onready var home = $HomeScreen
 @onready var phone = $PhoneScreen
 @onready var gallery = $GalleryScreen
 @onready var notes = $NotesScreen
+@onready var home_button = $Home
 
 #phone 
 @onready var phone_num = $PhoneScreen/PhoneNum
@@ -26,8 +26,6 @@ extends CanvasLayer
 @onready var close_pic_6 = $"GalleryScreen/ClosePics/Close Pic6"
 @onready var close_pic_7 = $"GalleryScreen/ClosePics/Close Pic7"
 @onready var gallery_buttons = $GalleryScreen/ClosePics/Buttons
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -430,6 +428,7 @@ func exit_phone():
 	GlobalVars.phone_up = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	phone.hide()
+	home_button.disabled = false
 	home.show()
 
 func _on_timeline_ended():
@@ -451,6 +450,7 @@ func set_receiving_call():
 	phone_contact.hide()
 	phone_bottom.hide()
 	phone_call_receiving.show()
+	home_button.disabled = true
 	phone_anim.play("Call")
 
 func set_nums():
@@ -470,7 +470,7 @@ func _on_accept_pressed():
 	phone_call.hide()
 	phone.hide()
 	#await get_tree().create_timer(.3).timeout
-	GlobalVars.in_call = false
+	#GlobalVars.in_call = false
 
 
 func _on_decline_pressed():

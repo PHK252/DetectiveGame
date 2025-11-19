@@ -13,7 +13,7 @@ var is_open: bool = false
 signal general_interaction
 
 func _ready():
-	if GlobalVars.day == 1:
+	if GlobalVars.day == 1 or Dialogic.VAR.get_variable("Endings.Ending_type") != "":
 		interactable.set_deferred("monitorable", false)
 	else:
 		interactable.set_deferred("monitorable", true)
