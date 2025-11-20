@@ -14,6 +14,7 @@ extends MeshInstance3D
 
 var dialogue_file : String
 var just_interacted := false
+signal theo_out
 signal theo_move
 signal activate_map
 
@@ -22,7 +23,8 @@ signal general_interaction
 signal call_recieved
 
 func _ready():
-	#if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
+	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or "Give Kale Cure And Choco":
+		emit_signal("theo_out")
 		 #"res://UI/Assets/Endings/Give Skylar Cure P1@2x.png")
 		#return
 	#if Dialogic.VAR.get_variable("Endings.Ending_type") != true:
@@ -105,7 +107,6 @@ func _on_exit_pressed():
 			player.stop_player()
 			GlobalVars.in_dialogue = true
 			Dialogic.signal_event.connect(enter_ending_Theo)
-			Dialogic.signal_event.connect(exit_Theo)
 			Dialogic.signal_event.connect(walk_out)
 			Dialogic.signal_event.connect(calling)
 			if fired == false:
@@ -126,23 +127,10 @@ func enter_ending_Theo(argument: String):
 		emit_signal("theo_move")
 		Dialogic.signal_event.disconnect(enter_ending_Theo)
 		pass
-func exit_Theo(argument: String):
-	if argument == "theo_exit":
-		#Prompt theo to walk through the door
-		print("Theo exits")
-		#emit_signal("theo_move")
-		Dialogic.signal_event.disconnect(exit_Theo)
-		pass
+
 #add anims
 func walk_out(argument: String):
-	if argument == "To_Intero":
-		#Prompt theo to walk through the door
-		#print("Both exit")
-		#emit_signal("Both_walk out")
-		Dialogic.signal_event.disconnect(walk_out)
-		Loading.load_scene(self, GlobalVars.interrogation, false, "", "")
-		pass
-	elif argument == "walk_out":
+	if argument == "walk_out":
 		#Prompt theo to walk through the door
 		#print("Both exit")
 		#emit_signal("Both_walk out")

@@ -15,7 +15,8 @@ var come_in := false
 var dalton_rotation := false
 var blend_speed := 5.0
 signal look_dalton
-
+var in_later : bool = false
+var is_there : bool = false
 enum {
 	IDLE, 
 	WALK,
@@ -28,9 +29,19 @@ var see_player = false
 func _ready() -> void:
 	state = OUT
 	path.progress_ratio = 0
-	
-	if GlobalVars.day == 1 and Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
+	if GlobalVars.from_save_file == true:
+		global_position = GlobalVars.theo_pos
+		GlobalVars.from_save_file == false
 		return
+	#print("placed " + str(GlobalVars.dalton_pos))
+	await get_tree().process_frame
+	if (GlobalVars.day == 1 and Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false) or in_later == true:
+		in_later = false
+		return
+	if is_there == true:
+		is_there = false
+		print("theo in")
+		#set position
 	_return_office()
 	
 func _return_office():
@@ -39,7 +50,13 @@ func _return_office():
 	state = WALK
 	come_in = true
 	
-	
+
+func _on_delay_theo_in():
+	in_later = true
+
+func _on_theo_there():
+	pass # Replace with function body.
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

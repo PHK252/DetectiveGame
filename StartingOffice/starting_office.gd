@@ -19,6 +19,8 @@ var dialogue_file: String
 @export var inputManager : InputManager
 
 signal change_texture(texture: String)
+signal theo_out
+signal theo_there
 func _ready():
 	GlobalVars.current_level = "Office"
 	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
@@ -44,6 +46,8 @@ func _ready():
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.signal_event.connect(enter_Theo)
 			Dialogic.signal_event.connect(walk_out)
+			Dialogic.signal_event.connect(calling)
+			Dialogic.signal_event.connect(exit_Theo)
 			var layout = Dialogic.start(dialogue_file)
 			layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 			layout.register_character(load("res://Dialogic Characters/Chief.dch"), dalton_marker)
@@ -105,19 +109,26 @@ func choose_office_dialogue():
 		3: 
 			if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
 				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
+					emit_signal("theo_there")
 					return "Day_3_gave_coor_case_rever_theo"
+				emit_signal("theo_there")
 				return "Secret_To_Location"
 			if Dialogic.VAR.get_variable("Quincy.solved_case") == true and Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
+					emit_signal("theo_out")
 					return "Day_3_gave_coor_case"
+				emit_signal("theo_there")
 				return "Day_3_case"
 			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
+				emit_signal("theo_there")
 				return "Day_3_hair"
 			if Dialogic.VAR.get_variable("Quincy.caught") == true:
 				Dialogic.VAR.set_variable("Endings.Ending_type", "Quincy fired")
 				emit_signal("change_texture", "res://UI/Assets/Endings/Quincy Fire@2x.png")
+				emit_signal("theo_out")
 				return "Day_3_fired_quincy"
 			Dialogic.VAR.set_variable("Endings.Ending_type", "Chief fired")
+			emit_signal("theo_out")
 			emit_signal("change_texture", "res://UI/Assets/Endings/Chief Fire@2x.png")
 			return "Day_3_fired_not_solved_case"
 		_:
@@ -152,7 +163,7 @@ func enter_Theo(argument: String):
 		pass
 func exit_Theo(argument: String):
 	if argument == "theo_exit":
-		#Prompt theo to walk through the door
+		#Prompt theo to exit
 		print("Theo exits")
 		#emit_signal("theo_move")
 		Dialogic.signal_event.disconnect(exit_Theo)
@@ -166,10 +177,8 @@ func walk_out(argument: String):
 		Dialogic.signal_event.disconnect(walk_out)
 		Loading.load_scene(self, GlobalVars.interrogation, false, "", "")
 		pass
-	elif argument == "walk_out":
-		#Prompt theo to walk through the door
-		#print("Both exit")
-		#emit_signal("Both_walk out")
+	elif argument == "fade":
+		#Fade to Credits
 		Dialogic.signal_event.disconnect(walk_out)
 
 func calling(argument: String):
