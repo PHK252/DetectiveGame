@@ -13,6 +13,8 @@ extends Control
 @onready var phone_up = false
 
 signal start_dialogue
+signal start_call_day_3
+signal start_call_end
 signal declined_call
 signal buzz
 signal _show_tut(tut_type : String)
@@ -23,7 +25,7 @@ var exit = InputMap.action_get_events("Exit")
 var interact = InputMap.action_get_events("interact")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# phone call code
+	phone_ui.hide()
 	#await get_tree().create_timer(3).timeout
 	#GlobalVars.emit_phone_call()
 	pass
@@ -94,11 +96,15 @@ func call_end():
 func _on_accept_pressed():
 	GlobalVars.in_call = true
 	call_end()
-	emit_signal("start_dialogue")
 	if GlobalVars.day == 1:
 		GlobalVars.Day_1_Quincy_call = true
+		emit_signal("start_dialogue")
+		return
 	if GlobalVars.day == 3:
 		GlobalVars.Day_3_Chief_call = true
+		emit_signal("start_call_day_3")
+		return
+	emit_signal("start_call_end")
 
 
 func _on_decline_pressed():

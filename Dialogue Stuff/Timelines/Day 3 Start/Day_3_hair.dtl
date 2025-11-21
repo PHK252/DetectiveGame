@@ -7,6 +7,7 @@ Dalton (Squint): Hm?
 Dalton (Talk): I’m going to make a few calls...
 Dalton (Awkward): See what other evidence I can-
 [signal arg="start_call"]
+Dalton (Surprised): ...!
 [end_timeline]
 
 label call
@@ -21,11 +22,12 @@ Chief: [shake rate=10.0 level=4 connected=2]We’ll move Aslan to the interrogat
 Dalton (Default): Understood.
 Dalton (Talk): Thank you, s-
 [signal arg = "end_call"]
+[wait time="1.0"]
 Dalton (Sigh): Huu...
 Dalton (Talk): A suspect’s en route to the station. 
 Theo (Happy): Really?!
 Dalton (Default): Forensics found a match.
 Theo (Talk): Oh, nice!
-Dalton (Sigh): Let’s just hope it’s the actual perpetrator.
+Dalton (Awkward): Let’s just hope it’s the actual perpetrator.
 [signal arg = "To_Intero"]
 set {Interogation.Case_Intero} = true

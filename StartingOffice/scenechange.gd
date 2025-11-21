@@ -191,10 +191,7 @@ func _on_visibility_changed():
 func _on_Quincy_call_start_dialogue():
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	var layout = Dialogic.start("Day_1_Quincy_Call")
-	layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	layout.register_character(load("res://Dialogic Characters/Quincy.dch"), dalton_marker)
-	layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+	Dialogic.start("Day_1_Quincy_Call")
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

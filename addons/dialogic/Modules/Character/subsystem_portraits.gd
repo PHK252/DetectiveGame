@@ -672,7 +672,6 @@ func change_speaker(speaker: DialogicCharacter = null, portrait := "") -> void:
 
 			if join_animation and join_animation_length:
 				_animate_node(container.get_child(-1), join_animation, join_animation_length)
-
 		_change_portrait_mirror(container.get_child(-1))
 
 	if speaker:

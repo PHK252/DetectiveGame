@@ -18,9 +18,14 @@ var dialogue_file: String
 @export var world_env : WorldEnvironment
 @export var inputManager : InputManager
 
+var call := false
+
 signal change_texture(texture: String)
 signal theo_out
+signal theo_move
 signal theo_there
+signal call_recieve
+
 func _ready():
 	GlobalVars.current_level = "Office"
 	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
@@ -73,8 +78,12 @@ func _input(event):
 	
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-	player.start_player()
 	GlobalVars.in_dialogue = false
+	if call == true:
+		return
+	player.start_player()
+	
+
 
 
 #choosing dialogue if there is any
@@ -107,7 +116,9 @@ func choose_office_dialogue():
 					return "End_day_2_got_case"
 				return "End_day_2_got_hair"
 		3: 
+			call = true
 			if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
+				call = false
 				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
 					emit_signal("theo_there")
 					return "Day_3_gave_coor_case_rever_theo"
@@ -123,10 +134,12 @@ func choose_office_dialogue():
 				emit_signal("theo_there")
 				return "Day_3_hair"
 			if Dialogic.VAR.get_variable("Quincy.caught") == true:
+				call = false
 				Dialogic.VAR.set_variable("Endings.Ending_type", "Quincy fired")
 				emit_signal("change_texture", "res://UI/Assets/Endings/Quincy Fire@2x.png")
 				emit_signal("theo_out")
 				return "Day_3_fired_quincy"
+			call = false
 			Dialogic.VAR.set_variable("Endings.Ending_type", "Chief fired")
 			emit_signal("theo_out")
 			emit_signal("change_texture", "res://UI/Assets/Endings/Chief Fire@2x.png")
@@ -172,7 +185,7 @@ func exit_Theo(argument: String):
 func walk_out(argument: String):
 	if argument == "To_Intero":
 		#Prompt theo to walk through the door
-		#print("Both exit")
+		print("Both exit")
 		#emit_signal("Both_walk out")
 		Dialogic.signal_event.disconnect(walk_out)
 		Loading.load_scene(self, GlobalVars.interrogation, false, "", "")
@@ -185,16 +198,18 @@ func calling(argument: String):
 	if argument == "start_call":
 		emit_signal("call_recieve")
 		GlobalVars.in_dialogue = false
+		#Dialogic.paused = true
+		#Dialogic.Styles.get_layout_node().hide()
 		Dialogic.signal_event.disconnect(calling)
 
 
-func _on_call_start_dialogue():
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		Dialogic.start(dialogue_file, "call")
-		#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		#layout.register_character(load("res://Dialogic Characters/Quincy.dch"), dalton_marker)
-		#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+func _on_start_call():
+	GlobalVars.in_dialogue = true
+	call = false
+	#Dialogic.paused = false
+	#Dialogic.Styles.get_layout_node().show()
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	Dialogic.start(dialogue_file, "call")
 #settings changes
 
 func _set_pixelation() -> void:

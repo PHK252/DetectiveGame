@@ -35,10 +35,12 @@ Dalton (Sigh): ...
 Dalton (Sad): I’ll start packing my stuff.
 Chief: [shake rate=10.0 level=4 connected=2]Dal-[/shake]
 [signal arg = "end_call"]
+[wait time="1.0""]
 Dalton (Angry): F*ck!
 Dalton (Sigh): Haah...
 Dalton (Awkward): What am I going to do now?
 [signal arg="theo_walk_in"]
+[wait time="5.0""]
 Dalton (Default): ... 
 Theo (Happy): ...?
 Theo (Talk): Did ya catch a cold or something?

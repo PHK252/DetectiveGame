@@ -107,7 +107,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 				print(str(int(progress * 100)) + "%")
 			3:
 				loaded = true
-				
+				print(GlobalVars.in_dialogue)
 				if GlobalVars.in_dialogue == true:
 					await Signal(self, "end_dialogue") 
 					print("awaiting")
@@ -126,7 +126,7 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 					return
 				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				#await get_tree().process_frame
-				#print(GlobalVars.current_level)
+				print(GlobalVars.current_level)
 				
 				return
 

@@ -37,11 +37,12 @@ Chief: [shake rate=10.0 level=4 connected=2]I don’t think you will be able to 
 Chief: [shake rate=10.0 level=4 connected=2]Good luck with your future endeavors.[/shake]
 Dalton (Squint): Wai-
 [signal arg = "end_call"]
-#[end_timeline]
+[wait time="1.0"]
 Dalton (Angry): F*ck!
 Dalton (Sigh): Haah...
 Dalton (Resting): You and I both know, my ass...
 [signal arg = "theo_walk_in"]
+[wait time="5.0""]
 Dalton (Angry): You!
 Dalton (Squint): How dare you rat me out to Chief!
 Theo (Mad): What did you want me to do?

@@ -41,6 +41,7 @@ func _ready() -> void:
 	if is_there == true:
 		is_there = false
 		print("theo in")
+		return
 		#set position
 	_return_office()
 	
@@ -55,7 +56,7 @@ func _on_delay_theo_in():
 	in_later = true
 
 func _on_theo_there():
-	pass # Replace with function body.
+	is_there = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

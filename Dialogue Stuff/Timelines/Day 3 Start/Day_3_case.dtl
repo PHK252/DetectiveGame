@@ -7,6 +7,7 @@ Dalton (Squint): Hm?
 Dalton (Talk): I’m going to make a few calls...
 Dalton (Resting): See what I can find on Sky-
 [signal arg="start_call"]
+Dalton (Surprised): ...!
 [end_timeline]
 
 label call
@@ -22,11 +23,13 @@ Dalton (Talk): Thank you, sir.
 Chief: [shake rate=10.0 level=4 connected=2]We’ll move Aslan to the interrogation room when you and Detective Lycus are ready.[/shake]
 Dalton (Talk): Thank you, s-
 [signal arg = "end_call"]
+[wait time="1.0"]
 Dalton (Sigh): Huu...
 Dalton (Talk): The suspect’s in holding already. 
 Theo (Laugh): Hah!
 Theo (Happy): It’s like we manifested it. 
 Dalton (Resting): Hmph. 
+label here
 Dalton (Talk): Let’s go. 
 Theo (Talk): Right behind ya!
 [signal arg = "To_Intero"]
