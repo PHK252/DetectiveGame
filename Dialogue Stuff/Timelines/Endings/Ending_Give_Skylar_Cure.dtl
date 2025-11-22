@@ -12,9 +12,10 @@ Theo (Sigh): ...
 Theo (Thinking): They’ll come back. 
 Theo (Concerned): They always do...
 [signal arg="start_call"]
+Dalton (Surprised): ...!
 [end_timeline]
 label call
-Dalton (Surprised): ...!
+
 Dalton (Angry): Is Sky-
 Chief (Call): [shake rate=10.0 level=4 connected=2]Assault and battery reported at the Hustle and Bustle in Industry.[/shake] 
 Chief (Call): [shake rate=10.0 level=4 connected=2]You two are the only officers on standby, so prepare to roll out.[/shake] 
@@ -23,6 +24,7 @@ Chief (Call): [shake rate=10.0 level=4 connected=2]Huu...[/shake]
 Chief (Call): [shake rate=10.0 level=4 connected=2]Still nothing on Skylar.[/shake]
 Chief (Call): [shake rate=10.0 level=4 connected=2]I’m sorry.[/shake]
 [signal arg="end_call"]
+[wait time="1.0"]
 Dalton (Sigh): Hu...
 Dalton (Resting): Let’s go...
 Theo (Surprised): ...!

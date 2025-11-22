@@ -24,7 +24,7 @@ signal general_interaction
 signal call_recieved
 
 func _ready():
-	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or  Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure And Choco":
+	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure And Choco":
 		emit_signal("theo_out")
 		 #"res://UI/Assets/Endings/Give Skylar Cure P1@2x.png")
 		#return
@@ -146,12 +146,11 @@ func calling(argument: String):
 
 
 func _on_call_start_dialogue():
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_ending_timeline_ended)
-		Dialogic.start(dialogue_file, "call")
-		#layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		#layout.register_character(load("res://Dialogic Characters/Quincy.dch"), dalton_marker)
-		#layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+	print(dialogue_file)
+	GlobalVars.in_dialogue = true
+	Dialogic.timeline_ended.connect(_on_ending_timeline_ended)
+	
+	Dialogic.start(dialogue_file, "call")
 	
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
@@ -166,15 +165,14 @@ func _on_timeline_ended():
 
 func _on_ending_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_ending_timeline_ended)
-	player.start_player()
-	alert.show()
 	#Anim and fade stuff
+	print("To credits")
 	pass
 	
 func _on_phone_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_phone_timeline_ended)
-	player.start_player()
-	#Anim and fade stuff
+	#player.start_player()
+	#Anim
 	pass
 
 func _input(event):

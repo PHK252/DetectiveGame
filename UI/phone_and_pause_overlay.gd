@@ -17,6 +17,7 @@ signal start_call_day_3
 signal start_call_end
 signal declined_call
 signal buzz
+signal stop_buzz
 signal _show_tut(tut_type : String)
 
 var accepted = false
@@ -88,6 +89,7 @@ func call_end():
 	GlobalVars.calling = false
 	call_anim.stop()
 	call_normal.show()
+	emit_signal("stop_buzz")
 	receiving_call.hide()
 	phone_ui.hide()
 	called = true
@@ -100,11 +102,15 @@ func _on_accept_pressed():
 		GlobalVars.Day_1_Quincy_call = true
 		emit_signal("start_dialogue")
 		return
+	if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
+		print("emitting")
+		emit_signal("start_call_end")
+		return
 	if GlobalVars.day == 3:
 		GlobalVars.Day_3_Chief_call = true
 		emit_signal("start_call_day_3")
 		return
-	emit_signal("start_call_end")
+
 
 
 func _on_decline_pressed():

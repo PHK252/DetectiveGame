@@ -40,8 +40,9 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	#$"UI/TeamPic Look".hide()
-	if Dialogic.VAR.get_variable("Interogation.ending") == true:
+	if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
 		choose_ending()
+		return
 	dialogue_file = choose_office_dialogue()
 	if dialogue_file != "":
 		if GlobalVars.in_dialogue == false:

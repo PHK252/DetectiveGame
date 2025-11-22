@@ -332,8 +332,7 @@ pitch_scale = 1.2
 bus = &"SFX"
 
 [connection signal="buzz" from="." to="Sounds" method="_on_phone_buzz"]
-[connection signal="declined_call" from="." to="Sounds" method="_on_stop_buzz"]
-[connection signal="start_dialogue" from="." to="Sounds" method="_on_stop_buzz"]
+[connection signal="stop_buzz" from="." to="Sounds" method="_on_stop_buzz"]
 [connection signal="pressed" from="CanvasLayer/Receiving call" to="." method="_on_receiving_call_pressed"]
 [connection signal="pressed" from="CanvasLayer/Call Normal" to="." method="_on_call_normal_pressed"]
 [connection signal="enable_interact" from="CanvasLayer/Phone UI" to="." method="exit_call_screen"]
