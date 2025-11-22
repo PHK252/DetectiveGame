@@ -261,5 +261,5 @@ func enter_Theo(argument: String):
 
 func _on_change_texture(texture):
 	print("change")
-	await get_tree().process_frame
-	set_instance_shader_parameter("shader_paramater/texture_albedo", texture)
+	get_active_material(0).set_shader_parameter("texture_albedo", load(texture))
+	#set_instance_shader_parameter("shader_paramater/texture_albedo", load(texture))

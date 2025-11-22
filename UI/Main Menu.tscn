@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b4hwa6q2nro5o"]
+[gd_scene load_steps=63 format=3 uid="uid://b4hwa6q2nro5o"]
 
 [ext_resource type="Script" uid="uid://c0ljt443mhj4a" path="res://UI/Main Menu.gd" id="1_avvtg"]
 [ext_resource type="Texture2D" uid="uid://d3kvej03xuxeb" path="res://UI/Assets/Main Menu/Updated/Start Board.png" id="2_8wcpv"]
@@ -55,6 +55,7 @@
 [ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="53_lk11p"]
 [ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="54_70b4d"]
 [ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="55_hggkw"]
+[ext_resource type="AudioStream" uid="uid://c5ayxplys2fqs" path="res://Music/Main Menu + 6.wav" id="56_prttk"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_prttk"]
 frames = 6
@@ -299,6 +300,10 @@ bus = &"SFX"
 [node name="Hiss02(back?)" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("55_hggkw")
 bus = &"SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("56_prttk")
+autoplay = true
 
 [connection signal="mouse_entered" from="Start/VBoxContainer/Controls" to="Sounds" method="_on_menuHover"]
 [connection signal="pressed" from="Start/VBoxContainer/Controls" to="." method="_on_controls_pressed"]

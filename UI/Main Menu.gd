@@ -10,6 +10,7 @@ var new_game : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(GlobalVars.current_level)
+	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("New Game: " + str(new_game))
 	if new_game == true:
