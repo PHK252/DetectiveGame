@@ -24,7 +24,7 @@ signal general_interaction
 signal call_recieved
 
 func _ready():
-	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or "Give Kale Cure And Choco":
+	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or  Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure And Choco":
 		emit_signal("theo_out")
 		 #"res://UI/Assets/Endings/Give Skylar Cure P1@2x.png")
 		#return

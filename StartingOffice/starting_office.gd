@@ -65,6 +65,8 @@ func _input(event):
 	if Input.is_action_just_pressed("Quit"):
 		if pause.visible == false:
 			pause.visible = true
+	#if Input.is_action_just_pressed("mouse_click"):
+		#print("Dalton " + str(GlobalVars.dalton_pos))
 	
 #func _input(event):
 	#if Input.is_key_pressed(KEY_S):
@@ -117,12 +119,17 @@ func choose_office_dialogue():
 				return "End_day_2_got_hair"
 		3: 
 			call = true
+			if Dialogic.VAR.get_variable("Quincy.caught") == true:
+				call = false
+				Dialogic.VAR.set_variable("Endings.Ending_type", "Quincy fired")
+				emit_signal("change_texture", "res://UI/Assets/Endings/Quincy Fire@2x.png")
+				emit_signal("theo_out")
+				return "Day_3_fired_quincy"
 			if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
 				call = false
-				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
-					emit_signal("theo_there")
-					return "Day_3_gave_coor_case_rever_theo"
 				emit_signal("theo_there")
+				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
+					return "Day_3_gave_coor_case_rever_theo"
 				return "Secret_To_Location"
 			if Dialogic.VAR.get_variable("Quincy.solved_case") == true and Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
@@ -133,12 +140,7 @@ func choose_office_dialogue():
 			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
 				emit_signal("theo_there")
 				return "Day_3_hair"
-			if Dialogic.VAR.get_variable("Quincy.caught") == true:
-				call = false
-				Dialogic.VAR.set_variable("Endings.Ending_type", "Quincy fired")
-				emit_signal("change_texture", "res://UI/Assets/Endings/Quincy Fire@2x.png")
-				emit_signal("theo_out")
-				return "Day_3_fired_quincy"
+
 			call = false
 			Dialogic.VAR.set_variable("Endings.Ending_type", "Chief fired")
 			emit_signal("theo_out")

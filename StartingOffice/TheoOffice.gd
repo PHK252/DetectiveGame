@@ -35,14 +35,16 @@ func _ready() -> void:
 		return
 	#print("placed " + str(GlobalVars.dalton_pos))
 	await get_tree().process_frame
+	await get_tree().process_frame
 	if (GlobalVars.day == 1 and Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false) or in_later == true:
 		in_later = false
 		return
 	if is_there == true:
-		is_there = false
 		print("theo in")
+		is_there = false
+		global_position = Vector3(0.527486, -0.029458, 0.551869)
 		return
-		#set position
+		
 	_return_office()
 	
 func _return_office():
@@ -53,9 +55,11 @@ func _return_office():
 	
 
 func _on_delay_theo_in():
+	print("theo out")
 	in_later = true
 
 func _on_theo_there():
+	print("theo in")
 	is_there = true
 
 func _physics_process(delta: float) -> void:
