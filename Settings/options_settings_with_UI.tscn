@@ -1,0 +1,719 @@
+[gd_scene load_steps=15 format=3 uid="uid://bhdb8cl0l8n27"]
+
+[ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_5jm4l"]
+[ext_resource type="Script" uid="uid://b5b3482ku7twe" path="res://Settings/window_mode.gd" id="2_is0l0"]
+[ext_resource type="Script" uid="uid://dknnj5f6c6tgm" path="res://Settings/resolution.gd" id="3_d5ajy"]
+[ext_resource type="Script" uid="uid://b78rwgf7trpph" path="res://Settings/shadows.gd" id="4_usseb"]
+[ext_resource type="Script" uid="uid://df82vbu0cty7x" path="res://Settings/brightness.gd" id="5_601wi"]
+[ext_resource type="Script" uid="uid://dj60ugfwogfoa" path="res://Settings/vsync.gd" id="6_ofjab"]
+[ext_resource type="Script" uid="uid://hw5kvlyrysff" path="res://Settings/display_fps.gd" id="7_2033e"]
+[ext_resource type="Script" uid="uid://m821lsxq61kl" path="res://Settings/pixelation.gd" id="8_4yxcg"]
+[ext_resource type="Script" uid="uid://cvaacwnn3tuje" path="res://Settings/remap_input.gd" id="9_w0vcm"]
+[ext_resource type="AudioStream" uid="uid://daj81pl4kj1c0" path="res://Audio/Ambience/fireplace.wav" id="10_q765p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypc3l"]
+
+[sub_resource type="Theme" id="Theme_vva6b"]
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_ypc3l")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l2f5"]
+bg_color = Color(0.813258, 0.813258, 0.813257, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3gqv"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Options_Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 395.0
+offset_top = 68.0
+offset_right = -448.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="FPS" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 616.0
+offset_right = 1005.0
+offset_bottom = 671.0
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ButtonsAltforTabs" type="VBoxContainer" parent="Panel/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 62
+
+[node name="Graphics" type="Button" parent="Panel/AspectRatioContainer/MarginContainer/ButtonsAltforTabs"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Graphics"
+
+[node name="Audio" type="Button" parent="Panel/AspectRatioContainer/MarginContainer/ButtonsAltforTabs"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Audio"
+
+[node name="Controls" type="Button" parent="Panel/AspectRatioContainer/MarginContainer/ButtonsAltforTabs"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Controls"
+
+[node name="TabContainer" type="TabContainer" parent="Panel/AspectRatioContainer"]
+layout_mode = 2
+tab_alignment = 1
+current_tab = 1
+
+[node name="Sound" type="TabBar" parent="Panel/AspectRatioContainer/TabContainer" node_paths=PackedStringArray("ambience", "amb_label", "master", "master_label", "sfx", "sfx_label", "music", "music_label")]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+script = ExtResource("1_5jm4l")
+ambience = NodePath("MarginContainer/VBoxContainer/Ambience/ambience_slider")
+amb_label = NodePath("MarginContainer/VBoxContainer/Ambience/ambience_value")
+master = NodePath("MarginContainer/VBoxContainer/Master/master_slider")
+master_label = NodePath("MarginContainer/VBoxContainer/Master/master_value")
+sfx = NodePath("MarginContainer/VBoxContainer/SFX/sfx_slider")
+sfx_label = NodePath("MarginContainer/VBoxContainer/SFX/sfx_value")
+music = NodePath("MarginContainer/VBoxContainer/Music/music_slider")
+music_label = NodePath("MarginContainer/VBoxContainer/Music/master_value")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer/TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Master"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
+
+[node name="master_slider" type="HSlider" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Master"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
+
+[node name="master_value" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="Music" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Music
+"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+
+[node name="music_slider" type="HSlider" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Music"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+
+[node name="master_value" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="SFX" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/SFX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SFX"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/SFX"]
+layout_mode = 2
+
+[node name="sfx_slider" type="HSlider" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/SFX"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/SFX"]
+layout_mode = 2
+
+[node name="sfx_value" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/SFX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="Ambience" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Ambience" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Ambience"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Ambience"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Ambience"]
+layout_mode = 2
+
+[node name="ambience_slider" type="HSlider" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Ambience"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Ambience"]
+layout_mode = 2
+
+[node name="ambience_value" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Ambience"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="Graphics" type="TabBar" parent="Panel/AspectRatioContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer"]
+layout_mode = 2
+
+[node name="Screen" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("op_button")]
+layout_mode = 2
+script = ExtResource("2_is0l0")
+op_button = NodePath("WindowMode")
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Screen:"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen"]
+layout_mode = 2
+
+[node name="WindowMode" type="OptionButton" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen"]
+layout_mode = 2
+theme = SubResource("Theme_vva6b")
+theme_override_font_sizes/font_size = 40
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless Window"
+popup/item_2/id = 2
+
+[node name="Resolution" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("cl", "op_button")]
+layout_mode = 2
+script = ExtResource("3_d5ajy")
+cl = NodePath("../../../../../..")
+op_button = NodePath("OptionButton")
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Resolution"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+selected = 5
+item_count = 6
+popup/item_0/text = "384x216"
+popup/item_0/id = 0
+popup/item_1/text = "768x432"
+popup/item_1/id = 1
+popup/item_2/text = "1152x648"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+popup/item_4/text = "1512x982"
+popup/item_4/id = 4
+popup/item_5/text = "1920x1080"
+popup/item_5/id = 5
+
+[node name="Shadows" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("checkbox")]
+layout_mode = 2
+script = ExtResource("4_usseb")
+checkbox = NodePath("CheckBox")
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Shadows"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Shadows"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Shadows"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Shadows"]
+layout_mode = 2
+
+[node name="Brightness" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("slider")]
+layout_mode = 2
+script = ExtResource("5_601wi")
+slider = NodePath("HSlider")
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Brightness"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Brightness"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Brightness"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Brightness"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+min_value = 0.7
+max_value = 1.2
+step = 0.01
+value = 1.0
+
+[node name="Vsync" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("targ_fps", "op_button")]
+layout_mode = 2
+script = ExtResource("6_ofjab")
+targ_fps = NodePath("../target fps")
+op_button = NodePath("OptionButton")
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Vsync"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "enabled"
+popup/item_0/id = 0
+popup/item_1/text = "adaptive"
+popup/item_1/id = 1
+popup/item_2/text = "disabled"
+popup/item_2/id = 2
+
+[node name="target fps" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/target fps"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Target FPS"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/target fps"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/target fps"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "30"
+popup/item_0/id = 0
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "unlimited"
+popup/item_2/id = 2
+
+[node name="display fps" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("fps_label", "checkbox")]
+layout_mode = 2
+script = ExtResource("7_2033e")
+fps_label = NodePath("../../../../../../FPS")
+checkbox = NodePath("CheckBox")
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/display fps"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Display FPS"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/display fps"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/display fps"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="pixelation" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("op_button")]
+layout_mode = 2
+script = ExtResource("8_4yxcg")
+op_button = NodePath("OptionButton")
+
+[node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/pixelation"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Pixelation"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/pixelation"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/pixelation"]
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "squeaky clean"
+popup/item_0/id = 0
+popup/item_1/text = "clean"
+popup/item_1/id = 1
+popup/item_2/text = "normal"
+popup/item_2/id = 2
+popup/item_3/text = "crunchy"
+popup/item_3/id = 3
+popup/item_4/text = "mega crunchy"
+popup/item_4/id = 4
+
+[node name="Reset" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Reset" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Reset *not for window:   "
+
+[node name="reset_graphics" type="Button" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "X"
+
+[node name="Controls" type="TabBar" parent="Panel/AspectRatioContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = 28
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Interact" type="ScrollContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="actions" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Interact" type="Button" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact/actions" node_paths=PackedStringArray("input_label")]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3l2f5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o3gqv")
+script = ExtResource("9_w0vcm")
+action = "interact"
+input_label = NodePath("MarginContainer/HBoxContainer/LabelInput")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact/actions/Interact"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact/actions/Interact/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "Interact"
+vertical_alignment = 1
+
+[node name="spacer" type="Control" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "E"
+vertical_alignment = 1
+
+[node name="Phone" type="ScrollContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="actions" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Interact" type="Button" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone/actions" node_paths=PackedStringArray("input_label")]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3l2f5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o3gqv")
+script = ExtResource("9_w0vcm")
+action = "Phone"
+input_label = NodePath("MarginContainer/HBoxContainer/LabelInput")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone/actions/Interact"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone/actions/Interact/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "Phone"
+vertical_alignment = 1
+
+[node name="spacer" type="Control" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "tab"
+vertical_alignment = 1
+
+[node name="Jog" type="ScrollContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="actions" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Interact" type="Button" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog/actions" node_paths=PackedStringArray("input_label")]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3l2f5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o3gqv")
+script = ExtResource("9_w0vcm")
+action = "jog"
+input_label = NodePath("MarginContainer/HBoxContainer/LabelInput")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog/actions/Interact"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog/actions/Interact/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "Jog"
+vertical_alignment = 1
+
+[node name="spacer" type="Control" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "shift"
+vertical_alignment = 1
+
+[node name="movement(up)" type="ScrollContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="actions" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Interact" type="Button" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)/actions" node_paths=PackedStringArray("input_label")]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3l2f5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o3gqv")
+script = ExtResource("9_w0vcm")
+action = "Forward"
+input_label = NodePath("MarginContainer/HBoxContainer/LabelInput")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)/actions/Interact"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)/actions/Interact/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "Up"
+vertical_alignment = 1
+
+[node name="spacer" type="Control" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)/actions/Interact/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "w"
+vertical_alignment = 1
+
+[node name="ResetButton" type="Button" parent="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "X"
+
+[node name="Language" type="TabBar" parent="Panel/AspectRatioContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="SoundTest" type="AudioStreamPlayer" parent="Panel/AspectRatioContainer"]
+stream = ExtResource("10_q765p")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="value_changed" from="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Master/master_slider" to="Panel/AspectRatioContainer/TabContainer/Sound" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Music/music_slider" to="Panel/AspectRatioContainer/TabContainer/Sound" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/SFX/sfx_slider" to="Panel/AspectRatioContainer/TabContainer/Sound" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Ambience/ambience_slider" to="Panel/AspectRatioContainer/TabContainer/Sound" method="_on_ambience_slider_value_changed"]
+[connection signal="full_screen" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution" method="_on_screen_full_screen"]
+[connection signal="windowed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution" method="_on_screen_windowed"]
+[connection signal="item_selected" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen/WindowMode" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen" method="_on_window_mode_item_selected"]
+[connection signal="item_selected" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution/OptionButton" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution" method="_on_option_button_item_selected"]
+[connection signal="toggled" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Shadows/CheckBox" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Shadows" method="_on_check_box_toggled"]
+[connection signal="value_changed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Brightness/HSlider" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Brightness" method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync/OptionButton" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync" method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/target fps/OptionButton" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync" method="_on_fps_button_item_selected"]
+[connection signal="toggled" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/display fps/CheckBox" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/display fps" method="_on_check_box_toggled"]
+[connection signal="item_selected" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/pixelation/OptionButton" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/pixelation" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset/reset_graphics" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Screen" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset/reset_graphics" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Resolution" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset/reset_graphics" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Shadows" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset/reset_graphics" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Brightness" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset/reset_graphics" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset/reset_graphics" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/display fps" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Reset/reset_graphics" to="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/pixelation" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Interact/actions/Interact" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Phone/actions/Interact" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/Jog/actions/Interact" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/ResetButton" to="Panel/AspectRatioContainer/TabContainer/Controls/PanelContainer/MarginContainer/VBoxContainer/movement(up)/actions/Interact" method="_on_reset_button_pressed"]
