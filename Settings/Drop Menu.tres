@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://b32kbvbggqevs"]
+
+[ext_resource type="FontFile" uid="uid://51xhy48fnpro" path="res://Dialogue Stuff/Fonts/Menu Font High Bottom.ttf" id="1_sc5yj"]
+[ext_resource type="Texture2D" uid="uid://dfs4f7w2d6gfs" path="res://UI/Assets/Options/Graphics/Dropdown Selection.png" id="2_8atgl"]
+[ext_resource type="Texture2D" uid="uid://bin2h2x3av8wd" path="res://UI/Assets/Options/Graphics/Plain Dropdown.png" id="3_fj2bw"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_vqiio"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_xk2vx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xk2vx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vqiio"]
+texture = ExtResource("3_fj2bw")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xk2vx"]
+color = Color(0.811765, 0.760784, 0.658824, 1)
+grow_begin = -5.0
+grow_end = -5.0
+thickness = 12
+
+[resource]
+PopupMenu/colors/font_color = Color(0.898039, 0.678431, 0.180392, 1)
+PopupMenu/colors/font_hover_color = Color(0.992157, 0.835294, 0.478431, 1)
+PopupMenu/constants/item_start_padding = 12
+PopupMenu/constants/separator_outline_size = 0
+PopupMenu/constants/v_separation = 24
+PopupMenu/font_sizes/font_separator_size = 6
+PopupMenu/font_sizes/font_size = 60
+PopupMenu/fonts/font = ExtResource("1_sc5yj")
+PopupMenu/icons/radio_checked = ExtResource("2_8atgl")
+PopupMenu/icons/radio_checked_disabled = SubResource("ImageTexture_vqiio")
+PopupMenu/icons/radio_unchecked = SubResource("ImageTexture_xk2vx")
+PopupMenu/styles/hover = SubResource("StyleBoxEmpty_xk2vx")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_vqiio")
+PopupMenu/styles/separator = SubResource("StyleBoxLine_xk2vx")

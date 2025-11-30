@@ -9,6 +9,7 @@ var base_window_size := Vector2(
 @export var op_button : OptionButton
 var full := false
 var windowed := false 
+var open := false
 
 func _ready() -> void:
 	get_viewport().size_changed.connect(_on_new_window_size)
@@ -30,6 +31,7 @@ func _on_new_window_size():
 	cl.pivot_offset = cl.size / 2   # CanvasLayer doesn’t have pivot, but its children do
 
 func _on_option_button_item_selected(index: int) -> void:
+	op_button.release_focus()
 	match index:
 		0:
 			base_window_size = Vector2i(384,216)
@@ -76,3 +78,22 @@ func _on_reset_graphics_pressed() -> void:
 	#full = true
 	#windowed = false
 	#op_button.selected = 5
+
+
+func _on_option_panel_clicked(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			op_button.release_focus()
+
+
+func _on_option_button_clicked(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			if open == true:
+				op_button.release_focus()
+
+
+
+
+func _on_option_button_toggled(toggled_on):
+	open = toggled_on

@@ -1,4 +1,4 @@
-[gd_scene load_steps=420 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=421 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -4011,6 +4011,8 @@ size = Vector2(288.837, 329.595)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gyyf"]
 size = Vector2(700, 1028)
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_lefkv"]
+
 [node name="Main" type="Node3D" node_paths=PackedStringArray("player", "dalton_marker", "theo_marker", "sub_v_container", "lights", "world_env")]
 script = ExtResource("1_aawn4")
 player = NodePath("SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
@@ -5494,8 +5496,11 @@ texture = ExtResource("143_jx4vc")
 [node name="Options_Settings" parent="." instance=ExtResource("134_58g4l")]
 visible = false
 
-[node name="SoundTest" parent="Options_Settings/Panel/AspectRatioContainer" index="2"]
-autoplay = false
+[node name="Audio" parent="Options_Settings/Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="0"]
+button_group = SubResource("ButtonGroup_lefkv")
+
+[node name="Graphics" parent="Options_Settings/Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="1"]
+button_group = SubResource("ButtonGroup_lefkv")
 
 [node name="Phone and Pause Overlay" parent="." node_paths=PackedStringArray("player") instance=ExtResource("135_kjarc")]
 player = NodePath("../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
@@ -5681,9 +5686,6 @@ stream = ExtResource("144_2gyyf")
 [connection signal="pressed" from="UI/Skylar Cure Choco/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Arrest Skylar/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Keep Secret/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
-[connection signal="set_shadow" from="Options_Settings/Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Shadows" to="." method="_set_shadow"]
-[connection signal="brightness_shift" from="Options_Settings/Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Brightness" to="." method="_on_brightness_brightness_shift"]
-[connection signal="set_pixelation" from="Options_Settings/Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/pixelation" to="." method="_set_pixelation"]
 [connection signal="declined_call" from="Phone and Pause Overlay" to="UI/Map" method="_on_Quincy_declined_call"]
 [connection signal="start_call_day_3" from="Phone and Pause Overlay" to="." method="_on_start_call"]
 [connection signal="start_call_end" from="Phone and Pause Overlay" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_call_start_dialogue"]

@@ -48,3 +48,36 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 func _on_ambience_slider_value_changed(value: float) -> void:
 	amb_label.text = str(int(round(ambience.value * 10)))
 	AudioServer.set_bus_volume_db(amb_index, linear_to_db(value))
+
+
+func _on_master_slider_clicked(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			master.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber Pressed.png"))
+		else:
+			master.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber normal.png"))
+
+
+
+func _on_music_slider_clicked(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			music.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber Pressed.png"))
+		else:
+			music.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber normal.png"))
+
+
+func _on_sfx_slider_clicked(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			sfx.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber Pressed.png"))
+		else:
+			sfx.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber normal.png"))
+
+
+func _on_ambience_slider_clicked(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			ambience.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber Pressed.png"))
+		else:
+			ambience.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber normal.png"))

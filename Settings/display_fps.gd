@@ -3,7 +3,7 @@ extends HBoxContainer
 @export var fps_label : Label
 var display_fps := false 
 
-@export var checkbox : CheckBox
+@export var checkbox : TextureButton
 
 func _ready() -> void:
 	fps_label.visible = false

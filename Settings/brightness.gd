@@ -15,3 +15,10 @@ func _on_reset_graphics_pressed() -> void:
 	GlobalVars.brightness = 1.0
 	slider.value = 1.0
 	emit_signal("brightness_shift")
+
+func _on_brightness_slider_clicked(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			slider.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber Pressed.png"))
+		else:
+			slider.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber normal.png"))
