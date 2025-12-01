@@ -11,16 +11,15 @@ func _on_option_button_item_selected(index: int) -> void:
 		1:
 			GlobalVars.stretch_factor = 4
 		2:
-			GlobalVars.stretch_factor = 6
-		3:
 			GlobalVars.stretch_factor = 7
-		4:
+		3:
 			GlobalVars.stretch_factor = 8
-			
+		4: 
+			GlobalVars.stretch_factor = 6
 	emit_signal("set_pixelation")
 
 func _on_reset_graphics_pressed() -> void:
-	op_button.selected = 2
+	op_button.selected = 4
 	GlobalVars.stretch_factor = 6
 	emit_signal("set_pixelation")
 

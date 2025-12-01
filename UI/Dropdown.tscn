@@ -1,0 +1,246 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6sdhxrs21m7a"]
+
+[ext_resource type="Texture2D" uid="uid://cqacges6jb8mp" path="res://UI/Assets/Options/Graphics/Dropdown Closed Small Normal.png" id="1_hk85n"]
+[ext_resource type="Script" uid="uid://bsk0722lheqme" path="res://UI/dropdown.gd" id="1_mil8g"]
+[ext_resource type="Texture2D" uid="uid://bj7ex5okfxj86" path="res://UI/Assets/Options/Graphics/Dropdown Closed Small Pressed.png" id="2_mil8g"]
+[ext_resource type="FontFile" uid="uid://51xhy48fnpro" path="res://Dialogue Stuff/Fonts/Menu Font High Bottom.ttf" id="3_gatmg"]
+[ext_resource type="Texture2D" uid="uid://cr13ypssjijun" path="res://UI/Assets/Options/Graphics/Dropdown Menu Button Normal.png" id="5_gatmg"]
+[ext_resource type="Texture2D" uid="uid://bm8iq0w2j674j" path="res://UI/Assets/Options/Graphics/Dropdown Menu Button Pressed.png" id="6_sdogv"]
+[ext_resource type="Script" uid="uid://b7ufuajki3cgw" path="res://UI/MenuButton.gd" id="7_sdogv"]
+[ext_resource type="Texture2D" uid="uid://k7m7sprc7rg2" path="res://UI/Assets/Options/Graphics/Dropdown Menu End Button Normal.png" id="8_a012y"]
+[ext_resource type="Texture2D" uid="uid://bpj7ignrasafc" path="res://UI/Assets/Options/Graphics/Dropdown Menu End Button Pressed.png" id="9_d5x7y"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_cyx36"]
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mil8g")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
+selected = 2
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Main" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("1_hk85n")
+texture_pressed = ExtResource("2_mil8g")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("3_gatmg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Hello"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Option1" type="TextureButton" parent="VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cyx36")
+texture_normal = ExtResource("5_gatmg")
+texture_pressed = ExtResource("6_sdogv")
+texture_hover = ExtResource("6_sdogv")
+script = ExtResource("7_sdogv")
+menu = NodePath("../../..")
+label = "1920"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("3_gatmg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cyx36")
+texture_normal = ExtResource("5_gatmg")
+texture_pressed = ExtResource("6_sdogv")
+texture_hover = ExtResource("6_sdogv")
+script = ExtResource("7_sdogv")
+menu = NodePath("../../..")
+label = "2563"
+index = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("3_gatmg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option3" type="TextureButton" parent="VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cyx36")
+texture_normal = ExtResource("5_gatmg")
+texture_pressed = ExtResource("6_sdogv")
+texture_hover = ExtResource("6_sdogv")
+script = ExtResource("7_sdogv")
+menu = NodePath("../../..")
+label = "Good1563"
+index = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("3_gatmg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cyx36")
+texture_normal = ExtResource("5_gatmg")
+texture_pressed = ExtResource("6_sdogv")
+texture_hover = ExtResource("6_sdogv")
+script = ExtResource("7_sdogv")
+menu = NodePath("../../..")
+label = "18963"
+index = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("3_gatmg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option5" type="TextureButton" parent="VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cyx36")
+texture_normal = ExtResource("5_gatmg")
+texture_pressed = ExtResource("6_sdogv")
+texture_hover = ExtResource("6_sdogv")
+script = ExtResource("7_sdogv")
+menu = NodePath("../../..")
+label = "15692"
+index = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("3_gatmg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cyx36")
+texture_normal = ExtResource("8_a012y")
+texture_pressed = ExtResource("9_d5x7y")
+texture_hover = ExtResource("9_d5x7y")
+script = ExtResource("7_sdogv")
+menu = NodePath("../../..")
+label = "28999"
+index = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("3_gatmg")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="toggled" from="VBoxContainer/Main" to="." method="_on_texture_button_toggled"]
+[connection signal="mouse_entered" from="VBoxContainer/Menu/Option1" to="VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Menu/Option1" to="VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Menu/Option1" to="VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="VBoxContainer/Menu/Option1" to="." method="_on_option_select"]
+[connection signal="mouse_entered" from="VBoxContainer/Menu/Option2" to="VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Menu/Option2" to="VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Menu/Option2" to="VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="VBoxContainer/Menu/Option2" to="." method="_on_option_select"]
+[connection signal="mouse_entered" from="VBoxContainer/Menu/Option3" to="VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Menu/Option3" to="VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Menu/Option3" to="VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="VBoxContainer/Menu/Option3" to="." method="_on_option_select"]
+[connection signal="mouse_entered" from="VBoxContainer/Menu/Option4" to="VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Menu/Option4" to="VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Menu/Option4" to="VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="VBoxContainer/Menu/Option4" to="." method="_on_option_select"]
+[connection signal="mouse_entered" from="VBoxContainer/Menu/Option5" to="VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Menu/Option5" to="VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Menu/Option5" to="VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="VBoxContainer/Menu/Option5" to="." method="_on_option_select"]
+[connection signal="mouse_entered" from="VBoxContainer/Menu/Option6" to="VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Menu/Option6" to="VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Menu/Option6" to="VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="VBoxContainer/Menu/Option6" to="." method="_on_option_select"]

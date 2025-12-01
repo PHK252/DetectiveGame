@@ -19,17 +19,26 @@ var sfx_index = AudioServer.get_bus_index("SFX")
 var music_index = AudioServer.get_bus_index("Music")
 var master_index = AudioServer.get_bus_index("Master")
 
+var master_default : float
+var music_default : float
+var sfx_default : float
+var amb_default : float
+
 func _ready() -> void:
 	master.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
+	master_default = master.value
 	master_label.text = str(int(round(master.value * 10)))
 	#
 	music.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
+	music_default = music.value
 	music_label.text = str(int(round(music.value * 10)))
 	#
 	sfx.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
+	sfx_default = sfx.value
 	sfx_label.text = str(int(round(sfx.value * 10)))
 	#
 	ambience.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
+	amb_default = ambience.value
 	amb_label.text = str(int(round(ambience.value * 10)))
 	#
 
@@ -48,6 +57,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 func _on_ambience_slider_value_changed(value: float) -> void:
 	amb_label.text = str(int(round(ambience.value * 10)))
 	AudioServer.set_bus_volume_db(amb_index, linear_to_db(value))
+
 
 
 func _on_master_slider_clicked(event):
@@ -81,3 +91,10 @@ func _on_ambience_slider_clicked(event):
 			ambience.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber Pressed.png"))
 		else:
 			ambience.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber normal.png"))
+
+
+func _on_audio_reset_pressed():
+	master.value = master_default
+	music.value = music_default
+	sfx.value = sfx_default
+	ambience.value = amb_default

@@ -19,3 +19,4 @@ func _on_check_box_toggled(toggled_on: bool) -> void:
 func _on_reset_graphics_pressed() -> void:
 	fps_label.visible = false
 	display_fps = false
+	checkbox.button_pressed = false

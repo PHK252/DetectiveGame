@@ -38,7 +38,7 @@ func _on_option_button_item_selected(index: int) -> void:
 func _on_reset_graphics_pressed() -> void:
 	op_button.selected = 0
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	targ_fps.visible = false
+	#targ_fps.visible = false
 	#_apply_fps_cap(0)
 
 func _on_option_panel_clicked(event):

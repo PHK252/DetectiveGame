@@ -1,7 +1,12 @@
 extends HBoxContainer
 
 signal set_shadow
-@export var checkbox : CheckBox
+@export var checkbox : TextureButton
+
+func _ready():
+	checkbox.button_pressed = true
+	GlobalVars.optional_shadow = true
+	emit_signal("set_shadow")
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	GlobalVars.optional_shadow = toggled_on
