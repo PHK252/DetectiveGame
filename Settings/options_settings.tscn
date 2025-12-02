@@ -1,6 +1,7 @@
-[gd_scene load_steps=75 format=3 uid="uid://d2hmxhs2js55d"]
+[gd_scene load_steps=104 format=3 uid="uid://d2hmxhs2js55d"]
 
 [ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_6ko55"]
+[ext_resource type="Script" uid="uid://duefet7jfp0uk" path="res://Settings/options_settings.gd" id="1_8i1sl"]
 [ext_resource type="Texture2D" uid="uid://dfdc8vkr01sfx" path="res://UI/Assets/Options/Graphics/Graphics Outline.png" id="1_i103g"]
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="1_vva6b"]
 [ext_resource type="AudioStream" uid="uid://daj81pl4kj1c0" path="res://Audio/Ambience/fireplace.wav" id="2_av0ln"]
@@ -38,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://dnxuulrywoyjt" path="res://UI/Assets/Options/Graphics/Resolution Label NS.png" id="29_vqiio"]
 [ext_resource type="FontFile" uid="uid://51xhy48fnpro" path="res://Dialogue Stuff/Fonts/Menu Font High Bottom.ttf" id="30_4p1b2"]
 [ext_resource type="Theme" uid="uid://b32kbvbggqevs" path="res://Settings/Drop Menu.tres" id="30_xk2vx"]
+[ext_resource type="Texture2D" uid="uid://c4i7g6k4h83u2" path="res://UI/Assets/Options/Graphics/Resolution Label.png" id="31_xr3is"]
 [ext_resource type="StyleBox" uid="uid://cgyydtbcr0kfc" path="res://Settings/Pressed Drop.tres" id="32_4p1b2"]
 [ext_resource type="StyleBox" uid="uid://brtho6qxcot63" path="res://Settings/Normal Drop.tres" id="33_cgbsv"]
 [ext_resource type="Script" uid="uid://cw7i4vcl2oo7n" path="res://Settings/option_button.gd" id="35_6fw26"]
@@ -50,6 +52,29 @@
 [ext_resource type="Texture2D" uid="uid://c6jo5gdkrcjye" path="res://UI/Assets/Options/Graphics/Toggle Pressed.png" id="43_l6ppg"]
 [ext_resource type="Texture2D" uid="uid://ejdxmav0nmyr" path="res://UI/Assets/Options/Graphics/Toggle Hovered.png" id="44_6fw26"]
 [ext_resource type="Texture2D" uid="uid://t7hq8hkqg5gw" path="res://UI/Assets/Options/Graphics/Shadows Label.png" id="46_yj3ep"]
+[ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="52_afqvd"]
+[ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="53_0kyy0"]
+[ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="54_2lsoo"]
+[ext_resource type="Texture2D" uid="uid://rk6y41d0oyc8" path="res://UI/Assets/Options/Tabs/Audio Label NS2.png" id="55_cn4cl"]
+[ext_resource type="Texture2D" uid="uid://c40mm7t75yvss" path="res://UI/Assets/Options/Tabs/Audio Label NS1.png" id="56_850at"]
+[ext_resource type="Texture2D" uid="uid://yml1plvihjdw" path="res://UI/Assets/Options/Tabs/Graphics Label NS2.png" id="57_qucnj"]
+[ext_resource type="Texture2D" uid="uid://ddoerpdq2wvqg" path="res://UI/Assets/Options/Tabs/Graphics Label NS1.png" id="58_x2h7q"]
+[ext_resource type="Texture2D" uid="uid://dxo6sqsqiidpc" path="res://UI/Assets/Options/Tabs/Reset Label NS2.png" id="59_4vdat"]
+[ext_resource type="Texture2D" uid="uid://bc83f4pnqg4oi" path="res://UI/Assets/Options/Tabs/Reset Label NS1.png" id="60_6gipo"]
+[ext_resource type="Texture2D" uid="uid://cgdw4qdkqckby" path="res://UI/Assets/Options/Audio/Master Label NS.png" id="61_q8uc2"]
+[ext_resource type="StyleBox" uid="uid://ch8ia8ddidoct" path="res://UI/Slider_NS.tres" id="62_3hrip"]
+[ext_resource type="Texture2D" uid="uid://ew4yvv73cgr4" path="res://UI/Assets/Options/Audio/Music Label NS.png" id="63_cfi1e"]
+[ext_resource type="Texture2D" uid="uid://q4h3d553tt0v" path="res://UI/Assets/Options/Audio/SFXs Label NS.png" id="64_l5w4m"]
+[ext_resource type="Texture2D" uid="uid://bjiejabdqkvb1" path="res://UI/Assets/Options/Audio/Ambience Label NS.png" id="65_8eai4"]
+[ext_resource type="Texture2D" uid="uid://vbrsclw64tut" path="res://UI/Assets/Options/Graphics/Brightness label NS.png" id="66_l2q3a"]
+[ext_resource type="Texture2D" uid="uid://c2bemniagr2dj" path="res://UI/Assets/Options/Graphics/Pixelation Label NS.png" id="68_mk5fo"]
+[ext_resource type="Texture2D" uid="uid://giajdcr430xf" path="res://UI/Assets/Options/Graphics/Screen Label NS.png" id="69_vamlv"]
+[ext_resource type="Texture2D" uid="uid://dvsq05lb5mlm4" path="res://UI/Assets/Options/Graphics/Vsync Label NS.png" id="70_44tj7"]
+[ext_resource type="Texture2D" uid="uid://ccn6k5xljuh5n" path="res://UI/Assets/Options/Graphics/FPS Label NS.png" id="71_sif7o"]
+[ext_resource type="Texture2D" uid="uid://caxkrchlhrjl0" path="res://UI/Assets/Options/Graphics/Toggle Normal NS.png" id="72_bujvx"]
+[ext_resource type="Texture2D" uid="uid://duxacabrqyfvv" path="res://UI/Assets/Options/Graphics/Toggle Pressed NS.png" id="73_igg84"]
+[ext_resource type="Texture2D" uid="uid://pasvdlj2r7gi" path="res://UI/Assets/Options/Graphics/Toggle Hovered NS.png" id="74_mb4rt"]
+[ext_resource type="Texture2D" uid="uid://b1tm4cohwhdxq" path="res://UI/Assets/Options/Graphics/Shadows Label NS.png" id="75_t1ojo"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_pimcf"]
 device = -1
@@ -130,22 +155,33 @@ texture_margin_top = 40.0
 
 [sub_resource type="ImageTexture" id="ImageTexture_yj3ep"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_8i1sl"]
+
 [sub_resource type="ImageTexture" id="ImageTexture_xvywo"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_vsfar"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_mcnnx"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_cixxg"]
+
 [sub_resource type="ImageTexture" id="ImageTexture_u4j8q"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_pcq5y"]
+
 [node name="Options_Settings" type="CanvasLayer"]
+script = ExtResource("1_8i1sl")
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Panel" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Main Menu"]
 layout_mode = 1
@@ -173,6 +209,7 @@ text = "0"
 vertical_alignment = 1
 
 [node name="AudioOutline" type="Sprite2D" parent="Main Menu/AspectRatioContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0.356863)
 texture = ExtResource("1_i103g")
 centered = false
@@ -249,6 +286,7 @@ texture_hover = ExtResource("13_xv5xv")
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AnimatedTexture_yyj6m")
 texture_pressed = ExtResource("13_xv5xv")
 texture_hover = ExtResource("13_xv5xv")
@@ -441,6 +479,7 @@ text = "8.0
 "
 
 [node name="Graphics" type="MarginContainer" parent="Main Menu/AspectRatioContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 553
@@ -499,9 +538,10 @@ op_button = NodePath("OptionButton")
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("29_vqiio")
+texture = ExtResource("31_xr3is")
 
 [node name="OptionButton" type="OptionButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
+visible = false
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -542,13 +582,54 @@ popup/item_4/text = "1512x982"
 popup/item_4/id = 4
 popup/item_5/text = "1920x1080"
 popup/item_5/id = 5
-script = ExtResource("35_6fw26")
+
+[node name="Resolution Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+selected = 5
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+
+[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" index="0"]
+text = "1920-1080"
+
+[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer" index="1"]
+z_index = 2
+
+[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "384-216"
+
+[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "768-432"
+index = 1
+
+[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1152-648"
+index = 2
+
+[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1280-720"
+index = 3
+
+[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1512-982"
+index = 4
+
+[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1920-1080"
+index = 5
 
 [node name="pixelation" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("4_w8hml")
-op_button = NodePath("OptionButton")
+op_button = NodePath("Pixelation Menu")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation"]
 layout_mode = 2
@@ -592,10 +673,49 @@ popup/item_3/text = "Mega Crunchy"
 popup/item_3/id = 3
 popup/item_4/text = "Normal"
 popup/item_4/id = 4
-script = ExtResource("35_6fw26")
 
-[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" instance=ExtResource("38_vsfar")]
+[node name="Pixelation Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 114)
 layout_mode = 2
+size_flags_horizontal = 0
+selected = 2
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+
+[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" index="0"]
+text = "Normal"
+
+[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer" index="1"]
+z_index = 2
+mouse_filter = 0
+
+[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Ultra Clean"
+
+[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Clean"
+index = 1
+
+[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Normal"
+index = 2
+
+[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Crunch"
+index = 3
+
+[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
+visible = false
+button_group = SubResource("ButtonGroup_vsfar")
+
+[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Ultra Crunch"
+index = 4
 
 [node name="HSeparator" type="HSeparator" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -604,23 +724,28 @@ theme_override_constants/separation = 6
 
 [node name="Screen_Vsync" type="HBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 83
 
 [node name="Screen" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("2_i8y7k")
 op_button = NodePath("WindowMode")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 texture = ExtResource("37_cgbsv")
 
 [node name="VSeparator" type="VSeparator" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="WindowMode" type="OptionButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
+visible = false
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -656,24 +781,73 @@ popup/item_2/text = "Borderless"
 popup/item_2/id = 2
 script = ExtResource("35_6fw26")
 
+[node name="Window Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+selected = 1
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+sub_menu = true
+main_box_container = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" index="0"]
+mouse_filter = 0
+
+[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" index="0"]
+text = "Windowed"
+
+[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer" index="1"]
+z_index = 2
+
+[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_cixxg")
+label = "Fullscreen"
+
+[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_cixxg")
+label = "Windowed"
+index = 1
+
+[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
+visible = false
+button_group = SubResource("ButtonGroup_cixxg")
+
+[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+visible = false
+button_group = SubResource("ButtonGroup_cixxg")
+
+[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+visible = false
+button_group = SubResource("ButtonGroup_cixxg")
+
+[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_cixxg")
+label = "Borderless"
+index = 2
+
 [node name="Vsync" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("4_qakdx")
 op_button = NodePath("OptionButton")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 texture = ExtResource("39_u4j8q")
 
 [node name="VSeparator" type="VSeparator" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="OptionButton" type="OptionButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
+visible = false
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("30_xk2vx")
 theme_override_colors/font_hover_pressed_color = Color(0.898039, 0.678431, 0.180392, 1)
@@ -704,6 +878,47 @@ popup/item_2/text = "Disabled"
 popup/item_2/id = 2
 script = ExtResource("35_6fw26")
 
+[node name="Vsync Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+selected = 0
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+sub_menu = true
+main_box_container = NodePath("VBoxContainer")
+
+[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" index="0"]
+text = "Enabled"
+
+[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer" index="1"]
+z_index = 2
+
+[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_pcq5y")
+label = "Enabled"
+
+[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_pcq5y")
+label = "Disabled"
+index = 1
+
+[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
+visible = false
+button_group = SubResource("ButtonGroup_pcq5y")
+
+[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+visible = false
+button_group = SubResource("ButtonGroup_pcq5y")
+
+[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+visible = false
+button_group = SubResource("ButtonGroup_pcq5y")
+
+[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_pcq5y")
+label = "Adaptive"
+index = 2
+
 [node name="HSeparator2" type="HSeparator" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
@@ -711,25 +926,29 @@ theme_override_constants/separation = 6
 
 [node name="FpS_Shadows" type="HBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 84
 
 [node name="display fps" type="HBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("fps_label", "checkbox")]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 29
 script = ExtResource("4_hhtmw")
 fps_label = NodePath("../../../../FPS Container/FPS")
-checkbox = NodePath("MarginContainer/CheckBox")
+checkbox = NodePath("MarginContainer/Fps")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 texture = ExtResource("41_4ecwm")
 
 [node name="MarginContainer" type="MarginContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 18
 
-[node name="CheckBox" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer"]
+[node name="Fps" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer"]
 custom_minimum_size = Vector2(96, 90)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -742,19 +961,22 @@ texture_hover = ExtResource("44_6fw26")
 
 [node name="Shadows" type="HBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("checkbox")]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("4_3l2f5")
-checkbox = NodePath("MarginContainer/CheckBox")
+checkbox = NodePath("MarginContainer/Shadows")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 texture = ExtResource("46_yj3ep")
 
 [node name="MarginContainer" type="MarginContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 18
 
-[node name="CheckBox" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer"]
+[node name="Shadows" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -784,18 +1006,867 @@ volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
-[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_panel_clicked"]
-[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_panel_clicked"]
-[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_panel_clicked"]
-[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_panel_clicked"]
+[node name="Pause Menu" type="Panel" parent="."]
+process_mode = 2
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Pause Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.77
+alignment_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="FPS Container" type="MarginContainer" parent="Pause Menu/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="FPS" type="Label" parent="Pause Menu/AspectRatioContainer/FPS Container"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/font = ExtResource("1_vva6b")
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+
+[node name="AudioOutline" type="Sprite2D" parent="Pause Menu/AspectRatioContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.356863)
+texture = ExtResource("1_i103g")
+centered = false
+
+[node name="Exit" type="MarginContainer" parent="Pause Menu/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 53
+theme_override_constants/margin_top = 44
+
+[node name="Main_exit_button" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Exit"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_mswj7")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("52_afqvd")
+texture_pressed = ExtResource("53_0kyy0")
+texture_hover = ExtResource("53_0kyy0")
+texture_disabled = ExtResource("54_2lsoo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/AspectRatioContainer" node_paths=PackedStringArray("sound_tab", "graphics_tab", "audio_button", "audio_reset", "graphic_reset")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 78
+theme_override_constants/margin_top = 227
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("7_l6ppg")
+sound_tab = NodePath("../Sound")
+graphics_tab = NodePath("../Graphics")
+audio_button = NodePath("ButtonsAltforTabs/Audio")
+audio_reset = NodePath("ButtonsAltforTabs/Audio Reset")
+graphic_reset = NodePath("ButtonsAltforTabs/Graphics Reset")
+
+[node name="ButtonsAltforTabs" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 110
+
+[node name="Audio" type="TextureButton" parent="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_yyj6m")
+texture_normal = ExtResource("55_cn4cl")
+texture_pressed = ExtResource("56_850at")
+texture_hover = ExtResource("56_850at")
+
+[node name="Graphics" type="TextureButton" parent="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_yyj6m")
+texture_normal = ExtResource("57_qucnj")
+texture_pressed = ExtResource("58_x2h7q")
+texture_hover = ExtResource("58_x2h7q")
+
+[node name="Audio Reset" type="TextureButton" parent="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("59_4vdat")
+texture_pressed = ExtResource("60_6gipo")
+texture_hover = ExtResource("60_6gipo")
+
+[node name="Graphics Reset" type="TextureButton" parent="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("59_4vdat")
+texture_pressed = ExtResource("60_6gipo")
+texture_hover = ExtResource("60_6gipo")
+
+[node name="Sound" type="MarginContainer" parent="Pause Menu/AspectRatioContainer" node_paths=PackedStringArray("ambience", "amb_label", "master", "master_label", "sfx", "sfx_label", "music", "music_label")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 606
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_6ko55")
+ambience = NodePath("VBoxContainer/Ambience/ambience_slider")
+amb_label = NodePath("VBoxContainer/Ambience/ambience_value")
+master = NodePath("VBoxContainer/Master/master_slider")
+master_label = NodePath("VBoxContainer/Master/master_value")
+sfx = NodePath("VBoxContainer/SFX/sfx_slider")
+sfx_label = NodePath("VBoxContainer/SFX/sfx_value")
+music = NodePath("VBoxContainer/Music/music_slider")
+music_label = NodePath("VBoxContainer/Music/master_value")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Sound"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Master" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Master"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("61_q8uc2")
+
+[node name="VSeparator" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Master"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 135
+
+[node name="master_slider" type="HSlider" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Master"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_v64us")
+theme_override_constants/grabber_offset = -2
+theme_override_icons/grabber = ExtResource("20_mswj7")
+theme_override_icons/grabber_highlight = ExtResource("20_mswj7")
+theme_override_icons/tick = SubResource("ImageTexture_v64us")
+theme_override_styles/slider = ExtResource("62_3hrip")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_mswj7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_v64us")
+max_value = 1.0
+step = 0.01
+value = 0.96
+scrollable = false
+
+[node name="VSeparator2" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Master"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 113
+
+[node name="master_value" type="Label" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Master"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="Music" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("63_cfi1e")
+
+[node name="VSeparator" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Music"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 190
+
+[node name="music_slider" type="HSlider" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Music"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("20_mswj7")
+theme_override_icons/grabber_highlight = ExtResource("20_mswj7")
+theme_override_styles/slider = ExtResource("62_3hrip")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_6vm75")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_mee5e")
+max_value = 1.0
+step = 0.01
+value = 0.8
+scrollable = false
+
+[node name="VSeparator2" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Music"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 113
+
+[node name="master_value" type="Label" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Music"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="SFX" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/SFX"]
+layout_mode = 2
+texture = ExtResource("64_l5w4m")
+
+[node name="VSeparator" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/SFX"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 213
+
+[node name="sfx_slider" type="HSlider" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/SFX"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("20_mswj7")
+theme_override_icons/grabber_highlight = ExtResource("20_mswj7")
+theme_override_styles/slider = ExtResource("62_3hrip")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_ww76w")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_j7q5d")
+max_value = 1.0
+step = 0.01
+value = 0.8
+scrollable = false
+
+[node name="VSeparator2" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/SFX"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 113
+
+[node name="sfx_value" type="Label" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/SFX"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="Ambience" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer"]
+layout_mode = 2
+
+[node name="Ambience" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience"]
+layout_mode = 2
+texture = ExtResource("65_8eai4")
+
+[node name="VSeparator" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 82
+
+[node name="ambience_slider" type="HSlider" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("20_mswj7")
+theme_override_icons/grabber_highlight = ExtResource("20_mswj7")
+theme_override_styles/slider = ExtResource("62_3hrip")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_i103g")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_elrco")
+max_value = 1.0
+step = 0.01
+value = 0.8
+scrollable = false
+
+[node name="VSeparator2" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 113
+
+[node name="ambience_value" type="Label" parent="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8.0
+"
+
+[node name="Graphics" type="MarginContainer" parent="Pause Menu/AspectRatioContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 553
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 117
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="Brightness" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer" node_paths=PackedStringArray("slider")]
+layout_mode = 2
+script = ExtResource("6_ypc3l")
+slider = NodePath("HSlider")
+
+[node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("66_l2q3a")
+
+[node name="VSeparator" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 87
+
+[node name="HSlider" type="HSlider" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("20_mswj7")
+theme_override_icons/grabber_highlight = ExtResource("20_mswj7")
+theme_override_icons/tick = SubResource("ImageTexture_cgbsv")
+theme_override_styles/slider = ExtResource("62_3hrip")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_u4j8q")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_xvywo")
+min_value = 0.7
+max_value = 1.2
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="Pixel_Res" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 83
+
+[node name="Resolution" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("cl", "op_button")]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("3_i8y7k")
+cl = NodePath("../../../../..")
+op_button = NodePath("OptionButton")
+
+[node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("29_vqiio")
+
+[node name="OptionButton" type="OptionButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
+visible = false
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+mouse_default_cursor_shape = 2
+theme = ExtResource("30_xk2vx")
+theme_override_colors/font_hover_pressed_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_hover_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_focus_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/font = ExtResource("30_4p1b2")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = ExtResource("32_4p1b2")
+theme_override_styles/hover_pressed_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/hover_pressed = ExtResource("33_cgbsv")
+theme_override_styles/hover_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/hover = ExtResource("33_cgbsv")
+theme_override_styles/pressed_mirrored = ExtResource("32_4p1b2")
+theme_override_styles/pressed = ExtResource("32_4p1b2")
+theme_override_styles/normal_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/normal = ExtResource("33_cgbsv")
+theme_override_icons/arrow = SubResource("ImageTexture_yj3ep")
+alignment = 1
+selected = 5
+fit_to_longest_item = false
+allow_reselect = true
+item_count = 6
+popup/item_0/text = "384x216"
+popup/item_0/id = 0
+popup/item_1/text = "768x432"
+popup/item_1/id = 1
+popup/item_2/text = "1152x648"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+popup/item_4/text = "1512x982"
+popup/item_4/id = 4
+popup/item_5/text = "1920x1080"
+popup/item_5/id = 5
+
+[node name="Resolution Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+selected = 5
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+
+[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" index="0"]
+text = "1920-1080"
+
+[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer" index="1"]
+z_index = 2
+
+[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "384-216"
+
+[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "768-432"
+index = 1
+
+[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1152-648"
+index = 2
+
+[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1280-720"
+index = 3
+
+[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1512-982"
+index = 4
+
+[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_8i1sl")
+label = "1920-1080"
+index = 5
+
+[node name="pixelation" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button")]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("4_w8hml")
+op_button = NodePath("Pixelation Menu")
+
+[node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("68_mk5fo")
+
+[node name="OptionButton" type="OptionButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation"]
+visible = false
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("30_xk2vx")
+theme_override_colors/font_hover_pressed_color = Color(0.898039, 0.690196, 0.180392, 1)
+theme_override_colors/font_hover_color = Color(0.898039, 0.690196, 0.180392, 1)
+theme_override_colors/font_color = Color(0.898039, 0.690196, 0.180392, 1)
+theme_override_colors/font_focus_color = Color(0.898039, 0.690196, 0.180392, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.690196, 0.180392, 1)
+theme_override_fonts/font = ExtResource("30_4p1b2")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = ExtResource("32_4p1b2")
+theme_override_styles/hover_pressed_mirrored = ExtResource("32_4p1b2")
+theme_override_styles/hover_pressed = ExtResource("32_4p1b2")
+theme_override_styles/hover_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/hover = ExtResource("33_cgbsv")
+theme_override_styles/pressed_mirrored = ExtResource("32_4p1b2")
+theme_override_styles/pressed = ExtResource("32_4p1b2")
+theme_override_styles/normal_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/normal = ExtResource("33_cgbsv")
+theme_override_icons/arrow = SubResource("ImageTexture_xvywo")
+alignment = 1
+selected = 4
+item_count = 5
+popup/item_0/text = "Squeaky Clean"
+popup/item_0/id = 0
+popup/item_1/text = "Clean"
+popup/item_1/id = 1
+popup/item_2/text = "Crunchy"
+popup/item_2/id = 2
+popup/item_3/text = "Mega Crunchy"
+popup/item_3/id = 3
+popup/item_4/text = "Normal"
+popup/item_4/id = 4
+
+[node name="Pixelation Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 114)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 2
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+
+[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" index="0"]
+text = "Normal"
+
+[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer" index="1"]
+z_index = 2
+mouse_filter = 0
+
+[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Ultra Clean"
+
+[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Clean"
+index = 1
+
+[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Normal"
+index = 2
+
+[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Crunch"
+index = 3
+
+[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
+visible = false
+button_group = SubResource("ButtonGroup_vsfar")
+
+[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_vsfar")
+label = "Ultra Crunch"
+index = 4
+
+[node name="HSeparator" type="HSeparator" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Screen_Vsync" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 83
+
+[node name="Screen" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_i8y7k")
+op_button = NodePath("WindowMode")
+
+[node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("69_vamlv")
+
+[node name="VSeparator" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WindowMode" type="OptionButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
+visible = false
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("30_xk2vx")
+theme_override_colors/font_hover_pressed_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_hover_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_focus_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/font = ExtResource("30_4p1b2")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = ExtResource("32_4p1b2")
+theme_override_styles/hover_pressed_mirrored = ExtResource("32_4p1b2")
+theme_override_styles/hover_pressed = ExtResource("32_4p1b2")
+theme_override_styles/hover_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/hover = ExtResource("33_cgbsv")
+theme_override_styles/pressed_mirrored = ExtResource("32_4p1b2")
+theme_override_styles/pressed = ExtResource("32_4p1b2")
+theme_override_styles/normal_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/normal = ExtResource("33_cgbsv")
+theme_override_icons/arrow = SubResource("ImageTexture_mcnnx")
+alignment = 1
+selected = 1
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless"
+popup/item_2/id = 2
+script = ExtResource("35_6fw26")
+
+[node name="Window Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+selected = 1
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+sub_menu = true
+main_box_container = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" index="0"]
+mouse_filter = 0
+
+[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" index="0"]
+text = "Windowed"
+
+[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer" index="1"]
+z_index = 2
+
+[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_cixxg")
+label = "Fullscreen"
+
+[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_cixxg")
+label = "Windowed"
+index = 1
+
+[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
+visible = false
+button_group = SubResource("ButtonGroup_cixxg")
+
+[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+visible = false
+button_group = SubResource("ButtonGroup_cixxg")
+
+[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+visible = false
+button_group = SubResource("ButtonGroup_cixxg")
+
+[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_cixxg")
+label = "Borderless"
+index = 2
+
+[node name="Vsync" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("4_qakdx")
+op_button = NodePath("OptionButton")
+
+[node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("70_44tj7")
+
+[node name="VSeparator" type="VSeparator" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OptionButton" type="OptionButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
+visible = false
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("30_xk2vx")
+theme_override_colors/font_hover_pressed_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_hover_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_focus_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/font = ExtResource("30_4p1b2")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = ExtResource("32_4p1b2")
+theme_override_styles/hover_pressed_mirrored = ExtResource("32_4p1b2")
+theme_override_styles/hover_pressed = ExtResource("32_4p1b2")
+theme_override_styles/hover_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/hover = ExtResource("33_cgbsv")
+theme_override_styles/pressed_mirrored = ExtResource("32_4p1b2")
+theme_override_styles/pressed = ExtResource("32_4p1b2")
+theme_override_styles/normal_mirrored = ExtResource("33_cgbsv")
+theme_override_styles/normal = ExtResource("33_cgbsv")
+theme_override_icons/arrow = SubResource("ImageTexture_u4j8q")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Enabled"
+popup/item_0/id = 0
+popup/item_1/text = "Adaptive"
+popup/item_1/id = 1
+popup/item_2/text = "Disabled"
+popup/item_2/id = 2
+script = ExtResource("35_6fw26")
+
+[node name="Vsync Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+selected = 0
+op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
+label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
+sub_menu = true
+main_box_container = NodePath("VBoxContainer")
+
+[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" index="0"]
+text = "Enabled"
+
+[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer" index="1"]
+z_index = 2
+
+[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_pcq5y")
+label = "Enabled"
+
+[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_pcq5y")
+label = "Disabled"
+index = 1
+
+[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
+visible = false
+button_group = SubResource("ButtonGroup_pcq5y")
+
+[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+visible = false
+button_group = SubResource("ButtonGroup_pcq5y")
+
+[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+visible = false
+button_group = SubResource("ButtonGroup_pcq5y")
+
+[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_pcq5y")
+label = "Adaptive"
+index = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="FpS_Shadows" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 84
+
+[node name="display fps" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("fps_label", "checkbox")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 29
+script = ExtResource("4_hhtmw")
+fps_label = NodePath("../../../../FPS Container/FPS")
+checkbox = NodePath("MarginContainer/Fps")
+
+[node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("71_sif7o")
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 18
+
+[node name="Fps" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer"]
+custom_minimum_size = Vector2(96, 90)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("72_bujvx")
+texture_pressed = ExtResource("73_igg84")
+texture_hover = ExtResource("74_mb4rt")
+
+[node name="Shadows" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("checkbox")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("4_3l2f5")
+checkbox = NodePath("MarginContainer/Shadows")
+
+[node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("75_t1ojo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 18
+
+[node name="Shadows" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("72_bujvx")
+texture_pressed = ExtResource("73_igg84")
+texture_hover = ExtResource("74_mb4rt")
+
+[node name="Reset" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Reset" type="Label" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Reset *not for window:   "
+
+[node name="reset_graphics" type="Button" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "X"
+
+[node name="SoundTest" type="AudioStreamPlayer" parent="Pause Menu/AspectRatioContainer"]
+stream = ExtResource("2_av0ln")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_menu_click"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/MarginContainer" method="_on_audio_toggled"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics" to="Main Menu/AspectRatioContainer/MarginContainer" method="_on_graphics_toggled"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio Reset" to="Main Menu/AspectRatioContainer/Sound" method="_on_audio_reset_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_reset_graphics_pressed"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Sound/VBoxContainer/Master/master_slider" to="Main Menu/AspectRatioContainer/Sound" method="_on_master_slider_clicked"]
@@ -807,23 +1878,57 @@ bus = &"Music"
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience/ambience_slider" to="Main Menu/AspectRatioContainer/Sound" method="_on_ambience_slider_clicked"]
 [connection signal="value_changed" from="Main Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience/ambience_slider" to="Main Menu/AspectRatioContainer/Sound" method="_on_ambience_slider_value_changed"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_brightness_slider_clicked"]
+[connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_main_menu_click"]
 [connection signal="value_changed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_h_slider_value_changed"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_toggled"]
+[connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_toggled"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_toggled"]
+[connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_toggled"]
 [connection signal="full_screen" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_full_screen"]
 [connection signal="windowed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_toggled"]
+[connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_toggled"]
-[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/CheckBox" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_check_box_toggled"]
-[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/CheckBox" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_check_box_toggled"]
+[connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_main_toggled"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_check_box_toggled"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_check_box_toggled"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_reset_graphics_pressed"]
@@ -831,3 +1936,106 @@ bus = &"Music"
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_reset_graphics_pressed"]
+[connection signal="gui_input" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_menu_click"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Pause Menu/AspectRatioContainer/MarginContainer" method="_on_audio_toggled"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics" to="Pause Menu/AspectRatioContainer/MarginContainer" method="_on_graphics_toggled"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio Reset" to="Pause Menu/AspectRatioContainer/Sound" method="_on_audio_reset_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_reset_graphics_pressed"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Master/master_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_master_slider_clicked"]
+[connection signal="value_changed" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Master/master_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_master_slider_value_changed"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Music/music_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_music_slider_clicked"]
+[connection signal="value_changed" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Music/music_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_music_slider_value_changed"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/SFX/sfx_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_sfx_slider_clicked"]
+[connection signal="value_changed" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/SFX/sfx_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_sfx_slider_value_changed"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience/ambience_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_ambience_slider_clicked"]
+[connection signal="value_changed" from="Pause Menu/AspectRatioContainer/Sound/VBoxContainer/Ambience/ambience_slider" to="Pause Menu/AspectRatioContainer/Sound" method="_on_ambience_slider_value_changed"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_brightness_slider_clicked"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_main_menu_click"]
+[connection signal="value_changed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_h_slider_value_changed"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_clicked"]
+[connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_toggled"]
+[connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_toggled"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_clicked"]
+[connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_item_selected"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_toggled"]
+[connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_toggled"]
+[connection signal="full_screen" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_full_screen"]
+[connection signal="windowed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
+[connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_toggled"]
+[connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_clicked"]
+[connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_item_selected"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_toggled"]
+[connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_menu_on_select_option"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_main_toggled"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_check_box_toggled"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_check_box_toggled"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_reset_graphics_pressed"]
+
+[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
+[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
+[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
+[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]
+[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
+[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
+[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
+[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]

@@ -46,3 +46,18 @@ func _on_option_button_clicked(event):
 
 func _on_option_button_toggled(toggled_on):
 	open = toggled_on
+
+
+func _on_menu_on_select_option(index):
+	match index:
+		0: #full
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+			emit_signal("full_screen")
+		1: #window
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			emit_signal("windowed")
+		2: #borderless window
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+			emit_signal("windowed")

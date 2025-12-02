@@ -69,6 +69,7 @@ events = [SubResource("InputEventKey_pimcf")]
 script = ExtResource("1_sohyj")
 
 [node name="Main Menu" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Main_exit_button" type="TextureButton" parent="Main Menu"]
 offset_left = 53.0

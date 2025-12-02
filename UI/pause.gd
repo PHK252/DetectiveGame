@@ -3,11 +3,12 @@ extends CanvasLayer
 @onready var controls = $Controls
 @onready var prev_mouse_mode : int
 @onready var pause_buttons = $VBoxContainer
+@onready var options = $Options_Settings
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-	#get_tree().paused = true
-	#pass # Replace with function body.
+func _ready():
+	get_tree().paused = true
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,7 +41,8 @@ func _on_resume_pressed():
 
 
 func _on_options_pressed():
-	print("options")
+	pause_buttons.visible = false
+	options.visible = true
 
 
 func _on_controls_pressed():
@@ -62,3 +64,8 @@ func _on_visibility_changed():
 		await get_tree().process_frame
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pass # Replace with function body.
+
+
+func _on_options_exit():
+	pause_buttons.visible = true
+	options.visible = false

@@ -30,30 +30,30 @@ func _on_new_window_size():
 	# Optional: if your CanvasLayer root needs pivot adjustment
 	cl.pivot_offset = cl.size / 2   # CanvasLayer doesn’t have pivot, but its children do
 
-func _on_option_button_item_selected(index: int) -> void:
-	op_button.release_focus()
-	match index:
-		0:
-			base_window_size = Vector2i(384,216)
-		1:
-			base_window_size = Vector2(768,432)
-		2:
-			base_window_size = Vector2i(1152,648)
-		3:
-			base_window_size = Vector2i(1280,720)
-		4:
-			base_window_size = Vector2i(1512,982)
-		5:
-			base_window_size = Vector2i(1920,1080)
-			
-	#DisplayServer.window_set_size(base_window_size)
-	if windowed:
-		get_window().set_size(base_window_size)
-		get_viewport().content_scale_size = base_window_size
-	elif full:
-		get_viewport().content_scale_size = base_window_size
-	
-	center_window()
+#func _on_option_button_item_selected(index: int) -> void:
+	#op_button.release_focus()
+	#match index:
+		#0:
+			#base_window_size = Vector2i(384,216)
+		#1:
+			#base_window_size = Vector2(768,432)
+		#2:
+			#base_window_size = Vector2i(1152,648)
+		#3:
+			#base_window_size = Vector2i(1280,720)
+		#4:
+			#base_window_size = Vector2i(1512,982)
+		#5:
+			#base_window_size = Vector2i(1920,1080)
+			#
+	##DisplayServer.window_set_size(base_window_size)
+	#if windowed:
+		#get_window().set_size(base_window_size)
+		#get_viewport().content_scale_size = base_window_size
+	#elif full:
+		#get_viewport().content_scale_size = base_window_size
+	#
+	#center_window()
 
 func center_window():
 	var center = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
@@ -80,20 +80,27 @@ func _on_reset_graphics_pressed() -> void:
 	#op_button.selected = 5
 
 
-func _on_option_panel_clicked(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			op_button.release_focus()
-
-
-func _on_option_button_clicked(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			if open == true:
-				op_button.release_focus()
-
-
-
-
-func _on_option_button_toggled(toggled_on):
-	open = toggled_on
+func _on_menu_on_select_option(index):
+	match index:
+		0:
+			base_window_size = Vector2i(384,216)
+		1:
+			base_window_size = Vector2(768,432)
+		2:
+			base_window_size = Vector2i(1152,648)
+		3:
+			base_window_size = Vector2i(1280,720)
+		4:
+			base_window_size = Vector2i(1512,982)
+		5:
+			base_window_size = Vector2i(1920,1080)
+			
+	#DisplayServer.window_set_size(base_window_size)
+	if windowed:
+		get_window().set_size(base_window_size)
+		get_viewport().content_scale_size = base_window_size
+	elif full:
+		get_viewport().content_scale_size = base_window_size
+	
+	center_window()
+	print(base_window_size)

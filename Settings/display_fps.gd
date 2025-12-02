@@ -20,3 +20,10 @@ func _on_reset_graphics_pressed() -> void:
 	fps_label.visible = false
 	display_fps = false
 	checkbox.button_pressed = false
+
+
+func _on_main_toggled(toggled_on):
+	if toggled_on:
+		checkbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	else:
+		checkbox.mouse_filter = Control.MOUSE_FILTER_STOP

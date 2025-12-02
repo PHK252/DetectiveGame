@@ -4,6 +4,7 @@ extends Node2D
 @onready var continue_new_cont = $Start/Continue
 @onready var start = $Start
 @onready var controls = $Controls
+@onready var options = $Options_Settings
 
 
 var new_game : bool
@@ -62,3 +63,13 @@ func _on_controls_pressed():
 
 func _on_controls_show_start():
 	start.visible = true
+
+
+func _on_options_pressed():
+	start.visible = false
+	options.visible = true
+
+
+func _on_options_exit_button_pressed():
+	start.visible = true
+	options.visible = false

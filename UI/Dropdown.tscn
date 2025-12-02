@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bm8iq0w2j674j" path="res://UI/Assets/Options/Graphics/Dropdown Menu Button Pressed.png" id="6_sdogv"]
 [ext_resource type="Script" uid="uid://b7ufuajki3cgw" path="res://UI/MenuButton.gd" id="7_sdogv"]
 [ext_resource type="Texture2D" uid="uid://k7m7sprc7rg2" path="res://UI/Assets/Options/Graphics/Dropdown Menu End Button Normal.png" id="8_a012y"]
-[ext_resource type="Texture2D" uid="uid://bpj7ignrasafc" path="res://UI/Assets/Options/Graphics/Dropdown Menu End Button Pressed.png" id="9_d5x7y"]
+[ext_resource type="Texture2D" uid="uid://bpj7ignrasafc" path="res://UI/Assets/Interactions/Dropdown Menu End Button Pressed.png" id="9_d5x7y"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_cyx36"]
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("menu", "main_button", "main_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,9 +23,6 @@ script = ExtResource("1_mil8g")
 menu = NodePath("VBoxContainer/Menu")
 main_button = NodePath("VBoxContainer/Main")
 main_label = NodePath("VBoxContainer/Main/RichTextLabel")
-selected = 2
-op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
-label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -61,6 +58,7 @@ offset_bottom = 40.0
 theme_override_constants/margin_top = 50
 
 [node name="Menu" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -74,7 +72,6 @@ texture_pressed = ExtResource("6_sdogv")
 texture_hover = ExtResource("6_sdogv")
 script = ExtResource("7_sdogv")
 menu = NodePath("../../..")
-label = "1920"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option1"]
 custom_minimum_size = Vector2(552, 78)
@@ -99,8 +96,6 @@ texture_pressed = ExtResource("6_sdogv")
 texture_hover = ExtResource("6_sdogv")
 script = ExtResource("7_sdogv")
 menu = NodePath("../../..")
-label = "2563"
-index = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option2"]
 custom_minimum_size = Vector2(552, 78)
@@ -125,8 +120,6 @@ texture_pressed = ExtResource("6_sdogv")
 texture_hover = ExtResource("6_sdogv")
 script = ExtResource("7_sdogv")
 menu = NodePath("../../..")
-label = "Good1563"
-index = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option3"]
 custom_minimum_size = Vector2(552, 78)
@@ -151,8 +144,6 @@ texture_pressed = ExtResource("6_sdogv")
 texture_hover = ExtResource("6_sdogv")
 script = ExtResource("7_sdogv")
 menu = NodePath("../../..")
-label = "18963"
-index = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option4"]
 custom_minimum_size = Vector2(552, 78)
@@ -177,8 +168,6 @@ texture_pressed = ExtResource("6_sdogv")
 texture_hover = ExtResource("6_sdogv")
 script = ExtResource("7_sdogv")
 menu = NodePath("../../..")
-label = "15692"
-index = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option5"]
 custom_minimum_size = Vector2(552, 78)
@@ -203,8 +192,6 @@ texture_pressed = ExtResource("9_d5x7y")
 texture_hover = ExtResource("9_d5x7y")
 script = ExtResource("7_sdogv")
 menu = NodePath("../../..")
-label = "28999"
-index = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Menu/Option6"]
 custom_minimum_size = Vector2(552, 78)

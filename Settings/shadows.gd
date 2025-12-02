@@ -26,3 +26,9 @@ func _on_reset_graphics_pressed() -> void:
 	checkbox.button_pressed = true
 	GlobalVars.optional_shadow = true
 	emit_signal("set_shadow")
+
+func _on_main_toggled(toggled_on):
+	if toggled_on:
+		checkbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	else:
+		checkbox.mouse_filter = Control.MOUSE_FILTER_STOP

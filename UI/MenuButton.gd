@@ -12,7 +12,7 @@ func _ready():
 	text_label.text = label
 
 func _on_pressed():
-	emit_signal("select", label, index)
+	emit_signal("select", label, index, false)
 
 
 func _on_mouse_entered():
