@@ -2,18 +2,28 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 &"_translation_id": "",
-&"color": Color(1, 1, 1, 1),
+&"color": Color(0.156863, 0.156863, 0.160784, 1),
 &"custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": "Text_Bubble"
+"style": "Dalton Box"
 },
-&"default_portrait": "",
+&"default_portrait": "Default",
 &"description": "",
 &"display_name": "Phone",
 &"mirror": false,
 &"nicknames": [""],
-&"offset": Vector2(0, 0),
-&"portraits": {},
+&"offset": Vector2(0, -3),
+&"portraits": {
+"Default": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Phone.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

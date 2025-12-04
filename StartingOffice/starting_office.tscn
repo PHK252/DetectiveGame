@@ -1,4 +1,4 @@
-[gd_scene load_steps=421 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=426 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -4013,6 +4013,16 @@ size = Vector2(700, 1028)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_lefkv"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_g24o1"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jx4vc"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_lbmes"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_aof2x"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_i2sk6"]
+
 [node name="Main" type="Node3D" node_paths=PackedStringArray("player", "dalton_marker", "theo_marker", "sub_v_container", "lights", "world_env")]
 script = ExtResource("1_aawn4")
 player = NodePath("SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
@@ -5502,6 +5512,156 @@ button_group = SubResource("ButtonGroup_lefkv")
 [node name="Graphics" parent="Options_Settings/Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="1"]
 button_group = SubResource("ButtonGroup_lefkv")
 
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Audio" parent="Options_Settings/Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="0"]
+button_group = SubResource("ButtonGroup_i2sk6")
+
+[node name="Graphics" parent="Options_Settings/Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="1"]
+button_group = SubResource("ButtonGroup_i2sk6")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_g24o1")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_jx4vc")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_lbmes")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_aof2x")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_aof2x")
+
 [node name="Phone and Pause Overlay" parent="." node_paths=PackedStringArray("player") instance=ExtResource("135_kjarc")]
 player = NodePath("../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
 
@@ -5724,6 +5884,14 @@ stream = ExtResource("144_2gyyf")
 [editable path="UI/Arrest Skylar"]
 [editable path="UI/Keep Secret"]
 [editable path="Options_Settings"]
+[editable path="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
+[editable path="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
+[editable path="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
+[editable path="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]
+[editable path="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
+[editable path="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
+[editable path="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
+[editable path="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]
 [editable path="Phone and Pause Overlay"]
 [editable path="Phone and Pause Overlay/CanvasLayer/Phone UI"]
 [editable path="Phone and Pause Overlay/CanvasLayer/Phone UI/NotesScreen/Micah/View Tool Note"]

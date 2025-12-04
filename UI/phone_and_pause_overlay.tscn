@@ -244,12 +244,6 @@ position = Vector2(961, 733)
 [node name="DeclineAnim" parent="CanvasLayer/Phone UI/PhoneScreen/PhoneCall" index="5"]
 visible = false
 
-[node name="ContactScreen" parent="CanvasLayer/Phone UI/PhoneScreen" index="6"]
-visible = true
-
-[node name="NotesScreen" parent="CanvasLayer/Phone UI" index="8"]
-visible = false
-
 [node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
 script = ExtResource("14_wljcx")
 audio_master = [NodePath("phone_back"), NodePath("phone_hover"), NodePath("ring"), NodePath("buzz"), NodePath("select"), NodePath("decline_call"), NodePath("accept_call"), NodePath("num_01"), NodePath("num_02"), NodePath("num_03"), NodePath("Hiss"), NodePath("altClick"), NodePath("phone_hover_high"), NodePath("ArrowClick"), NodePath("Phone_back_02"), NodePath("buzz"), NodePath("delete"), NodePath("flip"), NodePath("selectPhoto")]

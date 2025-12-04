@@ -1168,7 +1168,6 @@ libraries = {
 }
 
 [node name="ContactScreen" type="Control" parent="PhoneScreen"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1446,6 +1445,7 @@ texture_pressed = ExtResource("91_h1u1y")
 texture_hover = ExtResource("91_h1u1y")
 
 [node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy", "evidence")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("87_fo3me")
