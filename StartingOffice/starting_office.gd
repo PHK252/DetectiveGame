@@ -191,7 +191,7 @@ func walk_out(argument: String):
 		print("Both exit")
 		#emit_signal("Both_walk out")
 		Dialogic.signal_event.disconnect(walk_out)
-		Loading.load_scene(self, GlobalVars.interrogation, false, "", "")
+		Loading.load_scene(self, GlobalVars.interrogation, "", "", "")
 		pass
 	elif argument == "fade":
 		#Fade to Credits

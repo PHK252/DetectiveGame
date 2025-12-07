@@ -5,12 +5,12 @@ signal end_dialogue
 var loading_scene_file = "res://loading_screen/load_screen.tscn"
 signal loading_screen_has_full_coverage
 #@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
-##Driving animation
+#Driving animation
 var drive_loading : AnimatedSprite2D
 var drive_anim : AnimationPlayer
-
-#var style: DialogicStyle = load("res://Dialogue Stuff/Text_Bubble.tres")
-#var my_timeline_resource = load("res://Dialogue Stuff/Timelines/MISC/PLACEHOLDER.dtl")
+#Sleeping animation
+var sleep_loading : AnimatedSprite2D
+var sleep_anim : AnimationPlayer
 
 #Default
 var d_back_loading : Node2D
@@ -37,10 +37,14 @@ var percent_label : Label
 	#await Signal(animationPlayer, "animation_finished")
 	#self.queue_free()
 
-func load_scene(current_scene, next_scene, driving : bool, time : String, dialogue : String):
+func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false):
 	in_loading = true
-	SceneTransitions.fade_to_load()
-	await SceneTransitions.fade.animation_finished
+	if glitch_in == true:
+		SceneTransitions.glitch_to_load()
+		await SceneTransitions.glitch.animation_finished
+	else:
+		SceneTransitions.fade_to_load()
+		await SceneTransitions.fade.animation_finished
 	var loading_scene = load(loading_scene_file)
 	var scene_instance = loading_scene.instantiate()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -60,30 +64,56 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 	d_loading_anim = scene_instance.get_node("Default Loading/AnimationPlayer")
 	d_loading_sprite = scene_instance.get_node("Default Loading/AnimationPlayer/Sprite2D")
 	
+	#Sleep
+	sleep_loading = scene_instance.get_node("Sleep Loading/AnimationPlayer/Sleep")
+	sleep_anim = scene_instance.get_node("Sleep Loading/AnimationPlayer")
+	
 	percent_label = scene_instance.get_node("Label")
-	if driving == true:
-		if time:
-			toggle_drive(true)
-			toggle_default(false)
+	if type == "driving":
+		toggle_drive(true)
+		toggle_default(false)
+		toggle_sleep(false)
+		if time == "morning":
 			current_anim = drive_anim
 			current_anim.play("Day_anim")
 			#await get_tree().create_timer(.2).timeout
+		elif time == "afternoon":
+			current_anim = drive_anim
+			current_anim.play("Sunset_anim")
+			#await get_tree().create_timer(.2).timeout
+		elif time == "night":
+			current_anim = drive_anim
+			current_anim.play("Night_Anim")
+	elif type == "Sleep":
+		toggle_drive(false)
+		toggle_default(false)
+		toggle_sleep(true)
+		if time == "To Dream":
+			current_anim = sleep_anim
+			current_anim.play("Sleep")
+			await current_anim.animation_finished
+			current_anim.play("Sleep_loop")
+		elif time == "Out Dream":
+			current_anim = sleep_anim
+			current_anim.play("Wake")
+			await current_anim.animation_finished
+			sleep_anim.play("Wake_loop")
 		else:
-			toggle_drive(true)
-			toggle_default(false)
-			current_anim = drive_anim
-			current_anim.play("Day_anim")
-			#await get_tree().create_timer(.2).timeout
+			current_anim = sleep_anim
+			current_anim.play("Sleep_Wake")
+			await current_anim.animation_finished
+			sleep_anim.play("Wake_loop")
 	else:
 		toggle_drive(false)
 		toggle_default(true)
+		toggle_sleep(false)
 		current_anim = d_loading_anim
 		current_anim.play("Load")
 		#print("play")
 	if dialogue != "":
 		var driving_dialogue = Dialogic.start(dialogue)
-		driving_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), d_loading_Dalton_marker)
-		driving_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), d_loading_theo_marker)
+		driving_dialogue.register_character(load("res://Dialogic Characters/Dalton Driving.dch"), d_loading_Dalton_marker)
+		driving_dialogue.register_character(load("res://Dialogic Characters/Theo Driving.dch"), d_loading_theo_marker)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		GlobalVars.in_dialogue = true
 		await get_tree().create_timer(.2).timeout
@@ -107,14 +137,17 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 				print(str(int(progress * 100)) + "%")
 			3:
 				loaded = true
-				print(GlobalVars.in_dialogue)
 				if GlobalVars.in_dialogue == true:
 					await Signal(self, "end_dialogue") 
 					print("awaiting")
-				await get_tree().create_timer(3.0).timeout
+				await get_tree().create_timer(1.6).timeout
 				var new_scene = ResourceLoader.load_threaded_get(next_scene)
-				SceneTransitions.fade_change_packed_scene(new_scene)
-				await get_tree().create_timer(.5).timeout
+				if glitch_out == true:
+					SceneTransitions.glitch_change_packed_scene(new_scene)
+					await get_tree().create_timer(3.0).timeout
+				else:
+					SceneTransitions.fade_change_packed_scene(new_scene)
+					await get_tree().create_timer(.5).timeout
 				current_anim.stop()
 				toggle_drive(false)
 				toggle_default(false)
@@ -124,21 +157,20 @@ func load_scene(current_scene, next_scene, driving : bool, time : String, dialog
 				print(GlobalVars.dalton_pos)
 				if GlobalVars.from_save_file == true:
 					return
-				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+				##SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				#await get_tree().process_frame
 				print(GlobalVars.current_level)
 				
 				return
-
-
-
-	
 func toggle_default(state : bool):
 	d_back_loading.visible = state
 	d_loading_sprite.visible = state
 
 func toggle_drive(state : bool):
 	drive_loading.visible = state
+
+func toggle_sleep(state : bool):
+	sleep_loading.visible = state
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
@@ -177,7 +209,6 @@ func choose_drive_dialogue():
 				if Dialogic.VAR.get_variable("Quincy.solved_case") == true and Dialogic.VAR.get_variable("Quincy.solved_rever") == false: 
 					return "Day_2_ride_from_Quincy"
 			return ""
-			
 		3: 
 			if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == true:
 				return "Day_3_to_Secret"

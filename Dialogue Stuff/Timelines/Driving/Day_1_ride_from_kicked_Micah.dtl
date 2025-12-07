@@ -1,57 +1,57 @@
 set {Character Aff Points.Theo} -= 1
 if {Juniper.kicked_out} == true:
 	set {Global.flip_bubble} = true
-	Theo: Again?
-	Theo: Seriously?
+	"Theo Driving": Again?
+	"Theo Driving": Seriously?
 	set {Global.flip_bubble} = false
-	Dalton: ...
+	"Dalton Driving": ...
 	set {Global.flip_bubble} = true
-	Theo: Huuu...
-	Theo: I’m starting to believe you’re a lost cause.
-	Theo: How the hell did you last ten years in this goddamn job?
+	"Theo Driving": Huuu...
+	"Theo Driving": I’m starting to believe you’re a lost cause.
+	"Theo Driving": How the hell did you last ten years in this goddamn job?
 	set {Global.flip_bubble} = false
-	Dalton: ...
-	Dalton: Isaac.
+	"Dalton Driving": ...
+	"Dalton Driving": Isaac.
 	set {Global.flip_bubble} = true
-	Theo: ...?
-	Theo: oh.
-	Theo: He must’ve had the patience of a saint.
+	"Theo Driving": ...?
+	"Theo Driving": oh.
+	"Theo Driving": He must’ve had the patience of a saint.
 	set {Global.flip_bubble} = false
-	Dalton: ...
-	Dalton: ...
+	"Dalton Driving": ...
+	"Dalton Driving": ...
 	set {Global.flip_bubble} = true
-	Theo: Huu...
-	Theo: Chief’s gonna have a field day with this.
+	"Theo Driving": Huu...
+	"Theo Driving": Chief’s gonna have a field day with this.
 	set {Global.flip_bubble} = false
 	[end_timeline]
 else:
 	set {Global.flip_bubble} = true
-	Theo: Dalton, what the hell happened?
-	Theo: That was a disaster.
+	"Theo Driving": Dalton, what the hell happened?
+	"Theo Driving": That was a disaster.
 	set {Global.flip_bubble} = false
-	Dalton: It’s Detective Reynard-
+	"Dalton Driving": It’s Detective Reynard-
 	set {Global.flip_bubble} = true
-	Theo: Now is NOT the time.
-	Theo: We absolutely botched that investigation.
-	Theo: Could you not tell that he was uncomfortable!?
-	Theo: All you did was scare him into giving useless information!
+	"Theo Driving": Now is NOT the time.
+	"Theo Driving": We absolutely botched that investigation.
+	"Theo Driving": Could you not tell that he was uncomfortable!?
+	"Theo Driving": All you did was scare him into giving useless information!
 	set {Global.flip_bubble} = false
-	Dalton: ...
+	"Dalton Driving": ...
 	set {Global.flip_bubble} = true
-	Theo: You know...
-	Theo: I used to look up to you.
+	"Theo Driving": You know...
+	"Theo Driving": I used to look up to you.
 	set {Global.flip_bubble} = false
-	Dalton: ...
+	"Dalton Driving": ...
 	set {Global.flip_bubble} = true
-	Theo: Tsk...
-	Theo: I guess I know why Chief doesn’t send you out anymore.
+	"Theo Driving": Tsk...
+	"Theo Driving": I guess I know why Chief doesn’t send you out anymore.
 	set {Global.flip_bubble} = false
-	Dalton: Hmph. 
+	"Dalton Driving": Hmph. 
 	set {Global.flip_bubble} = true
-	Theo: You're not gonna say anything??
+	"Theo Driving": You're not gonna say anything??
 	set {Global.flip_bubble} = false
-	Dalton: ...
+	"Dalton Driving": ...
 	set {Global.flip_bubble} = true
-	Theo: Fine, let’s go.
+	"Theo Driving": Fine, let’s go.
 	set {Global.flip_bubble} = false
 	[end_timeline]

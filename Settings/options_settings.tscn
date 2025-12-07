@@ -163,6 +163,7 @@ texture_margin_top = 40.0
 [sub_resource type="ImageTexture" id="ImageTexture_yj3ep"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_4vdat"]
+allow_unpress = true
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_8i1sl"]
 
@@ -186,7 +187,6 @@ script = ExtResource("1_8i1sl")
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Panel" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -1679,6 +1679,7 @@ bus = &"Music"
 
 [node name="Pause Menu" type="Panel" parent="."]
 process_mode = 2
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -3223,10 +3224,10 @@ text = "paused"
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_disable_overlap"]
+[connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_texture_button_toggled"]
-[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_toggled"]
-[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
@@ -3255,10 +3256,10 @@ text = "paused"
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_disable_overlap"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_other_menu_clicked"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_menu_on_select_option"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_texture_button_toggled"]
-[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
@@ -3288,9 +3289,9 @@ text = "paused"
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_texture_button_toggled"]
-[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
@@ -3319,9 +3320,9 @@ text = "paused"
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_menu_on_select_option"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_texture_button_toggled"]
-[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_main_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
@@ -3470,6 +3471,7 @@ text = "paused"
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]

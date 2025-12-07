@@ -1,42 +1,42 @@
 if {Juniper.found_skylar} == true:
 	if {Asked Questions.Micah_timed_out} == true:
-		Dalton: Huu...
-		Dalton: What did I tell you about calling your own shots.
+		"Dalton Driving": Huu...
+		"Dalton Driving": What did I tell you about calling your own shots.
 	else:
-		Dalton: Why did you do that?
-	Dalton: I was still check for-
+		"Dalton Driving": Why did you do that?
+	"Dalton Driving": I was still check for-
 	set {Global.flip_bubble} = true
-	Theo: Checking, Smecking.
-	Theo: We found the perpetrator’s name! 
-	Theo: We’re already doing fine without whatever Schrödinger’s evidence ya got going on up there.
+	"Theo Driving": Checking, Smecking.
+	"Theo Driving": We found the perpetrator’s name! 
+	"Theo Driving": We’re already doing fine without whatever Schrödinger’s evidence ya got going on up there.
 	set {Global.flip_bubble} = false
-	Dalton: Hmph. 
-	Dalton: Fine. 
-	Dalton: You’re to blame if this ends up biting us in the ass.
+	"Dalton Driving": Hmph. 
+	"Dalton Driving": Fine. 
+	"Dalton Driving": You’re to blame if this ends up biting us in the ass.
 	set {Global.flip_bubble} = true
-	Theo: Yeah, yeah.
+	"Theo Driving": Yeah, yeah.
 	set {Global.flip_bubble} = false
 else:
-	Dalton: Why did you do that?
-	Dalton: I was still check for-
+	"Dalton Driving": Why did you do that?
+	"Dalton Driving": I was still check for-
 	set {Global.flip_bubble} = true
-	Theo: And what?
-	Theo: You want her to stand around as her cafe empire crumbles?
+	"Theo Driving": And what?
+	"Theo Driving": You want her to stand around as her cafe empire crumbles?
 	set {Global.flip_bubble} = false
-	Dalton: You’re being dramatic.
+	"Dalton Driving": You’re being dramatic.
 	set {Global.flip_bubble} = true
-	Theo: Dalton-
+	"Theo Driving": Dalton-
 	set {Global.flip_bubble} = false
-	Dalton: It’s Detective Reynard.
+	"Dalton Driving": It’s Detective Reynard.
 	set {Global.flip_bubble} = true
-	Theo: Huu...
-	Theo: Fine.
-	Theo: Detective Reynard, we took an oath to serve the subjects of this city...
-	Theo: If they want us out of their house, we get out of their house.
+	"Theo Driving": Huu...
+	"Theo Driving": Fine.
+	"Theo Driving": Detective Reynard, we took an oath to serve the subjects of this city...
+	"Theo Driving": If they want us out of their house, we get out of their house.
 	set {Global.flip_bubble} = false
-	Dalton: I don’t need a rookie to lecture me on my duties.
+	"Dalton Driving": I don’t need a rookie to lecture me on my duties.
 	set {Global.flip_bubble} = true
-	Theo: My bad.
-	Theo: It really seemed like you forgot.
+	"Theo Driving": My bad.
+	"Theo Driving": It really seemed like you forgot.
 	set {Global.flip_bubble} = false
-	Dalton: Hmph.
+	"Dalton Driving": Hmph.

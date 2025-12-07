@@ -314,11 +314,16 @@ func _on_call_pressed():
 				return
 			else:
 				if GlobalVars.current_level == "quincy":
-					Dialogic.start("Theo_call", "with Dalton")
+					Dialogic.start("Theo_call", "separated")
 					GlobalVars.in_dialogue = true
 					Dialogic.timeline_ended.connect(_on_timeline_ended)
 					return
-				Dialogic.start("Theo_call", "separated")
+				if GlobalVars.current_level == "Office" and GlobalVars.day == 1:
+					Dialogic.start("Theo_call", "Before Case")
+					GlobalVars.in_dialogue = true
+					Dialogic.timeline_ended.connect(_on_timeline_ended)
+					return
+				Dialogic.start("Theo_call", "with Dalton")
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				return
@@ -398,30 +403,26 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 		Dialogic.signal_event.connect(_bottle_fall_sound)
 		Dialogic.signal_event.connect(_end_call)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		#book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		##book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		#book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-		#book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 	elif bar_call == true:
 		var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
 		GlobalVars.in_dialogue = true
 		Dialogic.signal_event.connect(_bar_end_call)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		#bar_call.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		##book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		#bar_call.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-		#bar_call.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 	else:
 		if GlobalVars.in_dialogue == false:
 			if GlobalVars.current_level == "quincy":
-				Dialogic.start("Theo_call", "with Dalton")
+				Dialogic.start("Theo_call", "separated")
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				return
-			Dialogic.start("Theo_call", "separated")
+			if GlobalVars.current_level == "Office" and GlobalVars.day == 1:
+				Dialogic.start("Theo_call", "Before Case")
+				GlobalVars.in_dialogue = true
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				return
+			Dialogic.start("Theo_call", "with Dalton")
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			#wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 
 func exit_phone():
 	phone_ui.hide()

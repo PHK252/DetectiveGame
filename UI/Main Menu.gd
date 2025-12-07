@@ -10,8 +10,10 @@ extends Node2D
 var new_game : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	await get_tree().process_frame
 	print(GlobalVars.current_level)
-	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("New Game: " + str(new_game))
 	if new_game == true:
@@ -38,7 +40,7 @@ func _on_start_pressed():
 	#SceneTransitions.glitch_change_scene("res://StartingOffice/starting_office.tscn")
 	#LoadManager.load_scene(GlobalVars.first_house_path)
 	#Loading.load_scene(self, GlobalVars.first_house_path, true, "morning", "yes_diner")
-	Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")
+	Loading.load_scene(self, GlobalVars.beginning_office, "", "", "")
 
 
 func _on_continue_pressed():
@@ -46,14 +48,14 @@ func _on_continue_pressed():
 	#Loading.load_scene(self, GlobalVars.third_house_path, false, "", "")
 	print(GlobalVars.dalton_pos)
 	var level_to_load = GlobalVars.get_current_level_path(GlobalVars.current_level)
-	Loading.load_scene(self, level_to_load, false, "", "")
+	Loading.load_scene(self, level_to_load, "", "", "")
 
 
 func _on_new_game_pressed():
 	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	Loading.load_scene(self, GlobalVars.beginning_office, false, "", "")
+	Loading.load_scene(self, GlobalVars.beginning_office, "", "", "")
 
 
 func _on_controls_pressed():

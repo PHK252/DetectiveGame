@@ -162,7 +162,7 @@ func _on_dalton_to_walk_out():
 	move_out = true
 	await get_tree().create_timer(3.5).timeout
 	sound_allowed = false
-	Loading.load_scene(self, GlobalVars.office_path, false, "", "")
+	Loading.load_scene(self, GlobalVars.office_path, "Sleep", "Out Dream", "")
 	GlobalVars.day = 1
 
 

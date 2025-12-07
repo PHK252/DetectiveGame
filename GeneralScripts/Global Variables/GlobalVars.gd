@@ -28,10 +28,7 @@ signal open_quincy_case
 @onready var current_level = ""
 @onready var first_house = "" # might not need
 
-#settings variables
-var stretch_factor : int = 6
-var optional_shadow := true
-var brightness := 1.0
+
 
 var load_global_arr = []
 var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house"]
@@ -311,7 +308,7 @@ var load_Secret_name_arr = ["has_secret", "view_secret_cure", "view_secret_usb",
 @onready var quincy_pos : Vector3
 @onready var isaac_pos : Vector3
 
-#add to save
+##add to save
 #handled in beginning office
 var movement_tut = false
 var interact_tut = false
@@ -322,9 +319,14 @@ var exit_tut = false
 var phone_tut = false # or first level
 #handled in first level
 var run_tut = false
-
+				 
 var Day_1_Quincy_call = false
 var Day_3_Chief_call = false
+
+#settings variables
+var stretch_factor : int = 6
+var optional_shadow := true
+var brightness := 1.0
 
 ###Save Up until Here?
 var from_save_file = false

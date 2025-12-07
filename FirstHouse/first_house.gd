@@ -69,7 +69,6 @@ func _input(event):
 			kicked_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			kicked_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			kicked_out_dialogue.register_character(load(load_char_dialogue), character_marker)
-			
 	
 	#timed out
 	if time_out == true:
