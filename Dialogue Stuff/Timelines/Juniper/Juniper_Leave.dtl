@@ -27,6 +27,7 @@ Dalton (Default): Leave?
 		Dalton (Resting): Let's go, Theo.
 		Theo (Default): Bye!
 		Juniper (Doubt): Bye.
+		set {Juniper.leave} = true
 		[end_timeline]
 	else:
 		Dalton (Talk): I think we got everything we've come here for.
@@ -56,6 +57,7 @@ Dalton (Default): Leave?
 		Theo (Happy): You too!
 		Dalton (Awkward): Yeah.
 		[signal arg="open_door"]
+		set {Juniper.leave} = true
 		[end_timeline]
 - Not yet.
 	[end_timeline]

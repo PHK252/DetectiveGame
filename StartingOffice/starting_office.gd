@@ -44,6 +44,7 @@ func _ready():
 		choose_ending()
 		return
 	dialogue_file = choose_office_dialogue()
+	print(dialogue_file)
 	if dialogue_file != "":
 		if GlobalVars.in_dialogue == false:
 			await get_tree().create_timer(4.0).timeout
@@ -141,7 +142,6 @@ func choose_office_dialogue():
 			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
 				emit_signal("theo_there")
 				return "Day_3_hair"
-
 			call = false
 			Dialogic.VAR.set_variable("Endings.Ending_type", "Chief fired")
 			emit_signal("theo_out")

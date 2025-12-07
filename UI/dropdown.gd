@@ -8,8 +8,9 @@ extends Control
 @export var label_array : Array[RichTextLabel]
 @export var sub_menu : bool = false
 signal on_select_option(index : int)
+signal disable_overlap (toggled : bool)
 @export var main_box_container : VBoxContainer
-
+var open = false
 func _ready():
 	menu.hide()
 	if selected == -1:
@@ -25,6 +26,8 @@ func _set_selected(selected : int):
 
 func _on_texture_button_toggled(toggled_on):
 	menu.visible = toggled_on
+	open = toggled_on
+	emit_signal("disable_overlap", toggled_on)
 	
 func _on_option_select(label, index, reset):
 	if reset == false:
@@ -40,14 +43,26 @@ func _on_option_select(label, index, reset):
 func _close_menu():
 	main_button.button_pressed = false
 	menu.hide()
+	
 
 func _on_main_menu_click(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			_close_menu()
 
-func _on_main_toggled(toggled_on):
-	if toggled_on == true and sub_menu == true:
+#func _on_main_toggled(toggled_on):
+	#if toggled_on == true and sub_menu == true:
+		#main_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		#mouse_filter = Control.MOUSE_FILTER_IGNORE
+		#main_box_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#else:
+		#main_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		#mouse_filter = Control.MOUSE_FILTER_STOP
+		#main_box_container.mouse_filter = Control.MOUSE_FILTER_STOP
+
+
+func _on_disable_overlap(toggled):
+	if toggled == true and sub_menu == true:
 		main_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		main_box_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -55,7 +70,3 @@ func _on_main_toggled(toggled_on):
 		main_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		mouse_filter = Control.MOUSE_FILTER_STOP
 		main_box_container.mouse_filter = Control.MOUSE_FILTER_STOP
-
-
-func _on_check_box_pressed():
-	pass # Replace with function body.

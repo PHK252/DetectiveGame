@@ -38,6 +38,7 @@ func default_screen():
 	notes.hide()
 	gallery_close_pics.hide()
 	phone_call.hide()
+	phone_contact.hide()
 
 func _on_home_pressed():
 	default_screen()
@@ -51,7 +52,6 @@ func _on_gallery_pressed():
 	notes.hide()
 	gallery.show()
 	gallery_list.show()
-	#emit_signal("add_contact", "skylar")
 
 func _on_notes_pressed():
 	home.hide()
@@ -224,11 +224,10 @@ func _on_left_hover_mouse_exited():
 @export var player : CharacterBody3D
 
 @onready var bar_call = false
-@onready var called_juniper = false
-@onready var called_clyde = false
+
 signal continue_convo
 signal Book_distract_quincy
-signal add_contact(char : String)
+
 signal enable_interact
 func inputNum(num: int):
 	if len(num_input.text) <  11:
@@ -297,54 +296,61 @@ func _on_call_pressed():
 	num_input.text = ""
 	
 	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
-	#print(at_bookshelf)
-	#print(needs_distraction)
-	#print(called_num)
-	
-	if called_num == "034-2012" and GlobalVars.in_dialogue == false :
-		if at_bookshelf == true and needs_distraction == true:
-			var book_distract = Dialogic.start("Quincy_book_distract")
+	if GlobalVars.in_dialogue == false:
+		# Dialing THEO
+		if called_num == "034-2012": 
+			if at_bookshelf == true and needs_distraction == true:
+				var book_distract = Dialogic.start("Quincy_book_distract")
+				GlobalVars.in_dialogue = true
+				Dialogic.signal_event.connect(_bottle_fall_sound)
+				Dialogic.signal_event.connect(_end_call)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				return
+			elif bar_call == true:
+				var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
+				GlobalVars.in_dialogue = true
+				Dialogic.signal_event.connect(_bar_end_call)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				return
+			else:
+				if GlobalVars.current_level == "quincy":
+					Dialogic.start("Theo_call", "with Dalton")
+					GlobalVars.in_dialogue = true
+					Dialogic.timeline_ended.connect(_on_timeline_ended)
+					return
+				Dialogic.start("Theo_call", "separated")
+				GlobalVars.in_dialogue = true
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				return
+		# Dialing JUNIPER
+		if called_num == "194-108":
+			Dialogic.start("Juniper_call")
 			GlobalVars.in_dialogue = true
-			Dialogic.signal_event.connect(_bottle_fall_sound)
-			Dialogic.signal_event.connect(_end_call)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-			book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), phone_marker)
-			book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
-		elif bar_call == true:
-			var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
-			GlobalVars.in_dialogue = true
-			Dialogic.signal_event.connect(_bar_end_call)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			bar_call.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-			bar_call.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-			bar_call.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
-	else:
-		if GlobalVars.in_dialogue == false:
-			var wrong_num = Dialogic.start("Phone_wrong_num")
+			return
+		# Dialing CLYDE
+		if called_num == "093-316":
+			Dialogic.start("Clyde_call")
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-	if called_num == "194-108":
-		if called_juniper == false:
-			called_juniper = true
-			emit_signal("add_contact", "juniper")
-		var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+			return
+		# Dialing QUINCY
+		if called_num == "221-1712":
+			Dialogic.start("Phone_line_busy")
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			return
+		# Dialing ISAAC
+		if called_num == "034-921":
+			Dialogic.start("Phone_num_gone")
+			GlobalVars.in_dialogue = true
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			return
+		Dialogic.start("Phone_wrong_num")
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-	if called_num == "093-316":
-		if called_clyde == false:
-			called_clyde = true
-			emit_signal("add_contact", "clyde")
-		var book_distract = Dialogic.start("PLACEHOLDER PHONE")
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+		
+		
 func _on_bookshelf_area_body_entered(body):
 	at_bookshelf = true
 
@@ -354,44 +360,34 @@ func _on_bookshelf_area_body_exited(body):
 
 func _on_isaac_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+	Dialogic.start("Phone_num_gone")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), dalton_marker)
 
 
 func _on_quincy_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+	Dialogic.start("Phone_line_busy")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 
 func _on_juniper_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+	Dialogic.start("Juniper_call")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 
 func _on_clyde_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+	Dialogic.start("Clyde_call")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 
 func _on_skylar_pressed(): #UPDATE TIMELINE
 	exit_phone()
-	var book_distract = Dialogic.start("PLACEHOLDER PHONE")
+	Dialogic.start("Phone_wrong_num")
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 
 func _on_theo_pressed(): #UPDATE TIMELINE
 	exit_phone()
@@ -402,25 +398,30 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 		Dialogic.signal_event.connect(_bottle_fall_sound)
 		Dialogic.signal_event.connect(_end_call)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-		book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+		#book_distract.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		##book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		#book_distract.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+		#book_distract.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 	elif bar_call == true:
 		var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
 		GlobalVars.in_dialogue = true
 		Dialogic.signal_event.connect(_bar_end_call)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		bar_call.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		#book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		bar_call.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
-		bar_call.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+		#bar_call.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
+		##book_distract.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+		#bar_call.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+		#bar_call.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 	else:
 		if GlobalVars.in_dialogue == false:
-			var wrong_num = Dialogic.start("Phone_wrong_num")
+			if GlobalVars.current_level == "quincy":
+				Dialogic.start("Theo_call", "with Dalton")
+				GlobalVars.in_dialogue = true
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				return
+			Dialogic.start("Theo_call", "separated")
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
+			#wrong_num.register_character(load("res://Dialogic Characters/Phone.dch"), phone_marker)
 
 func exit_phone():
 	phone_ui.hide()

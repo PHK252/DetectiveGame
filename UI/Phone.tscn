@@ -873,6 +873,7 @@ position = Vector2(763, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="PhoneScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -3058,7 +3059,6 @@ wait_time = 60.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 60.0
 
-[connection signal="add_contact" from="." to="PhoneScreen/ContactScreen" method="_on_phone_ui_add_contact"]
 [connection signal="visibility_changed" from="." to="Panel Left" method="_on_visibility_changed"]
 [connection signal="pressed" from="HomeScreen/Gallery" to="." method="_on_gallery_pressed"]
 [connection signal="pressed" from="HomeScreen/Notes" to="." method="_on_notes_pressed"]
@@ -3093,6 +3093,7 @@ wait_time = 60.0
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Decline" to="." method="_on_decline_pressed"]
+[connection signal="visibility_changed" from="PhoneScreen/ContactScreen" to="PhoneScreen/ContactScreen" method="_on_visibility_changed"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Isaac" to="." method="_on_isaac_pressed"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Quincy" to="." method="_on_quincy_pressed"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Theo" to="." method="_on_theo_pressed"]

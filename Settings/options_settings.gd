@@ -6,6 +6,9 @@ extends CanvasLayer
 @onready var pause_menu = $"Pause Menu"
 
 signal options_exit
+#func _ready():
+	#get_tree().paused = true
+
 func _on_visibility_changed():
 	if visible == true:
 		if main_menu == true:

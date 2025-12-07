@@ -275,6 +275,7 @@ directories/dtl_directory={
 "Secret_trash_thoughts": "res://Dialogue Stuff/Timelines/Secret Location/Secret_trash_thoughts.dtl",
 "Sloth": "res://Dialogue Stuff/Timelines/Micah Nieghbors/Sloth.dtl",
 "Theo_answer_morning": "res://Dialogue Stuff/Timelines/Micah/Theo_answer_morning.dtl",
+"Theo_call": "res://Dialogue Stuff/Timelines/Phone Calls/Theo_call.dtl",
 "Warrant": "res://Dialogue Stuff/Timelines/Micah/Warrant.dtl",
 "Warrant_home": "res://Dialogue Stuff/Timelines/Micah/Warrant_home.dtl",
 "Warrant_night": "res://Dialogue Stuff/Timelines/Micah/Warrant_night.dtl",
@@ -320,7 +321,7 @@ variables={
 "Micah_time_out_finished": false,
 "Micah_timed_out": false,
 "Micah_tool_note_read": false,
-"Micah_viewed_ID": false,
+"Micah_viewed_ID": true,
 "Micah_viewed_bookmark": false,
 "has_hair": false,
 "has_key": false,
@@ -335,6 +336,10 @@ variables={
 "viewed_donuts": false,
 "viewed_map_cork": false
 },
+"Call": {
+"Clyde_called": false,
+"Juniper_called": false
+},
 "Character Aff Points": {
 "Juniper": 0,
 "Micah": 0,
@@ -348,7 +353,7 @@ variables={
 "Global": {
 "first_house": "",
 "flip_bubble": false,
-"got_theo_ad": false,
+"got_theo_ad": true,
 "went_to_Juniper": false,
 "went_to_Micah": false,
 "went_to_Quincy": false,
@@ -389,6 +394,7 @@ variables={
 "found_skylar": false,
 "has_pie": false,
 "kicked_out": false,
+"leave": true,
 "num_questions_asked": 0,
 "picked_resume": "",
 "reenter_resumes": false,
@@ -414,7 +420,7 @@ variables={
 "bedroom_cycle": 0,
 "bookshelf_cycle": 0,
 "catch_up": false,
-"caught": true,
+"caught": false,
 "checked_email": false,
 "clogged_toilet": false,
 "cue_cycle": 0,
@@ -447,7 +453,7 @@ variables={
 "second_greeting": false,
 "show_coors_note": false,
 "solved_case": false,
-"solved_rever": true,
+"solved_rever": false,
 "talked_at_port": false,
 "talked_at_port_know_skylar": false,
 "talked_at_port_not_know_Skylar": false,

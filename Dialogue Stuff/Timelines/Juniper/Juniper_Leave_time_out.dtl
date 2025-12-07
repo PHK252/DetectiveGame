@@ -11,6 +11,7 @@ if {Juniper.found_skylar} == true:
 		Juniper (Hmph): Yeah...
 		Dalton (Awkward): Hmph.
 		set {Juniper.timed_out} = true
+		set {Juniper.leave} = true
 		[end_timeline]
 	else:
 		Juniper (Surprise): Ah!
@@ -32,6 +33,7 @@ if {Juniper.found_skylar} == true:
 		Juniper (Default): Take care, y’all!
 		Dalton (Sigh): Yeah.
 		set {Juniper.timed_out} = true
+		set {Juniper.leave} = true
 		[end_timeline]
 else:
 	if {Character Aff Points.Juniper} < 0:
@@ -45,6 +47,7 @@ else:
 		Juniper (Hmph): Yeah...
 		Dalton (Awkward): Hmph.
 		set {Juniper.timed_out} = true
+		set {Juniper.leave} = true
 		[end_timeline]
 	else:
 		Juniper (Surprise): Ah!
@@ -66,4 +69,5 @@ else:
 		Juniper (Default): Take care, y’all!
 		Dalton (Sigh): Yeah.
 		set {Juniper.timed_out} = true
+		set {Juniper.leave} = true
 		[end_timeline]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://d2hmxhs2js55d"]
+[gd_scene load_steps=113 format=3 uid="uid://d2hmxhs2js55d"]
 
 [ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_6ko55"]
 [ext_resource type="Script" uid="uid://duefet7jfp0uk" path="res://Settings/options_settings.gd" id="1_8i1sl"]
@@ -44,11 +44,18 @@
 [ext_resource type="StyleBox" uid="uid://brtho6qxcot63" path="res://Settings/Normal Drop.tres" id="33_cgbsv"]
 [ext_resource type="Script" uid="uid://cw7i4vcl2oo7n" path="res://Settings/option_button.gd" id="35_6fw26"]
 [ext_resource type="Texture2D" uid="uid://curcehsmdyixe" path="res://UI/Assets/Options/Graphics/Pixelation Label.png" id="35_u4j8q"]
+[ext_resource type="Script" uid="uid://bsk0722lheqme" path="res://UI/dropdown.gd" id="36_4vdat"]
+[ext_resource type="Texture2D" uid="uid://cqacges6jb8mp" path="res://UI/Assets/Options/Graphics/Dropdown Closed Small Normal.png" id="37_6gipo"]
 [ext_resource type="Texture2D" uid="uid://2spohs8238od" path="res://UI/Assets/Options/Graphics/Screen Label.png" id="37_cgbsv"]
-[ext_resource type="PackedScene" uid="uid://b6sdhxrs21m7a" path="res://UI/Dropdown.tscn" id="38_vsfar"]
+[ext_resource type="Texture2D" uid="uid://bj7ex5okfxj86" path="res://UI/Assets/Options/Graphics/Dropdown Closed Small Pressed.png" id="38_q8uc2"]
+[ext_resource type="Texture2D" uid="uid://cr13ypssjijun" path="res://UI/Assets/Options/Graphics/Dropdown Menu Button Normal.png" id="39_3hrip"]
 [ext_resource type="Texture2D" uid="uid://ds361k7n8fxgh" path="res://UI/Assets/Options/Graphics/Vsync Label.png" id="39_u4j8q"]
+[ext_resource type="Texture2D" uid="uid://bm8iq0w2j674j" path="res://UI/Assets/Options/Graphics/Dropdown Menu Button Pressed.png" id="40_cfi1e"]
 [ext_resource type="Texture2D" uid="uid://c0fl3gsl1fjxu" path="res://UI/Assets/Options/Graphics/FPS Label.png" id="41_4ecwm"]
+[ext_resource type="Script" uid="uid://b7ufuajki3cgw" path="res://UI/MenuButton.gd" id="41_l5w4m"]
+[ext_resource type="Texture2D" uid="uid://k7m7sprc7rg2" path="res://UI/Assets/Options/Graphics/Dropdown Menu End Button Normal.png" id="42_8eai4"]
 [ext_resource type="Texture2D" uid="uid://br56wtb7esdh2" path="res://UI/Assets/Options/Graphics/Toggle Normal.png" id="42_yj3ep"]
+[ext_resource type="Texture2D" uid="uid://bpj7ignrasafc" path="res://UI/Assets/Interactions/Dropdown Menu End Button Pressed.png" id="43_l2q3a"]
 [ext_resource type="Texture2D" uid="uid://c6jo5gdkrcjye" path="res://UI/Assets/Options/Graphics/Toggle Pressed.png" id="43_l6ppg"]
 [ext_resource type="Texture2D" uid="uid://ejdxmav0nmyr" path="res://UI/Assets/Options/Graphics/Toggle Hovered.png" id="44_6fw26"]
 [ext_resource type="Texture2D" uid="uid://t7hq8hkqg5gw" path="res://UI/Assets/Options/Graphics/Shadows Label.png" id="46_yj3ep"]
@@ -155,6 +162,8 @@ texture_margin_top = 40.0
 
 [sub_resource type="ImageTexture" id="ImageTexture_yj3ep"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_4vdat"]
+
 [sub_resource type="ButtonGroup" id="ButtonGroup_8i1sl"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_xvywo"]
@@ -168,6 +177,9 @@ texture_margin_top = 40.0
 [sub_resource type="ImageTexture" id="ImageTexture_u4j8q"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_pcq5y"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_x2h7q"]
+allow_unpress = true
 
 [node name="Options_Settings" type="CanvasLayer"]
 script = ExtResource("1_8i1sl")
@@ -292,6 +304,7 @@ texture_pressed = ExtResource("13_xv5xv")
 texture_hover = ExtResource("13_xv5xv")
 
 [node name="Sound" type="MarginContainer" parent="Main Menu/AspectRatioContainer" node_paths=PackedStringArray("ambience", "amb_label", "master", "master_label", "sfx", "sfx_label", "music", "music_label")]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 606
@@ -479,7 +492,6 @@ text = "8.0
 "
 
 [node name="Graphics" type="MarginContainer" parent="Main Menu/AspectRatioContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 553
@@ -528,10 +540,11 @@ scrollable = false
 layout_mode = 2
 theme_override_constants/separation = 83
 
-[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("cl", "op_button")]
+[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("menu", "cl", "op_button")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("3_i8y7k")
+menu = NodePath("Resolution Menu")
 cl = NodePath("../../../../..")
 op_button = NodePath("OptionButton")
 
@@ -583,47 +596,212 @@ popup/item_4/id = 4
 popup/item_5/text = "1920x1080"
 popup/item_5/id = 5
 
-[node name="Resolution Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
+[node name="Resolution Menu" type="Control" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array")]
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 5
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 
-[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Main" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_4vdat")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "1920-1080"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "384-216"
 
-[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "768-432"
 index = 1
 
-[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option3" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1152-648"
 index = 2
 
-[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1280-720"
 index = 3
 
-[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option5" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1512-982"
 index = 4
 
-[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1920-1080"
 index = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="pixelation" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
@@ -674,48 +852,213 @@ popup/item_3/id = 3
 popup/item_4/text = "Normal"
 popup/item_4/id = 4
 
-[node name="Pixelation Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
-custom_minimum_size = Vector2(552, 114)
+[node name="Pixelation Menu" type="Control" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array")]
+custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
 size_flags_horizontal = 0
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 2
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 
-[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Main" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_4vdat")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "Normal"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
 mouse_filter = 0
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Ultra Clean"
 
-[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Clean"
 index = 1
 
-[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option3" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Normal"
 index = 2
 
-[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Crunch"
 index = 3
 
-[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
-visible = false
-button_group = SubResource("ButtonGroup_vsfar")
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+[node name="Option5" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Ultra Crunch"
 index = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -781,49 +1124,212 @@ popup/item_2/text = "Borderless"
 popup/item_2/id = 2
 script = ExtResource("35_6fw26")
 
-[node name="Window Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+[node name="Window Menu" type="Control" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array", "main_box_container")]
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 1
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 sub_menu = true
 main_box_container = NodePath("VBoxContainer")
 
-[node name="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 0
+theme_override_constants/separation = 0
 
-[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" index="0"]
+[node name="Main" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_4vdat")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "Windowed"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Fullscreen"
 
-[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Windowed"
 index = 1
 
-[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
-visible = false
-button_group = SubResource("ButtonGroup_cixxg")
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+[node name="Option3" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option5" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Borderless"
 index = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Vsync" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
@@ -878,46 +1384,211 @@ popup/item_2/text = "Disabled"
 popup/item_2/id = 2
 script = ExtResource("35_6fw26")
 
-[node name="Vsync Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+[node name="Vsync Menu" type="Control" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array", "main_box_container")]
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 0
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 sub_menu = true
 main_box_container = NodePath("VBoxContainer")
 
-[node name="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Main" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_4vdat")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "Enabled"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Enabled"
 
-[node name="Option2" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Disabled"
 index = 1
 
-[node name="Option3" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
-visible = false
-button_group = SubResource("ButtonGroup_pcq5y")
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Option4" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+[node name="Option3" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option5" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option6" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option5" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Adaptive"
 index = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -1008,7 +1679,6 @@ bus = &"Music"
 
 [node name="Pause Menu" type="Panel" parent="."]
 process_mode = 2
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -1418,47 +2088,212 @@ popup/item_4/id = 4
 popup/item_5/text = "1920x1080"
 popup/item_5/id = 5
 
-[node name="Resolution Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
+[node name="Resolution Menu" type="Control" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array")]
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 5
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 
-[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Main" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_x2h7q")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "1920-1080"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "384-216"
 
-[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "768-432"
 index = 1
 
-[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option3" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1152-648"
 index = 2
 
-[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1280-720"
 index = 3
 
-[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option5" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1512-982"
 index = 4
 
-[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_8i1sl")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "1920-1080"
 index = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="pixelation" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
@@ -1509,48 +2344,213 @@ popup/item_3/id = 3
 popup/item_4/text = "Normal"
 popup/item_4/id = 4
 
-[node name="Pixelation Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" node_paths=PackedStringArray("op_array", "label_array") instance=ExtResource("38_vsfar")]
-custom_minimum_size = Vector2(552, 114)
+[node name="Pixelation Menu" type="Control" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array")]
+custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
 size_flags_horizontal = 0
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 2
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 
-[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Main" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_x2h7q")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "Normal"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
 mouse_filter = 0
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Ultra Clean"
 
-[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Clean"
 index = 1
 
-[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option3" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Normal"
 index = 2
 
-[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Crunch"
 index = 3
 
-[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
-visible = false
-button_group = SubResource("ButtonGroup_vsfar")
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+[node name="Option5" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vsfar")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Ultra Crunch"
 index = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -1616,49 +2616,212 @@ popup/item_2/text = "Borderless"
 popup/item_2/id = 2
 script = ExtResource("35_6fw26")
 
-[node name="Window Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+[node name="Window Menu" type="Control" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array", "main_box_container")]
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 1
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 sub_menu = true
 main_box_container = NodePath("VBoxContainer")
 
-[node name="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 0
+theme_override_constants/separation = 0
 
-[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" index="0"]
+[node name="Main" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_x2h7q")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "Windowed"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Fullscreen"
 
-[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Windowed"
 index = 1
 
-[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
-visible = false
-button_group = SubResource("ButtonGroup_cixxg")
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+[node name="Option3" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option5" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cixxg")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Borderless"
 index = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Vsync" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
@@ -1713,46 +2876,211 @@ popup/item_2/text = "Disabled"
 popup/item_2/id = 2
 script = ExtResource("35_6fw26")
 
-[node name="Vsync Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" node_paths=PackedStringArray("op_array", "label_array", "main_box_container") instance=ExtResource("38_vsfar")]
+[node name="Vsync Menu" type="Control" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array", "main_box_container")]
 custom_minimum_size = Vector2(552, 144)
 layout_mode = 2
+script = ExtResource("36_4vdat")
+menu = NodePath("VBoxContainer/Menu")
+main_button = NodePath("VBoxContainer/Main")
+main_label = NodePath("VBoxContainer/Main/RichTextLabel")
 selected = 0
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 sub_menu = true
 main_box_container = NodePath("VBoxContainer")
 
-[node name="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Main" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_x2h7q")
+texture_normal = ExtResource("37_6gipo")
+texture_pressed = ExtResource("38_q8uc2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main"]
+custom_minimum_size = Vector2(552, 144)
+layout_mode = 2
+offset_right = 552.0
+offset_bottom = 144.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
 text = "Enabled"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Menu" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+
+[node name="Menu" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer"]
+visible = false
 z_index = 2
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Option1" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+[node name="Option1" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+z_index = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Enabled"
 
-[node name="Option2" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Disabled"
 index = 1
 
-[node name="Option3" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
-visible = false
-button_group = SubResource("ButtonGroup_pcq5y")
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Option4" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+[node name="Option3" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option5" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
 visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 
-[node name="Option6" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option5" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
 button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("39_3hrip")
+texture_pressed = ExtResource("40_cfi1e")
+texture_hover = ExtResource("40_cfi1e")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option6" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_pcq5y")
+texture_normal = ExtResource("42_8eai4")
+texture_pressed = ExtResource("43_l2q3a")
+texture_hover = ExtResource("43_l2q3a")
+script = ExtResource("41_l5w4m")
+menu = NodePath("../../..")
 label = "Adaptive"
 index = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6"]
+custom_minimum_size = Vector2(552, 78)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("30_4p1b2")
+theme_override_font_sizes/normal_font_size = 60
+text = "Good"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -1841,6 +3169,14 @@ volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 175.0
+offset_right = 144.0
+offset_bottom = 215.0
+text = "paused"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_main_menu_click"]
@@ -1888,39 +3224,128 @@ bus = &"Music"
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_toggled"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_toggled"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
 [connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_toggled"]
+[connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_other_menu_clicked"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_toggled"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="full_screen" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_full_screen"]
 [connection signal="windowed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_toggled"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
 [connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_toggled"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
-[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_main_toggled"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
@@ -1981,40 +3406,128 @@ bus = &"Music"
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_disable_overlap"]
+[connection signal="disable_overlap" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
-[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_toggled"]
-[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_texture_button_toggled"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
 [connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
-[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_toggled"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_texture_button_toggled"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="full_screen" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_full_screen"]
 [connection signal="windowed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_toggled"]
 [connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_texture_button_toggled"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_main_toggled"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
 [connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_toggled"]
+[connection signal="disable_overlap" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_menu_on_select_option"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
-[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
-[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_main_toggled"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_texture_button_toggled"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option2" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option3" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option4" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option5" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
+[connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
@@ -2030,12 +3543,3 @@ bus = &"Music"
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_reset_graphics_pressed"]
-
-[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
-[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
-[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
-[editable path="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]
-[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu"]
-[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu"]
-[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu"]
-[editable path="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu"]

@@ -4,7 +4,7 @@ var base_window_size := Vector2(
 		ProjectSettings.get_setting("display/window/size/viewport_width"),
 		ProjectSettings.get_setting("display/window/size/viewport_height")
 )
-
+@export var menu : Control
 @export var cl : Panel
 @export var op_button : OptionButton
 var full := false
@@ -104,3 +104,12 @@ func _on_menu_on_select_option(index):
 	
 	center_window()
 	print(base_window_size)
+
+
+func _on_other_menu_clicked(event):
+	print(menu.open)
+	if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		print(menu.open)
+		if menu.open == true:
+			print(menu.open)
+			menu._close_menu()

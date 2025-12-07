@@ -27,8 +27,10 @@ func _on_reset_graphics_pressed() -> void:
 	GlobalVars.optional_shadow = true
 	emit_signal("set_shadow")
 
-func _on_main_toggled(toggled_on):
-	if toggled_on:
+
+
+func _on_disable_overlap(toggled):
+	if toggled:
 		checkbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	else:
 		checkbox.mouse_filter = Control.MOUSE_FILTER_STOP

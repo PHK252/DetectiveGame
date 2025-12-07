@@ -33,6 +33,7 @@ if {Character Aff Points.Theo} > 3:
 	Quincy (Surprise): What the hell?
 	[signal arg = "bar_distract"]
 	set {Quincy.is_distracted} = true
+	set {Quincy.needs_distraction} = false
 	[signal arg= "end"]
 	[end_timeline]
 else:

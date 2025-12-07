@@ -66,7 +66,3 @@ func _on_menu_on_select_option(index):
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		2:
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ADAPTIVE)
-
-
-func _on_main_menu_click(event):
-	pass # Replace with function body.

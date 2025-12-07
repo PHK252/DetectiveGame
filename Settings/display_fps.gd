@@ -21,9 +21,8 @@ func _on_reset_graphics_pressed() -> void:
 	display_fps = false
 	checkbox.button_pressed = false
 
-
-func _on_main_toggled(toggled_on):
-	if toggled_on:
+func _on_disable_overlap(toggled):
+	if toggled:
 		checkbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	else:
 		checkbox.mouse_filter = Control.MOUSE_FILTER_STOP

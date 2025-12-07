@@ -8,9 +8,9 @@ extends Control
 @onready var isaac : TextureButton = $VBoxContainer/Isaac
 @onready var quincy : TextureButton = $VBoxContainer/Quincy
 
-#@export var player : CharacterBody3D
-#@export var dalton_marker : Marker2D
-#@export var phone_marker : Marker2D
+@onready var theo_visible = false
+@onready var juniper_visible = false
+@onready var clyde_visible = false
 @onready var contact_screen = $"."
 @onready var phone_num = $"../PhoneNum"
 
@@ -26,22 +26,25 @@ func _ready():
 			contacts.visible = true
 	
 	#print(GlobalVars.phone_contacts)
-func _on_phone_ui_add_contact(char):
+
+func _add_contact(char):
 	if char == "theo":
 		theo.show()
+		theo_visible = true
 		visible_contacts.append(theo)
 
 	if char == "juniper":
 		juniper.show()
+		juniper_visible = true
 		visible_contacts.append(juniper)
 
 	if char == "clyde":
 		clyde.show()
 		visible_contacts.append(clyde)
-
-	if char == "skylar":
-		skylar.show()
-		visible_contacts.append(skylar)
+		clyde_visible = true
+	#if char == "skylar":
+		#skylar.show()
+		#visible_contacts.append(skylar)
 
 	GlobalVars.phone_contacts = visible_contacts
 	
@@ -53,3 +56,13 @@ func _on_keypad_pressed():
 func _on_contact_pressed():
 	contact_screen.show()
 	phone_num.hide()
+
+
+func _on_visibility_changed():
+	if visible == true:
+		if Dialogic.VAR.get_variable("Global.got_theo_ad") and theo.visible != true:
+			_add_contact("theo")
+		if Dialogic.VAR.get_variable("Juniper.leave") and juniper.visible != true:
+			_add_contact("juniper")
+		if Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") and clyde.visible != true:
+			_add_contact("clyde")
