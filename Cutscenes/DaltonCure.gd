@@ -147,3 +147,13 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	#playAnim
 	#number = 1
 	#move_out = true
+
+func _on_characters_walkoutdalton() -> void:
+	await get_tree().create_timer(0.8).timeout
+	GlobalVars.player_move = true
+	#SPEED = 0.8
+	in_control = false
+	number = 1
+	move_out = true
+	await get_tree().create_timer(3.5).timeout
+	move_out = false
