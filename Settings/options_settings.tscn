@@ -1,10 +1,9 @@
-[gd_scene load_steps=113 format=3 uid="uid://d2hmxhs2js55d"]
+[gd_scene load_steps=112 format=3 uid="uid://d2hmxhs2js55d"]
 
 [ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_6ko55"]
 [ext_resource type="Script" uid="uid://duefet7jfp0uk" path="res://Settings/options_settings.gd" id="1_8i1sl"]
 [ext_resource type="Texture2D" uid="uid://dfdc8vkr01sfx" path="res://UI/Assets/Options/Graphics/Graphics Outline.png" id="1_i103g"]
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="1_vva6b"]
-[ext_resource type="AudioStream" uid="uid://daj81pl4kj1c0" path="res://Audio/Ambience/fireplace.wav" id="2_av0ln"]
 [ext_resource type="Script" uid="uid://b5b3482ku7twe" path="res://Settings/window_mode.gd" id="2_i8y7k"]
 [ext_resource type="Script" uid="uid://dknnj5f6c6tgm" path="res://Settings/resolution.gd" id="3_i8y7k"]
 [ext_resource type="Texture2D" uid="uid://v8yi13ehtmfj" path="res://UI/Assets/Options/Paper Anim.tres" id="3_im6xs"]
@@ -1671,12 +1670,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "X"
 
-[node name="SoundTest" type="AudioStreamPlayer" parent="Main Menu/AspectRatioContainer"]
-stream = ExtResource("2_av0ln")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
-
 [node name="Pause Menu" type="Panel" parent="."]
 process_mode = 2
 visible = false
@@ -3163,12 +3156,6 @@ text = "Reset *not for window:   "
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "X"
-
-[node name="SoundTest" type="AudioStreamPlayer" parent="Pause Menu/AspectRatioContainer"]
-stream = ExtResource("2_av0ln")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu"]
 layout_mode = 0

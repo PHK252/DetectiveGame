@@ -26,7 +26,15 @@ signal theo_move
 signal theo_there
 signal call_recieve
 
+signal dalton_exit_alt
+signal theo_exit_alt
+signal stop_look
+
+signal theo_exit
+signal stop_lookTheo
+
 func _ready():
+	GlobalVars.day = 2 #for testing the leave stuff
 	GlobalVars.current_level = "Office"
 	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
 #	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
@@ -182,6 +190,9 @@ func exit_Theo(argument: String):
 		#Prompt theo to exit
 		print("Theo exits")
 		#emit_signal("theo_move")
+		emit_signal("stop_lookTheo")
+		await get_tree().create_timer(1.0).timeout
+		emit_signal("theo_exit")
 		Dialogic.signal_event.disconnect(exit_Theo)
 		pass
 #add anims
@@ -191,8 +202,20 @@ func walk_out(argument: String):
 		print("Both exit")
 		#emit_signal("Both_walk out")
 		Dialogic.signal_event.disconnect(walk_out)
+		emit_signal("stop_look")
+		await get_tree().create_timer(1.0).timeout
+		emit_signal("dalton_exit_alt")
+		emit_signal("theo_exit_alt")
+		await get_tree().create_timer(1.0).timeout
 		Loading.load_scene(self, GlobalVars.interrogation, "", "", "")
 		pass
+	elif argument == "Walk_out":
+		#print("TRYINGTOWALKOUT")
+		emit_signal("stop_look")
+		await get_tree().create_timer(1.0).timeout
+		emit_signal("dalton_exit_alt")
+		emit_signal("theo_exit_alt")
+		await get_tree().create_timer(1.0).timeout
 	elif argument == "fade":
 		#Fade to Credits
 		Dialogic.signal_event.disconnect(walk_out)

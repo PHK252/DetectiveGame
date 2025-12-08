@@ -53,3 +53,7 @@ func _process(delta: float) -> void:
 
 func _on_character_body_3d_look_dalton() -> void:
 	activate_look = true
+
+
+func _on_theo_look_away() -> void:
+	activate_look = false

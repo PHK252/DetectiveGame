@@ -93,3 +93,6 @@ func target_change(target: int):
 	elif target == 2:
 		target_node = secondary_target.get_path()
 		
+
+func _on_stop_look_alternate() -> void:
+	active = false

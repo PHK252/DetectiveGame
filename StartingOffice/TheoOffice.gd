@@ -7,7 +7,10 @@ extends CharacterBody3D
 @export var walk_target : Marker3D
 @export var sound_anims : AnimationPlayer
 
-const speed = 0.3
+@export var walk_target_alt : Marker3D
+@export var walk_position_alt : Marker3D
+
+var speed = 0.3
 const LERP_VAL = 0.15
 var rotation_speed = 70
 var stop_walk := false
@@ -17,14 +20,20 @@ var blend_speed := 5.0
 signal look_dalton
 var in_later : bool = false
 var is_there : bool = false
+var leave_rotation := false
 enum {
 	IDLE, 
 	WALK,
-	OUT
+	OUT,
+	LEAVE,
+	LEAVE_ALT
 }
 
 var state = OUT
-var see_player = false
+var see_player := false
+var walk_away := false
+
+signal look_away
 
 func _ready() -> void:
 	state = OUT
@@ -42,7 +51,7 @@ func _ready() -> void:
 	if is_there == true:
 		print("theo in")
 		is_there = false
-		global_position = Vector3(0.527486, -0.029458, 0.551869)
+		global_position = Vector3(0.527486, -0.029458, 0.207)
 		return
 		
 	_return_office()
@@ -75,30 +84,55 @@ func _physics_process(delta: float) -> void:
 func force_rotation(delta):
 	var target = walk_target.global_position
 	var dir = (armature.global_position - target).normalized()
-	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(dir.x, dir.z), LERP_VAL)
+	armature.rotation.y = lerp_angle(armature.rotation.y, atan2(dir.x, -dir.z), LERP_VAL)
 		
 
 func force_walk(delta):
-	var dir_marker = (armature.global_position - walk_target.global_position).normalized()
-	velocity.x = lerp(velocity.x, dir_marker.x * speed, LERP_VAL)
-	velocity.z = lerp(velocity.z, dir_marker.z * speed, LERP_VAL)
-
+	var dir_marker = (armature.global_position - walk_target_alt.global_position).normalized()
+	velocity.x = lerp(velocity.x, -dir_marker.x * speed, LERP_VAL)
+	velocity.z = lerp(velocity.z, -dir_marker.z * speed, LERP_VAL)
 
 func _rotate_dalton(delta):
 	pass
 	#var direct = (player.global_position - armature.global_position).normalized()
 	#armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-direct.x, -direct.z), LERP_VAL)
-	
 
 func _process(delta):
 	#print(state)
-	if state == WALK:
+	#if Input.is_action_just_pressed("Jump"):
+		#state = LEAVE
+		#emit_signal("look_away")
+		#print("Theoleaving")
+		#leave_rotation = true
+		#await get_tree().create_timer(0.8).timeout
+		#walk_away = true
+		#leave_rotation = false
+		
+	if walk_away:
+		sound_anims.play("WoodWalk")
+		var c_pos: float = anim_tree.get("parameters/BlendSpace1D/blend_position") as float
+		var leave_pos: float = lerp(c_pos, 1.0, delta * blend_speed)
+		anim_tree.set("parameters/BlendSpace1D/blend_position", leave_pos)
+		
+	if state == WALK and not leave_rotation:
 		sound_anims.play("WoodWalk")
 		var flipped_basis = path.global_transform.basis
 		flipped_basis.x = -flipped_basis.x  # Flip the X basis vector to mirror rotation on the Y-axis
 		flipped_basis.z = -flipped_basis.z  # Flip the Z basis vector to mirror rotation on the Y-axis
 	# Apply the flipped basis to the NPC
 		global_transform.basis = flipped_basis
+	
+	if state == LEAVE_ALT:
+		var c_pos: float = anim_tree.get("parameters/BlendSpace1D/blend_position") as float
+		var leave_pos: float = lerp(c_pos, 1.0, delta * blend_speed)
+		anim_tree.set("parameters/BlendSpace1D/blend_position", leave_pos)
+		force_walk(delta)
+	
+	if state == LEAVE or state == LEAVE_ALT:
+		sound_anims.play("WoodWalk")
+		
+	if leave_rotation:	
+		force_rotation(delta)
 	
 	if see_player and Input.is_action_just_pressed("interact"):
 		pass
@@ -114,6 +148,7 @@ func _process(delta):
 	elif path.progress_ratio == 1:
 		state = IDLE
 		stop_walk = true
+
 
 	#if see player true then look at player
 	#check player position player.globalposition
@@ -144,6 +179,17 @@ func _process(delta):
 					state = IDLE
 		OUT:
 			pass
+		LEAVE:
+			if walk_away:
+				if path.progress_ratio > 0:
+					path.progress_ratio = clamp(path.progress_ratio - speed * delta, 0.0, 1.0)
+				
+				if path.progress_ratio == 0.0:
+					walk_away = false 
+		LEAVE_ALT:
+			pass
+					
+				
 	
 func _on_interact_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -161,3 +207,19 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 func _on_exposition_theo_move() -> void:
 	state = WALK
 	come_in = true
+
+func _on_theo_exit() -> void:
+	speed = 0.8
+	emit_signal("look_away")
+	print("Theoleaving")
+	leave_rotation = true
+	await get_tree().create_timer(0.8).timeout
+	state = LEAVE
+	walk_away = true
+	
+	
+	
+
+func _on_theo_exit_alt() -> void:
+	speed = 0.8
+	state = LEAVE_ALT

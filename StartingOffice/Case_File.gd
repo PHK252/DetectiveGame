@@ -23,6 +23,10 @@ signal paper_exit
 signal general_interaction
 signal call_recieved
 
+signal theo_exit
+signal dalton_exit
+
+
 func _ready():
 	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure And Choco":
 		emit_signal("theo_out")
@@ -32,6 +36,13 @@ func _ready():
 		#return
 	#set_instance_shader_parameter("albedo_texture", "res://StartingOffice/StartingOffice_CaseFile.png")
 	pass
+	
+#func _process(delta: float) -> void: for testing leave when theo walks in
+	#if Input.is_action_just_pressed("call"):
+		#emit_signal("theo_exit")
+		#await get_tree().create_timer(2.0).timeout
+		#emit_signal("dalton_exit")
+		#test signal for both leave
 
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:
@@ -136,6 +147,10 @@ func walk_out(argument: String):
 		#Prompt theo to walk through the door
 		#print("Both exit")
 		#emit_signal("Both_walk out")
+		#walk out signals for when theo walks in only
+		emit_signal("theo_exit")
+		await get_tree().create_timer(2.0).timeout
+		emit_signal("dalton_exit")
 		Dialogic.signal_event.disconnect(walk_out)
 
 func calling(argument: String):
@@ -143,7 +158,6 @@ func calling(argument: String):
 		emit_signal("call_recieved")
 		GlobalVars.in_dialogue = false
 		Dialogic.signal_event.disconnect(calling)
-
 
 func _on_call_start_dialogue():
 	print(dialogue_file)

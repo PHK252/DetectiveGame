@@ -91,6 +91,22 @@ func _physics_process(delta: float) -> void:
 	GlobalVars.player_pos = global_position
 	GlobalVars.dalton_pos = global_position
 	
+	#if Input.is_action_just_pressed("call"):
+		##coll_wall.disabled = true
+		#number = 7
+		#in_control = false
+		#needs_rotation_forced = true
+		#force_rotation = true
+		#await get_tree().create_timer(0.5).timeout
+		#force_rotation = false
+		#needs_rotation_forced = false
+		#number = 0
+		#walk_number = 7
+		#forced_walk = true
+		#await get_tree().create_timer(8.0).timeout
+		#forced_walk = false
+		#walk_number = 0
+	
 	if GlobalVars.in_dialogue == true:
 		anim_tree.set("parameters/Thinking/request", 2)
 	#if Input.is_action_just_pressed("meeting_done"):
@@ -1105,3 +1121,22 @@ func _on_paper_rotation(interactor: Interactor) -> void:
 	needs_rotation_forced = false
 	number = 0
 	in_control = true
+
+func _on_exit_office_dalton() -> void:
+	#coll_wall.disabled = true
+	#print("dalton_exit")
+	SPEED = 0.5
+	number = 7
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	walk_number = 7
+	forced_walk = true
+	await get_tree().create_timer(8.0).timeout
+	forced_walk = false
+	walk_number = 0
+	SPEED = 1.15
