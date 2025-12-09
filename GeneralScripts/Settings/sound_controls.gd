@@ -29,15 +29,15 @@ func _ready() -> void:
 	master_default = master.value
 	master_label.text = str(int(round(master.value * 10)))
 	#
-	music.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
+	music.value = db_to_linear(AudioServer.get_bus_volume_db(music_index))
 	music_default = music.value
 	music_label.text = str(int(round(music.value * 10)))
 	#
-	sfx.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
+	sfx.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_index))
 	sfx_default = sfx.value
 	sfx_label.text = str(int(round(sfx.value * 10)))
 	#
-	ambience.value = db_to_linear(AudioServer.get_bus_volume_db(master_index))
+	ambience.value = db_to_linear(AudioServer.get_bus_volume_db(amb_index))
 	amb_default = ambience.value
 	amb_label.text = str(int(round(ambience.value * 10)))
 	#

@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://d2hmxhs2js55d"]
+[gd_scene load_steps=125 format=3 uid="uid://d2hmxhs2js55d"]
 
 [ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_6ko55"]
 [ext_resource type="Script" uid="uid://duefet7jfp0uk" path="res://Settings/options_settings.gd" id="1_8i1sl"]
@@ -81,6 +81,14 @@
 [ext_resource type="Texture2D" uid="uid://duxacabrqyfvv" path="res://UI/Assets/Options/Graphics/Toggle Pressed NS.png" id="73_igg84"]
 [ext_resource type="Texture2D" uid="uid://pasvdlj2r7gi" path="res://UI/Assets/Options/Graphics/Toggle Hovered NS.png" id="74_mb4rt"]
 [ext_resource type="Texture2D" uid="uid://b1tm4cohwhdxq" path="res://UI/Assets/Options/Graphics/Shadows Label NS.png" id="75_t1ojo"]
+[ext_resource type="Script" uid="uid://bfihmqbwknndy" path="res://Settings/Options_Sounds.gd" id="82_x2h7q"]
+[ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="83_cfi1e"]
+[ext_resource type="AudioStream" uid="uid://dlmukgdrndsxy" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_2.wav" id="84_l5w4m"]
+[ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="85_8eai4"]
+[ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="86_l2q3a"]
+[ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="87_mk5fo"]
+[ext_resource type="AudioStream" uid="uid://otsbc8ipu338" path="res://Audio/misc_sounds/PhoneHover.wav" id="88_l5w4m"]
+[ext_resource type="AudioStream" uid="uid://bvnsftemyng8f" path="res://Audio/misc_sounds/altClick.wav" id="89_8eai4"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_pimcf"]
 device = -1
@@ -208,6 +216,34 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_6gipo"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.486401),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_x2h7q"]
 resource_name = "fade_in_out"
 tracks/0/type = "value"
@@ -261,34 +297,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_6gipo"]
-resource_name = "fade_in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.486401),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4vdat"]
@@ -3302,23 +3310,69 @@ libraries = {
 &"": SubResource("AnimationLibrary_4vdat")
 }
 
+[node name="Options_Sounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
+script = ExtResource("82_x2h7q")
+audio = [NodePath("Blip(start?)"), NodePath("Blip(back?)"), NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Hiss02(back?)"), NodePath("alt_select"), NodePath("Hiss(hover)low")]
+
+[node name="Blip(start?)" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("83_cfi1e")
+bus = &"SFX"
+
+[node name="Blip(back?)" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("84_l5w4m")
+bus = &"SFX"
+
+[node name="Click(select)" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("85_8eai4")
+bus = &"SFX"
+
+[node name="Hiss(hover)" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("86_l2q3a")
+bus = &"SFX"
+
+[node name="Hiss(hover)low" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("86_l2q3a")
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="Hiss02(back?)" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("87_mk5fo")
+bus = &"SFX"
+
+[node name="dropdownhover" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("88_l5w4m")
+bus = &"SFX"
+
+[node name="alt_select" type="AudioStreamPlayer" parent="Options_Sounds"]
+stream = ExtResource("89_8eai4")
+bus = &"SFX"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_menu_click"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Options_Sounds" method="on_hover"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Exit/Main_exit_button" to="Options_Sounds" method="_on_exit_click"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Options_Sounds" method="on_hover_high"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Options_Sounds" method="_on_norm_click"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio" to="Main Menu/AspectRatioContainer/MarginContainer" method="_on_audio_toggled"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics" to="Options_Sounds" method="on_hover_high"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics" to="Options_Sounds" method="_on_norm_click"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics" to="Main Menu/AspectRatioContainer/MarginContainer" method="_on_graphics_toggled"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio Reset" to="Options_Sounds" method="on_hover_high"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio Reset" to="Main Menu/AspectRatioContainer/Sound" method="_on_audio_reset_pressed"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Audio Reset" to="Options_Sounds" method="_on_norm_click"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Options_Sounds" method="on_hover_high"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
@@ -3330,6 +3384,7 @@ libraries = {
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_reset_graphics_pressed"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs/Graphics Reset" to="Options_Sounds" method="_on_norm_click"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Sound/VBoxContainer/Master/master_slider" to="Main Menu/AspectRatioContainer/Sound" method="_on_master_slider_clicked"]
 [connection signal="value_changed" from="Main Menu/AspectRatioContainer/Sound/VBoxContainer/Master/master_slider" to="Main Menu/AspectRatioContainer/Sound" method="_on_master_slider_value_changed"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Sound/VBoxContainer/Music/music_slider" to="Main Menu/AspectRatioContainer/Sound" method="_on_music_slider_clicked"]
@@ -3351,6 +3406,8 @@ libraries = {
 [connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_disable_overlap"]
 [connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
+[connection signal="select_sound" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" to="Options_Sounds" method="alt_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Options_Sounds" method="_on_hover_non_exit"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_texture_button_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
@@ -3383,6 +3440,8 @@ libraries = {
 [connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_disable_overlap"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_other_menu_clicked"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_menu_on_select_option"]
+[connection signal="select_sound" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" to="Options_Sounds" method="alt_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Options_Sounds" method="_on_hover_non_exit"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_texture_button_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
@@ -3415,6 +3474,8 @@ libraries = {
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_toggled"]
 [connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
+[connection signal="select_sound" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" to="Options_Sounds" method="alt_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Options_Sounds" method="_on_hover_non_exit"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_texture_button_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
@@ -3446,6 +3507,8 @@ libraries = {
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_toggled"]
 [connection signal="disable_overlap" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_disable_overlap"]
 [connection signal="on_select_option" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_menu_on_select_option"]
+[connection signal="select_sound" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" to="Options_Sounds" method="alt_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Options_Sounds" method="_on_hover_non_exit"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Main" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_texture_button_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option1" method="_on_mouse_exited"]
@@ -3471,13 +3534,17 @@ libraries = {
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
 [connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Options_Sounds" method="_on_hover_non_exit"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Options_Sounds" method="alt_select"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_check_box_toggled"]
+[connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Options_Sounds" method="_on_hover_non_exit"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
+[connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Options_Sounds" method="alt_select"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_check_box_toggled"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_reset_graphics_pressed"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Reset/reset_graphics" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_reset_graphics_pressed"]

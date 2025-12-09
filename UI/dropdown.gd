@@ -11,6 +11,9 @@ signal on_select_option(index : int)
 signal disable_overlap (toggled : bool)
 @export var main_box_container : VBoxContainer
 var open = false
+
+signal select_sound
+
 func _ready():
 	menu.hide()
 	if selected == -1:
@@ -32,6 +35,7 @@ func _on_texture_button_toggled(toggled_on):
 func _on_option_select(label, index, reset):
 	if reset == false:
 		emit_signal("on_select_option", index)
+		emit_signal("select_sound")
 	main_label.text = label
 	main_button.button_pressed = false
 	label_array[selected].add_theme_color_override("default_color", Color(0.898,0.678,0.18,1.0))

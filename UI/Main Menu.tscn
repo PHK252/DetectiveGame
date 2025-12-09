@@ -306,9 +306,10 @@ bus = &"SFX"
 stream = ExtResource("55_hggkw")
 bus = &"SFX"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_prttk")
 autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="Start/VBoxContainer/Controls" to="Sounds" method="_on_menuHover"]
 [connection signal="pressed" from="Start/VBoxContainer/Controls" to="." method="_on_controls_pressed"]

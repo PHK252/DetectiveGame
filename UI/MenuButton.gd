@@ -4,7 +4,7 @@ extends TextureButton
 @export var label : String
 @export var index : int
 @onready var text_label = $RichTextLabel
-
+@onready var hover_sound = $"../../../../../../../../../../Options_Sounds/dropdownhover"
 
 signal select(label: String, index : int)
 
@@ -17,6 +17,7 @@ func _on_pressed():
 
 func _on_mouse_entered():
 	if menu.selected != index:
+		hover_sound.play()
 		text_label.add_theme_color_override("default_color", Color(0.992,0.835,0.478,1.0))
 
 
