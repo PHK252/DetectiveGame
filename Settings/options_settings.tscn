@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://d2hmxhs2js55d"]
+[gd_scene load_steps=117 format=3 uid="uid://d2hmxhs2js55d"]
 
 [ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_6ko55"]
 [ext_resource type="Script" uid="uid://duefet7jfp0uk" path="res://Settings/options_settings.gd" id="1_8i1sl"]
@@ -180,6 +180,124 @@ allow_unpress = true
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_x2h7q"]
 allow_unpress = true
+
+[sub_resource type="Animation" id="Animation_qucnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_x2h7q"]
+resource_name = "fade_in_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.486401, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4vdat"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.486401),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6gipo"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.486401),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vdat"]
+_data = {
+&"RESET": SubResource("Animation_qucnj"),
+&"fade_in": SubResource("Animation_6gipo"),
+&"fade_in_out": SubResource("Animation_x2h7q"),
+&"fade_out": SubResource("Animation_4vdat")
+}
 
 [node name="Options_Settings" type="CanvasLayer"]
 script = ExtResource("1_8i1sl")
@@ -539,13 +657,14 @@ scrollable = false
 layout_mode = 2
 theme_override_constants/separation = 83
 
-[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("menu", "cl", "op_button")]
+[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("menu", "cl", "op_button", "screen_transition_fade")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("3_i8y7k")
 menu = NodePath("Resolution Menu")
 cl = NodePath("../../../../..")
 op_button = NodePath("OptionButton")
+screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
 layout_mode = 2
@@ -1069,11 +1188,12 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 83
 
-[node name="Screen" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
+[node name="Screen" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "screen_transition_fade")]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("2_i8y7k")
 op_button = NodePath("WindowMode")
+screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
 layout_mode = 2
@@ -2027,12 +2147,13 @@ scrollable = false
 layout_mode = 2
 theme_override_constants/separation = 83
 
-[node name="Resolution" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("cl", "op_button")]
+[node name="Resolution" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("cl", "op_button", "screen_transition_fade")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("3_i8y7k")
 cl = NodePath("../../../../..")
 op_button = NodePath("OptionButton")
+screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
 
 [node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
 layout_mode = 2
@@ -2556,11 +2677,12 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 83
 
-[node name="Screen" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
+[node name="Screen" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "screen_transition_fade")]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("2_i8y7k")
 op_button = NodePath("WindowMode")
+screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
 
 [node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
 layout_mode = 2
@@ -3164,6 +3286,21 @@ offset_top = 175.0
 offset_right = 144.0
 offset_bottom = 215.0
 text = "paused"
+
+[node name="ScreenFadesWindowMode" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="ScreenTransitionPlayer" type="AnimationPlayer" parent="ScreenFadesWindowMode"]
+libraries = {
+&"": SubResource("AnimationLibrary_4vdat")
+}
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]

@@ -4,16 +4,21 @@ signal full_screen
 signal windowed
 
 @export var op_button : OptionButton
+@export var screen_transition_fade : AnimationPlayer
+
 var open := false
 
 func _ready() -> void:
 	pass
 	#default window option
 	
+#this isnt used right?
 func _on_window_mode_item_selected(index: int) -> void:
 	op_button.release_focus()
 	match index:
 		0: #full
+			screen_transition_fade.play("fade_out")
+			await get_tree().create_timer(.5).timeout
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 			emit_signal("full_screen")
 		1: #window
@@ -47,10 +52,12 @@ func _on_option_button_clicked(event):
 func _on_option_button_toggled(toggled_on):
 	open = toggled_on
 
-
 func _on_menu_on_select_option(index):
 	match index:
 		0: #full
+			#print("FADE")
+			screen_transition_fade.play("fade_out")
+			await get_tree().create_timer(.5).timeout
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 			emit_signal("full_screen")
 		1: #window

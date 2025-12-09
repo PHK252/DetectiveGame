@@ -11,6 +11,8 @@ var full := false
 var windowed := false 
 var open := false
 
+@export var screen_transition_fade : AnimationPlayer
+
 func _ready() -> void:
 	get_viewport().size_changed.connect(_on_new_window_size)
 	_on_new_window_size()
@@ -63,11 +65,16 @@ func center_window():
 func _on_screen_full_screen() -> void:
 	full = true
 	windowed = false
-	get_window().set_size(Vector2i(1920,1080))
+	center_window()
+	await get_tree().create_timer(.5).timeout
+	screen_transition_fade.play("fade_in")
+	#get_window().set_size(Vector2i(1920,1080)) think this was an issue
 
 func _on_screen_windowed() -> void:
 	windowed = true
 	full = false
+	center_window()
+	screen_transition_fade.play("fade_in_out")
 
 func _on_reset_graphics_pressed() -> void:
 	pass
