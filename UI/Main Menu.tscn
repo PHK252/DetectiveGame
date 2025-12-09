@@ -49,7 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://cuisnnlbsn0ft" path="res://UI/Assets/Main Menu/Updated/Start quit hovered.png" id="27_8hnc3"]
 [ext_resource type="Texture2D" uid="uid://bljobscvtdjmy" path="res://UI/Assets/Main Menu/Updated/Start Light.png" id="27_j3mhs"]
 [ext_resource type="PackedScene" uid="uid://todl2n23or4m" path="res://UI/Controls.tscn" id="42_5dry5"]
-[ext_resource type="Script" uid="uid://dqhhjmkechlf" path="res://GeneralScripts/AudioScripts/audio_manager_phone.gd" id="50_ck1bs"]
+[ext_resource type="Script" uid="uid://d4jfbi0qqqpji" path="res://UI/menu_sounds.gd" id="51_52ejp"]
 [ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="51_prttk"]
 [ext_resource type="AudioStream" uid="uid://dlmukgdrndsxy" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_2.wav" id="52_52ejp"]
 [ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="53_lk11p"]
@@ -282,27 +282,27 @@ main_menu = true
 visible = false
 main_menu = true
 
-[node name="Sounds" type="Node" parent="." node_paths=PackedStringArray("audio_master")]
-script = ExtResource("50_ck1bs")
-audio_master = [NodePath("Blip(start?)"), NodePath("Blip(back?)"), NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Hiss02(back?)")]
+[node name="MenuSounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
+script = ExtResource("51_52ejp")
+audio = [NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Blip(back?)")]
 
-[node name="Blip(start?)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Blip(start?)" type="AudioStreamPlayer" parent="MenuSounds"]
 stream = ExtResource("51_prttk")
 bus = &"SFX"
 
-[node name="Blip(back?)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Blip(back?)" type="AudioStreamPlayer" parent="MenuSounds"]
 stream = ExtResource("52_52ejp")
 bus = &"SFX"
 
-[node name="Click(select)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Click(select)" type="AudioStreamPlayer" parent="MenuSounds"]
 stream = ExtResource("53_lk11p")
 bus = &"SFX"
 
-[node name="Hiss(hover)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Hiss(hover)" type="AudioStreamPlayer" parent="MenuSounds"]
 stream = ExtResource("54_70b4d")
 bus = &"SFX"
 
-[node name="Hiss02(back?)" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Hiss02(back?)" type="AudioStreamPlayer" parent="MenuSounds"]
 stream = ExtResource("55_hggkw")
 bus = &"SFX"
 
@@ -311,23 +311,25 @@ stream = ExtResource("56_prttk")
 autoplay = true
 bus = &"Music"
 
-[connection signal="mouse_entered" from="Start/VBoxContainer/Controls" to="Sounds" method="_on_menuHover"]
+[connection signal="mouse_entered" from="Start/VBoxContainer/Controls" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="Start/VBoxContainer/Controls" to="Sounds" method="_on_menuClick"]
-[connection signal="mouse_entered" from="Start/VBoxContainer/Options" to="Sounds" method="_on_menuHover"]
+[connection signal="pressed" from="Start/VBoxContainer/Controls" to="MenuSounds" method="_on_menu_press"]
+[connection signal="mouse_entered" from="Start/VBoxContainer/Options" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Start/VBoxContainer/Options" to="Sounds" method="_on_menuClick"]
-[connection signal="mouse_entered" from="Start/VBoxContainer/Credits" to="Sounds" method="_on_menuHover"]
-[connection signal="pressed" from="Start/VBoxContainer/Credits" to="Sounds" method="_on_menuClick"]
-[connection signal="mouse_entered" from="Start/VBoxContainer/Quit" to="Sounds" method="_on_menuHover"]
+[connection signal="pressed" from="Start/VBoxContainer/Options" to="MenuSounds" method="_on_menu_press"]
+[connection signal="mouse_entered" from="Start/VBoxContainer/Credits" to="MenuSounds" method="_on_menu_hover"]
+[connection signal="pressed" from="Start/VBoxContainer/Credits" to="MenuSounds" method="_on_menu_press"]
+[connection signal="mouse_entered" from="Start/VBoxContainer/Quit" to="MenuSounds" method="_on_menuHover"]
 [connection signal="pressed" from="Start/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="Start/Start" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Start" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="Start/Continue/Continue" to="Sounds" method="_on_menuHover"]
+[connection signal="pressed" from="Start/Start" to="MenuSounds" method="_on_start_pressed"]
+[connection signal="mouse_entered" from="Start/Continue/Continue" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Continue/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Start/Continue/Continue" to="Sounds" method="_on_start_click"]
-[connection signal="mouse_entered" from="Start/Continue/New Game" to="Sounds" method="_on_menuHover"]
+[connection signal="pressed" from="Start/Continue/Continue" to="MenuSounds" method="_on_start_pressed"]
+[connection signal="mouse_entered" from="Start/Continue/New Game" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Continue/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Start/Continue/New Game" to="Sounds" method="_on_start_click"]
+[connection signal="pressed" from="Start/Continue/New Game" to="MenuSounds" method="_on_start_pressed"]
 [connection signal="show_start" from="Controls" to="." method="_on_controls_show_start"]
 [connection signal="visibility_changed" from="Controls" to="Controls" method="_on_visibility_changed"]
 [connection signal="options_exit" from="Options_Settings" to="." method="_on_options_exit_button_pressed"]
