@@ -323,10 +323,25 @@ var run_tut = false
 var Day_1_Quincy_call = false
 var Day_3_Chief_call = false
 
+signal pixelation_changed(new_value)
+signal shadow_changed(new_value)
+signal brightness_changed(new_value)
+
 #settings variables
-var stretch_factor : int = 6
-var optional_shadow := true
-var brightness := 1.0
+var stretch_factor : int = 6:
+	set(value):
+		stretch_factor = value
+		emit_signal("pixelation_changed", value)
+
+var optional_shadow := true:
+	set(value):
+		optional_shadow = value
+		emit_signal("shadow_changed", value)
+
+var brightness := 1.0:
+	set(value):
+		brightness = value
+		emit_signal("brightness_changed", value)
 
 ###Save Up until Here?
 var from_save_file = false

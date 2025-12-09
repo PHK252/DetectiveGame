@@ -45,6 +45,17 @@ func _ready():
 	contact.hide()
 	missing.hide()
 	
+	#settings
+	#brightness
+	GlobalVars.pixelation_changed.connect(_set_pixelation)
+	_set_pixelation(GlobalVars.stretch_factor) 
+	#shadow
+	GlobalVars.shadow_changed.connect(_set_shadow)
+	_set_shadow(GlobalVars.optional_shadow)
+	#pixel
+	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
+	_on_brightness_brightness_shift(GlobalVars.brightness)
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	#$"UI/TeamPic Look".hide()
@@ -238,15 +249,13 @@ func _on_start_call():
 	Dialogic.start(dialogue_file, "call")
 #settings changes
 
-func _set_pixelation() -> void:
-	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
+func _set_pixelation(stretch) -> void:
+	sub_v_container.stretch_shrink = stretch
 
-func _set_shadow() -> void:
-	world_env.environment.ssao_enabled = GlobalVars.optional_shadow
+func _set_shadow(shadow) -> void:
+	world_env.environment.ssao_enabled = shadow
 	#optional lights for other levels
 	#for light in lights:
 		#light.shadow_enabled = GlobalVars.optional_shadow
-	
-
-func _on_brightness_brightness_shift() -> void:
-	world_env.environment.adjustment_brightness = GlobalVars.brightness
+func _on_brightness_brightness_shift(brightness) -> void:
+	world_env.environment.adjustment_brightness = brightness

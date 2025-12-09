@@ -1,5 +1,6 @@
-[gd_scene load_steps=37 format=4 uid="uid://cag171myh2rvi"]
+[gd_scene load_steps=38 format=4 uid="uid://cag171myh2rvi"]
 
+[ext_resource type="Script" uid="uid://chfs5v5k8n2ek" path="res://Cutscenes/prison.gd" id="1_8xffw"]
 [ext_resource type="PackedScene" uid="uid://b4bg3e2c51b0g" path="res://Cutscenes/PrisonGLB.glb" id="1_etn41"]
 [ext_resource type="Script" uid="uid://cguvqsqv4exb7" path="res://Cutscenes/color_rect.gd" id="1_ln8dv"]
 [ext_resource type="PackedScene" uid="uid://b87mr376lbfke" path="res://Cutscenes/PrisonDaltonWalkOut.glb" id="2_7bji2"]
@@ -232,7 +233,10 @@ _data = {
 &"walk": SubResource("Animation_utcoj")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("world_env", "sub_v_container")]
+script = ExtResource("1_8xffw")
+world_env = NodePath("SubViewportContainer/SubViewport/Lighting/WorldEnvironment")
+sub_v_container = NodePath("SubViewportContainer")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 1
@@ -323,7 +327,6 @@ bones/24/rotation = Quaternion(-0.290243, -0.00438581, 0.0281743, 0.956528)
 bones/25/rotation = Quaternion(0.804837, 0.028544, -0.0293053, 0.592085)
 bones/26/position = Vector3(0.256355, -0.0907406, -0.292152)
 bones/26/rotation = Quaternion(0.0265639, -0.243664, 0.969252, -0.0217622)
-bones/26/scale = Vector3(1, 1, 1)
 bones/27/position = Vector3(-0.202026, 0.00885522, -0.266457)
 bones/27/rotation = Quaternion(-0.0159334, 0.07277, 0.995248, 0.062713)
 bones/28/position = Vector3(0.437328, -0.166017, -1.7059)
