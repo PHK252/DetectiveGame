@@ -46,6 +46,7 @@ func _on_home_pressed():
 	$Home.release_focus()
 
 
+
 func _on_gallery_pressed():
 	home.hide()
 	phone.hide()

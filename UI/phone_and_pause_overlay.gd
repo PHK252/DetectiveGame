@@ -26,7 +26,7 @@ var exit = InputMap.action_get_events("Exit")
 var interact = InputMap.action_get_events("interact")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	phone_ui.hide()
+	##phone_ui.hide()
 	#await get_tree().create_timer(3).timeout
 	#GlobalVars.emit_phone_call()
 	pass

@@ -3054,9 +3054,11 @@ texture_pressed = ExtResource("9_valq1")
 texture_hover = ExtResource("9_valq1")
 
 [node name="Debug" type="Timer" parent="."]
+process_mode = 1
 wait_time = 60.0
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 60.0
 
 [connection signal="visibility_changed" from="." to="Panel Left" method="_on_visibility_changed"]
