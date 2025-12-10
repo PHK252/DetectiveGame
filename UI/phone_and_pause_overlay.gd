@@ -12,6 +12,8 @@ extends Control
 @onready var called = false
 @onready var phone_up = false
 
+var in_evidence
+
 signal start_dialogue
 signal start_call_day_3
 signal start_call_end
@@ -19,7 +21,7 @@ signal declined_call
 signal buzz
 signal stop_buzz
 signal _show_tut(tut_type : String)
-
+signal awaiting_tut
 var accepted = false
 var prev_mouse_mode : int
 var exit = InputMap.action_get_events("Exit")
@@ -35,7 +37,12 @@ func _process(delta):
 		call_normal.disabled = true
 	else:
 		call_normal.disabled = false
-
+	if GlobalVars.phone_tut == false and in_evidence == true:
+		if GlobalVars.in_dialogue == true:
+			await get_tree().create_timer(.5).timeout
+			if GlobalVars.in_dialogue == true:
+				return
+			awaiting_tut.emit()
 
 func _on_receiving_call_pressed():
 	GlobalVars.phone_up = true
@@ -119,14 +126,20 @@ func _on_decline_pressed():
 
 
 func _on_case_added_notes_overlay():
+	in_evidence = true
 	evidence.visible = true
 	if call_normal.disabled == true:
 		evidence.modulate.a = 0.365
 	else:
 		evidence.modulate.a = 0.784
-	if GlobalVars.phone_tut == false:
-		emit_signal("_show_tut", "phone")
 	evidence_anim.play("Notes_added")
 	await get_tree().create_timer(3.6).timeout
 	evidence_anim.stop()
 	evidence.visible = false
+	if GlobalVars.phone_tut == false:
+		if GlobalVars.in_dialogue == false:
+			emit_signal("_show_tut", "phone")
+		else:
+			await awaiting_tut 
+			emit_signal("_show_tut", "phone")
+	in_evidence = false

@@ -6,9 +6,9 @@ extends CanvasLayer
 @onready var options = $Options_Settings
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	get_tree().paused = true
-	pass # Replace with function body.
+#func _ready():
+	#get_tree().paused = true
+	#pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,7 +26,7 @@ func _on_resume_pressed():
 	print("resume_pressed")
 	get_tree().paused = false
 	visible = false
-	#print(prev_mouse_mode)
+	GlobalVars.unpaused.emit()
 	Input.set_mouse_mode(prev_mouse_mode)
 	#$".".hide()
 	#GlobalVars.forward = true

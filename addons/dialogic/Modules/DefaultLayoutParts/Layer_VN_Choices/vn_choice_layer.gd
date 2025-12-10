@@ -3,6 +3,7 @@ extends DialogicLayoutLayer
 
 ## A layer that allows showing up to 10 choices.
 ## Choices are positioned in the center of the screen.
+@onready var dialogic_node_choice_button_1 = $Choices/Column1/DialogicNode_ChoiceButton1
 
 @export_group("Text")
 @export_subgroup('Font')
@@ -39,6 +40,8 @@ extends DialogicLayoutLayer
 @export_file("*.wav", "*.ogg", "*.mp3") var sounds_hover: String = "res://addons/dialogic/Example Assets/sound-effects/typing2.wav"
 @export_file("*.wav", "*.ogg", "*.mp3") var sounds_focus: String = "res://addons/dialogic/Example Assets/sound-effects/typing4.wav"
 
+func _ready():
+	GlobalVars.unpaused.connect(_focus_choice)
 func get_choices() -> HBoxContainer:
 	return $Choices
 
@@ -120,3 +123,6 @@ func _apply_export_overrides() -> void:
 	button_sound.sound_pressed = load(sounds_pressed)
 	button_sound.sound_hover = load(sounds_hover)
 	button_sound.sound_focus = load(sounds_focus)
+
+func _focus_choice():
+	dialogic_node_choice_button_1.grab_focus()

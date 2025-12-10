@@ -10,7 +10,7 @@ signal phone_call_receiving
 signal open_micah_case
 signal open_juniper_case
 signal open_quincy_case
-
+signal unpaused
 #don't save/ false on load
 @onready var in_call = false
 @onready var calling = false
@@ -424,6 +424,7 @@ func emit_open_jun_case():
 func emit_open_quincy_case():
 	emit_signal("open_quincy_case")
 	opened_quincy_case = true
+
 
 func emit_add_note(char : String, event : String, condition : String):
 	note_char = char

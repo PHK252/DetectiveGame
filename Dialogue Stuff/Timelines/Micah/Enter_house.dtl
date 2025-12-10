@@ -22,6 +22,7 @@ Dalton (Default): ...
 	Dalton: ASPD!
 	Theo (Surprised): Dude!!
 	Theo (Concerned): Chill!
+	do GlobalVars.emit_add_note("micah", "juniper", "connection_low")
 	Theo (Concerned): They're coming.
 	[wait time="2.0"]
 	jump Micah Open
@@ -30,7 +31,7 @@ Dalton (Default): ...
 	[wait time="4.0"]
 	Dalton (Hmph): ...
 	Theo (Awkward): ...
-	[wait time="0.5"]
+	#[wait time="0.5"]
 	Dalton (Default): ...
 	- Knock Again.
 		set {Character Aff Points.Micah} += 1
@@ -50,11 +51,11 @@ label Micah Open
 [wait time="1.5"]
 Micah (Yawn): ...
 Micah (Stare): Hello?
-[wait time="0.5"]
+#[wait time="0.5"]
 Dalton: ...
-- Presesnt Warrant.
+- Show Warrant.
 	jump Warrant/
 - Greet Micah.
 	jump Good_morning/
-- Have Theo answer. | [if {Character Aff Points.Theo} >= 1] [else="hide"]
+- Let Theo Answer. | [if {Character Aff Points.Theo} >= 1] [else="hide"]
 	jump Micah_Theo_Answer/
