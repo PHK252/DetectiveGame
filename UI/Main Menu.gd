@@ -80,12 +80,11 @@ func _on_new_game_pressed():
 func _on_controls_pressed():
 	start.visible = false
 	controls.visible = true
-	print("click")
 
 
 func _on_controls_show_start():
 	start.visible = true
-
+	controls.visible = false
 
 func _on_options_pressed():
 	start.visible = false
