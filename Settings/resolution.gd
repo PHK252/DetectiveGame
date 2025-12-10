@@ -117,11 +117,11 @@ func _on_menu_on_select_option(index):
 	#DisplayServer.window_set_size(base_window_size)
 	if windowed:
 		if native_monitor_size < base_window_size:
-			get_viewport().content_scale_size = native_monitor_size
+			#get_viewport().content_scale_size = native_monitor_size
 			get_window().set_size(native_monitor_size)
 		else:
 			get_window().set_size(base_window_size)
-			get_viewport().content_scale_size = base_window_size
+			#get_viewport().content_scale_size = base_window_size
 	#I don't know how full screen will work on 4k monitors, disabling res change for now
 	#elif full:
 		#get_viewport().content_scale_size = base_window_size
