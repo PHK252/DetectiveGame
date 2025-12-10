@@ -1,4 +1,8 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://cb2b7aexdou0r"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cb2b7aexdou0r"]
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_46px0"]
+resource_name = "HighPassFilter"
+cutoff_hz = 292.0
 
 [resource]
 bus/0/volume_db = -1.51925
@@ -20,3 +24,11 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = -5.04538
 bus/3/send = &"Master"
+bus/4/name = &"dialogue"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -7.26851
+bus/4/send = &"SFX"
+bus/4/effect/0/effect = SubResource("AudioEffectHighPassFilter_46px0")
+bus/4/effect/0/enabled = true

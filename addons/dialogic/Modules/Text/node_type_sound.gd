@@ -78,9 +78,10 @@ func _on_continued_revealing_text(new_character:String) -> void:
 	characters_since_last_sound = 0
 
 	var audio_player: AudioStreamPlayer = self
+	audio_player.bus = "dialogue"
 	if current_overwrite_data.get('mode', mode) == Modes.OVERLAP:
 		audio_player = AudioStreamPlayer.new()
-		audio_player.bus = bus
+		audio_player.bus = "dialogue"
 		add_child(audio_player)
 	elif current_overwrite_data.get('mode', mode) == Modes.INTERRUPT:
 		stop()

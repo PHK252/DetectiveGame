@@ -22,7 +22,7 @@ var loop := false
 ################################################################################
 
 func _execute() -> void:
-	dialogic.Audio.play_sound(file_path, volume, audio_bus, loop)
+	dialogic.Audio.play_sound(file_path, volume, "dialogue", loop) #hard code dialogue bus
 	finish()
 
 
