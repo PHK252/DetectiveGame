@@ -1,15 +1,22 @@
 extends Node2D
 
-@onready var start_butt = $Start/Start
-@onready var continue_new_cont = $Start/Continue
-@onready var start = $Start
-@onready var controls = $Controls
-@onready var options = $Options_Settings
+#continue and start buttons
+@export var start_butt : MarginContainer 
+@export var continue_new_cont : MarginContainer
 
+#switching screens
+@export var start : CanvasLayer 
+@export var controls : CanvasLayer
+@export var options : CanvasLayer
+
+@export var cl : Panel
+@export var bg : TextureRect
 
 var new_game : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_viewport().size_changed.connect(_on_new_window_size)
+	_on_new_window_size()
 	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	await get_tree().process_frame
 	print(GlobalVars.current_level)
@@ -27,9 +34,21 @@ func _ready():
 		#GlobalVars.to_quit = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_new_window_size():
+	var viewport_size = get_viewport().get_visible_rect().size
+	
+	# Pick the smaller ratio so the UI never stretches unevenly
+	var ratio = min(
+		viewport_size.x / ProjectSettings.get_setting("display/window/size/viewport_width"),
+		viewport_size.y / ProjectSettings.get_setting("display/window/size/viewport_height")
+	)
+	
+	# Scale the whole CanvasLayer (so all children Controls scale uniformly)
+	cl.scale = Vector2(ratio, ratio)
+	bg.scale = Vector2(ratio, ratio)
+
+	# Optional: if your CanvasLayer root needs pivot adjustment
+	cl.pivot_offset = cl.size / 2   # CanvasLayer doesn’t have pivot, but its children do
 
 
 func _on_quit_pressed():
@@ -61,6 +80,7 @@ func _on_new_game_pressed():
 func _on_controls_pressed():
 	start.visible = false
 	controls.visible = true
+	print("click")
 
 
 func _on_controls_show_start():

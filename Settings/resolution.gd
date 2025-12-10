@@ -4,7 +4,9 @@ var base_window_size := Vector2(
 		ProjectSettings.get_setting("display/window/size/viewport_width"),
 		ProjectSettings.get_setting("display/window/size/viewport_height")
 )
-@export var menu : Control
+@export var dropdown: TextureButton
+@export var dropdown_label : RichTextLabel 
+@export var window_mode : Control
 @export var cl : Panel
 @export var op_button : OptionButton
 var full := false
@@ -16,7 +18,11 @@ var open := false
 func _ready() -> void:
 	get_viewport().size_changed.connect(_on_new_window_size)
 	_on_new_window_size()
-	
+	if window_mode.selected == 0:
+		dropdown.disabled = true
+		dropdown_label.add_theme_color_override("default_color", Color(0.992, 0.835, 0.478))
+		return
+
 func _on_new_window_size():
 	var viewport_size = get_viewport().get_visible_rect().size
 	
@@ -68,6 +74,8 @@ func _on_screen_full_screen() -> void:
 	center_window()
 	await get_tree().create_timer(.5).timeout
 	screen_transition_fade.play("fade_in")
+	dropdown.disabled = true
+	dropdown_label.add_theme_color_override("default_color", Color(0.992, 0.835, 0.478))
 	#get_window().set_size(Vector2i(1920,1080)) think this was an issue
 
 func _on_screen_windowed() -> void:
@@ -75,6 +83,9 @@ func _on_screen_windowed() -> void:
 	full = false
 	center_window()
 	screen_transition_fade.play("fade_in_out")
+	if dropdown.disabled:
+		dropdown.disabled = false
+		dropdown_label.add_theme_color_override("default_color", Color(0.898, 0.678, 0.18))
 
 func _on_reset_graphics_pressed() -> void:
 	pass
@@ -88,35 +99,31 @@ func _on_reset_graphics_pressed() -> void:
 
 
 func _on_menu_on_select_option(index):
+	var native_monitor_size : Vector2 = DisplayServer.screen_get_size()
+	if native_monitor_size.x >= 1280 and native_monitor_size.x < 1920:
+		native_monitor_size = Vector2i(1280,720)
+	elif native_monitor_size.x >= 1920 and native_monitor_size.x < 3840:
+		native_monitor_size = Vector2i(1920,1080)
+	else:
+		native_monitor_size = Vector2i(3840,2160)
 	match index:
 		0:
-			base_window_size = Vector2i(384,216)
-		1:
-			base_window_size = Vector2(768,432)
-		2:
-			base_window_size = Vector2i(1152,648)
-		3:
 			base_window_size = Vector2i(1280,720)
-		4:
-			base_window_size = Vector2i(1512,982)
-		5:
+		1:
 			base_window_size = Vector2i(1920,1080)
+		2:
+			base_window_size = Vector2i(3840,2160)
 			
 	#DisplayServer.window_set_size(base_window_size)
 	if windowed:
-		get_window().set_size(base_window_size)
-		get_viewport().content_scale_size = base_window_size
-	elif full:
-		get_viewport().content_scale_size = base_window_size
+		if native_monitor_size < base_window_size:
+			get_viewport().content_scale_size = native_monitor_size
+			get_window().set_size(native_monitor_size)
+		else:
+			get_window().set_size(base_window_size)
+			get_viewport().content_scale_size = base_window_size
+	#I don't know how full screen will work on 4k monitors, disabling res change for now
+	#elif full:
+		#get_viewport().content_scale_size = base_window_size
 	
 	center_window()
-	print(base_window_size)
-
-
-func _on_other_menu_clicked(event):
-	print(menu.open)
-	if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		print(menu.open)
-		if menu.open == true:
-			print(menu.open)
-			menu._close_menu()

@@ -312,6 +312,7 @@ script = ExtResource("1_8i1sl")
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Panel" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -665,11 +666,13 @@ scrollable = false
 layout_mode = 2
 theme_override_constants/separation = 83
 
-[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("menu", "cl", "op_button", "screen_transition_fade")]
+[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("dropdown", "dropdown_label", "window_mode", "cl", "op_button", "screen_transition_fade")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("3_i8y7k")
-menu = NodePath("Resolution Menu")
+dropdown = NodePath("Resolution Menu/VBoxContainer/Main")
+dropdown_label = NodePath("Resolution Menu/VBoxContainer/Main/RichTextLabel")
+window_mode = NodePath("../../Screen_Vsync/Screen/Window Menu")
 cl = NodePath("../../../../..")
 op_button = NodePath("OptionButton")
 screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
@@ -729,7 +732,7 @@ script = ExtResource("36_4vdat")
 menu = NodePath("VBoxContainer/Menu")
 main_button = NodePath("VBoxContainer/Main")
 main_label = NodePath("VBoxContainer/Main/RichTextLabel")
-selected = 5
+selected = 1
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 
@@ -784,7 +787,7 @@ texture_pressed = ExtResource("40_cfi1e")
 texture_hover = ExtResource("40_cfi1e")
 script = ExtResource("41_l5w4m")
 menu = NodePath("../../..")
-label = "384-216"
+label = "1280-720"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1"]
 custom_minimum_size = Vector2(552, 78)
@@ -809,7 +812,7 @@ texture_pressed = ExtResource("40_cfi1e")
 texture_hover = ExtResource("40_cfi1e")
 script = ExtResource("41_l5w4m")
 menu = NodePath("../../..")
-label = "768-432"
+label = "1920-1080"
 index = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2"]
@@ -826,6 +829,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Option3" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -852,6 +856,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Option4" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -878,6 +883,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Option5" type="TextureButton" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -913,8 +919,8 @@ texture_pressed = ExtResource("43_l2q3a")
 texture_hover = ExtResource("43_l2q3a")
 script = ExtResource("41_l5w4m")
 menu = NodePath("../../..")
-label = "1920-1080"
-index = 5
+label = "3840-2160"
+index = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6"]
 custom_minimum_size = Vector2(552, 78)
@@ -1258,7 +1264,7 @@ script = ExtResource("36_4vdat")
 menu = NodePath("VBoxContainer/Menu")
 main_button = NodePath("VBoxContainer/Main")
 main_label = NodePath("VBoxContainer/Main/RichTextLabel")
-selected = 1
+selected = 0
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 sub_menu = true
@@ -1800,7 +1806,6 @@ text = "X"
 
 [node name="Pause Menu" type="Panel" parent="."]
 process_mode = 2
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -2155,10 +2160,13 @@ scrollable = false
 layout_mode = 2
 theme_override_constants/separation = 83
 
-[node name="Resolution" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("cl", "op_button", "screen_transition_fade")]
+[node name="Resolution" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("dropdown", "dropdown_label", "window_mode", "cl", "op_button", "screen_transition_fade")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("3_i8y7k")
+dropdown = NodePath("Resolution Menu/VBoxContainer/Main")
+dropdown_label = NodePath("Resolution Menu/VBoxContainer/Main/RichTextLabel")
+window_mode = NodePath("../../Screen_Vsync/Screen/Window Menu")
 cl = NodePath("../../../../..")
 op_button = NodePath("OptionButton")
 screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
@@ -2218,7 +2226,7 @@ script = ExtResource("36_4vdat")
 menu = NodePath("VBoxContainer/Menu")
 main_button = NodePath("VBoxContainer/Main")
 main_label = NodePath("VBoxContainer/Main/RichTextLabel")
-selected = 5
+selected = 1
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option3"), NodePath("VBoxContainer/Menu/Option4"), NodePath("VBoxContainer/Menu/Option5"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option3/RichTextLabel"), NodePath("VBoxContainer/Menu/Option4/RichTextLabel"), NodePath("VBoxContainer/Menu/Option5/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 
@@ -2273,7 +2281,7 @@ texture_pressed = ExtResource("40_cfi1e")
 texture_hover = ExtResource("40_cfi1e")
 script = ExtResource("41_l5w4m")
 menu = NodePath("../../..")
-label = "384-216"
+label = "1280-720"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option1"]
 custom_minimum_size = Vector2(552, 78)
@@ -2298,7 +2306,7 @@ texture_pressed = ExtResource("40_cfi1e")
 texture_hover = ExtResource("40_cfi1e")
 script = ExtResource("41_l5w4m")
 menu = NodePath("../../..")
-label = "768-432"
+label = "1920-1080"
 index = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option2"]
@@ -2315,6 +2323,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Option3" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -2341,6 +2350,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Option4" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -2367,6 +2377,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Option5" type="TextureButton" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" node_paths=PackedStringArray("menu")]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -2402,8 +2413,8 @@ texture_pressed = ExtResource("43_l2q3a")
 texture_hover = ExtResource("43_l2q3a")
 script = ExtResource("41_l5w4m")
 menu = NodePath("../../..")
-label = "1920-1080"
-index = 5
+label = "3840-2160"
+index = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6"]
 custom_minimum_size = Vector2(552, 78)
@@ -2747,7 +2758,7 @@ script = ExtResource("36_4vdat")
 menu = NodePath("VBoxContainer/Menu")
 main_button = NodePath("VBoxContainer/Main")
 main_label = NodePath("VBoxContainer/Main/RichTextLabel")
-selected = 1
+selected = 0
 op_array = [NodePath("VBoxContainer/Menu/Option1"), NodePath("VBoxContainer/Menu/Option2"), NodePath("VBoxContainer/Menu/Option6")]
 label_array = [NodePath("VBoxContainer/Menu/Option1/RichTextLabel"), NodePath("VBoxContainer/Menu/Option2/RichTextLabel"), NodePath("VBoxContainer/Menu/Option6/RichTextLabel")]
 sub_menu = true
@@ -3288,6 +3299,7 @@ theme_override_font_sizes/font_size = 50
 text = "X"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Pause Menu"]
+visible = false
 layout_mode = 0
 offset_left = 7.0
 offset_top = 175.0
