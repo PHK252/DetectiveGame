@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=235 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -163,6 +163,22 @@
 [ext_resource type="Texture2D" uid="uid://b13m4uusn5low" path="res://ThirdHouse/Assets/Sciencepic front@2x.png" id="130_hqjxk"]
 [ext_resource type="Texture2D" uid="uid://c4wvalrot4e50" path="res://ThirdHouse/Assets/Sciencepic back@2x.png" id="131_sykof"]
 [ext_resource type="Texture2D" uid="uid://wghfnjybiaak" path="res://ThirdHouse/Assets/Project Proposal_1@2x.png" id="159_k0hhp"]
+[ext_resource type="Script" uid="uid://ktpiy2gq45ns" path="res://UI/phone_sounds_general.gd" id="164_x6dlt"]
+[ext_resource type="AudioStream" uid="uid://oiijkhxhm8r6" path="res://Audio/misc_sounds/num_01.wav" id="165_14bcs"]
+[ext_resource type="AudioStream" uid="uid://bp3cervcm2od7" path="res://Audio/misc_sounds/num_02.wav" id="166_hn6t8"]
+[ext_resource type="AudioStream" uid="uid://deuqrd0umjhpj" path="res://Audio/misc_sounds/num_03.wav" id="167_i5i4q"]
+[ext_resource type="AudioStream" uid="uid://bp6cy33wpsa5i" path="res://Audio/misc_sounds/PhoneSelectAlt.wav" id="168_v8hec"]
+[ext_resource type="AudioStream" uid="uid://bg2un2dokyydw" path="res://Audio/misc_sounds/decline_call copy.wav" id="169_5ppeq"]
+[ext_resource type="AudioStream" uid="uid://quq8ugrtqynq" path="res://Audio/misc_sounds/phoneSelect.wav" id="170_k471k"]
+[ext_resource type="AudioStream" uid="uid://kk44tow71lgj" path="res://Audio/misc_sounds/buzzsound.wav" id="171_0wfhy"]
+[ext_resource type="AudioStream" uid="uid://3jmlebnmc5h8" path="res://Audio/misc_sounds/phonering.wav" id="172_5q3dh"]
+[ext_resource type="AudioStream" uid="uid://otsbc8ipu338" path="res://Audio/misc_sounds/PhoneHover.wav" id="173_1sigl"]
+[ext_resource type="AudioStream" uid="uid://c7fdi0sfthirg" path="res://Audio/misc_sounds/PhoneBack.wav" id="174_7pji7"]
+[ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="175_2edgf"]
+[ext_resource type="AudioStream" uid="uid://bvnsftemyng8f" path="res://Audio/misc_sounds/altClick.wav" id="176_68rv4"]
+[ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="177_2digd"]
+[ext_resource type="AudioStream" uid="uid://5j82iw27gyly" path="res://Audio/misc_sounds/phoneBackAlt.wav" id="178_bvu4t"]
+[ext_resource type="AudioStream" uid="uid://bkr7wavakq430" path="res://Audio/misc_sounds/deleteblip.wav" id="179_ch132"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cs8vq"]
 
@@ -3061,67 +3077,211 @@ wait_time = 60.0
 process_mode = 1
 wait_time = 60.0
 
+[node name="Phone_Sounds_General" type="Node" parent="." node_paths=PackedStringArray("audio")]
+script = ExtResource("164_x6dlt")
+audio = [NodePath("phone_back"), NodePath("phone_hover"), NodePath("ring"), NodePath("buzz"), NodePath("select"), NodePath("decline_call"), NodePath("accept_call"), NodePath("num_01"), NodePath("num_02"), NodePath("num_03"), NodePath("Hiss"), NodePath("altClick"), NodePath("phone_hover_high"), NodePath("ArrowClick"), NodePath("Phone_back_02"), NodePath("buzz"), NodePath("delete"), NodePath("flip"), NodePath("selectPhoto")]
+
+[node name="num_01" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("165_14bcs")
+bus = &"SFX"
+
+[node name="num_02" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("166_hn6t8")
+bus = &"SFX"
+
+[node name="num_03" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("167_i5i4q")
+bus = &"SFX"
+
+[node name="accept_call" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("168_v8hec")
+bus = &"SFX"
+
+[node name="decline_call" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("169_5ppeq")
+bus = &"SFX"
+
+[node name="select" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("170_k471k")
+bus = &"SFX"
+
+[node name="buzz" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("171_0wfhy")
+bus = &"SFX"
+
+[node name="ring" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("172_5q3dh")
+bus = &"SFX"
+
+[node name="phone_hover" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("173_1sigl")
+bus = &"SFX"
+
+[node name="phone_hover_high" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("173_1sigl")
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="phone_back" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("174_7pji7")
+bus = &"SFX"
+
+[node name="Hiss" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("175_2edgf")
+bus = &"SFX"
+
+[node name="altClick" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("176_68rv4")
+bus = &"SFX"
+
+[node name="ArrowClick" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("177_2digd")
+bus = &"SFX"
+
+[node name="Phone_back_02" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("178_bvu4t")
+bus = &"SFX"
+
+[node name="delete" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("179_ch132")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="flip" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("179_ch132")
+volume_db = -5.868
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="selectPhoto" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("176_68rv4")
+pitch_scale = 1.2
+bus = &"SFX"
+
 [connection signal="visibility_changed" from="." to="Panel Left" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="HomeScreen/Gallery" to="Phone_Sounds_General" method="_on_phone_hover"]
 [connection signal="pressed" from="HomeScreen/Gallery" to="." method="_on_gallery_pressed"]
+[connection signal="pressed" from="HomeScreen/Gallery" to="Phone_Sounds_General" method="_on_phone_select"]
+[connection signal="mouse_entered" from="HomeScreen/Notes" to="Phone_Sounds_General" method="_on_phone_hover"]
 [connection signal="pressed" from="HomeScreen/Notes" to="." method="_on_notes_pressed"]
+[connection signal="pressed" from="HomeScreen/Notes" to="Phone_Sounds_General" method="_on_phone_select"]
+[connection signal="mouse_entered" from="HomeScreen/Phone" to="Phone_Sounds_General" method="_on_phone_hover"]
 [connection signal="pressed" from="HomeScreen/Phone" to="." method="_on_phone_pressed"]
+[connection signal="pressed" from="HomeScreen/Phone" to="Phone_Sounds_General" method="_on_phone_select"]
+[connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic1" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic1" to="." method="_on_pic_1_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic1" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic2" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic2" to="." method="_on_pic_2_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic2" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic3" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic3" to="." method="_on_pic_3_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic3" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic4" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic4" to="." method="_on_pic_4_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic4" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic5" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic5" to="." method="_on_pic_5_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic5" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic6" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic6" to="." method="_on_pic_6_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic6" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic7" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic7" to="." method="_on_pic_7_pressed"]
+[connection signal="pressed" from="GalleryScreen/GalleryList/Pic7" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/ClosePics/Buttons/Back" to="Phone_Sounds_General" method="_on_phone_hiss"]
 [connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
+[connection signal="mouse_entered" from="GalleryScreen/ClosePics/Buttons/Left" to="Phone_Sounds_General" method="_on_phone_hiss"]
 [connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Left" to="Phone_Sounds_General" method="_on_arrow_click"]
+[connection signal="mouse_entered" from="GalleryScreen/ClosePics/Buttons/Right" to="Phone_Sounds_General" method="_on_phone_hiss"]
 [connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="GalleryScreen/ClosePics/Buttons/Right" to="Phone_Sounds_General" method="_on_arrow_click"]
 [connection signal="mouse_entered" from="GalleryScreen/ClosePics/Buttons/RightHover" to="." method="_on_right_hover_mouse_entered"]
 [connection signal="mouse_exited" from="GalleryScreen/ClosePics/Buttons/RightHover" to="." method="_on_right_hover_mouse_exited"]
 [connection signal="mouse_entered" from="GalleryScreen/ClosePics/Buttons/LeftHover" to="." method="_on_left_hover_mouse_entered"]
 [connection signal="mouse_exited" from="GalleryScreen/ClosePics/Buttons/LeftHover" to="." method="_on_left_hover_mouse_exited"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/zero" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/zero" to="Phone_Sounds_General" method="_on_num_01_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/one" to="." method="_on_one_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/one" to="Phone_Sounds_General" method="_on_num_01_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/two" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/two" to="Phone_Sounds_General" method="_on_num_two_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/three" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/three" to="Phone_Sounds_General" method="_on_num_three_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/four" to="." method="_on_four_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/four" to="Phone_Sounds_General" method="_on_num_01_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/five" to="." method="_on_five_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/five" to="Phone_Sounds_General" method="_on_num_two_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/six" to="." method="_on_six_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/six" to="Phone_Sounds_General" method="_on_num_three_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/seven" to="." method="_on_seven_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/seven" to="Phone_Sounds_General" method="_on_num_01_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/eight" to="." method="_on_eight_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/eight" to="Phone_Sounds_General" method="_on_num_two_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/nine" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/nine" to="Phone_Sounds_General" method="_on_num_three_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Star" to="." method="_on_star_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Star" to="Phone_Sounds_General" method="_on_num_two_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Pound" to="." method="_on_pound_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Pound" to="Phone_Sounds_General" method="_on_num_three_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Call" to="." method="_on_call_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="Phone_Sounds_General" method="_on_delete_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneCall/Accept" to="Phone_Sounds_General" method="_on_accept_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Decline" to="." method="_on_decline_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneCall/Decline" to="Phone_Sounds_General" method="_on_decline_pressed"]
 [connection signal="visibility_changed" from="PhoneScreen/ContactScreen" to="PhoneScreen/ContactScreen" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Isaac" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Isaac" to="." method="_on_isaac_pressed"]
+[connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Quincy" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Quincy" to="." method="_on_quincy_pressed"]
+[connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Theo" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Theo" to="." method="_on_theo_pressed"]
+[connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Juniper" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Juniper" to="." method="_on_juniper_pressed"]
+[connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Clyde" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Clyde" to="." method="_on_clyde_pressed"]
+[connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Skylar" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Skylar" to="." method="_on_skylar_pressed"]
+[connection signal="mouse_entered" from="PhoneScreen/Phone Bottom/Contact" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/Phone Bottom/Contact" to="PhoneScreen/ContactScreen" method="_on_contact_pressed"]
+[connection signal="pressed" from="PhoneScreen/Phone Bottom/Contact" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="PhoneScreen/Phone Bottom/Keypad" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/Phone Bottom/Keypad" to="PhoneScreen/ContactScreen" method="_on_keypad_pressed"]
+[connection signal="pressed" from="PhoneScreen/Phone Bottom/Keypad" to="Phone_Sounds_General" method="_on_altClick_phone"]
 [connection signal="visibility_changed" from="NotesScreen" to="NotesScreen" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="NotesScreen/Home/Notes" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Home/Notes" to="NotesScreen" method="_on_notes_pressed"]
+[connection signal="pressed" from="NotesScreen/Home/Notes" to="Phone_Sounds_General" method="_on_altClick_phone"]
 [connection signal="add_juniper_note" from="NotesScreen/Case" to="NotesScreen/Juniper" method="_on_case_add_juniper_note"]
 [connection signal="add_micah_note" from="NotesScreen/Case" to="NotesScreen/Micah" method="_on_case_add_micah_note"]
 [connection signal="add_quincy_note" from="NotesScreen/Case" to="NotesScreen/Quincy" method="_on_case_add_quincy_note"]
 [connection signal="mouse_entered" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Victim1" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim1" to="NotesScreen/Case/Victim1" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim1" to="NotesScreen" method="_on_victim_1_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Victim1" to="Phone_Sounds_General" method="_on_altClick_phone"]
 [connection signal="mouse_entered" from="NotesScreen/Case/Victim2" to="NotesScreen/Case/Victim2" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Victim2" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim2" to="NotesScreen/Case/Victim2" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim2" to="NotesScreen" method="_on_victim_2_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Victim2" to="Phone_Sounds_General" method="_on_altClick_phone"]
 [connection signal="mouse_entered" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Victim3" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="mouse_exited" from="NotesScreen/Case/Victim3" to="NotesScreen/Case/Victim3" method="_on_mouse_exited"]
 [connection signal="pressed" from="NotesScreen/Case/Victim3" to="NotesScreen" method="_on_victim_3_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Victim3" to="NotesScreen/Evidence" method="_on_victim_3_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Victim3" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Back" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Case/Back" to="NotesScreen" method="_on_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
+[connection signal="mouse_entered" from="NotesScreen/Case/Evidence" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen" method="_on_evidence_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen/Evidence" method="_on_evidence_pressed"]
+[connection signal="pressed" from="NotesScreen/Case/Evidence" to="Phone_Sounds_General" method="_on_altClick_phone"]
 [connection signal="mouse_entered" from="NotesScreen/Evidence/Micah Letter" to="NotesScreen/Evidence/Micah Letter" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="NotesScreen/Evidence/Micah Letter" to="NotesScreen/Evidence/Micah Letter" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="NotesScreen/Evidence/Micah Key" to="NotesScreen/Evidence/Micah Key" method="_on_mouse_entered"]
@@ -3140,16 +3300,25 @@ wait_time = 60.0
 [connection signal="mouse_exited" from="NotesScreen/Evidence/Quincy Coors" to="NotesScreen/Evidence/Quincy Coors" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="NotesScreen/Evidence/Quincy Choco" to="NotesScreen/Evidence/Quincy Choco" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="NotesScreen/Evidence/Quincy Choco" to="NotesScreen/Evidence/Quincy Choco" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="NotesScreen/Evidence/Back" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Evidence/Back" to="NotesScreen" method="_on_evidence_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Evidence/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
 [connection signal="meta_clicked" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_RichTextLabel_meta_clicked"]
 [connection signal="meta_hover_ended" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_ended"]
 [connection signal="meta_hover_started" from="NotesScreen/Micah/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Micah" method="_on_rich_text_label_meta_hover_started"]
+[connection signal="mouse_entered" from="NotesScreen/Micah/Back" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Micah/Back" to="NotesScreen" method="_on_micah_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Micah/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
 [connection signal="meta_clicked" from="NotesScreen/Juniper/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Juniper" method="_on_RichTextLabel_meta_clicked"]
+[connection signal="mouse_entered" from="NotesScreen/Juniper/Back" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Juniper/Back" to="NotesScreen" method="_on_Juniper_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Juniper/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
 [connection signal="meta_clicked" from="NotesScreen/Quincy/ScrollContainer/VBoxContainer/RichTextLabel" to="NotesScreen/Quincy" method="_on_RichTextLabel_meta_clicked"]
+[connection signal="mouse_entered" from="NotesScreen/Quincy/Back" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Quincy/Back" to="NotesScreen" method="_on_quincy_back_pressed"]
+[connection signal="pressed" from="NotesScreen/Quincy/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
 [connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="Home" to="Phone_Sounds_General" method="_on_home_pressed"]
 [connection signal="timeout" from="Timer" to="HomeScreen/Time" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="GalleryScreen/Time" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="PhoneScreen/Time" method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv3113xuon5pg"]
+[gd_scene load_steps=12 format=3 uid="uid://dv3113xuon5pg"]
 
 [ext_resource type="Texture2D" uid="uid://df0mmtrgrqum0" path="res://UI/Assets/Phone/Phone Home Phone.png" id="1_ddx7p"]
 [ext_resource type="Script" uid="uid://cbhuamoego3te" path="res://UI/notes_view_photo_flip.gd" id="1_u6c5w"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://xeu6o4sq4ykh" path="res://UI/Assets/Phone/Phone Home Gallery.png" id="2_u6c5w"]
 [ext_resource type="Texture2D" uid="uid://ox8yi4qc7e3a" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow pressed.png" id="3_u6c5w"]
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="6_f3rrp"]
+[ext_resource type="Script" uid="uid://csdf4urjkaj27" path="res://UI/phone_photo_sounds.gd" id="7_el2wl"]
+[ext_resource type="AudioStream" uid="uid://bkr7wavakq430" path="res://Audio/misc_sounds/deleteblip.wav" id="8_adiao"]
+[ext_resource type="AudioStream" uid="uid://bvnsftemyng8f" path="res://Audio/misc_sounds/altClick.wav" id="9_d4j4w"]
+[ext_resource type="AudioStream" uid="uid://otsbc8ipu338" path="res://Audio/misc_sounds/PhoneHover.wav" id="10_d4j4w"]
+[ext_resource type="AudioStream" uid="uid://5j82iw27gyly" path="res://Audio/misc_sounds/phoneBackAlt.wav" id="11_4anv8"]
 
 [node name="View photo" type="Control" node_paths=PackedStringArray("back", "front", "back_label", "front_label")]
 layout_mode = 3
@@ -88,7 +93,35 @@ bbcode_enabled = true
 text = "[center]BACK[/center]"
 fit_content = true
 
+[node name="Phone_Photo_Sounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
+script = ExtResource("7_el2wl")
+audio = [NodePath("flip"), NodePath("selectPhoto"), NodePath("Phone_back_02"), NodePath("phone_hover_high")]
+
+[node name="flip" type="AudioStreamPlayer" parent="Phone_Photo_Sounds"]
+stream = ExtResource("8_adiao")
+volume_db = -5.868
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="selectPhoto" type="AudioStreamPlayer" parent="Phone_Photo_Sounds"]
+stream = ExtResource("9_d4j4w")
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="phone_hover_high" type="AudioStreamPlayer" parent="Phone_Photo_Sounds"]
+stream = ExtResource("10_d4j4w")
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Phone_back_02" type="AudioStreamPlayer" parent="Phone_Photo_Sounds"]
+stream = ExtResource("11_4anv8")
+bus = &"SFX"
+
+[connection signal="flip_sound" from="." to="Phone_Photo_Sounds" method="_on_view_photo_flip_sound"]
+[connection signal="vis_sound" from="." to="Phone_Photo_Sounds" method="_on_view_photo_vis_sound"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Front" to="." method="_on_object_front_gui_input"]
 [connection signal="gui_input" from="Back" to="." method="_on_object_back_gui_input"]
+[connection signal="mouse_entered" from="Exit" to="Phone_Photo_Sounds" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Exit" to="Phone_Photo_Sounds" method="_on_exit_pressed"]
