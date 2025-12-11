@@ -11,7 +11,6 @@ extends Button
 ## Using a different node may allow using rich text effects; they are
 ## not supported on buttons at this point.
 
-
 ## Used to identify what choices to put on. If you leave it at -1, choices will be distributed automatically.
 @export var choice_index: int = -1
 
@@ -29,7 +28,10 @@ func _ready() -> void:
 	add_to_group('dialogic_choice_button')
 	shortcut_in_tooltip = false
 	hide()
+	await get_tree().process_frame
+	
 
+	
 
 func _load_info(choice_info: Dictionary) -> void:
 	set_choice_text(choice_info.text)
