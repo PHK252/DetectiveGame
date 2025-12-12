@@ -12,7 +12,8 @@ var base_window_size := Vector2(
 var full := false
 var windowed := false 
 var open := false
-
+var native_monitor_size : Vector2
+var force_window_size : Vector2
 @export var screen_transition_fade : AnimationPlayer
 
 func _ready() -> void:
@@ -22,6 +23,8 @@ func _ready() -> void:
 		dropdown.disabled = true
 		dropdown_label.add_theme_color_override("default_color", Color(0.992, 0.835, 0.478))
 		return
+	await get_tree().process_frame
+
 
 func _on_new_window_size():
 	var viewport_size = get_viewport().get_visible_rect().size
@@ -37,6 +40,13 @@ func _on_new_window_size():
 
 	# Optional: if your CanvasLayer root needs pivot adjustment
 	cl.pivot_offset = cl.size / 2   # CanvasLayer doesn’t have pivot, but its children do
+	native_monitor_size = DisplayServer.screen_get_size()
+	if native_monitor_size.x >= 1280 and native_monitor_size.x < 1920:
+		force_window_size = Vector2i(1280,720)
+	elif native_monitor_size.x >= 1920 and native_monitor_size.x < 3840:
+		force_window_size = Vector2i(1920,1080)
+	else:
+		force_window_size = Vector2i(3840,2160)
 
 #func _on_option_button_item_selected(index: int) -> void:
 	#op_button.release_focus()
@@ -69,6 +79,7 @@ func center_window():
 	get_window().set_position(center - window_size / 2)
 
 func _on_screen_full_screen() -> void:
+	print("full")
 	full = true
 	windowed = false
 	center_window()
@@ -99,13 +110,6 @@ func _on_reset_graphics_pressed() -> void:
 
 
 func _on_menu_on_select_option(index):
-	var native_monitor_size : Vector2 = DisplayServer.screen_get_size()
-	if native_monitor_size.x >= 1280 and native_monitor_size.x < 1920:
-		native_monitor_size = Vector2i(1280,720)
-	elif native_monitor_size.x >= 1920 and native_monitor_size.x < 3840:
-		native_monitor_size = Vector2i(1920,1080)
-	else:
-		native_monitor_size = Vector2i(3840,2160)
 	match index:
 		0:
 			base_window_size = Vector2i(1280,720)
@@ -118,7 +122,7 @@ func _on_menu_on_select_option(index):
 	if windowed:
 		if native_monitor_size < base_window_size:
 			#get_viewport().content_scale_size = native_monitor_size
-			get_window().set_size(native_monitor_size)
+			get_window().set_size(force_window_size)
 		else:
 			get_window().set_size(base_window_size)
 			#get_viewport().content_scale_size = base_window_size

@@ -4,27 +4,29 @@ Dalton (Talk): Hello!
 Dalton (Resting): Is anybody home?
 [wait time="1.0"]
 Dalton  (Talk): ASPD!
-[wait time="3.0"]
 Dalton (Default): ...
 - Knock Again.
 	# #Knock knock
 	[signal arg="knock"]
+	[wait time="5.0"]
 	Dalton (Squint): Hello?
 	Dalton (Talk): We are here to investigate a break in that happened last night.
+	[signal arg="knock"]
+	[wait time="5.0"]
 	# #knock 
-	[wait time="2.0"]
+	[signal arg="knock"]
+	[wait time="5.0"]
 	# #knock
 	Dalton (Angry): Is anybody home?!
 	Dalton (Angry): ASPD!
-	[wait time="2.0"]
+	[wait time="5.0"]
 	# #foot steps
 	Dalton (Angry): Open up!
 	Dalton: ASPD!
 	Theo (Surprised): Dude!!
 	Theo (Concerned): Chill!
-	do GlobalVars.emit_add_note("micah", "juniper", "connection_low")
 	Theo (Concerned): They're coming.
-	[wait time="2.0"]
+	[wait time="5.0"]
 	jump Micah Open
 - Wait.
 	label Wait
@@ -36,6 +38,8 @@ Dalton (Default): ...
 	- Knock Again.
 		set {Character Aff Points.Micah} += 1
 		# #Knock
+		[signal arg="knock"]
+		[wait time="5.0"]
 		Dalton (Angry): ASPD!
 		Dalton: We are here to investi-
 		# #A loud thud comes from inside the apartment, followed by tired groan and a curse

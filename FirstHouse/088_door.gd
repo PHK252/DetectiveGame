@@ -11,19 +11,20 @@ func _on_interactable_interacted(interactor):
 		in_knock = true
 		player.stop_player()
 		alert.hide()
-		#Knock anim
 		knock_count +=1
-		if knock_count < 2:
-			await get_tree().create_timer(1.0)
-			player.start_player()
-			in_knock = false
+		if knock_count < 3:
+			Dialogic.start(dialogue_file, "knock")
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			return
-		Dialogic.start(dialogue_file)
+		Dialogic.start(dialogue_file, "reply")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func _on_timeline_ended():
+	print(knock_count)
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	in_knock = false
 	player.start_player()
-	if knock_count != 5:
-		interactable.set_deferred("monitorable", false)
+	if knock_count == 5:
+		interactable.queue_free()
+		return
+	alert.show()

@@ -1,3 +1,9 @@
+label knock
+[signal arg="knock"]
+[wait time="5.0"]
+[end_timeline]
+label reply
+[signal arg="knock"]
+[wait time="5.0"]
 Dalton (Awkward): ...
 Theo (Thinking): I don’t think they’re here.
-
