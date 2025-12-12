@@ -169,3 +169,7 @@ func posChange():
 		pos4.hideArrows()
 		pos5.hideArrows()
 		pos6.showArrows()
+
+
+func _on_letter_exit_pressed():
+	show_open_case()

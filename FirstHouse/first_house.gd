@@ -32,7 +32,7 @@ extends Node3D
 
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
-
+@export var music : AudioStreamPlayer
 
 signal phone_time_start
 # Called when the node enters the scene tree for the first time.
@@ -153,5 +153,6 @@ func disable_interaction(arr: Array):
 
 func _on_entered_micah():
 	timer.start()
+	music.play()
 	emit_signal("phone_time_start")
 	print("level start!")

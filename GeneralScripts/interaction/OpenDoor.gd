@@ -65,23 +65,23 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
+	print(cooldown)
 	if cooldown == false:
 		cooldown = true
 		alert.hide()
 		emit_signal("general_interact")
 		print(is_open)
 		print(entered)
-	
+		print(GlobalVars.in_dialogue)
 		#level exit
 		#__________________
 		if is_open == false and entered == true and GlobalVars.in_dialogue == false:
-			GlobalVars.in_dialogue == true
+			GlobalVars.in_dialogue = true
 			Dialogic.signal_event.connect(doorOpen)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			var exit = Dialogic.start("Micah_Leave")
-			exit.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			exit.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-			exit.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
+			Dialogic.signal_event.connect(notleave)
+			Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
+			player.stop_player()
+			Dialogic.start("Micah_Leave")
 		elif is_open == false and GlobalVars.in_dialogue == false and introduction_happened == false:
 			#print("open")
 			#$Interactable.queue_free()
@@ -123,6 +123,11 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 
+func _on_exit_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_exit_timeline_ended)
+	GlobalVars.in_dialogue = false
+	player.start_player()
+
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
 		emit_signal("door_open")
@@ -133,16 +138,21 @@ func doorOpen(argument: String):
 		#collision.disabled = true
 		is_open = true
 
+func notleave(argument : String):
+	if argument == "notyet":
+		Dialogic.signal_event.disconnect(doorOpen)
+		Dialogic.signal_event.disconnect(notleave)
+		cooldown = false
 # will need more debugging
-func _on_interactable_unfocused(interactor):
-	if is_open == true:
-		print("close")
-		#await get_tree().create_timer(3.0).timeout
-		#animation_tree["parameters/conditions/is_closed"] = true
-		#animation_tree["parameters/conditions/is_opened"] = false
-		#is_open = false
-		#entered = true
-		#collision.disabled = false
+#func _on_interactable_unfocused(interactor):
+	#if is_open == true:
+		#print("close")
+		##await get_tree().create_timer(3.0).timeout
+		##animation_tree["parameters/conditions/is_closed"] = true
+		##animation_tree["parameters/conditions/is_opened"] = false
+		##is_open = false
+		##entered = true
+		##collision.disabled = false
 
 func _on_character_body_3d_d_hall() -> void:
 	is_outside = true

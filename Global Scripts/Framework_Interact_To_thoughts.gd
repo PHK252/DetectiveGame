@@ -31,6 +31,9 @@ func _on_input_event(viewport, event, shape_idx):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	if GlobalVars.viewing == "hair":
+		if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
+			object_interact.hide()
 	object_interact.show()
 	GlobalVars.viewing = ""
 	if extra_anim:

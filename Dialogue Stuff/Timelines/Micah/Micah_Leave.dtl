@@ -1,25 +1,26 @@
 Dalton (Default): Leave?
 - Yes.
+	if {Asked Questions.Micah_Closet_Asked} == false and {Asked Questions.viewed_pic} == false and {Asked Questions.Micah_Asked_Case} == false:
+		Theo (Concerned): ...?
+		Theo (Thinking): We haven't been here long.
+		Theo (Doubt): Are you sure?
+		Dalton (Default): ...
+		- Yes.
+			set {Character Aff Points.Theo} -= 1
+			Dalton (Resting): Don't talk back to me.
+			Dalton (Talk): Let's go.
+			Theo (Concerned): ...
+			Theo (Thinking): Fine.
+			[signal arg="open_door"]
+			[end_timeline]
+		- No.
+			Dalton (Awkward): ...
+			Dalton (Hmph): Let's keep looking.
+			[signal arg= "notyet"]
+			[end_timeline]
 	if {Character Aff Points.Micah} < 2:
 		Dalton (Resting): I think that'll be all for now. 
 		Dalton (Talk): Theo, let's go. 
-		if {Asked Questions.Micah_Closet_Asked} == false and {Asked Questions.viewed_pic} == false and {Asked Questions.Micah_Asked_Case} == false:
-			Theo (Concerned): ...?
-			Theo (Thinking): We haven't been here long.
-			Theo (Doubt): Are you sure?
-			Dalton (Default): ...
-			- Yes.
-				set {Character Aff Points.Theo} -= 1
-				Dalton (Resting): Don't talk back to me.
-				Dalton (Talk): Let's go.
-				Theo (Concerned): ...
-				Theo (Thinking): Fine.
-				[signal arg="open_door"]
-				[end_timeline]
-			- No.
-				Dalton (Awkward): ...
-				Dalton (Hmph): Let's keep looking.
-				[end_timeline]
 		Theo (Awkward): Sorry about that. 
 		Theo (Talk): He's just a little cranky. 
 		Dalton (Talk): Theo.
@@ -75,4 +76,5 @@ Dalton (Default): Leave?
 		[signal arg="open_door"]
 		[end_timeline]
 - Not yet.
+	[signal arg= "notyet"]
 	[end_timeline]
