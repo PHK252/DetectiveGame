@@ -9,8 +9,8 @@ extends CanvasLayer
 @export var map_cam : PhantomCamera3D
 @export var exit_cam : PhantomCamera3D
 @export var player : CharacterBody3D
-@export var dalton_marker : Marker2D
-@export var theo_marker : Marker2D
+#@export var dalton_marker : Marker2D
+#@export var theo_marker : Marker2D
 @export var alert : Sprite3D
 
 var went_Micah : bool
@@ -32,7 +32,7 @@ func _ready() -> void:
 
 func _on_firsthouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
-	if GlobalVars.current_level == "juniper" or GlobalVars.current_level == "quincy":
+	if car_rev:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
@@ -43,12 +43,12 @@ func _on_firsthouse_button_pressed() -> void:
 		else:
 			Loading.load_scene(self, GlobalVars.first_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 			player.start_player()
-		GlobalVars.in_interaction = ""
+			GlobalVars.in_interaction = ""
 
 
 func _on_secondhouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
-	if GlobalVars.current_level == "quincy":
+	if car_rev:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
 	if went_Micah == true:
@@ -63,7 +63,7 @@ func _on_secondhouse_button_pressed() -> void:
 
 func _on_thirdhouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
-	if GlobalVars.current_level == "juniper":
+	if car_rev:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
@@ -87,33 +87,30 @@ func _on_thirdhouse_button_pressed() -> void:
 func _on_office_button_pressed() -> void:
 	#print("office_pressed")
 	emit_signal("select_level_sound")
-	if GlobalVars.current_level == "juniper" or GlobalVars.current_level == "quincy":
+	if car_rev:
 		car_rev.play()
-	if GlobalVars.day == 1: 
-		if went_Juniper == false or went_Micah == false:
-			#thought to go to next house
-			pass
-		else:
+	match GlobalVars.day:
+		1: 
 			GlobalVars.in_look_screen = false
 			Loading.load_scene(self, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""
-	if GlobalVars.day == 2: 
-		GlobalVars.in_look_screen = false
-		Loading.load_scene(self, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
-		player.start_player()
-		GlobalVars.in_interaction = ""
-	if GlobalVars.day == 3: 
-		GlobalVars.in_look_screen = false
-		Loading.load_scene(self, GlobalVars.office_path, "driving", "afternoon", Loading.choose_drive_dialogue())
-		player.start_player()
-		GlobalVars.in_interaction = ""
+		2: 
+			GlobalVars.in_look_screen = false
+			Loading.load_scene(self, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
+			player.start_player()
+			GlobalVars.in_interaction = ""
+		3: 
+			GlobalVars.in_look_screen = false
+			Loading.load_scene(self, GlobalVars.office_path, "driving", "afternoon", Loading.choose_drive_dialogue())
+			player.start_player()
+			GlobalVars.in_interaction = ""
 	#get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
 
 
 func _on_secret_button_pressed() -> void:
 	emit_signal("select_level_sound")
-	if GlobalVars.current_level == "juniper" or GlobalVars.current_level == "quincy":
+	if car_rev:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
 	Loading.load_scene(self, GlobalVars.secret_path, "driving", "morning", Loading.choose_drive_dialogue())
@@ -132,7 +129,7 @@ func _on_check_day():
 	went_Micah = Dialogic.VAR.get_variable("Global.went_to_Micah")
 	went_Juniper = Dialogic.VAR.get_variable("Global.went_to_Juniper")
 	went_Quincy = Dialogic.VAR.get_variable("Global.went_to_Quincy")
-	went_Quincy = Dialogic.VAR.get_variable("Global.went_to_Quincy")
+	went_secret = Dialogic.VAR.get_variable("Global.went_to_secret")
 	if went_Juniper == true and juniper.disabled == false:
 		juniper.disabled = true
 		juniper.mouse_default_cursor_shape = Control.CURSOR_ARROW
@@ -150,22 +147,12 @@ func _on_check_day():
 			quincy.visible = false
 		else:
 			quincy.visible = true
-	#else:
-		#micah.disabled = false
-	#if GlobalVars.current_level == "Juniper":
-		#juniper.disabled = true
-	#else:
-		#juniper.disabled = false
-	#if GlobalVars.current_level == "Quincy":
-		#quincy.disabled = true
-	#else:
-		#quincy.disabled = false
-	if GlobalVars.current_level == "Office":
-		office.disabled = true
-		office.mouse_default_cursor_shape = Control.CURSOR_ARROW
-	else:
+	if (went_Juniper == true and  went_Micah == true and GlobalVars.day == 1) or (went_Quincy == true and GlobalVars.day == 2) or (went_secret == true and GlobalVars.day == 3):
 		office.disabled = false
 		office.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	else:
+		office.disabled = true
+		office.mouse_default_cursor_shape = Control.CURSOR_ARROW
 	
 	#if GlobalVars.current_level == "Secret":
 		#secret.disabled = true
@@ -201,7 +188,7 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	GlobalVars.in_interaction = ""
 
-func _on_Quincy_declined_call():
-	player.start_player()
-	GlobalVars.in_interaction = ""
-	pass # Replace with function body.
+#func _on_Quincy_declined_call():
+	#player.start_player()
+	#GlobalVars.in_interaction = ""
+	#pass # Replace with function body.

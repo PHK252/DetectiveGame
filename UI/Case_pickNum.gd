@@ -48,7 +48,10 @@ func hide_open_case():
 func show_open_case():
 	case_top_2.show()
 	case_bottom_2.show()
-	case_hair.show()
+	if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
+		case_hair.hide()
+	else:
+		case_hair.show()
 	case_note.show()
 	case_key.show()
 	

@@ -15,6 +15,8 @@ var check_repeat = false
 @export var doorSound : AudioStreamPlayer3D
 @export var seizure_sound : AnimationPlayer
 
+var door_dialogue := false
+var open := false
 signal start_Isaac
 signal check_on_isaac
 signal switch_cam_bed
@@ -23,16 +25,16 @@ signal look_activate
 signal look_deactivate
 
 func _on_enter_room_body_entered(body: Node3D) -> void:
-	if stop_repeat == false and GlobalVars.in_dialogue == false:
+	if stop_repeat == false and GlobalVars.in_dialogue == false and door_dialogue == false:
+		door_dialogue = true
+		open = true
 		emit_signal("look_activate")
 		door_anim.play("DoorOpen")
 		doorSound.play()
 		stop_repeat = true
 		GlobalVars.in_dialogue = true
-		var bedroom_open_dialogue = Dialogic.start("Day_1_Isaac", "bedroom_open")
+		Dialogic.start("Day_1_Isaac", "bedroom_open")
 		Dialogic.timeline_ended.connect(_on_open_ended)
-		bedroom_open_dialogue.register_character(load("res://Dialogic Characters/Kale.dch"), kale_marker)
-		bedroom_open_dialogue.register_character(load("res://Dialogic Characters/Isaac.dch"), isaac_marker)
 		player.stop_player()
 
 
@@ -44,11 +46,15 @@ func _on_check_kale_body_entered(body):
 		player.stop_player()
 		await get_tree().create_timer(1.8).timeout
 		emit_signal("look_activate")
-		var bedroom_open_dialogue = Dialogic.start("Day_1_Isaac", "bedroom_check")
+		Dialogic.start("Day_1_Isaac", "bedroom_check")
 		Dialogic.timeline_ended.connect(_on_flash_ended)
-		bedroom_open_dialogue.register_character(load("res://Dialogic Characters/Kale.dch"), kale_marker)
-		bedroom_open_dialogue.register_character(load("res://Dialogic Characters/Isaac.dch"), isaac_marker)
 		
+
+func _on_close_door_body_entered(body):
+	if open == true:
+		door_anim.play("DoorClose")
+		doorSound.play()
+		open = false
 
 
 

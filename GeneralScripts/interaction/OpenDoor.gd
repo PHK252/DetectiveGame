@@ -213,3 +213,15 @@ func _on_doorcamarea_body_entered(body):
 				emit_signal("activate_leave")
 				if interaction.monitorable == true:
 					interaction.set_deferred("monitorable", false)
+
+
+func _on_doorcamarea_dalton_body_exited(body):
+	if entered == true:
+		if body.is_in_group("player"):
+			dalton_left = false
+
+
+func _on_theo_doorcamarea_body_exited(body):
+	if entered == true:
+		if body.is_in_group("theo"):
+			theo_left = false

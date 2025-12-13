@@ -59,3 +59,7 @@ func _input(event):
 
 func _on_activate_leave():
 	interactable.set_deferred("monitorable", true)
+
+
+func _on_Quincy_call_start_dialogue():
+	pass # Replace with function body.

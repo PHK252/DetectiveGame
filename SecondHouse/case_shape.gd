@@ -26,23 +26,20 @@ func _on_input_event(viewport, event, shape_idx):
 
 	
 
-#func _on_exit_pressed():
-	#if GlobalVars.viewed_Juniper_case == false and GlobalVars.clicked_case_Juniper == 1:
-		#case_top.show()
-		#case_bottom.show()
-		#apron.show()
-		#letter.show()
-		#bill.show()
-		#object.show()
-		#GlobalVars.viewed_Juniper_case = true
-		#GlobalVars.viewing = ""
-	#else:
-		#case_top.show()
-		#case_bottom.show()
-		#apron.show()
-		#letter.show()
-		#bill.show()
-		#GlobalVars.viewing = ""
+func _on_exit_pressed():
+	case_top.show()
+	case_bottom.show()
+	apron.show()
+	letter.show()
+	bill.show()
+	object.show()
+	GlobalVars.viewing = ""
+	if GlobalVars.viewed_Juniper_case == false and GlobalVars.clicked_case_Juniper == 1:
+		GlobalVars.viewed_Juniper_case = true
+	else:
+		return
+
+
 #
 #
 #func _input(event):

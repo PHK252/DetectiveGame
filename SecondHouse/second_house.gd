@@ -14,6 +14,8 @@ extends Node3D
 @export var player: CharacterBody3D
 @export var alert : Sprite3D
 
+@export var music : AudioStreamPlayer
+
 @export var timer : Timer
 @onready var time_out = false 
 @onready var pause = $Pause
@@ -147,4 +149,5 @@ func can_interact():
 func _on_entered_juniper():
 	timer.start()
 	emit_signal("phone_time_start")
+	music.play()
 	print("level start!")

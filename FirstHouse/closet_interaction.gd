@@ -176,9 +176,11 @@ func _on_interactable_interacted(interactor):
 			
 
 func _on_timeline_ended():
+	_close_door()
 	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	
 	if FP_Cam.priority == 0:
 		player.start_player()
 		alert.show()
@@ -201,11 +203,21 @@ func closetLook(argument: String):
 		Dialogic.signal_event.disconnect(closetLook)
 
 func _on_closedoor_interacted(interactor):
+	pass
+	#alert.hide()
+	#open_closet_door_1.disabled = true
+	#open_closet_door_2.disabled = true
+	#closet_anim.play("NewClosetClose")
+	#closet_open = false
+	#print("closet closing")
+	#close_door_1.set_monitorable(false)
+	#close_door_2.set_monitorable(false)
+
+func _close_door():
 	alert.hide()
 	open_closet_door_1.disabled = true
 	open_closet_door_2.disabled = true
 	closet_anim.play("NewClosetClose")
 	closet_open = false
 	print("closet closing")
-	#close_door_1.set_monitorable(false)
-	#close_door_2.set_monitorable(false)
+	await closet_anim.animation_finished

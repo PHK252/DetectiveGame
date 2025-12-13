@@ -67,8 +67,13 @@ frame_2/duration = 0.25
 frame_3/texture = ExtResource("20_7ob01")
 frame_3/duration = 0.25
 
-[node name="Map" type="CanvasLayer"]
+[node name="Map" type="CanvasLayer" node_paths=PackedStringArray("micah", "juniper", "quincy", "office", "secret")]
 script = ExtResource("1_n4a1j")
+micah = NodePath("Micah")
+juniper = NodePath("Juniper")
+quincy = NodePath("Quincy")
+office = NodePath("Office")
+secret = NodePath("Secret")
 
 [node name="Background2" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)

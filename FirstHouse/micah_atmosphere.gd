@@ -130,7 +130,7 @@ func _on_panda_timer_timeout() -> void:
 	panda.basis = flipped_panda
 	await get_tree().create_timer(1.3).timeout
 	panda_activate = true
-	delivery_timer.start()
+	
 
 func _on_delivery_timer_timeout() -> void:
 	elevator_anim.play("elevatorOpenClose")
@@ -228,3 +228,7 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 	if go_back_activate == false and sloth_anims["parameters/blendHold/blend_amount"] == 1:
 		delivery_activate = false
 		go_back_activate = true
+
+
+func _on_activate_leave():
+	delivery_timer.start()

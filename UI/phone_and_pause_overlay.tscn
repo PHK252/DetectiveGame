@@ -214,6 +214,7 @@ libraries = {
 }
 
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
+visible = false
 
 [node name="Accept" parent="CanvasLayer/Phone UI/PhoneScreen/PhoneCall" index="2"]
 offset_left = 907.0
