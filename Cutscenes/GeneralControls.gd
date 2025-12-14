@@ -14,6 +14,7 @@ var check_repeat = false
 
 @export var doorSound : AudioStreamPlayer3D
 @export var seizure_sound : AnimationPlayer
+@export var door_collision : CollisionShape3D
 
 var door_dialogue := false
 var open := false
@@ -28,6 +29,7 @@ func _on_enter_room_body_entered(body: Node3D) -> void:
 	if stop_repeat == false and GlobalVars.in_dialogue == false and door_dialogue == false:
 		door_dialogue = true
 		open = true
+		door_collision.set_deferred("disabled", true)
 		emit_signal("look_activate")
 		door_anim.play("DoorOpen")
 		doorSound.play()
@@ -39,6 +41,11 @@ func _on_enter_room_body_entered(body: Node3D) -> void:
 
 
 func _on_check_kale_body_entered(body):
+	if open == true:
+		door_collision.set_deferred("disabled", false)
+		door_anim.play("DoorClose")
+		doorSound.play()
+		open = false
 	if check_repeat == false and GlobalVars.in_dialogue == false:
 		emit_signal("check_on_isaac")
 		GlobalVars.in_dialogue = true
@@ -48,14 +55,6 @@ func _on_check_kale_body_entered(body):
 		emit_signal("look_activate")
 		Dialogic.start("Day_1_Isaac", "bedroom_check")
 		Dialogic.timeline_ended.connect(_on_flash_ended)
-		
-
-func _on_close_door_body_entered(body):
-	if open == true:
-		door_anim.play("DoorClose")
-		doorSound.play()
-		open = false
-
 
 
 func _on_start_kitchen_dialogue():
@@ -87,8 +86,10 @@ func _on_flash_ended():
 	Dialogic.timeline_ended.disconnect(_on_flash_ended)
 	GlobalVars.in_dialogue = false
 	player.stop_player()
+	#Loading.load_scene(self, GlobalVars.flashback_1_2, "", "", "", true, true)
 	SceneTransitions.glitch_change_scene(GlobalVars.flashback_1_2)
-	await get_tree().create_timer(3.0).timeout
-	player.start_player()
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(6.0).timeout
 	self.queue_free()
+
+func _on_lock_in_body_entered(body):
+	door_collision.set_deferred("disabled", false)

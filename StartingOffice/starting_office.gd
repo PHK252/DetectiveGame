@@ -35,6 +35,7 @@ signal stop_lookTheo
 
 func _ready():
 	#GlobalVars.day = 2 #for testing the leave stuff
+	player.start_player()
 	GlobalVars.current_level = "Office"
 	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
 #	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)

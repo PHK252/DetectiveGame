@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=4 uid="uid://boda0uybnshug"]
+[gd_scene load_steps=150 format=4 uid="uid://boda0uybnshug"]
 
 [ext_resource type="PackedScene" uid="uid://dtr4dmea8d0jt" path="res://Cutscenes/IsaacFlashback_01.glb" id="1_b3khi"]
 [ext_resource type="Script" uid="uid://ch1vyj8unrgyi" path="res://Cutscenes/flashback_Day1.gd" id="1_mnrbd"]
@@ -996,6 +996,9 @@ size = Vector3(1.98097, 64.6021, 0.0739441)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps7mt"]
 size = Vector3(0.477539, 66.3288, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3x18"]
+size = Vector3(0.0167389, 38.035, 0.269655)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oronr"]
 resource_name = "Material.001"
 transparency = 4
@@ -1337,11 +1340,11 @@ size = Vector3(1.19489, 2.06049, 1.54689)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vs82i"]
 size = Vector3(0.323547, 0.858155, 0.363793)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oronr"]
-size = Vector3(0.207275, 1, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnrbd"]
 size = Vector3(0.263672, 0.483887, 2.20569)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oronr"]
+size = Vector3(0.0834961, 0.598755, 1)
 
 [node name="Isaac_house_flash" type="Node3D" node_paths=PackedStringArray("world_env", "sub_v_container")]
 script = ExtResource("1_mnrbd")
@@ -1373,7 +1376,7 @@ render_target_update_mode = 4
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(-0.0991393, 1.32676e-09, 1.68901e-10, 0.995074)
-bones/5/rotation = Quaternion(0.260603, -8.81326e-09, -1.27553e-09, 0.965446)
+bones/5/rotation = Quaternion(0.269242, -8.82914e-09, -1.27786e-09, 0.963073)
 bones/7/rotation = Quaternion(0.251585, 0.0036754, 0.0141376, 0.967725)
 bones/9/rotation = Quaternion(0.251585, 0.00367533, 0.014137, 0.967725)
 bones/11/rotation = Quaternion(-0.263317, -0.10466, -0.639998, 0.714222)
@@ -1398,7 +1401,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0.38)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/4/rotation = Quaternion(0.111542, -7.42854e-09, -1.4092e-09, 0.99376)
-bones/5/rotation = Quaternion(-0.0109534, -0.0380123, 0.018589, 0.999044)
+bones/5/rotation = Quaternion(-0.0173446, -0.0381304, 0.0183455, 0.998954)
 bones/7/rotation = Quaternion(0.0615113, 0.000898595, 0.0145798, 0.997999)
 bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
 bones/11/rotation = Quaternion(-0.398748, -0.0951924, -0.663664, 0.625691)
@@ -1500,8 +1503,8 @@ visible = false
 bones/0/position = Vector3(1.11022e-16, -1.30962e-08, -1.75284)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
-bones/4/rotation = Quaternion(-0.0754563, -0.0413848, -0.00209579, 0.996288)
-bones/5/rotation = Quaternion(0.198784, -0.0760508, 0.00567768, 0.977072)
+bones/4/rotation = Quaternion(-0.0754408, -0.046068, -0.00233296, 0.996083)
+bones/5/rotation = Quaternion(0.198647, -0.084568, 0.00631355, 0.976395)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662162)
 bones/6/rotation = Quaternion(1.92867e-08, -2.67596e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615113, 0.000898596, 0.0145798, 0.997999)
@@ -1509,11 +1512,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-4.39494e-09, 2.33899e-09, 0.138842, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898602, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.439436, 0.0868032, -0.317434, 0.835821)
+bones/11/rotation = Quaternion(-0.445152, 0.0856303, -0.315809, 0.83353)
 bones/12/rotation = Quaternion(0.503192, 0.178565, -0.57087, 0.623714)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.332503, -0.0799624, 0.37099, 0.863374)
-bones/16/rotation = Quaternion(0.513946, -0.174248, 0.578889, 0.608593)
+bones/15/rotation = Quaternion(-0.326855, -0.0805496, 0.37259, 0.864786)
+bones/16/rotation = Quaternion(0.513733, -0.174355, 0.57865, 0.608969)
 bones/19/rotation = Quaternion(0.09865, 0.00997421, -0.00680437, 0.995049)
 bones/20/rotation = Quaternion(-0.245123, 0.000133744, -0.00672399, 0.969469)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
@@ -1807,6 +1810,10 @@ shape = SubResource("BoxShape3D_ps7mt")
 transform = Transform3D(1, 0, -3.3765e-11, 0, 1, 0, 0, 0, 1, 1.02461, -3.85684, -1.34843)
 shape = SubResource("BoxShape3D_ps7mt")
 
+[node name="Door" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment/Cube_002/StaticBody3D"]
+transform = Transform3D(1, 0, -3.60387e-11, 0, 1, 0, 0, 0, 1, -0.927502, 21.0884, -0.118606)
+shape = SubResource("BoxShape3D_l3x18")
+
 [node name="Cube_003" parent="SubViewportContainer/SubViewport/FirstFlashEnvironment" index="5"]
 transform = Transform3D(0.790388, 0, 0, 0, 0.0732956, 0, 0, 0, 0.0920332, 0.4793, 0.12147, -2.02675)
 
@@ -1859,7 +1866,7 @@ randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_gcp7e")
 draw_pass_1 = SubResource("QuadMesh_uue3t")
 
-[node name="ControlAreas" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("door_anim", "dalton_look", "dalton_room", "brother_anims", "isaac_marker", "kale_marker", "player", "doorSound", "seizure_sound")]
+[node name="ControlAreas" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("door_anim", "dalton_look", "dalton_room", "brother_anims", "isaac_marker", "kale_marker", "player", "doorSound", "seizure_sound", "door_collision")]
 script = ExtResource("24_3xeah")
 door_anim = NodePath("../DoorCutscene/AnimationPlayer")
 dalton_look = NodePath("../Characters/dalton_fb2/AnimationTree")
@@ -1870,6 +1877,7 @@ kale_marker = NodePath("../UI/Kale")
 player = NodePath("../Characters/IsaacMain/Isaac/CharacterBody3D")
 doorSound = NodePath("../Sounds/DoorOpen")
 seizure_sound = NodePath("../Characters/IsaacsBrotherTweaking/BrotherTweak")
+door_collision = NodePath("../FirstFlashEnvironment/Cube_002/StaticBody3D/Door")
 
 [node name="WalkUp" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467339, 1.5694, -4.79712)
@@ -1884,12 +1892,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33832, 2.76947, -7.14002)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/EnterRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149445, 0.0709226, -0.137959)
 shape = SubResource("BoxShape3D_vs82i")
-
-[node name="Close door" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/Close door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95262, 2.64687, -7.15895)
-shape = SubResource("BoxShape3D_oronr")
 
 [node name="FaceKitchen" type="Marker3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43184, 0, -1.43623)
@@ -1908,6 +1910,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482575, 0, -2.12422)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/Check_Kale"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03007, 2.25806, -6.88922)
 shape = SubResource("BoxShape3D_mnrbd")
+
+[node name="Lock in" type="Area3D" parent="SubViewportContainer/SubViewport/ControlAreas"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/ControlAreas/Lock in"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92644, 2.99761, -7.13549)
+shape = SubResource("BoxShape3D_oronr")
 
 [node name="backwall" parent="SubViewportContainer/SubViewport" instance=ExtResource("36_uh4i3")]
 
@@ -1983,8 +1991,8 @@ visible = false
 [connection signal="switch_cam_bed" from="SubViewportContainer/SubViewport/ControlAreas" to="SubViewportContainer/SubViewport/CamSystem" method="_on_character_body_3d_cam_bed"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/WalkUp" to="SubViewportContainer/SubViewport/Characters/IsaacMain/Isaac/CharacterBody3D" method="_on_walk_up_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/EnterRoom" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_enter_room_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/Close door" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_close_door_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/Check_Kale" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_check_kale_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/ControlAreas/Lock in" to="SubViewportContainer/SubViewport/ControlAreas" method="_on_lock_in_body_entered"]
 
 [editable path="SubViewportContainer/SubViewport/Characters/dalton_fb2"]
 [editable path="SubViewportContainer/SubViewport/Characters/dalton_fb1"]
