@@ -120,3 +120,7 @@ func _on_input_event(viewport, event, shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			if current_tut == exit_tut:
 				_hide_tut()
+
+
+func _on_hide_tut():
+	_hide_tut()

@@ -33,9 +33,11 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	if GlobalVars.viewing == "hair":
 		if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
-			object_interact.hide()
-	object_interact.show()
+			GlobalVars.viewing = ""
+			return
 	GlobalVars.viewing = ""
+	object_interact.show()
+
 	if extra_anim:
 		extra_anim.play(anim_track)
 		await extra_anim.animation_finished

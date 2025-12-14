@@ -60,3 +60,23 @@ func _on_letter_mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 func _on_letter_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_hair_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_hair_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func _on_key_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_key_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func _on_case_locked_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_case_locked_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

@@ -93,8 +93,9 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			emit_signal("enable_look")
+			GlobalVars.in_dialogue = true
 			var closet_dialogue = Dialogic.start(end_dialogue_file)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Dialogic.timeline_ended.connect(_on_note_timeline_ended)
 			closet_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			closet_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			closet_dialogue.register_character(load(load_char_dialogue), character_marker)
@@ -174,9 +175,16 @@ func _on_interactable_interacted(interactor):
 			closet_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			closet_dialogue.register_character(load(load_char_dialogue), character_marker)
 			
+func _on_note_timeline_ended():
+	emit_signal("disable_look")
+	Dialogic.timeline_ended.disconnect(_on_note_timeline_ended)
+	GlobalVars.in_dialogue = false
+	_close_door()
+	if FP_Cam.priority == 0:
+		player.start_player()
+		alert.show()
 
 func _on_timeline_ended():
-	_close_door()
 	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
@@ -199,8 +207,9 @@ func closetLook(argument: String):
 		alert.hide()
 		player.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
+	if argument == "end":
 		Dialogic.signal_event.disconnect(closetLook)
+		_close_door()
 
 func _on_closedoor_interacted(interactor):
 	pass

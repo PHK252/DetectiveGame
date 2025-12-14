@@ -12,8 +12,8 @@ extends Control
 @onready var called = false
 @onready var phone_up = false
 
-var in_evidence
-
+var in_evidence := false
+var phone_visible := false
 signal start_dialogue
 signal start_call_day_3
 signal start_call_end
@@ -22,6 +22,7 @@ signal buzz
 signal stop_buzz
 signal _show_tut(tut_type : String)
 signal awaiting_tut
+signal hide_tut
 var accepted = false
 var prev_mouse_mode : int
 var exit = InputMap.action_get_events("Exit")
@@ -33,16 +34,26 @@ func _ready():
 	#GlobalVars.emit_phone_call()
 	pass
 func _process(delta):
-	if GlobalVars.in_dialogue == true or  GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "":
+	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "":
 		call_normal.disabled = true
 	else:
 		call_normal.disabled = false
 	if GlobalVars.phone_tut == false and in_evidence == true:
-		if GlobalVars.in_dialogue == true:
-			await get_tree().create_timer(.5).timeout
-			if GlobalVars.in_dialogue == true:
-				return
-			awaiting_tut.emit()
+		if GlobalVars.in_dialogue == true and phone_visible == true:
+			print("enter hide")
+			emit_signal("hide_tut")
+			phone_visible = false
+		if call_normal.disabled == true:
+			return
+			#await get_tree().create_timer(.25).timeout
+			#if call_normal.disabled == true:
+				#return
+		#if GlobalVars.in_dialogue == true:
+			#await get_tree().create_timer(.5).timeout
+			#if GlobalVars.in_dialogue == true:
+				#return
+			#print(GlobalVars.in_interaction)
+		awaiting_tut.emit()
 
 func _on_receiving_call_pressed():
 	GlobalVars.phone_up = true
@@ -137,9 +148,14 @@ func _on_case_added_notes_overlay():
 	evidence_anim.stop()
 	evidence.visible = false
 	if GlobalVars.phone_tut == false:
-		if GlobalVars.in_dialogue == false:
+		if call_normal.disabled == false:
 			emit_signal("_show_tut", "phone")
+			phone_visible = true
+			await get_tree().create_timer(6.0).timeout
 		else:
 			await awaiting_tut 
 			emit_signal("_show_tut", "phone")
-	in_evidence = false
+			phone_visible = true
+			await get_tree().create_timer(6.0).timeout
+	phone_visible = false
+	in_evidence = false  

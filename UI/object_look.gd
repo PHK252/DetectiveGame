@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var front = $"Object front"
 @onready var back = $"Object Back"
 @export var just_front : bool = false
+@export var show_mouse_exit : bool = false
 signal paper_sound
 
 signal _show_tut(tut_type : String)
@@ -18,6 +19,9 @@ func _input(event):
 		GlobalVars.in_look_screen = false
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""
+		if show_mouse_exit == true or GlobalVars.in_interaction == "case":
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			return
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_object_front_gui_input(event):
@@ -44,6 +48,9 @@ func _on_exit_pressed():
 	$".".hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.viewing = ""
+	if show_mouse_exit == true:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		return
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 

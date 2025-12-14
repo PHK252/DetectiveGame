@@ -11,14 +11,15 @@ Dalton (Default): ...
 	Dalton (Squint): Hello?
 	Dalton (Talk): We are here to investigate a break in that happened last night.
 	[signal arg="knock"]
-	[wait time="5.0"]
+	[wait time="3.0"]
 	# #knock 
 	[signal arg="knock"]
-	[wait time="5.0"]
+	[wait time="3.0"]
 	# #knock
 	Dalton (Angry): Is anybody home?!
 	Dalton (Angry): ASPD!
-	[wait time="5.0"]
+	[signal arg="knock"]
+	[wait time="3.0"]
 	# #foot steps
 	Dalton (Angry): Open up!
 	Dalton: ASPD!

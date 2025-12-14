@@ -22,11 +22,11 @@ if {Character Aff Points.Micah} < 2 and {Asked Questions.Micah_Theo_enter} == fa
 	Dalton (Resting): Hmph.
 	Dalton (Hmph): Tsk...
 	do GlobalVars.emit_add_note("micah", "case", "low")
-	[wait time="0.3"]
 	label choices
 	Dalton: ...
 	- Inspect case.
 		[signal arg="look_case"]
+		[end_timeline]
 	-  Continue investigation.
 		[signal arg="exit"]
 		[end_timeline]
@@ -54,7 +54,7 @@ if {Character Aff Points.Micah} >= 2 and {Asked Questions.Micah_Theo_enter} == f
 		Theo (Thinking): Dalton, take it easy on him. 
 		Dalton (Resting): Hmph.
 		jump continue
-	- Continue
+	- Continue.
 		jump continue
 	label continue
 	Dalton (Resting): Do you know where the case came from?
@@ -66,11 +66,11 @@ if {Character Aff Points.Micah} >= 2 and {Asked Questions.Micah_Theo_enter} == f
 	Dalton (Resting): Hmph...
 	Dalton (Awkward): I see.
 	do GlobalVars.emit_add_note("micah", "case", "high")
-	[wait time="0.3"]
 	label choices
 	Dalton: ...
 	- Inspect case.
 		[signal arg="look_case"]
+		[end_timeline]
 	-  Continue investigation.
 		[signal arg="exit"]
 		[end_timeline]
@@ -90,11 +90,11 @@ if {Asked Questions.Micah_Theo_enter} == true:
 	Theo (Laugh): Time to do some detective work, sir Dalton.
 	Dalton (Hmph): Hmmph.
 	do GlobalVars.emit_add_note("micah", "case", "theo")
-	[wait time="0.3"]
 	label choices
 	Dalton (Default): ...
 	- Inspect case.
 		[signal arg="look_case"]
+		[end_timeline]
 	- Continue investigation.
 		[signal arg="exit"]
 		[end_timeline]

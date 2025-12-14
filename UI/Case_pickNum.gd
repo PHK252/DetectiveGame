@@ -28,6 +28,7 @@ extends CanvasLayer
 @export var case_note : MeshInstance3D
 @export var case_key : MeshInstance3D
 
+@export var collision : CollisionShape3D
 #sounds
 @export var case_locked : AudioStreamPlayer3D
 @export var case_unlocked : AudioStreamPlayer3D
@@ -117,7 +118,7 @@ func _open_case():
 	GlobalVars.in_look_screen = false
 	GlobalVars.Micah_in_case = false
 	$".".hide()
-	#open_animation.play("caseopened")
+	collision.set_deferred("disabled", true)
 	Dialogic.VAR.set_variable("Asked Questions.Micah_Solved_Case", true)
 	open_animation_2["parameters/conditions/case_opened"] = true
 	await open_animation_2.animation_finished
