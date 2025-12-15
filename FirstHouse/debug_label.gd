@@ -19,11 +19,11 @@ func _process(delta):
 			#debug_var = i.name
 #	debug_var = timer.get_time_left()
 	#debug_var_1 = distraction_timer.get_time_left()
-	debug_var = GlobalVars.phone_tut
-	debug_var_1 = GlobalVars.in_dialogue
-	debug_var_2 = phone_and_pause_overlay.in_evidence
-	debug_var_3 = phone_and_pause_overlay.phone_visible
-	debug_var_4 = alert.visible
+	debug_var = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
+	debug_var_1 = Dialogic.VAR.get_variable("Asked Questions.viewed_pic")
+	debug_var_2 = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
+	#debug_var_3 = phone_and_pause_overlay.phone_visible
+	#debug_var_4 = alert.visible
 	#label.text = "Time left: " + str(debug_var) + "\nDistract Time left: " + str(debug_var_1)
-	label.text = "Phone tut: " + str(debug_var) + "\nIn Dialogue: " + str(debug_var_1) + "\nIn evidence: " + str(debug_var_2) + "\nIn phone tut: " + str(debug_var_3) + "\nAlert: " + str(debug_var_4)
+	label.text = "Asked Case: " + str(debug_var) + "\nViewed Pic: " + str(debug_var_1) + "\nCloset: " + str(debug_var_2)
 	pass

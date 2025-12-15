@@ -108,6 +108,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flip/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.375),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_l4ptw"]
 resource_name = "Blink Exit"
@@ -327,6 +339,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Flip/ColorRect:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbvhg"]
@@ -591,6 +615,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Click" type="AnimatedSprite2D" parent="Flip"]
 visible = false
@@ -599,7 +624,7 @@ sprite_frames = SubResource("SpriteFrames_5sc0d")
 frame = 1
 
 [node name="ColorRect" type="ColorRect" parent="Flip"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 737.0
 offset_top = 704.0
@@ -615,6 +640,7 @@ offset_left = 690.0
 offset_top = 697.0
 offset_right = 1231.0
 offset_bottom = 780.0
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90

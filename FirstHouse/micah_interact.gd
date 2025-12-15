@@ -51,24 +51,24 @@ func _process(delta):
 	asked = Dialogic.VAR.get_variable("Asked Questions.Micah_asked_all")
 	asked_dad =  Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde")
 	asked_skylar = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Skylar")
-	if Dialogic.VAR.get_variable("Asked Questions.Micah_Solved_Case") == false:
-		if asked == true:
-			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
-				if sit_body.visible == true:
-					sit_interaction.set_monitorable(true)
-				else:
-					stand_interaction.set_monitorable(true)
-			elif Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false and time_out == false:
-				if sit_body.visible == true:
-					sit_interaction.set_monitorable(true)
-				else:
-					stand_interaction.set_monitorable(true)
+	#if Dialogic.VAR.get_variable("Asked Questions.Micah_Solved_Case") == false:
+	if asked == true:
+		if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
+			if sit_body.visible == true:
+				sit_interaction.set_monitorable(true)
 			else:
-				if sit_body.visible == true:
-					sit_interaction.set_monitorable(false)
-				else:
-					stand_interaction.set_monitorable(false)
-	else:
+				stand_interaction.set_monitorable(true)
+		elif Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false and time_out == false:
+			if sit_body.visible == true:
+				sit_interaction.set_monitorable(true)
+			else:
+				stand_interaction.set_monitorable(true)
+		else:
+			if sit_body.visible == true:
+				sit_interaction.set_monitorable(false)
+			else:
+				stand_interaction.set_monitorable(false)
+	#else:
 		stand_interaction.set_monitorable(false)
 		sit_interaction.set_monitorable(false)
 		

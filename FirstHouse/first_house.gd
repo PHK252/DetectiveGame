@@ -158,3 +158,4 @@ func _on_entered_micah():
 	music.play()
 	emit_signal("phone_time_start")
 	print("level start!")
+	#disconnect("_on_entered_micah")

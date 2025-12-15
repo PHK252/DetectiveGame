@@ -1,6 +1,6 @@
 Dalton (Default): Leave?
 - Yes.
-	if {Asked Questions.Micah_Closet_Asked} == false and {Asked Questions.viewed_pic} == false and {Asked Questions.Micah_Asked_Case} == false:
+	if {Asked Questions.Micah_Closet_Asked} == false or {Asked Questions.viewed_pic} == false or {Asked Questions.Micah_Asked_Case} == false:
 		Theo (Concerned): ...?
 		Theo (Thinking): We haven't been here long.
 		Theo (Doubt): Are you sure?

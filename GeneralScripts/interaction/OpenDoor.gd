@@ -50,7 +50,7 @@ func open() -> void:
 	
 func close() -> void:
 	print("Closing")
-	
+	player.stop_player()
 	cooldown = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
@@ -58,7 +58,9 @@ func close() -> void:
 	await get_tree().create_timer(2.5).timeout
 	door_sound_close.play()
 	collision.disabled = false
+	
 	cooldown = false
+	player.start_player()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -172,7 +174,7 @@ func _on_micah_body_micah_open() -> void:
 func _on_door_theo_entered():
 	if entered == false:
 		theo_entered = true
-		#print("theo entered!" + str(theo_entered))
+		print("theo entered!" + str(theo_entered))
 		if dalton_entered == true:
 			entered = true
 			emit_signal("entered_micah")
@@ -182,7 +184,7 @@ func _on_door_theo_entered():
 func _on_dalton_door_entered():
 	if entered == false: 
 		dalton_entered = true
-		#print("dalton entered!"  + str(dalton_entered))
+		print("dalton entered! "  + str(dalton_entered))
 		if theo_entered == true:
 			entered = true
 			emit_signal("entered_micah")

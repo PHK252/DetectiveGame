@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var main : Node
 @export var micah : TextureButton
 @export var juniper : TextureButton
 @export var quincy : TextureButton
@@ -12,7 +13,7 @@ extends CanvasLayer
 #@export var dalton_marker : Marker2D
 #@export var theo_marker : Marker2D
 @export var alert : Sprite3D
-
+@export var music : AudioStreamPlayer
 var went_Micah : bool
 var went_Juniper : bool
 var went_Quincy : bool
@@ -37,12 +38,12 @@ func _on_firsthouse_button_pressed() -> void:
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
 		if went_Juniper == true:
-			Loading.load_scene(self, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
-			player.start_player()
+			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
+			
 			GlobalVars.in_interaction = ""
 		else:
-			Loading.load_scene(self, GlobalVars.first_house_path, "driving", "morning", Loading.choose_drive_dialogue())
-			player.start_player()
+			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "morning", Loading.choose_drive_dialogue())
+			
 			GlobalVars.in_interaction = ""
 
 
@@ -52,12 +53,13 @@ func _on_secondhouse_button_pressed() -> void:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
 	if went_Micah == true:
-		Loading.load_scene(self, GlobalVars.second_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
-		player.start_player()
+		music.stop()
+		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 		GlobalVars.in_interaction = ""
 	else:
-		Loading.load_scene(self, GlobalVars.second_house_path, "driving", "morning", Loading.choose_drive_dialogue())
-		player.start_player()
+		music.stop()
+		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "morning", Loading.choose_drive_dialogue())
+		
 		GlobalVars.in_interaction = ""
 
 
@@ -79,8 +81,8 @@ func _on_thirdhouse_button_pressed() -> void:
 		else:
 			return
 	else:
-		Loading.load_scene(self, GlobalVars.third_house_path, "driving", "morning", Loading.choose_drive_dialogue())
-		player.start_player()
+		Loading.load_scene(main, GlobalVars.third_house_path, "driving", "morning", Loading.choose_drive_dialogue())
+		
 		#get_tree().change_scene_to_file("res://ThirdHouse/third_house.tscn")
 
 
@@ -92,18 +94,18 @@ func _on_office_button_pressed() -> void:
 	match GlobalVars.day:
 		1: 
 			GlobalVars.in_look_screen = false
-			Loading.load_scene(self, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
-			player.start_player()
+			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
+			
 			GlobalVars.in_interaction = ""
 		2: 
 			GlobalVars.in_look_screen = false
-			Loading.load_scene(self, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
-			player.start_player()
+			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
+			
 			GlobalVars.in_interaction = ""
 		3: 
 			GlobalVars.in_look_screen = false
-			Loading.load_scene(self, GlobalVars.office_path, "driving", "afternoon", Loading.choose_drive_dialogue())
-			player.start_player()
+			Loading.load_scene(main, GlobalVars.office_path, "driving", "afternoon", Loading.choose_drive_dialogue())
+			
 			GlobalVars.in_interaction = ""
 	#get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
 
@@ -113,8 +115,8 @@ func _on_secret_button_pressed() -> void:
 	if car_rev:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
-	Loading.load_scene(self, GlobalVars.secret_path, "driving", "morning", Loading.choose_drive_dialogue())
-	player.start_player()
+	Loading.load_scene(main, GlobalVars.secret_path, "driving", "morning", Loading.choose_drive_dialogue())
+	
 	GlobalVars.in_interaction = ""
 	#get_tree().change_scene_to_file("res://SecretLocation/secret_location.tscn")
 
@@ -183,12 +185,12 @@ func _on_Quincy_call_start_dialogue():
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_call = true
-	player.start_player()
-	#alert.show()
+	
+	alert.show()
 	GlobalVars.in_dialogue = false
 	GlobalVars.in_interaction = ""
 
 #func _on_Quincy_declined_call():
-	#player.start_player()
+	#
 	#GlobalVars.in_interaction = ""
 	#pass # Replace with function body.

@@ -6,7 +6,7 @@ extends Area2D
 @onready var cam_anim = $"../../../../../../SubViewport/CameraSystem/Picture/AnimationPlayer"
 @onready var pic_fall = $"."
 @onready var pic_fall_anim = $"../../../../AnimationPlayer"
-
+@export var alert : Sprite3D
 
 @onready var dalton_marker = $"../../../../../../../UI/Dalton_marker"
 @onready var micah_marker = $"../../../../../../../UI/Micah_marker"
@@ -41,6 +41,7 @@ func _on_input_event(viewport, event, shape_idx):
 			player.stop_player()
 			GlobalVars.in_interaction = ""
 			pic_fall.hide()
+			alert.hide()
 			if GlobalVars.in_dialogue == false and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
 				print("pic entered")
 				GlobalVars.in_dialogue = true
@@ -53,3 +54,4 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
+	alert.show()
