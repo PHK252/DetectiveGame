@@ -32,3 +32,9 @@ else:
 	Dalton (Talk): It's all yours.
 	Juniper (Happy): Thank you.
 	set {Juniper.finished_letter} = true
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_Case_Choice/

@@ -24,8 +24,9 @@ var is_open: bool = false
 @export var rev_car : AudioStreamPlayer3D
 
 func _ready():
-	#pass to test
-	interactable.set_deferred("monitorable", false)
+	pass
+	print(interactable.monitorable)
+	#interactable.set_deferred("monitorable", false)
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
@@ -37,7 +38,7 @@ func _on_map_leave_interacted(interactor):
 		theo_player.play("SitOutside_001")
 		theo_car.visible = true
 		dalton_car.visible = true
-		
+		main_cam.set_tween_duration(0)
 		main_cam.priority = 30
 		exit_cam.priority = 0
 		player.stop_player()
@@ -105,3 +106,10 @@ func _input(event):
 func _on_main_door_activate_car():
 	door_interactable.set_deferred("monitorable", false)
 	interactable.set_deferred("monitorable", true)
+
+
+func _on_map_hide_player():
+	theo_norm.visible = false
+	theo_car.visible = true
+	dalton_car.visible = false
+	player.show()

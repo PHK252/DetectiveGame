@@ -21,6 +21,7 @@ func _on_input_event(viewport, event, shape_idx):
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				print("clicked")
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				object_interact.hide()
 				GlobalVars.viewing = viewing
 				GlobalVars.in_dialogue = true
@@ -30,6 +31,7 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GlobalVars.in_dialogue = false
 	if GlobalVars.viewing == "hair":
 		if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:

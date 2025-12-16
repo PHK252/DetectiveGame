@@ -23,7 +23,7 @@ signal Quincy_call_recieve
 signal _show_tut(tut_type : String)
 signal select_level_sound
 signal leave_map_sound
-
+signal hide_player
 @export var car_rev : AudioStreamPlayer3D
 
 # Called when the node enters the scene tree for the first time.
@@ -37,14 +37,14 @@ func _on_firsthouse_button_pressed() -> void:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
-		if went_Juniper == true:
-			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
-			
+		if went_Juniper == true or Dialogic.VAR.get_variable("Global.first_house") == "Juniper":
 			GlobalVars.in_interaction = ""
+			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 		else:
+			GlobalVars.in_interaction = ""
 			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 			
-			GlobalVars.in_interaction = ""
+			
 
 
 func _on_secondhouse_button_pressed() -> void:
@@ -52,24 +52,24 @@ func _on_secondhouse_button_pressed() -> void:
 	if car_rev:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
-	if went_Micah == true:
-		music.stop()
-		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
+	if went_Micah == true or Dialogic.VAR.get_variable("Global.first_house") == "Micah":
 		GlobalVars.in_interaction = ""
+		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 	else:
-		music.stop()
+		GlobalVars.in_interaction = ""
 		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 		
-		GlobalVars.in_interaction = ""
+		
 
 
 func _on_thirdhouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
-	if car_rev:
-		car_rev.play()
+	
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
 		if GlobalVars.Day_1_Quincy_call == false:
+			emit_signal("hide_player")
+			GlobalVars.in_interaction = ""
 			map_cam.priority = 0
 			exit_cam.priority = 30
 			emit_signal("Quincy_call_recieve")
@@ -77,10 +77,14 @@ func _on_thirdhouse_button_pressed() -> void:
 				emit_signal("_show_tut", "phone")
 			visible = false
 			player.show()
+			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			return
 	else:
+		if car_rev:
+			car_rev.play()
+		GlobalVars.in_interaction = ""
 		Loading.load_scene(main, GlobalVars.third_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 		
 		#get_tree().change_scene_to_file("res://ThirdHouse/third_house.tscn")
@@ -115,9 +119,10 @@ func _on_secret_button_pressed() -> void:
 	if car_rev:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
+	GlobalVars.in_interaction = ""
 	Loading.load_scene(main, GlobalVars.secret_path, "driving", "morning", Loading.choose_drive_dialogue())
 	
-	GlobalVars.in_interaction = ""
+	
 	#get_tree().change_scene_to_file("res://SecretLocation/secret_location.tscn")
 
 
@@ -185,7 +190,7 @@ func _on_Quincy_call_start_dialogue():
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_call = true
-	
+	player.start_player()
 	alert.show()
 	GlobalVars.in_dialogue = false
 	GlobalVars.in_interaction = ""

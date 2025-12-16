@@ -8,6 +8,13 @@ if {Character Aff Points.Juniper} < 0:
 	Dalton (Doubt1): ...
 	Dalton (Resting): I see.
 	do GlobalVars.emit_add_note("juniper", "pastry", "low")
+	set {Juniper.finished_pie} = true
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_cab2_Choice/
 else:
 	set {Juniper.saw_pie} = true
 	Dalton (Sad): I found some damage. 
@@ -18,7 +25,7 @@ else:
 	Theo (Laugh): That old fox got jokes sometimes.
 	Theo (Concerned): It’s scary when he does.
 	Juniper (Sigh): Huu...
-	Juniper (Roll Eyes): Well, I hope they got their money's worth. 
+	Juniper (Awkward): Well, I hope they got their money's worth. 
 	Juniper (Hmph): That pastry’s been out for days.
 	do GlobalVars.emit_add_note("juniper", "pastry", "high")
 	Dalton (Default): ... 
@@ -31,5 +38,19 @@ else:
 		Dalton (Awkward): Thanks.
 		set {Juniper.has_pie} = true
 		do GlobalVars.emit_add_evidence("juniper", "pie")
+		set {Juniper.finished_pie} = true
+		if {Juniper.in_choice} == true:
+			if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+				set {Juniper.in_choice} = false
+				[end_timeline]
+			else:
+				jump Juniper_cab2_Choice/
 	- Leave it.
 		Dalton (Resting): Hmph.
+		set {Juniper.finished_pie} = true
+		if {Juniper.in_choice} == true:
+			if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+				set {Juniper.in_choice} = false
+				[end_timeline]
+			else:
+				jump Juniper_cab2_Choice/

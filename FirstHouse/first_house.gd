@@ -6,7 +6,7 @@ extends Node3D
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
-
+@export var theo_body : CharacterBody3D
 @export var dalton_marker: Marker2D
 @export var theo_marker: Marker2D
 @export var character_marker: Marker2D
@@ -37,6 +37,9 @@ extends Node3D
 signal phone_time_start
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.start_player()
+	if theo_body.visible == false:
+		theo_body.visible = true
 	GlobalVars.current_level = "micah"
 	note_interaction.hide()
 	pic_fall_interact.hide()
@@ -49,7 +52,6 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Micah")
-	
 	#await get_tree().create_timer(10.0).timeout
 	#emit_signal("phone_time_start")
 	#GlobalVars.emit_add_note("micah", "window", "")

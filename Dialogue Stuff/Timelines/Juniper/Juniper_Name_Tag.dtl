@@ -16,6 +16,12 @@ if {Character Aff Points.Juniper} < 0:
 		Juniper (Sad): Was an employee. 
 		Dalton (Doubt1): Was?
 		Juniper (Doubt): They quit.
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_Case_Choice/
 	do GlobalVars.emit_add_note("juniper", "nametag", "response")
 	set {Juniper.found_skylar} = true
 	set {Juniper.finished_name_tag} = true
@@ -46,6 +52,12 @@ else:
 		Juniper (Sad): Yeah...
 		Juniper (Hmph): At least that's what they went by...
 		Dalton (Default): I see...
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_Case_Choice/
 	do GlobalVars.emit_add_note("juniper", "nametag", "response")
 	set {Juniper.found_skylar} = true
 	set {Juniper.finished_name_tag} = true

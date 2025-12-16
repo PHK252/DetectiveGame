@@ -2,6 +2,13 @@ if {Character Aff Points.Juniper} < 0:
 	Dalton (Talk): These resumes...
 	Dalton (Resting): What are they for?
 	Juniper (Squint): That's none of your business.
+	set {Juniper.finished_resumes} = true
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_Employee_Resume_choice/
 else:
 	if {Juniper.reenter_resumes} == false:
 		Dalton (Talk): These resumes...
@@ -21,7 +28,6 @@ else:
 				Dalton (Squint): I can try.
 				label choices
 				set {Character Aff Points.Juniper} += 1
-				[wait time="0.3"]
 				Dalton (Default): ...
 				- Milo
 					Dalton (Awkward): This one.
@@ -54,10 +60,21 @@ else:
 					Dalton (Talk): Let me take another look at those resumes.
 					Juniper (Happy): Sure.
 					Juniper (Default): Go ahead.
+					if {Juniper.in_choice} == true:
+						jump Juniper_Employee_Resume_choice/
+					else:
+						[end_timeline]
 			- No.
 				Dalton (Awkward): Uh...
 				Dalton (Resting): I’m afraid this is beyond my jurisdiction.
 				Juniper (Sad) : Darn.
+				set {Juniper.finished_resumes} = true
+				if {Juniper.in_choice} == true:
+					if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
+						set {Juniper.in_choice} = false
+						[end_timeline]
+					else:
+						jump Juniper_Employee_Resume_choice/
 		else:
 			[end_timeline]
 	else:
@@ -73,7 +90,10 @@ else:
 			Dalton (Awkward): No...
 			Dalton (Resting): I need more time.
 			Juniper (Default): Of course!
-	
+			if {Juniper.in_choice} == true:
+				jump Juniper_Employee_Resume_choice/
+			else:
+				[end_timeline]
 #	if {Juniper.picked_resume} != "":
 #		Juniper: Thank ya for the help!
 #		Juniper: I really appreciate it.

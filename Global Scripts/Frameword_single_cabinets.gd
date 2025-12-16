@@ -109,6 +109,9 @@ func _process(delta):
 			open_interact.hide()
 			close_interact.hide()
 			alert.hide()
+			await get_tree().process_frame
+			await get_tree().process_frame
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "" and cab_anim == false:
 			print("exit")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -124,6 +127,9 @@ func _process(delta):
 			open_interact.hide()
 			close_interact.hide()
 			alert.show()
+			await get_tree().process_frame
+			await get_tree().process_frame
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			#activate dialogue
 
 	if GlobalVars.in_look_screen == true:

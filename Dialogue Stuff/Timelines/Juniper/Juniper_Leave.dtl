@@ -1,25 +1,32 @@
 Dalton (Default): Leave?
 - Yes.
-	if {Character Aff Points.Juniper} <= 0:
-		Dalton (Talk): I think we got everything we've come here for.
-		Dalton (Awkward): Right, Detective Lycus?
-		if {Juniper.found_last_name} == false and {Juniper.saw_pie} == false and {Juniper.Juniper_asked_case} == false:
-			Theo (Surprised): Huh?
-			Theo (Thinking): We just got here.
-			Theo (Concerned): Are you sure?
-			Dalton (Default): ...
-			- Yes.
-				Dalton (Resting): I'm sure.
-				[signal arg="open_door"]
+	Dalton (Talk): I think we got everything we've come here for.
+	Dalton (Awkward): Right, Detective Lycus?
+	if {Juniper.found_last_name} == false or {Juniper.saw_pie} == false or {Juniper.Juniper_asked_case} == false:
+		Theo (Surprised): Huh?
+		Theo (Thinking): We just got here.
+		Theo (Concerned): Are you sure?
+		Dalton (Default): ...
+		- Yes.
+			Dalton (Resting): I'm sure.
+			[signal arg="open_door"]
+			if {Character Aff Points.Juniper} <= 0:
 				jump continue
-			- No.
-				Dalton (Awkward): ...
-				Dalton (Resting): Let's keep looking.
+			else:
+				Theo (Concerned): Whatever you say...
+				Juniper (Happy): Thanks for coming by!
+				Juniper (Default): Y'all take care!
+				Theo (Happy): You too, ma'am!
+				Dalton (Awkward): Yeah.
 				[end_timeline]
-		else:
-			Theo (Thinking): Uhh...
-			Theo (Concerned): Yeah?
-			Juniper (Hmph): Ok.
+		- No.
+			Dalton (Awkward): ...
+			Dalton (Resting): Let's keep looking.
+			[end_timeline]
+	if {Character Aff Points.Juniper} <= 0:
+		Theo (Thinking): Uhh...
+		Theo (Concerned): Yeah?
+		Juniper (Hmph): Ok.
 		label continue
 		Dalton (Default): Please call us if anything else happens.
 		Juniper (Squint): I'll keep that in mind.
@@ -30,8 +37,6 @@ Dalton (Default): Leave?
 		set {Juniper.leave} = true
 		[end_timeline]
 	else:
-		Dalton (Talk): I think we got everything we've come here for.
-		Dalton (Resting): Right, Detective Lycus?
 		Theo (Thinking): Huh?
 		Theo (Awkward): Uhh...
 		Theo (Silly): Yeah!
@@ -47,12 +52,13 @@ Dalton (Default): Leave?
 		Theo (Default): Thank you for letting us take up some of your time.
 		Theo (Concerned): I know it must’ve been stressful for you.
 		Juniper (Happy): Oh, it's no problem at all.
-		Juniper (Awkward): Also...
-		Juniper (Hmph): If it does happen to be who I think it is...
-		Juniper (Default): Take it easy on the kid.
-		Dalton (Awkward): ...
-		Dalton (Talk): I'll keep that in mind.
-		Juniper (Happy): Thanks.
+		if {Juniper.found_skylar} == true:
+			Juniper (Awkward): Also...
+			Juniper (Hmph): If it does happen to be who I think it is...
+			Juniper (Default): Take it easy on the kid.
+			Dalton (Awkward): ...
+			Dalton (Talk): I'll keep that in mind.
+			Juniper (Happy): Thanks.
 		Juniper (Default): Y'all take care!
 		Theo (Happy): You too!
 		Dalton (Awkward): Yeah.

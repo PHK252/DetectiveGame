@@ -13,6 +13,13 @@ if {Character Aff Points.Juniper} > 0:
 		Dalton (Talk): It looks like they're expired.
 		Dalton (Default): You should get rid of them.
 		Juniper (Sad): Yeah...
+	set {Juniper.finished_pills} = true
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_cab2_Choice/
 else:
 	Dalton (Doubt1): Are these pills yours?
 	Juniper (Surprise): ...!
@@ -25,3 +32,10 @@ else:
 	Dalton (Resting): Why do you still have them, then?
 	Juniper (Squint): Just in case.
 	Dalton (Resting): Hmph.
+	set {Juniper.finished_pills} = true
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_cab2_Choice/

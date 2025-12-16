@@ -21,6 +21,12 @@ if {Character Aff Points.Juniper} <= 0:
 	Juniper (Hmph): Heard he found another job that has even more bread.
 	set {Juniper.found_last_name} = true
 	do GlobalVars.emit_add_note("juniper", "info", "low")
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_Employee_Resume_choice/
 else:
 	Dalton (Talk): Is this a list of all your employees?
 	Juniper (Surprise): Woah!
@@ -46,3 +52,9 @@ else:
 	Dalton (Talk): I see.
 	do GlobalVars.emit_add_note("juniper", "info", "high")
 	set {Juniper.found_last_name} = true
+	if {Juniper.in_choice} == true:
+		if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
+			set {Juniper.in_choice} = false
+			[end_timeline]
+		else:
+			jump Juniper_Employee_Resume_choice/
