@@ -127,7 +127,7 @@ func _process(delta: float) -> void:
 	#should be removed later one issue figured out
 
 func _on_exit_pressed():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GlobalVars.Juniper_in_case = false
 	GlobalVars.in_look_screen = false
 	UI.hide()
@@ -139,7 +139,7 @@ func _input(event):
 	timed = GlobalVars.juniper_time_out
 	var finished_letter = Dialogic.VAR.get_variable("Juniper.finished_letter")
 	var finished_tag = Dialogic.VAR.get_variable("Juniper.finished_name_tag")
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+	if GlobalVars.in_dialogue == false:
 		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and kicked == false and timed == false:
 			#case exit issue is that we not entering this logic for some reason
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -235,6 +235,7 @@ func _on_input_event(viewport, event, shape_idx):
 				if GlobalVars.in_interaction == "":
 					GlobalVars.in_interaction = interact_type
 				UI.show()
+				GlobalVars.viewing = "case_ui"
 				GlobalVars.in_look_screen = true
 				GlobalVars.clicked_case_Juniper = GlobalVars.clicked_case_Juniper + 1
 				interact_area.hide()

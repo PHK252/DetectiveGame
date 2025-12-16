@@ -1,4 +1,5 @@
 set {Character Aff Points.Theo} += 1
+jump end
 Dalton (Default): Coffee.
 Juniper (Default): You want it with cream or sugar?
 Dalton (Talk): I'll drink it black.
@@ -17,5 +18,6 @@ Juniper (Laugh): I'm going to go make y'alls drinks!
 Juniper (Default): I'll be back in a minute!
 Theo (Laugh): Thank you, Ma'am!
 Dalton (Awkward): Yeah, thanks...
+label end
 [signal arg= "tea_time"]
 [end_timeline]

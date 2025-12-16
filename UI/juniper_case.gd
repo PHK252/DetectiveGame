@@ -109,7 +109,7 @@ func _open_case():
 	if case_interlude > 1 and finished == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		GlobalVars.in_dialogue = true
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(.5).timeout
 		GlobalVars.in_interaction = ""
 		case_cam.priority = 0
 		main_cam.priority = 30
@@ -134,3 +134,7 @@ func _on_timeline_ended():
 	if GlobalVars.Juniper_in_case == false:
 		player.start_player()
 		alert.show()
+
+
+func _on_exit_pressed():
+	pass # Replace with function body.

@@ -17,12 +17,12 @@ func _input(event):
 	if Input.is_action_just_pressed("Exit"):
 		$".".hide()
 		GlobalVars.in_look_screen = false
-		await get_tree().create_timer(.3).timeout
+		await get_tree().create_timer(.03).timeout
 		GlobalVars.viewing = ""
 		if show_mouse_exit == true or GlobalVars.in_interaction == "case":
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			return
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_object_front_gui_input(event):
 	if event is InputEventMouseButton:
@@ -51,7 +51,7 @@ func _on_exit_pressed():
 	if show_mouse_exit == true:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		return
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _on_visibility_changed():

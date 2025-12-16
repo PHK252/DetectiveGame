@@ -9,35 +9,35 @@ extends Area2D
 @onready var look = $"../Case UI"
 
 
-func _on_input_event(viewport, event, shape_idx):
-	if GlobalVars.in_look_screen == false:
-		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				case_top.hide()
-				case_bottom.hide()
-				apron.hide()
-				letter.hide()
-				bill.hide()
-				object.hide()
-				look.show()
-				GlobalVars.viewing = "case"
-				GlobalVars.in_look_screen = true
-				GlobalVars.clicked_case_Juniper = GlobalVars.clicked_case_Juniper + 1
+#func _on_input_event(viewport, event, shape_idx):
+	#if GlobalVars.in_look_screen == false:
+		#if event is InputEventMouseButton:
+			#if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				#case_top.hide()
+				#case_bottom.hide()
+				#apron.hide()
+				#letter.hide()
+				#bill.hide()
+				#object.hide()
+				#look.show()
+				#GlobalVars.viewing = "case_ui"
+				#GlobalVars.in_look_screen = true
+				#GlobalVars.clicked_case_Juniper = GlobalVars.clicked_case_Juniper + 1
 
 	
-
-func _on_exit_pressed():
-	case_top.show()
-	case_bottom.show()
-	apron.show()
-	letter.show()
-	bill.show()
-	object.show()
-	GlobalVars.viewing = ""
-	if GlobalVars.viewed_Juniper_case == false and GlobalVars.clicked_case_Juniper == 1:
-		GlobalVars.viewed_Juniper_case = true
-	else:
-		return
+#
+#func _on_exit_pressed():
+	#case_top.show()
+	#case_bottom.show()
+	#apron.show()
+	#letter.show()
+	#bill.show()
+	#object.show()
+	#GlobalVars.viewing = ""
+	#if GlobalVars.viewed_Juniper_case == false and GlobalVars.clicked_case_Juniper == 1:
+		#GlobalVars.viewed_Juniper_case = true
+	#else:
+		#return
 
 
 #

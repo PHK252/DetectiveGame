@@ -77,6 +77,7 @@ func _on_exit_pressed():
 			GlobalVars.set(view_object, true)
 			object_in_scene.show()
 			object_interact.show() # might not need?
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if add_note == true:
 			GlobalVars.emit_add_note(GlobalVars.current_level, viewing, "found")
 	else:
@@ -107,6 +108,7 @@ func _input(event):
 				object_in_scene.show()
 				object_interact.show() # might not need?
 				GlobalVars.set(view_object, true)
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			if add_note == true:
 				GlobalVars.emit_add_note(GlobalVars.current_level, viewing, "found")
 		else:
