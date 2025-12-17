@@ -28,7 +28,8 @@ signal activate_leave
 var is_outside = true
 
 var cooldown = false
-
+var theo_close_door := false
+var dalton_close_door := false
 signal greet_done
 signal entered_micah
 # Called when the node enters the scene tree for the first time.
@@ -50,7 +51,7 @@ func open() -> void:
 	
 func close() -> void:
 	print("Closing")
-	player.stop_player()
+	#player.stop_player()
 	cooldown = true
 	animation_tree["parameters/conditions/is_closed"] = true
 	animation_tree["parameters/conditions/is_opened"] = false
@@ -60,7 +61,8 @@ func close() -> void:
 	collision.disabled = false
 	
 	cooldown = false
-	player.start_player()
+	dalton_close_door = false
+	theo_close_door = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -175,20 +177,20 @@ func _on_door_theo_entered():
 	if entered == false:
 		theo_entered = true
 		print("theo entered!" + str(theo_entered))
-		if dalton_entered == true:
-			entered = true
-			emit_signal("entered_micah")
-			close()
+		#if dalton_entered == true:
+			#entered = true
+			#emit_signal("entered_micah")
+			#close()
 
 
 func _on_dalton_door_entered():
 	if entered == false: 
 		dalton_entered = true
 		print("dalton entered! "  + str(dalton_entered))
-		if theo_entered == true:
-			entered = true
-			emit_signal("entered_micah")
-			close()
+		#if theo_entered == true:
+			#entered = true
+			#emit_signal("entered_micah")
+			#close()
 
 
 func _on_door_dalton_leave_body_entered(body):
@@ -196,12 +198,12 @@ func _on_door_dalton_leave_body_entered(body):
 	if entered == true:
 		if body.is_in_group("player"):
 			dalton_left = true
-			if theo_left == true:
-				close()
-				entered = false
-				emit_signal("activate_leave")
-				if interaction.monitorable == true:
-					interaction.set_deferred("monitorable", false)
+			#if theo_left == true:
+				#close()
+				#entered = false
+				#emit_signal("activate_leave")
+				#if interaction.monitorable == true:
+					#interaction.set_deferred("monitorable", false)
 		
 #signal when theo leaves, body not registering
 func _on_doorcamarea_body_entered(body):
@@ -209,12 +211,12 @@ func _on_doorcamarea_body_entered(body):
 	if entered == true:
 		if body.is_in_group("theo"):
 			theo_left = true
-			if dalton_left == true:
-				close()
-				entered = false
-				emit_signal("activate_leave")
-				if interaction.monitorable == true:
-					interaction.set_deferred("monitorable", false)
+			#if dalton_left == true:
+				#close()
+				#entered = false
+				#emit_signal("activate_leave")
+				#if interaction.monitorable == true:
+					#interaction.set_deferred("monitorable", false)
 
 
 func _on_doorcamarea_dalton_body_exited(body):
@@ -227,3 +229,47 @@ func _on_theo_doorcamarea_body_exited(body):
 	if entered == true:
 		if body.is_in_group("theo"):
 			theo_left = false
+
+
+func _on_door_point_body_exited(body):
+	if entered == false: 
+		if body.is_in_group("theo") and theo_entered:
+			theo_close_door = true
+			print("theo close",theo_close_door)
+		if body.is_in_group("player") and dalton_entered:
+			dalton_close_door = true
+			print("dalton close", dalton_close_door)
+		if theo_close_door and dalton_close_door:
+			entered = true
+			emit_signal("entered_micah")
+			close()
+	else:
+		if body.is_in_group("theo") and theo_left:
+			theo_close_door = true
+			print("theo close",theo_close_door)
+		if body.is_in_group("player") and dalton_left:
+			dalton_close_door = true
+			print("dalton close", dalton_close_door)
+		if theo_close_door and dalton_close_door:
+			close()
+			entered = false
+			emit_signal("activate_leave")
+			if interaction.monitorable == true:
+				interaction.set_deferred("monitorable", false)
+
+
+func _on_door_point_body_entered(body):
+	if entered == false: 
+		if body.is_in_group("theo") and theo_entered:
+			theo_close_door = false
+			print("theo close",theo_close_door)
+		if body.is_in_group("player") and dalton_entered:
+			dalton_close_door = false
+			print("dalton close", dalton_close_door)
+	else:
+		if body.is_in_group("theo") and theo_left:
+			theo_close_door = false
+			print("theo close",theo_close_door)
+		if body.is_in_group("player") and dalton_left:
+			dalton_close_door = false
+			print("dalton close", dalton_close_door)

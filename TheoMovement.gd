@@ -89,7 +89,11 @@ enum {
 
 func _ready() -> void:
 	add_to_group("theo")
-	if GlobalVars.theo_pos != Vector3(0.0, 0.0, 0.0):
+	print(GlobalVars.theo_pos)
+	#if GlobalVars.theo_pos != Vector3(0.0, 0.0, 0.0):
+		#global_position = GlobalVars.theo_pos
+	if GlobalVars.from_save_file == true:
+		GlobalVars.from_save_file = false
 		global_position = GlobalVars.theo_pos
 	#global_position = GlobalVars.theo_pos
 	# Initialize the navigation target to the player's position

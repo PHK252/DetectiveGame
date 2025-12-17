@@ -42,7 +42,8 @@ var not_stairs := true
 @export var crouch_sound : AudioStreamPlayer3D
 
 func _ready() -> void:
-	if GlobalVars.isaac_pos != Vector3(0.0, 0.0, 0.0):
+	if GlobalVars.from_save_file == true:
+		GlobalVars.from_save_file = false
 		global_position = GlobalVars.isaac_pos
 	add_to_group("player")
 	in_control = false

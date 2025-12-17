@@ -25,8 +25,8 @@ var is_open: bool = false
 
 func _ready():
 	pass
-	print(interactable.monitorable)
-	#interactable.set_deferred("monitorable", false)
+	#print(interactable.monitorable)
+	interactable.set_deferred("monitorable", false)
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":

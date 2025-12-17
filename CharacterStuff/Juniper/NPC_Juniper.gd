@@ -89,7 +89,8 @@ var case_handle_rotation := false
 
 func _ready() -> void:
 	add_to_group("juniper")
-	if GlobalVars.juniper_pos != Vector3(0.0, 0.0, 0.0):
+	if GlobalVars.from_save_file == true:
+		GlobalVars.from_save_file = false
 		global_position = GlobalVars.juniper_pos
 	anim_player.play("idle_chain")
 	state = IDLE

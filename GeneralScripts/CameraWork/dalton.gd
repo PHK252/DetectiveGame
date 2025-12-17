@@ -70,9 +70,8 @@ func _ready() -> void:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	#if GlobalVars.dalton_pos:
 	if GlobalVars.from_save_file == true:
-		print(GlobalVars.dalton_pos)
 		global_position = GlobalVars.dalton_pos
-		GlobalVars.from_save_file == false
+		GlobalVars.from_save_file = false
 		return
 	#print("placed " + str(GlobalVars.dalton_pos))
 	await get_tree().process_frame

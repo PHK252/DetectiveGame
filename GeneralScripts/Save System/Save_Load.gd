@@ -317,6 +317,8 @@ func _load_char_pos(main_dic : Dictionary):
 			return 
 		"loading":
 			return
+		_:
+			return
 	return
 func loadGame(path : String):
 	Dialogic.Save.load()

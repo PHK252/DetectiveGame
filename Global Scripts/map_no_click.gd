@@ -9,7 +9,8 @@ extends MeshInstance3D
 var is_open: bool = false
 	
 func _ready():
-	interactable.set_deferred("monitorable", false)
+	pass
+	#interactable.set_deferred("monitorable", false)
 		
 func _on_interactable_interacted(interactor) -> void:
 	if GlobalVars.in_interaction == "":

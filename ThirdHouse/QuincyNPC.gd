@@ -92,7 +92,8 @@ enum {
 var state := IDLE
 
 func _ready() -> void:
-	if GlobalVars.quincy_pos != Vector3(0.0, 0.0, 0.0):
+	if GlobalVars.from_save_file == true:
+		GlobalVars.from_save_file = false
 		global_position = GlobalVars.quincy_pos
 	add_to_group("quincy")
 	wander_choice = 11
