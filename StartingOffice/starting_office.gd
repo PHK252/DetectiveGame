@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var main : Node
 @onready var team_pic = $UI/TeamPic
 @onready var partner_pic = $UI/PartnerPic
 @onready var news = $UI/News
@@ -219,7 +220,7 @@ func walk_out(argument: String):
 		emit_signal("dalton_exit_alt")
 		emit_signal("theo_exit_alt")
 		await get_tree().create_timer(1.0).timeout
-		Loading.load_scene(self, GlobalVars.interrogation, "", "", "")
+		Loading.load_scene(main, GlobalVars.interrogation, "", "", "")
 		pass
 	elif argument == "Walk_out":
 		#print("TRYINGTOWALKOUT")

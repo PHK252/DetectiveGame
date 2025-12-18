@@ -19,6 +19,10 @@ var d_loading_Dalton_marker : Marker2D
 var d_loading_theo_marker : Marker2D
 var d_loading_sprite : AnimatedSprite2D
 
+#Date
+var date_loading : Node2D
+var date_label : RichTextLabel
+var blink_anim : AnimationPlayer
 #@onready var progressBar : ProgressBar = $AnimationPlayer/Panel/ProgressBar
 var _progress: Array = []
 var loaded = false
@@ -68,6 +72,11 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 	#Sleep
 	sleep_loading = scene_instance.get_node("Sleep Loading/AnimationPlayer/Sleep")
 	sleep_anim = scene_instance.get_node("Sleep Loading/AnimationPlayer")
+	
+	#Date 
+	date_loading = scene_instance.get_node("Date Loading")
+	blink_anim = scene_instance.get_node("Date Loading/AnimationPlayer")
+	date_label = scene_instance.get_node("Date Loading/RichTextLabel")
 	
 	percent_label = scene_instance.get_node("Label")
 	if type == "driving":
@@ -120,7 +129,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 		await get_tree().create_timer(.2).timeout
 	else:
 		pass
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(.2).timeout
 	while loaded == false:
 		#var progress = _progress[0]
 		#percent_label.text = str(int(progress * 100)) + "%"
@@ -141,8 +150,16 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				if GlobalVars.in_dialogue == true:
 					await Signal(self, "end_dialogue") 
 					print("awaiting")
-				await get_tree().create_timer(1.6).timeout
 				var new_scene = ResourceLoader.load_threaded_get(next_scene)
+				if type == "date":
+					toggle_default(false)
+					date_loading.show()
+					date_label.text = time
+					blink_anim.play("Blink")
+					await blink_anim.animation_finished
+					date_loading.hide()
+				else:
+					await get_tree().create_timer(1.6).timeout
 				if glitch_out == true:
 					SceneTransitions.glitch_change_packed_scene(new_scene)
 					await get_tree().create_timer(3.0).timeout

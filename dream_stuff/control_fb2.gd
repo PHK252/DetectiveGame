@@ -3,7 +3,7 @@ extends Node
 @export var anim_I : AnimationTree
 @export var anim_r : AnimationTree
 @export var anim_c : AnimationPlayer
-
+@export var main : Node
 @export var isaac_marker : Marker2D
 @export var runa_marker : Marker2D
 @onready var pause = $"../../../Pause"
@@ -30,7 +30,7 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	Dialogic.signal_event.disconnect(_isaac_movement)
 	GlobalVars.in_dialogue = false
-	Loading.load_scene(self, GlobalVars.office_path, "Sleep", "Out Dream", "", true, false)
+	Loading.load_scene(main, GlobalVars.office_path, "Sleep", "Out Dream", "", true, false)
 	GlobalVars.day = 2
 
 func _isaac_movement(arg : String):

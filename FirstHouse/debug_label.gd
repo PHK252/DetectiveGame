@@ -10,7 +10,7 @@ extends Label
 @export var distraction_timer : Timer
 @export var cam_array : Array[PhantomCamera3D] = []
 @onready var phone_and_pause_overlay = $"../Phone and Pause Overlay"
-@onready var alert = $"../../SubViewportContainer/SubViewport/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
+#@onready var alert = $"../../SubViewportContainer/SubViewport/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
 
 func _process(delta):

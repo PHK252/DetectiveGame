@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var main : Node
 @export var armature = Node3D
 @export var anim_tree : AnimationTree
 @export var camera = Camera3D
@@ -162,7 +163,7 @@ func _on_dalton_to_walk_out():
 	move_out = true
 	await get_tree().create_timer(3.5).timeout
 	sound_allowed = false
-	Loading.load_scene(self, GlobalVars.office_path, "Sleep", "Out Dream", "")
+	Loading.load_scene(main, GlobalVars.office_path, "", "", "")
 	GlobalVars.day = 1
 
 

@@ -59,7 +59,7 @@ func _on_start_pressed():
 	#SceneTransitions.glitch_change_scene("res://StartingOffice/starting_office.tscn")
 	#LoadManager.load_scene(GlobalVars.first_house_path)
 	#Loading.load_scene(self, GlobalVars.first_house_path, true, "morning", "yes_diner")
-	Loading.load_scene(self, GlobalVars.beginning_office, "", "", "")
+	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
 
 func _on_continue_pressed():
@@ -74,7 +74,7 @@ func _on_new_game_pressed():
 	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	Loading.load_scene(self, GlobalVars.beginning_office, "", "", "")
+	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
 
 func _on_controls_pressed():

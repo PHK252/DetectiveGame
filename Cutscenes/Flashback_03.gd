@@ -1,5 +1,6 @@
 extends Node
 
+@export var main : Node
 @export var anim_case : AnimationPlayer
 @export var anim_phone : AnimationPlayer
 
@@ -85,5 +86,6 @@ func _end_movement(arg : String):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	Dialogic.signal_event.disconnect(_end_movement)
-	SceneTransitions.glitch_change_scene(GlobalVars.office_path)
+	#SceneTransitions.glitch_change_scene(GlobalVars.office_path)
+	Loading.load_scene(main, GlobalVars.office_path, "Sleep", "Out Dream", "", true, false)
 	GlobalVars.day = 3

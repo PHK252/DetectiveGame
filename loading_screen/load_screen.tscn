@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://df6fsv80g6bxa"]
+[gd_scene load_steps=131 format=3 uid="uid://df6fsv80g6bxa"]
 
 [ext_resource type="Script" uid="uid://bkrwkttxlkydd" path="res://loading_screen/load_screen.gd" id="1_ej2at"]
 [ext_resource type="Texture2D" uid="uid://bcya8b3k7eu2g" path="res://loading_screen/Frames/Day Loading/Morning1.png" id="2_tohd2"]
@@ -104,6 +104,7 @@
 [ext_resource type="Texture2D" uid="uid://isfta12ewt1n" path="res://loading_screen/Frames/Wake Loading/Sleep Indexed Day Anim30.png" id="102_uyf1w"]
 [ext_resource type="Texture2D" uid="uid://vs1e7218amyi" path="res://loading_screen/Frames/Wake Loading/Sleep Indexed Day Anim31.png" id="103_tqm54"]
 [ext_resource type="Texture2D" uid="uid://cv8pnkgvurfbp" path="res://loading_screen/Frames/Wake Loading/Sleep Indexed Day Anim32.png" id="104_ivqwd"]
+[ext_resource type="FontFile" uid="uid://bfh28807un7kc" path="res://Dialogue Stuff/Fonts/Menu Font.ttf" id="105_6vts3"]
 
 [sub_resource type="Animation" id="Animation_cpqar"]
 length = 0.001
@@ -1008,6 +1009,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_juar3"]
+resource_name = "Blink"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_glwdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryfxn"]
+_data = {
+&"Blink": SubResource("Animation_juar3"),
+&"RESET": SubResource("Animation_glwdg")
+}
+
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_ej2at")
@@ -1050,6 +1088,7 @@ libraries = {
 }
 
 [node name="Driving" type="AnimatedSprite2D" parent="Drinving Loading/Morning"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_5qj7b")
 animation = &"Day"
 centered = false
@@ -1092,6 +1131,32 @@ centered = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sleep Loading/AnimationPlayer"]
 stream = ExtResource("30_jjjxe")
+
+[node name="Date Loading" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Date Loading"]
+libraries = {
+&"": SubResource("AnimationLibrary_ryfxn")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Date Loading"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("105_6vts3")
+theme_override_font_sizes/normal_font_size = 120
+text = "25 NOV XX20"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

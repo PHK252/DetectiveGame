@@ -22,14 +22,14 @@ signal door_open
 signal door_close
 
 func _ready():
-	#pass to test
-	interactable.set_deferred("monitorable", false)
+	pass # to test
+	#interactable.set_deferred("monitorable", false)
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
+		
 		print("map_interact")
 		emit_signal("door_open")
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		theo_norm.visible = false
 		dalton_player.play("SitNoDrink")
 		theo_player.play("SitOutside_001")
@@ -40,12 +40,13 @@ func _on_map_leave_interacted(interactor):
 		exit_cam.priority = 0
 		player.stop_player()
 		player.hide()
-		#await get_tree().create_timer(1.0)
+		await get_tree().create_timer(1).timeout
 		map_ui.show()
 		cam_anim.play("Cam_Idle")
 		player.stop_player()
 		player.hide()
-		#GlobalVars.in_look_screen = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		GlobalVars.in_look_screen = true
 		GlobalVars.viewing = "map"
 		GlobalVars.in_look_screen = true
 		GlobalVars.in_interaction = "level change"
@@ -58,13 +59,13 @@ func _on_exit_pressed():
 	GlobalVars.viewing = ""
 	GlobalVars.in_look_screen = false
 	GlobalVars.in_interaction = ""
+	main_cam.priority = 0
+	exit_cam.priority = 30
 	theo_norm.visible = true
 	theo_car.visible = false
 	dalton_car.visible = false
 	dalton_player.stop()
 	theo_player.stop()
-	main_cam.priority = 0
-	exit_cam.priority = 30
 	cam_anim.play("RESET")
 	player.show()
 	player.start_player()
@@ -74,17 +75,21 @@ func _input(event):
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "map":
 			emit_signal("door_close")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			map_ui.hide()
-			main_cam.set_tween_duration(0)
-			main_cam.priority = 0
-			exit_cam.priority = 30
-			main_cam.set_tween_duration(1)
-			cam_anim.play("RESET")
-			player.show()
-			player.start_player()
 			GlobalVars.viewing = ""
 			GlobalVars.in_look_screen = false
 			GlobalVars.in_interaction = ""
+			map_ui.hide()
+			main_cam.priority = 0
+			exit_cam.priority = 30
+			theo_norm.visible = true
+			theo_car.visible = false
+			dalton_car.visible = false
+			dalton_player.stop()
+			theo_player.stop()
+			cam_anim.play("RESET")
+			player.show()
+			player.start_player()
+
 
 
 func _on_main_door_activate_car():

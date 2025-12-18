@@ -951,7 +951,7 @@ libraries = {
 transform = Transform3D(-0.0124662, 0.461924, -2.01913e-08, 0, -2.01987e-08, -0.462092, -0.461924, -0.0124662, 5.44915e-10, 0, 0.316403, -0.899646)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacFB2Changes/Armature_002" index="0"]
-bones/0/position = Vector3(-5.96046e-08, 0, -1.7852)
+bones/0/position = Vector3(-5.96046e-08, 0, -1.77884)
 bones/0/rotation = Quaternion(-0.4719, 0.526603, 0.526603, -0.4719)
 bones/1/rotation = Quaternion(1.25411e-08, 0.129933, 0.991523, -1.30457e-08)
 bones/4/rotation = Quaternion(-0.0755212, -2.43548e-09, 1.16257e-09, 0.997144)
@@ -963,17 +963,17 @@ bones/8/position = Vector3(-0.262217, 0.657452, 0.0662161)
 bones/8/rotation = Quaternion(3.93493e-09, 5.47231e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.308277, 0.00450352, 0.0138954, 0.951184)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.39171, 0.0798598, -0.448302, 0.799506)
-bones/12/rotation = Quaternion(0.135327, -0.282502, -0.647518, 0.694694)
+bones/11/rotation = Quaternion(-0.392656, 0.0814852, -0.446337, 0.799978)
+bones/12/rotation = Quaternion(0.136317, -0.280884, -0.652253, 0.690715)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.338203, -0.0119236, 0.421473, 0.841331)
-bones/16/rotation = Quaternion(0.0883156, 0.215633, 0.576667, 0.783044)
-bones/19/rotation = Quaternion(0.0487951, -0.0032872, -0.016234, 0.998671)
-bones/20/rotation = Quaternion(-0.14668, 0.000136461, -0.00402358, 0.989176)
-bones/21/rotation = Quaternion(0.764499, -0.0303949, 0.0273809, 0.643325)
-bones/23/rotation = Quaternion(0.0487952, 0.00328746, 0.0162345, 0.998672)
-bones/24/rotation = Quaternion(-0.14668, -0.000136458, 0.00402358, 0.989176)
-bones/25/rotation = Quaternion(0.7645, 0.0303949, -0.0273809, 0.643325)
+bones/15/rotation = Quaternion(-0.339292, -0.0133163, 0.418692, 0.842259)
+bones/16/rotation = Quaternion(0.0892168, 0.214489, 0.582551, 0.77889)
+bones/19/rotation = Quaternion(0.0614839, -0.00364557, -0.0157351, 0.997977)
+bones/20/rotation = Quaternion(-0.171932, 0.000135902, -0.00471627, 0.985098)
+bones/21/rotation = Quaternion(0.775868, -0.0299009, 0.0279195, 0.629567)
+bones/23/rotation = Quaternion(0.0614838, 0.00364572, 0.0157357, 0.997977)
+bones/24/rotation = Quaternion(-0.171932, -0.000135891, 0.00471626, 0.985098)
+bones/25/rotation = Quaternion(0.775868, 0.0299009, -0.0279195, 0.629567)
 bones/26/position = Vector3(0.106307, 0.263697, -0.13186)
 bones/26/rotation = Quaternion(0.0152332, 0.0136507, 0.744573, -0.667228)
 bones/27/position = Vector3(0.0465011, -0.28049, -0.13186)
@@ -1196,8 +1196,9 @@ transform = Transform3D(-0.00120587, -0.441427, 0.897296, -0.00059323, 0.897297,
 projection = 1
 size = 4.78
 
-[node name="ControlNode" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("anim_case", "anim_phone", "isaac_anim", "whistleblower_anim", "CIA_anim", "CIA_02_anim", "watching_dalton", "CIA_01", "CIA_02", "isaac_marker", "marcus_marker", "man1_marker", "man2_marker", "isaac_sounds", "wb_sounds", "CIA2_sounds", "CIA1_sounds", "rustle")]
+[node name="ControlNode" type="Node" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("main", "anim_case", "anim_phone", "isaac_anim", "whistleblower_anim", "CIA_anim", "CIA_02_anim", "watching_dalton", "CIA_01", "CIA_02", "isaac_marker", "marcus_marker", "man1_marker", "man2_marker", "isaac_sounds", "wb_sounds", "CIA2_sounds", "CIA1_sounds", "rustle")]
 script = ExtResource("11_th87f")
+main = NodePath("../../..")
 anim_case = NodePath("../Characters/Flashback_02_case/AnimationPlayer")
 anim_phone = NodePath("../Characters/Flashback_02_phone/AnimationPlayer")
 isaac_anim = NodePath("../Characters/Flashback_02_Isaac/AnimationTree")
