@@ -6,6 +6,7 @@ var panda_activate : bool = false
 var panda_inside : bool = false
 var delivery_activate : bool = false
 var go_back_activate : bool = false
+var allow_sloth := false
 
 var speed : float = 0.1
 var sloth_speed : float = 0.05
@@ -133,6 +134,7 @@ func _on_panda_timer_timeout() -> void:
 	
 
 func _on_delivery_timer_timeout() -> void:
+	print("timerTimeout")
 	elevator_anim.play("elevatorOpenClose")
 	E_sounds.play("OpenClose")
 	sloth.visible = true
@@ -222,7 +224,7 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 	if panda_activate == false:
 		panda_activate = true
 		
-	if delivery_activate == false:
+	if delivery_activate == false and allow_sloth: #this is the issue i think
 		delivery_activate = true
 		
 	if go_back_activate == false and sloth_anims["parameters/blendHold/blend_amount"] == 1:
@@ -231,4 +233,5 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 
 
 func _on_activate_leave():
+	allow_sloth = true # for unfocused bug
 	delivery_timer.start()

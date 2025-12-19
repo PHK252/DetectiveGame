@@ -6,6 +6,7 @@ extends MeshInstance3D
 @export var interactable : Interactable
 var knock_count = 0
 var in_knock = false
+
 func _on_interactable_interacted(interactor):
 	if in_knock == false:
 		in_knock = true

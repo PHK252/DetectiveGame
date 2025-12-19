@@ -1139,3 +1139,26 @@ func _on_exit_office_dalton() -> void:
 	forced_walk = false
 	walk_number = 0
 	SPEED = 1.15
+
+
+func _on_door88_interacted(interactor: Interactor) -> void:
+	number = 8
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_rotate_panda(interactor: Interactor) -> void:
+	number = 9
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
