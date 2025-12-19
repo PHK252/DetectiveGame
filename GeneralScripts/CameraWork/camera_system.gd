@@ -265,3 +265,7 @@ func _on_door_greeting() -> void:
 
 func _on_sitting_ppl_dalton_faint() -> void:
 	activate_camera(20)
+
+
+func _on_main_area_flashback_01(body: Node3D) -> void:
+	activate_camera(0)
