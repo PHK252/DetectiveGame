@@ -37,6 +37,8 @@ var timed = false
 @export var case_pickup : AudioStreamPlayer3D
 @export var case_pickup_2 : AudioStreamPlayer3D
 
+@export var case_anim : AnimationPlayer
+
 #lookat
 signal enable_look
 signal disable_look
@@ -110,6 +112,9 @@ func _on_timeline_ended():
 func caseUI(argument: String):
 	if argument == "look_case":
 		case_pickup.play()
+		#case_anim.play("case_open") #testing
+		#await get_tree().create_timer(4.0).timeout
+		#case_anim.play("case_close") #testing
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.hide()
 		GlobalVars.Juniper_in_case = true
