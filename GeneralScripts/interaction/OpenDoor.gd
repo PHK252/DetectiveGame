@@ -32,6 +32,12 @@ var theo_close_door := false
 var dalton_close_door := false
 signal greet_done
 signal entered_micah
+
+var greeting_done := false
+
+signal stop_control
+signal start_control
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -39,30 +45,33 @@ func _ready() -> void:
 func open() -> void:
 	#if is_outside:
 		#emit_signal("micah_rotate")
-	cooldown = true
-	print("Opening")
-	door_sound.play()
-	animation_tree["parameters/conditions/is_opened"] = true
-	animation_tree["parameters/conditions/is_closed"] = false
-	is_open = true
-	await get_tree().create_timer(0.5).timeout
-	collision.disabled = true
-	cooldown = false
+	if is_open == false:
+		cooldown = true
+		print("Opening")
+		door_sound.play()
+		animation_tree["parameters/conditions/is_opened"] = true
+		animation_tree["parameters/conditions/is_closed"] = false
+		is_open = true
+		await get_tree().create_timer(0.5).timeout
+		collision.disabled = true
+		cooldown = false
 	
 func close() -> void:
 	print("Closing")
-	#player.stop_player()
-	cooldown = true
-	animation_tree["parameters/conditions/is_closed"] = true
-	animation_tree["parameters/conditions/is_opened"] = false
-	is_open = false
-	await get_tree().create_timer(2.5).timeout
-	door_sound_close.play()
-	collision.disabled = false
-	
-	cooldown = false
-	dalton_close_door = false
-	theo_close_door = false
+	if is_open == true:
+		emit_signal("stop_control")
+		cooldown = true
+		animation_tree["parameters/conditions/is_closed"] = true
+		animation_tree["parameters/conditions/is_opened"] = false
+		is_open = false
+		await get_tree().create_timer(2.5).timeout
+		emit_signal("start_control")
+		door_sound_close.play()
+		collision.disabled = false
+		
+		cooldown = false
+		dalton_close_door = false
+		theo_close_door = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -108,12 +117,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			return
 		
 		
-		if is_open == false: 
+		if is_open == false and greeting_done: 
 			if is_outside == true:
 				open()
 				return
 				
-		if is_open == true: 
+		if is_open == true and greeting_done: 
 			close()
 		#	collision.disabled = false
 			return
@@ -123,6 +132,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 #__________________
 func _on_timeline_ended():
 	emit_signal("greet_done")
+	greeting_done = true
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()

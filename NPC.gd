@@ -247,25 +247,26 @@ func _rotate_towards_object(wander_choice) -> void:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(0, 1), LERP_VAL)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	intDalton = true
-	wander_rotate = false
-	#emit_signal("collision_danger")
-	if wander_choice < 2:
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
-	if wander_choice == 2:
-		emit_signal("sit_invisible")
-		armature.visible = true
-	anim_tree.set("parameters/Yawn/request", 2)
-	anim_tree.set("parameters/Scratch/request", 2)
-	yawn.stop()
-	scratch.stop()
-	anim_player.play("basketball_default")
-	#set all one shots to abort
-	is_navigating = true
-	is_wandering = false
-	#print("interactableTrig")
-	state = FOLLOW
+	if GlobalVars.in_dialogue == false:
+		intDalton = true
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		if wander_choice < 2:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		if wander_choice == 2:
+			emit_signal("sit_invisible")
+			armature.visible = true
+		anim_tree.set("parameters/Yawn/request", 2)
+		anim_tree.set("parameters/Scratch/request", 2)
+		yawn.stop()
+		scratch.stop()
+		anim_player.play("basketball_default")
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		#print("interactableTrig")
+		state = FOLLOW
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)

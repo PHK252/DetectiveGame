@@ -53,6 +53,7 @@ var walk_number = 2
 
 var number := 0
 
+
 @export var tea_wait_marker : Marker3D
 @export var office_return = false
 var tea_time = false
@@ -112,6 +113,7 @@ func _physics_process(delta: float) -> void:
 		#_on_door_bathroom_replace_quincy_enter_bathroom()
 	
 	if forced_walk:
+		in_control = false
 		var dir_marker = (armature.global_position - force_rotate_list[walk_number].global_position).normalized()
 		velocity.x = lerp(velocity.x, -dir_marker.x * SPEED, LERP_VAL)
 		velocity.z = lerp(velocity.z, -dir_marker.z * SPEED, LERP_VAL)
@@ -1154,6 +1156,44 @@ func _on_door88_interacted(interactor: Interactor) -> void:
 
 func _on_rotate_panda(interactor: Interactor) -> void:
 	number = 9
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+func _on_door_greet_done_micah() -> void:
+	walk_number = 10
+	in_control = false
+	needs_rotation_forced = true
+	number = 10
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	forced_walk = true
+	await get_tree().create_timer(3.5).timeout
+	forced_walk = false
+	await get_tree().create_timer(1.5).timeout
+	walk_number = 0
+	needs_rotation_forced = false
+	number = 0
+	force_rotation = false
+	in_control = true
+
+
+func _on_door_stop_control() -> void:
+	in_control = false
+	
+func _on_door_start_control() -> void:
+	in_control = true
+
+
+func _on_rotate_sloth(interactor: Interactor) -> void:
+	number = 11
 	in_control = false
 	needs_rotation_forced = true
 	force_rotation = true
