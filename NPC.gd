@@ -40,6 +40,10 @@ var accel = 10
 var wander_choice = 0
 var front_rotation := false
 
+#stop jitter stuff
+var stop_jitter := false
+
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -154,6 +158,10 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+	if intDalton:
+		stop_jitter = true
+	else:
+		stop_jitter = false
 	if front_rotation:
 		_rotate_towards_dalton()
 	#if wander_choice == 2:
@@ -247,7 +255,7 @@ func _rotate_towards_object(wander_choice) -> void:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(0, 1), LERP_VAL)
 		
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	if GlobalVars.in_dialogue == false:
+	if stop_jitter == false:
 		intDalton = true
 		wander_rotate = false
 		#emit_signal("collision_danger")

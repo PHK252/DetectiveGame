@@ -55,7 +55,7 @@ signal general_quit
 
 signal enable_look
 signal disable_look
-
+var interaction_closet := false
 @onready var tool_asked
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -130,13 +130,16 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	open_closet_door_1.disabled = false
 	open_closet_door_2.disabled = false
-	if closet_open == false: 
+	
+	if closet_open == false and interaction_closet == false: 
+		interaction_closet = true
 		emit_signal("general_interact")
 		emit_signal("stepback")
 		closet_anim.play("NewClosetOpen")
 		open_closet_sound.play()
 		await closet_anim.animation_finished
 		closet_open = true
+		interaction_closet = false
 
 	tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
@@ -223,10 +226,11 @@ func _on_closedoor_interacted(interactor):
 	#close_door_2.set_monitorable(false)
 
 func _close_door():
-	alert.hide()
-	open_closet_door_1.disabled = true
-	open_closet_door_2.disabled = true
-	closet_anim.play("NewClosetClose")
-	closet_open = false
-	print("closet closing")
-	await closet_anim.animation_finished
+	if closet_open == true:
+		alert.hide()
+		open_closet_door_1.disabled = true
+		open_closet_door_2.disabled = true
+		closet_anim.play("NewClosetClose")
+		closet_open = false
+		print("closet closing")
+		await closet_anim.animation_finished

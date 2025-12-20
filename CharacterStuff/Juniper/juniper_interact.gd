@@ -21,6 +21,7 @@ signal enable_interaction
 #look signals
 signal enable_look
 signal disable_look
+signal force_wander
 signal retarget(target: int)
 
 func _on_interactable_interacted(interactor):
@@ -49,6 +50,7 @@ func _on_timeline_ended():
 	#emit_signal("Dstopped")
 	#emit_signal("Tstart")
 	emit_signal("disable_look")
+	emit_signal("force_wander")
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false

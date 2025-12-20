@@ -257,11 +257,27 @@ func _process_anim():
 		is_navigating = false
 		wander_rotate = false
 		wander_choice = 0
-		cooldown_bool = true
-		cooldown.start()
-		wander_timer.start()
 		floor_type_gather()
-		state = IDLE
+		await get_tree().create_timer(2.0).timeout
+		var choice = rng.randi_range(-10, 10)
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		var previous_choice = wander_choice
+		wander_choice = rng.randi_range(0, 2)
+		if previous_choice == wander_choice:
+			if (previous_choice + 1) != 3:
+				wander_choice = previous_choice + 1
+			else:
+				wander_choice = 1
+		wander_rotate = false
+			#if choice > 0:
+		nav.target_position = marker_positions[wander_choice].global_position
+		is_navigating = true
+		is_wandering = true
+		state = WANDER
+		
+		
 		
 func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	# Prevent old path issues
@@ -570,6 +586,27 @@ func _on_case_interact_disable_look() -> void:
 	wander_choice = rng.randi_range(0, 2)
 	wander_rotate = false
 	#if choice > 0:
+	nav.target_position = marker_positions[wander_choice].global_position
+	is_navigating = true
+	is_wandering = true
+	state = WANDER
+
+
+func _on_juniper_interact_force_wander() -> void:
+	var choice = rng.randi_range(-10, 10)
+	
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
+	var previous_choice = wander_choice
+	wander_choice = rng.randi_range(0, 2)
+	if previous_choice == wander_choice:
+		if (previous_choice + 1) != 3:
+			wander_choice = previous_choice + 1
+		else:
+			wander_choice = 1
+	wander_rotate = false
+			#if choice > 0:
 	nav.target_position = marker_positions[wander_choice].global_position
 	is_navigating = true
 	is_wandering = true
