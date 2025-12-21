@@ -431,7 +431,7 @@ func _on_cooldown_timeout() -> void:
 func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
-	if greeting == true:
+	if greeting == true and case_handling == false:
 		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false and case_handling == false and GlobalVars.in_dialogue == false:
 			if wander_choice < 3:
 				var current_anim = one_shots[wander_choice]
