@@ -64,6 +64,9 @@ var bookshelf := false
 
 signal activate_drink
 
+var stop_jitter := false
+var intDalton := false
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -284,6 +287,10 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	velocity = velocity.lerp(Vector3.ZERO, LERP_VAL)
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
+	if intDalton:
+		stop_jitter = true
+	else:
+		stop_jitter = false
 
 func _process_follow_state(distance_to_target: float) -> void:
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
@@ -444,65 +451,75 @@ func _on_wander_timeout() -> void:
 			state = WANDER
 
 func _on_bookshelf_interacted(interactor: Interactor) -> void:
-	wander_rotate = false
-	bookshelf = true
-	#emit_signal("collision_danger")
-	if wander_choice < 3:
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
-	#set all one shots to abort
-	is_navigating = true
-	is_wandering = false
-	state = FOLLOW
+	intDalton = true
+	if stop_jitter == false:
+		wander_rotate = false
+		bookshelf = true
+		#emit_signal("collision_danger")
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
 
 func _on_house_pic_interacted(interactor: Interactor) -> void:
 	#gate for if dialogue needed?
-	wander_rotate = false
-	#emit_signal("collision_danger")
-	if wander_choice < 3:
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
-	#set all one shots to abort
-	is_navigating = true
-	is_wandering = false
-	state = FOLLOW
+	intDalton = true
+	if stop_jitter == false:
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
 
 func _on_cafe_pic_interacted(interactor: Interactor) -> void:
-	wander_rotate = false
-	#emit_signal("collision_danger")
-	if wander_choice < 3:
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
-	#set all one shots to abort
-	is_navigating = true
-	is_wandering = false
-	state = FOLLOW
+	intDalton = true
+	if stop_jitter == false:
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
 
 func _on_resumes_interacted(interactor: Interactor) -> void:
-	wander_rotate = false
-	#emit_signal("collision_danger")
-	if wander_choice < 3:
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
-	#set all one shots to abort
-	is_navigating = true
-	is_wandering = false
-	state = FOLLOW
+	intDalton = true
+	if stop_jitter == false:
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		#set all one shots to abort
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
 
 func _on_case_interacted(interactor: Interactor) -> void:
-	print("CASEINTERACTION")
-	case_handling = true
-	wander_rotate = false
-	#emit_signal("collision_danger")
-	if wander_choice < 3:
-		var current_anim = one_shots[wander_choice]
-		anim_tree.set("parameters/" + current_anim + "/request", 2)
-	wander_choice = 9 #edgecase
-	#set all one shots to abort
-	nav.target_position = marker_positions[wander_choice].global_position
-	is_navigating = true
-	is_wandering = false
-	state = FOLLOW
+	intDalton = true
+	if stop_jitter == false:
+		print("CASEINTERACTION")
+		case_handling = true
+		wander_rotate = false
+		#emit_signal("collision_danger")
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		wander_choice = 9 #edgecase
+		#set all one shots to abort
+		nav.target_position = marker_positions[wander_choice].global_position
+		is_navigating = true
+		is_wandering = false
+		state = FOLLOW
 	
 func _on_door_point_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -562,6 +579,7 @@ func _on_house_interact_general_interact() -> void:
 	pass # Replace with function body.
 
 func _on_resume_interact_juniper_wander() -> void:
+	intDalton = false
 	interaction = false
 	#print("EXITINGTOWANDER")
 	var choice = rng.randi_range(-10, 10)
@@ -581,11 +599,22 @@ func _on_resume_interact_general_interact() -> void:
 
 func _on_case_interact_disable_look() -> void:
 	#print("EXITINGTOWANDERLOOK")
+	intDalton = false
 	case_handling = false
 	case_handle_rotation = false
+	var choice = rng.randi_range(-10, 10)
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
+	var previous_choice = wander_choice
 	wander_choice = rng.randi_range(0, 2)
+	if previous_choice == wander_choice:
+		if (previous_choice + 1) != 3:
+			wander_choice = previous_choice + 1
+		else:
+			wander_choice = 1
 	wander_rotate = false
-	#if choice > 0:
+			#if choice > 0:
 	nav.target_position = marker_positions[wander_choice].global_position
 	is_navigating = true
 	is_wandering = true
