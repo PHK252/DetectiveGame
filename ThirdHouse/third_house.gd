@@ -14,7 +14,7 @@ extends Node3D
 @export var theo_marker : Marker2D
 @export var character_marker : Marker2D
 @export var timer : Timer
-
+@export var music : AudioStreamPlayer
 @onready var pause = $Pause
 
 var time_out = false
@@ -179,3 +179,4 @@ func _on_quincy_entered():
 	timer.start()
 	emit_signal("phone_time_start")
 	print("level start!")
+	music.play()
