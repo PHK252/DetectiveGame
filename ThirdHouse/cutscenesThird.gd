@@ -41,9 +41,11 @@ func _on_bar_faint_time():
 	sitting_Dalton.hide()
 	#player.hide()
 	emit_signal("faint_disable")
+	await get_tree().process_frame
 	anim_player.play("fainting_cutscene")
 	await anim_player.animation_finished
 	var faint_dialogue = Dialogic.start("Quincy_faint")
+	player.stop_player()
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	alert.hide()

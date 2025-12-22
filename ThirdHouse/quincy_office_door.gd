@@ -85,8 +85,8 @@ func _process(delta):
 			tilt = "mid"
 	else:
 			FP_Cam.set_rotation_degrees(mid_angle)
-	if try_open == 2:
-		print("need_distract")
+	if try_open == 2 and Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
+		print("need distraction")
 		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
@@ -213,6 +213,7 @@ func _on_office_door_input_event(viewport, event, shape_idx):
 					GlobalVars.in_dialogue = true
 					Dialogic.start(thought_dialogue_file)
 				elif Dialogic.VAR.get_variable("Quincy.is_distracted") == false and Dialogic.VAR.get_variable("Quincy.needs_distraction") == true: 
+					try_open += 1
 					GlobalVars.in_dialogue = true
 					choose_distract_thought_dialogue()
 					in_thoughts = true

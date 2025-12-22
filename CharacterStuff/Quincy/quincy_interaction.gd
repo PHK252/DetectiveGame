@@ -63,7 +63,7 @@ func _on_greeting_ended():
 	#emit_signal("Dstopped")
 	#emit_signal("Tstart")
 	player.start_player()
-	alert.show()
+	alert.hide()
 	Dialogic.timeline_ended.disconnect(_on_greeting_ended)
 	GlobalVars.in_dialogue = false
 	if Q_greeting == true:

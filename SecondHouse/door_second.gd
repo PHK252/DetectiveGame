@@ -302,7 +302,7 @@ func _on_exit_house(body):
 			close()
 			collision.set_deferred("disabled", false) 
 			emit_signal("activate_car")
-			is_open = false	
+			is_open = false
 
 
 func open_door(arg : String):

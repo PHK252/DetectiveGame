@@ -38,9 +38,9 @@ Dalton (Default): ...
 			Dalton (Hmph): Tsk.
 			Dalton (Awkward): Go down to the basement.
 			Theo (Call): [shake rate=10.0 level=4 connected=2]Already coming down.[/shake]
+			set {Quincy.in_call} = false
 			[signal arg="call_end"]
 			[end_timeline]
-			set {Quincy.in_call} = false
 			label Bar continue
 			Theo (Laugh) : Hello, esteemed mayor of Arcadia Springs!
 			Theo (Default): I see you’ve convinced this fox to take up day drinking.

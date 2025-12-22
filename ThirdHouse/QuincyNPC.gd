@@ -722,6 +722,12 @@ func _on_cutscene_cams_reposition_dalton() -> void:
 	pass
 
 func _on_cutscene_cams_faint_disable() -> void:
+	if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
+		pass
+		#show quincy
+	else:
+		#hide quincy
+		pass
 	sound_allowed = false
 
 func _on_main_door_quincy_reposition() -> void:

@@ -15,6 +15,8 @@ extends Node3D
 @export var character_marker : Marker2D
 @export var timer : Timer
 @export var music : AudioStreamPlayer
+
+@export var door : Interactable
 @onready var pause = $Pause
 
 var time_out = false
@@ -161,7 +163,8 @@ func disable_distraction_interaction(arr: Array):
 
 func _on_cutscene_cams_faint_disable():
 	disable_interaction(interactables)
-	GlobalVars.quincy_fainted = false
+	door.set_deferred("monitorable", false)
+	GlobalVars.quincy_fainted = true
 
 
 func _on_quincy_pause_timeout():

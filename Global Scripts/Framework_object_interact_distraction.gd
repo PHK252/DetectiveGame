@@ -54,7 +54,7 @@ signal disable_look
 func _process(delta):
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
 	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
-	if try_viewed == 2:
+	if try_viewed == 2 and Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
 		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
 	var read_dialogue : bool = GlobalVars.get(dialogue)
 	var viewed_item : bool = GlobalVars.get(view_item)

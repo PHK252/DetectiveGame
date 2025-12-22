@@ -32,26 +32,26 @@ func _ready():
 	pass
 
 func _process(delta):
-	if Dialogic.VAR.get_variable("Quincy.caught") == false:
-		if fainted == false:
-			if GlobalVars.bar_dialogue_Quincy_finished == true or GlobalVars.Quincy_Dalton_caught == true:
+	if fainted == false:
+		if GlobalVars.bar_dialogue_Quincy_finished == true or GlobalVars.Quincy_Dalton_caught == true:
+			interactable.set_monitorable(false) 
+		elif quincy_at_bar == true:
+			if set_monitor == false:
+				interactable.set_monitorable(true) 
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().create_timer(.03).timeout
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+				set_monitor = true
+		else:
+			if set_monitor == true:
 				interactable.set_monitorable(false) 
-			elif quincy_at_bar == true:
-				if set_monitor == false:
-					interactable.set_monitorable(true) 
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-					await get_tree().create_timer(.03).timeout
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-					set_monitor = true
-			else:
-				if set_monitor == true:
-					interactable.set_monitorable(false) 
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-					await get_tree().create_timer(.03).timeout
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-					set_monitor = false
-	else: 
-		interactable.set_monitorable(false) 
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().create_timer(.03).timeout
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+				set_monitor = false
+	#else:
+		#interactable.set_monitorable(false) 
+
 
 func _on_bar_interact_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finished == false and GlobalVars.in_interaction == "":
@@ -86,8 +86,8 @@ func _on_timeline_ended():
 			emit_signal("return_norm_markers")
 			if Dialogic.VAR.get_variable("Quincy.refused_bar") == false:
 				GlobalVars.bar_dialogue_Quincy_finished = true
-			else:
-				Dialogic.VAR.set_variable("Quincy.refused_bar", false)
+			#else:
+				#Dialogic.VAR.set_variable("Quincy.refused_bar", false)
 				
 	else:
 		Dialogic.timeline_ended.disconnect(_on_timeline_ended)
@@ -102,12 +102,10 @@ func _faint_to_livingroom(argument: String):
 	if argument == "faint":
 		fainted = true
 		Dialogic.signal_event.disconnect(_faint_to_livingroom)
-		#Scene transtion 
 		emit_signal("faint_time")
-		#signal to play ending dialogue
 		GlobalVars.in_dialogue = false
 		GlobalVars.in_interaction = ""
-		pass
+		alert.hide()
 	elif argument == "disconnect":
 		Dialogic.signal_event.disconnect(_faint_to_livingroom)
 
