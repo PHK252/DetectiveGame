@@ -22,8 +22,9 @@ signal door_open
 signal door_close
 
 func _ready():
-	pass # to test
 	#interactable.set_deferred("monitorable", false)
+	pass # to test
+	#
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":

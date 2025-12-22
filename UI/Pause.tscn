@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnu1071bx7xsa"]
+[gd_scene load_steps=20 format=3 uid="uid://cnu1071bx7xsa"]
 
 [ext_resource type="Texture2D" uid="uid://sr60ubjrdhtv" path="res://UI/Assets/Pause/Pause Board.png" id="1_3uscu"]
 [ext_resource type="Script" uid="uid://2ix3jmv1wutb" path="res://UI/pause.gd" id="1_k7vu6"]
@@ -20,8 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="17_4muie"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_74tmv"]
-
-[sub_resource type="Shortcut" id="Shortcut_8vpyk"]
 
 [node name="Pause" type="CanvasLayer"]
 layer = 5
@@ -60,7 +58,6 @@ theme_override_constants/separation = 20
 process_mode = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
-shortcut = SubResource("Shortcut_8vpyk")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("3_nxs1w")
 texture_pressed = ExtResource("4_8vpyk")

@@ -1,10 +1,10 @@
+jump Theo Call
 Quincy (Smug): Would you like a drink?
 Dalton (Awkward): I shouldn’t.
 Quincy (Squint Smug): Come on, you’re so uptight around the rookie.
 Quincy (Awkward): Well...
 Quincy (Happy): Even more than usual.
 Quincy (Smug): Loosen up a bit.
-[wait time="1.0"]
 Dalton (Awkward): ... 
 Dalton (Default): ...
 - Sure.
@@ -15,7 +15,6 @@ Dalton (Default): ...
 	Dalton (Awkward): Hmph.
 	Quincy (Sigh): Would you like to invite the rookie as well?
 	if {Character Aff Points.Theo} > 3 and {Global.got_theo_ad} == true:
-		[wait time=".3"]
 		Dalton (Default): ...
 		- Call Theo.
 			set {Quincy.drink_with_theo} = true
@@ -24,7 +23,7 @@ Dalton (Default): ...
 			[signal arg="call_cue"]
 			[end_timeline]
 			label Theo Call
-			Theo (Call):[shake rate=10.0 level=4 connected=2] Hello?[/shake]
+			Theo (Call): [shake rate=10.0 level=4 connected=2]Hello?[/shake]
 			Dalton (Resting): Do you want a drink?
 			Theo (Call): [shake rate=10.0 level=4 connected=2]Like water...?[/shake]
 			Dalton (Hmph): No.
@@ -32,7 +31,7 @@ Dalton (Default): ...
 			Theo (Call): [shake rate=10.0 level=4 connected=2]Huh?[/shake]
 			Theo (Call): [shake rate=10.0 level=4 connected=2]Yeah![/shake]
 			Theo (Call): [shake rate=10.0 level=4 connected=2]Sure![/shake]
-			Theo (Call): [shake rate=10.0 level=4 connected=2]You don't seem like one to drink on the job.[/shake]
+			Theo (Call): [shake rate=10.0 level=4 connected=2]You don't seem like one to drink on the job, though.[/shake]
 			Dalton (Awkward): I'm not.
 			Dalton (Resting): Today's an expection.
 			Theo (Call): [shake rate=10.0 level=4 connected=2]Hm...[/shake]

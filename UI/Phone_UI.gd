@@ -491,6 +491,7 @@ func _on_bar_theo_bar_call():
 func _bar_end_call(argument : String):
 	if argument == "call_end":
 		#GlobalVars.in_dialogue = false
+		bar_call = false
 		Dialogic.signal_event.disconnect(_bar_end_call)
 		emit_signal("continue_convo")
 	elif argument == "disconnect":
@@ -507,7 +508,6 @@ func _bottle_fall_sound(argument: String):
 func _end_call(argument: String):
 	if argument == "end_call":
 		#play sound
-		bar_call = false
 		#GlobalVars.in_dialogue = false
 		Dialogic.signal_event.disconnect(_end_call)
 	elif argument == "end":

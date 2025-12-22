@@ -17,9 +17,9 @@ var new_game : bool
 func _ready():
 	get_viewport().size_changed.connect(_on_new_window_size)
 	_on_new_window_size()
-	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	await get_tree().process_frame
-	print(GlobalVars.current_level)
+	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	#await get_tree().process_frame
+	#print(GlobalVars.current_level)
 	
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("New Game: " + str(new_game))

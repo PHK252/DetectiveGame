@@ -5,13 +5,9 @@ extends Node3D
 @export var player_interactor : Interactor
 @export var alert: Sprite3D
 
-#Assign character markers (up to 3)
-@export var dalton_marker: Marker2D
-@export var theo_marker: Marker2D
-@export var character_marker: Marker2D
-@export var load_Dalton_dialogue: String
-@export var load_Theo_dialogue: String
-@export var load_char_dialogue: String
+#
+@export var dalton_bar : Node3D
+@export var stool_getup : AudioStreamPlayer3D
 @export var interactable : Interactable
 @export var interaction_type : String
 @export var phone_ui : CanvasLayer
@@ -30,7 +26,7 @@ signal return_norm_markers
 signal Switch_theo_marker
 signal enable_look
 signal disable_look
-
+signal DaltonVisible
 func _ready():
 	interactable.set_monitorable(false) 
 	pass
@@ -66,9 +62,6 @@ func _on_bar_interact_interacted(interactor):
 		Dialogic.signal_event.connect(_faint_to_livingroom)
 		Dialogic.signal_event.connect(_make_drinks)
 		Dialogic.signal_event.connect(_call_theo)
-		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
 		emit_signal("Switch_Dalton_marker")
 		emit_signal("Nudge_Quincy_marker")
 		player.stop_player()
@@ -81,6 +74,9 @@ func _on_timeline_ended():
 			Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 			GlobalVars.in_dialogue = false
 		else:
+			dalton_bar.visible = false
+			stool_getup.play()
+			emit_signal("DaltonVisible")
 			Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 			GlobalVars.in_interaction = ""
 			GlobalVars.in_dialogue = false
@@ -141,10 +137,7 @@ func _on_bar_continue_convo():
 		var bar_dialogue = Dialogic.start(dialogue_file, "Bar continue")
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
-	
+
 
 
 func _on_cutscene_cams_continue_bar():
@@ -152,16 +145,10 @@ func _on_cutscene_cams_continue_bar():
 		var bar_dialogue = Dialogic.start(dialogue_file, "continue2")
 		GlobalVars.in_dialogue = true
 		#Dialogic.timeline_ended.connect(_on_timeline_ended)
-		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
 	else:
 		var bar_dialogue = Dialogic.start(dialogue_file, "continue1")
 		GlobalVars.in_dialogue = true
 	#	Dialogic.timeline_ended.connect(_on_timeline_ended)
-		bar_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		bar_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		bar_dialogue.register_character(load(load_char_dialogue), character_marker)
-
 
 func _on_office_a_body_entered(body):
 	if Dialogic.VAR.get_variable("Quincy.is_distracted") == false:

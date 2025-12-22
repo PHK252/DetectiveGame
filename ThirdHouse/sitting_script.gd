@@ -45,8 +45,6 @@ func _on_character_body_3d_theo_sit() -> void:
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	alert.hide()
-	
-	
 	if dalton_bar.visible == false:
 		if out_sit:
 			print("signaling")
@@ -72,11 +70,8 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 func _process(delta: float) -> void:
 	var bar_convo = Dialogic.VAR.get_variable("Quincy.in_bar_convo")
 	if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false and bar_convo == true:
-		dalton_outside.visible = false
-		dalton_bar.visible = false
-		alert.show()
-		stool_getup.play()
-		emit_signal("DaltonVisible")
+		pass
+		##emit_signal("DaltonVisible")
 	elif Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
 		if out_sit:
 			patio_getup.play()
