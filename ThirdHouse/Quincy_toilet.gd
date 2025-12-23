@@ -149,17 +149,17 @@ func _on_interactable_interacted(interactor):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		player.hide()
 		player.stop_player()
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0
 		cam_anim.play("Cam_Idle")
 		GlobalVars.in_interaction = interact_type
 		if need_distraction == true and Dialogic.VAR.get_variable("Quincy.clogged_toilet") == false: 
-			#GlobalVars.in_dialogue = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			interact_area_1.show()
 			#interact_area_2.show()
 		elif need_distraction == false and Dialogic.VAR.get_variable("Quincy.clogged_toilet") == false:
 			GlobalVars.in_dialogue = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Dialogic.timeline_ended.connect(_on_regular_thoughts_ended)
 			Dialogic.start(distraction_dialogue_file)
 			player.stop_player()

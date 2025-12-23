@@ -476,13 +476,13 @@ func _on_bathroom_q_body_exited(body: Node3D) -> void:
 
 func _on_door_bathroom_replace_quincy_enter_bathroom():
 	if general_distraction == true:
-			is_navigating = true
-			is_distracted = true
-			wander_choice = 4
-			nav.target_position = marker_positions[4].global_position
-			state = FOLLOW
-			distraction_timer.start()
-			emit_signal("pause_timeout")
+		is_navigating = true
+		is_distracted = true
+		wander_choice = 4
+		nav.target_position = marker_positions[4].global_position
+		state = FOLLOW
+		distraction_timer.start()
+		emit_signal("pause_timeout")
 			
 
 		
@@ -701,11 +701,13 @@ func _on_danger_body_exited(body):
 			in_danger = false
 			print("out of danger")
 			if catch_possibility == true:
+				print("danger resume")
 				emit_signal("time_out_resume")
 				Dialogic.VAR.set_variable("Quincy.needs_distraction", false) 
+				catch_possibility = false 
 		else:
 			in_danger = false
-			#catch_possibility = false 
+				#catch_possibility = false 
 
 
 func _on_caught_exit_interact():
