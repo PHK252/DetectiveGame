@@ -44,11 +44,12 @@ func _process(delta):
 				set_monitor = true
 		else:
 			if set_monitor == true:
-				interactable.set_monitorable(false) 
-				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-				await get_tree().create_timer(.03).timeout
-				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-				set_monitor = false
+				if interactable:
+					interactable.set_monitorable(false) 
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+					await get_tree().create_timer(.03).timeout
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+					set_monitor = false
 	#else:
 		#interactable.set_monitorable(false) 
 

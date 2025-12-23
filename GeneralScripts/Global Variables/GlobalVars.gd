@@ -23,7 +23,7 @@ signal unpaused
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int = 3
+@onready var day : int = 2
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need
@@ -53,6 +53,7 @@ var note_condition = ""
 @onready var evidence_container : VBoxContainer
 #don't save these
 var evi_char = ""
+var evi_remove_char = ""
 var evidence = ""
 
 var load_phone_name_arr = ["phone_contacts", "clock_time", "micah_notes", "juniper_notes", "quincy_notes", "evidence_container"]
@@ -239,8 +240,8 @@ var load_Quincy_name_arr = ["quincy_time_out", "quincy_kicked_out", "quincy_fain
  "clicked_letter_Quincy", "viewed_Quincy_chocolate", "chocolate_dialogue"]
 
 func _dalton_caught_clear_state():
+	#dalton_pos = Vector3()
 	Quincy_Dalton_caught = true 
-	
 	quincy_time_out = false
 	quincy_kicked_out = false
 	quincy_fainted = false
@@ -433,4 +434,8 @@ func emit_add_note(char : String, event : String, condition : String):
 
 func emit_add_evidence(char : String, evi : String):
 	evi_char = char
+	evidence = evi
+
+func emit_remove_evidence(char : String, evi : String):
+	evi_remove_char = char
 	evidence = evi

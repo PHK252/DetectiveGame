@@ -99,7 +99,8 @@ func _process(delta):
 			await get_tree().process_frame
 			player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
 		else:
-			interactable.set_monitorable(false)
+			if interactable:
+				interactable.set_monitorable(false)
 
 	
 func _on_timeline_ended():
@@ -132,6 +133,7 @@ func _on_chocolate_input_event(viewport, event, shape_idx):
 				if is_open == false:
 					if Dialogic.VAR.get_variable("Quincy.has_choco") == false:
 						interact_area.hide()
+						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 						Dialogic.signal_event.connect(_open_choco)
 						Dialogic.signal_event.connect(_take_choco)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -162,6 +164,7 @@ func _take_choco(argument: String):
 
 
 func _on_quincy_caught_in_view():
+	print("caught in view choco")
 	interact_area.hide()
 	Exit_Cam.set_tween_duration(0)
 	FP_Cam.priority = 0

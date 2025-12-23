@@ -54,7 +54,7 @@ func _on_timeline_ended():
 	#emit_signal("Tstart")
 	emit_signal("disable_look")
 	player.start_player()
-	alert.show()
+	alert.hide()
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	#asked = true

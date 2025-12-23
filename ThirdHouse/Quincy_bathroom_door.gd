@@ -7,6 +7,7 @@ extends Node3D
 @export var theo_marker : Marker2D
 @export var quincy_marker : Marker2D
 @export var player = CharacterBody3D
+@export var player_interactor : Interactor
 @export var alert : Sprite3D
 @export var interactable : Interactable
 var is_open: bool = false
@@ -172,4 +173,6 @@ func _on_phone_ui_book_distract_quincy():
 
 func _on_quincy_pause_timeout():
 	interactable.set_deferred("monitorable", false)
-	interactable.queue_free()
+	player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+	await get_tree().process_frame
+	player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT

@@ -391,7 +391,7 @@ func _on_distraction_time_timeout() -> void:
 		Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
 		Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
 		emit_signal("time_out_resume")
-		catch_possibility = true
+	catch_possibility = true
 	print("catch_possibility")
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)

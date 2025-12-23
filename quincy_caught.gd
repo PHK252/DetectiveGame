@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var main : Node3D
 @export var anim : AnimationPlayer
 @export var restart: AnimationPlayer
 @export var phone_pause : CanvasLayer
@@ -35,10 +36,8 @@ func _input(event):
 		if event is InputEventKey and event.is_pressed():
 			anim_finished = false
 			GlobalVars._dalton_caught_clear_state()
-			#teleport to start
 			print("restarting...")
-			await get_tree().create_timer(2.0)
-			hide()
+			Loading.load_scene(main, GlobalVars.third_house_path, "","","", true, true)
 			pass
 
 

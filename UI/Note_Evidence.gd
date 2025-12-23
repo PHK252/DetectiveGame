@@ -18,6 +18,7 @@ extends Control
 @export var description: RichTextLabel
 @export var description_body: RichTextLabel
 
+var choco_row :=0
 signal added_notes_overlay
 #func _ready():
 	#_add_evidence(micah_letter)
@@ -31,7 +32,16 @@ signal added_notes_overlay
 	#_add_evidence(quincy_choco)
 
 func _process(delta):
-	if GlobalVars.evi_char == "":
+	if GlobalVars.evi_char == "" and GlobalVars.evi_remove_char == "":
+		return
+	if GlobalVars.evi_remove_char != "":
+		GlobalVars.evi_remove_char = ""
+		if choco_row == 1:
+			print("remove choco")
+			row_1.remove_child(quincy_choco)
+		else:
+			row_1.remove_child(quincy_choco)
+		quincy_choco.hide()
 		return
 	_recieve_evidence()
 	
@@ -40,8 +50,12 @@ func _process(delta):
 func _add_evidence(evidence : TextureButton):
 	if row_1.get_child_count() < 5:
 		_attach_button(evidence, row_1)
+		if evidence == quincy_choco:
+			choco_row = 1
 	elif row_2.get_child_count() < 5:
 		_attach_button(evidence, row_2)
+		if evidence == quincy_choco:
+			choco_row = 2
 	else:
 		print_debug("Evidence placement in trouble")
 	_clear_evidence()

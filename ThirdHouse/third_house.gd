@@ -5,7 +5,7 @@ extends Node3D
 @export var player : CharacterBody3D
 @export var alert : Sprite3D
 @export var timed_out_dialogue_file : String
-
+@export var death : Node2D
 @export var load_Dalton_dialogue : String
 @export var load_Theo_dialogue : String
 @export var load_char_dialogue : String
@@ -35,7 +35,8 @@ func _ready():
 	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	emit_signal("phone_time_start")
-	
+	player.start_player()
+	death.hide()
 	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)
@@ -137,8 +138,9 @@ func _on_timeline_ended_kicked():
 
 func disable_interaction(arr: Array):
 	for i in arr:
-		i.set_monitorable(false)
-		i.queue_free()
+		if i:
+			i.set_monitorable(false)
+			i.queue_free()
 
 func enable_distraction_interaction(arr: Array):
 	for i in arr:
