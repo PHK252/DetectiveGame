@@ -165,7 +165,11 @@ func _on_interactable_body_entered(body):
 func _on_phone_ui_book_distract_quincy():
 	interactable.set_deferred("monitorable", false)
 
+#
+#func _on_quincy_time_out_resume():
+	#if interactable.monitorable == false:
+		#interactable.set_deferred("monitorable", true)
 
-func _on_quincy_time_out_resume():
-	if interactable.monitorable == false:
-		interactable.set_deferred("monitorable", true)
+func _on_quincy_pause_timeout():
+	interactable.set_deferred("monitorable", false)
+	interactable.queue_free()

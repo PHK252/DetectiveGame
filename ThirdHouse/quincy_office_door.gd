@@ -258,3 +258,10 @@ func cue_finished():
 		quincy_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 		quincy_dialogue.register_character(load("res://Dialogic Characters/Quincy.dch"), character_marker)
 		player.stop_player()
+
+
+func _on_caught_open_doors():
+	if is_open == false:
+		open()
+		collision.set_deferred("disabled", true)
+		return

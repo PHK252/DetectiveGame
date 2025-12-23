@@ -346,3 +346,10 @@ func _on_juniper_interact_reactivate_door():
 
 func _on_tea_time():
 	interaction.set_deferred("monitorable", false)
+
+
+func _on_caught_open_doors():
+	if is_open == false:
+		open()
+		collision.set_deferred("disabled", true)
+		return

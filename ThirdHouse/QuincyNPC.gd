@@ -75,6 +75,7 @@ signal play_caught
 signal pause_timeout
 signal time_out_resume
 signal caught_in_view
+signal open_doors
 
 @export var sound_player : AnimationPlayer
 var end_time := false
@@ -379,13 +380,18 @@ func _on_dalton_caught_body_entered(body: Node3D) -> void:
 				emit_signal("caught_in_view")
 			else:
 				emit_signal("play_caught")
+			emit_signal("open_doors")
 			
 
 func _on_distraction_time_timeout() -> void:
 	print("finished")
 	if in_danger == false:
+		print("no danger resume")
+		is_distracted = false
+		Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
+		Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
 		emit_signal("time_out_resume")
-	catch_possibility = true
+		catch_possibility = true
 	print("catch_possibility")
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
@@ -674,6 +680,7 @@ func drop_distract():
 	distraction_timer.stop()
 	distraction_timer.emit_signal("timeout")
 	is_distracted = false
+	Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
 	Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
 	emit_signal("time_out_resume")
 
@@ -703,7 +710,7 @@ func _on_danger_body_exited(body):
 			if catch_possibility == true:
 				print("danger resume")
 				emit_signal("time_out_resume")
-				Dialogic.VAR.set_variable("Quincy.needs_distraction", false) 
+				#Dialogic.VAR.set_variable("Quincy.needs_distraction", false) 
 				catch_possibility = false 
 		else:
 			in_danger = false

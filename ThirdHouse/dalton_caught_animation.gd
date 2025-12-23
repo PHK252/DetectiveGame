@@ -7,12 +7,14 @@ extends Area3D
 @export var character_marker: Marker2D
 @export var phone : CanvasLayer
 @export var time_out_timer: Timer 
+@export var music : AudioStreamPlayer
 
 signal play_anim
 
 func _on_quincy_play_caught():
 	if phone.visible == true:
 		phone.hide()
+	music.stop()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	time_out_timer.stop()
 	Dialogic.VAR.set_variable("Quincy.caught", true)

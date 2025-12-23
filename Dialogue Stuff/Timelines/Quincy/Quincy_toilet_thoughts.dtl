@@ -1,11 +1,12 @@
 if {Quincy.needs_distraction} == true:
 	"Daltons Thoughts": I wonder... 
 	"Daltons Thoughts": Can I clog it?
-	- Try. 
+	"Daltons Thoughts": Clog?
+	- Yes. 
 		set {Quincy.clogged_toilet} = true
 		[signal arg= "clog_time"]
 		[end_timeline]
-	- Don't.
+	- No.
 		"Daltons Thoughts": I shouldn't...
 		[signal arg= "end"]
 		[end_timeline]

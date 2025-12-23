@@ -92,10 +92,10 @@ func _process(delta):
 	
 	if Dialogic.VAR.get_variable("Quincy.is_distracted") == true and locked == false:
 		disable_distraction_interaction(distract_interactables)
-		locked == true
+		locked = true
 	elif Dialogic.VAR.get_variable("Quincy.is_distracted") == false and locked == true:
 		enable_distraction_interaction(distract_interactables)
-		locked == false
+		locked = false
 	else:
 		return
 		

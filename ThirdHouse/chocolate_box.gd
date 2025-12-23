@@ -96,10 +96,10 @@ func _process(delta):
 			set_monitor = true
 			interactable.set_monitorable(false)
 			player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-			await get_tree().create_timer(.03).timeout
+			await get_tree().process_frame
 			player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-		#else:
-			#interactable.set_monitorable(false)
+		else:
+			interactable.set_monitorable(false)
 
 	
 func _on_timeline_ended():
