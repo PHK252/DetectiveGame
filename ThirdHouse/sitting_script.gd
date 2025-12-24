@@ -21,6 +21,7 @@ signal DaltonVisible
 signal theo_out
 signal DaltonFaint
 
+
 var out_sit = false
 
 @export var patio_sit : AudioStreamPlayer3D

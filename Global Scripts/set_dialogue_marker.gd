@@ -39,7 +39,7 @@ func positionMarker(mult : int):
 		
 		if sit_dalton_quincy_bar:
 			if dalton_bar_sit == true:
-				print("sitting_dalton")
+				#print("sitting_dalton")
 				pos = sit_dalton_quincy_bar.global_position
 			else:
 				pos = body_marker.global_position

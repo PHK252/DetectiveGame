@@ -113,6 +113,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	#print(is_navigating)
+	#print(str(is_distracted) + ": distraction")
+	#print(wander_choice)
 	
 	if is_distracted == false:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
@@ -233,6 +235,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 		
 		if Input.is_action_just_pressed("meeting_done"):
 			quincy_tree.set("parameters/Wine/request", 2)
+			print("D1")
 			is_drinking = false
 			#is_distracted = true
 			#is_navigating = true
@@ -505,6 +508,7 @@ func _on_snowmobile_distraction() -> void:
 
 func _on_pool_table_stop_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
+		print("D2")
 		poolTable = true 
 		is_navigating = false
 		is_distracted = true
@@ -561,6 +565,7 @@ func _on_hallway_check_body_entered(body: Node3D) -> void:
 func _on_hallway_check_body_exited(body: Node3D) -> void:
 	if general_distraction == false:
 		emit_signal("disable_look")
+		print("D3")
 		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
@@ -580,6 +585,7 @@ func _on_living_room_adjustment_body_exited(body: Node3D) -> void:
 		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
+		print("D4")
 
 func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and drunk_dalton == false and general_distraction == false:
@@ -595,6 +601,7 @@ func _on_painting_adjustment_body_exited(body: Node3D) -> void:
 		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
+		print("D5")
 
 func _on_quincy_lower_body_entered(body: Node3D) -> void:
 	#transform_quincy = true
@@ -740,6 +747,7 @@ func _on_cutscene_cams_faint_disable() -> void:
 	sound_allowed = false
 
 func _on_main_door_quincy_reposition() -> void:
+	print("FGG")
 	quincy_tree.set("parameters/Smoking/request", 2)
 	smoke.emitting = false
 	packofcigs.visible = false
@@ -759,6 +767,7 @@ func _on_timer_start_timeout() -> void:
 	rotate_number = 0
 	rotate_forced = false
 	start_time = false
+	print("D6")
 	
 	
 func _on_bar_interaction_interacted(interactor: Interactor) -> void:
@@ -772,7 +781,7 @@ func _on_bar_interaction_interacted(interactor: Interactor) -> void:
 	distraction_allowed = false
 
 func _on_wine_time_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player") and general_distraction == false:
+	if body.is_in_group("player") and general_distraction == false and GlobalVars.in_dialogue == false:
 		quincy_tree.set("parameters/Wine/request", 2)
 		is_drinking = false
 		rotate_number = 0
@@ -781,6 +790,7 @@ func _on_wine_time_body_exited(body: Node3D) -> void:
 		is_distracted = false
 		is_navigating = true
 		state = FOLLOW
+		print("D7")
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and general_distraction == false:
@@ -798,3 +808,16 @@ func _on_catch_navigation_stop_body_entered(body: Node3D) -> void:
 func _on_catch_navigation_stop_body_exited(body: Node3D) -> void:
 	if body.name == "Quincy": #and catch_possibility:
 		entered_catch_zone = false
+
+
+func _on_theoSit_force_quincy_bar() -> void:
+	pass
+	#naive solution
+	#rotate_forced = false
+	#rotate_number = 0
+	#is_distracted = true
+	#is_navigating = true
+	#wander_choice = 2
+	#nav.target_position = marker_positions[2].global_position
+	#state = FOLLOW
+	#distraction_allowed = false

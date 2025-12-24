@@ -77,6 +77,7 @@ var force_idle_closet := false
 signal dalton_enter_level
 signal look_at_activate
 signal look_at_disactivate
+signal force_quincy_bar
 
 enum {
 	IDLE, 
@@ -260,6 +261,7 @@ func _process_investigate_state(distance_to_target) -> void:
 			await get_tree().create_timer(3).timeout
 			armature.visible = false
 			collision_theo.disabled = true
+			emit_signal("force_quincy_bar")
 			emit_signal("TheoSit")
 			is_navigating = false
 			state = IDLE
