@@ -26,6 +26,7 @@ var in_secret = false
 var locked = false
 signal time_out_drop_distract
 signal phone_time_start
+signal open_main_door
 
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
@@ -37,6 +38,7 @@ func _ready():
 	emit_signal("phone_time_start")
 	player.start_player()
 	death.hide()
+
 	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)
@@ -47,7 +49,11 @@ func _ready():
 	#pixel
 	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
 	_on_brightness_brightness_shift(GlobalVars.brightness)
-	
+	await get_tree().process_frame
+	await get_tree().process_frame
+	print(interactables[0].monitorable)
+	if interactables[0].monitorable == false:
+		interactables[0].set_deferred("monitorable", true)
 
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
@@ -70,6 +76,8 @@ func _process(delta):
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
 		GlobalVars.quincy_kicked_out = true
 		disable_interaction(interactables)
+		door.set_deferred("monitorable", false)
+		emit_signal("open_main_door")
 			#alert.hide()
 			#player.stop_player()
 			#in_kicked_out_dialogue = true

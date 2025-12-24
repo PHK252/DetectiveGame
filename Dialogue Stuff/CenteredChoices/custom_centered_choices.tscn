@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnla0nemsukvx"]
+[gd_scene load_steps=8 format=3 uid="uid://dnla0nemsukvx"]
 
 [ext_resource type="Script" uid="uid://dxbumbaakfu2g" path="res://Dialogue Stuff/CenteredChoices/vn_choice_layer.gd" id="1_kurgw"]
 [ext_resource type="Script" uid="uid://clvak7qwpu5nt" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="1_w632k"]
+[ext_resource type="Script" uid="uid://c2rjscooterg2" path="res://Dialogue Stuff/CenteredChoices/choices.gd" id="2_f5elj"]
 [ext_resource type="Script" uid="uid://dq67d8ai8ag8a" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="2_mgko6"]
 [ext_resource type="AudioStream" uid="uid://b6c1p14bc20p1" path="res://addons/dialogic/Example Assets/sound-effects/typing1.wav" id="3_mql8i"]
 [ext_resource type="AudioStream" uid="uid://c2viukvbub6v6" path="res://addons/dialogic/Example Assets/sound-effects/typing4.wav" id="4_420fr"]
@@ -33,7 +34,7 @@ boxes_stylebox_pressed = "uid://wrp8f7ard3uu"
 boxes_stylebox_focused = "uid://wrp8f7ard3uu"
 boxes_v_separation = 5
 
-[node name="Choices" type="HBoxContainer" parent="."]
+[node name="Choices" type="HBoxContainer" parent="." node_paths=PackedStringArray("focus_choice")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -49,6 +50,8 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 15
 alignment = 1
+script = ExtResource("2_f5elj")
+focus_choice = NodePath("DialogicNode_ChoiceButton1")
 metadata/_edit_layout_mode = 1
 
 [node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices"]

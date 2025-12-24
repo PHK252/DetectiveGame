@@ -35,8 +35,10 @@ func _ready():
 	pass
 func _process(delta):
 	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "":
+		evidence.modulate.a = 0.365
 		call_normal.disabled = true
 	else:
+		evidence.modulate.a = 0.784
 		call_normal.disabled = false
 	if GlobalVars.phone_tut == false and in_evidence == true:
 		if GlobalVars.in_dialogue == true and phone_visible == true:
@@ -139,10 +141,10 @@ func _on_decline_pressed():
 func _on_case_added_notes_overlay():
 	in_evidence = true
 	evidence.visible = true
-	if call_normal.disabled == true:
-		evidence.modulate.a = 0.365
-	else:
-		evidence.modulate.a = 0.784
+	#if call_normal.disabled == true:
+		#evidence.modulate.a = 0.365
+	#else:
+		#evidence.modulate.a = 0.784
 	evidence_anim.play("Notes_added")
 	await get_tree().create_timer(3.6).timeout
 	evidence_anim.stop()

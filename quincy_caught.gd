@@ -12,7 +12,7 @@ extends Node2D
 
 @onready var anim_finished = false
 
-var pause = InputMap.action_get_events("Quit")
+@onready var pause = InputMap.action_get_events("Quit")
 func _ready():
 	quincy_caught.hide()
 
@@ -37,10 +37,11 @@ func _input(event):
 			anim_finished = false
 			GlobalVars._dalton_caught_clear_state()
 			print("restarting...")
-			Loading.load_scene(main, GlobalVars.third_house_path, "","","", true, true)
+			InputMap.action_add_event("Quit", pause[0])
+			Loading.load_scene(main, GlobalVars.third_house_path, "","","")
 			pass
 
 
-func _on_visibility_changed():
-	if visible == false:
-		InputMap.action_add_event("Quit", pause[0])
+#func _on_visibility_changed():
+	#if visible == false:
+		#InputMap.action_add_event("Quit", pause[0])

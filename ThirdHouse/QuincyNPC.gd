@@ -69,7 +69,9 @@ var sound_allowed := true
 @export var leave_position : Marker3D
 @export var entrance_position : Marker3D
 
-var in_danger = false
+@export var interact : Interactable
+var in_danger := false
+var in_choco := false
 var alarm_active = false
 signal play_caught
 signal pause_timeout
@@ -376,17 +378,20 @@ func _on_fixed_wine_distraction() -> void:
 
 func _on_dalton_caught_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
-		print("entered catch")
 		if catch_possibility and in_danger == true:
+			print("entered catch")
+			interact.set_deferred("monitorable", false)
 			print("quincy caught you")
 			if GlobalVars.in_interaction != "":
 				emit_signal("caught_in_view")
 			else:
 				emit_signal("play_caught")
+			if in_choco == true:
+				return
 			emit_signal("open_doors")
-			
 
 func _on_distraction_time_timeout() -> void:
+	interact.set_deferred("monitorable", true)
 	print("finished")
 	if in_danger == false:
 		print("no danger resume")
@@ -821,3 +826,11 @@ func _on_theoSit_force_quincy_bar() -> void:
 	#nav.target_position = marker_positions[2].global_position
 	#state = FOLLOW
 	#distraction_allowed = false
+
+
+func _on_choco_entered(body):
+	in_choco = true
+
+
+func _on_choco_exited(body):
+	in_choco = false

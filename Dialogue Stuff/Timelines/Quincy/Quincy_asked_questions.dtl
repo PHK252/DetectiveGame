@@ -2,7 +2,6 @@ set {Quincy.num_question_asked} = 0
 Dalton (Doubt1): Can I ask you a few questions?
 Quincy (Happy): Sure.
 label choices
-[wait time= "0.3"]
 Dalton (Default): Ask about...
 - Break-in.
 	- Location.
@@ -29,7 +28,6 @@ Dalton (Default): Ask about...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
 			[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Ask more questions.
 				jump choices
@@ -55,7 +53,6 @@ Dalton (Default): Ask about...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
 			[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Ask more questions.
 				jump choices
@@ -93,7 +90,6 @@ Dalton (Default): Ask about...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
 			[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Ask more questions.
 				jump choices
@@ -133,7 +129,6 @@ Dalton (Default): Ask about...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
 			[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Ask more questions.
 				jump choices
@@ -151,6 +146,7 @@ Dalton (Default): Ask about...
 			Quincy (Happy): Probably just a passing resemblance.
 			Dalton (Resting): Hmph.
 			do GlobalVars.emit_add_note("quincy", "micah", "")
+			[end_timeline]
 		else:
 			Dalton (Talk): Do you recognize him?
 			Quincy (Awkward): Still don’t. 
@@ -160,7 +156,6 @@ Dalton (Default): Ask about...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
 			[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Ask more questions.
 				jump choices
@@ -172,7 +167,6 @@ Dalton (Default): Ask about...
 	- Go back.
 		jump choices
 - Chocolate. | [if {Quincy.has_choco} == true] [else="hide"]
-	set {Quincy.kicked_out} = true
 	Dalton (Resting): I found this package.
 	Dalton (Hmph): Do you care to explain?
 	Quincy (Squint): You cheeky fox...
@@ -190,6 +184,7 @@ Dalton (Default): Ask about...
 	Quincy (Surprise): Now!
 	Dalton (Awkward): Hmph.
 	Dalton (Sigh): Fine...
+	set {Quincy.kicked_out} = true
 	[end_timeline]
 - Continue.
 	if {Quincy.num_question_asked} == 0:
@@ -197,7 +192,9 @@ Dalton (Default): Ask about...
 		Dalton (Resting): I changed my mind.
 		Quincy (Laugh): Hah. 
 		Quincy (Smug): Okay.
+		[end_timeline]
 	else:
 		Dalton (Talk): That's all for now.
 		Quincy (Happy): Hm...
 		Quincy (Smug): Was a pleasure to assit, Dectective.
+		[end_timeline]

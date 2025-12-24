@@ -45,6 +45,8 @@ func _on_interactable_interacted(interactor):
 			emit_signal("greet_cam")
 			_on_greeting_third_q_dialogue()
 
+
+	
 func _ready():
 	if Q_greeting == false:
 		interactable.set_monitorable(false)
@@ -76,7 +78,7 @@ func _process(delta):
 	asked = Dialogic.VAR.get_variable("Quincy.asked_all")
 	if Dialogic.VAR.get_variable("Quincy.solved_case") == false:
 		if asked == true and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
-			#print("hide")
+			print("enter_false")
 			alert.hide()
 			$Interactable.set_monitorable(false)
 	else:
