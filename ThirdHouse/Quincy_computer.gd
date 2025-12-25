@@ -32,7 +32,7 @@ func _ready():
 
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "computer":
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		elif mouse_pos.y < tilt_down_thres:
@@ -52,6 +52,7 @@ func _on_interactable_interacted(interactor):
 		Dialogic.signal_event.connect(compFP)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		computer_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		GlobalVars.in_interaction = "computer"
 
 
 func _on_timeline_ended():
@@ -71,24 +72,26 @@ func compFP(argument: String):
 		interact_area.show()
 		#GlobalVars.Quincy_in_computer = true
 		player.stop_player()
-		GlobalVars.in_interaction = "computer"
 		#UI.show()
 		Dialogic.signal_event.disconnect(compFP)
 		
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "computer" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false: 
-		FP_Cam.priority = 0
-		Exit_Cam.priority = 30
-		var computer_react = Dialogic.start(react_dialogue_file)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		computer_react.register_character(load(load_Dalton_dialogue), dalton_marker)
-		GlobalVars.in_dialogue = true
-		interact_area.hide()
-		GlobalVars.Quincy_in_computer = false
-		player.start_player()
-		player.show()
-		GlobalVars.in_interaction = ""
+	print("lookscreen", GlobalVars.in_look_screen)
+	if GlobalVars.Quincy_in_computer == false:
+		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "computer" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false: 
+			print("enter_exit")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			FP_Cam.priority = 0
+			Exit_Cam.priority = 30
+			var computer_react = Dialogic.start(react_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			GlobalVars.in_dialogue = true
+			interact_area.hide()
+			GlobalVars.Quincy_in_computer = false
+			player.start_player()
+			player.show()
+			GlobalVars.in_interaction = ""
 
 
 func _on_computer_input_event(viewport, event, shape_idx):
@@ -96,6 +99,7 @@ func _on_computer_input_event(viewport, event, shape_idx):
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				GlobalVars.Quincy_in_computer = true
+				GlobalVars.in_look_screen = true
 				UI.show()
 
 

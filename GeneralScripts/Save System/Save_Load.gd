@@ -14,8 +14,9 @@ func _ready():
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
 
-func saveGame(path: String):
-	Dialogic.Save.save()
+func saveGame(path: String, dialogic_save : bool = true):
+	if dialogic_save == true:
+		Dialogic.Save.save()
 	#var file = FileAccess.open(path, FileAccess.WRITE)
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
 	print(_get_char_pos())

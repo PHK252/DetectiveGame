@@ -84,14 +84,17 @@ func _on_hint_pressed():
 
 func _on_sleep_pressed():
 	$".".hide()
+	GlobalVars.Quincy_in_computer = false
 
 
 func _on_restart_pressed():
-	get_tree().quit()
+	$".".hide() 
+	GlobalVars.Quincy_in_computer = false
 
 
 func _on_shutdown_pressed():
 	$".".hide()
+	GlobalVars.Quincy_in_computer = false
 
 
 #Home

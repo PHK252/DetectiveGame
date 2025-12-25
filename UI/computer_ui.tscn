@@ -369,6 +369,14 @@ _data = {
 [node name="ComputerUI" type="CanvasLayer"]
 script = ExtResource("1_f0ejt")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Login" type="Control" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
@@ -513,6 +521,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Incorrect. Try again."
 
 [node name="Home" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

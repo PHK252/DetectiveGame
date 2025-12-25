@@ -69,8 +69,9 @@ func _on_exit_pressed():
 	GlobalVars.viewing = ""
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit"):
+	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "journal":
 		$".".hide()
+		print("enter_journal")
 		GlobalVars.in_look_screen = false
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""

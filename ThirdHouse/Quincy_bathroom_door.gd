@@ -35,7 +35,8 @@ signal disable_look
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	if interactable.monitorable == false:
+		interactable.set_deferred("monitorable", true)
 
 func open() -> void:
 	print("opening")
@@ -92,6 +93,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 				bathroom.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			else:
 				open()
+				_on_quincy_pause_timeout()
 		else:
 			close()
 	else:
@@ -129,8 +131,8 @@ func _on_bathroom_door_body_exited(body):
 				player_in_bathroom = false
 				GlobalVars.in_dialogue = true
 				player.stop_player()
-				alert.hide()
 				emit_signal("enable_look")
+				alert.hide()
 				Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
 				Dialogic.signal_event.connect(_quincy_enter_bathroom)
 				var clogged = Dialogic.start(clog_exit_dialogue)

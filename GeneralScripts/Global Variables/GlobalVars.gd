@@ -284,6 +284,9 @@ func _dalton_caught_clear_state():
 	clicked_proposal_Quincy = 0
 	viewed_Quincy_chocolate = false
 	chocolate_dialogue = false
+	Dialogic.VAR.reset("Quincy")
+	await get_tree().process_frame
+	Dialogic.VAR.set_variable("Quincy.caught", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 
 ##Secret Vars
@@ -405,10 +408,14 @@ func set_mouse_pointing():
 	#print("set pointing")
 	Input.set_custom_mouse_cursor(GlobalVars.pointing_hand, Input.CURSOR_POINTING_HAND, Vector2(20,22.5))
 
+func set_mouse_I_beam():
+	Input.set_custom_mouse_cursor(GlobalVars.i_beam, Input.CURSOR_IBEAM)
+
 func _ready():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	set_mouse_default()
 	set_mouse_pointing()
+	set_mouse_I_beam()
 
 #func emit_phone_call():
 	#emit_signal("phone_call_receiving")

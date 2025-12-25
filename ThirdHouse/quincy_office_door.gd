@@ -206,6 +206,7 @@ func _on_office_door_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 					Dialogic.timeline_ended.connect(_on_thoughts_ended)
 					Dialogic.signal_event.connect(doorOpen)

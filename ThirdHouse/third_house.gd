@@ -51,7 +51,8 @@ func _ready():
 	_on_brightness_brightness_shift(GlobalVars.brightness)
 	await get_tree().process_frame
 	await get_tree().process_frame
-	print(interactables[0].monitorable)
+	print(Dialogic.VAR.get_variable("Quincy.is_distracted"), " distracted")
+	print(Dialogic.VAR.get_variable("Quincy.caught"), " caught")
 	if interactables[0].monitorable == false:
 		interactables[0].set_deferred("monitorable", true)
 

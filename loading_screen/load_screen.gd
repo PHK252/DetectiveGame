@@ -41,7 +41,7 @@ var percent_label : Label
 	#await Signal(animationPlayer, "animation_finished")
 	#self.queue_free()
 
-func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false):
+func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false, dialogic_save : bool = true):
 	
 	in_loading = true
 	if glitch_in == true:

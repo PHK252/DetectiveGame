@@ -502,6 +502,7 @@ func _on_door_bathroom_replace_quincy_enter_bathroom():
 		
 func _on_toilet_stuff_distraction() -> void:
 	general_distraction = true
+	interact.set_deferred("monitorable", false)
 
 func _on_snowmobile_distraction() -> void:
 	snowmobile_distraction = true
@@ -719,13 +720,13 @@ func _on_danger_body_exited(body):
 		if is_distracted == true and alarm_active == false: 
 			in_danger = false
 			print("out of danger")
+		else:
+			in_danger = false
 			if catch_possibility == true:
 				print("danger resume")
 				emit_signal("time_out_resume")
-				#Dialogic.VAR.set_variable("Quincy.needs_distraction", false) 
+				Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
 				catch_possibility = false 
-		else:
-			in_danger = false
 				#catch_possibility = false 
 
 
