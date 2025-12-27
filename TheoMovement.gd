@@ -571,7 +571,7 @@ func _on_theo_wander_body_entered(body: Node3D) -> void:
 func _on_investigate_timer_timeout() -> void:
 	#print("timerCheck")
 	#print(investigate_choice)
-	if living_room_nogo == false and faint_dalton == false:
+	if living_room_nogo == false and faint_dalton == false and going_to_bar == false:
 		var choice = rng.randi_range(-10, 10)
 		investigate_choice = rng.randi_range(0, 2)
 		animation_choice = rng.randi_range(0, 10)
@@ -1026,6 +1026,19 @@ func _on_theo_wander_body_exited(body: Node3D) -> void:
 		STOPPING_DISTANCE = 1.0
 
 func _on_cutscene_cams_faint_disable() -> void:
+	#need to handle sitting state
+	#emit signal stop sitting
+	# set global position to drunk marker position
+	# should automatically handle edge cases
+	patio_sit = false
+	going_to_bar = false
+	armature.visible = true
+	collision_theo.disabled = false
+	nav.path_desired_distance = 0.75
+	nav.target_desired_distance = 1.0
+	STOPPING_DISTANCE = 0.0
+	emit_signal("TheoStand")
+	theo_node.global_position = drunk_marker.global_position
 	InvestigateTime.stop()
 	faint_dalton = true
 	is_navigating = true
@@ -1046,6 +1059,7 @@ func _on_cutscene_cams_theo_follow() -> void:
 
 func _on_dialogic_signal(argument: String):
 	if argument == "follow_dalton":
+		emit_signal("look_at_disactivate")
 		theo_adjustment = false
 		is_investigating = false
 		is_navigating = true 
@@ -1157,3 +1171,12 @@ func _on_resume_interact_theo_reposition_start() -> void:
 func _on_resume_interact_theo_reposition_end() -> void:
 	theo_adjustment = false
 	in_kitchen = false
+
+
+func _on_hall_theo_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and faint_dalton:
+		is_navigating = false
+
+func _on_hall_theo_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player") and faint_dalton:
+		is_navigating = true

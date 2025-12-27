@@ -19,6 +19,7 @@ var idle_timer_active: bool = false
 @export var charac_body : CharacterBody3D
 @export var coll_wall : CollisionShape3D
 @export var secret_location_walkin := false
+@export var safe_dalton_position : Marker3D
 
 var gathered := false
 var walk_indicate := false
@@ -37,6 +38,8 @@ signal theo_adjustment
 signal theo_reset
 signal knocking
 signal theo_walk_in
+signal two_target_needed
+signal active_look
 var move_back := false
 var is_interacting := false
 
@@ -646,6 +649,8 @@ func _on_sitting_ppl_dalton_faint() -> void:
 	number = 1
 	force_rotation = true
 	await get_tree().create_timer(0.2).timeout
+	emit_signal("two_target_needed", 2)
+	emit_signal("active_look")
 	force_rotation = false
 	needs_rotation_forced = false
 	armature.visible = true
@@ -1202,3 +1207,7 @@ func _on_rotate_sloth(interactor: Interactor) -> void:
 	needs_rotation_forced = false
 	number = 0
 	in_control = true
+
+
+func _on_bar_interaction_interacted_repos(interactor: Interactor) -> void:
+	daltonParent.global_position = safe_dalton_position.global_position

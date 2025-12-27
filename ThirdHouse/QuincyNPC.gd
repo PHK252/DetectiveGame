@@ -12,6 +12,7 @@ var transform_quincy := false
 var just_wentUp := false
 var dalton_clear := true
 signal stop_dalton
+@export var q_node_parent : Node3D
 @export var timer_check : Timer
 @export var entrance_timer : Timer
 
@@ -26,6 +27,7 @@ signal stop_dalton
 @export var quincy_tree: AnimationTree
 
 #AI NAV controls
+@export var Q_collision : CollisionShape3D
 @export var nav: NavigationAgent3D
 @export var player: CharacterBody3D
 @export var armature: Node3D
@@ -82,9 +84,16 @@ signal open_doors
 @export var sound_player : AnimationPlayer
 var end_time := false
 var start_time := false
+var extra_gate_end := false
+var special_rotation := false
 #
 signal enable_look
 signal disable_look
+
+@export var Q_body : CharacterBody3D
+@export var Q_marker_end : Marker3D
+@export var Q_marker_end_safe : Marker3D
+
 
 enum {
 	IDLE, 
@@ -95,6 +104,8 @@ enum {
 var state := IDLE
 
 func _ready() -> void:
+	Dialogic.signal_event.connect(_on_dialogic_signal)
+	
 	if GlobalVars.from_save_file == true:
 		GlobalVars.from_save_file = false
 		global_position = GlobalVars.quincy_pos
@@ -111,8 +122,20 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	rotate_forced = false
 	rotate_number = 0
+	
 
-
+func _on_dialogic_signal(argument: String):
+	if argument == "to_door":
+		rotate_forced = false
+		rotate_number = 0
+		extra_gate_end = false
+		end_time = true
+		is_navigating = true
+		special_rotation = true
+		nav.target_position = leave_position.global_position
+		state = FOLLOW
+		
+		
 func _process(delta: float) -> void:
 	#print(is_navigating)
 	#print(str(is_distracted) + ": distraction")
@@ -224,8 +247,12 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 	idle_blend = lerp(idle_blend, 0.0, LERP_VAL)
 	quincy_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
 	#if Input.is_action_just_pressed("meeting_done"):
-	if end_time:
+	if end_time or extra_gate_end:
 		is_navigating = false
+	
+	if special_rotation:
+		rotate_number = 6
+		rotate_forced = true
 	
 	
 	if wander_choice == 2:
@@ -735,25 +762,43 @@ func _on_caught_exit_interact():
 
 
 func _on_sitting_ppl_dalton_faint() -> void:
-	drunk_dalton = true
-	is_drinking = false
-	is_navigating = false
-	armature.visible = false
+	if Dialogic.VAR.get_variable("Juniper.found_skylar") == false:
+		drunk_dalton = true
+		is_drinking = false
+		is_navigating = false
+		armature.visible = false
+	else:
+		drunk_dalton = true
+		is_drinking = false
+		is_navigating = false
+		Q_body.global_position = Q_marker_end.global_position
+		
 
 func _on_cutscene_cams_reposition_dalton() -> void:
 	pass
 
 func _on_cutscene_cams_faint_disable() -> void:
 	if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
-		pass
-		#show quincy
+		is_navigating = false
+		end_time = false
+		extra_gate_end = true
+		armature.visible = true
+		Q_body.global_position = Q_marker_end.global_position
+		rotate_number = 5
+		rotate_forced = true
+		state = IDLE
+		#show quincy: position at marker, state idle, disabled follow
 	else:
-		#hide quincy
-		pass
-	sound_allowed = false
+		#hide quincy:
+		#disable collision, hide armature (should already be gone), no sound
+		Q_body.global_position = Q_marker_end_safe.global_position
+		Q_body.visible = false
+		end_time = true
+		Q_collision.disabled = true
+		sound_allowed = false
+		state = IDLE
 
 func _on_main_door_quincy_reposition() -> void:
-	print("FGG")
 	quincy_tree.set("parameters/Smoking/request", 2)
 	smoke.emitting = false
 	packofcigs.visible = false
@@ -773,7 +818,6 @@ func _on_timer_start_timeout() -> void:
 	rotate_number = 0
 	rotate_forced = false
 	start_time = false
-	print("D6")
 	
 	
 func _on_bar_interaction_interacted(interactor: Interactor) -> void:
@@ -796,7 +840,6 @@ func _on_wine_time_body_exited(body: Node3D) -> void:
 		is_distracted = false
 		is_navigating = true
 		state = FOLLOW
-		print("D7")
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and general_distraction == false:

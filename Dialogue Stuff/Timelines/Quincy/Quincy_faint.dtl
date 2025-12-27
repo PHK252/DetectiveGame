@@ -44,6 +44,8 @@ if {Juniper.found_skylar} == true:
 	Theo (Laugh): Bye!
 	Quincy (Happy): Goodbye!
 	Dalton (Sigh): Bye.
+	[signal arg="to_door"]
+	[signal arg="follow_dalton"]
 	do GlobalVars.emit_add_note("quincy", "faint", "skylar")
 	[end_timeline]
 else:
