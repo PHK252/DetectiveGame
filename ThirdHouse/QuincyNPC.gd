@@ -134,6 +134,28 @@ func _on_dialogic_signal(argument: String):
 		special_rotation = true
 		nav.target_position = leave_position.global_position
 		state = FOLLOW
+	
+	#if argument == "work_time":
+		#quincy_tree.set("parameters/Wine/request", 2)
+		#rotate_number = 0
+		#rotate_forced = false
+		#await get_tree().create_timer(0.1).timeout
+		#is_drinking = false
+		#wander_choice = 11
+		#is_distracted = false
+		#is_navigating = true
+		#state = FOLLOW
+	
+	if argument == "work_time_theo":
+		await get_tree().create_timer(4.0).timeout
+		quincy_tree.set("parameters/Wine/request", 2)
+		is_drinking = false
+		rotate_number = 0
+		rotate_forced = false
+		wander_choice = 11
+		is_distracted = false
+		is_navigating = true
+		state = FOLLOW
 		
 		
 func _process(delta: float) -> void:

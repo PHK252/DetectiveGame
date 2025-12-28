@@ -1067,6 +1067,25 @@ func _on_dialogic_signal(argument: String):
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0
 		state = FOLLOW
+	
+	if argument == "work_time_theo":
+		emit_signal("look_at_disactivate")
+		emit_signal("allow_stairs")
+		patio_sit = false
+		going_to_bar = false
+		armature.visible = true
+		collision_theo.disabled = false
+		animation_choice = rng.randi_range(0, 10)
+		investigate_choice = rng.randi_range(0, 3)
+		is_investigating = true
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		nav.path_desired_distance = 0.75
+		nav.target_desired_distance = 1.0
+		STOPPING_DISTANCE = 0.0
+		emit_signal("TheoStand")
+		state = INVESTIGATE
+		
 
 func _on_main_door_theo_follow() -> void:
 	InvestigateTime.stop()

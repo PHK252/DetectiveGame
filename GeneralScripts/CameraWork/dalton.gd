@@ -87,6 +87,11 @@ func _on_dialogic_signal(argument: String):
 	if argument == "knock":
 		anim_tree.set("parameters/Knock/request", true)
 		emit_signal("knocking")
+	
+	if argument == "work_time_theo":
+		in_control = false
+		await get_tree().create_timer(4.0).timeout
+		in_control = true
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames() 
