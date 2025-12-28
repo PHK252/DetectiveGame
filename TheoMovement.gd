@@ -1199,3 +1199,13 @@ func _on_hall_theo_body_entered(body: Node3D) -> void:
 func _on_hall_theo_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player") and faint_dalton:
 		is_navigating = true
+
+func _on_sitting_ppl_theo_armature_visible() -> void:
+	await get_tree().process_frame
+	is_navigating = true
+	patio_sit = false
+	going_to_bar = false
+	armature.visible = true
+	collision_theo.disabled = false
+	emit_signal("TheoStand")
+	state = IDLE

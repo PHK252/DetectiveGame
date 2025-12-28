@@ -31,6 +31,8 @@ var out_sit = false
 @export var stool_sit : AudioStreamPlayer3D
 @export var stool_getup: AudioStreamPlayer3D
 
+signal theo_armature_visible
+
 func _ready() -> void:
 	theo_sitting.visible = false
 	theo_outside.visible = false
@@ -40,10 +42,15 @@ func _ready() -> void:
 	cocktailStatic.visible = false
 
 func _on_character_body_3d_theo_sit() -> void:
-	theo_sitting.visible = true
-	anim_player_theo.play("Sit_Bar")
-	theo_outside.visible = true
-	anim_player_tO.play("SitOutside_001")
+	if dalton_bar.visible == true or dalton_outside.visible == true:
+		theo_sitting.visible = true
+		anim_player_theo.play("Sit_Bar")
+		theo_outside.visible = true
+		anim_player_tO.play("SitOutside_001")
+	else:
+		#print("enteringalternatestate")
+		emit_signal("theo_armature_visible")
+		
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	alert.hide()
@@ -85,6 +92,13 @@ func _process(delta: float) -> void:
 		dalton_bar.visible = false
 		alert.show()
 		emit_signal("DaltonVisible")
+		if theo_outside.visible == true:
+			patio_getup.play()
+			theo_sitting.visible = false
+			theo_outside.visible = false
+			anim_player_theo.stop()
+			anim_player_tO.stop()
+			
 		
 		
 
