@@ -101,6 +101,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			#if introduction_happened:
 				#open()
 				#collision.disabled = true
+			alert.hide()
 			emit_signal("greeting")
 			emit_signal("micah_rotate")
 			#Level enter
