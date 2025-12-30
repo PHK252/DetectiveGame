@@ -70,6 +70,8 @@ func _on_exit_pressed():
 			object_in_scene.show()
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			await get_tree().process_frame
+			await get_tree().process_frame
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Dialogic.start(dialogue_file)
 			GlobalVars.set(view_object, true)
@@ -101,6 +103,8 @@ func _input(event):
 				object_in_scene.show()
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				await get_tree().process_frame
+				await get_tree().process_frame
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				Dialogic.start(dialogue_file)
 				GlobalVars.set(view_object, true)

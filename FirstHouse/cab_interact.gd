@@ -94,7 +94,7 @@ func _process(delta):
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
 			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		elif clickable == false and Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false :
+		elif clickable == true and Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false :
 			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			main_cam.set_tween_duration(0)
@@ -123,6 +123,7 @@ func _process(delta):
 func _on_cab_input_event(viewport, event, shape_idx):
 	if clickable and Input.is_action_just_pressed("mouse_click"):
 		if cab_open == false and GlobalVars.clicked_cab == 0:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			open_cabinet()
 			await get_tree().create_timer(5.0).timeout
 			GlobalVars.in_dialogue = true

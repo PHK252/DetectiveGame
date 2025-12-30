@@ -136,7 +136,7 @@ func _on_interactable_interacted(interactor):
 	emit_signal("general_interact")
 	if GlobalVars.in_dialogue == false and thoughts == false and GlobalVars.in_interaction == "":
 		thoughts = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
 		FP_Cam.priority = 30
