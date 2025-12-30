@@ -39,6 +39,10 @@ Loading="*res://loading_screen/load_screen.gd"
 SceneTransitions="*res://UI/scene_transitions.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
+[debug]
+
+shapes/navigation/enable_agent_paths=false
+
 [dialogic]
 
 directories/dch_directory={

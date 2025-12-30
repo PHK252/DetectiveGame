@@ -28,7 +28,7 @@ func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
 	if GlobalVars.in_dialogue == false and asked == false:
-		#emit_signal("Tstop")
+		alert.hide()
 		GlobalVars.in_dialogue = true
 		player.stop_player()
 		emit_signal("enable_look")

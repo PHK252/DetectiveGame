@@ -40,7 +40,8 @@ func _on_firsthouse_button_pressed() -> void:
 		if went_Juniper == true or Dialogic.VAR.get_variable("Global.first_house") == "Juniper":
 			GlobalVars.in_interaction = ""
 			player.start_player()
-			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
+			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", "Day_1_ride_from_TG")
+			#Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 		else:
 			GlobalVars.in_interaction = ""
 			player.start_player()

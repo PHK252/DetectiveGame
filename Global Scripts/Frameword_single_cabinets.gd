@@ -217,14 +217,14 @@ func _on_timeline_ended():
 
 
 func _on_to_open_drawer_input_event(viewport, event, shape_idx):
-	if GlobalVars.in_look_screen == false:
-		if event is InputEventMouseButton:
+	if GlobalVars.in_look_screen == false and event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			open()
 
 
 func _on_to_close_drawer_input_event(viewport, event, shape_idx):
-		if GlobalVars.in_look_screen == false:
-			if event is InputEventMouseButton:
+		if GlobalVars.in_look_screen == false and event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				close()
 
 

@@ -361,20 +361,20 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_to_open_drawer_input_event(viewport, event, shape_idx):
-	if GlobalVars.in_look_screen == false:
-		if event is InputEventMouseButton:
+	if GlobalVars.in_look_screen == false and event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			open()
 
 
 func _on_cab_close_1_input_event(viewport, event, shape_idx):
-		if GlobalVars.in_look_screen == false:
-			if event is InputEventMouseButton:
+		if GlobalVars.in_look_screen == false and event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				close()
 
 
 func _on_cab_close_2_input_event(viewport, event, shape_idx):
-		if GlobalVars.in_look_screen == false:
-			if event is InputEventMouseButton:
+		if GlobalVars.in_look_screen == false and event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				close()
 
 

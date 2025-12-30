@@ -204,7 +204,7 @@ func _on_towels_input_event(viewport, event, shape_idx):
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				GlobalVars.in_dialogue = true
 				interact_area_1.hide()
-				#interact_area_2.hide()
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				Dialogic.timeline_ended.connect(_on_distracted_thoughts_ended)
 				Dialogic.signal_event.connect(_clog_toilet)
 				Dialogic.start(distraction_dialogue_file)
