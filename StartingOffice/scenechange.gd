@@ -39,9 +39,11 @@ func _on_firsthouse_button_pressed() -> void:
 	if GlobalVars.day == 1:
 		if went_Juniper == true or Dialogic.VAR.get_variable("Global.first_house") == "Juniper":
 			GlobalVars.in_interaction = ""
+			player.start_player()
 			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 		else:
 			GlobalVars.in_interaction = ""
+			player.start_player()
 			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 			
 			
@@ -54,9 +56,11 @@ func _on_secondhouse_button_pressed() -> void:
 	GlobalVars.in_look_screen = false
 	if went_Micah == true or Dialogic.VAR.get_variable("Global.first_house") == "Micah":
 		GlobalVars.in_interaction = ""
+		player.start_player()
 		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 	else:
 		GlobalVars.in_interaction = ""
+		player.start_player()
 		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 		
 		
@@ -85,6 +89,7 @@ func _on_thirdhouse_button_pressed() -> void:
 		if car_rev:
 			car_rev.play()
 		GlobalVars.in_interaction = ""
+		player.start_player()
 		Loading.load_scene(main, GlobalVars.third_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 		
 		#get_tree().change_scene_to_file("res://ThirdHouse/third_house.tscn")
@@ -99,17 +104,17 @@ func _on_office_button_pressed() -> void:
 		1: 
 			GlobalVars.in_look_screen = false
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
-			
+			player.start_player()
 			GlobalVars.in_interaction = ""
 		2: 
 			GlobalVars.in_look_screen = false
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
-			
+			player.start_player()
 			GlobalVars.in_interaction = ""
 		3: 
 			GlobalVars.in_look_screen = false
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "afternoon", Loading.choose_drive_dialogue())
-			
+			player.start_player()
 			GlobalVars.in_interaction = ""
 	#get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
 
@@ -120,6 +125,7 @@ func _on_secret_button_pressed() -> void:
 		car_rev.play()
 	GlobalVars.in_look_screen = false
 	GlobalVars.in_interaction = ""
+	player.start_player()
 	Loading.load_scene(main, GlobalVars.secret_path, "driving", "morning", Loading.choose_drive_dialogue())
 	
 	
