@@ -93,7 +93,10 @@ signal disable_look
 @export var Q_body : CharacterBody3D
 @export var Q_marker_end : Marker3D
 @export var Q_marker_end_safe : Marker3D
+@export var safe_bathroom_distract : Marker3D
 
+#handle distraction downstairs
+var bar_catch_area := false
 
 enum {
 	IDLE, 
@@ -343,6 +346,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 	if poolTable:
 		state = IDLE
 	if distance_to_target <= STOPPING_DISTANCE:
+				
 			catch_possibility = false
 			#emit_signal("collision_safe")
 			#is_navigating = false
@@ -862,6 +866,14 @@ func _on_wine_time_body_exited(body: Node3D) -> void:
 		is_distracted = false
 		is_navigating = true
 		state = FOLLOW
+	if body.is_in_group("player") and bar_catch_area == true:
+		bar_catch_area = false
+		rotate_number = 0
+		rotate_forced = false
+		wander_choice = 11
+		is_distracted = false
+		is_navigating = true
+		state = FOLLOW
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and general_distraction == false:
@@ -870,6 +882,17 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 		wander_choice = 0
 		nav.target_position = marker_positions[0].global_position
 		state = FOLLOW
+	if body.name == "Quincy" and catch_possibility:
+		bar_catch_area = true
+		if entered_catch_zone == false:
+			is_distracted = true
+			is_navigating = true
+			wander_choice = 0
+			nav.target_position = marker_positions[0].global_position
+			state = FOLLOW
+		else:
+			is_navigating = false
+			state = IDLE 
 
 #handling quincy stoppage after distraction
 func _on_catch_navigation_stop_body_entered(body: Node3D) -> void:
@@ -900,3 +923,8 @@ func _on_choco_entered(body):
 
 func _on_choco_exited(body):
 	in_choco = false
+
+
+func _on_bathroom_cam_became_active() -> void:
+	await get_tree().create_timer(1.3).timeout
+	Q_body.global_position = safe_bathroom_distract.global_position
