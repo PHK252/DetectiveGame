@@ -21,6 +21,8 @@ signal collision_safe
 var current_anim 
 var intDalton = false
 
+@export var pos_test : Marker3D
+
 @export var sound_player : AnimationPlayer
 @export var yawn : AudioStreamPlayer3D
 @export var scratch : AudioStreamPlayer3D
@@ -428,3 +430,10 @@ func _on_door_greet_done() -> void:
 
 func _on_caseorpic_rotationneeded(interactor: Interactor) -> void:
 	front_rotation = true
+
+
+func _on_window_close_became_active() -> void:
+	visible = false
+
+func _on_window_close_became_inactive() -> void:
+	visible = true
