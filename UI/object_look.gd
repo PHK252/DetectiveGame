@@ -14,9 +14,10 @@ func _ready():
 
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit"):
+	if Input.is_action_just_pressed("Exit") and visible == true:
 		$".".hide()
 		GlobalVars.in_look_screen = false
+		await get_tree().process_frame
 		await get_tree().process_frame
 		GlobalVars.viewing = ""
 		if show_mouse_exit == true or GlobalVars.in_interaction == "case":

@@ -55,6 +55,7 @@ func _on_tea_activate_temp_interacted(interactor):
 
 
 func _on_timeline_ended():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 
@@ -73,6 +74,7 @@ func _on_tea_drink_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false :
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				anim_drink.play("dalton_drink")
 				await anim_drink.animation_finished
 				GlobalVars.in_dialogue = true

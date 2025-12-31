@@ -128,6 +128,7 @@ func caseUI(argument: String):
 		
 func _process(delta: float) -> void:
 	if case_cam.priority == 30:
+
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#should be removed later one issue figured out
 

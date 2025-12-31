@@ -26,7 +26,7 @@ var is_open: bool = false
 func _ready():
 	pass
 	#print(interactable.monitorable)
-	#interactable.set_deferred("monitorable", false)
+	interactable.set_deferred("monitorable", false)
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
@@ -80,27 +80,37 @@ func _on_exit_pressed():
 func _input(event):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "level change":
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "map":
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			close_door.play()
-			map_ui.hide()
-			main_cam.set_tween_duration(0)
-			GlobalVars.viewing = ""
-			GlobalVars.in_look_screen = false
-			GlobalVars.in_interaction = ""
-			theo_norm.visible = true
-			theo_car.visible = false
-			dalton_car.visible = false
-			dalton_player.stop()
-			theo_player.stop()
-			main_cam.priority = 0
-			exit_cam.priority = 30
-			main_cam.set_tween_duration(1)
-			cam_anim.play("RESET")
-			player.show()
-			player.start_player()
-			GlobalVars.viewing = ""
-			GlobalVars.in_look_screen = false
-			GlobalVars.in_interaction = ""
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
+			_on_exit_pressed()
+			#close_door.play()
+			#map_ui.hide()
+			#main_cam.set_tween_duration(0)
+			#GlobalVars.viewing = ""
+			#GlobalVars.in_look_screen = false
+			#GlobalVars.in_interaction = ""
+			#theo_norm.visible = true
+			#theo_car.visible = false
+			#dalton_car.visible = false
+			#dalton_player.stop()
+			#theo_player.stop()
+			#main_cam.priority = 0
+			#exit_cam.priority = 30
+			#main_cam.set_tween_duration(1)
+			#cam_anim.play("RESET")
+			#player.show()
+			#player.start_player()
+			#GlobalVars.viewing = ""
+			#GlobalVars.in_look_screen = false
+			#GlobalVars.in_interaction = ""
+			#await get_tree().process_frame
+			#await get_tree().process_frame
+			#await get_tree().process_frame
+			#await get_tree().process_frame
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			
 
 
 func _on_main_door_activate_car():

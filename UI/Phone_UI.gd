@@ -62,7 +62,7 @@ func _on_notes_pressed():
 
 
 func _on_phone_pressed():
-	#print(GlobalVars.in_call)
+	print("phone entered")
 	if GlobalVars.in_call == true and GlobalVars.calling == true:
 		home.hide()
 		gallery.hide()

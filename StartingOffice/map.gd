@@ -58,7 +58,6 @@ func _input(event):
 			main_cam.set_tween_duration(0)
 			main_cam.priority = 0
 			exit_cam.priority = 30
-			main_cam.set_tween_duration(1)
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()

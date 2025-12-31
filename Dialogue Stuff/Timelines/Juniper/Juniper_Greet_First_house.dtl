@@ -2,7 +2,7 @@ set {Character Aff Points.Juniper} += 1
 if {Character Aff Points.Theo} > 0:
 	Juniper (Laugh): Hiya!
 	Dalton (Default): Hello.
-	jump open
+	#jump open
 	Dalton (Talk): Are you Juniper Hartley?
 	Juniper (Happy): Yes, Officer!
 	Dalton (Resting): ...?
@@ -23,7 +23,7 @@ if {Character Aff Points.Theo} > 0:
 	Juniper (Laugh): Of course!
 	Juniper (Happy): Come on in!
 	set {Juniper.Greeted} = true
-	label open
+	#label open
 	#[signal arg="open_door"]
 else:
 	Juniper (Laugh): Hiya!

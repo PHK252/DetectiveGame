@@ -85,11 +85,11 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "" and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
 			await get_tree().create_timer(.03).timeout
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			cam_anim.play("RESET")
 			player.show()
 			emit_signal("enable_look")
@@ -105,12 +105,12 @@ func _process(delta):
 			interact_area_2.hide()
 			alert.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "": 
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
 			emit_signal("general_quit")
 			await get_tree().create_timer(.03).timeout
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			cam_anim.play("RESET")
 			player.show()
 			player.start_player()
