@@ -749,6 +749,7 @@ func drop_distract():
 	Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
 	Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
 	emit_signal("time_out_resume")
+	
 
 
 func _on_safe_ui_alarm():
@@ -928,3 +929,13 @@ func _on_choco_exited(body):
 func _on_bathroom_cam_became_active() -> void:
 	await get_tree().create_timer(1.3).timeout
 	Q_body.global_position = safe_bathroom_distract.global_position
+
+
+func _on_main_quincy_leave() -> void:
+	is_distracted = true
+	extra_gate_end = false
+	end_time = true
+	is_navigating = true
+	special_rotation = true
+	nav.target_position = leave_position.global_position
+	state = FOLLOW

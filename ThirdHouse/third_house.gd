@@ -28,6 +28,9 @@ signal time_out_drop_distract
 signal phone_time_start
 signal open_main_door
 
+signal theo_leave
+signal quincy_leave
+
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
 
@@ -119,6 +122,8 @@ func _on_timer_timeout():
 		disable_interaction(interactables)
 		time_out = true
 		print("LEVEL TIMEOUT")
+		#emit_signal("theo_leave")
+		#emit_signal("quincy_leave")
 		player.stop_player()
 		alert.hide()
 		if GlobalVars.in_interaction == "":
@@ -133,6 +138,8 @@ func _on_timer_timeout():
 		 
 
 func _on_timeline_ended_timed():
+	emit_signal("theo_leave")
+	emit_signal("quincy_leave")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
 	GlobalVars.in_dialogue = false
 	player.start_player()
@@ -140,6 +147,8 @@ func _on_timeline_ended_timed():
 	
 
 func _on_timeline_ended_kicked():
+	emit_signal("theo_leave")
+	emit_signal("quincy_leave")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended_kicked)
 	GlobalVars.in_dialogue = false
 	player.start_player()

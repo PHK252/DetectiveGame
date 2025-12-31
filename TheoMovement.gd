@@ -1209,3 +1209,14 @@ func _on_sitting_ppl_theo_armature_visible() -> void:
 	collision_theo.disabled = false
 	emit_signal("TheoStand")
 	state = IDLE
+
+func _on_main_theo_leave() -> void:
+	faint_dalton = true
+	emit_signal("look_at_disactivate")
+	theo_adjustment = false
+	is_investigating = false
+	is_navigating = true 
+	nav.path_desired_distance = 0.75
+	nav.target_desired_distance = 1.0
+	STOPPING_DISTANCE = 1.0
+	state = FOLLOW
