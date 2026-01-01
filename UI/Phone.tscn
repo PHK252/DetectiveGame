@@ -492,6 +492,7 @@ metadata/_edit_vertical_guides_ = [2472.0, 2245.0]
 metadata/_edit_horizontal_guides_ = [1774.0]
 
 [node name="Background2" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
 anchors_preset = 15
 anchor_right = 1.0
@@ -889,7 +890,6 @@ position = Vector2(763, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="PhoneScreen" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1185,6 +1185,7 @@ libraries = {
 }
 
 [node name="ContactScreen" type="Control" parent="PhoneScreen"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1434,12 +1435,7 @@ scroll_active = false
 script = ExtResource("12_cs8vq")
 global_timer = NodePath("../../Timer")
 
-[node name="Phone Bottom" type="Control" parent="PhoneScreen"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Contact" type="TextureButton" parent="PhoneScreen/Phone Bottom"]
+[node name="Contact" type="TextureButton" parent="PhoneScreen"]
 layout_mode = 0
 offset_left = 828.0
 offset_top = 888.0
@@ -1450,7 +1446,7 @@ texture_normal = ExtResource("88_ca35y")
 texture_pressed = ExtResource("89_t6hk1")
 texture_hover = ExtResource("89_t6hk1")
 
-[node name="Keypad" type="TextureButton" parent="PhoneScreen/Phone Bottom"]
+[node name="Keypad" type="TextureButton" parent="PhoneScreen"]
 layout_mode = 0
 offset_left = 1050.0
 offset_top = 888.0
@@ -1460,6 +1456,13 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("90_8rgu2")
 texture_pressed = ExtResource("91_h1u1y")
 texture_hover = ExtResource("91_h1u1y")
+
+[node name="Phone Bottom" type="Control" parent="PhoneScreen"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy", "evidence")]
 visible = false
@@ -3246,12 +3249,12 @@ bus = &"SFX"
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Clyde" to="." method="_on_clyde_pressed"]
 [connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Skylar" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Skylar" to="." method="_on_skylar_pressed"]
-[connection signal="mouse_entered" from="PhoneScreen/Phone Bottom/Contact" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
-[connection signal="pressed" from="PhoneScreen/Phone Bottom/Contact" to="PhoneScreen/ContactScreen" method="_on_contact_pressed"]
-[connection signal="pressed" from="PhoneScreen/Phone Bottom/Contact" to="Phone_Sounds_General" method="_on_altClick_phone"]
-[connection signal="mouse_entered" from="PhoneScreen/Phone Bottom/Keypad" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
-[connection signal="pressed" from="PhoneScreen/Phone Bottom/Keypad" to="PhoneScreen/ContactScreen" method="_on_keypad_pressed"]
-[connection signal="pressed" from="PhoneScreen/Phone Bottom/Keypad" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="PhoneScreen/Contact" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="PhoneScreen/Contact" to="PhoneScreen/ContactScreen" method="_on_contact_pressed"]
+[connection signal="pressed" from="PhoneScreen/Contact" to="Phone_Sounds_General" method="_on_altClick_phone"]
+[connection signal="mouse_entered" from="PhoneScreen/Keypad" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="PhoneScreen/Keypad" to="PhoneScreen/ContactScreen" method="_on_keypad_pressed"]
+[connection signal="pressed" from="PhoneScreen/Keypad" to="Phone_Sounds_General" method="_on_altClick_phone"]
 [connection signal="visibility_changed" from="NotesScreen" to="NotesScreen" method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="NotesScreen/Home/Notes" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Home/Notes" to="NotesScreen" method="_on_notes_pressed"]

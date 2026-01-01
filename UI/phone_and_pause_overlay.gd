@@ -8,7 +8,7 @@ extends Control
 @onready var evidence_anim = $CanvasLayer/Evidence/AnimationPlayer
 
 @export var player : CharacterBody3D
-#temp var to check if called
+@export var background : TextureRect
 @onready var called = false
 @onready var phone_up = false
 
@@ -29,9 +29,7 @@ var exit = InputMap.action_get_events("Exit")
 var interact = InputMap.action_get_events("interact")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	##phone_ui.hide()
-	#await get_tree().create_timer(3).timeout
-	#GlobalVars.emit_phone_call()
+	#call_normal.toggle_on = false
 	pass
 func _process(delta):
 	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "":
@@ -63,10 +61,9 @@ func _on_receiving_call_pressed():
 	phone_ui.show()
 	phone_ui.set_receiving_call()
 
-			
-func _on_call_normal_pressed():
+func _on_call_normal_toggled(toggled_on):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_look_screen == false:
-		if GlobalVars.phone_up == false:
+		if toggled_on == true:
 			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				prev_mouse_mode = 2
 			elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
@@ -74,13 +71,11 @@ func _on_call_normal_pressed():
 			await get_tree().process_frame
 			InputMap.action_erase_events("Exit")
 			InputMap.action_erase_events("interact")
-			#print(prev_mouse_mode)
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			phone_ui.show()
 			GlobalVars.phone_up = true
 			player.stop_player() 
 		else:
-			#print(prev_mouse_mode)
 			InputMap.action_add_event("Exit", exit[0])
 			InputMap.action_add_event("interact", interact[0])
 			Input.set_mouse_mode(prev_mouse_mode)
@@ -90,6 +85,33 @@ func _on_call_normal_pressed():
 				player.start_player() 
 	else:
 		print("error")
+		
+#func _on_call_normal_pressed():
+	#if GlobalVars.in_dialogue == false and GlobalVars.in_look_screen == false:
+		#if GlobalVars.phone_up == false:
+			#if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				#prev_mouse_mode = 2
+			#elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				#prev_mouse_mode = 0
+			#await get_tree().process_frame
+			#InputMap.action_erase_events("Exit")
+			#InputMap.action_erase_events("interact")
+			##print(prev_mouse_mode)
+			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			#phone_ui.show()
+			#GlobalVars.phone_up = true
+			#player.stop_player() 
+		#else:
+			##print(prev_mouse_mode)
+			#InputMap.action_add_event("Exit", exit[0])
+			#InputMap.action_add_event("interact", interact[0])
+			#Input.set_mouse_mode(prev_mouse_mode)
+			#phone_ui.hide()
+			#GlobalVars.phone_up = false
+			#if GlobalVars.in_interaction == "":
+				#player.start_player() 
+	#else:
+		#print("error")
 
 func exit_call_screen():
 	InputMap.action_add_event("Exit", exit[0])
@@ -161,3 +183,15 @@ func _on_case_added_notes_overlay():
 			await get_tree().create_timer(6.0).timeout
 	phone_visible = false
 	in_evidence = false  
+
+
+
+
+func _on_phone_ui_visibility_changed():
+	if phone_ui.visible == true:
+		background.show()
+	else:
+		background.hide()
+		if call_normal.button_pressed == true:
+			call_normal.button_pressed = false
+		print(phone_up)

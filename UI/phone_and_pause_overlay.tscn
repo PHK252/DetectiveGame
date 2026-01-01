@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b4fmk8hkjnh1v"]
+[gd_scene load_steps=28 format=3 uid="uid://b4fmk8hkjnh1v"]
 
 [ext_resource type="Script" uid="uid://bo4tbw36hrcsa" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
 [ext_resource type="Texture2D" uid="uid://b6c7lhul6o2dq" path="res://UI/Assets/Pause overlay/Phone call normal.tres" id="4_ixe56"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://coi3wnw75drw1" path="res://UI/Phone.tscn" id="11_wwlkg"]
 [ext_resource type="Script" uid="uid://qaemgagjev3y" path="res://UI/call_sounds.gd" id="14_it1av"]
 [ext_resource type="AudioStream" uid="uid://kk44tow71lgj" path="res://Audio/misc_sounds/buzzsound.wav" id="21_wljcx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_it1av"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_uxvkf"]
 device = -1
@@ -156,7 +158,7 @@ _data = {
 &"Shake": SubResource("Animation_686su")
 }
 
-[node name="Phone and Pause Overlay" type="Control"]
+[node name="Phone and Pause Overlay" type="Control" node_paths=PackedStringArray("background")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -166,8 +168,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_m3hpa")
+background = NodePath("CanvasLayer/Background2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background2" type="TextureRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(0.325, 0.227, 0.184, 0.459)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_it1av")
 
 [node name="Receiving call" type="TextureButton" parent="CanvasLayer"]
 visible = false
@@ -201,7 +214,9 @@ offset_top = 956.0
 offset_right = 1908.0
 offset_bottom = 1056.0
 mouse_default_cursor_shape = 2
+toggle_mode = true
 shortcut = SubResource("Shortcut_uxvkf")
+shortcut_feedback = false
 shortcut_in_tooltip = false
 texture_normal = ExtResource("6_ygsle")
 texture_pressed = ExtResource("7_0704h")
@@ -215,6 +230,10 @@ libraries = {
 
 [node name="Phone UI" parent="CanvasLayer" instance=ExtResource("11_wwlkg")]
 visible = false
+
+[node name="Background2" parent="CanvasLayer/Phone UI" index="0"]
+z_index = -3
+z_as_relative = false
 
 [node name="Accept" parent="CanvasLayer/Phone UI/PhoneScreen/PhoneCall" index="2"]
 offset_left = 907.0
@@ -246,7 +265,9 @@ bus = &"SFX"
 [connection signal="stop_buzz" from="." to="Call_Sounds" method="_on_stop_buzz"]
 [connection signal="pressed" from="CanvasLayer/Receiving call" to="." method="_on_receiving_call_pressed"]
 [connection signal="pressed" from="CanvasLayer/Call Normal" to="." method="_on_call_normal_pressed"]
+[connection signal="toggled" from="CanvasLayer/Call Normal" to="." method="_on_call_normal_toggled"]
 [connection signal="enable_interact" from="CanvasLayer/Phone UI" to="." method="exit_call_screen"]
+[connection signal="visibility_changed" from="CanvasLayer/Phone UI" to="." method="_on_phone_ui_visibility_changed"]
 [connection signal="pressed" from="CanvasLayer/Phone UI/PhoneScreen/PhoneCall/Accept" to="." method="_on_accept_pressed"]
 [connection signal="added_notes_overlay" from="CanvasLayer/Phone UI/NotesScreen/Case" to="." method="_on_case_added_notes_overlay"]
 [connection signal="added_notes_overlay" from="CanvasLayer/Phone UI/NotesScreen/Evidence" to="." method="_on_case_added_notes_overlay"]
