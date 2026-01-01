@@ -523,6 +523,7 @@ func _on_k_control_body_entered(body: Node3D) -> void:
 		state = IDLE
 	if body.is_in_group("theo"):
 		if micahBack == false:
+			in_kitchen = false
 			nav.target_position = adjustment_list[8].global_position
 			is_navigating = true
 			state = ADJUST
