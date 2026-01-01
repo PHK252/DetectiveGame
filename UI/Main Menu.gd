@@ -17,8 +17,8 @@ var new_game : bool
 func _ready():
 	get_viewport().size_changed.connect(_on_new_window_size)
 	_on_new_window_size()
-	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	#await get_tree().process_frame
+	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	await get_tree().process_frame
 	#print(GlobalVars.current_level)
 	
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
@@ -58,7 +58,7 @@ func _on_quit_pressed():
 func _on_start_pressed():
 	#SceneTransitions.glitch_change_scene("res://StartingOffice/starting_office.tscn")
 	#LoadManager.load_scene(GlobalVars.first_house_path)
-	#Loading.load_scene(self, GlobalVars.first_house_path, true, "morning", "yes_diner")
+	#Loading.load_scene(self, GlobalVars.first_house_path, "driving", "afternoon", "Day_1_ride_to_back_to_station")
 	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
 

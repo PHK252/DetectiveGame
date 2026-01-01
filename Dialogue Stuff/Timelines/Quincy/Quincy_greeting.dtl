@@ -21,7 +21,7 @@ else:
 	Dalton (Talk): Hello.
 	if {Character Aff Points.Theo} > 3:
 		set {Quincy.first_greeting} = true
-		jump open
+		#jump open
 		Theo (Happy): Hi! 
 		Theo (Puppy Eyes): Wow! 
 		Theo (Silly): Your manor is even more impressive than what the papers show!
@@ -36,7 +36,7 @@ else:
 		Quincy (Squint Smug): All they'll do is slow us down, won't they? 
 		Quincy (Smirk): Just call me Quincy. 
 		Quincy (Smug): Now, why don't we head inside.
-		label  open
+		#label  open
 		[signal arg= "walk_in"]
 		Theo (Puppy Eyes): Woah...
 		Dalton (Sigh): Come on. 

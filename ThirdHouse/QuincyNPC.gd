@@ -444,7 +444,8 @@ func _on_dalton_caught_body_entered(body: Node3D) -> void:
 			emit_signal("open_doors")
 
 func _on_distraction_time_timeout() -> void:
-	interact.set_deferred("monitorable", true)
+	if interact:
+		interact.set_deferred("monitorable", true)
 	print("finished")
 	if in_danger == false:
 		print("no danger resume")

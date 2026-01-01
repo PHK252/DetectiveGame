@@ -5677,7 +5677,7 @@ button_group = SubResource("ButtonGroup_aof2x")
 [node name="Phone and Pause Overlay" parent="." node_paths=PackedStringArray("player") instance=ExtResource("135_kjarc")]
 player = NodePath("../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")
 
-[node name="Phone UI" parent="Phone and Pause Overlay/CanvasLayer" index="4" node_paths=PackedStringArray("dalton_marker", "phone_marker", "player")]
+[node name="Phone UI" parent="Phone and Pause Overlay/CanvasLayer" index="5" node_paths=PackedStringArray("dalton_marker", "phone_marker", "player")]
 dalton_marker = NodePath("../../../UI/Dalton\'s Marker")
 phone_marker = NodePath("../../../UI/Dalton\'s Marker")
 player = NodePath("../../../SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D")

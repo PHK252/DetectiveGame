@@ -39,7 +39,7 @@ func _ready() -> void:
 		return
 
 	cam_anims.play("IntroAnimation_revised")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(4).timeout
 	decision_cam.current = true
 	var intero_dialogue = Dialogic.start(dialogic_file)
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
