@@ -129,9 +129,6 @@ func _on_timer_timeout():
 			print("timeout_dialogue_entered")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
-			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 		else:
 			pass
 		 
