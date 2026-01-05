@@ -108,7 +108,10 @@ func _process(delta: float) -> void:
 
 	if not is_wandering and case_handling == false:
 		if greeting == true:
-			distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
+			if bookshelf == false:
+				distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
+			else:
+				distance_to_target = armature.global_transform.origin.distance_to(marker_positions[6].global_transform.origin)
 		else:
 			distance_to_target = armature.global_transform.origin.distance_to(marker_positions[5].global_transform.origin)
 			
@@ -252,6 +255,11 @@ func _process_anim():
 		tray_anim_player.play("trayDown")
 		await get_tree().create_timer(1.7).timeout
 		emit_signal("activate_drink")
+		#trying to stop all other anims possible
+		tray_anim_player.stop()
+		anim_tree.set("parameters/" + "Coffee" + "/request", 2)
+		anim_tree.set("parameters/Pour/request", 2)
+		#
 		tray_anim.visible = false
 		tray_static.visible = true
 		#tea_walking = false
@@ -262,6 +270,7 @@ func _process_anim():
 		wander_choice = 0
 		floor_type_gather()
 		await get_tree().create_timer(2.0).timeout
+		anim_tree.set("parameters/" + "Coffee" + "/request", 2)
 		var choice = rng.randi_range(-10, 10)
 		if wander_choice < 3:
 			var current_anim = one_shots[wander_choice]
