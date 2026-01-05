@@ -1216,3 +1216,14 @@ func _on_rotate_sloth(interactor: Interactor) -> void:
 
 func _on_bar_interaction_interacted_repos(interactor: Interactor) -> void:
 	daltonParent.global_position = safe_dalton_position.global_position
+
+
+func _on_cam_windowsJuniper_became_active() -> void:
+	in_control = false
+	await get_tree().create_timer(0.3).timeout
+	in_control = true
+
+func _on_cam_windows_became_inactive() -> void:
+	in_control = false
+	await get_tree().create_timer(0.5).timeout
+	in_control = true
