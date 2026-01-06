@@ -106,7 +106,7 @@ func _process(delta):
 				Exit_Cam.set_tween_duration(0)
 				FP_Cam.priority = 0
 				Exit_Cam.priority = 30
-				#await get_tree().create_timer(.03).timeout
+				GlobalVars.in_dialogue = true
 				cam_anim.play("RESET")
 				player.show()
 				emit_signal("enable_look")
@@ -134,7 +134,7 @@ func _process(delta):
 				Exit_Cam.priority = 30
 				emit_signal("general_quit")
 				emit_signal("enable_look")
-				#await get_tree().create_timer(.03).timeout
+				GlobalVars.in_dialogue = true
 				cam_anim.play("RESET")
 				player.show()
 				var game_dialogue = Dialogic.start(dialogue_file_1)
@@ -168,6 +168,7 @@ func _process(delta):
 				game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 				game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 				game_dialogue.register_character(load(load_char_dialogue), character_marker)
+				GlobalVars.in_dialogue = true
 				GlobalVars.in_interaction = ""
 				print("clear")
 				GlobalVars.set(dialogue_2, true)

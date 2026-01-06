@@ -34,8 +34,5 @@ func _physics_process(delta: float) -> void:
 		click.position = new_pos
 		Input.parse_input_event(click)
 		print("released")
-	
-	if Input.is_action_just_pressed("Quit"):
-		get_tree().quit()
 
 	

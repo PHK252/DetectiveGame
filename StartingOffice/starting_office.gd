@@ -84,10 +84,7 @@ func _ready():
 		return
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _input(event):
-	if Input.is_action_just_pressed("Quit"):
-		if pause.visible == false:
-			pause.visible = true
+
 	#if Input.is_action_just_pressed("mouse_click"):
 		#print("Dalton " + str(GlobalVars.dalton_pos))
 	

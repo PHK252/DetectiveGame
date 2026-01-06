@@ -53,6 +53,7 @@ func _process(delta):
 		
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.viewing == "":
 		if Input.is_action_just_pressed("Exit") and cork_cam.priority == 5:
+			print("enter")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			exit_cork.play()
 			cork_cam.priority = 0

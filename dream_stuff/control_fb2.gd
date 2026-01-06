@@ -40,7 +40,3 @@ func _isaac_movement(arg : String):
 		anim_I["parameters/conditions/snapOut"] = true
 		emit_signal("activate_look")
 		
-func _input(event):
-	if Input.is_action_just_pressed("Quit"):
-		if pause.visible == false:
-			pause.visible = true

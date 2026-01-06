@@ -190,7 +190,7 @@ func _on_phone_timeline_ended():
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "case file" or GlobalVars.in_interaction == "Ending Texts":
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		just_interacted = false
 		casefilecam.priority = 0

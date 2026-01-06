@@ -190,6 +190,8 @@ func _on_case_added_notes_overlay():
 func _on_phone_ui_visibility_changed():
 	if phone_ui.visible == true:
 		background.show()
+		if GlobalVars.phone_tut == false:
+			GlobalVars.phone_tut = true 
 	else:
 		background.hide()
 		if call_normal.button_pressed == true:

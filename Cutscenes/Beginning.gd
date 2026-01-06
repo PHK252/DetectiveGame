@@ -35,9 +35,3 @@ func _set_shadow(shadow) -> void:
 		#light.shadow_enabled = GlobalVars.optional_shadow
 func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
-
-
-func _process(delta):
-	if Input.is_action_just_pressed("Quit"):
-		if pause.visible == false:
-			pause.visible = true

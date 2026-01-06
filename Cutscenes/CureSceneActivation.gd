@@ -29,10 +29,6 @@ func _ready() -> void:
 	GlobalVars.current_level = "Give Cure"
 	cam_anims.play("IntroAnimation")
 
-func _input(event):
-	if Input.is_action_just_pressed("Quit"):
-		if pause.visible == false:
-			pause.visible = true
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	player.stop_player()

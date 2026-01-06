@@ -50,11 +50,6 @@ func _ready() -> void:
 	intero_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 	intero_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 	intero_dialogue.register_character(load("res://Dialogic Characters/Skylar.dch"), skylar_maker)
-	
-func _input(event):
-	if Input.is_action_just_pressed("Quit"):
-		if pause.visible == false:
-			pause.visible = true
 
 
 func _on_timeline_ended():

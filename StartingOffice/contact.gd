@@ -43,6 +43,9 @@ func _on_exit_pressed():
 		Dialogic.start("Office_contact_ad")
 		GlobalVars.viewed_contact == true
 		GlobalVars.viewing = ""
+	else:
+		GlobalVars.in_dialogue = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "contact":

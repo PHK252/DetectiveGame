@@ -53,10 +53,6 @@ func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
 
 
-func _input(event):
-	if Input.is_action_just_pressed("Quit"):
-		if pause.visible == false:
-			pause.visible = true
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

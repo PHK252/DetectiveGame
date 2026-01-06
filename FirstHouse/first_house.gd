@@ -77,13 +77,6 @@ func _set_shadow(shadow) -> void:
 		#light.shadow_enabled = GlobalVars.optional_shadow
 func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
-
-
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-func _input(event):
-	if Input.is_action_just_pressed("Quit"):
-		if pause.visible == false:
-			pause.visible = true
 	
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:

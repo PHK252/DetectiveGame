@@ -268,7 +268,7 @@ func _on_timeline_ended():
 
 func _on_knock_ended():
 	Dialogic.timeline_ended.disconnect(_on_knock_ended)
-	GlobalVars.in_dialogue = false
+	#GlobalVars.in_dialogue = false
 
 func _on_after_faint_open_door():
 	open()
