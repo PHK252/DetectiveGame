@@ -16,6 +16,7 @@ var idle_timer_active: bool = false
 @export var towel : Node3D
 @export var after_clog : Node3D
 @export var bathroom_position : Marker3D
+@export var window_position : Marker3D
 @export var charac_body : CharacterBody3D
 @export var coll_wall : CollisionShape3D
 @export var secret_location_walkin := false
@@ -828,6 +829,7 @@ func _on_Shelf_interacted(interactor: Interactor) -> void:
 	in_control = true
 
 func _on_Window_interacted(interactor: Interactor) -> void:
+	charac_body.global_position = window_position.global_position
 	number = 4
 	in_control = false
 	needs_rotation_forced = true
