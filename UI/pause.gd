@@ -27,6 +27,7 @@ func _on_resume_pressed():
 	print("resume_pressed")
 	resume.shortcut = null
 	get_tree().paused = false
+	Engine.time_scale = 1
 	visible = false
 	GlobalVars.unpaused.emit()
 	Input.set_mouse_mode(prev_mouse_mode)
@@ -72,6 +73,7 @@ func _on_visibility_changed():
 		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			prev_mouse_mode = 0
 		get_tree().paused = true
+		Engine.time_scale = 0
 		await get_tree().process_frame
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		InputMap.action_erase_events("Quit")

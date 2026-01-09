@@ -71,7 +71,7 @@ func _process(delta):
 		$Interactable.set_monitorable(false)
 
 func _on_door_second_j_dialogue() -> void:
-	if GlobalVars.in_dialogue == false and asked == false:
+	if asked == false:
 		#emit_signal("Tstop")
 		print("tryingtogrree")
 		GlobalVars.in_dialogue = true
