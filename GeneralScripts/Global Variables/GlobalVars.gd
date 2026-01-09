@@ -406,7 +406,7 @@ func set_mouse_default():
 
 func set_mouse_pointing():
 	#print("set pointing")
-	Input.set_custom_mouse_cursor(GlobalVars.pointing_hand, Input.CURSOR_POINTING_HAND, Vector2(20,22.5))
+	Input.set_custom_mouse_cursor(GlobalVars.pointing_hand, Input.CURSOR_POINTING_HAND, Vector2(10,6))
 
 func set_mouse_I_beam():
 	Input.set_custom_mouse_cursor(GlobalVars.i_beam, Input.CURSOR_IBEAM)

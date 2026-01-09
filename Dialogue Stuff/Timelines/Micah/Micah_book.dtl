@@ -5,9 +5,8 @@ if {Character Aff Points.Micah} < 2:
 	Micah (Awkward): I skimmed it a while back.
 	Micah (Default): Don't remember much, though.
 	label low choices
-	[wait time="0.3"]
-	Dalton (Default): ...
-	- Author of the note?
+	Dalton (Default): Ask about...
+	- Writer?
 		set {Asked Questions.Micah_Book_Asked_wrote} = true
 		Dalton (Doubt1): Did you write this note?
 		Micah (Awkward): What note?
@@ -25,7 +24,7 @@ if {Character Aff Points.Micah} < 2:
 		do GlobalVars.emit_add_note("micah", "bookmark", "wrote_low")
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
 			jump low choices
-	- Meaning of the note?
+	- Meaning?
 		set {Asked Questions.Micah_Book_Asked_meaning} = true
 		Dalton (Resting): Do you know what the note means?
 		Micah (Yawn): ...
@@ -42,8 +41,8 @@ else:
 	Micah (Awkward): Don't remember much, though.
 	label high choices
 	[wait time="0.3"]
-	Dalton (Default): ...
-	- Author of the note?
+	Dalton (Default): Ask about...
+	- Writer?
 		set {Asked Questions.Micah_Book_Asked_wrote} = true
 		Dalton (Default): Did you write this note?
 		Micah (Stare): Huh?
@@ -55,7 +54,7 @@ else:
 		do GlobalVars.emit_add_note("micah", "bookmark", "wrote_high")
 		if {Asked Questions.Micah_Book_Asked_meaning} == false:
 			jump high choices
-	- Meaning of the note?
+	- Meaning?
 		set {Asked Questions.Micah_Book_Asked_meaning} = true
 		Dalton (Talk): Do you know that the note means?
 		Micah (Awkward): No?

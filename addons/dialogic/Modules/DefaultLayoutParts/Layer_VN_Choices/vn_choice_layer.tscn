@@ -55,7 +55,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
+focus_neighbor_right = NodePath("../../Column2/DialogicNode_ChoiceButton3")
 focus_neighbor_bottom = NodePath("../DialogicNode_ChoiceButton2")
 focus_next = NodePath("../DialogicNode_ChoiceButton2")
 focus_previous = NodePath(".")
@@ -66,7 +66,7 @@ script = ExtResource("1_w632k")
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../DialogicNode_ChoiceButton1")
-focus_neighbor_right = NodePath(".")
+focus_neighbor_right = NodePath("../../Column2/DialogicNode_ChoiceButton4")
 focus_neighbor_bottom = NodePath("../../Column2/DialogicNode_ChoiceButton3")
 focus_next = NodePath("../../Column2/DialogicNode_ChoiceButton3")
 focus_previous = NodePath("../DialogicNode_ChoiceButton1")
@@ -79,9 +79,9 @@ theme_override_constants/separation = 5
 
 [node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices/Column2"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
+focus_neighbor_left = NodePath("../../Column1/DialogicNode_ChoiceButton1")
 focus_neighbor_top = NodePath("../../Column1/DialogicNode_ChoiceButton2")
-focus_neighbor_right = NodePath(".")
+focus_neighbor_right = NodePath("../../Column3/DialogicNode_ChoiceButton5")
 focus_neighbor_bottom = NodePath("../DialogicNode_ChoiceButton4")
 focus_next = NodePath("../DialogicNode_ChoiceButton4")
 focus_previous = NodePath("../../Column1/DialogicNode_ChoiceButton2")
@@ -90,9 +90,9 @@ script = ExtResource("1_w632k")
 
 [node name="DialogicNode_ChoiceButton4" type="Button" parent="Choices/Column2"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
+focus_neighbor_left = NodePath("../../Column1/DialogicNode_ChoiceButton2")
 focus_neighbor_top = NodePath("../DialogicNode_ChoiceButton3")
-focus_neighbor_right = NodePath(".")
+focus_neighbor_right = NodePath("../../Column3/DialogicNode_ChoiceButton6")
 focus_neighbor_bottom = NodePath("../../Column3/DialogicNode_ChoiceButton5")
 focus_next = NodePath("../../Column3/DialogicNode_ChoiceButton5")
 focus_previous = NodePath("../DialogicNode_ChoiceButton3")
@@ -104,7 +104,7 @@ layout_mode = 2
 
 [node name="DialogicNode_ChoiceButton5" type="Button" parent="Choices/Column3"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
+focus_neighbor_left = NodePath("../../Column2/DialogicNode_ChoiceButton3")
 focus_neighbor_top = NodePath("../../Column2/DialogicNode_ChoiceButton4")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../DialogicNode_ChoiceButton6")
@@ -115,7 +115,7 @@ script = ExtResource("1_w632k")
 
 [node name="DialogicNode_ChoiceButton6" type="Button" parent="Choices/Column3"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
+focus_neighbor_left = NodePath("../../Column2/DialogicNode_ChoiceButton4")
 focus_neighbor_top = NodePath("../DialogicNode_ChoiceButton5")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")

@@ -71,12 +71,14 @@ func _process(delta):
 			emit_signal("activate_look")
 			cam_anim.play("RESET")
 			player.show()
+			player.stop_player()
 			var book_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			book_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 			book_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 			book_dialogue.register_character(load(load_char_dialogue), character_marker)
 			GlobalVars.in_interaction = ""
+			GlobalVars.in_dialogue = true
 			GlobalVars.set(dialogue, true)
 			interact_area.hide()
 			alert.hide()

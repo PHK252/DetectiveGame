@@ -20,14 +20,13 @@ extends Node2D
 @export var begin := false
 @export var end := false
 
-signal posChange(pos : int)
 func _ready():
 	#$".".hide()
 	numChange()
 
 func _on_up_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-	##case_click.play()
+	case_click.play()
 	
 	if numClick < 9:
 		numClick = numClick + 1 
@@ -37,7 +36,7 @@ func _on_up_pressed():
 
 func _on_down_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		##case_click.play()
+		case_click.play()
 		
 		if numClick > 0:
 			numClick = numClick - 1

@@ -115,6 +115,12 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			print("dalton_move_knock")
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
+			if alert.visible == true:
+				print("alert hid")
+				alert.hide()
 			return
 		
 		
