@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ectnv6dstuhg"]
+[gd_scene load_steps=28 format=3 uid="uid://ectnv6dstuhg"]
 
 [ext_resource type="Script" uid="uid://dyr6n71gjkllk" path="res://UI/Lock_Number_change.gd" id="1_foqkb"]
 [ext_resource type="Texture2D" uid="uid://cgldbao7t3snt" path="res://UI/Assets/Micah case/Case3.png" id="2_d8yj6"]
@@ -11,7 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://dt88akq8v3pef" path="res://UI/Assets/Micah case/Case Arrow Up active.png" id="9_rqmqh"]
 [ext_resource type="Texture2D" uid="uid://3n40s1ve2fvk" path="res://UI/Assets/Micah case/Case Arrow Up inactive.png" id="11_tcpv0"]
 [ext_resource type="Texture2D" uid="uid://bv6shnd0toig3" path="res://UI/Assets/Micah case/Case Arrow Down active.png" id="12_2tgmk"]
+[ext_resource type="Texture2D" uid="uid://d36hwrescbuto" path="res://UI/Assets/Micah case/Case Arrow Right inactive.png" id="13_g7aii"]
+[ext_resource type="Texture2D" uid="uid://cy2mv5eftv0ky" path="res://UI/Assets/Micah case/Case Arrow Right active.png" id="14_b47rx"]
 [ext_resource type="Texture2D" uid="uid://dkbujski12d3u" path="res://UI/Assets/Micah case/Case Arrow Down inactive.png" id="14_jthfh"]
+[ext_resource type="Texture2D" uid="uid://de0s2j7j48j3j" path="res://UI/Assets/Micah case/Case Arrow Left inactive.png" id="15_qpsj0"]
+[ext_resource type="Texture2D" uid="uid://dwue7ww6bggo3" path="res://UI/Assets/Micah case/Case Arrow left active.png" id="16_sa6fn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x6on4"]
 load_path = "res://.godot/imported/Case0.png-717489bb275d1f98ae94354208b90701.ctex"
@@ -33,6 +37,20 @@ action = &"Down"
 
 [sub_resource type="Shortcut" id="Shortcut_erwu8"]
 events = [SubResource("InputEventAction_qiod5")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_g7aii"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_b47rx"]
+events = [SubResource("InputEventKey_g7aii")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_qpsj0"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_sa6fn"]
+events = [SubResource("InputEventKey_qpsj0")]
 
 [node name="Pos" type="Node2D"]
 script = ExtResource("1_foqkb")
@@ -133,5 +151,31 @@ texture_pressed = ExtResource("12_2tgmk")
 texture_hover = ExtResource("12_2tgmk")
 texture_disabled = ExtResource("14_jthfh")
 
+[node name="Right" type="TextureButton" parent="."]
+offset_left = 143.0
+offset_top = 143.0
+offset_right = 153.0
+offset_bottom = 158.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_b47rx")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("13_g7aii")
+texture_pressed = ExtResource("14_b47rx")
+texture_hover = ExtResource("14_b47rx")
+
+[node name="Left" type="TextureButton" parent="."]
+offset_left = 58.0
+offset_top = 143.0
+offset_right = 68.0
+offset_bottom = 158.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_sa6fn")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("15_qpsj0")
+texture_pressed = ExtResource("16_sa6fn")
+texture_hover = ExtResource("16_sa6fn")
+
 [connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
 [connection signal="pressed" from="Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Left" to="." method="_on_left_pressed"]

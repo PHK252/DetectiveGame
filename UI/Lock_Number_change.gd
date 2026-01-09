@@ -12,18 +12,22 @@ extends Node2D
 @onready var num9 = $"9"
 
 @onready var numClick = 0
+@onready var case_ui = $".."
+
 
 #sound
 @export var case_click : AudioStreamPlayer
+@export var begin := false
+@export var end := false
 
-
+signal posChange(pos : int)
 func _ready():
 	#$".".hide()
 	numChange()
 
 func _on_up_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-	case_click.play()
+	##case_click.play()
 	
 	if numClick < 9:
 		numClick = numClick + 1 
@@ -33,7 +37,7 @@ func _on_up_pressed():
 
 func _on_down_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		case_click.play()
+		##case_click.play()
 		
 		if numClick > 0:
 			numClick = numClick - 1
@@ -44,15 +48,29 @@ func _on_down_pressed():
 
 func hideArrows():
 	$Up.disabled = true
-	$Up.hide()
 	$Down.disabled = true
+	$Right.disabled= true
+	$Left.disabled= true
+	$Up.hide()
 	$Down.hide()
-
+	$Right.hide()
+	$Left.hide()
 func showArrows():
 	$Up.disabled = false
-	$Up.show()
 	$Down.disabled = false
+	$Right.disabled= false
+	$Left.disabled= false
+	$Up.show()
 	$Down.show()
+	if end == true:
+		$Right.hide()
+	else:
+		$Right.show()
+	if begin == true:
+		$Left.hide()
+	else:
+		$Left.show()
+	
 
 func numChange():
 	if numClick == 0:
@@ -175,3 +193,17 @@ func numChange():
 		num7.hide()
 		num8.hide()
 		num9.show()
+
+
+func _on_right_pressed():
+	
+	if case_ui.posClick < 5:
+		case_ui.posClick = case_ui.posClick + 1 
+		case_ui.posChange()
+		print(case_ui.posClick)
+
+func _on_left_pressed():
+	if case_ui.posClick > 0:
+		case_ui.posClick = case_ui.posClick - 1
+		case_ui.posChange()
+		print(case_ui.posClick)

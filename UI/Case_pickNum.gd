@@ -66,21 +66,13 @@ func  show_closed_case():
 
 func _input(event):
 	if GlobalVars.Micah_in_case == true:
-		if Input.is_action_just_pressed("case_right"):
-			switch.play()
-			if posClick < 5:
-				posClick = posClick + 1 
-			else:
-				posClick = 0
-			posChange()
-		
-		if Input.is_action_just_pressed("case_left"):
-			switch.play()
-			if posClick > 0:
-				posClick = posClick - 1
-			else:
-				posClick = 5
-			posChange()
+		#if Input.is_action_just_pressed("case_right"):
+			#switch.play()
+#
+		#
+		#if Input.is_action_just_pressed("case_left"):
+			#switch.play()
+
 		if Input.is_action_just_pressed("ui_accept"):
 			print(check)
 			if check != password:
@@ -131,6 +123,7 @@ func _open_case():
 
 
 func posChange():
+	##switch.play()
 	if posClick == 0:
 		pos1.showArrows()
 		pos2.hideArrows()
