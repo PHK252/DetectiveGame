@@ -64,6 +64,9 @@ var bookshelf := false
 
 signal activate_drink
 
+signal stop_theo_for_tea
+signal start_theo_after_tea
+
 var stop_jitter := false
 var intDalton := false
 
@@ -284,6 +287,7 @@ func _process_anim():
 				wander_choice = 1
 		wander_rotate = false
 			#if choice > 0:
+		emit_signal("start_theo_after_tea")
 		nav.target_position = marker_positions[wander_choice].global_position
 		is_navigating = true
 		is_wandering = true
@@ -538,6 +542,7 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 
 func _on_tea_activated():
 	print("interactedTea")
+	emit_signal("stop_theo_for_tea")
 	wander_rotate = false
 	wander_choice = 0
 	var current_anim = one_shots[wander_choice]

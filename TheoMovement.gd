@@ -37,6 +37,9 @@ var faint_dalton := false
 var waterfall_scene := false
 var sofa_scene := false
 var juniper_clear := true
+
+var stopped_theo_for_tea := false
+
 @export var drunk_marker : Marker3D
 @export var theo_node : CharacterBody3D
 @export var stairMarker : Marker3D
@@ -867,7 +870,7 @@ func _on_right_porch_body_entered(body: Node3D) -> void:
 		state = ADJUST
 
 func _on_sofa_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and stopped_theo_for_tea == false:
 		#print("adjustMiddle")
 		#theo_adjustment = true
 		sofa_scene = true
@@ -887,9 +890,10 @@ func _on_left_porch_body_exited(body: Node3D) -> void:
 
 func _on_sofa_area_body_exited(body: Node3D) -> void:
 	#theo_adjustment = false
-	emit_signal("look_at_disactivate")
-	sofa_scene = false
-	in_kitchen = false 
+	if stopped_theo_for_tea == false:
+		emit_signal("look_at_disactivate")
+		sofa_scene = false
+		in_kitchen = false 
 
 func _on_interactable_interacted_Juniper(interactor: Interactor) -> void:	
 	#print("noteTakeStop")
@@ -1234,3 +1238,16 @@ func _on_main_theo_leave() -> void:
 	nav.target_desired_distance = 1.0
 	STOPPING_DISTANCE = 1.0
 	state = FOLLOW
+
+
+func _on_juniper_stop_theo_for_tea() -> void:
+	stopped_theo_for_tea = true
+	emit_signal("two_targ_dalton", 1)
+	emit_signal("look_at_activate")
+	is_navigating = false
+	
+func _on_juniper_start_theo_after_tea() -> void:
+	stopped_theo_for_tea = false
+	emit_signal("two_targ_dalton", 1)
+	emit_signal("look_at_disactivate")
+	is_navigating = true
