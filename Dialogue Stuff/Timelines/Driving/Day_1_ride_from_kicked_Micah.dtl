@@ -26,7 +26,8 @@ if {Juniper.kicked_out} == true:
 	[end_timeline]
 else:
 	set {Global.flip_bubble} = true
-	"Theo Driving": Dalton, what the hell happened?
+	"Theo Driving": Dalton...
+	"Theo Driving": What the hell happened?
 	"Theo Driving": That was a disaster.
 	set {Global.flip_bubble} = false
 	"Dalton Driving": It’s Detective Reynard-
@@ -52,6 +53,6 @@ else:
 	set {Global.flip_bubble} = false
 	"Dalton Driving": ...
 	set {Global.flip_bubble} = true
-	"Theo Driving": Fine, let’s go.
+	"Theo Driving": Fine.
 	set {Global.flip_bubble} = false
 	[end_timeline]
