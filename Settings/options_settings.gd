@@ -20,4 +20,5 @@ func _on_visibility_changed():
 
 
 func _on_exit_pressed():
+	SaveLoad.saveSettings(SaveLoad.SAVE_DIR + SaveLoad.SETTINGS_FILE)
 	emit_signal("options_exit")

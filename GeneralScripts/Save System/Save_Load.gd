@@ -2,10 +2,13 @@ extends Node
 
 # Global
 const SAVE_DIR = "user://savegame/"
+const SETTING_DIR = "user://savegame/"
 const SAVE_FILE_NAME = "save.json"
+const SETTINGS_FILE = "settings.json"
 const SECURITY_KEY = "hdksfa42442"
 
 signal loaded
+signal loaded_settings
 
 @onready var char_pos = {}
 func _ready():
@@ -13,6 +16,55 @@ func _ready():
 	
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
+
+func saveSettings(path: String):
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+	var data: Dictionary = {
+		"Tutorial":{
+			"movement_tut": GlobalVars.movement_tut,
+			"interact_tut" : GlobalVars.interact_tut,
+			"dialogue_tut" : GlobalVars.dialogue_tut,
+			"flip_tut" : GlobalVars.flip_tut,
+			"exit_tut" : GlobalVars.exit_tut,
+			"map_tut" : GlobalVars.map_tut,
+			"phone_tut" : GlobalVars.phone_tut,
+			"run_tut" : GlobalVars.run_tut,
+		},
+		"Settings":{
+			"stretch_factor" : GlobalVars.stretch_factor,
+			"optional_shadow" : GlobalVars.optional_shadow, 
+			"brightness" : GlobalVars.brightness,
+		}
+	}
+	var json_string = JSON.stringify(data, "\t", false)
+	file.store_line(json_string)
+	file.close()
+
+func loadSettings(path : String):
+	if FileAccess.file_exists(path):
+		#var file = FileAccess.open(path, FileAccess.WRITE)
+		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
+		if file == null:
+			printerr(FileAccess.get_open_error())
+			return
+		
+		var content = file.get_as_text()
+		file.close()
+		
+		var data = JSON.parse_string(content)
+		if data == null:
+			printerr("Cannot parse %s as a json_string : (%s)" % [path, content])
+			return
+		
+		#load here
+		_load_arr(data, "Tutorial", GlobalVars.load_tutorial_arr)
+		_load_arr(data, "Settings", GlobalVars.load_settings_arr)
+		
+		emit_signal("loaded_settings")
+		
+	else:
+		printerr("Cannot open non_existent file at %s!" % [path])
+		return
 
 func saveGame(path: String, dialogic_save : bool = true):
 	if dialogic_save == true:
@@ -60,6 +112,8 @@ func saveGame(path: String, dialogic_save : bool = true):
 			#case
 			"clicked_case_file": GlobalVars.clicked_case_file,
 			"viewed_case_file": GlobalVars.viewed_case_file,
+			#Quincy Call
+			"Day_1_Quincy_call" : GlobalVars.Day_1_Quincy_call
 		},
 		"Micah_Vars":{
 			"micah_kicked_out" : GlobalVars.micah_kicked_out,

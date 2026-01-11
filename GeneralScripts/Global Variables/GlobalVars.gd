@@ -79,9 +79,10 @@ var load_phone_name_arr = ["phone_contacts", "clock_time", "micah_notes", "junip
 #Case File
 @onready var clicked_case_file = 0
 @onready var viewed_case_file = false
-
+#Quincy Call
+@onready var Day_1_Quincy_call = false
 var load_Office_name_arr = ["intro_dialogue", "clicked_contact", "viewed_contact", "has_contact", "clicked_partner", "viewed_partner",
-"clicked_news", "viewed_news", "clicked_team", "viewed_team", "clicked_missing", "viewed_missing", "clicked_case_file", "viewed_case_file"]
+"clicked_news", "viewed_news", "clicked_team", "viewed_team", "clicked_missing", "viewed_missing", "clicked_case_file", "viewed_case_file", "Day_1_Quincy_call"]
 
 ##Micah Vars
 @onready var micah_kicked_out = false
@@ -325,8 +326,7 @@ var phone_tut = false # or first level
 #handled in first level
 var run_tut = false
 
-var Day_1_Quincy_call = false
-var Day_3_Chief_call = false
+var load_tutorial_arr := ["movement_tut", "interact_tut", "dialogue_tut", "flip_tut", "exit_tut", "map_tut", "phone_tut", "run_tut"]
 
 signal pixelation_changed(new_value)
 signal shadow_changed(new_value)
@@ -348,6 +348,7 @@ var brightness := 1.0:
 		brightness = value
 		emit_signal("brightness_changed", value)
 
+var load_settings_arr := ["stretch_factor", "optional_shadow", "brightness"]
 ###Save Up until Here?
 var from_save_file = false
 var to_quit = false

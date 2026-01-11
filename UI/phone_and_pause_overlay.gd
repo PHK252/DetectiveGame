@@ -149,7 +149,6 @@ func _on_accept_pressed():
 		emit_signal("start_call_end")
 		return
 	if GlobalVars.day == 3:
-		GlobalVars.Day_3_Chief_call = true
 		emit_signal("start_call_day_3")
 		return
 
@@ -192,6 +191,7 @@ func _on_phone_ui_visibility_changed():
 		background.show()
 		if GlobalVars.phone_tut == false:
 			GlobalVars.phone_tut = true 
+			SaveLoad.saveSettings(SaveLoad.SAVE_DIR + SaveLoad.SETTINGS_FILE)
 	else:
 		background.hide()
 		if call_normal.button_pressed == true:

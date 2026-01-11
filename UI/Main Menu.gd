@@ -23,6 +23,7 @@ func _ready():
 	
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("New Game: " + str(new_game))
+	SaveLoad.loadSettings(SaveLoad.SAVE_DIR + SaveLoad.SETTINGS_FILE)
 	if new_game == true:
 		start_butt.show()
 		continue_new_cont.hide()
