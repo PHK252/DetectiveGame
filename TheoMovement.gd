@@ -84,6 +84,8 @@ signal force_quincy_bar
 
 signal two_targ_dalton(targ: int)
 
+var in_nav_danger := false
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -522,29 +524,32 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 			#state = FOLLOW
 
 func _on_k_control_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and in_nav_danger == false:
 		emit_signal("look_at_activate")
 		emit_signal("two_targ_dalton", 2)
 		in_kitchen = true
 		is_navigating = false
 		state = IDLE
-	if body.is_in_group("theo"):
-		if micahBack == false:
+	elif body.is_in_group("theo"):
 			#in_kitchen = false
+			in_nav_danger = true
 			nav.target_position = adjustment_list[8].global_position
 			is_navigating = true
 			state = ADJUST
+			#hopefully micah is never behind sofa
 		#force_idle_closet = true
 		#if around sofa then force idle and look at dalton
 
 func _on_k_control_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and in_nav_danger == false:
 		emit_signal("look_at_disactivate")
 		emit_signal("two_targ_dalton", 1)
 		in_kitchen = false
 		if anim_tree["parameters/Blend2/blend_amount"] == 0:
 			is_navigating = true
 			state = FOLLOW
+	elif body.is_in_group("theo"):
+		in_nav_danger = false
 	#if body.is_in_group("theo"):
 		#force_idle_closet = false
 
