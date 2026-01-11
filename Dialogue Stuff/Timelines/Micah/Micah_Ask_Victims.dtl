@@ -2,7 +2,6 @@ set {Asked Questions.num_asked} = 0
 Dalton (Talk): Can I ask you a few questions?
 Micah (Awkward): I guess.
 label choices
-[wait time= "0.3"]
 Dalton (Default): Ask about... 
 - Other victims.
 	Dalton (Default): Show picture of... 
@@ -10,7 +9,6 @@ Dalton (Default): Ask about...
 		label juniper qs
 		set {Asked Questions.Micah_asked_juniper} = true
 		if {Character Aff Points.Micah} < 2:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Connection to Juniper?
 				if {Asked Questions.Micah_Juniper_Q1} == true:
@@ -39,7 +37,6 @@ Dalton (Default): Ask about...
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton (Default): ...
 					- Ask more questions
 						jump choices
@@ -65,7 +62,6 @@ Dalton (Default): Ask about...
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton: ...
 					- Ask more questions
 						jump choices
@@ -73,7 +69,6 @@ Dalton (Default): Ask about...
 						Dalton (Resting): That's all the questions I have for now.
 						[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Connection to Juniper?
 				if {Asked Questions.Micah_Juniper_Q1} == true:
@@ -116,7 +111,6 @@ Dalton (Default): Ask about...
 					Dalton (Talk): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton (Default): ...
 					- Ask more questions
 						jump choices
@@ -143,7 +137,6 @@ Dalton (Default): Ask about...
 					Dalton (Talk): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton (Default): ...
 					- Ask more questions
 						jump choices
@@ -153,7 +146,6 @@ Dalton (Default): Ask about...
 	- Quincy Leonid.
 		label quincy qs
 		if {Character Aff Points.Micah} < 2:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Connection to Quincy?
 				if {Asked Questions.Micah_Quincy_Q1} == true:
@@ -181,7 +173,6 @@ Dalton (Default): Ask about...
 					Dalton (Default): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton (Default): ...
 					- Ask more questions
 						jump choices
@@ -204,7 +195,6 @@ Dalton (Default): Ask about...
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton (Default): ...
 					- Ask more questions
 						jump choices
@@ -212,7 +202,6 @@ Dalton (Default): Ask about...
 						Dalton (Resting): That's all the questions I have for now.
 						[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Connection to Quincy?
 				if {Asked Questions.Micah_Quincy_Q1} == true:
@@ -245,7 +234,6 @@ Dalton (Default): Ask about...
 					Dalton (Talk): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton (Default): ...
 					- Ask more questions
 						jump choices
@@ -276,7 +264,6 @@ Dalton (Default): Ask about...
 					Dalton (Talk): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					[wait time="0.3"]
 					Dalton: ...
 					- Ask more questions
 						jump choices
@@ -290,7 +277,6 @@ Dalton (Default): Ask about...
 			if {Asked Questions.Micah_repeat_Dad} == false
 				set {Asked Questions.Micah_repeat_Dad} = true
 				set {Character Aff Points.Micah} -= 1
-				[wait time= "0.3"]
 			Dalton (Resting): Clyde Procyon.
 			Micah (Sus): I told you to leave him out of this.
 			Dalton (Awkward): Hmph.
@@ -319,7 +305,6 @@ Dalton (Default): Ask about...
 				Dalton (Resting): That's all the questions I have for now.
 				[end_timeline]
 			else:
-				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
 					jump choices
@@ -359,7 +344,6 @@ Dalton (Default): Ask about...
 				Dalton: That's all the questions I have for now.
 				[end_timeline]
 			else:
-				[wait time="0.3"]
 				Dalton: ...
 				- Ask more questions
 					jump choices
@@ -395,7 +379,6 @@ Dalton (Default): Ask about...
 			Dalton (Resting): That's all the questions I have for now.
 			[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton (Default): ...
 			- Ask more questions
 				jump choices
@@ -432,7 +415,6 @@ Dalton (Default): Ask about...
 			Dalton (Talk): That's all the questions I have for now.
 			[end_timeline]
 		else:
-			[wait time="0.3"]
 			Dalton: ...
 			- Ask more questions
 				jump choices

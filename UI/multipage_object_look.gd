@@ -9,8 +9,8 @@ signal paper_sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
 	pages[pCount].show()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +18,6 @@ func _process(delta):
 	pass
 
 func _on_forward_pressed():
-	#turnPageForward(5)
 	emit_signal("paper_sound")
 	if pCount == pageCount - 1:
 		pCount = 0
@@ -27,7 +26,6 @@ func _on_forward_pressed():
 		pCount += 1
 		pages[pCount - 1].hide()
 	pages[pCount].show()
-	#print(pCount)
 
 func _on_back_pressed():
 	emit_signal("paper_sound")

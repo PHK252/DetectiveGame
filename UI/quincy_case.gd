@@ -254,7 +254,6 @@ func reset_when_switch():
 func _open_case():
 	case_unlocked.play()
 	#cam_anim.play("Case_look")
-	#hide_closed_case()
 	#show_open_case()
 	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_case = false
