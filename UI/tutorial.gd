@@ -10,6 +10,7 @@ class_name Tutorial
 @export var phone_tut : Node
 @export var flip_tut : Node
 @export var dialogue_tut : Node
+@export var map_tut : Node
 
 @onready var timer = $Timer
 @onready var current_tut : Node
@@ -46,6 +47,9 @@ func _show_tut(tut_type : String):
 	elif tut_type == "dialogue":
 		current_tut = dialogue_tut
 		current_anim = "Blink Pause"
+	elif tut_type == "map":
+		current_tut = map_tut
+		current_anim = "Blink Map"
 	else:
 		print_debug("Tutorial Loading Failed")
 		return

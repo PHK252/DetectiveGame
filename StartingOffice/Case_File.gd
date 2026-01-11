@@ -15,6 +15,7 @@ extends MeshInstance3D
 
 var dialogue_file : String
 var just_interacted := false
+signal _show_tut(tut_type : String)
 signal theo_out
 signal theo_move
 signal activate_map
@@ -172,6 +173,8 @@ func _on_timeline_ended():
 	alert.show()
 	office_theme.play()
 	theo_theme.stop()
+	if GlobalVars.map_tut == false:
+		emit_signal("_show_tut", "map")
 	GlobalVars.in_dialogue = false
 	emit_signal("activate_map")
 	GlobalVars.in_interaction = ""

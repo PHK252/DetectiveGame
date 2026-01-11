@@ -320,6 +320,7 @@ var dialogue_tut = false
 #handled in office
 var flip_tut = false
 var exit_tut = false
+var map_tut = false
 var phone_tut = false # or first level
 #handled in first level
 var run_tut = false

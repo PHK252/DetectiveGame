@@ -1,7 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjrv3kmqym4e1"]
+[gd_scene load_steps=29 format=3 uid="uid://cjrv3kmqym4e1"]
 
 [ext_resource type="Script" uid="uid://bxm3brlgnve21" path="res://StartingOffice/scenechange.gd" id="1_n4a1j"]
-[ext_resource type="Texture2D" uid="uid://3dybopp2edp5" path="res://StartingOffice/Map v2 large.png" id="2_ek0q2"]
+[ext_resource type="Texture2D" uid="uid://c748bmbj8e61f" path="res://StartingOffice/Office Map Small.png" id="2_tdlr5"]
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="3_5gnlj"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="4_rhcr0"]
 [ext_resource type="Texture2D" uid="uid://q2c5aislv1l7" path="res://UI/Assets/Map/Map_pins_normal_anim.tres" id="5_rhcr0"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bxpueclt77ud8" path="res://UI/Assets/Map/Office Pin Hovered2.png" id="18_cctyf"]
 [ext_resource type="Texture2D" uid="uid://bkvt3v0npsc6k" path="res://UI/Assets/Map/Office Pin Hovered3.png" id="19_sw58j"]
 [ext_resource type="Texture2D" uid="uid://blgdcrq1b3ecx" path="res://UI/Assets/Map/Office Pin Hovered4.png" id="20_7ob01"]
+[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="21_qs08e"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1pcwa"]
 
@@ -95,18 +96,19 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_ek0q2")
 
 [node name="Map" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 322.5
-offset_top = -310.0
-offset_right = -322.5
-offset_bottom = 310.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.5
+offset_top = -510.0
+offset_right = 382.5
+offset_bottom = 510.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-pivot_offset = Vector2(637.5, 850)
-texture = ExtResource("2_ek0q2")
+pivot_offset = Vector2(382.5, 510)
+texture = ExtResource("2_tdlr5")
 
 [node name="Exit" type="TextureButton" parent="."]
 offset_left = 50.0
@@ -121,10 +123,10 @@ texture_pressed = ExtResource("4_rhcr0")
 texture_hover = ExtResource("4_rhcr0")
 
 [node name="Micah" type="TextureButton" parent="."]
-offset_left = 995.0
-offset_top = 870.0
-offset_right = 1025.0
-offset_bottom = 985.0
+offset_left = 998.0
+offset_top = 868.0
+offset_right = 1028.0
+offset_bottom = 983.0
 scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -135,10 +137,10 @@ texture_hover = ExtResource("7_uw31m")
 texture_disabled = ExtResource("8_xb0rx")
 
 [node name="Juniper" type="TextureButton" parent="."]
-offset_left = 641.0
-offset_top = 546.0
-offset_right = 741.0
-offset_bottom = 661.0
+offset_left = 629.0
+offset_top = 574.0
+offset_right = 659.0
+offset_bottom = 689.0
 scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -150,9 +152,9 @@ texture_disabled = ExtResource("8_xb0rx")
 
 [node name="Quincy" type="TextureButton" parent="."]
 offset_left = 1190.0
-offset_top = 48.0
+offset_top = 49.0
 offset_right = 1224.0
-offset_bottom = 163.0
+offset_bottom = 164.0
 scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -165,9 +167,9 @@ texture_disabled = ExtResource("8_xb0rx")
 
 [node name="Office" type="TextureButton" parent="."]
 offset_left = 860.0
-offset_top = 498.0
-offset_right = 960.0
-offset_bottom = 613.0
+offset_top = 499.0
+offset_right = 890.0
+offset_bottom = 614.0
 scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -179,9 +181,9 @@ texture_disabled = ExtResource("13_2byc5")
 
 [node name="Secret" type="TextureButton" parent="."]
 offset_left = 641.0
-offset_top = 63.0
-offset_right = 741.0
-offset_bottom = 178.0
+offset_top = 52.0
+offset_right = 671.0
+offset_bottom = 167.0
 scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -191,9 +193,109 @@ texture_pressed = ExtResource("6_xb0rx")
 texture_hover = ExtResource("7_uw31m")
 texture_disabled = ExtResource("8_xb0rx")
 
+[node name="Micah Label" type="ColorRect" parent="."]
+visible = false
+offset_left = 911.0
+offset_top = 937.0
+offset_right = 1086.0
+offset_bottom = 971.0
+color = Color(0.980392, 0.945098, 0.823529, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Micah Label"]
+layout_mode = 0
+offset_right = 175.0
+offset_bottom = 34.0
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("21_qs08e")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]1. Micah Procyon[/center]"
+
+[node name="Juniper Label" type="ColorRect" parent="."]
+visible = false
+offset_left = 544.0
+offset_top = 643.0
+offset_right = 728.0
+offset_bottom = 677.0
+color = Color(0.980392, 0.945098, 0.823529, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Juniper Label"]
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 34.0
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("21_qs08e")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]2. Juniper Hartley[/center]"
+
+[node name="Quincy Label" type="ColorRect" parent="."]
+visible = false
+offset_left = 1110.0
+offset_top = 115.0
+offset_right = 1279.0
+offset_bottom = 149.0
+color = Color(0.980392, 0.945098, 0.823529, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Quincy Label"]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 34.0
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("21_qs08e")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]3. Quincy Leonid[/center]"
+
+[node name="Office Label" type="ColorRect" parent="."]
+visible = false
+offset_left = 776.0
+offset_top = 568.0
+offset_right = 986.0
+offset_bottom = 601.0
+color = Color(0.980392, 0.945098, 0.823529, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Office Label"]
+layout_mode = 0
+offset_right = 209.0
+offset_bottom = 33.0
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("21_qs08e")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]ASPD Central Office[/center]"
+
+[node name="Coors" type="ColorRect" parent="."]
+visible = false
+offset_left = 542.0
+offset_top = 118.0
+offset_right = 752.0
+offset_bottom = 151.0
+color = Color(0.980392, 0.945098, 0.823529, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Coors"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 33.0
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("21_qs08e")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]18’5.0’’N 22’5.18’’W[/center]"
+
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="Micah" to="." method="_on_micah_mouse_entered"]
+[connection signal="mouse_exited" from="Micah" to="." method="_on_micah_mouse_exited"]
 [connection signal="pressed" from="Micah" to="." method="_on_firsthouse_button_pressed"]
+[connection signal="mouse_entered" from="Juniper" to="." method="_on_juniper_mouse_entered"]
+[connection signal="mouse_exited" from="Juniper" to="." method="_on_juniper_mouse_exited"]
 [connection signal="pressed" from="Juniper" to="." method="_on_secondhouse_button_pressed"]
+[connection signal="mouse_entered" from="Quincy" to="." method="_on_quincy_mouse_entered"]
+[connection signal="mouse_exited" from="Quincy" to="." method="_on_quincy_mouse_exited"]
 [connection signal="pressed" from="Quincy" to="." method="_on_thirdhouse_button_pressed"]
+[connection signal="mouse_entered" from="Office" to="." method="_on_office_mouse_entered"]
+[connection signal="mouse_exited" from="Office" to="." method="_on_office_mouse_exited"]
 [connection signal="pressed" from="Office" to="." method="_on_office_button_pressed"]
+[connection signal="mouse_entered" from="Secret" to="." method="_on_secret_mouse_entered"]
+[connection signal="mouse_exited" from="Secret" to="." method="_on_secret_mouse_exited"]
 [connection signal="pressed" from="Secret" to="." method="_on_secret_button_pressed"]

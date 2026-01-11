@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://djiit5o2pgoy7"]
+[gd_scene load_steps=35 format=3 uid="uid://djiit5o2pgoy7"]
 
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="1_eamh7"]
 [ext_resource type="Script" uid="uid://b40nwl7y7u2wi" path="res://UI/tutorial.gd" id="1_om0r0"]
@@ -352,12 +352,42 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Map/TO MAP:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c481p"]
+resource_name = "Blink Map"
+loop_mode = 2
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map/TO MAP:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbvhg"]
 _data = {
 &"Blink Click": SubResource("Animation_om0r0"),
 &"Blink Exit": SubResource("Animation_l4ptw"),
 &"Blink Interact": SubResource("Animation_oypdc"),
+&"Blink Map": SubResource("Animation_c481p"),
 &"Blink Move": SubResource("Animation_tvhgf"),
 &"Blink Pause": SubResource("Animation_8krtd"),
 &"Blink Phone": SubResource("Animation_cr2mm"),
@@ -365,7 +395,7 @@ _data = {
 &"RESET": SubResource("Animation_0g1k3")
 }
 
-[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut")]
+[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut", "map_tut")]
 script = ExtResource("1_om0r0")
 animationplayer = NodePath("AnimationPlayer")
 movement_tut = NodePath("Movement")
@@ -375,6 +405,7 @@ exit_tut = NodePath("Exit")
 phone_tut = NodePath("Phone")
 flip_tut = NodePath("Flip")
 dialogue_tut = NodePath("Pause")
+map_tut = NodePath("Map")
 metadata/_edit_horizontal_guides_ = [994.0, 943.0]
 metadata/_edit_vertical_guides_ = [960.0]
 
@@ -386,6 +417,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="OR" type="RichTextLabel" parent="Movement"]
 texture_filter = 2
@@ -474,6 +506,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Shift" type="Sprite2D" parent="Run"]
 position = Vector2(842, 968)
@@ -502,6 +535,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="E" type="Sprite2D" parent="Interact"]
 position = Vector2(757, 968)
@@ -530,6 +564,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Q" type="Sprite2D" parent="Exit"]
 position = Vector2(830, 968)
@@ -558,6 +593,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Esc" type="Sprite2D" parent="Pause"]
 texture_filter = 1
@@ -587,6 +623,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Phone"]
+visible = false
+layout_mode = 0
+offset_left = 627.0
+offset_top = 933.0
+offset_right = 1301.0
+offset_bottom = 1005.0
 
 [node name="Tab" type="Sprite2D" parent="Phone"]
 position = Vector2(688, 968)
@@ -594,7 +639,6 @@ texture = ExtResource("15_c481p")
 
 [node name="TO RUN" type="RichTextLabel" parent="Phone"]
 texture_filter = 2
-layout_mode = 0
 offset_left = 776.0
 offset_top = 923.0
 offset_right = 1317.0
@@ -646,6 +690,48 @@ theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]CLICK TO FLIP[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Map" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Map"]
+visible = false
+offset_left = 228.0
+offset_top = 928.0
+offset_right = 1670.0
+offset_bottom = 1006.0
+mouse_filter = 2
+color = Color(0.980392, 0.945098, 0.823529, 1)
+
+[node name="TO MAP" type="RichTextLabel" parent="Map"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = 382.5
+offset_right = 720.0
+offset_bottom = 465.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("1_eamh7")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "HEAD TO THE MAP TO CHOOSE YOUR DESTINATION"
 fit_content = true
 scroll_active = false
 
