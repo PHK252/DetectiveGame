@@ -445,7 +445,7 @@ func _on_wander_timeout() -> void:
 	print(cooldown_bool)
 	var choice = rng.randi_range(-10, 10)
 	if greeting == true and case_handling == false:
-		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false and case_handling == false and GlobalVars.in_dialogue == false:
+		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW and interaction == false and case_handling == false and GlobalVars.in_dialogue == false and intDalton == false:
 			if wander_choice < 3:
 				var current_anim = one_shots[wander_choice]
 				anim_tree.set("parameters/" + current_anim + "/request", 2)
@@ -599,8 +599,17 @@ func _on_resume_interact_juniper_wander() -> void:
 	var choice = rng.randi_range(-10, 10)
 	if greeting == true:
 		if cant_follow == false:
+			if wander_choice < 3:
+				var current_anim = one_shots[wander_choice]
+				anim_tree.set("parameters/" + current_anim + "/request", 2)
+			var previous_choice = wander_choice
 			wander_choice = rng.randi_range(0, 2)
-		if state == IDLE and see_player == false and cooldown_bool == false and state != FOLLOW:
+			if previous_choice == wander_choice:
+				if (previous_choice + 1) != 3:
+					wander_choice = previous_choice + 1
+				else:
+					wander_choice = 1
+		if state == IDLE and cooldown_bool == false and state != FOLLOW:
 			wander_rotate = false
 			#if choice > 0:
 			nav.target_position = marker_positions[wander_choice].global_position

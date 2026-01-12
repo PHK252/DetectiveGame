@@ -114,6 +114,7 @@ func _process(delta):
 			player.show()
 			player.start_player()
 			#main_cam.set_tween_duration(1)
+			GlobalVars.in_dialogue = false #never gets set back to false after interacting if u don't do it here, this is where 2nd interact issues come from
 			GlobalVars.in_interaction = ""
 			alert.show()
 			thoughts = false
@@ -146,7 +147,7 @@ func _on_interactable_interacted(interactor):
 		if is_player_visible == false:
 			player.hide()
 		player.stop_player()
-		GlobalVars.in_dialogue = true
+		GlobalVars.in_dialogue = true #always set to true even if dialogue not needed
 		Dialogic.timeline_ended.connect(_on_thoughts_ended)
 		Dialogic.start(thought_dialogue_file)
 		GlobalVars.set(view_item, true)
