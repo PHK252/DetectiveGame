@@ -110,6 +110,7 @@ func _hide_tut():
 	current_tut.visible = false
 	timer.stop()
 	animationplayer.play("RESET")
+	SaveLoad.saveSettings(SaveLoad.SAVE_DIR + SaveLoad.SETTINGS_FILE)
 	set_process(false)
 	return
 
@@ -123,7 +124,6 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			if current_tut == exit_tut:
-				SaveLoad.saveSettings(SaveLoad.SAVE_DIR + SaveLoad.SETTINGS_FILE)
 				_hide_tut()
 
 

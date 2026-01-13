@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://djiit5o2pgoy7"]
+[gd_scene load_steps=38 format=3 uid="uid://djiit5o2pgoy7"]
 
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="1_eamh7"]
 [ext_resource type="Script" uid="uid://b40nwl7y7u2wi" path="res://UI/tutorial.gd" id="1_om0r0"]
@@ -17,12 +17,15 @@
 [ext_resource type="Texture2D" uid="uid://cefkmi8nvx7y5" path="res://UI/Assets/tutorial/Notes_dialogue.png" id="14_om0r0"]
 [ext_resource type="Texture2D" uid="uid://cmmchhxdna8h" path="res://UI/Assets/tutorial/Notes_tab_darker.png" id="15_c481p"]
 [ext_resource type="Texture2D" uid="uid://dy7fg7fs132wd" path="res://UI/Assets/tutorial/Notes_click1.png" id="15_na8nk"]
+[ext_resource type="Texture2D" uid="uid://bq6wwd88osj1t" path="res://UI/Assets/tutorial/Paper/Phone_tut_bubble.png" id="16_gc8pi"]
 [ext_resource type="Texture2D" uid="uid://01mxte662mjj" path="res://UI/Assets/tutorial/Notes_click2.png" id="16_h6ssu"]
 [ext_resource type="Texture2D" uid="uid://bua4guet3old6" path="res://UI/Assets/tutorial/Notes_click3.png" id="17_xj8md"]
 [ext_resource type="Texture2D" uid="uid://ctq7n8td3k6wi" path="res://UI/Assets/tutorial/Notes_click4.png" id="18_rqcy7"]
 [ext_resource type="Texture2D" uid="uid://mwv1s1kh646e" path="res://UI/Assets/tutorial/Notes_click5.png" id="19_bacir"]
 [ext_resource type="Texture2D" uid="uid://crdtikc7dkfnv" path="res://UI/Assets/tutorial/Notes_click6.png" id="20_cjvdg"]
 [ext_resource type="Texture2D" uid="uid://cqj6k0t3e2d4s" path="res://UI/Assets/tutorial/Notes_click Blank.png" id="21_pwpa5"]
+[ext_resource type="Texture2D" uid="uid://yjesiikkh6m8" path="res://UI/Assets/tutorial/Paper/Flip_tut_bubble.png" id="25_n3cvu"]
+[ext_resource type="Texture2D" uid="uid://dinhg078fq5nu" path="res://UI/Assets/tutorial/Paper/Map_tut_bubble.png" id="26_hey4w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5sc0d"]
 animations = [{
@@ -118,7 +121,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.375),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_l4ptw"]
@@ -169,6 +172,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Map/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5)]
+}
 
 [sub_resource type="Animation" id="Animation_tvhgf"]
 resource_name = "Blink Move"
@@ -209,7 +224,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Phone:modulate")
+tracks/0/path = NodePath("Phone/TO RUN:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -217,6 +232,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Phone/Tab:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Phone/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_ttlim"]
@@ -276,7 +315,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Phone:modulate")
+tracks/3/path = NodePath("Exit:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -288,7 +327,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Exit:modulate")
+tracks/4/path = NodePath("Pause:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -300,7 +339,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Pause:modulate")
+tracks/5/path = NodePath("Flip/TO RUN:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -312,55 +351,55 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Flip/TO RUN:modulate")
+tracks/6/path = NodePath("Flip/Click:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [1]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Flip/Click:frame")
+tracks/7/path = NodePath("Flip/Click:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Flip/Click:visible")
+tracks/8/path = NodePath("Flip/TO RUN:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Flip/TO RUN:visible")
+tracks/9/path = NodePath("Flip/ColorRect:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Flip/ColorRect:modulate")
+tracks/10/path = NodePath("Map/TO MAP:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -372,10 +411,46 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Map/TO MAP:modulate")
+tracks/11/path = NodePath("Map/TextureRect:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Phone/TO RUN:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Phone/Tab:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Phone/ColorRect:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -396,7 +471,6 @@ _data = {
 }
 
 [node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut", "map_tut")]
-visible = false
 script = ExtResource("1_om0r0")
 animationplayer = NodePath("AnimationPlayer")
 movement_tut = NodePath("Movement")
@@ -626,24 +700,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Phone"]
-visible = false
+[node name="ColorRect" type="TextureRect" parent="Phone"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 627.0
-offset_top = 933.0
-offset_right = 1301.0
-offset_bottom = 1005.0
+offset_left = 621.0
+offset_top = 928.0
+offset_right = 1300.0
+offset_bottom = 1012.0
+texture = ExtResource("16_gc8pi")
 
 [node name="Tab" type="Sprite2D" parent="Phone"]
-position = Vector2(688, 968)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(696, 968)
 texture = ExtResource("15_c481p")
 
 [node name="TO RUN" type="RichTextLabel" parent="Phone"]
 texture_filter = 2
 layout_mode = 0
-offset_left = 776.0
+offset_left = 769.0
 offset_top = 923.0
-offset_right = 1317.0
+offset_right = 1310.0
 offset_bottom = 1006.0
 theme_override_colors/default_color = Color(0.909804, 0.698039, 0.219608, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
@@ -669,22 +745,22 @@ position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_5sc0d")
 frame = 1
 
-[node name="ColorRect" type="ColorRect" parent="Flip"]
+[node name="ColorRect" type="TextureRect" parent="Flip"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 737.0
-offset_top = 704.0
-offset_right = 1182.0
-offset_bottom = 782.0
+offset_top = 701.0
+offset_right = 1185.0
+offset_bottom = 785.0
 mouse_filter = 2
-color = Color(0.980392, 0.945098, 0.823529, 1)
+texture = ExtResource("25_n3cvu")
 
 [node name="TO RUN" type="RichTextLabel" parent="Flip"]
 texture_filter = 2
 layout_mode = 0
-offset_left = 690.0
+offset_left = 736.0
 offset_top = 697.0
-offset_right = 1231.0
+offset_right = 1185.0
 offset_bottom = 780.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
@@ -696,7 +772,6 @@ fit_content = true
 scroll_active = false
 
 [node name="Map" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -705,14 +780,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Map"]
-layout_mode = 0
-offset_left = 228.0
-offset_top = 928.0
-offset_right = 1670.0
-offset_bottom = 1006.0
-mouse_filter = 2
-color = Color(0.980392, 0.945098, 0.823529, 1)
+[node name="TextureRect" type="TextureRect" parent="Map"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -721.0
+offset_top = 386.5
+offset_right = 721.0
+offset_bottom = 470.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_hey4w")
 
 [node name="TO MAP" type="RichTextLabel" parent="Map"]
 modulate = Color(1, 1, 1, 0)
@@ -723,9 +805,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -719.5
+offset_left = -735.5
 offset_top = 382.5
-offset_right = 751.5
+offset_right = 735.5
 offset_bottom = 465.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -733,7 +815,7 @@ theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "HEAD TO THE MAP TO CHOOSE YOUR DESTINATION"
+text = "[center]HEAD TO THE MAP TO CHOOSE YOUR DESTINATION[/center]"
 fit_content = true
 scroll_active = false
 

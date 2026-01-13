@@ -2986,30 +2986,30 @@ getUp = NodePath("Armature_001/GetUpSound")
 transform = Transform3D(-0.462092, -1.79945e-07, 7.86566e-15, 0, -2.01987e-08, -0.462092, 1.79945e-07, -0.462092, 2.01987e-08, 0, 0.000947615, 0.93657)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Isaac/Armature_001" index="0"]
-bones/0/position = Vector3(2.33594e-10, 2.38419e-07, -1.81372)
+bones/0/position = Vector3(-7.33048e-11, 2.38419e-07, -1.80952)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14018e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19025e-08)
-bones/4/rotation = Quaternion(-0.181956, 0.000927232, 0.00015701, 0.983306)
+bones/4/rotation = Quaternion(-0.152918, 3.23326e-09, -3.09545e-09, 0.988239)
 bones/5/rotation = Quaternion(0.355955, -7.6485e-09, 2.60517e-08, 0.934503)
-bones/6/position = Vector3(0.251923, 0.641351, 0.1115)
-bones/6/rotation = Quaternion(0.316483, 0.00723285, -0.155991, 0.935656)
+bones/6/position = Vector3(0.251915, 0.640863, 0.112681)
+bones/6/rotation = Quaternion(0.324641, 0.00587052, -0.156048, 0.932857)
 bones/7/rotation = Quaternion(0.150191, 0.00219412, 0.0144416, 0.988549)
-bones/8/position = Vector3(-0.25753, 0.641601, 0.110111)
-bones/8/rotation = Quaternion(0.320819, 0.0152983, 0.142445, 0.936243)
+bones/8/position = Vector3(-0.257529, 0.641335, 0.111271)
+bones/8/rotation = Quaternion(0.328982, 0.0165415, 0.142306, 0.933406)
 bones/9/rotation = Quaternion(0.150191, 0.00219409, 0.0144413, 0.988549)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.323172, 0.040837, -0.477351, 0.816105)
-bones/12/rotation = Quaternion(0.471605, 0.313908, -0.222312, 0.793491)
+bones/11/rotation = Quaternion(-0.324444, 0.0217898, -0.487146, 0.810525)
+bones/12/rotation = Quaternion(0.470608, 0.314155, -0.221842, 0.794116)
 bones/13/rotation = Quaternion(0.0184011, 0.637816, -0.0116091, 0.769881)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.326355, -0.0261145, 0.535097, 0.778769)
-bones/16/rotation = Quaternion(0.457502, -0.317476, 0.214297, 0.802482)
+bones/15/rotation = Quaternion(-0.325022, -0.0100449, 0.544257, 0.773333)
+bones/16/rotation = Quaternion(0.458589, -0.317218, 0.214805, 0.801828)
 bones/17/rotation = Quaternion(0.0182237, -0.626127, 0.0118857, 0.779418)
-bones/19/rotation = Quaternion(0.60278, 0.0987552, 0.102173, 0.785152)
-bones/20/rotation = Quaternion(-0.819373, 0.00622309, -0.228812, 0.52558)
+bones/19/rotation = Quaternion(0.604435, 0.0987347, 0.102656, 0.783818)
+bones/20/rotation = Quaternion(-0.820868, 0.00619316, -0.229229, 0.523059)
 bones/21/rotation = Quaternion(0.783286, -0.0295675, 0.0282724, 0.620314)
-bones/23/rotation = Quaternion(0.579067, -0.085913, -0.0100135, 0.810679)
-bones/24/rotation = Quaternion(-0.819562, -0.00105113, 0.0510786, 0.570708)
+bones/23/rotation = Quaternion(0.580756, -0.0858737, -0.010265, 0.80947)
+bones/24/rotation = Quaternion(-0.82131, -0.00104649, 0.0511875, 0.568181)
 bones/25/rotation = Quaternion(0.841715, 0.0265733, -0.0311034, 0.53837)
 bones/26/position = Vector3(0.302293, 0.237652, -0.922289)
 bones/26/rotation = Quaternion(0.0204546, -4.33681e-19, 0.999791, 6.58544e-10)
@@ -3102,24 +3102,47 @@ shape = SubResource("BoxShape3D_2g7hf")
 [node name="Alert" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D" index="0"]
 visible = false
 
+[node name="FlashBackDalton" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback" index="0"]
+transform = Transform3D(0.423249, 0, 0, 0, -1.85008e-08, -0.423249, 0, 0.423249, -1.85008e-08, 0, 0, 0)
+
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton" index="0"]
-bones/0/position = Vector3(6.97847e-10, -1.10713e-08, -1.72248)
-bones/4/rotation = Quaternion(-0.0625603, -7.62146e-10, -3.00197e-10, 0.998041)
-bones/5/rotation = Quaternion(0.0672954, -3.76596e-16, 1.66767e-15, 0.997733)
-bones/11/rotation = Quaternion(-0.367256, 0.0173095, -0.500783, 0.783607)
-bones/12/rotation = Quaternion(0.425991, 0.27746, -0.325477, 0.797253)
-bones/15/rotation = Quaternion(-0.359045, -0.00853141, 0.500452, 0.787757)
-bones/16/rotation = Quaternion(0.395285, -0.273803, 0.332484, 0.811318)
-bones/19/rotation = Quaternion(0.132662, 0.00874263, -0.00537729, 0.991108)
-bones/20/rotation = Quaternion(-0.311755, 0.000131075, -0.00855177, 0.950124)
-bones/21/rotation = Quaternion(0.805301, -0.028521, 0.0293277, 0.591453)
-bones/23/rotation = Quaternion(0.132662, -0.00874259, 0.00537728, 0.991108)
-bones/24/rotation = Quaternion(-0.311755, -0.000131075, 0.00855176, 0.950124)
-bones/25/rotation = Quaternion(0.805301, 0.028521, -0.0293277, 0.591453)
-bones/28/position = Vector3(0.501367, 0.0504961, -1.51865)
-bones/28/scale = Vector3(1.00942, 1, 1.1447)
-bones/29/position = Vector3(-0.503843, 0.0420171, -1.50088)
-bones/29/scale = Vector3(1.00942, 1, 1.1447)
+bones/0/position = Vector3(-8.53611e-10, -1.30962e-08, -1.73331)
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
+bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
+bones/4/rotation = Quaternion(-0.067182, 1.44646e-16, 2.02094e-15, 0.997741)
+bones/5/rotation = Quaternion(0.0701064, -4.88289e-10, -9.1201e-11, 0.99754)
+bones/6/position = Vector3(0.256909, 0.65721, 0.0662163)
+bones/6/rotation = Quaternion(2.65866e-10, -5.70862e-10, -0.143774, 0.989611)
+bones/7/rotation = Quaternion(0.0615113, 0.000898594, 0.0145798, 0.997999)
+bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
+bones/8/rotation = Quaternion(-3.7282e-10, 3.78358e-10, 0.138842, 0.990315)
+bones/9/rotation = Quaternion(0.0615112, 0.000898607, 0.0145793, 0.997999)
+bones/10/rotation = Quaternion(-0.14247, 0.0557454, -0.688243, 0.709166)
+bones/11/rotation = Quaternion(-0.361535, 0.0122284, -0.508951, 0.781097)
+bones/12/rotation = Quaternion(0.414328, 0.275421, -0.320828, 0.805944)
+bones/13/rotation = Quaternion(0.00671636, -0.00228499, -0.0206946, 0.999761)
+bones/14/rotation = Quaternion(-0.14247, -0.0557454, 0.688243, 0.709166)
+bones/15/rotation = Quaternion(-0.347656, 0.0025734, 0.509154, 0.787332)
+bones/16/rotation = Quaternion(0.362087, -0.268852, 0.329705, 0.829401)
+bones/17/rotation = Quaternion(0.00671635, 0.00228496, 0.0206946, 0.999761)
+bones/19/rotation = Quaternion(0.121441, 0.00917195, -0.00588038, 0.992539)
+bones/20/rotation = Quaternion(-0.289862, 0.00013203, -0.00795122, 0.957035)
+bones/21/rotation = Quaternion(0.797566, -0.0288988, 0.0289555, 0.601843)
+bones/23/rotation = Quaternion(0.121441, -0.0091719, 0.00588037, 0.992539)
+bones/24/rotation = Quaternion(-0.289862, -0.000132029, 0.00795122, 0.957035)
+bones/25/rotation = Quaternion(0.797566, 0.0288988, -0.0289555, 0.601843)
+bones/26/position = Vector3(0.302293, -0.0768642, -0.13186)
+bones/26/rotation = Quaternion(0.0204546, 0, 0.999791, 6.58544e-10)
+bones/26/scale = Vector3(1.10417, 1, 1.00018)
+bones/27/position = Vector3(-0.302293, -0.0768642, -0.13186)
+bones/27/rotation = Quaternion(-0.0204547, 8.89046e-16, 0.999791, -1.31709e-09)
+bones/27/scale = Vector3(1.10417, 1, 1.00018)
+bones/28/position = Vector3(0.497011, 0.0668094, -1.51982)
+bones/28/rotation = Quaternion(0.790332, -2.10734e-08, 0.612679, -7.76605e-08)
+bones/28/scale = Vector3(1.00763, 1, 1.11612)
+bones/29/position = Vector3(-0.501166, 0.0525779, -1.49001)
+bones/29/rotation = Quaternion(0.790332, 2.10734e-08, -0.612679, -7.76605e-08)
+bones/29/scale = Vector3(1.00763, 1, 1.11612)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/FlashbackDalton/Dalton/CharacterBody3D/Flashback/FlashBackDalton/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_45o54")
@@ -3390,6 +3413,10 @@ bus = &"SFX"
 [node name="Hiss02(back?)" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Sounds"]
 stream = ExtResource("42_i5g4t")
 bus = &"SFX"
+
+[node name="Pause" parent="SubViewportContainer" node_paths=PackedStringArray("main_scene") instance=ExtResource("54_cnt7s")]
+visible = false
+main_scene = NodePath("../..")
 
 [node name="Stuff" type="Node" parent="."]
 
@@ -3786,9 +3813,6 @@ body_marker = NodePath("../../SubViewportContainer/SubViewport/Characters/Isaac/
 
 [node name="OfficeChairReworked" parent="." instance=ExtResource("55_j0egg")]
 transform = Transform3D(0.484352, 0, 0.874873, 0, 1, 0, -0.874873, 0, 0.484352, -0.820023, -0.0258503, 1.09678)
-
-[node name="Pause" parent="." instance=ExtResource("54_cnt7s")]
-visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_m53ye")

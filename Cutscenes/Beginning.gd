@@ -2,7 +2,7 @@ extends Node3D
 
 signal _show_tut(tut_type : String)
 
-@onready var pause = $Pause
+@onready var pause = "SubViewportContainer/Pause"
 
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer

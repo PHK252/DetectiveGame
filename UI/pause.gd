@@ -1,4 +1,6 @@
 extends CanvasLayer
+
+@export var main_scene : Node
 @onready var resume = $VBoxContainer/Resume
 @onready var controls = $Controls
 @onready var prev_mouse_mode : int
@@ -8,20 +10,18 @@ var quit = InputMap.action_get_events("Quit")
 @onready var resume_short = Shortcut.new()
 @onready var key_event = InputEventKey.new()
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-	#get_tree().paused = true
-	#pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _ready():
 	pass
+
 func _on_save_pressed():
-	print("save_pressed")
+	print(main_scene)
+	#await get_tree().process_frame
 	get_tree().paused = false
+	Engine.time_scale = 1
 	await get_tree().process_frame
-	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	GlobalVars.to_quit = true
-	SceneTransitions.fade_change_scene(GlobalVars.main_menu)
+	await get_tree().process_frame
+	visible = false
+	Loading.load_scene(main_scene, GlobalVars.main_menu, "", "", "")
 
 func _on_resume_pressed():
 	print("resume_pressed")
@@ -82,8 +82,13 @@ func _on_visibility_changed():
 		resume_short.events = [key_event]
 		resume.shortcut = resume_short
 		
-
-
+func _process(delta):
+	if GlobalVars.in_dialogue == true:
+		$VBoxContainer/Save.disabled = true
+		$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_ARROW
+	else:
+		$VBoxContainer/Save.disabled = false
+		$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 func _on_options_exit():
 	pause_buttons.visible = true
 	options.visible = false

@@ -15,16 +15,19 @@ extends Node2D
 var new_game : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_viewport().size_changed.connect(_on_new_window_size)
-	_on_new_window_size()
-	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#
+		#GlobalVars.to_quit = false
+	#get_viewport().size_changed.connect(_on_new_window_size)
+	#_on_new_window_size()
+	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	await get_tree().process_frame
 	#print(GlobalVars.current_level)
 	
 	new_game = SaveLoad.check_save_file_empty(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("New Game: " + str(new_game))
 	SaveLoad.loadSettings(SaveLoad.SAVE_DIR + SaveLoad.SETTINGS_FILE)
-	if new_game == true:
+	if new_game == true or SaveLoad.brand_new == true:
 		start_butt.show()
 		continue_new_cont.hide()
 	else:
@@ -32,7 +35,6 @@ func _ready():
 		GlobalVars.from_save_file = true
 		start_butt.hide()
 		continue_new_cont.show()
-		#GlobalVars.to_quit = false
 
 
 func _on_new_window_size():

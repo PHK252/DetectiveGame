@@ -42,20 +42,24 @@ var percent_label : Label
 	#self.queue_free()
 
 func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false, dialogic_save : bool = true):
-	
+	if get_tree().paused == true:
+		get_tree().paused = false
 	in_loading = true
 	if glitch_in == true:
 		SceneTransitions.glitch_to_load()
 		await SceneTransitions.glitch.animation_finished
 	else:
+		print("loading")
 		SceneTransitions.fade_to_load()
 		await SceneTransitions.fade.animation_finished
+	print("loading2")
 	var loading_scene = load(loading_scene_file)
 	var scene_instance = loading_scene.instantiate()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().get_root().add_child(scene_instance)
 	
 	current_scene.queue_free()
+	
 	#
 	ResourceLoader.load_threaded_request(next_scene, "", false)
 	#driving

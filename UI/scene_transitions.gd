@@ -22,9 +22,11 @@ func fade_change_scene(target : String):
 	fade.play_backwards("Dissolve")
 
 func fade_to_load():
+	print("fade")
 	fade.play("Dissolve")
 	await fade.animation_finished
 	fade.play_backwards("Dissolve")
+	print("fade_end")
 
 func glitch_change_packed_scene(target : PackedScene):
 	#await get_tree().create_timer(.5)

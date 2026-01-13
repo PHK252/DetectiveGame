@@ -9,7 +9,7 @@ const SECURITY_KEY = "hdksfa42442"
 
 signal loaded
 signal loaded_settings
-
+var brand_new : bool
 @onready var char_pos = {}
 func _ready():
 	verify_save_directory(SAVE_DIR)
@@ -18,7 +18,11 @@ func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
 
 func saveSettings(path: String):
+	print("setting saved")
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+	if file == null:
+		printerr(FileAccess.get_open_error())
+		return
 	var data: Dictionary = {
 		"Tutorial":{
 			"movement_tut": GlobalVars.movement_tut,
@@ -45,6 +49,7 @@ func loadSettings(path : String):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
 		if file == null:
+			brand_new = true
 			printerr(FileAccess.get_open_error())
 			return
 		
@@ -381,6 +386,7 @@ func loadGame(path : String):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
 		if file == null:
+			brand_new = true
 			printerr(FileAccess.get_open_error())
 			return
 		
@@ -432,12 +438,13 @@ func clearSave(path : String):
 		print("Save cleared successfully.")
 
 func check_save_file_empty(path : String):
-	#var file = FileAccess.open(path, FileAccess.WRITE)
+	var is_empty : bool
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
 	if file == null:
+		is_empty = true
 		printerr("File does not exist" + str(FileAccess.get_open_error()))
-		return
+		return is_empty
 	print(file.get_length())
-	var is_empty = file.get_length() == 2
+	is_empty = file.get_length() == 2
 	file.close()
 	return is_empty
