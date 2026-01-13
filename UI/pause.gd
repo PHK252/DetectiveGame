@@ -18,22 +18,24 @@ func _on_save_pressed():
 	#await get_tree().process_frame
 	get_tree().paused = false
 	Engine.time_scale = 1
+	resume.shortcut = null
 	await get_tree().process_frame
-	await get_tree().process_frame
+	InputMap.action_add_event("Quit", quit[0])
 	visible = false
 	Loading.load_scene(main_scene, GlobalVars.main_menu, "", "", "")
+
 
 func _on_resume_pressed():
 	print("resume_pressed")
 	resume.shortcut = null
-	get_tree().paused = false
-	Engine.time_scale = 1
 	visible = false
 	GlobalVars.unpaused.emit()
 	Input.set_mouse_mode(prev_mouse_mode)
 	await get_tree().process_frame
 	await get_tree().process_frame
 	InputMap.action_add_event("Quit", quit[0])
+	get_tree().paused = false
+	Engine.time_scale = 1
 	
 
 	#$".".hide()

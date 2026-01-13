@@ -28,6 +28,7 @@ func _on_interactable_interacted(interactor):
 		GlobalVars.in_interaction = interact_type
 		if GlobalVars.dialogue_tut == false:
 			emit_signal("_show_tut", "dialogue")
+			GlobalVars.dialogue_tut = true
 			if GlobalVars.interact_tut == false:
 				GlobalVars.interact_tut = true
 		player.stop_player()

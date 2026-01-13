@@ -471,6 +471,7 @@ _data = {
 }
 
 [node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut", "map_tut")]
+visible = false
 script = ExtResource("1_om0r0")
 animationplayer = NodePath("AnimationPlayer")
 movement_tut = NodePath("Movement")
@@ -672,16 +673,16 @@ mouse_filter = 2
 
 [node name="Esc" type="Sprite2D" parent="Pause"]
 texture_filter = 1
-position = Vector2(747, 968)
+position = Vector2(747, 833)
 texture = ExtResource("14_om0r0")
 
 [node name="TO RUN" type="RichTextLabel" parent="Pause"]
 texture_filter = 2
 layout_mode = 0
 offset_left = 865.0
-offset_top = 923.0
+offset_top = 788.0
 offset_right = 1265.0
-offset_bottom = 1006.0
+offset_bottom = 871.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("1_eamh7")
 theme_override_font_sizes/normal_font_size = 90
@@ -772,6 +773,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Map" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

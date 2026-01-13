@@ -156,6 +156,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 					print("awaiting")
 				var new_scene = ResourceLoader.load_threaded_get(next_scene)
 				if type == "date":
+					await get_tree().create_timer(2.0).timeout
 					toggle_default(false)
 					date_loading.show()
 					date_label.text = time

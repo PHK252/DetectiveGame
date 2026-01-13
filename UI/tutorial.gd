@@ -117,7 +117,8 @@ func _hide_tut():
 
 
 func _on_interactable_body_exited(body):
-	_hide_tut()
+	if GlobalVars.interact_tut == false:
+		_hide_tut()
 
 
 func _on_input_event(viewport, event, shape_idx):

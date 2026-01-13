@@ -33,10 +33,16 @@ var blend_target = 1.0
 
 func _ready() -> void:
 	add_to_group("player")
-	anim_tree.set("parameters/Blend2/blend_amount", blend_target)
 	#in_control = false
 	#await get_tree().create_timer(10).timeout
 	# Start lerping to 0
+	if GlobalVars.from_save_file == true:
+		global_position = GlobalVars.dalton_pos
+		GlobalVars.from_save_file = false
+		blend_target = 0.0
+		in_control = true
+		return
+	anim_tree.set("parameters/Blend2/blend_amount", blend_target)
 	sound_allowed = true
 	blend_target = 0.0
 	await get_tree().create_timer(1).timeout
