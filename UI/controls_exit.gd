@@ -31,7 +31,7 @@ func _on_new_window_size():
 	cl_main.pivot_offset = cl_main.size / 2   # CanvasLayer doesn’t have pivot, but its children do
 	
 func _on_exit_button_pressed():
-	#visible = false
+	visible = false
 	pause_menu_screen.visible = false
 	emit_signal("show_pause")
 
@@ -43,14 +43,13 @@ func _on_main_exit_button_pressed():
 
 func _on_visibility_changed():
 	print(pause)
-	await get_tree().process_frame
 	if visible == true:
 		if main_menu == true:
 			main_menu_screen.visible = true
 			pause_menu_screen.visible = false
 			return
 		if pause == true:
-			#print("enter")
+			print("enter")
 			main_menu_screen.visible = false
 			pause_menu_screen.visible = true
 			return

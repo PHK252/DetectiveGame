@@ -38,6 +38,7 @@ func saveSettings(path: String):
 			"stretch_factor" : GlobalVars.stretch_factor,
 			"optional_shadow" : GlobalVars.optional_shadow, 
 			"brightness" : GlobalVars.brightness,
+			"fps_toggle" : GlobalVars.fps_toggle,
 		}
 	}
 	var json_string = JSON.stringify(data, "\t", false)

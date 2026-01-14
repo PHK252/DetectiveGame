@@ -338,6 +338,7 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="FPS" type="Label" parent="Main Menu/AspectRatioContainer/FPS Container"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.980392, 0.945098, 0.823529, 1)
@@ -1733,12 +1734,11 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 84
 
-[node name="display fps" type="HBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("fps_label", "checkbox")]
+[node name="display fps" type="HBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("checkbox")]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 29
 script = ExtResource("4_hhtmw")
-fps_label = NodePath("../../../../FPS Container/FPS")
 checkbox = NodePath("MarginContainer/Fps")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps"]
@@ -1831,6 +1831,7 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="FPS" type="Label" parent="Pause Menu/AspectRatioContainer/FPS Container"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.980392, 0.945098, 0.823529, 1)
@@ -3227,12 +3228,11 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 84
 
-[node name="display fps" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("fps_label", "checkbox")]
+[node name="display fps" type="HBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows" node_paths=PackedStringArray("checkbox")]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 29
 script = ExtResource("4_hhtmw")
-fps_label = NodePath("../../../../FPS Container/FPS")
 checkbox = NodePath("MarginContainer/Fps")
 
 [node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps"]
@@ -3552,6 +3552,7 @@ bus = &"SFX"
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Options_Sounds" method="alt_select"]
 [connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_check_box_toggled"]
+[connection signal="toggled" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_fps_toggled"]
 [connection signal="mouse_entered" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Options_Sounds" method="_on_hover_non_exit"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
@@ -3736,6 +3737,7 @@ bus = &"SFX"
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
+[connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_pause_fps_toggled"]
 [connection signal="toggled" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps" method="_on_check_box_toggled"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows/MarginContainer/Shadows" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]

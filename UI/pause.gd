@@ -60,7 +60,6 @@ func _on_options_pressed():
 
 
 func _on_controls_pressed():
-	print("pressed")
 	pause_buttons.visible = false
 	controls.visible = true
 

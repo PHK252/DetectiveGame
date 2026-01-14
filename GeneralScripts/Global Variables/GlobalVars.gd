@@ -313,7 +313,6 @@ var load_Secret_name_arr = ["has_secret", "view_secret_cure", "view_secret_usb",
 @onready var quincy_pos : Vector3
 @onready var isaac_pos : Vector3
 
-##add to save
 #handled in beginning office
 var movement_tut = false
 var interact_tut = false
@@ -331,10 +330,17 @@ var load_tutorial_arr := ["movement_tut", "interact_tut", "dialogue_tut", "flip_
 signal pixelation_changed(new_value)
 signal shadow_changed(new_value)
 signal brightness_changed(new_value)
+signal toggle_fps(toggled)
+
+var fps_toggle := false:
+	set(value):
+		fps_toggle = value
+		emit_signal("toggle_fps", value)
 
 #settings variables
 var stretch_factor : int = 6:
 	set(value):
+		print("emit stretch")
 		stretch_factor = value
 		emit_signal("pixelation_changed", value)
 
@@ -348,7 +354,7 @@ var brightness := 1.0:
 		brightness = value
 		emit_signal("brightness_changed", value)
 
-var load_settings_arr := ["stretch_factor", "optional_shadow", "brightness"]
+var load_settings_arr := ["stretch_factor", "optional_shadow", "brightness", "fps_toggle"]
 ###Save Up until Here?
 var from_save_file = false
 var to_quit = false

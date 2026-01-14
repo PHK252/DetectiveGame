@@ -1,24 +1,23 @@
 extends HBoxContainer
 
-@export var fps_label : Label
-var display_fps := false 
+@onready var menu_fps = $MarginContainer/Fps
+@onready var pause_fps = $"../../../../../../Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/display fps/MarginContainer/Fps"
 
 @export var checkbox : TextureButton
 
 func _ready() -> void:
-	fps_label.visible = false
-
-func _process(delta: float) -> void:
-	if display_fps:
-		fps_label.text = str(Engine.get_frames_per_second())
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	menu_fps.button_pressed = GlobalVars.fps_toggle
+	pause_fps.button_pressed = GlobalVars.fps_toggle
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
-	fps_label.visible = toggled_on
-	display_fps = toggled_on
+	GlobalVars.fps_toggle = toggled_on
+
 
 func _on_reset_graphics_pressed() -> void:
-	fps_label.visible = false
-	display_fps = false
+	GlobalVars.fps_toggle = false
 	checkbox.button_pressed = false
 
 func _on_disable_overlap(toggled):
@@ -26,3 +25,11 @@ func _on_disable_overlap(toggled):
 		checkbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	else:
 		checkbox.mouse_filter = Control.MOUSE_FILTER_STOP
+
+
+func _on_fps_toggled(toggled_on):
+	pause_fps.set_pressed_no_signal(GlobalVars.fps_toggle)
+
+
+func _on_pause_fps_toggled(toggled_on):
+	menu_fps.set_pressed_no_signal(GlobalVars.fps_toggle)

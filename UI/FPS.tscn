@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bll1dg2b2fwqi"]
+
+[ext_resource type="Script" uid="uid://3xxygbaffhrv" path="res://UI/fps.gd" id="1_1d060"]
+[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="2_deggr"]
+
+[node name="FPS" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_1d060")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 20.0
+offset_top = 1019.0
+offset_right = 116.0
+offset_bottom = 1066.0
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("2_deggr")
+theme_override_font_sizes/normal_font_size = 50
+text = "00"

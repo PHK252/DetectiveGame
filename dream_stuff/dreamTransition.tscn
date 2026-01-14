@@ -1956,25 +1956,25 @@ shape = SubResource("BoxShape3D_bkanq")
 visible = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(1.2125e-10, -5.39206e-08, -2.94276)
-bones/3/rotation = Quaternion(3.85801e-05, 0.367896, 0.852459, -0.371439)
-bones/4/rotation = Quaternion(-0.328819, -0.000804614, -0.0342749, 0.943771)
-bones/5/rotation = Quaternion(0.544334, -0.0306465, 0.061379, 0.836058)
-bones/8/rotation = Quaternion(-3.85514e-05, 0.367896, 0.852459, 0.371439)
-bones/9/rotation = Quaternion(-0.328819, 0.000804614, 0.0342749, 0.943771)
-bones/10/rotation = Quaternion(0.544334, 0.0306465, -0.061379, 0.836058)
-bones/12/position = Vector3(1.2125e-10, -2.87352e-07, -2.94276)
-bones/15/rotation = Quaternion(-0.0727374, 1.13617e-07, -1.21838e-08, 0.997351)
-bones/16/rotation = Quaternion(0.0104805, 8.70475e-09, 8.07726e-09, 0.999945)
-bones/18/rotation = Quaternion(0.0744665, 0.00932564, -0.0105204, 0.997124)
-bones/20/rotation = Quaternion(0.0744665, -0.00932564, 0.0105204, 0.997124)
-bones/22/rotation = Quaternion(-0.267497, -0.148002, -0.379893, 0.873054)
-bones/23/rotation = Quaternion(-0.00390296, -0.000433483, -0.35815, 0.933656)
-bones/26/rotation = Quaternion(-0.267497, 0.148001, 0.379893, 0.873054)
-bones/27/rotation = Quaternion(-0.00390317, 0.000433501, 0.35815, 0.933656)
-bones/31/position = Vector3(0.939846, -0.0311821, -2.17872)
-bones/33/position = Vector3(1.2125e-10, -1.13525e-07, -2.94276)
-bones/36/position = Vector3(-0.939846, -0.0311821, -2.17872)
+bones/1/position = Vector3(3.37094e-09, -5.39206e-08, -3.01711)
+bones/3/rotation = Quaternion(0.0198562, 0.313133, 0.877656, -0.362318)
+bones/4/rotation = Quaternion(-0.216345, 0.0881767, -0.0383569, 0.97157)
+bones/5/rotation = Quaternion(0.493426, -0.110292, 0.102928, 0.856605)
+bones/8/rotation = Quaternion(-0.0198562, 0.313133, 0.877656, 0.362318)
+bones/9/rotation = Quaternion(-0.216345, -0.0881767, 0.0383569, 0.97157)
+bones/10/rotation = Quaternion(0.493426, 0.110292, -0.102929, 0.856605)
+bones/12/position = Vector3(3.37094e-09, -2.33403e-07, -3.01711)
+bones/15/rotation = Quaternion(-0.0857623, 1.13837e-07, -1.0642e-08, 0.996316)
+bones/16/rotation = Quaternion(0.0390009, 9.19636e-09, 8.10061e-09, 0.999239)
+bones/18/rotation = Quaternion(0.0184243, -0.00969678, -0.00965151, 0.999737)
+bones/20/rotation = Quaternion(0.0184243, 0.00969678, 0.00965153, 0.999737)
+bones/22/rotation = Quaternion(-0.255491, -0.149042, -0.404678, 0.865302)
+bones/23/rotation = Quaternion(-0.00308844, -0.000445258, -0.283407, 0.958995)
+bones/26/rotation = Quaternion(-0.255491, 0.149041, 0.404678, 0.865302)
+bones/27/rotation = Quaternion(-0.00308863, 0.000445247, 0.283409, 0.958994)
+bones/31/position = Vector3(0.989338, -0.0311821, -2.1928)
+bones/33/position = Vector3(3.37094e-09, -1.13525e-07, -3.01711)
+bones/36/position = Vector3(-0.989338, -0.0311821, -2.1928)
 
 [node name="Idle" type="Timer" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D" index="8"]
 wait_time = 35.0
@@ -2102,8 +2102,9 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94889, 0.964143, -1.47473)
 stream = SubResource("AudioStreamRandomizer_bvs2m")
 
-[node name="Pause" parent="." instance=ExtResource("38_616vu")]
+[node name="Pause" parent="." node_paths=PackedStringArray("main_scene") instance=ExtResource("38_616vu")]
 visible = false
+main_scene = NodePath("..")
 
 [connection signal="tile_change" from="SubViewportContainer/SubViewport/DreamTransition/Tile Matrix/Tile_1_1" to="SubViewportContainer/SubViewport/DreamTransition/Tile Matrix" method="_on_tile_change"]
 [connection signal="tile_change" from="SubViewportContainer/SubViewport/DreamTransition/Tile Matrix/Tile_1_2" to="SubViewportContainer/SubViewport/DreamTransition/Tile Matrix" method="_on_tile_change"]
