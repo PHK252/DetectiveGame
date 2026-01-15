@@ -19,26 +19,6 @@ func _ready() -> void:
 	pass
 	#default window option
 
-
-##this isnt used right? ##yeah
-#func _on_window_mode_item_selected(index: int) -> void:
-	#op_button.release_focus()
-	#match index:
-		#0: #full
-			#screen_transition_fade.play("fade_out")
-			#await get_tree().create_timer(.5).timeout
-			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-			#emit_signal("full_screen")
-		#1: #window
-			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			#DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			#emit_signal("windowed")
-		#2: #borderless window
-			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			#DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-			#emit_signal("windowed")
-
-
 func _on_reset_graphics_pressed() -> void:
 	pass
 	#op_button.selected = 0

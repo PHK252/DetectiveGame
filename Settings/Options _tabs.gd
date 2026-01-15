@@ -5,9 +5,7 @@ extends MarginContainer
 @export var audio_button : TextureButton
 @export var audio_reset : TextureButton
 @export var graphic_reset : TextureButton
-
-func _ready():
-	audio_button.button_pressed = true
+@export var options : Node
 
 
 func _on_graphics_toggled(toggled_on):
@@ -24,3 +22,12 @@ func _on_audio_toggled(toggled_on):
 		graphics_tab.visible = false
 		audio_reset.visible = true
 		graphic_reset.visible = false
+
+
+func _on_options_settings_visibility_changed():
+	if options.visible == true:
+		audio_button.button_pressed = true
+
+
+func _on_pause_menu_visibility_changed():
+	audio_button.button_pressed = true

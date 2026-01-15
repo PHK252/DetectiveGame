@@ -74,7 +74,7 @@ func _on_visibility_changed():
 		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			prev_mouse_mode = 0
 		get_tree().paused = true
-		Engine.time_scale = 0
+
 		await get_tree().process_frame
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		InputMap.action_erase_events("Quit")
@@ -82,6 +82,7 @@ func _on_visibility_changed():
 		key_event.keycode = KEY_ESCAPE
 		resume_short.events = [key_event]
 		resume.shortcut = resume_short
+		Engine.time_scale = 0
 		
 func _process(delta):
 	if GlobalVars.in_dialogue == true:

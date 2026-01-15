@@ -3,10 +3,17 @@ extends HBoxContainer
 #send signal to world env change brightness based on slide
 # 0.7 min - 1.2 max
 #1.0 default
-
+@export var menu_slider : HSlider
+@export var pause_slider : HSlider
 signal brightness_shift
 @export var slider : HSlider
 
+func _ready():
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	slider.value = GlobalVars.brightness
+	
 func _on_h_slider_value_changed(value: float) -> void:
 	GlobalVars.brightness = value
 	emit_signal("brightness_shift")
@@ -22,3 +29,10 @@ func _on_brightness_slider_clicked(event):
 			slider.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber Pressed.png"))
 		else:
 			slider.add_theme_icon_override("grabber_highlight", load("res://UI/Assets/Options/Graphics/Brightness Slider Grabber normal.png"))
+
+
+func _on_menu_brightness_shift():
+	pause_slider.value = GlobalVars.brightness
+
+func _on_pause_brightness_shift():
+	menu_slider.value = GlobalVars.brightness

@@ -20,12 +20,14 @@ func _ready():
 		return
 	if selected > op_array.size() -1:
 		return
-	_set_selected(selected)
+	#_set_selected(selected)
 
 func _set_selected(selected : int):
 	op_array[selected].button_pressed = true
-	main_label.text = label_array[selected].text
+	print(op_array[selected].button_pressed)
+	main_label.text = op_array[selected].label
 	label_array[selected].add_theme_color_override("default_color", Color(0.992,0.835,0.478,1.0))
+	print("set selected ", selected, main_label.text)
 
 func _on_texture_button_toggled(toggled_on):
 	menu.visible = toggled_on
