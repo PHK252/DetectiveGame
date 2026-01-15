@@ -10,31 +10,8 @@ signal set_mirror
 var selected
 
 func _ready() -> void:
-	await get_tree().process_frame
-	await get_tree().process_frame
-	await get_tree().process_frame
-	match GlobalVars.vsync:
-		0:
-			op_button.selected = 0
-			selected = 0
-			emit_signal("set_mirror", 0)
-			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-		1:
-			op_button.selected = 1
-			selected = 1
-			emit_signal("set_mirror", 1)
-			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-		2:
-			op_button.selected = 2
-			selected = 2
-			emit_signal("set_mirror", 2)
-			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-		_:
-			emit_signal("set_mirror", 0)
-			op_button.selected = 0
-			selected = 0
-			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-
+	pass
+	
 #func _on_option_button_item_selected(index: int) -> void:
 	#op_button.release_focus()
 	#match index:
@@ -85,8 +62,9 @@ func _on_reset_graphics_pressed() -> void:
 #func _on_option_button_toggled(toggled_on):
 	#open = toggled_on
 func _on_pause_menu_visibility_changed():
-	if pause_screen.visible == true:
-		pause_menu.op_array[selected].set_pressed_no_signal(true)
+	pass
+	#if pause_screen.visible == true:
+		#pause_menu.op_array[selected].set_pressed_no_signal(true)
 
 func _on_menu_on_select_option(index):
 	match index:

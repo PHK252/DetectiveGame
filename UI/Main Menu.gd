@@ -13,6 +13,11 @@ extends Node2D
 @export var bg : TextureRect
 
 var new_game : bool
+
+var selected : int
+
+#handle_label_changes
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -36,7 +41,11 @@ func _ready():
 		GlobalVars.from_save_file = true
 		start_butt.hide()
 		continue_new_cont.show()
-
+		
+		
+		#not needed
+		#brightness technically firing twice bad practice but maybe ok
+		#emit_signal("set_brightness_label", GlobalVars.brightnes)
 
 func _on_new_window_size():
 	var viewport_size = get_viewport().get_visible_rect().size

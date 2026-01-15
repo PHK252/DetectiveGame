@@ -11,34 +11,7 @@ var open := false
 @export var pause_screen : Panel
 
 func _ready():
-	await get_tree().process_frame
-	await get_tree().process_frame
-	await get_tree().process_frame
-	match GlobalVars.stretch_factor:
-		2:
-			op_button.selected = 0
-			selected = 0
-			emit_signal("set_selected", 0)
-		4:
-			op_button.selected = 1
-			selected = 1
-			emit_signal("set_selected", 1)
-		6:
-			op_button.selected = 2
-			selected = 2
-			emit_signal("set_selected", 2)
-		7:
-			op_button.selected = 3
-			selected = 3
-			emit_signal("set_selected", 3)
-		8:
-			op_button.selected = 4
-			selected = 4
-			emit_signal("set_selected", 4)
-		_:
-			op_button.selected = 2
-			selected = 2
-			emit_signal("set_selected", 2)
+	pass
 		
 
 func _on_option_button_item_selected(index: int) -> void:

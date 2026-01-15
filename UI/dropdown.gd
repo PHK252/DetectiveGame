@@ -23,6 +23,7 @@ func _ready():
 	#_set_selected(selected)
 
 func _set_selected(selected : int):
+	print("setting_selection")
 	op_array[selected].button_pressed = true
 	main_label.text = op_array[selected].label
 	label_array[selected].add_theme_color_override("default_color", Color(0.992,0.835,0.478,1.0))

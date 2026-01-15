@@ -23,46 +23,6 @@ signal set_selected
 
 func _ready() -> void:
 	get_viewport().size_changed.connect(_on_new_window_size)
-	await get_tree().process_frame
-	await get_tree().process_frame
-	await get_tree().process_frame
-	loaded_size = Vector2i(GlobalVars.window_size_x, GlobalVars.window_size_y)
-	match loaded_size:
-		Vector2i(1280,720):
-			op_button.selected = 0
-			selected = 0
-			base_window_size = loaded_size
-			emit_signal("set_selected", 0)
-		Vector2i(1920,1080):
-			op_button.selected = 1
-			selected = 1
-			base_window_size = loaded_size
-			emit_signal("set_selected", 1)
-		Vector2i(3840,2160):
-			op_button.selected = 2
-			selected = 2
-			base_window_size = loaded_size
-			emit_signal("set_selected", 2)
-		_:
-			op_button.selected = 1
-			selected = 1
-			base_window_size = loaded_size
-			emit_signal("set_selected", 1)
-	_on_new_window_size()
-	await get_tree().process_frame
-	if windowed:
-		if native_monitor_size < base_window_size:
-			#get_viewport().content_scale_size = native_monitor_size
-			get_window().set_size(force_window_size)
-		else:
-			print(base_window_size)
-			get_window().set_size(base_window_size)
-		center_window()
-	if window_mode.selected == 0:
-		dropdown.disabled = true
-		dropdown_label.add_theme_color_override("default_color", Color(0.992, 0.835, 0.478))
-		return
-	await get_tree().process_frame
 
 
 func _on_new_window_size():

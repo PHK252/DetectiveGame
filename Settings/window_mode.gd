@@ -17,38 +17,7 @@ var selected : int
 var open := false
 
 func _ready() -> void:
-	await get_tree().process_frame
-	await get_tree().process_frame
-	await get_tree().process_frame
-	
-	match GlobalVars.screen_mode:
-		"Full":
-			op_button.selected = 0
-			selected = 0
-			emit_signal("set_selected", 0)
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			emit_signal("full_screen")
-		"Window":
-			op_button.selected = 1
-			selected = 1
-			emit_signal("set_selected", 1)
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			emit_signal("windowed")
-		"Borderless":
-			op_button.selected = 2
-			selected = 2
-			emit_signal("set_selected", 2)
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-			emit_signal("windowed")
-		_:
-			op_button.selected = 0
-			selected = 0
-			emit_signal("set_selected", 0)
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			emit_signal("full_screen")
-	#default window option
+	pass
 
 func _on_reset_graphics_pressed() -> void:
 	pass

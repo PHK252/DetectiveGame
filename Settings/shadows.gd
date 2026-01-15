@@ -4,15 +4,7 @@ signal set_shadow
 @export var checkbox : TextureButton
 
 func _ready():
-	await get_tree().process_frame
-	await get_tree().process_frame
-	await get_tree().process_frame
-	if GlobalVars.optional_shadow == false:
-		checkbox.button_pressed = false
-	else:
-		checkbox.button_pressed = true
-		GlobalVars.optional_shadow = true
-		emit_signal("set_shadow")
+	pass
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	GlobalVars.optional_shadow = toggled_on
@@ -40,3 +32,7 @@ func _on_disable_overlap(toggled):
 		checkbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	else:
 		checkbox.mouse_filter = Control.MOUSE_FILTER_STOP
+
+
+func _on_main_menu_set_shadow_label(shadow: bool) -> void:
+	checkbox.button_pressed = shadow

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b4hwa6q2nro5o"]
+[gd_scene load_steps=70 format=3 uid="uid://b4hwa6q2nro5o"]
 
 [ext_resource type="Script" uid="uid://c0ljt443mhj4a" path="res://UI/Main Menu.gd" id="1_avvtg"]
 [ext_resource type="Texture2D" uid="uid://d3kvej03xuxeb" path="res://UI/Assets/Main Menu/Updated/Start Board.png" id="2_8wcpv"]
@@ -146,6 +146,22 @@ frame_4/texture = ExtResource("17_jjxcq")
 frame_4/duration = 0.25
 frame_5/texture = ExtResource("18_8hnc3")
 frame_5/duration = 0.25
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_prttk"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_52ejp"]
+allow_unpress = true
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_lk11p"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_70b4d"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_hggkw"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_g4i40"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_2xfe3"]
+allow_unpress = true
 
 [node name="Main Menu" type="Node2D" node_paths=PackedStringArray("start_butt", "continue_new_cont", "start", "controls", "options", "cl", "bg")]
 script = ExtResource("1_avvtg")
@@ -299,6 +315,186 @@ main_menu = true
 visible = false
 main_menu = true
 
+[node name="Audio" parent="Options_Settings/Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="0"]
+button_group = SubResource("ButtonGroup_prttk")
+
+[node name="Graphics" parent="Options_Settings/Main Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="1"]
+button_group = SubResource("ButtonGroup_prttk")
+
+[node name="Main" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_52ejp")
+
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Main" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_52ejp")
+
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Main" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_52ejp")
+
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Main" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_52ejp")
+
+[node name="Option1" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option2" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option3" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option4" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option5" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option6" parent="Options_Settings/Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Audio" parent="Options_Settings/Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="0"]
+button_group = SubResource("ButtonGroup_prttk")
+
+[node name="Graphics" parent="Options_Settings/Pause Menu/AspectRatioContainer/MarginContainer/ButtonsAltforTabs" index="1"]
+button_group = SubResource("ButtonGroup_prttk")
+
+[node name="Main" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_2xfe3")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_lk11p")
+
+[node name="Main" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_2xfe3")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_70b4d")
+
+[node name="Main" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_2xfe3")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_hggkw")
+
+[node name="Main" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer" index="0"]
+button_group = SubResource("ButtonGroup_2xfe3")
+
+[node name="Option1" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="0"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option2" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="1"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option3" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="2"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option4" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="3"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option5" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="4"]
+button_group = SubResource("ButtonGroup_g4i40")
+
+[node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu/VBoxContainer/Menu" index="5"]
+button_group = SubResource("ButtonGroup_g4i40")
+
 [node name="MenuSounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
 script = ExtResource("51_52ejp")
 audio = [NodePath("Click(select)"), NodePath("Hiss(hover)"), NodePath("Blip(back?)")]
@@ -352,3 +548,4 @@ bus = &"Music"
 [connection signal="options_exit" from="Options_Settings" to="." method="_on_options_exit_button_pressed"]
 
 [editable path="Controls"]
+[editable path="Options_Settings"]
