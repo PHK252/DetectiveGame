@@ -3,20 +3,17 @@ extends VBoxContainer
 signal set_pixelation
 signal set_reset
 signal set_selected
-signal set_mirror
 var selected : int
 @export var op_button : Control
 var open := false
 
 @export var pause_menu : Control
-@export var menu_menu : Control
 @export var pause_screen : Panel
 
 func _ready():
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
-	print(GlobalVars.stretch_factor)
 	match GlobalVars.stretch_factor:
 		2:
 			op_button.selected = 0
@@ -51,6 +48,7 @@ func _on_option_button_item_selected(index: int) -> void:
 func _on_reset_graphics_pressed() -> void:
 	emit_signal("set_reset", "Normal", 2, true)
 	GlobalVars.stretch_factor = 6
+	selected = 2
 	emit_signal("set_pixelation")
 
 func _on_menu_on_select_option(index):

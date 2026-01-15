@@ -39,6 +39,14 @@ func saveSettings(path: String):
 			"optional_shadow" : GlobalVars.optional_shadow, 
 			"brightness" : GlobalVars.brightness,
 			"fps_toggle" : GlobalVars.fps_toggle,
+			"window_size_x" : GlobalVars.window_size_x,
+			"window_size_y" :  GlobalVars.window_size_y,
+			"screen_mode" : GlobalVars.screen_mode,
+			"vsync" : GlobalVars.vsync, 
+			"master" : GlobalVars.master, 
+			"music" : GlobalVars.music, 
+			"sfx" : GlobalVars.sfx, 
+			"ambience" : GlobalVars.ambience,
 		}
 	}
 	var json_string = JSON.stringify(data, "\t", false)

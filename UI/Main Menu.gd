@@ -16,7 +16,8 @@ var new_game : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		#
+	if AudioServer.is_bus_mute(0) == true:
+		AudioServer.set_bus_mute(0, false)
 		#GlobalVars.to_quit = false
 	#get_viewport().size_changed.connect(_on_new_window_size)
 	#_on_new_window_size()

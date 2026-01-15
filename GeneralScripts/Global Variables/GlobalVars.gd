@@ -332,6 +332,8 @@ signal shadow_changed(new_value)
 signal brightness_changed(new_value)
 signal toggle_fps(toggled)
 
+
+
 var fps_toggle := false:
 	set(value):
 		fps_toggle = value
@@ -354,7 +356,17 @@ var brightness := 1.0:
 		brightness = value
 		emit_signal("brightness_changed", value)
 
-var load_settings_arr := ["stretch_factor", "optional_shadow", "brightness", "fps_toggle"]
+var window_size_x : int
+var window_size_y : int
+var screen_mode : String
+var vsync : int
+var master : float
+var music : float
+var sfx : float
+var ambience : float
+	
+
+var load_settings_arr := ["stretch_factor", "optional_shadow", "brightness", "fps_toggle", "window_size_x", "window_size_y", "screen_mode", "vsync", "master", "music", "sfx", "ambience"]
 ###Save Up until Here?
 var from_save_file = false
 var to_quit = false
@@ -402,10 +414,6 @@ func get_current_level_path(level : String):
 var cam_changed = false
 var clue_progress = 1
 var ghost_open = false
-
-var master_volume : int
-var music_volume : int
-var effect_volume : int
 
 
 func set_mouse_default():

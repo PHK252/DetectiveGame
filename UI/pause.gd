@@ -14,15 +14,16 @@ func _ready():
 	pass
 
 func _on_save_pressed():
-	print(main_scene)
-	#await get_tree().process_frame
-	get_tree().paused = false
-	Engine.time_scale = 1
+	AudioServer.set_bus_mute(0, true)
 	resume.shortcut = null
 	await get_tree().process_frame
 	InputMap.action_add_event("Quit", quit[0])
 	visible = false
 	Loading.load_scene(main_scene, GlobalVars.main_menu, "", "", "")
+	get_tree().paused = false
+	Engine.time_scale = 1
+	await get_tree().create_timer(0.51).timeout
+	
 
 
 func _on_resume_pressed():

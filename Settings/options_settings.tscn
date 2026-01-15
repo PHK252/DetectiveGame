@@ -312,7 +312,6 @@ script = ExtResource("1_8i1sl")
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Panel" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -670,16 +669,18 @@ scrollable = false
 layout_mode = 2
 theme_override_constants/separation = 83
 
-[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("dropdown", "dropdown_label", "window_mode", "cl", "op_button", "screen_transition_fade")]
+[node name="Resolution" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("dropdown", "dropdown_label", "window_mode", "cl", "op_button", "screen_transition_fade", "pause_screen", "pause_menu")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("3_i8y7k")
 dropdown = NodePath("Resolution Menu/VBoxContainer/Main")
 dropdown_label = NodePath("Resolution Menu/VBoxContainer/Main/RichTextLabel")
-window_mode = NodePath("../../Screen_Vsync/Screen/Window Menu")
+window_mode = NodePath("../../Screen_Vsync/Screen")
 cl = NodePath("../../../../..")
 op_button = NodePath("OptionButton")
 screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
+pause_screen = NodePath("../../../../../../Pause Menu")
+pause_menu = NodePath("../../../../../../Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
 layout_mode = 2
@@ -939,13 +940,12 @@ text = "Good"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pixelation" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button", "pause_menu", "menu_menu", "pause_screen")]
+[node name="pixelation" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button", "pause_menu", "pause_screen")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("4_w8hml")
 op_button = NodePath("Pixelation Menu")
 pause_menu = NodePath("../../../../../../Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu")
-menu_menu = NodePath("Pixelation Menu")
 pause_screen = NodePath("../../../../../../Pause Menu")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation"]
@@ -1209,12 +1209,14 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 83
 
-[node name="Screen" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "screen_transition_fade")]
+[node name="Screen" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "screen_transition_fade", "pause_screen", "pause_menu")]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("2_i8y7k")
-op_button = NodePath("WindowMode")
+op_button = NodePath("Window Menu")
 screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
+pause_screen = NodePath("../../../../../../Pause Menu")
+pause_menu = NodePath("../../../../../../Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
 layout_mode = 2
@@ -1262,7 +1264,6 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 popup/item_2/text = "Borderless"
 popup/item_2/id = 2
-script = ExtResource("35_6fw26")
 
 [node name="Window Menu" type="Control" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array", "main_box_container")]
 custom_minimum_size = Vector2(552, 144)
@@ -1471,11 +1472,13 @@ text = "Good"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Vsync" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
+[node name="Vsync" type="VBoxContainer" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "pause_screen", "pause_menu")]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("4_qakdx")
-op_button = NodePath("OptionButton")
+op_button = NodePath("Vsync Menu")
+pause_screen = NodePath("../../../../../../Pause Menu")
+pause_menu = NodePath("../../../../../../Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu")
 
 [node name="Label" type="TextureRect" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
 layout_mode = 2
@@ -1522,7 +1525,6 @@ popup/item_1/text = "Adaptive"
 popup/item_1/id = 1
 popup/item_2/text = "Disabled"
 popup/item_2/id = 2
-script = ExtResource("35_6fw26")
 
 [node name="Vsync Menu" type="Control" parent="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array", "main_box_container")]
 custom_minimum_size = Vector2(552, 144)
@@ -1812,6 +1814,7 @@ text = "X"
 
 [node name="Pause Menu" type="Panel" parent="."]
 process_mode = 2
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -2170,16 +2173,18 @@ scrollable = false
 layout_mode = 2
 theme_override_constants/separation = 83
 
-[node name="Resolution" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("dropdown", "dropdown_label", "window_mode", "cl", "op_button", "screen_transition_fade")]
+[node name="Resolution" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("dropdown", "dropdown_label", "window_mode", "cl", "op_button", "screen_transition_fade", "pause_screen", "pause_menu")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("3_i8y7k")
 dropdown = NodePath("Resolution Menu/VBoxContainer/Main")
 dropdown_label = NodePath("Resolution Menu/VBoxContainer/Main/RichTextLabel")
-window_mode = NodePath("../../Screen_Vsync/Screen/Window Menu")
+window_mode = NodePath("../../Screen_Vsync/Screen")
 cl = NodePath("../../../../..")
 op_button = NodePath("OptionButton")
 screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
+pause_screen = NodePath("../../../../..")
+pause_menu = NodePath("Resolution Menu")
 
 [node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution"]
 layout_mode = 2
@@ -2439,13 +2444,12 @@ text = "Good"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pixelation" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button", "pause_menu", "menu_menu", "pause_screen")]
+[node name="pixelation" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res" node_paths=PackedStringArray("op_button", "pause_menu", "pause_screen")]
 layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("4_w8hml")
 op_button = NodePath("Pixelation Menu")
 pause_menu = NodePath("Pixelation Menu")
-menu_menu = NodePath("../../../../../../Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu")
 pause_screen = NodePath("../../../../..")
 
 [node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation"]
@@ -2709,12 +2713,14 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 83
 
-[node name="Screen" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "screen_transition_fade")]
+[node name="Screen" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "screen_transition_fade", "pause_screen", "pause_menu")]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("2_i8y7k")
-op_button = NodePath("WindowMode")
+op_button = NodePath("Window Menu")
 screen_transition_fade = NodePath("../../../../../../ScreenFadesWindowMode/ScreenTransitionPlayer")
+pause_screen = NodePath("../../../../..")
+pause_menu = NodePath("Window Menu")
 
 [node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen"]
 layout_mode = 2
@@ -2762,7 +2768,6 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 popup/item_2/text = "Borderless"
 popup/item_2/id = 2
-script = ExtResource("35_6fw26")
 
 [node name="Window Menu" type="Control" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" node_paths=PackedStringArray("menu", "main_button", "main_label", "op_array", "label_array", "main_box_container")]
 custom_minimum_size = Vector2(552, 144)
@@ -2971,11 +2976,13 @@ text = "Good"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Vsync" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button")]
+[node name="Vsync" type="VBoxContainer" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync" node_paths=PackedStringArray("op_button", "pause_screen", "pause_menu")]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("4_qakdx")
-op_button = NodePath("OptionButton")
+op_button = NodePath("Vsync Menu")
+pause_screen = NodePath("../../../../..")
+pause_menu = NodePath("Vsync Menu")
 
 [node name="Label" type="TextureRect" parent="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync"]
 layout_mode = 2
@@ -3425,6 +3432,7 @@ bus = &"SFX"
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_main_menu_click"]
 [connection signal="value_changed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_h_slider_value_changed"]
+[connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_set_selected"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
@@ -3459,8 +3467,6 @@ bus = &"SFX"
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
 [connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
-[connection signal="set_mirror" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
-[connection signal="set_pixelation" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_pixelation_main_selected_changed"]
 [connection signal="set_reset" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_set_selected"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_option_button_clicked"]
@@ -3497,6 +3503,7 @@ bus = &"SFX"
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
 [connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="full_screen" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_full_screen"]
+[connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_set_selected"]
 [connection signal="windowed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
@@ -3530,6 +3537,7 @@ bus = &"SFX"
 [connection signal="mouse_exited" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
 [connection signal="pressed" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
 [connection signal="select" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="set_mirror" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_set_selected"]
 [connection signal="set_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_item_selected"]
@@ -3588,7 +3596,10 @@ bus = &"SFX"
 [connection signal="gui_input" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_main_menu_click"]
 [connection signal="visibility_changed" from="Pause Menu" to="Pause Menu/AspectRatioContainer/MarginContainer" method="_on_pause_menu_visibility_changed"]
+[connection signal="visibility_changed" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_pause_menu_visibility_changed"]
 [connection signal="visibility_changed" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_pause_menu_visibility_changed"]
+[connection signal="visibility_changed" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_pause_menu_visibility_changed"]
+[connection signal="visibility_changed" from="Pause Menu" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_pause_menu_visibility_changed"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_close_menu"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Exit/Main_exit_button" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
@@ -3627,6 +3638,7 @@ bus = &"SFX"
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_main_menu_click"]
 [connection signal="value_changed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness/HSlider" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Brightness" method="_on_h_slider_value_changed"]
+[connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_set_selected"]
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
@@ -3659,7 +3671,6 @@ bus = &"SFX"
 [connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
 [connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_option_select"]
-[connection signal="set_mirror" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="set_pixelation" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" method="_on_pixelation_pause_selected_changed"]
 [connection signal="set_reset" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_set_selected"]
@@ -3694,6 +3705,7 @@ bus = &"SFX"
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
 [connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_option_select"]
 [connection signal="full_screen" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_full_screen"]
+[connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_set_selected"]
 [connection signal="windowed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/WindowMode" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_window_mode_item_selected"]
@@ -3726,6 +3738,7 @@ bus = &"SFX"
 [connection signal="mouse_exited" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_mouse_exited"]
 [connection signal="pressed" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" method="_on_pressed"]
 [connection signal="select" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu/VBoxContainer/Menu/Option6" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_option_select"]
+[connection signal="set_mirror" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_set_selected"]
 [connection signal="set_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_on_option_select"]
 [connection signal="gui_input" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_clicked"]
 [connection signal="item_selected" from="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/OptionButton" to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync" method="_on_option_button_item_selected"]
