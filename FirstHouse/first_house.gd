@@ -35,6 +35,7 @@ extends Node3D
 @export var music : AudioStreamPlayer
 
 signal phone_time_start
+signal auto_open
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#player.start_player()
@@ -131,6 +132,7 @@ func _on_timeline_ended_timed():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.hide()
+	emit_signal("auto_open")
 	
 
 func _on_timeline_ended_kicked():
@@ -138,6 +140,7 @@ func _on_timeline_ended_kicked():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.hide()
+	emit_signal("auto_open")
 
 func disable_interaction(arr: Array):
 	for i in arr:

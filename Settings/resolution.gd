@@ -23,6 +23,14 @@ signal set_selected
 
 func _ready() -> void:
 	get_viewport().size_changed.connect(_on_new_window_size)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	if GlobalVars.screen_mode == "Full":
+		dropdown.disabled = true
+		dropdown_label.add_theme_color_override("default_color", Color(0.992, 0.835, 0.478))
+		return
 
 
 func _on_new_window_size():

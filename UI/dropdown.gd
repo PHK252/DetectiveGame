@@ -22,7 +22,8 @@ func _ready():
 		return
 	#_set_selected(selected)
 
-func _set_selected(selected : int):
+func _set_selected(val : int):
+	selected = val
 	print("setting_selection")
 	op_array[selected].button_pressed = true
 	main_label.text = op_array[selected].label
@@ -76,3 +77,7 @@ func _on_disable_overlap(toggled):
 		main_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		mouse_filter = Control.MOUSE_FILTER_STOP
 		main_box_container.mouse_filter = Control.MOUSE_FILTER_STOP
+
+
+func _on_screen_full_screen():
+	pass # Replace with function body.

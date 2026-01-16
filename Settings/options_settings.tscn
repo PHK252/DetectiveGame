@@ -3378,13 +3378,17 @@ bus = &"SFX"
 stream = ExtResource("89_8eai4")
 bus = &"SFX"
 
+[connection signal="full_screen" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_screen_full_screen"]
+[connection signal="full_screen_p" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_full_screen"]
 [connection signal="set_pixel_label" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_set_selected"]
 [connection signal="set_pixel_label_M" from="." to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_set_selected"]
 [connection signal="set_res" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
 [connection signal="set_res" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_set_selected"]
 [connection signal="set_res_M" from="." to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_menu_on_select_option"]
 [connection signal="set_res_M" from="." to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_set_selected"]
+[connection signal="set_selected" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
 [connection signal="set_selected" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_set_selected"]
+[connection signal="set_selected_M" from="." to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen" method="_on_menu_on_select_option"]
 [connection signal="set_selected_M" from="." to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_set_selected"]
 [connection signal="set_shadow_label" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_main_menu_set_shadow_label"]
 [connection signal="set_shadow_label_M" from="." to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/FpS_Shadows/Shadows" method="_on_main_menu_set_shadow_label"]
@@ -3394,6 +3398,8 @@ bus = &"SFX"
 [connection signal="set_vsync_M" from="." to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_set_selected"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="." to="Main Menu/AspectRatioContainer/MarginContainer" method="_on_options_settings_visibility_changed"]
+[connection signal="windowed" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
+[connection signal="windowed_p" from="." to="Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution" method="_on_screen_windowed"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_on_main_menu_click"]
 [connection signal="gui_input" from="Main Menu" to="Main Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_on_main_menu_click"]

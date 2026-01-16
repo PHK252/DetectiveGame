@@ -19,37 +19,49 @@ signal set_res_M(res: int)
 signal set_vsync_M(vsync: int)
 signal set_pixel_label_M(pixelation: int)
 signal set_shadow_label_M(shadow: bool)
-#func _ready():
-	#get_tree().paused = true
 
+signal full_screen
+signal windowed
+signal full_screen_p
+signal windowed_p
 func _ready() -> void:
-	SaveLoad.loaded_settings.connect(_on_loaded_settings)
+	_on_loaded_settings()
+	#SaveLoad.loaded_settings.connect(_on_loaded_settings)
 
 func _on_loaded_settings():
-	print("ready to load settings")
-	#handling screen and window
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
 	
+	print("ready to load settings")
+	#handling screen and window	
 	match GlobalVars.screen_mode:
 		"Full":
 			if main_menu:
 				emit_signal("set_selected_M", 0)
 			else:
 				emit_signal("set_selected", 0)
+
 		"Window":
+			
 			if main_menu:
 				emit_signal("set_selected_M", 1)
 			else:
 				emit_signal("set_selected", 1)
+
 		"Borderless":
+				
 			if main_menu:
 				emit_signal("set_selected_M", 2)
 			else:
 				emit_signal("set_selected", 2)
+
 		_:
 			if main_menu:
 				emit_signal("set_selected_M", 0)
 			else:
 				emit_signal("set_selected", 0)
+
 
 		#screen
 	var loaded_size = Vector2i(GlobalVars.window_size_x, GlobalVars.window_size_y)

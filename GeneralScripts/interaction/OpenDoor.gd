@@ -271,8 +271,9 @@ func _on_door_point_body_exited(body):
 			close()
 			entered = false
 			emit_signal("activate_leave")
-			if interaction.monitorable == true:
-				interaction.set_deferred("monitorable", false)
+			if interaction:
+				if interaction.monitorable == true:
+					interaction.set_deferred("monitorable", false)
 
 
 func _on_door_point_body_entered(body):
