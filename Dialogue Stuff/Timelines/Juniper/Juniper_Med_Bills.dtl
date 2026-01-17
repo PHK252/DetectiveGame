@@ -12,7 +12,6 @@ if {Character Aff Points.Juniper} <= 0:
 	Dalton (Talk): And it’s Detective Reynard still.
 	Theo (Roll Eyes): Yeah, yeah.
 	Theo (Sigh): Huu...
-	do GlobalVars.emit_add_note("juniper", "med", "")
 else:
 	set {Juniper.ask_mom_rever} = true
 	set {Character Aff Points.Juniper} -= 1

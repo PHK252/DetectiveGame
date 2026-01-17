@@ -353,3 +353,11 @@ func _on_caught_open_doors():
 		open()
 		collision.set_deferred("disabled", true)
 		return
+
+
+func _on_auto_open():
+	leaving = true
+	open()
+	collision.set_deferred("disabled", true)
+	interaction.set_monitorable(false)
+	interaction.queue_free()

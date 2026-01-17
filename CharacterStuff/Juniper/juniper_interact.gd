@@ -5,6 +5,7 @@ extends Node3D
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var juniper_marker : Marker2D
+@export var timer : Timer
 #signal Dquestion
 #signal Dstopped
 #signal Tstop
@@ -61,8 +62,6 @@ func _on_tea_ended():
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_tea_ended)
 	GlobalVars.in_dialogue = false
-	if GlobalVars.in_tea_time == false:
-		emit_signal("enable_interaction")
 
 func _process(delta):
 	asked = Dialogic.VAR.get_variable("Juniper.asked_all")
@@ -79,9 +78,6 @@ func _on_door_second_j_dialogue() -> void:
 		alert.hide()
 		var greeting = Dialogic.start("Juniper_Greeting", "continue")
 		Dialogic.timeline_ended.connect(_on_greeting_ended)
-		greeting.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		greeting.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		greeting.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 
 
 func _on_entered_juniper_house():
@@ -93,9 +89,6 @@ func _on_entered_juniper_house():
 		var in_house = Dialogic.start("Juniper_Enter_House")
 		Dialogic.signal_event.connect(_activate_tea)
 		Dialogic.timeline_ended.connect(_on_tea_ended)
-		in_house.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		in_house.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		in_house.register_character(load("res://Dialogic Characters/Juniper.dch"), juniper_marker)
 
 func _activate_tea(argument : String):
 	if argument == "tea_time":
@@ -104,5 +97,11 @@ func _activate_tea(argument : String):
 		Dialogic.signal_event.disconnect(_activate_tea)
 		GlobalVars.in_tea_time = true
 		emit_signal("tea_time")
+		timer.paused = true
+		print("teaaa")
 	else:
 		Dialogic.signal_event.disconnect(_activate_tea)
+
+
+func _on_unpause_timer():
+	timer.paused = false

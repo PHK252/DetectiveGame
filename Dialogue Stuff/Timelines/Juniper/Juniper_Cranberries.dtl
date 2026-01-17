@@ -5,12 +5,17 @@
 	[signal arg="exit_cam"]
 	if {Character Aff Points.Juniper} <= 0:
 		set {Character Aff Points.Juniper} -= 1
-		Juniper (Doubt): Is snooping around not enough?
-		Juniper (Squint): Now ya wanna steal my food.
-		Dalton (Squint): I- 
-		Dalton (Awkward): Um...
-		Juniper (Roll Eyes): Y’all are supposed to solve crime, not commit them.
-		Juniper (Doubt): Even I know that. 
+		if {Juniper.Cran_repeat} == false:
+			Juniper (Doubt): Is snooping around not enough?
+			Juniper (Squint): Now ya wanna steal my food.
+			Dalton (Squint): I- 
+			Dalton (Awkward): Um...
+			Juniper (Roll Eyes): Y’all are supposed to solve crime, not commit them.
+			Juniper (Doubt): Even I know that. 
+			set {Juniper.Cran_repeat} = true
+		else:
+			Juniper (Doubt): Tsk.
+			Juniper (Squint): Again?
 		[end_timeline]
 	else:
 		if {Juniper.Cran_repeat} == false:
@@ -25,7 +30,6 @@
 			set {Juniper.Cran_repeat} = true
 			[end_timeline]
 		else:
-			
 			if {Juniper.Cran_repeat_choice} == 0:
 				Juniper (Default): Ya still hungry?
 				Dalton (Surprised): ...!

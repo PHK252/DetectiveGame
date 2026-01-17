@@ -119,7 +119,6 @@ func caseUI(argument: String):
 		player.hide()
 		GlobalVars.Juniper_in_case = true
 		player.stop_player()
-		GlobalVars.viewing = "case_ui"
 		interact_area.show()
 		case_cam.priority = 30
 		main_cam.priority = 0 
@@ -147,7 +146,6 @@ func _input(event):
 	var finished_tag = Dialogic.VAR.get_variable("Juniper.finished_name_tag")
 	if GlobalVars.in_dialogue == false:
 		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and kicked == false and timed == false:
-			#case exit issue is that we not entering this logic for some reason
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30
@@ -220,11 +218,13 @@ func _input(event):
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			else:
+				print("exit case")
 				emit_signal("disable_look")
 				GlobalVars.in_interaction = ""
 				player.start_player()
 				alert.show()
 				interact_area.hide()
+				
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "case_ui": 
 			UI.hide()
 			GlobalVars.in_look_screen = false
@@ -232,7 +232,20 @@ func _input(event):
 			await get_tree().create_timer(.03).timeout
 			GlobalVars.viewing = ""
 			interact_area.show()
-
+		elif Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and timed == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			case_cam.priority = 0
+			main_cam.priority = 30
+			cam_anim.play("RESET")
+			player.show()
+			GlobalVars.in_interaction = ""
+			if GlobalVars.opened_jun_case == true:
+				interior_interact_area_1.hide()
+				interior_interact_area_2.hide()
+				interior_interact_area_3.hide()
+				interior_interact_area_4.hide()
+			else:
+				interact_area.hide()
 func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:

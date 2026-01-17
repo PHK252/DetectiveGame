@@ -24,6 +24,7 @@ extends Node3D
 @onready var in_kicked_out_dialogue = false
 
 signal phone_time_start
+signal auto_open
 
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
@@ -68,29 +69,25 @@ func _on_brightness_brightness_shift(brightness) -> void:
 
 func _process(delta):
 	#Kicked out 
-	if Dialogic.VAR.get_variable("Character Aff Points.Juniper") <= -3:
+	if Dialogic.VAR.get_variable("Character Aff Points.Juniper") <= -4:
 		GlobalVars.juniper_kicked_out = true
 		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
 			disable_interaction(interactables)
 			alert.hide()
 			player.stop_player()
 			in_kicked_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
-			kicked_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			kicked_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			kicked_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 	
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Juniper.timed_out") == false and GlobalVars.juniper_kicked_out == false:
 			alert.hide()
 			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
-			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 			
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
 
@@ -105,12 +102,10 @@ func _on_timer_timeout():
 		alert.hide()
 		if GlobalVars.in_interaction == "":
 			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			print("timeout_dialogue_entered")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
-			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 		else:
 			pass
 		 
@@ -120,6 +115,7 @@ func _on_timeline_ended_timed():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.hide()
+	emit_signal("auto_open")
 	
 
 func _on_timeline_ended_kicked():
@@ -127,6 +123,8 @@ func _on_timeline_ended_kicked():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.hide()
+	emit_signal("auto_open")
+	
 
 func disable_interaction(arr: Array):
 	for i in arr:
@@ -149,3 +147,8 @@ func _on_entered_juniper():
 	emit_signal("phone_time_start")
 	music.play()
 	print("level start!")
+
+
+func _on_level_exit():
+	print("level exited!")
+	music.stop()

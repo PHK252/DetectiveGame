@@ -145,7 +145,6 @@ func caseUI(argument: String):
 		player.hide()
 		GlobalVars.Micah_in_case = true
 		player.stop_player()
-		GlobalVars.viewing = "case_ui"
 		interact_area.show()
 		case_cam.priority = 30
 		main_cam.priority = 0 

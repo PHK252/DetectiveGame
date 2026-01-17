@@ -90,14 +90,16 @@ func _process(delta):
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "" and cab_anim == false and kicked == false and timed == false:
+			print("exit dialogue")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			Exit_Cam.set_tween_duration(0)
+			#Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
-			await get_tree().create_timer(.03).timeout
+			await get_tree().process_frame
 			cam_anim.play("RESET")
 			player.show()
 			emit_signal("enable_look")
+			GlobalVars.in_dialogue = true
 			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -115,7 +117,7 @@ func _process(delta):
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "" and cab_anim == false:
 			print("exit")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			Exit_Cam.set_tween_duration(0)
+			#Exit_Cam.set_tween_duration(0)
 			FP_Cam.priority = 0
 			Exit_Cam.priority = 30
 			cam_anim.play("RESET")

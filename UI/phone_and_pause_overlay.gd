@@ -39,7 +39,7 @@ func _process(delta):
 		evidence.modulate.a = 0.784
 		call_normal.disabled = false
 	if GlobalVars.phone_tut == false and in_evidence == true:
-		if GlobalVars.in_dialogue == true and phone_visible == true:
+		if (GlobalVars.in_interaction != "" or GlobalVars.in_dialogue == true) and phone_visible == true:
 			print("enter hide")
 			emit_signal("hide_tut")
 			phone_visible = false
