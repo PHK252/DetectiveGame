@@ -56,7 +56,6 @@ func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false:
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
-			GlobalVars.in_interaction = interact_type
 			alert.hide()
 			player.stop_player()
 			emit_signal("enable_look")
@@ -80,7 +79,6 @@ func _on_interactable_interacted(interactor):
 			interior_interact_area_3.show()
 			interior_interact_area_4.show()
 		else:
-			GlobalVars.in_interaction = interact_type
 			GlobalVars.in_dialogue = true
 			alert.hide()
 			player.stop_player()
@@ -105,19 +103,19 @@ func _on_timeline_ended():
 		emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	if GlobalVars.Juniper_in_case == false:
+	if GlobalVars.in_interaction == "":
 		player.start_player()
 		alert.show()
 #
 func caseUI(argument: String):
 	if argument == "look_case":
 		case_pickup.play()
+		GlobalVars.in_interaction = interact_type
 		#case_anim.play("case_open") #testing
 		#await get_tree().create_timer(4.0).timeout
 		#case_anim.play("case_close") #testing
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.hide()
-		GlobalVars.Juniper_in_case = true
 		player.stop_player()
 		interact_area.show()
 		case_cam.priority = 30
@@ -256,5 +254,6 @@ func _on_input_event(viewport, event, shape_idx):
 				UI.show()
 				GlobalVars.viewing = "case_ui"
 				GlobalVars.in_look_screen = true
+				GlobalVars.Juniper_in_case = true
 				GlobalVars.clicked_case_Juniper = GlobalVars.clicked_case_Juniper + 1
 				interact_area.hide()

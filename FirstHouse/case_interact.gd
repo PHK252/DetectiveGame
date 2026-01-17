@@ -105,7 +105,6 @@ func _on_interactable_interacted(interactor):
 			return
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
-			GlobalVars.in_interaction = interact_type
 			player.stop_player()
 			emit_signal("enable_look")
 			Dialogic.start(dialogue_file)
@@ -117,7 +116,6 @@ func _on_interactable_interacted(interactor):
 			alert.hide()
 			return
 		else:
-			GlobalVars.in_interaction = interact_type
 			GlobalVars.in_dialogue = true
 			alert.set_deferred("visible", false)
 			player.stop_player()
@@ -135,15 +133,15 @@ func _on_timeline_ended():
 	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	if GlobalVars.Micah_in_case == false:
+	if GlobalVars.in_interaction == "":
 		player.start_player()
 		alert.show()
 #
 func caseUI(argument: String):
 	if argument == "look_case":
+		GlobalVars.in_interaction = interact_type
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.hide()
-		GlobalVars.Micah_in_case = true
 		player.stop_player()
 		interact_area.show()
 		case_cam.priority = 30
@@ -176,6 +174,7 @@ func _input(event):
 			emit_signal("general_quit")
 			cam_anim.play("RESET")
 			player.show()
+			GlobalVars.Micah_in_case = false
 			if GlobalVars.opened_micah_case == true:
 				interior_interact_area_1.hide()
 				interior_interact_area_2.hide()
@@ -246,12 +245,12 @@ func _input(event):
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "case_ui": 
 			UI.hide()
 			GlobalVars.in_look_screen = false
-			GlobalVars.Micah_in_case = false
 			await get_tree().create_timer(.03).timeout
 			GlobalVars.viewing = ""
 			interact_area.show()
 			show_closed_case()
 			await get_tree().create_timer(.1).timeout
+			GlobalVars.Micah_in_case = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_input_event(viewport, event, shape_idx):

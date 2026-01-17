@@ -84,9 +84,7 @@ func _process(delta):
 	if GlobalVars.Micah_in_case == true:
 		check = str(pos1.numClick) + str(pos2.numClick) + str(pos3.numClick) + str(pos4.numClick) +str(pos5.numClick) + str(pos6.numClick) 
 		if check == password:
-			print("opened")
 			GlobalVars.open_micah_case.connect(_open_case) 
-			print("Open")
 			GlobalVars.emit_open_micah_case()
 			await get_tree().create_timer(1.5).timeout
 			GlobalVars.emit_add_note("micah", "case", "unlock")
