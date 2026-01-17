@@ -21,6 +21,10 @@ if {Character Aff Points.Micah} < 2:
 			jump Micah_ask_keep/
 		else:
 			jump Micah_case_choice/
+	else:
+		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			set {Asked Questions.Micah_in_choice} = false
+			jump Micah_ask_keep/
 if {Character Aff Points.Micah} >= 2:
 	if {Asked Questions.Micah_Asked_Key} == true:
 		Dalton (Talk): Are you missing a key by any chance?
@@ -43,3 +47,7 @@ if {Character Aff Points.Micah} >= 2:
 			jump Micah_ask_keep/
 		else:
 			jump Micah_case_choice/
+	else:
+		if {Asked Questions.Micah_Asked_Key} == true and {Asked Questions.Micah_asked_letter} == true:
+			set {Asked Questions.Micah_in_choice} = false
+			jump Micah_ask_keep/

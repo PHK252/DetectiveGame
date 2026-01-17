@@ -160,28 +160,24 @@ func _on_decline_pressed():
 
 
 func _on_case_added_notes_overlay():
+	if GlobalVars.phone_tut == false and call_normal.disabled == false:
+		emit_signal("_show_tut", "phone")
+		phone_visible = true
+		#else:
+			#await awaiting_tut 
+			#emit_signal("_show_tut", "phone")
+			#phone_visible = true
 	in_evidence = true
 	evidence.visible = true
-	#if call_normal.disabled == true:
-		#evidence.modulate.a = 0.365
-	#else:
-		#evidence.modulate.a = 0.784
 	evidence_anim.play("Notes_added")
 	await get_tree().create_timer(3.6).timeout
 	evidence_anim.stop()
 	evidence.visible = false
-	if GlobalVars.phone_tut == false:
-		if call_normal.disabled == false:
-			emit_signal("_show_tut", "phone")
-			phone_visible = true
-			await get_tree().create_timer(6.0).timeout
-		else:
-			await awaiting_tut 
-			emit_signal("_show_tut", "phone")
-			phone_visible = true
-			await get_tree().create_timer(6.0).timeout
-	phone_visible = false
-	in_evidence = false  
+	if GlobalVars.phone_tut == false and call_normal.disabled == true:
+		await awaiting_tut 
+		emit_signal("_show_tut", "phone")
+		phone_visible = true
+	
 
 
 

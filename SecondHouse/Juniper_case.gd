@@ -125,7 +125,6 @@ func caseUI(argument: String):
 		
 func _process(delta: float) -> void:
 	if case_cam.priority == 30:
-
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#should be removed later one issue figured out
 
@@ -179,6 +178,10 @@ func _input(event):
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
+					else:
+						GlobalVars.in_interaction = ""
+						alert.show()
+						player.start_player()
 				else:
 					if GlobalVars.view_letter_juniper == true and GlobalVars.view_nametag_juniper == true:
 						GlobalVars.in_interaction = ""
@@ -215,6 +218,10 @@ func _input(event):
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
+					else:
+						GlobalVars.in_interaction = ""
+						alert.show()
+						player.start_player()
 			else:
 				print("exit case")
 				emit_signal("disable_look")

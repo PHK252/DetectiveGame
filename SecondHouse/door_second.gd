@@ -36,7 +36,7 @@ signal entered_juniper
 signal quincy_reposition 
 signal theo_follow
 signal retarget(target: int)
-
+@export var timer : Timer
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
 
@@ -193,6 +193,9 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
+		Dialogic.signal_event.disconnect(doorOpen)
+		if not timer.is_stopped():
+			timer.stop()
 		if entered_quincy_house == true:
 			leaving = true
 			emit_signal("quincy_reposition")
@@ -202,6 +205,8 @@ func doorOpen(argument: String):
 		open()
 		collision.disabled = true
 		is_open = true
+	else:
+		Dialogic.signal_event.disconnect(doorOpen)
 
 		
 func _on_kitchen_point_body_entered(body: CharacterBody3D) -> void:

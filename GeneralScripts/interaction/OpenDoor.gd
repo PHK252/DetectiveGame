@@ -13,6 +13,7 @@ var is_open: bool = false
 @onready var entered = false
 @export var door_sound : AudioStreamPlayer3D
 @export var door_sound_close : AudioStreamPlayer3D
+@export var timer : Timer
 var introduction_happened = false
 var dalton_entered = false
 var theo_entered = false
@@ -148,6 +149,8 @@ func _on_exit_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_exit_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
+	if not timer.is_stopped():
+		timer.stop()
 
 func doorOpen(argument: String):
 	if not is_open and argument == "open_door":

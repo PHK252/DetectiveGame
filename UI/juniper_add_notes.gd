@@ -179,7 +179,7 @@ func _on_case_add_juniper_note():
 		if GlobalVars.note_condition == "found":
 			_add_note(juniper_case_name_tag_found)
 		elif GlobalVars.note_condition == "response":
-			_add_note(juniper_case_name_tag_response)
+			_add_note(juniper_case_name_tag_response.to_upper())
 		else:
 			print_debug("Juniper name tag error")
 	else:

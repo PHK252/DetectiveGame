@@ -4,8 +4,8 @@
 - Yes
 	[signal arg="exit_cam"]
 	if {Character Aff Points.Juniper} <= 0:
-		set {Character Aff Points.Juniper} -= 1
 		if {Juniper.Cran_repeat} == false:
+			set {Character Aff Points.Juniper} -= 1
 			Juniper (Doubt): Is snooping around not enough?
 			Juniper (Squint): Now ya wanna steal my food.
 			Dalton (Squint): I- 
