@@ -103,3 +103,6 @@ func _on_timer_timeout():
 
 func _level_timer_start():
 	global_timer.start()
+
+func _level_timer_timeout():
+	global_timer.stop()

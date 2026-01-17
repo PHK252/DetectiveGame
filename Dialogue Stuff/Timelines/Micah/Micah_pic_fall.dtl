@@ -8,8 +8,8 @@ Dalton (Default): ...
 	Micah (Stare): I’ll fix it later...
 	[end_timeline]
 - Brush it off.
-	set {Character Aff Points.Micah} -= 1
 	[wait time= "0.3"]
 	Dalton (Awkward): ...
 	do GlobalVars.emit_add_note("micah", "picture", "fell")
+	set {Character Aff Points.Micah} -= 1
 	[end_timeline]

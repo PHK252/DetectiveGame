@@ -40,7 +40,6 @@ if {Character Aff Points.Micah} >= 2 and {Asked Questions.Micah_Theo_enter} == f
 	Dalton (Doubt1): This morning?
 	Dalton (Default): ...
 	- Bring up inconsistency
-		set {Character Aff Points.Micah} -= 1
 		Micah (Sigh): Yeah...
 		Dalton (Doubt2): I believe you told us nothing changed-
 		Micah (Threat): I'm tired, ya dingo!
@@ -53,6 +52,7 @@ if {Character Aff Points.Micah} >= 2 and {Asked Questions.Micah_Theo_enter} == f
 		Theo: We are sorry.
 		Theo (Thinking): Dalton, take it easy on him. 
 		Dalton (Resting): Hmph.
+		set {Character Aff Points.Micah} -= 1
 		jump continue
 	- Continue.
 		jump continue

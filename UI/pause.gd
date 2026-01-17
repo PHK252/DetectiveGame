@@ -14,6 +14,7 @@ func _ready():
 	pass
 
 func _on_save_pressed():
+	print("pressed")
 	AudioServer.set_bus_mute(0, true)
 	resume.shortcut = null
 	await get_tree().process_frame
@@ -84,14 +85,16 @@ func _on_visibility_changed():
 		resume_short.events = [key_event]
 		resume.shortcut = resume_short
 		Engine.time_scale = 0
-		
-func _process(delta):
-	if GlobalVars.in_dialogue == true:
-		$VBoxContainer/Save.disabled = true
-		$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_ARROW
-	else:
-		$VBoxContainer/Save.disabled = false
-		$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		print(GlobalVars.in_dialogue)
+		if GlobalVars.in_dialogue == true:
+			$VBoxContainer/Save.disabled = true
+			$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_ARROW
+		else:
+			$VBoxContainer/Save.disabled = false
+			$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
+	
+
 func _on_options_exit():
 	pause_buttons.visible = true
 	options.visible = false

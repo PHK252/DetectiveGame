@@ -128,8 +128,8 @@ func _process(delta):
 		interact_area_2.show()
 
 func _on_interactable_interacted(interactor):
-	open_closet_door_1.disabled = false
-	open_closet_door_2.disabled = false
+	#open_closet_door_1.disabled = false
+	#open_closet_door_2.disabled = false
 	
 	if closet_open == false and interaction_closet == false: 
 		interaction_closet = true

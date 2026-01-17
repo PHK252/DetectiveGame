@@ -78,7 +78,8 @@ func _set_shadow(shadow) -> void:
 		#light.shadow_enabled = GlobalVars.optional_shadow
 func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
-	
+
+func _process(delta):
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:
 		GlobalVars.micah_kicked_out = true
@@ -87,19 +88,18 @@ func _on_brightness_brightness_shift(brightness) -> void:
 			alert.hide()
 			player.stop_player()
 			in_kicked_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
-			kicked_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			kicked_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			kicked_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 	
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Asked Questions.Micah_time_out_finished") == false and GlobalVars.micah_kicked_out == false:
 			alert.hide()
-			disable_interaction(interactables)
+			#disable_interaction(interactables)
 			player.stop_player()
 			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
@@ -120,6 +120,7 @@ func _on_timer_timeout():
 		alert.hide()
 		if GlobalVars.in_interaction == "":
 			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			print("timeout_dialogue_entered")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
@@ -154,3 +155,9 @@ func _on_entered_micah():
 	emit_signal("phone_time_start")
 	print("level start!")
 	#disconnect("_on_entered_micah")
+
+
+func _on_door_activate_leave():
+	music.stop()
+	print("level exit!")
+	

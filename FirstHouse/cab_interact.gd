@@ -58,7 +58,7 @@ func _process(delta):
 	
 	#var dialogue_pick = Dialogic.VAR.get_variable("Asked Questions.Micah_cab")
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cab" and cab_open == false:
-		if clickable == false and GlobalVars.clicked_cab == 1 and GlobalVars.opened_cab == true and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
+		if clickable == false and GlobalVars.clicked_cab == 1 and GlobalVars.opened_cab == true:
 			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			GlobalVars.in_dialogue = true
@@ -71,12 +71,13 @@ func _process(delta):
 			emit_signal("enable_look")
 			#player.start_player()
 			GlobalVars.in_interaction = ""
-			var cab_dialogue = Dialogic.start("Micah_cabinet")
-			Dialogic.VAR.get("Asked Questions").Micah_cab = 1
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		elif clickable == false and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false: # I don't think I need this
+			if GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
+				var cab_dialogue = Dialogic.start("Micah_cabinet")
+				Dialogic.VAR.get("Asked Questions").Micah_cab = 1
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+				cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+		elif clickable == false and GlobalVars.clicked_cab > 1 and GlobalVars.opened_cab == true:
 			print("enter_cab")
 			GlobalVars.in_dialogue = true
 			alert.hide()
@@ -89,12 +90,13 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			emit_signal("enable_look")
-			GlobalVars.in_interaction = ""
-			var cab_dialogue = Dialogic.start("Micah_cabinet")
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
-			cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		elif clickable == true and Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false :
+			if GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
+				GlobalVars.in_interaction = ""
+				var cab_dialogue = Dialogic.start("Micah_cabinet")
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				cab_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_maker)
+				cab_dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
+		elif clickable == true and Input.is_action_just_pressed("Exit") and GlobalVars.opened_cab == false:
 			alert.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			main_cam.set_tween_duration(0)

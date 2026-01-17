@@ -90,17 +90,18 @@ func _on_timer_timeout():
 	time_out = true
 
 func _on_micah_sit():
-	if sit_body.visible == true:
-		sit_micah = true
-		stand_interaction.set_monitorable(false)
-		sit_interaction.set_monitorable(true)
-		player_interactor.set_monitoring(false)
-		await get_tree().create_timer(.03)
-		player_interactor.set_monitoring(true)
-	else:
-		sit_micah = false
-		stand_interaction.set_monitorable(true)
-		sit_interaction.set_monitorable(false)
-		player_interactor.set_monitoring(false)
-		await get_tree().create_timer(.03)
-		player_interactor.set_monitoring(true)
+	if sit_interaction and stand_interaction:
+		if sit_body.visible == true:
+			sit_micah = true
+			stand_interaction.set_monitorable(false)
+			sit_interaction.set_monitorable(true)
+			player_interactor.set_monitoring(false)
+			await get_tree().create_timer(.03)
+			player_interactor.set_monitoring(true)
+		else:
+			sit_micah = false
+			stand_interaction.set_monitorable(true)
+			sit_interaction.set_monitorable(false)
+			player_interactor.set_monitoring(false)
+			await get_tree().create_timer(.03)
+			player_interactor.set_monitoring(true)

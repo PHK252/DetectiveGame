@@ -274,12 +274,12 @@ Dalton (Default): Ask about...
 	label Clyde qs
 	if {Character Aff Points.Micah} < 2:
 		if {Asked Questions.Micah_Asked_Clyde} == true:
-			if {Asked Questions.Micah_repeat_Dad} == false
-				set {Asked Questions.Micah_repeat_Dad} = true
-				set {Character Aff Points.Micah} -= 1
 			Dalton (Resting): Clyde Procyon.
 			Micah (Sus): I told you to leave him out of this.
 			Dalton (Awkward): Hmph.
+			if {Asked Questions.Micah_repeat_Dad} == false
+				set {Asked Questions.Micah_repeat_Dad} = true
+				set {Character Aff Points.Micah} -= 1
 			set {Asked Questions.num_asked} += 1
 		else:
 			set {Asked Questions.Micah_Asked_Clyde} = true
