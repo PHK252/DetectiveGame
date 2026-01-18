@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjbgsfh7bjtw1"]
+
+[ext_resource type="Script" uid="uid://cbuusbvu74y54" path="res://GeneralScripts/Settings/fade_controls.gd" id="1_s3ijp"]
+
+[node name="music_fade_in_out" type="Node" node_paths=PackedStringArray("fade_time_break_timer")]
+script = ExtResource("1_s3ijp")
+fade_time_break_timer = NodePath("fade_music_timer")
+
+[node name="fade_music_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="fade_music_timer" to="." method="_on_fade_music_timer_timeout"]

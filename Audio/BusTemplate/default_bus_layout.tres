@@ -1,4 +1,14 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cb2b7aexdou0r"]
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://cb2b7aexdou0r"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_46px0"]
+resource_name = "Compressor"
+threshold = -26.6
+ratio = 5.8
+mix = 0.8
+sidechain = &"dialogue"
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_46px0"]
+resource_name = "Amplify"
 
 [sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_46px0"]
 resource_name = "HighPassFilter"
@@ -12,6 +22,10 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = -4.003
 bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_46px0")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectAmplify_46px0")
+bus/1/effect/1/enabled = true
 bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false

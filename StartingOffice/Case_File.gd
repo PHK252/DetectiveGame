@@ -36,7 +36,8 @@ func _ready():
 	#if Dialogic.VAR.get_variable("Endings.Ending_type") != true:
 		#return
 	#set_instance_shader_parameter("albedo_texture", "res://StartingOffice/StartingOffice_CaseFile.png")
-	pass
+	Dialogic.signal_event.connect(_on_dialogic_signal)
+	
 	
 #func _process(delta: float) -> void: for testing leave when theo walks in
 	#if Input.is_action_just_pressed("call"):
@@ -44,6 +45,16 @@ func _ready():
 		#await get_tree().create_timer(2.0).timeout
 		#emit_signal("dalton_exit")
 		#test signal for both leave
+
+func _on_dialogic_signal(argument: String):
+	if argument == "fade_in_out":
+		print("successfully_faded_audio")
+		MusicFades.fade_out_audio()
+		await get_tree().create_timer(3.5).timeout #if doing manually after 3.5 is safe try not to go lower
+		theo_theme.stop()
+		office_theme.play()
+		MusicFades.fade_in_audio()
+		#theo_theme.stop()
 
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:
@@ -171,8 +182,8 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	player.start_player()
 	alert.show()
-	office_theme.play()
-	theo_theme.stop()
+	#office_theme.play()
+	#theo_theme.stop()
 	if GlobalVars.map_tut == false:
 		emit_signal("_show_tut", "map")
 	GlobalVars.in_dialogue = false
@@ -274,6 +285,7 @@ func enter_Theo(argument: String):
 		office_theme.stop()
 		theo_theme.play()
 		pass
+	
 
 
 func _on_change_texture(texture):

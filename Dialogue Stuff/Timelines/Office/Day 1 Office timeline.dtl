@@ -2,7 +2,7 @@ Dalton (Resting): Hmph.
 Dalton (Doubt1): A break-in case...
 Dalton (Hmph): With the rookie?
 Dalton (Resting): What is Chief up to now-
-[signal arg = "enter_theo"]
+[signal arg="enter_theo"]
 [wait time="2.0"]
 Theo (Laugh): Hey Dalton!!
 Theo (Happy): Did you read the case files?
@@ -37,3 +37,4 @@ Dalton (Talk): We should go talk to the victims...
 Dalton (Default): You're in charge of taking notes, alright?
 Theo (Happy): Yes, sir!
 Dalton (Default): Okay, let’s head out.
+[signal arg="fade_in_out"]

@@ -106,7 +106,9 @@ func _on_timeline_ended():
 	player.start_player()
 	
 
-
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("call"):
+		#MusicFades.fade_in_out()
 
 #choosing dialogue if there is any
 func choose_office_dialogue():
