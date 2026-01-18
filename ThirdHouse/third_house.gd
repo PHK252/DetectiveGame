@@ -18,7 +18,7 @@ extends Node3D
 
 @export var door : Interactable
 @onready var pause = $Pause
-
+@export var bathroom_door : Node3D
 var time_out = false
 var in_time_out_dialogue = false
 
@@ -28,6 +28,7 @@ signal time_out_drop_distract
 signal phone_time_start
 signal open_main_door
 
+signal bar_timed
 signal theo_leave
 signal quincy_leave
 
@@ -88,14 +89,12 @@ func _process(delta):
 
 	#timed out
 	if time_out == true:
-		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.timed_out") == false and GlobalVars.quincy_kicked_out == false:
+		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.timed_out") == false and GlobalVars.quincy_kicked_out == false and bathroom_door.player_in_bathroom == false:
+			disable_interaction(interactables)
 			alert.hide()
 			in_time_out_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
-			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 	
 	
 	if Dialogic.VAR.get_variable("Quincy.is_distracted") == true and locked == false:
@@ -114,20 +113,17 @@ func _on_timer_timeout():
 		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 			Dialogic.VAR.set_variable("Quincy.is_distracted", false)
 		emit_signal("time_out_drop_distract")
-		disable_interaction(interactables)
 		time_out = true
 		print("LEVEL TIMEOUT")
 		#emit_signal("theo_leave")
 		#emit_signal("quincy_leave")
 		player.stop_player()
 		alert.hide()
-		if GlobalVars.in_interaction == "":
+		if GlobalVars.in_interaction == "" and bathroom_door.player_in_bathroom == false:
+			disable_interaction(interactables)
 			in_time_out_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
-			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 		else:
 			pass
 		 
@@ -135,7 +131,9 @@ func _on_timer_timeout():
 func _on_timeline_ended_timed():
 	emit_signal("theo_leave")
 	emit_signal("quincy_leave")
+	emit_signal("bar_timed")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
+	emit_signal("open_main_door")
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	alert.hide()
@@ -198,3 +196,8 @@ func _on_quincy_entered():
 	emit_signal("phone_time_start")
 	print("level start!")
 	music.play()
+
+
+func _on_exit_level():
+	print("level exit!")
+	music.stop()

@@ -556,7 +556,8 @@ func _on_door_bathroom_replace_quincy_enter_bathroom():
 		
 func _on_toilet_stuff_distraction() -> void:
 	general_distraction = true
-	interact.set_deferred("monitorable", false)
+	if interact:
+		interact.set_deferred("monitorable", false)
 
 func _on_snowmobile_distraction() -> void:
 	snowmobile_distraction = true

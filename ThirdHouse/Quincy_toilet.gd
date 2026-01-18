@@ -71,7 +71,7 @@ func _process(delta):
 		else:
 			FP_Cam.set_rotation_degrees(mid_angle)
 	
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
@@ -181,7 +181,8 @@ func _clog_toilet(argument : String):
 		towel.visible = true
 		await get_tree().create_timer(3).timeout
 		towel.visible = false
-		interactable.set_monitorable(false)
+		if interactable:
+			interactable.set_monitorable(false)
 		player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 		await get_tree().create_timer(.03).timeout
 		player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
@@ -196,6 +197,7 @@ func _clog_toilet(argument : String):
 		pass
 	else:
 		Dialogic.signal_event.disconnect(_clog_toilet)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _on_towels_input_event(viewport, event, shape_idx):

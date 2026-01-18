@@ -17,7 +17,7 @@ func _on_timeline_ended():
 
 
 func _on_bedroom_closet_cam_tween_completed():
-	if entered_room == false:
+	if entered_room == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
 		entered_room = true
 		player.stop_player()
 		GlobalVars.in_dialogue = true

@@ -269,12 +269,14 @@ func _on_thoughts_finished():
 
 
 func _on_toilet_distraction():
-	interactable.set_deferred("monitorable", false)
+	if interactable:
+		interactable.set_deferred("monitorable", false)
 
 
 func _on_quincy_time_out_resume():
-	if interactable.monitorable == false:
-		interactable.set_deferred("monitorable", true)
+	if interactable:
+		if interactable.monitorable == false:
+			interactable.set_deferred("monitorable", true)
 
 
 func _on_secret_exit(body):

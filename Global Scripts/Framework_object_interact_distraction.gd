@@ -93,9 +93,6 @@ func _process(delta):
 			emit_signal("enable_look")
 			var game_dialogue = Dialogic.start(viewed_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)
 			interact_area.hide()
@@ -154,7 +151,7 @@ func _on_interactable_interacted(interactor):
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+			if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 				if Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					interact_area.hide()
@@ -168,19 +165,20 @@ func _on_input_event(viewport, event, shape_idx):
 					else:
 						try_viewed += 1
 					if in_thoughts == false:
+						GlobalVars.in_interaction = ""
 						Exit_Cam.set_tween_duration(0)
 						FP_Cam.priority = 0
 						Exit_Cam.priority = 30 
 						Exit_Cam.set_tween_duration(1)
 						player.show()
-						GlobalVars.in_dialogue = true
-						var game_dialogue = Dialogic.start(regular_dialogue_file)
-						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
-						player.stop_player()
-						alert.hide()
+						if GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+							GlobalVars.in_dialogue = true
+							var game_dialogue = Dialogic.start(regular_dialogue_file)
+							Dialogic.timeline_ended.connect(_on_timeline_ended)
+							player.stop_player()
+							alert.hide()
+					else:
+						return
 
 
 func choose_distract_thought_dialogue():
@@ -209,15 +207,17 @@ func _on_thoughts_finished():
 		FP_Cam.priority = 0
 		Exit_Cam.priority = 30 
 		Exit_Cam.set_tween_duration(1)
+		GlobalVars.in_interaction = ""
 		player.show()
-		GlobalVars.in_dialogue = true
-		var game_dialogue = Dialogic.start(regular_dialogue_file)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-		game_dialogue.register_character(load(load_char_dialogue), character_marker)
-		player.stop_player()
-		alert.hide()
+		if GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+			GlobalVars.in_dialogue = true
+			var game_dialogue = Dialogic.start(regular_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
+			game_dialogue.register_character(load(load_char_dialogue), character_marker)
+			player.stop_player()
+			alert.hide()
 
 
 
