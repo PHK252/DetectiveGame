@@ -135,12 +135,13 @@ func _on_bar_continue_convo():
 		emit_signal("enable_look")
 		emit_signal("theo_enter_bar")
 		emit_signal("Switch_theo_marker")
-		GlobalVars.in_interaction = ""
-		#await get_tree().create_timer(3.0).timeout
+		
+		
 		var bar_dialogue = Dialogic.start(dialogue_file, "Bar continue")
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-
+		await get_tree().create_timer(12.0).timeout
+		GlobalVars.in_interaction = ""
 
 
 func _on_cutscene_cams_continue_bar():

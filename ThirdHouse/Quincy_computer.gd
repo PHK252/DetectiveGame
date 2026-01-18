@@ -77,9 +77,8 @@ func compFP(argument: String):
 		
 
 func _input(event):
-	print("lookscreen", GlobalVars.in_look_screen)
 	if GlobalVars.Quincy_in_computer == false:
-		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "computer" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false: 
+		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "computer": 
 			print("enter_exit")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			FP_Cam.priority = 0
