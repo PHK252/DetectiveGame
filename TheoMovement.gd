@@ -1236,6 +1236,7 @@ func _on_sitting_ppl_theo_armature_visible() -> void:
 func _on_main_theo_leave() -> void:
 	#handle timeout sit
 	if state == INVESTIGATE:
+		nav.radius = 0.01 #so quincy doesn't force into wall?
 		InvestigateTime.stop()
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
