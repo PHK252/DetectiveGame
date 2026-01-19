@@ -122,3 +122,7 @@ func _on_cutscene_cams_after_faint() -> void:
 	dalton_bar.visible = false
 	alert.hide()
 	emit_signal("DaltonFaint")
+
+
+func _on_handle_sitting_while_timeout() -> void:
+	dalton_outside.visible = false

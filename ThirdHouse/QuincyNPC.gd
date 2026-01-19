@@ -287,19 +287,19 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 		is_drinking = true
 		#quincy_tree.set("parameters/Blend3/blend_amount", 1)
 		
-		if Input.is_action_just_pressed("meeting_done"):
-			quincy_tree.set("parameters/Wine/request", 2)
-			print("D1")
-			is_drinking = false
-			#is_distracted = true
+		#if Input.is_action_just_pressed("meeting_done"):
+			#quincy_tree.set("parameters/Wine/request", 2)
+			#print("D1")
+			#is_drinking = false
+			##is_distracted = true
+			##is_navigating = true
+			##wander_choice = 0
+			##nav.target_position = marker_positions[0].global_position
+			##state = FOLLOW
+			#wander_choice = 11
+			#is_distracted = false
 			#is_navigating = true
-			#wander_choice = 0
-			#nav.target_position = marker_positions[0].global_position
 			#state = FOLLOW
-			wander_choice = 11
-			is_distracted = false
-			is_navigating = true
-			state = FOLLOW
 			
 
 	if wander_choice == 1: 
@@ -794,11 +794,17 @@ func _on_sitting_ppl_dalton_faint() -> void:
 	if Dialogic.VAR.get_variable("Juniper.found_skylar") == false:
 		drunk_dalton = true
 		is_drinking = false
+		rotate_number = 0
+		rotate_forced = false
+		wander_choice = 11
 		is_navigating = false
 		armature.visible = false
 	else:
 		drunk_dalton = true
 		is_drinking = false
+		rotate_number = 0
+		rotate_forced = false
+		wander_choice = 11
 		is_navigating = false
 		Q_body.global_position = Q_marker_end.global_position
 		
@@ -934,6 +940,15 @@ func _on_bathroom_cam_became_active() -> void:
 
 
 func _on_main_quincy_leave() -> void:
+	#handle drinking stoppage
+	quincy_tree.set("parameters/Wine/request", 2)
+	is_drinking = false
+	rotate_number = 0
+	rotate_forced = false
+	wander_choice = 11
+	sound_player.stop()
+	
+
 	is_distracted = true
 	extra_gate_end = false
 	end_time = true
@@ -941,3 +956,12 @@ func _on_main_quincy_leave() -> void:
 	special_rotation = true
 	nav.target_position = leave_position.global_position
 	state = FOLLOW
+
+
+func _on_bar_faint_time_handle_drink_sound() -> void:
+	quincy_tree.set("parameters/Wine/request", 2)
+	is_drinking = false
+	rotate_number = 0
+	rotate_forced = false
+	wander_choice = 11
+	sound_player.stop()

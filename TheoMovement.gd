@@ -265,7 +265,7 @@ func _process_investigate_state(distance_to_target) -> void:
 			velocity = velocity.lerp(Vector3.ZERO, 0.2)
 			idle_blend = lerp(idle_blend, 0.0, 0.0)
 			anim_tree.set("parameters/BlendSpace1D/blend_position", idle_blend)
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(0.5).timeout
 			armature.visible = false
 			collision_theo.disabled = true
 			emit_signal("force_quincy_bar")
@@ -315,22 +315,22 @@ func _process_sitting_state() -> void:
 			emit_signal("TheoStand")
 			state = IDLE
 	
-	if Input.is_action_pressed("meeting_done"):
-		emit_signal("allow_stairs")
-		patio_sit = false
-		going_to_bar = false
-		armature.visible = true
-		collision_theo.disabled = false
-		animation_choice = rng.randi_range(0, 10)
-		investigate_choice = rng.randi_range(0, 3)
-		is_investigating = true
-		nav.target_position = marker_list[investigate_choice].global_position
-		is_navigating = true
-		nav.path_desired_distance = 0.75
-		nav.target_desired_distance = 1.0
-		STOPPING_DISTANCE = 0.0
-		emit_signal("TheoStand")
-		state = INVESTIGATE
+	#if Input.is_action_pressed("meeting_done"): old test
+		#emit_signal("allow_stairs")
+		#patio_sit = false
+		#going_to_bar = false
+		#armature.visible = true
+		#collision_theo.disabled = false
+		#animation_choice = rng.randi_range(0, 10)
+		#investigate_choice = rng.randi_range(0, 3)
+		#is_investigating = true
+		#nav.target_position = marker_list[investigate_choice].global_position
+		#is_navigating = true
+		#nav.path_desired_distance = 0.75
+		#nav.target_desired_distance = 1.0
+		#STOPPING_DISTANCE = 0.0
+		#emit_signal("TheoStand")
+		#state = INVESTIGATE
 		
 		
 # Handles behavior when NPC is in the IDLE state
@@ -1234,6 +1234,16 @@ func _on_sitting_ppl_theo_armature_visible() -> void:
 	state = IDLE
 
 func _on_main_theo_leave() -> void:
+	#handle timeout sit
+	if going_to_bar:
+		is_navigating = true
+		patio_sit = false
+		going_to_bar = false
+		armature.visible = true
+		collision_theo.disabled = false
+		emit_signal("TheoStand")
+		#also make all sitting ppl invisible
+	
 	faint_dalton = true
 	emit_signal("look_at_disactivate")
 	theo_adjustment = false
