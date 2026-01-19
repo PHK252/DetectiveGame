@@ -1235,6 +1235,18 @@ func _on_sitting_ppl_theo_armature_visible() -> void:
 
 func _on_main_theo_leave() -> void:
 	#handle timeout sit
+	if state == INVESTIGATE:
+		InvestigateTime.stop()
+		anim_tree.set("parameters/Scratch/request", 2)
+		anim_tree.set("parameters/NoteAlt/request", 2)
+		is_investigating = true
+		investigate_choice = 7
+		nav.target_position = marker_list[investigate_choice].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		state = INVESTIGATE
+		return
+	
 	if going_to_bar:
 		is_navigating = true
 		patio_sit = false
@@ -1243,6 +1255,10 @@ func _on_main_theo_leave() -> void:
 		collision_theo.disabled = false
 		emit_signal("TheoStand")
 		#also make all sitting ppl invisible
+		
+	#handle more investigate stuff
+	anim_tree.set("parameters/Scratch/request", 2)
+	anim_tree.set("parameters/NoteAlt/request", 2)
 	
 	faint_dalton = true
 	emit_signal("look_at_disactivate")
