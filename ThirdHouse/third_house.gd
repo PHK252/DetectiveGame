@@ -42,6 +42,7 @@ func _ready():
 	emit_signal("phone_time_start")
 	#player.start_player()
 	death.hide()
+	#MusicFades.fade_out_audio()
 
 	#settings
 	#brightness
@@ -196,8 +197,12 @@ func _on_quincy_entered():
 	emit_signal("phone_time_start")
 	print("level start!")
 	music.play()
+	#MusicFades.fade_in_audio() sound better if u just play
+	
 
 
 func _on_exit_level():
 	print("level exit!")
+	MusicFades.fade_out_audio()
+	await get_tree().create_timer(5.0).timeout
 	music.stop()
