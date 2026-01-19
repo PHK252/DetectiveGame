@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=238 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -179,6 +179,9 @@
 [ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="177_2digd"]
 [ext_resource type="AudioStream" uid="uid://5j82iw27gyly" path="res://Audio/misc_sounds/phoneBackAlt.wav" id="178_bvu4t"]
 [ext_resource type="AudioStream" uid="uid://bkr7wavakq430" path="res://Audio/misc_sounds/deleteblip.wav" id="179_ch132"]
+[ext_resource type="AudioStream" uid="uid://v678plit6mbe" path="res://Audio/extra_sounds_misc/phone_ring_sound.wav" id="180_v8hec"]
+[ext_resource type="AudioStream" uid="uid://5u842guoerxx" path="res://Audio/extra_sounds_misc/phone_pickup.wav" id="181_5ppeq"]
+[ext_resource type="AudioStream" uid="uid://berqrpib5dhjo" path="res://Audio/extra_sounds_misc/hangup_2.wav" id="182_v8hec"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cs8vq"]
 
@@ -486,8 +489,9 @@ VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ltpiu")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_1v3be"]
 
-[node name="Phone UI" type="CanvasLayer"]
+[node name="Phone UI" type="CanvasLayer" node_paths=PackedStringArray("hangup_call")]
 script = ExtResource("1_eli2p")
+hangup_call = NodePath("Phone_Sounds_General/hangup")
 metadata/_edit_vertical_guides_ = [2472.0, 2245.0]
 metadata/_edit_horizontal_guides_ = [1774.0]
 
@@ -3082,7 +3086,7 @@ wait_time = 60.0
 
 [node name="Phone_Sounds_General" type="Node" parent="." node_paths=PackedStringArray("audio")]
 script = ExtResource("164_x6dlt")
-audio = [NodePath("phone_back"), NodePath("phone_hover"), NodePath("ring"), NodePath("buzz"), NodePath("select"), NodePath("decline_call"), NodePath("accept_call"), NodePath("num_01"), NodePath("num_02"), NodePath("num_03"), NodePath("Hiss"), NodePath("altClick"), NodePath("phone_hover_high"), NodePath("ArrowClick"), NodePath("Phone_back_02"), NodePath("buzz"), NodePath("delete"), NodePath("flip"), NodePath("selectPhoto")]
+audio = [NodePath("phone_back"), NodePath("phone_hover"), NodePath("ring"), NodePath("buzz"), NodePath("select"), NodePath("decline_call"), NodePath("accept_call"), NodePath("num_01"), NodePath("num_02"), NodePath("num_03"), NodePath("Hiss"), NodePath("altClick"), NodePath("phone_hover_high"), NodePath("ArrowClick"), NodePath("Phone_back_02"), NodePath("buzz"), NodePath("delete"), NodePath("flip"), NodePath("selectPhoto"), NodePath("ringing"), NodePath("pickup"), NodePath("hangup")]
 
 [node name="num_01" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
 stream = ExtResource("165_14bcs")
@@ -3161,6 +3165,21 @@ stream = ExtResource("176_68rv4")
 pitch_scale = 1.2
 bus = &"SFX"
 
+[node name="ringing" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("180_v8hec")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="pickup" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("181_5ppeq")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="hangup" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
+stream = ExtResource("182_v8hec")
+volume_db = -15.0
+bus = &"SFX"
+
 [connection signal="visibility_changed" from="." to="Panel Left" method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="HomeScreen/Gallery" to="Phone_Sounds_General" method="_on_phone_hover"]
 [connection signal="pressed" from="HomeScreen/Gallery" to="." method="_on_gallery_pressed"]
@@ -3230,6 +3249,7 @@ bus = &"SFX"
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Pound" to="." method="_on_pound_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Pound" to="Phone_Sounds_General" method="_on_num_three_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Call" to="." method="_on_call_pressed"]
+[connection signal="pressed" from="PhoneScreen/PhoneNum/Call" to="Phone_Sounds_General" method="_on_call_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneNum/Delete" to="Phone_Sounds_General" method="_on_delete_pressed"]
 [connection signal="pressed" from="PhoneScreen/PhoneCall/Accept" to="." method="_on_accept_pressed"]
@@ -3239,16 +3259,22 @@ bus = &"SFX"
 [connection signal="visibility_changed" from="PhoneScreen/ContactScreen" to="PhoneScreen/ContactScreen" method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Isaac" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Isaac" to="." method="_on_isaac_pressed"]
+[connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Isaac" to="Phone_Sounds_General" method="_on_call_pressed"]
 [connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Quincy" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Quincy" to="." method="_on_quincy_pressed"]
+[connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Quincy" to="Phone_Sounds_General" method="_on_call_pressed"]
 [connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Theo" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Theo" to="." method="_on_theo_pressed"]
+[connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Theo" to="Phone_Sounds_General" method="_on_call_pressed"]
 [connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Juniper" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Juniper" to="." method="_on_juniper_pressed"]
+[connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Juniper" to="Phone_Sounds_General" method="_on_call_pressed"]
 [connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Clyde" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Clyde" to="." method="_on_clyde_pressed"]
+[connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Clyde" to="Phone_Sounds_General" method="_on_call_pressed"]
 [connection signal="mouse_entered" from="PhoneScreen/ContactScreen/VBoxContainer/Skylar" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Skylar" to="." method="_on_skylar_pressed"]
+[connection signal="pressed" from="PhoneScreen/ContactScreen/VBoxContainer/Skylar" to="Phone_Sounds_General" method="_on_call_pressed"]
 [connection signal="mouse_entered" from="PhoneScreen/Contact" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="PhoneScreen/Contact" to="PhoneScreen/ContactScreen" method="_on_contact_pressed"]
 [connection signal="pressed" from="PhoneScreen/Contact" to="Phone_Sounds_General" method="_on_altClick_phone"]

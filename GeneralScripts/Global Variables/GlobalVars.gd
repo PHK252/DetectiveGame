@@ -428,7 +428,7 @@ func set_mouse_I_beam():
 	Input.set_custom_mouse_cursor(GlobalVars.i_beam, Input.CURSOR_IBEAM)
 
 func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	set_mouse_default()
 	set_mouse_pointing()
 	set_mouse_I_beam()

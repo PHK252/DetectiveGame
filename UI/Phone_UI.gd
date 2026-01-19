@@ -222,6 +222,8 @@ func _on_left_hover_mouse_exited():
 @export var phone_marker : Marker2D
 @export var player : CharacterBody3D
 
+@export var hangup_call : AudioStreamPlayer
+
 @onready var bar_call = false
 
 signal continue_convo
@@ -519,6 +521,7 @@ func _on_bar_theo_bar_call():
 
 func _bar_end_call(argument : String):
 	if argument == "call_end":
+		hangup_call.play()
 		GlobalVars.in_dialogue = false
 		bar_call = false
 		Dialogic.signal_event.disconnect(_bar_end_call)
@@ -537,6 +540,7 @@ func _bottle_fall_sound(argument: String):
 func _end_call(argument: String):
 	if argument == "end_call":
 		#play sound
+		hangup_call.play()
 		#GlobalVars.in_dialogue = false
 		Dialogic.signal_event.disconnect(_end_call)
 	elif argument == "end":

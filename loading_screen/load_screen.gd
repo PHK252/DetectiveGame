@@ -8,6 +8,9 @@ signal loading_screen_has_full_coverage
 #Driving animation
 var drive_loading : AnimatedSprite2D
 var drive_anim : AnimationPlayer
+
+var drive_sound : AudioStreamPlayer 
+
 #Sleeping animation
 var sleep_loading : AnimatedSprite2D
 var sleep_anim : AnimationPlayer
@@ -67,7 +70,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 	drive_anim = scene_instance.get_node("Drinving Loading/Morning")
 	d_loading_theo_marker = scene_instance.get_node("Drinving Loading/Theo")
 	d_loading_Dalton_marker = scene_instance.get_node("Drinving Loading/Dalton")
-	
+	drive_sound = scene_instance.get_node("Drinving Loading/drive_sound")
 	# default
 	d_back_loading = scene_instance.get_node("Default Loading")
 	d_loading_anim = scene_instance.get_node("Default Loading/AnimationPlayer")
@@ -84,6 +87,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 	
 	percent_label = scene_instance.get_node("Label")
 	if type == "driving":
+		drive_sound.play()
 		toggle_drive(true)
 		toggle_default(false)
 		toggle_sleep(false)
@@ -177,6 +181,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				scene_instance.queue_free()
 				in_loading = false
 				loaded = false
+				#drive_sound.stop() not needed i think
 				print(GlobalVars.dalton_pos)
 				if GlobalVars.from_save_file == true:
 					return

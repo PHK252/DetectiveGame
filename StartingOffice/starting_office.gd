@@ -254,7 +254,8 @@ func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
 
 func _set_shadow(shadow) -> void:
-	world_env.environment.ssao_enabled = shadow
+	if world_env.environment.ssao_enabled == true:
+		world_env.environment.ssao_enabled = shadow
 	#optional lights for other levels
 	#for light in lights:
 		#light.shadow_enabled = GlobalVars.optional_shadow
