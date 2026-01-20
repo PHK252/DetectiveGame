@@ -415,6 +415,220 @@ var cam_changed = false
 var clue_progress = 1
 var ghost_open = false
 
+func reset_globals():
+	## The actual Globals
+	forward = false
+	day = 1
+	time = ""
+	current_level = ""
+	first_house = "" # might not need
+
+	##Phone stuff
+	#for contacts
+	phone_contacts = []
+	# clock
+	clock_time = []
+	#for phone notes
+	micah_notes = ""
+	juniper_notes = ""
+	quincy_notes = ""
+
+	##Office Vars
+	intro_dialogue = false
+	#contact
+	clicked_contact = 0
+	viewed_contact = false
+	has_contact = false
+	#Isaac
+	clicked_partner = 0
+	viewed_partner = false
+	#News
+	clicked_news = 0
+	viewed_news = false
+	#Team
+	clicked_team = 0
+	viewed_team = false
+	#Missing
+	clicked_missing = 0
+	viewed_missing = false
+	#Case File
+	clicked_case_file = 0
+	viewed_case_file = false
+	#Quincy Call
+	Day_1_Quincy_call = false
+
+	##Micah Vars
+	micah_kicked_out = false
+	micah_time_out = false
+	#Closet
+	clicked_tool_note = 0
+	clicked_id_card = 0
+	closet_dialogue = false
+	viewed_tool_note = false
+	viewed_id_card = false
+	#bookshelf
+	clicked_book_note = 0
+	book_dialogue = false
+	viewed_Micah_bookmark = false
+	#Cabinet
+	clicked_cab = 0
+	opened_cab = false
+	#Pic
+	pic_fell = false
+	clicked_Micah_pic = 0
+	Micah_pic_dialogue = false
+	viewed_Micah_pic = false
+	#Fridge
+	viewed_Micah_fridge = false
+	#Window
+	window_dialogue = false
+	viewed_Micah_window = false
+	#Case
+	opened_micah_case = false
+	Micah_in_case = false
+	clicked_case_Micah = 0
+	clicked_case_letter_note = 0
+	viewed_Micah_letter = false
+	viewed_Micah_key = false
+	viewed_Micah_hair = false
+
+	##Juniper Vars
+	juniper_kicked_out = false
+	juniper_time_out = false
+	in_tea_time = false
+	#House
+	viewed_Juniper_house_pic = false
+	house_dialogue_Juniper = false
+	#Cafe
+	viewed_Juniper_cafe_pic = false
+	cafe_dialogue_Juniper = false
+	#Window
+	viewed_Juniper_window = false
+	window_thoughts_Juniper = false
+	#Bookmark
+	viewed_Juniper_Bookmark = false
+	book_dialogue_Juniper = false
+	clicked_bookmark_Juniper = 0
+	#Employee + Resumes table
+	viewed_Juniper_employee = false
+	viewed_Juniper_resume = false
+	resume_dialogue_Juniper = false
+	employee_dialogue_Juniper = false
+	#viewed_Juniper_empinfo = false
+	clicked_employee_Juniper = 0
+	clicked_resume_Juniper = 0
+	#Med bills
+	bills_dialogue_Juniper = false
+	view_bills_juniper = false
+	clicked_bills_Juniper = 0
+	#Cab 2 (close to window)
+	pills_dialogue_Juniper = false
+	pie_dialogue_Juniper = false
+	viewed_pills_juniper = false
+	viewed_pie_juniper = false
+	#Cab 1 (Far from window)
+	cran_dialogue_Juniper = false
+	recipe_dialogue_Juniper = false
+	viewed_cran_juniper = false
+	viewed_recipe_juniper = false
+	clicked_recipe_Juniper = 0
+	#Case
+	opened_jun_case = false
+	Juniper_in_case = false
+	view_apron_juniper = false
+	view_letter_juniper = false
+	view_nametag_juniper = false
+	clicked_letter_Juniper = 0
+	clicked_case_Juniper = 0
+	clicked_nametag_Juniper = 0
+
+	##Quincy Vars
+	quincy_time_out = false
+	quincy_kicked_out = false
+	quincy_fainted = false
+	Quincy_toilet_distracted = false
+	Quincy_Dalton_caught = false 
+	#Fam Portrait
+	viewed_Quincy_famPic = false
+	famPic_dialogue_Quincy = false
+	viewed_Quincy_coor = false
+	coor_dialogue_Quincy = false
+	clicked_coor_Quincy = 0
+	#Fish
+	fish_dialogue_Quincy = false
+	viewed_Quincy_fish = false
+	#Poker
+	poker_thoughts_Quincy = false
+	viewed_Quincy_poker = false
+	#Journal
+	journal_dialogue_Quincy = false
+	viewed_Quincy_journal = false
+	clicked_journal_Quincy = 0
+	#Phone
+	viewed_Quincy_phone = false
+	phone_dialogue_Quincy = false
+	clicked_phone_Quincy = 0
+	#Case
+	Quincy_in_case = false
+	opened_quincy_case = false
+	viewed_Quincy_letter = false
+	viewed_Quincy_hammer = false
+	clicked_case_Quincy = 0
+	clicked_letter_Quincy = 0
+	#bar
+	bar_dialogue_Quincy_finished = false
+	#Office Pic
+	viewed_Quincy_offPic = false
+	clicked_offPic_Quincy = 0
+	offPic_dialogue_Quincy = false
+	#computer
+	Quincy_in_computer = false
+	#Safe
+	Quincy_Safe_UI = false
+	safe_dialogue_Quincy = false
+	viewed_Quincy_bookmark = false
+	viewed_Quincy_pager = false
+	clicked_pager_Quincy = 0
+	viewed_Quincy_news = false
+	clicked_news_Quincy = 0
+	viewed_Quincy_usb = false
+	viewed_Quincy_proposal = false
+	clicked_proposal_Quincy = 0
+	#chocolate
+	viewed_Quincy_chocolate = false
+	chocolate_dialogue = false
+	
+	##Secret Vars
+	has_secret = false
+	#Cure
+	view_secret_cure = false
+	#USB
+	view_secret_usb = false
+	#Runa Letter
+	view_secret_runa_letter = false
+	clicked_runa_letter = 0
+	#Isaac Letter
+	view_secret_isaac_letter = false
+	clicked_isaac_letter = 0
+	
+	##Character Positions
+	dalton_pos = Vector3(0,0,0)
+	theo_pos = Vector3(0,0,0)
+	micah_pos = Vector3(0,0,0)
+	juniper_pos = Vector3(0,0,0)
+	quincy_pos = Vector3(0,0,0)
+	isaac_pos = Vector3(0,0,0)
+
+func reset_interaction():
+	##false on load
+	in_call = false
+	calling = false
+	player_move = true
+	in_look_screen = false
+	in_dialogue = false
+	phone_up = false
+	in_interaction = ""
+	viewing = ""
 
 func set_mouse_default():
 	#print("set default")

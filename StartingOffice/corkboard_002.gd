@@ -88,7 +88,7 @@ func _on_interactable_interacted(interactor):
 	if cork_cam.priority != 5:
 		emit_signal("general_interaction")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
+	print("interact cork")
 	cork_cam.priority = 5
 	main_cam.priority = 0
 	player.stop_player()

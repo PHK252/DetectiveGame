@@ -15,7 +15,6 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("Exit") and visible == true:
-		print("enter ui exit")
 		$".".hide()
 		await get_tree().process_frame
 		await get_tree().process_frame

@@ -22,6 +22,7 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	print(GlobalVars.viewed_partner, " GlobalVars.viewed_partner")
 	if GlobalVars.exit_tut == false:
 		emit_signal("_show_tut", "exit")
 
@@ -31,7 +32,7 @@ func _on_exit_pressed():
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_Partner_Picture")
-		GlobalVars.viewed_partner == true
+		GlobalVars.viewed_partner = true
 		GlobalVars.viewing = ""
 		
 
@@ -41,5 +42,5 @@ func _process(delta):
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_Partner_Picture")
-			GlobalVars.viewed_partner == true
+			GlobalVars.viewed_partner = true
 			GlobalVars.viewing = ""
