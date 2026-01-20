@@ -38,10 +38,7 @@ var quincy_pager = "- REVER, Operation NULL REV2\n- Turn off your phone when you
 var quincy_proposal = "- TRANSCRIPT: [color=#64635f]...[/color][p][color=#566f5c][url=show_proposal]VIEW PHOTO[/url][/color]\n- DALTON...\n- WHAT IS THIS?\n- WHERE ARE YOU?\n\n- WE HAVE TO GO THEO."
 
 func _ready():
-	#_add_note(quincy_email)
-	#_add_note(quincy_lab)
-	#_add_note(quincy_pager.to_upper())
-	#_add_note(quincy_proposal)
+	text_label.text = GlobalVars.quincy_notes
 	pass
 
 #Handling Notes

@@ -56,9 +56,7 @@ var micah_skylar_high = "- Skylar Aslan and the victim are friends, but the vict
 var micah_leave_missing = "- The victim mentioned that his friend by the name of Skylar Aslan has gone missing for the past few weeks."
 
 func _ready():
-	#_add_note(micah_case_letter_skylar)
-	#_add_note(micah_pic_high_found)
-	#_add_note(micah_tool_note_found)
+	text_label.text = GlobalVars.micah_notes
 	pass
 
 #handling notes

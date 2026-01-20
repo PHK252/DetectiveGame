@@ -5,12 +5,12 @@ signal camera_changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	#if GlobalVars.in_level:
-		#activate_camera(GlobalVars.cam_index)
+	#pass
+	if GlobalVars.in_level:
+		activate_camera(GlobalVars.cam_index)
 
 func activate_camera(cam_index: int) -> void:
-		#GlobalVars.cam_index = cam_index #will update last index whenever func activates
+		GlobalVars.cam_index = cam_index #will update last index whenever func activates
 		emit_signal("camera_changed")
 		for i in range(cameras.size()):
 			if i == cam_index:

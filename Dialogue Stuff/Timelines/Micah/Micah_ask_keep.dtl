@@ -27,6 +27,7 @@ if {Character Aff Points.Micah} < 2:
 		Dalton (Hmph): ...
 		Dalton (Talk): I'll be taking the letter.
 		Dalton (Resting): You can come get it at the station once you're ready to talk.
+		set {Asked Questions.has_letter} = true
 		do GlobalVars.emit_add_evidence("micah", "letter")
 	- Relinquish.
 		set {Character Aff Points.Micah} += 1
@@ -43,6 +44,7 @@ else:
 	Dalton (Talk): Can we take the key in as evidence?
 	Micah (Awkward): Sure...
 	Micah (Talk): I wouldn't know what to do with it anyway.
+	set {Asked Questions.has_key} = true
 	do GlobalVars.emit_add_evidence("micah", "key")
 	Dalton (Resting): The letter?
 	Micah (Awkward): ...
@@ -62,3 +64,4 @@ else:
 	Dalton (Talk): You can keep it.
 	Micah (Happy): ...!
 	Micah (Talk): Thank you.
+	[end_timeline]

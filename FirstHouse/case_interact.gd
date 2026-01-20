@@ -41,14 +41,28 @@ extends Node3D
 
 @export var case_pickup : AudioStreamPlayer3D
 signal general_quit
-
+signal open_case
 signal disable_look
 signal enable_look
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	UI.hide()
-	interact_area.hide()
-	hide_open_case()
+	if GlobalVars.opened_micah_case == true:
+		show_open_case()
+		emit_signal("open_case")
+		hide_closed_case()
+	else:
+		hide_open_case()
+		show_closed_case()
+	#if Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Key") == false or Dialogic.VAR.get_variable("Asked Questions.Micah_asked_letter") == false:
+		#print("enterededed")
+		#GlobalVars.viewed_Micah_key = false
+		#GlobalVars.viewed_Micah_letter = false
+		#Dialogic.VAR.set_variable("Asked Questions.Micah_Asked_Key", false)
+		#Dialogic.VAR.set_variable("Asked Questions.Micah_asked_letter", false)
+		
+	#UI.hide()
+	#interact_area.hide()
+	#hide_open_case()
 	#show_open_case()
 	pass # Replace with function body.
 
@@ -66,8 +80,20 @@ func show_open_case():
 		case_hair.hide()
 	else:
 		case_hair.show()
-	case_note.show()
-	case_key.show()
+	if Dialogic.VAR.get_variable("Asked Questions.has_letter") == true:
+		case_note.hide()
+		interior_interact_area_1.hide()
+	else:
+		case_note.show()
+		if GlobalVars.in_interaction != "":
+			interior_interact_area_1.show()
+	if Dialogic.VAR.get_variable("Asked Questions.has_key") == true:
+		case_key.hide()
+		interior_interact_area_3.hide()
+	else:
+		case_key.show()
+		if GlobalVars.in_interaction != "":
+			interior_interact_area_3.show()
 	
 func  hide_closed_case():
 	case_top_1.hide()
@@ -78,7 +104,6 @@ func  show_closed_case():
 	case_bottom_1.show()
 
 func _on_interactable_interacted(interactor):
-	
 	var case_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
 	print(alert.visible, "alert")
 	if GlobalVars.in_dialogue == false:
@@ -133,6 +158,8 @@ func _on_timeline_ended():
 	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	if GlobalVars.opened_micah_case == true:
+		show_open_case()
 	if GlobalVars.in_interaction == "":
 		player.start_player()
 		alert.show()
@@ -179,8 +206,12 @@ func _input(event):
 				interior_interact_area_1.hide()
 				interior_interact_area_2.hide()
 				interior_interact_area_3.hide()
+				if finished_letter == true and finished_key == true:
+					player.start_player()
+					GlobalVars.in_interaction = ""
+					return
 				if finished_letter == true or finished_key == true:
-					if finished_key == true:
+					if finished_key == true and GlobalVars.viewed_Micah_letter == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()
@@ -190,7 +221,7 @@ func _input(event):
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
-					elif finished_letter == true:
+					elif finished_letter == true and GlobalVars.viewed_Micah_key == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()
@@ -200,6 +231,10 @@ func _input(event):
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
+					else:
+						player.start_player()
+						GlobalVars.in_interaction = ""
+						return
 				elif GlobalVars.viewed_Micah_letter == true or GlobalVars.viewed_Micah_key == true:
 					if GlobalVars.viewed_Micah_letter == true and GlobalVars.viewed_Micah_key == true:
 						GlobalVars.in_interaction = ""

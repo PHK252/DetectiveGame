@@ -36,7 +36,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$".".hide()
+	if GlobalVars.opened_micah_case == true:
+		open_animation_2["parameters/conditions/case_opened"] = true
 	posChange()
 
 func hide_open_case():

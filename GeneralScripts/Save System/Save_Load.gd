@@ -98,6 +98,7 @@ func saveGame(path: String, dialogic_save : bool = true):
 			"in_level": GlobalVars.in_level,
 			"time_left" : GlobalVars.time_left,
 			"distract_left": GlobalVars.distract_left,
+			"cam_index": GlobalVars.cam_index,
 		},
 		"Phone":{
 			"contact": GlobalVars.phone_contacts,

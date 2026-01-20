@@ -33,12 +33,12 @@ signal unpaused
 
 
 #camera index for loading
-#@onready var cam_index : int = 0
+@onready var cam_index : int = 0
 
 
 
 var load_global_arr = []
-var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house", "in_level", "time_left", "distract_left"]
+var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house", "in_level", "time_left", "distract_left", "cam_index"]
 func _load_global_arr():
 	load_global_arr = [GlobalVars.forward, GlobalVars.day, GlobalVars.time, GlobalVars.current_level, GlobalVars.first_house]
 	return load_global_arr
@@ -57,7 +57,7 @@ var note_event = ""
 var note_condition = ""
 
 #for evidence collection
-@onready var evidence_container : VBoxContainer
+@onready var evidence_container : Array[String] = []
 #don't save these
 var evi_char = ""
 var evi_remove_char = ""

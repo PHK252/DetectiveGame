@@ -1,6 +1,6 @@
 extends Control
 
-@export var container : VBoxContainer
+@export var node : Control
 @export var row_1: HBoxContainer
 @export var row_2: HBoxContainer
 
@@ -18,18 +18,14 @@ extends Control
 @export var description: RichTextLabel
 @export var description_body: RichTextLabel
 
+@export var evi_array : Array[TextureButton]
+
 var choco_row :=0
 signal added_notes_overlay
-#func _ready():
-	#_add_evidence(micah_letter)
-	#_add_evidence(micah_key)
-	#_add_evidence(micah_fur)
-	#_add_evidence(juniper_letter)
-	#_add_evidence(juniper_pie)
-	#_add_evidence(quincy_letter)
-	#_add_evidence(quincy_hammer)
-	#_add_evidence(quincy_coors)
-	#_add_evidence(quincy_choco)
+func _ready():
+	if GlobalVars.evidence_container.size() > 0:
+		for evidence in GlobalVars.evidence_container:
+			_find_evi_button(evidence)
 
 func _process(delta):
 	if GlobalVars.evi_char == "" and GlobalVars.evi_remove_char == "":
@@ -40,20 +36,27 @@ func _process(delta):
 			print("remove choco")
 			row_1.remove_child(quincy_choco)
 		else:
-			row_1.remove_child(quincy_choco)
+			row_2.remove_child(quincy_choco)
 		quincy_choco.hide()
 		return
 	_recieve_evidence()
 	
-	
+func _find_evi_button(target: String):
+	for i in evi_array:
+		if i.name == target:
+			_add_evidence(i, false) 
 
-func _add_evidence(evidence : TextureButton):
+func _add_evidence(evidence : TextureButton, add_global : bool = true):
 	if row_1.get_child_count() < 5:
 		_attach_button(evidence, row_1)
+		if add_global == true:
+			GlobalVars.evidence_container.append(evidence.name)
 		if evidence == quincy_choco:
 			choco_row = 1
 	elif row_2.get_child_count() < 5:
 		_attach_button(evidence, row_2)
+		if add_global == true:
+			GlobalVars.evidence_container.append(evidence.name)
 		if evidence == quincy_choco:
 			choco_row = 2
 	else:
@@ -68,7 +71,7 @@ func _attach_button(evidence : TextureButton, row_num : HBoxContainer):
 	remove_child(evidence)
 	row_num.add_child(evidence)
 	evidence.show()
-	GlobalVars.evidence_container = container
+	
 
 func _recieve_evidence():
 	if GlobalVars.evi_char == "micah":

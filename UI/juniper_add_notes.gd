@@ -45,9 +45,7 @@ var juniper_case_name_tag_found = "- NAME TAG TRANSCRIPT: [color=#64635f]SKYLAR 
 var juniper_case_name_tag_response = "- The full name of the missing employee is Skylar Aslan.\n- They left their name tag and apron in the case.\n- Skylar Aslan is now the primary suspect of this break-in."
 
 func _ready():
-	#_add_note(juniper_case_letter)
-	#_add_note(juniper_case_name_tag_found)
-	#_add_note(juniper_bookmark_found)
+	text_label.text = GlobalVars.juniper_notes
 	pass
 
 #Handling Notes
