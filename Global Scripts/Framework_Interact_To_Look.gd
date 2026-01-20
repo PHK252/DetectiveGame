@@ -39,7 +39,7 @@ signal check_pager_text
 var played_anim := false
 
 func _on_input_event(viewport, event, shape_idx):
-	if GlobalVars.in_look_screen == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				if is_there_anim == true:

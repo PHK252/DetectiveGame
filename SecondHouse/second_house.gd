@@ -32,15 +32,17 @@ signal auto_open
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#player.start_player()
-	disable_interaction_beginning(interactables)
+	if GlobalVars.in_level == false:
+		disable_interaction_beginning(interactables)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalVars.current_level = "juniper"
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
-		Dialogic.VAR.set_variable("Global.first_house", "Juniper")	
-	#await get_tree().create_timer(1.0).timeout
-	#GlobalVars.emit_add_evidence("juniper", "letter")
-	#await get_tree().create_timer(10.0).timeout
-	#GlobalVars.emit_add_note("juniper", "letter", "found")
+		Dialogic.VAR.set_variable("Global.first_house", "Juniper")
+	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		#print(GlobalVars.time_left)
+		timer.wait_time = GlobalVars.time_left
+		music.play()
+		timer.start()
 	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)
@@ -144,6 +146,7 @@ func can_interact():
 
 func _on_entered_juniper():
 	timer.start()
+	GlobalVars.in_level = true
 	emit_signal("phone_time_start")
 	music.play()
 	print("level start!")
@@ -151,4 +154,5 @@ func _on_entered_juniper():
 
 func _on_level_exit():
 	print("level exited!")
+	GlobalVars.in_level = false
 	music.stop()

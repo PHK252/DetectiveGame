@@ -38,9 +38,10 @@ func _ready() -> void:
 	# Start lerping to 0
 	if GlobalVars.from_save_file == true:
 		global_position = GlobalVars.dalton_pos
-		GlobalVars.from_save_file = false
 		blend_target = 0.0
 		in_control = true
+		await get_tree().process_frame
+		GlobalVars.from_save_file = false
 		return
 	anim_tree.set("parameters/Blend2/blend_amount", blend_target)
 	sound_allowed = true

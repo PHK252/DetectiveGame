@@ -43,8 +43,9 @@ var not_stairs := true
 
 func _ready() -> void:
 	if GlobalVars.from_save_file == true:
-		GlobalVars.from_save_file = false
 		global_position = GlobalVars.isaac_pos
+		await get_tree().process_frame
+		GlobalVars.from_save_file = false
 	add_to_group("player")
 	in_control = false
 	force_rotation = true

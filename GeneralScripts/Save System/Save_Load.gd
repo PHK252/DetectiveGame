@@ -94,7 +94,10 @@ func saveGame(path: String, dialogic_save : bool = true):
 			"game_day" : GlobalVars.day,
 			"game_time": GlobalVars.time,
 			"current_level": GlobalVars.current_level,
-			"first_house": GlobalVars.first_house
+			"first_house": GlobalVars.first_house,
+			"in_level": GlobalVars.in_level,
+			"time_left" : GlobalVars.time_left,
+			"distract_left": GlobalVars.distract_left,
 		},
 		"Phone":{
 			"contact": GlobalVars.phone_contacts,

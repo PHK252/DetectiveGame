@@ -110,8 +110,9 @@ func _ready() -> void:
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 	if GlobalVars.from_save_file == true:
-		GlobalVars.from_save_file = false
 		global_position = GlobalVars.quincy_pos
+		await get_tree().process_frame
+		GlobalVars.from_save_file = false
 	add_to_group("quincy")
 	wander_choice = 11
 	packofcigs.visible = false

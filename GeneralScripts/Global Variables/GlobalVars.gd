@@ -27,11 +27,13 @@ signal unpaused
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need
-
+@onready var in_level : bool = false
+@onready var time_left : float = 0.0
+@onready var distract_left : float = 0.0
 
 
 var load_global_arr = []
-var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house"]
+var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house", "in_level", "time_left", "distract_left"]
 func _load_global_arr():
 	load_global_arr = [GlobalVars.forward, GlobalVars.day, GlobalVars.time, GlobalVars.current_level, GlobalVars.first_house]
 	return load_global_arr
@@ -421,7 +423,10 @@ func reset_globals():
 	day = 1
 	time = ""
 	current_level = ""
-	first_house = "" # might not need
+	first_house = "" 
+	in_level = false
+	time_left = 0.0
+	distract_left = 0.0
 
 	##Phone stuff
 	#for contacts

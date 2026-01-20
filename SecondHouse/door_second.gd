@@ -52,7 +52,8 @@ signal disable_look
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	if GlobalVars.in_level == true:
+		greeting = true
 
 func open() -> void:
 	print("opening")
@@ -142,7 +143,6 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 	
 	elif is_open == false and GlobalVars.in_dialogue == false and cooldown == false:
 		#print("open")
-		#$Interactable.queue_free()
 		if greeting == false and quincy_house == false and triggered == false:
 			emit_signal("cam_greeting")
 			triggered = true

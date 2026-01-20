@@ -74,8 +74,11 @@ func _ready() -> void:
 	if MicahHouse:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	#if GlobalVars.dalton_pos:
+	print(GlobalVars.from_save_file, " from save")
 	if GlobalVars.from_save_file == true:
 		global_position = GlobalVars.dalton_pos
+		print("from save", global_position)
+		await get_tree().process_frame
 		GlobalVars.from_save_file = false
 		return
 	#print("placed " + str(GlobalVars.dalton_pos))

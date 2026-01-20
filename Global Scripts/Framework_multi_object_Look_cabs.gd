@@ -353,7 +353,6 @@ func _on_dialogue2_ended():
 	alert.show()
 
 func _on_timeline_ended():
-	print("disconnect")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalVars.in_dialogue = false
@@ -377,7 +376,12 @@ func _on_cab_close_2_input_event(viewport, event, shape_idx):
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 				close()
 
-
+func _on_cran_timeline_ended():
+	print("disconnect")
+	Dialogic.timeline_ended.disconnect(_on_cran_timeline_ended)
+	GlobalVars.in_dialogue = false
+	player.start_player()
+	alert.show()
 
 func _on_input_event(viewport, event, shape_idx):
 	var read_dialogue_1 : bool = GlobalVars.get(dialogue_1)
@@ -391,25 +395,11 @@ func _on_input_event(viewport, event, shape_idx):
 					#alert.hide()
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					GlobalVars.in_dialogue = true
-					#FP_Cam.priority = 0
-					#Exit_Cam.priority = 30
-					#emit_signal("general_quit")
-					#await get_tree().create_timer(.03).timeout
-					#cam_anim.play("RESET")
-					#player.show()
-					#player.start_player()
-					#GlobalVars.in_interaction = ""
 					var game_dialogue = Dialogic.start(dialogue_file_1)
 					Dialogic.signal_event.connect(_exit_first_pov)
-					Dialogic.timeline_ended.connect(_on_timeline_ended)
+					Dialogic.timeline_ended.connect(_on_cran_timeline_ended)
 					GlobalVars.set(dialogue_1, true)
 					GlobalVars.set(view_item_1, true)
-					#interact_area_1.hide()
-					#interact_area_2.hide()
-					#open_interact.hide()
-					#close_interact_1.hide()
-					#close_interact_2.hide()
-					#alert.hide()
 
 func _exit_first_pov(argument: String):
 	if argument == "exit_cam":
@@ -432,5 +422,6 @@ func _exit_first_pov(argument: String):
 		close_interact_2.hide()
 		alert.hide()
 	else:
+		print("visible mouse")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Dialogic.signal_event.disconnect(_exit_first_pov)

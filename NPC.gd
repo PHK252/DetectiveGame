@@ -74,6 +74,7 @@ func _ready() -> void:
 	state = IDLE
 	if GlobalVars.from_save_file == true:
 		global_position = GlobalVars.micah_pos
+		await get_tree().process_frame
 		GlobalVars.from_save_file = false
 	#var target_position = player.global_position
 	#var target_direction = (target_position - global_transform.origin).normalized()

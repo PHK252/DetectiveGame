@@ -96,8 +96,11 @@ var case_handle_rotation := false
 func _ready() -> void:
 	add_to_group("juniper")
 	if GlobalVars.from_save_file == true:
-		GlobalVars.from_save_file = false
 		global_position = GlobalVars.juniper_pos
+		if GlobalVars.in_level == true:
+			greeting = true
+		await get_tree().process_frame
+		GlobalVars.from_save_file = false
 	anim_player.play("idle_chain")
 	state = IDLE
 	#var target_position = player.global_position

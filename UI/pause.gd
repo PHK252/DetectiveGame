@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@export var level_timer : Timer
+@export var distract_timer : Timer
+
 @export var main_scene : Node
 @onready var resume = $VBoxContainer/Resume
 @onready var controls = $Controls
@@ -14,7 +17,12 @@ func _ready():
 	pass
 
 func _on_save_pressed():
-	print("pressed")
+	if level_timer:
+		if level_timer.time_left != 0.0:
+			GlobalVars.time_left = level_timer.time_left
+	if distract_timer:
+		if distract_timer.time_left != 0.0:
+			GlobalVars.distract_left = distract_timer.time_left
 	AudioServer.set_bus_mute(0, true)
 	resume.shortcut = null
 	await get_tree().process_frame

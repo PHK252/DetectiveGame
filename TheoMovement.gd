@@ -101,8 +101,9 @@ func _ready() -> void:
 	#if GlobalVars.theo_pos != Vector3(0.0, 0.0, 0.0):
 		#global_position = GlobalVars.theo_pos
 	if GlobalVars.from_save_file == true:
-		GlobalVars.from_save_file = false
 		global_position = GlobalVars.theo_pos
+		await get_tree().process_frame
+		GlobalVars.from_save_file = false
 	#global_position = GlobalVars.theo_pos
 	# Initialize the navigation target to the player's position
 	nav.target_position = player.global_transform.origin
