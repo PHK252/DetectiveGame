@@ -39,7 +39,12 @@ func _ready():
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Juniper")
 	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
-		#print(GlobalVars.time_left)
+		if Dialogic.VAR.get_variable("Juniper.timed_out") == true or Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
+			disable_interaction(interactables)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			emit_signal("auto_open")
+			return
 		timer.wait_time = GlobalVars.time_left
 		music.play()
 		timer.start()

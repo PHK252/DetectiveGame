@@ -422,6 +422,5 @@ func _exit_first_pov(argument: String):
 		close_interact_2.hide()
 		alert.hide()
 	else:
-		print("visible mouse")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Dialogic.signal_event.disconnect(_exit_first_pov)

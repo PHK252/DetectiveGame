@@ -285,6 +285,7 @@ func _on_after_faint_open_door():
 func _on_exit_house(body):
 	var dalton_left = false
 	var theo_left = false
+
 	if leaving == true:
 		if body.is_in_group("player"):
 			dalton_left = true
@@ -293,14 +294,18 @@ func _on_exit_house(body):
 				#collision.set_deferred("disabled", false) 
 				#emit_signal("activate_car")
 				#is_open = false
-		print("DETEC")
+		print("Theo ", theo_left)
+		print("Dalton ", dalton_left)
+		
 		if body.is_in_group("theo"):
 			theo_left = true
 			await get_tree().create_timer(1.0).timeout
 			close()
 			collision.set_deferred("disabled", false) 
 			emit_signal("activate_car")
-			is_open = false	
+			is_open = false
+			print("Theo ", theo_left)
+			print("Dalton ", dalton_left)
 		
 		if dalton_left == true and theo_left == true:
 			print("CLOSEING")
@@ -308,6 +313,8 @@ func _on_exit_house(body):
 			collision.set_deferred("disabled", false) 
 			emit_signal("activate_car")
 			is_open = false
+			print("Theo ", theo_left)
+			print("Dalton ", dalton_left)
 
 
 func open_door(arg : String):

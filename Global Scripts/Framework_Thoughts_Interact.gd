@@ -52,6 +52,12 @@ signal disable_look
 var kicked = false
 var timed = false
 
+func _ready():
+	if GlobalVars.get(dialogue) == true:
+		dialogue_after = false
+	if GlobalVars.get(view_item) == true:
+		thoughts = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var read_dialogue : bool = GlobalVars.get(dialogue)
@@ -100,7 +106,7 @@ func _process(delta):
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)
 			alert.hide()
-			thoughts = false
+			#thoughts = false
 			dialogue_after = false
 		elif dialogue_after == false and Input.is_action_just_pressed("Exit"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -117,7 +123,7 @@ func _process(delta):
 			GlobalVars.in_dialogue = false #never gets set back to false after interacting if u don't do it here, this is where 2nd interact issues come from
 			GlobalVars.in_interaction = ""
 			alert.show()
-			thoughts = false
+			#thoughts = false
 			#activate dialogue
 
 
@@ -136,8 +142,7 @@ func _on_thoughts_ended():
 
 func _on_interactable_interacted(interactor):
 	emit_signal("general_interact")
-	if GlobalVars.in_dialogue == false and thoughts == false and GlobalVars.in_interaction == "":
-		thoughts = true
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
@@ -147,7 +152,9 @@ func _on_interactable_interacted(interactor):
 		if is_player_visible == false:
 			player.hide()
 		player.stop_player()
-		GlobalVars.in_dialogue = true #always set to true even if dialogue not needed
-		Dialogic.timeline_ended.connect(_on_thoughts_ended)
-		Dialogic.start(thought_dialogue_file)
-		GlobalVars.set(view_item, true)
+		if thoughts == false:
+			thoughts = true
+			GlobalVars.in_dialogue = true #always set to true even if dialogue not needed
+			Dialogic.timeline_ended.connect(_on_thoughts_ended)
+			Dialogic.start(thought_dialogue_file)
+			GlobalVars.set(view_item, true)

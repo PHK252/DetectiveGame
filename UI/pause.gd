@@ -95,7 +95,7 @@ func _on_visibility_changed():
 		resume.shortcut = resume_short
 		Engine.time_scale = 0
 		print(GlobalVars.in_dialogue)
-		if GlobalVars.in_dialogue == true:
+		if GlobalVars.in_dialogue == true or GlobalVars.in_tea_time == true:
 			$VBoxContainer/Save.disabled = true
 			$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_ARROW
 		else:

@@ -385,6 +385,7 @@ var flashback_1_1 := "res://Cutscenes/Flashback_01.tscn"
 var flashback_1_2 := "res://dream_stuff/Flashback_Runa.tscn"
 var flashback_2 := "res://Cutscenes/Flashback_02.tscn"
 var interrogation := "res://Cutscenes/Interrogation.tscn"
+var credits := "res://UI/credits.tscn"
 
 #get current level path for loading
 func get_current_level_path(level : String):

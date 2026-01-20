@@ -50,6 +50,16 @@ func _ready():
 	cab_interact.hide()
 	pic_look_interact.hide()
 	tool_anim.play("NEWToolOpen")
+	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		if Dialogic.VAR.get_variable("Asked Questions.Micah_timed_out") == true or Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true:
+			disable_interaction(interactables)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			emit_signal("auto_open")
+			return
+		timer.wait_time = GlobalVars.time_left
+		music.play()
+		timer.start()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Micah")
@@ -153,11 +163,13 @@ func _on_entered_micah():
 	timer.start()
 	music.play()
 	emit_signal("phone_time_start")
+	GlobalVars.in_level = true
 	print("level start!")
 	#disconnect("_on_entered_micah")
 
 
 func _on_door_activate_leave():
 	music.stop()
+	GlobalVars.in_level = false
 	print("level exit!")
 	

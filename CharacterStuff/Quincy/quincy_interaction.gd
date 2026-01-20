@@ -48,6 +48,8 @@ func _on_interactable_interacted(interactor):
 
 	
 func _ready():
+	if GlobalVars.in_level == true:
+		Q_greeting = true
 	if Q_greeting == false:
 		interactable.set_monitorable(false)
 

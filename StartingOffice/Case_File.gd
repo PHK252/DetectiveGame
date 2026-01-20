@@ -1,5 +1,6 @@
 extends MeshInstance3D
 
+@export var main : Node3D
 @export var casefilecam : PhantomCamera3D
 @export var exitcam : PhantomCamera3D
 @export var camanim : AnimationPlayer
@@ -194,7 +195,9 @@ func _on_timeline_ended():
 func _on_ending_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_ending_timeline_ended)
 	#Anim and fade stuff
-	print("To credits")
+	SceneTransitions.fade_change_scene(GlobalVars.credits)
+	await get_tree().create_timer(.5).timeout
+	main.queue_free()
 	pass
 	
 func _on_phone_timeline_ended():

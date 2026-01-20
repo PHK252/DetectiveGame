@@ -110,6 +110,10 @@ func _ready() -> void:
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 	if GlobalVars.from_save_file == true:
+		if GlobalVars.in_level == true:
+			greeting = true
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+			is_distracted = true
 		global_position = GlobalVars.quincy_pos
 		await get_tree().process_frame
 		GlobalVars.from_save_file = false

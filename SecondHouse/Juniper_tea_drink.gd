@@ -28,7 +28,11 @@ signal theo_reposition_start
 signal theo_reposition_end
 
 func _ready():
-	interactable.set_deferred("monitorable", false)
+	if Dialogic.VAR.get_variable("Juniper.has_tea") == false:
+		interactable.set_deferred("monitorable", false)
+	else:
+		pass
+		## Tea tray become visible
 
 
 func choose_drink_thought_dialogue():
@@ -64,6 +68,7 @@ func _activate_drink():
 	GlobalVars.in_tea_time = false
 	interactable.set_deferred("monitorable", true)
 	emit_signal("enable_after_tea_interaction")
+	Dialogic.VAR.set_variable("Juniper.has_tea", true)
 	#var game_dialogue = Dialogic.start(dialogue_file)
 	#game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 	#game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)

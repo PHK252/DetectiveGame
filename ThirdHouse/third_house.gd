@@ -14,6 +14,7 @@ extends Node3D
 @export var theo_marker : Marker2D
 @export var character_marker : Marker2D
 @export var timer : Timer
+@export var distract_time : Timer
 @export var music : AudioStreamPlayer
 
 @export var door : Interactable
@@ -42,6 +43,21 @@ func _ready():
 	emit_signal("phone_time_start")
 	#player.start_player()
 	death.hide()
+	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		music.play()
+		if Dialogic.VAR.get_variable("Quincy.timed_out") == true or Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
+			disable_interaction(interactables)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			emit_signal("open_main_door")
+			return
+		print(GlobalVars.time_left)
+		timer.wait_time = GlobalVars.time_left
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+			distract_time.wait_time = GlobalVars.distract_left
+			distract_time.start()
+			return
+		timer.start()
 	#MusicFades.fade_out_audio()
 
 	#settings
@@ -196,6 +212,7 @@ func _on_quincy_entered():
 	timer.start()
 	emit_signal("phone_time_start")
 	print("level start!")
+	GlobalVars.in_level = true
 	music.play()
 	#MusicFades.fade_in_audio() sound better if u just play
 	
@@ -203,6 +220,7 @@ func _on_quincy_entered():
 
 func _on_exit_level():
 	print("level exit!")
+	GlobalVars.in_level = false
 	MusicFades.fade_out_audio()
 	await get_tree().create_timer(5.0).timeout
 	music.stop()
