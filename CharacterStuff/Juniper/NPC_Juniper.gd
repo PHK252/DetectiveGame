@@ -275,7 +275,7 @@ func _process_anim():
 		wander_rotate = false
 		wander_choice = 0
 		floor_type_gather()
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.5).timeout
 		anim_tree.set("parameters/" + "Coffee" + "/request", 2)
 		var choice = rng.randi_range(-10, 10)
 		if wander_choice < 3:
@@ -546,6 +546,7 @@ func _on_door_point_body_entered(body: Node3D) -> void:
 func _on_tea_activated():
 	print("interactedTea")
 	emit_signal("stop_theo_for_tea")
+	SPEED = 0.8
 	wander_rotate = false
 	wander_choice = 0
 	var current_anim = one_shots[wander_choice]
@@ -572,6 +573,7 @@ func _on_door_second_juniper_greeting() -> void:
 	
 func _on_juniper_interact_finish_greeting() -> void:
 	if greeting == false:
+		SPEED = 1.0
 		greet_rotation = false
 		greeting = true
 		#wander_choice = rng.randi_range(0, 2)

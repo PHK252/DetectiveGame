@@ -628,7 +628,7 @@ func _sofa_drink_dalton():
 	
 func _sofa_exit_dalton():
 	theo_adjustment = false
-	in_kitchen = false 
+	#in_kitchen = false 
 
 func _on_bar_theo_enter_bar():
 	print("wine_time")
