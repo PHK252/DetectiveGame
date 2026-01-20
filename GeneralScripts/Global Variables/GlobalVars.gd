@@ -32,6 +32,11 @@ signal unpaused
 @onready var distract_left : float = 0.0
 
 
+#camera index for loading
+#@onready var cam_index : int = 0
+
+
+
 var load_global_arr = []
 var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house", "in_level", "time_left", "distract_left"]
 func _load_global_arr():
