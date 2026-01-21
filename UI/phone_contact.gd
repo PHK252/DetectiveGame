@@ -61,7 +61,3 @@ func _on_visibility_changed():
 			_add_contact("juniper")
 		if Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") and clyde.visible != true:
 			_add_contact("clyde")
-
-
-func _on_evidence_pressed():
-	Dialogic.VAR.set_variable("Asked Questions.Micah_viewed_ID", true)

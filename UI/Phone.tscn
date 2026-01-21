@@ -3312,7 +3312,6 @@ bus = &"SFX"
 [connection signal="pressed" from="NotesScreen/Case/Back" to="NotesScreen" method="_on_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
 [connection signal="mouse_entered" from="NotesScreen/Case/Evidence" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
-[connection signal="pressed" from="NotesScreen/Case/Evidence" to="PhoneScreen/ContactScreen" method="_on_evidence_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen" method="_on_evidence_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen/Evidence" method="_on_evidence_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="Phone_Sounds_General" method="_on_altClick_phone"]

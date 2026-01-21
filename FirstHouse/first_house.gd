@@ -50,22 +50,10 @@ func _ready():
 	cab_interact.hide()
 	pic_look_interact.hide()
 	tool_anim.play("NEWToolOpen")
-	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
-		if Dialogic.VAR.get_variable("Asked Questions.Micah_timed_out") == true or Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true:
-			disable_interaction(interactables)
-			await get_tree().process_frame
-			await get_tree().process_frame
-			emit_signal("auto_open")
-			return
-		timer.wait_time = GlobalVars.time_left
-		music.play()
-		timer.start()
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Micah")
-	#await get_tree().create_timer(10.0).timeout
-	#emit_signal("phone_time_start")
-	#GlobalVars.emit_add_note("micah", "window", "")
 	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)
@@ -76,6 +64,35 @@ func _ready():
 	#pixel
 	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
 	_on_brightness_brightness_shift(GlobalVars.brightness)
+	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		if GlobalVars.micah_time_out == true:
+			Dialogic.clear()
+			disable_interaction(interactables)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			alert.hide()
+			player.stop_player()
+			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
+			print("timeout_dialogue_entered")
+			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
+			return
+		if GlobalVars.micah_kicked_out == true:
+			Dialogic.clear()
+			disable_interaction(interactables)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			alert.hide()
+			player.stop_player()
+			in_kicked_out_dialogue = true
+			GlobalVars.in_dialogue = true
+			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
+			return
+		timer.wait_time = GlobalVars.time_left
+		music.play()
+		timer.start()
 	
 
 func _set_pixelation(stretch) -> void:
@@ -94,6 +111,8 @@ func _process(delta):
 	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:
 		GlobalVars.micah_kicked_out = true
 		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
+			Dialogic.clear()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			alert.hide()
 			player.stop_player()
@@ -105,6 +124,8 @@ func _process(delta):
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Asked Questions.Micah_time_out_finished") == false and GlobalVars.micah_kicked_out == false:
+			Dialogic.clear()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			alert.hide()
 			#disable_interaction(interactables)
 			player.stop_player()
@@ -129,6 +150,8 @@ func _on_timer_timeout():
 		player.stop_player()
 		alert.hide()
 		if GlobalVars.in_interaction == "":
+			Dialogic.clear()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			print("timeout_dialogue_entered")

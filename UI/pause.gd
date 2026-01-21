@@ -85,7 +85,6 @@ func _on_visibility_changed():
 		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			prev_mouse_mode = 0
 		get_tree().paused = true
-
 		await get_tree().process_frame
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		InputMap.action_erase_events("Quit")
@@ -94,8 +93,27 @@ func _on_visibility_changed():
 		resume_short.events = [key_event]
 		resume.shortcut = resume_short
 		Engine.time_scale = 0
-		print(GlobalVars.in_dialogue)
-		if GlobalVars.in_dialogue == true or GlobalVars.in_tea_time == true:
+		var time_out := false
+		var kick_out := false
+		match GlobalVars.current_level:
+			"micah":
+				if GlobalVars.micah_time_out == true:
+					time_out = true
+				if GlobalVars.micah_kicked_out == true:
+					kick_out = true
+			"juniper":
+				if GlobalVars.juniper_time_out == true:
+					time_out = true
+				if GlobalVars.juniper_kicked_out == true:
+					kick_out = true
+			"quincy":
+				if GlobalVars.quincy_time_out == true:
+					time_out = true
+				if GlobalVars.quincy_kicked_out == true:
+					kick_out = true
+			_:
+				pass
+		if GlobalVars.in_dialogue == true or GlobalVars.in_tea_time == true or time_out == true or kick_out == true:
 			$VBoxContainer/Save.disabled = true
 			$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_ARROW
 		else:
