@@ -3,6 +3,8 @@ extends Node
 @export var cameras: Array[Node3D]
 signal camera_changed
 
+var print_cam := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#pass
