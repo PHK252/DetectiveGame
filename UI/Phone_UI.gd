@@ -303,6 +303,7 @@ func _on_call_pressed():
 		if called_num == "034-2012": 
 			if at_bookshelf == true and needs_distraction == true:
 				var book_distract = Dialogic.start("Quincy_book_distract")
+				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				GlobalVars.in_dialogue = true
 				Dialogic.signal_event.connect(_bottle_fall_sound)
 				Dialogic.signal_event.connect(_end_call)
@@ -422,6 +423,7 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 	GlobalVars.in_interaction = "phone call"
 	if at_bookshelf == true and needs_distraction == true:
 		var book_distract = Dialogic.start("Quincy_book_distract")
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.in_dialogue = true
 		Dialogic.signal_event.connect(_bottle_fall_sound)
 		Dialogic.signal_event.connect(_end_call)

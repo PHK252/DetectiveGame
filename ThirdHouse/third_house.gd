@@ -33,6 +33,7 @@ signal bar_timed
 signal theo_leave
 signal quincy_leave
 
+signal load_bath
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
 
@@ -43,21 +44,7 @@ func _ready():
 	emit_signal("phone_time_start")
 	#player.start_player()
 	death.hide()
-	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
-		music.play()
-		if Dialogic.VAR.get_variable("Quincy.timed_out") == true or Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
-			disable_interaction(interactables)
-			await get_tree().process_frame
-			await get_tree().process_frame
-			emit_signal("open_main_door")
-			return
-		print(GlobalVars.time_left)
-		timer.wait_time = GlobalVars.time_left
-		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
-			distract_time.wait_time = GlobalVars.distract_left
-			distract_time.start()
-			return
-		timer.start()
+
 	#MusicFades.fade_out_audio()
 
 	#settings
@@ -76,6 +63,33 @@ func _ready():
 	print(Dialogic.VAR.get_variable("Quincy.caught"), " caught")
 	if interactables[0].monitorable == false:
 		interactables[0].set_deferred("monitorable", true)
+	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		music.play()
+		if GlobalVars.quincy_time_out == true:
+			disable_interaction(interactables)
+			Dialogic.clear()
+			await get_tree().process_frame
+			await get_tree().process_frame
+			player.stop_player()
+			alert.hide()
+			in_time_out_dialogue = true
+			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
+			return
+		if GlobalVars.quincy_kicked_out == true:
+			disable_interaction(interactables)
+			Dialogic.clear()
+			await get_tree().process_frame
+			await get_tree().process_frame
+			player.stop_player()
+			alert.hide()
+			door.set_deferred("monitorable", false)
+			emit_signal("open_main_door")
+			return
+		if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+			emit_signal("load_bath")
+		timer.wait_time = GlobalVars.time_left
+		timer.start()
 
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
@@ -91,6 +105,8 @@ func _on_brightness_brightness_shift(brightness) -> void:
 func _process(delta):
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
+		Dialogic.clear()
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.quincy_kicked_out = true
 		disable_interaction(interactables)
 		door.set_deferred("monitorable", false)
@@ -107,6 +123,8 @@ func _process(delta):
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.timed_out") == false and GlobalVars.quincy_kicked_out == false and bathroom_door.player_in_bathroom == false:
+			Dialogic.clear()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			alert.hide()
 			in_time_out_dialogue = true
@@ -137,6 +155,8 @@ func _on_timer_timeout():
 		player.stop_player()
 		alert.hide()
 		if GlobalVars.in_interaction == "" and bathroom_door.player_in_bathroom == false:
+			Dialogic.clear()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			in_time_out_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)

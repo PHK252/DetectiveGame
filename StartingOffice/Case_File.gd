@@ -71,9 +71,12 @@ func _on_interactable_interacted(interactor):
 		if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
 			GlobalVars.in_interaction = "Ending Texts"
 			ending_text.show()
+			print("enter interaction", GlobalVars.in_interaction)
 			return
 		GlobalVars.in_interaction = "case file"
 		look_click.show()
+		if GlobalVars.exit_tut == false:
+			emit_signal("_show_tut", "exit")
 
 func _on_exit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -103,6 +106,7 @@ func _on_exit_pressed():
 				GlobalVars.in_interaction = ""
 				return
 		"Ending Texts":
+			ending_text.hide()
 			var fired : bool
 			var phone : bool
 			match Dialogic.VAR.get_variable("Endings.Ending_type"):
@@ -176,7 +180,6 @@ func _on_call_start_dialogue():
 	print(dialogue_file)
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_ending_timeline_ended)
-	
 	Dialogic.start(dialogue_file, "call")
 	
 func _on_timeline_ended():
@@ -185,8 +188,9 @@ func _on_timeline_ended():
 	alert.show()
 	#office_theme.play()
 	#theo_theme.stop()
-	if GlobalVars.map_tut == false:
-		emit_signal("_show_tut", "map")
+	##Map tut if players are confused
+	#if GlobalVars.map_tut == false:
+		#emit_signal("_show_tut", "map")
 	GlobalVars.in_dialogue = false
 	emit_signal("activate_map")
 	GlobalVars.in_interaction = ""
@@ -207,7 +211,8 @@ func _on_phone_timeline_ended():
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "case file" or GlobalVars.in_interaction == "Ending Texts":
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false and (GlobalVars.in_interaction == "case file" or GlobalVars.in_interaction == "Ending Texts"):
+		print("exit")
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		just_interacted = false
 		casefilecam.priority = 0
@@ -235,49 +240,58 @@ func _input(event):
 					GlobalVars.in_interaction = ""
 					return
 			"Ending Texts":
-				alert.hide()
-				var fired : bool
-				var phone : bool
-				match Dialogic.VAR.get_variable("Endings.Ending_type"):
-					"Arrested Skylar":
-						phone = true
-						dialogue_file = "Ending_arrested_skylar"
-					"Keep Confidential":
-						phone = true
-						dialogue_file = "Keep_confidential"
-					"Give Skylar Cure":
-						phone = true
-						dialogue_file = "Ending_Give_Skylar_Cure"
-					"Give Skylar Cure And Choco":
-						phone = true
-						dialogue_file = "Ending_Give_Skylar_Cure_choco"
-					"Give Kale Cure":
-						dialogue_file = "Ending_Give_Kale_Cure"
-					"Give Kale Cure And Choco":
-						dialogue_file = "Ending_Give_Kale_Cure_choco"
-					"Chief fired":
-						fired = true
-						dialogue_file = "Day_3_fired_not_solved_case"
-					"Quincy fired":
-						fired = true
-						dialogue_file = "Day_3_fired_quincy"
-					_:
-						print_debug("No Ending Uh Oh")
-				player.stop_player()
-				GlobalVars.in_dialogue = true
-				Dialogic.signal_event.connect(enter_ending_Theo)
-				Dialogic.signal_event.connect(walk_out)
-				Dialogic.signal_event.connect(calling)
-				if fired == false:
-					if phone == false:
-						Dialogic.timeline_ended.connect(_on_ending_timeline_ended)
-					else:
-						Dialogic.timeline_ended.connect(_on_phone_timeline_ended)
-					Dialogic.start(dialogue_file)
+				ending_text.hide()
+				if GlobalVars.viewing == "ending text":
+					alert.hide()
+					var fired : bool
+					var phone : bool
+					match Dialogic.VAR.get_variable("Endings.Ending_type"):
+						"Arrested Skylar":
+							phone = true
+							dialogue_file = "Ending_arrested_skylar"
+						"Keep Confidential":
+							phone = true
+							dialogue_file = "Keep_confidential"
+						"Give Skylar Cure":
+							phone = true
+							dialogue_file = "Ending_Give_Skylar_Cure"
+						"Give Skylar Cure And Choco":
+							phone = true
+							dialogue_file = "Ending_Give_Skylar_Cure_choco"
+						"Give Kale Cure":
+							dialogue_file = "Ending_Give_Kale_Cure"
+						"Give Kale Cure And Choco":
+							dialogue_file = "Ending_Give_Kale_Cure_choco"
+						"Chief fired":
+							fired = true
+							dialogue_file = "Day_3_fired_not_solved_case"
+						"Quincy fired":
+							fired = true
+							dialogue_file = "Day_3_fired_quincy"
+						_:
+							print_debug("No Ending Uh Oh")
+					player.stop_player()
+					GlobalVars.in_dialogue = true
+					Dialogic.signal_event.connect(enter_ending_Theo)
+					Dialogic.signal_event.connect(walk_out)
+					Dialogic.signal_event.connect(calling)
+					if fired == false:
+						if phone == false:
+							Dialogic.timeline_ended.connect(_on_ending_timeline_ended)
+						else:
+							Dialogic.timeline_ended.connect(_on_phone_timeline_ended)
+						Dialogic.start(dialogue_file)
+						return
+					Dialogic.start(dialogue_file, "call_talk")
+					Dialogic.timeline_ended.connect(_on_phone_timeline_ended)
+					await get_tree().process_frame
+					GlobalVars.viewing = ""
 					return
-				Dialogic.start(dialogue_file, "call_talk")
-				Dialogic.timeline_ended.connect(_on_phone_timeline_ended)
-				return
+				else:
+					player.start_player()
+					alert.show()
+					GlobalVars.in_interaction = ""
+					return
 
 func enter_Theo(argument: String):
 	if argument == "enter_theo":

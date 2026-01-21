@@ -38,16 +38,7 @@ func _ready():
 	GlobalVars.current_level = "juniper"
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Juniper")
-	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
-		if Dialogic.VAR.get_variable("Juniper.timed_out") == true or Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
-			disable_interaction(interactables)
-			await get_tree().process_frame
-			await get_tree().process_frame
-			emit_signal("auto_open")
-			return
-		timer.wait_time = GlobalVars.time_left
-		music.play()
-		timer.start()
+
 	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)
@@ -58,6 +49,34 @@ func _ready():
 	#pixel
 	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
 	_on_brightness_brightness_shift(GlobalVars.brightness)
+	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		music.play()
+		if GlobalVars.juniper_time_out == true:
+			Dialogic.clear()
+			disable_interaction(interactables)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			alert.hide()
+			player.stop_player()
+			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
+			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
+			return
+		if GlobalVars.juniper_kicked_out == true:
+			disable_interaction(interactables)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			alert.hide()
+			player.stop_player()
+			in_kicked_out_dialogue = true
+			Dialogic.clear()
+			GlobalVars.in_dialogue = true
+			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
+			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
+			return
+		timer.wait_time = GlobalVars.time_left
+		timer.start()
 	
 
 func _set_pixelation(stretch) -> void:
@@ -80,9 +99,12 @@ func _process(delta):
 		GlobalVars.juniper_kicked_out = true
 		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
 			disable_interaction(interactables)
+			#await get_tree().process_frame
 			alert.hide()
 			player.stop_player()
 			in_kicked_out_dialogue = true
+			Dialogic.clear()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
@@ -91,7 +113,10 @@ func _process(delta):
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Juniper.timed_out") == false and GlobalVars.juniper_kicked_out == false:
 			alert.hide()
+			player.stop_player()
+			Dialogic.clear()
 			in_time_out_dialogue = true
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
@@ -108,6 +133,9 @@ func _on_timer_timeout():
 		player.stop_player()
 		alert.hide()
 		if GlobalVars.in_interaction == "":
+			#await get_tree().process_frame
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+			Dialogic.clear()
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			print("timeout_dialogue_entered")

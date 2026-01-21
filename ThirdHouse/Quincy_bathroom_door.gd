@@ -136,17 +136,22 @@ func _on_bathroom_door_body_exited(body):
 				Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
 				Dialogic.signal_event.connect(_quincy_enter_bathroom)
 				var clogged = Dialogic.start(clog_exit_dialogue)
-				clogged.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-				clogged.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
-				clogged.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			else:
 				close()
 			
-
+func _load_bath_distract():
+	GlobalVars.in_dialogue = true
+	player.stop_player()
+	emit_signal("enable_look")
+	alert.hide()
+	Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
+	Dialogic.signal_event.connect(_quincy_enter_bathroom)
+	var clogged = Dialogic.start(clog_exit_dialogue, "clean")
 
 func _quincy_enter_bathroom(argument: String):
 	if argument == "quincy_clean":
 		Dialogic.signal_event.disconnect(_quincy_enter_bathroom)
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		player.start_player()
 		emit_signal("Quincy_enter_bathroom")
 		print("quincy clean")

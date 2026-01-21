@@ -25,11 +25,11 @@ signal select_level_sound
 signal leave_map_sound
 signal hide_player
 @export var car_rev : AudioStreamPlayer3D
-@onready var micah_label = $"Micah Label"
-@onready var juniper_label = $"Juniper Label"
-@onready var quincy_label = $"Quincy Label"
-@onready var office_label = $"Office Label"
-@onready var coors = $Coors
+#@onready var micah_label = $"Micah Label"
+#@onready var juniper_label = $"Juniper Label"
+#@onready var quincy_label = $"Quincy Label"
+#@onready var office_label = $"Office Label"
+#@onready var coors = $Coors
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -208,51 +208,51 @@ func _on_timeline_ended():
 	GlobalVars.in_interaction = ""
 
 
-func _on_micah_mouse_entered():
-	if micah.disabled == false:
-		micah_label.show()
-
-
-func _on_micah_mouse_exited():
-	if micah.disabled == false:
-		micah_label.hide()
-
-
-func _on_office_mouse_entered():
-	if office.disabled == false:
-		office_label.show()
-
-
-func _on_office_mouse_exited():
-	if office.disabled == false:
-		office_label.hide()
-
-
-func _on_juniper_mouse_entered():
-	if juniper.disabled == false:
-		juniper_label.show()
-
-
-func _on_juniper_mouse_exited():
-	if juniper.disabled == false:
-		juniper_label.hide()
-
-func _on_quincy_mouse_entered():
-	if quincy.disabled == false:
-		quincy_label.show()
-
-
-func _on_quincy_mouse_exited():
-	if quincy.disabled == false:
-		quincy_label.hide()
-
-
-
-func _on_secret_mouse_entered():
-	if secret.disabled == false:
-		coors.show()
-
-
-func _on_secret_mouse_exited():
-	if secret.disabled == false:
-		coors.hide()
+#func _on_micah_mouse_entered():
+	#if micah.disabled == false:
+		#micah_label.show()
+#
+#
+#func _on_micah_mouse_exited():
+	#if micah.disabled == false:
+		#micah_label.hide()
+#
+#
+#func _on_office_mouse_entered():
+	#if office.disabled == false:
+		#office_label.show()
+#
+#
+#func _on_office_mouse_exited():
+	#if office.disabled == false:
+		#office_label.hide()
+#
+#
+#func _on_juniper_mouse_entered():
+	#if juniper.disabled == false:
+		#juniper_label.show()
+#
+#
+#func _on_juniper_mouse_exited():
+	#if juniper.disabled == false:
+		#juniper_label.hide()
+#
+#func _on_quincy_mouse_entered():
+	#if quincy.disabled == false:
+		#quincy_label.show()
+#
+#
+#func _on_quincy_mouse_exited():
+	#if quincy.disabled == false:
+		#quincy_label.hide()
+#
+#
+#
+#func _on_secret_mouse_entered():
+	#if secret.disabled == false:
+		#coors.show()
+#
+#
+#func _on_secret_mouse_exited():
+	#if secret.disabled == false:
+		#coors.hide()

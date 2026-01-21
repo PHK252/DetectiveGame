@@ -65,6 +65,7 @@ func _ready():
 	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
 	_on_brightness_brightness_shift(GlobalVars.brightness)
 	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		music.play()
 		if GlobalVars.micah_time_out == true:
 			Dialogic.clear()
 			disable_interaction(interactables)
@@ -91,7 +92,6 @@ func _ready():
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
 			return
 		timer.wait_time = GlobalVars.time_left
-		music.play()
 		timer.start()
 	
 
@@ -116,6 +116,7 @@ func _process(delta):
 			disable_interaction(interactables)
 			alert.hide()
 			player.stop_player()
+			timer.stop()
 			in_kicked_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)

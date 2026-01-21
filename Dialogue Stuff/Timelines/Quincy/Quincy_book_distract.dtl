@@ -29,9 +29,8 @@ if {Character Aff Points.Theo} > 3:
 	Dalton (Talk): Chief was asking for a check in.
 	Quincy (Default): Hmm...
 	Quincy (Happy): Tell him I said- 
-	# play bottle crashing sound
-	Quincy (Surprise): What the hell?
 	[signal arg = "bar_distract"]
+	Quincy (Surprise): What the hell?
 	set {Quincy.is_distracted} = true
 	set {Quincy.needs_distraction} = false
 	[signal arg= "end"]

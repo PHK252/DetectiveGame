@@ -58,6 +58,7 @@ func _process(delta):
 
 func _on_bar_interact_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finished == false:
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		emit_signal("enable_look")
 		in_bar = true
 		var bar_dialogue = Dialogic.start(dialogue_file)
@@ -76,7 +77,7 @@ func _on_timeline_ended():
 	if fainted == false:
 		if Dialogic.VAR.get_variable("Quincy.in_call") == true:
 			Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-			GlobalVars.in_dialogue = false
+			#GlobalVars.in_dialogue = false
 		else:
 			in_bar = false
 			dalton_bar.visible = false
@@ -95,7 +96,7 @@ func _on_timeline_ended():
 	else:
 		in_bar = false
 		Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-		GlobalVars.in_dialogue = false
+		#GlobalVars.in_dialogue = false
 		GlobalVars.bar_dialogue_Quincy_finished = true
 
 func _faint_to_livingroom(argument: String):
@@ -103,7 +104,7 @@ func _faint_to_livingroom(argument: String):
 		fainted = true
 		Dialogic.signal_event.disconnect(_faint_to_livingroom)
 		emit_signal("faint_time")
-		GlobalVars.in_dialogue = false
+		#GlobalVars.in_dialogue = false
 		alert.hide()
 	elif argument == "disconnect":
 		Dialogic.signal_event.disconnect(_faint_to_livingroom)
@@ -131,17 +132,16 @@ func _call_theo(argument: String):
 
 
 func _on_bar_continue_convo():
-	if GlobalVars.in_dialogue == false:
-		emit_signal("enable_look")
-		emit_signal("theo_enter_bar")
-		emit_signal("Switch_theo_marker")
-		
-		
-		var bar_dialogue = Dialogic.start(dialogue_file, "Bar continue")
-		GlobalVars.in_dialogue = true
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		await get_tree().create_timer(12.0).timeout
-		GlobalVars.in_interaction = ""
+	emit_signal("enable_look")
+	emit_signal("theo_enter_bar")
+	emit_signal("Switch_theo_marker")
+	
+	
+	var bar_dialogue = Dialogic.start(dialogue_file, "Bar continue")
+	GlobalVars.in_dialogue = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	await get_tree().create_timer(12.0).timeout
+	GlobalVars.in_interaction = ""
 
 
 func _on_cutscene_cams_continue_bar():
