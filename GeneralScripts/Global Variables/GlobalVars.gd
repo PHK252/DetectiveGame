@@ -44,9 +44,9 @@ func _load_global_arr():
 	return load_global_arr
 ##Phone stuff
 #for contacts
-@onready var phone_contacts: Array[TextureButton] = []
+var phone_contacts: Array[String] = ["Isaac", "Quincy"]
 # clock
-@onready var clock_time : Array[int]
+var clock_time : Array[int]
 #for phone notes
 @onready var micah_notes : String
 @onready var juniper_notes : String
@@ -57,13 +57,13 @@ var note_event = ""
 var note_condition = ""
 
 #for evidence collection
-@onready var evidence_container : Array[String] = []
+var evidence_container : Array[String] 
 #don't save these
 var evi_char = ""
 var evi_remove_char = ""
 var evidence = ""
 
-var load_phone_name_arr = ["phone_contacts", "clock_time", "micah_notes", "juniper_notes", "quincy_notes", "evidence_container"]
+var load_phone_notes_arr = ["micah_notes", "juniper_notes", "quincy_notes"]
 
 ##Office Vars
 @onready var intro_dialogue = false
@@ -436,7 +436,8 @@ func reset_globals():
 
 	##Phone stuff
 	#for contacts
-	phone_contacts = []
+	phone_contacts = ["Isaac", "Quincy"]
+	evidence_container = []
 	# clock
 	clock_time = []
 	#for phone notes

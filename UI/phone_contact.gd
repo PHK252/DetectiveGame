@@ -14,39 +14,34 @@ extends Control
 @onready var contact_screen = $"."
 @onready var phone_num = $"../PhoneNum"
 
-@onready var visible_contacts : Array [TextureButton] = [isaac, quincy]
+@export var contacts_arr : Array [TextureButton] 
 func _ready():
-	if GlobalVars.phone_contacts.size() == 0:
-		GlobalVars.phone_contacts = visible_contacts
-	else:
-		visible_contacts = GlobalVars.phone_contacts
+	if GlobalVars.phone_contacts.size() != 0:
+		for cont in GlobalVars.phone_contacts:
+			_show_contact(cont)
 	
-	if is_instance_valid(visible_contacts):
-		for contacts in visible_contacts:
-			contacts.visible = true
-	
-	#print(GlobalVars.phone_contacts)
-
+func _show_contact(target: String):
+	for contact in contacts_arr:
+		if contact.name == target:
+			contact.visible = true
 func _add_contact(char):
 	if char == "theo":
 		theo.show()
 		theo_visible = true
-		visible_contacts.append(theo)
+		GlobalVars.phone_contacts.append(theo.name)
 
 	if char == "juniper":
 		juniper.show()
 		juniper_visible = true
-		visible_contacts.append(juniper)
+		GlobalVars.phone_contacts.append(juniper.name)
 
 	if char == "clyde":
 		clyde.show()
-		visible_contacts.append(clyde)
+		GlobalVars.phone_contacts.append(clyde.name)
 		clyde_visible = true
 	#if char == "skylar":
 		#skylar.show()
 		#visible_contacts.append(skylar)
-
-	GlobalVars.phone_contacts = visible_contacts
 	
 func _on_keypad_pressed():
 	contact_screen.hide()
@@ -66,3 +61,7 @@ func _on_visibility_changed():
 			_add_contact("juniper")
 		if Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") and clyde.visible != true:
 			_add_contact("clyde")
+
+
+func _on_evidence_pressed():
+	Dialogic.VAR.set_variable("Asked Questions.Micah_viewed_ID", true)

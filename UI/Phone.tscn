@@ -1188,12 +1188,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_4eqew")
 }
 
-[node name="ContactScreen" type="Control" parent="PhoneScreen"]
+[node name="ContactScreen" type="Control" parent="PhoneScreen" node_paths=PackedStringArray("contacts_arr")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("88_h1u1y")
+contacts_arr = [NodePath("VBoxContainer/Isaac"), NodePath("VBoxContainer/Quincy"), NodePath("VBoxContainer/Theo"), NodePath("VBoxContainer/Juniper"), NodePath("VBoxContainer/Clyde")]
 
 [node name="Title" type="RichTextLabel" parent="PhoneScreen/ContactScreen"]
 texture_filter = 2
@@ -1216,6 +1217,7 @@ offset_bottom = 881.0
 theme_override_constants/separation = 0
 
 [node name="Isaac" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_8rgu2")
@@ -1250,6 +1252,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "034-921"
 
 [node name="Quincy" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_8rgu2")
@@ -3309,6 +3312,7 @@ bus = &"SFX"
 [connection signal="pressed" from="NotesScreen/Case/Back" to="NotesScreen" method="_on_back_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Back" to="Phone_Sounds_General" method="_on_back_pressed_phone"]
 [connection signal="mouse_entered" from="NotesScreen/Case/Evidence" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
+[connection signal="pressed" from="NotesScreen/Case/Evidence" to="PhoneScreen/ContactScreen" method="_on_evidence_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen" method="_on_evidence_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="NotesScreen/Evidence" method="_on_evidence_pressed"]
 [connection signal="pressed" from="NotesScreen/Case/Evidence" to="Phone_Sounds_General" method="_on_altClick_phone"]

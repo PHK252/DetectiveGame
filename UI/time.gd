@@ -1,7 +1,7 @@
 extends RichTextLabel
 
 @export var in_level : bool 
-@export var level_timer : Timer
+@export var level_time : float
 @export var in_game_time : int
 @export var global_timer : Timer
 
@@ -11,12 +11,19 @@ extends RichTextLabel
 #@onready var change : bool
 func _ready():
 	if in_level == true:
-		var level_time_mins = level_timer.wait_time/in_game_time
+		var level_time_mins = level_time/in_game_time
 		global_timer.wait_time = level_time_mins
 	else:
 		global_timer.wait_time = 60
 		global_timer.start()
 	await get_tree().process_frame
+	if GlobalVars.in_level == true:
+		print(global_timer.wait_time)
+		hour = GlobalVars.clock_time[0]
+		minute = GlobalVars.clock_time[1]
+		set_time(hour, minute)
+		_level_timer_start()
+		return
 	start_time()
 
 func start_time():

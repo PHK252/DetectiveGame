@@ -101,14 +101,13 @@ func saveGame(path: String, dialogic_save : bool = true):
 			"cam_index": GlobalVars.cam_index,
 		},
 		"Phone":{
-			"contact": GlobalVars.phone_contacts,
-			"clock_time" : GlobalVars.clock_time,
 			"micah_notes": GlobalVars.micah_notes,
 			"juniper_notes": GlobalVars.juniper_notes,
 			"quincy_notes": GlobalVars.quincy_notes,
-			"evidence": GlobalVars.evidence_container,
-	
 		},
+		"Evidence": GlobalVars.evidence_container,
+		"Contacts" : GlobalVars.phone_contacts,
+		"Time" : GlobalVars.clock_time,
 		"Office_Vars":{
 			"theo_entrance" : GlobalVars.intro_dialogue,
 			#contact
@@ -413,7 +412,10 @@ func loadGame(path : String):
 		
 		#load here
 		_load_arr(data, "Globals", GlobalVars.load_global_name_arr)
-		_load_arr(data, "Phone", GlobalVars.load_phone_name_arr)
+		_load_arr(data, "Phone", GlobalVars.load_phone_notes_arr)
+		_load_single(data, "Evidence", GlobalVars.evidence_container)
+		_load_single(data, "Contacts", GlobalVars.phone_contacts)
+		_load_single(data, "Time", GlobalVars.clock_time)
 		_load_arr(data, "Office_Vars", GlobalVars.load_Office_name_arr)
 		_load_arr(data, "Micah_Vars", GlobalVars.load_Micah_name_arr)
 		_load_arr(data, "Juniper_Vars", GlobalVars.load_Juniper_name_arr)
@@ -436,7 +438,15 @@ func _load_arr(main_dic: Dictionary, sub_dic: String, load_name : Array):
 		GlobalVars.set(load_name[variable], main_dic[sub_dic][keyed_dic[variable]]) 
 	print_debug(sub_dic + " loaded successfully")
 
-
+func _load_single(main_dic: Dictionary, sub_dic: String, load_name : Array):
+		load_name.clear()
+		for content in main_dic[sub_dic]:
+			if is_instance_of(content, TYPE_FLOAT):
+				load_name.append(int(content))
+			else:
+				load_name.append(content)
+		print_debug(sub_dic + " loaded successfully")
+	
 func clearSave(path : String):
 	Dialogic.Save.delete_slot("Default")
 	if FileAccess.file_exists(path):
