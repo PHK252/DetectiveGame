@@ -10,6 +10,7 @@ func _ready() -> void:
 		activate_camera(GlobalVars.cam_index)
 
 func activate_camera(cam_index: int) -> void:
+		print("cam_index activated:" + str(cam_index))
 		GlobalVars.cam_index = cam_index #will update last index whenever func activates
 		emit_signal("camera_changed")
 		for i in range(cameras.size()):
@@ -20,6 +21,8 @@ func activate_camera(cam_index: int) -> void:
 
 func _on_hall_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
+		print("hall_body_entered_by_player")
+		print(str(GlobalVars.dalton_pos) + "current dalton pos")
 		activate_camera(0)  # First camera
 
 func _on_main_area_body_entered(body: Node3D) -> void:
