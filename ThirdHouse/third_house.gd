@@ -37,6 +37,8 @@ signal load_bath
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
 
+@export var hide_tween : AnimationPlayer
+
 func _ready():
 	GlobalVars.current_level = "quincy"
 	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
@@ -46,6 +48,8 @@ func _ready():
 	death.hide()
 
 	#MusicFades.fade_out_audio()
+	if GlobalVars.in_level:
+		hide_tween.play("fade_in_hide_tween")
 
 	#settings
 	#brightness

@@ -109,6 +109,18 @@ func _ready() -> void:
 	nav.target_position = player.global_transform.origin
 	if quincy_house:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
+		if GlobalVars.in_level:
+			print("in_level_quincy")
+			#force investigate
+			greeting_finished = true
+			animation_choice = rng.randi_range(0, 10)
+			investigate_choice = rng.randi_range(0, 2)
+			is_investigating = true
+			nav.target_position = marker_list[investigate_choice].global_position
+			is_navigating = true
+			STOPPING_DISTANCE = 0.0
+			state = INVESTIGATE
+			allow_activation = false
 	
 	if secret_location:
 		global_position = marker_list[0].global_position
@@ -353,6 +365,12 @@ func _process_idle_state(distance_to_target: float) -> void:
 
 	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton) and waterfall_scene == false):
 		print("Switching to FOLLOW state")
+		
+		print("is_nav" + str(is_navigating))
+		print("is_inv" + str(is_investigating))
+		print("got_greeting" + str(quincy_greet))
+		print("faint_var" + str(faint_dalton))
+		
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
 		STOPPING_DISTANCE = 1.0
