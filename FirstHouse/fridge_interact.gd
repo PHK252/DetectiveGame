@@ -16,9 +16,7 @@ extends Node3D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _ready() -> void:
-	pass
-	#reset
-	#fridge_anim.play_backwards("NEWfridgeopen")
+	fridge_anim.play("NEWfridgedefault")
 
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
