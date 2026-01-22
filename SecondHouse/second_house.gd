@@ -52,7 +52,7 @@ func _ready():
 	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
 		music.play()
 		if GlobalVars.juniper_time_out == true:
-			Dialogic.clear()
+			Dialogic.clear(1)
 			disable_interaction(interactables)
 			await get_tree().process_frame
 			await get_tree().process_frame
@@ -70,7 +70,7 @@ func _ready():
 			alert.hide()
 			player.stop_player()
 			in_kicked_out_dialogue = true
-			Dialogic.clear()
+			Dialogic.clear(1)
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
@@ -103,7 +103,7 @@ func _process(delta):
 			alert.hide()
 			player.stop_player()
 			in_kicked_out_dialogue = true
-			Dialogic.clear()
+			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
@@ -114,7 +114,7 @@ func _process(delta):
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Juniper.timed_out") == false and GlobalVars.juniper_kicked_out == false:
 			alert.hide()
 			player.stop_player()
-			Dialogic.clear()
+			Dialogic.clear(1)
 			in_time_out_dialogue = true
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			GlobalVars.in_dialogue = true
@@ -135,7 +135,7 @@ func _on_timer_timeout():
 		if GlobalVars.in_interaction == "":
 			#await get_tree().process_frame
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-			Dialogic.clear()
+			Dialogic.clear(1)
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			print("timeout_dialogue_entered")
@@ -188,4 +188,6 @@ func _on_entered_juniper():
 func _on_level_exit():
 	print("level exited!")
 	GlobalVars.in_level = false
+	Dialogic.VAR.set_variable("Juniper.left_juniper", true)
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	music.stop()

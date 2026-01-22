@@ -28,6 +28,10 @@ extends CanvasLayer
 signal locked_sound
 signal unlocked_sound
 
+func _ready():
+	if GlobalVars.opened_jun_case == true:
+		$"../../SubViewportContainer/SubViewport/SecondHouseUpdate/Armature/Skeleton3D/topcase".hide()
+
 func key_press(num : int):
 	if len(text_edit.text) <  10:
 		text_edit.text += str(num)
@@ -134,7 +138,3 @@ func _on_timeline_ended():
 	if GlobalVars.Juniper_in_case == false:
 		player.start_player()
 		alert.show()
-
-
-func _on_exit_pressed():
-	pass # Replace with function body.

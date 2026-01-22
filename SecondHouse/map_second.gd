@@ -26,7 +26,7 @@ var is_open: bool = false
 func _ready():
 	pass
 	#print(interactable.monitorable)
-	interactable.set_deferred("monitorable", false)
+	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Juniper.left_juniper"))
 
 func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":

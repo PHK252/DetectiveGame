@@ -52,8 +52,12 @@ signal disable_look
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if GlobalVars.in_level == true:
-		greeting = true
+	greeting = GlobalVars.in_level
+	match GlobalVars.current_level:
+		"juniper":
+			entered_juniper_house = GlobalVars.in_level
+		"quincy":
+			entered_quincy_house = GlobalVars.in_level
 
 func open() -> void:
 	print("opening")

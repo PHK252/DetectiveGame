@@ -45,9 +45,26 @@ signal disable_look
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	UI.hide()
-	interact_area.hide()
-	pass # Replace with function body.
+	#if GlobalVars.opened_jun_case == true:
+		#interior_interact_area_1.show()
+		#interior_interact_area_2.show()
+		#interior_interact_area_3.show()
+		#interior_interact_area_4.show()
+		#interact_area.hide()
+		#emit_signal("open_case")
+		##hide_closed_case()
+	#else:
+		#interior_interact_area_1.hide()
+		#interior_interact_area_2.hide()
+		#interior_interact_area_3.hide()
+		#interior_interact_area_4.hide()
+		#interact_area.show()
+		#hide_open_case()
+		#show_closed_case()
+	if Dialogic.VAR.get_variable("Juniper.finished_name_tag") == false and GlobalVars.view_nametag_juniper == true:
+		GlobalVars.view_nametag_juniper = false
+	if Dialogic.VAR.get_variable("Juniper.finished_letter") == false and GlobalVars.view_letter_juniper == true:
+		GlobalVars.view_letter_juniper = false
 
 
 func _on_interactable_interacted(interactor):
@@ -142,7 +159,7 @@ func _input(event):
 	var finished_letter = Dialogic.VAR.get_variable("Juniper.finished_letter")
 	var finished_tag = Dialogic.VAR.get_variable("Juniper.finished_name_tag")
 	if GlobalVars.in_dialogue == false:
-		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and kicked == false and timed == false:
+		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30

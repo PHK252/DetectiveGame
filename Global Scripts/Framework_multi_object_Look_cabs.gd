@@ -6,7 +6,7 @@ extends Node3D
 
 #First Person cam anim + movement
 @export var cam_anim: AnimationPlayer
-@export var tilt_thres: int
+@export var tilt_thres: float
 @export var tilt_up_angle: Vector3
 @export var tilt_down_angle: Vector3
 #@export var mid_angle: Vector3
@@ -56,7 +56,7 @@ extends Node3D
 
 var kicked = false
 var timed = false
-
+var normal_tilt : float
 #sound 
 @export var close_cab_sound : AudioStreamPlayer3D
 @export var open_cab_sound : AudioStreamPlayer3D
@@ -65,8 +65,13 @@ signal general_quit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	normal_tilt = tilt_thres
 	if extra_animation:
 		extra_animation.play("RESET")
+	if GlobalVars.get(view_item_1) == true and GlobalVars.get(dialogue_1) == false:
+		GlobalVars.set(view_item_1, false)
+	if GlobalVars.get(view_item_2) == true and GlobalVars.get(dialogue_2) == false:
+		GlobalVars.set(view_item_2, false)
 	
 
 func _process(delta):
@@ -82,9 +87,10 @@ func _process(delta):
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
 	#var immediate_exit = quick_exit# Dialogic.VAR.get("Immediate Exit").Micah_cab # set to true in Dialogic
-	#print(mouse_pos) 
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+		tilt_thres = (get_viewport().size.y * float(normal_tilt/180.0)) 
+		
 		mouse_pos = get_viewport().get_mouse_position()
 		if mouse_pos.y >= tilt_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)

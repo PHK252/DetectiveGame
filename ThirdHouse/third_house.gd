@@ -71,7 +71,7 @@ func _ready():
 		music.play()
 		if GlobalVars.quincy_time_out == true:
 			disable_interaction(interactables)
-			Dialogic.clear()
+			Dialogic.clear(1)
 			await get_tree().process_frame
 			await get_tree().process_frame
 			player.stop_player()
@@ -82,7 +82,7 @@ func _ready():
 			return
 		if GlobalVars.quincy_kicked_out == true:
 			disable_interaction(interactables)
-			Dialogic.clear()
+			Dialogic.clear(1)
 			await get_tree().process_frame
 			await get_tree().process_frame
 			player.stop_player()
@@ -109,7 +109,7 @@ func _on_brightness_brightness_shift(brightness) -> void:
 func _process(delta):
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
-		Dialogic.clear()
+		Dialogic.clear(1)
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.quincy_kicked_out = true
 		disable_interaction(interactables)
@@ -127,7 +127,7 @@ func _process(delta):
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.timed_out") == false and GlobalVars.quincy_kicked_out == false and bathroom_door.player_in_bathroom == false:
-			Dialogic.clear()
+			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			alert.hide()
@@ -159,7 +159,7 @@ func _on_timer_timeout():
 		player.stop_player()
 		alert.hide()
 		if GlobalVars.in_interaction == "" and bathroom_door.player_in_bathroom == false:
-			Dialogic.clear()
+			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			in_time_out_dialogue = true
@@ -247,4 +247,6 @@ func _on_exit_level():
 	GlobalVars.in_level = false
 	MusicFades.fade_out_audio()
 	await get_tree().create_timer(5.0).timeout
+	Dialogic.VAR.set_variable("Quincy.left_quincy", true)
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	music.stop()

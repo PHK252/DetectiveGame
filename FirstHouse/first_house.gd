@@ -193,7 +193,6 @@ func _on_door_activate_leave():
 	music.stop()
 	GlobalVars.in_level = false
 	Dialogic.VAR.set_variable("Asked Questions.left_Micah", true)
-	
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("level exit!")
 	
