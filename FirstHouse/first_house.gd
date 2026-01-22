@@ -67,7 +67,7 @@ func _ready():
 	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
 		music.play()
 		if GlobalVars.micah_time_out == true:
-			Dialogic.clear()
+			Dialogic.clear(1)
 			disable_interaction(interactables)
 			await get_tree().process_frame
 			await get_tree().process_frame
@@ -80,7 +80,7 @@ func _ready():
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 			return
 		if GlobalVars.micah_kicked_out == true:
-			Dialogic.clear()
+			Dialogic.clear(1)
 			disable_interaction(interactables)
 			await get_tree().process_frame
 			await get_tree().process_frame
@@ -111,7 +111,7 @@ func _process(delta):
 	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:
 		GlobalVars.micah_kicked_out = true
 		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
-			Dialogic.clear()
+			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			alert.hide()
@@ -125,7 +125,7 @@ func _process(delta):
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Asked Questions.Micah_time_out_finished") == false and GlobalVars.micah_kicked_out == false:
-			Dialogic.clear()
+			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			alert.hide()
 			#disable_interaction(interactables)
@@ -134,9 +134,6 @@ func _process(delta):
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
-			time_out_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			time_out_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			time_out_dialogue.register_character(load(load_char_dialogue), character_marker)
 	
 			
 	#print($SubViewportContainer/SubViewport/CameraSystem/Camera3D.rotation_degrees.y)
@@ -151,7 +148,7 @@ func _on_timer_timeout():
 		player.stop_player()
 		alert.hide()
 		if GlobalVars.in_interaction == "":
-			Dialogic.clear()
+			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
@@ -195,5 +192,8 @@ func _on_entered_micah():
 func _on_door_activate_leave():
 	music.stop()
 	GlobalVars.in_level = false
+	Dialogic.VAR.set_variable("Asked Questions.left_Micah", true)
+	
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("level exit!")
 	

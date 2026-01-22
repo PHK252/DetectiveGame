@@ -186,11 +186,12 @@ func _on_check_day():
 
 func _on_visibility_changed():
 	if visible:
-		micah.button_pressed = false
-		juniper.button_pressed = false
-		quincy.button_pressed = false
-		office.button_pressed = false
-		secret.button_pressed = false
+		print("check", Dialogic.VAR.get_variable("Global.went_to_Micah"))
+		#micah.button_pressed = false
+		#juniper.button_pressed = false
+		#quincy.button_pressed = false
+		#office.button_pressed = false
+		#secret.button_pressed = false
 		_on_check_day()
 
 

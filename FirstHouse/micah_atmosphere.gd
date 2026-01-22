@@ -7,6 +7,7 @@ var panda_inside : bool = false
 var delivery_activate : bool = false
 var go_back_activate : bool = false
 var allow_sloth := false
+var allow_panda := false
 
 var speed : float = 0.1
 var sloth_speed : float = 0.05
@@ -56,7 +57,12 @@ func _ready():
 	sloth.visible = false
 	panda.visible = false
 	cardboard_collision.disabled = true
-	panda_timer.start()
+	if Dialogic.VAR.get_variable("Asked Questions.left_Micah") == false:
+		panda_timer.start()
+		allow_panda = true
+		return
+	delivery_timer.start()
+	allow_sloth = true
 
 func _on_window_close_became_active() -> void:
 	count += 1
@@ -221,7 +227,7 @@ func _on_interactable_focused(interactor: Interactor) -> void:
 
 func _on_interactable_unfocused(interactor: Interactor) -> void:
 	print("unfocused")
-	if panda_activate == false:
+	if panda_activate == false and allow_panda:
 		panda_activate = true
 		
 	if delivery_activate == false and allow_sloth: #this is the issue i think

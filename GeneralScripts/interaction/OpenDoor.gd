@@ -41,7 +41,7 @@ signal start_control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	entered = GlobalVars.in_level
 
 func open() -> void:
 	#if is_outside:
@@ -144,6 +144,8 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
+	print("entered", Dialogic.VAR.get_variable("Global.went_to_Micah"))
+	
 
 func _on_exit_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_exit_timeline_ended)
