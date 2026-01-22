@@ -108,7 +108,7 @@ func _process(delta):
 func _hide_tut():
 	visible = false
 	current_tut.visible = false
-	timer.stop()
+	#timer.stop()
 	animationplayer.play("RESET")
 	SaveLoad.saveSettings(SaveLoad.SAVE_DIR + SaveLoad.SETTINGS_FILE)
 	set_process(false)

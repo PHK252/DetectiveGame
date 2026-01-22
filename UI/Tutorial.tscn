@@ -471,6 +471,7 @@ _data = {
 }
 
 [node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut", "map_tut")]
+visible = false
 script = ExtResource("1_om0r0")
 animationplayer = NodePath("AnimationPlayer")
 movement_tut = NodePath("Movement")

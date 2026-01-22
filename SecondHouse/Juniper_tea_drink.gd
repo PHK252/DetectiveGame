@@ -21,6 +21,7 @@ extends Node3D
 @export var load_Theo_dialogue: String
 @export var load_char_dialogue: String
 
+@export var tea_tray : MeshInstance3D
 @export var anim_drink : AnimationPlayer
 signal enable_after_tea_interaction
 
@@ -30,7 +31,10 @@ signal theo_reposition_end
 func _ready():
 	if Dialogic.VAR.get_variable("Juniper.has_tea") == false:
 		interactable.set_deferred("monitorable", false)
+		tea_tray.visible = false
 	else:
+		tea_tray.visible = true
+		interactable.set_deferred("monitorable", true)
 		pass
 		## Tea tray become visible
 

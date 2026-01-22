@@ -10,8 +10,7 @@ extends MeshInstance3D
 @onready var look_click = $"../../../../UI/Casefile"
 @onready var ending_text = $"../../../../UI/Ending Text"
 @onready var player = $"../../Characters/Dalton/CharacterBody3D"
-@export var dalton_marker : Marker2D
-@export var theo_marker : Marker2D
+@export var tutorial : CanvasLayer
 @onready var alert = $"../../Characters/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
 var dialogue_file : String
@@ -27,7 +26,7 @@ signal call_recieved
 
 signal theo_exit
 signal dalton_exit
-
+signal _hide_tut
 
 func _ready():
 	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure And Choco":
@@ -93,12 +92,12 @@ func _on_exit_pressed():
 			look_click.hide()
 			await get_tree().create_timer(.05).timeout
 			if GlobalVars.intro_dialogue == false and GlobalVars.viewed_case_file == true:
+				if GlobalVars.exit_tut == false and tutorial.visible == true:
+					emit_signal("_hide_tut")
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				Dialogic.signal_event.connect(enter_Theo)
 				var layout = Dialogic.start("Day 1 Office timeline")
-				layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-				layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 				return
 			else:
 				player.start_player()
@@ -227,12 +226,12 @@ func _input(event):
 				look_click.hide()
 				await get_tree().create_timer(.05).timeout
 				if GlobalVars.intro_dialogue == false and GlobalVars.viewed_case_file == true:
+					if GlobalVars.exit_tut == false and tutorial.visible == true:
+						emit_signal("_hide_tut")
 					GlobalVars.in_dialogue = true
 					Dialogic.timeline_ended.connect(_on_timeline_ended)
 					Dialogic.signal_event.connect(enter_Theo)
 					var layout = Dialogic.start("Day 1 Office timeline")
-					layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-					layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 					return
 				else:
 					player.start_player()

@@ -41,7 +41,6 @@ func _ready():
 		GlobalVars.from_save_file = true
 		start_butt.hide()
 		continue_new_cont.show()
-		print(GlobalVars.phone_contacts)
 		
 		
 		#not needed
@@ -72,7 +71,7 @@ func _on_quit_pressed():
 func _on_start_pressed():
 	#SceneTransitions.glitch_change_scene("res://StartingOffice/starting_office.tscn")
 	#LoadManager.load_scene(GlobalVars.first_house_path)
-	#Loading.load_scene(self, GlobalVars.first_house_path, "driving", "afternoon", "Day_1_ride_to_back_to_station")
+	GlobalVars.reset_globals()
 	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
 

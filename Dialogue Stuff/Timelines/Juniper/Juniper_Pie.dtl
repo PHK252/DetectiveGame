@@ -12,9 +12,12 @@ if {Character Aff Points.Juniper} < 0:
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
 			set {Juniper.in_choice} = false
+			[signal arg="end"]
 			[end_timeline]
 		else:
 			jump Juniper_cab2_Choice/
+	[signal arg="end"]
+	[end_timeline]
 else:
 	set {Juniper.saw_pie} = true
 	Dalton (Sad): I found some damage. 
@@ -38,6 +41,7 @@ else:
 		Dalton (Awkward): Thanks.
 		set {Juniper.has_pie} = true
 		do GlobalVars.emit_add_evidence("juniper", "pie")
+		[signal arg="got pie"]
 		set {Juniper.finished_pie} = true
 		if {Juniper.in_choice} == true:
 			if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
@@ -45,12 +49,17 @@ else:
 				[end_timeline]
 			else:
 				jump Juniper_cab2_Choice/
+		[signal arg="end"]
+		[end_timeline]
 	- Leave it.
 		Dalton (Resting): Hmph.
 		set {Juniper.finished_pie} = true
 		if {Juniper.in_choice} == true:
 			if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
 				set {Juniper.in_choice} = false
+				[signal arg="end"]
 				[end_timeline]
 			else:
 				jump Juniper_cab2_Choice/
+		[signal arg="end"]
+		[end_timeline]
