@@ -25,6 +25,8 @@ extends Node
 
 @onready var pause = $"../../../Pause"
 
+signal look_at_activate_skylar
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalVars.current_level = "interrogation"
@@ -40,6 +42,7 @@ func _ready() -> void:
 
 	cam_anims.play("IntroAnimation_revised")
 	await get_tree().create_timer(4).timeout
+	emit_signal("look_at_activate_skylar")
 	decision_cam.current = true
 	var intero_dialogue = Dialogic.start(dialogic_file)
 	Dialogic.timeline_ended.connect(_on_timeline_ended)

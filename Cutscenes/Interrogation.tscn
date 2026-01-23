@@ -1383,6 +1383,11 @@ bones/28/scale = Vector3(0.990445, 1, 0.844322)
 bones/29/position = Vector3(-0.429965, 0.733313, -2.08833)
 bones/29/scale = Vector3(0.990445, 1, 0.844322)
 
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="SubViewportContainer/SubViewport/Characters/DaltonShowChocolate/Armature_001/Skeleton3D" index="1"]
+target_node = NodePath("../../../../Skylar2/Armature/Skeleton3D/SkylarHead")
+script = ExtResource("16_8lk3s")
+automatic_activation = true
+
 [node name="DaltonInterrogation" parent="SubViewportContainer/SubViewport/Characters" instance=ExtResource("9_l42ju")]
 
 [node name="Armature_001" parent="SubViewportContainer/SubViewport/Characters/DaltonInterrogation" index="0"]
@@ -1394,21 +1399,21 @@ bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -5.18479e-16)
 bones/1/rotation = Quaternion(-0.00955379, -0.0996726, 0.9923, -0.0729054)
 bones/2/rotation = Quaternion(-0.0134291, 1.10369e-08, 4.74166e-09, 0.99991)
 bones/3/rotation = Quaternion(-0.104185, 2.4481e-10, -2.13259e-09, 0.994558)
-bones/4/rotation = Quaternion(-0.0395123, -3.45681e-10, 4.9278e-09, 0.999219)
-bones/5/rotation = Quaternion(0.319889, 0.0140286, -0.0200952, 0.947138)
-bones/6/position = Vector3(0.256844, 0.656988, 0.060766)
-bones/6/rotation = Quaternion(-0.0369812, 0.00537273, -0.143673, 0.988919)
+bones/4/rotation = Quaternion(-0.0376215, 1.03292e-08, 4.82567e-09, 0.999292)
+bones/5/rotation = Quaternion(0.312631, 0.0451968, -0.0238907, 0.948498)
+bones/6/position = Vector3(0.256845, 0.656992, 0.060858)
+bones/6/rotation = Quaternion(-0.0413237, 0.00600363, -0.143648, 0.988747)
 bones/7/rotation = Quaternion(0.0615113, 0.000898598, 0.0145798, 0.997999)
-bones/8/position = Vector3(-0.262154, 0.657237, 0.0609322)
-bones/8/rotation = Quaternion(-0.0370369, -0.00519255, 0.138744, 0.989622)
+bones/8/position = Vector3(-0.262155, 0.657241, 0.0610214)
+bones/8/rotation = Quaternion(-0.0412513, -0.0057834, 0.138721, 0.989455)
 bones/9/rotation = Quaternion(0.0615112, 0.000898615, 0.0145794, 0.997999)
 bones/10/rotation = Quaternion(-0.14247, 0.0557454, -0.688243, 0.709166)
-bones/11/rotation = Quaternion(-0.210285, -0.106486, -0.431494, 0.870778)
-bones/12/rotation = Quaternion(0.610395, 0.40974, -0.167069, 0.656977)
+bones/11/rotation = Quaternion(-0.207371, -0.106722, -0.428532, 0.872908)
+bones/12/rotation = Quaternion(0.61097, 0.409482, -0.167226, 0.656564)
 bones/13/rotation = Quaternion(0.00671634, -0.00228499, -0.0206946, 0.999761)
 bones/14/rotation = Quaternion(-0.14247, -0.0557454, 0.688243, 0.709166)
-bones/15/rotation = Quaternion(-0.130789, 0.192456, 0.708422, 0.666328)
-bones/16/rotation = Quaternion(0.428651, -0.474059, 0.117325, 0.760106)
+bones/15/rotation = Quaternion(-0.13019, 0.19553, 0.705646, 0.668492)
+bones/16/rotation = Quaternion(0.43555, -0.472162, 0.119213, 0.757065)
 bones/17/rotation = Quaternion(0.00671635, 0.00228497, 0.0206946, 0.999761)
 bones/19/rotation = Quaternion(0.587322, 0.154732, 0.0986425, 0.788277)
 bones/20/rotation = Quaternion(-0.702749, 0.00877381, -0.246666, 0.667251)
@@ -1422,9 +1427,9 @@ bones/26/scale = Vector3(1, 1, 1)
 bones/27/position = Vector3(-0.316024, 0.346653, -0.629386)
 bones/27/rotation = Quaternion(-0.0204547, 8.88178e-16, 0.999791, -1.97563e-09)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/position = Vector3(0.898109, 0.287713, -2.15983)
+bones/28/position = Vector3(0.90378, 0.285753, -2.15983)
 bones/28/scale = Vector3(0.990445, 1, 0.844322)
-bones/29/position = Vector3(-0.510498, 0.723703, -2.10849)
+bones/29/position = Vector3(-0.520919, 0.72246, -2.1111)
 bones/29/scale = Vector3(0.990445, 1, 0.844322)
 
 [node name="DaltonHead" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/DaltonInterrogation/Armature_001/Skeleton3D" index="0"]
@@ -1450,6 +1455,8 @@ secondary_limit_angle = 0.15708
 secondary_damp_threshold = 1.0
 script = ExtResource("16_8lk3s")
 character_string = "Dalton"
+influence_target = 0.3
+automatic_activation = true
 
 [node name="Marker3D" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/DaltonInterrogation/Armature_001" index="1"]
 transform = Transform3D(2.24841, 2.59609e-14, 0.725865, -0.725865, -1.03276e-07, 2.24841, 3.17286e-08, -2.36268, -9.82811e-08, 0.275696, -0.21212, -2.95715)
@@ -1472,7 +1479,7 @@ bones/0/rotation = Quaternion(-2.57216e-12, 0.707107, 0.707107, -2.57248e-12)
 bones/1/rotation = Quaternion(1.4526e-08, 0.129933, 0.991523, -1.19029e-08)
 bones/2/rotation = Quaternion(-0.0134291, 1.58091e-08, 6.42937e-09, 0.99991)
 bones/3/rotation = Quaternion(-0.104185, 1.00771e-13, -4.65913e-13, 0.994558)
-bones/4/rotation = Quaternion(-0.0221777, 0.121517, 0.0396983, 0.991547)
+bones/4/rotation = Quaternion(-0.0178085, 0.12169, 0.0391625, 0.991635)
 bones/5/rotation = Quaternion(0.189727, 0.105139, -0.0207194, 0.975971)
 bones/6/position = Vector3(0.256909, 0.65721, 0.0662165)
 bones/6/rotation = Quaternion(-1.12881e-08, -2.58756e-08, -0.143774, 0.989611)
@@ -1481,11 +1488,11 @@ bones/8/position = Vector3(-0.262216, 0.657452, 0.0662163)
 bones/8/rotation = Quaternion(-2.42619e-09, -9.526e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.0615112, 0.000898628, 0.0145793, 0.997999)
 bones/10/rotation = Quaternion(-0.163088, 0.0767725, -0.68275, 0.708068)
-bones/11/rotation = Quaternion(-0.13937, -0.0814019, -0.509286, 0.845327)
+bones/11/rotation = Quaternion(-0.139346, -0.0834668, -0.50998, 0.844711)
 bones/12/rotation = Quaternion(-0.435576, -0.481891, -0.451701, 0.611573)
 bones/13/rotation = Quaternion(0.00671634, -0.00228498, -0.0206946, 0.999761)
 bones/14/rotation = Quaternion(-0.162166, -0.0758297, 0.68301, 0.708131)
-bones/15/rotation = Quaternion(-0.39256, 0.141253, 0.348966, 0.839146)
+bones/15/rotation = Quaternion(-0.394401, 0.143846, 0.349769, 0.837507)
 bones/16/rotation = Quaternion(-0.478536, 0.448251, 0.496415, 0.568898)
 bones/17/rotation = Quaternion(0.00671635, 0.00228499, 0.0206946, 0.999761)
 bones/19/rotation = Quaternion(0.0474238, 0.0333852, 0.00277184, 0.998313)
@@ -1516,6 +1523,8 @@ secondary_limit_angle = 0.15708
 secondary_damp_threshold = 1.0
 script = ExtResource("16_8lk3s")
 character_string = "Theo"
+influence_target = 0.3
+automatic_activation = true
 
 [node name="TheoHead" type="Marker3D" parent="SubViewportContainer/SubViewport/Characters/Theo2/Armature_004/Skeleton3D" index="2"]
 transform = Transform3D(1, 0, -4.33681e-19, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, -3.13251)
@@ -1535,13 +1544,13 @@ parameters/conditions/theo_look = false
 transform = Transform3D(-0.430659, -6.50277e-08, 2.84245e-15, 0, -1.88247e-08, -0.430659, 6.50277e-08, -0.430659, 1.88247e-08, -0.0398343, 0, 0.482563)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Skylar2/Armature" index="0"]
-bones/0/position = Vector3(7.45058e-09, 0, -1.31747)
+bones/0/position = Vector3(7.45058e-09, 0, -1.31537)
 bones/0/rotation = Quaternion(0, 0.707107, 0.707107, -3.14019e-16)
 bones/1/rotation = Quaternion(1.45263e-08, 0.129933, 0.991523, -1.19026e-08)
 bones/2/rotation = Quaternion(-0.0134291, 1.58083e-08, 6.42944e-09, 0.99991)
 bones/3/rotation = Quaternion(-0.104185, 1.41151e-14, 1.93131e-15, 0.994558)
-bones/4/rotation = Quaternion(-0.0947009, 1.76117e-09, -1.00132e-08, 0.995506)
-bones/5/rotation = Quaternion(0.0667618, 4.23841e-11, 1.43176e-11, 0.997769)
+bones/4/rotation = Quaternion(-0.09271, 1.63953e-15, -5.74642e-17, 0.995693)
+bones/5/rotation = Quaternion(0.0676156, -4.883e-10, -9.11985e-11, 0.997711)
 bones/6/position = Vector3(0.295781, 0.756361, 0.0710941)
 bones/6/rotation = Quaternion(-7.78236e-08, 5.62116e-09, -0.143774, 0.989611)
 bones/7/rotation = Quaternion(0.0615112, 0.000898575, 0.0145806, 0.997999)
@@ -1549,18 +1558,18 @@ bones/8/position = Vector3(-0.291152, 0.755717, 0.0695998)
 bones/8/rotation = Quaternion(-3.79078e-10, 2.74766e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.0615113, 0.000898612, 0.0145797, 0.997999)
 bones/10/rotation = Quaternion(-0.171837, 0.0857196, -0.68022, 0.707407)
-bones/11/rotation = Quaternion(-0.310531, -0.0477076, -0.488516, 0.814031)
-bones/12/rotation = Quaternion(0.730355, 0.227562, -0.290873, 0.574622)
+bones/11/rotation = Quaternion(-0.311393, -0.0484402, -0.488434, 0.813708)
+bones/12/rotation = Quaternion(0.731796, 0.226833, -0.291447, 0.572783)
 bones/13/rotation = Quaternion(-0.048719, 0.400544, -0.437888, 0.803396)
 bones/14/rotation = Quaternion(-0.1752, -0.0891616, 0.679216, 0.707121)
-bones/15/rotation = Quaternion(-0.132224, 0.141083, 0.730258, 0.655237)
-bones/16/rotation = Quaternion(0.481153, -0.302871, 0.298112, 0.76674)
+bones/15/rotation = Quaternion(-0.132591, 0.141167, 0.730522, 0.654851)
+bones/16/rotation = Quaternion(0.483946, -0.302038, 0.299843, 0.764633)
 bones/17/rotation = Quaternion(0.0221574, 0.0019914, 0.0247039, 0.999447)
-bones/19/rotation = Quaternion(0.696189, -0.133196, 0.178539, 0.682425)
-bones/20/rotation = Quaternion(-0.694587, -0.00245858, -0.325417, 0.641597)
+bones/19/rotation = Quaternion(0.697025, -0.133371, 0.178797, 0.681469)
+bones/20/rotation = Quaternion(-0.69528, -0.00245502, -0.325741, 0.640681)
 bones/21/rotation = Quaternion(0.780307, 0.0104256, 0.0471575, 0.623529)
-bones/23/rotation = Quaternion(0.590434, 0.306396, -0.0658677, 0.743755)
-bones/24/rotation = Quaternion(-0.544295, 0.00306231, 0.255004, 0.799191)
+bones/23/rotation = Quaternion(0.591906, 0.304821, -0.0663945, 0.743185)
+bones/24/rotation = Quaternion(-0.545335, 0.00305901, 0.255491, 0.798326)
 bones/25/rotation = Quaternion(0.780307, -0.0104256, -0.0471575, 0.623529)
 bones/26/position = Vector3(0.260426, 0.726119, -0.439704)
 bones/26/rotation = Quaternion(0.0204546, 4.33681e-19, 0.999791, 6.58544e-10)
@@ -1589,7 +1598,9 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.15708
 secondary_damp_threshold = 1.0
 script = ExtResource("16_8lk3s")
+amplitude = 0.08
 character_string = "Skylar"
+influence_target = 0.7
 two_target_needed = true
 main_target = NodePath("../../../../DaltonInterrogation/Armature_001/Skeleton3D/DaltonHead")
 secondary_target = NodePath("../../../../Theo2/Armature_004/Skeleton3D/TheoHead")
@@ -1682,6 +1693,8 @@ main_scene = NodePath("..")
 stream = ExtResource("33_ujyna")
 volume_db = -6.0
 autoplay = true
+
+[connection signal="look_at_activate_skylar" from="SubViewportContainer/SubViewport/Cameras" to="SubViewportContainer/SubViewport/Characters/Skylar2/Armature/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
 
 [editable path="SubViewportContainer/SubViewport/Stuff/Ceil"]
 [editable path="SubViewportContainer/SubViewport/Stuff/InterrogationDoor"]
