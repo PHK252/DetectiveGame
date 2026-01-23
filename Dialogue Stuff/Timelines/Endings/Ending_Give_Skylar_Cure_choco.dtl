@@ -11,10 +11,11 @@ Dalton (Awkward): Hmm...
 Dalton (Resting): Said something about being in talks...
 Dalton (Awkward): Trying to gather aid and garner sympathy...
 Dalton (Sigh): Just 2 more weeks, they say...
+Dalton (Surprised): ...!
 [signal arg="start_call"]
 [end_timeline]
 label call
-Dalton (Surprised): ...!
+
 Chief: [shake rate=10.0 level=4 connected=2]Armed robbery reported at a bank in Central.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]Prepare to roll out.[/shake] 
 Dalton (Angry): But we just got back-
@@ -32,3 +33,5 @@ Dalton (Sigh): Hmph.
 Theo (Sigh): Huff...
 Theo (Doubt): We better get a raise after this.
 [signal arg = "walk_out"]
+[wait time="1.0"]
+[end_timeline]

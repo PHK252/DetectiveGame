@@ -1140,7 +1140,7 @@ func _on_paper_rotation(interactor: Interactor) -> void:
 
 func _on_exit_office_dalton() -> void:
 	#coll_wall.disabled = true
-	#print("dalton_exit")
+	print("dalton_exit")
 	SPEED = 0.5
 	number = 7
 	in_control = false

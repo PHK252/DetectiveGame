@@ -1,5 +1,5 @@
 extends Node
-
+@export var main : Node3D
 @export var dalton_controller : Node3D
 @export var dalton_cutscene : Node3D
 @export var dalton_anims : AnimationTree
@@ -60,7 +60,14 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	cam_anims.play("OutroAnimation")
 	emit_signal("walkoutdalton")
-	#TO ENDING
+	match Dialogic.VAR.get_variable("Endings.Ending_type"):
+		"Give Kale Cure":
+			Loading.load_scene(main, GlobalVars.office_path, "date", "21 DEC XX20", "")
+		"Give Kale Cure And Choco":
+			Loading.load_scene(main, GlobalVars.office_path, "date", "20 NOV XX20", "")
+		_:
+			print_debug("Uh_oh")
+			pass
 
 func _on_knock_open_door_brother():
 	norm_dalton.global_position = marker_place_dalton.global_position

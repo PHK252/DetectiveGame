@@ -11,6 +11,7 @@ if {Character Aff Points.Juniper} < 0:
 	- Inspect case.
 		[signal arg="look_case"]
 	- Continue investigation.
+		[signal arg="end"]
 		[end_timeline]
 else:
 	set {Juniper.Juniper_asked_case} = true
@@ -34,4 +35,5 @@ else:
 	- Inspect case.
 		[signal arg="look_case"]
 	- Continue investigation.
+		[signal arg="end"]
 		[end_timeline]

@@ -1,5 +1,5 @@
 [signal arg ="theo_walk_in"]
-[wait time="3.0"]
+[wait time="3.5"]
 Theo (Sigh): ...
 Theo (Concerned): Never in my life would I have thought I would be putting the mayor in cuffs...
 Theo (Sad): ...
@@ -34,3 +34,5 @@ Dalton (Resting): Let’s go.
 Dalton (Talk): He’s waiting for us.
 Theo (Laugh): Yeah!
 [signal arg = "walk_out"]
+[wait time="1.0"]
+[end_timeline]

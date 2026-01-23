@@ -165,8 +165,11 @@ func walk_out(argument: String):
 		#emit_signal("Both_walk out")
 		#walk out signals for when theo walks in only
 		emit_signal("theo_exit")
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		emit_signal("dalton_exit")
+		Dialogic.signal_event.disconnect(walk_out)
+	elif argument == "theo_exit":
+		emit_signal("theo_exit")
 		Dialogic.signal_event.disconnect(walk_out)
 
 func calling(argument: String):
@@ -198,6 +201,7 @@ func _on_timeline_ended():
 func _on_ending_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_ending_timeline_ended)
 	#Anim and fade stuff
+	await get_tree().create_timer(0.5).timeout
 	SceneTransitions.fade_change_scene(GlobalVars.credits)
 	await get_tree().create_timer(.5).timeout
 	main.queue_free()

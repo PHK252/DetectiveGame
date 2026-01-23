@@ -1,5 +1,5 @@
 extends Node
-
+@export var main : Node3D
 @export var S_anim : AnimationTree
 @export var D_anim : AnimationTree
 @export var T_anim : AnimationTree
@@ -28,11 +28,11 @@ extends Node
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalVars.current_level = "interrogation"
-	if Dialogic.VAR.get_variable("Interogation.Case_Intero", true):
+	if Dialogic.VAR.get_variable("Interogation.Case_Intero") == true:
 		dialogic_file = "Day_3_intero_case"
-	elif Dialogic.VAR.get_variable("Interogation.Case_Rever_Quincy_intero", true):
+	elif Dialogic.VAR.get_variable("Interogation.Case_Rever_Quincy_intero") == true:
 		dialogic_file = "Day_3_intero_case_rever_quincy"
-	elif Dialogic.VAR.get_variable("Interogation.Secret_intero", true):
+	elif Dialogic.VAR.get_variable("Interogation.Secret_intero") == true:
 		dialogic_file = "Secret_intero"
 	else:
 		print_debug("How you get here?")
@@ -55,6 +55,21 @@ func _ready() -> void:
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	match Dialogic.VAR.get_variable("Endings.Ending_type"):
+		"Arrested Skylar":
+			Loading.load_scene(main, GlobalVars.office_path, "", "", "")
+		"Keep Confidential":
+			Loading.load_scene(main, GlobalVars.office_path, "date", "14 APR XX21", "")
+		"Give Skylar Cure":
+			Loading.load_scene(main, GlobalVars.office_path, "date", "15 FEB XX21", "")
+		"Give Skylar Cure And Choco":
+			Loading.load_scene(main, GlobalVars.office_path, "date", "26 NOV XX21", "")
+		"Give Kale Cure":
+			Loading.load_scene(main, GlobalVars.isaac_house, "", "", "")
+		"Give Kale Cure And Choco":
+			Loading.load_scene(main, GlobalVars.isaac_house, "", "", "")
+		_:
+			print_debug("No Ending Uh Oh")
 
 func _walk_out_skylar(arg : String):
 	if arg == "Skylar_walk_out":

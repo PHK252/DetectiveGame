@@ -21,7 +21,8 @@ var dialogue_file: String
 
 var call := false
 var mouse_pos : Vector2
-
+var day_end := false
+var to_flash := false
 signal change_texture(texture: String)
 signal theo_out
 signal theo_move
@@ -69,18 +70,15 @@ func _ready():
 	print(dialogue_file)
 	if dialogue_file != "":
 		if GlobalVars.in_dialogue == false:
-			await get_tree().create_timer(4.0).timeout
-			player.stop_player()
 			GlobalVars.in_dialogue = true
+			await get_tree().create_timer(2.0).timeout
+			player.stop_player()
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.signal_event.connect(enter_Theo)
 			Dialogic.signal_event.connect(walk_out)
 			Dialogic.signal_event.connect(calling)
 			Dialogic.signal_event.connect(exit_Theo)
 			var layout = Dialogic.start(dialogue_file)
-			layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			layout.register_character(load("res://Dialogic Characters/Chief.dch"), dalton_marker)
-			layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 	else:
 		return
 
@@ -105,6 +103,14 @@ func _on_timeline_ended():
 	if call == true:
 		return
 	player.start_player()
+	if day_end:
+		if to_flash:
+			Loading.load_scene(main, GlobalVars.dream_trans, "Sleep", "To Dream", "", false, true)
+			return
+		GlobalVars.day += 1
+		Loading.load_scene(main, GlobalVars.office_path, "Sleep", "", "")
+		return
+	
 	
 
 func _process(delta: float) -> void:
@@ -118,6 +124,9 @@ func choose_office_dialogue():
 			if Dialogic.VAR.get_variable("Global.went_to_Micah") == false or Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 				print_debug("D1: something went wrong with office dialogue or it's your first time here")
 				return ""
+			day_end = true
+			if Dialogic.VAR.get_variable("Juniper.viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde") == true and Dialogic.VAR.get_variable("Juniper.ask_mom_rever") and Dialogic.VAR.get_variable("Character Aff Points.Juniper") > 1 and Dialogic.VAR.get_variable("Character Aff Points.Micah")  > 2:
+				to_flash = true
 			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 				return "End_day_1_got_name"
 			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
@@ -133,9 +142,11 @@ func choose_office_dialogue():
 					return "Beginning_day_2_got_kicked"
 				return "Beginning_day_2_got_nothing"
 			else:
+				day_end = true
 				if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
 					return "End_day_2_got_kicked"
 				if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
+					to_flash = true
 					return "End_day_2_got_REVER" 
 				if Dialogic.VAR.get_variable("Quincy.solved_case") == true and Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 					return "End_day_2_got_case"

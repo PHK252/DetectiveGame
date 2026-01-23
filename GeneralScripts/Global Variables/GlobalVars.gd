@@ -23,7 +23,7 @@ signal unpaused
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int = 1
+@onready var day : int = 3
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need
@@ -385,6 +385,7 @@ var third_house_path := "res://ThirdHouse/third_house.tscn"
 var secret_path := "res://SecretLocation/secret_location.tscn"
 var office_path := "res://StartingOffice/starting_office.tscn"
 var beginning_office := "res://Cutscenes/cluttered_office.tscn"
+var isaac_house := "res://Cutscenes/brothersHouse.tscn"
 var dream_trans := "res://dream_stuff/dreamTransition.tscn"
 var flashback_1_1 := "res://Cutscenes/Flashback_01.tscn"
 var flashback_1_2 := "res://dream_stuff/Flashback_Runa.tscn"

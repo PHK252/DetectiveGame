@@ -11,8 +11,8 @@ Dalton (Squint): So much is at stake right now.
 Theo (Sigh): ...
 Theo (Thinking): They’ll come back. 
 Theo (Concerned): They always do...
-[signal arg="start_call"]
 Dalton (Surprised): ...!
+[signal arg="start_call"]
 [end_timeline]
 label call
 
@@ -38,3 +38,5 @@ Theo (Concerned): I’m driving, though.
 Theo (Resting): Get some sleep in the car.
 Dalton (Awkward): Hmph.
 [signal arg = "walk_out"]
+[wait time="1.0"]
+[end_timeline]

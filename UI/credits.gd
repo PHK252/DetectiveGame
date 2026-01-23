@@ -22,3 +22,5 @@ func _ready():
 			ending_label.text = "[center]Poked the Cat’s Nest[/center]"
 		_:
 			print_debug("How did this happen")
+	await get_tree().create_timer(5.0).timeout
+	get_tree().quit()

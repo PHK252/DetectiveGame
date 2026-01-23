@@ -100,6 +100,7 @@ func _activate_tea(argument : String):
 		timer.paused = true
 		print("teaaa")
 	else:
+		emit_signal("enable_interaction")
 		Dialogic.signal_event.disconnect(_activate_tea)
 
 
