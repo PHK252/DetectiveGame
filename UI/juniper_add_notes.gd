@@ -46,7 +46,8 @@ var juniper_case_name_tag_response = "- The full name of the missing employee is
 
 func _ready():
 	text_label.text = GlobalVars.juniper_notes
-	pass
+	if text_label.text == "":
+		text_label.text = "ADD NOTES HERE"
 
 #Handling Notes
 func _add_note(text : String):

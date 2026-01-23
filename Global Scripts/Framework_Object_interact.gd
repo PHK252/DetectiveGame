@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var main : Node3D
 #Assign first person cam and exit cam + idle animation
 @export var FP_Cam: PhantomCamera3D
 @export var Exit_Cam: PhantomCamera3D
@@ -51,8 +52,8 @@ signal disable_look
 func _process(delta):
 	var read_dialogue : bool = GlobalVars.get(dialogue)
 	var viewed_item : bool = GlobalVars.get(view_item)
-	mouse_pos = get_viewport().get_mouse_position()
 	
+	#print(get_viewport().get_mouse_position())
 	#set kicked and timed out vars
 	if GlobalVars.current_level == "Quincy":
 		kicked = GlobalVars.quincy_kicked_out
@@ -65,6 +66,10 @@ func _process(delta):
 		timed = GlobalVars.micah_time_out
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+		if main:
+			mouse_pos = main.mouse_pos
+		else:
+			mouse_pos = get_viewport().get_mouse_position()
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		elif mouse_pos.y < tilt_down_thres:

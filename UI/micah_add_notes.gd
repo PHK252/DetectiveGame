@@ -57,7 +57,8 @@ var micah_leave_missing = "- The victim mentioned that his friend by the name of
 
 func _ready():
 	text_label.text = GlobalVars.micah_notes
-	pass
+	if text_label.text == "":
+		text_label.text = "ADD NOTES HERE"
 
 #handling notes
 func _add_note(text : String):

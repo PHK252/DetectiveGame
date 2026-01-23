@@ -127,6 +127,8 @@ func _process(delta):
 	#timed out
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.timed_out") == false and GlobalVars.quincy_kicked_out == false and bathroom_door.player_in_bathroom == false:
+			player.stop_player()
+			alert.hide()
 			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
@@ -156,9 +158,9 @@ func _on_timer_timeout():
 		print("LEVEL TIMEOUT")
 		#emit_signal("theo_leave")
 		#emit_signal("quincy_leave")
-		player.stop_player()
-		alert.hide()
 		if GlobalVars.in_interaction == "" and bathroom_door.player_in_bathroom == false:
+			player.stop_player()
+			alert.hide()
 			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)

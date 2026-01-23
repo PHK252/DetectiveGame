@@ -39,7 +39,8 @@ var quincy_proposal = "- TRANSCRIPT: [color=#64635f]...[/color][p][color=#566f5c
 
 func _ready():
 	text_label.text = GlobalVars.quincy_notes
-	pass
+	if text_label.text == "":
+		text_label.text = "ADD NOTES HERE"
 
 #Handling Notes
 func _add_note(text : String):

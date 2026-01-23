@@ -74,6 +74,7 @@ func _activate_drink():
 	interactable.set_deferred("monitorable", true)
 	emit_signal("enable_after_tea_interaction")
 	Dialogic.VAR.set_variable("Juniper.has_tea", true)
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#var game_dialogue = Dialogic.start(dialogue_file)
 	#game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 	#game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)

@@ -20,6 +20,7 @@ var dialogue_file: String
 @export var inputManager : InputManager
 
 var call := false
+var mouse_pos : Vector2
 
 signal change_texture(texture: String)
 signal theo_out
@@ -106,9 +107,9 @@ func _on_timeline_ended():
 	player.start_player()
 	
 
-#func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("call"):
-		#MusicFades.fade_in_out()
+func _process(delta: float) -> void:
+	if GlobalVars.in_interaction == "cork":
+		mouse_pos = get_viewport().get_mouse_position() 
 
 #choosing dialogue if there is any
 func choose_office_dialogue():

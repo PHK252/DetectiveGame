@@ -16,6 +16,11 @@ if {Character Aff Points.Juniper} < 0:
 		Juniper (Sad): Was an employee. 
 		Dalton (Doubt1): Was?
 		Juniper (Doubt): They quit.
+		Dalton (Hmph): Hmph.
+		Dalton (Resting) : Do you know their last name?
+		Juniper (Squint): ...
+		Juniper (Sigh): ...
+		Juniper (Sad): Aslan.
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
 			set {Juniper.in_choice} = false
@@ -52,6 +57,10 @@ else:
 		Juniper (Sad): Yeah...
 		Juniper (Hmph): At least that's what they went by...
 		Dalton (Default): I see...
+		Dalton (Talk): Do you know their last name?
+		Juniper (Hmph): ...
+		Juniper (Default): Aslan.
+		Juniper (Happy): Skylar Aslan.
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
 			set {Juniper.in_choice} = false

@@ -54,36 +54,37 @@ var case_show = true
 	
 
 func _process(delta):
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		mouse_pos = get_viewport().get_mouse_position()
-		if mouse_pos.y >= tilt_thres:
-			FP_Cam.set_rotation_degrees(tilt_up_angle)
-			tilt = "down"
-		elif mouse_pos.y < tilt_thres:
-			FP_Cam.set_rotation_degrees(tilt_down_angle)
-			tilt = "up"
-		#mouse_pos = mouse_pos
-		#if tilt == "down":
+	#if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+		#mouse_pos = get_viewport().get_mouse_position()
+		#print(mouse_pos)
+		#if mouse_pos.y >= tilt_thres:
 			#FP_Cam.set_rotation_degrees(tilt_up_angle)
-			#interact_area_2.show()
-			#close_interact_1.hide()
-			#close_interact_2.hide()
-			#interact_area_1.hide()
-			#open_interact.hide()
-#
-		#elif tilt == "up" and cab_anim == false:
+			#tilt = "down"
+		#elif mouse_pos.y < tilt_thres:
 			#FP_Cam.set_rotation_degrees(tilt_down_angle)
-			#interact_area_2.hide()
-			#if is_open == true:
-				#open_interact.hide()
-				#interact_area_1.show()
-				#close_interact_1.show()
-				#close_interact_2.show()
-			#else:
-				#open_interact.show()
-				#interact_area_1.hide()
-				#close_interact_1.hide()
-				#close_interact_2.hide()
+			#tilt = "up"
+		##mouse_pos = mouse_pos
+		##if tilt == "down":
+			##FP_Cam.set_rotation_degrees(tilt_up_angle)
+			##interact_area_2.show()
+			##close_interact_1.hide()
+			##close_interact_2.hide()
+			##interact_area_1.hide()
+			##open_interact.hide()
+##
+		##elif tilt == "up" and cab_anim == false:
+			##FP_Cam.set_rotation_degrees(tilt_down_angle)
+			##interact_area_2.hide()
+			##if is_open == true:
+				##open_interact.hide()
+				##interact_area_1.show()
+				##close_interact_1.show()
+				##close_interact_2.show()
+			##else:
+				##open_interact.show()
+				##interact_area_1.hide()
+				##close_interact_1.hide()
+				##close_interact_2.hide()
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "":

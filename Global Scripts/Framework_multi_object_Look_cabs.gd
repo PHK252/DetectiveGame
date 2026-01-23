@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var main : Node3D
 #Assign first person cam and exit cam + idle animation
 @export var FP_Cam: PhantomCamera3D
 @export var Exit_Cam: PhantomCamera3D
@@ -89,9 +90,12 @@ func _process(delta):
 	#var immediate_exit = quick_exit# Dialogic.VAR.get("Immediate Exit").Micah_cab # set to true in Dialogic
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-		tilt_thres = (get_viewport().size.y * float(normal_tilt/180.0)) 
-		
-		mouse_pos = get_viewport().get_mouse_position()
+		#tilt_thres = (get_viewport().size.y * float(normal_tilt/180.0)) 
+		if main:
+			mouse_pos = main.mouse_pos
+		else:
+			mouse_pos = get_viewport().get_mouse_position()
+		print(mouse_pos)
 		if mouse_pos.y >= tilt_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 			tilt = "down"

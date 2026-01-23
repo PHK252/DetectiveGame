@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var main : Node3D
 #Assign first person cam and exit cam + idle animation
 @export var FP_Cam: PhantomCamera3D
 @export var Exit_Cam: PhantomCamera3D
@@ -64,7 +65,6 @@ func _process(delta):
 	var viewed_item_1 : bool = GlobalVars.get(view_item_1)
 	var read_dialogue_2 : bool = GlobalVars.get(dialogue_2)
 	var viewed_item_2 : bool = GlobalVars.get(view_item_2)
-	mouse_pos = get_viewport().get_mouse_position()
 	
 	if GlobalVars.current_level == "Quincy":
 		kicked = GlobalVars.quincy_kicked_out
@@ -73,10 +73,14 @@ func _process(delta):
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
 	
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+		if main:
+			mouse_pos = main.mouse_pos
+		else:
+			mouse_pos = get_viewport().get_mouse_position()
 		if FP_Cam.priority == 30:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		mouse_pos = get_viewport().get_mouse_position()
+
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 			tilt = "down"

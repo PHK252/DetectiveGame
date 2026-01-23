@@ -55,6 +55,8 @@ func _process(delta):
 			#print(GlobalVars.in_interaction)
 		awaiting_tut.emit()
 
+		
+
 func _on_receiving_call_pressed():
 	GlobalVars.phone_up = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -26,6 +26,7 @@ extends Node3D
 signal phone_time_start
 signal auto_open
 
+var mouse_pos = Vector2(0,0) 
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
 
@@ -94,7 +95,10 @@ func _on_brightness_brightness_shift(brightness) -> void:
 
 
 func _process(delta):
+	#print(get_viewport().get_mouse_position())
 	#Kicked out 
+	if GlobalVars.in_interaction != "":
+		mouse_pos = get_viewport().get_mouse_position()
 	if Dialogic.VAR.get_variable("Character Aff Points.Juniper") <= -4:
 		GlobalVars.juniper_kicked_out = true
 		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":

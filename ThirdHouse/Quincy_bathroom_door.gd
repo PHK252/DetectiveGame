@@ -137,6 +137,7 @@ func _on_bathroom_door_body_exited(body):
 				Dialogic.signal_event.connect(_quincy_enter_bathroom)
 				var clogged = Dialogic.start(clog_exit_dialogue)
 			else:
+				player_in_bathroom = false
 				close()
 			
 func _load_bath_distract():

@@ -71,6 +71,7 @@ func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Juniper.Juniper_asked_case")
 	print(case_asked)
 	if GlobalVars.in_dialogue == false:
+		player.hide()
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
 			alert.hide()
@@ -173,7 +174,12 @@ func _input(event):
 				print("viewed letter" + str(GlobalVars.view_letter_juniper))
 				print("viewed name" + str(GlobalVars.view_nametag_juniper))
 				if finished_letter == true or finished_tag == true:
-					if finished_tag == true:
+					if finished_letter == true and finished_tag == true:
+						GlobalVars.in_interaction = ""
+						alert.show()
+						player.start_player()
+						return
+					if finished_tag == true and GlobalVars.view_letter_juniper == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()
@@ -184,7 +190,7 @@ func _input(event):
 						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
 						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
 						game_dialogue.register_character(load(load_char_dialogue), character_marker)
-					elif finished_letter == true:
+					elif finished_letter == true and GlobalVars.view_nametag_juniper == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()

@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var main : Node3D
 #Assign first person cam and exit cam + idle animation
 @export var FP_Cam: PhantomCamera3D
 @export var Exit_Cam: PhantomCamera3D
@@ -72,8 +73,13 @@ func _process(delta):
 		kicked = GlobalVars.juniper_kicked_out
 		timed = GlobalVars.juniper_time_out
 
-	mouse_pos = get_viewport().get_mouse_position()
+	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+		if main:
+			mouse_pos = main.mouse_pos
+		else:
+			mouse_pos = get_viewport().get_mouse_position()
+		
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 		elif mouse_pos.y < tilt_down_thres:

@@ -19,10 +19,9 @@ func _ready():
 	Dialogic.VAR.set_variable("Global.went_to_secret", true)
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#await walk in
+	GlobalVars.in_dialogue = true
 	await get_tree().create_timer(4).timeout
-	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
-		GlobalVars.in_dialogue = true
+	if GlobalVars.in_interaction == "":
 		var arrived_dialogue = Dialogic.start("Secret_arrived")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		arrived_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)

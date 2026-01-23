@@ -1,5 +1,6 @@
 extends MeshInstance3D
 
+@export var main : Node3D
 @onready var cork_cam = $"../../CameraSystem/Corkboard cam"
 @onready var cam_anim = $"../../CameraSystem/Corkboard cam/AnimationPlayer"
 @onready var main_cam = $"../../CameraSystem/PhantomCamera3D"
@@ -23,15 +24,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	mouse_pos = get_viewport().get_mouse_position() 
+	mouse_pos = main.mouse_pos
 	#print(mouse_pos)
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cork":
 		if cork_cam.priority == 5:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		if mouse_pos.y >= 150:
+		if mouse_pos.y >= 900:
 			cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
 			tilt = "down"
-		elif mouse_pos.y < 30:
+		elif mouse_pos.y < 180:
 			cork_cam.set_rotation_degrees(Vector3(4, 176.6, .4))
 			tilt = "up"
 		else:
