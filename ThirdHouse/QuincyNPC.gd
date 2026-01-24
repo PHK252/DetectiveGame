@@ -170,7 +170,8 @@ func _process(delta: float) -> void:
 	#print(is_navigating)
 	#print(str(is_distracted) + ": distraction")
 	#print(wander_choice)
-	
+	if GlobalVars.quincy_time_out == true or GlobalVars.quincy_kicked_out == true:
+		is_distracted = false
 	if is_distracted == false:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
@@ -596,6 +597,7 @@ func _on_bookshelf_distract(interactor: Interactor) -> void:
 
 func _on_phone_book_distract_quincy():
 	is_distracted = true
+	print("phone")
 	is_navigating = true
 	general_distraction = true
 	wander_choice = 1
@@ -622,6 +624,7 @@ func _on_theo_quincy_no_go_body_exited(body: Node3D) -> void:
 func _on_hallway_check_body_entered(body: Node3D) -> void:
 	if general_distraction == false:
 		emit_signal("enable_look")
+		print("hall")
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 8
@@ -638,7 +641,9 @@ func _on_hallway_check_body_exited(body: Node3D) -> void:
 		#state = FOLLOW
 
 func _on_living_room_adjustment_body_entered(body: Node3D) -> void:
+	print(GlobalVars.quincy_time_out, "timeout")
 	if body.is_in_group("player") and drunk_dalton == false and general_distraction == false:
+		print("living")
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 9
@@ -655,6 +660,7 @@ func _on_living_room_adjustment_body_exited(body: Node3D) -> void:
 
 func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and drunk_dalton == false and general_distraction == false:
+		print("painting")
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 10
@@ -724,6 +730,7 @@ func _on_timer_check_timeout() -> void:
 				#distraction_allowed = false
 
 func _on_quincy_interact_finish_greeting() -> void:
+	print("finish")
 	greeting = true
 	start_time = true
 	is_distracted = true
@@ -844,6 +851,7 @@ func _on_main_door_quincy_reposition() -> void:
 	packofcigs.visible = false
 	lighter.visible = false
 	cig.visible = false
+	print("main door")
 	is_distracted = true
 	end_time = true
 	is_navigating = true
@@ -863,6 +871,7 @@ func _on_timer_start_timeout() -> void:
 func _on_bar_interaction_interacted(interactor: Interactor) -> void:
 	rotate_forced = false
 	rotate_number = 0
+	print("bar")
 	is_distracted = true
 	is_navigating = true
 	wander_choice = 2
@@ -891,6 +900,7 @@ func _on_wine_time_body_exited(body: Node3D) -> void:
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and general_distraction == false:
+		print("wine")
 		is_distracted = true
 		is_navigating = true
 		wander_choice = 0
@@ -899,6 +909,7 @@ func _on_wine_time_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy" and catch_possibility:
 		bar_catch_area = true
 		if entered_catch_zone == false:
+			print("wine catch")
 			is_distracted = true
 			is_navigating = true
 			wander_choice = 0
@@ -952,8 +963,7 @@ func _on_main_quincy_leave() -> void:
 	rotate_forced = false
 	wander_choice = 11
 	sound_player.stop()
-	
-
+	print("leave")
 	is_distracted = true
 	extra_gate_end = false
 	end_time = true

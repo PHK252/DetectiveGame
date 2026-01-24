@@ -36,15 +36,28 @@ signal disable_look
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	UI.hide()
-	interact_area.hide()
-	pass # Replace with function body.
+	if Dialogic.VAR.get_variable("Quincy.finished_case_note") == false and GlobalVars.viewed_Quincy_letter == true:
+		GlobalVars.viewed_Quincy_letter = false
+	if Dialogic.VAR.get_variable("Quincy.finished_case_hammer") == false and GlobalVars.viewed_Quincy_hammer == true:
+		GlobalVars.viewed_Quincy_hammer = false
 
 
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Quincy.Quincy_asked_case")
-	print(case_asked)
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		if GlobalVars.opened_quincy_case == true:
+			GlobalVars.in_interaction = interact_type
+			#print("look " + str(GlobalVars.in_look_screen))
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			alert.hide()
+			player.stop_player()
+			player.hide()
+			case_cam.priority = 30
+			main_cam.priority = 0 
+			cam_anim.play("Cam_Idle")
+			interior_interact_area_1.show()
+			interior_interact_area_2.show()
+			return
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
 			GlobalVars.in_interaction = interact_type
@@ -54,20 +67,7 @@ func _on_interactable_interacted(interactor):
 			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.signal_event.connect(caseUI)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			game_dialogue.register_character(load(load_char_dialogue), character_marker)
-		elif GlobalVars.opened_quincy_case == true:
-			GlobalVars.in_interaction = interact_type
-			#print("look " + str(GlobalVars.in_look_screen))
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			alert.hide()
-			player.stop_player()
-			case_cam.priority = 30
-			main_cam.priority = 0 
-			cam_anim.play("Cam_Idle")
-			interior_interact_area_1.show()
-			interior_interact_area_2.show()
+			return
 		else:
 			GlobalVars.in_interaction = interact_type
 			GlobalVars.in_dialogue = true
@@ -77,16 +77,7 @@ func _on_interactable_interacted(interactor):
 			var game_dialogue = Dialogic.start(dialogue_file, "choices")
 			Dialogic.signal_event.connect(caseUI)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			game_dialogue.register_character(load(load_char_dialogue), character_marker)
-	else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			alert.hide()
-			player.stop_player()
-			case_cam.priority = 30
-			main_cam.priority = 0 
-			cam_anim.play("Cam_Idle")
+			return
 
 
 func _on_timeline_ended():
@@ -126,13 +117,13 @@ func _input(event):
 	var finished_letter = Dialogic.VAR.get_variable("Quincy.finished_case_note")
 	var finished_hammer = Dialogic.VAR.get_variable("Quincy.finished_case_hammer")
 	if GlobalVars.in_dialogue == false:
-		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+		if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "":
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			case_cam.priority = 0
 			main_cam.priority = 30
 			main_cam.set_tween_duration(0)
 			cam_anim.play("RESET")
-			#main_cam.set_tween_duration(1)
+			alert.hide()
 			player.show()
 			if GlobalVars.opened_quincy_case == true:
 				interior_interact_area_1.hide()
@@ -146,9 +137,6 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_1) 
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif finished_letter == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
@@ -157,9 +145,6 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_2) 
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 				else:
 					if GlobalVars.viewed_Quincy_letter == true and GlobalVars.viewed_Quincy_hammer == true:
 						GlobalVars.in_interaction = ""
@@ -169,9 +154,6 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_choices)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif GlobalVars.viewed_Quincy_letter == true and GlobalVars.viewed_Quincy_hammer == false:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
@@ -180,9 +162,6 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_1)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif GlobalVars.viewed_Quincy_letter == false and GlobalVars.viewed_Quincy_hammer == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
@@ -191,14 +170,12 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_2)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			else:
 				GlobalVars.in_interaction = ""
 				player.start_player()
-				alert.show()
 				interact_area.hide()
+				alert.show()
+				
 				#interior_interact_area_1.hide()
 				#interior_interact_area_2.hide()
 		elif Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == interact_type and GlobalVars.viewing == "case_ui": 

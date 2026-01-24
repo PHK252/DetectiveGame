@@ -171,7 +171,10 @@ func _on_back_pressed():
 		position_blinker_backwards(position-1)
 		label.text = label.text.erase(len(label.text)-1, 1)
 		input = label.text
-		position -= 1
+		if position > 0:
+			position -= 1
+		else:
+			position = 0
 		print(position)
 		reset_num()
 
@@ -204,7 +207,8 @@ func _on_enter_pressed():
 		GlobalVars.emit_open_quincy_case()
 		await get_tree().create_timer(1.5).timeout
 	else:
-		case_locked.play()
+		if case_locked:
+			case_locked.play()
 		print("very wrong")
 		label.text = "Wrong"
 		await get_tree().create_timer(.05).timeout
@@ -244,7 +248,8 @@ func _on_enter_pressed():
 
 func reset_when_switch():
 	print("entered")
-	case_click.play()
+	if case_click:
+		case_click.play()
 	if pressed_button != "enter" and current_button != pressed_button:
 		current_button = pressed_button
 		print(current_button)
@@ -252,7 +257,8 @@ func reset_when_switch():
 
 
 func _open_case():
-	case_unlocked.play()
+	if case_unlocked:
+		case_unlocked.play()
 	#cam_anim.play("Case_look")
 	#show_open_case()
 	GlobalVars.in_look_screen = false

@@ -4,5 +4,7 @@ Quincy (Default): Hmm...
 Dalton (Default): I’ll take it in for investigation. 
 Quincy (Smug): Yeah. 
 Quincy (Smirk): You do that.
+set {Quincy.has_hammer} = true
+[signal arg="has hammer"]
 do GlobalVars.emit_add_evidence("quincy", "hammer")
 jump Quincy_open_case_choice/

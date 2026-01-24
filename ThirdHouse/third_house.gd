@@ -40,6 +40,7 @@ signal load_bath
 @export var hide_tween : AnimationPlayer
 
 func _ready():
+	print(GlobalVars.in_level," level" )
 	GlobalVars.current_level = "quincy"
 	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -50,6 +51,7 @@ func _ready():
 	#MusicFades.fade_out_audio()
 	if GlobalVars.in_level:
 		hide_tween.play("fade_in_hide_tween")
+		#await hide_tween.animation_finished
 
 	#settings
 	#brightness
@@ -61,14 +63,10 @@ func _ready():
 	#pixel
 	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
 	_on_brightness_brightness_shift(GlobalVars.brightness)
-	await get_tree().process_frame
-	await get_tree().process_frame
-	print(Dialogic.VAR.get_variable("Quincy.is_distracted"), " distracted")
-	print(Dialogic.VAR.get_variable("Quincy.caught"), " caught")
-	if interactables[0].monitorable == false:
-		interactables[0].set_deferred("monitorable", true)
+
 	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
 		music.play()
+
 		if GlobalVars.quincy_time_out == true:
 			disable_interaction(interactables)
 			Dialogic.clear(1)
@@ -77,6 +75,7 @@ func _ready():
 			player.stop_player()
 			alert.hide()
 			in_time_out_dialogue = true
+			await hide_tween.animation_finished
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 			return
@@ -85,15 +84,24 @@ func _ready():
 			Dialogic.clear(1)
 			await get_tree().process_frame
 			await get_tree().process_frame
-			player.stop_player()
+			player.start_player()
 			alert.hide()
-			door.set_deferred("monitorable", false)
+			await hide_tween.animation_finished
+			emit_signal("theo_leave")
+			emit_signal("quincy_leave")
 			emit_signal("open_main_door")
 			return
+		#fix this
 		if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 			emit_signal("load_bath")
 		timer.wait_time = GlobalVars.time_left
 		timer.start()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	print(Dialogic.VAR.get_variable("Quincy.is_distracted"), " distracted")
+	print(Dialogic.VAR.get_variable("Quincy.caught"), " caught")
+	if interactables[0].monitorable == false:
+		interactables[0].set_deferred("monitorable", true)
 
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
@@ -136,6 +144,9 @@ func _process(delta):
 			in_time_out_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
+			await get_tree().process_frame
+			if alert.visible == true:
+				alert.hide()
 	
 	
 	if Dialogic.VAR.get_variable("Quincy.is_distracted") == true and locked == false:
@@ -167,8 +178,6 @@ func _on_timer_timeout():
 			in_time_out_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
-		else:
-			pass
 		 
 
 func _on_timeline_ended_timed():
@@ -247,8 +256,8 @@ func _on_quincy_entered():
 func _on_exit_level():
 	print("level exit!")
 	GlobalVars.in_level = false
-	MusicFades.fade_out_audio()
-	await get_tree().create_timer(5.0).timeout
 	Dialogic.VAR.set_variable("Quincy.left_quincy", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	MusicFades.fade_out_audio()
+	await get_tree().create_timer(5.0).timeout
 	music.stop()

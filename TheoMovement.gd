@@ -109,7 +109,7 @@ func _ready() -> void:
 	nav.target_position = player.global_transform.origin
 	if quincy_house:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
-		if GlobalVars.in_level:
+		if GlobalVars.in_level == true:
 			print("in_level_quincy")
 			#force investigate
 			greeting_finished = true
@@ -364,7 +364,7 @@ func _process_idle_state(distance_to_target: float) -> void:
 		state = SITTING
 
 	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton) and waterfall_scene == false):
-		print("Switching to FOLLOW state")
+		print("Switching to FOLLOW state", " Theo")
 		
 		print("is_nav" + str(is_navigating))
 		print("is_inv" + str(is_investigating))

@@ -419,6 +419,8 @@ func loadGame(path : String):
 		_load_arr(data, "Office_Vars", GlobalVars.load_Office_name_arr)
 		_load_arr(data, "Micah_Vars", GlobalVars.load_Micah_name_arr)
 		_load_arr(data, "Juniper_Vars", GlobalVars.load_Juniper_name_arr)
+		_load_arr(data, "Quincy_Vars", GlobalVars.load_Quincy_name_arr)
+		_load_arr(data, "Secret_Vars", GlobalVars.load_Secret_name_arr)
 		_load_char_pos(data) #TO DEBUG
 		
 		emit_signal("loaded")

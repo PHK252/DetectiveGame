@@ -117,6 +117,7 @@ func _on_exit_timeline_ended():
 
 func _on_bathroom_body_entered(body):
 	if body.is_in_group("player"):
+		print("in_bathroom", player_in_bathroom)
 		if is_open == true:
 			close()
 			player_in_bathroom = true

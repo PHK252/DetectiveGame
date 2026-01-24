@@ -18,6 +18,8 @@ if {Juniper.found_skylar} == true and {Quincy.talked_at_port} == true:
 		Dalton (Squint): Okay.
 		Dalton (Talk): I'll send a search team out for Skylar Aslan...
 		Dalton (Default): And I'll take the note in for examination.
+		[signal arg="has note"]
+		set {Quincy.has_letter} = true
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_portrait")
 		jump Quincy_open_case_choice/
@@ -55,6 +57,8 @@ elif {Juniper.found_skylar} == true and {Quincy.talked_at_port} == false:
 		Dalton (Awkward): Hm...
 		Dalton (Squint): I’ll take the note and see if we can do anything to further your case. 
 		Quincy (Happy): Mm...
+		[signal arg="has note"]
+		set {Quincy.has_letter} = true
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_no_portrait")
 		jump Quincy_open_case_choice/
@@ -96,6 +100,8 @@ else:
 		Quincy (Sigh): Good. 
 		Quincy (Smug): Once you track him down, call me.
 		Dalton (Resting): Hmph.
+		[signal arg="has note"]
+		set {Quincy.has_letter} = true
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "no_name_no_portrait")
 		jump Quincy_open_case_choice/

@@ -49,7 +49,10 @@ signal distraction
 @export var flush : AudioStreamPlayer3D
 
 func _ready() -> void:
-	towel.visible = false
+	if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
+		if interactable:
+			interactable.set_monitorable(false)
+			return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -193,7 +196,7 @@ func _clog_toilet(argument : String):
 		await get_tree().create_timer(1.2).timeout
 		flush.play()
 		player.start_player()
-		#flood_anim.play(anim_track)
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		pass
 	else:
 		Dialogic.signal_event.disconnect(_clog_toilet)

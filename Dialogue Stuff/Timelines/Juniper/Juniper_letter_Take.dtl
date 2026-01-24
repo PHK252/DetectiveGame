@@ -9,7 +9,9 @@ Dalton: You respect my decision.
 Theo (Awkward): ...
 Theo (Doubt): Yes, sir.
 do GlobalVars.emit_add_evidence("juniper", "letter")
+set {Juniper.has_letter} = true
 set {Juniper.finished_letter} = true
+[signal arg="has_letter"]
 if {Juniper.in_choice} == true:
 	if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
 		set {Juniper.in_choice} = false

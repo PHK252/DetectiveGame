@@ -42,7 +42,7 @@ var timed = false
 #lookat
 signal enable_look
 signal disable_look
-
+signal disable_letter
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#if GlobalVars.opened_jun_case == true:
