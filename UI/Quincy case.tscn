@@ -477,5 +477,6 @@ libraries = {
 [connection signal="pressed" from="9wxyz" to="." method="_on_wxyz_pressed"]
 [connection signal="pressed" from="0" to="." method="_on_zero_pressed"]
 [connection signal="pressed" from="Enter" to="." method="_on_enter_pressed"]
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

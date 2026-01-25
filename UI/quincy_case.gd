@@ -46,6 +46,7 @@ extends CanvasLayer
 @export var case_unlocked : AudioStreamPlayer3D
 @export var case_click : AudioStreamPlayer3D
 
+var erase := false
 func _ready():
 	label.text = ""
 	#blinker.size = Vector2(15, 3)
@@ -64,119 +65,134 @@ func reset_num():
 	wxyz_pos = -1
 
 func _on_one_pressed():
-	pressed_button = "1"
-	reset_when_switch()
-	label.text = input + "1"
+	if erase == false:
+		pressed_button = "1"
+		reset_when_switch()
+		label.text = input + "1"
 
 func _on_zero_pressed():
-	pressed_button = "0"
-	reset_when_switch()
-	label.text = input + "0"
+	if erase == false:
+		pressed_button = "0"
+		reset_when_switch()
+		label.text = input + "0"
 	
 func _on_abc_pressed():
-	pressed_button = "2"
-	reset_when_switch()
-	if abc_pos == len(abc_array) - 1:
-		abc_pos = 0
-		label.text = input + abc_array[abc_pos]
-	else:
-		abc_pos += 1
-		label.text = input + abc_array[abc_pos]
+	if erase == false:
+		pressed_button = "2"
+		reset_when_switch()
+		if abc_pos == len(abc_array) - 1:
+			abc_pos = 0
+			label.text = input + abc_array[abc_pos]
+		else:
+			abc_pos += 1
+			label.text = input + abc_array[abc_pos]
 
 func _on_def_pressed():
-	pressed_button = "3"
-	reset_when_switch()
-	if def_pos == len(def_array) - 1:
-		def_pos = 0
-		label.text = input + def_array[def_pos]
-	else:
-		def_pos += 1
-		label.text = input + def_array[def_pos]
+	if erase == false:
+		pressed_button = "3"
+		reset_when_switch()
+		if def_pos == len(def_array) - 1:
+			def_pos = 0
+			label.text = input + def_array[def_pos]
+		else:
+			def_pos += 1
+			label.text = input + def_array[def_pos]
 
 func _on_ghi_pressed():
-	pressed_button = "4"
-	reset_when_switch()
-	if ghi_pos == len(ghi_array) - 1:
-		ghi_pos = 0
-		label.text = input + ghi_array[ghi_pos]
-	else:
-		ghi_pos += 1
-		label.text = input + ghi_array[ghi_pos]
+	if erase == false:
+		pressed_button = "4"
+		reset_when_switch()
+		if ghi_pos == len(ghi_array) - 1:
+			ghi_pos = 0
+			label.text = input + ghi_array[ghi_pos]
+		else:
+			ghi_pos += 1
+			label.text = input + ghi_array[ghi_pos]
 
 
 func _on_jkl_pressed():
-	pressed_button = "5"
-	reset_when_switch()
-	if jkl_pos == len(jkl_array) - 1:
-		jkl_pos = 0
-		label.text = input + jkl_array[jkl_pos]
-	else:
-		jkl_pos += 1
-		label.text = input + jkl_array[jkl_pos]
+	if erase == false:
+		pressed_button = "5"
+		reset_when_switch()
+		if jkl_pos == len(jkl_array) - 1:
+			jkl_pos = 0
+			label.text = input + jkl_array[jkl_pos]
+		else:
+			jkl_pos += 1
+			label.text = input + jkl_array[jkl_pos]
 
 
 func _on_mno_pressed():
-	pressed_button = "6"
-	reset_when_switch()
-	if mno_pos == len(mno_array) - 1:
-		mno_pos = 0
-		label.text = input + mno_array[mno_pos]
-	else:
-		mno_pos += 1
-		label.text = input + mno_array[mno_pos]
+	if erase == false:
+		pressed_button = "6"
+		reset_when_switch()
+		if mno_pos == len(mno_array) - 1:
+			mno_pos = 0
+			label.text = input + mno_array[mno_pos]
+		else:
+			mno_pos += 1
+			label.text = input + mno_array[mno_pos]
 
 
 func _on_pqrs_pressed():
-	pressed_button = "7"
-	reset_when_switch()
-	if pqrs_pos == len(pqrs_array) - 1:
-		pqrs_pos = 0
-		label.text = input + pqrs_array[pqrs_pos]
-	else:
-		pqrs_pos += 1
-		label.text = input + pqrs_array[pqrs_pos]
+	if erase == false:
+		pressed_button = "7"
+		reset_when_switch()
+		if pqrs_pos == len(pqrs_array) - 1:
+			pqrs_pos = 0
+			label.text = input + pqrs_array[pqrs_pos]
+		else:
+			pqrs_pos += 1
+			label.text = input + pqrs_array[pqrs_pos]
 
 
 func _on_tuv_pressed():
-	pressed_button = "8"
-	reset_when_switch()
-	if tuv_pos == len(tuv_array) - 1:
-		tuv_pos = 0
-		label.text = input + tuv_array[tuv_pos]
-	else:
-		tuv_pos += 1
-		label.text = input + tuv_array[tuv_pos]
+	if erase == false:
+		pressed_button = "8"
+		reset_when_switch()
+		if tuv_pos == len(tuv_array) - 1:
+			tuv_pos = 0
+			label.text = input + tuv_array[tuv_pos]
+		else:
+			tuv_pos += 1
+			label.text = input + tuv_array[tuv_pos]
 
 
 func _on_wxyz_pressed():
-	pressed_button = "9"
-	reset_when_switch()
-	if wxyz_pos == len(wxyz_array) - 1:
-		wxyz_pos = 0
-		label.text = input + wxyz_array[wxyz_pos]
-	else:
-		wxyz_pos += 1
-		label.text = input + wxyz_array[wxyz_pos]
+	if erase == false:
+		pressed_button = "9"
+		reset_when_switch()
+		if wxyz_pos == len(wxyz_array) - 1:
+			wxyz_pos = 0
+			label.text = input + wxyz_array[wxyz_pos]
+		else:
+			wxyz_pos += 1
+			label.text = input + wxyz_array[wxyz_pos]
 
 func _on_next_pressed():
 	input = label.text
 	if len(input) == position + 1:
 		position += 1
 		position_blinker_forward(position - 1)
+	print(position)
 	reset_num()
 	#print(input)
 
 func _on_back_pressed():
 	if len(input) > 0:
-		position_blinker_backwards(position-1)
-		label.text = label.text.erase(len(label.text)-1, 1)
-		input = label.text
-		if position > 0:
-			position -= 1
-		else:
-			position = 0
-		print(position)
-		reset_num()
+		if len(input) == position:
+			erase = true
+			position_blinker_backwards(position-1)
+			if len(label.text) > len(input):
+				label.text = label.text.erase(len(label.text)-2, 2)
+			else:
+				label.text = label.text.erase(len(label.text)-1, 1)
+			input = label.text
+			if position > 0:
+				position -= 1
+			else:
+				position = 0
+			reset_num()
 
 func position_blinker_forward(pos : int):
 	var offset = label.get_character_bounds(pos)
@@ -271,3 +287,13 @@ func _open_case():
 	interact_area_1.show()
 	interact_area_2.show()
 	GlobalVars.open_quincy_case.disconnect(_open_case)
+
+
+func _on_back_button_up():
+	print("up1")
+	erase = false
+
+func _input(event):
+	if Input.is_action_just_released("ui_left"):
+		print("up2")
+		erase = false
