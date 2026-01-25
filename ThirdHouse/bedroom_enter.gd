@@ -1,8 +1,7 @@
 extends Area3D
-
+@export var alert : Sprite3D
 @export var player : CharacterBody3D
-@export var dalton_marker : Marker2D
-@export var quincy_marker : Marker2D
+@export var quincy : CharacterBody3D
 @onready var entered_room = false
 @export var phantom_camera_masterbed : PhantomCamera3D
 @export var phantom_camera_hallway : PhantomCamera3D
@@ -17,16 +16,14 @@ func _on_timeline_ended():
 
 
 func _on_bedroom_closet_cam_tween_completed():
-	if entered_room == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
+	if entered_room == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false and quincy.in_caught_bubble:
 		entered_room = true
+		alert.hide()
 		player.stop_player()
 		GlobalVars.in_dialogue = true
 		var bed_enter = Dialogic.start("Quincy_bedroom_enter")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		bed_enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		bed_enter.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
-
-
+	
 func _on_body_entered(body: Node3D) -> void:
 	if to_notes:
 		#if come back from notes then tween

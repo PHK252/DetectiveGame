@@ -129,7 +129,13 @@ func _input(event):
 				interior_interact_area_1.hide()
 				interior_interact_area_2.hide()
 				if finished_letter == true or finished_hammer == true:
-					if finished_hammer == true:
+					if finished_letter == true and finished_hammer == true:
+						GlobalVars.in_interaction = ""
+						player.start_player()
+						interact_area.hide()
+						alert.show()
+						return
+					if finished_hammer == true and GlobalVars.viewed_Quincy_letter == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()
@@ -137,7 +143,8 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_1) 
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-					elif finished_letter == true:
+						return
+					elif finished_letter == true and GlobalVars.viewed_Quincy_hammer == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
 						alert.hide()
@@ -145,6 +152,13 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_2) 
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
+						return
+					else:
+						GlobalVars.in_interaction = ""
+						player.start_player()
+						interact_area.hide()
+						alert.show()
+						return
 				else:
 					if GlobalVars.viewed_Quincy_letter == true and GlobalVars.viewed_Quincy_hammer == true:
 						GlobalVars.in_interaction = ""
@@ -170,6 +184,11 @@ func _input(event):
 						emit_signal("enable_look")
 						var game_dialogue = Dialogic.start(in_case_dialogue_2)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
+					else:
+						GlobalVars.in_interaction = ""
+						player.start_player()
+						interact_area.hide()
+						alert.show()
 			else:
 				GlobalVars.in_interaction = ""
 				player.start_player()

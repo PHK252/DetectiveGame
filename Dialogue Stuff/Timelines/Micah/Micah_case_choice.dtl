@@ -6,4 +6,5 @@ Dalton (Default): ...
 - Ask about the letter.
 	jump Micah_letter/
 - Continue.
+	set {Asked Questions.Micah_in_choice} = false
 	[end_timeline]

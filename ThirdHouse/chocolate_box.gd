@@ -38,6 +38,9 @@ var is_open = false
 signal exit_interact
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Dialogic.VAR.get_variable("Quincy.has_choco") == true:
+		interactable.set_monitorable(false)
+		chocolate.hide()
 	anim_player.play("ChocolateDefault")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -164,12 +167,13 @@ func _take_choco(argument: String):
 
 
 func _on_quincy_caught_in_view():
-	print("caught in view choco")
-	interact_area.hide()
-	Exit_Cam.set_tween_duration(0)
-	FP_Cam.priority = 0
-	Exit_Cam.priority = 30 
-	Exit_Cam.set_tween_duration(1)
-	GlobalVars.in_interaction = ""
-	player.show()
-	emit_signal("exit_interact")
+	if GlobalVars.in_interaction == interact_type:
+		print("caught in view choco")
+		interact_area.hide()
+		Exit_Cam.set_tween_duration(0)
+		FP_Cam.priority = 0
+		Exit_Cam.priority = 30 
+		Exit_Cam.set_tween_duration(1)
+		GlobalVars.in_interaction = ""
+		player.show()
+		emit_signal("exit_interact")

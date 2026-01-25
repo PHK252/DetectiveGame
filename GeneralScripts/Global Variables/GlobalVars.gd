@@ -23,7 +23,7 @@ signal unpaused
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int = 3
+@onready var day : int = 2
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need
@@ -427,7 +427,7 @@ var ghost_open = false
 func reset_globals():
 	## The actual Globals
 	forward = false
-	day = 2
+	day = 1
 	time = ""
 	current_level = ""
 	first_house = "" 

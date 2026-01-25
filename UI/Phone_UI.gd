@@ -225,7 +225,7 @@ func _on_left_hover_mouse_exited():
 @export var hangup_call : AudioStreamPlayer
 
 @onready var bar_call = false
-
+@export var alert : Sprite3D
 signal continue_convo
 signal Book_distract_quincy
 
@@ -299,6 +299,8 @@ func _on_call_pressed():
 	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
 	if GlobalVars.in_dialogue == false:
 		# Dialing THEO
+		if alert.visible:
+			alert.hide()
 		GlobalVars.in_interaction = "phone call"
 		if called_num == "034-2012": 
 			if at_bookshelf == true and needs_distraction == true:
@@ -371,7 +373,9 @@ func _on_bookshelf_area_body_exited(body):
 	at_bookshelf = false
 
 
-func _on_isaac_pressed(): #UPDATE TIMELINE
+func _on_isaac_pressed():
+	if alert.visible:
+		alert.hide()
 	exit_phone()
 	Dialogic.start("Phone_num_gone")
 	GlobalVars.in_interaction = "phone call"
@@ -379,8 +383,10 @@ func _on_isaac_pressed(): #UPDATE TIMELINE
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 
-func _on_quincy_pressed(): #UPDATE TIMELINE
+func _on_quincy_pressed():
 	exit_phone()
+	if alert.visible:
+		alert.hide()
 	GlobalVars.in_dialogue = true
 	if GlobalVars.current_level == "quincy":
 		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
@@ -397,13 +403,17 @@ func _on_quincy_pressed(): #UPDATE TIMELINE
 	
 
 func _on_juniper_pressed(): #UPDATE TIMELINE
+	if alert.visible:
+		alert.hide()
 	exit_phone()
 	Dialogic.start("Juniper_call")
 	GlobalVars.in_interaction = "phone call"
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
-func _on_clyde_pressed(): #UPDATE TIMELINE
+func _on_clyde_pressed():
+	if alert.visible:
+		alert.hide()
 	exit_phone()
 	Dialogic.start("Clyde_call")
 	GlobalVars.in_interaction = "phone call"
@@ -419,6 +429,8 @@ func _on_skylar_pressed(): #UPDATE TIMELINE
 
 func _on_theo_pressed(): #UPDATE TIMELINE
 	exit_phone()
+	if alert.visible:
+		alert.hide()
 	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
 	GlobalVars.in_interaction = "phone call"
 	if at_bookshelf == true and needs_distraction == true:

@@ -22,13 +22,27 @@ if {Juniper.found_skylar} == true and {Quincy.talked_at_port} == true:
 		set {Quincy.has_letter} = true
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_portrait")
-		jump Quincy_open_case_choice/
+		if {Quincy.in_choice} == true:
+			if {Quincy.finished_case_hammer} == true and {Quincy.finished_case_note} == true:
+				set {Quincy.in_choice} = false
+				[end_timeline]
+			else:
+				jump Quincy_open_case_choice/
+		else:
+			[end_timeline]
 	else:
 		Quincy (Squint): Hmph.
 		Quincy (Sigh): I swear...
 		Quincy (Awkward): Of all the times for the brat to come back...
 		Quincy (Squint): Why now?
-		jump Quincy_open_case_choice/
+		if {Quincy.in_choice} == true:
+			if {Quincy.finished_case_hammer} == true and {Quincy.finished_case_note} == true:
+				set {Quincy.in_choice} = false
+				[end_timeline]
+			else:
+				jump Quincy_open_case_choice/
+		else:
+			[end_timeline]
 elif {Juniper.found_skylar} == true and {Quincy.talked_at_port} == false:
 	if {Quincy.finished_case_note} == false:
 		set {Quincy.finished_case_note} = true
@@ -61,11 +75,25 @@ elif {Juniper.found_skylar} == true and {Quincy.talked_at_port} == false:
 		set {Quincy.has_letter} = true
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "name_no_portrait")
-		jump Quincy_open_case_choice/
+		if {Quincy.in_choice} == true:
+			if {Quincy.finished_case_hammer} == true and {Quincy.finished_case_note} == true:
+				set {Quincy.in_choice} = false
+				[end_timeline]
+			else:
+				jump Quincy_open_case_choice/
+		else:
+			[end_timeline]
 	else:
 		Quincy (Squint): Hmph.
 		Quincy (Sigh): I would’ve never guessed that brat had the balls to pull something like this.
-		jump Quincy_open_case_choice/
+		if {Quincy.in_choice} == true:
+			if {Quincy.finished_case_hammer} == true and {Quincy.finished_case_note} == true:
+				set {Quincy.in_choice} = false
+				[end_timeline]
+			else:
+				jump Quincy_open_case_choice/
+		else:
+			[end_timeline]
 else:
 	if {Quincy.finished_case_note} == false:
 		set {Quincy.finished_case_note} = true
@@ -104,10 +132,24 @@ else:
 		set {Quincy.has_letter} = true
 		do GlobalVars.emit_add_evidence("quincy", "letter")
 		do GlobalVars.emit_add_note("quincy", "letter", "no_name_no_portrait")
-		jump Quincy_open_case_choice/
+		if {Quincy.in_choice} == true:
+			if {Quincy.finished_case_hammer} == true and {Quincy.finished_case_note} == true:
+				set {Quincy.in_choice} = false
+				[end_timeline]
+			else:
+				jump Quincy_open_case_choice/
+		else:
+			[end_timeline]
 	else:
 		Dalton (Doubt1): Do you remember your kid’s name yet?
 		Quincy (Squint): Ah...
 		Quincy (Awkward): no.
 		Dalton (Roll Eyes): Father of the year, you are.
-		jump Quincy_open_case_choice/
+		if {Quincy.in_choice} == true:
+			if {Quincy.finished_case_hammer} == true and {Quincy.finished_case_note} == true:
+				set {Quincy.in_choice} = false
+				[end_timeline]
+			else:
+				jump Quincy_open_case_choice/
+		else:
+			[end_timeline]

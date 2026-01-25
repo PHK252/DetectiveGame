@@ -34,6 +34,7 @@ extends Node3D
 @export var dialogue: String
 @export var view_item: String
 
+@export var coors : MeshInstance3D
 #@export var in_pause : bool
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
@@ -48,6 +49,14 @@ signal juniper_wander
 
 signal enable_look
 signal disable_look
+
+func _ready():
+	if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == true:
+		coors.hide()
+		#interact_area_2.input_pickable = false
+		#if Dialogic.VAR.get_variable("Quincy.show_coors_note") == true:
+			#read_dialogue = true
+			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -90,11 +99,9 @@ func _process(delta):
 			cam_anim.play("RESET")
 			player.show()
 			emit_signal("enable_look")
+			GlobalVars.in_dialogue = true
 			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			game_dialogue.register_character(load(load_char_dialogue), character_marker)
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)
 			interact_area.hide()
@@ -134,7 +141,7 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
-	if GlobalVars.in_interaction == "":
+	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
 		emit_signal("general_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()

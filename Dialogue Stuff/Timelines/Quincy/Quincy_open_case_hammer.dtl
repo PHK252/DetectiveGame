@@ -4,7 +4,16 @@ Quincy (Default): Hmm...
 Dalton (Default): I’ll take it in for investigation. 
 Quincy (Smug): Yeah. 
 Quincy (Smirk): You do that.
+if {Quincy.has_hammer} == false:
+	do GlobalVars.emit_add_evidence("quincy", "hammer")
 set {Quincy.has_hammer} = true
 [signal arg="has hammer"]
-do GlobalVars.emit_add_evidence("quincy", "hammer")
-jump Quincy_open_case_choice/
+set {Quincy.finished_case_hammer} = true
+if {Quincy.in_choice} == true:
+	if {Quincy.finished_case_hammer} == true and {Quincy.finished_case_note} == true:
+		set {Quincy.in_choice} = false
+		[end_timeline]
+	else:
+		jump Quincy_open_case_choice/
+else:
+	[end_timeline]

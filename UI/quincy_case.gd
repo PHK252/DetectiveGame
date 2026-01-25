@@ -3,8 +3,9 @@ extends CanvasLayer
 @onready var label = $Label
 @onready var blinker = $Blink
 
+const MAX := 10
 
-@onready var password = "a1b2c3d4e5f6g7h8i9"
+@onready var password = "0000"#"a1b2c3b2a1"
 @onready var input = ""
 
 @onready var abc_pos = -1
@@ -52,6 +53,9 @@ func _ready():
 	#blinker.size = Vector2(15, 3)
 	#blinker.position = Vector2(blinker_x_pos, 821.0)
 	blinker_anim.play("Blink")
+	GlobalVars.opened_quincy_case = true
+	if GlobalVars.opened_quincy_case == true:
+		open_animation.play("case_open")
 #	open_animation.play("default")
 
 func reset_num():
@@ -65,19 +69,19 @@ func reset_num():
 	wxyz_pos = -1
 
 func _on_one_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "1"
 		reset_when_switch()
 		label.text = input + "1"
 
 func _on_zero_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "0"
 		reset_when_switch()
 		label.text = input + "0"
 	
 func _on_abc_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "2"
 		reset_when_switch()
 		if abc_pos == len(abc_array) - 1:
@@ -88,7 +92,7 @@ func _on_abc_pressed():
 			label.text = input + abc_array[abc_pos]
 
 func _on_def_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "3"
 		reset_when_switch()
 		if def_pos == len(def_array) - 1:
@@ -99,7 +103,7 @@ func _on_def_pressed():
 			label.text = input + def_array[def_pos]
 
 func _on_ghi_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "4"
 		reset_when_switch()
 		if ghi_pos == len(ghi_array) - 1:
@@ -111,7 +115,7 @@ func _on_ghi_pressed():
 
 
 func _on_jkl_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "5"
 		reset_when_switch()
 		if jkl_pos == len(jkl_array) - 1:
@@ -123,7 +127,7 @@ func _on_jkl_pressed():
 
 
 func _on_mno_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "6"
 		reset_when_switch()
 		if mno_pos == len(mno_array) - 1:
@@ -135,7 +139,7 @@ func _on_mno_pressed():
 
 
 func _on_pqrs_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "7"
 		reset_when_switch()
 		if pqrs_pos == len(pqrs_array) - 1:
@@ -147,7 +151,7 @@ func _on_pqrs_pressed():
 
 
 func _on_tuv_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "8"
 		reset_when_switch()
 		if tuv_pos == len(tuv_array) - 1:
@@ -159,7 +163,7 @@ func _on_tuv_pressed():
 
 
 func _on_wxyz_pressed():
-	if erase == false:
+	if len(input) < MAX:
 		pressed_button = "9"
 		reset_when_switch()
 		if wxyz_pos == len(wxyz_array) - 1:
@@ -170,18 +174,18 @@ func _on_wxyz_pressed():
 			label.text = input + wxyz_array[wxyz_pos]
 
 func _on_next_pressed():
-	input = label.text
-	if len(input) == position + 1:
-		position += 1
-		position_blinker_forward(position - 1)
-	print(position)
-	reset_num()
+	if len(input) < MAX-1:
+		input = label.text
+		if len(input) == position + 1:
+			position += 1
+			position_blinker_forward(position - 1)
+		#print(position)
+		reset_num()
 	#print(input)
 
 func _on_back_pressed():
 	if len(input) > 0:
 		if len(input) == position:
-			erase = true
 			position_blinker_backwards(position-1)
 			if len(label.text) > len(input):
 				label.text = label.text.erase(len(label.text)-2, 2)
@@ -287,13 +291,3 @@ func _open_case():
 	interact_area_1.show()
 	interact_area_2.show()
 	GlobalVars.open_quincy_case.disconnect(_open_case)
-
-
-func _on_back_button_up():
-	print("up1")
-	erase = false
-
-func _input(event):
-	if Input.is_action_just_released("ui_left"):
-		print("up2")
-		erase = false

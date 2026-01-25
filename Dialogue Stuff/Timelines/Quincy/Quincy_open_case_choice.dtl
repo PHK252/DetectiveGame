@@ -1,6 +1,9 @@
+set {Quincy.in_choice} = true
 Dalton (Default): Ask about...
 - The hammer.
 	jump Quincy_open_case_hammer/hammer
 - The note.
 	jump Quincy_open_case_note/
 - Continue.
+	set {Quincy.in_choice} = false
+	[end_timeline]

@@ -26,7 +26,8 @@ signal reposition_dalton
 		#anim_player.play("fainting_cutscene")
 	
 func _ready() -> void:
-	Dialogic.signal_event.connect(_on_dialogic_signal)
+	pass
+	#Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func _on_bar_make_drinks():
 	print("making drinks")
@@ -48,6 +49,7 @@ func _on_bar_faint_time():
 	player.stop_player()
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	alert.hide()
 	faint_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 	faint_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
@@ -62,7 +64,7 @@ func _on_timeline_ended():
 	emit_signal("theo_follow")
 	
 func _on_dialogic_signal(argument: String):
-	print("signal")
+	print(argument)
 	if argument == "water":
 		print("assigned_water")
 		cutscene = "cocktail_cutscene_water"

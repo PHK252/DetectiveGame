@@ -4,7 +4,7 @@ extends Node2D
 @export var anim : AnimationPlayer
 @export var restart: AnimationPlayer
 @export var phone_pause : CanvasLayer
-
+@export var player : CharacterBody3D
 @onready var anim_frames = $AnimFrames
 @onready var text = $Text
 @onready var quincy_detection_restart = $QuincyDetectionRestart
@@ -39,6 +39,8 @@ func _input(event):
 			print("restarting...")
 			InputMap.action_add_event("Quit", pause[0])
 			Loading.load_scene(main, GlobalVars.third_house_path, "","","")
+			GlobalVars.in_level = false
+			player.start_player()
 			pass
 
 

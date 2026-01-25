@@ -39,6 +39,7 @@ var triggered = false
 @export var close_door : AudioStreamPlayer3D
 @export var key_sound : AudioStreamPlayer3D
 
+@export var interactable : Interactable
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -266,3 +267,14 @@ func _on_caught_open_doors():
 		open()
 		collision.set_deferred("disabled", true)
 		return
+
+
+func _on_quincy_disable_office():
+	if interactable:
+		interactable.set_deferred("monitorable", false)
+
+
+func _on_interact_resume():
+	if interactable:
+		if interactable.monitorable == false:
+			interactable.set_deferred("monitorable", true)

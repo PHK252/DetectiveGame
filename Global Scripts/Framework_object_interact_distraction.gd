@@ -3,6 +3,7 @@ extends Node3D
 #Assign first person cam and exit cam + idle animation
 @export var FP_Cam: PhantomCamera3D
 @export var Exit_Cam: PhantomCamera3D
+@export var View_exit_Cam: PhantomCamera3D
 
 #First Person cam anim + movement
 @export var cam_anim: AnimationPlayer
@@ -23,6 +24,7 @@ extends Node3D
 
 #Interaction Variables
 @export var interact_area: Area2D
+@export  var ui : CanvasLayer
 @export var viewed_dialogue_file: String
 @export var regular_dialogue_file: String
 @export var cue_distract_dialogue :String
@@ -222,11 +224,17 @@ func _on_thoughts_finished():
 
 
 func _on_quincy_caught_in_view():
-	interact_area.hide()
-	Exit_Cam.set_tween_duration(0)
-	FP_Cam.priority = 0
-	Exit_Cam.priority = 30 
-	Exit_Cam.set_tween_duration(1)
-	GlobalVars.in_interaction = ""
-	player.show()
-	emit_signal("exit_interact")
+	if GlobalVars.in_interaction == interact_type:
+		if ui.visible:
+			ui.hide()
+		interact_area.hide()
+		Exit_Cam.set_tween_duration(0)
+		FP_Cam.priority = 0
+		if View_exit_Cam:
+			View_exit_Cam.priority = 30 
+		else:
+			Exit_Cam.priority = 30 
+		Exit_Cam.set_tween_duration(1)
+		GlobalVars.in_interaction = ""
+		player.show()
+		emit_signal("exit_interact")

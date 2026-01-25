@@ -73,6 +73,7 @@ var sound_allowed := true
 
 @export var interact : Interactable
 var in_danger := false
+var in_caught_bubble := false
 var in_choco := false
 var alarm_active = false
 signal play_caught
@@ -80,7 +81,7 @@ signal pause_timeout
 signal time_out_resume
 signal caught_in_view
 signal open_doors
-
+signal disable_office
 @export var sound_player : AnimationPlayer
 var end_time := false
 var start_time := false
@@ -437,30 +438,39 @@ func _on_fixed_wine_distraction() -> void:
 
 func _on_dalton_caught_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
-		if catch_possibility and in_danger == true:
-			print("entered catch")
-			interact.set_deferred("monitorable", false)
-			print("quincy caught you")
-			if GlobalVars.in_interaction != "":
-				emit_signal("caught_in_view")
-			else:
-				emit_signal("play_caught")
-			if in_choco == true:
-				return
-			emit_signal("open_doors")
+		in_caught_bubble = true
+		_quincy_caught()
+
+func _on_dalton_caught_body_exited(body):
+	if body.name == "Quincy":
+		in_caught_bubble = false
+
+func _quincy_caught():
+	if catch_possibility and in_danger == true:
+		interact.set_deferred("monitorable", false)
+		print("quincy caught you")
+		if GlobalVars.in_interaction != "":
+			emit_signal("caught_in_view")
+		else:
+			emit_signal("play_caught")
+		if in_choco == true:
+			return
+		emit_signal("open_doors")
 
 func _on_distraction_time_timeout() -> void:
 	if interact:
 		interact.set_deferred("monitorable", true)
 	print("finished")
+	Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
 	if in_danger == false:
-		print("no danger resume")
 		is_distracted = false
-		Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
-		Dialogic.VAR.set_variable("Quincy.is_distracted", false) 
 		emit_signal("time_out_resume")
+		print("no danger resume")
+		Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
 	catch_possibility = true
 	print("catch_possibility")
+	if in_caught_bubble:
+		_quincy_caught()
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
 		wander_choice = 11
@@ -604,6 +614,7 @@ func _on_phone_book_distract_quincy():
 	nav.target_position = marker_positions[1].global_position
 	state = FOLLOW
 	distraction_timer.start()
+	emit_signal("disable_office")
 	emit_signal("pause_timeout")
 	fall_allowed = false
 
@@ -778,14 +789,14 @@ func _on_time_out_drop_distract():
 
 func _on_danger_body_entered(body):
 	if body.is_in_group("player"):
-		if is_distracted == true: 
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true: 
 			in_danger = true # Replace with function body.
 			print("in danger")
 
 
 func _on_danger_body_exited(body):
 	if body.is_in_group("player"):
-		if is_distracted == true and alarm_active == false: 
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true and alarm_active == false: 
 			in_danger = false
 			print("out of danger")
 		else:
