@@ -9,7 +9,7 @@ extends MeshInstance3D
 
 func _ready():
 	if Dialogic.VAR.get_variable("Quincy.has_letter") == false or Dialogic.VAR.get_variable("Quincy.has_hammer") == false:
-		print("connect")
+		#print("connect")
 		Dialogic.signal_event.connect(_hide_takables)
 	if Dialogic.VAR.get_variable("Quincy.has_hammer") == false:
 		show()
@@ -29,4 +29,6 @@ func _hide_takables(arg : String):
 		letter_input.input_pickable = false
 		letter.hide()
 		return
+	if Dialogic.VAR.get_variable("Quincy.has_letter") == false or Dialogic.VAR.get_variable("Quincy.has_hammer") == false:
+		Dialogic.signal_event.disconnect(_hide_takables)
 		
