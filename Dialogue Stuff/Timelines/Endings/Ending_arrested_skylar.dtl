@@ -1,28 +1,54 @@
-Theo (Awkward): ...
-Theo (Talk): Is that it?
-Theo (Thinking): I mean, we got the perp, but it seems like there was a lot that was left unsaid.
-Dalton (Awkward): We’ll have some more time to get them to talk...
-Dalton (Talk): Quincy will definitely push charges on them.
-Theo (Thinking): I see.
-Theo (Awkward): But...
-Theo (Laugh): Our job here is done!
-Dalton (Sigh): Mostly.
-Theo (Happy): Why don’t we go celebr-
-[signal arg="start_call"]
-[end_timeline]
-label call
-Chief: [shake rate=10.0 level=4 connected=2]A missing citizen was reported.[/shake] 
-Chief: [shake rate=10.0 level=4 connected=2]They were last seen at the Hustle and Bustle in Industry.[/shake]
-Chief: [shake rate=10.0 level=4 connected=2]Head out there to see if anyone knows anything about it.[/shake] 
-Dalton (Talk): Yes, sir!
-[signal arg="end_call"]
-[wait time="1.0"]
-Dalton (Awkward): We got a call to investigate a missing citizens report. 
-Theo (Surprised): ...? 
-Theo (Concerned): In-person?
-Theo (Thinking): Seems serious.
-Dalton (Hmph): Hmph. 
-Dalton (Talk): Let’s roll out.
-[signal arg = "walk_out"]
-[wait time="1.0"]
-[end_timeline]
+if {Character Aff Points.Theo} < 3:
+	Theo (Awkward): ...
+	Theo (Resting): Is that it?
+	Theo (Concerned): We got the perp, but it seems like we missed something still.
+	Dalton (Awkward): We’ll have some more time to get them to talk...
+	Dalton (Talk): Quincy will definitely push charges on them.
+	Theo (Doubt): I see.
+	[signal arg="start_call"]
+	[end_timeline]
+	label call
+	Chief: [shake rate=10.0 level=4 connected=2]A missing citizen was reported.[/shake] 
+	Chief: [shake rate=10.0 level=4 connected=2]They were last seen at the Hustle and Bustle in Industry.[/shake]
+	Chief: [shake rate=10.0 level=4 connected=2]Head out there to see if anyone knows anything about it.[/shake] 
+	Dalton (Talk): Yes, sir!
+	[signal arg="end_call"]
+	[wait time="1.0"]
+	Dalton (Awkward): We got a call to investigate a missing citizens report. 
+	Theo (Surprised): ...? 
+	Theo (Concerned): In-person?
+	Theo (Resting): Seems serious.
+	Dalton (Hmph): Hmph. 
+	Dalton (Talk): Let’s roll out.
+	[signal arg = "walk_out"]
+	[wait time="1.0"]
+	[end_timeline]
+else:
+	Theo (Awkward): ...
+	Theo (Talk): Is that it?
+	Theo (Thinking): I mean, we got the perp, but it seems like there was a lot that was left unsaid.
+	Dalton (Awkward): We’ll have some more time to get them to talk...
+	Dalton (Talk): Quincy will definitely push charges on them.
+	Theo (Thinking): I see.
+	Theo (Awkward): But...
+	Theo (Laugh): Our job here is done!
+	Dalton (Sigh): Mostly.
+	Theo (Happy): Why don’t we go celebr-
+	[signal arg="start_call"]
+	[end_timeline]
+	label call
+	Chief: [shake rate=10.0 level=4 connected=2]A missing citizen was reported.[/shake] 
+	Chief: [shake rate=10.0 level=4 connected=2]They were last seen at the Hustle and Bustle in Industry.[/shake]
+	Chief: [shake rate=10.0 level=4 connected=2]Head out there to see if anyone knows anything about it.[/shake] 
+	Dalton (Talk): Yes, sir!
+	[signal arg="end_call"]
+	[wait time="1.0"]
+	Dalton (Awkward): We got a call to investigate a missing citizens report. 
+	Theo (Surprised): ...? 
+	Theo (Concerned): In-person?
+	Theo (Thinking): Seems serious.
+	Dalton (Hmph): Hmph. 
+	Dalton (Talk): Let’s roll out.
+	[signal arg = "walk_out"]
+	[wait time="1.0"]
+	[end_timeline]

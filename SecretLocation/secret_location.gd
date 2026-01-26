@@ -1,5 +1,5 @@
 extends Node3D
-
+@export var main : Node3D
 @export var player : CharacterBody3D
 @export var alert : Sprite3D
 @export var dalton_marker : Marker2D
@@ -82,4 +82,4 @@ func _exit_scene():
 	GlobalVars.in_dialogue = false
 	#player.start_player()
 	GlobalVars.in_interaction = ""
-	#fade to load
+	Loading.load_scene(main, GlobalVars.interrogation, "driving", "afternoon", "")

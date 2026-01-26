@@ -60,6 +60,7 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	cam_anims.play("OutroAnimation")
 	emit_signal("walkoutdalton")
+	await cam_anims.animation_finished
 	match Dialogic.VAR.get_variable("Endings.Ending_type"):
 		"Give Kale Cure":
 			Loading.load_scene(main, GlobalVars.office_path, "date", "21 DEC XX20", "")

@@ -37,6 +37,7 @@ func _ready() -> void:
 	elif Dialogic.VAR.get_variable("Interogation.Secret_intero") == true:
 		dialogic_file = "Secret_intero"
 	else:
+		dialogic_file = "Day_3_intero_case"
 		print_debug("How you get here?")
 		return
 
@@ -50,9 +51,6 @@ func _ready() -> void:
 		Dialogic.signal_event.connect(_walk_out_skylar)
 		Dialogic.signal_event.connect(_show_da_choco)
 	GlobalVars.in_dialogue = true
-	intero_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	intero_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-	intero_dialogue.register_character(load("res://Dialogic Characters/Skylar.dch"), skylar_maker)
 
 
 func _on_timeline_ended():
