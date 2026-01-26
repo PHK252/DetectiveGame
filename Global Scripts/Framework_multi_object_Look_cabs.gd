@@ -95,7 +95,6 @@ func _process(delta):
 			mouse_pos = main.mouse_pos
 		else:
 			mouse_pos = get_viewport().get_mouse_position()
-		print(mouse_pos)
 		if mouse_pos.y >= tilt_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 			tilt = "down"

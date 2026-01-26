@@ -1,4 +1,4 @@
-if {Juniper.leave} == true and {Call.Juniper_called} == false:
+if {Juniper.leave} == true and {Call.Juniper_called} == false and {Character Aff Points.Juniper} > 1:
 	Juniper (Call): [shake rate=10.0 level=4 connected=2]Hello?[/shake]
 	Dalton (Talk): Hello, this is Detective Dalton-
 	Juniper (Call): [shake rate=10.0 level=4 connected=2]Oh![/shake]
