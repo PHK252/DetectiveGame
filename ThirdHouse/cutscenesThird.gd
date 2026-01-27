@@ -49,7 +49,7 @@ func _on_bar_faint_time():
 	player.stop_player()
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	Dialogic.signal_event.connect(_on_dialogic_signal)
+	#Dialogic.signal_event.connect(_on_dialogic_signal)
 	alert.hide()
 	faint_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
 	faint_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
@@ -62,6 +62,7 @@ func _on_timeline_ended():
 	emit_signal("open_door")
 	player.start_player()
 	emit_signal("theo_follow")
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	
 func _on_dialogic_signal(argument: String):
 	print(argument)
@@ -74,3 +75,11 @@ func _on_dialogic_signal(argument: String):
 		cutscene = "cocktail_cutscene_beer"
 	if argument == "whiskey":
 		cutscene = "cocktail_cutscene_whiskey"
+
+
+func _on_bar_bar_interacted():
+	Dialogic.signal_event.connect(_on_dialogic_signal)
+
+
+func _on_bar_bar_leave():
+	Dialogic.signal_event.disconnect(_on_dialogic_signal)

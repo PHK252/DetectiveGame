@@ -22,7 +22,8 @@ signal door_open
 signal door_close
 
 func _ready():
-	door_interactable.set_deferred("monitorable", !Dialogic.VAR.get_variable("Quincy.left_quincy"))
+	if Dialogic.VAR.get_variable("Quincy.left_quincy"):
+		door_interactable.set_deferred("monitorable", false)
 	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Quincy.left_quincy"))
 	pass # to test
 	#

@@ -53,7 +53,6 @@ func _ready():
 	#blinker.size = Vector2(15, 3)
 	#blinker.position = Vector2(blinker_x_pos, 821.0)
 	blinker_anim.play("Blink")
-	GlobalVars.opened_quincy_case = true
 	if GlobalVars.opened_quincy_case == true:
 		open_animation.play("case_open")
 #	open_animation.play("default")

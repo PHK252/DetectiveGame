@@ -28,6 +28,8 @@ signal Switch_theo_marker
 signal enable_look
 signal disable_look
 signal DaltonVisible
+signal bar_interacted
+signal bar_leave
 func _ready():
 	interactable.set_monitorable(false) 
 	pass
@@ -68,6 +70,7 @@ func _on_bar_interact_interacted(interactor):
 		Dialogic.signal_event.connect(_make_drinks)
 		Dialogic.signal_event.connect(_call_theo)
 		emit_signal("Switch_Dalton_marker")
+		emit_signal("bar_interacted")
 		emit_signal("Nudge_Quincy_marker")
 		player.stop_player()
 		alert.hide()
@@ -80,6 +83,7 @@ func _on_timeline_ended():
 			#GlobalVars.in_dialogue = false
 		else:
 			in_bar = false
+			emit_signal("bar_leave")
 			dalton_bar.visible = false
 			stool_getup.play()
 			emit_signal("DaltonVisible")

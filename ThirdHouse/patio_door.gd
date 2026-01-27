@@ -2,6 +2,7 @@ extends Node3D
 
 @export var animation_tree : AnimationTree
 @export var collision : CollisionShape3D
+@export var patio_lock : CollisionShape3D
 @export var player : CharacterBody3D
 @export var alert : Sprite3D
 @export var dalton_marker : Marker2D
@@ -17,7 +18,11 @@ var triggered = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	if Dialogic.VAR.get_variable("Quincy.left_quincy") == true:
+		patio_lock.disabled = true
+		return
+	patio_lock.disabled = !is_open
+	
 
 func open() -> void:
 	print("opening")
@@ -45,9 +50,6 @@ func close() -> void:
 	animation_tree["parameters/conditions/is_closed"] = false
 	cooldown = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_back_interacted(interactor):
@@ -56,6 +58,7 @@ func _on_back_interacted(interactor):
 		collision.disabled = true
 		if inside_open == false:
 			inside_open = true
+			patio_lock.disabled = !inside_open
 	elif is_open == true and cooldown == false:
 		close()
 		collision.disabled = false
@@ -85,64 +88,8 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 
-#func _on_interactable_interacted(interactor: Interactor) -> void:
-	#print(is_open)
-	#print(inside_open)
-	##game code
-	##__________________
-	##player.stop_player()
-	##GlobalVars.in_dialogue = true
-	##Dialogic.timeline_ended.connect(_on_timeline_ended)
-	##Dialogic.signal_event.connect(doorOpen)
-	##var layout = Dialogic.start("Enter_house")
-	##layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	##layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-	##layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-	#
-	##for debug
-	##__________________
-	#
-	#if is_open == false and inside_open == true and GlobalVars.in_dialogue == false:
-		##GlobalVars.in_dialogue == true
-		##Dialogic.signal_event.connect(doorOpen)
-		##Dialogic.timeline_ended.connect(_on_timeline_ended)
-		##var layout = Dialogic.start("Micah_Leave")
-		##layout.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		##layout.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-		##layout.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		#pass
-	#
-	#elif is_open == false and GlobalVars.in_dialogue == false and cooldown == false:
-		#pass
-		##print("open")
-		##$Interactable.queue_free()
-		##if greeting == false and quincy_house == false and triggered == false:
-			##print("asking juniper to come")
-			##emit_signal("juniper_greeting")
-			##emit_signal("cam_greeting")
-			##triggered = true
-			##return
-			###play knocking sound
-		##
-		##if (greeting == true and quincy_house == false) or quincy_house:
-			##open()
-			##collision.disabled = true
-			##return
-		#
-	#if is_open == true and cooldown == false: 
-		#close()
-		#collision.disabled = false
 
 
-#func doorOpen(argument: String):
-	#if not is_open and argument == "open_door":
-		##$Interactable.queue_free()
-		#open()
-		#collision.disabled = true
-		#is_open = true
 
-#
-#func _on_side_enter_body_entered(body: Node3D) -> void:
-	#if is_open == false:
-		#open()
-		#collision.disabled = true
+func _on_main_level_end():
+	patio_lock.disabled = true

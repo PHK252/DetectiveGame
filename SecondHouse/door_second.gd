@@ -100,6 +100,7 @@ func _process(delta: float) -> void:
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	print(is_open)
 	print(entered)
+	
 	#game code
 	#__________________
 	#player.stop_player()

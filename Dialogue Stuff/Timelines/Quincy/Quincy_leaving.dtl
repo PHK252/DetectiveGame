@@ -2,135 +2,134 @@ Dalton: Leave?
 - Yes.
 	if {Quincy.solved_case} == true:
 		if {Quincy.solved_rever} == true:
-			Dalton: I- 
-			Dalton: Um...
-			Dalton: Uh...
+			Dalton (Surprised): I- 
+			Dalton (Resting): Um...
+			Dalton (Awkward): Uh...
 			Dalton: I think we’re done here.
-			Dalton: We should head back. 
-			Quincy: Well...
-			Quincy: Since you are done, why don’t you both stay here for a bit?
-			Quincy: We got some catching up to do, Dalton.
-			Quincy: And I’d love to know more about you, Theo. 
-			Dalton: ...!
-			Dalton: We sh-
-			Theo: That sounds amazing!
-			Quincy: Fantastic! 
-			Quincy: I’ll-
-			Dalton: Theo...
-			Dalton: We have to go...
-			Dalton: Please.
-			Theo: Why?
-			Dalton: Just-
-			Dalton: Let’s go. 
-			Dalton: I’m tired. 
-			Theo: Okay, ya old fox.
-			Theo: You don’t have to be so down in the dumps about it. 
-			Theo: Well...
-			Theo: We better head back, so Dalton can get his afternoon nap. 
-			Theo: He gets cranky when he doesn’t get them. 
-			Dalton: Hmph.
-			Quincy: Ah...
-			Quincy: Okay. 
-			Quincy: How about we can have a celebratory dinner after all this is done?
-			Theo: Definitely!
-			Theo: See ya, later!
-			Quincy: Goodbye!
-			Dalton: ...
-			Dalton: bye.
+			Dalton (Talk): We should head back. 
+			Quincy (Smug): Well...
+			Quincy (Happy): Since you are done, why don’t you both stay here for a bit?
+			Quincy (Laugh): We got some catching up to do, Dalton.
+			Quincy (Smug): And I’d love to know more about you, Theo. 
+			Dalton (Surprised): ...!
+			Dalton (Awkward): We sh-
+			Theo (Laugh): That sounds amazing!
+			Quincy (Smirk): Fantastic! 
+			Quincy (Smug): I’ll-
+			Dalton (Resting): Theo...
+			Dalton (Squint): We have to go...
+			Dalton (Sad): Please.
+			Theo (Concerned): Why?
+			Dalton (Awkward): Just-
+			Dalton (Sigh): Let’s go. 
+			Dalton (Sad): I’m tired. 
+			Theo (Silly): Okay, ya old fox.
+			Theo (Thinking): You don’t have to be so down in the dumps about it. 
+			Theo (Happy): Well...
+			Theo (Default): We better head back, so Dalton can get his afternoon nap. 
+			Theo (Talk): He gets cranky when he doesn’t get them. 
+			Dalton (Hmph): Hmph.
+			Quincy (Awkward): Ah...
+			Quincy (Squint): Okay. 
+			Quincy (Smug): How about we can have a celebratory dinner after all this is done?
+			Theo (Laugh): Definitely!
+			Theo (Silly): See ya, later!
+			Quincy (Happy): Goodbye!
+			Dalton (Awkward): ...
+			Dalton (Resting): bye.
 			[signal arg= "open_door"]
 			[end_timeline]
 		else:
 			if {Character Aff Points.Theo} > 3:
-				Dalton: We are pretty much done here. 
-				Dalton: Pretty open and shut case. 
-				Dalton: Quincy, I’ll let you know once we apprehend and question Skylar.
-				Dalton: Is there anything else we can do for you?
-				Quincy: Nope, that’s pretty much it. 
-				Quincy: Thank you both for dedication and service to this city. 
-				Quincy: Arcadia Springs would not be the same without you.
-				Dalton: Hmph.
-				Theo: Thank you!
-				Theo: It was nice meeting you, Quincy!
-				Theo: We should all have dinner after this!
-				Quincy: Yes, of course.
-				Quincy: I know a place in Midtown that’ll explode your fur off.
-				Theo: Ooh...
-				Theo: I’ll look forward to it. 
-				Dalton: We should get going before Chief gets antsy. 
-				Theo: Yeah...
-				Theo: Definitely don’t want that. 
-				Theo: Bye, Quincy!
-				Quincy: Goodbye!
-				Quincy: Drive safe!
-				Quincy: Oh, and Dalton!
-				Quincy: We’ll catch up later, yeah?
-				Dalton: Hmph.
+				Dalton (Talk): We are pretty much done here. 
+				Dalton (Awkward): Pretty open and shut case. 
+				Dalton (Default): I’ll let you know once we apprehend and question Skylar.
+				Dalton (Squint): Is there anything else we can do for you?
+				Quincy (Squint Smug): Nope, that’s pretty much it. 
+				Quincy (Happy): Thank you both for dedication and service to this city. 
+				Quincy (Smug): Arcadia Springs would not be the same without you.
+				Dalton (Awkward): Hmph.
+				Theo (Laugh): It was nice meeting you, Quincy!
+				Theo (Happy): We should all have dinner after this!
+				Quincy (Smirk): Yes, of course.
+				Quincy (Laugh): I know a place in Midtown that’ll explode your fur off.
+				Theo (Talk): Ooh...
+				Theo (Puppy Eyes): Yes, please...
+				Dalton (Talk): We should get going before Chief gets antsy. 
+				Theo (Thinking): Yeah...
+				Theo (Concerned): Definitely don’t want that. 
+				Theo (Happy): Bye, Quincy!
+				Quincy (Smug): Goodbye!
+				Quincy (Happy): Drive safe!
+				Quincy (Awkward): Oh, and Dalton...
+				Quincy (Smug): We’ll catch up later, yeah?
+				Dalton (Resting): Hmph.
 				[signal arg= "open_door"]
 				[end_timeline]
 			else:
-				Dalton: I think we are pretty much done here. 
-				Dalton: Pretty open and shut case. 
-				Dalton: Quincy.
-				Dalton: I’ll let you know once we apprehend and question Skylar.
-				Dalton: Is there anything else we can do for you?
-				Quincy: Nope, that’s pretty much it. 
-				Quincy: Thank you both for dedication and service to this city. 
-				Quincy: Arcadia Springs would not be the same without you.
-				Dalton: Hmph.
-				Dalton: Thanks.
-				Dalton: We should get going before Chief gets antsy. 
-				Theo: Yeah...
-				Theo: Definitely don’t want that. 
-				Theo: Bye, Quincy!
-				Theo: It was nice meeting you!
-				Quincy: Goodbye!
-				Quincy: Drive safe!
-				Quincy: Oh, and Dalton!
-				Quincy: Try not to scare the rookie too much.
-				Dalton: Hmph.
+				Dalton (Talk): We are pretty much done here. 
+				Dalton (Awkward): Pretty open and shut case. 
+				Dalton (Default): I’ll let you know once we apprehend and question Skylar.
+				Dalton (Squint): Is there anything else we can do for you?
+				Quincy (Squint Smug): Nope, that’s pretty much it. 
+				Quincy (Happy): Thank you both for dedication and service to this city. 
+				Quincy (Smug): Arcadia Springs would not be the same without you.
+				Dalton (Awkward): Hmph.
+				Dalton (Hmph): Thanks.
+				Dalton (Talk): We should get going before Chief gets antsy. 
+				Theo (Thinking): Yeah...
+				Theo (Concerned): Definitely don’t want that. 
+				Theo (Happy): Bye, Quincy!
+				Theo (Laugh): It was nice meeting you!
+				Quincy (Smug): Goodbye!
+				Quincy (Happy): Drive safe!
+				Quincy (Awkward): Oh, and Dalton...
+				Quincy (Squint Smug): Try not to scare the rookie too much.
+				Dalton (Awkward): Hmph.
 				[signal arg= "open_door"]
 				[end_timeline]
+	elif {Quincy.solved_rever} == true:
+		Dalton (Surprised): I- 
+		Dalton (Resting): Um...
+		Dalton (Awkward): Uh...
+		Dalton (Talk): We have to-
+		Dalton (Sad): Uh...
+		Dalton (Awkward): S-something happened at the station. 
+		Dalton (Squint): We have to go. 
+		Theo (Concerned): What?!
+		Theo (Thinking): I didn’t get-
+		Dalton (Angry): NOW!
+		Dalton (Awkward): We have to go now.
+		Dalton (Sad): please.
+		Theo (Concerned): Okay, okay.
+		Quincy (Concern): Dalton, are you okay?
+		Quincy (Squint): You seem...
+		Dalton (Surprised): ...!
+		Dalton (Awkward): Ya-
+		Dalton (Resting): Yes.
+		Dalton (Sad): I’m not-
+		Dalton (Sigh): I’m fine.
+		Dalton (Talk): We just have to go. 
+		[signal arg= "open_door"]
+		[end_timeline]
 	else:
-		Dalton: I'm gonna head out now.
-		Quincy: That quick?
-		Theo: Dalton, are you sure?
+		Dalton (Talk): I'm gonna head out now.
+		Quincy (Concern): That quick?
+		Theo (Surprised): Dalton, are you sure?
 		Dalton: ...
 		- Leave.
-			Dalton: Yes. 
-			Dalton: I'm sure.
-			Dalton: Let go.
-			Theo: Okay...?
-			Theo: Goodbye, Mister Mayor.
-			Quincy: Take care. 
+			Dalton (Awkward): Yes. 
+			Dalton (Talk): I'm sure.
+			Dalton (Resting): Let go.
+			Theo (Concerned): Okay...?
+			Theo (Laugh): Goodbye, Mister Mayor.
+			Quincy (Squint): Take care. 
 			[signal arg= "open_door"]
 			[end_timeline]
 		- Stay. 
-			Dalton: You're right.  
-			Dalton: Let's continue. 
+			Dalton (Awkward): You're right.  
+			Dalton (Talk): Let's continue. 
 			[end_timeline]
-	if {Quincy.solved_rever} == true:
-		Dalton: I- 
-		Dalton: Um...
-		Dalton: Uh...
-		Dalton: We have to-
-		Dalton: Uh...
-		Dalton: S-something happened at the station. 
-		Dalton: We have to go. 
-		Theo: What?!
-		Theo: I didn’t get-
-		Dalton: NOW!
-		Dalton: We have to go now.
-		Dalton: please.
-		Theo: Okay, okay.
-		Quincy: Dalton, are you good?
-		Quincy: You seem...
-		Dalton: ...!
-		Dalton: Ya-
-		Dalton: Yes.
-		Dalton: I’m not-
-		Dalton: I’m fine.
-		Dalton: We just have to go. 
-		[signal arg= "open_door"]
-		[end_timeline]
+	
 - Not yet.
 	[end_timeline]

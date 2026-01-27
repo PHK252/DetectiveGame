@@ -34,6 +34,8 @@ signal theo_leave
 signal quincy_leave
 
 signal load_bath
+
+signal level_end
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
 
@@ -255,6 +257,7 @@ func _on_quincy_entered():
 
 func _on_exit_level():
 	print("level exit!")
+	emit_signal("level_end")
 	GlobalVars.in_level = false
 	Dialogic.VAR.set_variable("Quincy.left_quincy", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
