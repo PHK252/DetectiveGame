@@ -124,6 +124,7 @@ directories/dtl_directory={
 "Ending_Give_Skylar_Cure_choco": "res://Dialogue Stuff/Timelines/Endings/Ending_Give_Skylar_Cure_choco.dtl",
 "Ending_arrested_skylar": "res://Dialogue Stuff/Timelines/Endings/Ending_arrested_skylar.dtl",
 "Enter_house": "res://Dialogue Stuff/Timelines/Micah/Enter_house.dtl",
+"Finished_tea": "res://Dialogue Stuff/Timelines/Juniper/Finished_tea.dtl",
 "Give_kale_cure": "res://Dialogue Stuff/Timelines/Secret Location/Give_kale_cure.dtl",
 "Good_morning": "res://Dialogue Stuff/Timelines/Micah/Good_morning.dtl",
 "Juniper_Apron_thoughts": "res://Dialogue Stuff/Timelines/Juniper/Juniper_Apron_thoughts.dtl",
@@ -223,6 +224,8 @@ directories/dtl_directory={
 "Phone_line_busy": "res://Dialogue Stuff/Timelines/Phone Calls/Phone_line_busy.dtl",
 "Phone_num_gone": "res://Dialogue Stuff/Timelines/Phone Calls/Phone_num_gone.dtl",
 "Phone_wrong_num": "res://Dialogue Stuff/Timelines/Phone Calls/Phone_wrong_num.dtl",
+"Porch_Quincy": "res://Dialogue Stuff/Timelines/Quincy/Porch_Quincy.dtl",
+"Porch_Theo": "res://Dialogue Stuff/Timelines/Quincy/Porch_Theo.dtl",
 "Quincy_Computer": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Computer.dtl",
 "Quincy_Computer_thoughts": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Computer_thoughts.dtl",
 "Quincy_Office_door": "res://Dialogue Stuff/Timelines/Quincy/Quincy_Office_door.dtl",
@@ -358,7 +361,7 @@ variables={
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
-"Theo": 2
+"Theo": 3
 },
 "Endings": {
 "Ending_type": ""
@@ -375,7 +378,7 @@ variables={
 "Interogation": {
 "Case_Intero": false,
 "Case_Rever_Quincy_intero": false,
-"Secret_intero": true,
+"Secret_intero": false,
 "asked_Juniper": false,
 "asked_Micah": false,
 "asked_Quincy": false,

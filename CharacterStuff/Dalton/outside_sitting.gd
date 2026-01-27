@@ -7,12 +7,12 @@ func _ready():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_level == false:
-		Dialogic.start("PLACEHOLDER")
+		Dialogic.start("Porch_Theo")
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 	else:
-		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
-			Dialogic.start("PLACEHOLDER2")
+		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false and Dialogic.VAR.get_variable("Quincy.caught") == false:
+			Dialogic.start("Porch_Quincy")
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 

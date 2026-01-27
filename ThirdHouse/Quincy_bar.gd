@@ -36,7 +36,7 @@ func _ready():
 
 func _process(delta):
 	if fainted == false:
-		if GlobalVars.bar_dialogue_Quincy_finished == true or GlobalVars.Quincy_Dalton_caught == true:
+		if GlobalVars.bar_dialogue_Quincy_finished == true or GlobalVars.Quincy_Dalton_caught == true or Dialogic.VAR.get_variable("Quincy.caught") == true:
 			if interactable:
 				interactable.set_monitorable(false) 
 		elif quincy_at_bar == true:

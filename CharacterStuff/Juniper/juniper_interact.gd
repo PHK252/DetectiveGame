@@ -10,7 +10,7 @@ extends Node3D
 #signal Dstopped
 #signal Tstop
 #signal Tstart
-
+@export var interactable : Interactable
 @onready var asked = false
 @onready var asked_entered = false
 
@@ -67,7 +67,8 @@ func _process(delta):
 	asked = Dialogic.VAR.get_variable("Juniper.asked_all")
 	if asked == true:
 		#print("hide")
-		$Interactable.set_monitorable(false)
+		if interactable:
+			interactable.set_monitorable(false)
 
 func _on_door_second_j_dialogue() -> void:
 	if asked == false:

@@ -190,7 +190,7 @@ var load_Juniper_name_arr =  ["juniper_kicked_out", "juniper_time_out", "in_tea_
 @onready var quincy_kicked_out = false
 @onready var quincy_fainted = false
 @onready var Quincy_toilet_distracted = false
-@onready var Quincy_Dalton_caught = false 
+@onready var Quincy_Dalton_caught = false
 #Fam Portrait
 @onready var viewed_Quincy_famPic = false
 @onready var famPic_dialogue_Quincy = false

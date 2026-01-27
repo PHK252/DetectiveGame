@@ -10,6 +10,7 @@ extends Node3D
 #signal Dstopped
 #signal Tstop
 #signal Tstart
+@export var quincy_interactable: Interactable
 @export var interactable : Interactable
 @onready var asked = false
 var Q_greeting := false
@@ -78,13 +79,10 @@ func _on_greeting_ended():
 
 func _process(delta):
 	asked = Dialogic.VAR.get_variable("Quincy.asked_all")
-	if Dialogic.VAR.get_variable("Quincy.solved_case") == false:
-		if asked == true and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
-			print("enter_false")
-			alert.hide()
-			$Interactable.set_monitorable(false)
-	else:
-		$Interactable.set_monitorable(false)
+	if asked == true:
+		alert.hide()
+		if quincy_interactable:
+			quincy_interactable.set_monitorable(false)
 
 #func _on_character_body_3d_d_inside() -> void:
 	#if asked == false:

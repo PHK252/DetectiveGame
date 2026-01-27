@@ -68,6 +68,10 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 
+func _on_tea_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_tea_timeline_ended)
+	GlobalVars.in_dialogue = false
+
 #connected via signal when Juniper is done setting drinks down
 func _activate_drink():
 	GlobalVars.in_tea_time = false
@@ -75,10 +79,9 @@ func _activate_drink():
 	emit_signal("enable_after_tea_interaction")
 	Dialogic.VAR.set_variable("Juniper.has_tea", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	#var game_dialogue = Dialogic.start(dialogue_file)
-	#game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-	#game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-	#game_dialogue.register_character(load(load_char_dialogue), character_marker)
+	GlobalVars.in_dialogue = true
+	Dialogic.start("Finished_tea")
+	Dialogic.timeline_ended.connect(_on_tea_timeline_ended)
 
 
 func _on_tea_drink_input_event(viewport, event, shape_idx):
