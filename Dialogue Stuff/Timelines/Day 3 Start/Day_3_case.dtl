@@ -6,12 +6,11 @@ Theo (Concerned): What now?
 Dalton (Squint): Hm?
 Dalton (Talk): I’m going to make a few calls...
 Dalton (Resting): See what I can find on Sky-
-[signal arg="start_call"]
 Dalton (Surprised): ...!
+[signal arg="start_call"]
 [end_timeline]
 
 label call
-Dalton (Surprised): ..!
 Dalton (Talk): Good morning, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]Good morning, Detective Reynard.[/shake]
 Chief: [shake rate=10.0 level=4 connected=2]We have a Skylar Aslan in holding right now.[/shake] 
@@ -34,3 +33,4 @@ Dalton (Talk): Let’s go.
 Theo (Talk): Right behind ya!
 [signal arg = "To_Intero"]
 set {Interogation.Case_Intero} = true
+[end_timeline]

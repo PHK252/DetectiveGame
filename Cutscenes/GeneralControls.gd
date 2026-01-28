@@ -25,6 +25,9 @@ signal switch_cam_bed
 signal look_activate
 signal look_deactivate
 
+func _ready():
+	player.start_player()
+
 func _on_enter_room_body_entered(body: Node3D) -> void:
 	if stop_repeat == false and GlobalVars.in_dialogue == false and door_dialogue == false:
 		door_dialogue = true

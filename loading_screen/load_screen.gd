@@ -122,18 +122,13 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 			await current_anim.animation_finished
 			sleep_anim.play("Wake_loop")
 	else:
-		if glitch_in == true:
-			print("glitch")
-			toggle_drive(false)
-			toggle_default(false)
-			toggle_sleep(false)
-			await SceneTransitions.glitch.animation_finished
 		toggle_drive(false)
 		toggle_default(true)
 		toggle_sleep(false)
 		current_anim = d_loading_anim
 		current_anim.play("Load")
-		#print("play")
+		if glitch_in == true:
+			await get_tree().create_timer(2.0).timeout
 	if dialogue != "":
 		var driving_dialogue = Dialogic.start(dialogue)
 		driving_dialogue.register_character(load("res://Dialogic Characters/Dalton Driving.dch"), d_loading_Dalton_marker)
@@ -180,7 +175,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 					await get_tree().create_timer(3.0).timeout
 				else:
 					SceneTransitions.fade_change_packed_scene(new_scene)
-					await get_tree().create_timer(.5).timeout
+					await get_tree().create_timer(1.0).timeout
 				current_anim.stop()
 				toggle_drive(false)
 				toggle_default(false)

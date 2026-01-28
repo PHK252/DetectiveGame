@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var fade = $Fade
 @onready var glitch = $Glitch
 @onready var glitch_shader = $ColorRect2
+@onready var color_rect = $ColorRect
 
 
 func fade_change_packed_scene(target : PackedScene):
@@ -43,9 +44,10 @@ func glitch_to_load():
 	glitch_shader.show()
 	glitch.play("Glitch")
 	await glitch.animation_finished
-	glitch.play_backwards("Glitch")
-	await glitch.animation_finished
+	#glitch.play_backwards("Glitch")
+	#await glitch.animation_finished
 	glitch_shader.hide()
+	color_rect.hide()
 
 func glitch_change_scene(target : String):
 	glitch_shader.show()
