@@ -104,6 +104,7 @@ func _on_timeline_ended():
 		return
 	player.start_player()
 	if day_end:
+		GlobalVars.time = "morning"
 		if to_flash:
 			Loading.load_scene(main, GlobalVars.dream_trans, "Sleep", "To Dream", "", false, true)
 			return
@@ -143,10 +144,11 @@ func choose_office_dialogue():
 				return "Beginning_day_2_got_nothing"
 			else:
 				day_end = true
+				if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
+					to_flash = true
 				if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
 					return "End_day_2_got_kicked"
 				if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
-					to_flash = true
 					return "End_day_2_got_REVER" 
 				if Dialogic.VAR.get_variable("Quincy.solved_case") == true and Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 					return "End_day_2_got_case"

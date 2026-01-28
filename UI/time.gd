@@ -35,22 +35,21 @@ func start_time():
 						hour = 9
 						minute = 0
 					else:
-						
-						hour = 4
+						hour = 16
 						minute = 45
 				"micah":
 					if Dialogic.VAR.get_variable("Global.first_house") == "Micah":
 						hour = 10
 						minute = 15
 					else:
-						hour = 3
+						hour = 15
 						minute = 0
 				"juniper":
 					if Dialogic.VAR.get_variable("Global.first_house") == "Juniper":
 						hour = 10
 						minute = 15
 					else:
-						hour = 3
+						hour = 15
 						minute = 0
 		2:
 			match GlobalVars.current_level:
@@ -59,7 +58,7 @@ func start_time():
 						hour = 9
 						minute = 0
 					else:
-						hour = 4
+						hour = 16
 						minute = 45
 				"quincy":
 					hour = 11
@@ -71,7 +70,7 @@ func start_time():
 						hour = 9
 						minute = 0
 					else:
-						hour = 3
+						hour = 15
 						minute = 0
 				"secret":
 					hour = 11
@@ -113,3 +112,12 @@ func _level_timer_start():
 
 func _level_timer_timeout():
 	global_timer.stop()
+
+
+func _on_faint_time():
+	set_time(14, 27)
+	hour = 14
+	minute = 27
+	global_timer.wait_time = 60
+	global_timer.start()
+	

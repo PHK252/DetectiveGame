@@ -122,6 +122,12 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 			await current_anim.animation_finished
 			sleep_anim.play("Wake_loop")
 	else:
+		if glitch_in == true:
+			print("glitch")
+			toggle_drive(false)
+			toggle_default(false)
+			toggle_sleep(false)
+			await SceneTransitions.glitch.animation_finished
 		toggle_drive(false)
 		toggle_default(true)
 		toggle_sleep(false)

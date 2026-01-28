@@ -8,9 +8,14 @@ if {Asked Questions.has_hair} == true and {Juniper.has_pie} == true:
 	Dalton (Awkward): Forensic is still working on IDing the fur and pie sample. 
 elif {Asked Questions.has_hair} == false and {Juniper.has_pie} == true:
 	Dalton (Awkward): Forensic is still working on IDing the pie sample. 
-else:
+elif {Asked Questions.has_hair} == true and {Juniper.has_pie} == false:
 	Dalton (Awkward): Forensic is still working on IDing the fur sample.
+else:
+	Dalton (Awkward): We'll go over everything we found tommorow.
+	Dalton (Awkward): See if we missed anything...
+	jump later
 Dalton (Resting): We’ll move forward from there.
+label later
 Theo (Concerned): If you say so, Mr. Dalton.
 Dalton (Awkward): It’s...
 Theo (Thinking): Well anyway, I’m going to head home. 

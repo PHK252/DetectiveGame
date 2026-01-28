@@ -41,7 +41,7 @@ shadow_mesh = SubResource("ArrayMesh_sfly0")
 albedo_texture = ExtResource("2_0acv1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jplcn"]
-size = Vector3(0.312073, 0.337036, 0.294418)
+size = Vector3(0.177017, 0.337036, 0.160948)
 
 [node name="Tile" type="MeshInstance3D"]
 transform = Transform3D(2.8751, 0, 0, 0, 2.41636, 0, 0, 0, 2.88106, 0, 0, 0)
@@ -68,7 +68,7 @@ spot_angle_attenuation = 1.68179
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165154, 0.152405, 0.160393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16919, 0.152405, 0.168298)
 shape = SubResource("BoxShape3D_jplcn")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

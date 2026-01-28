@@ -46,10 +46,6 @@ func _ready() -> void:
 	var end_dialogue = Dialogic.start("Day_2_Secret")
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	Dialogic.signal_event.connect(_end_movement)
-	end_dialogue.register_character(load("res://Dialogic Characters/Marcus.dch"), marcus_marker)
-	end_dialogue.register_character(load("res://Dialogic Characters/Isaac.dch"), isaac_marker)
-	end_dialogue.register_character(load("res://Dialogic Characters/Maskman1.dch"), man1_marker)
-	end_dialogue.register_character(load("res://Dialogic Characters/Maskman2.dch"), man2_marker)
 	
 	await get_tree().create_timer(14).timeout
 	blend = true
@@ -86,6 +82,7 @@ func _end_movement(arg : String):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	Dialogic.signal_event.disconnect(_end_movement)
-	#SceneTransitions.glitch_change_scene(GlobalVars.office_path)
-	Loading.load_scene(main, GlobalVars.office_path, "Sleep", "Out Dream", "", true, false)
+	GlobalVars.in_dialogue = false
 	GlobalVars.day = 3
+	Loading.load_scene(main, GlobalVars.office_path, "Sleep", "Out Dream", "", true, false)
+	

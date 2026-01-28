@@ -38,7 +38,7 @@ signal unpaused
 
 
 var load_global_arr = []
-var load_global_name_arr = ["forward", "day", "time", "current_level", "first_house", "in_level", "time_left", "distract_left", "cam_index"]
+var load_global_name_arr = ["dialogue_flip", "game_day", "game_time", "current_level", "first_house", "in_level", "time_left", "distract_left", "cam_index"]
 func _load_global_arr():
 	load_global_arr = [GlobalVars.forward, GlobalVars.day, GlobalVars.time, GlobalVars.current_level, GlobalVars.first_house]
 	return load_global_arr
@@ -427,7 +427,7 @@ var ghost_open = false
 func reset_globals():
 	## The actual Globals
 	forward = false
-	day = 1
+	day = 2
 	time = ""
 	current_level = ""
 	first_house = "" 

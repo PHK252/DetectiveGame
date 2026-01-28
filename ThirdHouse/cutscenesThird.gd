@@ -18,6 +18,7 @@ signal open_door
 signal after_faint
 signal theo_follow
 signal reposition_dalton
+signal faint_time
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("interact") and test_cutscene:
 		#pass
@@ -49,11 +50,8 @@ func _on_bar_faint_time():
 	player.stop_player()
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	#Dialogic.signal_event.connect(_on_dialogic_signal)
 	alert.hide()
-	faint_dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-	faint_dialogue.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-	faint_dialogue.register_character(load("res://Dialogic Characters/Quincy.dch"), character_marker)
+	emit_signal("faint_time")
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

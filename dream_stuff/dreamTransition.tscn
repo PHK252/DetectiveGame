@@ -1542,8 +1542,9 @@ layers = 512
 mesh = SubResource("ArrayMesh_7fx7n")
 skeleton = NodePath("")
 
-[node name="Tile Matrix" type="Node" parent="SubViewportContainer/SubViewport/DreamTransition" node_paths=PackedStringArray("player")]
+[node name="Tile Matrix" type="Node" parent="SubViewportContainer/SubViewport/DreamTransition" node_paths=PackedStringArray("main", "player")]
 script = ExtResource("8_n1bx6")
+main = NodePath("../../../..")
 player = NodePath("../../Dalton2/CharacterBody3D")
 
 [node name="Tile_1_1" parent="SubViewportContainer/SubViewport/DreamTransition/Tile Matrix" instance=ExtResource("3_rxvkm")]
@@ -1956,25 +1957,45 @@ shape = SubResource("BoxShape3D_bkanq")
 visible = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(3.37094e-09, -5.39206e-08, -3.01711)
-bones/3/rotation = Quaternion(0.0198562, 0.313133, 0.877656, -0.362318)
-bones/4/rotation = Quaternion(-0.216345, 0.0881767, -0.0383569, 0.97157)
-bones/5/rotation = Quaternion(0.493426, -0.110292, 0.102928, 0.856605)
-bones/8/rotation = Quaternion(-0.0198562, 0.313133, 0.877656, 0.362318)
-bones/9/rotation = Quaternion(-0.216345, -0.0881767, 0.0383569, 0.97157)
-bones/10/rotation = Quaternion(0.493426, 0.110292, -0.102929, 0.856605)
-bones/12/position = Vector3(3.37094e-09, -2.33403e-07, -3.01711)
-bones/15/rotation = Quaternion(-0.0857623, 1.13837e-07, -1.0642e-08, 0.996316)
-bones/16/rotation = Quaternion(0.0390009, 9.19636e-09, 8.10061e-09, 0.999239)
-bones/18/rotation = Quaternion(0.0184243, -0.00969678, -0.00965151, 0.999737)
-bones/20/rotation = Quaternion(0.0184243, 0.00969678, 0.00965153, 0.999737)
-bones/22/rotation = Quaternion(-0.255491, -0.149042, -0.404678, 0.865302)
-bones/23/rotation = Quaternion(-0.00308844, -0.000445258, -0.283407, 0.958995)
-bones/26/rotation = Quaternion(-0.255491, 0.149041, 0.404678, 0.865302)
-bones/27/rotation = Quaternion(-0.00308863, 0.000445247, 0.283409, 0.958994)
-bones/31/position = Vector3(0.989338, -0.0311821, -2.1928)
-bones/33/position = Vector3(3.37094e-09, -1.13525e-07, -3.01711)
-bones/36/position = Vector3(-0.989338, -0.0311821, -2.1928)
+bones/1/position = Vector3(-1.14221e-09, -5.75171e-08, -2.99614)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.013303, 0.331121, 0.870011, -0.365053)
+bones/4/rotation = Quaternion(-0.253094, 0.0625568, -0.0395525, 0.964606)
+bones/5/rotation = Quaternion(0.510194, -0.0874861, 0.0921284, 0.850624)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.013303, 0.331121, 0.870011, 0.365053)
+bones/9/rotation = Quaternion(-0.253094, -0.0625568, 0.0395525, 0.964606)
+bones/10/rotation = Quaternion(0.510194, 0.0874861, -0.0921284, 0.850624)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(-1.14221e-09, -3.25835e-07, -2.99614)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0819919, 1.15476e-07, -1.32866e-08, 0.996633)
+bones/16/rotation = Quaternion(0.0309218, 4.08717e-09, 1.27854e-08, 0.999522)
+bones/18/rotation = Quaternion(0.0342451, -0.00433242, -0.00990013, 0.999355)
+bones/20/rotation = Quaternion(0.0342451, 0.00433241, 0.00990014, 0.999355)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.258966, -0.148642, -0.396812, 0.867976)
+bones/23/rotation = Quaternion(-0.00334079, -0.000441921, -0.306564, 0.951844)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.258966, 0.148642, 0.396812, 0.867976)
+bones/27/rotation = Quaternion(-0.00334096, 0.000441958, 0.306564, 0.951844)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.975378, -0.0311821, -2.18883)
+bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
+bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
+bones/33/position = Vector3(-1.14221e-09, -1.17122e-07, -2.99614)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
+bones/36/position = Vector3(-0.975378, -0.0311821, -2.18883)
+bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
+bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 
 [node name="Idle" type="Timer" parent="SubViewportContainer/SubViewport/Dalton2/CharacterBody3D" index="8"]
 wait_time = 35.0
@@ -2042,6 +2063,7 @@ visible = false
 visible = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom/Armature" index="0"]
+visible = false
 bones/1/rotation = Quaternion(1.46083e-08, 0.129933, 0.991523, -1.17395e-08)
 bones/4/rotation = Quaternion(-0.169677, 0.318233, -0.0893867, 0.928411)
 bones/4/scale = Vector3(1, 1, 1)
@@ -2067,6 +2089,12 @@ skin = SubResource("Skin_1q50w")
 [node name="Cylinder" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom" index="4" groups=["BedVisible"]]
 visible = false
 
+[node name="Cube_002" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom" index="5"]
+transform = Transform3D(0.11763, -0.0496089, -0.0544354, 0.0235356, 0.206536, -0.0396454, 0.0360942, 0.0269993, 0.203254, 1.02827, 0.703925, 1.44872)
+
+[node name="Cube_003" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom" index="6"]
+transform = Transform3D(0.0761372, 0, -0.170035, 0, 0.21412, 0, 0.0994814, 0, 0.130135, 0.554896, 0.626668, 1.61311)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom/Cube_004" index="0"]
 collision_layer = 4
 
@@ -2074,14 +2102,14 @@ collision_layer = 4
 transform = Transform3D(1, 0, -1.49012e-07, 0, 1, 0, 1.49012e-08, 0, 1, -0.0491328, 5.64917, -0.0258918)
 shape = SubResource("BoxShape3D_g1nns")
 
+[node name="Plane_001" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom" index="8"]
+transform = Transform3D(0.999288, 0.0402101, 0.000400901, -0.0377023, 1.06541, 0.0241454, 0.000511214, -0.0258196, 0.99695, 0.860067, 0.792618, 0.300118)
+
 [node name="Plane_002" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom" index="9" groups=["BedVisible"]]
 visible = false
 
 [node name="Cube_005" parent="SubViewportContainer/SubViewport/BedroomStuff/Bedroom" index="10" groups=["BedVisible"]]
 visible = false
-
-[node name="Interactable" parent="SubViewportContainer/SubViewport/BedroomStuff" instance=ExtResource("12_oq3si")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52084, 0.949264, -1.79903)
 
 [node name="Sounds" type="Node" parent="SubViewportContainer/SubViewport"]
 
@@ -2142,7 +2170,6 @@ main_scene = NodePath("..")
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CamSystem/Note Look/Note 1/Interactable" to="SubViewportContainer/SubViewport/CamSystem/Note Look/Note 1" method="_on_clue_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CamSystem/Note Look/Note 2/Interactable" to="SubViewportContainer/SubViewport/CamSystem/Note Look/Note 2" method="_on_clue_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CamSystem/Note Look/Note 3/Interactable" to="SubViewportContainer/SubViewport/CamSystem/Note Look/Note 3" method="_on_clue_interacted"]
-[connection signal="interacted" from="SubViewportContainer/SubViewport/BedroomStuff/Interactable" to="SubViewportContainer/SubViewport/BedroomStuff" method="_on_interactable_interacted"]
 
 [editable path="SubViewportContainer/SubViewport/DreamTransition"]
 [editable path="SubViewportContainer/SubViewport/FrameSep"]

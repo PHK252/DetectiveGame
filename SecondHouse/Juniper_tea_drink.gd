@@ -16,6 +16,7 @@ extends Node3D
 @export var interact_type : String
 @export var interact_area: Area2D
 @export var interactable: Interactable
+@export var jun_interactable: Interactable
 @export var dialogue_file: String
 @export var load_Dalton_dialogue: String
 @export var load_Theo_dialogue: String
@@ -71,6 +72,8 @@ func _on_timeline_ended():
 func _on_tea_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_tea_timeline_ended)
 	GlobalVars.in_dialogue = false
+	jun_interactable.set_deferred("monitorable", true)
+	player.start_player()
 
 #connected via signal when Juniper is done setting drinks down
 func _activate_drink():
@@ -80,7 +83,9 @@ func _activate_drink():
 	Dialogic.VAR.set_variable("Juniper.has_tea", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.in_dialogue = true
+	player.stop_player()
 	Dialogic.start("Finished_tea")
+	jun_interactable.set_deferred("monitorable", false)
 	Dialogic.timeline_ended.connect(_on_tea_timeline_ended)
 
 

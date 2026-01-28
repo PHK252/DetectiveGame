@@ -45,6 +45,7 @@ func _on_firsthouse_button_pressed() -> void:
 		if went_Juniper == true or Dialogic.VAR.get_variable("Global.first_house") == "Juniper":
 			GlobalVars.in_interaction = ""
 			player.start_player()
+			GlobalVars.time = "afternoon"
 			#Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", "Day_1_ride_from_TG")
 			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 		else:
@@ -63,6 +64,7 @@ func _on_secondhouse_button_pressed() -> void:
 	if went_Micah == true or Dialogic.VAR.get_variable("Global.first_house") == "Micah":
 		GlobalVars.in_interaction = ""
 		player.start_player()
+		GlobalVars.time = "afternoon"
 		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 	else:
 		GlobalVars.in_interaction = ""
@@ -108,17 +110,20 @@ func _on_office_button_pressed() -> void:
 		car_rev.play()
 	match GlobalVars.day:
 		1: 
+			GlobalVars.time = "night"
 			GlobalVars.in_look_screen = false
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""
 		2: 
+			GlobalVars.time = "night"
 			GlobalVars.in_look_screen = false
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""
 		3: 
 			GlobalVars.in_look_screen = false
+			GlobalVars.time = "afternoon"
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""

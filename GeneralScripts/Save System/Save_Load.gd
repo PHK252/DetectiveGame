@@ -130,7 +130,7 @@ func saveGame(path: String, dialogic_save : bool = true):
 			"clicked_case_file": GlobalVars.clicked_case_file,
 			"viewed_case_file": GlobalVars.viewed_case_file,
 			#Quincy Call
-			"Day_1_Quincy_call" : GlobalVars.Day_1_Quincy_call
+			"Day_1_Quincy_call" : GlobalVars.Day_1_Quincy_call,
 		},
 		"Micah_Vars":{
 			"micah_kicked_out" : GlobalVars.micah_kicked_out,
