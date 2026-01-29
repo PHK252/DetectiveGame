@@ -4,8 +4,19 @@
 &"_translation_id": "",
 &"color": Color(0.494118, 0.333333, 0.219608, 1),
 &"custom_info": {
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Talking",
+"sound_moods": {
+"Talking": {
+"mode": 0,
+"name": "Talking",
+"pitch_base": 0.4,
+"pitch_variance": 0.2,
+"skip_characters": 3.0,
+"sound_path": "res://Audio/Voices/12_alt",
+"volume_base": 5.0,
+"volume_variance": 1.2
+}
+},
 "style": "Dalton Box"
 },
 &"default_portrait": "Sus Talk",
