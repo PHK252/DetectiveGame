@@ -166,6 +166,7 @@ func walk_out(argument: String):
 		#walk out signals for when theo walks in only
 		emit_signal("theo_exit")
 		await get_tree().create_timer(0.5).timeout
+		player.start_player()
 		emit_signal("dalton_exit")
 		Dialogic.signal_event.disconnect(walk_out)
 	elif argument == "theo_exit":
@@ -200,16 +201,14 @@ func _on_timeline_ended():
 
 func _on_ending_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_ending_timeline_ended)
-	#Anim and fade stuff
-	await get_tree().create_timer(0.5).timeout
+	MusicFades.fade_out_audio()
 	SceneTransitions.fade_change_scene(GlobalVars.credits)
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	main.queue_free()
 	pass
 	
 func _on_phone_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_phone_timeline_ended)
-	#player.start_player()
 	#Anim
 	pass
 
@@ -278,6 +277,7 @@ func _input(event):
 					Dialogic.signal_event.connect(enter_ending_Theo)
 					Dialogic.signal_event.connect(walk_out)
 					Dialogic.signal_event.connect(calling)
+					GlobalVars.in_interaction = ""
 					if fired == false:
 						if phone == false:
 							Dialogic.timeline_ended.connect(_on_ending_timeline_ended)

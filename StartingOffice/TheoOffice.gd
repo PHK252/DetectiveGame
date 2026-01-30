@@ -223,5 +223,6 @@ func _on_theo_exit() -> void:
 	
 
 func _on_theo_exit_alt() -> void:
+	print("alt")
 	speed = 0.8
 	state = LEAVE_ALT

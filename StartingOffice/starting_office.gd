@@ -19,6 +19,7 @@ var dialogue_file: String
 @export var world_env : WorldEnvironment
 @export var inputManager : InputManager
 
+var there := false
 var call := false
 var mouse_pos : Vector2
 var day_end := false
@@ -105,6 +106,7 @@ func _on_timeline_ended():
 		return
 	player.start_player()
 	emit_signal("stop_lookDalton")
+	MusicFades.fade_out_audio()
 	if day_end:
 		GlobalVars.time = "morning"
 		if to_flash:
@@ -167,15 +169,19 @@ func choose_office_dialogue():
 				call = false
 				emit_signal("theo_there")
 				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
+					there = true
 					return "Day_3_gave_coor_case_rever_theo"
 				return "Secret_To_Location"
 			if Dialogic.VAR.get_variable("Quincy.solved_case") == true and Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 				if Dialogic.VAR.get_variable("Quincy.Quincy_saw_coors") == true:
+					there = false
 					emit_signal("theo_out")
 					return "Day_3_gave_coor_case"
+				there = true
 				emit_signal("theo_there")
 				return "Day_3_case"
 			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
+				there = true
 				emit_signal("theo_there")
 				return "Day_3_hair"
 			call = false
@@ -233,7 +239,10 @@ func walk_out(argument: String):
 		emit_signal("stop_look")
 		await get_tree().create_timer(1.0).timeout
 		emit_signal("dalton_exit_alt")
-		emit_signal("theo_exit_alt")
+		if there == true:
+			emit_signal("theo_exit_alt")
+		else:
+			emit_signal("theo_exit")
 		await get_tree().create_timer(1.0).timeout
 		Loading.load_scene(main, GlobalVars.interrogation, "", "", "")
 		pass
