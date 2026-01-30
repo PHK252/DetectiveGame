@@ -190,9 +190,11 @@ func _on_entered_micah():
 
 
 func _on_door_activate_leave():
-	music.stop()
+	MusicFades.fade_out_audio()
 	GlobalVars.in_level = false
 	Dialogic.VAR.set_variable("Asked Questions.left_Micah", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("level exit!")
+	await get_tree().create_timer(4.0).timeout
+	music.stop() #technically not necessary
 	

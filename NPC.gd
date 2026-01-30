@@ -438,3 +438,12 @@ func _on_window_close_became_active() -> void:
 
 func _on_window_close_became_inactive() -> void:
 	visible = true
+
+
+func _on_door_activate_leave_micah() -> void:
+	#turn off everything to be sure
+	is_wandering = false
+	cooldown.stop()
+	wander_timer.stop()
+	is_navigating = false
+	state = IDLE
