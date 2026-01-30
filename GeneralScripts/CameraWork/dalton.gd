@@ -96,6 +96,8 @@ func _on_dialogic_signal(argument: String):
 		in_control = false
 		await get_tree().create_timer(4.0).timeout
 		in_control = true
+	
+		
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames() 
@@ -631,6 +633,7 @@ func _on_tent_cam_became_inactive() -> void:
 
 func _on_exposition_theo_move() -> void:
 	await get_tree().create_timer(3).timeout
+	emit_signal("active_look")
 	needs_rotation_forced = true
 	in_control = false
 	number = 1
@@ -1231,4 +1234,18 @@ func _on_cam_windowsJuniper_became_active() -> void:
 func _on_cam_windows_became_inactive() -> void:
 	in_control = false
 	await get_tree().create_timer(0.5).timeout
+	in_control = true
+
+
+func _on_character_body_3d_rotate_dalton_office() -> void:
+	emit_signal("active_look")
+	await get_tree().create_timer(2.5).timeout
+	needs_rotation_forced = true
+	in_control = false
+	number = 1
+	force_rotation = true
+	await get_tree().create_timer(1).timeout
+	force_rotation = false
+	number = 0
+	needs_rotation_forced = false
 	in_control = true

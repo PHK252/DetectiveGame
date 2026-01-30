@@ -34,6 +34,7 @@ var see_player := false
 var walk_away := false
 
 signal look_away
+signal rotate_dalton
 
 func _ready() -> void:
 	state = OUT
@@ -59,6 +60,7 @@ func _ready() -> void:
 func _return_office():
 	print("returningTheo")
 	await get_tree().create_timer(1.0).timeout
+	emit_signal("rotate_dalton")
 	state = WALK
 	come_in = true
 	

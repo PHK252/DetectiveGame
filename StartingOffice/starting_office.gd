@@ -35,6 +35,7 @@ signal stop_look
 
 signal theo_exit
 signal stop_lookTheo
+signal stop_lookDalton
 
 func _ready():
 	#GlobalVars.day = 2 #for testing the leave stuff
@@ -103,6 +104,7 @@ func _on_timeline_ended():
 	if call == true:
 		return
 	player.start_player()
+	emit_signal("stop_lookDalton")
 	if day_end:
 		GlobalVars.time = "morning"
 		if to_flash:
