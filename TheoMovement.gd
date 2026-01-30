@@ -366,10 +366,10 @@ func _process_idle_state(distance_to_target: float) -> void:
 	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton) and waterfall_scene == false):
 		print("Switching to FOLLOW state", " Theo")
 		
-		print("is_nav" + str(is_navigating))
-		print("is_inv" + str(is_investigating))
-		print("got_greeting" + str(quincy_greet))
-		print("faint_var" + str(faint_dalton))
+		#print("is_nav" + str(is_navigating))
+		#print("is_inv" + str(is_investigating))
+		#print("got_greeting" + str(quincy_greet))
+		#print("faint_var" + str(faint_dalton))
 		
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
@@ -1302,3 +1302,17 @@ func _on_juniper_start_theo_after_tea() -> void:
 	emit_signal("two_targ_dalton", 1)
 	emit_signal("look_at_disactivate")
 	is_navigating = true
+
+
+func _on_theo_nogo_J_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		in_kitchen = true
+		is_navigating = false
+		state = IDLE
+
+
+func _on_theo_nogoJ_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		in_kitchen = false
+		is_navigating = true
+		state = FOLLOW

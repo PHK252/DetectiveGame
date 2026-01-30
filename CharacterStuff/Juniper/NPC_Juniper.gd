@@ -309,6 +309,7 @@ func _process_idle_state(distance_to_target: float, delta: float) -> void:
 		stop_jitter = false
 
 func _process_follow_state(distance_to_target: float) -> void:
+	Coffee_Anim.visible = false #bandaid
 	if distance_to_target <= STOPPING_DISTANCE or nav.is_target_reached():
 			#emit_signal("collision_safe")
 			if greeting == false:
