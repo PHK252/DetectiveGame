@@ -52,7 +52,7 @@ func _ready() -> void:
 	if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
 		if interactable:
 			interactable.set_monitorable(false)
-			return
+		return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -196,7 +196,6 @@ func _clog_toilet(argument : String):
 		await get_tree().create_timer(1.2).timeout
 		flush.play()
 		player.start_player()
-		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		pass
 	else:
 		Dialogic.signal_event.disconnect(_clog_toilet)
@@ -207,6 +206,7 @@ func _on_towels_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				GlobalVars.in_dialogue = true
 				interact_area_1.hide()
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

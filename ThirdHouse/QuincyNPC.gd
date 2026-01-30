@@ -119,7 +119,8 @@ func _ready() -> void:
 		await get_tree().process_frame
 		GlobalVars.from_save_file = false
 	add_to_group("quincy")
-	wander_choice = 11
+	if GlobalVars.in_level == false:
+		wander_choice = 11
 	packofcigs.visible = false
 	cig.visible = false
 	lighter.visible = false

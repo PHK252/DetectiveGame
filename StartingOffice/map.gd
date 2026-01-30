@@ -16,7 +16,7 @@ signal general_interaction
 signal _hide_tut
 
 func _ready():
-	if GlobalVars.day == 1 or Dialogic.VAR.get_variable("Endings.Ending_type") != "":
+	if (GlobalVars.day == 1 and Dialogic.VAR.get_variable("Beginning.meet_theo") == false) or Dialogic.VAR.get_variable("Endings.Ending_type") != "":
 		interactable.set_deferred("monitorable", false)
 	else:
 		interactable.set_deferred("monitorable", true)
@@ -27,9 +27,9 @@ func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and main_cam.priority != 30:
 		print("map_interact")
 		emit_signal("general_interaction")
-		if GlobalVars.map_tut == false and tutorial.visible == true:
-			GlobalVars.map_tut = true
-			emit_signal("_hide_tut")
+		#if GlobalVars.map_tut == false and tutorial.visible == true:
+			#GlobalVars.map_tut = true
+			#emit_signal("_hide_tut")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		main_cam.priority = 30
 		exit_cam.priority = 0

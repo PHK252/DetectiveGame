@@ -21,7 +21,7 @@ var triggered = false
 @export var quincy_house_inside: bool
 @onready var in_bathroom 
 @onready var distracted 
-@onready var player_in_bathroom = false
+ 
 @onready var quincy_close_door = false
 
 signal Quincy_enter_bathroom
@@ -72,16 +72,16 @@ func close() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	print(interactable.monitorable, " monitioring")
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	in_bathroom = Dialogic.VAR.get_variable("Quincy.in_bathroom")
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted")
-	print("player " + str(player_in_bathroom))
+	print("player " + str(Dialogic.VAR.get_variable("Quincy.dalton_in_bath")))
 	print("distract "+ str(distracted))
 	if is_open == false and GlobalVars.in_dialogue == false:
 		if in_bathroom == false:
-			if distracted == false and player_in_bathroom == false:
+			if distracted == false and Dialogic.VAR.get_variable("Quincy.dalton_in_bath") == false:
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				player.stop_player()
 				alert.hide()
@@ -93,7 +93,9 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 				bathroom.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			else:
 				open()
-				_on_quincy_pause_timeout()
+				if distracted == true:
+					_on_quincy_pause_timeout()
+					return
 		else:
 			close()
 	else:
@@ -117,19 +119,19 @@ func _on_exit_timeline_ended():
 
 func _on_bathroom_body_entered(body):
 	if body.is_in_group("player"):
-		print("in_bathroom", player_in_bathroom)
+		print("in_bathroom", Dialogic.VAR.get_variable("Quincy.dalton_in_bath"))
 		if is_open == true:
 			close()
-			player_in_bathroom = true
+			Dialogic.VAR.set_variable("Quincy.dalton_in_bath", true) 
 
 
 
 func _on_bathroom_door_body_exited(body):
 	if body.is_in_group("player"):
-		if player_in_bathroom == true:
+		if Dialogic.VAR.get_variable("Quincy.dalton_in_bath") == true:
 			if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
 				print("bathroom exit")
-				player_in_bathroom = false
+				Dialogic.VAR.set_variable("Quincy.dalton_in_bath", false)
 				GlobalVars.in_dialogue = true
 				player.stop_player()
 				emit_signal("enable_look")
@@ -138,7 +140,7 @@ func _on_bathroom_door_body_exited(body):
 				Dialogic.signal_event.connect(_quincy_enter_bathroom)
 				var clogged = Dialogic.start(clog_exit_dialogue)
 			else:
-				player_in_bathroom = false
+				Dialogic.VAR.set_variable("Quincy.dalton_in_bath", false)
 				close()
 			
 func _load_bath_distract():
