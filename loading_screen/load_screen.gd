@@ -14,6 +14,8 @@ var drive_sound : AudioStreamPlayer
 #Sleeping animation
 var sleep_loading : AnimatedSprite2D
 var sleep_anim : AnimationPlayer
+var sleep_sounds : AudioStreamPlayer
+var wake_sounds : AudioStreamPlayer
 
 #Default
 var d_back_loading : Node2D
@@ -79,6 +81,8 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 	#Sleep
 	sleep_loading = scene_instance.get_node("Sleep Loading/AnimationPlayer/Sleep")
 	sleep_anim = scene_instance.get_node("Sleep Loading/AnimationPlayer")
+	sleep_sounds = scene_instance.get_node("Sleep Loading/AnimationPlayer/SleepSounds")
+	wake_sounds = scene_instance.get_node("Sleep Loading/AnimationPlayer/WakeSounds")
 	
 	#Date 
 	date_loading = scene_instance.get_node("Date Loading")
@@ -107,11 +111,13 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 		toggle_default(false)
 		toggle_sleep(true)
 		if time == "To Dream":
+			sleep_sounds.play()
 			current_anim = sleep_anim
 			current_anim.play("Sleep")
 			await current_anim.animation_finished
 			current_anim.play("Sleep_loop")
 		elif time == "Out Dream":
+			wake_sounds.play()
 			current_anim = sleep_anim
 			current_anim.play("Wake")
 			await current_anim.animation_finished

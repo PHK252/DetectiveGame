@@ -1,9 +1,10 @@
+jump Wait
 set {Global.went_to_Micah} = true
 [wait time="3.0"]
 Dalton (Talk): Hello!
 Dalton (Resting): Is anybody home?
 [wait time="1.0"]
-Dalton  (Talk): ASPD!
+Dalton (Talk): ASPD!
 Dalton (Default): ...
 - Knock Again.
 	[signal arg="knock"]
@@ -33,7 +34,6 @@ Dalton (Default): ...
 	[wait time="4.0"]
 	Dalton (Hmph): ...
 	Theo (Awkward): ...
-	#[wait time="0.5"]
 	Dalton (Default): ...
 	- Knock Again.
 		set {Character Aff Points.Micah} += 1
@@ -42,8 +42,8 @@ Dalton (Default): ...
 		[wait time="5.0"]
 		Dalton (Angry): ASPD!
 		Dalton: We are here to investi-
-		# #A loud thud comes from inside the apartment, followed by tired groan and a curse
-		# #Faint footsteps can be heard through the door
+		[sound path="res://Audio/Extras/Micah Fall.mp3" volume="12.0"]
+		[wait time="2.0"]
 		Theo (Thinking): Someone’s not having a good day.
 		Dalton (Resting): Shh.
 		jump Micah Open

@@ -9,11 +9,14 @@ extends Node2D
 @onready var text = $Text
 @onready var quincy_detection_restart = $QuincyDetectionRestart
 @onready var quincy_caught = $"."
+@onready var beginning = $Beginning
 
 @onready var anim_finished = false
 
 @onready var pause = InputMap.action_get_events("Quit")
 func _ready():
+	if AudioServer.is_bus_solo(5):
+		AudioServer.set_bus_solo(5, false)
 	quincy_caught.hide()
 
 
@@ -23,8 +26,13 @@ func _on_dalton_caught_play_anim():
 	quincy_caught.show()
 	#pause process
 	quincy_detection_restart.hide()
+	anim_frames.hide()
+	text.hide()
+	await get_tree().create_timer(1.0).timeout
+	text.show()
+	anim_frames.show()
 	anim.play("Caught_Anim")
-	await  anim.animation_finished
+	await anim.animation_finished
 	text.hide()
 	anim_frames.hide()
 	quincy_detection_restart.show()

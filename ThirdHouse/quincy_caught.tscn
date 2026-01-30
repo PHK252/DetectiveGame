@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://7vduw88j8d4w"]
+[gd_scene load_steps=92 format=3 uid="uid://7vduw88j8d4w"]
 
 [ext_resource type="Script" uid="uid://cm6a5y87pfip2" path="res://quincy_caught.gd" id="1_xxbli"]
 [ext_resource type="Texture2D" uid="uid://ch4d6mcfcyikc" path="res://ThirdHouse/Dectection Restart/Quincy Detection background.png" id="2_ud1ue"]
@@ -78,6 +78,10 @@
 [ext_resource type="Texture2D" uid="uid://dvdnqwbj0xdh1" path="res://ThirdHouse/Dectection Restart/Text/Binary/Quincy Detection code1.png" id="76_mgx7t"]
 [ext_resource type="Texture2D" uid="uid://byfryl7mlwxn0" path="res://ThirdHouse/Dectection Restart/Text/Binary/Quincy Detection code2.png" id="77_of4fa"]
 [ext_resource type="Texture2D" uid="uid://da348evhp14t5" path="res://ThirdHouse/Dectection Restart/Text/Binary/Quincy Detection code3.png" id="78_hru5b"]
+[ext_resource type="AudioStream" uid="uid://cuaf748rjqhnu" path="res://Audio/Extras/Death Drone.mp3" id="79_of4fa"]
+[ext_resource type="AudioStream" uid="uid://bgvv5wiyg55rj" path="res://Audio/Extras/Death beginning.mp3" id="80_dwkkf"]
+[ext_resource type="AudioStream" uid="uid://c6ssfuoale640" path="res://Audio/Extras/Death Glitchmp3.mp3" id="80_t1ilo"]
+[ext_resource type="AudioStream" uid="uid://b4yromgkd6xgy" path="res://Audio/Extras/Death Restart.mp3" id="81_dwkkf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gfxm2"]
 animations = [{
@@ -439,10 +443,67 @@ tracks/5/path = NodePath("Code:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 10.4, 10.7, 15.7, 16, 17.5, 17.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(10.4, 10.7, 15.7, 16, 17.5, 17.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3, 0, 3, 1, 3, 2, 3]
+"values": [0, 3, 1, 3, 2, 3]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Code:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Drone")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6, 17.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Glitch")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(17.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Beginning")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ruqi4"]
@@ -519,6 +580,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Code:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2hdfi"]
 _data = {
@@ -556,6 +629,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Restart Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tvqcv"]
@@ -624,7 +711,25 @@ libraries = {
 }
 
 [node name="Code" type="AnimatedSprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.152941)
 sprite_frames = SubResource("SpriteFrames_t1ilo")
 animation = &"Code"
 centered = false
+
+[node name="Beginning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_dwkkf")
+volume_db = 3.0
+
+[node name="Drone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("79_of4fa")
+bus = &"Death"
+
+[node name="Glitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_t1ilo")
+volume_db = 3.0
+bus = &"Death"
+
+[node name="Restart Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("81_dwkkf")
+bus = &"Death"

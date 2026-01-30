@@ -17,7 +17,6 @@ func _on_quincy_play_caught():
 		if phone.visible == true:
 			phone.hide()
 		music.stop()
-		#mute all buses
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		time_out_timer.stop()
 		Dialogic.VAR.set_variable("Quincy.caught", true)
@@ -31,5 +30,8 @@ func _on_quincy_play_caught():
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	AudioServer.set_bus_solo(5, true)
+	SceneTransitions.glitch_to_load()
+	await SceneTransitions.glitch.animation_finished
 	emit_signal("play_anim")
 	#reset all vars expect caught

@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://df6fsv80g6bxa"]
+[gd_scene load_steps=135 format=3 uid="uid://df6fsv80g6bxa"]
 
 [ext_resource type="Script" uid="uid://bkrwkttxlkydd" path="res://loading_screen/load_screen.gd" id="1_ej2at"]
 [ext_resource type="Texture2D" uid="uid://bcya8b3k7eu2g" path="res://loading_screen/Frames/Day Loading/Morning1.png" id="2_tohd2"]
@@ -106,6 +106,9 @@
 [ext_resource type="Texture2D" uid="uid://vs1e7218amyi" path="res://loading_screen/Frames/Wake Loading/Sleep Indexed Day Anim31.png" id="103_tqm54"]
 [ext_resource type="Texture2D" uid="uid://cv8pnkgvurfbp" path="res://loading_screen/Frames/Wake Loading/Sleep Indexed Day Anim32.png" id="104_ivqwd"]
 [ext_resource type="FontFile" uid="uid://bfh28807un7kc" path="res://Dialogue Stuff/Fonts/Menu Font.ttf" id="105_6vts3"]
+[ext_resource type="AudioStream" uid="uid://2udyqjf75qit" path="res://Audio/Ambience/nightime_ambience.wav" id="106_glwdg"]
+[ext_resource type="AudioStream" uid="uid://d00xr3wa61b1o" path="res://Audio/Extras/Morning.mp3" id="107_ryfxn"]
+[ext_resource type="AudioStream" uid="uid://ctbu0k6k6ugns" path="res://Audio/Extras/Date Transition longer.mp3" id="109_glwdg"]
 
 [sub_resource type="Animation" id="Animation_cpqar"]
 length = 0.001
@@ -545,6 +548,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/SleepSounds:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/WakeSounds:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ch4cm"]
 resource_name = "Sleep"
@@ -674,6 +701,58 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/SleepSounds:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6.8, 9),
+"transitions": PackedFloat32Array(2.92817, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/WakeSounds:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(9.00233, 11.4),
+"transitions": PackedFloat32Array(1, 2.07053),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer/SleepSounds")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/WakeSounds")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_y6ecj"]
@@ -1012,7 +1091,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_juar3"]
 resource_name = "Blink"
-length = 5.0
+length = 5.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1020,10 +1099,24 @@ tracks/0/path = NodePath("RichTextLabel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true, false, true, false, true]
+"values": [true, false, true, false, true, false, true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_glwdg"]
@@ -1103,7 +1196,7 @@ position = Vector2(1452, 531)
 
 [node name="drive_sound" type="AudioStreamPlayer" parent="Drinving Loading"]
 stream = ExtResource("26_y6ecj")
-volume_db = -20.0
+volume_db = -3.0
 bus = &"Music"
 
 [node name="Default Loading" type="Node2D" parent="."]
@@ -1124,6 +1217,7 @@ position = Vector2(1738, 988)
 sprite_frames = SubResource("SpriteFrames_1wxyu")
 
 [node name="Sleep Loading" type="Node2D" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sleep Loading"]
 libraries = {
@@ -1138,6 +1232,14 @@ centered = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sleep Loading/AnimationPlayer"]
 stream = ExtResource("30_jjjxe")
+bus = &"SFX"
+
+[node name="SleepSounds" type="AudioStreamPlayer" parent="Sleep Loading/AnimationPlayer"]
+stream = ExtResource("106_glwdg")
+bus = &"Ambience"
+
+[node name="WakeSounds" type="AudioStreamPlayer" parent="Sleep Loading/AnimationPlayer"]
+stream = ExtResource("107_ryfxn")
 
 [node name="Date Loading" type="Node2D" parent="."]
 visible = false
@@ -1164,6 +1266,11 @@ theme_override_font_sizes/normal_font_size = 120
 text = "25 NOV XX20"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Date Loading"]
+stream = ExtResource("109_glwdg")
+volume_db = 6.0
+bus = &"SFX"
 
 [node name="Panel" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
