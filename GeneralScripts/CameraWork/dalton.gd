@@ -63,14 +63,24 @@ var number := 0
 var tea_time = false
 @export var MicahHouse := false
 @export var block_secretLocation_left : CollisionShape3D
-
+@export var timeout_pos : Marker3D
 func _ready() -> void:
 	add_to_group("player")
 	#
 	if secret_location_walkin:
 		global_position = force_rotate_list[1].global_position
 		enter_secretLocation()
-
+	if GlobalVars.in_level:
+		match GlobalVars.current_level:
+			"micah":
+				if GlobalVars.micah_kicked_out == true or GlobalVars.micah_time_out == true:
+					GlobalVars.dalton_pos = timeout_pos.position
+			"juniper":
+				if GlobalVars.juniper_kicked_out == true or GlobalVars.juniper_time_out == true:
+					GlobalVars.dalton_pos = timeout_pos.position
+			"quincy":
+				if GlobalVars.quincy_kicked_out == true or GlobalVars.quincy_time_out == true:
+					GlobalVars.dalton_pos = timeout_pos.position
 	if MicahHouse:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	#if GlobalVars.dalton_pos:

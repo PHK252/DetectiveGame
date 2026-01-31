@@ -57,12 +57,13 @@ func _ready():
 	sloth.visible = false
 	panda.visible = false
 	cardboard_collision.disabled = true
-	if Dialogic.VAR.get_variable("Asked Questions.left_Micah") == false:
+	if Dialogic.VAR.get_variable("Asked Questions.left_Micah") == false and GlobalVars.micah_kicked_out == false and GlobalVars.micah_time_out == false:
 		panda_timer.start()
 		allow_panda = true
 		return
-	delivery_timer.start()
-	allow_sloth = true
+	else:
+		delivery_timer.start()
+		allow_sloth = true
 
 func _on_window_close_became_active() -> void:
 	count += 1

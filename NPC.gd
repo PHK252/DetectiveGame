@@ -27,7 +27,7 @@ var intDalton = false
 @export var yawn : AudioStreamPlayer3D
 @export var scratch : AudioStreamPlayer3D
 @export var beer : AnimationPlayer
-
+@export var timeout_pos : Marker3D
 
 var STOPPING_DISTANCE = 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
@@ -72,6 +72,10 @@ func _ready() -> void:
 	add_to_group("micah")
 	anim_player.play("basketball_default")
 	state = IDLE
+	if GlobalVars.in_level:
+		if GlobalVars.micah_kicked_out == true or GlobalVars.micah_time_out == true:
+			GlobalVars.micah_pos = timeout_pos.position
+
 	if GlobalVars.from_save_file == true:
 		global_position = GlobalVars.micah_pos
 		await get_tree().process_frame

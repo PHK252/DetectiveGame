@@ -70,9 +70,7 @@ func close() -> void:
 	cooldown = false
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	print(interactable.monitorable, " monitioring")
+
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	in_bathroom = Dialogic.VAR.get_variable("Quincy.in_bathroom")
@@ -143,14 +141,6 @@ func _on_bathroom_door_body_exited(body):
 				Dialogic.VAR.set_variable("Quincy.dalton_in_bath", false)
 				close()
 			
-func _load_bath_distract():
-	GlobalVars.in_dialogue = true
-	player.stop_player()
-	emit_signal("enable_look")
-	alert.hide()
-	Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
-	Dialogic.signal_event.connect(_quincy_enter_bathroom)
-	var clogged = Dialogic.start(clog_exit_dialogue, "clean")
 
 func _quincy_enter_bathroom(argument: String):
 	if argument == "quincy_clean":

@@ -45,7 +45,7 @@ var STOPPING_DISTANCE := 0.5  # Distance at which we stop following
 const STOPPING_BUFFER = 0.4  # Small buffer to prevent jittering
 const MIN_STOP_THRESHOLD = 0.05  # Minimum velocity to consider NPC as stationary
 #const FOLLOW_DISTANCE = 1.2 
-
+@export var timeout_pos : Marker3D
 var idle_blend := 0.0
 var is_navigating := false
 var targ_reach := false
@@ -95,6 +95,9 @@ var case_handle_rotation := false
 
 func _ready() -> void:
 	add_to_group("juniper")
+	if GlobalVars.in_level:
+		if GlobalVars.juniper_kicked_out == true or GlobalVars.juniper_time_out == true:
+			GlobalVars.juniper_pos = timeout_pos.position
 	if GlobalVars.from_save_file == true:
 		global_position = GlobalVars.juniper_pos
 		if GlobalVars.in_level == true:

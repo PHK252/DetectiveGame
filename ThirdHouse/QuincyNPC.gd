@@ -90,7 +90,7 @@ var special_rotation := false
 #
 signal enable_look
 signal disable_look
-
+@export var timeout_pos : Marker3D
 @export var Q_body : CharacterBody3D
 @export var Q_marker_end : Marker3D
 @export var Q_marker_end_safe : Marker3D
@@ -109,7 +109,9 @@ var state := IDLE
 
 func _ready() -> void:
 	Dialogic.signal_event.connect(_on_dialogic_signal)
-	
+	if GlobalVars.in_level:
+		if GlobalVars.quincy_kicked_out == true or GlobalVars.quincy_time_out == true:
+			GlobalVars.quincy_pos = timeout_pos.position
 	if GlobalVars.from_save_file == true:
 		if GlobalVars.in_level == true:
 			greeting = true

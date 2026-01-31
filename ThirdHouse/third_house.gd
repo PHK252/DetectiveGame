@@ -34,7 +34,7 @@ signal theo_leave
 signal quincy_leave
 
 signal load_bath
-
+@export var phone_overlay : CanvasLayer
 signal level_end
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
@@ -93,9 +93,6 @@ func _ready():
 			emit_signal("quincy_leave")
 			emit_signal("open_main_door")
 			return
-		#fix this
-		if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
-			emit_signal("load_bath")
 		timer.wait_time = GlobalVars.time_left
 		timer.start()
 	await get_tree().process_frame
@@ -104,6 +101,7 @@ func _ready():
 	print(Dialogic.VAR.get_variable("Quincy.caught"), " caught")
 	if interactables[0].monitorable == false:
 		interactables[0].set_deferred("monitorable", true)
+	await hide_tween.animation_finished
 
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
@@ -171,7 +169,7 @@ func _on_timer_timeout():
 		print("LEVEL TIMEOUT")
 		#emit_signal("theo_leave")
 		#emit_signal("quincy_leave")
-		if GlobalVars.in_interaction == "" and bathroom_door.player_in_bathroom == false:
+		if GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.dalton_in_bath") == false:
 			player.stop_player()
 			alert.hide()
 			Dialogic.clear(1)

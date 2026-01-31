@@ -12,9 +12,10 @@ func _on_interactable_interacted(interactor):
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 	else:
 		if Dialogic.VAR.get_variable("Quincy.is_distracted") == false and Dialogic.VAR.get_variable("Quincy.caught") == false:
-			Dialogic.start("Porch_Quincy")
-			GlobalVars.in_dialogue = true
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			if GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false:
+				Dialogic.start("Porch_Quincy")
+				GlobalVars.in_dialogue = true
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

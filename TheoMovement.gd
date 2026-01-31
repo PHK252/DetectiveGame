@@ -68,6 +68,7 @@ var dalton_entered := false
 var direct
 var greeting_finished := false
 var force_idle_closet := false
+@export var timeout_pos : Marker3D
 
 @export var secret_location := false
 
@@ -98,8 +99,17 @@ enum {
 func _ready() -> void:
 	add_to_group("theo")
 	print(GlobalVars.theo_pos)
-	#if GlobalVars.theo_pos != Vector3(0.0, 0.0, 0.0):
-		#global_position = GlobalVars.theo_pos
+	if GlobalVars.in_level:
+		match GlobalVars.current_level:
+			"micah":
+				if GlobalVars.micah_kicked_out == true or GlobalVars.micah_time_out == true:
+					GlobalVars.theo_pos = timeout_pos.position
+			"juniper":
+				if GlobalVars.juniper_kicked_out == true or GlobalVars.juniper_time_out == true:
+					GlobalVars.theo_pos = timeout_pos.position
+			"quincy":
+				if GlobalVars.quincy_kicked_out == true or GlobalVars.quincy_time_out == true:
+					GlobalVars.theo_pos = timeout_pos.position
 	if GlobalVars.from_save_file == true:
 		global_position = GlobalVars.theo_pos
 		await get_tree().process_frame
