@@ -54,7 +54,7 @@
 [ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="53_lk11p"]
 [ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="54_70b4d"]
 [ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="55_hggkw"]
-[ext_resource type="AudioStream" uid="uid://c5ayxplys2fqs" path="res://Music/Main Menu + 6.wav" id="56_prttk"]
+[ext_resource type="AudioStream" uid="uid://b5nm5hjml0b4t" path="res://Audio/masters_ogg/main_menu.ogg" id="56_prttk"]
 [ext_resource type="PackedScene" uid="uid://d2hmxhs2js55d" path="res://Settings/options_settings.tscn" id="57_52ejp"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_prttk"]
@@ -523,6 +523,7 @@ bus = &"SFX"
 stream = ExtResource("56_prttk")
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Controls" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
