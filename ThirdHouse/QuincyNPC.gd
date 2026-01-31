@@ -135,6 +135,14 @@ func _ready() -> void:
 	rotate_forced = false
 	rotate_number = 0
 	
+	if GlobalVars.in_level == true:
+		await get_tree().create_timer(2.0).timeout
+		if is_distracted == false:
+			rotate_forced = false
+			wander_choice = 11
+			is_distracted = false
+			is_navigating = true
+	
 
 func _on_dialogic_signal(argument: String):
 	if argument == "to_door":
