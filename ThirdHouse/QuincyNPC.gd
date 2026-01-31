@@ -117,6 +117,8 @@ func _ready() -> void:
 			greeting = true
 		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 			is_distracted = true
+		if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
+			general_distraction = true
 		global_position = GlobalVars.quincy_pos
 		await get_tree().process_frame
 		GlobalVars.from_save_file = false
