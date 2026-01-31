@@ -34,8 +34,8 @@
 [ext_resource type="AudioStream" uid="uid://dfbmqxh6dghpc" path="res://Audio/Case/pickUpCaseIsaac.wav" id="19_56133"]
 [ext_resource type="PackedScene" uid="uid://sodyrj41yo6k" path="res://CharacterStuff/Isaac/IsaacFB2Changes.glb" id="19_hut4e"]
 [ext_resource type="AnimationLibrary" uid="uid://bm7oidngh6ue0" path="res://CustomTracks/whistle.res" id="21_8usum"]
-[ext_resource type="AudioStream" uid="uid://2udyqjf75qit" path="res://Audio/Ambience/nightime_ambience.wav" id="29_pbqp2"]
 [ext_resource type="AudioStream" uid="uid://bec0ymt7hi38" path="res://Audio/Ambience/RustleLeaves.wav" id="35_vg05g"]
+[ext_resource type="AudioStream" uid="uid://dmfgexbxb7vqi" path="res://Audio/ambience_ogg/nightime_ambience.ogg" id="35_ywtg3"]
 [ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="36_216me"]
 
 [sub_resource type="Shader" id="Shader_frku4"]
@@ -951,7 +951,7 @@ libraries = {
 transform = Transform3D(-0.0124662, 0.461924, -2.01913e-08, 0, -2.01987e-08, -0.462092, -0.461924, -0.0124662, 5.44915e-10, 0, 0.316403, -0.899646)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacFB2Changes/Armature_002" index="0"]
-bones/0/position = Vector3(-5.96046e-08, 0, -1.77345)
+bones/0/position = Vector3(-5.96046e-08, 0, -1.79369)
 bones/0/rotation = Quaternion(-0.4719, 0.526603, 0.526603, -0.4719)
 bones/1/rotation = Quaternion(1.25411e-08, 0.129933, 0.991523, -1.30457e-08)
 bones/4/rotation = Quaternion(-0.0755212, -2.43548e-09, 1.16257e-09, 0.997144)
@@ -963,17 +963,17 @@ bones/8/position = Vector3(-0.262217, 0.657452, 0.0662161)
 bones/8/rotation = Quaternion(3.93493e-09, 5.47231e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.308277, 0.00450352, 0.0138954, 0.951184)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.393387, 0.0827466, -0.444808, 0.800341)
-bones/12/rotation = Quaternion(0.137145, -0.279513, -0.656216, 0.687345)
+bones/11/rotation = Quaternion(-0.390554, 0.0778838, -0.450686, 0.798927)
+bones/12/rotation = Quaternion(0.133987, -0.284659, -0.641106, 0.7)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.339893, -0.0140841, 0.417149, 0.84277)
-bones/16/rotation = Quaternion(0.0900413, 0.213427, 0.587935, 0.775032)
-bones/19/rotation = Quaternion(0.0717729, -0.00395111, -0.0153116, 0.997296)
-bones/20/rotation = Quaternion(-0.19315, 0.000135352, -0.00529831, 0.981155)
-bones/21/rotation = Quaternion(0.786621, -0.0294145, 0.0284314, 0.61608)
-bones/23/rotation = Quaternion(0.071773, 0.0039515, 0.015312, 0.997296)
-bones/24/rotation = Quaternion(-0.19315, -0.000135353, 0.00529831, 0.981155)
-bones/25/rotation = Quaternion(0.786621, 0.0294145, -0.0284315, 0.61608)
+bones/15/rotation = Quaternion(-0.3368, -0.010126, 0.425033, 0.840125)
+bones/16/rotation = Quaternion(0.0870876, 0.217164, 0.568648, 0.788603)
+bones/19/rotation = Quaternion(0.0265333, -0.00270362, -0.0170551, 0.999499)
+bones/20/rotation = Quaternion(-0.101639, 0.000137242, -0.00278805, 0.994817)
+bones/21/rotation = Quaternion(0.74842, -0.0310601, 0.0266239, 0.661962)
+bones/23/rotation = Quaternion(0.0265333, 0.00270415, 0.0170554, 0.999499)
+bones/24/rotation = Quaternion(-0.101639, -0.000137235, 0.00278805, 0.994817)
+bones/25/rotation = Quaternion(0.74842, 0.0310601, -0.0266239, 0.661962)
 bones/26/position = Vector3(0.106307, 0.263697, -0.13186)
 bones/26/rotation = Quaternion(0.0152332, 0.0136507, 0.744573, -0.667228)
 bones/27/position = Vector3(0.0465011, -0.28049, -0.13186)
@@ -1271,10 +1271,11 @@ bus = &"SFX"
 
 [node name="Ambience" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64418, 3.95299, -0.177769)
-stream = ExtResource("29_pbqp2")
+stream = ExtResource("35_ywtg3")
 volume_db = -10.0
 autoplay = true
 bus = &"Ambience"
+parameters/looping = true
 
 [node name="Rustle" type="AudioStreamPlayer3D" parent="SubViewportContainer/SubViewport/Sounds"]
 transform = Transform3D(-0.655334, 0, 0.755339, 0, 1, 0, -0.755339, 0, -0.655334, 4.01032, 0.806919, -6.04673)

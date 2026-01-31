@@ -106,7 +106,7 @@
 [ext_resource type="Texture2D" uid="uid://vs1e7218amyi" path="res://loading_screen/Frames/Wake Loading/Sleep Indexed Day Anim31.png" id="103_tqm54"]
 [ext_resource type="Texture2D" uid="uid://cv8pnkgvurfbp" path="res://loading_screen/Frames/Wake Loading/Sleep Indexed Day Anim32.png" id="104_ivqwd"]
 [ext_resource type="FontFile" uid="uid://bfh28807un7kc" path="res://Dialogue Stuff/Fonts/Menu Font.ttf" id="105_6vts3"]
-[ext_resource type="AudioStream" uid="uid://2udyqjf75qit" path="res://Audio/Ambience/nightime_ambience.wav" id="106_glwdg"]
+[ext_resource type="AudioStream" uid="uid://dmfgexbxb7vqi" path="res://Audio/ambience_ogg/nightime_ambience.ogg" id="106_glwdg"]
 [ext_resource type="AudioStream" uid="uid://d00xr3wa61b1o" path="res://Audio/Extras/Morning.mp3" id="107_ryfxn"]
 [ext_resource type="AudioStream" uid="uid://ctbu0k6k6ugns" path="res://Audio/Extras/Date Transition longer.mp3" id="109_glwdg"]
 
@@ -1237,6 +1237,7 @@ bus = &"SFX"
 [node name="SleepSounds" type="AudioStreamPlayer" parent="Sleep Loading/AnimationPlayer"]
 stream = ExtResource("106_glwdg")
 bus = &"Ambience"
+parameters/looping = true
 
 [node name="WakeSounds" type="AudioStreamPlayer" parent="Sleep Loading/AnimationPlayer"]
 stream = ExtResource("107_ryfxn")

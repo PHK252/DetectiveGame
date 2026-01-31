@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhdb8cl0l8n27"]
+[gd_scene load_steps=14 format=3 uid="uid://bhdb8cl0l8n27"]
 
 [ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_5jm4l"]
 [ext_resource type="Script" uid="uid://b5b3482ku7twe" path="res://Settings/window_mode.gd" id="2_is0l0"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://hw5kvlyrysff" path="res://Settings/display_fps.gd" id="7_2033e"]
 [ext_resource type="Script" uid="uid://m821lsxq61kl" path="res://Settings/pixelation.gd" id="8_4yxcg"]
 [ext_resource type="Script" uid="uid://cvaacwnn3tuje" path="res://Settings/remap_input.gd" id="9_w0vcm"]
-[ext_resource type="AudioStream" uid="uid://daj81pl4kj1c0" path="res://Audio/Ambience/fireplace.wav" id="10_q765p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypc3l"]
 
@@ -349,10 +348,9 @@ max_value = 1.2
 step = 0.01
 value = 1.0
 
-[node name="Vsync" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("targ_fps", "op_button")]
+[node name="Vsync" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("op_button")]
 layout_mode = 2
 script = ExtResource("6_ofjab")
-targ_fps = NodePath("../target fps")
 op_button = NodePath("OptionButton")
 
 [node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/Vsync"]
@@ -394,10 +392,9 @@ popup/item_1/id = 1
 popup/item_2/text = "unlimited"
 popup/item_2/id = 2
 
-[node name="display fps" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("fps_label", "checkbox")]
+[node name="display fps" type="HBoxContainer" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer" node_paths=PackedStringArray("checkbox")]
 layout_mode = 2
 script = ExtResource("7_2033e")
-fps_label = NodePath("../../../../../../FPS")
 checkbox = NodePath("CheckBox")
 
 [node name="Label" type="Label" parent="Panel/AspectRatioContainer/TabContainer/Graphics/MarginContainer/VBoxContainer/display fps"]
@@ -685,12 +682,6 @@ text = "X"
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
-
-[node name="SoundTest" type="AudioStreamPlayer" parent="Panel/AspectRatioContainer"]
-stream = ExtResource("10_q765p")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
 
 [connection signal="value_changed" from="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Master/master_slider" to="Panel/AspectRatioContainer/TabContainer/Sound" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Panel/AspectRatioContainer/TabContainer/Sound/MarginContainer/VBoxContainer/Music/music_slider" to="Panel/AspectRatioContainer/TabContainer/Sound" method="_on_music_slider_value_changed"]
