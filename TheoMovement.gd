@@ -1015,6 +1015,8 @@ func _on_theo_no_go_body_exited(body: Node3D) -> void:
 
 func _on_living_room_no_go_theo_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and faint_dalton == false:
+		if nav.is_inside_tree() == false:
+			return
 		living_room_nogo = true
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -1026,6 +1028,8 @@ func _on_living_room_no_go_theo_body_entered(body: Node3D) -> void:
 
 func _on_living_room_no_go_theo_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player") and faint_dalton == false:
+		if nav.is_inside_tree() == false:
+			return
 		living_room_nogo = false
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -1037,6 +1041,8 @@ func _on_living_room_no_go_theo_body_exited(body: Node3D) -> void:
 
 func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and faint_dalton == false:
+		if nav.is_inside_tree() == false:
+			return
 		living_room_nogo = true
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
@@ -1048,6 +1054,8 @@ func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 
 func _on_painting_adjustment_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player") and faint_dalton == false:
+		if nav.is_inside_tree() == false:
+			return
 		living_room_nogo = false
 		anim_tree.set("parameters/Scratch/request", 2)
 		anim_tree.set("parameters/NoteAlt/request", 2)
