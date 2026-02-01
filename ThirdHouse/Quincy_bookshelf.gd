@@ -55,7 +55,8 @@ var react = false
 
 @export var bookshelf_move_sound : AudioStreamPlayer3D
 @export var bookmark_sound : AudioStreamPlayer3D
-
+@export var music : AudioStreamPlayer3D
+@onready var music_arr = ["res://Audio/masters_ogg/quincy_master.ogg", "res://Audio/masters_ogg/secret_master.ogg"]
 signal book_thoughts_finished
 signal thoughts_finished
 
@@ -285,9 +286,20 @@ func _on_secret_exit(body):
 			in_secret = false
 			close()
 			interactable.set_deferred("monitorable", true)
+			MusicFades.fade_out_audio()
+			await get_tree().create_timer(1.0).timeout
+			music.stream = load(music_arr[0])
+			music.play()
+			MusicFades.fade_in_audio()
+
 
 
 func _on_secret_entered(body):
 	if body == player:
 		if in_secret == false:
 			in_secret = true
+			MusicFades.fade_out_audio()
+			await get_tree().create_timer(1.0).timeout
+			music.stream = load(music_arr[1])
+			music.play()
+			MusicFades.fade_in_audio()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://bawb6xy2v8wo"]
+[gd_scene load_steps=100 format=4 uid="uid://bawb6xy2v8wo"]
 
 [ext_resource type="PackedScene" uid="uid://decqoin6bioax" path="res://Cutscenes/Flashback_02_base.glb" id="1_0r6ac"]
 [ext_resource type="Script" uid="uid://cv7sjy6pr8a15" path="res://Cutscenes/flashback_Day2.gd" id="1_ufqas"]
@@ -37,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://bec0ymt7hi38" path="res://Audio/Ambience/RustleLeaves.wav" id="35_vg05g"]
 [ext_resource type="AudioStream" uid="uid://dmfgexbxb7vqi" path="res://Audio/ambience_ogg/nightime_ambience.ogg" id="35_ywtg3"]
 [ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="36_216me"]
+[ext_resource type="AudioStream" uid="uid://yn3bwq4ifbmp" path="res://Audio/masters_ogg/secret_master.ogg" id="38_8tucx"]
 
 [sub_resource type="Shader" id="Shader_frku4"]
 code = "shader_type spatial;
@@ -951,7 +952,7 @@ libraries = {
 transform = Transform3D(-0.0124662, 0.461924, -2.01913e-08, 0, -2.01987e-08, -0.462092, -0.461924, -0.0124662, 5.44915e-10, 0, 0.316403, -0.899646)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/IsaacFB2Changes/Armature_002" index="0"]
-bones/0/position = Vector3(-5.96046e-08, 0, -1.79369)
+bones/0/position = Vector3(-5.96046e-08, 0, -1.77507)
 bones/0/rotation = Quaternion(-0.4719, 0.526603, 0.526603, -0.4719)
 bones/1/rotation = Quaternion(1.25411e-08, 0.129933, 0.991523, -1.30457e-08)
 bones/4/rotation = Quaternion(-0.0755212, -2.43548e-09, 1.16257e-09, 0.997144)
@@ -963,17 +964,17 @@ bones/8/position = Vector3(-0.262217, 0.657452, 0.0662161)
 bones/8/rotation = Quaternion(3.93493e-09, 5.47231e-09, 0.138841, 0.990315)
 bones/9/rotation = Quaternion(0.308277, 0.00450352, 0.0138954, 0.951184)
 bones/10/rotation = Quaternion(-0.167798, 0.0815864, -0.681403, 0.707727)
-bones/11/rotation = Quaternion(-0.390554, 0.0778838, -0.450686, 0.798927)
-bones/12/rotation = Quaternion(0.133987, -0.284659, -0.641106, 0.7)
+bones/11/rotation = Quaternion(-0.393211, 0.0824426, -0.445177, 0.800254)
+bones/12/rotation = Quaternion(0.136899, -0.279923, -0.655036, 0.688353)
 bones/14/rotation = Quaternion(-0.161671, -0.0753242, 0.683148, 0.708165)
-bones/15/rotation = Quaternion(-0.3368, -0.010126, 0.425033, 0.840125)
-bones/16/rotation = Quaternion(0.0870876, 0.217164, 0.568648, 0.788603)
-bones/19/rotation = Quaternion(0.0265333, -0.00270362, -0.0170551, 0.999499)
-bones/20/rotation = Quaternion(-0.101639, 0.000137242, -0.00278805, 0.994817)
-bones/21/rotation = Quaternion(0.74842, -0.0310601, 0.0266239, 0.661962)
-bones/23/rotation = Quaternion(0.0265333, 0.00270415, 0.0170554, 0.999499)
-bones/24/rotation = Quaternion(-0.101639, -0.000137235, 0.00278805, 0.994817)
-bones/25/rotation = Quaternion(0.74842, 0.0310601, -0.0266239, 0.661962)
+bones/15/rotation = Quaternion(-0.339722, -0.0138659, 0.417589, 0.842625)
+bones/16/rotation = Quaternion(0.0897463, 0.213808, 0.586008, 0.776419)
+bones/19/rotation = Quaternion(0.0682062, -0.00384342, -0.0154607, 0.997544)
+bones/20/rotation = Quaternion(-0.185287, 0.000135563, -0.00508263, 0.982671)
+bones/21/rotation = Quaternion(0.782498, -0.0296033, 0.0282348, 0.621308)
+bones/23/rotation = Quaternion(0.0682058, 0.00384393, 0.0154609, 0.997544)
+bones/24/rotation = Quaternion(-0.185286, -0.000135565, 0.0050826, 0.982671)
+bones/25/rotation = Quaternion(0.782498, 0.0296033, -0.0282348, 0.621308)
 bones/26/position = Vector3(0.106307, 0.263697, -0.13186)
 bones/26/rotation = Quaternion(0.0152332, 0.0136507, 0.744573, -0.667228)
 bones/27/position = Vector3(0.0465011, -0.28049, -0.13186)
@@ -1286,6 +1287,10 @@ bus = &"SFX"
 [node name="Pause" parent="." node_paths=PackedStringArray("main_scene") instance=ExtResource("36_216me")]
 visible = false
 main_scene = NodePath("..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_8tucx")
+autoplay = true
 
 [connection signal="activate_look_general" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA1/Armature_001/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
 [connection signal="activate_look_general" from="SubViewportContainer/SubViewport/ControlNode" to="SubViewportContainer/SubViewport/Characters/Flashback_02_CIA2/Armature/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
