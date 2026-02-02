@@ -171,7 +171,7 @@ func _on_check_day():
 			quincy.visible = false
 		else:
 			quincy.visible = true
-	if (went_Juniper == true and  went_Micah == true and GlobalVars.day == 1) or (went_Quincy == true and GlobalVars.day == 2) or (went_secret == true and GlobalVars.day == 3):
+	if (went_Juniper == true and went_Micah == true and GlobalVars.day == 1) or (went_Quincy == true and GlobalVars.day == 2) or (went_secret == true and GlobalVars.day == 3):
 		office.disabled = false
 		office.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	else:
