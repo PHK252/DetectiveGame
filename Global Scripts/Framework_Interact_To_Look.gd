@@ -121,6 +121,8 @@ func _input(event):
 			object_in_scene.show()
 			object_interact.show() # might not need?
 			GlobalVars.set(view_object, true)
+			emit_signal("show_others")
+			emit_signal("check_pager_text")
 
 
 func _on_check_pager_text():

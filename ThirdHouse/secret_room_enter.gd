@@ -4,6 +4,7 @@ extends Area3D
 @export var dalton_marker : Marker2D
 @onready var entered_room = false
 
+signal play_secret
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		if entered_room == false:

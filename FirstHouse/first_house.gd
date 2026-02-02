@@ -112,11 +112,11 @@ func _process(delta):
 		GlobalVars.micah_kicked_out = true
 		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
 			Dialogic.clear(1)
-			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			alert.hide()
 			player.stop_player()
 			timer.stop()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			in_kicked_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)

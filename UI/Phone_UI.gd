@@ -27,6 +27,9 @@ extends CanvasLayer
 @onready var close_pic_7 = $"GalleryScreen/ClosePics/Close Pic7"
 @onready var gallery_buttons = $GalleryScreen/ClosePics/Buttons
 
+@export var glass_break_sound : AudioStreamPlayer3D
+
+signal save_time
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	default_screen()
@@ -305,10 +308,12 @@ func _on_call_pressed():
 		if called_num == "034-2012": 
 			if at_bookshelf == true and needs_distraction == true:
 				var book_distract = Dialogic.start("Quincy_book_distract")
+				emit_signal("save_time")
 				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				GlobalVars.in_dialogue = true
 				Dialogic.signal_event.connect(_bottle_fall_sound)
 				Dialogic.signal_event.connect(_end_call)
+				Dialogic.signal_event.connect(_leave_quincy)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				return
 			elif bar_call == true:
@@ -318,6 +323,11 @@ func _on_call_pressed():
 				Dialogic.timeline_ended.connect(_on_bar_call_ended)
 				return
 			else:
+				if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+					Dialogic.start("Phone_wrong_num")
+					GlobalVars.in_dialogue = true
+					Dialogic.timeline_ended.connect(_on_timeline_ended)
+					return
 				if GlobalVars.current_level == "quincy":
 					Dialogic.start("Theo_call", "separated")
 					GlobalVars.in_dialogue = true
@@ -435,10 +445,12 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 	GlobalVars.in_interaction = "phone call"
 	if at_bookshelf == true and needs_distraction == true:
 		var book_distract = Dialogic.start("Quincy_book_distract")
+		emit_signal("save_time")
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.in_dialogue = true
 		Dialogic.signal_event.connect(_bottle_fall_sound)
 		Dialogic.signal_event.connect(_end_call)
+		Dialogic.signal_event.connect(_leave_quincy)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 	elif bar_call == true:
 		var bar_call = Dialogic.start("Quincy_bar", "Theo Call")
@@ -451,6 +463,11 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 	else:
 		if GlobalVars.in_dialogue == false:
+			if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+				Dialogic.start("Phone_wrong_num")
+				GlobalVars.in_dialogue = true
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				return
 			if GlobalVars.current_level == "quincy":
 				Dialogic.start("Theo_call", "separated")
 				GlobalVars.in_dialogue = true
@@ -545,12 +562,22 @@ func _bar_end_call(argument : String):
 	
 func _bottle_fall_sound(argument: String):
 	if argument == "bar_distract":
-		#play sound
+		glass_break_sound.play()
 		Dialogic.signal_event.disconnect(_bottle_fall_sound)
-		emit_signal("Book_distract_quincy")
 	elif argument == "end":
 		Dialogic.signal_event.disconnect(_bottle_fall_sound)
 
+func _leave_quincy(argument: String):
+	if argument == "quincy_walk":
+		emit_signal("Book_distract_quincy")
+		Dialogic.signal_event.disconnect(_leave_quincy)
+		await get_tree().create_timer(1.0).timeout
+		alert.show()
+		
+	elif argument == "end":
+		alert.show()
+		Dialogic.signal_event.disconnect(_leave_quincy)
+		
 func _end_call(argument: String):
 	if argument == "end_call":
 		#play sound

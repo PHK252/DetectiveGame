@@ -30,7 +30,9 @@ if {Character Aff Points.Theo} > 3:
 	Quincy (Default): Hmm...
 	Quincy (Happy): Tell him I said- 
 	[signal arg = "bar_distract"]
+	[wait time="1.0"]
 	Quincy (Surprise): What the hell?
+	[signal arg="quincy_walk"]
 	set {Quincy.is_distracted} = true
 	set {Quincy.needs_distraction} = false
 	[signal arg= "end"]
@@ -71,4 +73,5 @@ else:
 	Quincy (Default): Hmm... 
 	Quincy (Squint Smug): Seems tense.
 	Dalton (Sigh): Hmph.
+	[signal arg="end"]
 	set {Quincy.failed_distract} = true

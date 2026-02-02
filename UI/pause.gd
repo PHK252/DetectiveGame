@@ -17,12 +17,7 @@ func _ready():
 	pass
 
 func _on_save_pressed():
-	if level_timer:
-		if level_timer.time_left != 0.0:
-			GlobalVars.time_left = level_timer.time_left
-	if distract_timer:
-		if distract_timer.time_left != 0.0:
-			GlobalVars.distract_left = distract_timer.time_left
+	save_time()
 	AudioServer.set_bus_mute(0, true)
 	resume.shortcut = null
 	await get_tree().process_frame
@@ -34,7 +29,14 @@ func _on_save_pressed():
 	Engine.time_scale = 1
 	await get_tree().create_timer(0.51).timeout
 	
-
+func save_time():
+	print("save time ",  level_timer.time_left)
+	if level_timer:
+		if level_timer.time_left != 0.0:
+			GlobalVars.time_left = level_timer.time_left
+	if distract_timer:
+		if distract_timer.time_left != 0.0:
+			GlobalVars.distract_left = distract_timer.time_left
 
 func _on_resume_pressed():
 	print("resume_pressed")

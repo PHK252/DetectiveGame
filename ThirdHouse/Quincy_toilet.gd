@@ -45,7 +45,7 @@ extends Node3D
 
 @export var towel: Node3D
 signal distraction
-
+signal save_time
 @export var flush : AudioStreamPlayer3D
 
 func _ready() -> void:
@@ -206,6 +206,7 @@ func _on_towels_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				emit_signal("save_time")
 				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				GlobalVars.in_dialogue = true
 				interact_area_1.hide()

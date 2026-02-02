@@ -6,6 +6,7 @@ var default_cursor = preload("res://UI/Assets/Cursors/Default Cursor small.png")
 var pointing_hand = preload("res://UI/Assets/Cursors/Pointing hand small.png")
 var i_beam = preload("res://UI/Assets/Cursors/I beam dark small.png")
 
+const KEY = "hdksfa42442"
 signal phone_call_receiving 
 signal open_micah_case
 signal open_juniper_case

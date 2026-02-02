@@ -1,4 +1,4 @@
-[gd_scene load_steps=238 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=239 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -162,6 +162,7 @@
 [ext_resource type="Texture2D" uid="uid://tk8fnydqh8f0" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame1@2x.png" id="128_mtbcp"]
 [ext_resource type="Texture2D" uid="uid://b13m4uusn5low" path="res://ThirdHouse/Assets/Sciencepic front@2x.png" id="130_hqjxk"]
 [ext_resource type="Texture2D" uid="uid://c4wvalrot4e50" path="res://ThirdHouse/Assets/Sciencepic back@2x.png" id="131_sykof"]
+[ext_resource type="Texture2D" uid="uid://cgbsifk625ex" path="res://SecondHouse/Close Assets/Juniper Employee Info Back@2x.png" id="144_5ppeq"]
 [ext_resource type="Texture2D" uid="uid://wghfnjybiaak" path="res://ThirdHouse/Assets/Project Proposal_1@2x.png" id="159_k0hhp"]
 [ext_resource type="Script" uid="uid://ktpiy2gq45ns" path="res://UI/phone_sounds_general.gd" id="164_x6dlt"]
 [ext_resource type="AudioStream" uid="uid://oiijkhxhm8r6" path="res://Audio/misc_sounds/num_01.wav" id="165_14bcs"]
@@ -597,7 +598,7 @@ texture_pressed = ExtResource("15_4x8ww")
 texture_hover = ExtResource("15_4x8ww")
 
 [node name="Time" type="RichTextLabel" parent="HomeScreen" node_paths=PackedStringArray("global_timer")]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
 offset_top = 74.0
@@ -633,7 +634,7 @@ position = Vector2(1161, 96)
 texture = ExtResource("12_qpmkw")
 
 [node name="Time" type="RichTextLabel" parent="GalleryScreen" node_paths=PackedStringArray("global_timer")]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
 offset_top = 74.0
@@ -658,7 +659,7 @@ texture = ExtResource("7_wibdo")
 anchors_preset = 0
 
 [node name="Gallery Title" type="RichTextLabel" parent="GalleryScreen/GalleryList"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 730.0
 offset_top = 164.0
@@ -672,7 +673,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Gallery Subtitle" type="RichTextLabel" parent="GalleryScreen/GalleryList"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
 offset_top = 284.0
@@ -929,7 +930,7 @@ position = Vector2(960, 247)
 texture = ExtResource("47_hk3kd")
 
 [node name="NumInput" type="Label" parent="PhoneScreen/PhoneNum"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 711.0
 offset_top = 211.0
@@ -1197,7 +1198,7 @@ script = ExtResource("88_h1u1y")
 contacts_arr = [NodePath("VBoxContainer/Isaac"), NodePath("VBoxContainer/Quincy"), NodePath("VBoxContainer/Theo"), NodePath("VBoxContainer/Juniper"), NodePath("VBoxContainer/Clyde")]
 
 [node name="Title" type="RichTextLabel" parent="PhoneScreen/ContactScreen"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 163.0
@@ -1225,7 +1226,7 @@ texture_pressed = ExtResource("89_h1u1y")
 texture_hover = ExtResource("89_h1u1y")
 
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Isaac"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 31.0
 offset_top = 16.0
@@ -1239,7 +1240,7 @@ text = "Isaac"
 fit_content = true
 
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Isaac"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 30.0
 offset_top = 48.0
@@ -1260,7 +1261,7 @@ texture_pressed = ExtResource("89_h1u1y")
 texture_hover = ExtResource("89_h1u1y")
 
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Quincy"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 31.0
 offset_top = 16.0
@@ -1274,7 +1275,7 @@ text = "Quincy Leonid"
 fit_content = true
 
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Quincy"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 30.0
 offset_top = 48.0
@@ -1295,7 +1296,7 @@ texture_pressed = ExtResource("89_h1u1y")
 texture_hover = ExtResource("89_h1u1y")
 
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Theo"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 31.0
 offset_top = 16.0
@@ -1309,7 +1310,7 @@ text = "Dectective Lycus"
 fit_content = true
 
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Theo"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 30.0
 offset_top = 48.0
@@ -1330,7 +1331,7 @@ texture_pressed = ExtResource("89_h1u1y")
 texture_hover = ExtResource("89_h1u1y")
 
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Juniper"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 31.0
 offset_top = 16.0
@@ -1344,7 +1345,7 @@ text = "Juniper Hartley"
 fit_content = true
 
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Juniper"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 30.0
 offset_top = 48.0
@@ -1365,7 +1366,7 @@ texture_pressed = ExtResource("89_h1u1y")
 texture_hover = ExtResource("89_h1u1y")
 
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Clyde"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 31.0
 offset_top = 16.0
@@ -1379,7 +1380,7 @@ text = "Clyde Procyon"
 fit_content = true
 
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Clyde"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 30.0
 offset_top = 48.0
@@ -1400,7 +1401,7 @@ texture_pressed = ExtResource("89_h1u1y")
 texture_hover = ExtResource("89_h1u1y")
 
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Skylar"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 31.0
 offset_top = 16.0
@@ -1414,7 +1415,7 @@ text = "Skylar Aslan"
 fit_content = true
 
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Skylar"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 30.0
 offset_top = 48.0
@@ -1427,7 +1428,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "093-191"
 
 [node name="Time" type="RichTextLabel" parent="PhoneScreen" node_paths=PackedStringArray("global_timer")]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
 offset_top = 74.0
@@ -1503,7 +1504,7 @@ position = Vector2(960, 513)
 texture = ExtResource("90_6iy3u")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Home"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 208.0
@@ -1515,7 +1516,7 @@ theme_override_font_sizes/normal_font_size = 70
 text = "ASPD CASE LOG"
 
 [node name="Case Number" type="RichTextLabel" parent="NotesScreen/Home"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 300.0
@@ -1527,7 +1528,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE NUMBER"
 
 [node name="Name" type="RichTextLabel" parent="NotesScreen/Home"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 919.0
 offset_top = 152.0
@@ -1539,7 +1540,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "DET. DALTON REYNARD"
 
 [node name="Date" type="RichTextLabel" parent="NotesScreen/Home"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 936.0
 offset_top = 301.0
@@ -1551,7 +1552,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "DATE"
 
 [node name="Status" type="RichTextLabel" parent="NotesScreen/Home"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 1092.0
 offset_top = 301.0
@@ -1574,7 +1575,7 @@ texture_pressed = ExtResource("91_ic4nm")
 texture_hover = ExtResource("91_ic4nm")
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1587,7 +1588,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10008302"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1600,7 +1601,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "11/02/XX20"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1625,7 +1626,7 @@ offset_right = 1182.0
 offset_bottom = 492.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1638,7 +1639,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10005823"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1651,7 +1652,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "11/11/XX19"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1671,7 +1672,7 @@ offset_right = 1182.0
 offset_bottom = 564.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1684,7 +1685,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10007289"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1697,7 +1698,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "08/02/XX19"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1717,7 +1718,7 @@ offset_right = 1182.0
 offset_bottom = 636.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1730,7 +1731,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10007146"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1743,7 +1744,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "07/14/XX19"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1763,7 +1764,7 @@ offset_right = 1182.0
 offset_bottom = 708.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1776,7 +1777,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10007220"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1789,7 +1790,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "06/06/XX19"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1809,7 +1810,7 @@ offset_right = 1182.0
 offset_bottom = 780.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1822,7 +1823,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10007122"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1835,7 +1836,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "05/31/XX19"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1855,7 +1856,7 @@ offset_right = 1182.0
 offset_bottom = 852.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1868,7 +1869,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10007160"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1881,7 +1882,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "05/15/XX19"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1901,7 +1902,7 @@ offset_right = 1182.0
 offset_bottom = 924.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
 offset_top = 18.0
@@ -1914,7 +1915,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "CASE 10007111"
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
 offset_top = 18.0
@@ -1927,7 +1928,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "04/02/XX19"
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
 offset_top = 18.0
@@ -1953,7 +1954,7 @@ position = Vector2(960, 513)
 texture = ExtResource("87_m7akq")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Case"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 159.0
@@ -1965,7 +1966,7 @@ theme_override_font_sizes/normal_font_size = 70
 text = "CASE 10008302"
 
 [node name="Date" type="RichTextLabel" parent="NotesScreen/Case"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 225.0
@@ -1993,7 +1994,7 @@ sub1 = NodePath("Case Number3")
 sub2 = NodePath("Case Number4")
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 12.0
 offset_top = 18.0
@@ -2008,7 +2009,7 @@ MICAH PROCYON"
 fit_content = true
 
 [node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
 offset_top = 110.0
@@ -2023,7 +2024,7 @@ text = "ADDRESS - 234 SUNSTONE AVE, INDUSTRY CENTER"
 fit_content = true
 
 [node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
 offset_top = 87.0
@@ -2053,7 +2054,7 @@ sub1 = NodePath("Case Number3")
 sub2 = NodePath("Case Number4")
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 12.0
 offset_top = 18.0
@@ -2068,7 +2069,7 @@ JUNIPER HARTLEY"
 fit_content = true
 
 [node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
 offset_top = 110.0
@@ -2084,7 +2085,7 @@ text = "ADDRESS - 234 615 PINELY STREET, SYLVAN DISTRICT
 fit_content = true
 
 [node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
 offset_top = 87.0
@@ -2114,7 +2115,7 @@ sub1 = NodePath("Case Number3")
 sub2 = NodePath("Case Number4")
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 12.0
 offset_top = 18.0
@@ -2129,7 +2130,7 @@ MAYOR QUINCY LEONID"
 fit_content = true
 
 [node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
 offset_top = 136.0
@@ -2144,7 +2145,7 @@ text = "ADDRESS - 234 SILVERFROST COURT, WHITECAP BOROUGH"
 fit_content = true
 
 [node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
 offset_top = 113.0
@@ -2204,7 +2205,7 @@ description_body = NodePath("Body")
 evi_array = [NodePath("Micah Letter"), NodePath("Micah Key"), NodePath("Micah fur"), NodePath("Juniper Letter"), NodePath("Juniper Pie"), NodePath("Quincy Letter"), NodePath("Quincy Hammer"), NodePath("Quincy Coors"), NodePath("Quincy Choco")]
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Evidence"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 159.0
@@ -2217,7 +2218,7 @@ bbcode_enabled = true
 text = "EVIDENCE"
 
 [node name="Description" type="RichTextLabel" parent="NotesScreen/Evidence"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 532.0
@@ -2230,7 +2231,7 @@ text = "DESCRIPTION:"
 fit_content = true
 
 [node name="Body" type="RichTextLabel" parent="NotesScreen/Evidence"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 571.0
@@ -2245,7 +2246,7 @@ fit_content = true
 scroll_active = false
 
 [node name="No evidence" type="RichTextLabel" parent="NotesScreen/Evidence"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 274.0
@@ -2435,7 +2436,7 @@ show_bookmark = NodePath("View bookmark")
 show_letter = NodePath("View letter")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Micah"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 164.0
@@ -2461,7 +2462,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NotesScreen/Micah/ScrollContainer/VBoxContainer"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
@@ -2511,10 +2512,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("104_hu8kh")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View Tool Note" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Micah/View Tool Note" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View ID Card" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2541,10 +2542,10 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("106_ce3nd")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View ID Card" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Micah/View ID Card" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View Picture" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2569,10 +2570,10 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("108_qn5tb")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View Picture" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Micah/View Picture" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View bookmark" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2597,10 +2598,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("110_jyrqf")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View bookmark" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Micah/View bookmark" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View letter" parent="NotesScreen/Micah" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2627,10 +2628,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("112_nkqwo")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View letter" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Micah/View letter" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="Juniper" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_name_tag", "show_letter", "show_bookmark", "show_info")]
 visible = false
@@ -2647,7 +2648,7 @@ show_bookmark = NodePath("View bookmark")
 show_info = NodePath("View Info")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Juniper"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 164.0
@@ -2672,7 +2673,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NotesScreen/Juniper/ScrollContainer/VBoxContainer"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
@@ -2717,10 +2718,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("115_rhqre")
 
 [node name="FrontLabel" parent="NotesScreen/Juniper/View bookmark" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Juniper/View bookmark" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View Info" parent="NotesScreen/Juniper" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2744,13 +2745,13 @@ offset_right = 1967.0
 offset_bottom = 1732.0
 rotation = 4.71239
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("116_6tnik")
+texture = ExtResource("144_5ppeq")
 
 [node name="FrontLabel" parent="NotesScreen/Juniper/View Info" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Juniper/View Info" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View Letter" parent="NotesScreen/Juniper" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2777,10 +2778,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("118_k5yqg")
 
 [node name="FrontLabel" parent="NotesScreen/Juniper/View Letter" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Juniper/View Letter" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View Name Tag" parent="NotesScreen/Juniper" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2807,12 +2808,13 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("119_k5yqg")
 
 [node name="FrontLabel" parent="NotesScreen/Juniper/View Name Tag" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Juniper/View Name Tag" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_coordinates", "show_letter", "show_journal", "show_phone", "show_lab_pic", "show_proposal")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2828,7 +2830,7 @@ show_lab_pic = NodePath("View Lab Pic")
 show_proposal = NodePath("View proposal")
 
 [node name="Title" type="RichTextLabel" parent="NotesScreen/Quincy"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 164.0
@@ -2853,7 +2855,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NotesScreen/Quincy/ScrollContainer/VBoxContainer"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("14_vsnqy")
@@ -2898,10 +2900,10 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("123_c1v7q")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View Coordinates" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Quincy/View Coordinates" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View phone" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2927,10 +2929,10 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("125_4k6t1")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View phone" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Quincy/View phone" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View letter" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2955,10 +2957,10 @@ scale = Vector2(0.45, 0.45)
 texture = ExtResource("127_6o44q")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View letter" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Quincy/View letter" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View journal" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -2985,10 +2987,10 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("128_mtbcp")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View journal" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Quincy/View journal" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View Lab Pic" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
@@ -3013,16 +3015,17 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("131_sykof")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View Lab Pic" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Quincy/View Lab Pic" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="View proposal" parent="NotesScreen/Quincy" node_paths=PackedStringArray("text_label", "title", "back_button") instance=ExtResource("102_1v3be")]
 visible = false
 text_label = NodePath("../ScrollContainer/VBoxContainer/RichTextLabel")
 title = NodePath("../Title")
 back_button = NodePath("../Back")
+front_only = true
 
 [node name="Front" parent="NotesScreen/Quincy/View proposal" index="1"]
 offset_left = 760.0
@@ -3041,13 +3044,13 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("159_k0hhp")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View proposal" index="4"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="BackLabel" parent="NotesScreen/Quincy/View proposal" index="5"]
-texture_filter = 2
+texture_filter = 1
 
 [node name="Time2" type="RichTextLabel" parent="NotesScreen" node_paths=PackedStringArray("global_timer")]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
 offset_top = 74.0

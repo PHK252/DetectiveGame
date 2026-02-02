@@ -13,23 +13,26 @@ extends Control
 signal vis_sound
 signal flip_sound
 
+@export var front_only : bool = false
 func _on_object_front_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			emit_signal("flip_sound")
-			back.show()
-			back_label.show()
-			front.hide()
-			front_label.hide()
+			if !front_only:
+				emit_signal("flip_sound")
+				back.show()
+				back_label.show()
+				front.hide()
+				front_label.hide()
 
 func _on_object_back_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			emit_signal("flip_sound")
-			back.hide()
-			back_label.hide()
-			front.show()
-			front_label.show()
+			if !front_only:
+				emit_signal("flip_sound")
+				back.hide()
+				back_label.hide()
+				front.show()
+				front_label.show()
 
 
 func _on_visibility_changed():

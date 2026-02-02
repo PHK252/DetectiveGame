@@ -29,7 +29,7 @@ signal enable_after_tea_interaction
 
 signal theo_reposition_start
 signal theo_reposition_end
-
+signal save_time
 func _ready():
 	if Dialogic.VAR.get_variable("Juniper.has_tea") == false:
 		interactable.set_deferred("monitorable", false)
@@ -81,6 +81,7 @@ func _activate_drink():
 	interactable.set_deferred("monitorable", true)
 	emit_signal("enable_after_tea_interaction")
 	Dialogic.VAR.set_variable("Juniper.has_tea", true)
+	emit_signal("save_time")
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.in_dialogue = true
 	player.stop_player()

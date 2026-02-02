@@ -49,7 +49,7 @@ func _ready():
 	emit_signal("phone_time_start")
 	#player.start_player()
 	death.hide()
-
+	print(GlobalVars.time_left)
 	#MusicFades.fade_out_audio()
 	if GlobalVars.in_level:
 		hide_tween.play("fade_in_hide_tween")

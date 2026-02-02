@@ -5,7 +5,6 @@ const SAVE_DIR = "user://savegame/"
 const SETTING_DIR = "user://savegame/"
 const SAVE_FILE_NAME = "save.json"
 const SETTINGS_FILE = "settings.json"
-const SECURITY_KEY = "hdksfa42442"
 
 signal loaded
 signal loaded_settings
@@ -19,7 +18,7 @@ func verify_save_directory(path : String):
 
 func saveSettings(path: String):
 	print("setting saved")
-	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, GlobalVars.KEY)
 	if file == null:
 		printerr(FileAccess.get_open_error())
 		return
@@ -56,7 +55,7 @@ func saveSettings(path: String):
 func loadSettings(path : String):
 	if FileAccess.file_exists(path):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
-		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
+		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, GlobalVars.KEY)
 		if file == null:
 			brand_new = true
 			printerr(FileAccess.get_open_error())
@@ -84,7 +83,7 @@ func saveGame(path: String, dialogic_save : bool = true):
 	if dialogic_save == true:
 		Dialogic.Save.save()
 	#var file = FileAccess.open(path, FileAccess.WRITE)
-	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, GlobalVars.KEY)
 	print(_get_char_pos())
 	var chars_pos : Dictionary = _get_char_pos()
 	
@@ -396,7 +395,7 @@ func loadGame(path : String):
 	Dialogic.Save.load()
 	if FileAccess.file_exists(path):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
-		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
+		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, GlobalVars.KEY)
 		if file == null:
 			brand_new = true
 			printerr(FileAccess.get_open_error())
@@ -453,7 +452,7 @@ func clearSave(path : String):
 	Dialogic.Save.delete_slot("Default")
 	if FileAccess.file_exists(path):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
-		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, GlobalVars.KEY)
 		if file == null:
 			printerr("File does not exist" + str(FileAccess.get_open_error()))
 			return
@@ -464,7 +463,7 @@ func clearSave(path : String):
 
 func check_save_file_empty(path : String):
 	var is_empty : bool
-	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, GlobalVars.KEY)
 	if file == null:
 		is_empty = true
 		printerr("File does not exist" + str(FileAccess.get_open_error()))

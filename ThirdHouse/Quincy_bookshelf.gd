@@ -55,11 +55,11 @@ var react = false
 
 @export var bookshelf_move_sound : AudioStreamPlayer3D
 @export var bookmark_sound : AudioStreamPlayer3D
-@export var music : AudioStreamPlayer3D
+@export var music : AudioStreamPlayer
 @onready var music_arr = ["res://Audio/masters_ogg/quincy_master.ogg", "res://Audio/masters_ogg/secret_master.ogg"]
 signal book_thoughts_finished
 signal thoughts_finished
-
+signal play_secret
 signal enable_look
 signal disable_look
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -299,7 +299,12 @@ func _on_secret_entered(body):
 		if in_secret == false:
 			in_secret = true
 			MusicFades.fade_out_audio()
-			await get_tree().create_timer(1.0).timeout
+			await play_secret
 			music.stream = load(music_arr[1])
-			music.play()
 			MusicFades.fade_in_audio()
+			music.play()
+
+
+func _on_secret_a_body_entered(body):
+	print("in secret")
+	play_secret.emit()

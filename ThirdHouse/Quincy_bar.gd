@@ -30,6 +30,7 @@ signal disable_look
 signal DaltonVisible
 signal bar_interacted
 signal bar_leave
+signal save_time
 func _ready():
 	interactable.set_monitorable(false) 
 	pass
@@ -60,6 +61,7 @@ func _process(delta):
 
 func _on_bar_interact_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.bar_dialogue_Quincy_finished == false:
+		emit_signal("save_time")
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		emit_signal("enable_look")
 		in_bar = true

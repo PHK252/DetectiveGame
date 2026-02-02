@@ -232,7 +232,7 @@ func choose_drive_dialogue():
 				return "Day_1_ride_to_back_to_station"
 			return ""
 		2: 
-			if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
+			if Dialogic.VAR.get_variable("Quincy.got_safe") == true or Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
 				return "Day_2_ride_from_Quincy_REVER" 
 			if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
 				return "Day_2_ride_kicked_from_Quincy" 

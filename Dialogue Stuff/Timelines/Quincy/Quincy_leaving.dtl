@@ -88,7 +88,7 @@ Dalton: Leave?
 				Dalton (Awkward): Hmph.
 				[signal arg= "open_door"]
 				[end_timeline]
-	elif {Quincy.solved_rever} == true:
+	elif {Quincy.got_safe} == true or {Quincy.solved_rever} == true:
 		Dalton (Surprised): I- 
 		Dalton (Resting): Um...
 		Dalton (Awkward): Uh...

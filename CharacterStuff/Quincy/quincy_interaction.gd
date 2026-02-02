@@ -70,10 +70,11 @@ func _on_greeting_ended():
 	player.start_player()
 	alert.hide()
 	Dialogic.timeline_ended.disconnect(_on_greeting_ended)
-	GlobalVars.in_dialogue = false
 	if Q_greeting == true:
 		emit_signal("finish_greeting")
 		needs_close = true
+		await get_tree().create_timer(4.0).timeout
+		GlobalVars.in_dialogue = false
 
 	
 

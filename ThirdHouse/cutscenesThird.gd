@@ -2,7 +2,7 @@ extends Node
 
 @export var anim_player : AnimationPlayer
 @export var test_cutscene : bool
-
+@export var timer : Timer
 @export var player : CharacterBody3D
 @export var alert : Sprite3D
 @export var sitting_Dalton : Node3D
@@ -40,8 +40,8 @@ func _on_bar_make_drinks():
 
 func _on_bar_faint_time():
 	print("fainting")
+	timer.stop()
 	sitting_Dalton.hide()
-	#player.hide()
 	emit_signal("faint_disable")
 	await get_tree().process_frame
 	anim_player.play("fainting_cutscene")
@@ -60,7 +60,7 @@ func _on_timeline_ended():
 	emit_signal("open_door")
 	player.start_player()
 	emit_signal("theo_follow")
-	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	
 	
 func _on_dialogic_signal(argument: String):
 	print(argument)
