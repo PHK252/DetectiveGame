@@ -42,6 +42,7 @@ signal level_end
 @export var hide_tween : AnimationPlayer
 
 func _ready():
+	MusicFades.fade_in_audio() #for reset
 	print(GlobalVars.in_level," level" )
 	GlobalVars.current_level = "quincy"
 	if Dialogic.VAR.get_variable("Global.went_to_Quincy") == false:
