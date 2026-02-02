@@ -195,5 +195,6 @@ func _on_level_exit():
 	Dialogic.VAR.set_variable("Juniper.left_juniper", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	MusicFades.fade_out_audio()
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	music.stop()
+	MusicFades.fade_in_audio()

@@ -450,6 +450,7 @@ func _load_single(main_dic: Dictionary, sub_dic: String, load_name : Array):
 	
 func clearSave(path : String):
 	Dialogic.Save.delete_slot("Default")
+	Dialogic.VAR.reset()
 	if FileAccess.file_exists(path):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, GlobalVars.KEY)

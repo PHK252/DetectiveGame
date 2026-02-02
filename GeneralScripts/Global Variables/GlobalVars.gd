@@ -428,7 +428,7 @@ var ghost_open = false
 func reset_globals():
 	## The actual Globals
 	forward = false
-	day = 2
+	day = 1
 	time = ""
 	current_level = ""
 	first_house = "" 

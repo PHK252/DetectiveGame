@@ -262,3 +262,4 @@ func _on_exit_level():
 	MusicFades.fade_out_audio()
 	await get_tree().create_timer(5.0).timeout
 	music.stop()
+	MusicFades.fade_in_audio()
