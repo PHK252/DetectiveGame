@@ -6,7 +6,7 @@ Dalton (Resting): What is Chief up to now-
 [wait time="2.0"]
 Theo (Laugh): Hey Dalton!!
 Theo (Happy): Did you read the case files?
-Theo: Aren’t you excited to work on a case with lil old me???
+Theo (Talk): Aren’t you excited to work on a case with lil old me???
 Theo (Laugh): Oh my gosh, this is so exciting!!
 Dalton (Squint): First of all, it’s Detective Reynard to you.
 Dalton (Talk): Yes, I just read the case files.
@@ -16,11 +16,11 @@ Theo: What?!
 Dalton (Sigh): Huu...
 Dalton (Resting): Look...
 Dalton (Talk): I know you’re eager to do more field work, but I don’t think-
-Theo (Happy): But Chief specifically assigned this case to you.
+Theo (Awkward): But Chief specifically assigned this case to you.
 Dalton (Surprised): What?
 Dalton (Doubt2): Why?
 Theo (Talk): Oh.
-Theo (Happy): You didn’t hear!?
+Theo (Thinking): You didn’t hear!?
 Theo (Laugh): The mayor came in this morning demanding that you lead the investigation!
 Dalton (Hmph): ...
 Dalton (Doubt1): The Mayor?
@@ -28,14 +28,20 @@ Theo (Happy): Yeah!
 Dalton (Awkward): ...
 Dalton (Hmph): Hmph.
 Dalton (Doubt2): Then why were you assigned to the case?
-Theo (Laugh): Oh!
-Theo (Talk): Chief said it would be good experience.
+Theo (Talk): Oh!
+Theo (Laugh): Chief said it would be good experience.
 Dalton (Hmph): ...
 Theo (Silly): ...
 Dalton (Resting): Tsk...
 Dalton (Talk): We should go talk to the victims...
-Dalton (Default): You're in charge of taking notes, alright?
-Theo (Happy): Yes, sir!
-Dalton (Default): Okay, let’s head out.
+Dalton (Sigh): Hand me the case files so we can-
+Theo (Thinking): Oh, I already marked their locations on the map.
+Dalton (Awkward): oh.
+Dalton (Talk): Thank-
+Dalton (Resting): Wait...
+Dalton (Hmph): How did get in here-
+Theo (Laugh): I'll be in charge of taking notes, alright?
+Dalton (Hmph): ...
+Dalton (Sigh): Fine.
 set {Beginning.meet_theo} = true
 [signal arg="fade_in_out"]

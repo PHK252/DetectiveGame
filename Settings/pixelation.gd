@@ -52,6 +52,6 @@ func _on_menu_on_select_option(index):
 	#
 
 
-func _on_pause_menu_visibility_changed():
-	if pause_screen.visible == true:
-		pause_menu.op_array[selected].set_pressed_no_signal(true)
+#func _on_pause_menu_visibility_changed():
+	#if pause_screen.visible == true:
+		#pause_menu.op_array[selected].set_pressed_no_signal(true)
