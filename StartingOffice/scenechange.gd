@@ -35,7 +35,6 @@ signal hide_player
 func _ready() -> void:
 	pass
 
-
 func _on_firsthouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
 	if car_rev:

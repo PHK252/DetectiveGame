@@ -25,6 +25,8 @@ func _ready():
 	if Dialogic.VAR.get_variable("Quincy.left_quincy"):
 		door_interactable.set_deferred("monitorable", false)
 	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Quincy.left_quincy"))
+	#interactable.set_deferred("monitorable", true)
+	
 	pass # to test
 	#
 

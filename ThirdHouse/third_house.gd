@@ -44,7 +44,8 @@ signal level_end
 func _ready():
 	print(GlobalVars.in_level," level" )
 	GlobalVars.current_level = "quincy"
-	Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
+	if Dialogic.VAR.get_variable("Global.went_to_Quincy") == false:
+		Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	emit_signal("phone_time_start")
 	#player.start_player()

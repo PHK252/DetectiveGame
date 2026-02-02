@@ -293,6 +293,7 @@ func _on_exit_house(body):
 
 	if leaving == true:
 		if body.is_in_group("player"):
+			Dialogic.VAR.set_variable("Quincy.left_quincy", true)
 			dalton_left = true
 			#if dalton_left == true:# and theo_left == true:
 				#close()
