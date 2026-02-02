@@ -329,7 +329,7 @@ func _process_sitting_state() -> void:
 		wAcontrol2.monitoring = false
 	
 	if Input.is_action_pressed("Exit"):
-		if patio_sit:
+		if patio_sit and GlobalVars.in_dialogue == false:
 			is_navigating = true
 			patio_sit = false
 			going_to_bar = false
