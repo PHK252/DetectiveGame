@@ -38,6 +38,11 @@ signal theo_exit
 signal stop_lookTheo
 signal stop_lookDalton
 
+signal day_lighting
+signal day_lighting_alternate
+signal fired_lighting
+signal night_lighting
+
 func _ready():
 	#GlobalVars.day = 2 #for testing the leave stuff
 	player.start_player()
