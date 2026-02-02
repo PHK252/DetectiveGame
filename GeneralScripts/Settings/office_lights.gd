@@ -6,6 +6,7 @@ extends Node
 #daylights
 @export var spot_01 : SpotLight3D
 @export var spot_02 : SpotLight3D
+@export var spot_shadow : SpotLight3D
 
 #take away for twilight
 @export var directional : DirectionalLight3D
@@ -76,6 +77,7 @@ func toggle_daylight(toggle : bool):
 	spot_01.visible = toggle
 	spot_02.visible = toggle
 	directional.visible = toggle
+	spot_shadow.visible = toggle
 	
 func toggle_daylight_alternate(toggle : bool):
 	if toggle:
