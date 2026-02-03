@@ -66,6 +66,7 @@ var evidence = ""
 
 var load_phone_notes_arr = ["micah_notes", "juniper_notes", "quincy_notes"]
 
+
 ##Office Vars
 @onready var intro_dialogue = false
 #contact

@@ -10,18 +10,32 @@ var just_interacted = false
 @export var dalton_marker : Marker2D
 @export var player : CharacterBody3D
 @onready var enough = false
+
+signal doughnut_gone
+
+@export var interactable : Area3D
+@export var coll_shape : CollisionShape3D
+var stop_interact := false
+
 func _ready() -> void:
 	doughnut.visible = false
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if GlobalVars.day == 3:
+		coll_shape.disabled = true
+		interactable.monitoring = false
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if just_interacted == false:
-		if eat_times <= 11:
+		if enough == false: #max doughnuts are 8
 			alert.hide()
 			eat_times += 1
 			just_interacted = true
 			emit_signal("time_to_eat")
 			await get_tree().create_timer(2.5).timeout
 			doughnut.visible = true
+			emit_signal("doughnut_gone")
 			await get_tree().create_timer(2.0).timeout
 			doughnut.visible = false
 			await get_tree().create_timer(1.8).timeout
@@ -49,7 +63,6 @@ func _on_timeline_ended():
 
 		
 
-
 func choose_dialogue():
 	if eat_times > 0 and eat_times <= 5:
 		var rng = RandomNumberGenerator.new()
@@ -74,3 +87,6 @@ func choose_dialogue():
 		if eat_times == 11:
 			dialogue = "nine"
 		 
+
+func _on_doughnut_box_no_more_doughnuts() -> void:
+	enough = true
