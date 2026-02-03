@@ -22,7 +22,7 @@ func _process(delta):
 	debug_var = timer.get_time_left()
 #	debug_var_1 = distraction_timer.get_time_left()
 	###debug_var = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
-	#debug_var_1 = GlobalVars.in_level
+	debug_var_1 = Dialogic.VAR.get_variable("Quincy.in_patio")
 #	debug_var_2 = quincy.in_danger
 	#debug_var_3 = quincy.in_caught_bubble
 	###debug_var_4 = alert.visible

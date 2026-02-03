@@ -14,7 +14,6 @@ var is_open: bool = false
 @export var door_sound : AudioStreamPlayer3D
 @export var door_sound_close : AudioStreamPlayer3D
 @export var timer : Timer
-var introduction_happened = false
 var dalton_entered = false
 var theo_entered = false
 var dalton_left = false
@@ -38,6 +37,7 @@ var greeting_done := false
 
 signal stop_control
 signal start_control
+signal disable_interactables
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -96,12 +96,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			Dialogic.timeline_ended.connect(_on_exit_timeline_ended)
 			player.stop_player()
 			Dialogic.start("Micah_Leave")
-		elif is_open == false and GlobalVars.in_dialogue == false and introduction_happened == false:
-			#print("open")
-			#$Interactable.queue_free()
-			#if introduction_happened:
-				#open()
-				#collision.disabled = true
+		elif is_open == false and GlobalVars.in_dialogue == false and entered == false:
 			alert.hide()
 			emit_signal("greeting")
 			emit_signal("micah_rotate")
@@ -112,9 +107,6 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.signal_event.connect(doorOpen)
 			var enter = Dialogic.start("Enter_house")
-			enter.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			enter.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
-			enter.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
 			print("dalton_move_knock")
 			await get_tree().process_frame
 			await get_tree().process_frame
@@ -157,11 +149,12 @@ func doorOpen(argument: String):
 	if not is_open and argument == "open_door":
 		emit_signal("door_open")
 		Dialogic.signal_event.disconnect(doorOpen)
-		introduction_happened = true
 		#$Interactable.queue_free()
 		open()
 		#collision.disabled = true
 		is_open = true
+		if entered:
+			emit_signal("disable_interactables")
 
 func notleave(argument : String):
 	if argument == "notyet":
@@ -189,7 +182,6 @@ func _on_micah_body_micah_open() -> void:
 	#await get_tree().create_timer(5).timeout
 	#open()
 	#collision.disabled = true
-	#introduction_happened = true
 	pass
 
 

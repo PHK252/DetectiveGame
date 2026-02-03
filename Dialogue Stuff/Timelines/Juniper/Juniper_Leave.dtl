@@ -9,7 +9,6 @@ Dalton (Default): Leave?
 		Dalton (Default): ...
 		- Yes.
 			Dalton (Resting): I'm sure.
-			[signal arg="open_door"]
 			if {Character Aff Points.Juniper} <= 0:
 				jump continue
 			else:
@@ -18,6 +17,7 @@ Dalton (Default): Leave?
 				Juniper (Default): Y'all take care!
 				Theo (Happy): You too, ma'am!
 				Dalton (Awkward): Yeah.
+				[signal arg="open_door"]
 				[end_timeline]
 		- No.
 			[signal arg="stay"]
@@ -35,6 +35,7 @@ Dalton (Default): Leave?
 		Dalton (Resting): Let's go, Theo.
 		Theo (Default): Bye!
 		Juniper (Doubt): Bye.
+		[signal arg="open_door"]
 		set {Juniper.leave} = true
 		[end_timeline]
 	else:

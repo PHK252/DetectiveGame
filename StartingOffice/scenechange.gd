@@ -36,6 +36,8 @@ func _ready() -> void:
 	pass
 
 func _on_firsthouse_button_pressed() -> void:
+	if GlobalVars.in_level == true:
+		GlobalVars.in_level = false
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()
@@ -56,6 +58,8 @@ func _on_firsthouse_button_pressed() -> void:
 
 
 func _on_secondhouse_button_pressed() -> void:
+	if GlobalVars.in_level == true:
+		GlobalVars.in_level = false
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()
@@ -75,7 +79,8 @@ func _on_secondhouse_button_pressed() -> void:
 
 func _on_thirdhouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
-	
+	if GlobalVars.in_level == true:
+		GlobalVars.in_level = false
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
 		if GlobalVars.Day_1_Quincy_call == false:
@@ -130,6 +135,8 @@ func _on_office_button_pressed() -> void:
 
 
 func _on_secret_button_pressed() -> void:
+	if GlobalVars.in_level == true:
+		GlobalVars.in_level = false
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()

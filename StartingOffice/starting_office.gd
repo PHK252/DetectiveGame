@@ -75,7 +75,7 @@ func _ready():
 		return
 	dialogue_file = choose_office_dialogue()
 	print(dialogue_file)
-	if dialogue_file != "":
+	if dialogue_file != "" and GlobalVars.in_level == false:
 		if GlobalVars.in_dialogue == false:
 			GlobalVars.in_dialogue = true
 			await get_tree().create_timer(2.0).timeout
@@ -107,12 +107,13 @@ func _ready():
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	GlobalVars.in_level = true
 	if call == true:
 		return
 	player.start_player()
 	emit_signal("stop_lookDalton")
-	MusicFades.fade_out_audio()
 	if day_end:
+		MusicFades.fade_out_audio()
 		GlobalVars.time = "morning"
 		if to_flash:
 			Loading.load_scene(main, GlobalVars.dream_trans, "Sleep", "To Dream", "", false, true)

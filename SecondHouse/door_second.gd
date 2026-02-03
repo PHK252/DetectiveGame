@@ -36,6 +36,8 @@ signal entered_juniper
 signal quincy_reposition 
 signal theo_follow
 signal retarget(target: int)
+signal close_patio
+signal disable_interactables
 @export var timer : Timer
 @export var quincy_house: bool
 @export var quincy_house_inside: bool
@@ -202,10 +204,12 @@ func doorOpen(argument: String):
 		if not timer.is_stopped():
 			timer.stop()
 		if entered_quincy_house == true:
+			emit_signal("disable_interactables")
 			leaving = true
 			emit_signal("quincy_reposition")
 			emit_signal("theo_follow")
 		elif entered_juniper_house == true:
+			emit_signal("disable_interactables")
 			leaving = true
 		open()
 		collision.disabled = true
@@ -294,6 +298,7 @@ func _on_exit_house(body):
 	if leaving == true:
 		if body.is_in_group("player"):
 			Dialogic.VAR.set_variable("Quincy.left_quincy", true)
+			emit_signal("close_patio")
 			dalton_left = true
 			#if dalton_left == true:# and theo_left == true:
 				#close()

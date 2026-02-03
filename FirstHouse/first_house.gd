@@ -198,3 +198,7 @@ func _on_door_activate_leave():
 	await get_tree().create_timer(5.0).timeout
 	music.stop() #technically not necessary
 	MusicFades.fade_in_audio()
+
+
+func _leave_level():
+	disable_interaction(interactables)

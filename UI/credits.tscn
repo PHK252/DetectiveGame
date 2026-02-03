@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://35i58aybkqg3"]
+[gd_scene load_steps=4 format=3 uid="uid://35i58aybkqg3"]
 
 [ext_resource type="FontFile" uid="uid://bfh28807un7kc" path="res://Dialogue Stuff/Fonts/Menu Font.ttf" id="1_ng644"]
 [ext_resource type="Script" uid="uid://0yp0aijgmdux" path="res://UI/credits.gd" id="1_uuuvy"]
+[ext_resource type="Texture2D" uid="uid://ck640slqpsior" path="res://UI/Assets/Credits/Endings/Poke.png" id="2_kk2ga"]
 
-[node name="Credits" type="CanvasLayer" node_paths=PackedStringArray("ending_label")]
+[node name="Credits" type="CanvasLayer" node_paths=PackedStringArray("ending_label", "icon")]
 script = ExtResource("1_uuuvy")
-ending_label = NodePath("Control/Ending")
+ending_label = NodePath("Control/MarginContainer/HBoxContainer/Ending")
+icon = NodePath("Control/MarginContainer/HBoxContainer/Icon")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -15,23 +17,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Ending" type="RichTextLabel" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -548.0
-offset_top = -232.5
-offset_right = 548.0
-offset_bottom = 232.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 220
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 220
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Icon" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
+texture = ExtResource("2_kk2ga")
+
+[node name="Ending" type="RichTextLabel" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
 theme_override_fonts/normal_font = ExtResource("1_ng644")
-theme_override_font_sizes/normal_font_size = 120
+theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]The Storm before the Calm[/center]"
 scroll_active = false

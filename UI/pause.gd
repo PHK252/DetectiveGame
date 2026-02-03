@@ -30,7 +30,6 @@ func _on_save_pressed():
 	await get_tree().create_timer(0.51).timeout
 	
 func save_time():
-	print("save time ",  level_timer.time_left)
 	if level_timer:
 		if level_timer.time_left != 0.0:
 			GlobalVars.time_left = level_timer.time_left

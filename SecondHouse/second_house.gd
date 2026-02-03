@@ -188,6 +188,8 @@ func _on_entered_juniper():
 	music.play()
 	print("level start!")
 
+func _leave_level():
+	disable_interaction(interactables)
 
 func _on_level_exit():
 	print("level exited!")

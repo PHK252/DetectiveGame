@@ -226,7 +226,8 @@ func disable_distraction_interaction(arr: Array):
 		#if in_secret == true:
 			#in_secret = false
 			#timer.paused = false
-
+func _leave_level():
+	disable_interaction(interactables)
 
 func _on_cutscene_cams_faint_disable():
 	disable_interaction(interactables)

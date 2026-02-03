@@ -18,10 +18,12 @@ var triggered = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if GlobalVars.in_level == true:
+		inside_open =  Dialogic.VAR.get_variable("Quincy.in_patio")
 	if Dialogic.VAR.get_variable("Quincy.left_quincy") == true:
 		patio_lock.disabled = true
 		return
-	patio_lock.disabled = !is_open
+	patio_lock.disabled = !Dialogic.VAR.get_variable("Quincy.in_patio")
 	
 
 func open() -> void:
@@ -93,3 +95,22 @@ func _on_timeline_ended():
 
 func _on_main_level_end():
 	patio_lock.disabled = true
+
+
+func _on_patio_entered(body):
+	if body.is_in_group("player") and GlobalVars.in_level == true:
+		if Dialogic.VAR.get_variable("Quincy.in_patio") == false:
+			Dialogic.VAR.set_variable("Quincy.in_patio", true)
+
+
+func _on_patio_exit(body):
+	if body.is_in_group("player") and GlobalVars.in_level == true:
+		if Dialogic.VAR.get_variable("Quincy.in_patio") == true:
+			Dialogic.VAR.set_variable("Quincy.in_patio", false)
+
+
+func _on_close_patio():
+	if is_open:
+		close()
+		if patio_lock.disabled == false:
+			patio_lock.set_deferred("disabled", true)

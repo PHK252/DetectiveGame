@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var player : AudioStreamPlayer3D
+@export var player : AudioStreamPlayer
 @export var sounds_folder : String
 @export var alert : Sprite3D
 var stream_array : Array[String]

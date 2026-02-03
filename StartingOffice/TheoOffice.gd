@@ -39,8 +39,10 @@ signal rotate_dalton
 func _ready() -> void:
 	state = OUT
 	path.progress_ratio = 0
-	if GlobalVars.from_save_file == true:
+	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
+		print("placed " + str(GlobalVars.theo_pos))
 		global_position = GlobalVars.theo_pos
+		await get_tree().process_frame
 		GlobalVars.from_save_file == false
 		return
 	#print("placed " + str(GlobalVars.dalton_pos))
@@ -100,6 +102,7 @@ func _rotate_dalton(delta):
 	#armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-direct.x, -direct.z), LERP_VAL)
 
 func _process(delta):
+	GlobalVars.theo_pos = global_position
 	#print(state)
 	#if Input.is_action_just_pressed("Jump"):
 		#state = LEAVE
