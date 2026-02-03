@@ -37,6 +37,7 @@ var faint_dalton := false
 var waterfall_scene := false
 var sofa_scene := false
 var juniper_clear := true
+var needs_seven := false
 
 var stopped_theo_for_tea := false
 
@@ -86,6 +87,8 @@ signal force_quincy_bar
 signal two_targ_dalton(targ: int)
 
 var in_nav_danger := false
+
+signal block_stairs
 
 enum {
 	IDLE, 
@@ -145,6 +148,9 @@ func _physics_process(delta: float) -> void:
 		distance_to_target = global_transform.origin.distance_to(marker_list[0].global_transform.origin)
 	else:
 		distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
+		if GlobalVars.in_level and quincy_house: #if following in quincy's house block stairs once
+			quincy_house = false 
+			emit_signal("block_stairs")
 
 	#teleportTest
 	#if Input.is_action_just_pressed("meeting_done"):
@@ -265,6 +271,9 @@ func quick_adjust():
 	theo_adjustment = false
 
 func _process_investigate_state(distance_to_target) -> void:
+	if needs_seven: #forceful gating
+		investigate_choice = 7
+		
 	if nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE:
 		if investigate_choice == 7:
 			faint_dalton = true #neededcondition
@@ -275,6 +284,10 @@ func _process_investigate_state(distance_to_target) -> void:
 			nav.target_desired_distance = 1.0
 			STOPPING_DISTANCE = 1.0
 			state = FOLLOW
+	
+	
+		
+	
 	
 	if (nav.is_navigation_finished() or distance_to_target <= STOPPING_DISTANCE or is_navigating == false) and faint_dalton == false:
 		if patio_sit:
@@ -1014,7 +1027,7 @@ func _on_theo_no_go_body_exited(body: Node3D) -> void:
 			state = FOLLOW
 
 func _on_living_room_no_go_theo_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and faint_dalton == false:
+	if body.is_in_group("player") and faint_dalton == false and needs_seven == false:
 		if nav.is_inside_tree() == false:
 			return
 		living_room_nogo = true
@@ -1027,7 +1040,7 @@ func _on_living_room_no_go_theo_body_entered(body: Node3D) -> void:
 		state = INVESTIGATE
 
 func _on_living_room_no_go_theo_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player") and faint_dalton == false:
+	if body.is_in_group("player") and faint_dalton == false and needs_seven == false:
 		if nav.is_inside_tree() == false:
 			return
 		living_room_nogo = false
@@ -1040,7 +1053,7 @@ func _on_living_room_no_go_theo_body_exited(body: Node3D) -> void:
 		state = INVESTIGATE
 
 func _on_painting_adjustment_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and faint_dalton == false:
+	if body.is_in_group("player") and faint_dalton == false and needs_seven == false:
 		if nav.is_inside_tree() == false:
 			return
 		living_room_nogo = true
@@ -1053,7 +1066,7 @@ func _on_painting_adjustment_body_entered(body: Node3D) -> void:
 		state = INVESTIGATE
 
 func _on_painting_adjustment_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player") and faint_dalton == false:
+	if body.is_in_group("player") and faint_dalton == false and needs_seven == false:
 		if nav.is_inside_tree() == false:
 			return
 		living_room_nogo = false
@@ -1148,6 +1161,7 @@ func _on_main_door_theo_follow() -> void:
 	anim_tree.set("parameters/Scratch/request", 2)
 	anim_tree.set("parameters/NoteAlt/request", 2)
 	is_investigating = true
+	needs_seven = true
 	investigate_choice = 7
 	nav.target_position = marker_list[investigate_choice].global_position
 	is_navigating = true
