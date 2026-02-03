@@ -38,6 +38,22 @@ func _ready():
 	#set_instance_shader_parameter("albedo_texture", "res://StartingOffice/StartingOffice_CaseFile.png")
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	match GlobalVars.day:
+		1:
+			global_position = Vector3(-0.322,0.655,0.965)
+			set_global_rotation_degrees(Vector3(0.0,23.2,0.0))
+		2:
+			global_position = Vector3(-0.372,0.655,0.975)
+			set_global_rotation_degrees(Vector3(0.0,18.0,0.0))
+		3:
+			global_position = Vector3(-0.38,0.655,0.975)
+			set_global_rotation_degrees(Vector3(0.0,21.0,0.0))
+			
+	
 	
 #func _process(delta: float) -> void: for testing leave when theo walks in
 	#if Input.is_action_just_pressed("call"):

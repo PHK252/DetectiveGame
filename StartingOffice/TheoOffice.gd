@@ -62,7 +62,8 @@ func _ready() -> void:
 func _return_office():
 	print("returningTheo")
 	await get_tree().create_timer(1.0).timeout
-	emit_signal("rotate_dalton")
+	if GlobalVars.in_dialogue:
+		emit_signal("rotate_dalton")
 	state = WALK
 	come_in = true
 	

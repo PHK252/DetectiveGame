@@ -44,7 +44,7 @@ signal twilight_lighting
 signal night_lighting
 
 func _ready():
-	#GlobalVars.day = 2 #for testing the leave stuff
+	#GlobalVars.day = 1 #for testing the leave stuff
 	player.start_player()
 	GlobalVars.current_level = "Office"
 	sub_v_container.stretch_shrink = GlobalVars.stretch_factor
