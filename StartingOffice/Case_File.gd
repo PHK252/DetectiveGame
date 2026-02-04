@@ -196,7 +196,7 @@ func calling(argument: String):
 		Dialogic.signal_event.disconnect(calling)
 
 func _on_call_start_dialogue():
-	print(dialogue_file)
+#	print(dialogue_file)
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_ending_timeline_ended)
 	Dialogic.start(dialogue_file, "call")

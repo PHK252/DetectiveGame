@@ -114,7 +114,7 @@ func _on_visibility_changed():
 					kick_out = true
 			_:
 				pass
-		if GlobalVars.in_dialogue == true or GlobalVars.in_tea_time == true or time_out == true or kick_out == true or Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+		if GlobalVars.in_dialogue == true or GlobalVars.in_tea_time == true or time_out == true or kick_out == true or Dialogic.VAR.get_variable("Quincy.is_distracted") == true or GlobalVars.in_animation == true:
 			$VBoxContainer/Save.disabled = true
 			$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_ARROW
 		else:

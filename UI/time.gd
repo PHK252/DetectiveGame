@@ -75,6 +75,9 @@ func start_time():
 				"secret":
 					hour = 11
 					minute = 45
+		4:
+			hour = randi_range(12,15)
+			minute = randi_range(13,59)
 	set_time(hour, minute)
 
 func set_time(cur_hour : int, cur_minute : int):

@@ -21,6 +21,7 @@ signal unpaused
 @onready var phone_up = false
 @onready var in_interaction = ""
 @onready var viewing = ""
+@onready var in_animation := false
 
 ## The actual Globals
 @onready var forward : bool

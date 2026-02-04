@@ -108,10 +108,10 @@ func _ready():
 	
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-	GlobalVars.in_dialogue = false
-	GlobalVars.in_level = true
 	if call == true:
 		return
+	GlobalVars.in_dialogue = false
+	GlobalVars.in_level = true
 	player.start_player()
 	emit_signal("stop_lookDalton")
 	if day_end:
@@ -208,22 +208,7 @@ func choose_office_dialogue():
 
 func choose_ending():
 	emit_signal("change_texture", "res://UI/Assets/Endings/Give Kale Cure Choco P1@2x.png")
-	#match Dialogic.VAR.get_variable("Endings.Ending_type"):
-		#"Arrested Skylar":
-			#return "Ending_arrested_skylar"
-		#"Keep Confidential":
-			#return "Keep_confidential"
-		#"Give Skylar Cure":
-			#return "Ending_Give_Skylar_Cure"
-		#"Give Skylar Cure And Choco":
-			#return "Ending_Give_Skylar_Cure_choco"
-		#"Give Kale Cure":
-			#return "Ending_Give_Kale_Cure"
-		#"Give Kale Cure And Choco":
-			#return "Ending_Give_Kale_Cure_choco"
-		#_:
-			#print_debug("No Ending Uh Oh")
-			#return
+
 ##Dialogue Signals
 func enter_Theo(argument: String):
 	if argument == "theo_walk_in":
@@ -234,6 +219,7 @@ func enter_Theo(argument: String):
 		pass
 func exit_Theo(argument: String):
 	if argument == "theo_exit":
+		GlobalVars.in_animation = true
 		#Prompt theo to exit
 		print("Theo exits")
 		#emit_signal("theo_move")
@@ -241,10 +227,13 @@ func exit_Theo(argument: String):
 		await get_tree().create_timer(1.0).timeout
 		emit_signal("theo_exit")
 		Dialogic.signal_event.disconnect(exit_Theo)
+		await get_tree().create_timer(1.0).timeout
+		GlobalVars.in_animation = false
 		pass
 #add anims
 func walk_out(argument: String):
 	if argument == "To_Intero":
+		GlobalVars.in_animation = true
 		#Prompt theo to walk through the door
 		print("Both exit")
 		#emit_signal("Both_walk out")
@@ -257,15 +246,21 @@ func walk_out(argument: String):
 		else:
 			emit_signal("theo_exit")
 		await get_tree().create_timer(1.0).timeout
+
 		Loading.load_scene(main, GlobalVars.interrogation, "", "", "")
+		await get_tree().create_timer(1.0).timeout
+		GlobalVars.in_animation = false
 		pass
 	elif argument == "Walk_out":
+		GlobalVars.in_animation = true
 		#print("TRYINGTOWALKOUT")
 		emit_signal("stop_look")
 		await get_tree().create_timer(1.0).timeout
 		emit_signal("dalton_exit_alt")
 		emit_signal("theo_exit_alt")
 		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(1.0).timeout
+		GlobalVars.in_animation = false
 	elif argument == "fade":
 		#Fade to Credits
 		Dialogic.signal_event.disconnect(walk_out)
@@ -273,7 +268,7 @@ func walk_out(argument: String):
 func calling(argument: String):
 	if argument == "start_call":
 		emit_signal("call_recieve")
-		GlobalVars.in_dialogue = false
+		#GlobalVars.in_dialogue = false
 		#Dialogic.paused = true
 		#Dialogic.Styles.get_layout_node().hide()
 		Dialogic.signal_event.disconnect(calling)
