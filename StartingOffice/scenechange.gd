@@ -116,12 +116,14 @@ func _on_office_button_pressed() -> void:
 		1: 
 			GlobalVars.time = "night"
 			GlobalVars.in_look_screen = false
+			await get_tree().process_frame
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""
 		2: 
 			GlobalVars.time = "night"
 			GlobalVars.in_look_screen = false
+			await get_tree().process_frame
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""

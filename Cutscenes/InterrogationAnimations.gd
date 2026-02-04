@@ -56,6 +56,7 @@ func _ready() -> void:
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	GlobalVars.day += 1
 	match Dialogic.VAR.get_variable("Endings.Ending_type"):
 		"Arrested Skylar":
 			Loading.load_scene(main, GlobalVars.office_path, "", "", "")

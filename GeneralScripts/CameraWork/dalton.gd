@@ -86,11 +86,15 @@ func _ready() -> void:
 	#if GlobalVars.dalton_pos:
 	print(GlobalVars.from_save_file, " from save")
 	if GlobalVars.from_save_file == true:
-		global_position = GlobalVars.dalton_pos
-		print("from save", global_position)
-		await get_tree().process_frame
-		GlobalVars.from_save_file = false
-		return
+		if GlobalVars.time != "night":
+			global_position = GlobalVars.dalton_pos
+			print("from save", global_position)
+			await get_tree().process_frame
+			GlobalVars.from_save_file = false
+			return
+		else:
+			await get_tree().process_frame
+			GlobalVars.from_save_file = false
 	#print("placed " + str(GlobalVars.dalton_pos))
 	await get_tree().process_frame
 	if GlobalVars.current_level == "Office":

@@ -69,7 +69,9 @@ func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
-	#$"UI/TeamPic Look".hide()
+	if GlobalVars.day == 3:
+		if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
+			Dialogic.VAR.set_variable("Endings.Ending_type", "")
 	if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
 		choose_ending()
 		return
@@ -113,12 +115,13 @@ func _on_timeline_ended():
 	player.start_player()
 	emit_signal("stop_lookDalton")
 	if day_end:
+		GlobalVars.in_level = false
+		GlobalVars.day += 1
 		MusicFades.fade_out_audio()
 		GlobalVars.time = "morning"
 		if to_flash:
 			Loading.load_scene(main, GlobalVars.dream_trans, "Sleep", "To Dream", "", false, true)
 			return
-		GlobalVars.day += 1
 		Loading.load_scene(main, GlobalVars.office_path, "Sleep", "", "")
 		return
 	

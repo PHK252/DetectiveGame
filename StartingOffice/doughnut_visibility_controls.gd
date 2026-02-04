@@ -20,7 +20,6 @@ func _ready() -> void:
 	
 	var random_doughnut_number = rng.randi_range(6, 8)
 	doughnuts_eaten = random_doughnut_number - 1
-	
 	match GlobalVars.day:
 		1:
 			box_over.global_position = Vector3(0.091,0.001,0.042)
@@ -38,8 +37,8 @@ func _ready() -> void:
 				doughnuts[i].visible = false
 
 func _on_doughnut_001_doughnut_gone() -> void:
-	if doughnuts_eaten > 0:
+	if doughnuts_eaten >= 0:
 		doughnuts[doughnuts_eaten].visible = false
 		doughnuts_eaten -= 1
-	else:
-		emit_signal("no_more_doughnuts")
+		if doughnuts_eaten == -1:
+			emit_signal("no_more_doughnuts")

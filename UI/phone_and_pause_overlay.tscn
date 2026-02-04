@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://b4fmk8hkjnh1v"]
+[gd_scene load_steps=29 format=3 uid="uid://b4fmk8hkjnh1v"]
 
 [ext_resource type="Script" uid="uid://bo4tbw36hrcsa" path="res://UI/phone_and_pause_overlay.gd" id="1_m3hpa"]
 [ext_resource type="Texture2D" uid="uid://b6c7lhul6o2dq" path="res://UI/Assets/Pause overlay/Phone call normal.tres" id="4_ixe56"]
+[ext_resource type="Script" uid="uid://xq0a5oebo4k1" path="res://UI/receiving_call.gd" id="4_jrkgh"]
 [ext_resource type="Texture2D" uid="uid://b61sxnpf7cfwd" path="res://UI/Assets/Pause overlay/Phone call hovered.tres" id="5_uxvkf"]
 [ext_resource type="Texture2D" uid="uid://i4je4rghurdy" path="res://UI/Assets/Pause overlay/Updated/Notes_update1.png" id="6_jrkgh"]
 [ext_resource type="Texture2D" uid="uid://bbwfruyq4lwyn" path="res://UI/Assets/Pause overlay/Updated/Phone normal Call1.png" id="6_ygsle"]
@@ -196,6 +197,7 @@ texture_normal = ExtResource("4_ixe56")
 texture_pressed = ExtResource("5_uxvkf")
 texture_hover = ExtResource("5_uxvkf")
 stretch_mode = 3
+script = ExtResource("4_jrkgh")
 
 [node name="Evidence" type="AnimatedSprite2D" parent="CanvasLayer"]
 visible = false

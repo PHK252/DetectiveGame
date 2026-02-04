@@ -64,28 +64,25 @@ func _on_timeline_ended():
 		
 
 func choose_dialogue():
-	if eat_times > 0 and eat_times <= 5:
-		var rng = RandomNumberGenerator.new()
-		var random = rng.randi_range(1, 3)
-		if random == 1:
+	if eat_times <= 8:
+		if eat_times == 1:
 			dialogue = "first"
-		if random == 2:
+		if eat_times == 2:
 			dialogue = "second"
-		if random == 3:
+		if eat_times == 3:
 			dialogue = "third"
-	elif eat_times >= 6:
-		if eat_times == 6:
+		if eat_times == 4:
 			dialogue = "fourth"
+		if eat_times == 5:
+			dialogue = "fifth"
+		if eat_times == 6:
+			dialogue = "sixth"
 		if eat_times == 7:
-			dialogue = "five"
+			dialogue = "seventh"
 		if eat_times == 8:
-			dialogue = "six"
+			dialogue = "eigth"
 		if eat_times == 9:
-			dialogue = "seven"
-		if eat_times == 10:
-			dialogue = "eight"
-		if eat_times == 11:
-			dialogue = "nine"
+			dialogue = "nineth"
 		 
 
 func _on_doughnut_box_no_more_doughnuts() -> void:

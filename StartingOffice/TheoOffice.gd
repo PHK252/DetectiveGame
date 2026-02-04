@@ -40,7 +40,6 @@ func _ready() -> void:
 	state = OUT
 	path.progress_ratio = 0
 	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
-		print("placed " + str(GlobalVars.theo_pos))
 		global_position = GlobalVars.theo_pos
 		await get_tree().process_frame
 		GlobalVars.from_save_file == false

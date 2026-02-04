@@ -90,8 +90,8 @@ func saveGame(path: String, dialogic_save : bool = true):
 	var data: Dictionary = {
 		"Globals":{
 			"dialogue_flip" : GlobalVars.forward, 
-			"game_day" : GlobalVars.day,
-			"game_time": GlobalVars.time,
+			"day" : GlobalVars.day,
+			"time": GlobalVars.time,
 			"current_level": GlobalVars.current_level,
 			"first_house": GlobalVars.first_house,
 			"in_level": GlobalVars.in_level,

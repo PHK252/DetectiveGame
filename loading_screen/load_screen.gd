@@ -194,7 +194,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 					return
 				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				#await get_tree().process_frame
-				print(GlobalVars.current_level)
+				print(GlobalVars.time)
 				
 				return
 func toggle_default(state : bool):
