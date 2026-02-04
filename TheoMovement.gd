@@ -99,6 +99,8 @@ enum {
 	NOTES
 }
 
+var allow_QH_switch := false
+
 func _ready() -> void:
 	add_to_group("theo")
 	print(GlobalVars.theo_pos)
@@ -120,6 +122,7 @@ func _ready() -> void:
 	#global_position = GlobalVars.theo_pos
 	# Initialize the navigation target to the player's position
 	nav.target_position = player.global_transform.origin
+	
 	if quincy_house:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 		if GlobalVars.in_level == true:
@@ -138,6 +141,9 @@ func _ready() -> void:
 	if secret_location:
 		global_position = marker_list[0].global_position
 		is_navigating = false
+		
+	await get_tree().create_timer(2.0).timeout
+	allow_QH_switch = true
 
 func _physics_process(delta: float) -> void:
 	GlobalVars.theo_pos = global_position
@@ -148,7 +154,7 @@ func _physics_process(delta: float) -> void:
 		distance_to_target = global_transform.origin.distance_to(marker_list[0].global_transform.origin)
 	else:
 		distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
-		if GlobalVars.in_level and quincy_house: #if following in quincy's house block stairs once
+		if GlobalVars.in_level and quincy_house and allow_QH_switch: #if following in quincy's house block stairs once
 			quincy_house = false 
 			emit_signal("block_stairs")
 
