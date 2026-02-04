@@ -15,6 +15,9 @@ var in_out_needed := false
 @export var fade_time_break_timer : Timer 
 
 func _ready() -> void:
+	fading_in = false
+	fading_out = false
+	break_time = false
 	effect.volume_db = ceiling 
 	fade_time_break_timer.wait_time = fade_time_break
 
