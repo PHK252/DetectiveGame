@@ -390,6 +390,9 @@ func _process_idle_state(distance_to_target: float) -> void:
 	#else:
 		# Ensure blend position matches slight movement
 		#anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+	if in_nav_danger and nav.target_position == adjustment_list[8].global_position:
+		in_nav_danger = false
+		
 	
 	if going_to_bar or patio_sit:
 		state = SITTING
@@ -555,11 +558,11 @@ func _on_interact_area_area_entered(area: Area3D) -> void:
 					state = ADJUST
 			
 			
-			if in_kitchen == false:
-				is_navigating = true
-			print("stopped interacting")
-			anim_tree["parameters/Blend2/blend_amount"] = 0
-			state = FOLLOW
+			#if in_kitchen == false:
+				#is_navigating = true
+			#print("stopped interacting")
+			#anim_tree["parameters/Blend2/blend_amount"] = 0
+			#state = FOLLOW
 	#if area.is_in_group("NPC"):
 		#is_navigating = false
 		#state = IDLE
@@ -573,35 +576,31 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 			#is_navigating = true
 			#state = FOLLOW
 
-func _on_k_control_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and in_nav_danger == false:
-		emit_signal("look_at_activate")
-		emit_signal("two_targ_dalton", 2)
-		in_kitchen = true
-		is_navigating = false
-		state = IDLE
-	elif body.is_in_group("theo"):
+func _on_k_control_body_entered(body: Node3D) -> void:	
+	if body.is_in_group("theo"):
 			#in_kitchen = false
 			in_nav_danger = true
 			nav.target_position = adjustment_list[8].global_position
 			is_navigating = true
 			state = ADJUST
-			#hopefully micah is never behind sofa
-		#force_idle_closet = true
-		#if around sofa then force idle and look at dalton
 
+	if body.is_in_group("player"):
+		emit_signal("look_at_activate")
+		emit_signal("two_targ_dalton", 2)
+		in_kitchen = true
+		if in_nav_danger == false:
+			is_navigating = false
+			state = IDLE
+	
 func _on_k_control_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player") and in_nav_danger == false:
+	if body.is_in_group("player"):
 		emit_signal("look_at_disactivate")
 		emit_signal("two_targ_dalton", 1)
 		in_kitchen = false
-		if anim_tree["parameters/Blend2/blend_amount"] == 0:
+		if anim_tree["parameters/Blend2/blend_amount"] < 0.01 and in_nav_danger == false:
 			is_navigating = true
 			state = FOLLOW
-	elif body.is_in_group("theo"):
-		in_nav_danger = false
-	#if body.is_in_group("theo"):
-		#force_idle_closet = false
+	
 
 func _on_micah_body_collision_danger() -> void:
 	print("micahCollide")
@@ -827,7 +826,8 @@ func _on_character_body_3d_theo_adjustment() -> void:
 func _on_character_body_3d_theo_reset() -> void:
 	theo_adjustment = false
 	if in_kitchen == false:
-		is_navigating = true
+		pass
+		#is_navigating = true
 	pass
 	#if book_area and theo_adjustment:
 		#if adjust_direction == "back":

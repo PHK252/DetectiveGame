@@ -183,6 +183,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				else:
 					SceneTransitions.fade_change_packed_scene(new_scene)
 					await get_tree().create_timer(1.0).timeout
+				
 				current_anim.stop()
 				toggle_drive(false)
 				toggle_default(false)
