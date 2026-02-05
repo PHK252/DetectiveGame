@@ -473,10 +473,10 @@ func _on_interact_area_body_entered(body: Node3D) -> void:
 		#state = IDLE
 		#Possibly causing freezing in certain scenarios, need to be careful
 		
-	if body.is_in_group("micah") and theo_adjustment:
-		print("abort")
-		is_navigating = false
-		state = IDLE
+	#if body.is_in_group("micah") and theo_adjustment:
+		#print("abort")
+		#is_navigating = false
+		#state = IDLE
 
 func _on_interact_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -759,17 +759,17 @@ func _on_front_move_body_entered(body: Node3D) -> void:
 		
 func _on_character_body_3d_theo_adjustment() -> void:
 	#print("ADJUSTTT")
-	theo_adjustment = true
-	await get_tree().create_timer(1.5).timeout
-	if micahBack and theo_adjustment:
-		if anim_tree["parameters/Blend2/blend_amount"] == 1:
-			state = IDLE
-			return
-		adjust_direction = "front"
-		print("change front")
-		if closet_area:
-			print("change frontC")
-			return
+	quick_adjust()
+	#await get_tree().create_timer(1.5).timeout
+	#if micahBack and theo_adjustment:
+		#if anim_tree["parameters/Blend2/blend_amount"] == 1:
+			#state = IDLE
+			#return
+		#adjust_direction = "front"
+		#print("change front")
+		#if closet_area:
+			#print("change frontC")
+			#return
 			#if collision_danger:
 				##print("dangerhere")
 				#is_navigating = true
@@ -784,9 +784,9 @@ func _on_character_body_3d_theo_adjustment() -> void:
 			##nav.path_desired_distance = 0.4
 			##nav.target_desired_distance = 0.6
 			#state = ADJUST
-		elif book_area:
-			print("frontChangeBOOK")
-			return
+		#elif book_area:
+			#print("frontChangeBOOK")
+			#return
 			#nav.target_position = adjustment_list[1].global_position
 				#
 			#is_navigating = true
@@ -794,8 +794,8 @@ func _on_character_body_3d_theo_adjustment() -> void:
 			##nav.path_desired_distance = 0.4
 			##nav.target_desired_distance = 0.6
 			#state = ADJUST
-	if micahFront and theo_adjustment:
-		return
+	#if micahFront and theo_adjustment:
+		#return
 		#if anim_tree["parameters/Blend2/blend_amount"] == 1:
 			#state = IDLE
 			#return
