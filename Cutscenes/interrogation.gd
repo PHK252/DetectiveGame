@@ -4,6 +4,7 @@ extends Node3D
 @export var sub_v_container : SubViewportContainer
 
 func _ready() -> void:
+	MusicFades.fade_in_audio()
 #settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)

@@ -90,6 +90,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 	date_label = scene_instance.get_node("Date Loading/RichTextLabel")
 	
 	percent_label = scene_instance.get_node("Label")
+	MusicFades.fade_in_audio()
 	if type == "driving":
 		drive_sound.play()
 		toggle_drive(true)

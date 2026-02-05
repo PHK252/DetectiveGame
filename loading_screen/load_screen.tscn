@@ -1196,8 +1196,7 @@ position = Vector2(1452, 531)
 
 [node name="drive_sound" type="AudioStreamPlayer" parent="Drinving Loading"]
 stream = ExtResource("26_y6ecj")
-volume_db = -3.0
-bus = &"Music"
+bus = &"Ambience"
 
 [node name="Default Loading" type="Node2D" parent="."]
 visible = false
