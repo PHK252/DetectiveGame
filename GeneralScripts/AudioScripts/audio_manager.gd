@@ -169,3 +169,11 @@ func _on_secret_focus_entered() -> void:
 
 func _on_non_interact_general_interaction() -> void:
 	audio[3].play()
+
+
+func _on_map_leave_map_sound_J() -> void:
+	pass # Replace with function body.
+
+
+func _on_map_select_level_sound_J() -> void:
+	audio[5].play()

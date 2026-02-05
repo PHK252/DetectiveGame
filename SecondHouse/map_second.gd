@@ -18,6 +18,8 @@ extends Node3D
 
 var is_open: bool = false
 
+signal theo_repos
+
 #sounds
 @export var open_door : AudioStreamPlayer3D
 @export var close_door : AudioStreamPlayer3D
@@ -37,6 +39,7 @@ func _on_map_leave_interacted(interactor):
 	if GlobalVars.in_interaction == "":
 		print("map_interact")
 		open_door.play()
+		emit_signal("theo_repos")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		theo_norm.visible = false
 		dalton_player.play("SitNoDrink")

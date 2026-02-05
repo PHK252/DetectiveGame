@@ -45,6 +45,8 @@ var stopped_theo_for_tea := false
 @export var theo_node : CharacterBody3D
 @export var stairMarker : Marker3D
 
+@export var car_pos : Marker3D
+
 const speed := 0.92
 const LERP_VAL := 0.15
 var STOPPING_DISTANCE := 1.0  # Distance at which we stop following
@@ -1354,3 +1356,15 @@ func _on_theo_nogoJ_body_exited(body: Node3D) -> void:
 		in_kitchen = false
 		is_navigating = true
 		state = FOLLOW
+
+
+func _on_car_door_open() -> void:
+	is_navigating = false
+	global_position = car_pos.global_position
+
+func _on_car_door_close() -> void:
+	is_navigating = true
+
+
+func _on_car_revamped_theo_repos() -> void:
+	global_position = car_pos.global_position

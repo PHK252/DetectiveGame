@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cjrv3kmqym4e1"]
+[gd_scene load_steps=33 format=3 uid="uid://cjrv3kmqym4e1"]
 
 [ext_resource type="Script" uid="uid://bxm3brlgnve21" path="res://StartingOffice/scenechange.gd" id="1_n4a1j"]
 [ext_resource type="Texture2D" uid="uid://c748bmbj8e61f" path="res://StartingOffice/Office Map Small.png" id="2_tdlr5"]
@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://bkvt3v0npsc6k" path="res://UI/Assets/Map/Office Pin Hovered3.png" id="19_sw58j"]
 [ext_resource type="Texture2D" uid="uid://blgdcrq1b3ecx" path="res://UI/Assets/Map/Office Pin Hovered4.png" id="20_7ob01"]
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="21_qs08e"]
+[ext_resource type="Script" uid="uid://d0ei1au8wsu6x" path="res://UI/map_sounds.gd" id="22_qs08e"]
+[ext_resource type="AudioStream" uid="uid://c770dfbuietj7" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/blip_11_alt.wav" id="23_cctyf"]
+[ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="24_sw58j"]
+[ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="25_sw58j"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1pcwa"]
 
@@ -121,6 +125,7 @@ shortcut_in_tooltip = false
 texture_normal = ExtResource("3_5gnlj")
 texture_pressed = ExtResource("4_rhcr0")
 texture_hover = ExtResource("4_rhcr0")
+metadata/_edit_use_anchors_ = true
 
 [node name="Micah" type="TextureButton" parent="."]
 offset_left = 998.0
@@ -283,19 +288,47 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]18’5.0’’N 22’5.18’’W[/center]"
 
+[node name="MapSounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
+script = ExtResource("22_qs08e")
+audio = [NodePath("map_select_level"), NodePath("map_hiss"), NodePath("map_exit"), NodePath("map_exit_hiss")]
+
+[node name="map_select_level" type="AudioStreamPlayer" parent="MapSounds"]
+stream = ExtResource("23_cctyf")
+bus = &"SFX"
+
+[node name="map_hiss" type="AudioStreamPlayer" parent="MapSounds"]
+stream = ExtResource("24_sw58j")
+bus = &"SFX"
+
+[node name="map_exit" type="AudioStreamPlayer" parent="MapSounds"]
+stream = ExtResource("25_sw58j")
+bus = &"SFX"
+
+[node name="map_exit_hiss" type="AudioStreamPlayer" parent="MapSounds"]
+stream = ExtResource("24_sw58j")
+pitch_scale = 0.9
+
+[connection signal="leave_map_sound" from="." to="MapSounds" method="_on_map_leave_map_sound"]
+[connection signal="select_level_sound" from="." to="MapSounds" method="_on_map_select_level_sound"]
+[connection signal="mouse_entered" from="Exit" to="MapSounds" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="Micah" to="." method="_on_micah_mouse_entered"]
+[connection signal="mouse_entered" from="Micah" to="MapSounds" method="location_mouse_entered"]
 [connection signal="mouse_exited" from="Micah" to="." method="_on_micah_mouse_exited"]
 [connection signal="pressed" from="Micah" to="." method="_on_firsthouse_button_pressed"]
 [connection signal="mouse_entered" from="Juniper" to="." method="_on_juniper_mouse_entered"]
+[connection signal="mouse_entered" from="Juniper" to="MapSounds" method="location_mouse_entered"]
 [connection signal="mouse_exited" from="Juniper" to="." method="_on_juniper_mouse_exited"]
 [connection signal="pressed" from="Juniper" to="." method="_on_secondhouse_button_pressed"]
 [connection signal="mouse_entered" from="Quincy" to="." method="_on_quincy_mouse_entered"]
+[connection signal="mouse_entered" from="Quincy" to="MapSounds" method="location_mouse_entered"]
 [connection signal="mouse_exited" from="Quincy" to="." method="_on_quincy_mouse_exited"]
 [connection signal="pressed" from="Quincy" to="." method="_on_thirdhouse_button_pressed"]
 [connection signal="mouse_entered" from="Office" to="." method="_on_office_mouse_entered"]
+[connection signal="mouse_entered" from="Office" to="MapSounds" method="location_mouse_entered"]
 [connection signal="mouse_exited" from="Office" to="." method="_on_office_mouse_exited"]
 [connection signal="pressed" from="Office" to="." method="_on_office_button_pressed"]
 [connection signal="mouse_entered" from="Secret" to="." method="_on_secret_mouse_entered"]
+[connection signal="mouse_entered" from="Secret" to="MapSounds" method="location_mouse_entered"]
 [connection signal="mouse_exited" from="Secret" to="." method="_on_secret_mouse_exited"]
 [connection signal="pressed" from="Secret" to="." method="_on_secret_button_pressed"]
