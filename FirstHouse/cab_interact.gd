@@ -20,6 +20,8 @@ extends Node3D
 @onready var micah_marker = $"../../../../UI/Micah_marker"
 @onready var alert = $"../../../SubViewport/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
+
+
 #sound 
 signal general_interact
 signal general_quit
@@ -30,7 +32,6 @@ signal disable_look
 #@onready var bookmark_interact = $Bookmark_interact
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	if cab_open == false:
 		for member in bag_group:
 			member.hide()

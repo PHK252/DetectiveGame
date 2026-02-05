@@ -497,65 +497,66 @@ func _rotate_towards_player() -> void:
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(direct.x, direct.z), LERP_VAL)
 
 func _on_interact_area_area_entered(area: Area3D) -> void:
-	if area.is_in_group("int_area") and theo_adjustment == false:
-		if stop_coll_b == false:
-			print("theo investigating")
-			anim_tree["parameters/Blend2/blend_amount"] = 1
-			is_navigating = false
-			emit_signal("stop_coll")
-			stop_coll_b = true
-			
-			if micahBack and theo_adjustment:
-				anim_tree["parameters/Blend2/blend_amount"] = 0
-				adjust_direction = "front"
-				print("change front")
-				if closet_area:
-					print("change frontC")
-					return
-					#if collision_danger:
-						##print("weareindanger")
-						#nav.target_position = adjustment_list[6].global_position
-					#else:
-						#print("thischoice")
-						#return
-						##nav.target_position = adjustment_list[0].global_position
+	pass
+	#if area.is_in_group("int_area") and theo_adjustment == false:
+		#if stop_coll_b == false:
+			#print("theo investigating")
+			#anim_tree["parameters/Blend2/blend_amount"] = 1
+			#is_navigating = false
+			#emit_signal("stop_coll")
+			#stop_coll_b = true
+			#
+			#if micahBack and theo_adjustment:
+				#anim_tree["parameters/Blend2/blend_amount"] = 0
+				#adjust_direction = "front"
+				#print("change front")
+				#if closet_area:
+					#print("change frontC")
+					#return
+					##if collision_danger:
+						###print("weareindanger")
+						##nav.target_position = adjustment_list[6].global_position
+					##else:
+						##print("thischoice")
+						##return
+						###nav.target_position = adjustment_list[0].global_position
+					##is_navigating = true
+					###STOPPING_DISTANCE = 0.2
+					###nav.path_desired_distance = 0.4
+					###nav.target_desired_distance = 0.6
+					##print("stateChange")
+					##state = ADJUST
+				#elif book_area:
+					#print("frontChangeBOOK")
+					#return
+					##nav.target_position = adjustment_list[1].global_position
+					##is_navigating = true
+					###STOPPING_DISTANCE = 0.2
+					###nav.path_desired_distance = 0.4
+					###nav.target_desired_distance = 0.6
+					##state = ADJUST
+			#if micahFront and theo_adjustment:
+				#anim_tree["parameters/Blend2/blend_amount"] = 0
+				#adjust_direction = "back"
+				#print("change back")
+				#if closet_area:
+					#return
+					##print("change backC")
+					##nav.target_position = adjustment_list[2].global_position
+					##is_navigating = true
+					###STOPPING_DISTANCE = 0.2
+					###nav.path_desired_distance = 0.4
+					###nav.target_desired_distance = 0.6
+					##state = ADJUST
+				#elif book_area:
+					#print("backChangeBOOK")
+					#nav.target_position = adjustment_list[3].global_position
+					#
 					#is_navigating = true
 					##STOPPING_DISTANCE = 0.2
-					##nav.path_desired_distance = 0.4
-					##nav.target_desired_distance = 0.6
-					#print("stateChange")
+					##nav.path_desired_distance = 0.2
+					##nav.target_desired_distance = 0.4
 					#state = ADJUST
-				elif book_area:
-					print("frontChangeBOOK")
-					return
-					#nav.target_position = adjustment_list[1].global_position
-					#is_navigating = true
-					##STOPPING_DISTANCE = 0.2
-					##nav.path_desired_distance = 0.4
-					##nav.target_desired_distance = 0.6
-					#state = ADJUST
-			if micahFront and theo_adjustment:
-				anim_tree["parameters/Blend2/blend_amount"] = 0
-				adjust_direction = "back"
-				print("change back")
-				if closet_area:
-					return
-					#print("change backC")
-					#nav.target_position = adjustment_list[2].global_position
-					#is_navigating = true
-					##STOPPING_DISTANCE = 0.2
-					##nav.path_desired_distance = 0.4
-					##nav.target_desired_distance = 0.6
-					#state = ADJUST
-				elif book_area:
-					print("backChangeBOOK")
-					nav.target_position = adjustment_list[3].global_position
-					
-					is_navigating = true
-					#STOPPING_DISTANCE = 0.2
-					#nav.path_desired_distance = 0.2
-					#nav.target_desired_distance = 0.4
-					state = ADJUST
 			
 			
 			#if in_kitchen == false:
