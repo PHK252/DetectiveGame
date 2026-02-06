@@ -100,12 +100,13 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	alert.hide()
-	GlobalVars.in_interaction = interact_type
-	FP_Cam.priority = 24
-	Exit_Cam.priority = 0 
-	interact_area.show()
-	cam_anim.play("Cam_Idle")
-	player.hide()
-	player.stop_player()
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		alert.hide()
+		GlobalVars.in_interaction = interact_type
+		FP_Cam.priority = 24
+		Exit_Cam.priority = 0 
+		interact_area.show()
+		cam_anim.play("Cam_Idle")
+		player.hide()
+		player.stop_player()

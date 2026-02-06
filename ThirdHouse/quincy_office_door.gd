@@ -31,7 +31,6 @@ var cooldown = false
 var triggered = false
 @onready var mouse_pos = Vector2(0,0) 
 @onready var tilt = ""
-@onready var try_open = 0
 @onready var in_thoughts = false
 
 #sounds
@@ -86,32 +85,31 @@ func _process(delta):
 			tilt = "mid"
 	else:
 			FP_Cam.set_rotation_degrees(mid_angle)
-	if try_open == 2 and Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
+	if GlobalVars.try_viewed_distract == 2 and Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
 		print("need distraction")
 		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	var unlocked = Dialogic.VAR.get_variable("Quincy.unlocked_office")
-	print(is_open)
-	print(entered)
-	if unlocked == true and is_open == false and cooldown == false:
-		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
-			open()
-			collision.disabled = true
-	elif unlocked == true and is_open == true and cooldown == false:
-		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
-			close()
-			collision.disabled = false
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		alert.hide()
-		GlobalVars.in_interaction = "office_door"
-		FP_Cam.priority = 30
-		Exit_Cam.priority = 0 
-		key_hole.show()
-		cam_anim.play("Cam_Idle")
-		player.hide()
-		player.stop_player()
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		var unlocked = Dialogic.VAR.get_variable("Quincy.unlocked_office")
+		if unlocked == true and is_open == false and cooldown == false:
+			if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+				open()
+				collision.disabled = true
+		elif unlocked == true and is_open == true and cooldown == false:
+			if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+				close()
+				collision.disabled = false
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			alert.hide()
+			GlobalVars.in_interaction = "office_door"
+			FP_Cam.priority = 30
+			Exit_Cam.priority = 0 
+			key_hole.show()
+			cam_anim.play("Cam_Idle")
+			player.hide()
+			player.stop_player()
 	
 	#if is_open == true:
 		#close()
@@ -215,14 +213,14 @@ func _on_office_door_input_event(viewport, event, shape_idx):
 					GlobalVars.in_dialogue = true
 					Dialogic.start(thought_dialogue_file)
 				elif Dialogic.VAR.get_variable("Quincy.is_distracted") == false and Dialogic.VAR.get_variable("Quincy.needs_distraction") == true: 
-					try_open += 1
+					GlobalVars.try_viewed_distract += 1
 					GlobalVars.in_dialogue = true
 					choose_distract_thought_dialogue()
 					in_thoughts = true
 					Dialogic.start(cue_distract_dialogue)
 					Dialogic.timeline_ended.connect(_on_cue_thoughts_ended)
 				else:
-					try_open += 1
+					GlobalVars.try_viewed_distract += 1
 					cue_finished()
 				
 

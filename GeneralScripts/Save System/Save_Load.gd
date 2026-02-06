@@ -218,6 +218,7 @@ func saveGame(path: String, dialogic_save : bool = true):
 			"quincy_fainted" : GlobalVars.quincy_fainted,
 			"Quincy_toilet_distracted" : GlobalVars.Quincy_toilet_distracted,
 			"Quincy_Dalton_caught" : GlobalVars.Quincy_Dalton_caught,
+			"try_viewed_distract" : GlobalVars.try_viewed_distract,
 			#fam_portrait 
 			"viewed_Quincy_famPic": GlobalVars.viewed_Quincy_famPic,
 			"famPic_dialogue_Quincy": GlobalVars.famPic_dialogue_Quincy,

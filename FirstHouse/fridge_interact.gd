@@ -48,17 +48,18 @@ func _process(delta):
 
 
 func _on_interactable_interacted(interactor):
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	GlobalVars.in_interaction = "fridge"
-	fridge_cam.priority = 30
-	main_cam.priority = 0 
-	cam_anim.play("Cam_Idle")
-	player.hide()
-	player.stop_player()
-	if fridge_open == false:
-		fridge_open_area.show()
-	elif fridge_open == true:
-		fridge_close_area.show()
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		GlobalVars.in_interaction = "fridge"
+		fridge_cam.priority = 30
+		main_cam.priority = 0 
+		cam_anim.play("Cam_Idle")
+		player.hide()
+		player.stop_player()
+		if fridge_open == false:
+			fridge_open_area.show()
+		elif fridge_open == true:
+			fridge_close_area.show()
 
 
 

@@ -31,7 +31,7 @@ func _ready():
 	#
 
 func _on_map_leave_interacted(interactor):
-	if GlobalVars.in_interaction == "":
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		
 		print("map_interact")
 		emit_signal("door_open")

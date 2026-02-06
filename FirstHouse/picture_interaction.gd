@@ -114,16 +114,17 @@ func _on_timeline_ended():
 	alert.show()
 
 func _on_interactable_interacted(interactor):
-	emit_signal("general_interact")
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	alert.hide()
-	GlobalVars.in_interaction = interact_type
-	FP_Cam.priority = 30
-	Exit_Cam.priority = 0 
-	cam_anim.play("Cam_Idle")
-	player.hide()
-	player.stop_player()
-	if GlobalVars.get(pic_status) == false:
-			interact_area_fall.show()
-	else:
-			interact_area_look.show()
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		emit_signal("general_interact")
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		alert.hide()
+		GlobalVars.in_interaction = interact_type
+		FP_Cam.priority = 30
+		Exit_Cam.priority = 0 
+		cam_anim.play("Cam_Idle")
+		player.hide()
+		player.stop_player()
+		if GlobalVars.get(pic_status) == false:
+				interact_area_fall.show()
+		else:
+				interact_area_look.show()

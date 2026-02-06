@@ -86,20 +86,21 @@ func _process(delta):
 	
 
 func _on_interactable_interacted(interactor):
-	if cork_cam.priority != 5:
-		emit_signal("general_interaction")
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	print("interact cork")
-	cork_cam.priority = 5
-	main_cam.priority = 0
-	player.stop_player()
-	player.hide()
-	GlobalVars.in_interaction = "cork"
-	team_pic.show()
-	partner_pic.show()
-	news.show()
-	contact.show()
-	missing.show()
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		if cork_cam.priority != 5:
+			emit_signal("general_interaction")
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		print("interact cork")
+		cork_cam.priority = 5
+		main_cam.priority = 0
+		player.stop_player()
+		player.hide()
+		GlobalVars.in_interaction = "cork"
+		team_pic.show()
+		partner_pic.show()
+		news.show()
+		contact.show()
+		missing.show()
 	
 
 

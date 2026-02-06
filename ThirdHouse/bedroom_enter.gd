@@ -1,7 +1,8 @@
 extends Area3D
 @export var alert : Sprite3D
 @export var player : CharacterBody3D
-@export var quincy : CharacterBody3D
+#@export var quincy : CharacterBody3D
+var quincy_entered := false
 @onready var entered_room = false
 @export var phantom_camera_masterbed : PhantomCamera3D
 @export var phantom_camera_hallway : PhantomCamera3D
@@ -16,7 +17,7 @@ func _on_timeline_ended():
 
 
 func _on_bedroom_closet_cam_tween_completed():
-	if entered_room == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false and quincy.in_caught_bubble:
+	if entered_room == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false and quincy_entered:
 		entered_room = true
 		alert.hide()
 		player.stop_player()
@@ -49,3 +50,13 @@ func _on_body_exited(body: Node3D) -> void:
 
 func _on_door_a_body_entered(body: Node3D) -> void:
 	phantom_camera_hallway.tween_duration = 1.0
+
+
+func _on_hall_quincy_entered(body):
+	if body.name == "Quincy":
+		quincy_entered = true
+
+
+func _on_hall_close_cam_area_body_exited(body):
+	if body.name == "Quincy":
+		quincy_entered = false
