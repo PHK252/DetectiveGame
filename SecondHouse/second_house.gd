@@ -97,6 +97,14 @@ func _on_brightness_brightness_shift(brightness) -> void:
 func _process(delta):
 	#print(get_viewport().get_mouse_position())
 	#Kicked out 
+	#if Input.is_action_just_pressed("call"):
+		#print("Juniper_bookmark" + str(Dialogic.VAR.Juniper.viewed_bookmark))
+		#print("Micah_bookmark:" + str(Dialogic.VAR["Asked Questions"]["Micah_viewed_bookmark"]))
+		#print("MicahClyde" + str(Dialogic.VAR["Asked Questions"]["Micah_Asked_Clyde"]))
+		#print("MicahPoints" + str(Dialogic.VAR["Character Aff Points"]["Micah"]))
+		#print("JuniperPoints" + str(Dialogic.VAR["Character Aff Points"]["Juniper"]))
+		#print("JuniperMomRever" + str(Dialogic.VAR.Juniper.ask_mom_rever))
+		
 	if GlobalVars.in_interaction != "":
 		mouse_pos = get_viewport().get_mouse_position()
 	if Dialogic.VAR.get_variable("Character Aff Points.Juniper") <= -4:

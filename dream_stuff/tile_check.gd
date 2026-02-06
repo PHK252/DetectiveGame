@@ -11,7 +11,7 @@ var day_2_matrix = [[0,0,1,1,0,0],[0,1,0,0,1,0],[1,0,0,0,0,1],[0,1,0,0,1,0],[0,0
 @export var player : CharacterBody3D
 
 func _ready():
-	if GlobalVars.day == 1:
+	if GlobalVars.day == 2: #u increment after they come back to office
 		clue.get_active_material(0).albedo_texture = load(text_day_1)
 	else:
 		clue.get_active_material(0).albedo_texture = load(text_day_2)
@@ -20,7 +20,7 @@ func _ready():
 func _on_tile_change(tile_x_num, tile_y_num, status):
 	tile_matrix[tile_x_num-1][tile_y_num-1] = status
 	#print(tile_matrix)
-	if GlobalVars.day == 1:
+	if GlobalVars.day == 2:
 		if tile_matrix == day_1_matrix:
 			player.stop_player()
 			Loading.load_scene(main, GlobalVars.flashback_1_1, "", "", "", true, false)
