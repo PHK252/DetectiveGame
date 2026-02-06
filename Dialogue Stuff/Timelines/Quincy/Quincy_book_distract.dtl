@@ -33,6 +33,7 @@ if {Character Aff Points.Theo} > 3:
 	[wait time="1.0"]
 	Quincy (Surprise): What the hell?
 	[signal arg="quincy_walk"]
+	set {Quincy.book_distract_worked} = true
 	set {Quincy.is_distracted} = true
 	set {Quincy.needs_distraction} = false
 	[signal arg= "end"]

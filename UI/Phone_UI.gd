@@ -443,7 +443,7 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 		alert.hide()
 	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
 	GlobalVars.in_interaction = "phone call"
-	if at_bookshelf == true and needs_distraction == true:
+	if at_bookshelf == true and needs_distraction == true and Dialogic.VAR.get_variable("Quincy.book_distract_worked") == false:
 		var book_distract = Dialogic.start("Quincy_book_distract")
 		emit_signal("save_time")
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)

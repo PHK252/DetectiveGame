@@ -1,8 +1,8 @@
 if {Asked Questions.Micah_viewed_bookmark} == true:
+	set {Juniper.viewed_bookmark} = true
 	"Daltons Thoughts": This pattern again...
 	"Daltons Thoughts": And the note...
 	"Daltons Thoughts": Something’s off.
-	set {Juniper.viewed_bookmark} = true
 else:
 	set {Juniper.viewed_bookmark} = true
 	"Daltons Thoughts": This pattern...
