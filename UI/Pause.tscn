@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnu1071bx7xsa"]
+[gd_scene load_steps=22 format=3 uid="uid://cnu1071bx7xsa"]
 
-[ext_resource type="Texture2D" uid="uid://sr60ubjrdhtv" path="res://UI/Assets/Pause/Pause Board.png" id="1_3uscu"]
 [ext_resource type="Script" uid="uid://2ix3jmv1wutb" path="res://UI/pause.gd" id="1_k7vu6"]
+[ext_resource type="Shader" uid="uid://7xdurvarlhbq" path="res://UI/Pause_blur.gdshader" id="2_a2krg"]
 [ext_resource type="Texture2D" uid="uid://b38a18bpmu0fs" path="res://UI/Assets/Pause/Update/Pause resume normal.png" id="3_nxs1w"]
 [ext_resource type="Texture2D" uid="uid://oobqiybtxhbs" path="res://UI/Assets/Pause/Update/Pause resume hovered.png" id="4_8vpyk"]
 [ext_resource type="Texture2D" uid="uid://u7ocvjtq5d2k" path="res://UI/Assets/Pause/Update/Pause Option normal.png" id="5_2sxps"]
@@ -22,6 +22,12 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_74tmv"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2tnu"]
+shader = ExtResource("2_a2krg")
+shader_parameter/blur_amount = 1.403
+shader_parameter/mix_amount = 0.199
+shader_parameter/color_over = Color(0.32549, 0.227451, 0.184314, 0.458824)
+
 [node name="Pause" type="CanvasLayer"]
 layer = 5
 script = ExtResource("1_k7vu6")
@@ -35,11 +41,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_74tmv")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_3uscu")
+[node name="TextureRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v2tnu")
+offset_right = 1917.0
+offset_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
