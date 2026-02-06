@@ -28,6 +28,7 @@ func _on_timeline_ended():
 func _on_exit_pressed():
 	if GlobalVars.viewed_news == false and GlobalVars.clicked_news == 1:
 		GlobalVars.in_dialogue = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_Newspaper")
 		GlobalVars.viewed_news == true
@@ -36,6 +37,7 @@ func _on_exit_pressed():
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "news":
 		if GlobalVars.viewed_news == false and GlobalVars.clicked_news == 1:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_Newspaper")

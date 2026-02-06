@@ -30,6 +30,7 @@ func _on_timeline_ended():
 func _on_exit_pressed():
 	if GlobalVars.viewed_partner == false and GlobalVars.clicked_partner == 1:
 		GlobalVars.in_dialogue = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_Partner_Picture")
 		GlobalVars.viewed_partner = true
@@ -40,6 +41,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "partner":
 		if GlobalVars.viewed_partner == false and GlobalVars.clicked_partner == 1:
 			GlobalVars.in_dialogue = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_Partner_Picture")
 			GlobalVars.viewed_partner = true

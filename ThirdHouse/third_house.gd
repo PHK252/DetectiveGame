@@ -22,7 +22,6 @@ extends Node3D
 @export var bathroom_door : Node3D
 var time_out = false
 var in_time_out_dialogue = false
-
 var in_secret = false
 var locked = false
 signal time_out_drop_distract
@@ -118,7 +117,7 @@ func _on_brightness_brightness_shift(brightness) -> void:
 
 func _process(delta):
 	#Kicked out 
-	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
+	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true and GlobalVars.quincy_kicked_out == false:
 		Dialogic.clear(1)
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.quincy_kicked_out = true

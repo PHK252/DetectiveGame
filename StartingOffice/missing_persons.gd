@@ -27,7 +27,7 @@ func _on_timeline_ended():
 
 func _on_exit_pressed():
 	if GlobalVars.viewed_missing == false and GlobalVars.clicked_missing == 1:
-		print("entered")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_Missing")
@@ -38,6 +38,7 @@ func _on_exit_pressed():
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "missing":
 		if GlobalVars.viewed_missing == false and GlobalVars.clicked_missing == 1:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_Missing")

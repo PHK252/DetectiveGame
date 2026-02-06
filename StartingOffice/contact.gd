@@ -39,6 +39,7 @@ func _on_timeline_ended():
 func _on_exit_pressed():
 	if ad_took == false:
 		GlobalVars.in_dialogue = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_contact_ad")
 		GlobalVars.viewed_contact == true
@@ -50,6 +51,7 @@ func _on_exit_pressed():
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "contact":
 		if ad_took == false:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_contact_ad")
