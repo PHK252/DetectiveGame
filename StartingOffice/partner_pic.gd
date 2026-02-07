@@ -35,7 +35,8 @@ func _on_exit_pressed():
 		Dialogic.start("Office_Partner_Picture")
 		GlobalVars.viewed_partner = true
 		GlobalVars.viewing = ""
-		
+		if GlobalVars.exit_tut == false:
+			emit_signal("_show_tut", "exit")
 
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "partner":
@@ -46,3 +47,5 @@ func _process(delta):
 			Dialogic.start("Office_Partner_Picture")
 			GlobalVars.viewed_partner = true
 			GlobalVars.viewing = ""
+			if GlobalVars.exit_tut == false:
+				emit_signal("_show_tut", "exit")

@@ -11,7 +11,7 @@ extends Node3D
 @export var interact_type: String
 @export var load_Dalton_dialogue: String
 @export var load_Isaac_dialogue: String
-
+@export var dialogic_variable: String
 signal _show_tut(tut_type : String)
 signal gen_interact
 signal dalton_disactivateLook
@@ -20,10 +20,9 @@ func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
 		emit_signal("gen_interact")
 		GlobalVars.in_dialogue = true
-		var game_dialogue = Dialogic.start(dialogue_file)
+		var label = _choose_dialogue()
+		var game_dialogue = Dialogic.start(dialogue_file, label)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-		game_dialogue.register_character(load(load_Isaac_dialogue), isaac_marker)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
 		if GlobalVars.dialogue_tut == false:
@@ -49,3 +48,9 @@ func _on_interactable_body_entered(body):
 	if body.is_in_group("player"):
 		if GlobalVars.interact_tut == false: 
 			emit_signal("_show_tut", "interact")
+
+func _choose_dialogue():
+	if Dialogic.VAR.get_variable(dialogic_variable):
+		return str(randi_range(1,3))
+	else:
+		return ""

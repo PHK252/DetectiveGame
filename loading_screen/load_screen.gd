@@ -49,6 +49,10 @@ var percent_label : Label
 func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false, dialogic_save : bool = true):
 	if get_tree().paused == true:
 		get_tree().paused = false
+	if GlobalVars.from_save_file == false:
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	else:
+		pass
 	in_loading = true
 	if glitch_in == true:
 		SceneTransitions.glitch_to_load()
@@ -192,9 +196,9 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				loaded = false
 				#drive_sound.stop() not needed i think
 				print(GlobalVars.dalton_pos)
-				if GlobalVars.from_save_file == true:
-					return
-				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+				if GlobalVars.from_save_file == false:
+					if GlobalVars.in_level == true:
+						GlobalVars.in_level = false
 				#await get_tree().process_frame
 				print(GlobalVars.time)
 				

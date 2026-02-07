@@ -1,35 +1,44 @@
-set {Beginning.viewed_donuts} = true
-"Young Dalton" (Talk): Did you eat all the donuts?
-Isaac (Awkward): Hmm? 
-Isaac (Default): What?
-"Young Dalton" (Squint): ...
-"Young Dalton" (Resting): The donuts.
-"Young Dalton" (Hmph): Did you eat them?
-Isaac (Talk): Ah...
-Isaac (Awkward): Can’t hear you.
-Isaac (Resting): You’re breaking up.
-Isaac (Talk): Are you going through a tunnel or something?
-"Young Dalton" (Resting): Isaac...
-Isaac (Happy): Dalton!
-"Young Dalton" (Hmph): ...
-"Young Dalton" (Sigh): You couldn’t have saved one?
-Isaac (Threat): Well, someone decided to work overtime...
-Isaac (Hmph): And I was starving. 
-"Young Dalton"  (Resting): So it’s my fault.
-Isaac (Happy): Exactly!
-"Young Dalton" (Roll Eyes): You keep thinking that. 
-if {Beginning.viewed_board} == false:
-	Isaac (Talk): You know, if you’re hungry...
-	Isaac (Default): We can go get dinner. 
-	"Young Dalton" (Resting): Five more minutes. 
-	Isaac (Doubt): Fine. 
+if {Beginning.viewed_donuts} == false:
+	set {Beginning.viewed_donuts} = true
+	"Young Dalton" (Talk): Did you eat all the donuts?
+	Isaac (Awkward): Hmm? 
+	Isaac (Default): What?
+	"Young Dalton" (Squint): ...
+	"Young Dalton" (Resting): The donuts.
+	"Young Dalton" (Hmph): Did you eat them?
+	Isaac (Talk): Ah...
+	Isaac (Awkward): Can’t hear you.
+	Isaac (Resting): You’re breaking up.
+	Isaac (Talk): Are you going through a tunnel or something?
+	"Young Dalton" (Resting): Isaac...
+	Isaac (Happy): Dalton!
+	"Young Dalton" (Hmph): ...
+	"Young Dalton" (Sigh): You couldn’t have saved one?
+	Isaac (Threat): Well, someone decided to work overtime...
+	Isaac (Hmph): And I was starving. 
+	"Young Dalton"  (Resting): So it’s my fault.
+	Isaac (Happy): Exactly!
+	"Young Dalton" (Roll Eyes): You keep thinking that. 
+	if {Beginning.viewed_board} == false:
+		Isaac (Talk): You know, if you’re hungry...
+		Isaac (Default): We can go get dinner. 
+		"Young Dalton" (Resting): Five more minutes. 
+		Isaac (Doubt): Fine. 
+	else:
+		Isaac (Talk): You know if you’re hungry...
+		Isaac (Threat): We.
+		Isaac: Can. 
+		Isaac: Go. 
+		Isaac: Get. 
+		Isaac (Angry): Dinner. 
+		"Young Dalton" (Roll Eyes): Yeah, yeah, quit your nagging. 
+		Isaac (Roll Eyes): Quit your double-checking, then.
+		"Young Dalton" (Hmph): Hmmph.
+	[end_timeline]
 else:
-	Isaac (Talk): You know if you’re hungry
-	Isaac (Threat): We.
-	Isaac: Can. 
-	Isaac: Go. 
-	Isaac: Get. 
-	Isaac (Angry): Dinner. 
-	"Young Dalton" (Roll Eyes): Yeah, yeah, quit your nagging. 
-	Isaac (Roll Eyes): Quit your double-checking, then.
-	"Young Dalton" (Hmph): Hmmph.
+	label 1
+		jump after_interact/1
+	label 2
+		jump after_interact/2
+	label 3
+		jump after_interact/3
