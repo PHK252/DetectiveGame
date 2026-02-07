@@ -21,15 +21,15 @@ if {Character Aff Points.Juniper} < 0:
 		Juniper (Squint): ...
 		Juniper (Sigh): ...
 		Juniper (Sad): Aslan.
+	do GlobalVars.emit_add_note("juniper", "nametag", "response")
+	set {Juniper.found_skylar} = true
+	set {Juniper.finished_name_tag} = true
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
 			set {Juniper.in_choice} = false
 			[end_timeline]
 		else:
 			jump Juniper_Case_Choice/
-	do GlobalVars.emit_add_note("juniper", "nametag", "response")
-	set {Juniper.found_skylar} = true
-	set {Juniper.finished_name_tag} = true
 else:
 	if {Juniper.found_last_name} == true:
 		Dalton (Squint): Did these belong to that missing employee?

@@ -47,8 +47,10 @@ func _on_exit_pressed():
 	else:
 		GlobalVars.in_dialogue = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if GlobalVars.exit_tut == false:
-		emit_signal("_show_tut", "exit")
+		print( GlobalVars.exit_tut)
+		if GlobalVars.exit_tut == false:
+			print("entered tut")
+			emit_signal("_show_tut", "exit")
 
 func _process(delta):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == "contact":
@@ -62,8 +64,8 @@ func _process(delta):
 		else:
 			GlobalVars.in_dialogue = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		if GlobalVars.exit_tut == false:
-			emit_signal("_show_tut", "exit")
+			if GlobalVars.exit_tut == false:
+				emit_signal("_show_tut", "exit")
 
 func check_ripped():
 	ad_took = Dialogic.VAR.get_variable("Global.got_theo_ad")

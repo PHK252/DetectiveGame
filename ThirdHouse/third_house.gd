@@ -39,7 +39,7 @@ signal level_end
 @export var sub_v_container : SubViewportContainer
 
 @export var hide_tween : AnimationPlayer
-
+var mouse_pos
 func _ready():
 	MusicFades.fade_in_audio() #for reset
 	print(GlobalVars.in_level," level" )
@@ -116,7 +116,8 @@ func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
 
 func _process(delta):
-	#Kicked out 
+	if GlobalVars.in_interaction != "":
+		mouse_pos = get_viewport().get_mouse_position()
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true and GlobalVars.quincy_kicked_out == false:
 		Dialogic.clear(1)
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)

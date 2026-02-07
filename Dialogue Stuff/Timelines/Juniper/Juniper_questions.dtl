@@ -9,10 +9,8 @@ else:
 	Juniper (Default): Ask away!
 
 label questions
-[wait time="0.3"]
 Dalton (Default): Ask about the...
 - Break-in.
-	[wait time="0.3"]
 	Dalton: Ask about...
 	- Location.
 		set {Juniper.num_questions_asked} += 1
@@ -23,7 +21,7 @@ Dalton (Default): Ask about the...
 	- Motive.
 		set {Juniper.num_questions_asked} += 1
 		jump Juniper_questions_who/
-	- Go back
+	- Back.
 		jump questions
 - Other victims.
 	[wait time="0.3"]
@@ -34,7 +32,7 @@ Dalton (Default): Ask about the...
 	- Quincy Leonid.
 		set {Juniper.num_questions_asked} += 1
 		jump Juniper_questions_quincy/
-	- Go back
+	- Back.
 		jump questions
 - Continue.
 	if {Juniper.num_questions_asked} == 0:

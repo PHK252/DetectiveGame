@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var main : Node3D
 @export var animation_tree : AnimationTree
 @export var collision : CollisionShape3D
 @export var FP_Cam: PhantomCamera3D
@@ -73,7 +74,7 @@ func close() -> void:
 
 func _process(delta):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "office_door":
-		mouse_pos = get_viewport().get_mouse_position()
+		mouse_pos = main.mouse_pos
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
 			tilt = "down"

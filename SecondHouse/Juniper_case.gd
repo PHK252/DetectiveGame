@@ -143,7 +143,7 @@ func caseUI(argument: String):
 	else:
 		Dialogic.signal_event.disconnect(caseUI)
 func _process(delta: float) -> void:
-	if case_cam.priority == 30:
+	if case_cam.priority == 30 and GlobalVars.in_dialogue == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#should be removed later one issue figured out
 

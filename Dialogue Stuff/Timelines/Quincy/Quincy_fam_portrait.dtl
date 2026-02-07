@@ -101,7 +101,7 @@ Dalton (Default): Ask about...
 		Quincy (Squint Smug): It’s quite haunting, don’t you think?
 		Dalton (Resting): Hmph.
 		jump 
-- The note | [if {Quincy.has_secret_coor} == true] [else="hide"]
+- The note. | [if {Quincy.has_secret_coor} == true] [else="hide"]
 	if {Quincy.show_coors_note} == false:
 		set {Quincy.show_coors_note} = true
 		Quincy (Sigh): What is that?

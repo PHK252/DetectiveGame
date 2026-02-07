@@ -17,5 +17,5 @@ Dalton: Ask about...
 	jump Morning_Property/
 - Motive.
 	jump Morning_home/
-- Enter apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
+- Ask to Enter. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
 	jump Micah_ask_enter/

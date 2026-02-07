@@ -222,9 +222,6 @@ func _input(event):
 						player.stop_player()
 						var game_dialogue = Dialogic.start(in_case_dialogue_1)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif finished_letter == true and GlobalVars.viewed_Micah_key == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
@@ -232,9 +229,6 @@ func _input(event):
 						player.stop_player()
 						var game_dialogue = Dialogic.start(in_case_dialogue_2)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					else:
 						player.start_player()
 						GlobalVars.in_interaction = ""
@@ -247,9 +241,6 @@ func _input(event):
 						player.stop_player()
 						var game_dialogue = Dialogic.start(in_case_dialogue_choices)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif GlobalVars.viewed_Micah_letter == true and GlobalVars.viewed_Micah_key == false:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
@@ -257,9 +248,6 @@ func _input(event):
 						player.stop_player()
 						var game_dialogue = Dialogic.start(in_case_dialogue_1)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 					elif GlobalVars.viewed_Micah_letter == false and GlobalVars.viewed_Micah_key == true:
 						GlobalVars.in_interaction = ""
 						GlobalVars.in_dialogue = true
@@ -267,9 +255,6 @@ func _input(event):
 						player.stop_player()
 						var game_dialogue = Dialogic.start(in_case_dialogue_2)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
-						game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-						game_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-						game_dialogue.register_character(load(load_char_dialogue), character_marker)
 				else:
 					GlobalVars.in_interaction = ""
 					player.start_player()

@@ -31,7 +31,7 @@ func _ready() -> void:
 			box_over.set_global_rotation_degrees(Vector3(0.0,-2.9,0.0))
 			for i in range(0, random_doughnut_number):
 				doughnuts[i].visible = true
-		3:
+		_:
 			box_over.visible = false
 			for i in range(doughnuts.size()):
 				doughnuts[i].visible = false

@@ -5,7 +5,7 @@ extends CanvasLayer
 
 const MAX := 10
 
-@onready var password = "0000"#"a1b2c3b2a1"
+@onready var password = "d1r2e3a2m1"
 @onready var input = ""
 
 @onready var abc_pos = -1
@@ -215,6 +215,7 @@ func _on_enter_pressed():
 	pressed_button = "enter"
 	blinker_anim.play("RESET")
 	input = label.text
+	blinker_x_pos  = blinker_x_pos_intial
 	blinker.position.x = blinker_x_pos_intial
 	reset_num()
 	if password == input:
@@ -228,7 +229,6 @@ func _on_enter_pressed():
 	else:
 		if case_locked:
 			case_locked.play()
-		print("very wrong")
 		label.text = "Wrong"
 		await get_tree().create_timer(.05).timeout
 		$Enter.disabled = true

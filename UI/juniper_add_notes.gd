@@ -33,9 +33,9 @@ var juniper_cafe_high = "- The victim owns a cafe that she started with her moth
 var juniper_case_low = "- The victim claims that the intruder left a locked case in her living room."
 var juniper_case_high = "- The victim reports that a locked case appeared after she came back.\n- The victim presumes that the intruder left it."
 var juniper_case_opened = "- The code to the case was the employee code of Aslan, S. (8008569420)\n- A letter, a name tag, an apron, and a 50 dollar bill were found inside the case."
-var juniper_info_low = "- THE VICTIM'S LAST EMPLOYEE (ASLAN, S.) IS REPORTED TO BE 'MISSING'.\n- THE VICTIM REFUSED TO ELABORATE.\n- TRANSCRIPT (RELEVANT FRONT): [color=#64635f]SKYLAR ASLAN / 8008569420 / BARISTA / PART-TIME (20HR/WEEK)/ MISSING?
+var juniper_info_low = "- THE VICTIM'S LAST EMPLOYEE (ASLAN, S.) IS REPORTED TO BE 'MISSING'.\n- THE VICTIM REFUSED TO ELABORATE.\n- TRANSCRIPT (RELEVANT FRONT): [color=#64635f]ASLAN, S. / 8008569420 / BARISTA / PART-TIME (20HR/WEEK)/ MISSING?
 [/color][p]- TRANSCRIPT (BACK): [color=#64635f]0315131621200518 16011919: NOVA1805220518 / C   A   T / 03 01  20[/color][p][color=#566f5c][url=show_info]VIEW PHOTO[/url][/color]"
-var juniper_info_high = "- THE VICTIM'S LAST EMPLOYEE (ASLAN, S.) IS REPORTED TO BE 'MISSING'.\n- ACCORDING TO THE VICTIM, ASLAN SUDDENLY STOPPED SHOWING UP TO WORK AND NEVER REPLIED TO HER ATTEMPTS AT CONTACTING THEM.\n- TRANSCRIPT (RELEVANT FRONT): [color=#64635f]SKYLAR ASLAN / 8008569420 / BARISTA / PART-TIME (20HR/WEEK)/ MISSING?
+var juniper_info_high = "- THE VICTIM'S LAST EMPLOYEE (ASLAN, S.) IS REPORTED TO BE 'MISSING'.\n- ACCORDING TO THE VICTIM, ASLAN SUDDENLY STOPPED SHOWING UP TO WORK AND NEVER REPLIED TO HER ATTEMPTS AT CONTACTING THEM.\n- TRANSCRIPT (RELEVANT FRONT): [color=#64635f]ASLAN, S. / 8008569420 / BARISTA / PART-TIME (20HR/WEEK)/ MISSING?
 [/color][p]- TRANSCRIPT (BACK): [color=#64635f]0315131621200518 16011919: NOVA1805220518 / C   A   T / 03 01  20[/color][p][color=#566f5c][url=show_info]VIEW PHOTO[/url][/color]"
 var juniper_med = "- The victim's mother passed away due to an unknown mental illness."
 var juniper_pastry_low = "- A half-eaten pastry was found in her toaster oven.\n- Despite what the teeth marks suggest, the victim claims that she ate it."

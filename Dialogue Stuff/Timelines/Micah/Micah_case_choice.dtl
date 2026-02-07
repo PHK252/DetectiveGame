@@ -1,9 +1,9 @@
 [wait time= "0.3"]
 set {Asked Questions.Micah_in_choice} = true
-Dalton (Default): ...
-- Ask about the key.
+Dalton (Default): Ask about...
+-  The key.
 	jump Micah_key/
-- Ask about the letter.
+- The letter.
 	jump Micah_letter/
 - Continue.
 	set {Asked Questions.Micah_in_choice} = false

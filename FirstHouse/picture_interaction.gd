@@ -125,6 +125,6 @@ func _on_interactable_interacted(interactor):
 		player.hide()
 		player.stop_player()
 		if GlobalVars.get(pic_status) == false:
-				interact_area_fall.show()
+			interact_area_fall.show()
 		else:
-				interact_area_look.show()
+			interact_area_look.show()

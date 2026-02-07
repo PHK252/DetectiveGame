@@ -22,8 +22,8 @@ func _process(delta):
 			##debug_var = i.name
 	##debug_var = GlobalVars.phone_tut
 	debug_var = timer.get_time_left()
-	#if distraction_timer:
-	debug_var_1 = distraction_timer.get_time_left()
+	if distraction_timer:
+		debug_var_1 = distraction_timer.get_time_left()
 	###debug_var = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
 	debug_var_2 = Dialogic.VAR.get_variable("Character Aff Points.Theo")
 	

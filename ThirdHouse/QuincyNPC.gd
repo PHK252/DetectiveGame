@@ -203,8 +203,10 @@ func _process(delta: float) -> void:
 			_process_follow_state(distance_to_target)
 	
 	if is_distracted == true:
-		safe_distract_drop()
-		toilet_distract_drop()
+		if !Dialogic.VAR.get_variable("Quincy.finished_book_distract"):
+			safe_distract_drop()
+		if !Dialogic.VAR.get_variable("Quincy.finished_toilet_distract"):
+			toilet_distract_drop()
 	
 func _physics_process(delta: float) -> void:
 	GlobalVars.quincy_pos = global_position
@@ -772,11 +774,13 @@ func safe_distract_drop():
 	if distraction_timer.time_left > 0:
 		if Dialogic.VAR.get_variable("Quincy.got_safe") == true:
 			drop_distract()
+			Dialogic.VAR.set_variable("Quincy.finished_book_distract", true)
 
 func toilet_distract_drop():
 	if distraction_timer.time_left > 0:
 		if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.has_choco") == true and Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true:
 			drop_distract()
+			Dialogic.VAR.set_variable("Quincy.finished_toilet_distract", true)
 			
 
 func drop_distract():

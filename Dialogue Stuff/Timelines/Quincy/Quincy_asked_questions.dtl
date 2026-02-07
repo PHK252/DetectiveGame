@@ -23,6 +23,7 @@ Dalton (Default): Ask about...
 			Dalton (Talk): Where were you here during the break-in?
 			Quincy (Smug): Nope.
 		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
@@ -48,6 +49,7 @@ Dalton (Default): Ask about...
 			Dalton (Talk): Besides the damage, was anything stolen?
 			Quincy (Sigh): Not that I can tell.
 		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
@@ -85,6 +87,7 @@ Dalton (Default): Ask about...
 			Dalton (Resting): Hmph.
 			Dalton (Awkward): Never mind.
 		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
@@ -124,6 +127,7 @@ Dalton (Default): Ask about...
 			Quincy (Laugh): Hah!
 			Quincy (Squint Smug): Of course that wouldn’t work on you, Goody-Two-Shoes.
 		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
 			Quincy (Smug): Was a pleasure to assit, Dectective.
@@ -152,6 +156,7 @@ Dalton (Default): Ask about...
 			Dalton (Talk): Do you recognize him?
 			Quincy (Awkward): Still don’t. 
 		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
+			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
 			Quincy (Smug): Was a pleasure to assit, Dectective.

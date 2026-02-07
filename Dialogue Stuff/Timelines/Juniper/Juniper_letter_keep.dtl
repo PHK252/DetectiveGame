@@ -7,7 +7,7 @@ Juniper (Default): Thank you.
 set {Juniper.finished_letter} = true
 if {Asked Questions.Juniper.in_choice} == true:
 	if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
-		set {Asked Questions.Juniper.in_choice} = false
+		set {Juniper.Juniper.in_choice} = false
 		[end_timeline]
 	else:
 		jump Juniper_Case_Choice/

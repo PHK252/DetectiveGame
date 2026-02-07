@@ -32,16 +32,12 @@ func _on_interactable_interacted(interactor):
 	#emit_signal("Dquestion")
 	if GlobalVars.in_dialogue == false and asked == false:
 		if Q_greeting == true:
-			#emit_signal("Tstop")
 			GlobalVars.in_dialogue = true
 			player.stop_player()
 			alert.hide()
 			emit_signal("enable_look")
 			var ask_victims = Dialogic.start("Quincy_asked_questions")
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			ask_victims.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-			ask_victims.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-			ask_victims.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
 		else:
 			emit_signal("greet_cam")
 			_on_greeting_third_q_dialogue()
@@ -81,9 +77,13 @@ func _on_greeting_ended():
 func _process(delta):
 	asked = Dialogic.VAR.get_variable("Quincy.asked_all")
 	if asked == true:
-		alert.hide()
-		if quincy_interactable:
-			quincy_interactable.set_monitorable(false)
+		if !Dialogic.VAR.get_variable("Quincy.has_choco"):
+			alert.hide()
+			if quincy_interactable:
+				quincy_interactable.set_deferred("monitoring", false)
+		else:
+			if quincy_interactable:
+				quincy_interactable.set_deferred("monitoring", true)
 
 #func _on_character_body_3d_d_inside() -> void:
 	#if asked == false:

@@ -39,7 +39,7 @@ extends Node3D
 
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
-@onready var thoughts = false
+@onready var thoughts := false
 
 #sound
 signal general_interact
@@ -146,8 +146,8 @@ func _on_thoughts_ended():
 	#await get_tree().create_timer(.5).timeout
 
 func _on_interactable_interacted(interactor):
-	emit_signal("general_interact")
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		emit_signal("general_interact")
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type

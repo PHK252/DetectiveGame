@@ -33,6 +33,7 @@ func _on_exit_pressed():
 		Dialogic.start("Office_Team_Picture")
 		GlobalVars.viewed_team == true
 		GlobalVars.viewing = ""
+	else:
 		if GlobalVars.exit_tut == false:
 			emit_signal("_show_tut", "exit")
 
@@ -45,5 +46,6 @@ func _process(delta):
 			Dialogic.start("Office_Team_Picture")
 			GlobalVars.viewed_team == true
 			GlobalVars.viewing = ""
+		else:
 			if GlobalVars.exit_tut == false:
 				emit_signal("_show_tut", "exit")

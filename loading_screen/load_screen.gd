@@ -225,15 +225,20 @@ func choose_drive_dialogue():
 			if Dialogic.VAR.get_variable("Global.first_house") == "" and Dialogic.VAR.get_variable("Character Aff Points.Theo") > 0:
 				return "Day_1_ride_to_first"
 			if Dialogic.VAR.get_variable("Global.first_house") == "Micah" and Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Theo_Question") == true:
-				return "Day_1_ride_from_TG"
+				if GlobalVars.current_level == "micah":
+					return "Day_1_ride_from_TG"
 			if Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true:
-				return "Day_1_ride_from_kicked_Micah"
+				if GlobalVars.current_level == "micah":
+					return "Day_1_ride_from_kicked_Micah"
 			if Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
-				return "Day_1_ride_from_kicked_Juniper"
+				if GlobalVars.current_level == "juniper":
+					return "Day_1_ride_from_kicked_Juniper"
 			if Dialogic.VAR.get_variable("Asked Questions.Micah_timed_out") == true:
-				return "Day_1_ride_from_timed_Micah"
+				if GlobalVars.current_level == "micah":
+					return "Day_1_ride_from_timed_Micah"
 			if Dialogic.VAR.get_variable("Juniper.timed_out") == true:
-				return "Day_1_ride_from_timed_Juniper" 
+				if GlobalVars.current_level == "juniper":
+					return "Day_1_ride_from_timed_Juniper" 
 			if Dialogic.VAR.get_variable("Character Aff Points.Theo") > 3 and Dialogic.VAR.get_variable("Asked Questions.Micah_Solved_Case") == true and Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 				return "Day_1_ride_to_back_to_station"
 			return ""

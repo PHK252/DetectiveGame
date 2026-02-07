@@ -47,8 +47,6 @@ func _on_input_event(viewport, event, shape_idx):
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				var pic_fell_Dialogue = Dialogic.start("Micah_pic_fall")
-				pic_fell_Dialogue.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-				pic_fell_Dialogue.register_character(load("res://Dialogic Characters/Micah.dch"), micah_marker)
 			
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
