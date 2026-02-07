@@ -2,11 +2,14 @@ extends MeshInstance3D
 
 @export var hair_interact : Area2D
 @export var key_interact : Area2D
-
+@export var letter_interact : Area2D
 func _ready():
-	if Dialogic.VAR.get_variable("Asked Questions.has_key") == false or Dialogic.VAR.get_variable("Asked Questions.has_hair") == false:
+	if Dialogic.VAR.get_variable("Asked Questions.has_key") == false or Dialogic.VAR.get_variable("Asked Questions.has_hair") == false or Dialogic.VAR.get_variable("Asked Questions.has_letter"):
 		Dialogic.signal_event.connect(_take_hair)
-
+	if Dialogic.VAR.get_variable("Asked Questions.has_letter"):
+		letter_interact.input_pickable = false
+	if Dialogic.VAR.get_variable("Asked Questions.has_key"):
+		key_interact.input_pickable = false
 #func _hide_pie(arg : String):
 	##print("arg ",  arg)
 	#if arg == "got pie":
@@ -27,8 +30,11 @@ func _ready():
 				#
 func _take_hair(argument : String):
 	if argument == "take hair":
-		hair_interact.hide()
+		hide()
+		hair_interact.input_pickable = false
 	elif argument == "take_key":
-		key_interact.hide()
-	if Dialogic.VAR.get_variable("Asked Questions.has_key") == true and Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
+		key_interact.input_pickable = false
+	elif argument == "take_letter":
+		letter_interact.input_pickable = false
+	if Dialogic.VAR.get_variable("Asked Questions.has_key") == true and Dialogic.VAR.get_variable("Asked Questions.has_hair") == true and Dialogic.VAR.get_variable("Asked Questions.has_letter"):
 		Dialogic.signal_event.disconnect(_take_hair)

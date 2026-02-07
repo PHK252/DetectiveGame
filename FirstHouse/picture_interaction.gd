@@ -44,6 +44,7 @@ signal general_quit
 signal enable_look
 signal disable_look
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pic_fell : bool = GlobalVars.get(pic_status)
@@ -102,7 +103,7 @@ func _process(delta):
 
 	if GlobalVars.in_look_screen == true and pic_fell == true: #add global var pic fell
 		interact_area_look.hide()
-	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 25 and pic_fell == true: #add global var pic fell
+	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30 and pic_fell == true: #add global var pic fell
 		interact_area_look.show()
 
 

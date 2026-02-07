@@ -17,6 +17,9 @@ var pic_fell = false
 @export var paper_fall : AnimationPlayer
 
 func _ready():
+	if GlobalVars.pic_fell == true:
+		pic_fall_anim.play("PicFalling")
+		return
 	pic_fall_anim.play("Default")
 
 

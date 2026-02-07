@@ -145,4 +145,6 @@ func _on_case_add_quincy_note():
 		else:
 			print_debug("Quincy proposal add notes error")
 	else:
+		print(GlobalVars.note_event, "event")
+		print(GlobalVars.note_condition, "condition")
 		print_debug("Quincy add notes error")

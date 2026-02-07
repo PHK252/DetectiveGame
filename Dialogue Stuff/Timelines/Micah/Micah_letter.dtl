@@ -8,6 +8,11 @@ if {Character Aff Points.Micah} < 2:
 		Dalton (Resting): Do you know who could've written this?
 		Micah (Awkward): I...
 		Micah (Talk): No...
+		if {Asked Questions.viewed_pic} == true
+			Dalton (Doubt1): Are you sure?
+			Dalton (Hmph): The passcode matches the date on the picture.
+			Micah (Threat): ...!
+			Micah (Awkward): ... 
 		Micah (Default): I don't know.
 		Dalton (Resting): ...hmmph.
 		do GlobalVars.emit_add_note("micah", "case_letter", "low")
@@ -33,6 +38,8 @@ if {Character Aff Points.Micah} >= 2:
 		Micah (Stare): ...!
 		Micah (Awkward): I-I don't know.
 		Theo (Concerned): The writer seems to be addressing you, Micah.
+		if {Asked Questions.viewed_pic} == true:
+			Dalton (Hmph): The passcode matches the date on the picture.
 		Theo (Concerned): Are you sure you don't know?
 		Micah (Awkward): It...
 		Micah: Maybe...
