@@ -11,7 +11,7 @@ extends Node3D
 func _ready():
 	GlobalVars.current_level = "Transition"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if GlobalVars.day == 1:
+	if GlobalVars.day == 2:
 		day_1_notes.show()
 		day_2_notes.hide()
 	else:
