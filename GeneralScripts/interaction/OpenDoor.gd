@@ -26,7 +26,7 @@ signal general_interact
 signal door_open
 signal activate_leave
 var is_outside = true
-
+var continue_level := false
 var cooldown = false
 var theo_close_door := false
 var dalton_close_door := false
@@ -142,7 +142,7 @@ func _on_exit_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_exit_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
-	if not timer.is_stopped():
+	if not timer.is_stopped() and continue_level == false:
 		timer.stop()
 
 func doorOpen(argument: String):
@@ -151,6 +151,7 @@ func doorOpen(argument: String):
 		Dialogic.signal_event.disconnect(doorOpen)
 		#$Interactable.queue_free()
 		open()
+		continue_level = false
 		#collision.disabled = true
 		is_open = true
 		if entered:
@@ -160,17 +161,8 @@ func notleave(argument : String):
 	if argument == "notyet":
 		Dialogic.signal_event.disconnect(doorOpen)
 		Dialogic.signal_event.disconnect(notleave)
+		continue_level = true
 		cooldown = false
-# will need more debugging
-#func _on_interactable_unfocused(interactor):
-	#if is_open == true:
-		#print("close")
-		##await get_tree().create_timer(3.0).timeout
-		##animation_tree["parameters/conditions/is_closed"] = true
-		##animation_tree["parameters/conditions/is_opened"] = false
-		##is_open = false
-		##entered = true
-		##collision.disabled = false
 
 func _on_character_body_3d_d_hall() -> void:
 	is_outside = true

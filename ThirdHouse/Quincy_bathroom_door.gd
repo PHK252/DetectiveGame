@@ -145,7 +145,7 @@ func _on_bathroom_door_body_exited(body):
 func _quincy_enter_bathroom(argument: String):
 	if argument == "quincy_clean":
 		Dialogic.signal_event.disconnect(_quincy_enter_bathroom)
-		#SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+		Dialogic.VAR.set_variable("Quincy.in_bathroom", true)
 		player.start_player()
 		emit_signal("Quincy_enter_bathroom")
 		print("quincy clean")
@@ -177,3 +177,8 @@ func _on_quincy_pause_timeout():
 	player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 	await get_tree().process_frame
 	player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+
+
+func _on_quincy_exit_bathroom(body):
+	if body.name == "Quincy" and Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
+		Dialogic.VAR.set_variable("Quincy.in_bathroom", false)

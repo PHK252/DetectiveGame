@@ -1,4 +1,4 @@
-[gd_scene load_steps=239 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=240 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -160,6 +160,7 @@
 [ext_resource type="Texture2D" uid="uid://sdgm61dpt61a" path="res://ThirdHouse/Assets/Note back@2x.png" id="127_6o44q"]
 [ext_resource type="Texture2D" uid="uid://djgf0yvl621pv" path="res://ThirdHouse/Runa Journal Frames/Tenth Page Frames/Tenth Page Frame1@2x.png" id="128_6o44q"]
 [ext_resource type="Texture2D" uid="uid://tk8fnydqh8f0" path="res://ThirdHouse/Runa Journal Frames/Eleventh Page Frames/Eleventh Page Frame1@2x.png" id="128_mtbcp"]
+[ext_resource type="Script" uid="uid://c8qlh7md16da5" path="res://UI/scroll_container.gd" id="129_k471k"]
 [ext_resource type="Texture2D" uid="uid://b13m4uusn5low" path="res://ThirdHouse/Assets/Sciencepic front@2x.png" id="130_hqjxk"]
 [ext_resource type="Texture2D" uid="uid://c4wvalrot4e50" path="res://ThirdHouse/Assets/Sciencepic back@2x.png" id="131_sykof"]
 [ext_resource type="Texture2D" uid="uid://cgbsifk625ex" path="res://SecondHouse/Close Assets/Juniper Employee Info Back@2x.png" id="144_5ppeq"]
@@ -2455,6 +2456,7 @@ offset_top = 242.0
 offset_right = 1182.0
 offset_bottom = 885.0
 theme = SubResource("Theme_1v3be")
+script = ExtResource("129_k471k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NotesScreen/Micah/ScrollContainer"]
 layout_mode = 2
@@ -2666,6 +2668,7 @@ offset_top = 242.0
 offset_right = 1182.0
 offset_bottom = 885.0
 theme = SubResource("Theme_1v3be")
+script = ExtResource("129_k471k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NotesScreen/Juniper/ScrollContainer"]
 layout_mode = 2
@@ -2848,6 +2851,7 @@ offset_top = 242.0
 offset_right = 1182.0
 offset_bottom = 885.0
 theme = SubResource("Theme_1v3be")
+script = ExtResource("129_k471k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NotesScreen/Quincy/ScrollContainer"]
 layout_mode = 2

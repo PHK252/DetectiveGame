@@ -42,7 +42,7 @@ signal level_end
 var mouse_pos
 func _ready():
 	MusicFades.fade_in_audio() #for reset
-	print(GlobalVars.in_level," level" )
+	print(Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_bookmark"), "Micahbookmark")
 	GlobalVars.current_level = "quincy"
 	if Dialogic.VAR.get_variable("Global.went_to_Quincy") == false:
 		Dialogic.VAR.set_variable("Global.went_to_Quincy", true)

@@ -248,3 +248,5 @@ func _on_interactable_interacted(interactor):
 		if GlobalVars.in_interaction == "Resume" and Dialogic.VAR.get_variable("Juniper.reenter_resumes") == true:
 			GlobalVars.set(dialogue_1, false)
 			GlobalVars.set(view_item_1, false)
+			if GlobalVars.get(view_item_2) == true and GlobalVars.get(dialogue_2) == false:
+				GlobalVars.set(view_item_2, false)

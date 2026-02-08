@@ -454,7 +454,8 @@ func _on_fixed_wine_distraction() -> void:
 func _on_dalton_caught_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
 		in_caught_bubble = true
-		_quincy_caught()
+		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == false:
+			_quincy_caught()
 
 func _on_dalton_caught_body_exited(body):
 	if body.name == "Quincy":

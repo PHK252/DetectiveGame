@@ -40,7 +40,7 @@ Dalton: Leave?
 			[signal arg= "open_door"]
 			[end_timeline]
 		else:
-			if {Character Aff Points.Theo} > 3:
+			if {Character Aff Points.Theo} >= 3:
 				Dalton (Talk): We are pretty much done here. 
 				Dalton (Awkward): Pretty open and shut case. 
 				Dalton (Default): I’ll let you know once we apprehend and question Skylar.

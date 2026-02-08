@@ -20,7 +20,6 @@ else:
 		if {Character Aff Points.Juniper} >= 1:
 			Juniper (Hmph): ...
 			Juniper (Happy): Wanna help?
-			[wait time="0.3"]
 			Dalton: ...
 			- Yes.
 				Dalton (Awkward): Uh...
@@ -28,8 +27,8 @@ else:
 				Dalton (Squint): I can try.
 				label choices
 				set {Character Aff Points.Juniper} += 1
-				Dalton (Default): ...
-				- Milo
+				Dalton (Default): Choose a resume...
+				- Milo.
 					Dalton (Awkward): This one.
 					Juniper (Hmph): Hmm...
 					Juniper (Happy): Seems like a smart kid.
@@ -38,7 +37,7 @@ else:
 					Juniper (Laugh): Thanks!
 					Dalton (Awkward): Yeah.
 					set {Juniper.picked_resume} = "Milo"
-				- Ash
+				- Ash.
 					Dalton (Awkward): This one.
 					Juniper (Surprise): Oh!
 					Juniper (Laugh): They seem perfect for us.
@@ -46,7 +45,7 @@ else:
 					Dalton (Awkward): Yeah...
 					Dalton (Resting): No problem.
 					set {Juniper.picked_resume} = "Ash"
-				- Pippin
+				- Pippin.
 					Dalton (Awkward): This one.
 					Juniper (Squint): Hm?
 					Juniper (Hmph): What...
@@ -61,9 +60,14 @@ else:
 					Juniper (Happy): Sure.
 					Juniper (Default): Go ahead.
 					if {Juniper.in_choice} == true:
-						jump Juniper_Employee_Resume_choice/
-					else:
+						set {Juniper.in_choice} = false
+					[end_timeline]
+				if {Juniper.in_choice} == true:
+					if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
+						set {Juniper.in_choice} = false
 						[end_timeline]
+					else:
+						jump Juniper_Employee_Resume_choice/
 			- No.
 				Dalton (Awkward): Uh...
 				Dalton (Resting): I’m afraid this is beyond my jurisdiction.
@@ -79,7 +83,6 @@ else:
 			[end_timeline]
 	else:
 		Juniper (Happy): Did ya choose one?
-		[wait time="0.3"]
 		Dalton (Default): ...
 		- Yes.
 			set {Juniper.reenter_resumes} = false
@@ -91,11 +94,8 @@ else:
 			Dalton (Resting): I need more time.
 			Juniper (Default): Of course!
 			if {Juniper.in_choice} == true:
-				jump Juniper_Employee_Resume_choice/
-			else:
-				[end_timeline]
-#	if {Juniper.picked_resume} != "":
-#		Juniper: Thank ya for the help!
-#		Juniper: I really appreciate it.
-#		Dalton: Hmph.
-#		Dalton: No problem.
+				if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
+					set {Juniper.in_choice} = false
+					[end_timeline]
+				else:
+					jump Juniper_Employee_Resume_choice/

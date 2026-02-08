@@ -109,8 +109,8 @@ func _process(delta):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	player.start_player()
-	alert.show()
+	#player.start_player()
+	#alert.show()
 	if GlobalVars.get(dialogue) == false:
 		GlobalVars.set(dialogue, true)
 

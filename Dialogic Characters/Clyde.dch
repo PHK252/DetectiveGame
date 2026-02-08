@@ -4,8 +4,19 @@
 &"_translation_id": "",
 &"color": Color(0.235294, 0.0588235, 0.0156863, 1),
 &"custom_info": {
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Mood 1",
+"sound_moods": {
+"Talking": {
+"mode": 0,
+"name": "Talking",
+"pitch_base": 0.5,
+"pitch_variance": 0.4,
+"skip_characters": 1.0,
+"sound_path": "res://Audio/Voices/600 [New]",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
 "style": "Dalton Box"
 },
 &"default_portrait": "Call",

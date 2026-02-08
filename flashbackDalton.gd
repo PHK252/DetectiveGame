@@ -169,6 +169,7 @@ func _on_dalton_to_walk_out():
 	force_rotate(number)
 	move_out = true
 	await get_tree().create_timer(3.5).timeout
+	MusicFades.fade_out_audio()
 	sound_allowed = false
 	Loading.load_scene(main, GlobalVars.office_path, "", "", "")
 	GlobalVars.day = 1

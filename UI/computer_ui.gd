@@ -113,17 +113,16 @@ func _on_dropdown_1_pressed():
 
 func _on_dropdown_2_pressed():
 	$".".hide()
+	GlobalVars.Quincy_in_computer = false
 
 
 func _on_dropdown_3_pressed():
 	$".".hide()
-
-
-func _on_dropdown_4_pressed():
-	$".".hide()
+	GlobalVars.Quincy_in_computer = false
 
 func _on_dropdown_5_pressed():
 	$".".hide()
+	GlobalVars.Quincy_in_computer = false
 
 func _on_mail_pressed():
 	Home_dropdown_overlay.hide()

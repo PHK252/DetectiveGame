@@ -253,6 +253,7 @@ var load_Quincy_name_arr = ["quincy_time_out", "quincy_kicked_out", "quincy_fain
 
 func _dalton_caught_clear_state():
 	#dalton_pos = Vector3()
+	quincy_notes = ""
 	Quincy_Dalton_caught = true 
 	quincy_time_out = false
 	quincy_kicked_out = false

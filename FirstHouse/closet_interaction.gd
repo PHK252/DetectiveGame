@@ -118,6 +118,8 @@ func _process(delta):
 			interact_area_1.hide()
 			interact_area_2.hide()
 			alert.show()
+			if closet_open == true:
+				_close_door()
 			#main_cam.set_tween_duration(1)
 	
 	if GlobalVars.in_look_screen == true:

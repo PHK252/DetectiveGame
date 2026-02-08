@@ -196,8 +196,7 @@ func choose_quincy_cycle_dialogue():
 	var rng = RandomNumberGenerator.new()
 	var random = rng.randi_range(1, 3)
 	Dialogic.VAR.set_variable("Quincy.bedroom_cycle", random)
-#Set try viewed --> needs distraction after 2 looks
-#set up cycling dialogue for cue thoughts and quincy dialogue for this and bookshelf
+
 
 
 
