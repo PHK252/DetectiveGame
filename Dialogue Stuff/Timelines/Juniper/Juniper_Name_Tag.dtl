@@ -7,6 +7,9 @@ if {Character Aff Points.Juniper} < 0:
 		Dalton (Awkward): It's Skylar?
 		Juniper (Squint): That's what the name tag says.
 		Dalton (Resting): Hmmph.
+		do GlobalVars.emit_add_note("juniper", "nametag", "response")
+		set {Juniper.found_skylar} = true
+
 	else:
 		Dalton (Resting): Who did this belong to?
 		Juniper (Squint): Can ya not read?
@@ -20,9 +23,9 @@ if {Character Aff Points.Juniper} < 0:
 		Dalton (Resting) : Do you know their last name?
 		Juniper (Squint): ...
 		Juniper (Sigh): ...
-		Juniper (Sad): Aslan.
-	do GlobalVars.emit_add_note("juniper", "nametag", "response")
-	set {Juniper.found_skylar} = true
+		Juniper (Hmph): It started with an A.
+		Dalton (Resting): Are you serious?
+		Juniper (Squint): Yes.
 	set {Juniper.finished_name_tag} = true
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
@@ -31,18 +34,24 @@ if {Character Aff Points.Juniper} < 0:
 		else:
 			jump Juniper_Case_Choice/
 else:
-	if {Juniper.found_last_name} == true:
+	if {Juniper.found_last_name} == true or {Juniper.Juniper_case_interlude_finished} == true:
 		Dalton (Squint): Did these belong to that missing employee?
 		Juniper (Doubt): Hmm?
 		Juniper (Hmph): Let me see...
 		Juniper (Sad): Oh my...
 		Juniper (Sigh): Yeah...
 		Dalton (Awkward): ...
-		Dalton (Talk): Skylar...
-		Dalton (Doubt1): That's their name?
-		Juniper (Sad): Yeah...
-		Juniper (Hmph): At least that's what they went by...
-		Dalton (Default): I see...
+		if {Juniper.Juniper_case_interlude_finished} == true:
+			Dalton (Talk): Do you know their last name?
+			Juniper (Hmph): ...
+			Juniper (Default): Aslan.
+			Juniper (Happy): Skylar Aslan.
+		else:
+			Dalton (Talk): Skylar...
+			Dalton (Doubt1): That's their name?
+			Juniper (Sad): Yeah...
+			Juniper (Hmph): At least that's what they went by...
+			Dalton (Default): I see...
 	else:
 		Dalton (Doubt1): Who did these belong to?
 		Juniper (Doubt): Hmm?
@@ -61,12 +70,12 @@ else:
 		Juniper (Hmph): ...
 		Juniper (Default): Aslan.
 		Juniper (Happy): Skylar Aslan.
+	do GlobalVars.emit_add_note("juniper", "nametag", "response")
+	set {Juniper.found_skylar} = true
+	set {Juniper.finished_name_tag} = true
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
 			set {Juniper.in_choice} = false
 			[end_timeline]
 		else:
 			jump Juniper_Case_Choice/
-	do GlobalVars.emit_add_note("juniper", "nametag", "response")
-	set {Juniper.found_skylar} = true
-	set {Juniper.finished_name_tag} = true

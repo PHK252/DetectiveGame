@@ -2,5 +2,7 @@
 "Daltons Thoughts": Lightly soiled...
 if {Juniper.viewed_name_tag} == true and {Juniper.found_last_name} == true:
 	"Daltons Thoughts": Must be Skylar’s.  
-else:
+elif {Juniper.Juniper_case_interlude_finished} == true or {Juniper.found_last_name} == true:
 	"Daltons Thoughts": Might be that missing employee’s uniform.
+else:
+	[end_timeline]

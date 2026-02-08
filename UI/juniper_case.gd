@@ -110,7 +110,7 @@ func _open_case():
 	GlobalVars.viewing = ""
 	var case_interlude = Dialogic.VAR.get_variable("Character Aff Points.Juniper")
 	var finished = Dialogic.VAR.get_variable("Juniper.Juniper_case_interlude_finished")
-	if case_interlude > 1 and finished == false:
+	if case_interlude >= 1 and finished == false:
 		GlobalVars.in_dialogue = true
 		await get_tree().create_timer(1.0).timeout
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

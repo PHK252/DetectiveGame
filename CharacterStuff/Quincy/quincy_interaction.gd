@@ -134,10 +134,11 @@ func _on_close_door_dalton_entered(body):
 			dalton_entered = true
 			print("dalton_enter")
 			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				needs_close = false
 				emit_signal("close_door")
 				await get_tree().create_timer(3.0).timeout
 				interactable.set_monitorable(true)
-				needs_close = false
+				
 
 
 func _on_close_door_theo_entered(body):
@@ -146,10 +147,11 @@ func _on_close_door_theo_entered(body):
 			theo_entered = true
 			print("Theo_enter")
 			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				needs_close = false
 				emit_signal("close_door")
 				await get_tree().create_timer(3.0).timeout
 				interactable.set_monitorable(true)
-				needs_close = false
+				
 
 
 func _on_close_door_quincy_entered(body):
@@ -158,12 +160,11 @@ func _on_close_door_quincy_entered(body):
 			quincy_entered = true
 			print("quincy_enter")
 			if dalton_entered == true and theo_entered == true and quincy_entered == true:
+				needs_close = false
 				emit_signal("close_door")
 				await get_tree().create_timer(3.0).timeout
 				interactable.set_monitorable(true)
-				needs_close = false
-
-
+				
 
 func _on_outside_snow_area_body_entered(body):
 	if body.is_in_group("player"):

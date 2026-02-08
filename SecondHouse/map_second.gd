@@ -30,7 +30,7 @@ func _ready():
 	#print(interactable.monitorable)
 	#if Dialogic.VAR.get_variable("Juniper.left_juniper") == true:
 		#door_interactable.set_deferred("monitorable", false)
-		#interactable.set_deferred("monitorable", true)
+	#interactable.set_deferred("monitorable", true)
 		#return
 	door_interactable.set_deferred("monitorable", !Dialogic.VAR.get_variable("Juniper.left_juniper"))
 	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Juniper.left_juniper"))

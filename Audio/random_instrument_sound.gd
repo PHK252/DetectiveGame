@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var dalton : CharacterBody3D
 @export var player : AudioStreamPlayer
 @export var sounds_folder : String
 @export var alert : Sprite3D
@@ -20,6 +21,7 @@ func _on_guitar_interact_interacted(interactor):
 			var curr_stream = load(stream_array[stream_num])
 			player.stream = curr_stream
 			alert.hide()
+			dalton.stop_player()
 			player.play()
 		else:
 			print_debug("no streams :(")
@@ -28,6 +30,7 @@ func _on_guitar_interact_interacted(interactor):
 
 func _on_guitar_sounds_finished():
 	alert.show()
+	dalton.start_player()
 	playing = false
 
 func get_sounds_from_folder(folder : String):

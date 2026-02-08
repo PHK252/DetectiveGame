@@ -10,7 +10,7 @@ var is_open: bool = false
 	
 func _ready():
 	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Asked Questions.left_Micah"))
-		
+
 func _on_interactable_interacted(interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
