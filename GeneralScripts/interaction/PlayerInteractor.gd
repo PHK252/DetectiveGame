@@ -6,8 +6,6 @@ extends Interactor
 var cached_closest: Interactable
 signal interacted_now
 
-func _ready() -> void:
-	controller = player
 
 func _physics_process(_delta: float) -> void:
 	var new_closest: Interactable = get_closest_interactable()

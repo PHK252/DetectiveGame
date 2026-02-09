@@ -94,6 +94,7 @@ func _process(delta):
 			player.show()
 			emit_signal("enable_look")
 			var game_dialogue = Dialogic.start(viewed_dialogue_file)
+			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			GlobalVars.in_interaction = ""
 			GlobalVars.set(dialogue, true)

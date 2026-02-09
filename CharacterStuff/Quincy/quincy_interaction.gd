@@ -6,7 +6,7 @@ extends Node3D
 @export var dalton_marker : Marker2D
 @export var theo_marker : Marker2D
 @export var quincy_marker : Marker2D
-#signal Dquestion
+@export var player_interactor :Interactor
 #signal Dstopped
 #signal Tstop
 #signal Tstart
@@ -18,7 +18,7 @@ var needs_close = false
 var dalton_entered = false
 var theo_entered = false
 var quincy_entered = false
-
+var interact_on := true
 
 signal finish_greeting
 signal greet_cam
@@ -80,10 +80,17 @@ func _process(delta):
 		if !Dialogic.VAR.get_variable("Quincy.has_choco"):
 			alert.hide()
 			if quincy_interactable:
-				quincy_interactable.set_deferred("monitoring", false)
+				if interact_on:
+					quincy_interactable.set_deferred("monitoring", false)
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+					await get_tree().process_frame
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+					interact_on = false
 		else:
 			if quincy_interactable:
-				quincy_interactable.set_deferred("monitoring", true)
+				if !interact_on:
+					quincy_interactable.set_deferred("monitoring", true)
+					interact_on = true
 
 #func _on_character_body_3d_d_inside() -> void:
 	#if asked == false:

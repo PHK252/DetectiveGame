@@ -25,11 +25,11 @@ func _process(delta):
 	if distraction_timer:
 		debug_var_1 = distraction_timer.get_time_left()
 	###debug_var = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
-	debug_var_2 = Dialogic.VAR.get_variable("Character Aff Points.Theo")
+	#debug_var_2 = Dialogic.VAR.get_variable("Character Aff Points.Theo")
 	debug_var_3 = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
 	debug_var_4 = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
 	debug_var_5 = Dialogic.VAR.get_variable("Asked Questions.viewed_pic")
-#	debug_var_2 = quincy.in_danger
+	debug_var_2 = Dialogic.VAR.get_variable("Quincy.in_bathroom")
 	#debug_var_3 = Dialogic.VAR.get_variable("Character Aff Points.Micah")
 	#debug_var_4 = Dialogic.VAR.get_variable("Character Aff Points.Juniper")
 	#debug_var_5 = Dialogic.VAR.get_variable("Character Aff Points.Quincy")

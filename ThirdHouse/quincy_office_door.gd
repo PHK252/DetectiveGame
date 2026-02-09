@@ -40,13 +40,14 @@ var triggered = false
 @export var key_sound : AudioStreamPlayer3D
 
 @export var interactable : Interactable
-
+@export var player_interactor : Interactor
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func open() -> void:
 	print("opening")
+	collision.set_deferred("disabled", true)
 	cooldown = true
 	animation_tree["parameters/conditions/is_opened"] = true
 	animation_tree["parameters/conditions/is_closed"] = false
@@ -71,6 +72,7 @@ func close() -> void:
 	#animation_tree["parameters/conditions/quick_close"] = false
 	#animation_tree["parameters/conditions/is_closed"] = false
 	cooldown = false
+	collision.set_deferred("disabled", false)
 
 func _process(delta):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "office_door":
@@ -96,11 +98,10 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		if unlocked == true and is_open == false and cooldown == false:
 			if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 				open()
-				collision.disabled = true
-		elif unlocked == true and is_open == true and cooldown == false:
-			if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
-				close()
-				collision.disabled = false
+		#elif unlocked == true and is_open == true and cooldown == false:
+			#if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+				#close()
+				#collision.disabled = false
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			alert.hide()
@@ -138,7 +139,11 @@ func doorOpen(argument: String):
 		key.hide()
 		open()
 		await get_tree().create_timer(2.5).timeout
-		collision.disabled = true
+		if interactable.monitorable:
+			interactable.set_deferred("monitorable", false)
+			player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+			await get_tree().process_frame
+			player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
 		is_open = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Exit_Cam.set_tween_duration(0)
@@ -149,6 +154,7 @@ func doorOpen(argument: String):
 		player.show()
 		alert.show()
 		GlobalVars.in_interaction = ""
+		
 	elif not is_open and argument == "end":
 		Dialogic.signal_event.disconnect(doorOpen)
 
@@ -264,12 +270,12 @@ func cue_finished():
 func _on_caught_open_doors():
 	if is_open == false:
 		open()
-		collision.set_deferred("disabled", true)
 		return
 
 
 func _on_quincy_disable_office():
 	if interactable:
+		print("disable door")
 		interactable.set_deferred("monitorable", false)
 
 
@@ -277,3 +283,25 @@ func _on_interact_resume():
 	if interactable:
 		if interactable.monitorable == false:
 			interactable.set_deferred("monitorable", true)
+
+
+func _on_office_area_entered(body):
+	if body.is_in_group("player"):
+		entered = true
+		await get_tree().create_timer(1.5).timeout
+		if entered == true:
+			close()
+			if interactable.monitorable == false:
+				interactable.set_deferred("monitorable", true)
+
+
+func _on_office_area_q_body_exited(body):
+	if body.is_in_group("player"):
+		entered = false
+		close()
+		if Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.got_journal") == true:
+			if interactable.monitorable == true:
+				interactable.set_deferred("monitorable", false)
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().process_frame
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT

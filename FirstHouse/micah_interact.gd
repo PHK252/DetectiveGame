@@ -9,7 +9,8 @@ extends Node3D
 @export var alert : Sprite3D
 @export var stand_interaction : Interactable
 @export var sit_interaction : Interactable
-
+var stand_interact_on := true
+var sit_interact_on := true
 signal Dquestion
 signal Dstopped
 signal Tstop
@@ -67,15 +68,19 @@ func _process(delta):
 					stand_interaction.set_monitorable(true)
 			else:
 				if sit_body.visible == true:
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-					await get_tree().process_frame
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-					sit_interaction.set_monitorable(false)
+					if sit_interact_on:
+						player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+						await get_tree().process_frame
+						player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+						sit_interaction.set_deferred("monitorable", false)
+						sit_interact_on = false
 				else:
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-					await get_tree().process_frame
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-					stand_interaction.set_monitorable(false)
+					if stand_interact_on:
+						player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+						await get_tree().process_frame
+						player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+						stand_interaction.set_deferred("monitorable", false)
+						stand_interact_on = false
 		##else:
 			#stand_interaction.set_monitorable(false)
 			#sit_interaction.set_monitorable(false)

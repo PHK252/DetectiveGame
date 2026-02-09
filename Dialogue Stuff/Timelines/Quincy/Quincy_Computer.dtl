@@ -1,8 +1,11 @@
+if {Quincy.computer_looked} == true:
+	jump look
 Dalton (Squint): Huh.
 Dalton (Doubt1): A computer.
-[wait time="0.5"]
+label look
 Dalton (Default): Take a look?
 - Yes. 
+	set {Quincy.computer_looked} = true
 	[signal arg="switch_cam"]
 - No.
 	[end_timeline]

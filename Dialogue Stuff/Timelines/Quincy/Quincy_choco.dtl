@@ -1,27 +1,39 @@
-"Daltons Thoughts": Hmm...
-"Daltons Thoughts": What's this?
+if {Quincy.refuse_choco} == false:
+	"Daltons Thoughts": Hmm...
+	"Daltons Thoughts": What's this?
 "Daltons Thoughts": ...
 - Open.
 	[signal arg= "open_choco"]
-	"Daltons Thoughts": What?
-	"Daltons Thoughts": Is that chocolate?
-	"Daltons Thoughts": Dark...
-	"Daltons Thoughts": 70 percent too.
-	"Daltons Thoughts": How did get his hands on this?
-	"Daltons Thoughts": We got rid of the supply during the Pavlov case.
+	if {Quincy.refuse_choco} == false:
+		set {Quincy.saw_choco} = true
+		"Daltons Thoughts": What?
+		"Daltons Thoughts": Is that chocolate?
+		"Daltons Thoughts": Dark...
+		"Daltons Thoughts": 70 percent too.
+		"Daltons Thoughts": How did get his hands on this?
+		"Daltons Thoughts": We got rid of the supply during the Pavlov case.
+	else:
+		"Daltons Thoughts": Hmm...
+		"Daltons Thoughts": Maybe I should take it...
 	"Daltons Thoughts": ...
 	- Take.
 		[signal arg= "take_choco"]
-		"Daltons Thoughts": I have to take this in for investigation. 
+		if {Quincy.refuse_choco} == false:
+			"Daltons Thoughts": I have to take this in for investigation. 
+		else:
+			"Daltons Thoughts": I should ask him about this...
+			set {Quincy.refuse_choco} = false
 		set {Quincy.has_choco} = true
 		do GlobalVars.emit_add_evidence("quincy", "choco")
 		[signal arg= "end"]
 		[end_timeline]
 	- Leave.
+		set {Quincy.refuse_choco} = true
 		"Daltons Thoughts": I’m sure he has his reasons.
 		"Daltons Thoughts": Better not to disrupt his business.
 		[signal arg= "end"]
 		[end_timeline]
 - Ignore.
+	[signal arg= "end"]
 	"Daltons Thoughts": It's probably nothing.
 	[end_timeline]

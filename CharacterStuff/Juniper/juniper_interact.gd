@@ -7,7 +7,7 @@ extends Node3D
 @export var juniper_marker : Marker2D
 @export var timer : Timer
 @export var player_interactor : Interactor
-#signal Dstopped
+var interactor_on := true
 #signal Tstop
 #signal Tstart
 @export var interactable : Interactable
@@ -68,10 +68,13 @@ func _process(delta):
 	if asked == true:
 		#print("hide")
 		if interactable:
-			player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-			await get_tree().process_frame
-			player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-			interactable.set_monitorable(false)
+			if interactor_on:
+				print("deactivate")
+				interactable.set_deferred("monitorable", false)
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().process_frame
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+				interactor_on = false
 
 func _on_door_second_j_dialogue() -> void:
 	if asked == false:

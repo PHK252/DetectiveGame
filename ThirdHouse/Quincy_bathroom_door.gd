@@ -145,12 +145,12 @@ func _on_bathroom_door_body_exited(body):
 func _quincy_enter_bathroom(argument: String):
 	if argument == "quincy_clean":
 		Dialogic.signal_event.disconnect(_quincy_enter_bathroom)
-		Dialogic.VAR.set_variable("Quincy.in_bathroom", true)
 		player.start_player()
 		emit_signal("Quincy_enter_bathroom")
-		print("quincy clean")
 		quincy_close_door = true
 		await get_tree().create_timer(3.0).timeout
+		Dialogic.VAR.set_variable("Quincy.in_bathroom", true)
+		print("quincy clean", Dialogic.VAR.get_variable("Quincy.in_bathroom"))
 		player.stop_player()
 		close()
 		pass
@@ -179,6 +179,10 @@ func _on_quincy_pause_timeout():
 	player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
 
 
-func _on_quincy_exit_bathroom(body):
+
+
+
+func _on_hall_close_cam_area_body_entered(body):
 	if body.name == "Quincy" and Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
 		Dialogic.VAR.set_variable("Quincy.in_bathroom", false)
+		print("quincy out", Dialogic.VAR.get_variable("Quincy.in_bathroom"))

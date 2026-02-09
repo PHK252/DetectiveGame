@@ -84,16 +84,19 @@ func _on_hint_pressed():
 
 func _on_sleep_pressed():
 	$".".hide()
+	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
 
 
 func _on_restart_pressed():
 	$".".hide() 
+	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
 
 
 func _on_shutdown_pressed():
 	$".".hide()
+	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
 
 
@@ -113,15 +116,24 @@ func _on_dropdown_1_pressed():
 
 func _on_dropdown_2_pressed():
 	$".".hide()
+	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
 
 
 func _on_dropdown_3_pressed():
 	$".".hide()
+	login.show()
+	home.hide()
+	mail.hide()
+	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
 
 func _on_dropdown_5_pressed():
 	$".".hide()
+	login.show()
+	home.hide()
+	mail.hide()
+	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
 
 func _on_mail_pressed():

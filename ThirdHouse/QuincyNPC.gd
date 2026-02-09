@@ -88,6 +88,7 @@ var start_time := false
 var extra_gate_end := false
 var special_rotation := false
 #
+signal out_bath
 signal enable_look
 signal disable_look
 @export var timeout_pos : Marker3D
@@ -207,6 +208,12 @@ func _process(delta: float) -> void:
 			safe_distract_drop()
 		if !Dialogic.VAR.get_variable("Quincy.finished_toilet_distract"):
 			toilet_distract_drop()
+	
+	if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
+		await get_tree().process_frame
+		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == false:
+			print("outbath")
+			out_bath.emit()
 	
 func _physics_process(delta: float) -> void:
 	GlobalVars.quincy_pos = global_position
@@ -454,15 +461,15 @@ func _on_fixed_wine_distraction() -> void:
 func _on_dalton_caught_body_entered(body: Node3D) -> void:
 	if body.name == "Quincy":
 		in_caught_bubble = true
-		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == false:
-			_quincy_caught()
+		_quincy_caught()
 
 func _on_dalton_caught_body_exited(body):
 	if body.name == "Quincy":
 		in_caught_bubble = false
 
 func _quincy_caught():
-	if catch_possibility and in_danger == true:
+	print("catch danger", in_danger)
+	if catch_possibility and in_danger == true and Dialogic.VAR.get_variable("Quincy.in_bathroom") == false:
 		interact.set_deferred("monitorable", false)
 		print("quincy caught you")
 		if GlobalVars.in_interaction != "":
@@ -486,6 +493,8 @@ func _on_distraction_time_timeout() -> void:
 	catch_possibility = true
 	print("catch_possibility")
 	if in_caught_bubble:
+		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
+			await out_bath
 		_quincy_caught()
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
@@ -779,7 +788,7 @@ func safe_distract_drop():
 
 func toilet_distract_drop():
 	if distraction_timer.time_left > 0:
-		if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.has_choco") == true and Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true:
+		if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.saw_choco") == true and Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true:
 			drop_distract()
 			Dialogic.VAR.set_variable("Quincy.finished_toilet_distract", true)
 			

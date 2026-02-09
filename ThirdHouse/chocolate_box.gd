@@ -28,7 +28,7 @@ extends Node3D
 @export var chocolate : Node3D
 #set defaults
 @onready var mouse_pos = Vector2(0,0) 
-
+var ignore := false
 var kicked = false
 var timed = false
 var set_monitor = false
@@ -109,8 +109,9 @@ func _process(delta):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	#player.start_player()
-	#alert.show()
+	if ignore == true:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		ignore = false
 	if GlobalVars.get(dialogue) == false:
 		GlobalVars.set(dialogue, true)
 
@@ -138,7 +139,6 @@ func _on_chocolate_input_event(viewport, event, shape_idx):
 						interact_area.hide()
 						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 						Dialogic.signal_event.connect(_open_choco)
-						Dialogic.signal_event.connect(_take_choco)
 						Dialogic.timeline_ended.connect(_on_timeline_ended)
 						GlobalVars.in_dialogue = true
 						Dialogic.start(dialogue_file)
@@ -152,8 +152,11 @@ func _open_choco(argument: String):
 	if argument == "open_choco":
 		Dialogic.signal_event.disconnect(_open_choco)
 		is_open = true
+		Dialogic.signal_event.connect(_take_choco)
 		anim_player.play("ChocolateOpen")
 	elif argument == "end":
+		interact_area.show()
+		ignore = true
 		Dialogic.signal_event.disconnect(_open_choco)
 
 func _take_choco(argument: String):
@@ -163,7 +166,11 @@ func _take_choco(argument: String):
 		interact_area.hide()
 		#interactable.set_monitorable(false)
 	elif argument == "end":
-		Dialogic.signal_event.disconnect(_open_choco)
+		anim_player.play("ChocolateClosed")
+		is_open = false
+		interact_area.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Dialogic.signal_event.disconnect(_take_choco)
 
 
 func _on_quincy_caught_in_view():

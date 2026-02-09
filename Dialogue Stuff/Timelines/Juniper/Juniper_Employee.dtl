@@ -35,6 +35,7 @@ else:
 	Dalton (Resting): Sorry, is this confidential? 
 	Juniper (Hmph): It isn’t now.
 	Dalton (Awkward): ...
+	[wait time="2.0"]
 	Juniper (Default): Well, ask away. 
 	Juniper (Happy): I can see those gears turning in that lil fox head of yours. 
 	Dalton (Hmph): Hmph. 
@@ -44,10 +45,10 @@ else:
 	Dalton (Squint): What happened?
 	Juniper (Hmph): Ah.
 	Juniper (Awkward): I don’t quite know, actually. 
-	Juniper (Sad): They just suddenly stopped showing up to shifts
+	Juniper (Sad): They just stopped showing up to shifts.
 	Juniper (Happy): It's odd since they were a pretty reliable and diligent worker...
 	Juniper (Default): I tried contacting them, but they never replied.
-	Juniper (Sad): It's been a tough few weeks without them.
+	Juniper (Sad): It's been a tough few weeks.
 	Dalton (Resting): Hmph.
 	Dalton (Talk): I see.
 	do GlobalVars.emit_add_note("juniper", "info", "high")

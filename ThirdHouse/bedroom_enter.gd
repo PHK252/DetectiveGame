@@ -1,7 +1,7 @@
 extends Area3D
 @export var alert : Sprite3D
 @export var player : CharacterBody3D
-#@export var quincy : CharacterBody3D
+@export var quincy : CharacterBody3D
 var quincy_entered := false
 @onready var entered_room = false
 @export var phantom_camera_masterbed : PhantomCamera3D
@@ -17,7 +17,7 @@ func _on_timeline_ended():
 
 
 func _on_bedroom_closet_cam_tween_completed():
-	if entered_room == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false and quincy_entered:
+	if entered_room == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false and !quincy.in_danger and quincy_entered:
 		entered_room = true
 		alert.hide()
 		player.stop_player()
