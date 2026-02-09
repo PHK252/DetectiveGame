@@ -124,7 +124,10 @@ func _process(delta):
 		GlobalVars.quincy_kicked_out = true
 		disable_interaction(interactables)
 		door.set_deferred("monitorable", false)
+		emit_signal("theo_leave")
+		emit_signal("quincy_leave")
 		emit_signal("open_main_door")
+		
 			#alert.hide()
 			#player.stop_player()
 			#in_kicked_out_dialogue = true

@@ -83,14 +83,14 @@ Dalton (Default): Ask about...
 		else:
 			Dalton (Squint): Do you know of anyone who would want to break into your house?
 			Quincy (Smug): Do you want a list of the subjects that don’t?
-			Quincy (Smirk): It would probably be shorter. 
+			Quincy (Smirk): It would probably be shorter.
 			Dalton (Resting): Hmph.
 			Dalton (Awkward): Never mind.
 		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assit, Dectective.
+			Quincy (Smug): Was a pleasure to assist, Dectective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -99,7 +99,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assit, Dectective.
+				Quincy (Smug): Was a pleasure to assist, Dectective.
 				[end_timeline]
 	- Go back
 		jump choices
@@ -119,7 +119,7 @@ Dalton (Default): Ask about...
 			do GlobalVars.emit_add_note("quincy", "juniper", "")
 		else:
 			Dalton (Talk): Do you recognize her?
-			Quincy (Smug): Nope. 
+			Quincy (Smug): Nope.
 			Quincy (Smirk): But if I can have her info...
 			Quincy (Squint Smug): You may see a raise in your next paycheck.
 			Dalton (Sigh): No.
@@ -130,7 +130,7 @@ Dalton (Default): Ask about...
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assit, Dectective.
+			Quincy (Smug): Was a pleasure to assist, Dectective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -139,7 +139,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assit, Dectective.
+				Quincy (Smug): Was a pleasure to assist, Dectective.
 				[end_timeline]
 	- Micah Procyon.
 		set {Quincy.num_question_asked} += 1
@@ -153,12 +153,12 @@ Dalton (Default): Ask about...
 			do GlobalVars.emit_add_note("quincy", "micah", "")
 		else:
 			Dalton (Talk): Do you recognize him?
-			Quincy (Awkward): Still don’t. 
+			Quincy (Awkward): Still don’t.
 		if {Quincy.asked_location} == true and {Quincy.asked_missing} == true and {Quincy.ask motive} == true and {Quincy.asked_Juniper} == true and {Quincy.asked_Micah} == true:
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assit, Dectective.
+			Quincy (Smug): Was a pleasure to assist, Dectective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -167,7 +167,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assit, Dectective.
+				Quincy (Smug): Was a pleasure to assist, Dectective.
 				[end_timeline]
 	- Go back.
 		jump choices
@@ -175,7 +175,7 @@ Dalton (Default): Ask about...
 	Dalton (Resting): I found this package.
 	Dalton (Hmph): Do you care to explain?
 	Quincy (Squint): You cheeky fox...
-	[signal arg_type= "snatch"]
+	[signal]
 	do GlobalVars.emit_remove_evidence("quincy", "choco")
 	Quincy (Sigh): Sometimes you're too nosy for your own good.
 	Quincy (Surprise): If you still want a career, I suggest you keep your mouth shut.
@@ -195,11 +195,11 @@ Dalton (Default): Ask about...
 	if {Quincy.num_question_asked} == 0:
 		Dalton (Awkward): ...
 		Dalton (Resting): I changed my mind.
-		Quincy (Laugh): Hah. 
+		Quincy (Laugh): Hah.
 		Quincy (Smug): Okay.
 		[end_timeline]
 	else:
 		Dalton (Talk): That's all for now.
 		Quincy (Happy): Hm...
-		Quincy (Smug): Was a pleasure to assit, Dectective.
+		Quincy (Smug): Was a pleasure to assist, Dectective.
 		[end_timeline]
