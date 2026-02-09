@@ -117,7 +117,7 @@ func _ready() -> void:
 			"quincy":
 				if GlobalVars.quincy_kicked_out == true or GlobalVars.quincy_time_out == true:
 					GlobalVars.theo_pos = timeout_pos.position
-	if GlobalVars.from_save_file == true:
+	if GlobalVars.from_save_file == true and GlobalVars.Quincy_Dalton_caught == false:
 		global_position = GlobalVars.theo_pos
 		await get_tree().process_frame
 		GlobalVars.from_save_file = false

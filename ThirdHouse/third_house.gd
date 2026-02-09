@@ -116,6 +116,7 @@ func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
 
 func _process(delta):
+	GlobalVars.time_left = timer.time_left
 	if GlobalVars.in_interaction != "":
 		mouse_pos = get_viewport().get_mouse_position()
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true and GlobalVars.quincy_kicked_out == false:

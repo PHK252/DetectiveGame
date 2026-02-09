@@ -47,12 +47,13 @@ var percent_label : Label
 	#self.queue_free()
 
 func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false, dialogic_save : bool = true):
-	if get_tree().paused == true:
-		get_tree().paused = false
+	#if get_tree().paused == true:
+		#get_tree().paused = false
 	if GlobalVars.from_save_file == false:
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	else:
 		pass
+	print("pre-loading")
 	in_loading = true
 	if glitch_in == true:
 		SceneTransitions.glitch_to_load()
@@ -170,6 +171,10 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				if GlobalVars.in_dialogue == true:
 					await Signal(self, "end_dialogue") 
 					print("awaiting")
+				if GlobalVars.from_save_file == false:
+					if GlobalVars.in_level == true:
+						print("clear level")
+						GlobalVars.in_level = false
 				var new_scene = ResourceLoader.load_threaded_get(next_scene)
 				if type == "date":
 					await get_tree().create_timer(2.0).timeout
@@ -187,7 +192,6 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				else:
 					SceneTransitions.fade_change_packed_scene(new_scene)
 					await get_tree().create_timer(1.0).timeout
-				
 				current_anim.stop()
 				toggle_drive(false)
 				toggle_default(false)
@@ -196,9 +200,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				loaded = false
 				#drive_sound.stop() not needed i think
 				print(GlobalVars.dalton_pos)
-				if GlobalVars.from_save_file == false:
-					if GlobalVars.in_level == true:
-						GlobalVars.in_level = false
+
 				#await get_tree().process_frame
 				print(GlobalVars.time)
 				

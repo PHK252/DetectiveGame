@@ -78,9 +78,9 @@ func _process(delta):
 	asked = Dialogic.VAR.get_variable("Quincy.asked_all")
 	if asked == true:
 		if !Dialogic.VAR.get_variable("Quincy.has_choco"):
-			alert.hide()
 			if quincy_interactable:
 				if interact_on:
+					alert.hide()
 					quincy_interactable.set_deferred("monitoring", false)
 					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 					await get_tree().process_frame

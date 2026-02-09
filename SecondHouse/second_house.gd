@@ -95,6 +95,7 @@ func _on_brightness_brightness_shift(brightness) -> void:
 
 
 func _process(delta):
+	GlobalVars.time_left = timer.time_left
 	#print(get_viewport().get_mouse_position())
 	#Kicked out 
 	#if Input.is_action_just_pressed("call"):

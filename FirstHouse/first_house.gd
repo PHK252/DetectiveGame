@@ -107,7 +107,7 @@ func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
 
 func _process(delta):
-	
+	GlobalVars.time_left = timer.time_left
 	#if Input.is_action_just_pressed("call"):
 		#print("Juniper_bookmark" + str(Dialogic.VAR.Juniper.viewed_bookmark))
 		#print("Micah_bookmark:" + str(Dialogic.VAR["Asked Questions"]["Micah_viewed_bookmark"]))

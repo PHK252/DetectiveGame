@@ -173,6 +173,7 @@ func _on_dalton_to_walk_out():
 	sound_allowed = false
 	Loading.load_scene(main, GlobalVars.office_path, "", "", "")
 	GlobalVars.day = 1
+	GlobalVars.time = "morning"
 
 
 func _on_Isaac_interacted(interactor: Interactor) -> void:

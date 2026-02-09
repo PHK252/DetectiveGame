@@ -54,6 +54,7 @@ signal disable_look
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	greeting = GlobalVars.in_level
 	match GlobalVars.current_level:
 		"juniper":
@@ -100,9 +101,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	print(is_open)
-	print(entered)
-	
+	print(is_open, "open")
+	print(entered, "entered")
+	print(greeting, "greeting")
+	print(triggered, "triggered")
 	#game code
 	#__________________
 	#player.stop_player()

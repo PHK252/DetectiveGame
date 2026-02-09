@@ -39,17 +39,20 @@ func _on_firsthouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()
-		await get_tree().create_timer(2.8).timeout
+		hide()
+		await get_tree().create_timer(1.0).timeout
 	GlobalVars.in_look_screen = false
 	if GlobalVars.day == 1:
 		if went_Juniper == true or Dialogic.VAR.get_variable("Global.first_house") == "Juniper":
 			GlobalVars.in_interaction = ""
+			GlobalVars.viewing = ""
 			player.start_player()
 			GlobalVars.time = "afternoon"
 			#Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", "Day_1_ride_from_TG")
 			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 		else:
 			GlobalVars.in_interaction = ""
+			GlobalVars.viewing = ""
 			player.start_player()
 			Loading.load_scene(main, GlobalVars.first_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 			
@@ -60,15 +63,18 @@ func _on_secondhouse_button_pressed() -> void:
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()
-		await get_tree().create_timer(2.8).timeout
+		hide()
+		await get_tree().create_timer(1.0).timeout
 	GlobalVars.in_look_screen = false
 	if went_Micah == true or Dialogic.VAR.get_variable("Global.first_house") == "Micah":
 		GlobalVars.in_interaction = ""
+		GlobalVars.viewing = ""
 		player.start_player()
 		GlobalVars.time = "afternoon"
 		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 	else:
 		GlobalVars.in_interaction = ""
+		GlobalVars.viewing = ""
 		player.start_player()
 		Loading.load_scene(main, GlobalVars.second_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 		
@@ -82,6 +88,7 @@ func _on_thirdhouse_button_pressed() -> void:
 		if GlobalVars.Day_1_Quincy_call == false:
 			emit_signal("hide_player")
 			GlobalVars.in_interaction = ""
+			GlobalVars.viewing = ""
 			map_cam.priority = 0
 			exit_cam.priority = 30
 			emit_signal("Quincy_call_recieve")
@@ -96,8 +103,10 @@ func _on_thirdhouse_button_pressed() -> void:
 	else:
 		if car_rev:
 			car_rev.play()
-			await get_tree().create_timer(2.8).timeout
+			hide()
+			await get_tree().create_timer(1.0).timeout
 		GlobalVars.in_interaction = ""
+		GlobalVars.viewing = ""
 		player.start_player()
 		Loading.load_scene(main, GlobalVars.third_house_path, "driving", "morning", Loading.choose_drive_dialogue())
 		
@@ -109,7 +118,8 @@ func _on_office_button_pressed() -> void:
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()
-		await get_tree().create_timer(2.8).timeout
+		hide()
+		await get_tree().create_timer(1.0).timeout
 	match GlobalVars.day:
 		1: 
 			GlobalVars.time = "night"
@@ -118,6 +128,7 @@ func _on_office_button_pressed() -> void:
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""
+			GlobalVars.viewing = ""
 		2: 
 			GlobalVars.time = "night"
 			GlobalVars.in_look_screen = false
@@ -125,12 +136,14 @@ func _on_office_button_pressed() -> void:
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "night", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""
+			GlobalVars.viewing = ""
 		3: 
 			GlobalVars.in_look_screen = false
 			GlobalVars.time = "afternoon"
 			Loading.load_scene(main, GlobalVars.office_path, "driving", "afternoon", Loading.choose_drive_dialogue())
 			player.start_player()
 			GlobalVars.in_interaction = ""
+			GlobalVars.viewing = ""
 	#get_tree().change_scene_to_file("res://StartingOffice/starting_office.tscn")
 
 
@@ -138,9 +151,11 @@ func _on_secret_button_pressed() -> void:
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()
+		hide()
 		await get_tree().create_timer(2.8).timeout
 	GlobalVars.in_look_screen = false
 	GlobalVars.in_interaction = ""
+	GlobalVars.viewing = ""
 	player.start_player()
 	Loading.load_scene(main, GlobalVars.secret_path, "driving", "morning", Loading.choose_drive_dialogue())
 	
@@ -216,6 +231,7 @@ func _on_timeline_ended():
 	alert.show()
 	GlobalVars.in_dialogue = false
 	GlobalVars.in_interaction = ""
+	GlobalVars.viewing = ""
 
 
 #func _on_micah_mouse_entered():

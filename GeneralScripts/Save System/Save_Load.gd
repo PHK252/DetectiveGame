@@ -54,7 +54,7 @@ func saveSettings(path: String):
 
 func loadSettings(path : String):
 	if FileAccess.file_exists(path):
-		#var file = FileAccess.open(path, FileAccess.WRITE)
+		print("saving")
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, GlobalVars.KEY)
 		if file == null:
 			brand_new = true
@@ -288,6 +288,7 @@ func saveGame(path: String, dialogic_save : bool = true):
 	var json_string = JSON.stringify(data, "\t", false)
 	file.store_line(json_string)
 	file.close()
+	print("saved")
 
 func _get_char_pos():
 	match GlobalVars.current_level:

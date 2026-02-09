@@ -141,7 +141,7 @@ func choose_office_dialogue():
 				return ""
 			day_end = true
 			emit_signal("night_lighting")
-			if Dialogic.VAR.get_variable("Juniper.viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde") == true and Dialogic.VAR.get_variable("Juniper.ask_mom_rever") == true and Dialogic.VAR.get_variable("Character Aff Points.Juniper") > 1 and Dialogic.VAR.get_variable("Character Aff Points.Micah")  > 2:
+			if Dialogic.VAR.get_variable("Juniper.viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde") == true and Dialogic.VAR.get_variable("Juniper.ask_mom_rever") == true and Dialogic.VAR.get_variable("Character Aff Points.Juniper") >= 2 and Dialogic.VAR.get_variable("Character Aff Points.Micah") >= 2:
 				to_flash = true
 			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 				return "End_day_1_got_name"
