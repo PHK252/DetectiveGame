@@ -654,6 +654,8 @@ func _on_case_interact_disable_look() -> void:
 
 
 func _on_juniper_interact_force_wander() -> void:
+	greet_rotation = false
+	
 	var choice = rng.randi_range(-10, 10)
 	
 	if wander_choice < 3:
@@ -672,3 +674,11 @@ func _on_juniper_interact_force_wander() -> void:
 	is_navigating = true
 	is_wandering = true
 	state = WANDER
+
+func _on_interacted_dalton(interactor: Interactor) -> void:
+	if cooldown_bool == false:
+		greet_rotation = true #rotate dalton if not in anim
+	wander_timer.stop() #stop wandering anyway
+	is_navigating = false
+	is_wandering = false
+	state = IDLE

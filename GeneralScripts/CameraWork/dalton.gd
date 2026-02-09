@@ -27,6 +27,8 @@ var walk_indicate := false
 var finished_greet := false
 var needs_rotation_forced := false
 
+var juniper_kitchen := false
+
 var forced_walk := false
 var micahSitting := false
 
@@ -541,8 +543,9 @@ func _on_forest_area_body_entered(body: Node3D) -> void:
 
 func _on_kitchen_area_jun_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and control_area:
+		juniper_kitchen = true
 		in_control = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.6).timeout
 		in_control = true
 
 func _on_timer_timeout() -> void:
@@ -1263,3 +1266,11 @@ func _on_character_body_3d_rotate_dalton_office() -> void:
 	number = 0
 	needs_rotation_forced = false
 	in_control = true
+
+
+func _on_door_areaJ_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and juniper_kitchen:
+		juniper_kitchen = false
+		in_control = false
+		await get_tree().create_timer(0.6).timeout
+		in_control = true

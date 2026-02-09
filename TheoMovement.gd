@@ -1180,6 +1180,9 @@ func _on_main_door_theo_follow() -> void:
 	
 func _on_waterfall_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
+		if in_kitchen == true:
+			in_kitchen = false
+			is_navigating = true
 		state = IDLE
 		waterfall_scene = true
 		nav.target_position = marker_list[0].global_transform.origin
@@ -1346,14 +1349,14 @@ func _on_juniper_start_theo_after_tea() -> void:
 
 
 func _on_theo_nogo_J_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and waterfall_scene == false:
 		in_kitchen = true
 		is_navigating = false
 		state = IDLE
 
 
 func _on_theo_nogoJ_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and waterfall_scene == false:
 		in_kitchen = false
 		is_navigating = true
 		state = FOLLOW
