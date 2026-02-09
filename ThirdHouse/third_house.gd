@@ -120,6 +120,7 @@ func _process(delta):
 		mouse_pos = get_viewport().get_mouse_position()
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true and GlobalVars.quincy_kicked_out == false:
 		Dialogic.clear(1)
+		Dialogic.VAR.set_variable("Quincy.has_choco", false)
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.quincy_kicked_out = true
 		disable_interaction(interactables)
