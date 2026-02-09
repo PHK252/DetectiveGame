@@ -33,45 +33,52 @@ signal alarm
 @export var safe_open : AudioStreamPlayer3D
 @export var safe_close : AudioStreamPlayer3D
 @export var safe_error : AudioStreamPlayer3D
-
+var in_enter := false
 func _ready():
 	pass_enter.text = ""
 	blinker_anim.play("Blink")
 
 func _on_down_pressed():
-	if array_pos == 0:
-		array_pos = len(input_array) - 1
-		pass_enter.text = input + input_array[array_pos]
-	else:
-		array_pos -= 1
-		pass_enter.text = input + input_array[array_pos]
+	if !in_enter:
+		if array_pos == 0:
+			array_pos = len(input_array) - 1
+			pass_enter.text = input + input_array[array_pos]
+		else:
+			array_pos -= 1
+			pass_enter.text = input + input_array[array_pos]
 
 
 func _on_up_pressed():
-	if array_pos == len(input_array) - 1:
-		array_pos = 0
-		pass_enter.text = input + input_array[array_pos]
-	else:
-		array_pos += 1
-		pass_enter.text = input + input_array[array_pos]
+	if !in_enter:
+		if array_pos == len(input_array) - 1:
+			array_pos = 0
+			pass_enter.text = input + input_array[array_pos]
+		else:
+			array_pos += 1
+			pass_enter.text = input + input_array[array_pos]
 		
 
 func _on_next_pressed():
-	input = input + input_array[array_pos]
-	if len(input) == position + 1:
-		position += 1
-		position_blinker_forward(position - 1)
-	array_pos = 0
-	print(input)
+	if !in_enter:
+		input = input + input_array[array_pos]
+		if len(input) == position + 1:
+			position += 1
+			position_blinker_forward(position - 1)
+		array_pos = 0
+		print(input)
 
 func _on_backspace_pressed():
-	if len(input) > 0:
-		position_blinker_backwards(position-1)
-		pass_enter.text = pass_enter.text.erase(len(pass_enter.text)-1, 1)
-		input = pass_enter.text
-		position -= 1
-		print(position)
-		array_pos = 0
+	if !in_enter:
+		if len(input) > 0:
+			position_blinker_backwards(position-1)
+			pass_enter.text = pass_enter.text.erase(len(pass_enter.text)-1, 1)
+			input = pass_enter.text
+			if len(input) == 0:
+				position = 0
+			else:
+				position -= 1
+			print(position)
+			array_pos = 0
 
 func position_blinker_forward(pos : int):
 	var offset = pass_enter.get_character_bounds(pos)
@@ -85,49 +92,54 @@ func position_blinker_backwards(pos : int):
 	blinker.position.x = blinker_x_pos
 
 func _on_enter_pressed():
-	blinker_anim.play("RESET")
-	blinker.position.x = blinker_x_pos_intial
-	input = input + input_array[array_pos]
-	if password == input:
-		$".".hide()
-		GlobalVars.in_look_screen = false
-		GlobalVars.Quincy_Safe_UI = false
-		#print("correct")
-		pass_enter.label_settings.font_size = 30
-		pass_enter.text = "Opening..."
-		await get_tree().create_timer(1.5).timeout
-		pass_enter.label_settings.font_size = 50
-		open()
-		array_pos = 0
-		input = ""
-		pass_enter.text = input
-		
-	elif incorrect_times > 0:
-		#print("wrong")
-		#safe_error.play()
-		array_pos = 0
-		pass_enter.label_settings.font_size = 30
-		pass_enter.text = "Incorrect. " + str(incorrect_times) + " tries remaining."
-		incorrect_times -= 1
-		await get_tree().create_timer(1.5).timeout
-		pass_enter.label_settings.font_size = 50
-		blinker_anim.play("Blink")
-		input = ""
-		pass_enter.text = input
-	else:
-		#print("very wrong")
-		array_pos = 0
-		pass_enter.label_settings.font_size = 30
-		pass_enter.text = "Too many incorrect attempts."
-		await get_tree().create_timer(1.5).timeout
-		pass_enter.text = "Sending alarm..."
-		await get_tree().create_timer(1.5).timeout
-		pass_enter.label_settings.font_size = 50
-		$".".hide()
-		emit_signal("alarm")
-		input = ""
-		pass_enter.text = input
-		
+	if !in_enter:
+		input = input + input_array[array_pos]
+		if len(input) > 0:
+			blinker_anim.play("RESET")
+			blinker_x_pos = blinker_x_pos_intial
+			blinker.position.x = blinker_x_pos
+			if password == input:
+				in_enter = true
+				$".".hide()
+				GlobalVars.in_look_screen = false
+				GlobalVars.Quincy_Safe_UI = false
+				#print("correct")
+				pass_enter.text = "Opening..."
+				await get_tree().create_timer(1.5).timeout
+				open()
+				array_pos = 0
+				input = ""
+				pass_enter.text = input
+				in_enter = false
+			elif incorrect_times > 0:
+				in_enter = true
+				if safe_error:
+					safe_error.play()
+				position = 0
+				array_pos = 0
+				pass_enter.text = "Incorrect."
+				await get_tree().create_timer(1.5).timeout 
+				pass_enter.text = str(incorrect_times) + " tries remaining."
+				incorrect_times -= 1
+				await get_tree().create_timer(1.5).timeout
+				blinker_anim.play("Blink")
+				input = ""
+				pass_enter.text = input
+				in_enter = false
+			else:
+				in_enter = true
+				if safe_error:
+					safe_error.play()
+				array_pos = 0
+				pass_enter.text = "Too many attempts."
+				await get_tree().create_timer(1.5).timeout
+				pass_enter.text = "Sending alarm..."
+				await get_tree().create_timer(1.5).timeout
+				$".".hide()
+				emit_signal("alarm")
+				input = ""
+				pass_enter.text = input
+				in_enter = false
 func open() -> void:
 	safe_open.play()
 	safe_anim = true

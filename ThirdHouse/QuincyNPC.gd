@@ -493,6 +493,7 @@ func _on_distraction_time_timeout() -> void:
 	catch_possibility = true
 	print("catch_possibility")
 	if in_caught_bubble:
+		print("in bubble")
 		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
 			await out_bath
 		_quincy_caught()
@@ -823,21 +824,22 @@ func _on_danger_body_entered(body):
 
 func _on_danger_body_exited(body):
 	if body.is_in_group("player"):
-		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true and alarm_active == false: 
-			in_danger = false
-			print("out of danger")
-		else:
-			in_danger = false
-			if catch_possibility == true:
-				print("danger resume")
-				emit_signal("time_out_resume")
-				Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
-				catch_possibility = false 
-				#catch_possibility = false 
+		if alarm_active == false:
+			if Dialogic.VAR.get_variable("Quincy.is_distracted") == true: 
+				in_danger = false
+				print("out of danger")
+			else:
+				in_danger = false
+				if catch_possibility == true:
+					print("danger resume")
+					emit_signal("time_out_resume")
+					Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
+					catch_possibility = false 
+					#catch_possibility = false 
 
 
-func _on_caught_exit_interact():
-	emit_signal("play_caught")
+#func _on_caught_exit_interact():
+	#emit_signal("play_caught")
 
 
 func _on_sitting_ppl_dalton_faint() -> void:

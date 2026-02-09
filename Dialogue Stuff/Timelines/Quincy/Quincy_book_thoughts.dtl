@@ -1,2 +1,4 @@
-"Daltons Thoughts": It's that bookmark again.
-
+if {Juniper.viewed_bookmark} == true or {Asked Questions.Micah_viewed_bookmark} == true:
+	"Daltons Thoughts": It's that bookmark again.
+else:
+	"Daltons Thoughts": What's this?

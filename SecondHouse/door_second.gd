@@ -373,7 +373,7 @@ func _on_tea_time():
 
 
 func _on_caught_open_doors():
-	if is_open == false:
+	if is_open == false and quincy_bed:
 		open()
 		collision.set_deferred("disabled", true)
 		return
@@ -385,3 +385,13 @@ func _on_auto_open():
 	collision.set_deferred("disabled", true)
 	interaction.set_monitorable(false)
 	interaction.queue_free()
+
+var quincy_bed
+
+func _on_hall_close_cam_area_body_entered(body):
+	quincy_bed = false
+	print("quincy in")
+
+func _on_master_closet_body_entered(body):
+	quincy_bed = true
+	print("quincy out")

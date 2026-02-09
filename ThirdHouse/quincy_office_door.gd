@@ -268,7 +268,7 @@ func cue_finished():
 
 
 func _on_caught_open_doors():
-	if is_open == false:
+	if is_open == false and entered == true:
 		open()
 		return
 

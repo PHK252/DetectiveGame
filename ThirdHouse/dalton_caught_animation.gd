@@ -30,8 +30,8 @@ func _on_quincy_play_caught():
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
-	AudioServer.set_bus_solo(5, true)
 	SceneTransitions.glitch_to_load()
 	await SceneTransitions.glitch.animation_finished
+	AudioServer.set_bus_solo(5, true)
 	emit_signal("play_anim")
 	#reset all vars expect caught

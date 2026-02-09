@@ -145,20 +145,20 @@ func _on_interactable_interacted(interactor):
 		player.stop_player()
 
 
-func _on_quincy_caught_in_view():
-	interior_interact_area_1.hide()
-	interior_interact_area_2.hide()
-	interior_interact_area_3.hide()
-	interior_interact_area_4.hide()
-	open_interact.hide()
-	close_interact.hide()
-	Exit_Cam.set_tween_duration(0)
-	FP_Cam.priority = 0
-	Exit_Cam.priority = 30 
-	Exit_Cam.set_tween_duration(1)
-	GlobalVars.in_interaction = ""
-	player.show()
-	emit_signal("exit_interact")
+#func _on_quincy_caught_in_view():
+	#interior_interact_area_1.hide()
+	#interior_interact_area_2.hide()
+	#interior_interact_area_3.hide()
+	#interior_interact_area_4.hide()
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#open_interact.hide()
+	#close_interact.hide()
+	#Exit_Cam.set_tween_duration(0)
+	#FP_Cam.priority = 0
+	#Exit_Cam.priority = 30 
+	#GlobalVars.in_interaction = ""
+	#player.show()
+	#emit_signal("exit_interact")
 
 
 func _on_safe_ui_alarm():
@@ -166,12 +166,14 @@ func _on_safe_ui_alarm():
 	interior_interact_area_2.hide()
 	interior_interact_area_3.hide()
 	interior_interact_area_4.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Dialogic.VAR.set_variable("Quincy.safe_alarm", true)
 	open_interact.hide()
 	close_interact.hide()
 	Exit_Cam.set_tween_duration(0)
 	FP_Cam.priority = 0
 	Exit_Cam.priority = 30 
-	Exit_Cam.set_tween_duration(1)
 	GlobalVars.in_interaction = ""
 	player.show()
+	player.start_player()
 	emit_signal("exit_interact")
