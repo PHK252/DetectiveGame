@@ -110,11 +110,11 @@ func _on_character_body_3d_theo_stand() -> void:
 	anim_player_tO.stop()
 
 func _on_theo_out_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and dalton_outside.visible == false:
 		out_sit = true
 
 func _on_theo_out_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and dalton_outside.visible == false:
 		out_sit = false
 
 func _on_cutscene_cams_after_faint() -> void:
