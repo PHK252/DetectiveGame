@@ -33,15 +33,39 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "juniper", "connection_low")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					Dalton (Default): ...
+					Dalton: ...
 					- Ask more questions.
 						jump choices
 					- Continue investigation.
-						Dalton (Resting): That's all the questions I have for now.
+						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
 			- Any motives against Juniper?
 				if {Asked Questions.Micah_Juniper_Q2} == true:
@@ -58,6 +82,30 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					#do GlobalVars.emit_add_note("micah", "juniper", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
@@ -66,7 +114,7 @@ Dalton (Default): Ask about...
 					- Ask more questions.
 						jump choices
 					- Continue investigation.
-						Dalton (Resting): That's all the questions I have for now.
+						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -107,11 +155,35 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "juniper", "connection_high")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
-					Dalton (Talk): That's all the questions I have for now.
+					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					Dalton (Default): ...
+					Dalton: ...
 					- Ask more questions.
 						jump choices
 					- Continue investigation.
@@ -133,15 +205,39 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					#do GlobalVars.emit_add_note("micah", "juniper", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
-					Dalton (Talk): That's all the questions I have for now.
+					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					Dalton (Default): ...
+					Dalton: ...
 					- Ask more questions.
 						jump choices
 					- Continue investigation.
-						Dalton: That's all the questions I have for now.
+						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
 	- Quincy Leonid.
 		label quincy qs
@@ -169,15 +265,39 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "quincy", "connection")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
-					Dalton (Default): That's all the questions I have for now.
+					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					Dalton (Default): ...
+					Dalton: ...
 					- Ask more questions.
 						jump choices
 					- Continue investigation.
-						Dalton (Resting): That's all the questions I have for now.
+						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
 			- Any motives against Quincy?
 				if {Asked Questions.Micah_Quincy_Q2} == true:
@@ -191,15 +311,39 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					#do GlobalVars.emit_add_note("micah", "quincy", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					Dalton (Default): ...
+					Dalton: ...
 					- Ask more questions.
 						jump choices
 					- Continue investigation.
-						Dalton (Resting): That's all the questions I have for now.
+						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -231,11 +375,35 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					do GlobalVars.emit_add_note("micah", "quincy", "connection")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
-					Dalton (Talk): That's all the questions I have for now.
+					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
-					Dalton (Default): ...
+					Dalton: ...
 					- Ask more questions.
 						jump choices
 					- Continue investigation.
@@ -261,8 +429,32 @@ Dalton (Default): Ask about...
 					set {Asked Questions.num_asked} += 1
 					#do GlobalVars.emit_add_note("micah", "quincy", "motive")
 				if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+					if {Juniper.found_skylar} == true:
+						if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
+					if {Asked Questions.Micah_viewed_ID} == true:
+						if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+							set {Asked Questions.Micah_asked_all} = true
+							Dalton (Resting): That's all the questions I have for now.
+							[end_timeline]
+						else:
+							Dalton (Default): ...
+							- Ask more questions.
+								jump choices
+							- Continue investigation.
+								Dalton (Resting): That's all the questions I have for now.
+								[end_timeline]
 					set {Asked Questions.Micah_asked_all} = true
-					Dalton (Talk): That's all the questions I have for now.
+					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
 				else:
 					Dalton: ...
@@ -302,16 +494,41 @@ Dalton (Default): Ask about...
 			Dalton: Hmph.
 			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "clyde", "")
-			if {Asked Questions.Micah_asked_all} == true:
-				Dalton (Resting): That's all the questions I have for now.
-				[end_timeline]
-			else:
-				Dalton: ...
-				- Ask more questions.
-					jump choices
-				- Continue investigation.
+		if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+			if {Juniper.found_skylar} == true:
+				if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+					set {Asked Questions.Micah_asked_all} = true
 					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			if {Asked Questions.Micah_viewed_ID} == true:
+				if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+					set {Asked Questions.Micah_asked_all} = true
+					Dalton (Resting): That's all the questions I have for now.
+					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			set {Asked Questions.Micah_asked_all} = true
+			Dalton (Resting): That's all the questions I have for now.
+			[end_timeline]
+		else:
+			Dalton: ...
+			- Ask more questions.
+				jump choices
+			- Continue investigation.
+				Dalton (Talk): That's all the questions I have for now.
+				[end_timeline]
 	else:
 		if {Asked Questions.Micah_Asked_Clyde} == true:
 			Dalton (Talk): Clyde Procyon.
@@ -341,16 +558,41 @@ Dalton (Default): Ask about...
 			Micah (Awkward): Oh.
 			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "clyde", "")
-			if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Skylar} == false:
-				Dalton: That's all the questions I have for now.
-				[end_timeline]
-			else:
-				Dalton: ...
-				- Ask more questions.
-					jump choices
-				- Continue investigation.
-					Dalton: That's all the questions I have for now.
+		if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+			if {Juniper.found_skylar} == true:
+				if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+					set {Asked Questions.Micah_asked_all} = true
+					Dalton (Resting): That's all the questions I have for now.
 					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			if {Asked Questions.Micah_viewed_ID} == true:
+				if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+					set {Asked Questions.Micah_asked_all} = true
+					Dalton (Resting): That's all the questions I have for now.
+					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			set {Asked Questions.Micah_asked_all} = true
+			Dalton (Resting): That's all the questions I have for now.
+			[end_timeline]
+		else:
+			Dalton: ...
+			- Ask more questions.
+				jump choices
+			- Continue investigation.
+				Dalton (Talk): That's all the questions I have for now.
+				[end_timeline]
 - Skylar Aslan. | [if {Juniper.found_skylar} == true]
 	label Skylar
 	if {Character Aff Points.Micah} < 2:
@@ -376,15 +618,40 @@ Dalton (Default): Ask about...
 			Micah: I don’t think I can help you.
 			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "skylar", "low")
-		if {Asked Questions.Micah_asked_all} == true:
+		if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+			if {Juniper.found_skylar} == true:
+				if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+					set {Asked Questions.Micah_asked_all} = true
+					Dalton (Resting): That's all the questions I have for now.
+					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			if {Asked Questions.Micah_viewed_ID} == true:
+				if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+					set {Asked Questions.Micah_asked_all} = true
+					Dalton (Resting): That's all the questions I have for now.
+					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			set {Asked Questions.Micah_asked_all} = true
 			Dalton (Resting): That's all the questions I have for now.
 			[end_timeline]
 		else:
-			Dalton (Default): ...
+			Dalton: ...
 			- Ask more questions.
 				jump choices
 			- Continue investigation.
-				Dalton (Resting): That's all the questions I have for now.
+				Dalton (Talk): That's all the questions I have for now.
 				[end_timeline]
 	else:
 		if {Asked Questions.Micah_Asked_Skylar} == true:
@@ -411,8 +678,33 @@ Dalton (Default): Ask about...
 			Micah: Sorry.
 			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "skylar", "high")
-		if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Clyde} == true:
-			Dalton (Talk): That's all the questions I have for now.
+		if {Asked Questions.Micah_Juniper_Q1} == true and {Asked Questions.Micah_Juniper_Q2} == true and {Asked Questions.Micah_Quincy_Q1} == true and {Asked Questions.Micah_Quincy_Q2} == true:
+			if {Juniper.found_skylar} == true:
+				if {Asked Questions.Micah_Asked_Skylar} == true and ({Asked Questions.Micah_viewed_ID} == false or ({Asked Questions.Micah_viewed_ID} == true and {Asked Questions.Micah_Asked_Clyde} == true)):
+					set {Asked Questions.Micah_asked_all} = true
+					Dalton (Resting): That's all the questions I have for now.
+					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			if {Asked Questions.Micah_viewed_ID} == true:
+				if {Asked Questions.Micah_Asked_Clyde} == true and ({Juniper.found_skylar} == false or ({Asked Questions.Micah_Asked_Skylar} == true and {Asked Questions.found_skylar} == true)):
+					set {Asked Questions.Micah_asked_all} = true
+					Dalton (Resting): That's all the questions I have for now.
+					[end_timeline]
+				else:
+					Dalton (Default): ...
+					- Ask more questions.
+						jump choices
+					- Continue investigation.
+						Dalton (Resting): That's all the questions I have for now.
+						[end_timeline]
+			set {Asked Questions.Micah_asked_all} = true
+			Dalton (Resting): That's all the questions I have for now.
 			[end_timeline]
 		else:
 			Dalton: ...

@@ -16,8 +16,8 @@ func _ready():
 	else:
 		global_timer.wait_time = 60
 		global_timer.start()
-	await get_tree().process_frame
-	if GlobalVars.in_level == true:
+	#await get_tree().process_frame
+	if GlobalVars.from_save_file == true:
 		print(global_timer.wait_time)
 		hour = GlobalVars.clock_time[0]
 		minute = GlobalVars.clock_time[1]

@@ -49,41 +49,40 @@ func _on_timeline_ended():
 	asked = true
 
 func _process(delta):
-	debug_label.text = str(sit_micah)
+	print("asked", asked)
 	asked = Dialogic.VAR.get_variable("Asked Questions.Micah_asked_all")
-	asked_dad =  Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde")
+	asked_dad = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde")
 	asked_skylar = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Skylar")
 	#if Dialogic.VAR.get_variable("Asked Questions.Micah_Solved_Case") == false:
 	if sit_interaction and stand_interaction:
 		if asked == true:
-			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
-				sit_interact_on = true
-				stand_interact_on = true
-				if sit_body.visible == true:
+			if sit_interact_on:
+				sit_interaction.set_deferred("monitorable", false)
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().process_frame
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+				sit_interact_on = false
+				alert.hide()
+			if stand_interact_on:
+				stand_interaction.set_deferred("monitorable", false)
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+				await get_tree().process_frame
+				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+				stand_interact_on = false
+		else:
+			if sit_body.visible == true:
+				if !sit_interact_on:
 					sit_interaction.set_monitorable(true)
-				else:
-					stand_interaction.set_monitorable(true)
-			elif Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false and time_out == false:
-				sit_interact_on = true
-				stand_interact_on = true
-				if sit_body.visible == true:
-					sit_interaction.set_monitorable(true)
-				else:
-					stand_interaction.set_monitorable(true)
+					sit_interact_on = true
 			else:
-				if sit_interact_on:
-					sit_interaction.set_deferred("monitorable", false)
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-					await get_tree().process_frame
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-					sit_interact_on = false
-					alert.hide()
-				if stand_interact_on:
-					stand_interaction.set_deferred("monitorable", false)
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-					await get_tree().process_frame
-					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-					stand_interact_on = false
+				if !stand_interact_on:
+					stand_interaction.set_monitorable(true)
+					stand_interact_on = true
+			#if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
+#
+		if Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false:
+			Dialogic.VAR.set_variable("Asked Questions.Micah_asked_all", false)
+				
 		
 		
 

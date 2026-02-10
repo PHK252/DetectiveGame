@@ -52,8 +52,9 @@ func _ready():
 	tool_anim.play("NEWToolOpen")
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
-		Dialogic.VAR.set_variable("Global.first_house", "Micah")
+	if Dialogic.VAR.get_variable("Global.first_house") == "":
+		if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
+			Dialogic.VAR.set_variable("Global.first_house", "Micah")
 	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)

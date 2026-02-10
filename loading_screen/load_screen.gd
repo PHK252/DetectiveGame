@@ -172,7 +172,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 					await Signal(self, "end_dialogue") 
 					print("awaiting")
 				if GlobalVars.from_save_file == false:
-					if GlobalVars.in_level == true:
+					if GlobalVars.in_level == true and GlobalVars.current_level == "Office":
 						print("clear level")
 						GlobalVars.in_level = false
 				var new_scene = ResourceLoader.load_threaded_get(next_scene)

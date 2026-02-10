@@ -42,11 +42,14 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+				print(clicked_object)
 				if clicked_object == "clicked_id_card" or "clicked_isaac_letter" or "clicked_runa_letter":
-					note_swipe.play()
+					if note_swipe:
+						note_swipe.play()
 				if is_there_anim == true:
 					if clicked_object == "clicked_book_note" or "clicked_bookmark_Juniper":
-						note_swipe.play()
+						if note_swipe:
+							note_swipe.play()
 					if played_anim == false:
 						anim.play(anim_track)
 						played_anim = true 
@@ -105,13 +108,13 @@ func _input(event):
 				object_interact.show()
 				object_in_scene.show()
 				GlobalVars.in_dialogue = true
+				GlobalVars.set(view_object, true)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				await get_tree().process_frame
 				await get_tree().process_frame
 				await get_tree().process_frame
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				Dialogic.start(dialogue_file)
-				GlobalVars.set(view_object, true)
 			else:
 				object_in_scene.show()
 				object_interact.show() # might not need?
