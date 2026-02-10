@@ -167,7 +167,7 @@ func choose_office_dialogue():
 					return "End_day_2_got_kicked"
 				if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
 					return "End_day_2_got_REVER" 
-				if Dialogic.VAR.get_variable("Quincy.solved_case") == true and Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
+				if Dialogic.VAR.get_variable("Quincy.solved_case") == true or Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 					return "End_day_2_got_case"
 				return "End_day_2_got_hair"
 		3: 

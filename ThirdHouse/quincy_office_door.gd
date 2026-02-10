@@ -95,8 +95,11 @@ func _process(delta):
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		var unlocked = Dialogic.VAR.get_variable("Quincy.unlocked_office")
-		if unlocked == true and is_open == false and cooldown == false:
-			open()
+		if unlocked == true:
+			if is_open == false and cooldown == false:
+				open()
+			else:
+				close()
 		#elif unlocked == true and is_open == true and cooldown == false:
 			#if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 				#close()
@@ -295,7 +298,7 @@ func _on_office_area_entered(body):
 
 
 func _on_office_area_q_body_exited(body):
-	if get_tree():
+	if is_inside_tree():
 		if body.is_in_group("player"):
 			entered = false
 			close()

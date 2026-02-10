@@ -46,12 +46,17 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		alert.hide()
-		GlobalVars.in_dialogue = true
 		player.stop_player()
-		var computer_dialogue = Dialogic.start(dialogue_file)
-		Dialogic.signal_event.connect(compFP)
-		Dialogic.timeline_ended.connect(_on_timeline_ended)
-		computer_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
+		cam_anim.play("Cam_Idle")
+		FP_Cam.priority = 30
+		Exit_Cam.priority = 0
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		player.hide()
+		interact_area.show()
+		#GlobalVars.Quincy_in_computer = true
+		player.stop_player()
+		##UI.show()
+		#Dialogic.signal_event.disconnect(compFP)
 		GlobalVars.in_interaction = "computer"
 
 
@@ -62,18 +67,18 @@ func _on_timeline_ended():
 		player.start_player()
 		alert.show()
 #
-func compFP(argument: String):
-	if argument == "switch_cam":
-		cam_anim.play("Cam_Idle")
-		FP_Cam.priority = 30
-		Exit_Cam.priority = 0
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		player.hide()
-		interact_area.show()
-		#GlobalVars.Quincy_in_computer = true
-		player.stop_player()
-		#UI.show()
-		Dialogic.signal_event.disconnect(compFP)
+#func compFP(argument: String):
+	#if argument == "switch_cam":
+		#cam_anim.play("Cam_Idle")
+		#FP_Cam.priority = 30
+		#Exit_Cam.priority = 0
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#player.hide()
+		#interact_area.show()
+		##GlobalVars.Quincy_in_computer = true
+		#player.stop_player()
+		##UI.show()
+		#Dialogic.signal_event.disconnect(compFP)
 		
 
 func _input(event):
@@ -103,11 +108,11 @@ func _on_computer_input_event(viewport, event, shape_idx):
 
 
 func _on_quincy_caught_in_view():
-	interact_area.hide()
-	Exit_Cam.set_tween_duration(0)
-	FP_Cam.priority = 0
-	Exit_Cam.priority = 30 
-	Exit_Cam.set_tween_duration(1)
-	GlobalVars.in_interaction = ""
-	player.show()
-	emit_signal("exit_interact")
+	if GlobalVars.in_interaction == "computer": 
+		interact_area.hide()
+		Exit_Cam.set_tween_duration(0)
+		FP_Cam.priority = 0
+		Exit_Cam.priority = 30 
+		GlobalVars.in_interaction = ""
+		player.show()
+		emit_signal("exit_interact")

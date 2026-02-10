@@ -376,7 +376,8 @@ func _process_follow_state(distance_to_target: float) -> void:
 		state = IDLE
 	if distance_to_target <= STOPPING_DISTANCE:
 				
-			catch_possibility = false
+			#catch_possibility = false
+			print("too close?")
 			#emit_signal("collision_safe")
 			#is_navigating = false
 			#cooldown_bool = true
@@ -389,6 +390,7 @@ func _process_follow_state(distance_to_target: float) -> void:
 			if start_time:
 				rotate_number = 4
 				rotate_forced = true
+				
 				entrance_timer.start()
 			
 			if snowmobile_distraction:
@@ -469,6 +471,7 @@ func _on_dalton_caught_body_exited(body):
 
 func _quincy_caught():
 	print("catch danger", in_danger)
+	print("catch ", catch_possibility)
 	if catch_possibility and in_danger == true and Dialogic.VAR.get_variable("Quincy.in_bathroom") == false:
 		interact.set_deferred("monitorable", false)
 		print("quincy caught you")
@@ -789,10 +792,14 @@ func safe_distract_drop():
 
 func toilet_distract_drop():
 	if distraction_timer.time_left > 0:
-		if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.saw_choco") == true and Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true:
-			drop_distract()
-			Dialogic.VAR.set_variable("Quincy.finished_toilet_distract", true)
-			
+		if Dialogic.VAR.get_variable("Asked Questions.has_key") == true:
+			if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.saw_choco") == true and Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true:
+				drop_distract()
+				Dialogic.VAR.set_variable("Quincy.finished_toilet_distract", true)
+		else:
+			if Dialogic.VAR.get_variable("Quincy.got_journal") == true and Dialogic.VAR.get_variable("Quincy.got_phone") == true and Dialogic.VAR.get_variable("Quincy.saw_choco") == true and Dialogic.VAR.get_variable("Quincy.saw_officedoor"):
+				drop_distract()
+				Dialogic.VAR.set_variable("Quincy.finished_toilet_distract", true)
 
 func drop_distract():
 	print("drop")
@@ -838,8 +845,8 @@ func _on_danger_body_exited(body):
 					#catch_possibility = false 
 
 
-#func _on_caught_exit_interact():
-	#emit_signal("play_caught")
+func _on_caught_exit_interact():
+	emit_signal("play_caught")
 
 
 func _on_sitting_ppl_dalton_faint() -> void:

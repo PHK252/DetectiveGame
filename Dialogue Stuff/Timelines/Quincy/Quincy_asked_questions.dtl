@@ -13,8 +13,11 @@ Dalton (Default): Ask about...
 			Quincy (Happy): I was having a night out in Midtown.
 			Dalton (Doubt1): Did you return home that night?
 			Quincy (Squint Smug): Nope.
-			Quincy (Smirk): I was preoccupied.
-			Dalton (Resting): When did you hear about the break in then?
+			Quincy (Smirk): I was...
+			Quincy (Squint Smug): preoccupied...
+			Quincy (Smug) : If you know what I mean.
+			Dalton (Squint): ...
+			Dalton (Awkward): When did you hear about the break in then?
 			Quincy (Sigh): I got a call from the groundskeeper at around 7 a.m.
 			Quincy (Squint): It was already scrubbed by the time he looked through the security footage, sneaky bastard.
 			Dalton (Talk): I see.
@@ -148,8 +151,9 @@ Dalton (Default): Ask about...
 			Dalton (Talk): Do you recognize him?
 			Quincy (Concern): He looks a little familiar.
 			Quincy (Happy): Probably just a passing resemblance.
-			Quincy (Smug): Heh! All trash smells the same, am I right?
-			Dalton (Resting): Hmph.
+			Quincy (Laugh): Heh!
+			Quincy (Smug): All trash smells the same, am I right?
+			Dalton (Resting): Right...
 			do GlobalVars.emit_add_note("quincy", "micah", "")
 		else:
 			Dalton (Talk): Do you recognize him?

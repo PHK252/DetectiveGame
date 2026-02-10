@@ -10,6 +10,7 @@ extends Area3D
 @export var music : AudioStreamPlayer
 var caught_anim := false
 signal play_anim
+signal clear_evi
 
 func _on_quincy_play_caught():
 	if caught_anim == false:

@@ -176,4 +176,3 @@ func _on_safe_ui_alarm():
 	GlobalVars.in_interaction = ""
 	player.show()
 	player.start_player()
-	emit_signal("exit_interact")

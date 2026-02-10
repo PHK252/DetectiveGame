@@ -74,13 +74,15 @@ func _on_enter_pressed():
 		login.hide()
 		home.show()
 	else:
-		incorrect.show()
-		emit_signal("return_default")
+		if !$Login/HintText.visible:
+			incorrect.show()
+			emit_signal("return_default")
 
 func _on_hint_pressed():
-	$Login/HintText.show()
-	await get_tree().create_timer(1.5).timeout
-	$Login/HintText.hide()
+	if !incorrect.visible:
+		$Login/HintText.show()
+		await get_tree().create_timer(1.5).timeout
+		$Login/HintText.hide()
 
 func _on_sleep_pressed():
 	$".".hide()

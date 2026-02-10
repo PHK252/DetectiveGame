@@ -30,7 +30,7 @@ signal disable_look
 func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
-	if GlobalVars.in_dialogue == false and asked == false:
+	if GlobalVars.in_dialogue == false:
 		if Q_greeting == true:
 			GlobalVars.in_dialogue = true
 			player.stop_player()
@@ -81,7 +81,7 @@ func _process(delta):
 			if quincy_interactable:
 				if interact_on:
 					alert.hide()
-					quincy_interactable.set_deferred("monitoring", false)
+					quincy_interactable.set_deferred("monitorable", false)
 					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 					await get_tree().process_frame
 					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
@@ -89,7 +89,7 @@ func _process(delta):
 		else:
 			if quincy_interactable:
 				if !interact_on:
-					quincy_interactable.set_deferred("monitoring", true)
+					quincy_interactable.set_deferred("monitorable", true)
 					interact_on = true
 
 #func _on_character_body_3d_d_inside() -> void:

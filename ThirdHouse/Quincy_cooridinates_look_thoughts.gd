@@ -47,6 +47,7 @@ func _on_exit_pressed():
 		GlobalVars.in_dialogue = true
 		Dialogic.signal_event.connect(take_coordinates)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Dialogic.start(dialogue_file)
 		if viewed_object == false: 
 			GlobalVars.set(view_object, true)
@@ -64,6 +65,7 @@ func _input(event):
 			GlobalVars.in_dialogue = true
 			Dialogic.signal_event.connect(take_coordinates)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Dialogic.start(dialogue_file)
 			if viewed_object == false: 
 				GlobalVars.set(view_object, true)
@@ -75,6 +77,7 @@ func _input(event):
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Dialogic.VAR.set_variable("Quincy.in_coor_thoughts", false)
 	if Dialogic.VAR.get_variable("Quincy.has_secret_coor") == false:
 		object_interact.show()

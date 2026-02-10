@@ -1,9 +1,14 @@
 [wait time="2.0"]
-Theo (Happy): It’s pretty much confirmed, right?
-Theo (Default): Skylar Aslan is the perp? 
-Dalton (Talk): It seems so. 
-Theo (Laugh): So we did it!
-Theo: Case closed!
+if {Quincy.solved_case} == true:
+	Theo (Happy): It’s pretty much confirmed, right?
+	Theo (Default): Skylar Aslan is the perp? 
+	Dalton (Talk): It seems so. 
+	Theo (Laugh): So we did it!
+	Theo: Case closed!
+else:
+	Theo (Thinking): You're thinking what I'm thinking, right?
+	Theo (Talk): Skylar Aslan is the perp? 
+	Dalton (Sigh): ...
 Dalton (Resting): I wouldn’t be so hasty.
 Dalton (Talk): There's still too many loose ends.
 Dalton (Squint): Though the motive is clear for the break-in at Quincy’s...

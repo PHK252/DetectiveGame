@@ -392,8 +392,6 @@ var quincy_bed
 
 func _on_hall_close_cam_area_body_entered(body):
 	quincy_bed = false
-	print("quincy in")
 
 func _on_master_closet_body_entered(body):
 	quincy_bed = true
-	print("quincy out")

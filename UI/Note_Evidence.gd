@@ -20,7 +20,8 @@ extends Control
 
 @export var evi_array : Array[TextureButton]
 
-var choco_row :=0
+var quincy_evi = ["Quincy Letter", "Quincy Hammer", "Quincy Coors", "Quincy Choco"]
+var choco_row := 0
 signal added_notes_overlay
 func _ready():
 	if GlobalVars.evidence_container.size() > 0:
@@ -105,7 +106,6 @@ func _recieve_evidence():
 		print_debug("Recieving evidence in trouble")
 	emit_signal("added_notes_overlay")
 
-
 func _on_evidence_pressed():
 	if row_1.get_child_count() == 0:
 		no_evidence.show()
@@ -115,3 +115,7 @@ func _on_evidence_pressed():
 		no_evidence.hide()
 		description.show()
 		description_body.show()
+
+
+func _on_dalton_caught_clear_evi():
+	GlobalVars.evidence = GlobalVars.evidence.filter(func(evi): return evi not in quincy_evi)

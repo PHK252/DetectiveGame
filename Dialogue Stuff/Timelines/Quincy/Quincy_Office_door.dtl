@@ -13,6 +13,7 @@ if {Quincy.is_distracted} == true:
 		[wait time="1.5"]
 		jump 
 	- Leave.
+		set {Quincy.saw_officedoor} = true
 		[signal arg="exit_door"]
 		[signal arg="end"]
 		[end_timeline]
