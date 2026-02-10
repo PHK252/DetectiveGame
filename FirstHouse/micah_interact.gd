@@ -57,33 +57,33 @@ func _process(delta):
 	if sit_interaction and stand_interaction:
 		if asked == true:
 			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
+				sit_interact_on = true
+				stand_interact_on = true
 				if sit_body.visible == true:
 					sit_interaction.set_monitorable(true)
 				else:
 					stand_interaction.set_monitorable(true)
 			elif Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false and time_out == false:
+				sit_interact_on = true
+				stand_interact_on = true
 				if sit_body.visible == true:
 					sit_interaction.set_monitorable(true)
 				else:
 					stand_interaction.set_monitorable(true)
 			else:
-				if sit_body.visible == true:
-					if sit_interact_on:
-						player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-						await get_tree().process_frame
-						player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-						sit_interaction.set_deferred("monitorable", false)
-						sit_interact_on = false
-				else:
-					if stand_interact_on:
-						player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
-						await get_tree().process_frame
-						player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
-						stand_interaction.set_deferred("monitorable", false)
-						stand_interact_on = false
-		##else:
-			#stand_interaction.set_monitorable(false)
-			#sit_interaction.set_monitorable(false)
+				if sit_interact_on:
+					sit_interaction.set_deferred("monitorable", false)
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+					await get_tree().process_frame
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+					sit_interact_on = false
+					alert.hide()
+				if stand_interact_on:
+					stand_interaction.set_deferred("monitorable", false)
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+					await get_tree().process_frame
+					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+					stand_interact_on = false
 		
 		
 

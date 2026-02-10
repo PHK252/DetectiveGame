@@ -89,6 +89,8 @@ func _on_flash_ended():
 	Dialogic.timeline_ended.disconnect(_on_flash_ended)
 	GlobalVars.in_dialogue = false
 	player.stop_player()
+	MusicFades.fade_out_audio()
+	await get_tree().create_timer(1.0).timeout
 	#Loading.load_scene(self, GlobalVars.flashback_1_2, "", "", "", true, true)
 	SceneTransitions.glitch_change_scene(GlobalVars.flashback_1_2)
 	await get_tree().create_timer(6.0).timeout

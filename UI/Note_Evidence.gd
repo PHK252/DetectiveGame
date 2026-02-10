@@ -118,4 +118,4 @@ func _on_evidence_pressed():
 
 
 func _on_dalton_caught_clear_evi():
-	GlobalVars.evidence = GlobalVars.evidence.filter(func(evi): return evi not in quincy_evi)
+	GlobalVars.evidence_container = GlobalVars.evidence_container.filter(func(evi): return not evi in quincy_evi)

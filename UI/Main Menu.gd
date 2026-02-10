@@ -26,7 +26,6 @@ func _ready():
 		#GlobalVars.to_quit = false
 	#get_viewport().size_changed.connect(_on_new_window_size)
 	#_on_new_window_size()
-	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	await get_tree().process_frame
 	#print(GlobalVars.current_level)
 	

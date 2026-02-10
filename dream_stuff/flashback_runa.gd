@@ -4,7 +4,8 @@ extends Node3D
 @export var sub_v_container : SubViewportContainer
 
 func _ready() -> void:
-#settings
+	
+	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)
 	_set_pixelation(GlobalVars.stretch_factor) 
@@ -14,7 +15,8 @@ func _ready() -> void:
 	#pixel
 	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
 	_on_brightness_brightness_shift(GlobalVars.brightness)
-	
+	await get_tree().create_timer(2.0).timeout
+	MusicFades.fade_in_audio()
 
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch

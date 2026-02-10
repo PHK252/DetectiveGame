@@ -132,8 +132,12 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	#open_closet_door_1.disabled = false
 	#open_closet_door_2.disabled = false
-	
+	await get_tree().process_frame
+	await get_tree().process_frame
+	alert.hide()
 	if closet_open == false and interaction_closet == false: 
+		GlobalVars.in_dialogue = true
+		alert.hide()
 		interaction_closet = true
 		emit_signal("general_interact")
 		emit_signal("stepback")
@@ -142,6 +146,7 @@ func _on_interactable_interacted(interactor):
 		await closet_anim.animation_finished
 		closet_open = true
 		interaction_closet = false
+		GlobalVars.in_dialogue = false
 
 	tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:

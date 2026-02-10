@@ -12,6 +12,8 @@ var caught_anim := false
 signal play_anim
 signal clear_evi
 
+
+
 func _on_quincy_play_caught():
 	if caught_anim == false:
 		caught_anim = true
@@ -25,6 +27,7 @@ func _on_quincy_play_caught():
 		GlobalVars.in_dialogue = true
 		player.stop_player()
 		Dialogic.start("Quincy_caught")
+		emit_signal("clear_evi")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		pass
 

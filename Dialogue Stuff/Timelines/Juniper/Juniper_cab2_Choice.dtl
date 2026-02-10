@@ -4,6 +4,6 @@ Dalton (Default): Ask about...
 	jump Juniper_Pills/
 - The pie.
 	jump Juniper_Pie/
-- Continue.
-	set {Juniper.in_choice} = false
-	[end_timeline]
+#- Continue.
+	#set {Juniper.in_choice} = false
+	#[end_timeline]

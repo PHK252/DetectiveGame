@@ -4,6 +4,6 @@ Dalton (Default): Ask about...
 	jump Juniper_Letter/
 - The name tag.
 	jump Juniper_Name_Tag/
-- Continue.
-	set {Juniper.in_choice} = false
-	[end_timeline]
+#- Continue.
+	#set {Juniper.in_choice} = false
+	#[end_timeline]

@@ -80,6 +80,6 @@ func _enter_skylar(arg : String):
 func _exit_scene():
 	Dialogic.timeline_ended.disconnect(_exit_scene)
 	GlobalVars.in_dialogue = false
-	#player.start_player()
+	player.start_player()
 	GlobalVars.in_interaction = ""
 	Loading.load_scene(main, GlobalVars.interrogation, "driving", "afternoon", "")

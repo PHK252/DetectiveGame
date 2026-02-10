@@ -7,6 +7,7 @@ extends Node3D
 
 
 func _ready():
+	MusicFades.fade_in_audio()
 	GlobalVars.current_level = "Flashback_day_2"
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	

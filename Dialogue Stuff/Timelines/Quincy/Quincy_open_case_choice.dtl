@@ -4,6 +4,6 @@ Dalton (Default): Ask about...
 	jump Quincy_open_case_hammer/hammer
 - The note.
 	jump Quincy_open_case_note/
-- Continue.
-	set {Quincy.in_choice} = false
-	[end_timeline]
+#- Continue.
+	#set {Quincy.in_choice} = false
+	#[end_timeline]

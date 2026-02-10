@@ -179,9 +179,6 @@ func _on_quincy_pause_timeout():
 	player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
 
 
-
-
-
 func _on_hall_close_cam_area_body_entered(body):
 	if body.name == "Quincy" and Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
 		Dialogic.VAR.set_variable("Quincy.in_bathroom", false)

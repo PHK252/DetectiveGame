@@ -195,6 +195,8 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				current_anim.stop()
 				toggle_drive(false)
 				toggle_default(false)
+				if GlobalVars.from_save_file == false:
+					SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 				scene_instance.queue_free()
 				in_loading = false
 				loaded = false

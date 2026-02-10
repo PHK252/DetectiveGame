@@ -5,6 +5,6 @@ Dalton (Default): Ask about...
 	jump Micah_key/
 - The letter.
 	jump Micah_letter/
-- Continue.
-	set {Asked Questions.Micah_in_choice} = false
-	[end_timeline]
+#- Continue.
+	#set {Asked Questions.Micah_in_choice} = false
+	#[end_timeline]

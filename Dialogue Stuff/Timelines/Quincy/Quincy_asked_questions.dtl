@@ -104,7 +104,7 @@ Dalton (Default): Ask about...
 				Quincy (Happy): Hm...
 				Quincy (Smug): Was a pleasure to assist, Dectective.
 				[end_timeline]
-	- Go back
+	- Back.
 		jump choices
 - Other victims.
 	Dalton (Default): Show picture of...
@@ -173,7 +173,7 @@ Dalton (Default): Ask about...
 				Quincy (Happy): Hm...
 				Quincy (Smug): Was a pleasure to assist, Dectective.
 				[end_timeline]
-	- Go back.
+	- Back.
 		jump choices
 - Chocolate. | [if {Quincy.has_choco} == true] [else="hide"]
 	Dalton (Resting): I found this package.

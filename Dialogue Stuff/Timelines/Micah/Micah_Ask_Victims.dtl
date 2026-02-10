@@ -212,7 +212,8 @@ Dalton (Default): Ask about...
 					Dalton (Awkward): I do.
 					Theo (Laugh): Of course he would!
 					Theo: They’re besties.
-					Theo (Happy): Got each other’s numbers on speed dial and everything.
+					if {Beginning.quincy_called} == true:
+						Theo (Happy): Got each other’s numbers on speed dial and everything.
 					Dalton (Surprised): Theo!
 					Dalton (Resting): Shut.
 					Theo (Silly): It’s true though...
@@ -408,7 +409,6 @@ Dalton (Default): Ask about...
 			Micah (Stare): That’s Skylar.
 			Micah (Awkward): But I don’t know where they are. 
 			Micah: Sorry.
-			Theo (Talk): No need to apologize, you already helped us tons.
 			set {Asked Questions.num_asked} += 1
 			do GlobalVars.emit_add_note("micah", "skylar", "high")
 		if {Asked Questions.Micah_asked_all} == true and {Asked Questions.Micah_Asked_Clyde} == true:
