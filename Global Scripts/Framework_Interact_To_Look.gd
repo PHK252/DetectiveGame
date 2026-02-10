@@ -42,7 +42,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				if clicked_object == "clicked_id_card":
+				if clicked_object == "clicked_id_card" or "clicked_isaac_letter" or "clicked_runa_letter":
 					note_swipe.play()
 				if is_there_anim == true:
 					if clicked_object == "clicked_book_note" or "clicked_bookmark_Juniper":

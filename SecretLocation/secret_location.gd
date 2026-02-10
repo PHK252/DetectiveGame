@@ -12,8 +12,13 @@ signal  walk_skylar
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
 
+@export var case_anim : AnimationPlayer
+@export var case : Node3D
+
 
 func _ready():
+	case.visible = false
+	case_anim.play("closed")
 	emit_signal("dalton_rotate")
 	GlobalVars.current_level = "secret"
 	Dialogic.VAR.set_variable("Global.went_to_secret", true)
