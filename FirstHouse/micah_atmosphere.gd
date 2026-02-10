@@ -163,6 +163,7 @@ func _on_panda_door_body_entered(body: Node3D) -> void:
 	panda_inside = false
 	await get_tree().create_timer(2.0).timeout
 	door_anim.play("doorClose")
+	await get_tree().create_timer(1.5).timeout
 	close_sound.play()
 	
 
