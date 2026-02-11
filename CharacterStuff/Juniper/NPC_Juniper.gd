@@ -184,6 +184,8 @@ func _physics_process(delta: float) -> void:
 		_rotate_towards_dalton()
 		
 
+		
+
 func floor_type_walk():
 	if $FloorTypeJuniper.is_colliding():
 		var collider = $FloorTypeJuniper.get_collider()
@@ -704,3 +706,26 @@ func _on_interacted_dalton(interactor: Interactor) -> void:
 	is_navigating = false
 	is_wandering = false
 	state = IDLE
+
+func _on_case_area_jun_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player") and case_handle_rotation:
+		intDalton = false
+		case_handling = false
+		case_handle_rotation = false
+		var choice = rng.randi_range(-10, 10)
+		if wander_choice < 3:
+			var current_anim = one_shots[wander_choice]
+			anim_tree.set("parameters/" + current_anim + "/request", 2)
+		var previous_choice = wander_choice
+		wander_choice = rng.randi_range(0, 2)
+		if previous_choice == wander_choice:
+			if (previous_choice + 1) != 3:
+				wander_choice = previous_choice + 1
+			else:
+				wander_choice = 1
+		wander_rotate = false
+				#if choice > 0:
+		nav.target_position = marker_positions[wander_choice].global_position
+		is_navigating = true
+		is_wandering = true
+		state = WANDER
