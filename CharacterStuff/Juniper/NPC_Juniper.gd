@@ -471,6 +471,10 @@ func _on_wander_timeout() -> void:
 			state = WANDER
 
 func _on_bookshelf_interacted(interactor: Interactor) -> void:
+	cooldown_bool = true
+	cooldown.stop()
+	wander_timer.stop()
+	
 	intDalton = true
 	if stop_jitter == false:
 		wander_rotate = false
@@ -480,12 +484,17 @@ func _on_bookshelf_interacted(interactor: Interactor) -> void:
 			var current_anim = one_shots[wander_choice]
 			anim_tree.set("parameters/" + current_anim + "/request", 2)
 		#set all one shots to abort
-		is_navigating = true
 		is_wandering = false
+		nav.target_position = player.global_position
+		is_navigating = true
 		state = FOLLOW
 
 func _on_house_pic_interacted(interactor: Interactor) -> void:
 	#gate for if dialogue needed?
+	cooldown_bool = true
+	cooldown.stop()
+	wander_timer.stop()
+	
 	intDalton = true
 	if stop_jitter == false:
 		wander_rotate = false
@@ -494,12 +503,18 @@ func _on_house_pic_interacted(interactor: Interactor) -> void:
 			var current_anim = one_shots[wander_choice]
 			anim_tree.set("parameters/" + current_anim + "/request", 2)
 		#set all one shots to abort
-		is_navigating = true
 		is_wandering = false
+		nav.target_position = player.global_position
+		is_navigating = true
 		state = FOLLOW
 
 func _on_cafe_pic_interacted(interactor: Interactor) -> void:
+	cooldown_bool = true
+	cooldown.stop()
+	wander_timer.stop()
+	
 	intDalton = true
+
 	if stop_jitter == false:
 		wander_rotate = false
 		#emit_signal("collision_danger")
@@ -507,12 +522,18 @@ func _on_cafe_pic_interacted(interactor: Interactor) -> void:
 			var current_anim = one_shots[wander_choice]
 			anim_tree.set("parameters/" + current_anim + "/request", 2)
 		#set all one shots to abort
-		is_navigating = true
 		is_wandering = false
+		nav.target_position = player.global_position
+		is_navigating = true
 		state = FOLLOW
 
 func _on_resumes_interacted(interactor: Interactor) -> void:
+	cooldown_bool = true
+	cooldown.stop()
+	wander_timer.stop()
+	
 	intDalton = true
+	
 	if stop_jitter == false:
 		wander_rotate = false
 		#emit_signal("collision_danger")
@@ -520,8 +541,9 @@ func _on_resumes_interacted(interactor: Interactor) -> void:
 			var current_anim = one_shots[wander_choice]
 			anim_tree.set("parameters/" + current_anim + "/request", 2)
 		#set all one shots to abort
-		is_navigating = true
 		is_wandering = false
+		nav.target_position = player.global_position
+		is_navigating = true
 		state = FOLLOW
 
 func _on_case_interacted(interactor: Interactor) -> void:
