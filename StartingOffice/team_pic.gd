@@ -31,7 +31,7 @@ func _on_exit_pressed():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_Team_Picture")
-		GlobalVars.viewed_team == true
+		GlobalVars.viewed_team = true
 		GlobalVars.viewing = ""
 	else:
 		if GlobalVars.exit_tut == false:
@@ -44,7 +44,7 @@ func _process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_Team_Picture")
-			GlobalVars.viewed_team == true
+			GlobalVars.viewed_team = true
 			GlobalVars.viewing = ""
 		else:
 			if GlobalVars.exit_tut == false:

@@ -31,7 +31,7 @@ func _on_exit_pressed():
 		GlobalVars.in_dialogue = true
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_Missing")
-		GlobalVars.viewed_missing == true
+		GlobalVars.viewed_missing = true
 		GlobalVars.viewing = ""
 	else:
 		if GlobalVars.exit_tut == false:
@@ -44,7 +44,7 @@ func _process(delta):
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_Missing")
-			GlobalVars.viewed_missing == true
+			GlobalVars.viewed_missing = true
 			GlobalVars.viewing = ""
 		else:
 			if GlobalVars.exit_tut == false:

@@ -42,7 +42,7 @@ func _on_exit_pressed():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		Dialogic.start("Office_contact_ad")
-		GlobalVars.viewed_contact == true
+		GlobalVars.viewed_contact = true
 		GlobalVars.viewing = ""
 	else:
 		GlobalVars.in_dialogue = false
@@ -59,7 +59,7 @@ func _process(delta):
 			GlobalVars.in_dialogue = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			Dialogic.start("Office_contact_ad")
-			GlobalVars.viewed_contact == true
+			GlobalVars.viewed_contact = true
 			GlobalVars.viewing = ""
 		else:
 			GlobalVars.in_dialogue = false

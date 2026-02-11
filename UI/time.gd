@@ -16,17 +16,19 @@ func _ready():
 	else:
 		global_timer.wait_time = 60
 		global_timer.start()
-	#await get_tree().process_frame
+	#
 	if GlobalVars.from_save_file == true:
-		print(global_timer.wait_time)
+		print(global_timer.wait_time, "wait")
 		hour = GlobalVars.clock_time[0]
 		minute = GlobalVars.clock_time[1]
 		set_time(hour, minute)
 		_level_timer_start()
 		return
+	await get_tree().process_frame
 	start_time()
 
 func start_time():
+	print("start_time")
 	match GlobalVars.day:
 		1:
 			match GlobalVars.current_level:

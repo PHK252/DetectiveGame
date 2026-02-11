@@ -38,7 +38,6 @@ signal phone_time_start
 signal auto_open
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(GlobalVars.phone_contacts)
 	if theo_body.visible == false:
 		theo_body.visible = true
 	GlobalVars.current_level = "micah"

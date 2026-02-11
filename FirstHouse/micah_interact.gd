@@ -49,7 +49,6 @@ func _on_timeline_ended():
 	asked = true
 
 func _process(delta):
-	print("asked", asked)
 	asked = Dialogic.VAR.get_variable("Asked Questions.Micah_asked_all")
 	asked_dad = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde")
 	asked_skylar = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Skylar")

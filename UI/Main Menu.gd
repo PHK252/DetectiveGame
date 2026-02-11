@@ -86,6 +86,7 @@ func _on_new_game_pressed():
 	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.reset_globals()
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	GlobalVars.from_save_file = false
 	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
