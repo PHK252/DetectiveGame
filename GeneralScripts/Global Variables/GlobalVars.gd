@@ -179,6 +179,7 @@ var load_Micah_name_arr = ["micah_kicked_out", "micah_time_out", "clicked_tool_n
 @onready var view_apron_juniper = false
 @onready var view_letter_juniper = false
 @onready var view_nametag_juniper = false
+@onready var view_dollar_juniper = false
 @onready var clicked_letter_Juniper = 0
 @onready var clicked_case_Juniper = 0
 @onready var clicked_nametag_Juniper = 0
@@ -186,7 +187,7 @@ var load_Micah_name_arr = ["micah_kicked_out", "micah_time_out", "clicked_tool_n
 var load_Juniper_name_arr =  ["juniper_kicked_out", "juniper_time_out", "in_tea_time", "viewed_Juniper_house_pic", "house_dialogue_Juniper", "viewed_Juniper_cafe_pic", "cafe_dialogue_Juniper", "viewed_Juniper_window", "window_thoughts_Juniper", "viewed_Juniper_employee",
 "viewed_Juniper_resume", "resume_dialogue_Juniper", "employee_dialogue_Juniper", "clicked_employee_Juniper", "clicked_resume_Juniper", "bills_dialogue_Juniper", "view_bills_juniper", "clicked_bills_Juniper", "pills_dialogue_Juniper", "pie_dialogue_Juniper", 
 "viewed_pills_juniper", "viewed_pie_juniper", "cran_dialogue_Juniper", "recipe_dialogue_Juniper", "viewed_cran_juniper", "viewed_recipe_juniper", "clicked_recipe_Juniper", "opened_jun_case", "Juniper_in_case", "view_apron_juniper", 
-"view_letter_juniper", "view_nametag_juniper", "clicked_letter_Juniper", "clicked_case_Juniper", "clicked_nametag_Juniper"]
+"view_letter_juniper", "view_nametag_juniper", "view_dollar_juniper", "clicked_letter_Juniper", "clicked_case_Juniper", "clicked_nametag_Juniper"]
 
 ##Quincy Vars
 @onready var quincy_time_out = false
@@ -556,6 +557,7 @@ func reset_globals():
 	view_apron_juniper = false
 	view_letter_juniper = false
 	view_nametag_juniper = false
+	
 	clicked_letter_Juniper = 0
 	clicked_case_Juniper = 0
 	clicked_nametag_Juniper = 0

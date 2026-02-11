@@ -208,6 +208,7 @@ func saveGame(path: String, dialogic_save : bool = true):
 			"view_apron_juniper": GlobalVars.view_apron_juniper,
 			"view_letter_juniper": GlobalVars.view_letter_juniper,
 			"view_nametag_juniper": GlobalVars.view_nametag_juniper,
+			"view_dollar_juniper" : GlobalVars.view_dollar_juniper,
 			"clicked_letter_Juniper": GlobalVars.clicked_letter_Juniper,
 			"clicked_case_Juniper": GlobalVars.clicked_case_Juniper,
 			"clicked_nametag_Juniper": GlobalVars.clicked_nametag_Juniper,

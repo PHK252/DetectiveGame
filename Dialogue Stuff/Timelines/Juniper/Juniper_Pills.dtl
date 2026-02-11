@@ -1,19 +1,29 @@
 if {Character Aff Points.Juniper} > 0:
 	if {Juniper.ask_mom_rever} == true:
-		Dalton (Doubt1): These pills were for your mom?
-		Juniper (Sigh): Yeah...
-		Juniper (Hmph): I probably shoulda flushed them a while ago...
-		Juniper (Sad): But...
+		if {Juniper.finished_pills} == false:
+			Dalton (Doubt1): These pills were for your mom?
+			Juniper (Sigh): Yeah...
+			Juniper (Hmph): I probably shoulda flushed them a while ago...
+			Juniper (Sad): But...
+			set {Juniper.finished_pills} = true
+		else:
+			Dalton (Doubt1): These pills were for your mom?
+			Juniper (Sigh): Yeah...
 	else:
-		Dalton (Resting): Are these pills yours?
-		Juniper (Surprise): ...!
-		Juniper (Hmph): Oh...
-		Juniper (Sigh): Those were my Ma’s pills.
-		Dalton (Awkward): I see.
-		Dalton (Talk): It looks like they're expired.
-		Dalton (Default): You should get rid of them.
-		Juniper (Sad): Yeah...
-	set {Juniper.finished_pills} = true
+		if {Juniper.finished_pills} == false:
+			Dalton (Resting): Are these pills yours?
+			Juniper (Surprise): ...!
+			Juniper (Hmph): Oh...
+			Juniper (Sigh): Those were my Ma’s pills.
+			Dalton (Awkward): I see.
+			Dalton (Talk): It looks like they're expired.
+			Dalton (Default): You should get rid of them.
+			Juniper (Sad): Yeah...
+			set {Juniper.finished_pills} = true
+		else:
+			Dalton (Resting): Are these pills yours?
+			Juniper (Sigh): ...
+			Juniper (Sad): No...
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
 			set {Juniper.in_choice} = false
@@ -21,18 +31,23 @@ if {Character Aff Points.Juniper} > 0:
 		else:
 			jump Juniper_cab2_Choice/
 else:
-	Dalton (Doubt1): Are these pills yours?
-	Juniper (Surprise): ...!
-	Juniper (Angry): Put those back right now!
-	Dalton (Squint): Who’s were they?
-	Juniper (Angry): They were my Ma’s!
-	Juniper (Squint): Ya happy now?
-	Dalton (Doubt1): Were?
-	Juniper (Roll Eyes): Yeah, she doesn’t need them anymore.
-	Dalton (Resting): Why do you still have them, then?
-	Juniper (Squint): Just in case.
-	Dalton (Resting): Hmph.
-	set {Juniper.finished_pills} = true
+	if {Juniper.finished_pills} == false:
+		Dalton (Doubt1): Are these pills yours?
+		Juniper (Surprise): ...!
+		Juniper (Angry): Put those back right now!
+		Dalton (Squint): Who’s were they?
+		Juniper (Angry): They were my Ma’s!
+		Juniper (Squint): Ya happy now?
+		Dalton (Doubt1): Were?
+		Juniper (Roll Eyes): Yeah, she doesn’t need them anymore.
+		Dalton (Resting): Why do you still have them, then?
+		Juniper (Squint): Just in case.
+		Dalton (Resting): Hmph.
+		set {Juniper.finished_pills} = true
+	else:
+		Dalton (Doubt1): Are these pills yours?
+		Juniper (Squint): Tsk.
+		Juniper (Squint): No.
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
 			set {Juniper.in_choice} = false

@@ -1,14 +1,19 @@
-if {Character Aff Points.Juniper} < 0:
-	set {Juniper.saw_pie} = true
-	Dalton (Resting): Did you take a bite out of this pastry?
-	Juniper (Doubt): Hm?
-	Juniper (Hmph): Oh, that one.
-	Juniper: Uh...
-	Juniper (Awkward): Yeah, I was in a rush yesterday.
-	Dalton (Doubt1): ...
-	Dalton (Resting): I see.
-	do GlobalVars.emit_add_note("juniper", "pastry", "low")
-	set {Juniper.finished_pie} = true
+if {Character Aff Points.Juniper} <= 0:
+	if {Juniper.finished_pie} == false:
+		set {Juniper.saw_pie} = true
+		Dalton (Resting): Did you take a bite out of this pastry?
+		Juniper (Doubt): Hm?
+		Juniper (Hmph): Oh, that one.
+		Juniper: Uh...
+		Juniper (Awkward): Yeah, I was in a rush yesterday.
+		Dalton (Doubt1): ...
+		Dalton (Resting): I see.
+		do GlobalVars.emit_add_note("juniper", "pastry", "low")
+		set {Juniper.finished_pie} = true
+	else:
+		Dalton (Resting): Did you take a bite out of this pastry?
+		Juniper (Doubt): Hm?
+		Juniper (Hmph): Sure...
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
 			set {Juniper.in_choice} = false
@@ -19,47 +24,67 @@ if {Character Aff Points.Juniper} < 0:
 	[signal arg="end"]
 	[end_timeline]
 else:
-	set {Juniper.saw_pie} = true
-	Dalton (Sad): I found some damage. 
-	Juniper (Surprise): What?!
-	Dalton (Silly): Someone took a bite out of your pastry. 
-	Juniper (Laugh): Bah!
-	Juniper (Default): Why did you have to scare me like that!?
-	Theo (Laugh): That old fox got jokes sometimes.
-	Theo (Concerned): It’s scary when he does.
-	Juniper (Sigh): Huu...
-	Juniper (Awkward): Well, I hope they got their money's worth. 
-	Juniper (Hmph): That pastry’s been out for days.
-	do GlobalVars.emit_add_note("juniper", "pastry", "high")
-	Dalton (Default): ... 
-	- Take as evidence.
-		Dalton (Talk):  Can I take the pastry in for examination?
-		Juniper (Happy): Oh! 
-		Juniper (Default): Of course!
-		Juniper (Hmph): I was just gonna throw it anyway.
-		Dalton (Resting): Hmph.
-		Dalton (Awkward): Thanks.
-		set {Juniper.has_pie} = true
-		do GlobalVars.emit_add_evidence("juniper", "pie")
-		[signal arg="got pie"]
-		set {Juniper.finished_pie} = true
-		if {Juniper.in_choice} == true:
-			if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
-				set {Juniper.in_choice} = false
-				[end_timeline]
-			else:
-				jump Juniper_cab2_Choice/
-		[signal arg="end"]
-		[end_timeline]
-	- Leave it.
-		Dalton (Resting): Hmph.
-		set {Juniper.finished_pie} = true
-		if {Juniper.in_choice} == true:
-			if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
-				set {Juniper.in_choice} = false
-				[signal arg="end"]
-				[end_timeline]
-			else:
-				jump Juniper_cab2_Choice/
-		[signal arg="end"]
-		[end_timeline]
+	if {Juniper.finished_pie} == false:
+		set {Juniper.saw_pie} = true
+		Dalton (Sad): I found some damage. 
+		Juniper (Surprise): What?!
+		Dalton (Silly): Someone took a bite out of your pastry. 
+		Juniper (Laugh): Bah!
+		Juniper (Default): Why did you have to scare me like that!?
+		Theo (Laugh): That old fox got jokes sometimes.
+		Theo (Concerned): It’s scary when he does.
+		Juniper (Sigh): Huu...
+		Juniper (Awkward): Well, I hope they got their money's worth. 
+		Juniper (Hmph): That pastry’s been out for days.
+		do GlobalVars.emit_add_note("juniper", "pastry", "high")\
+		label choice
+		Dalton (Default): ... 
+		- Take as evidence.
+			Dalton (Talk):  Can I take the pastry in for examination?
+			Juniper (Happy): Oh! 
+			Juniper (Default): Of course!
+			Juniper (Hmph): I was just gonna throw it anyway.
+			Dalton (Resting): Hmph.
+			Dalton (Awkward): Thanks.
+			set {Juniper.has_pie} = true
+			do GlobalVars.emit_add_evidence("juniper", "pie")
+			[signal arg="got pie"]
+			set {Juniper.finished_pie} = true
+			if {Juniper.in_choice} == true:
+				if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+					set {Juniper.in_choice} = false
+					[end_timeline]
+				else:
+					jump Juniper_cab2_Choice/
+			[signal arg="end"]
+			[end_timeline]
+		- Leave it.
+			Dalton (Resting): Hmph.
+			set {Juniper.finished_pie} = true
+			if {Juniper.in_choice} == true:
+				if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+					set {Juniper.in_choice} = false
+					[signal arg="end"]
+					[end_timeline]
+				else:
+					jump Juniper_cab2_Choice/
+			[signal arg="end"]
+			[end_timeline]
+	else:
+		if {Juniper.has_pie} == false:
+			set {Juniper.finished_pie} = false
+			jump choice
+		else:
+			Dalton (Awkward): Did you make it?
+			Juniper (Awkward): Nah...
+			Juniper (Default) : One of my bakers made it.
+			Juniper (Happy): I usually take some leftovers from the cafe.
+			if {Juniper.in_choice} == true:
+				if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
+					set {Juniper.in_choice} = false
+					[signal arg="end"]
+					[end_timeline]
+				else:
+					jump Juniper_cab2_Choice/
+			[signal arg="end"]
+			[end_timeline]
