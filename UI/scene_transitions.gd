@@ -68,8 +68,8 @@ func glitch_change_scene(target : String):
 	glitch_shader.show()
 	glitch.play("Glitch")
 	await glitch.animation_finished
+	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file(target)
-	await get_tree().create_timer(1.0).timeout
 	sf_xs.play()
 	glitch.play_backwards("Glitch")
 	await glitch.animation_finished

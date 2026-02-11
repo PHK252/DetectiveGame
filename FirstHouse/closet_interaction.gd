@@ -132,12 +132,12 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	#open_closet_door_1.disabled = false
 	#open_closet_door_2.disabled = false
-	await get_tree().process_frame
-	await get_tree().process_frame
-	alert.hide()
+	
 	if closet_open == false and interaction_closet == false: 
-		GlobalVars.in_dialogue = true
+		await get_tree().process_frame
+		await get_tree().process_frame
 		alert.hide()
+		GlobalVars.in_dialogue = true
 		interaction_closet = true
 		emit_signal("general_interact")
 		emit_signal("stepback")
@@ -148,42 +148,33 @@ func _on_interactable_interacted(interactor):
 		interaction_closet = false
 		GlobalVars.in_dialogue = false
 
-	tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
-		Exit_Cam.priority = 30
-		alert.hide()
-		if closet_open == false and tool_asked == false:
-			GlobalVars.in_dialogue = true
-			player.stop_player()
-			#Dialogue start
-			emit_signal("enable_look")
-			var closet_dialogue = Dialogic.start(start_dialogue_file)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			Dialogic.signal_event.connect(closetLook)
-			closet_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			closet_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			closet_dialogue.register_character(load(load_char_dialogue), character_marker)
-			#await get_tree().create_timer(3).timeout
-		elif closet_open == true and tool_asked == false:
-			GlobalVars.in_dialogue = true
-			player.stop_player()
-			emit_signal("enable_look")
-			var closet_dialogue = Dialogic.start("Micah_closet_ask", "choices")
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			Dialogic.signal_event.connect(closetLook)
-			closet_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			closet_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			closet_dialogue.register_character(load(load_char_dialogue), character_marker)
-		elif closet_open == true and tool_asked == true:
-			GlobalVars.in_dialogue = true
-			player.stop_player()
-			emit_signal("enable_look")
-			var closet_dialogue = Dialogic.start("Micah_closet_ask", "tool choices")
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			Dialogic.signal_event.connect(closetLook)
-			closet_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)
-			closet_dialogue.register_character(load(load_Theo_dialogue), theo_marker)
-			closet_dialogue.register_character(load(load_char_dialogue), character_marker)
+		tool_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Closet_Asked")
+		if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.micah_time_out == false and GlobalVars.micah_kicked_out == false:
+			Exit_Cam.priority = 30
+			alert.hide()
+			if closet_open == false and tool_asked == false:
+				GlobalVars.in_dialogue = true
+				player.stop_player()
+				#Dialogue start
+				emit_signal("enable_look")
+				var closet_dialogue = Dialogic.start(start_dialogue_file)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				Dialogic.signal_event.connect(closetLook)
+				#await get_tree().create_timer(3).timeout
+			elif closet_open == true and tool_asked == false:
+				GlobalVars.in_dialogue = true
+				player.stop_player()
+				emit_signal("enable_look")
+				var closet_dialogue = Dialogic.start("Micah_closet_ask", "choices")
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				Dialogic.signal_event.connect(closetLook)
+			elif closet_open == true and tool_asked == true:
+				GlobalVars.in_dialogue = true
+				player.stop_player()
+				emit_signal("enable_look")
+				var closet_dialogue = Dialogic.start("Micah_closet_ask", "tool choices")
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				Dialogic.signal_event.connect(closetLook)
 			
 func _on_note_timeline_ended():
 	emit_signal("disable_look")
@@ -197,8 +188,6 @@ func _on_note_timeline_ended():
 func _on_timeline_ended():
 	emit_signal("disable_look")
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-	GlobalVars.in_dialogue = false
-	
 	if FP_Cam.priority == 0:
 		player.start_player()
 		alert.show()
@@ -208,6 +197,7 @@ func closetLook(argument: String):
 		# connect signal to switch cams
 		Dialogic.signal_event.disconnect(closetLook)
 		GlobalVars.in_interaction = interact_type
+		GlobalVars.in_dialogue = false
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
 		interact_area_1.show()
@@ -238,6 +228,7 @@ func _close_door():
 		open_closet_door_1.disabled = true
 		open_closet_door_2.disabled = true
 		closet_anim.play("NewClosetClose")
+		await closet_anim.animation_finished
 		closet_open = false
 		print("closet closing")
-		await closet_anim.animation_finished
+		GlobalVars.in_dialogue = false

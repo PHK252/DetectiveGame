@@ -93,7 +93,7 @@ func _input(event):
 			GlobalVars.in_dialogue = true
 			interact_area.hide()
 			GlobalVars.Quincy_in_computer = false
-			player.start_player()
+			#player.start_player()
 			player.show()
 			GlobalVars.in_interaction = ""
 

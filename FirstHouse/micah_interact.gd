@@ -79,8 +79,12 @@ func _process(delta):
 					stand_interact_on = true
 			#if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and asked_skylar == false and time_out == false:
 #
-		if Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true and asked_dad == false:
-			Dialogic.VAR.set_variable("Asked Questions.Micah_asked_all", false)
+		if Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_ID") == true:
+			if asked_dad == false:
+				Dialogic.VAR.set_variable("Asked Questions.Micah_asked_all", false)
+			else:
+				Dialogic.VAR.set_variable("Asked Questions.Micah_asked_all", true)
+			
 				
 		
 		

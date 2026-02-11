@@ -76,6 +76,7 @@ func _on_fridge_open_input_event(viewport, event, shape_idx):
 			in_anim = false
 			if GlobalVars.viewed_Micah_fridge == false:
 				GlobalVars.in_dialogue = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				Dialogic.start("Micah_Fridge_thoughts")
 			else:
@@ -97,6 +98,7 @@ func _on_fridge_close_input_event(viewport, event, shape_idx):
 			in_anim = false
 
 func _on_timeline_ended():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	GlobalVars.in_look_screen = false

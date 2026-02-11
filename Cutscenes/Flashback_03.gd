@@ -84,5 +84,7 @@ func _on_timeline_ended():
 	Dialogic.signal_event.disconnect(_end_movement)
 	GlobalVars.in_dialogue = false
 	GlobalVars.day = 3
-	Loading.load_scene(main, GlobalVars.office_path, "Sleep", "Out Dream", "", true, false)
+	MusicFades.fade_out_audio()
+	await get_tree().create_timer(1.0).timeout
+	Loading.load_scene(main, GlobalVars.office_path, "Sleep", "Out Dream", "", false, false)
 	

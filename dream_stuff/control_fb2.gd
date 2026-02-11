@@ -31,7 +31,7 @@ func _on_timeline_ended():
 	Dialogic.signal_event.disconnect(_isaac_movement)
 	GlobalVars.in_dialogue = false
 	MusicFades.fade_out_audio()
-	await get_tree().create_timer(1.0)
+	await get_tree().create_timer(1.0).timeout
 	Loading.load_scene(main, GlobalVars.office_path, "Sleep", "Out Dream", "")
 	GlobalVars.day = 2
 

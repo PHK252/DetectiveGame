@@ -2,6 +2,7 @@ extends Node3D
 
 @export var world_env : WorldEnvironment
 @export var sub_v_container : SubViewportContainer
+@export var music : AudioStreamPlayer
 
 func _ready() -> void:
 	
@@ -15,8 +16,9 @@ func _ready() -> void:
 	#pixel
 	GlobalVars.brightness_changed.connect(_on_brightness_brightness_shift)
 	_on_brightness_brightness_shift(GlobalVars.brightness)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	MusicFades.fade_in_audio()
+	music.play()
 
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
