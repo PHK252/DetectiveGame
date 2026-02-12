@@ -26,6 +26,7 @@ else:
 			if {Character Aff Points.Juniper} >= 1:
 				Juniper (Hmph): ...
 				Juniper (Happy): Wanna help?
+				label yesno
 				Dalton: ...
 				- Yes.
 					Dalton (Awkward): Uh...
@@ -108,18 +109,18 @@ else:
 					else:
 						jump Juniper_Employee_Resume_choice/
 	else:
-		Dalton (Talk): These resumes...
-		Dalton (Resting): What are they for?
 		if {Juniper.picked_resume} != "":
-			Juniper (Squint): ...?
-			Juniper (Hmph): Are ya alright?
+			Dalton (Talk): These resumes...
+			Dalton (Resting): What are they for?
+			Juniper (Hmph): ...?
+			Juniper (Squint): Are ya alright?
 		else:
-			Juniper (Awkward): Ah...
-			Juniper (Sigh): We're just understaffed.
+			Juniper (Happy): Ah...
+			Juniper (Default): Ready to help?
+			jump yesno
 		if {Juniper.in_choice} == true:
-				if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
-					set {Juniper.in_choice} = false
-					[end_timeline]
-				else:
-					jump Juniper_Employee_Resume_choice/
-			
+			if {Juniper.finished_resumes} == true and {Juniper.found_last_name} == true:
+				set {Juniper.in_choice} = false
+				[end_timeline]
+			else:
+				jump Juniper_Employee_Resume_choice/

@@ -5,7 +5,7 @@ if {Character Aff Points.Juniper} <= 0:
 		Juniper (Doubt): Hm?
 		Juniper (Hmph): Oh, that one.
 		Juniper: Uh...
-		Juniper (Awkward): Yeah, I was in a rush yesterday.
+		Juniper (Doubt): Yeah, I was in a rush yesterday.
 		Dalton (Doubt1): ...
 		Dalton (Resting): I see.
 		do GlobalVars.emit_add_note("juniper", "pastry", "low")
@@ -75,10 +75,9 @@ else:
 			set {Juniper.finished_pie} = false
 			jump choice
 		else:
-			Dalton (Awkward): Did you make it?
-			Juniper (Awkward): Nah...
-			Juniper (Default) : One of my bakers made it.
-			Juniper (Happy): I usually take some leftovers from the cafe.
+			Dalton (Awkward): Did you bake this yourself?
+			Juniper (Hmph): Nah...
+			Juniper (Default): It's just some leftovers from the cafe.
 			if {Juniper.in_choice} == true:
 				if {Juniper.finished_pie} == true and {Juniper.finished_pills} == true:
 					set {Juniper.in_choice} = false

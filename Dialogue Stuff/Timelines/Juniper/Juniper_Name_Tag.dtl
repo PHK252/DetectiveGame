@@ -85,14 +85,14 @@ else:
 		set {Juniper.finished_name_tag} = true
 	else:
 		Dalton (Talk): Can ya tell me more about Skylar Aslan?
-		Juniper (Default): They were a hard worker...
+		Juniper (Hmph): They were a hard worker...
 		Juniper (Happy): Great with customers.
 		Juniper (Default): Can make killer latte art.
 		Juniper (Awkward): ...
 		Juniper (Hmph): As far as I know, they don't got a good Pa.
 		Juniper (Sad): And they're Ma passed away last year.
 		Juniper (Sigh): ...
-		Juniper (Default): Tough kid, that cat.
+		Juniper (Happy): Tough kid, that cat.
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
 			set {Juniper.in_choice} = false

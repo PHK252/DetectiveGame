@@ -1,5 +1,5 @@
 if {Character Aff Points.Juniper} <= 0:
-	if {set {Juniper.found_last_name} == false:
+	if {Juniper.found_last_name} == false:
 		set {Character Aff Points.Juniper} -= 1
 		Dalton (Talk): Is this a list of all your employees?
 		Juniper (Surprise): Hey!

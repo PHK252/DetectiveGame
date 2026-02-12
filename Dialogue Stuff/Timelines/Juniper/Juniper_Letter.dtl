@@ -19,8 +19,9 @@ if {Character Aff Points.Juniper} <= 0:
 			jump Juniper_letter_Take/
 	else:
 		Dalton (Squint): Do you know where they'd be?
-		Juniper (Squint): No?
-		Juniper (Doubt): I thought they were a goner a few minutes ago.
+		Juniper (Hmph): No?
+		Juniper (Squint): Up until a few minutes ago, I thought they were a goner.
+		Dalton (Hmph): Hmph. 
 else:
 	if {Juniper.finished_letter} == false:
 		Dalton (Squint): I think this letter is for you...
@@ -34,14 +35,14 @@ else:
 		Dalton (Resting): You got a photo of it?
 		Theo (Laugh): Yes, sir!
 		Dalton (Talk): It's all yours.
-		Juniper (Happy): Thank you.
+		Juniper (Laugh): Thank ya.
 		set {Juniper.finished_letter} = true
 	else:
-		Juniper (Awkward): Detective...
-		Juniper (Sad): Why do you think they came back?
+		Juniper (Hmph): Detective...
+		Juniper (Default): Thank ya letting me keep this.
+		Juniper (Happy): It means a lot.
 		Dalton (Awkward): ...
-		Dalton (Talk): It's hard to say since we don't have the full picture...
-		Dalton (Resting):Sorry...
+		Dalton (Resting): Yeah...
 	if {Juniper.in_choice} == true:
 		if {Juniper.finished_name_tag} == true and {Juniper.finished_letter} == true:
 			set {Juniper.in_choice} = false
