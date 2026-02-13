@@ -143,20 +143,21 @@ func choose_office_dialogue():
 			emit_signal("night_lighting")
 			if Dialogic.VAR.get_variable("Juniper.viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_bookmark") == true and Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Clyde") == true and Dialogic.VAR.get_variable("Juniper.ask_mom_rever") == true and Dialogic.VAR.get_variable("Character Aff Points.Juniper") >= 2 and Dialogic.VAR.get_variable("Character Aff Points.Micah") >= 2:
 				to_flash = true
-			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
+			if Dialogic.VAR.get_variable("Juniper.found_skylar") == true and Dialogic.VAR.get_variable("Character Aff Points.Theo") >= 0:
 				return "End_day_1_got_name"
-			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
+			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true and Dialogic.VAR.get_variable("Character Aff Points.Theo") <= -1:
 				return "End_day_1_got_hair_no_name"
-			if Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true and Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
+			if Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true and Dialogic.VAR.get_variable("Juniper.kicked_out") == true or Dialogic.VAR.get_variable("Character Aff Points.Theo") <= -4:
 				return "End_day_1_got_kicked"
 			return "End_day_1_got_nothing"
 		2: 
 			if Dialogic.VAR.get_variable("Global.went_to_Quincy") == false:
 				emit_signal("day_lighting_alternate")
-				if Dialogic.VAR.get_variable("Juniper.found_skylar") == true or Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
-					return "Beginning_day_2_got_name_or_hair"
-				if Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true and Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
-					return "Beginning_day_2_got_kicked"
+				if Dialogic.VAR.get_variable("Character Aff Points.Theo") >= 0:
+					if Dialogic.VAR.get_variable("Juniper.found_skylar") == true or Dialogic.VAR.get_variable("Asked Questions.has_hair") == true or Dialogic.VAR.get_variable("Juniper.has_pie") == true:
+						return "Beginning_day_2_got_name_or_hair"
+					if Dialogic.VAR.get_variable("Asked Questions.Micah_kicked_out") == true and Dialogic.VAR.get_variable("Juniper.kicked_out") == true:
+						return "Beginning_day_2_got_kicked"
 				return "Beginning_day_2_got_nothing"
 			else:
 				day_end = true
@@ -165,9 +166,9 @@ func choose_office_dialogue():
 					to_flash = true
 				if Dialogic.VAR.get_variable("Quincy.kicked_out") == true:
 					return "End_day_2_got_kicked"
-				if Dialogic.VAR.get_variable("Quincy.solved_rever") == true:
+				if Dialogic.VAR.get_variable("Quincy.solved_rever") == true and Dialogic.VAR.get_variable("Character Aff Points.Theo") >= 0:
 					return "End_day_2_got_REVER" 
-				if Dialogic.VAR.get_variable("Quincy.solved_case") == true or Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
+				if (Dialogic.VAR.get_variable("Quincy.solved_case") == true or Dialogic.VAR.get_variable("Juniper.found_skylar") == true) and Dialogic.VAR.get_variable("Character Aff Points.Theo") >= -1:
 					return "End_day_2_got_case"
 				return "End_day_2_got_hair"
 		3: 

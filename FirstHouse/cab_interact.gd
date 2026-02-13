@@ -133,6 +133,7 @@ func _on_cab_input_event(viewport, event, shape_idx):
 			Dialogic.start("Micah_cabinet_thoughts")
 			Dialogic.timeline_ended.connect(_on_thoughts_ended)
 		elif cab_open == false:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			open_cabinet()
 			await get_tree().create_timer(7.5).timeout
 			close_cabinet()

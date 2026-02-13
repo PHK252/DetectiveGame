@@ -1,5 +1,3 @@
-set {Character Aff Points.Juniper} -= 1
-set {Character Aff Points.Theo} -= 1
 Dalton (Awkward): ...
 Dalton (Resting): You can call the station after the case is closed to get the letter back.
 Theo (Concerned): Detective Rey-
@@ -8,6 +6,8 @@ Dalton (Resting): I'm the lead.
 Dalton: You respect my decision.
 Theo (Awkward): ...
 Theo (Doubt): Yes, sir.
+set {Character Aff Points.Juniper} -= 1
+set {Character Aff Points.Theo} -= 1
 do GlobalVars.emit_add_evidence("juniper", "letter")
 set {Juniper.has_letter} = true
 set {Juniper.finished_letter} = true

@@ -185,7 +185,8 @@ func _process(delta: float) -> void:
 	#print(is_navigating)
 	#print(str(is_distracted) + ": distraction")
 	#print(wander_choice)
-	if GlobalVars.quincy_time_out == true or GlobalVars.quincy_kicked_out == true:
+	GlobalVars.quincy_fainted
+	if GlobalVars.quincy_time_out == true or GlobalVars.quincy_kicked_out == true: #or GlobalVars.quincy_fainted == true (gate ze faint)
 		is_distracted = false
 	if is_distracted == false:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
@@ -874,6 +875,7 @@ func _on_cutscene_cams_reposition_dalton() -> void:
 func _on_cutscene_cams_faint_disable() -> void:
 	if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 		is_navigating = false
+		is_distracted = false
 		end_time = false
 		extra_gate_end = true
 		armature.visible = true
@@ -885,6 +887,7 @@ func _on_cutscene_cams_faint_disable() -> void:
 	else:
 		#hide quincy:
 		#disable collision, hide armature (should already be gone), no sound
+		is_distracted = false
 		Q_body.global_position = Q_marker_end_safe.global_position
 		Q_body.visible = false
 		end_time = true
