@@ -185,7 +185,6 @@ func _process(delta: float) -> void:
 	#print(is_navigating)
 	#print(str(is_distracted) + ": distraction")
 	#print(wander_choice)
-	GlobalVars.quincy_fainted
 	if GlobalVars.quincy_time_out == true or GlobalVars.quincy_kicked_out == true: #or GlobalVars.quincy_fainted == true (gate ze faint)
 		is_distracted = false
 	if is_distracted == false:
