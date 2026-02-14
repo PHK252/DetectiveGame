@@ -7,9 +7,7 @@ extends Node
 @export var alert : Sprite3D
 @export var sitting_Dalton : Node3D
 @export var quincy_norm_body : CharacterBody3D 
-@export var dalton_marker : Marker2D
-@export var theo_marker : Marker2D
-@export var character_marker : Marker2D
+@export var music : AudioStreamPlayer
 var cutscene : String
 
 signal faint_disable
@@ -45,6 +43,7 @@ func _on_bar_faint_time():
 	emit_signal("faint_disable")
 	await get_tree().process_frame
 	anim_player.play("fainting_cutscene")
+	_lower_music()
 	await anim_player.animation_finished
 	var faint_dialogue = Dialogic.start("Quincy_faint")
 	player.stop_player()
@@ -81,3 +80,9 @@ func _on_bar_bar_interacted():
 
 func _on_bar_bar_leave():
 	Dialogic.signal_event.disconnect(_on_dialogic_signal)
+
+func _lower_music():
+	var tween = create_tween()
+	tween.tween_property(music, "pitch_scale", 0.72, 6.0)
+	await get_tree().create_timer(6.0).timeout
+	MusicFades.fade_out_audio()
