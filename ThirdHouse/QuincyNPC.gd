@@ -875,7 +875,7 @@ func _on_cutscene_cams_faint_disable() -> void:
 	if Dialogic.VAR.get_variable("Juniper.found_skylar") == true:
 		is_navigating = false
 		is_distracted = false
-		end_time = false
+		end_time = true
 		extra_gate_end = true
 		armature.visible = true
 		Q_body.global_position = Q_marker_end.global_position

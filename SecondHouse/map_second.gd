@@ -32,7 +32,8 @@ func _ready():
 		#door_interactable.set_deferred("monitorable", false)
 	#interactable.set_deferred("monitorable", true)
 		#return
-	door_interactable.set_deferred("monitorable", !Dialogic.VAR.get_variable("Juniper.left_juniper"))
+	if door_interactable:
+		door_interactable.set_deferred("monitorable", !Dialogic.VAR.get_variable("Juniper.left_juniper"))
 	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Juniper.left_juniper"))
 
 func _on_map_leave_interacted(interactor):

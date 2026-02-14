@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var interactables : Array[Interactable] = []
+@export var tea_interactable : Interactable
 @export var timed_out_dialogue_file: String
 @export var kicked_out_dialogue_file: String
 @export var load_Dalton_dialogue: String
@@ -199,6 +200,8 @@ func _on_entered_juniper():
 
 func _leave_level():
 	disable_interaction(interactables)
+	if tea_interactable.monitorable:
+		tea_interactable.set_deferred("monitorable", false)
 
 func _on_level_exit():
 	print("level exited!")
