@@ -6,6 +6,8 @@ extends MeshInstance3D
 @export var camanim : AnimationPlayer
 @export var theo_theme : AudioStreamPlayer
 @export var office_theme : AudioStreamPlayer
+@export var door_slam : AudioStreamPlayer
+@export var camShake : AnimationPlayer
 @onready var object = $"."
 @onready var look_click = $"../../../../UI/Casefile"
 @onready var ending_text = $"../../../../UI/Ending Text"
@@ -320,6 +322,10 @@ func enter_Theo(argument: String):
 		emit_signal("theo_move")
 		Dialogic.signal_event.disconnect(enter_Theo)
 		office_theme.stop()
+		door_slam.play()
+		camShake.play("Cam_shake")
+		await door_slam.finished
+		#await get_tree().create_timer(.4).timeout
 		theo_theme.play()
 		pass
 	

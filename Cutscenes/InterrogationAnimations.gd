@@ -54,6 +54,8 @@ func _ready() -> void:
 
 
 func _on_timeline_ended():
+	MusicFades.fade_out_audio()
+	await get_tree().create_timer(1.0).timeout
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	GlobalVars.day += 1

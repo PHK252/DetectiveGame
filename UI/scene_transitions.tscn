@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://p8du61ej25rq"]
+[gd_scene load_steps=13 format=3 uid="uid://p8du61ej25rq"]
 
 [ext_resource type="Script" uid="uid://b3u2skq7ngpld" path="res://UI/scene_transitions.gd" id="1_tyuqr"]
 [ext_resource type="Texture2D" uid="uid://t67pm8ubr4g8" path="res://UI/Assets/Computer/Computer UI Login Outline.png" id="2_hfwcb"]
 [ext_resource type="Shader" uid="uid://bp5f25vsn2rhg" path="res://UI/glitch_transition.gdshader" id="3_ie2oa"]
 [ext_resource type="AudioStream" uid="uid://btymctw723x0c" path="res://Audio/Extras/Glitch.mp3" id="4_ie2oa"]
+[ext_resource type="AudioStream" uid="uid://dy7vva5ul8fpe" path="res://Audio/Extras/Glitch_out.mp3" id="5_w1qm3"]
 
 [sub_resource type="Animation" id="Animation_cdd70"]
 resource_name = "Dissolve"
@@ -156,10 +157,12 @@ _data = {
 &"RESET": SubResource("Animation_w1qm3")
 }
 
-[node name="Transitions" type="CanvasLayer"]
+[node name="Transitions" type="CanvasLayer" node_paths=PackedStringArray("sf_xs", "glitch_out")]
 process_mode = 3
 layer = 2
 script = ExtResource("1_tyuqr")
+sf_xs = NodePath("Glitch_in")
+glitch_out = NodePath("Glitch_out")
 
 [node name="Fade" type="AnimationPlayer" parent="."]
 root_node = NodePath("../ColorRect")
@@ -168,7 +171,6 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_hfwcb")
 centered = false
 
@@ -200,6 +202,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_ac7ig")
 }
 
-[node name="SFXs" type="AudioStreamPlayer" parent="."]
+[node name="Glitch_in" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ie2oa")
+bus = &"SFX"
+
+[node name="Glitch_out" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_w1qm3")
 bus = &"SFX"

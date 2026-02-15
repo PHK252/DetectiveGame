@@ -4,8 +4,8 @@ extends CanvasLayer
 @onready var glitch = $Glitch
 @onready var glitch_shader = $ColorRect2
 @onready var color_rect = $ColorRect
-@onready var sf_xs = $SFXs
-
+@export var sf_xs : AudioStreamPlayer
+@export var glitch_out : AudioStreamPlayer
 
 func fade_change_packed_scene(target : PackedScene):
 	#await get_tree().create_timer(.5)
@@ -38,8 +38,9 @@ func glitch_change_packed_scene(target : PackedScene):
 	await glitch.animation_finished
 	get_tree().change_scene_to_packed(target)
 	print("load packed")
-	sf_xs.play()
 	glitch.play_backwards("Glitch")
+	await get_tree().create_timer(.75).timeout
+	glitch_out.play()
 	await glitch.animation_finished
 	glitch_shader.hide()
 
@@ -49,17 +50,18 @@ func glitch_to_load():
 	glitch.play("Glitch")
 	await glitch.animation_finished
 	#glitch.play_backwards("Glitch")
+	#await get_tree().create_timer(.75).timeout
+	#glitch_out.play()
 	#await glitch.animation_finished
 	glitch_shader.hide()
 	color_rect.hide()
 
 func glitch_to_load_back():
-	sf_xs.play()
 	glitch_shader.show()
 	glitch.play_backwards("Glitch")
+	await get_tree().create_timer(.75).timeout
+	glitch_out.play()
 	await glitch.animation_finished
-	#glitch.play_backwards("Glitch")
-	#await glitch.animation_finished
 	glitch_shader.hide()
 	color_rect.hide()
 
@@ -70,7 +72,8 @@ func glitch_change_scene(target : String):
 	await glitch.animation_finished
 	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file(target)
-	sf_xs.play()
 	glitch.play_backwards("Glitch")
+	await get_tree().create_timer(.75).timeout
+	glitch_out.play()
 	await glitch.animation_finished
 	glitch_shader.hide()
