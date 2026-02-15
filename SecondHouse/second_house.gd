@@ -33,6 +33,10 @@ var mouse_pos = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_kicked):
+		Dialogic.timeline_ended.disconnect(_on_timeline_ended_kicked)
+	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_timed):
+		Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
 	#player.start_player()
 	if GlobalVars.in_level == false:
 		disable_interaction_beginning(interactables)
@@ -40,7 +44,6 @@ func _ready():
 	GlobalVars.current_level = "juniper"
 	if Dialogic.VAR.get_variable("Global.went_to_Micah") == false and Dialogic.VAR.get_variable("Global.went_to_Juniper") == false:
 		Dialogic.VAR.set_variable("Global.first_house", "Juniper")
-
 	#settings
 	#brightness
 	GlobalVars.pixelation_changed.connect(_set_pixelation)
@@ -60,26 +63,24 @@ func _ready():
 			await get_tree().process_frame
 			alert.hide()
 			player.stop_player()
-			in_time_out_dialogue = true
+			#in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 			return
 		if GlobalVars.juniper_kicked_out == true:
+			Dialogic.clear(1)
 			disable_interaction(interactables)
 			await get_tree().process_frame
 			await get_tree().process_frame
 			alert.hide()
 			player.stop_player()
-			in_kicked_out_dialogue = true
-			Dialogic.clear(1)
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
 			return
 		timer.wait_time = GlobalVars.time_left
 		timer.start()
-	
 
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
@@ -91,9 +92,6 @@ func _set_shadow(shadow) -> void:
 		#light.shadow_enabled = GlobalVars.optional_shadow
 func _on_brightness_brightness_shift(brightness) -> void:
 	world_env.environment.adjustment_brightness = brightness
-
-
-
 
 func _process(delta):
 	GlobalVars.time_left = timer.time_left
@@ -110,13 +108,11 @@ func _process(delta):
 	if GlobalVars.in_interaction != "":
 		mouse_pos = get_viewport().get_mouse_position()
 	if Dialogic.VAR.get_variable("Character Aff Points.Juniper") <= -4:
-		GlobalVars.juniper_kicked_out = true
-		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
+		if GlobalVars.juniper_kicked_out == false and GlobalVars.in_interaction == "":
+			GlobalVars.juniper_kicked_out = true
 			disable_interaction(interactables)
-			#await get_tree().process_frame
 			alert.hide()
 			player.stop_player()
-			in_kicked_out_dialogue = true
 			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			GlobalVars.in_dialogue = true
@@ -177,8 +173,9 @@ func _on_timeline_ended_kicked():
 
 func disable_interaction(arr: Array):
 	for i in arr:
-		i.set_monitorable(false)
-		i.queue_free()
+		if i:
+			i.set_monitorable(false)
+			i.queue_free()
 
 func disable_interaction_beginning(arr: Array):
 	for i in arr:

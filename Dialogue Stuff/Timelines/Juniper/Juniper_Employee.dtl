@@ -1,12 +1,12 @@
 if {Character Aff Points.Juniper} <= 0:
 	if {Juniper.found_last_name} == false:
-		set {Character Aff Points.Juniper} -= 1
 		Dalton (Talk): Is this a list of all your employees?
 		Juniper (Surprise): Hey!
 		Juniper (Angry): Put that down!
 		Juniper: Why are ya looking through my stuff!?
 		Dalton (Resting): What happened to your last employee?
 		Dalton (Talk): Aslan, S.
+		set {Character Aff Points.Juniper} -= 1
 		Juniper (Sigh): Huuuu...
 		Juniper (Doubt): If I knew y’all would be snooping around all my stuff for a goddamn window, I would’ve never called ya.
 		Dalton (Awkward): ...

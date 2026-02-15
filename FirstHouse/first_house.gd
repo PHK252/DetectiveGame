@@ -38,6 +38,10 @@ signal phone_time_start
 signal auto_open
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_kicked):
+		Dialogic.timeline_ended.disconnect(_on_timeline_ended_kicked)
+	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_timed):
+		Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
 	if theo_body.visible == false:
 		theo_body.visible = true
 	GlobalVars.current_level = "micah"
@@ -86,7 +90,7 @@ func _ready():
 			await get_tree().process_frame
 			alert.hide()
 			player.stop_player()
-			in_kicked_out_dialogue = true
+			#in_kicked_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
@@ -118,15 +122,14 @@ func _process(delta):
 	
 	#Kicked out 
 	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:
-		GlobalVars.micah_kicked_out = true
-		if in_kicked_out_dialogue == false and GlobalVars.in_interaction == "":
+		if GlobalVars.micah_kicked_out == false and GlobalVars.in_interaction == "":
 			Dialogic.clear(1)
 			disable_interaction(interactables)
 			alert.hide()
 			player.stop_player()
 			timer.stop()
+			GlobalVars.micah_kicked_out = true
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-			in_kicked_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			var kicked_out_dialogue = Dialogic.start(kicked_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_kicked)
@@ -135,10 +138,10 @@ func _process(delta):
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Asked Questions.Micah_time_out_finished") == false and GlobalVars.micah_kicked_out == false:
 			Dialogic.clear(1)
-			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			alert.hide()
 			#disable_interaction(interactables)
 			player.stop_player()
+			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
@@ -185,8 +188,9 @@ func _on_timeline_ended_kicked():
 
 func disable_interaction(arr: Array):
 	for i in arr:
-		i.set_monitorable(false)
-		i.queue_free()
+		if i:
+			i.set_monitorable(false)
+			i.queue_free()
 
 
 func _on_entered_micah():

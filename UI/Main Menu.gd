@@ -71,6 +71,7 @@ func _on_start_pressed():
 	#SceneTransitions.glitch_change_scene("res://StartingOffice/starting_office.tscn")
 	#LoadManager.load_scene(GlobalVars.first_house_path)
 	GlobalVars.reset_globals()
+	GlobalVars.current_level = "Beginning"
 	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
 

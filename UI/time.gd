@@ -18,7 +18,7 @@ func _ready():
 		global_timer.start()
 	#
 	if GlobalVars.from_save_file == true:
-		print(global_timer.wait_time, "wait")
+		#print(global_timer.wait_time, "wait")
 		hour = GlobalVars.clock_time[0]
 		minute = GlobalVars.clock_time[1]
 		set_time(hour, minute)

@@ -3,6 +3,8 @@ extends CanvasLayer
 @export var ending_label : RichTextLabel
 @export var icon : TextureRect
 func _ready():
+	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	GlobalVars.reset_globals()
 	match Dialogic.VAR.get_variable("Endings.Ending_type"):
 		"Arrested Skylar":
 			ending_label.text = "[center]Bare Minimum[/center]"

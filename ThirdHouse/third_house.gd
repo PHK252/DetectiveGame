@@ -41,6 +41,8 @@ signal level_end
 @export var hide_tween : AnimationPlayer
 var mouse_pos
 func _ready():
+	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_timed):
+		Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
 	MusicFades.fade_in_audio() #for reset
 	print(Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_bookmark"), "Micahbookmark")
 	GlobalVars.current_level = "quincy"
@@ -122,8 +124,8 @@ func _process(delta):
 	if Dialogic.VAR.get_variable("Quincy.kicked_out") == true and GlobalVars.quincy_kicked_out == false:
 		Dialogic.clear(1)
 		Dialogic.VAR.set_variable("Quincy.has_choco", false)
-		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		GlobalVars.quincy_kicked_out = true
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		disable_interaction(interactables)
 		door.set_deferred("monitorable", false)
 		emit_signal("theo_leave")
