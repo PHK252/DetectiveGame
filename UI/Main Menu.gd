@@ -72,14 +72,16 @@ func _on_start_pressed():
 	#LoadManager.load_scene(GlobalVars.first_house_path)
 	GlobalVars.reset_globals()
 	GlobalVars.current_level = "Beginning"
+	MusicFades.fade_out_audio()
 	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
 
 func _on_continue_pressed():
 	#GlobalVars.current_level = "quincy"
 	#Loading.load_scene(self, GlobalVars.third_house_path, false, "", "")
-	#Loading.load_scene(self, GlobalVars.beginning_office, "Sleep", "Sleep_Wake", "")
+	#Loading.load_scene(self, GlobalVars.beginning_office, "Sleep", "", "")
 	var level_to_load = GlobalVars.get_current_level_path(GlobalVars.current_level)
+	MusicFades.fade_out_audio()
 	Loading.load_scene(self, level_to_load, "", "", "")
 
 
@@ -89,6 +91,7 @@ func _on_new_game_pressed():
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.from_save_file = false
 	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	MusicFades.fade_out_audio()
 	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 
 

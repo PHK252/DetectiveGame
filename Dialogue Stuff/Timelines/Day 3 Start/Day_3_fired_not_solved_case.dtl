@@ -43,34 +43,63 @@ Dalton (Sigh): Haah...
 Dalton (Resting): You and I both know, my ass...
 [signal arg = "theo_walk_in"]
 [wait time="3.0""]
-Dalton (Angry): You!
-Dalton (Squint): How dare you rat me out to Chief!
-Theo (Mad): What did you want me to do?
-Theo (Doubt): Lie to him?
-Dalton (Hmph): We were partners.
-Dalton (Talk): We’re supposed to have each other’s backs
-Theo (Mad): Hah!
-Theo: That’s rich coming from you!
-Dalton (Sigh): Huu...
-Dalton (Awkward): What am I going to do now?
-Theo (Thinking): Knowing Chief he’ll put you on a few weeks of paperwork and he’ll let you back out.
-Dalton (Squint): What?
-Dalton (Resting): I got fired.
-Theo (Surprised): What!
-Dalton (Sigh): Termination letter is right there.
-Theo (Awkward): oh.
-Theo (Thinking): Uh...
-Theo (Concerned): D-do you need help packing up?
-Dalton (Sigh): Get out.
-Theo (Surprised): Hey, you don’t need to take-
-Dalton (Angry): GET OUT!
-Theo (Thinking): Okay, okay.
-Theo (Talk): See y-
-Theo (Awkward): I mean-
-Theo (Thinking): Uh...
-Theo (Talk): Bye?
-Dalton (Sigh): Huu...
-Dalton (Resting): Just leave.
+if {Character Aff Points.Theo} < 4:
+	Dalton (Angry): You!
+	Dalton (Squint): How dare you rat me out to Chief!
+	Theo (Mad): What did you want me to do?
+	Theo (Doubt): Lie to him?
+	Dalton (Hmph): We were partners.
+	Dalton (Talk): We’re supposed to have each other’s backs
+	Theo (Mad): Hah!
+	Theo: That’s rich coming from you!
+	Dalton (Sigh): Huu...
+	Dalton (Awkward): What am I going to do now?
+	Theo (Thinking): Knowing Chief he’ll put you on a few weeks of paperwork and he’ll let you back out.
+	Dalton (Squint): What?
+	Dalton (Resting): I got fired.
+	Theo (Surprised): What!
+	Dalton (Sigh): Termination letter is right there.
+	Theo (Awkward): oh.
+	Theo (Thinking): Uh...
+	Theo (Concerned): D-do you need help packing up?
+	Dalton (Sigh): Get out.
+	Theo (Surprised): Hey, you don’t need to take-
+	Dalton (Angry): GET OUT!
+	Theo (Thinking): Okay, okay.
+	Theo (Talk): See y-
+	Theo (Awkward): I mean-
+	Theo (Thinking): Uh...
+	Theo (Talk): Bye?
+	Dalton (Sigh): Huu...
+	Dalton (Resting): Just leave.
+else:
+	Theo (Happy): Hey, Dalton!
+	Theo (Laugh): What's pop-
+	Theo (Surprised): Oh.
+	Theo (Concerned): What happened?
+	Dalton (Awkward): ...got fired.
+	Theo (Surprised): What!
+	Dalton (Sigh): Termination letter is right there.
+	Theo (Mad): Termination letter?
+	Theo (Thinking): Wha- 
+	Theo (Sad): How?
+	Theo (Concerned): We were so close-
+	Dalton (Resting): What did you say to Chief?
+	Theo (Surprised): Nothing, I swear!
+	Theo (Mad): I'll go talk to him.
+	Theo (Thinking): Maybe he'll-
+	Dalton (Sad): Just... 
+	Dalton (Sigh): leave.
+	Theo (Concerned): But-
+	Dalton (Awkward): He already made up his mind.
+	Dalton (Sigh): And I missed my chance...
+	Theo (Sad): ...
+	Theo (Concerned): ...
+	Dalton (Resting): Don't make this harder than it already is.
+	Theo (Thinking): I...
+	Theo (Concerned): Um...
+	Theo (Sad): See ya, Dalton...
+	Dalton (Sigh): Yeah...
 [signal arg = "theo_exit"]
 [wait time="2.0"]
 [end_timeline]

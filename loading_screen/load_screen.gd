@@ -53,16 +53,13 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	else:
 		pass
-	print("pre-loading")
 	in_loading = true
 	if glitch_in == true:
 		SceneTransitions.glitch_to_load()
 		await SceneTransitions.glitch.animation_finished
 	else:
-		print("loading")
 		SceneTransitions.fade_to_load()
 		await SceneTransitions.fade.animation_finished
-	print("loading2")
 	var loading_scene = load(loading_scene_file)
 	var scene_instance = loading_scene.instantiate()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -191,6 +188,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 					await get_tree().create_timer(3.0).timeout
 				else:
 					SceneTransitions.fade_change_packed_scene(new_scene)
+					_fade_morning(type, time, wake_sounds)
 					await get_tree().create_timer(1.0).timeout
 				current_anim.stop()
 				toggle_drive(false)
@@ -222,6 +220,12 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	emit_signal("end_dialogue")
 
+func _fade_morning(type, time, wake_sounds : AudioStreamPlayer):
+	if type == "Sleep" and time != "To Dream":
+		var tween = create_tween()
+		tween.tween_property(wake_sounds, "volume_db", -88.0, 3.0)
+		await get_tree().create_timer(2.0).timeout
+		
 #choosing dialogue if there is any
 func choose_drive_dialogue():
 	match GlobalVars.day:
