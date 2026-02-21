@@ -1,3 +1,6 @@
 Phone: [shake rate=10.0 level=4 connected=2]We're sorry.[/shake]
 Phone: [shake rate=10.0 level=4 connected=2]The number you have dialed has been disconnected or is no longer in service.[/shake]
+[wait time="0.1"]
+[signal arg="end_call"]
+[wait time="1.0"]
 Dalton (Sad): ...

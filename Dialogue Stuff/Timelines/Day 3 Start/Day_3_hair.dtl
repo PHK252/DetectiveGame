@@ -20,6 +20,7 @@ Chief: [shake rate=10.0 level=4 connected=2]Just hang tight until they bring the
 Chief: [shake rate=10.0 level=4 connected=2]We’ll move Aslan to the interrogation room for questioning when they get here.[/shake]
 Dalton (Default): Understood.
 Dalton (Talk): Thank you, s-
+[wait time="0.1"]
 [signal arg = "end_call"]
 [wait time="1.0"]
 Dalton (Sigh): Huu...

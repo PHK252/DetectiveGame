@@ -183,7 +183,7 @@
 [ext_resource type="AudioStream" uid="uid://bkr7wavakq430" path="res://Audio/misc_sounds/deleteblip.wav" id="179_ch132"]
 [ext_resource type="AudioStream" uid="uid://v678plit6mbe" path="res://Audio/extra_sounds_misc/phone_ring_sound.wav" id="180_v8hec"]
 [ext_resource type="AudioStream" uid="uid://5u842guoerxx" path="res://Audio/extra_sounds_misc/phone_pickup.wav" id="181_5ppeq"]
-[ext_resource type="AudioStream" uid="uid://berqrpib5dhjo" path="res://Audio/extra_sounds_misc/hangup_2.wav" id="182_v8hec"]
+[ext_resource type="AudioStream" uid="uid://u22nb3i2coc" path="res://Audio/Extras/HangupAlt.mp3" id="184_k471k"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cs8vq"]
 
@@ -3187,7 +3187,7 @@ volume_db = -15.0
 bus = &"SFX"
 
 [node name="hangup" type="AudioStreamPlayer" parent="Phone_Sounds_General"]
-stream = ExtResource("182_v8hec")
+stream = ExtResource("184_k471k")
 volume_db = -15.0
 bus = &"SFX"
 

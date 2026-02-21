@@ -8,6 +8,7 @@ extends MeshInstance3D
 @export var office_theme : AudioStreamPlayer
 @export var door_slam : AudioStreamPlayer
 @export var camShake : AnimationPlayer
+@export var hangup : AudioStreamPlayer
 @onready var object = $"."
 @onready var look_click = $"../../../../UI/Casefile"
 @onready var ending_text = $"../../../../UI/Ending Text"
@@ -201,8 +202,15 @@ func _on_call_start_dialogue():
 #	print(dialogue_file)
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_ending_timeline_ended)
+	Dialogic.signal_event.connect(_end_call)
 	Dialogic.start(dialogue_file, "call")
-	
+
+func _end_call(arg : String):
+	if arg == "end_call":
+		Dialogic.signal_event.disconnect(_end_call)
+		if hangup:
+			hangup.play()
+
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	player.start_player()

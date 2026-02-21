@@ -25,8 +25,9 @@ Quincy (Call): [shake rate=10.0 level=4 connected=2]Well, I have to go now.[/sha
 Quincy (Call): [shake rate=10.0 level=4 connected=2]Urgent mayor business, you know.[/shake]
 Quincy (Call): [shake rate=10.0 level=4 connected=2]See you soon.[/shake]
 Dalton (Resting): Bye.
+[wait time="0.1"]
 [signal arg="end_call"]
-[wait time=".3"]
+[wait time="1.0"]
 Theo (Happy): Was that the Mayor?
 Dalton (Resting): Yeah.
 Theo (Silly): Ooo... 

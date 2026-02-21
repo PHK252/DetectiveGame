@@ -14,6 +14,7 @@ extends CanvasLayer
 #@export var theo_marker : Marker2D
 @export var alert : Sprite3D
 @export var music : AudioStreamPlayer
+@export var hangup : AudioStreamPlayer
 var went_Micah : bool
 var went_Juniper : bool
 var went_Quincy : bool
@@ -222,7 +223,14 @@ func _on_visibility_changed():
 func _on_Quincy_call_start_dialogue():
 	GlobalVars.in_dialogue = true
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	Dialogic.signal_event.connect(_end_call)
 	Dialogic.start("Day_1_Quincy_Call")
+
+func _end_call(arg : String):
+	if arg == "end_call":
+		Dialogic.signal_event.disconnect(_end_call)
+		if hangup:
+			hangup.play()
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

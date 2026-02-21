@@ -12,6 +12,7 @@ extends Node3D
 @export var theo_marker : Marker2D
 @onready var pause = $Pause
 var dialogue_file: String
+@export var hangup : AudioStreamPlayer
 #settings
 @export var sub_v_container : SubViewportContainer
 @export var subviewport : SubViewportContainer
@@ -282,9 +283,15 @@ func _on_start_call():
 	#Dialogic.paused = false
 	#Dialogic.Styles.get_layout_node().show()
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	Dialogic.signal_event.connect(_end_call)
 	Dialogic.start(dialogue_file, "call")
-#settings changes
 
+func _end_call(arg : String):
+	if arg == "end_call":
+		Dialogic.signal_event.disconnect(_end_call)
+		if hangup:
+			hangup.play()
+#settings changes
 func _set_pixelation(stretch) -> void:
 	sub_v_container.stretch_shrink = stretch
 

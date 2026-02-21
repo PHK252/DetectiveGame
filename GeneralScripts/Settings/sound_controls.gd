@@ -20,7 +20,7 @@ var music_index = AudioServer.get_bus_index("Music")
 var master_index = AudioServer.get_bus_index("Master")
 
 const MASTER_DEFAULT : float = 0.8
-var MUSIC_DEFAULT : float = .6
+var MUSIC_DEFAULT : float = .4
 var SFX_DEFAULT : float = .75
 var AMB_DEFAULT : float = .55
 

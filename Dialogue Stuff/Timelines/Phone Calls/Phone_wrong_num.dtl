@@ -1,3 +1,6 @@
 Phone: [shake rate=10.0 level=2 connected=0]Your call has been forwarded to an automated voice messaging system.[/shake]
 Phone: [shake rate=10.0 level=4 connected=2]At the tone, please record your message or hang up and try again later.[/shake]
+[wait time="0.1"]
+[signal arg="end_call"]
+[wait time="1.0"]
 Dalton (Sigh): ...

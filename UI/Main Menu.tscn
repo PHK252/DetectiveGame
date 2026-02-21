@@ -521,6 +521,7 @@ bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_prttk")
+volume_db = -3.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true

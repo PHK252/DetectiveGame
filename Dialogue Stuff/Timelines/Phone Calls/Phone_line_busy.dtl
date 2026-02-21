@@ -1,5 +1,8 @@
 Phone: [shake rate=10.0 level=4 connected=2]This line is busy.[/shake] 
 Phone: [shake rate=10.0 level=4 connected=2]Please try again later or stay on the line to be added to a virtual queue.[/shake]
+[wait time="0.1"]
+[signal arg="end_call"]
+[wait time="1.0"]
 Dalton (Roll Eyes): ... 
 Dalton (Sigh): ...
 [end_timeline]

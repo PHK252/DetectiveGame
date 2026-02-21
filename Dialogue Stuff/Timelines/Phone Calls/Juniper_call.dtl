@@ -26,5 +26,7 @@ if {Juniper.leave} == true and {Call.Juniper_called} == false and {Character Aff
 	Juniper (Call): [shake rate=10.0 level=4 connected=2]I’ll hold ya to that![/shake]
 	Juniper (Call): [shake rate=10.0 level=4 connected=2]See ya, Detective![/shake]
 	set {Call.Juniper_called} = true
+	[wait time="0.1"]
+	[signal arg="end_call"]
 else:
 	jump Phone_wrong_num/

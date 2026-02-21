@@ -15,12 +15,13 @@ Chief: [shake rate=10.0 level=4 connected=2]You ought to be thanking the mayor.[
 Chief: [shake rate=10.0 level=4 connected=2]It was quite the sight this morning.[/shake] 
 Chief: [shake rate=10.0 level=4 connected=2]We’ll move Aslan to the interrogation room when you and Detective Lycus are ready.[/shake]
 Dalton (Talk): Thank you, s-
+[wait time="0.1"]
 [signal arg = "end_call"]
 [wait time="1.0"]
 Dalton (Squint): Quincy was here?
 Dalton (Doubt1): How did he find-
 [signal arg = "theo_walk_in"]
-[wait time=="5.0"]
+[wait time="5.0"]
 Theo (Laugh): Hi Dalton!
 Dalton (Talk): Suspect is in holding. 
 Dalton (Default): We should go talk to them. 

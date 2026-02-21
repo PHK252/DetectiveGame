@@ -10,10 +10,14 @@ Theo (Call): [shake rate=10.0 level=4 connected=2]Did ya find anything?[/shake]
 Dalton (Hmph): Hmph. 
 Dalton (Awkward): Nevermind.
 Theo (Call): [shake rate=10.0 level=4 connected=2]Wha-
+[wait time="0.1"]
+[signal arg="end_call"]
 [end_timeline]
 label Before Case
 Theo (Call): [shake rate=10.0 level=4 connected=2]Hello?[/shake]
 Dalton (Surprised): Ah-
 Theo (Call): [shake rate=10.0 level=4 connected=2]Dal-?[/shake]
 Dalton (Awkward): oops.
+[wait time="0.1"]
+[signal arg="end_call"]
 [end_timeline]

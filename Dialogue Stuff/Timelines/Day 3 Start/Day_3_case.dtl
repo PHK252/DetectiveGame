@@ -20,6 +20,7 @@ Chief: [shake rate=10.0 level=4 connected=2]Found loitering around a store at th
 Dalton (Talk): Thank you, sir. 
 Chief: [shake rate=10.0 level=4 connected=2]We’ll move Aslan to the interrogation room when you and Detective Lycus are ready.[/shake]
 Dalton (Talk): Thank you, s-
+[wait time="0.1"]
 [signal arg = "end_call"]
 [wait time="1.0"]
 Dalton (Sigh): Huu...

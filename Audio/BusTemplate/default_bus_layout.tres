@@ -10,9 +10,11 @@ sidechain = &"dialogue"
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_46px0"]
 resource_name = "Amplify"
 
-[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_46px0"]
-resource_name = "HighPassFilter"
-cutoff_hz = 292.0
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_vuags"]
+resource_name = "Compressor"
+threshold = -6.2
+attack_us = 63.0
+release_ms = 80.0
 
 [resource]
 bus/0/volume_db = -1.51925
@@ -20,7 +22,7 @@ bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -4.003
+bus/1/volume_db = -7.63485
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectCompressor_46px0")
 bus/1/effect/0/enabled = true
@@ -42,9 +44,9 @@ bus/4/name = &"dialogue"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -7.26851
+bus/4/volume_db = -12.9785
 bus/4/send = &"SFX"
-bus/4/effect/0/effect = SubResource("AudioEffectHighPassFilter_46px0")
+bus/4/effect/0/effect = SubResource("AudioEffectCompressor_vuags")
 bus/4/effect/0/enabled = true
 bus/5/name = &"Death"
 bus/5/solo = false
