@@ -301,10 +301,11 @@ func _on_call_pressed():
 	
 	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
 	if GlobalVars.in_dialogue == false:
-		# Dialing THEO
+		player.stop_player()
 		if alert.visible:
 			alert.hide()
 		GlobalVars.in_interaction = "phone call"
+		# Dialing THEO
 		if called_num == "034-2012": 
 			if at_bookshelf == true and needs_distraction == true:
 				var book_distract = Dialogic.start("Quincy_book_distract")
@@ -326,16 +327,19 @@ func _on_call_pressed():
 				if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 					Dialogic.start("Phone_wrong_num")
 					GlobalVars.in_dialogue = true
+					Dialogic.signal_event.connect(_end_call)
 					Dialogic.timeline_ended.connect(_on_timeline_ended)
 					return
 				if GlobalVars.current_level == "quincy":
 					Dialogic.start("Theo_call", "separated")
 					GlobalVars.in_dialogue = true
+					Dialogic.signal_event.connect(_end_call)
 					Dialogic.timeline_ended.connect(_on_timeline_ended)
 					return
 				if GlobalVars.current_level == "Office" and GlobalVars.day == 1:
 					Dialogic.start("Theo_call", "Before Case")
 					GlobalVars.in_dialogue = true
+					Dialogic.signal_event.connect(_end_call)
 					Dialogic.timeline_ended.connect(_on_timeline_ended)
 					return
 				Dialogic.start("Theo_call", "with Dalton")
@@ -347,12 +351,14 @@ func _on_call_pressed():
 		if called_num == "194-108":
 			Dialogic.start("Juniper_call")
 			GlobalVars.in_dialogue = true
+			Dialogic.signal_event.connect(_end_call)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			return
 		# Dialing CLYDE
 		if called_num == "093-316":
 			Dialogic.start("Clyde_call")
 			GlobalVars.in_dialogue = true
+			Dialogic.signal_event.connect(_end_call)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			return
 		# Dialing QUINCY
@@ -363,16 +369,19 @@ func _on_call_pressed():
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 			else:
 				Dialogic.start("Phone_line_busy")
+				Dialogic.signal_event.connect(_end_call)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 			return
 		# Dialing ISAAC
 		if called_num == "034-921":
 			Dialogic.start("Phone_num_gone")
 			GlobalVars.in_dialogue = true
+			Dialogic.signal_event.connect(_end_call)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			return
 		Dialogic.start("Phone_wrong_num")
 		GlobalVars.in_dialogue = true
+		Dialogic.signal_event.connect(_end_call)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		
 		
@@ -387,14 +396,17 @@ func _on_isaac_pressed():
 	if alert.visible:
 		alert.hide()
 	exit_phone()
+	player.stop_player()
 	Dialogic.start("Phone_num_gone")
 	GlobalVars.in_interaction = "phone call"
 	GlobalVars.in_dialogue = true
+	Dialogic.signal_event.connect(_end_call)
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 
 func _on_quincy_pressed():
 	exit_phone()
+	player.stop_player()
 	if alert.visible:
 		alert.hide()
 	GlobalVars.in_dialogue = true
@@ -402,6 +414,7 @@ func _on_quincy_pressed():
 		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 			Dialogic.start("Phone_wrong_num")
 			GlobalVars.in_dialogue = true
+			Dialogic.signal_event.connect(_end_call)
 			Dialogic.timeline_ended.connect(_on_timeline_ended) 
 			return
 		Dialogic.start("Phone_line_busy", "in house")
@@ -409,6 +422,7 @@ func _on_quincy_pressed():
 	else:
 		Dialogic.start("Phone_line_busy")
 		GlobalVars.in_interaction = "phone call"
+		Dialogic.signal_event.connect(_end_call)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 	
 
@@ -416,29 +430,36 @@ func _on_juniper_pressed(): #UPDATE TIMELINE
 	if alert.visible:
 		alert.hide()
 	exit_phone()
+	player.stop_player()
 	Dialogic.start("Juniper_call")
 	GlobalVars.in_interaction = "phone call"
 	GlobalVars.in_dialogue = true
+	Dialogic.signal_event.connect(_end_call)
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func _on_clyde_pressed():
 	if alert.visible:
 		alert.hide()
 	exit_phone()
+	player.stop_player()
 	Dialogic.start("Clyde_call")
 	GlobalVars.in_interaction = "phone call"
 	GlobalVars.in_dialogue = true
+	Dialogic.signal_event.connect(_end_call)
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func _on_skylar_pressed(): #UPDATE TIMELINE
 	exit_phone()
+	player.stop_player()
 	GlobalVars.in_interaction = "phone call"
 	Dialogic.start("Phone_wrong_num")
 	GlobalVars.in_dialogue = true
+	Dialogic.signal_event.connect(_end_call)
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func _on_theo_pressed(): #UPDATE TIMELINE
 	exit_phone()
+	player.stop_player()
 	if alert.visible:
 		alert.hide()
 	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
@@ -466,16 +487,19 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 			if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 				Dialogic.start("Phone_wrong_num")
 				GlobalVars.in_dialogue = true
+				Dialogic.signal_event.connect(_end_call)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				return
 			if GlobalVars.current_level == "quincy":
 				Dialogic.start("Theo_call", "separated")
 				GlobalVars.in_dialogue = true
+				Dialogic.signal_event.connect(_end_call)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				return
 			if GlobalVars.current_level == "Office" and GlobalVars.day == 1:
 				Dialogic.start("Theo_call", "Before Case")
 				GlobalVars.in_dialogue = true
+				Dialogic.signal_event.connect(_end_call)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				return
 			Dialogic.start("Theo_call", "with Dalton")
