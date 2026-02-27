@@ -20,6 +20,7 @@ var selected : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MusicFades.fade_in_audio()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if AudioServer.is_bus_mute(0) == true:
 		AudioServer.set_bus_mute(0, false)

@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var music_player : AudioStreamPlayer
 @export var ending_label : RichTextLabel
 @export var icon : TextureRect
 @export var dev_team : AnimatedSprite2D
@@ -12,27 +13,47 @@ extends CanvasLayer
 @export var music : AnimationPlayer
 
 @export var layers : Array[Control]
-
+signal oneshot_finished
+signal fading(value)
 var cur_layer := 0
+var in_fade := false:
+	set(value):
+		in_fade = value
+		if in_fade == false:
+			fading.emit()
 func _ready():
 	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#GlobalVars.reset_globals()
 	_show_ending()
-	play_dev_cred()
-	play_oneshot_cred(threeDs, "Spin")
-	play_oneshot_cred(twoDs, "Flap")
-	play_oneshot_cred(writer, "Writing", 10.0)
-	play_oneshot_cred(UI, "Button Movement", 7.0)
-	play_oneshot_cred(audio, "Engine", 5.0, true)
-	play_oneshot_cred(sfx, "Footsteps")
+	await oneshot_finished
+	play_oneshot_cred(threeDs, "Spin", 8.0)
+	await oneshot_finished
+	play_oneshot_cred(twoDs, "Flap", 8.0)
+	await oneshot_finished
+	play_oneshot_cred(writer, "Writing", 8.0)
+	await oneshot_finished
+	play_oneshot_cred(UI, "Button Movement", 8.0)
+	await oneshot_finished
+	play_oneshot_cred(audio, "Engine", 6.0)
+	await oneshot_finished
+	play_oneshot_cred(sfx, "Footsteps", 6.0)
+	await oneshot_finished
 	play_oneshot_cred(music, "Play", 6.0)
-	
-	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	#GlobalVars.reset_globals()
-	#get_tree().quit()
+	await oneshot_finished
+	play_dev_cred()
+	await oneshot_finished
+	await get_tree().create_timer(6.0).timeout
+	_fade_in_out()
+	await get_tree().create_timer(6.5).timeout
+	_fade_in_out()
+	await music_player.finished
+	_fade(layers[cur_layer], 0.0, 2.0)
+	await get_tree().create_timer(5.0).timeout
+	print("done")
+	_end_credits()
 
 func _show_ending():
-	_fade(layers[cur_layer], 1)
+	_fade(layers[cur_layer], 1.0, 2.0)
 	match Dialogic.VAR.get_variable("Endings.Ending_type"):
 		"Arrested Skylar":
 			ending_label.text = "[center]Bare Minimum[/center]"
@@ -60,8 +81,9 @@ func _show_ending():
 			icon.texture = load("res://UI/Assets/Credits/Endings/Poke.png")
 		_:
 			print_debug("How did this happen")
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(8.0).timeout
 	_fade_in_out()
+	emit_signal("oneshot_finished")
 
 func play_dev_cred():
 	dev_team.play("Beginning")
@@ -75,30 +97,54 @@ func play_dev_cred():
 	dev_team.play("Ending")
 	await dev_team.animation_finished
 	_fade_in_out()
-
+	emit_signal("oneshot_finished")
 
 
 func play_oneshot_cred(sprite, anim : String, time : float = 5.0, delay : bool = false, delay_time : float = 1.0):
-	if delay:
-		await get_tree().create_timer(delay_time).timeout
+	await fading
 	sprite.play(anim)
 	await get_tree().create_timer(time).timeout
-	#_fade_in_out()
-	sprite.stop()
+	_fade_in_out()
+	emit_signal("oneshot_finished")
+	
 
 func _fade_in_out():
 	if cur_layer < layers.size():
+		in_fade = true
 		_fade(layers[cur_layer], 0)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1.0).timeout
 		layers[cur_layer].hide()
 		cur_layer += 1
 		layers[cur_layer].show()
 		_fade(layers[cur_layer], 1)
+		in_fade = false
 	else:
 		print("credit end")
 		return
 
-func _fade(lay : Control, value : float):
+func _fade(lay : Control, value : float, time : float = 1.0):
 	var tween = create_tween()
-	tween.tween_property(lay, "modulate:a", value, 0.5)
-	await get_tree().create_timer(0.5).timeout
+	tween.tween_property(lay, "modulate:a", value, time)
+	await get_tree().create_timer(time).timeout
+
+@export var timer : Timer
+var pressed := false
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
+		if pressed == false:
+			timer.start()
+			pressed = true
+	if event is InputEventKey and event.is_released() and event.keycode == KEY_SPACE:
+		timer.stop()
+		pressed = false
+	
+func _on_timer_timeout():
+	timer.stop()
+	_end_credits()
+
+
+func _end_credits():
+	MusicFades.fade_out_audio()
+	SceneTransitions.fade_change_scene(GlobalVars.main_menu)
+	await get_tree().create_timer(1.0).timeout
+	queue_free()

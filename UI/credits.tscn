@@ -1,8 +1,8 @@
-[gd_scene load_steps=253 format=3 uid="uid://35i58aybkqg3"]
+[gd_scene load_steps=230 format=3 uid="uid://35i58aybkqg3"]
 
-[ext_resource type="FontFile" uid="uid://bfh28807un7kc" path="res://Dialogue Stuff/Fonts/Menu Font.ttf" id="1_ng644"]
 [ext_resource type="Script" uid="uid://0yp0aijgmdux" path="res://UI/credits.gd" id="1_uuuvy"]
 [ext_resource type="Texture2D" uid="uid://ck640slqpsior" path="res://UI/Assets/Credits/Endings/Poke.png" id="2_kk2ga"]
+[ext_resource type="FontFile" uid="uid://b1m3n2uorffu7" path="res://Dialogue Stuff/Fonts/Menu Font Ending.ttf" id="3_3omd1"]
 [ext_resource type="Texture2D" uid="uid://c201mctig6c7s" path="res://UI/Assets/Credits/Development Rage/Beginning/Development1.png" id="4_68cdf"]
 [ext_resource type="Texture2D" uid="uid://dxmc85t7p701r" path="res://UI/Assets/Credits/Development Rage/Beginning/Development2.png" id="5_u8gop"]
 [ext_resource type="Texture2D" uid="uid://dtnksmr2dkl4x" path="res://UI/Assets/Credits/Development Rage/Beginning/Development3.png" id="6_vfoxg"]
@@ -88,14 +88,6 @@
 [ext_resource type="Texture2D" uid="uid://by57oi0sgemtc" path="res://UI/Assets/Credits/2D Artist/Papers11.png" id="86_n5nxa"]
 [ext_resource type="Texture2D" uid="uid://cdoo0tkvry3bc" path="res://UI/Assets/Credits/2D Artist/Papers12.png" id="87_n8013"]
 [ext_resource type="Texture2D" uid="uid://sa1tx0nea8vt" path="res://UI/Assets/Credits/2D Artist/Papers13.png" id="88_g0jcj"]
-[ext_resource type="Texture2D" uid="uid://cxbsmky4oiknd" path="res://UI/Assets/Credits/Writing/Writing1.png" id="89_jxua2"]
-[ext_resource type="Texture2D" uid="uid://ce1iib5nue1p3" path="res://UI/Assets/Credits/Writing/Writing2.png" id="90_jwpv2"]
-[ext_resource type="Texture2D" uid="uid://dyu8s3jler1sl" path="res://UI/Assets/Credits/Writing/Writing3.png" id="91_38wmn"]
-[ext_resource type="Texture2D" uid="uid://p7orik2463ex" path="res://UI/Assets/Credits/Writing/Writing4.png" id="92_mikdn"]
-[ext_resource type="Texture2D" uid="uid://br207iase68p" path="res://UI/Assets/Credits/Writing/Writing5.png" id="93_jrctn"]
-[ext_resource type="Texture2D" uid="uid://co0n2brj72eiv" path="res://UI/Assets/Credits/Writing/Writing6.png" id="94_fgphk"]
-[ext_resource type="Texture2D" uid="uid://t81u78y6afhl" path="res://UI/Assets/Credits/Writing/Writing7.png" id="95_oeui3"]
-[ext_resource type="Texture2D" uid="uid://dssvt5ddopwh7" path="res://UI/Assets/Credits/Writing/Writing8.png" id="96_manm3"]
 [ext_resource type="Texture2D" uid="uid://boxjyms40i2dn" path="res://UI/Assets/Credits/Writing/Writing9.png" id="97_1xiuc"]
 [ext_resource type="Texture2D" uid="uid://opyvu0powcoa" path="res://UI/Assets/Credits/Writing/Writing10.png" id="98_rm12r"]
 [ext_resource type="Texture2D" uid="uid://blo3dkpeoiqx5" path="res://UI/Assets/Credits/Writing/Writing11.png" id="99_26xue"]
@@ -160,13 +152,6 @@
 [ext_resource type="Texture2D" uid="uid://bc7qmye3fuoru" path="res://UI/Assets/Credits/Writing/Writing70.png" id="158_c44ep"]
 [ext_resource type="Texture2D" uid="uid://kvx3gq7w08q3" path="res://UI/Assets/Credits/Writing/Writing71.png" id="159_tfb1k"]
 [ext_resource type="Texture2D" uid="uid://dcuisj7wc36uo" path="res://UI/Assets/Credits/Writing/Writing72.png" id="160_hi2n8"]
-[ext_resource type="Texture2D" uid="uid://bapipyfl7co0l" path="res://UI/Assets/Credits/Writing/Writing73.png" id="161_0j565"]
-[ext_resource type="Texture2D" uid="uid://cw6suyu6a25pf" path="res://UI/Assets/Credits/Writing/Writing74.png" id="162_dc13n"]
-[ext_resource type="Texture2D" uid="uid://cnhwx4nsyvoeh" path="res://UI/Assets/Credits/Writing/Writing75.png" id="163_ce3io"]
-[ext_resource type="Texture2D" uid="uid://b2gfbyxkx64hk" path="res://UI/Assets/Credits/Writing/Writing76.png" id="164_sdhfh"]
-[ext_resource type="Texture2D" uid="uid://dnskrxc1laac1" path="res://UI/Assets/Credits/Writing/Writing77.png" id="165_62ltk"]
-[ext_resource type="Texture2D" uid="uid://ou3yrxyfsva0" path="res://UI/Assets/Credits/Writing/Writing78.png" id="166_jcxla"]
-[ext_resource type="Texture2D" uid="uid://d4g4in1wuhdnd" path="res://UI/Assets/Credits/Writing/Writing79.png" id="167_omd0q"]
 [ext_resource type="Texture2D" uid="uid://cs6hui4ak88y8" path="res://UI/Assets/Credits/UI/Unpressed.png" id="168_jrctn"]
 [ext_resource type="Texture2D" uid="uid://c1llnh0pwnlnk" path="res://UI/Assets/Credits/UI/Pressed.png" id="169_fgphk"]
 [ext_resource type="Texture2D" uid="uid://dmcoqpsq3tbg6" path="res://UI/Assets/Credits/UI/Arrow.png" id="170_oeui3"]
@@ -195,15 +180,6 @@
 [ext_resource type="Texture2D" uid="uid://bq3luy5j1utu5" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer22.png" id="193_56xl1"]
 [ext_resource type="Texture2D" uid="uid://fx5dfpagx10k" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer23.png" id="194_7n3mm"]
 [ext_resource type="Texture2D" uid="uid://fyh3ej3gx0ry" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer24.png" id="195_w7dkd"]
-[ext_resource type="Texture2D" uid="uid://vw386xfgtydl" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer25.png" id="196_u01nl"]
-[ext_resource type="Texture2D" uid="uid://203nkvwh7emo" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer26.png" id="197_ahyxs"]
-[ext_resource type="Texture2D" uid="uid://dm8w2gnf8pjjs" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer27.png" id="198_1vcmd"]
-[ext_resource type="Texture2D" uid="uid://chfy88on51knt" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer28.png" id="199_ri6kg"]
-[ext_resource type="Texture2D" uid="uid://gydqrvjqmgra" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer29.png" id="200_uhfek"]
-[ext_resource type="Texture2D" uid="uid://b70yig7i40o0d" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer30.png" id="201_oxv73"]
-[ext_resource type="Texture2D" uid="uid://8i38j171d2dr" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer31.png" id="202_a5k6q"]
-[ext_resource type="Texture2D" uid="uid://ccq2x3q7fj86j" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer32.png" id="203_d0qqu"]
-[ext_resource type="Texture2D" uid="uid://c4543i4eyfvqy" path="res://UI/Assets/Credits/Audio Engines/Audio Engineer33.png" id="204_8as3c"]
 [ext_resource type="Texture2D" uid="uid://dkmglfv4gc061" path="res://UI/Assets/Credits/SFXs/SFXs1.png" id="205_wyrqd"]
 [ext_resource type="Texture2D" uid="uid://dn5mrj2gd3hlw" path="res://UI/Assets/Credits/SFXs/SFXs2.png" id="206_7nepb"]
 [ext_resource type="Texture2D" uid="uid://c2wb1i837ciov" path="res://UI/Assets/Credits/SFXs/SFXs3.png" id="207_rwg5c"]
@@ -237,6 +213,7 @@
 [ext_resource type="Texture2D" uid="uid://dgo43wjjlfco" path="res://UI/Assets/Credits/Music/Notes/whole.png" id="235_0812m"]
 [ext_resource type="Texture2D" uid="uid://b838ded1v76mw" path="res://UI/Assets/Credits/Godot.png" id="236_tfb1k"]
 [ext_resource type="Texture2D" uid="uid://bsta7c62s7ewo" path="res://UI/Assets/Credits/Dialogic.png" id="237_hi2n8"]
+[ext_resource type="AudioStream" uid="uid://bq7uy6uyjeopk" path="res://Audio/masters_ogg/credits_master.ogg" id="238_hi2n8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sx0m1"]
 animations = [{
@@ -531,30 +508,6 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("89_jxua2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("90_jwpv2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("91_38wmn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("92_mikdn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("93_jrctn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("94_fgphk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("95_oeui3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("96_manm3")
-}, {
-"duration": 1.0,
 "texture": ExtResource("97_1xiuc")
 }, {
 "duration": 1.0,
@@ -747,25 +700,25 @@ animations = [{
 "texture": ExtResource("160_hi2n8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("161_0j565")
+"texture": ExtResource("160_hi2n8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("162_dc13n")
+"texture": ExtResource("160_hi2n8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("163_ce3io")
+"texture": ExtResource("160_hi2n8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("164_sdhfh")
+"texture": ExtResource("160_hi2n8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("165_62ltk")
+"texture": ExtResource("160_hi2n8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("166_jcxla")
+"texture": ExtResource("160_hi2n8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("167_omd0q")
+"texture": ExtResource("160_hi2n8")
 }],
 "loop": false,
 "name": &"Writing",
@@ -812,7 +765,7 @@ tracks/0/path = NodePath("Buttons:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.453687, 0.565383, 1.10792, 1.22551, 1.71564, 1.82219, 2.36934, 2.51688, 2.9798),
+"times": PackedFloat32Array(0, 0.453687, 0.565383, 1.125, 1.22551, 1.7021, 1.82219, 2.30758, 2.51688, 2.96322),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
@@ -836,7 +789,7 @@ tracks/2/path = NodePath("Buttons:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.503687, 0.578687, 1.164, 1.25419, 1.78056, 1.82219, 2.43838, 2.50585, 3.02555),
+"times": PackedFloat32Array(0, 0.503687, 0.578687, 1.164, 1.25419, 1.75, 1.82219, 2.375, 2.50585, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false]
@@ -860,7 +813,7 @@ tracks/4/path = NodePath("Mouse:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.278832, 0.512424, 0.98366, 1.164, 1.54267, 1.78027, 2.26983, 2.45872, 2.75413, 3.02804),
+"times": PackedFloat32Array(0, 0.278832, 0.512424, 0.98366, 1.164, 1.64303, 1.75, 2.26983, 2.45872, 2.75413, 3.02804),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
@@ -972,6 +925,105 @@ animations = [{
 "texture": ExtResource("182_omd0q")
 }, {
 "duration": 1.0,
+"texture": ExtResource("172_rxdik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_c44ep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_tfb1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_hi2n8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_0j565")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_dc13n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_ce3io")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_sdhfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_62ltk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_jcxla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_omd0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_rxdik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_c44ep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_tfb1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_hi2n8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_0j565")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_dc13n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_ce3io")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_sdhfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_62ltk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_jcxla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_omd0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_rxdik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_c44ep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_tfb1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_hi2n8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_0j565")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_dc13n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_ce3io")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_sdhfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_62ltk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_jcxla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_omd0q")
+}, {
+"duration": 1.0,
 "texture": ExtResource("183_knh7r")
 }, {
 "duration": 1.0,
@@ -1011,31 +1063,31 @@ animations = [{
 "texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("196_u01nl")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("197_ahyxs")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("198_1vcmd")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("199_ri6kg")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("200_uhfek")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("201_oxv73")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("202_a5k6q")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("203_d0qqu")
+"texture": ExtResource("195_w7dkd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("204_8as3c")
+"texture": ExtResource("195_w7dkd")
 }],
 "loop": false,
 "name": &"Engine",
@@ -1089,15 +1141,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("219_j0sop")
-}, {
-"duration": 1.0,
-"texture": ExtResource("220_6cqcj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("220_6cqcj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("220_6cqcj")
 }, {
 "duration": 1.0,
 "texture": ExtResource("220_6cqcj")
@@ -1504,8 +1547,9 @@ _data = {
 &"RESET": SubResource("Animation_j40gv")
 }
 
-[node name="Credits" type="CanvasLayer" node_paths=PackedStringArray("ending_label", "icon", "dev_team", "threeDs", "twoDs", "writer", "UI", "audio", "sfx", "music", "layers")]
+[node name="Credits" type="CanvasLayer" node_paths=PackedStringArray("music_player", "ending_label", "icon", "dev_team", "threeDs", "twoDs", "writer", "UI", "audio", "sfx", "music", "layers", "timer")]
 script = ExtResource("1_uuuvy")
+music_player = NodePath("Music")
 ending_label = NodePath("Control/Ending/HBoxContainer/Ending")
 icon = NodePath("Control/Ending/HBoxContainer/Icon")
 dev_team = NodePath("Control/Dev Team/Rage")
@@ -1516,7 +1560,10 @@ UI = NodePath("Control/UI/Button")
 audio = NodePath("Control/Audio/Audio")
 sfx = NodePath("Control/SFXs/SFXs")
 music = NodePath("Control/Music/Music")
-layers = [NodePath("Control/Ending"), NodePath("Control/Dev Team"), NodePath("Control/3D Artist"), NodePath("Control/2D Artist"), NodePath("Control/Writer"), NodePath("Control/UI"), NodePath("Control/Audio"), NodePath("Control/SFXs"), NodePath("Control/Music"), NodePath("Control/Godot"), NodePath("Control/Playtest"), NodePath("Control/Thanks")]
+layers = [NodePath("Control/Ending"), NodePath("Control/3D Artist"), NodePath("Control/2D Artist"), NodePath("Control/Writer"), NodePath("Control/UI"), NodePath("Control/Audio"), NodePath("Control/SFXs"), NodePath("Control/Music"), NodePath("Control/Dev Team"), NodePath("Control/Godot"), NodePath("Control/Playtest"), NodePath("Control/Thanks")]
+timer = NodePath("Timer")
+metadata/_edit_horizontal_guides_ = [540.0]
+metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -1554,7 +1601,7 @@ texture = ExtResource("2_kk2ga")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]The Storm before the Calm[/center]"
@@ -1572,23 +1619,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Rage" type="AnimatedSprite2D" parent="Control/Dev Team"]
-position = Vector2(404, 507)
+position = Vector2(578, 540)
 sprite_frames = SubResource("SpriteFrames_sx0m1")
-animation = &"Loading"
+animation = &"Beginning"
 
 [node name="Ending" type="RichTextLabel" parent="Control/Dev Team"]
 layout_mode = 2
-offset_left = 767.0
-offset_top = 196.0
-offset_right = 1688.0
-offset_bottom = 837.0
+offset_left = 810.0
+offset_top = 358.0
+offset_right = 1731.0
+offset_bottom = 722.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_constants/line_separation = 14
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "[center]Developed by 
+K=20 Studios[/center]"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1600,23 +1649,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="3D" type="AnimatedSprite2D" parent="Control/3D Artist"]
-position = Vector2(457, 581)
+position = Vector2(656, 540)
 sprite_frames = SubResource("SpriteFrames_wuws1")
 animation = &"Spin"
 frame_progress = 0.361101
 
 [node name="Ending" type="RichTextLabel" parent="Control/3D Artist"]
-offset_left = 767.0
-offset_top = 196.0
-offset_right = 1688.0
-offset_bottom = 837.0
+layout_mode = 0
+offset_left = 959.0
+offset_top = 212.0
+offset_right = 1880.0
+offset_bottom = 853.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "3D Artist:
+Pranav Kurup"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1628,23 +1679,25 @@ offset_right = 1921.0
 offset_bottom = 1081.0
 
 [node name="Papers" type="AnimatedSprite2D" parent="Control/2D Artist"]
-position = Vector2(979, 539)
+position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_bngp7")
 animation = &"Flap"
 frame_progress = 0.863458
 
 [node name="Ending" type="RichTextLabel" parent="Control/2D Artist"]
-offset_left = 638.0
-offset_top = 285.0
-offset_right = 1348.0
-offset_bottom = 926.0
+layout_mode = 0
+offset_left = 605.0
+offset_top = 220.0
+offset_right = 1315.0
+offset_bottom = 861.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "[center]2D Artist:
+Aretha Li[/center]"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1656,24 +1709,24 @@ offset_right = 1921.0
 offset_bottom = 1081.0
 
 [node name="Writing" type="AnimatedSprite2D" parent="Control/Writer"]
-position = Vector2(421, 717)
+position = Vector2(673, 679)
 sprite_frames = SubResource("SpriteFrames_knh7r")
 animation = &"Writing"
-frame = 55
-frame_progress = 0.357307
 
 [node name="Ending" type="RichTextLabel" parent="Control/Writer"]
-offset_left = 638.0
-offset_top = 285.0
-offset_right = 1348.0
-offset_bottom = 926.0
+layout_mode = 0
+offset_left = 961.0
+offset_top = 220.0
+offset_right = 1671.0
+offset_bottom = 861.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "Writer:
+Aretha Li"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1696,17 +1749,19 @@ sprite_frames = SubResource("SpriteFrames_rm12r")
 animation = &"Mouse"
 
 [node name="Ending" type="RichTextLabel" parent="Control/UI"]
-offset_left = 638.0
-offset_top = 285.0
-offset_right = 1348.0
-offset_bottom = 926.0
+layout_mode = 0
+offset_left = 565.0
+offset_top = 220.0
+offset_right = 1355.0
+offset_bottom = 861.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "[center]UI/UX Designer:
+Aretha Li[/center]"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1724,24 +1779,25 @@ offset_right = 1921.0
 offset_bottom = 1081.0
 
 [node name="Audio" type="AnimatedSprite2D" parent="Control/Audio"]
-position = Vector2(572, 579)
+position = Vector2(571, 540)
 sprite_frames = SubResource("SpriteFrames_oqxa3")
 animation = &"Engine"
-frame = 32
-frame_progress = 1.0
 
 [node name="Ending" type="RichTextLabel" parent="Control/Audio"]
-offset_left = 804.0
-offset_top = 272.0
-offset_right = 1514.0
-offset_bottom = 913.0
+layout_mode = 0
+offset_left = 960.0
+offset_top = 220.0
+offset_right = 1670.0
+offset_bottom = 861.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_constants/line_separation = 14
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "Audio Engineer:
+Pranav Kurup"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1753,23 +1809,24 @@ offset_right = 1921.0
 offset_bottom = 1081.0
 
 [node name="SFXs" type="AnimatedSprite2D" parent="Control/SFXs"]
-position = Vector2(572, 579)
+position = Vector2(579, 541)
 sprite_frames = SubResource("SpriteFrames_4hdoo")
 animation = &"Footsteps"
-frame_progress = 0.116891
 
 [node name="Ending" type="RichTextLabel" parent="Control/SFXs"]
-offset_left = 804.0
-offset_top = 272.0
-offset_right = 1514.0
-offset_bottom = 913.0
+layout_mode = 0
+offset_left = 960.0
+offset_top = 220.0
+offset_right = 1670.0
+offset_bottom = 861.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "Sound FXs:
+Pranav Kurup"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1781,24 +1838,27 @@ offset_right = 1921.0
 offset_bottom = 1081.0
 
 [node name="SFXs" type="AnimatedSprite2D" parent="Control/Music"]
-position = Vector2(562, 530)
+position = Vector2(559, 541)
 sprite_frames = SubResource("SpriteFrames_mwa71")
 animation = &"Music"
 frame = 4
 frame_progress = 0.117752
 
 [node name="Ending" type="RichTextLabel" parent="Control/Music"]
-offset_left = 920.0
-offset_top = 260.0
-offset_right = 1630.0
-offset_bottom = 901.0
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 225.0
+offset_right = 1755.0
+offset_bottom = 866.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_constants/line_separation = 14
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]The Storm before the Calm[/center]"
+text = "Music by
+Aretha Li"
 scroll_active = false
 vertical_alignment = 1
 
@@ -1840,73 +1900,261 @@ libraries = {
 &"": SubResource("AnimationLibrary_chj6o")
 }
 
-[node name="Godot" type="Control" parent="Control"]
+[node name="Godot" type="MarginContainer" parent="Control"]
 visible = false
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 0
+layout_mode = 0
 offset_right = 1921.0
 offset_bottom = 1081.0
+theme_override_constants/margin_left = 330
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 250
 
-[node name="Godot" type="Sprite2D" parent="Control/Godot"]
-position = Vector2(951, 491)
-texture = ExtResource("236_tfb1k")
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Godot"]
+layout_mode = 2
 
-[node name="Dialogic" type="Sprite2D" parent="Control/Godot"]
-position = Vector2(965, 832)
-texture = ExtResource("237_hi2n8")
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Godot/HBoxContainer"]
+layout_mode = 2
 
-[node name="Ending" type="RichTextLabel" parent="Control/Godot"]
-offset_left = 593.0
-offset_top = 152.0
-offset_right = 1303.0
-offset_bottom = 298.0
+[node name="Ending" type="RichTextLabel" parent="Control/Godot/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]Made in[/center]"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="Playtest" type="Control" parent="Control"]
-visible = false
-anchors_preset = 0
-offset_right = 1921.0
-offset_bottom = 1081.0
+[node name="Godot" type="TextureRect" parent="Control/Godot/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("236_tfb1k")
 
-[node name="Ending" type="RichTextLabel" parent="Control/Playtest"]
-offset_left = 593.0
-offset_top = 152.0
-offset_right = 1303.0
-offset_bottom = 298.0
+[node name="Ending2" type="RichTextLabel" parent="Control/Godot/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]Special Thanks[/center]"
+text = "[center]with[/center]"
 scroll_active = false
 vertical_alignment = 1
 
+[node name="Dialogic" type="TextureRect" parent="Control/Godot/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("237_hi2n8")
+
+[node name="Playtest" type="MarginContainer" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1921.0
+offset_bottom = 1081.0
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Playtest"]
+layout_mode = 2
+
+[node name="Ending" type="RichTextLabel" parent="Control/Playtest/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[center]Special Thanks To Our Playtesters![/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/Playtest/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Names" type="HBoxContainer" parent="Control/Playtest/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator2" type="VSeparator" parent="Control/Playtest/VBoxContainer/Names"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="Row1" type="VBoxContainer" parent="Control/Playtest/VBoxContainer/Names"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ending" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending2" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending3" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending4" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending5" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Row2" type="VBoxContainer" parent="Control/Playtest/VBoxContainer/Names"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ending" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending2" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending3" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending4" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Ending5" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Names Last[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Control/Playtest/VBoxContainer/Names"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 150
+
 [node name="Thanks" type="Control" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_right = 1921.0
 offset_bottom = 1081.0
 
 [node name="Ending" type="RichTextLabel" parent="Control/Thanks"]
-offset_left = 459.0
-offset_top = 165.0
-offset_right = 1414.0
-offset_bottom = 311.0
+layout_mode = 0
+offset_left = 482.0
+offset_top = 164.0
+offset_right = 1437.0
+offset_bottom = 310.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("1_ng644")
+theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]Thank you for playing[/center]"
 scroll_active = false
 vertical_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("238_hi2n8")
+volume_db = -1.0
+autoplay = true
+bus = &"Music"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
