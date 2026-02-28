@@ -12,6 +12,7 @@ extends CanvasLayer
 @export var sfx : AnimatedSprite2D
 @export var music : AnimationPlayer
 
+
 @export var layers : Array[Control]
 signal oneshot_finished
 signal fading(value)
@@ -21,16 +22,19 @@ var in_fade := false:
 		in_fade = value
 		if in_fade == false:
 			fading.emit()
+
 func _ready():
-	#SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
-	#GlobalVars.reset_globals()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	await get_tree().process_frame
 	_show_ending()
+	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	GlobalVars.reset_globals()
 	await oneshot_finished
 	play_oneshot_cred(threeDs, "Spin", 8.0)
 	await oneshot_finished
 	play_oneshot_cred(twoDs, "Flap", 8.0)
 	await oneshot_finished
-	play_oneshot_cred(writer, "Writing", 8.0)
+	play_oneshot_cred(writer, "Map", 8.0)
 	await oneshot_finished
 	play_oneshot_cred(UI, "Button Movement", 8.0)
 	await oneshot_finished
@@ -84,6 +88,8 @@ func _show_ending():
 	await get_tree().create_timer(8.0).timeout
 	_fade_in_out()
 	emit_signal("oneshot_finished")
+	await get_tree().create_timer(2.0).timeout
+	skip_anim.play("Pulse")
 
 func play_dev_cred():
 	dev_team.play("Beginning")
@@ -127,21 +133,43 @@ func _fade(lay : Control, value : float, time : float = 1.0):
 	tween.tween_property(lay, "modulate:a", value, time)
 	await get_tree().create_timer(time).timeout
 
+@export var skip : TextureRect
+@export var skip_anim : AnimationPlayer
 @export var timer : Timer
+var skip_tween : Tween
 var pressed := false
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
 		if pressed == false:
 			timer.start()
 			pressed = true
+			await get_tree().process_frame
+			_op_skip()
 	if event is InputEventKey and event.is_released() and event.keycode == KEY_SPACE:
 		timer.stop()
 		pressed = false
+		await get_tree().process_frame
+		_op_skip()
 	
 func _on_timer_timeout():
 	timer.stop()
 	_end_credits()
 
+func _op_skip():
+	if pressed == true:
+		print("increase")
+		skip_tween = create_tween()
+		skip_anim.pause()
+		skip_tween.tween_property(skip, "modulate:a", 1, 3.0)
+		await get_tree().process_frame
+		skip_anim.stop()
+	else:
+		print("decrease")
+		#skip.modulate.a = 0
+		skip_tween.kill()
+		
+		#
+		skip_anim.play("Pulse")
 
 func _end_credits():
 	MusicFades.fade_out_audio()
