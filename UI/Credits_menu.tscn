@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://3peuvra6bt81"]
+[gd_scene load_steps=48 format=3 uid="uid://3peuvra6bt81"]
 
 [ext_resource type="Script" uid="uid://cxqgbaxunnb0i" path="res://UI/credits_menu.gd" id="1_lf6oj"]
 [ext_resource type="Texture2D" uid="uid://tgnll7o5pu11" path="res://UI/Assets/Credits Menu/Credits_outline1.png" id="1_wdbet"]
@@ -35,6 +35,11 @@
 [ext_resource type="Texture2D" uid="uid://vovus5flexj7" path="res://UI/Assets/Credits Menu/Assets/Send/Credits_Send3.png" id="22_6bfvs"]
 [ext_resource type="Texture2D" uid="uid://di68svhiaylil" path="res://UI/Assets/Credits Menu/Assets/Send/Credits_Send4.png" id="23_yo0le"]
 [ext_resource type="Texture2D" uid="uid://64suesll3r3n" path="res://UI/Assets/Credits Menu/Assets/Send/Credits_Send1.png" id="24_ganak"]
+[ext_resource type="Script" uid="uid://de7057hfq0utt" path="res://UI/credits_sounds.gd" id="36_4xy1u"]
+[ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="37_732vb"]
+[ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="38_tck3x"]
+[ext_resource type="AudioStream" uid="uid://b8hesescgfur6" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_01.wav" id="39_slon7"]
+[ext_resource type="AudioStream" uid="uid://6bjjk0jq15rq" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/ClickSound.wav" id="40_m0y7x"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_s11lg"]
 frames = 4
@@ -259,13 +264,46 @@ offset_bottom = 864.0
 mouse_filter = 0
 texture = ExtResource("12_28lyi")
 
+[node name="credits_sounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
+script = ExtResource("36_4xy1u")
+audio = [NodePath("exit_click"), NodePath("exit_hover"), NodePath("hover_norm"), NodePath("click_norm")]
+
+[node name="exit_click" type="AudioStreamPlayer" parent="credits_sounds"]
+stream = ExtResource("37_732vb")
+bus = &"SFX"
+
+[node name="exit_hover" type="AudioStreamPlayer" parent="credits_sounds"]
+stream = ExtResource("38_tck3x")
+bus = &"SFX"
+
+[node name="hover_norm" type="AudioStreamPlayer" parent="credits_sounds"]
+stream = ExtResource("39_slon7")
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="click_norm" type="AudioStreamPlayer" parent="credits_sounds"]
+stream = ExtResource("40_m0y7x")
+pitch_scale = 0.95
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Exit" to="credits_sounds" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Exit" to="credits_sounds" method="_on_exit_cred_pressed"]
+[connection signal="mouse_entered" from="Insta" to="credits_sounds" method="_on_regular_mouse_entered"]
 [connection signal="pressed" from="Insta" to="Insta" method="_on_pressed"]
+[connection signal="mouse_entered" from="Youtube" to="credits_sounds" method="_on_regular_mouse_entered"]
 [connection signal="pressed" from="Youtube" to="Youtube" method="_on_pressed"]
+[connection signal="mouse_entered" from="Itchio" to="credits_sounds" method="_on_regular_mouse_entered"]
 [connection signal="pressed" from="Itchio" to="Itchio" method="_on_pressed"]
+[connection signal="mouse_entered" from="Steam" to="credits_sounds" method="_on_regular_mouse_entered"]
 [connection signal="pressed" from="Steam" to="Steam" method="_on_pressed"]
+[connection signal="mouse_entered" from="Send" to="credits_sounds" method="_on_regular_mouse_entered"]
 [connection signal="pressed" from="Send" to="Send" method="_on_pressed"]
 [connection signal="gui_input" from="Panel" to="Dev1" method="_on_panel_gui_input"]
 [connection signal="gui_input" from="Panel" to="Dev2" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="Dev1" to="credits_sounds" method="_on_regular_mouse_entered"]
+[connection signal="pressed" from="Dev1" to="credits_sounds" method="_on_reg_pressed"]
 [connection signal="toggled" from="Dev1" to="Dev1" method="_on_toggled"]
+[connection signal="mouse_entered" from="Dev2" to="credits_sounds" method="_on_regular_mouse_entered"]
+[connection signal="pressed" from="Dev2" to="credits_sounds" method="_on_reg_pressed"]
 [connection signal="toggled" from="Dev2" to="Dev2" method="_on_toggled"]

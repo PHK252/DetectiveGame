@@ -542,6 +542,7 @@ parameters/looping = true
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Credits" to="MenuSounds" method="_on_menu_press"]
 [connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Quit" to="MenuSounds" method="_on_menuHover"]
+[connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Quit" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Horz Butts/Continue/Continue" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Horz Butts/Continue/Continue" to="." method="_on_continue_pressed"]
