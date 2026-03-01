@@ -1,0 +1,271 @@
+[gd_scene load_steps=43 format=3 uid="uid://3peuvra6bt81"]
+
+[ext_resource type="Script" uid="uid://cxqgbaxunnb0i" path="res://UI/credits_menu.gd" id="1_lf6oj"]
+[ext_resource type="Texture2D" uid="uid://tgnll7o5pu11" path="res://UI/Assets/Credits Menu/Credits_outline1.png" id="1_wdbet"]
+[ext_resource type="Texture2D" uid="uid://ck3ibn6x204c6" path="res://Settings/Exit.tres" id="2_0bdix"]
+[ext_resource type="Texture2D" uid="uid://bwi1rk4c3liau" path="res://UI/Assets/tutorial/Paper/Controls_Exit_hovered.png" id="3_sx5sc"]
+[ext_resource type="Texture2D" uid="uid://bhgi0h25tt5qb" path="res://UI/Assets/Credits Menu/Assets/Credits_studio.png" id="4_hrfii"]
+[ext_resource type="Texture2D" uid="uid://bipxhtlcffiha" path="res://UI/Assets/Credits Menu/Assets/Credits_Socials.png" id="5_v16v4"]
+[ext_resource type="Texture2D" uid="uid://cbkej17lr7lk2" path="res://UI/Assets/Credits Menu/Assets/Credits_Aretha.png" id="6_ejuyc"]
+[ext_resource type="Texture2D" uid="uid://fk80n5lrt8lb" path="res://UI/Assets/Credits Menu/Assets/Insta/Credits_Insta3.png" id="6_psbi3"]
+[ext_resource type="Texture2D" uid="uid://jir1x6yhx78f" path="res://UI/Assets/Credits Menu/Assets/Insta/Credits_Insta4.png" id="7_rrsle"]
+[ext_resource type="Texture2D" uid="uid://dspneo8ymcbpg" path="res://UI/Assets/Credits Menu/Assets/Credits_Aretha_open.png" id="7_se6sd"]
+[ext_resource type="Texture2D" uid="uid://211qdq2fgl5y" path="res://UI/Assets/Credits Menu/Assets/Insta/Credits_Insta2.png" id="8_lf6oj"]
+[ext_resource type="Script" uid="uid://u4ddxojtx1ts" path="res://dev_roles.gd" id="8_uvcin"]
+[ext_resource type="Texture2D" uid="uid://hj1hlhw4ya0c" path="res://UI/Assets/Credits Menu/Assets/Youtube/Credits_Insta3.png" id="9_4xy1u"]
+[ext_resource type="Texture2D" uid="uid://5q5o28n4eq76" path="res://UI/Assets/Credits Menu/Assets/Credits_Aretha_menu.png" id="9_bwqoc"]
+[ext_resource type="Script" uid="uid://c5sjfpp5fuvte" path="res://UI/Link_button.gd" id="9_rrsle"]
+[ext_resource type="Texture2D" uid="uid://dkb5unfq5fbx3" path="res://UI/Assets/Credits Menu/Assets/Youtube/Credits_Insta4.png" id="10_dctg2"]
+[ext_resource type="Texture2D" uid="uid://faceph57wokq" path="res://UI/Assets/Credits Menu/Assets/Credits_Pranav.png" id="10_neesd"]
+[ext_resource type="Texture2D" uid="uid://csoih71rgsvxi" path="res://UI/Assets/Credits Menu/Assets/Credits_Pranav_open.png" id="11_4lbqv"]
+[ext_resource type="Texture2D" uid="uid://brlkoubj7qi8h" path="res://UI/Assets/Credits Menu/Assets/Youtube/Credits_Insta2.png" id="11_fatrd"]
+[ext_resource type="Texture2D" uid="uid://l5x5ca07uwqo" path="res://UI/Assets/Credits Menu/Assets/Credits_Pranav_menu.png" id="12_28lyi"]
+[ext_resource type="Texture2D" uid="uid://dqih8kiiqsfbk" path="res://UI/Assets/Credits Menu/Assets/Youtube/Credits_Insta1.png" id="12_i8dbc"]
+[ext_resource type="Texture2D" uid="uid://tbphi1w58lm0" path="res://UI/Assets/Credits Menu/Assets/Itch/Credits_Insta3.png" id="13_732vb"]
+[ext_resource type="Texture2D" uid="uid://cdyihn5oakjim" path="res://UI/Assets/Credits Menu/Assets/Credits_Godot.png" id="13_yabna"]
+[ext_resource type="Texture2D" uid="uid://dmonuvaxdp4c1" path="res://UI/Assets/Credits Menu/Assets/Credits_Bug.png" id="14_1rlae"]
+[ext_resource type="Texture2D" uid="uid://dmnr7qnlat40j" path="res://UI/Assets/Credits Menu/Assets/Itch/Credits_Insta4.png" id="14_tck3x"]
+[ext_resource type="Texture2D" uid="uid://chta4vnqr8qw1" path="res://UI/Assets/Credits Menu/Assets/Itch/Credits_Insta2.png" id="15_slon7"]
+[ext_resource type="Texture2D" uid="uid://dm4xi6j7mox0f" path="res://UI/Assets/Credits Menu/Assets/Itch/Credits_Insta1.png" id="16_m0y7x"]
+[ext_resource type="Texture2D" uid="uid://bx7so225j8t76" path="res://UI/Assets/Credits Menu/Assets/Steam/Credits_Steam3.png" id="17_ujdsj"]
+[ext_resource type="Texture2D" uid="uid://c8fjsxyfbfnl3" path="res://UI/Assets/Credits Menu/Assets/Steam/Credits_Steam4.png" id="18_ijug1"]
+[ext_resource type="Texture2D" uid="uid://btwo1ix6a21pv" path="res://UI/Assets/Credits Menu/Assets/Steam/Credits_Steam2.png" id="19_fvvqj"]
+[ext_resource type="Texture2D" uid="uid://cjbakk1ffw3ms" path="res://UI/Assets/Credits Menu/Assets/Steam/Credits_Steam1.png" id="20_m3is0"]
+[ext_resource type="Texture2D" uid="uid://b5en5sflvve1t" path="res://UI/Assets/Credits Menu/Assets/Send/Credits_Send2.png" id="21_vnuhk"]
+[ext_resource type="Texture2D" uid="uid://vovus5flexj7" path="res://UI/Assets/Credits Menu/Assets/Send/Credits_Send3.png" id="22_6bfvs"]
+[ext_resource type="Texture2D" uid="uid://di68svhiaylil" path="res://UI/Assets/Credits Menu/Assets/Send/Credits_Send4.png" id="23_yo0le"]
+[ext_resource type="Texture2D" uid="uid://64suesll3r3n" path="res://UI/Assets/Credits Menu/Assets/Send/Credits_Send1.png" id="24_ganak"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_s11lg"]
+frames = 4
+frame_0/texture = ExtResource("6_psbi3")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("7_rrsle")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("6_psbi3")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("8_lf6oj")
+frame_3/duration = 0.25
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0fhmg"]
+load_path = "res://.godot/imported/Credits_Insta1.png-079c3a94a23f2db8be155e03abad9d73.ctex"
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_sj5lp"]
+frames = 4
+frame_0/texture = ExtResource("9_4xy1u")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("10_dctg2")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("9_4xy1u")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("11_fatrd")
+frame_3/duration = 0.25
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_rs1i7"]
+frames = 4
+frame_0/texture = ExtResource("13_732vb")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("14_tck3x")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("13_732vb")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("15_slon7")
+frame_3/duration = 0.25
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_67fgw"]
+frames = 4
+frame_0/texture = ExtResource("17_ujdsj")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("18_ijug1")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("17_ujdsj")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("19_fvvqj")
+frame_3/duration = 0.25
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_nh0uh"]
+frames = 4
+frame_0/texture = ExtResource("21_vnuhk")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("22_6bfvs")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("23_yo0le")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("22_6bfvs")
+frame_3/duration = 0.25
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_wdbet"]
+allow_unpress = true
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_lf6oj")
+
+[node name="CreditsOutline1" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.239216)
+texture = ExtResource("1_wdbet")
+centered = false
+
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = 50.0
+offset_top = 40.0
+offset_right = 180.0
+offset_bottom = 200.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_0bdix")
+texture_pressed = ExtResource("3_sx5sc")
+texture_hover = ExtResource("3_sx5sc")
+
+[node name="Studio" type="TextureRect" parent="."]
+offset_left = 156.0
+offset_top = 234.0
+offset_right = 1182.0
+offset_bottom = 426.0
+texture = ExtResource("4_hrfii")
+
+[node name="Social" type="TextureRect" parent="."]
+offset_left = 156.0
+offset_top = 702.0
+offset_right = 444.0
+offset_bottom = 876.0
+texture = ExtResource("5_v16v4")
+
+[node name="Insta" type="TextureButton" parent="."]
+offset_left = 462.0
+offset_top = 708.0
+offset_right = 642.0
+offset_bottom = 868.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_s11lg")
+texture_pressed = SubResource("CompressedTexture2D_0fhmg")
+texture_hover = SubResource("CompressedTexture2D_0fhmg")
+script = ExtResource("9_rrsle")
+link = "https://www.instagram.com/k20.studios/"
+
+[node name="Youtube" type="TextureButton" parent="."]
+offset_left = 642.0
+offset_top = 708.0
+offset_right = 822.0
+offset_bottom = 868.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_sj5lp")
+texture_pressed = ExtResource("12_i8dbc")
+texture_hover = ExtResource("12_i8dbc")
+script = ExtResource("9_rrsle")
+link = "https://www.youtube.com/@K-20Studios"
+
+[node name="Itchio" type="TextureButton" parent="."]
+offset_left = 822.0
+offset_top = 708.0
+offset_right = 1002.0
+offset_bottom = 868.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_rs1i7")
+texture_pressed = ExtResource("16_m0y7x")
+texture_hover = ExtResource("16_m0y7x")
+script = ExtResource("9_rrsle")
+link = "https://k-20studios.itch.io/"
+
+[node name="Steam" type="TextureButton" parent="."]
+offset_left = 1002.0
+offset_top = 708.0
+offset_right = 1182.0
+offset_bottom = 868.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_67fgw")
+texture_pressed = ExtResource("20_m3is0")
+texture_hover = ExtResource("20_m3is0")
+script = ExtResource("9_rrsle")
+link = "https://store.steampowered.com/app/4087290/The_Case_of_Arcadia_Springs/"
+
+[node name="Send" type="TextureButton" parent="."]
+offset_left = 1367.0
+offset_top = 858.0
+offset_right = 1643.0
+offset_bottom = 1014.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AnimatedTexture_nh0uh")
+texture_pressed = ExtResource("24_ganak")
+texture_hover = ExtResource("24_ganak")
+script = ExtResource("9_rrsle")
+mail = true
+
+[node name="Godot" type="TextureRect" parent="."]
+offset_left = 1308.0
+offset_top = 108.0
+offset_right = 1746.0
+offset_bottom = 690.0
+texture = ExtResource("13_yabna")
+
+[node name="Bug" type="TextureRect" parent="."]
+offset_left = 1272.0
+offset_top = 721.0
+offset_right = 1782.0
+offset_bottom = 865.0
+texture = ExtResource("14_1rlae")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dev1" type="TextureButton" parent="." node_paths=PackedStringArray("menu", "panel")]
+offset_left = 162.0
+offset_top = 426.0
+offset_right = 660.0
+offset_bottom = 624.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wdbet")
+texture_normal = ExtResource("6_ejuyc")
+texture_pressed = ExtResource("7_se6sd")
+script = ExtResource("8_uvcin")
+menu = NodePath("../Menu1")
+panel = NodePath("../Panel")
+
+[node name="Menu1" type="TextureRect" parent="."]
+visible = false
+offset_left = 162.0
+offset_top = 624.0
+offset_right = 660.0
+offset_bottom = 948.0
+mouse_filter = 0
+texture = ExtResource("9_bwqoc")
+
+[node name="Dev2" type="TextureButton" parent="." node_paths=PackedStringArray("menu", "panel")]
+offset_left = 678.0
+offset_top = 426.0
+offset_right = 1176.0
+offset_bottom = 624.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wdbet")
+texture_normal = ExtResource("10_neesd")
+texture_pressed = ExtResource("11_4lbqv")
+script = ExtResource("8_uvcin")
+menu = NodePath("../Menu2")
+panel = NodePath("../Panel")
+
+[node name="Menu2" type="TextureRect" parent="."]
+visible = false
+offset_left = 678.0
+offset_top = 624.0
+offset_right = 1176.0
+offset_bottom = 864.0
+mouse_filter = 0
+texture = ExtResource("12_28lyi")
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Insta" to="Insta" method="_on_pressed"]
+[connection signal="pressed" from="Youtube" to="Youtube" method="_on_pressed"]
+[connection signal="pressed" from="Itchio" to="Itchio" method="_on_pressed"]
+[connection signal="pressed" from="Steam" to="Steam" method="_on_pressed"]
+[connection signal="pressed" from="Send" to="Send" method="_on_pressed"]
+[connection signal="gui_input" from="Panel" to="Dev1" method="_on_panel_gui_input"]
+[connection signal="gui_input" from="Panel" to="Dev2" method="_on_panel_gui_input"]
+[connection signal="toggled" from="Dev1" to="Dev1" method="_on_toggled"]
+[connection signal="toggled" from="Dev2" to="Dev2" method="_on_toggled"]

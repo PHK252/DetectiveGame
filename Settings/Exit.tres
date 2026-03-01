@@ -1,0 +1,16 @@
+[gd_resource type="AnimatedTexture" load_steps=4 format=3 uid="uid://ck3ibn6x204c6"]
+
+[ext_resource type="Texture2D" uid="uid://bbo5a8xafagsh" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal1.png" id="1_fogxm"]
+[ext_resource type="Texture2D" uid="uid://dp4clp4nr26k" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal2.png" id="2_accj3"]
+[ext_resource type="Texture2D" uid="uid://bsuvkl2rdc76p" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal3.png" id="3_24pom"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_fogxm")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("2_accj3")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("3_24pom")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("2_accj3")
+frame_3/duration = 0.25

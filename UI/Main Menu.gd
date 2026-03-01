@@ -8,6 +8,7 @@ extends Node2D
 @export var start : CanvasLayer 
 @export var controls : CanvasLayer
 @export var options : CanvasLayer
+@export var credits : CanvasLayer
 
 @export var cl : Panel
 @export var bg : TextureRect
@@ -113,3 +114,8 @@ func _on_options_pressed():
 func _on_options_exit_button_pressed():
 	start.visible = true
 	options.visible = false
+
+
+func _on_credits_pressed():
+	credits.visible = true
+	start.visible = false

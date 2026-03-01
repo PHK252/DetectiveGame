@@ -49,6 +49,7 @@ func _ready():
 	await get_tree().create_timer(6.0).timeout
 	_fade_in_out()
 	await get_tree().create_timer(6.5).timeout
+	_hide_skip()
 	_fade_in_out()
 	await music_player.finished
 	_fade(layers[cur_layer], 0.0, 2.0)
@@ -88,7 +89,7 @@ func _show_ending():
 	await get_tree().create_timer(8.0).timeout
 	_fade_in_out()
 	emit_signal("oneshot_finished")
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	skip_anim.play("Pulse")
 
 func play_dev_cred():
@@ -138,9 +139,10 @@ func _fade(lay : Control, value : float, time : float = 1.0):
 @export var timer : Timer
 var skip_tween : Tween
 var pressed := false
+var ending := false
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
-		if pressed == false:
+		if pressed == false and ending == false:
 			timer.start()
 			pressed = true
 			await get_tree().process_frame
@@ -157,20 +159,25 @@ func _on_timer_timeout():
 
 func _op_skip():
 	if pressed == true:
-		print("increase")
 		skip_tween = create_tween()
 		skip_anim.pause()
 		skip_tween.tween_property(skip, "modulate:a", 1, 3.0)
 		await get_tree().process_frame
 		skip_anim.stop()
 	else:
-		print("decrease")
 		#skip.modulate.a = 0
 		skip_tween.kill()
-		
-		#
-		skip_anim.play("Pulse")
+		if ending == false:
+			skip_anim.play("Pulse")
+		else:
+			_hide_skip()
 
+func _hide_skip():
+	ending = true
+	if pressed == false:
+		skip_anim.pause()
+		create_tween().tween_property(skip, "modulate:a", 0, 0.5)
+		
 func _end_credits():
 	MusicFades.fade_out_audio()
 	SceneTransitions.fade_change_scene(GlobalVars.main_menu)

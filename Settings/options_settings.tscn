@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://d2hmxhs2js55d"]
+[gd_scene load_steps=122 format=3 uid="uid://d2hmxhs2js55d"]
 
 [ext_resource type="Script" uid="uid://6dxawuodf3a" path="res://GeneralScripts/Settings/sound_controls.gd" id="1_6ko55"]
 [ext_resource type="Script" uid="uid://duefet7jfp0uk" path="res://Settings/options_settings.gd" id="1_8i1sl"]
@@ -7,16 +7,14 @@
 [ext_resource type="Script" uid="uid://b5b3482ku7twe" path="res://Settings/window_mode.gd" id="2_i8y7k"]
 [ext_resource type="Script" uid="uid://dknnj5f6c6tgm" path="res://Settings/resolution.gd" id="3_i8y7k"]
 [ext_resource type="Texture2D" uid="uid://v8yi13ehtmfj" path="res://UI/Assets/Options/Paper Anim.tres" id="3_im6xs"]
-[ext_resource type="Texture2D" uid="uid://bbo5a8xafagsh" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal1.png" id="3_yyj6m"]
 [ext_resource type="Script" uid="uid://b78rwgf7trpph" path="res://Settings/shadows.gd" id="4_3l2f5"]
 [ext_resource type="Texture2D" uid="uid://qrtxhk5t88k" path="res://UI/Assets/Options/Tabs/Audio Label1.png" id="4_04aof"]
+[ext_resource type="Texture2D" uid="uid://ck3ibn6x204c6" path="res://Settings/Exit.tres" id="4_cfi1e"]
 [ext_resource type="Script" uid="uid://hw5kvlyrysff" path="res://Settings/display_fps.gd" id="4_hhtmw"]
-[ext_resource type="Texture2D" uid="uid://dp4clp4nr26k" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal2.png" id="4_impsp"]
 [ext_resource type="Script" uid="uid://dj60ugfwogfoa" path="res://Settings/vsync.gd" id="4_qakdx"]
 [ext_resource type="Script" uid="uid://m821lsxq61kl" path="res://Settings/pixelation.gd" id="4_w8hml"]
 [ext_resource type="Texture2D" uid="uid://1eoj5pgkpv75" path="res://UI/Assets/Options/Tabs/Graphics Label3.png" id="5_8qsos"]
 [ext_resource type="Texture2D" uid="uid://5yjcxmck2auw" path="res://UI/Assets/Options/Tabs/Graphics Label1.png" id="5_cygq8"]
-[ext_resource type="Texture2D" uid="uid://bsuvkl2rdc76p" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal3.png" id="5_l526m"]
 [ext_resource type="Texture2D" uid="uid://bwi1rk4c3liau" path="res://UI/Assets/tutorial/Paper/Controls_Exit_hovered.png" id="6_v64us"]
 [ext_resource type="Texture2D" uid="uid://bykvtisno3bkk" path="res://UI/Assets/Options/Tabs/Graphics Label4.png" id="6_y2pu2"]
 [ext_resource type="Script" uid="uid://df82vbu0cty7x" path="res://Settings/brightness.gd" id="6_ypc3l"]
@@ -97,17 +95,6 @@ unicode = 113
 
 [sub_resource type="Shortcut" id="Shortcut_mswj7"]
 events = [SubResource("InputEventKey_pimcf")]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_6vm75"]
-frames = 4
-frame_0/texture = ExtResource("3_yyj6m")
-frame_0/duration = 0.25
-frame_1/texture = ExtResource("4_impsp")
-frame_1/duration = 0.25
-frame_2/texture = ExtResource("5_l526m")
-frame_2/duration = 0.25
-frame_3/texture = ExtResource("4_impsp")
-frame_3/duration = 0.25
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_yyj6m"]
 
@@ -367,7 +354,7 @@ size_flags_vertical = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_mswj7")
 shortcut_in_tooltip = false
-texture_normal = SubResource("AnimatedTexture_6vm75")
+texture_normal = ExtResource("4_cfi1e")
 texture_pressed = ExtResource("6_v64us")
 texture_hover = ExtResource("6_v64us")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=252 format=3 uid="uid://35i58aybkqg3"]
+[gd_scene load_steps=254 format=3 uid="uid://35i58aybkqg3"]
 
 [ext_resource type="Script" uid="uid://0yp0aijgmdux" path="res://UI/credits.gd" id="1_uuuvy"]
 [ext_resource type="Texture2D" uid="uid://ck640slqpsior" path="res://UI/Assets/Credits/Endings/Poke.png" id="2_kk2ga"]
@@ -222,16 +222,18 @@
 [ext_resource type="Texture2D" uid="uid://dbiv7f45jqjsb" path="res://UI/Assets/Credits/Music/Music7.png" id="227_j6xl6"]
 [ext_resource type="Texture2D" uid="uid://tv7jirihwgp4" path="res://UI/Assets/Credits/Music/Music8.png" id="228_3lf16"]
 [ext_resource type="Texture2D" uid="uid://c6p0nvpc0bgd0" path="res://UI/Assets/Credits/Music/Notes/2eigth.png" id="229_0qibw"]
+[ext_resource type="Texture2D" uid="uid://da0bgrnmg08h" path="res://UI/Assets/Credits/GodotDialogic.png" id="229_rxdik"]
+[ext_resource type="Texture2D" uid="uid://iigi856uyk87" path="res://UI/Assets/Credits/aseprite.png" id="230_c44ep"]
 [ext_resource type="Texture2D" uid="uid://bbdkcmja7s7gn" path="res://UI/Assets/Credits/Music/Notes/16th.png" id="230_wxb8d"]
 [ext_resource type="Texture2D" uid="uid://ln5lqbf0ec3t" path="res://UI/Assets/Credits/Title.png" id="231_etcbd"]
 [ext_resource type="Texture2D" uid="uid://0fgw1yv27vkn" path="res://UI/Assets/Credits/Music/Notes/eigth.png" id="231_p5hge"]
+[ext_resource type="Texture2D" uid="uid://ccni3i8nl0ng8" path="res://UI/Assets/Credits/Blender.png" id="231_tfb1k"]
+[ext_resource type="Texture2D" uid="uid://mh0m4513g4i0" path="res://UI/Assets/Credits/ableton.png" id="232_hi2n8"]
 [ext_resource type="Texture2D" uid="uid://cldne2c4e4apl" path="res://UI/Assets/Credits/Music/Notes/Half.png" id="232_n7lyl"]
 [ext_resource type="Texture2D" uid="uid://bxemq88j2nvi" path="res://UI/Assets/Credits/Skip.png" id="232_uyiav"]
 [ext_resource type="Texture2D" uid="uid://cjxln7kyxs1xm" path="res://UI/Assets/Credits/Music/Notes/quarter.png" id="233_vddro"]
 [ext_resource type="Texture2D" uid="uid://c4mok6srt57ly" path="res://UI/Assets/Credits/Music/Notes/Triplet.png" id="234_fub4x"]
 [ext_resource type="Texture2D" uid="uid://dgo43wjjlfco" path="res://UI/Assets/Credits/Music/Notes/whole.png" id="235_0812m"]
-[ext_resource type="Texture2D" uid="uid://b838ded1v76mw" path="res://UI/Assets/Credits/Godot.png" id="236_tfb1k"]
-[ext_resource type="Texture2D" uid="uid://bsta7c62s7ewo" path="res://UI/Assets/Credits/Dialogic.png" id="237_hi2n8"]
 [ext_resource type="AudioStream" uid="uid://bq7uy6uyjeopk" path="res://Audio/masters_ogg/credits_master.ogg" id="238_hi2n8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sx0m1"]
@@ -1707,8 +1709,6 @@ layers = [NodePath("Control/Ending"), NodePath("Control/3D Artist"), NodePath("C
 skip = NodePath("Control/Skip")
 skip_anim = NodePath("Control/Skip/AnimationPlayer")
 timer = NodePath("Timer")
-metadata/_edit_horizontal_guides_ = [540.0]
-metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -2051,51 +2051,94 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1921.0
 offset_bottom = 1081.0
-theme_override_constants/margin_left = 330
-theme_override_constants/margin_top = 250
-theme_override_constants/margin_right = 250
-theme_override_constants/margin_bottom = 250
+theme_override_constants/margin_left = 350
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 350
+theme_override_constants/margin_bottom = 150
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Godot"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Godot"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Godot/HBoxContainer"]
-layout_mode = 2
-
-[node name="Ending" type="RichTextLabel" parent="Control/Godot/HBoxContainer/VBoxContainer"]
+[node name="Ending" type="RichTextLabel" parent="Control/Godot/VBoxContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
 theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]Made in[/center]"
+text = "[center]Made with[/center]"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="Godot" type="TextureRect" parent="Control/Godot/HBoxContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/Godot/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("236_tfb1k")
+theme_override_constants/separation = 40
 
-[node name="Ending2" type="RichTextLabel" parent="Control/Godot/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Godot/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Godot/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+
+[node name="Godot" type="TextureRect" parent="Control/Godot/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("229_rxdik")
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Godot/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Ending3" type="RichTextLabel" parent="Control/Godot/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
 theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[center]with[/center]"
+text = "[center]and[/center]"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="Dialogic" type="TextureRect" parent="Control/Godot/HBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="Control/Godot/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Tools" type="HBoxContainer" parent="Control/Godot/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Aesprite" type="TextureRect" parent="Control/Godot/VBoxContainer/Tools"]
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("237_hi2n8")
+texture = ExtResource("230_c44ep")
+
+[node name="VSeparator" type="VSeparator" parent="Control/Godot/VBoxContainer/Tools"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Blender" type="TextureRect" parent="Control/Godot/VBoxContainer/Tools"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("231_tfb1k")
+
+[node name="VSeparator2" type="VSeparator" parent="Control/Godot/VBoxContainer/Tools"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Ableton" type="TextureRect" parent="Control/Godot/VBoxContainer/Tools"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("232_hi2n8")
 
 [node name="Playtest" type="MarginContainer" parent="Control"]
 visible = false
@@ -2276,8 +2319,8 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1921.0
 offset_bottom = 1081.0
-theme_override_constants/margin_top = 200
-theme_override_constants/margin_bottom = 200
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_bottom = 250
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Thanks"]
 layout_mode = 2
