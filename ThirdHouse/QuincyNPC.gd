@@ -377,7 +377,6 @@ func _process_follow_state(distance_to_target: float) -> void:
 	if distance_to_target <= STOPPING_DISTANCE:
 				
 			#catch_possibility = false
-			print("too close?")
 			#emit_signal("collision_safe")
 			#is_navigating = false
 			#cooldown_bool = true

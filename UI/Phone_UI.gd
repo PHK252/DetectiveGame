@@ -219,13 +219,11 @@ func _on_left_hover_mouse_exited():
 #Number input
 @onready var num_input = $PhoneScreen/PhoneNum/NumInput
 @onready var at_bookshelf = false
-@export var dalton_marker : Marker2D
-@export var quincy_marker : Marker2D
-#@export var theo_marker : Marker2D
-@export var phone_marker : Marker2D
 @export var player : CharacterBody3D
-
+@export var call_button : TextureButton
 @export var hangup_call : AudioStreamPlayer
+@onready var call_short = Shortcut.new()
+@onready var key_event = InputEventKey.new()
 
 @onready var bar_call = false
 @export var alert : Sprite3D
@@ -289,12 +287,26 @@ func _on_delete_pressed():
 	else:
 		pass
 
+func _on_theo_thoughts_ended():
+	Dialogic.timeline_ended.disconnect(_on_theo_thoughts_ended)
+	key_event.keycode = KEY_ENTER
+	call_short.events = [key_event]
+	call_button.shortcut = call_short
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 func _on_call_pressed():
 	#print("Calling")
 	#emit signal(calling) for possible animation
 	var called_num = num_input.text
 	if called_num == "":
 		#error sfx
+		return
+	if bar_call == true and called_num != "034-2012":
+		call_button.shortcut = null 
+		num_input.text = ""
+		Dialogic.start("Theo_Bar_redirect")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Dialogic.timeline_ended.connect(_on_theo_thoughts_ended)
 		return
 	exit_phone()
 	num_input.text = ""
@@ -330,7 +342,7 @@ func _on_call_pressed():
 					Dialogic.signal_event.connect(_end_call)
 					Dialogic.timeline_ended.connect(_on_timeline_ended)
 					return
-				if GlobalVars.current_level == "quincy":
+				if GlobalVars.current_level == "quincy" and GlobalVars.in_level == true:
 					Dialogic.start("Theo_call", "separated")
 					GlobalVars.in_dialogue = true
 					Dialogic.signal_event.connect(_end_call)
@@ -395,6 +407,12 @@ func _on_bookshelf_area_body_exited(body):
 func _on_isaac_pressed():
 	if alert.visible:
 		alert.hide()
+	if bar_call == true:
+		Dialogic.start("Theo_Bar_redirect")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Dialogic.timeline_ended.connect(_on_theo_thoughts_ended)
+		call_button.shortcut = null 
+		return
 	exit_phone()
 	player.stop_player()
 	Dialogic.start("Phone_num_gone")
@@ -405,6 +423,12 @@ func _on_isaac_pressed():
 
 
 func _on_quincy_pressed():
+	if bar_call == true:
+		Dialogic.start("Theo_Bar_redirect")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Dialogic.timeline_ended.connect(_on_theo_thoughts_ended)
+		call_button.shortcut = null 
+		return
 	exit_phone()
 	player.stop_player()
 	if alert.visible:
@@ -429,6 +453,12 @@ func _on_quincy_pressed():
 func _on_juniper_pressed(): #UPDATE TIMELINE
 	if alert.visible:
 		alert.hide()
+	if bar_call == true:
+		Dialogic.start("Theo_Bar_redirect")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Dialogic.timeline_ended.connect(_on_theo_thoughts_ended)
+		call_button.shortcut = null 
+		return
 	exit_phone()
 	player.stop_player()
 	Dialogic.start("Juniper_call")
@@ -440,6 +470,12 @@ func _on_juniper_pressed(): #UPDATE TIMELINE
 func _on_clyde_pressed():
 	if alert.visible:
 		alert.hide()
+	if bar_call == true:
+		Dialogic.start("Theo_Bar_redirect")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Dialogic.timeline_ended.connect(_on_theo_thoughts_ended)
+		call_button.shortcut = null 
+		return
 	exit_phone()
 	player.stop_player()
 	Dialogic.start("Clyde_call")
@@ -449,6 +485,12 @@ func _on_clyde_pressed():
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func _on_skylar_pressed(): #UPDATE TIMELINE
+	if bar_call == true:
+		Dialogic.start("Theo_Bar_redirect")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Dialogic.timeline_ended.connect(_on_theo_thoughts_ended)
+		call_button.shortcut = null 
+		return
 	exit_phone()
 	player.stop_player()
 	GlobalVars.in_interaction = "phone call"
@@ -490,7 +532,7 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 				Dialogic.signal_event.connect(_end_call)
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				return
-			if GlobalVars.current_level == "quincy":
+			if GlobalVars.current_level == "quincy" and GlobalVars.in_level == true:
 				Dialogic.start("Theo_call", "separated")
 				GlobalVars.in_dialogue = true
 				Dialogic.signal_event.connect(_end_call)

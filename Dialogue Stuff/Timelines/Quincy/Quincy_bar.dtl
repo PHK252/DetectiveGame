@@ -42,8 +42,7 @@ Dalton (Default): ...
 			[signal arg="call_end"]
 			[end_timeline]
 			label Bar continue
-			[wait time="12.0"]
-			#Remove when delay fixed
+			[wait time="7.0"]
 			Theo (Laugh): Hello, esteemed mayor of Arcadia Springs!
 			Theo (Default): I see you’ve convinced this fox to take up day drinking.
 			Quincy (Smug): Ahh.
@@ -82,7 +81,15 @@ Dalton (Default): ...
 			Quincy (Smug): Theo, what would you like?
 			Theo (Thinking): Hmm...
 			Theo (Laugh): Just your company will be enough for me.
-			Quincy (Smirk): Well, if you put it like that...
+			if {Quincy.first_faint} == true or {Quincy.second_faint} == true or {Quincy.third_faint} == true:
+				Dalton (Resting): You-
+				Theo (Default): What?
+				Theo (Happy): Someone's gotta drive.
+				Dalton (Hmph): Hmph.
+			else:
+				Dalton (Hmph): You-
+				Theo (Happy): Gotta stay sharp, you know.
+				Dalton (Hmph): Hmph.
 			if {Quincy.first_faint} == true:
 				Quincy (Smug): One whiskey on the rocks coming right up for our special little fox detective.
 			elif {Quincy.second_faint} == true:

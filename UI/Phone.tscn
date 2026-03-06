@@ -491,8 +491,9 @@ VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ltpiu")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_1v3be"]
 
-[node name="Phone UI" type="CanvasLayer" node_paths=PackedStringArray("hangup_call")]
+[node name="Phone UI" type="CanvasLayer" node_paths=PackedStringArray("call_button", "hangup_call")]
 script = ExtResource("1_eli2p")
+call_button = NodePath("PhoneScreen/PhoneNum/Call")
 hangup_call = NodePath("Phone_Sounds_General/hangup")
 metadata/_edit_vertical_guides_ = [2472.0, 2245.0]
 metadata/_edit_horizontal_guides_ = [1774.0]
@@ -1221,7 +1222,10 @@ theme_override_constants/separation = 0
 [node name="Isaac" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
+shortcut_feedback = false
+shortcut_in_tooltip = false
 texture_normal = ExtResource("88_8rgu2")
 texture_pressed = ExtResource("89_h1u1y")
 texture_hover = ExtResource("89_h1u1y")
@@ -1256,6 +1260,7 @@ text = "034-921"
 [node name="Quincy" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_8rgu2")
 texture_pressed = ExtResource("89_h1u1y")
@@ -1291,6 +1296,7 @@ text = "221-1712"
 [node name="Theo" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_8rgu2")
 texture_pressed = ExtResource("89_h1u1y")
@@ -1326,6 +1332,7 @@ text = "034-2012"
 [node name="Juniper" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_8rgu2")
 texture_pressed = ExtResource("89_h1u1y")
@@ -1361,6 +1368,7 @@ text = "194-108"
 [node name="Clyde" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_8rgu2")
 texture_pressed = ExtResource("89_h1u1y")
@@ -1396,6 +1404,7 @@ text = "093-316"
 [node name="Skylar" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_8rgu2")
 texture_pressed = ExtResource("89_h1u1y")
@@ -1457,6 +1466,7 @@ offset_left = 828.0
 offset_top = 888.0
 offset_right = 870.0
 offset_bottom = 930.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("88_ca35y")
 texture_pressed = ExtResource("89_t6hk1")
@@ -1468,6 +1478,7 @@ offset_left = 1050.0
 offset_top = 888.0
 offset_right = 1092.0
 offset_bottom = 930.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("90_8rgu2")
 texture_pressed = ExtResource("91_h1u1y")

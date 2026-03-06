@@ -54,7 +54,8 @@ func _on_delete_pressed() -> void:
 
 func _on_call_pressed() -> void:
 	#can also make loop if u change audio file and explicitly stop it
-	audio[19].play()
-	await get_tree().create_timer(2.5).timeout
-	audio[19].play()
+	pass
+	#audio[19].play()
+	#await get_tree().create_timer(2.5).timeout
+	#audio[19].play()
 	
