@@ -8,6 +8,7 @@ Dalton (Default): Leave?
 		Theo (Concerned): Are you sure?
 		Dalton (Default): ...
 		- Yes.
+			set {Global.juniper_quick_leave} = true
 			Dalton (Resting): I'm sure.
 			if {Character Aff Points.Juniper} <= 0:
 				jump continue

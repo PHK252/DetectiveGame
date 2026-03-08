@@ -17,8 +17,6 @@ var new_game : bool
 
 var selected : int
 
-#handle_label_changes
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	MusicFades.fade_in_audio()
@@ -42,7 +40,6 @@ func _ready():
 		GlobalVars.from_save_file = true
 		start_butt.hide()
 		continue_new_cont.show()
-		
 		
 		#not needed
 		#brightness technically firing twice bad practice but maybe ok

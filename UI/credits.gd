@@ -54,7 +54,7 @@ func _ready():
 	await music_player.finished
 	_fade(layers[cur_layer], 0.0, 2.0)
 	await get_tree().create_timer(5.0).timeout
-	print("done")
+	GlobalVars.set_achievements("ACH_THANK")
 	_end_credits()
 
 func _show_ending():
@@ -63,27 +63,35 @@ func _show_ending():
 		"Arrested Skylar":
 			ending_label.text = "[center]Bare Minimum[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Minimum.png")
+			GlobalVars.set_achievements("ACH_MINIMUM")
 		"Keep Confidential":
 			ending_label.text = "[center]Ignorance by Omission[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Ignorance.png")
+			GlobalVars.set_achievements("ACH_IGNORANCE")
 		"Give Skylar Cure":
 			ending_label.text = "[center]In Over Your Head[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Overhead.png")
+			GlobalVars.set_achievements("ACH_OVERHEAD")
 		"Give Skylar Cure And Choco":
 			ending_label.text = "[center]The Storm before the Calm[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Storm.png")
+			GlobalVars.set_achievements("ACH_STORM")
 		"Give Kale Cure":
 			ending_label.text = "[center]Human Proof[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Human.png")
+			GlobalVars.set_achievements("ACH_HUMAN")
 		"Give Kale Cure And Choco":
 			ending_label.text = "[center]Isaac’s Requiem[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Isaac.png")
+			GlobalVars.set_achievements("ACH_REQUIEM")
 		"Chief fired":
 			ending_label.text = "[center]Lost Cause[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Lost.png")
+			GlobalVars.set_achievements("ACH_LOST")
 		"Quincy fired":
 			ending_label.text = "[center]Poked the Cat’s Nest[/center]"
 			icon.texture = load("res://UI/Assets/Credits/Endings/Poke.png")
+			GlobalVars.set_achievements("ACH_POKED")
 		_:
 			print_debug("How did this happen")
 	await get_tree().create_timer(8.0).timeout

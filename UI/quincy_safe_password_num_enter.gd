@@ -99,6 +99,8 @@ func _on_enter_pressed():
 			blinker_x_pos = blinker_x_pos_intial
 			blinker.position.x = blinker_x_pos
 			if password == input:
+				if incorrect_times == 3:
+					GlobalVars.set_achievements("ACH_FIRSTNT") 
 				in_enter = true
 				$".".hide()
 				GlobalVars.in_look_screen = false

@@ -666,7 +666,15 @@ func _ready():
 	set_mouse_default()
 	set_mouse_pointing()
 	set_mouse_I_beam()
-
+	
+	#Steam integration
+	Steam.steamInit()
+	var isRunning = Steam.isSteamRunning()
+	
+	if !isRunning:
+		printerr("Steam is not running!")
+		return
+	print("Steam is running!")
 #func emit_phone_call():
 	#emit_signal("phone_call_receiving")
 	#calling = true
@@ -696,3 +704,18 @@ func emit_add_evidence(char : String, evi : String):
 func emit_remove_evidence(char : String, evi : String):
 	evi_remove_char = char
 	evidence = evi
+
+#Steam integration
+var APP_ID = "4087290"
+
+func _init():
+	OS.set_environment("SteamAppID", APP_ID)
+	OS.set_environment("SteamGameID", APP_ID)
+
+func set_achievements(ach_name: String):
+	var status = Steam.getAchievement(ach_name)
+	if status["achieved"]:
+		print("Already unlocked")
+		return
+	Steam.setAchievement(ach_name)
+	print("Unlocked Achievment: ", ach_name)

@@ -368,12 +368,15 @@ variables={
 "Theo": 0
 },
 "Endings": {
-"Ending_type": ""
+"Ending_type": "Chief fired"
 },
 "Global": {
 "first_house": "",
 "flip_bubble": false,
 "got_theo_ad": false,
+"juniper_quick_leave": false,
+"micah_quick_leave": false,
+"quincy_quick_leave": false,
 "theo_know_quit": false,
 "went_to_Juniper": false,
 "went_to_Micah": false,
@@ -747,3 +750,10 @@ textures/light_projectors/filter=0
 environment/subsurface_scattering/subsurface_scattering_quality=0
 environment/volumetric_fog/use_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+
+[steam]
+
+initialization/app_id=0
+initialization/initialize_on_startup=false
+initialization/embed_callbacks=false
+multiplayer_peer/max_channels=4

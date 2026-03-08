@@ -66,12 +66,16 @@ func _on_timeline_ended():
 			Loading.load_scene(main, GlobalVars.office_path, "date", "14 APR XX21", "")
 		"Give Skylar Cure":
 			Loading.load_scene(main, GlobalVars.office_path, "date", "15 FEB XX21", "")
+			GlobalVars.set_achievements("ACH_PERFECT")
 		"Give Skylar Cure And Choco":
 			Loading.load_scene(main, GlobalVars.office_path, "date", "26 NOV XX21", "")
+			GlobalVars.set_achievements("ACH_PERFECT")
 		"Give Kale Cure":
 			Loading.load_scene(main, GlobalVars.isaac_house, "", "", "")
+			GlobalVars.set_achievements("ACH_PERFECT")
 		"Give Kale Cure And Choco":
 			Loading.load_scene(main, GlobalVars.isaac_house, "", "", "")
+			GlobalVars.set_achievements("ACH_PERFECT")
 		_:
 			print_debug("No Ending Uh Oh")
 

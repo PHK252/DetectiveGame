@@ -72,6 +72,12 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	alert.hide()
 	if GlobalVars.day == 3:
+		if GlobalVars.micah_kicked_out == true and GlobalVars.juniper_kicked_out == true and GlobalVars.quincy_kicked_out == true:
+			GlobalVars.set_achievements("ACH_KICKED") 
+		if GlobalVars.micah_time_out == true and GlobalVars.juniper_time_out == true and GlobalVars.quincy_time_out == true:
+			GlobalVars.set_achievements("ACH_TIMED") 
+		if Dialogic.VAR.get_variable("Global.micah_quick_leave") == true and Dialogic.VAR.get_variable("Global.juniper_quick_leave") == true and Dialogic.VAR.get_variable("Global.quincy_quick_leave") == true:
+			GlobalVars.set_achievements("ACH_WHY")
 		if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
 			Dialogic.VAR.set_variable("Endings.Ending_type", "")
 	if Dialogic.VAR.get_variable("Endings.Ending_type") != "":

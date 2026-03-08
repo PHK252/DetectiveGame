@@ -41,4 +41,5 @@ func _on_doughnut_001_doughnut_gone() -> void:
 		doughnuts[doughnuts_eaten].visible = false
 		doughnuts_eaten -= 1
 		if doughnuts_eaten == -1:
+			GlobalVars.set_achievements("ACH_DONUTS")
 			emit_signal("no_more_doughnuts")
