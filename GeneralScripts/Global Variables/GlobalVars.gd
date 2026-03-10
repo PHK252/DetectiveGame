@@ -245,12 +245,15 @@ var load_Juniper_name_arr =  ["juniper_kicked_out", "juniper_time_out", "in_tea_
 #chocolate
 @onready var viewed_Quincy_chocolate = false
 @onready var chocolate_dialogue = false
+#hook
+var viewed_Quincy_hook = false
+var hook_dialogue = false
 
 var load_Quincy_name_arr = ["quincy_time_out", "quincy_kicked_out", "quincy_fainted", "Quincy_toilet_distracted", "Quincy_Dalton_caught", "try_viewed_distract", "viewed_Quincy_famPic", "famPic_dialogue_Quincy", "viewed_Quincy_coor", "coor_dialogue_Quincy", "clicked_coor_Quincy",
 "viewed_Quincy_fish", "fish_dialogue_Quincy", "viewed_Quincy_poker", "poker_thoughts_Quincy", "viewed_Juniper_employee", "viewed_Juniper_resume", "clicked_resume_Juniper", "viewed_Quincy_phone", "phone_dialogue_Quincy", "clicked_phone_Quincy",
 "bar_dialogue_Quincy_finished", "viewed_Quincy_offPic", "clicked_offPic_Quincy", "offPic_dialogue_Quincy", "Quincy_in_computer", "Quincy_Safe_UI", "safe_dialogue_Quincy", "viewed_Quincy_bookmark", "viewed_Quincy_pager", "clicked_pager_Quincy",
 "viewed_Quincy_news", "clicked_news_Quincy", "viewed_Quincy_usb", "viewed_Quincy_proposal", "clicked_proposal_Quincy", "Quincy_in_case", "opened_quincy_case", "viewed_Quincy_letter", "viewed_Quincy_hammer", "clicked_case_Quincy",
- "clicked_letter_Quincy", "viewed_Quincy_chocolate", "chocolate_dialogue"]
+ "clicked_letter_Quincy", "viewed_Quincy_chocolate", "chocolate_dialogue", "viewed_Quincy_hook", "hook_dialogue"]
 
 func _dalton_caught_clear_state():
 	#dalton_pos = Vector3()
@@ -298,6 +301,8 @@ func _dalton_caught_clear_state():
 	clicked_proposal_Quincy = 0
 	viewed_Quincy_chocolate = false
 	chocolate_dialogue = false
+	viewed_Quincy_hook = false
+	hook_dialogue = false
 	Dialogic.VAR.reset("Quincy")
 	await get_tree().process_frame
 	Dialogic.VAR.set_variable("Quincy.caught", true)
@@ -617,6 +622,9 @@ func reset_globals():
 	#chocolate
 	viewed_Quincy_chocolate = false
 	chocolate_dialogue = false
+	#hook
+	viewed_Quincy_hook = false
+	hook_dialogue = false
 	
 	##Secret Vars
 	has_secret = false

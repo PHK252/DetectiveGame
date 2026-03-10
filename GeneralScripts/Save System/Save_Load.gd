@@ -269,6 +269,9 @@ func saveGame(path: String, dialogic_save : bool = true):
 			#chocolate
 			"viewed_Quincy_chocolate": GlobalVars.viewed_Quincy_chocolate,
 			"chocolate_dialogue": GlobalVars.chocolate_dialogue,
+			#hook
+			"viewed_Quincy_hook" : GlobalVars.viewed_Quincy_hook,
+			"hook_dialogue" : GlobalVars.hook_dialogue,
 		},
 		"Secret_Vars":{
 			"has_secret" : GlobalVars.has_secret,
