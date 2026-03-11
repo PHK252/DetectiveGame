@@ -172,6 +172,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 					if GlobalVars.in_level == true and GlobalVars.current_level == "Office":
 						print("clear level")
 						GlobalVars.in_level = false
+				GlobalVars.in_trans = false
 				var new_scene = ResourceLoader.load_threaded_get(next_scene)
 				if type == "date":
 					await get_tree().create_timer(2.0).timeout

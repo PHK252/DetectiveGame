@@ -49,6 +49,10 @@ var sloth_speed : float = 0.05
 @export var pandaSounds : AnimationPlayer
 @export var pandacast : RayCast3D
 
+#Door activate
+@export var panda_door_interact : Interactable
+@export var sloth_door_interact : Interactable
+
 func _ready():
 	wander_character.visible = false
 	walking_character.visible = false
@@ -59,9 +63,11 @@ func _ready():
 	cardboard_collision.disabled = true
 	if Dialogic.VAR.get_variable("Asked Questions.left_Micah") == false and GlobalVars.micah_kicked_out == false and GlobalVars.micah_time_out == false:
 		panda_timer.start()
+		panda_door_interact.set_deferred("monitorable", false)
 		allow_panda = true
 		return
 	else:
+		sloth_door_interact.set_deferred("monitorable", false)
 		delivery_timer.start()
 		allow_sloth = true
 
@@ -165,6 +171,7 @@ func _on_panda_door_body_entered(body: Node3D) -> void:
 	door_anim.play("doorClose")
 	await get_tree().create_timer(1.5).timeout
 	close_sound.play()
+	panda_door_interact.set_deferred("monitorable", true)
 	
 
 func _on_delivery_door_body_entered(body: Node3D) -> void:
@@ -181,6 +188,8 @@ func _on_delivery_door_body_entered(body: Node3D) -> void:
 	cardboard_static.visible = true
 	cardboard_anim.visible = false
 	await get_tree().create_timer(1).timeout
+	sloth_door_interact.set_deferred("monitorable", true)
+	print("Activate delivery door")
 	var flipped_deliver = sloth.global_transform.basis
 	var rotation = Basis(Vector3.UP, deg_to_rad(87))
 	sloth.basis = rotation * flipped_deliver
@@ -241,5 +250,6 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 
 
 func _on_activate_leave():
-	allow_sloth = true # for unfocused bug
+	sloth_door_interact.set_deferred("monitorable", false)
+	allow_sloth = true 
 	delivery_timer.start()

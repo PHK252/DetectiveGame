@@ -4,16 +4,38 @@
 &"_translation_id": "",
 &"color": Color(0.199219, 0.0910492, 0.0910492, 1),
 &"custom_info": {
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Default",
+"sound_moods": {
+"Default": {
+"mode": 0,
+"name": "Default",
+"pitch_base": 1.0,
+"pitch_variance": 0.2,
+"skip_characters": 2.0,
+"sound_path": "res://Audio/Voices/0 Voice",
+"volume_base": 6.7,
+"volume_variance": 0.7
+}
+},
 "style": "Dalton Box"
 },
-&"default_portrait": "",
+&"default_portrait": "Default",
 &"description": "",
 &"display_name": "091",
 &"mirror": false,
 &"nicknames": [""],
-&"offset": Vector2(0, 0),
-&"portraits": {},
+&"offset": Vector2(0, -3),
+&"portraits": {
+"Default": {
+"export_overrides": {
+"image": "\"res://UI/Dialogue Portraits/Doors/091.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "",
+"sound_mood": "Default"
+}
+},
 &"scale": 1.0
 }

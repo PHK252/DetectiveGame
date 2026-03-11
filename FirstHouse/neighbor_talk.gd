@@ -23,4 +23,5 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	player.start_player()
-	interactable.set_deferred("monitorable", false)
+	interactable.queue_free()
+	#interactable.set_deferred("monitorable", false)
