@@ -42,7 +42,7 @@ func _ready() -> void:
 	if GlobalVars.from_save_file == true and GlobalVars.in_level == true:
 		global_position = GlobalVars.theo_pos
 		await get_tree().process_frame
-		GlobalVars.from_save_file == false
+		GlobalVars.from_save_file = false
 		return
 	#print("placed " + str(GlobalVars.dalton_pos))
 	await get_tree().process_frame

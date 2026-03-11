@@ -2,7 +2,7 @@ extends Node3D
 #Assign player body
 @export var player: CharacterBody3D
 @export var alert: Sprite3D
-
+@export var interaction : Interactable
 #Dialogue Stuff
 @export var dialogue_file: String
 @export var interact_type: String
@@ -26,3 +26,5 @@ func _on_timeline_ended():
 	player.start_player()
 	alert.show()
 	GlobalVars.in_interaction = ""
+	if interaction:
+		interaction.set_deferred("monitorable", false)

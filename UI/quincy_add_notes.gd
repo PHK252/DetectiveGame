@@ -36,6 +36,7 @@ var quincy_email = "- TRANSCRIPT: [color=#64635f] HEY DIR. QUINCY, / I’VE BEEN
 var quincy_lab = "[color=#566f5c][url=show_lab_pic]VIEW PHOTO[/url][/color]\n- WHAT IS THAT??"
 var quincy_pager = "- REVER, Operation NULL REV2\n- Turn off your phone when you put it away, Dalton."
 var quincy_proposal = "- TRANSCRIPT: [color=#64635f]...[/color][p][color=#566f5c][url=show_proposal]VIEW PHOTO[/url][/color]\n- DALTON...\n- WHAT IS THIS?\n- WHERE ARE YOU?\n- WE HAVE TO GO THEO."
+var quincy_hook = "The intruder used a climbing hook to enter the premises."
 
 func _ready():
 	text_label.text = GlobalVars.quincy_notes
@@ -133,6 +134,8 @@ func _on_case_add_quincy_note():
 			print_debug("Quincy letter add notes error")
 	elif GlobalVars.note_event == "runa":
 		_add_note(quincy_runa)
+	elif GlobalVars.note_event == "hook":
+		_add_note(quincy_hook.to_upper())
 	elif GlobalVars.note_event == "email":
 		_add_note(quincy_email)
 	elif GlobalVars.note_event == "lab":

@@ -22,6 +22,7 @@ signal unpaused
 @onready var in_interaction = ""
 @onready var viewing = ""
 @onready var in_animation := false
+@onready var in_trans : bool = false
 
 ## The actual Globals
 @onready var forward : bool

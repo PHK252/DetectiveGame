@@ -43,6 +43,7 @@ func _on_firsthouse_button_pressed() -> void:
 		hide()
 		await get_tree().create_timer(1.0).timeout
 	GlobalVars.in_look_screen = false
+	GlobalVars.in_trans = true
 	if GlobalVars.day == 1:
 		if went_Juniper == true or Dialogic.VAR.get_variable("Global.first_house") == "Juniper":
 			GlobalVars.in_interaction = ""
@@ -67,6 +68,7 @@ func _on_secondhouse_button_pressed() -> void:
 		hide()
 		await get_tree().create_timer(1.0).timeout
 	GlobalVars.in_look_screen = false
+	GlobalVars.in_trans = true
 	if went_Micah == true or Dialogic.VAR.get_variable("Global.first_house") == "Micah":
 		GlobalVars.in_interaction = ""
 		GlobalVars.viewing = ""
@@ -106,6 +108,7 @@ func _on_thirdhouse_button_pressed() -> void:
 			car_rev.play()
 			hide()
 			await get_tree().create_timer(1.0).timeout
+		GlobalVars.in_trans = true
 		GlobalVars.in_interaction = ""
 		GlobalVars.viewing = ""
 		player.start_player()
@@ -121,6 +124,7 @@ func _on_office_button_pressed() -> void:
 		car_rev.play()
 		hide()
 		await get_tree().create_timer(1.0).timeout
+	GlobalVars.in_trans = true
 	match GlobalVars.day:
 		1: 
 			GlobalVars.time = "night"
@@ -149,6 +153,7 @@ func _on_office_button_pressed() -> void:
 
 
 func _on_secret_button_pressed() -> void:
+	GlobalVars.in_trans = true
 	emit_signal("select_level_sound")
 	if car_rev:
 		car_rev.play()

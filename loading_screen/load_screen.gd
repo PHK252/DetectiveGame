@@ -168,7 +168,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				if GlobalVars.in_dialogue == true:
 					await Signal(self, "end_dialogue") 
 					print("awaiting")
-				if GlobalVars.from_save_file == false:
+				if GlobalVars.from_save_file == false and GlobalVars.in_trans == true:
 					if GlobalVars.in_level == true and GlobalVars.current_level == "Office":
 						print("clear level")
 						GlobalVars.in_level = false
