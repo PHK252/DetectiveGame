@@ -21,7 +21,7 @@ signal DaltonVisible
 signal theo_out
 signal DaltonFaint
 
-
+signal DaltonRepos
 
 var out_sit = false
 
@@ -58,6 +58,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		if out_sit:
 			print("signaling")
 			emit_signal("theo_out")
+			emit_signal("DaltonRepos")
 			patio_sit.play()
 		else:
 			stool_sit.play()

@@ -22,6 +22,8 @@ var idle_timer_active: bool = false
 @export var secret_location_walkin := false
 @export var safe_dalton_position : Marker3D
 
+@export var marker_repos_patio : Marker3D
+
 var gathered := false
 var walk_indicate := false
 var finished_greet := false
@@ -1274,3 +1276,7 @@ func _on_door_areaJ_body_entered(body: Node3D) -> void:
 		in_control = false
 		await get_tree().create_timer(0.6).timeout
 		in_control = true
+
+
+func _on_sitting_ppl_dalton_repos() -> void:
+	global_position = marker_repos_patio.global_position
