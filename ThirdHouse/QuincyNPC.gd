@@ -490,6 +490,7 @@ func _on_distraction_time_timeout() -> void:
 	if in_danger == false:
 		is_distracted = false
 		emit_signal("time_out_resume")
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		print("no danger resume")
 		Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
 	catch_possibility = true
@@ -839,7 +840,8 @@ func _on_danger_body_exited(body):
 				if catch_possibility == true:
 					print("danger resume")
 					emit_signal("time_out_resume")
-					Dialogic.VAR.set_variable("Quincy.needs_distraction", true) 
+					Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
+					SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME) 
 					catch_possibility = false 
 					#catch_possibility = false 
 

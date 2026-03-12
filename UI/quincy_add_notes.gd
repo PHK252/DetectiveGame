@@ -36,7 +36,7 @@ var quincy_email = "- TRANSCRIPT: [color=#64635f] HEY DIR. QUINCY, / I’VE BEEN
 var quincy_lab = "[color=#566f5c][url=show_lab_pic]VIEW PHOTO[/url][/color]\n- WHAT IS THAT??"
 var quincy_pager = "- REVER, Operation NULL REV2\n- Turn off your phone when you put it away, Dalton."
 var quincy_proposal = "- TRANSCRIPT: [color=#64635f]...[/color][p][color=#566f5c][url=show_proposal]VIEW PHOTO[/url][/color]\n- DALTON...\n- WHAT IS THIS?\n- WHERE ARE YOU?\n- WE HAVE TO GO THEO."
-var quincy_hook = "The intruder used a climbing hook to enter the premises."
+var quincy_hook = "- The intruder used a climbing hook to enter the premises."
 
 func _ready():
 	text_label.text = GlobalVars.quincy_notes
