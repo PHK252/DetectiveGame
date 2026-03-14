@@ -9,13 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://m5w6r4giq7dt" path="res://UI/Assets/Phone/Updated/Home/Phone Home Button Normal.png" id="8_wrr1c"]
 [ext_resource type="Texture2D" uid="uid://6f278amj4spa" path="res://UI/Assets/Phone/Updated/Home/Phone Home Button Hovered.png" id="9_valq1"]
 [ext_resource type="Texture2D" uid="uid://co6fvylov3hvl" path="res://UI/Assets/Phone/Updated/Home/Phone Gallery Button Normal.png" id="10_pvk2c"]
+[ext_resource type="FontFile" uid="uid://bwwgclqq3mgo" path="res://Dialogue Stuff/Fonts/Default.ttf" id="11_0wfhy"]
 [ext_resource type="Texture2D" uid="uid://ci23sjyon4su2" path="res://UI/Assets/Phone/Updated/Home/Phone Gallery Button Hovered.png" id="11_ao5dl"]
 [ext_resource type="Texture2D" uid="uid://cldl3xmci7njh" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Background.png" id="11_iukwx"]
 [ext_resource type="Script" uid="uid://b5l8rsscdog1o" path="res://UI/time.gd" id="12_cs8vq"]
 [ext_resource type="Texture2D" uid="uid://chwmk4ym37t4k" path="res://UI/Assets/Phone/Updated/Home/Phone Notes Button Normal.png" id="12_k8qp8"]
 [ext_resource type="Texture2D" uid="uid://djiexmxvw6q3n" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Battery.png" id="12_qpmkw"]
 [ext_resource type="Texture2D" uid="uid://bombd5fmy4xwy" path="res://UI/Assets/Phone/Updated/Home/Phone Note Button Hovered.png" id="13_ckxde"]
-[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="14_vsnqy"]
 [ext_resource type="Texture2D" uid="uid://dlon4h2dowtlq" path="res://UI/Assets/Phone/Updated/Home/Phone Call Button Normal.png" id="14_yny11"]
 [ext_resource type="Texture2D" uid="uid://rntra48fe8vj" path="res://UI/Assets/Phone/Updated/Home/Phone Call Button Hovered.png" id="15_4x8ww"]
 [ext_resource type="Texture2D" uid="uid://dqtgq38g6edy4" path="res://UI/Assets/Phone/Updated/Phone Bar.png" id="16_vgsq4"]
@@ -496,7 +496,7 @@ script = ExtResource("1_eli2p")
 call_button = NodePath("PhoneScreen/PhoneNum/Call")
 hangup_call = NodePath("Phone_Sounds_General/hangup")
 metadata/_edit_vertical_guides_ = [2472.0, 2245.0]
-metadata/_edit_horizontal_guides_ = [1774.0]
+metadata/_edit_horizontal_guides_ = [1774.0, 96.0, 167.0]
 
 [node name="Background2" type="TextureRect" parent="."]
 visible = false
@@ -603,12 +603,12 @@ texture_hover = ExtResource("15_4x8ww")
 texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
-offset_top = 74.0
+offset_top = 85.0
 offset_right = 872.0
-offset_bottom = 133.0
+offset_bottom = 144.0
 theme_override_colors/default_color = Color(0.780392, 0.85098, 0.890196, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 45
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "XX:XX"
 fit_content = true
@@ -617,6 +617,7 @@ script = ExtResource("12_cs8vq")
 global_timer = NodePath("../../Timer")
 
 [node name="GalleryScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -639,12 +640,12 @@ texture = ExtResource("12_qpmkw")
 texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
-offset_top = 74.0
+offset_top = 85.0
 offset_right = 872.0
-offset_bottom = 133.0
+offset_bottom = 115.0
 theme_override_colors/default_color = Color(0.6, 0.568627, 0.682353, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 45
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 30
 text = "XX:XX"
 fit_content = true
 scroll_active = false
@@ -668,8 +669,8 @@ offset_top = 164.0
 offset_right = 1162.0
 offset_bottom = 247.0
 theme_override_colors/default_color = Color(0.231373, 0.203922, 0.305882, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 80
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 70
 text = "Dalton's Gallery"
 fit_content = true
 scroll_active = false
@@ -678,11 +679,11 @@ scroll_active = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
-offset_top = 284.0
+offset_top = 268.0
 offset_right = 987.0
-offset_bottom = 326.0
+offset_bottom = 310.0
 theme_override_colors/default_color = Color(0.6, 0.568627, 0.682353, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 40
 text = "Most Recent:"
 fit_content = true
@@ -691,9 +692,9 @@ scroll_active = false
 [node name="Pic1" type="TextureButton" parent="GalleryScreen/GalleryList"]
 layout_mode = 0
 offset_left = 732.0
-offset_top = 333.0
+offset_top = 317.0
 offset_right = 840.0
-offset_bottom = 441.0
+offset_bottom = 425.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("19_ab3eh")
 texture_pressed = ExtResource("20_wkkr4")
@@ -702,9 +703,9 @@ texture_hover = ExtResource("20_wkkr4")
 [node name="Pic2" type="TextureButton" parent="GalleryScreen/GalleryList"]
 layout_mode = 0
 offset_left = 846.0
-offset_top = 333.0
+offset_top = 317.0
 offset_right = 954.0
-offset_bottom = 441.0
+offset_bottom = 425.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("21_f6le3")
 texture_pressed = ExtResource("22_xqb3a")
@@ -713,9 +714,9 @@ texture_hover = ExtResource("22_xqb3a")
 [node name="Pic3" type="TextureButton" parent="GalleryScreen/GalleryList"]
 layout_mode = 0
 offset_left = 960.0
-offset_top = 333.0
+offset_top = 317.0
 offset_right = 1068.0
-offset_bottom = 441.0
+offset_bottom = 425.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("23_gkgmt")
 texture_pressed = ExtResource("24_ybx83")
@@ -724,9 +725,9 @@ texture_hover = ExtResource("24_ybx83")
 [node name="Pic4" type="TextureButton" parent="GalleryScreen/GalleryList"]
 layout_mode = 0
 offset_left = 1074.0
-offset_top = 333.0
+offset_top = 317.0
 offset_right = 1182.0
-offset_bottom = 441.0
+offset_bottom = 425.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("25_jfxx1")
 texture_pressed = ExtResource("26_a4e7i")
@@ -735,9 +736,9 @@ texture_hover = ExtResource("26_a4e7i")
 [node name="Pic5" type="TextureButton" parent="GalleryScreen/GalleryList"]
 layout_mode = 0
 offset_left = 732.0
-offset_top = 447.0
+offset_top = 431.0
 offset_right = 840.0
-offset_bottom = 555.0
+offset_bottom = 539.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("27_ruefl")
 texture_pressed = ExtResource("28_qan61")
@@ -746,9 +747,9 @@ texture_hover = ExtResource("28_qan61")
 [node name="Pic6" type="TextureButton" parent="GalleryScreen/GalleryList"]
 layout_mode = 0
 offset_left = 846.0
-offset_top = 447.0
+offset_top = 431.0
 offset_right = 954.0
-offset_bottom = 555.0
+offset_bottom = 539.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("29_vnvpy")
 texture_pressed = ExtResource("30_uue8b")
@@ -757,16 +758,16 @@ texture_hover = ExtResource("30_uue8b")
 [node name="Pic7" type="TextureButton" parent="GalleryScreen/GalleryList"]
 layout_mode = 0
 offset_left = 960.0
-offset_top = 447.0
+offset_top = 431.0
 offset_right = 1068.0
-offset_bottom = 555.0
+offset_bottom = 539.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("31_k6abh")
 texture_pressed = ExtResource("32_i7ff1")
 texture_hover = ExtResource("32_i7ff1")
 
 [node name="Sprite2D" type="Sprite2D" parent="GalleryScreen/GalleryList"]
-position = Vector2(957, 672)
+position = Vector2(957, 656)
 texture = ExtResource("29_xqvf3")
 
 [node name="ClosePics" type="Control" parent="GalleryScreen"]
@@ -897,6 +898,7 @@ position = Vector2(763, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="PhoneScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -942,7 +944,7 @@ theme_override_colors/font_color = Color(0.321569, 0.415686, 0.447059, 1)
 theme_override_fonts/font = ExtResource("48_7adlf")
 theme_override_font_sizes/font_size = 60
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
 [node name="zero" type="TextureButton" parent="PhoneScreen/PhoneNum"]
 layout_mode = 0
@@ -1192,7 +1194,6 @@ libraries = {
 }
 
 [node name="ContactScreen" type="Control" parent="PhoneScreen" node_paths=PackedStringArray("contacts_arr")]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1205,11 +1206,12 @@ layout_mode = 0
 offset_left = 738.0
 offset_top = 163.0
 offset_right = 1129.0
-offset_bottom = 239.0
+offset_bottom = 248.0
 theme_override_colors/default_color = Color(0.403922, 0.498039, 0.52549, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 70
 text = "CONTACTS"
+vertical_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PhoneScreen/ContactScreen"]
 layout_mode = 0
@@ -1220,7 +1222,6 @@ offset_bottom = 881.0
 theme_override_constants/separation = 0
 
 [node name="Isaac" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1233,13 +1234,13 @@ texture_hover = ExtResource("89_h1u1y")
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Isaac"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 31.0
-offset_top = 16.0
-offset_right = 298.0
-offset_bottom = 58.0
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 313.0
+offset_bottom = 54.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.403922, 0.498039, 0.52549, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 40
 text = "Isaac"
 fit_content = true
@@ -1247,18 +1248,17 @@ fit_content = true
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Isaac"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 30.0
-offset_top = 48.0
-offset_right = 421.0
-offset_bottom = 84.0
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 436.0
+offset_bottom = 96.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.537255, 0.65098, 0.686275, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "034-921"
 
 [node name="Quincy" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1269,13 +1269,13 @@ texture_hover = ExtResource("89_h1u1y")
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Quincy"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 31.0
-offset_top = 16.0
-offset_right = 298.0
-offset_bottom = 58.0
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 313.0
+offset_bottom = 54.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.403922, 0.498039, 0.52549, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 40
 text = "Quincy Leonid"
 fit_content = true
@@ -1283,18 +1283,17 @@ fit_content = true
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Quincy"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 30.0
-offset_top = 48.0
-offset_right = 421.0
-offset_bottom = 84.0
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 436.0
+offset_bottom = 96.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.537255, 0.65098, 0.686275, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "221-1712"
 
 [node name="Theo" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1305,13 +1304,13 @@ texture_hover = ExtResource("89_h1u1y")
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Theo"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 31.0
-offset_top = 16.0
-offset_right = 298.0
-offset_bottom = 58.0
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 313.0
+offset_bottom = 54.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.403922, 0.498039, 0.52549, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 40
 text = "Detective Lycus"
 fit_content = true
@@ -1319,18 +1318,17 @@ fit_content = true
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Theo"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 30.0
-offset_top = 48.0
-offset_right = 421.0
-offset_bottom = 84.0
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 436.0
+offset_bottom = 96.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.537255, 0.65098, 0.686275, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "034-2012"
 
 [node name="Juniper" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1341,13 +1339,13 @@ texture_hover = ExtResource("89_h1u1y")
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Juniper"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 31.0
-offset_top = 16.0
-offset_right = 298.0
-offset_bottom = 58.0
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 313.0
+offset_bottom = 54.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.403922, 0.498039, 0.52549, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 40
 text = "Juniper Hartley"
 fit_content = true
@@ -1355,18 +1353,17 @@ fit_content = true
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Juniper"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 30.0
-offset_top = 48.0
-offset_right = 421.0
-offset_bottom = 84.0
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 436.0
+offset_bottom = 96.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.537255, 0.65098, 0.686275, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "194-108"
 
 [node name="Clyde" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1377,13 +1374,13 @@ texture_hover = ExtResource("89_h1u1y")
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Clyde"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 31.0
-offset_top = 16.0
-offset_right = 298.0
-offset_bottom = 58.0
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 313.0
+offset_bottom = 54.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.403922, 0.498039, 0.52549, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 40
 text = "Clyde Procyon"
 fit_content = true
@@ -1391,18 +1388,17 @@ fit_content = true
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Clyde"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 30.0
-offset_top = 48.0
-offset_right = 421.0
-offset_bottom = 84.0
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 436.0
+offset_bottom = 96.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.537255, 0.65098, 0.686275, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "093-316"
 
 [node name="Skylar" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1413,13 +1409,13 @@ texture_hover = ExtResource("89_h1u1y")
 [node name="Name" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Skylar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 31.0
-offset_top = 16.0
-offset_right = 298.0
-offset_bottom = 58.0
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 313.0
+offset_bottom = 54.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.403922, 0.498039, 0.52549, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 40
 text = "Skylar Aslan"
 fit_content = true
@@ -1427,13 +1423,13 @@ fit_content = true
 [node name="Number" type="RichTextLabel" parent="PhoneScreen/ContactScreen/VBoxContainer/Skylar"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 30.0
-offset_top = 48.0
-offset_right = 421.0
-offset_bottom = 84.0
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 436.0
+offset_bottom = 96.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.537255, 0.65098, 0.686275, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "093-191"
 
@@ -1441,12 +1437,12 @@ text = "093-191"
 texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
-offset_top = 74.0
+offset_top = 85.0
 offset_right = 817.0
-offset_bottom = 133.0
+offset_bottom = 144.0
 theme_override_colors/default_color = Color(0.321569, 0.415686, 0.447059, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 45
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 30
 text = "XX:XX"
 fit_content = true
 scroll_active = false
@@ -1485,7 +1481,6 @@ texture_pressed = ExtResource("91_h1u1y")
 texture_hover = ExtResource("91_h1u1y")
 
 [node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy", "evidence")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("87_fo3me")
@@ -1507,7 +1502,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Profile" type="Sprite2D" parent="NotesScreen/Home"]
-position = Vector2(1159, 165)
+position = Vector2(1159, 175)
 scale = Vector2(0.666667, 0.666667)
 texture = ExtResource("89_ic4nm")
 
@@ -1519,47 +1514,49 @@ texture = ExtResource("90_6iy3u")
 texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
-offset_top = 208.0
+offset_top = 231.0
 offset_right = 1129.0
-offset_bottom = 284.0
+offset_bottom = 307.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 70
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 60
 text = "ASPD CASE LOG"
 
 [node name="Case Number" type="RichTextLabel" parent="NotesScreen/Home"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
-offset_top = 300.0
-offset_right = 875.0
-offset_bottom = 337.0
+offset_top = 314.0
+offset_right = 912.0
+offset_bottom = 351.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "CASE NUMBER"
 
 [node name="Name" type="RichTextLabel" parent="NotesScreen/Home"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 919.0
-offset_top = 152.0
-offset_right = 1128.0
-offset_bottom = 189.0
+offset_left = 917.0
+offset_top = 161.0
+offset_right = 1126.0
+offset_bottom = 190.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "DET. DALTON REYNARD"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Date" type="RichTextLabel" parent="NotesScreen/Home"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 936.0
-offset_top = 301.0
+offset_top = 315.0
 offset_right = 1000.0
-offset_bottom = 338.0
+offset_bottom = 352.0
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "DATE"
 
@@ -1567,20 +1564,20 @@ text = "DATE"
 texture_filter = 1
 layout_mode = 0
 offset_left = 1092.0
-offset_top = 301.0
+offset_top = 315.0
 offset_right = 1172.0
-offset_bottom = 338.0
+offset_bottom = 352.0
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "STATUS"
 
 [node name="Notes" type="TextureButton" parent="NotesScreen/Home"]
 layout_mode = 0
 offset_left = 738.0
-offset_top = 354.0
+offset_top = 353.0
 offset_right = 1182.0
-offset_bottom = 420.0
+offset_bottom = 419.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("90_66dn3")
 texture_pressed = ExtResource("91_ic4nm")
@@ -1590,367 +1587,392 @@ texture_hover = ExtResource("91_ic4nm")
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 70.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10008302"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 3.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "11/02/XX20"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "11-02-XX20"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Notes"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.337255, 0.435294, 0.360784, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "ACTIVE"
+vertical_alignment = 1
 
 [node name="Notes Back2" type="Sprite2D" parent="NotesScreen/Home/Notes"]
 visible = false
+modulate = Color(1, 1, 1, 0.580392)
 position = Vector2(222, 159)
 texture = ExtResource("88_1sd4w")
 
 [node name="Fill1" type="Control" parent="NotesScreen/Home"]
 anchors_preset = 0
 offset_left = 738.0
-offset_top = 426.0
+offset_top = 425.0
 offset_right = 1182.0
-offset_bottom = 492.0
+offset_bottom = 491.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 70.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10005823"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "11/11/XX19"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "11-11-XX19"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill1"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 70.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CLOSED"
+vertical_alignment = 1
 
 [node name="Fill2" type="Control" parent="NotesScreen/Home"]
 anchors_preset = 0
 offset_left = 738.0
-offset_top = 498.0
+offset_top = 497.0
 offset_right = 1182.0
-offset_bottom = 564.0
+offset_bottom = 563.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 3.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 70.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10007289"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 70.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "08/02/XX19"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "08-02-XX19"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill2"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 70.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CLOSED"
+vertical_alignment = 1
 
 [node name="Fill3" type="Control" parent="NotesScreen/Home"]
 anchors_preset = 0
 offset_left = 738.0
-offset_top = 570.0
+offset_top = 569.0
 offset_right = 1182.0
-offset_bottom = 636.0
+offset_bottom = 635.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 72.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10007146"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "07/14/XX19"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "07-14-XX19"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill3"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CLOSED"
+vertical_alignment = 1
 
 [node name="Fill4" type="Control" parent="NotesScreen/Home"]
 anchors_preset = 0
 offset_left = 738.0
-offset_top = 642.0
+offset_top = 641.0
 offset_right = 1182.0
-offset_bottom = 708.0
+offset_bottom = 707.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10007220"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "06/06/XX19"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "06-06-XX19"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill4"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CLOSED"
+vertical_alignment = 1
 
 [node name="Fill5" type="Control" parent="NotesScreen/Home"]
 anchors_preset = 0
 offset_left = 738.0
-offset_top = 714.0
+offset_top = 713.0
 offset_right = 1182.0
-offset_bottom = 780.0
+offset_bottom = 779.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 4.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10007122"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "05/31/XX19"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "05-31-XX19"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill5"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CLOSED"
+vertical_alignment = 1
 
 [node name="Fill6" type="Control" parent="NotesScreen/Home"]
 anchors_preset = 0
 offset_left = 738.0
-offset_top = 786.0
+offset_top = 785.0
 offset_right = 1182.0
-offset_bottom = 852.0
+offset_bottom = 851.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10007160"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "05/15/XX19"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "05-15-XX19"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill6"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 70.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CLOSED"
+vertical_alignment = 1
 
 [node name="Fill7" type="Control" parent="NotesScreen/Home"]
 anchors_preset = 0
 offset_left = 738.0
-offset_top = 858.0
+offset_top = 857.0
 offset_right = 1182.0
-offset_bottom = 924.0
+offset_bottom = 923.0
 
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 166.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CASE 10007111"
+vertical_alignment = 1
 
 [node name="Date2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 199.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 310.0
-offset_bottom = 72.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
-text = "04/02/XX19"
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+text = "04-02-XX19"
+vertical_alignment = 1
 
 [node name="Status2" type="RichTextLabel" parent="NotesScreen/Home/Fill7"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 354.0
-offset_top = 18.0
+offset_top = 5.0
 offset_right = 434.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.494118, 0.333333, 0.333333, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 text = "CLOSED"
+vertical_alignment = 1
 
 [node name="Case" type="Control" parent="NotesScreen"]
 visible = false
@@ -1973,8 +1995,8 @@ offset_top = 159.0
 offset_right = 1129.0
 offset_bottom = 235.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 70
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 60
 text = "CASE 10008302"
 
 [node name="Date" type="RichTextLabel" parent="NotesScreen/Case"]
@@ -1982,10 +2004,10 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 738.0
 offset_top = 225.0
-offset_right = 1058.0
-offset_bottom = 277.0
+offset_right = 1186.0
+offset_bottom = 285.0
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "CASE ASSIGNMENT: DET. DALTON REYNARD, DET. THEO LYCUS"
 fit_content = true
@@ -2008,13 +2030,13 @@ sub2 = NodePath("Case Number4")
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 12.0
+offset_left = 6.0
 offset_top = 18.0
-offset_right = 181.0
-offset_bottom = 70.0
+offset_right = 189.0
+offset_bottom = 78.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "VICTIM 1 -
 MICAH PROCYON"
@@ -2024,12 +2046,12 @@ fit_content = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
-offset_top = 110.0
+offset_top = 122.0
 offset_right = 182.0
-offset_bottom = 147.0
+offset_bottom = 182.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "ADDRESS - 234 SUNSTONE AVE, INDUSTRY CENTER"
@@ -2039,12 +2061,12 @@ fit_content = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
-offset_top = 87.0
+offset_top = 99.0
 offset_right = 182.0
-offset_bottom = 124.0
+offset_bottom = 136.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "SPECIES - RACCOON"
@@ -2068,13 +2090,13 @@ sub2 = NodePath("Case Number4")
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 12.0
+offset_left = 6.0
 offset_top = 18.0
-offset_right = 181.0
-offset_bottom = 70.0
+offset_right = 201.0
+offset_bottom = 108.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "VICTIM 2 -
 JUNIPER HARTLEY"
@@ -2084,12 +2106,12 @@ fit_content = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
-offset_top = 110.0
+offset_top = 122.0
 offset_right = 182.0
-offset_bottom = 147.0
+offset_bottom = 182.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "ADDRESS - 234 615 PINELY STREET, SYLVAN DISTRICT
@@ -2100,12 +2122,12 @@ fit_content = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
-offset_top = 87.0
+offset_top = 99.0
 offset_right = 182.0
-offset_bottom = 124.0
+offset_bottom = 136.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "SPECIES - DEER"
@@ -2129,28 +2151,28 @@ sub2 = NodePath("Case Number4")
 [node name="Case Number2" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 12.0
+offset_left = 6.0
 offset_top = 18.0
-offset_right = 194.0
-offset_bottom = 70.0
+offset_right = 188.0
+offset_bottom = 78.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "VICTIM 3 - 
-MAYOR QUINCY LEONID"
+MAYOR LEONID"
 fit_content = true
 
 [node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
-offset_top = 136.0
+offset_top = 122.0
 offset_right = 193.0
-offset_bottom = 187.0
+offset_bottom = 182.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "ADDRESS - 234 SILVERFROST COURT, WHITECAP BOROUGH"
@@ -2160,12 +2182,12 @@ fit_content = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 13.0
-offset_top = 113.0
+offset_top = 99.0
 offset_right = 182.0
-offset_bottom = 150.0
+offset_bottom = 119.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "SPECIES - CAT"
@@ -2224,8 +2246,8 @@ offset_top = 159.0
 offset_right = 1156.0
 offset_bottom = 235.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 70
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "EVIDENCE"
 
@@ -2237,7 +2259,7 @@ offset_top = 532.0
 offset_right = 1058.0
 offset_bottom = 584.0
 theme_override_colors/default_color = Color(0.407843, 0.403922, 0.388235, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
 text = "DESCRIPTION:"
 fit_content = true
@@ -2250,8 +2272,8 @@ offset_top = 571.0
 offset_right = 1182.0
 offset_bottom = 623.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "ADDITIONAL INFORMATION WILL APPEAR HERE."
 fit_content = true
@@ -2265,8 +2287,8 @@ offset_top = 274.0
 offset_right = 1182.0
 offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "NO EVIDENCE HAS BEEN COLLECTED."
 fit_content = true
@@ -2455,7 +2477,7 @@ offset_top = 164.0
 offset_right = 1174.0
 offset_bottom = 240.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 60
 text = "1 - M. PROCYON"
 scroll_active = false
@@ -2478,10 +2500,11 @@ size_flags_vertical = 3
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "ADD NOTES HERE"
+text = "ADD NOTES HERE
+"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
@@ -2668,7 +2691,7 @@ offset_top = 164.0
 offset_right = 1174.0
 offset_bottom = 240.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 60
 text = "2 - J. HARTLEY"
 
@@ -2690,8 +2713,8 @@ size_flags_vertical = 3
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "ADD NOTES HERE"
 fit_content = true
@@ -2828,7 +2851,6 @@ texture_filter = 1
 texture_filter = 1
 
 [node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_coordinates", "show_letter", "show_journal", "show_phone", "show_lab_pic", "show_proposal")]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2851,9 +2873,9 @@ offset_top = 164.0
 offset_right = 1174.0
 offset_bottom = 240.0
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 60
-text = "3 - MAYOR Q. LEONID"
+text = "3 - MAYOR LEONID"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotesScreen/Quincy"]
 layout_mode = 0
@@ -2873,8 +2895,8 @@ size_flags_vertical = 3
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "ADD NOTES HERE"
 fit_content = true
@@ -3068,12 +3090,12 @@ texture_filter = 1
 texture_filter = 1
 layout_mode = 0
 offset_left = 732.0
-offset_top = 74.0
+offset_top = 85.0
 offset_right = 872.0
-offset_bottom = 133.0
+offset_bottom = 144.0
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("14_vsnqy")
-theme_override_font_sizes/normal_font_size = 45
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 30
 text = "XX:XX"
 fit_content = true
 scroll_active = false

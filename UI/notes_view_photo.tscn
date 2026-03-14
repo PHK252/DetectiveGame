@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dnc2wc8wv2upd" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow.png" id="2_18eir"]
 [ext_resource type="Texture2D" uid="uid://xeu6o4sq4ykh" path="res://UI/Assets/Phone/Phone Home Gallery.png" id="2_u6c5w"]
 [ext_resource type="Texture2D" uid="uid://ox8yi4qc7e3a" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes arrow pressed.png" id="3_u6c5w"]
-[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="6_f3rrp"]
+[ext_resource type="FontFile" uid="uid://bwwgclqq3mgo" path="res://Dialogue Stuff/Fonts/Default.ttf" id="6_d4j4w"]
 [ext_resource type="Script" uid="uid://csdf4urjkaj27" path="res://UI/phone_photo_sounds.gd" id="7_el2wl"]
 [ext_resource type="AudioStream" uid="uid://bkr7wavakq430" path="res://Audio/misc_sounds/deleteblip.wav" id="8_adiao"]
 [ext_resource type="AudioStream" uid="uid://bvnsftemyng8f" path="res://Audio/misc_sounds/altClick.wav" id="9_d4j4w"]
@@ -22,6 +22,7 @@ back = NodePath("Back")
 front = NodePath("Front")
 back_label = NodePath("BackLabel")
 front_label = NodePath("FrontLabel")
+metadata/_edit_vertical_guides_ = [1200.0]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -67,31 +68,33 @@ texture_hover = ExtResource("3_u6c5w")
 
 [node name="FrontLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1138.0
-offset_top = 859.0
-offset_right = 1200.0
-offset_bottom = 890.0
+offset_left = 1141.0
+offset_top = 864.0
+offset_right = 1203.0
+offset_bottom = 895.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("6_f3rrp")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("6_d4j4w")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]FRONT[/center]"
+text = "FRONT"
 fit_content = true
+horizontal_alignment = 2
 
 [node name="BackLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1138.0
-offset_top = 859.0
-offset_right = 1200.0
-offset_bottom = 890.0
+offset_left = 1140.0
+offset_top = 864.0
+offset_right = 1202.0
+offset_bottom = 895.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
-theme_override_fonts/normal_font = ExtResource("6_f3rrp")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("6_d4j4w")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]BACK[/center]"
+text = "BACK"
 fit_content = true
+horizontal_alignment = 2
 
 [node name="Phone_Photo_Sounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
 script = ExtResource("7_el2wl")
