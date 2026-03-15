@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ol30d26lcb68"]
+
+[ext_resource type="Texture2D" uid="uid://db61mguen4hg" path="res://UI/Assets/Pause overlay/Updated/Phone Notes Happy.png" id="1_tlyps"]
+[ext_resource type="Script" uid="uid://bnobvud35reaa" path="res://UI/Aff_Icon.gd" id="2_14uj2"]
+
+[node name="AffFace" type="TextureRect"]
+offset_right = 30.0
+offset_bottom = 24.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_tlyps")
+stretch_mode = 4
+script = ExtResource("2_14uj2")
+emo_array = Array[String](["res://UI/Assets/Pause overlay/Updated/Phone Notes Happy.png", "res://UI/Assets/Pause overlay/Updated/Phone Notes Neutral.png", "res://UI/Assets/Pause overlay/Updated/Phone Notes Sad.png"])

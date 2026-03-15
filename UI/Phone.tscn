@@ -1,4 +1,4 @@
-[gd_scene load_steps=240 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=241 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -129,6 +129,7 @@
 [ext_resource type="Texture2D" uid="uid://mxscck8idwdr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key normal.png" id="106_gus2y"]
 [ext_resource type="Texture2D" uid="uid://64fukljo3wxa" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key.png" id="107_cbewn"]
 [ext_resource type="Texture2D" uid="uid://du4syfn2s10fe" path="res://FirstHouse/Close Assets/Micah Pic Front@2x.png" id="107_vbsje"]
+[ext_resource type="PackedScene" uid="uid://ol30d26lcb68" path="res://UI/aff_face.tscn" id="108_0wfhy"]
 [ext_resource type="Texture2D" uid="uid://dyoechipf8dwo" path="res://FirstHouse/Close Assets/Micah Pic Back@2x.png" id="108_qn5tb"]
 [ext_resource type="Texture2D" uid="uid://dfh3tjo11mdf0" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc hair normal.png" id="108_xqvf3"]
 [ext_resource type="Texture2D" uid="uid://hyudl2is500c" path="res://FirstHouse/Close Assets/Micah Bookmark front@2x.png" id="109_4na7x"]
@@ -1487,6 +1488,7 @@ texture_pressed = ExtResource("91_h1u1y")
 texture_hover = ExtResource("91_h1u1y")
 
 [node name="NotesScreen" type="Control" parent="." node_paths=PackedStringArray("home", "case", "micah", "juniper", "quincy", "evidence")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("87_fo3me")
@@ -1981,7 +1983,6 @@ text = "CLOSED"
 vertical_alignment = 1
 
 [node name="Case" type="Control" parent="NotesScreen"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2082,15 +2083,26 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 6.0
 offset_top = 170.0
-offset_right = 175.0
+offset_right = 151.0
 offset_bottom = 190.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "PHONE - UNKNOWN"
+text = "PHONE - N/A"
 fit_content = true
+
+[node name="AffFace" parent="NotesScreen/Case/Victim1" node_paths=PackedStringArray("note_screen") instance=ExtResource("108_0wfhy")]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 166.0
+offset_right = 199.0
+offset_bottom = 190.0
+character = "Character Aff Points.Micah"
+low = -2
+high = 2
+note_screen = NodePath("../../..")
 
 [node name="Victim2" type="TextureButton" parent="NotesScreen/Case" node_paths=PackedStringArray("title", "sub1", "sub2")]
 layout_mode = 0
@@ -2153,20 +2165,12 @@ bbcode_enabled = true
 text = "SPECIES - DEER"
 fit_content = true
 
-[node name="ColorRect" type="ColorRect" parent="NotesScreen/Case/Victim2"]
-visible = false
-layout_mode = 0
-offset_left = 21.0
-offset_top = 159.0
-offset_right = 61.0
-offset_bottom = 170.0
-
 [node name="Case Number5" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 6.0
 offset_top = 170.0
-offset_right = 175.0
+offset_right = 153.0
 offset_bottom = 190.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
@@ -2175,6 +2179,17 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "PHONE - 194-108"
 fit_content = true
+
+[node name="AffFace" parent="NotesScreen/Case/Victim2" node_paths=PackedStringArray("note_screen") instance=ExtResource("108_0wfhy")]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 166.0
+offset_right = 199.0
+offset_bottom = 190.0
+character = "Character Aff Points.Juniper"
+low = -1
+high = 2
+note_screen = NodePath("../../..")
 
 [node name="Victim3" type="TextureButton" parent="NotesScreen/Case" node_paths=PackedStringArray("title", "sub1", "sub2")]
 layout_mode = 0
@@ -2250,6 +2265,16 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "PHONE - 221-1712"
 fit_content = true
+
+[node name="AffFace" parent="NotesScreen/Case/Victim3" node_paths=PackedStringArray("note_screen") instance=ExtResource("108_0wfhy")]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 166.0
+offset_right = 199.0
+offset_bottom = 190.0
+character = "Character Aff Points.Quincy"
+low = -1
+note_screen = NodePath("../../..")
 
 [node name="Back" type="TextureButton" parent="NotesScreen/Case"]
 layout_mode = 0
@@ -3397,6 +3422,9 @@ bus = &"SFX"
 [connection signal="pressed" from="PhoneScreen/Phone Bottom/Keypad" to="PhoneScreen/ContactScreen" method="_on_keypad_pressed"]
 [connection signal="pressed" from="PhoneScreen/Phone Bottom/Keypad" to="Phone_Sounds_General" method="_on_altClick_phone"]
 [connection signal="visibility_changed" from="NotesScreen" to="NotesScreen" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="NotesScreen" to="NotesScreen/Case/Victim1/AffFace" method="_on_notes_vis_change"]
+[connection signal="visibility_changed" from="NotesScreen" to="NotesScreen/Case/Victim2/AffFace" method="_on_notes_vis_change"]
+[connection signal="visibility_changed" from="NotesScreen" to="NotesScreen/Case/Victim3/AffFace" method="_on_notes_vis_change"]
 [connection signal="mouse_entered" from="NotesScreen/Home/Notes" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="NotesScreen/Home/Notes" to="NotesScreen" method="_on_notes_pressed"]
 [connection signal="pressed" from="NotesScreen/Home/Notes" to="Phone_Sounds_General" method="_on_altClick_phone"]

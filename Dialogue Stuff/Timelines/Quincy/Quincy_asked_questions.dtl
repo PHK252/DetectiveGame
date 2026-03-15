@@ -194,6 +194,7 @@ Dalton (Default): Ask about...
 	Dalton (Awkward): Hmph.
 	Dalton (Sigh): Fine...
 	set {Quincy.kicked_out} = true
+	set {Character Aff Points.Quincy} -= 1
 	[end_timeline]
 - Continue.
 	if {Quincy.num_question_asked} == 0:
