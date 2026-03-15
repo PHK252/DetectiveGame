@@ -84,6 +84,7 @@ func _activate_drink():
 	emit_signal("save_time")
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.in_dialogue = true
+	alert.hide()
 	player.stop_player()
 	Dialogic.start("Finished_tea")
 	jun_interactable.set_deferred("monitorable", false)

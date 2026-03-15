@@ -1,7 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://djiit5o2pgoy7"]
+[gd_scene load_steps=37 format=3 uid="uid://djiit5o2pgoy7"]
 
-[ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="1_eamh7"]
 [ext_resource type="Script" uid="uid://b40nwl7y7u2wi" path="res://UI/tutorial.gd" id="1_om0r0"]
+[ext_resource type="FontFile" uid="uid://bwwgclqq3mgo" path="res://Dialogue Stuff/Fonts/Default.ttf" id="2_2whfq"]
 [ext_resource type="Texture2D" uid="uid://uut7ggpjbkbi" path="res://UI/Assets/tutorial/Notes_arrow_right.png" id="2_pwpa5"]
 [ext_resource type="Texture2D" uid="uid://cqhd1lc1d0edu" path="res://UI/Assets/tutorial/Notes_arrow_left.png" id="3_om0r0"]
 [ext_resource type="Texture2D" uid="uid://cwohdgtm3ywwn" path="res://UI/Assets/tutorial/Notes_arrow_up.png" id="4_c481p"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bd3ohdy8yhmdm" path="res://UI/Assets/tutorial/Notes_s_down.png" id="8_n3cvu"]
 [ext_resource type="Texture2D" uid="uid://dvup6hsfbeywu" path="res://UI/Assets/tutorial/Notes_d_right.png" id="9_hey4w"]
 [ext_resource type="Texture2D" uid="uid://dt2pgjcoj4po2" path="res://UI/Assets/tutorial/Notes_shift.png" id="10_fcm1x"]
-[ext_resource type="Texture2D" uid="uid://b6lookf1d2ffh" path="res://UI/Assets/tutorial/Paper/Tutorial_movement.png" id="11_c481p"]
 [ext_resource type="Texture2D" uid="uid://bfve7ho7jfvh7" path="res://UI/Assets/tutorial/Notes_interact_e.png" id="11_pxagh"]
 [ext_resource type="Texture2D" uid="uid://7i4meclxyb01" path="res://UI/Assets/tutorial/Notes_exit_q_darker.png" id="13_om0r0"]
 [ext_resource type="Texture2D" uid="uid://cefkmi8nvx7y5" path="res://UI/Assets/tutorial/Notes_dialogue.png" id="14_om0r0"]
@@ -496,83 +495,66 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="OR" type="RichTextLabel" parent="Movement"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
-offset_left = 700.0
-offset_top = 918.0
-offset_right = 887.0
-offset_bottom = 1001.0
+offset_left = 726.0
+offset_top = 943.0
+offset_right = 913.0
+offset_bottom = 1034.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 100
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[center]OR[/center]"
 fit_content = true
 scroll_active = false
 
 [node name="TO MOVE" type="RichTextLabel" parent="Movement"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
-offset_left = 1126.0
-offset_top = 918.0
-offset_right = 1410.0
-offset_bottom = 1001.0
+offset_left = 1152.0
+offset_top = 942.0
+offset_right = 1481.0
+offset_bottom = 1033.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 100
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "TO MOVE"
 fit_content = true
 scroll_active = false
 
 [node name="Right" type="Sprite2D" parent="Movement"]
-position = Vector2(672.5, 968)
+position = Vector2(698.5, 968)
 texture = ExtResource("2_pwpa5")
 
 [node name="Left" type="Sprite2D" parent="Movement"]
-position = Vector2(542.5, 968)
+position = Vector2(568.5, 968)
 texture = ExtResource("3_om0r0")
 
 [node name="Up" type="Sprite2D" parent="Movement"]
-position = Vector2(607.5, 908)
+position = Vector2(633.5, 908)
 texture = ExtResource("4_c481p")
 
 [node name="Down" type="Sprite2D" parent="Movement"]
-position = Vector2(607.5, 968)
+position = Vector2(633.5, 968)
 texture = ExtResource("5_en25p")
 
 [node name="W" type="Sprite2D" parent="Movement"]
-position = Vector2(979.5, 908)
+position = Vector2(1005.5, 908)
 texture = ExtResource("6_2whfq")
 
 [node name="A" type="Sprite2D" parent="Movement"]
-position = Vector2(914.5, 968)
+position = Vector2(940.5, 968)
 texture = ExtResource("7_gc8pi")
 
 [node name="S" type="Sprite2D" parent="Movement"]
-position = Vector2(979.5, 968)
+position = Vector2(1005.5, 968)
 texture = ExtResource("8_n3cvu")
 
 [node name="D" type="Sprite2D" parent="Movement"]
-position = Vector2(1044.5, 968)
+position = Vector2(1070.5, 968)
 texture = ExtResource("9_hey4w")
-
-[node name="Movement" type="TextureRect" parent="Movement"]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -462.0
-offset_top = -309.0
-offset_right = 462.0
-offset_bottom = -51.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("11_c481p")
-stretch_mode = 2
 
 [node name="Run" type="Control" parent="."]
 visible = false
@@ -585,19 +567,19 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Shift" type="Sprite2D" parent="Run"]
-position = Vector2(842, 968)
+position = Vector2(852, 968)
 texture = ExtResource("10_fcm1x")
 
 [node name="TO RUN" type="RichTextLabel" parent="Run"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
-offset_left = 946.0
-offset_top = 923.0
-offset_right = 1221.0
-offset_bottom = 1006.0
+offset_left = 956.0
+offset_top = 943.0
+offset_right = 1231.0
+offset_bottom = 1026.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 90
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "TO RUN"
 fit_content = true
@@ -614,19 +596,19 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="E" type="Sprite2D" parent="Interact"]
-position = Vector2(757, 968)
+position = Vector2(786, 968)
 texture = ExtResource("11_pxagh")
 
 [node name="TO RUN" type="RichTextLabel" parent="Interact"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
-offset_left = 819.0
-offset_top = 923.0
-offset_right = 1219.0
-offset_bottom = 1006.0
+offset_left = 848.0
+offset_top = 943.0
+offset_right = 1248.0
+offset_bottom = 1014.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 90
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "TO INTERACT"
 fit_content = true
@@ -643,19 +625,19 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Q" type="Sprite2D" parent="Exit"]
-position = Vector2(830, 968)
+position = Vector2(855, 968)
 texture = ExtResource("13_om0r0")
 
 [node name="TO RUN" type="RichTextLabel" parent="Exit"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
-offset_left = 892.0
-offset_top = 923.0
-offset_right = 1144.0
-offset_bottom = 1006.0
+offset_left = 917.0
+offset_top = 943.0
+offset_right = 1169.0
+offset_bottom = 1026.0
 theme_override_colors/default_color = Color(0.909804, 0.698039, 0.219608, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 90
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "TO EXIT"
 fit_content = true
@@ -673,19 +655,19 @@ mouse_filter = 2
 
 [node name="Esc" type="Sprite2D" parent="Pause"]
 texture_filter = 1
-position = Vector2(747, 833)
+position = Vector2(780, 833)
 texture = ExtResource("14_om0r0")
 
 [node name="TO RUN" type="RichTextLabel" parent="Pause"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
-offset_left = 865.0
-offset_top = 788.0
-offset_right = 1265.0
-offset_bottom = 871.0
+offset_left = 898.0
+offset_top = 808.0
+offset_right = 1298.0
+offset_bottom = 879.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 90
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "TO CONTINUE"
 fit_content = true
@@ -712,19 +694,19 @@ texture = ExtResource("16_gc8pi")
 
 [node name="Tab" type="Sprite2D" parent="Phone"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(696, 968)
+position = Vector2(726, 968)
 texture = ExtResource("15_c481p")
 
 [node name="TO RUN" type="RichTextLabel" parent="Phone"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
-offset_left = 769.0
-offset_top = 923.0
-offset_right = 1310.0
-offset_bottom = 1006.0
+offset_left = 799.0
+offset_top = 943.0
+offset_right = 1340.0
+offset_bottom = 1026.0
 theme_override_colors/default_color = Color(0.909804, 0.698039, 0.219608, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 90
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "TO TOGGLE PHONE"
 fit_content = true
@@ -757,7 +739,7 @@ mouse_filter = 2
 texture = ExtResource("25_n3cvu")
 
 [node name="TO RUN" type="RichTextLabel" parent="Flip"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 0
 offset_left = 736.0
 offset_top = 697.0
@@ -765,8 +747,8 @@ offset_right = 1185.0
 offset_bottom = 780.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 90
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[center]CLICK TO FLIP[/center]"
 fit_content = true
@@ -800,7 +782,7 @@ texture = ExtResource("26_hey4w")
 
 [node name="TO MAP" type="RichTextLabel" parent="Map"]
 modulate = Color(1, 1, 1, 0)
-texture_filter = 2
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -808,14 +790,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -735.5
-offset_top = 382.5
+offset_top = 402.5
 offset_right = 735.5
-offset_bottom = 465.5
+offset_bottom = 485.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
-theme_override_fonts/normal_font = ExtResource("1_eamh7")
-theme_override_font_sizes/normal_font_size = 90
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[center]HEAD TO THE MAP TO CHOOSE YOUR DESTINATION[/center]"
 fit_content = true

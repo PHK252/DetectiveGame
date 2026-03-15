@@ -437,7 +437,7 @@ func loadGame(path : String):
 
 func _load_arr(main_dic: Dictionary, sub_dic: String, load_name : Array):
 	if main_dic[sub_dic].size() != load_name.size():
-		printerr("Mismatch load arr to dic size: " + str(load_name))
+		printerr("Mismatch load arr to dic size: " + str(load_name.size()) +  str(main_dic[sub_dic].size()))
 		return
 	var accessed_dictionary = main_dic[sub_dic]
 	var keyed_dic = accessed_dictionary.keys()
