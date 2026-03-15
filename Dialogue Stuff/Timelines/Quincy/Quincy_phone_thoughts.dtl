@@ -1,3 +1,4 @@
 Dalton (Doubt1): Huh. 
 Dalton (Hmph): Interesting.
 set {Quincy.got_phone} = true
+do GlobalVars.emit_add_note("quincy", "phone", "")

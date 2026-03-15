@@ -134,6 +134,8 @@ func _on_case_add_quincy_note():
 			print_debug("Quincy letter add notes error")
 	elif GlobalVars.note_event == "runa":
 		_add_note(quincy_runa)
+	elif GlobalVars.note_event == "phone":
+		_add_note(quincy_phone_found)
 	elif GlobalVars.note_event == "hook":
 		_add_note(quincy_hook.to_upper())
 	elif GlobalVars.note_event == "email":

@@ -4,7 +4,7 @@ extends Control
 @onready var delete = $Delete
 @onready var subject = $Subject
 @onready var message = $Message
-@onready var allowed_characters: String = "[a-zA-Z0-9\\.\\?,]+"
+@onready var allowed_characters: String = "[a-zA-Z0-9\\.\\?!, ]+"
 var _reg_ex: RegEx = RegEx.new()
 
 signal placeholder
@@ -23,7 +23,7 @@ func _ready():
 	
 
 func _input(event):
-	if subject.text != "" and message.text != "":
+	if subject.text != "" or message.text != "":
 		send.disabled = false
 		delete.disabled = false
 		send.mouse_default_cursor_shape = Control.CursorShape.CURSOR_POINTING_HAND

@@ -265,3 +265,7 @@ func faceScan():
 	await $"Mail/Face ID/FaceID Anim".animation_finished
 	Mail_face_id_overlay.hide()
 	enableMailButtons()
+
+
+func _on_subject_text_submitted(new_text):
+	pass # Replace with function body.

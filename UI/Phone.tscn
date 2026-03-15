@@ -164,7 +164,7 @@
 [ext_resource type="Texture2D" uid="uid://b13m4uusn5low" path="res://ThirdHouse/Assets/Sciencepic front@2x.png" id="130_hqjxk"]
 [ext_resource type="Texture2D" uid="uid://c4wvalrot4e50" path="res://ThirdHouse/Assets/Sciencepic back@2x.png" id="131_sykof"]
 [ext_resource type="Texture2D" uid="uid://cgbsifk625ex" path="res://SecondHouse/Close Assets/Juniper Employee Info Back@2x.png" id="144_5ppeq"]
-[ext_resource type="Texture2D" uid="uid://wghfnjybiaak" path="res://ThirdHouse/Assets/Project Proposal_1@2x.png" id="159_k0hhp"]
+[ext_resource type="Texture2D" uid="uid://chmnmfh55n180" path="res://ThirdHouse/Assets/Project Proposal@2x.png" id="161_k471k"]
 [ext_resource type="Script" uid="uid://ktpiy2gq45ns" path="res://UI/phone_sounds_general.gd" id="164_x6dlt"]
 [ext_resource type="AudioStream" uid="uid://oiijkhxhm8r6" path="res://Audio/misc_sounds/num_01.wav" id="165_14bcs"]
 [ext_resource type="AudioStream" uid="uid://bp3cervcm2od7" path="res://Audio/misc_sounds/num_02.wav" id="166_hn6t8"]
@@ -1222,6 +1222,7 @@ offset_bottom = 881.0
 theme_override_constants/separation = 0
 
 [node name="Isaac" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1259,6 +1260,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "034-921"
 
 [node name="Quincy" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1294,6 +1296,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "221-1712"
 
 [node name="Theo" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1329,6 +1332,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "034-2012"
 
 [node name="Juniper" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1364,6 +1368,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "194-108"
 
 [node name="Clyde" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -1399,6 +1404,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "093-316"
 
 [node name="Skylar" type="TextureButton" parent="PhoneScreen/ContactScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -2038,19 +2044,18 @@ mouse_filter = 1
 theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 30
-text = "VICTIM 1 -
-MICAH PROCYON"
+text = "VICTIM 1 - MICAH PROCYON"
 fit_content = true
 
 [node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 13.0
-offset_top = 122.0
-offset_right = 182.0
-offset_bottom = 182.0
+offset_left = 6.0
+offset_top = 105.0
+offset_right = 194.0
+offset_bottom = 165.0
 mouse_filter = 1
-theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -2060,16 +2065,31 @@ fit_content = true
 [node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 13.0
-offset_top = 99.0
-offset_right = 182.0
-offset_bottom = 136.0
+offset_left = 6.0
+offset_top = 80.0
+offset_right = 175.0
+offset_bottom = 100.0
 mouse_filter = 1
-theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "SPECIES - RACCOON"
+fit_content = true
+
+[node name="Case Number5" type="RichTextLabel" parent="NotesScreen/Case/Victim1"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 175.0
+offset_bottom = 190.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "PHONE - UNKNOWN"
 fit_content = true
 
 [node name="Victim2" type="TextureButton" parent="NotesScreen/Case" node_paths=PackedStringArray("title", "sub1", "sub2")]
@@ -2105,32 +2125,55 @@ fit_content = true
 [node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 13.0
-offset_top = 122.0
-offset_right = 182.0
-offset_bottom = 182.0
+offset_left = 6.0
+offset_top = 105.0
+offset_right = 170.0
+offset_bottom = 165.0
 mouse_filter = 1
-theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "ADDRESS - 234 615 PINELY STREET, SYLVAN DISTRICT
+text = "ADDRESS - 615 PINELY STREET, SYLVAN DISTRICT
 "
 fit_content = true
 
 [node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 13.0
-offset_top = 99.0
-offset_right = 182.0
-offset_bottom = 136.0
+offset_left = 6.0
+offset_top = 80.0
+offset_right = 175.0
+offset_bottom = 100.0
 mouse_filter = 1
-theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "SPECIES - DEER"
+fit_content = true
+
+[node name="ColorRect" type="ColorRect" parent="NotesScreen/Case/Victim2"]
+visible = false
+layout_mode = 0
+offset_left = 21.0
+offset_top = 159.0
+offset_right = 61.0
+offset_bottom = 170.0
+
+[node name="Case Number5" type="RichTextLabel" parent="NotesScreen/Case/Victim2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 175.0
+offset_bottom = 190.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "PHONE - 194-108"
 fit_content = true
 
 [node name="Victim3" type="TextureButton" parent="NotesScreen/Case" node_paths=PackedStringArray("title", "sub1", "sub2")]
@@ -2166,31 +2209,46 @@ fit_content = true
 [node name="Case Number3" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 13.0
-offset_top = 122.0
-offset_right = 193.0
-offset_bottom = 182.0
+offset_left = 6.0
+offset_top = 105.0
+offset_right = 186.0
+offset_bottom = 165.0
 mouse_filter = 1
-theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "ADDRESS - 234 SILVERFROST COURT, WHITECAP BOROUGH"
+text = "ADDRESS - 314 SILVERFROST COURT, WHITECAP BOROUGH"
 fit_content = true
 
 [node name="Case Number4" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 13.0
-offset_top = 99.0
-offset_right = 182.0
-offset_bottom = 119.0
+offset_left = 6.0
+offset_top = 80.0
+offset_right = 175.0
+offset_bottom = 100.0
 mouse_filter = 1
-theme_override_colors/default_color = Color(0.662745, 0.658824, 0.607843, 1)
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "SPECIES - CAT"
+fit_content = true
+
+[node name="Case Number5" type="RichTextLabel" parent="NotesScreen/Case/Victim3"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 170.0
+offset_right = 175.0
+offset_bottom = 190.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
+theme_override_fonts/normal_font = ExtResource("11_0wfhy")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "PHONE - 221-1712"
 fit_content = true
 
 [node name="Back" type="TextureButton" parent="NotesScreen/Case"]
@@ -2535,7 +2593,7 @@ offset_top = 203.0
 offset_right = 2038.0
 offset_bottom = 504.0
 rotation = 1.5708
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("103_bnvcj")
 
 [node name="Back" parent="NotesScreen/Micah/View Tool Note" index="2"]
@@ -2544,7 +2602,7 @@ offset_top = 203.0
 offset_right = 2038.0
 offset_bottom = 504.0
 rotation = 1.5708
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("104_hu8kh")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View Tool Note" index="4"]
@@ -2560,12 +2618,12 @@ title = NodePath("../Title")
 back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Micah/View ID Card" index="1"]
-visible = false
+texture_filter = 2
 offset_left = 762.0
 offset_top = 250.0
 offset_right = 1763.0
 offset_bottom = 1551.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("105_p4c1p")
 
 [node name="Back" parent="NotesScreen/Micah/View ID Card" index="2"]
@@ -2574,7 +2632,7 @@ offset_left = 762.0
 offset_top = 250.0
 offset_right = 1763.0
 offset_bottom = 1551.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("106_ce3nd")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View ID Card" index="4"]
@@ -2598,11 +2656,12 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("107_vbsje")
 
 [node name="Back" parent="NotesScreen/Micah/View Picture" index="2"]
+visible = false
 offset_left = 762.0
 offset_top = 227.0
 offset_right = 1763.0
 offset_bottom = 1628.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("108_qn5tb")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View Picture" index="4"]
@@ -2618,6 +2677,7 @@ title = NodePath("../Title")
 back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Micah/View bookmark" index="1"]
+visible = false
 offset_left = 879.0
 offset_top = 199.0
 offset_right = 1180.0
@@ -2630,7 +2690,7 @@ offset_left = 879.0
 offset_top = 199.0
 offset_right = 1180.0
 offset_bottom = 1200.0
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("110_jyrqf")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View bookmark" index="4"]
@@ -2651,16 +2711,17 @@ offset_top = 204.0
 offset_right = 2136.6
 offset_bottom = 805.0
 rotation = 1.5708
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("111_abwpn")
 
 [node name="Back" parent="NotesScreen/Micah/View letter" index="2"]
+visible = false
 offset_left = 1135.6
 offset_top = 204.0
 offset_right = 2136.6
 offset_bottom = 805.0
 rotation = 1.5708
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("112_nkqwo")
 
 [node name="FrontLabel" parent="NotesScreen/Micah/View letter" index="4"]
@@ -2767,12 +2828,13 @@ title = NodePath("../Title")
 back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Juniper/View Info" index="1"]
+texture_filter = 2
 offset_left = 1165.4
 offset_top = 252.0
 offset_right = 2366.4
 offset_bottom = 1253.0
 rotation = 1.5708
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("116_6tnik")
 
 [node name="Back" parent="NotesScreen/Juniper/View Info" index="2"]
@@ -2851,6 +2913,7 @@ texture_filter = 1
 texture_filter = 1
 
 [node name="Quincy" type="Control" parent="NotesScreen" node_paths=PackedStringArray("text_label", "title", "back_button", "show_coordinates", "show_letter", "show_journal", "show_phone", "show_lab_pic", "show_proposal")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2957,11 +3020,11 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("124_los0y")
 
 [node name="Back" parent="NotesScreen/Quincy/View phone" index="2"]
-visible = false
-offset_left = 760.0
-offset_top = 168.0
-offset_right = 1761.0
-offset_bottom = 1869.0
+texture_filter = 2
+offset_left = 756.0
+offset_top = 172.0
+offset_right = 1757.0
+offset_bottom = 1873.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("125_4k6t1")
 
@@ -2978,19 +3041,22 @@ title = NodePath("../Title")
 back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Quincy/View letter" index="1"]
+texture_filter = 2
 offset_left = 736.0
 offset_top = 274.0
 offset_right = 1737.0
 offset_bottom = 1275.0
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.225, 0.225)
 texture = ExtResource("126_ci535")
 
 [node name="Back" parent="NotesScreen/Quincy/View letter" index="2"]
+visible = false
+texture_filter = 2
 offset_left = 736.0
 offset_top = 274.0
 offset_right = 1737.0
 offset_bottom = 1275.0
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.225, 0.225)
 texture = ExtResource("127_6o44q")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View letter" index="4"]
@@ -3006,6 +3072,7 @@ title = NodePath("../Title")
 back_button = NodePath("../Back")
 
 [node name="Front" parent="NotesScreen/Quincy/View journal" index="1"]
+texture_filter = 2
 offset_left = 1181.4
 offset_top = 210.0
 offset_right = 2682.4
@@ -3015,6 +3082,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("128_6o44q")
 
 [node name="Back" parent="NotesScreen/Quincy/View journal" index="2"]
+texture_filter = 2
 offset_left = 1181.4
 offset_top = 210.0
 offset_right = 2682.4
@@ -3044,6 +3112,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("130_hqjxk")
 
 [node name="Back" parent="NotesScreen/Quincy/View Lab Pic" index="2"]
+texture_filter = 2
 offset_left = 762.0
 offset_top = 250.0
 offset_right = 1763.0
@@ -3065,20 +3134,22 @@ back_button = NodePath("../Back")
 front_only = true
 
 [node name="Front" parent="NotesScreen/Quincy/View proposal" index="1"]
+texture_filter = 2
 offset_left = 760.0
 offset_top = 205.0
 offset_right = 1761.0
 offset_bottom = 1706.0
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("159_k0hhp")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("161_k471k")
 
 [node name="Back" parent="NotesScreen/Quincy/View proposal" index="2"]
+texture_filter = 2
 offset_left = 760.0
 offset_top = 205.0
 offset_right = 1761.0
 offset_bottom = 1706.0
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("159_k0hhp")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("161_k471k")
 
 [node name="FrontLabel" parent="NotesScreen/Quincy/View proposal" index="4"]
 texture_filter = 1
