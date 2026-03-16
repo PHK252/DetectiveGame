@@ -183,3 +183,9 @@ func _on_hall_close_cam_area_body_entered(body):
 	if body.name == "Quincy" and Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
 		Dialogic.VAR.set_variable("Quincy.in_bathroom", false)
 		print("quincy out", Dialogic.VAR.get_variable("Quincy.in_bathroom"))
+
+
+func _on_quincy_open_close_bathroom_door() -> void:
+	open()
+	await get_tree().create_timer(3.0).timeout
+	close()

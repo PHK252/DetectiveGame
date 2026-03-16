@@ -156,7 +156,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	GlobalVars.theo_pos = global_position
 	
-	print(nav.target_position)
 	
 	if is_investigating == true or going_to_bar == true:
 		distance_to_target = global_transform.origin.distance_to(marker_list[investigate_choice].global_transform.origin)
@@ -453,7 +452,10 @@ func _process_idle_state(distance_to_target: float) -> void:
 # Handles behavior when NPC is in the FOLLOW state
 func _process_follow_state(distance_to_target: float) -> void:
 	# Update navigation target dynamically
-	if quincy_greet == false:
+	if in_nav_danger:
+		nav.target_position = adjustment_list[adjustment_num].global_position
+		
+	if quincy_greet == false and in_nav_danger == false:
 		nav.target_position = player.global_transform.origin
 		
 	if faint_dalton:

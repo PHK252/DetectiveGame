@@ -66,6 +66,8 @@ var fall_allowed := true
 var distraction_allowed := true
 var rotate_number := 0
 var is_activated := false
+var q_in_bath := false
+signal open_close_bathroomDoor 
 
 var sound_allowed := true
 @export var leave_position : Marker3D
@@ -99,6 +101,8 @@ signal disable_look
 
 #handle distraction downstairs
 var bar_catch_area := false
+
+var bar_danger_zone := false
 
 enum {
 	IDLE, 
@@ -185,6 +189,9 @@ func _process(delta: float) -> void:
 	#print(is_navigating)
 	#print(str(is_distracted) + ": distraction")
 	#print(wander_choice)
+	#print(q_in_bath)
+	#print(wander_choice)
+	#print(bar_danger_zone)
 	if GlobalVars.quincy_time_out == true or GlobalVars.quincy_kicked_out == true: #or GlobalVars.quincy_fainted == true (gate ze faint)
 		is_distracted = false
 	if is_distracted == false:
@@ -483,6 +490,8 @@ func _quincy_caught():
 		emit_signal("open_doors")
 
 func _on_distraction_time_timeout() -> void:
+	print("entered_timeout_area")
+	
 	if interact:
 		interact.set_deferred("monitorable", true)
 	print("finished")
@@ -498,8 +507,10 @@ func _on_distraction_time_timeout() -> void:
 	if in_caught_bubble:
 		print("in bubble")
 		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
-			await out_bath
+			pass
+			#await out_bath await pauses function making him not come out
 		_quincy_caught()
+	
 	if wander_choice == 1:
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
 		wander_choice = 11
@@ -508,13 +519,16 @@ func _on_distraction_time_timeout() -> void:
 		general_distraction = false
 		state = FOLLOW
 	
-	if wander_choice == 4:
+	if wander_choice == 4 or q_in_bath:
+		print("entered_bathroom_exit_state")
+		q_in_bath = false
 		after_clog.visible = false
 		quincy_tree.set("parameters/Blend3/blend_amount", 0)
 		wander_choice = 11
 		is_distracted = false
 		is_navigating = true
 		general_distraction = false
+		emit_signal("open_close_bathroomDoor")
 		state = FOLLOW
 		
 	if wander_choice == 5:
@@ -564,6 +578,9 @@ func _on_smoke_time_timeout() -> void:
 
 func _on_bathroom_q_body_entered(body: Node3D) -> void:
 	pass
+	#if body.name == "Quincy":
+		#q_in_bath = true
+		
 	#if body.is_in_group("player"):
 		#if bathroom_distraction == false:
 			#is_distracted = true
@@ -1030,3 +1047,30 @@ func _on_bar_faint_time_handle_drink_sound() -> void:
 	rotate_forced = false
 	wander_choice = 11
 	sound_player.stop()
+
+
+func _on_q_check_bath_body_entered(body: Node3D) -> void:
+	if body.name == "Quincy":
+		q_in_bath = true
+
+
+func _on_bar_danger_zone_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		bar_danger_zone = true
+	
+	if body.name == "Quincy" and bar_danger_zone:
+		#stop any drinking
+		quincy_tree.set("parameters/Wine/request", 2)
+		is_drinking = false
+		rotate_number = 0
+		rotate_forced = false
+		#go to safe area 
+		is_distracted = true
+		is_navigating = true
+		wander_choice = 0
+		nav.target_position = marker_positions[0].global_position
+		state = FOLLOW
+		
+func _on_bar_danger_zone_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		bar_danger_zone = false
