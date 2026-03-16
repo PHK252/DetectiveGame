@@ -92,6 +92,12 @@ var in_nav_danger := false
 
 signal block_stairs
 
+
+@export var micahsHouse := false
+var adjustment_num := 7
+
+
+
 enum {
 	IDLE, 
 	FOLLOW,
@@ -150,12 +156,20 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	GlobalVars.theo_pos = global_position
 	
+	print(nav.target_position)
+	
 	if is_investigating == true or going_to_bar == true:
 		distance_to_target = global_transform.origin.distance_to(marker_list[investigate_choice].global_transform.origin)
 	elif waterfall_scene:
 		distance_to_target = global_transform.origin.distance_to(marker_list[0].global_transform.origin)
 	else:
-		distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
+		if micahsHouse == false:
+			distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
+		elif theo_adjustment == false:
+			distance_to_target = global_transform.origin.distance_to(player.global_transform.origin)
+		else:
+			distance_to_target = global_transform.origin.distance_to(adjustment_list[adjustment_num].global_position)
+		
 		if GlobalVars.in_level and quincy_house and allow_QH_switch: #if following in quincy's house block stairs once
 			quincy_house = false 
 			emit_signal("block_stairs")
@@ -397,13 +411,16 @@ func _process_idle_state(distance_to_target: float) -> void:
 	if going_to_bar or patio_sit:
 		state = SITTING
 
-	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton) and waterfall_scene == false):
+	if ((distance_to_target > FOLLOW_DISTANCE and is_navigating and is_investigating == false and going_to_bar == false) and in_kitchen == false and theo_adjustment == false and (quincy_greet == false or faint_dalton) and waterfall_scene == false and in_nav_danger == false):
 		print("Switching to FOLLOW state", " Theo")
 		
 		#print("is_nav" + str(is_navigating))
 		#print("is_inv" + str(is_investigating))
 		#print("got_greeting" + str(quincy_greet))
 		#print("faint_var" + str(faint_dalton))
+		
+		
+		
 		
 		nav.path_desired_distance = 0.75
 		nav.target_desired_distance = 1.0
@@ -581,7 +598,8 @@ func _on_k_control_body_entered(body: Node3D) -> void:
 	if body.is_in_group("theo"):
 			#in_kitchen = false
 			in_nav_danger = true
-			nav.target_position = adjustment_list[8].global_position
+			adjustment_num = 8
+			nav.target_position = adjustment_list[adjustment_num].global_position
 			is_navigating = true
 			state = ADJUST
 
@@ -712,7 +730,8 @@ func _on_d_entered_body_exited(body: Node3D) -> void:
 		emit_signal("dalton_enter_level")
 		#animation_choice = rng.randi_range(0, 10)
 		#is_investigating = true
-		nav.target_position = marker_list[3].global_position
+		adjustment_num = 6
+		nav.target_position = adjustment_list[adjustment_num].global_position
 		is_navigating = true
 		STOPPING_DISTANCE = 0.0
 		state = ADJUST
@@ -1215,7 +1234,8 @@ func _on_sc_nogo_body_exited(body: Node3D) -> void:
 
 func _on_MicahDoor_greeting() -> void:
 	theo_adjustment = true
-	nav.target_position = adjustment_list[7].global_position
+	adjustment_num = 7
+	nav.target_position = adjustment_list[adjustment_num].global_position
 	is_navigating = true
 	STOPPING_DISTANCE = 0.0
 	nav.path_desired_distance = 0.2

@@ -1280,3 +1280,39 @@ func _on_door_areaJ_body_entered(body: Node3D) -> void:
 
 func _on_sitting_ppl_dalton_repos() -> void:
 	global_position = marker_repos_patio.global_position
+
+
+func _on_087_interacted(interactor: Interactor) -> void:
+	number = 12
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_091_interacted(interactor: Interactor) -> void:
+	number = 13
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
+
+
+func _on_090_interacted(interactor: Interactor) -> void:
+	number = 14
+	in_control = false
+	needs_rotation_forced = true
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	force_rotation = false
+	needs_rotation_forced = false
+	number = 0
+	in_control = true
