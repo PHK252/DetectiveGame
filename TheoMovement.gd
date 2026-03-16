@@ -132,6 +132,7 @@ func _ready() -> void:
 	nav.target_position = player.global_transform.origin
 	
 	if quincy_house:
+		nav.radius = 0.1
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 		if GlobalVars.in_level == true:
 			print("in_level_quincy")
