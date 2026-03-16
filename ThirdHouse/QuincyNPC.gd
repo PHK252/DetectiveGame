@@ -478,7 +478,10 @@ func _on_dalton_caught_body_exited(body):
 func _quincy_caught():
 	print("catch danger", in_danger)
 	print("catch ", catch_possibility)
-	if catch_possibility and in_danger == true and Dialogic.VAR.get_variable("Quincy.in_bathroom") == false:
+	print("bathroom" , Dialogic.VAR.get_variable("Quincy.in_bathroom"))
+	if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
+		await out_bath
+	if catch_possibility and in_danger == true:
 		interact.set_deferred("monitorable", false)
 		print("quincy caught you")
 		if GlobalVars.in_interaction != "":
@@ -506,9 +509,9 @@ func _on_distraction_time_timeout() -> void:
 	print("catch_possibility")
 	if in_caught_bubble:
 		print("in bubble")
-		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
-			pass
-			#await out_bath await pauses function making him not come out
+		#if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
+			#pass
+			##await out_bath await pauses function making him not come out
 		_quincy_caught()
 	
 	if wander_choice == 1:

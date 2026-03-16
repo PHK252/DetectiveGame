@@ -15,6 +15,7 @@ extends Node3D
 @export var down_default: bool = false
 #Assign player body
 @export var player: CharacterBody3D
+@export var quincy : CharacterBody3D
 @export var alert: Sprite3D
 
 #Assign character markers (up to 3)
@@ -153,7 +154,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
-				if Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
+				if Dialogic.VAR.get_variable("Quincy.is_distracted") == false and quincy.in_danger == false:
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					interact_area.hide()
 					choose_quincy_cycle_dialogue()

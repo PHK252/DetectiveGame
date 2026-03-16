@@ -11,6 +11,7 @@ extends Area2D
 @export var viewing : String
 @export var clicked_object : String
 @export var view_object: String
+@export var quincy : CharacterBody3D
 
 #Access Globals
 @onready var clicked_count = GlobalVars.get(clicked_object)
@@ -39,7 +40,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
+				if Dialogic.VAR.get_variable("Quincy.is_distracted") == true or quincy.in_danger == true:
 					if is_there_anim == true:
 						if clicked_object == "clicked_book_note" or "clicked_bookmark_Juniper":
 							note_swipe.play()
