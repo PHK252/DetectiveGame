@@ -670,6 +670,7 @@ func set_mouse_pointing():
 func set_mouse_I_beam():
 	Input.set_custom_mouse_cursor(GlobalVars.i_beam, Input.CURSOR_IBEAM)
 
+var isRunning : bool = false
 func _ready():
 	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	set_mouse_default()
@@ -678,7 +679,7 @@ func _ready():
 	
 	#Steam integration
 	Steam.steamInit()
-	var isRunning = Steam.isSteamRunning()
+	isRunning = Steam.isSteamRunning()
 	
 	if !isRunning:
 		printerr("Steam is not running!")
@@ -722,9 +723,10 @@ func _init():
 	OS.set_environment("SteamGameID", APP_ID)
 
 func set_achievements(ach_name: String):
-	var status = Steam.getAchievement(ach_name)
-	if status["achieved"]:
-		print("Already unlocked")
-		return
-	Steam.setAchievement(ach_name)
-	print("Unlocked Achievment: ", ach_name)
+	if isRunning:
+		var status = Steam.getAchievement(ach_name)
+		if status["achieved"]:
+			print("Already unlocked")
+			return
+		Steam.setAchievement(ach_name)
+		print("Unlocked Achievment: ", ach_name)
