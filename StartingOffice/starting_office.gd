@@ -216,7 +216,18 @@ func choose_office_dialogue():
 			return ""
 
 func choose_ending():
-	emit_signal("change_texture", "res://UI/Assets/Endings/Give Kale Cure Choco P1@2x.png")
+	match Dialogic.VAR.get_variable("Endings.Ending_type"): 
+		"Keep Confidential":
+			emit_signal("change_texture", "res://UI/Assets/Endings/Keep confidential P1@2x.png")
+		"Give Skylar Cure":
+			emit_signal("change_texture", "res://UI/Assets/Endings/Give Skylar Cure P1@2x.png")
+		"Give Skylar Cure And Choco":
+			emit_signal("change_texture", "res://UI/Assets/Endings/Give Skylar Cure Choco P1@2x.png")
+		"Give Kale Cure":
+			emit_signal("change_texture", "res://UI/Assets/Endings/Give Kale Cure P1@2x.png")
+		"Give Kale Cure And Choco":
+			emit_signal("change_texture", "res://UI/Assets/Endings/Give Kale Cure Choco P1@2x.png")
+	
 
 ##Dialogue Signals
 func enter_Theo(argument: String):

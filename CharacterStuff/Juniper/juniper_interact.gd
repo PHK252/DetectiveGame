@@ -44,7 +44,7 @@ func _on_greeting_ended():
 	#emit_signal("Tstart")
 	player.start_player()
 	Dialogic.timeline_ended.disconnect(_on_greeting_ended)
-	GlobalVars.in_dialogue = false
+	#GlobalVars.in_dialogue = false
 	emit_signal("finish_greeting")
 	#asked = true
 func _on_timeline_ended():
@@ -88,7 +88,7 @@ func _on_door_second_j_dialogue() -> void:
 
 
 func _on_entered_juniper_house():
-	if GlobalVars.in_dialogue == false and asked_entered == false:
+	if asked_entered == false:
 		GlobalVars.in_dialogue = true
 		asked_entered = true
 		player.stop_player()

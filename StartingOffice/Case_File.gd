@@ -229,10 +229,10 @@ func _on_timeline_ended():
 
 func _on_ending_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_ending_timeline_ended)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	SceneTransitions.fade_out()
 	MusicFades.fade_out_audio()
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file(GlobalVars.credits)
 	pass
 

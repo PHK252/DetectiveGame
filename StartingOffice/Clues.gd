@@ -19,16 +19,16 @@ var clue3 : bool
 var clue4 : bool
 
 func _ready() -> void:
-	if GlobalVars.time == "morning":
+	if GlobalVars.time == "morning" or GlobalVars.day > 3:
 		clue1 = Dialogic.VAR.get_variable("Asked Questions.Micah_Solved_Case")
 		clue2 = Dialogic.VAR.get_variable("Juniper.found_skylar")
 		clue3 = Dialogic.VAR.get_variable("Quincy.solved_case")
 		if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
-			if Dialogic.VAR.get_variable("Endings.Ending_type") != "Quincy fired" and  Dialogic.VAR.get_variable("Endings.Ending_type") != "Chief fired" and Dialogic.VAR.get_variable("Endings.Ending_type") != "Arrested Skylar":
+			if Dialogic.VAR.get_variable("Endings.Ending_type") != "Quincy fired" and  Dialogic.VAR.get_variable("Endings.Ending_type") != "Chief fired" and Dialogic.VAR.get_variable("Endings.Ending_type") != "Arrested Skylar" and Dialogic.VAR.get_variable("Endings.Ending_type") != "Keep Confidential":
 				clue4 = true
-				GlobalVars.set_achievements("ACH_PERFECT")
 	if clue1 and clue2 and clue3 and clue4:
 		GlobalVars.clue_progress = 4
+		GlobalVars.set_achievements("ACH_PERFECT")
 	elif clue1 and clue2 and clue3:
 		GlobalVars.clue_progress = 3
 	elif clue1 and clue2:

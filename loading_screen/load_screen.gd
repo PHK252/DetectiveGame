@@ -114,18 +114,21 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 		toggle_default(false)
 		toggle_sleep(true)
 		if time == "To Dream":
+			_fade_dream(sleep_sounds)
 			sleep_sounds.play()
 			current_anim = sleep_anim
 			current_anim.play("Sleep")
 			await current_anim.animation_finished
 			current_anim.play("Sleep_loop")
 		elif time == "Out Dream":
+			_fade_dream(wake_sounds)
 			wake_sounds.play()
 			current_anim = sleep_anim
 			current_anim.play("Wake")
 			await current_anim.animation_finished
 			sleep_anim.play("Wake_loop")
 		else:
+			_fade_dream(sleep_sounds)
 			current_anim = sleep_anim
 			current_anim.play("Sleep_Wake")
 			await current_anim.animation_finished
@@ -185,6 +188,8 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				else:
 					await get_tree().create_timer(1.6).timeout
 				if glitch_out == true:
+					if time == "To Dream":
+						_fade_out_sleep()
 					SceneTransitions.glitch_change_packed_scene(new_scene)
 					await get_tree().create_timer(3.0).timeout
 				else:
@@ -226,6 +231,15 @@ func _fade_morning(type, time, wake_sounds : AudioStreamPlayer):
 		var tween = create_tween()
 		tween.tween_property(wake_sounds, "volume_db", -88.0, 3.0)
 		await get_tree().create_timer(2.0).timeout
+
+func _fade_dream(sounds : AudioStreamPlayer):
+	sounds.volume_db = -88.0
+	var tween = create_tween()
+	tween.tween_property(sounds, "volume_db", 0.0, 4.0)
+
+func _fade_out_sleep():
+	var tween = create_tween()
+	tween.tween_property(sleep_sounds, "volume_db", -88.0, 3)
 		
 #choosing dialogue if there is any
 func choose_drive_dialogue():

@@ -216,11 +216,13 @@ func disable_interaction(arr: Array):
 
 func enable_distraction_interaction(arr: Array):
 	for i in arr:
-		i.set_monitorable(true)
+		if i:
+			i.set_monitorable(true)
 
 func disable_distraction_interaction(arr: Array):
 	for i in arr:
-		i.set_monitorable(false)
+		if i:
+			i.set_monitorable(false)
 #
 #func _on_secret_entered(body):
 	#if body == player:

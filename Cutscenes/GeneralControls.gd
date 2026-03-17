@@ -4,7 +4,7 @@ extends Node
 @export var dalton_look : AnimationTree
 @export var dalton_room : AnimationTree
 @export var brother_anims : AnimationTree
-
+@export var main : Node3D
 var stop_repeat := false
 var check_repeat = false
 
@@ -90,11 +90,11 @@ func _on_flash_ended():
 	GlobalVars.in_dialogue = false
 	player.stop_player()
 	MusicFades.fade_out_audio()
-	await get_tree().create_timer(1.0).timeout
-	#Loading.load_scene(self, GlobalVars.flashback_1_2, "", "", "", true, true)
+	await get_tree().create_timer(.5).timeout
+	
 	SceneTransitions.glitch_change_scene(GlobalVars.flashback_1_2)
-	await get_tree().create_timer(6.0).timeout
-	self.queue_free()
+	await get_tree().create_timer(3.0).timeout
+	main.queue_free()
 
 func _on_lock_in_body_entered(body):
 	door_collision.set_deferred("disabled", false)

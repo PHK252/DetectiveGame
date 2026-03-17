@@ -29,7 +29,7 @@ func _ready():
 	SceneTransitions.fade_in()
 	MusicFades.fade_in_audio()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	await get_tree().process_frame
+	await get_tree().create_timer(1.0).timeout
 	music_player.play()
 	_show_ending()
 	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)

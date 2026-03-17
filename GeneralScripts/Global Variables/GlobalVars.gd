@@ -26,7 +26,7 @@ signal unpaused
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int = 3
+@onready var day : int = 1
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need
@@ -726,7 +726,7 @@ func set_achievements(ach_name: String):
 	if isRunning:
 		var status = Steam.getAchievement(ach_name)
 		if status["achieved"]:
-			print("Already unlocked")
+			print("Already unlocked: ", ach_name)
 			return
 		Steam.setAchievement(ach_name)
 		print("Unlocked Achievment: ", ach_name)

@@ -58,7 +58,7 @@ func _ready() -> void:
 	#checking_start = false
 
 func _on_start_isaac():
-	await get_tree().create_timer(1).timeout
+	#await get_tree().create_timer(1).timeout
 	force_rotation = false
 	in_control = true
 	checking_start = false
