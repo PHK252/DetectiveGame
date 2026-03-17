@@ -9,6 +9,7 @@ var in_knock = false
 
 func _on_interactable_interacted(interactor):
 	if in_knock == false:
+		GlobalVars.in_dialogue = true
 		in_knock = true
 		player.stop_player()
 		alert.hide()
@@ -21,6 +22,7 @@ func _on_interactable_interacted(interactor):
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func _on_timeline_ended():
+	GlobalVars.in_dialogue = false
 	print(knock_count)
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	in_knock = false

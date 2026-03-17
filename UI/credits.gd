@@ -16,6 +16,8 @@ extends CanvasLayer
 @export var layers : Array[Control]
 signal oneshot_finished
 signal fading(value)
+var bus_ind = AudioServer.get_bus_index("Music")
+var starting_db = AudioServer.get_bus_volume_db(bus_ind)
 var cur_layer := 0
 var in_fade := false:
 	set(value):
@@ -24,8 +26,11 @@ var in_fade := false:
 			fading.emit()
 
 func _ready():
+	SceneTransitions.fade_in()
+	MusicFades.fade_in_audio()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	await get_tree().process_frame
+	music_player.play()
 	_show_ending()
 	SaveLoad.clearSave(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.reset_globals()

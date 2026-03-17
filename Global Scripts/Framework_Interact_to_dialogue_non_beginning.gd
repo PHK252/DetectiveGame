@@ -3,17 +3,21 @@ extends Node3D
 @export var player: CharacterBody3D
 @export var alert: Sprite3D
 @export var interaction : Interactable
-@export var interaction_type : String
+@export var is_finished_var : String
 #Dialogue Stuff
 @export var dialogue_file: String
 @export var interact_type: String
 signal _show_tut(tut_type : String)
 signal gen_interact
 
+func _ready():
+	if interaction:
+		if Dialogic.VAR.get_variable(is_finished_var):
+			interaction.set_deferred("monitorable", false)
+
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
 		emit_signal("gen_interact")
-		GlobalVars.in_interaction = interaction_type
 		GlobalVars.in_dialogue = true
 		Dialogic.start(dialogue_file)
 		Dialogic.timeline_ended.connect(_on_timeline_ended)

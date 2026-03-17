@@ -129,7 +129,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 			return
 	
 	if is_open == false and entered_quincy_house == true and GlobalVars.in_dialogue == false:
-		GlobalVars.in_dialogue == true
+		GlobalVars.in_dialogue = true
 		player.stop_player()
 		alert.hide()
 		emit_signal("enable_look")
@@ -173,7 +173,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 				player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
 			#play knocking sound
 		elif greeting == true and quincy_house == false and entered_juniper_house == true:
-			GlobalVars.in_dialogue == true
+			GlobalVars.in_dialogue = true
 			player.stop_player()
 			alert.hide()
 			Dialogic.signal_event.connect(doorOpen)

@@ -3,6 +3,7 @@ extends Area3D
 @export var player: CharacterBody3D
 
 #Assign character markers (up to 3)
+@export var alert : Sprite3D
 @export var dalton_marker: Marker2D
 @export var character_marker: Marker2D
 @export var phone : CanvasLayer
@@ -25,6 +26,8 @@ func _on_quincy_play_caught():
 		Dialogic.VAR.set_variable("Quincy.caught", true)
 		GlobalVars.Quincy_Dalton_caught = true
 		GlobalVars.in_dialogue = true
+		if alert.visible:
+			alert.hide()
 		player.stop_player()
 		Dialogic.start("Quincy_caught")
 		emit_signal("clear_evi")

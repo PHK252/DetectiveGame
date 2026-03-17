@@ -11,6 +11,7 @@ var ceiling := 0.0
 var break_time := false
 var in_out_needed := false
 
+signal fadeout_finished
 @export var fade_time_break := 0.1 #how long we want silence in between music
 @export var fade_time_break_timer : Timer 
 
@@ -41,9 +42,11 @@ func _process(delta: float) -> void:
 	if fading_out: #use to fade_back in after
 		if effect.volume_db >= silence:
 			effect.volume_db -= fade_speed * delta
+			print(effect.volume_db)
 		else:
 			fading_out = false
 			print("fade_out_finished")
+			fadeout_finished.emit()
 			if in_out_needed:
 				break_time = true
 

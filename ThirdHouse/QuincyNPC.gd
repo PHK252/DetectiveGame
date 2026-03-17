@@ -479,9 +479,12 @@ func _quincy_caught():
 	print("catch danger", in_danger)
 	print("catch ", catch_possibility)
 	print("bathroom" , Dialogic.VAR.get_variable("Quincy.in_bathroom"))
-	if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
-		await out_bath
 	if catch_possibility and in_danger == true:
+		if Dialogic.VAR.get_variable("Quincy.in_bathroom") == true:
+			await out_bath
+			if !catch_possibility or !in_danger:
+				print("drop_caught")
+				return
 		interact.set_deferred("monitorable", false)
 		print("quincy caught you")
 		if GlobalVars.in_interaction != "":

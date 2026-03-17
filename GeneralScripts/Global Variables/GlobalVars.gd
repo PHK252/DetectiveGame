@@ -26,7 +26,7 @@ signal unpaused
 
 ## The actual Globals
 @onready var forward : bool
-@onready var day : int = 1
+@onready var day : int = 3
 @onready var time : String 
 @onready var current_level = ""
 @onready var first_house = "" # might not need
@@ -37,8 +37,6 @@ signal unpaused
 
 #camera index for loading
 @onready var cam_index : int = 0
-
-
 
 var load_global_arr = []
 var load_global_name_arr = ["dialogue_flip", "day", "time", "current_level", "first_house", "in_level", "time_left", "distract_left", "cam_index"]
@@ -260,6 +258,7 @@ func _dalton_caught_clear_state():
 	#dalton_pos = Vector3()
 	quincy_notes = ""
 	Quincy_Dalton_caught = true 
+	try_viewed_distract = 0
 	quincy_time_out = false
 	quincy_kicked_out = false
 	quincy_fainted = false
@@ -433,7 +432,7 @@ func get_current_level_path(level : String):
 		
 
 var cam_changed = false
-var clue_progress = 1
+var clue_progress = 0
 var ghost_open = false
 
 func reset_globals():
@@ -574,6 +573,7 @@ func reset_globals():
 	quincy_fainted = false
 	Quincy_toilet_distracted = false
 	Quincy_Dalton_caught = false 
+	try_viewed_distract = 0
 	#Fam Portrait
 	viewed_Quincy_famPic = false
 	famPic_dialogue_Quincy = false

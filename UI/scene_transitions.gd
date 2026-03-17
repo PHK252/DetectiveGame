@@ -17,10 +17,17 @@ func fade_change_packed_scene(target : PackedScene):
 
 
 func fade_change_scene(target : String):
-	print(fade)
 	fade.play("Dissolve")
 	await fade.animation_finished
 	get_tree().change_scene_to_file(target)
+	fade.play_backwards("Dissolve")
+
+func fade_out():
+	print("fade")
+	fade.play("Dissolve")
+	
+func fade_in():
+	print("fade")
 	fade.play_backwards("Dissolve")
 
 func fade_to_load():

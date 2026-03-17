@@ -31,6 +31,7 @@ signal theo_exit
 signal dalton_exit
 signal _hide_tut
 
+
 func _ready():
 	if Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure" or Dialogic.VAR.get_variable("Endings.Ending_type") == "Give Kale Cure And Choco":
 		emit_signal("theo_out")
@@ -228,12 +229,14 @@ func _on_timeline_ended():
 
 func _on_ending_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_ending_timeline_ended)
+	await get_tree().create_timer(2.0).timeout
+	SceneTransitions.fade_out()
 	MusicFades.fade_out_audio()
-	SceneTransitions.fade_change_scene(GlobalVars.credits)
-	await get_tree().create_timer(1.5).timeout
-	main.queue_free()
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file(GlobalVars.credits)
 	pass
-	
+
+
 func _on_phone_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_phone_timeline_ended)
 	#Anim
