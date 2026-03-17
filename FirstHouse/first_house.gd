@@ -36,6 +36,8 @@ extends Node3D
 
 signal phone_time_start
 signal auto_open
+
+signal camera_check 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_kicked):
@@ -121,6 +123,9 @@ func _process(delta):
 		#print("JuniperMomRever" + str(Dialogic.VAR.Juniper.ask_mom_rever))
 	
 	#Kicked out 
+	#if Input.is_action_just_pressed("call"): test
+		#Dialogic.VAR.set_variable("Character Aff Points.Micah", -4)
+		
 	if Dialogic.VAR.get_variable("Character Aff Points.Micah") <= -3:
 		if GlobalVars.micah_kicked_out == false and GlobalVars.in_interaction == "":
 			Dialogic.clear(1)
@@ -209,6 +214,7 @@ func _on_door_activate_leave():
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("level exit!")
 	await get_tree().create_timer(5.0).timeout
+	emit_signal("camera_check")
 	music.stop() #technically not necessary
 	MusicFades.fade_in_audio()
 

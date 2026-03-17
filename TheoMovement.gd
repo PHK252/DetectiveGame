@@ -276,6 +276,10 @@ func _process_adjust_state() -> void:
 			emit_signal("look_at_activate")
 			#theo_adjustment = true
 			quick_adjust()
+		
+		if micahsHouse and adjustment_num == 7:
+			quick_adjust()
+		
 		state = IDLE
 		
 	if not nav.is_navigation_finished():
@@ -1395,3 +1399,15 @@ func _on_car_door_close() -> void:
 
 func _on_car_revamped_theo_repos() -> void:
 	global_position = car_pos.global_position
+
+
+func _on_interactableMicahDoor_interacted(interactor: Interactor) -> void:
+	if GlobalVars.in_level:
+		theo_adjustment = true
+		adjustment_num = 6
+		nav.target_position = adjustment_list[adjustment_num].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.4
+		state = ADJUST

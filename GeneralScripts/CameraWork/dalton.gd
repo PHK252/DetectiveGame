@@ -139,7 +139,7 @@ func _physics_process(delta: float) -> void:
 		#forced_walk = false
 		#walk_number = 0
 	
-	if GlobalVars.in_dialogue == true:
+	if GlobalVars.in_dialogue == true or forced_walk or move_back_in_progress:
 		anim_tree.set("parameters/Thinking/request", 2)
 	#if Input.is_action_just_pressed("meeting_done"):
 		#_on_door_bathroom_replace_quincy_enter_bathroom()

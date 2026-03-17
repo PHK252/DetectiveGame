@@ -253,3 +253,18 @@ func _on_activate_leave():
 	sloth_door_interact.set_deferred("monitorable", false)
 	allow_sloth = true 
 	delivery_timer.start()
+
+
+func _on_panda_doc_look_at_off() -> void:
+	print("unfocused")
+	if panda_activate == false and allow_panda:
+		panda_activate = true
+
+func _on_sloth_correct_look_at_off() -> void:
+	print("unfocused")
+	if delivery_activate == false and allow_sloth: #this is the issue i think
+		delivery_activate = true
+		
+	if go_back_activate == false and sloth_anims["parameters/blendHold/blend_amount"] == 1:
+		delivery_activate = false
+		go_back_activate = true

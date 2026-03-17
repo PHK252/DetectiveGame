@@ -277,3 +277,14 @@ func _on_sitting_ppl_dalton_faint() -> void:
 
 func _on_main_area_flashback_01(body: Node3D) -> void:
 	activate_camera(0)
+
+
+func _on_MicahDoor_activate_leave() -> void:
+	pass
+	#print("forcing hall camera")
+	#await get_tree().create_timer(5.0).timeout
+	#activate_camera(0)
+
+func _on_MicahLeave_camera_check() -> void:
+	if cameras[1].priority == 23:
+		activate_camera(5)
