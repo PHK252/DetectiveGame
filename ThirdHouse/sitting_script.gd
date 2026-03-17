@@ -33,6 +33,8 @@ var out_sit = false
 
 signal theo_armature_visible
 
+@export var theo_armature : Node3D
+
 func _ready() -> void:
 	theo_sitting.visible = false
 	theo_outside.visible = false
@@ -85,6 +87,12 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false:
 		if out_sit:
 			patio_getup.play()
+			if theo_armature.visible == false:
+				theo_sitting.visible = false
+				theo_outside.visible = false
+				anim_player_theo.stop()
+				anim_player_tO.stop()
+				emit_signal("theo_armature_visible")
 		elif bar_convo:
 			stool_getup.play()
 		elif dalton_bar.visible == true:
@@ -93,12 +101,13 @@ func _process(delta: float) -> void:
 		dalton_bar.visible = false
 		alert.show()
 		emit_signal("DaltonVisible")
-		if theo_outside.visible == true:
+		if theo_outside.visible == true or out_sit:
 			patio_getup.play()
 			theo_sitting.visible = false
 			theo_outside.visible = false
 			anim_player_theo.stop()
 			anim_player_tO.stop()
+			emit_signal("theo_armature_visible")
 			
 		
 		
