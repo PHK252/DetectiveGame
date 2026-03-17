@@ -213,8 +213,8 @@ func _on_door_activate_leave():
 	Dialogic.VAR.set_variable("Asked Questions.left_Micah", true)
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	print("level exit!")
-	await get_tree().create_timer(5.0).timeout
 	emit_signal("camera_check")
+	await get_tree().create_timer(5.0).timeout
 	music.stop() #technically not necessary
 	MusicFades.fade_in_audio()
 
