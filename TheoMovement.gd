@@ -1411,3 +1411,6 @@ func _on_interactableMicahDoor_interacted(interactor: Interactor) -> void:
 		nav.path_desired_distance = 0.2
 		nav.target_desired_distance = 0.4
 		state = ADJUST
+	else:
+		await get_tree().create_timer(3.0).timeout
+		quick_adjust()
