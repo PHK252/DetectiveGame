@@ -2141,8 +2141,6 @@ size_flags_vertical = 4
 texture = ExtResource("232_hi2n8")
 
 [node name="Playtest" type="MarginContainer" parent="Control"]
-visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1921.0
 offset_bottom = 1081.0
@@ -2153,6 +2151,11 @@ theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Playtest"]
 layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Control/Playtest/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 150
 
 [node name="Ending" type="RichTextLabel" parent="Control/Playtest/VBoxContainer"]
 custom_minimum_size = Vector2(0, 180)
@@ -2192,7 +2195,7 @@ theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
 theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]Names Last[/center]"
+text = "[center]Jimmy He[/center]"
 scroll_active = false
 vertical_alignment = 1
 
@@ -2204,43 +2207,7 @@ theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
 theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]Names Last[/center]"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Ending3" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("3_3omd1")
-theme_override_font_sizes/normal_font_size = 70
-bbcode_enabled = true
-text = "[center]Names Last[/center]"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Ending4" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("3_3omd1")
-theme_override_font_sizes/normal_font_size = 70
-bbcode_enabled = true
-text = "[center]Names Last[/center]"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Ending5" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row1"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("3_3omd1")
-theme_override_font_sizes/normal_font_size = 70
-bbcode_enabled = true
-text = "[center]Names Last[/center]"
+text = "[center]James Street[/center]"
 scroll_active = false
 vertical_alignment = 1
 
@@ -2256,7 +2223,7 @@ theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
 theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]Names Last[/center]"
+text = "[center]Carolyn Sam[/center]"
 scroll_active = false
 vertical_alignment = 1
 
@@ -2268,47 +2235,16 @@ theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
 theme_override_fonts/normal_font = ExtResource("3_3omd1")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]Names Last[/center]"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Ending3" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("3_3omd1")
-theme_override_font_sizes/normal_font_size = 70
-bbcode_enabled = true
-text = "[center]Names Last[/center]"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Ending4" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("3_3omd1")
-theme_override_font_sizes/normal_font_size = 70
-bbcode_enabled = true
-text = "[center]Names Last[/center]"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Ending5" type="RichTextLabel" parent="Control/Playtest/VBoxContainer/Names/Row2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.980392, 0.945098, 0.823529, 1)
-theme_override_fonts/normal_font = ExtResource("3_3omd1")
-theme_override_font_sizes/normal_font_size = 70
-bbcode_enabled = true
-text = "[center]Names Last[/center]"
+text = "[center]Fabio Scopel[/center]"
 scroll_active = false
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="Control/Playtest/VBoxContainer/Names"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Playtest/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 150
