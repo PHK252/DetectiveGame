@@ -53,6 +53,7 @@ var in_thoughts = false
 var in_secret = false
 var react = false
 
+
 @export var bookshelf_move_sound : AudioStreamPlayer3D
 @export var bookmark_sound : AudioStreamPlayer3D
 @export var music : AudioStreamPlayer
@@ -197,6 +198,7 @@ func _on_input_event(viewport, event, shape_idx):
 					
 
 func open() -> void:
+	bookmark.hide()
 	bookshelf_move_sound.play()
 	cab_anim = true
 	doorL_anim["parameters/conditions/is_opened"] = true
