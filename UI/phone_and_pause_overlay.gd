@@ -32,6 +32,12 @@ func _ready():
 	#call_normal.toggle_on = false
 	pass
 func _process(delta):
+	if GlobalVars.in_dialogue == true and GlobalVars.phone_up == true:
+			InputMap.action_add_event("Exit", exit[0])
+			InputMap.action_add_event("interact", interact[0])
+			Input.set_mouse_mode(prev_mouse_mode)
+			phone_ui.hide()
+			GlobalVars.phone_up = false
 	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "":
 		evidence.modulate.a = 0.365
 		call_normal.disabled = true

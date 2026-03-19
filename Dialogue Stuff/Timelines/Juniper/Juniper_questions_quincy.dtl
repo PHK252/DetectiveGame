@@ -7,7 +7,7 @@ if {Character Aff Points.Juniper} < 0:
 		Dalton (Awkward): He's one of the other victims...
 		Juniper (Surprise): ...!
 		Juniper (Default): Damn!
-		Juniper (Laugh): You ain't kidding...
+		Juniper (Laugh): Ya ain't kidding...
 		Juniper (Happy): Serves that bastard right.
 		Theo (Surprised): Hey!
 		Theo (Mad): He's our mayor!
@@ -26,7 +26,7 @@ if {Character Aff Points.Juniper} < 0:
 		Juniper (Doubt): Kinda stupid question to ask knowing what ya know now...
 		Juniper (Hmph): But, no.
 		Juniper: I don't.
-		Juniper (Doubt): I wouldn't tell you even if I did.
+		Juniper (Doubt): I wouldn't tell ya even if I did.
 		do GlobalVars.emit_add_note("juniper", "quincy", "low")
 	else:
 		Juniper (Squint): Are ya tryna provoke me?

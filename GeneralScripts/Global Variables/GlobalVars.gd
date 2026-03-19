@@ -677,6 +677,7 @@ func _ready():
 	set_mouse_pointing()
 	set_mouse_I_beam()
 	
+	#disable from here 
 	#Steam integration
 	Steam.steamInit()
 	isRunning = Steam.isSteamRunning()
@@ -685,9 +686,11 @@ func _ready():
 		printerr("Steam is not running!")
 		return
 	print("Steam is running!")
-#func emit_phone_call():
-	#emit_signal("phone_call_receiving")
-	#calling = true
+	# to here for itch export
+	
+func emit_phone_call():
+	emit_signal("phone_call_receiving")
+	calling = true
 
 func emit_open_micah_case():
 	emit_signal("open_micah_case")
@@ -715,12 +718,14 @@ func emit_remove_evidence(char : String, evi : String):
 	evi_remove_char = char
 	evidence = evi
 
+#disable from here 
 #Steam integration
 var APP_ID = "4087290"
 
 func _init():
 	OS.set_environment("SteamAppID", APP_ID)
 	OS.set_environment("SteamGameID", APP_ID)
+# to here for itch export
 
 func set_achievements(ach_name: String):
 	if isRunning:

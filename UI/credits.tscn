@@ -2141,6 +2141,8 @@ size_flags_vertical = 4
 texture = ExtResource("232_hi2n8")
 
 [node name="Playtest" type="MarginContainer" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1921.0
 offset_bottom = 1081.0

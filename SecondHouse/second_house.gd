@@ -63,7 +63,7 @@ func _ready():
 			await get_tree().process_frame
 			alert.hide()
 			player.stop_player()
-			#in_time_out_dialogue = true
+			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)

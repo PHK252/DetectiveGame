@@ -80,6 +80,7 @@ func _ready():
 			player.stop_player()
 			alert.hide()
 			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			await hide_tween.animation_finished
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
@@ -145,12 +146,14 @@ func _process(delta):
 	if time_out == true:
 		if in_time_out_dialogue == false and GlobalVars.in_interaction == "" and Dialogic.VAR.get_variable("Quincy.timed_out") == false and GlobalVars.quincy_kicked_out == false and bathroom_door.player_in_bathroom == false:
 			player.stop_player()
+			
 			alert.hide()
 			Dialogic.clear(1)
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			alert.hide()
 			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 			await get_tree().process_frame
@@ -185,6 +188,7 @@ func _on_timer_timeout():
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			in_time_out_dialogue = true
+			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 		 

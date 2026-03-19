@@ -272,12 +272,12 @@ func _on_toilet_distraction():
 		interactable.set_deferred("monitorable", false)
 
 
-func _on_quincy_time_out_resume():
-	if interactable:
-		if interactable.monitorable == false:
-			if !Dialogic.VAR.get_variable("Quincy.got_safe") and !Dialogic.VAR.get_variable("Quincy.safe_alarm"):
-				print("active timeout")
-				interactable.set_deferred("monitorable", true)
+#func _on_quincy_time_out_resume():
+	#if interactable:
+		#if interactable.monitorable == false:
+			#if !Dialogic.VAR.get_variable("Quincy.got_safe") and !Dialogic.VAR.get_variable("Quincy.safe_alarm"):
+				#print("active timeout")
+				#interactable.set_deferred("monitorable", true)
 
 
 func _on_secret_exit(body):
@@ -285,12 +285,12 @@ func _on_secret_exit(body):
 		if in_secret == true:
 			in_secret = false
 			close()
-			#if !Dialogic.VAR.get_variable("Quincy.got_safe") and !Dialogic.VAR.get_variable("Quincy.safe_alarm"):
-				#print("active secret")
-				#interactable.set_deferred("monitorable", true)
-			#else:
-				#print("deactive secret")
-				#interactable.set_deferred("monitorable", false)
+			if Dialogic.VAR.get_variable("Quincy.is_distracted"):
+				print("active secret")
+				interactable.set_deferred("monitorable", true)
+			else:
+				print("deactive secret")
+				interactable.set_deferred("monitorable", false)
 			MusicFades.fade_out_audio()
 			await get_tree().create_timer(1.0).timeout
 			music.stream = load(music_arr[0])
