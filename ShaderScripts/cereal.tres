@@ -3,14 +3,14 @@
 [ext_resource type="Shader" uid="uid://dmnp3nn16ok6d" path="res://ShaderScripts/cerealK.tres" id="1_dmhd4"]
 [ext_resource type="Texture2D" uid="uid://bcedkkbrsj431" path="res://ShaderScripts/color_gradient.tres" id="2_0bmmj"]
 [ext_resource type="Texture2D" uid="uid://did3p25l52we" path="res://ShaderScripts/fresnel_gradient.tres" id="3_3rfsd"]
-[ext_resource type="Texture2D" uid="uid://b4qpdenf20cq0" path="res://FirstHouse/FirstHouseUpdated_cerealmap.png" id="4_jov1o"]
+[ext_resource type="Texture2D" uid="uid://petjyixfvynw" path="res://FirstHouse/Bitcrushed/BitCrushed Cereal.png" id="4_aspkq"]
 
 [resource]
 resource_name = "Cereal"
 render_priority = 0
 shader = ExtResource("1_dmhd4")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("4_jov1o")
+shader_parameter/texture_albedo = ExtResource("4_aspkq")
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
