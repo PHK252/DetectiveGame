@@ -26,6 +26,7 @@ extends Node3D
 
 signal phone_time_start
 signal auto_open
+signal phone_down
 
 var mouse_pos = Vector2(0,0) 
 @export var world_env : WorldEnvironment
@@ -64,6 +65,7 @@ func _ready():
 			alert.hide()
 			player.stop_player()
 			in_time_out_dialogue = true
+			emit_signal("phone_down")
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
@@ -128,6 +130,7 @@ func _process(delta):
 			in_time_out_dialogue = true
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			GlobalVars.in_dialogue = true
+			emit_signal("phone_down")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 			
@@ -148,6 +151,7 @@ func _on_timer_timeout():
 			Dialogic.clear(1)
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
+			emit_signal("phone_down")
 			print("timeout_dialogue_entered")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)

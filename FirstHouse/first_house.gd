@@ -36,7 +36,7 @@ extends Node3D
 
 signal phone_time_start
 signal auto_open
-
+signal phone_down
 signal camera_check 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -81,6 +81,7 @@ func _ready():
 			player.stop_player()
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
+			emit_signal("phone_down")
 			print("timeout_dialogue_entered")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
@@ -149,6 +150,7 @@ func _process(delta):
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
+			emit_signal("phone_down")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
 	
@@ -169,6 +171,7 @@ func _on_timer_timeout():
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			in_time_out_dialogue = true
 			GlobalVars.in_dialogue = true
+			emit_signal("phone_down")
 			print("timeout_dialogue_entered")
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)

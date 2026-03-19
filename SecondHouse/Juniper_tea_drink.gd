@@ -26,7 +26,7 @@ extends Node3D
 @export var tea_tray_kitch : Node3D
 @export var anim_drink : AnimationPlayer
 signal enable_after_tea_interaction
-
+signal phone_down
 signal theo_reposition_start
 signal theo_reposition_end
 signal save_time
@@ -87,6 +87,7 @@ func _activate_drink():
 	alert.hide()
 	player.stop_player()
 	Dialogic.start("Finished_tea")
+	emit_signal("phone_down")
 	jun_interactable.set_deferred("monitorable", false)
 	Dialogic.timeline_ended.connect(_on_tea_timeline_ended)
 

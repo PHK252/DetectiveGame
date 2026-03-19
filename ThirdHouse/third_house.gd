@@ -27,7 +27,7 @@ var locked = false
 signal time_out_drop_distract
 signal phone_time_start
 signal open_main_door
-
+signal phone_down
 signal bar_timed
 signal theo_leave
 signal quincy_leave
@@ -80,6 +80,7 @@ func _ready():
 			player.stop_player()
 			alert.hide()
 			in_time_out_dialogue = true
+			emit_signal("phone_down")
 			GlobalVars.in_dialogue = true
 			await hide_tween.animation_finished
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
@@ -153,6 +154,7 @@ func _process(delta):
 			disable_interaction(interactables)
 			alert.hide()
 			in_time_out_dialogue = true
+			emit_signal("phone_down")
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
@@ -188,6 +190,7 @@ func _on_timer_timeout():
 			SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 			disable_interaction(interactables)
 			in_time_out_dialogue = true
+			emit_signal("phone_down")
 			GlobalVars.in_dialogue = true
 			var time_out_dialogue = Dialogic.start(timed_out_dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended_timed)
