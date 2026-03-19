@@ -688,9 +688,9 @@ func _ready():
 	print("Steam is running!")
 	# to here for itch export
 	
-func emit_phone_call():
-	emit_signal("phone_call_receiving")
-	calling = true
+#func emit_phone_call():
+	#emit_signal("phone_call_receiving")
+	#calling = true
 
 func emit_open_micah_case():
 	emit_signal("open_micah_case")
