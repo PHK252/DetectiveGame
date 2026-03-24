@@ -1414,3 +1414,18 @@ func _on_interactableMicahDoor_interacted(interactor: Interactor) -> void:
 	else:
 		await get_tree().create_timer(3.0).timeout
 		quick_adjust()
+
+
+func _on_nogo_theo_bar_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if state == FOLLOW:
+			in_kitchen = true
+			is_navigating = false
+			state = IDLE
+
+func _on_nogo_theo_bar_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if state == IDLE and is_investigating == false:
+			in_kitchen = false
+			is_navigating = true
+			state = FOLLOW
