@@ -110,53 +110,54 @@ func  show_closed_case():
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
 	print(alert.visible, "alert")
-	if GlobalVars.in_dialogue == false:
-		if GlobalVars.opened_micah_case == true:
-			player.hide()
-			show_open_case()
-			GlobalVars.in_interaction = interact_type
-			#print("look " + str(GlobalVars.in_look_screen))
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			player.stop_player()
-			case_cam.priority = 30
-			main_cam.priority = 0 
-			cam_anim.play("Case_look")
-			interior_interact_area_1.show()
-			if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
-				interior_interact_area_2.hide()
+	if GlobalVars.in_look_screen == false and GlobalVars.in_interaction == "":
+		if GlobalVars.in_dialogue == false:
+			if GlobalVars.opened_micah_case == true:
+				player.hide()
+				show_open_case()
+				GlobalVars.in_interaction = interact_type
+				#print("look " + str(GlobalVars.in_look_screen))
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				player.stop_player()
+				case_cam.priority = 30
+				main_cam.priority = 0 
+				cam_anim.play("Case_look")
+				interior_interact_area_1.show()
+				if Dialogic.VAR.get_variable("Asked Questions.has_hair") == true:
+					interior_interact_area_2.hide()
+				else:
+					interior_interact_area_2.show()
+				interior_interact_area_3.show()
+				await get_tree().process_frame
+				await get_tree().process_frame
+				await get_tree().process_frame
+				alert.hide()
+				return
+			if case_asked == false:
+				GlobalVars.in_dialogue = true
+				player.stop_player()
+				emit_signal("enable_look")
+				Dialogic.start(dialogue_file)
+				Dialogic.signal_event.connect(caseUI)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				await get_tree().process_frame
+				await get_tree().process_frame
+				await get_tree().process_frame
+				alert.hide()
+				return
 			else:
-				interior_interact_area_2.show()
-			interior_interact_area_3.show()
-			await get_tree().process_frame
-			await get_tree().process_frame
-			await get_tree().process_frame
-			alert.hide()
-			return
-		if case_asked == false:
-			GlobalVars.in_dialogue = true
-			player.stop_player()
-			emit_signal("enable_look")
-			Dialogic.start(dialogue_file)
-			Dialogic.signal_event.connect(caseUI)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			await get_tree().process_frame
-			await get_tree().process_frame
-			await get_tree().process_frame
-			alert.hide()
-			return
-		else:
-			GlobalVars.in_dialogue = true
-			alert.set_deferred("visible", false)
-			player.stop_player()
-			emit_signal("enable_look")
-			Dialogic.start(dialogue_file, "choices")
-			Dialogic.signal_event.connect(caseUI)
-			Dialogic.timeline_ended.connect(_on_timeline_ended)
-			await get_tree().process_frame
-			await get_tree().process_frame
-			await get_tree().process_frame
-			alert.hide()
-			return
+				GlobalVars.in_dialogue = true
+				alert.set_deferred("visible", false)
+				player.stop_player()
+				emit_signal("enable_look")
+				Dialogic.start(dialogue_file, "choices")
+				Dialogic.signal_event.connect(caseUI)
+				Dialogic.timeline_ended.connect(_on_timeline_ended)
+				await get_tree().process_frame
+				await get_tree().process_frame
+				await get_tree().process_frame
+				alert.hide()
+				return
 
 func _on_timeline_ended():
 	emit_signal("disable_look")
