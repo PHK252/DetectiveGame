@@ -98,7 +98,7 @@ func _process(delta):
 
 	if GlobalVars.in_look_screen == true:
 		interact_area.hide()
-	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 24:
+	elif GlobalVars.in_look_screen == false and FP_Cam.priority == 30:
 		interact_area.show()
 
 func _on_timeline_ended():
