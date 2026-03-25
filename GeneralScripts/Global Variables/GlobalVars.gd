@@ -436,6 +436,7 @@ var clue_progress = 0
 var ghost_open = false
 
 func reset_globals():
+	reset_interaction()
 	## The actual Globals
 	forward = false
 	day = 1
@@ -658,6 +659,13 @@ func reset_interaction():
 	phone_up = false
 	in_interaction = ""
 	viewing = ""
+	if Micah_in_case:
+		Micah_in_case = false
+	if Juniper_in_case:
+		Juniper_in_case = false
+	if Quincy_in_case:
+		Quincy_in_case = false
+	
 
 func set_mouse_default():
 	#print("set default")

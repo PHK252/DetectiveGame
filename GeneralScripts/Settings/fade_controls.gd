@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	if fading_in:
 		if effect.volume_db <= ceiling:
 			effect.volume_db += fade_speed * delta
-			print(effect.volume_db)
+			#print(effect.volume_db)
 		else:
 			fading_in = false
 			print("fade_in_finished")
@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	if fading_out: #use to fade_back in after
 		if effect.volume_db >= silence:
 			effect.volume_db -= fade_speed * delta
-			print(effect.volume_db)
+			#print(effect.volume_db)
 		else:
 			fading_out = false
 			print("fade_out_finished")
