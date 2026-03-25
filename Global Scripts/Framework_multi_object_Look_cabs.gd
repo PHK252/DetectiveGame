@@ -81,6 +81,8 @@ func _process(delta):
 	var read_dialogue_2 : bool = GlobalVars.get(dialogue_2)
 	var viewed_item_2 : bool = GlobalVars.get(view_item_2)
 	
+	var current_rot = FP_Cam.rotation_degrees
+	
 	if GlobalVars.current_level == "Quincy":
 		kicked = GlobalVars.quincy_kicked_out
 		timed = GlobalVars.quincy_time_out
@@ -96,14 +98,17 @@ func _process(delta):
 		else:
 			mouse_pos = get_viewport().get_mouse_position()
 		if mouse_pos.y >= tilt_thres:
-			FP_Cam.set_rotation_degrees(tilt_up_angle)
+			#FP_Cam.set_rotation_degrees(tilt_up_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_up_angle, 5.0 * delta)
 			tilt = "down"
 		elif mouse_pos.y < tilt_thres:
-			FP_Cam.set_rotation_degrees(tilt_down_angle)
+			#FP_Cam.set_rotation_degrees(tilt_down_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_down_angle, 5.0 * delta)
 			tilt = "up"
 		#mouse_pos = mouse_pos
 		if tilt == "down" and cab_anim == false:
-			FP_Cam.set_rotation_degrees(tilt_up_angle)
+			#FP_Cam.set_rotation_degrees(tilt_up_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_up_angle, 5.0 * delta)
 			interact_area_2.show()
 			close_interact_1.hide()
 			close_interact_2.hide()
@@ -111,7 +116,8 @@ func _process(delta):
 			open_interact.hide()
 
 		elif tilt == "up" and cab_anim == false:
-			FP_Cam.set_rotation_degrees(tilt_down_angle)
+			#FP_Cam.set_rotation_degrees(tilt_down_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_down_angle, 5.0 * delta)
 			interact_area_2.hide()
 			if is_open == true:
 				open_interact.hide()

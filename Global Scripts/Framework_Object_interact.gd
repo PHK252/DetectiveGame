@@ -52,7 +52,7 @@ signal disable_look
 func _process(delta):
 	var read_dialogue : bool = GlobalVars.get(dialogue)
 	var viewed_item : bool = GlobalVars.get(view_item)
-	
+	var current_rot = FP_Cam.rotation_degrees
 	#print(get_viewport().get_mouse_position())
 	#set kicked and timed out vars
 	if GlobalVars.current_level == "Quincy":
@@ -71,17 +71,22 @@ func _process(delta):
 		else:
 			mouse_pos = get_viewport().get_mouse_position()
 		if mouse_pos.y >= tilt_up_thres:
-			FP_Cam.set_rotation_degrees(tilt_up_angle)
+			#FP_Cam.set_rotation_degrees(tilt_up_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_up_angle, 5.0 * delta)
 		elif mouse_pos.y < tilt_down_thres:
-			FP_Cam.set_rotation_degrees(tilt_down_angle)
+			#FP_Cam.set_rotation_degrees(tilt_down_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_down_angle, 5.0 * delta)
 		else:
-			FP_Cam.set_rotation_degrees(mid_angle)
+			#FP_Cam.set_rotation_degrees(mid_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(mid_angle, 5.0 * delta)
 				#pass
 	else:
 		if down_default == true:
-			FP_Cam.set_rotation_degrees(tilt_up_angle)
+			#FP_Cam.set_rotation_degrees(tilt_up_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_up_angle, 5.0 * delta)
 		else:
-			FP_Cam.set_rotation_degrees(mid_angle)
+			#FP_Cam.set_rotation_degrees(mid_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(mid_angle, 5.0 * delta)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
 		if Input.is_action_just_pressed("Exit") and viewed_item == true and read_dialogue == false and GlobalVars.viewing == "" and kicked == false and timed == false:
