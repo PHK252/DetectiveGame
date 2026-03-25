@@ -47,18 +47,25 @@ extends Node3D
 var kicked = false
 var timed = false
 var in_thoughts = false
+var reg_need = false
 signal thoughts_finished
 signal exit_interact
 
 signal enable_look
 signal disable_look
 
+
+func _ready():
+	if GlobalVars.try_viewed_distract == 2:
+		reg_need = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
 	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
-	if GlobalVars.try_viewed_distract == 2 and Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
-		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
+	if GlobalVars.try_viewed_distract == 2:
+		if Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
+			Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
+		reg_need = true
 	var read_dialogue : bool = GlobalVars.get(dialogue)
 	var viewed_item : bool = GlobalVars.get(view_item)
 	mouse_pos = get_viewport().get_mouse_position()
@@ -164,7 +171,7 @@ func _on_input_event(viewport, event, shape_idx):
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					interact_area.hide()
 					choose_quincy_cycle_dialogue()
-					if need_distraction == true:
+					if need_distraction == true and reg_need == true:
 						GlobalVars.in_dialogue = true
 						choose_distract_thought_dialogue()
 						in_thoughts = true

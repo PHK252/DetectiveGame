@@ -52,7 +52,7 @@ extends Node3D
 var in_thoughts = false
 var in_secret = false
 var react = false
-
+var book_need_distract := false 
 
 @export var bookshelf_move_sound : AudioStreamPlayer3D
 @export var bookmark_sound : AudioStreamPlayer3D
@@ -63,14 +63,20 @@ signal thoughts_finished
 signal play_secret
 signal enable_look
 signal disable_look
+
+func _ready():
+	if Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") == 2:
+		book_need_distract = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
 	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
 	var current_rot = FP_Cam.rotation_degrees
-	if GlobalVars.try_viewed_distract == 2:
-		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
+	if Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") == 2:
+		if Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
+			Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
+		book_need_distract = true
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= tilt_up_thres:
 			#FP_Cam.set_rotation_degrees(tilt_up_angle)
@@ -148,14 +154,14 @@ func _on_input_event(viewport, event, shape_idx):
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					interact_area.hide()
 					choose_quincy_cycle_dialogue()
-					if need_distraction == true:
+					if need_distraction == true and book_need_distract == true:
 						GlobalVars.in_dialogue = true
 						choose_distract_thought_dialogue()
 						in_thoughts = true
 						Dialogic.start(cue_distract_dialogue)
 						Dialogic.timeline_ended.connect(_on_thoughts_ended)
 					else:
-						GlobalVars.try_viewed_distract += 1
+						Dialogic.VAR.set_variable("Quincy.quincy_book_distract_cue", Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") + 1)
 					if in_thoughts == false:
 						Exit_Cam.set_tween_duration(0)
 						FP_Cam.priority = 0

@@ -1,0 +1,15 @@
+if {Quincy.cue_cycle} == 1:
+	"Daltons Thoughts": Huuh...
+	"Daltons Thoughts": How do I get him to leave me alone?
+	[end_timeline]
+elif {Quincy.cue_cycle} == 2:
+	"Daltons Thoughts": Hmph.
+	"Daltons Thoughts": I should call for help. 
+	[end_timeline]
+elif {Quincy.cue_cycle} == 3:
+	"Daltons Thoughts": ...
+	"Daltons Thoughts": He’s really not going to get off my tail, huh.
+	"Daltons Thoughts": Maybe Detective Lycus can do something...
+	[end_timeline]
+else:
+	[end_timeline]
