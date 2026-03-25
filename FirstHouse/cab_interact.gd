@@ -20,7 +20,7 @@ extends Node3D
 @onready var micah_marker = $"../../../../UI/Micah_marker"
 @onready var alert = $"../../../SubViewport/Dalton/CharacterBody3D/PlayerInteractor/CollisionShape3D/Alert"
 
-
+var lerp_speed = 5.0
 
 #sound 
 signal general_interact
@@ -49,13 +49,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
+	var current_rot = cab_cam.rotation_degrees
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 550:
-			cab_cam.set_rotation_degrees(Vector3(-27.5, 35.6, -1.3))
+			#cab_cam.set_rotation_degrees(Vector3(-27.5, 35.6, -1.3))
+			cab_cam.rotation_degrees = current_rot.lerp(Vector3(-27.5, 35.6, -1.3), lerp_speed * delta)
 		else:
-			cab_cam.set_rotation_degrees(Vector3(-1.8, 35.6, -1.3))
+			#cab_cam.set_rotation_degrees(Vector3(-1.8, 35.6, -1.3))
+			cab_cam.rotation_degrees = current_rot.lerp(Vector3(-1.8, 35.6, -1.3), lerp_speed * delta)
 	else:
-		cab_cam.set_rotation_degrees(Vector3(-1.8, 35.6, -1.3))
+		#cab_cam.set_rotation_degrees(Vector3(-1.8, 35.6, -1.3))
+		cab_cam.rotation_degrees = current_rot.lerp(Vector3(-1.8, 35.6, -1.3), lerp_speed * delta)
 	
 	#var dialogue_pick = Dialogic.VAR.get_variable("Asked Questions.Micah_cab")
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cab" and cab_open == false:

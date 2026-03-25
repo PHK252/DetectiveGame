@@ -13,6 +13,9 @@ extends Node3D
 @export var fridge_open_sound : AudioStreamPlayer3D
 @export var fridge_close_sound : AudioStreamPlayer3D
 
+
+var lerp_speed = 5.0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _ready() -> void:
@@ -21,13 +24,17 @@ func _ready() -> void:
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	#print(mouse_pos) 
+	var current_rot = fridge_cam.rotation_degrees
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= 550:
 			fridge_cam.set_rotation_degrees(Vector3(-33.5, -87.1, -1.3))
+			fridge_cam.rotation_degrees = current_rot.lerp(Vector3(-33.5, -87.1, -1.3), lerp_speed * delta)
 		else:
 			fridge_cam.set_rotation_degrees(Vector3(-20.1, -87.1, -1.3))
+			fridge_cam.rotation_degrees = current_rot.lerp(Vector3(-20.1, -87.1, -1.3), lerp_speed * delta)
 	else:
 		fridge_cam.set_rotation_degrees(Vector3(-33.5, -87.1, -1.3))
+		fridge_cam.rotation_degrees = current_rot.lerp(Vector3(-33.5, -87.1, -1.3), lerp_speed * delta)
 	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "fridge":
 		if Input.is_action_just_pressed("Exit") and in_anim == false:

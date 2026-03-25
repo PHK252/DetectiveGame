@@ -26,17 +26,21 @@ func _ready():
 func _process(delta):
 	mouse_pos = main.mouse_pos
 	#print(mouse_pos)
+	var current_rot = cork_cam.rotation_degrees
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "cork":
 		if cork_cam.priority == 5:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if mouse_pos.y >= 900:
-			cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
+			#cork_cam.set_rotation_degrees(Vector3(-20, 176.6, .4))
+			cork_cam.rotation_degrees = current_rot.lerp(Vector3(-20, 176.6, .4), 5.0 * delta)
 			tilt = "down"
 		elif mouse_pos.y < 180:
-			cork_cam.set_rotation_degrees(Vector3(4, 176.6, .4))
+			#cork_cam.set_rotation_degrees(Vector3(4, 176.6, .4))
+			cork_cam.rotation_degrees = current_rot.lerp(Vector3(4, 176.6, .4), 5.0 * delta)
 			tilt = "up"
 		else:
-			cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
+			#cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
+			cork_cam.rotation_degrees = current_rot.lerp(Vector3(-3, 176.6, .4), 5.0 * delta)
 			tilt = "mid"
 		if tilt == "mid":
 			#cork_cam.set_rotation_degrees(Vector3(-3, 176.6, .4))
