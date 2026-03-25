@@ -75,16 +75,21 @@ func close() -> void:
 	collision.set_deferred("disabled", false)
 
 func _process(delta):
+	var current_rot = FP_Cam.rotation_degrees
+	
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "office_door":
 		mouse_pos = main.mouse_pos
 		if mouse_pos.y >= tilt_up_thres:
 			FP_Cam.set_rotation_degrees(tilt_up_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_up_angle, 5.0 * delta)
 			tilt = "down"
 		elif mouse_pos.y < tilt_down_thres:
 			FP_Cam.set_rotation_degrees(tilt_down_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(tilt_down_angle, 5.0 * delta)
 			tilt = "up"
 		else:
 			FP_Cam.set_rotation_degrees(mid_angle)
+			FP_Cam.rotation_degrees = current_rot.lerp(mid_angle, 5.0 * delta)
 			tilt = "mid"
 	else:
 			FP_Cam.set_rotation_degrees(mid_angle)
