@@ -19,16 +19,17 @@ apply_overrides_on_ready = true
 text_use_global_size = false
 text_custom_size = 40
 text_use_global_color = false
-custom_normal_font = "uid://3ccjbmqoi4bc"
+use_global_fonts = false
+custom_normal_font = "uid://bwwgclqq3mgo"
 box_panel = "uid://bv6dxwi4d8upa"
-box_size = Vector2(685, 170)
+box_size = Vector2(900, 190)
 portrait_bg_modulate = Color(0, 0, 0, 0)
 apply_overrides_on_ready = true
 
 [node name="VN_ChoiceLayer" parent="." instance=ExtResource("8_535rr")]
-font_custom = "uid://3ccjbmqoi4bc"
+font_use_global = false
+font_custom = "uid://bwwgclqq3mgo"
 font_size_use_global = false
 font_size_custom = 40
 text_color_use_global = false
-boxes_v_separation = 5
 apply_overrides_on_ready = true

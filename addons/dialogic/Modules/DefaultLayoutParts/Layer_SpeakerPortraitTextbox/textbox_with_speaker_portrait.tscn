@@ -56,7 +56,6 @@ mouse_filter = 2
 [node name="HBox" type="HBoxContainer" parent="Anchor/Panel"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 15
 
 [node name="PortraitPanel" type="Panel" parent="Anchor/Panel/HBox"]
 unique_name_in_owner = true
@@ -97,12 +96,18 @@ script = ExtResource("1_4jxq7")
 mode = 1
 container_ids = PackedStringArray("1")
 size_mode = 0
+origin_offset = Vector2(-5, 0)
 debug_character_portrait = "speaker"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Anchor/Panel/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+
+[node name="HSeparator" type="HSeparator" parent="Anchor/Panel/HBox/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="DialogicNode_NameLabel" type="Label" parent="Anchor/Panel/HBox/VBoxContainer"]
 unique_name_in_owner = true
@@ -117,6 +122,7 @@ script = ExtResource("2_y0h34")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/line_separation = 5
 theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
 text = "Some text"

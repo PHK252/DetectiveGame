@@ -36,9 +36,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -85.0
-offset_top = -137.0
+offset_top = -146.0
 offset_right = 181.0
-offset_bottom = -16.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -49,7 +49,7 @@ metadata/_edit_layout_mode = 1
 
 [node name="Column1" type="VBoxContainer" parent="Choices"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
 [node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices/Column1"]
 layout_mode = 2
@@ -75,7 +75,7 @@ script = ExtResource("1_w632k")
 
 [node name="Column2" type="VBoxContainer" parent="Choices"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
 [node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices/Column2"]
 layout_mode = 2
@@ -101,6 +101,7 @@ script = ExtResource("1_w632k")
 
 [node name="Column3" type="VBoxContainer" parent="Choices"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="DialogicNode_ChoiceButton5" type="Button" parent="Choices/Column3"]
 layout_mode = 2

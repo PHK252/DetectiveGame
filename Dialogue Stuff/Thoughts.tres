@@ -28,7 +28,7 @@ overrides = {
 "name_label_use_global_color": "false",
 "name_label_use_global_font": "false",
 "name_label_use_global_font_size": "false",
-"normal_font": "\"res://Dialogue Stuff/Fonts/Pixel Font V2.ttf\"",
+"normal_font": "\"res://Dialogue Stuff/Fonts/Default.ttf\"",
 "text_use_global_font": "false",
 "text_use_global_size": "false"
 }
@@ -39,7 +39,7 @@ scene = ExtResource("5_2m60m")
 overrides = {
 "boxes_offset": "Vector2(0, 120)",
 "boxes_stylebox_hovered": "\"choice_panel_hover.tres\"",
-"font_custom": "\"res://Dialogue Stuff/Fonts/Pixel Font V2.ttf\""
+"font_custom": "\"res://Dialogue Stuff/Fonts/Default.ttf\""
 }
 
 [resource]
@@ -47,4 +47,4 @@ script = ExtResource("10_ushj6")
 name = "Thoughts"
 base_overrides = {}
 layers = Array[ExtResource("1_cwleq")]([SubResource("Resource_4ooyk"), SubResource("Resource_eblly"), SubResource("Resource_h8xcl"), SubResource("Resource_7vwwo")])
-metadata/_latest_layer = 3
+metadata/_latest_layer = 2
