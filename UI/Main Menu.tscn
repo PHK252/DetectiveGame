@@ -434,6 +434,9 @@ button_group = SubResource("ButtonGroup_lk11p")
 [node name="Option6" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Menu" index="5"]
 button_group = SubResource("ButtonGroup_lk11p")
 
+[node name="OptionButton" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation" index="1"]
+selected = 1
+
 [node name="Main" parent="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu/VBoxContainer" index="0"]
 button_group = SubResource("ButtonGroup_2xfe3")
 
@@ -541,8 +544,8 @@ parameters/looping = true
 [connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Credits" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Credits" to="MenuSounds" method="_on_menu_press"]
-[connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Quit" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Quit" to="MenuSounds" method="_on_menuHover"]
+[connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Quit" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Vertical Butts/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="Start/Panel/AspectRatioContainer/Horz Butts/Continue/Continue" to="MenuSounds" method="_on_menu_hover"]
 [connection signal="pressed" from="Start/Panel/AspectRatioContainer/Horz Butts/Continue/Continue" to="." method="_on_continue_pressed"]

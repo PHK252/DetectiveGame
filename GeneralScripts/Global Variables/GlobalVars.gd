@@ -358,7 +358,7 @@ var fps_toggle := false:
 		emit_signal("toggle_fps", value)
 
 #settings variables
-var stretch_factor : int = 6:
+var stretch_factor : int = 4:
 	set(value):
 		print("emit stretch")
 		stretch_factor = value

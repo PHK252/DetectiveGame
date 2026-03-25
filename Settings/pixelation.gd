@@ -19,9 +19,9 @@ func _on_option_button_item_selected(index: int) -> void:
 
 
 func _on_reset_graphics_pressed() -> void:
-	emit_signal("set_reset", "Normal", 2, true)
-	GlobalVars.stretch_factor = 6
-	selected = 2
+	emit_signal("set_reset", "Clean", 1, true)
+	GlobalVars.stretch_factor = 4
+	selected = 1
 	emit_signal("set_pixelation")
 
 func _on_menu_on_select_option(index):
