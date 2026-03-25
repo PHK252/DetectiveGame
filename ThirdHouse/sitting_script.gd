@@ -99,7 +99,7 @@ func _process(delta: float) -> void:
 			stool_getup.play()
 		dalton_outside.visible = false
 		dalton_bar.visible = false
-		alert.show()
+		#alert.show()
 		emit_signal("DaltonVisible")
 		if theo_outside.visible == true or out_sit:
 			patio_getup.play()

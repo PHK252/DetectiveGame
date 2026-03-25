@@ -87,7 +87,7 @@ func _on_upstairs_body_entered(body: Node3D) -> void:
 
 func _on_u_1a_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		activate_camera(5)  # Fourth camera
+		activate_camera(6)  # Fourth camera
 
 
 func _on_u_2a_body_entered(body: Node3D) -> void:
