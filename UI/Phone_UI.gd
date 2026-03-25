@@ -229,6 +229,7 @@ func _on_left_hover_mouse_exited():
 @export var alert : Sprite3D
 signal continue_convo
 signal Book_distract_quincy
+signal disable_book
 
 signal enable_interact
 func inputNum(num: int):
@@ -311,7 +312,7 @@ func _on_call_pressed():
 	exit_phone()
 	num_input.text = ""
 	
-	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	var needs_distraction = Dialogic.VAR.get_variable("Quincy.need_book_distraction")
 	if GlobalVars.in_dialogue == false:
 		player.stop_player()
 		if alert.visible:
@@ -319,7 +320,7 @@ func _on_call_pressed():
 		GlobalVars.in_interaction = "phone call"
 		# Dialing THEO
 		if called_num == "034-2012": 
-			if at_bookshelf == true and needs_distraction == true:
+			if at_bookshelf == true and needs_distraction == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == false and Dialogic.VAR.get_variable("Quincy.book_distract_worked") == false:
 				var book_distract = Dialogic.start("Quincy_book_distract")
 				emit_signal("save_time")
 				SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
@@ -504,9 +505,9 @@ func _on_theo_pressed(): #UPDATE TIMELINE
 	player.stop_player()
 	if alert.visible:
 		alert.hide()
-	var needs_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	var needs_distraction = Dialogic.VAR.get_variable("Quincy.need_book_distraction")
 	GlobalVars.in_interaction = "phone call"
-	if at_bookshelf == true and needs_distraction == true and Dialogic.VAR.get_variable("Quincy.book_distract_worked") == false:
+	if at_bookshelf == true and needs_distraction == true and Dialogic.VAR.get_variable("Quincy.book_distract_worked") == false and Dialogic.VAR.get_variable("Quincy.is_distracted") == false:
 		var book_distract = Dialogic.start("Quincy_book_distract")
 		emit_signal("save_time")
 		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
@@ -632,6 +633,8 @@ func _bottle_fall_sound(argument: String):
 		Dialogic.signal_event.disconnect(_bottle_fall_sound)
 	elif argument == "end":
 		Dialogic.signal_event.disconnect(_bottle_fall_sound)
+		if Dialogic.VAR.get_variable("Quincy.failed_distract") == true:
+			emit_signal("disable_book")
 
 func _leave_quincy(argument: String):
 	if argument == "quincy_walk":

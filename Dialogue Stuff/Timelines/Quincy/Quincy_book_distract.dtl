@@ -75,7 +75,7 @@ else:
 		Quincy (Default): Hmm... 
 		Quincy (Squint Smug): Seems tense.
 		Dalton (Sigh): Hmph.
-		[signal arg="end"]
 		set {Quincy.failed_distract} = true
+		[signal arg="end"]
 	else:
 		jump Theo_call/separated

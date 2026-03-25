@@ -34,6 +34,11 @@ signal unpaused
 @onready var time_left : float = 0.0
 @onready var distract_left : float = 0.0
 
+var reg_need : bool
+var book_need : bool
+func _process(delta):
+	reg_need = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	book_need = Dialogic.VAR.get_variable("Quincy.need_book_distraction")
 
 #camera index for loading
 @onready var cam_index : int = 0

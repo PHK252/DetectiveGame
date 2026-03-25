@@ -26,6 +26,7 @@ extends Node3D
 @export var dalton_marker: Marker2D
 @export var theo_marker: Marker2D
 @export var character_marker: Marker2D
+@export var player_interactor : Interactor
 
 #Interaction Variables
 @export var interactable : Interactable
@@ -52,8 +53,6 @@ extends Node3D
 var in_thoughts = false
 var in_secret = false
 var react = false
-var book_need_distract := false 
-
 @export var bookshelf_move_sound : AudioStreamPlayer3D
 @export var bookmark_sound : AudioStreamPlayer3D
 @export var music : AudioStreamPlayer
@@ -65,18 +64,17 @@ signal enable_look
 signal disable_look
 
 func _ready():
-	if Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") == 2:
-		book_need_distract = true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	if Dialogic.VAR.get_variable("Quincy.finished_safe_room") == true or Dialogic.VAR.get_variable("Quincy.failed_distract") == true:
+		interactable.set_deferred("monitorable", false)
+
 func _process(delta):
 	mouse_pos = get_viewport().get_mouse_position()
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
-	need_distraction = Dialogic.VAR.get_variable("Quincy.needs_distraction")
+	need_distraction = Dialogic.VAR.get_variable("Quincy.need_book_distraction")
 	var current_rot = FP_Cam.rotation_degrees
 	if Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") == 2:
-		if Dialogic.VAR.get_variable("Quincy.needs_distraction") == false:
-			Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
-		book_need_distract = true
+		Dialogic.VAR.set_variable("Quincy.need_book_distraction", true)
+
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
 		if mouse_pos.y >= tilt_up_thres:
 			#FP_Cam.set_rotation_degrees(tilt_up_angle)
@@ -154,7 +152,7 @@ func _on_input_event(viewport, event, shape_idx):
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					interact_area.hide()
 					choose_quincy_cycle_dialogue()
-					if need_distraction == true and book_need_distract == true:
+					if need_distraction == true:
 						GlobalVars.in_dialogue = true
 						choose_distract_thought_dialogue()
 						in_thoughts = true
@@ -304,6 +302,7 @@ func _on_secret_exit(body):
 				interactable.set_deferred("monitorable", true)
 			else:
 				print("deactive secret")
+				Dialogic.VAR.set_variable("Quincy.finished_safe_room", true)
 				interactable.set_deferred("monitorable", false)
 			MusicFades.fade_out_audio()
 			await get_tree().create_timer(1.0).timeout
@@ -336,3 +335,10 @@ func _on_secret_a_body_entered(body):
 			if is_open == true:
 				close()
 		
+
+
+func _on_phone_ui_disable_book():
+	interactable.set_deferred("monitorable", false)
+	player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
+	await get_tree().process_frame
+	player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
