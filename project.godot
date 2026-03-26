@@ -255,6 +255,7 @@ directories/dtl_directory={
 "Quincy_bathroom_after_clogged": "res://Dialogue Stuff/Timelines/Quincy/Quincy_bathroom_after_clogged.dtl",
 "Quincy_bedroom": "res://Dialogue Stuff/Timelines/Quincy/Quincy_bedroom.dtl",
 "Quincy_bedroom_enter": "res://Dialogue Stuff/Timelines/Quincy/Quincy_bedroom_enter.dtl",
+"Quincy_book_at_bath_distraction": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_at_bath_distraction.dtl",
 "Quincy_book_cycle": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_cycle.dtl",
 "Quincy_book_distract": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_distract.dtl",
 "Quincy_book_open_thoughts": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_open_thoughts.dtl",
@@ -378,7 +379,7 @@ variables={
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
-"Theo": 4
+"Theo": 0
 },
 "Endings": {
 "Ending_type": ""
@@ -463,7 +464,7 @@ variables={
 "asked_location": false,
 "asked_missing": false,
 "asked_painting": false,
-"bathroom_activated": true,
+"bathroom_activated": false,
 "bedroom_cycle": 0,
 "book_distract_worked": false,
 "book_too_early": false,

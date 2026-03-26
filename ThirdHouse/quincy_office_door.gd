@@ -125,7 +125,7 @@ func _on_interactable_interacted(interactor: Interactor) -> void:
 		#collision.disabled = false
 
 func _input(event):
-	if Input.is_action_just_pressed("Exit") and GlobalVars.in_interaction == "office_door" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false: 
+	if Input.is_action_just_pressed("Exit") and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "office_door" and GlobalVars.quincy_kicked_out == false and GlobalVars.quincy_time_out == false: 
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Exit_Cam.set_tween_duration(0)
 		FP_Cam.priority = 0

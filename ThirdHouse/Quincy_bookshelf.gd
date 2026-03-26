@@ -32,6 +32,7 @@ extends Node3D
 @export var interactable : Interactable
 @export var interact_area: Area2D
 @export var before_dialogue_file : String
+@export var bathroom_distract_dialogue : String
 @export var dialogue_file: String
 @export var react_file: String
 @export var thought_dialogue_file: String
@@ -136,14 +137,33 @@ func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#interact_area.hide()
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
 		cam_anim.play("Cam_Idle")
 		player.hide()
 		player.stop_player()
+		if Dialogic.VAR.get_variable("Quincy.bathroom_activated") == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == true and Dialogic.VAR.get_variable("Quincy.book_distract_worked") == false:
+			GlobalVars.in_dialogue = true
+			Dialogic.start(bathroom_distract_dialogue)
+			Dialogic.timeline_ended.connect(_on_distract_thoughts_ended)
+			return
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
+func _on_distract_thoughts_ended():
+	GlobalVars.in_dialogue = false
+	Dialogic.timeline_ended.disconnect(_on_distract_thoughts_ended)
+	Exit_Cam.set_tween_duration(0)
+	FP_Cam.priority = 0
+	Exit_Cam.priority = 30
+	await get_tree().create_timer(.03).timeout
+	cam_anim.play("RESET")
+	player.show()
+	player.start_player()
+	#main_cam.set_tween_duration(1)
+	GlobalVars.in_interaction = ""
+	interact_area.hide()
+	alert.show()
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -293,19 +313,19 @@ func _on_thoughts_finished():
 		alert.hide()
 
 
-func _on_toilet_distraction():
-	if interactable:
-		interactable.set_deferred("monitorable", false)
-
-
-func _on_quincy_time_out_resume():
-	if interactable:
-		if interactable.monitorable == false:
-			if !Dialogic.VAR.get_variable("Quincy.activate_secret"):
-				print("active timeout")
-				interactable.set_deferred("monitorable", true)
-			else:
-				interactable.set_deferred("monitorable", false)
+#func _on_toilet_distraction():
+	#if interactable:
+		#interactable.set_deferred("monitorable", false)
+#
+#
+#func _on_quincy_time_out_resume():
+	#if interactable:
+		#if interactable.monitorable == false:
+			#if !Dialogic.VAR.get_variable("Quincy.activate_secret"):
+				#print("active timeout")
+				#interactable.set_deferred("monitorable", true)
+			#else:
+				#interactable.set_deferred("monitorable", false)
 
 
 func _on_secret_exit(body):
