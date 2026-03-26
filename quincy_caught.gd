@@ -45,6 +45,9 @@ func _input(event):
 			anim_finished = false
 			GlobalVars._dalton_caught_clear_state()
 			print("restarting...")
+			await get_tree().process_frame
+			await get_tree().process_frame
+			await get_tree().process_frame
 			InputMap.action_add_event("Quit", pause[0])
 			Loading.load_scene(main, GlobalVars.third_house_path, "","","")
 			GlobalVars.in_level = false

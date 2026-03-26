@@ -1,5 +1,6 @@
+[wait time=".5"]
 if {Quincy.book_too_early} == false:
-	[signal arg="pool_cam"]
+	#[signal arg="pool_cam"]
 	Theo (Concerned): Dalton!?
 	Theo (Awkward): Where did you go?
 	Dalton (Resting): I'm upstairs.

@@ -644,8 +644,10 @@ func _leave_quincy(argument: String):
 		alert.show()
 		
 	elif argument == "end":
-		alert.show()
 		Dialogic.signal_event.disconnect(_leave_quincy)
+		if Dialogic.VAR.get_variable("Quincy.failed_distract"):
+			return
+		alert.show()
 		
 func _end_call(argument: String):
 	if argument == "end_call":

@@ -69,14 +69,14 @@ else:
 		Dalton (Resting): I'll see you at the station.
 		Theo (Call): [shake rate=10.0 level=4 connected=2]Huh?[/shake]
 		[signal arg = "end_call"]
+		set {Quincy.failed_distract} = true
+		set {Quincy.need_book_distraction} = false
 		Quincy (Smug): Who was that?
 		Dalton (Sigh): Huu.... 
 		Dalton (Awkward): Chief...was asking for a check in.
 		Quincy (Default): Hmm... 
 		Quincy (Squint Smug): Seems tense.
 		Dalton (Sigh): Hmph.
-		set {Quincy.failed_distract} = true
-		set {Quincy.need_book_distraction} = false
 		[signal arg="end"]
 	else:
 		jump Theo_call/separated

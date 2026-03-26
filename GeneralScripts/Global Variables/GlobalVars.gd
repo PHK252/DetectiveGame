@@ -260,7 +260,7 @@ var load_Quincy_name_arr = ["quincy_time_out", "quincy_kicked_out", "quincy_fain
  "clicked_letter_Quincy", "viewed_Quincy_chocolate", "chocolate_dialogue", "viewed_Quincy_hook", "hook_dialogue"]
 
 func _dalton_caught_clear_state():
-	#dalton_pos = Vector3()
+	Dialogic.VAR.reset("Quincy")
 	quincy_notes = ""
 	Quincy_Dalton_caught = true 
 	try_viewed_distract = 0
@@ -308,9 +308,12 @@ func _dalton_caught_clear_state():
 	chocolate_dialogue = false
 	viewed_Quincy_hook = false
 	hook_dialogue = false
+	await get_tree().process_frame
 	Dialogic.VAR.reset("Quincy")
 	await get_tree().process_frame
 	Dialogic.VAR.set_variable("Quincy.caught", true)
+	print(Dialogic.VAR.get_variable("Quincy.needs_distraction"))
+	print(Dialogic.VAR.get_variable("Quincy.caught"))
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 
 ##Secret Vars
