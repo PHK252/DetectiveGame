@@ -86,6 +86,7 @@ signal time_out_resume
 signal caught_in_view
 signal open_doors
 signal disable_office
+signal pool_table_cam
 @export var sound_player : AnimationPlayer
 var end_time := false
 var start_time := false
@@ -156,6 +157,7 @@ func _ready() -> void:
 
 func _on_dialogic_signal(argument: String):
 	if argument == "to_door":
+		special_gate_upstairs = false
 		rotate_forced = false
 		rotate_number = 0
 		extra_gate_end = false
@@ -164,6 +166,9 @@ func _on_dialogic_signal(argument: String):
 		special_rotation = true
 		nav.target_position = leave_position.global_position
 		state = FOLLOW
+	
+	if argument == "pool_cam":
+		emit_signal("pool_table_cam")
 	
 	#if argument == "work_time":
 		#quincy_tree.set("parameters/Wine/request", 2)
@@ -195,13 +200,19 @@ func _process(delta: float) -> void:
 	#print(q_in_bath)
 	#print(wander_choice)
 	#print(bar_danger_zone)
+		
 	if GlobalVars.quincy_time_out == true or GlobalVars.quincy_kicked_out == true: #or GlobalVars.quincy_fainted == true (gate ze faint)
 		is_distracted = false
+		special_gate_upstairs = false
+		
 	if is_distracted == false:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
 		if end_time == false and start_time == false:
-			distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
+			if special_gate_upstairs:
+				distance_to_target = armature.global_transform.origin.distance_to(upstairs_marker.global_position)
+			else:
+				distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
 		elif end_time:
 			distance_to_target = armature.global_transform.origin.distance_to(leave_position.global_position)
 		elif start_time:
@@ -392,9 +403,9 @@ func _process_follow_state(distance_to_target: float) -> void:
 			#cooldown_bool = true
 			#cooldown.start()
 			#wander_timer.start()
-			#if nav.target_position == upstairs_marker.global_position:
-				#rotate_number = 7
-				#rotate_forced = true
+			if nav.target_position == upstairs_marker.global_position and special_gate_upstairs:
+				rotate_number = 7
+				rotate_forced = true
 			
 			
 			if end_time:
@@ -666,6 +677,10 @@ func _on_bookshelf_distract(interactor: Interactor) -> void:
 	pass
 
 func _on_phone_book_distract_quincy():
+	rotate_number = 0
+	rotate_forced = false
+	special_gate_upstairs = false
+		
 	is_distracted = true
 	print("phone")
 	is_navigating = true
@@ -933,6 +948,9 @@ func _on_main_door_quincy_reposition() -> void:
 	lighter.visible = false
 	cig.visible = false
 	print("main door")
+	special_gate_upstairs = false
+	rotate_number = 0
+	rotate_forced = false
 	is_distracted = true
 	end_time = true
 	is_navigating = true
@@ -1038,6 +1056,7 @@ func _on_bathroom_cam_became_active() -> void:
 
 func _on_main_quincy_leave() -> void:
 	#handle drinking stoppage
+	special_gate_upstairs = false
 	quincy_tree.set("parameters/Wine/request", 2)
 	is_drinking = false
 	rotate_number = 0
@@ -1091,22 +1110,20 @@ func _on_bar_danger_zone_body_exited(body: Node3D) -> void:
 
 
 func _on_upstairs_wait_q_body_entered(body: Node3D) -> void:
-	pass
-	#if body.is_in_group("player") and catch_possibility == false and general_distraction == false:
-		#emit_signal("enable_look")
-		#special_gate_upstairs = true
-		#is_distracted = true
-		#is_navigating = true
-		#wander_choice = 11
-		#nav.target_position = upstairs_marker.global_position
-		#state = FOLLOW
+	if body.is_in_group("player") and catch_possibility == false and general_distraction == false and wander_choice != 4 and wander_choice != 1:
+		emit_signal("enable_look")
+		special_gate_upstairs = true
+		is_distracted = true
+		is_navigating = true
+		wander_choice = 11
+		nav.target_position = upstairs_marker.global_position
+		state = FOLLOW
 
 func _on_upstairs_wait_q_body_exited(body: Node3D) -> void:
-	pass
-	#if body.is_in_group("player") and catch_possibility == false and nav.target_position == upstairs_marker.global_position and general_distraction == false:
-		#rotate_number = 0
-		#rotate_forced = false
-		#is_distracted = false
-		#special_gate_upstairs = false
-		#is_navigating = true
-		#state = FOLLOW
+	if body.is_in_group("player") and catch_possibility == false and nav.target_position == upstairs_marker.global_position and general_distraction == false and wander_choice != 4 and wander_choice != 1:
+		rotate_number = 0
+		rotate_forced = false
+		is_distracted = false
+		special_gate_upstairs = false
+		is_navigating = true
+		state = FOLLOW

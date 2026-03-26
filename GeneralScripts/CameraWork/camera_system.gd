@@ -288,3 +288,7 @@ func _on_MicahDoor_activate_leave() -> void:
 func _on_MicahLeave_camera_check() -> void:
 	if cameras[1].priority == 23:
 		activate_camera(5)
+
+
+func _on_quincy_pool_table_cam() -> void:
+	activate_camera(6)
