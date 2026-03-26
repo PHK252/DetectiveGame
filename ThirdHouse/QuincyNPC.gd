@@ -1094,7 +1094,7 @@ func _on_bar_danger_zone_body_exited(body: Node3D) -> void:
 
 
 func _on_upstairs_wait_q_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and catch_possibility == false:
+	if body.is_in_group("player") and catch_possibility == false and is_distracted == false:
 		emit_signal("enable_look")
 		special_gate_upstairs = true
 		is_distracted = true
@@ -1104,7 +1104,7 @@ func _on_upstairs_wait_q_body_entered(body: Node3D) -> void:
 		state = FOLLOW
 
 func _on_upstairs_wait_q_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player") and catch_possibility == false:
+	if body.is_in_group("player") and catch_possibility == false and nav.target_position == upstairs_marker.global_position:
 		rotate_number = 0
 		rotate_forced = false
 		is_distracted = false
