@@ -16,6 +16,8 @@ signal stop_dalton
 @export var timer_check : Timer
 @export var entrance_timer : Timer
 
+@export var upstairs_marker : Marker3D
+
 @export var wineStatic: Node3D
 @export var wineAnim: Node3D
 @export var winepoint: Marker3D
@@ -103,6 +105,7 @@ signal disable_look
 var bar_catch_area := false
 
 var bar_danger_zone := false
+var special_gate_upstairs := false
 
 enum {
 	IDLE, 
@@ -198,7 +201,10 @@ func _process(delta: float) -> void:
 		distance_to_target = armature.global_transform.origin.distance_to(player.global_transform.origin)
 	else:
 		if end_time == false and start_time == false:
-			distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
+			if special_gate_upstairs == true:
+				distance_to_target = armature.global_transform.origin.distance_to(upstairs_marker.global_position)
+			else:
+				distance_to_target = armature.global_transform.origin.distance_to(marker_positions[wander_choice].global_position)
 		elif end_time:
 			distance_to_target = armature.global_transform.origin.distance_to(leave_position.global_position)
 		elif start_time:
@@ -389,6 +395,11 @@ func _process_follow_state(distance_to_target: float) -> void:
 			#cooldown_bool = true
 			#cooldown.start()
 			#wander_timer.start()
+			if nav.target_position == upstairs_marker.global_position:
+				rotate_number = 7
+				rotate_forced = true
+			
+			
 			if end_time:
 				rotate_number = 4
 				rotate_forced = true
@@ -1080,3 +1091,23 @@ func _on_bar_danger_zone_body_entered(body: Node3D) -> void:
 func _on_bar_danger_zone_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		bar_danger_zone = false
+
+
+func _on_upstairs_wait_q_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and catch_possibility == false:
+		emit_signal("enable_look")
+		special_gate_upstairs = true
+		is_distracted = true
+		is_navigating = true
+		wander_choice = 11
+		nav.target_position = upstairs_marker.global_position
+		state = FOLLOW
+
+func _on_upstairs_wait_q_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player") and catch_possibility == false:
+		rotate_number = 0
+		rotate_forced = false
+		is_distracted = false
+		special_gate_upstairs = false
+		is_navigating = true
+		state = FOLLOW
