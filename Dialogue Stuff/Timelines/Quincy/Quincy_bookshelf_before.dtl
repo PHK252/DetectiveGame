@@ -1,0 +1,14 @@
+if {Quincy.book_too_early} == false:
+	Theo (Concerned): Dalton!?
+	Theo (Awkward): Where did you go?
+	Dalton (Resting): I'm upstairs.
+	Theo (Thinking): Why?
+	Theo (Talk): We still haven't finished down here.
+	Dalton (Sigh): Huuh...
+	Quincy (Laugh): Hah.
+	Quincy (Default): Seems like your little doggy partner needs some help.
+	set {Quincy.book_too_early} = true
+else:
+	Theo (Concerned): Dalton!?
+	Dalton (Sigh): Yeah...
+	Dalton (Resting): Coming.

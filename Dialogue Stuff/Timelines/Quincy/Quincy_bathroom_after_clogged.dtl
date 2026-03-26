@@ -8,6 +8,7 @@ Quincy (Smug): Don’t worry about it.
 Quincy (Happy): You go rest your little fox tail, and I’ll go clean it up.
 set {Quincy.is_distracted} = true
 set {Quincy.needs_distraction} = false
+set {Quincy.bathroom_activated} = true
 label clean
 [signal arg= "quincy_clean"]
 [wait time="4.0"]

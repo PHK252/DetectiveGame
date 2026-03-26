@@ -31,6 +31,7 @@ extends Node3D
 #Interaction Variables
 @export var interactable : Interactable
 @export var interact_area: Area2D
+@export var before_dialogue_file : String
 @export var dialogue_file: String
 @export var react_file: String
 @export var thought_dialogue_file: String
@@ -72,7 +73,7 @@ func _process(delta):
 	distracted = Dialogic.VAR.get_variable("Quincy.is_distracted") 
 	need_distraction = Dialogic.VAR.get_variable("Quincy.need_book_distraction")
 	var current_rot = FP_Cam.rotation_degrees
-	if Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") == 2:
+	if Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") == 1:
 		Dialogic.VAR.set_variable("Quincy.need_book_distraction", true)
 
 	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false:
@@ -158,6 +159,19 @@ func _on_input_event(viewport, event, shape_idx):
 						in_thoughts = true
 						Dialogic.start(cue_distract_dialogue)
 						Dialogic.timeline_ended.connect(_on_thoughts_ended)
+					elif Dialogic.VAR.get_variable("Quincy.bathroom_activated") == false:
+						Exit_Cam.set_tween_duration(0)
+						FP_Cam.priority = 0
+						Exit_Cam.priority = 30 
+						Exit_Cam.set_tween_duration(1)
+						player.show()
+						emit_signal("enable_look")
+						GlobalVars.in_dialogue = true
+						var game_dialogue = Dialogic.start(before_dialogue_file)
+						Dialogic.timeline_ended.connect(_on_timeline_ended)
+						player.stop_player()
+						alert.hide()
+						return
 					else:
 						Dialogic.VAR.set_variable("Quincy.quincy_book_distract_cue", Dialogic.VAR.get_variable("Quincy.quincy_book_distract_cue") + 1)
 					if in_thoughts == false:
@@ -284,12 +298,14 @@ func _on_toilet_distraction():
 		interactable.set_deferred("monitorable", false)
 
 
-#func _on_quincy_time_out_resume():
-	#if interactable:
-		#if interactable.monitorable == false:
-			#if !Dialogic.VAR.get_variable("Quincy.got_safe") and !Dialogic.VAR.get_variable("Quincy.safe_alarm"):
-				#print("active timeout")
-				#interactable.set_deferred("monitorable", true)
+func _on_quincy_time_out_resume():
+	if interactable:
+		if interactable.monitorable == false:
+			if !Dialogic.VAR.get_variable("Quincy.activate_secret"):
+				print("active timeout")
+				interactable.set_deferred("monitorable", true)
+			else:
+				interactable.set_deferred("monitorable", false)
 
 
 func _on_secret_exit(body):
@@ -342,3 +358,12 @@ func _on_phone_ui_disable_book():
 	player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 	await get_tree().process_frame
 	player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+
+
+func _on_u_1a_body_entered(body):
+	# close door if leave bookshelf area when open
+	if is_open:
+		close()
+		if Dialogic.VAR.get_variable("Quincy.is_distracted"):
+			print("active secret")
+			interactable.set_deferred("monitorable", true)

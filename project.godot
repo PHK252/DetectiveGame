@@ -259,6 +259,7 @@ directories/dtl_directory={
 "Quincy_book_distract": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_distract.dtl",
 "Quincy_book_open_thoughts": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_open_thoughts.dtl",
 "Quincy_book_thoughts": "res://Dialogue Stuff/Timelines/Quincy/Quincy_book_thoughts.dtl",
+"Quincy_bookshelf_before": "res://Dialogue Stuff/Timelines/Quincy/Quincy_bookshelf_before.dtl",
 "Quincy_case": "res://Dialogue Stuff/Timelines/Quincy/Quincy_case.dtl",
 "Quincy_caught": "res://Dialogue Stuff/Timelines/Quincy/Quincy_caught.dtl",
 "Quincy_choco": "res://Dialogue Stuff/Timelines/Quincy/Quincy_choco.dtl",
@@ -377,7 +378,7 @@ variables={
 "Micah": 0,
 "Quincy": 0,
 "Skylar": 0,
-"Theo": 0
+"Theo": 4
 },
 "Endings": {
 "Ending_type": ""
@@ -453,6 +454,7 @@ variables={
 "Quincy": {
 "Quincy_asked_case": false,
 "Quincy_saw_coors": false,
+"activate_secret": false,
 "ask motive": false,
 "ask_yesterday": false,
 "asked_Juniper": false,
@@ -461,8 +463,10 @@ variables={
 "asked_location": false,
 "asked_missing": false,
 "asked_painting": false,
+"bathroom_activated": true,
 "bedroom_cycle": 0,
 "book_distract_worked": false,
+"book_too_early": false,
 "bookshelf_cycle": 0,
 "catch_up": false,
 "caught": false,

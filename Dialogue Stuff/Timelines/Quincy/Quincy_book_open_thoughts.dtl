@@ -1,1 +1,3 @@
-Dalton (Surprised): What in the world?
+if {Quincy.activate_secret} == false:
+	Dalton (Surprised): What in the world?
+	set {Quincy.activate_secret} = true

@@ -35,7 +35,7 @@ if {Character Aff Points.Theo} > 3:
 	[signal arg="quincy_walk"]
 	set {Quincy.book_distract_worked} = true
 	set {Quincy.is_distracted} = true
-	set {Quincy.needs_distraction} = false
+	set {Quincy.need_book_distraction} = false
 	[signal arg= "end"]
 	[end_timeline]
 else:
@@ -76,6 +76,7 @@ else:
 		Quincy (Squint Smug): Seems tense.
 		Dalton (Sigh): Hmph.
 		set {Quincy.failed_distract} = true
+		set {Quincy.need_book_distraction} = false
 		[signal arg="end"]
 	else:
 		jump Theo_call/separated
