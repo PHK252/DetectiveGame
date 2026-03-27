@@ -59,6 +59,11 @@ signal disable_look
 signal theo_reposition_start
 signal theo_reposition_end
 
+func _ready():
+	if GlobalVars.get(view_item_1) == true and GlobalVars.get(dialogue_1) == false:
+		GlobalVars.set(view_item_1, false)
+	if GlobalVars.get(view_item_2) == true and GlobalVars.get(dialogue_2) == false:
+		GlobalVars.set(view_item_2, false)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var read_dialogue_1 : bool = GlobalVars.get(dialogue_1)
