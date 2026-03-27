@@ -88,6 +88,7 @@ func _process(delta):
 			Exit_Cam.priority = 30
 			cam_anim.play("RESET")
 			player.show()
+			GlobalVars.in_dialogue = true
 			var game_dialogue = Dialogic.start(dialogue_file)
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
 			game_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)

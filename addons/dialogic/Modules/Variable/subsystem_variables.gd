@@ -150,9 +150,11 @@ func get_variable(variable_path:String, default: Variant = null, no_warning := f
 
 ## Resets all variables or a specific variable to the value(s) defined in the variable editor
 func reset(variable:="") -> void:
+	print("enter_reset")
 	if variable.is_empty():
 		dialogic.current_state_info['variables'] = ProjectSettings.get_setting("dialogic/variables", {}).duplicate(true)
 	else:
+		print("enter_reset_not_empty",  dialogic.current_state_info['variables'], DialogicUtil._get_value_in_dictionary(variable, ProjectSettings.get_setting('dialogic/variables', {})))
 		DialogicUtil._set_value_in_dictionary(variable, dialogic.current_state_info['variables'], DialogicUtil._get_value_in_dictionary(variable, ProjectSettings.get_setting('dialogic/variables', {})))
 
 

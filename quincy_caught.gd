@@ -43,9 +43,8 @@ func _input(event):
 	if anim_finished == true:
 		if event is InputEventKey and event.is_pressed():
 			anim_finished = false
-			GlobalVars._dalton_caught_clear_state()
+			GlobalVars.dalton_caught_clear_state()
 			print("restarting...")
-			await get_tree().process_frame
 			await get_tree().process_frame
 			await get_tree().process_frame
 			InputMap.action_add_event("Quit", pause[0])

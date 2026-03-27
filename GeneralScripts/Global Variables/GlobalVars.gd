@@ -259,8 +259,7 @@ var load_Quincy_name_arr = ["quincy_time_out", "quincy_kicked_out", "quincy_fain
 "viewed_Quincy_news", "clicked_news_Quincy", "viewed_Quincy_usb", "viewed_Quincy_proposal", "clicked_proposal_Quincy", "Quincy_in_case", "opened_quincy_case", "viewed_Quincy_letter", "viewed_Quincy_hammer", "clicked_case_Quincy",
  "clicked_letter_Quincy", "viewed_Quincy_chocolate", "chocolate_dialogue", "viewed_Quincy_hook", "hook_dialogue"]
 
-func _dalton_caught_clear_state():
-	Dialogic.VAR.reset("Quincy")
+func dalton_caught_clear_state():
 	quincy_notes = ""
 	Quincy_Dalton_caught = true 
 	try_viewed_distract = 0
@@ -309,13 +308,20 @@ func _dalton_caught_clear_state():
 	viewed_Quincy_hook = false
 	hook_dialogue = false
 	await get_tree().process_frame
-	Dialogic.VAR.reset("Quincy")
+	GlobalVars._reset_dialogic()
 	await get_tree().process_frame
 	Dialogic.VAR.set_variable("Quincy.caught", true)
-	print(Dialogic.VAR.get_variable("Quincy.needs_distraction"))
-	print(Dialogic.VAR.get_variable("Quincy.caught"))
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 
+
+func _reset_dialogic():
+	var Quincy_arr : Array = Dialogic.VAR.get("Quincy").variables()
+	for variable in Quincy_arr:
+		var cur_var = Dialogic.VAR.Quincy.get(variable)
+		if cur_var is int:
+			Dialogic.VAR.Quincy.set(variable, 0)
+		if cur_var is bool:
+			Dialogic.VAR.Quincy.set(variable, false)
 ##Secret Vars
 @onready var has_secret = false
 #Cure

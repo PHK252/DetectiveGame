@@ -13,7 +13,14 @@ var caught_anim := false
 signal play_anim
 signal clear_evi
 
-
+#func _input(event):
+	#if event is InputEventKey and event.is_pressed():
+		#if event.keycode == KEY_SPACE:
+			#_on_quincy_play_caught()
+		#if event.keycode == KEY_P:
+			#Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
+		#if event.keycode == KEY_I:
+			#Dialogic.VAR.set_variable("Quincy.bedroom_cycle", 5)
 
 func _on_quincy_play_caught():
 	if caught_anim == false:
@@ -23,8 +30,8 @@ func _on_quincy_play_caught():
 		music.stop()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		time_out_timer.stop()
-		Dialogic.VAR.set_variable("Quincy.caught", true)
-		GlobalVars.Quincy_Dalton_caught = true
+		#Dialogic.VAR.set_variable("Quincy.caught", true)
+		#GlobalVars.Quincy_Dalton_caught = true
 		GlobalVars.in_dialogue = true
 		if alert.visible:
 			alert.hide()
@@ -36,9 +43,9 @@ func _on_quincy_play_caught():
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
-	GlobalVars.in_dialogue = false
 	SceneTransitions.glitch_to_load()
 	await SceneTransitions.glitch.animation_finished
+	GlobalVars.in_dialogue = false
 	AudioServer.set_bus_solo(5, true)
 	emit_signal("play_anim")
 	#reset all vars expect caught
