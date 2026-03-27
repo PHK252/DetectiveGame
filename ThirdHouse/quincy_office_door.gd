@@ -41,6 +41,8 @@ var triggered = false
 
 @export var interactable : Interactable
 @export var player_interactor : Interactor
+
+var finished_distract : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -100,7 +102,7 @@ func _process(delta):
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		var unlocked = Dialogic.VAR.get_variable("Quincy.unlocked_office")
-		if unlocked == true:
+		if unlocked == true and (finished_distract == false or (finished_distract == true and entered == true)):
 			if is_open == false and cooldown == false:
 				open()
 			else:
@@ -307,9 +309,13 @@ func _on_office_area_q_body_exited(body):
 		if body.is_in_group("player"):
 			entered = false
 			close()
-			if Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.got_journal") == true:
+			if Dialogic.VAR.get_variable("Quincy.got_mail") == true and Dialogic.VAR.get_variable("Quincy.saw_human_pic") == true and Dialogic.VAR.get_variable("Quincy.is_distracted") == true:
 				if interactable.monitorable == true:
 					interactable.set_deferred("monitorable", false)
 					player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
 					await get_tree().process_frame
 					player_interactor.process_mode = player_interactor.PROCESS_MODE_INHERIT
+
+
+func _on_distraction_time_timeout():
+	finished_distract = true

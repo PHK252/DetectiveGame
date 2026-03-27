@@ -19,7 +19,9 @@ var selected : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#hopefully helps with the dialogue on main menu bug
 	GlobalVars.reset_interaction()
+	Dialogic.clear(1)
 	MusicFades.fade_in_audio()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if AudioServer.is_bus_mute(0) == true:
@@ -90,7 +92,6 @@ func _on_new_game_pressed():
 	GlobalVars.reset_globals()
 	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.from_save_file = false
-	#SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	MusicFades.fade_out_audio()
 	Loading.load_scene(self, GlobalVars.beginning_office, "date", "1 OCT XX19", "")
 

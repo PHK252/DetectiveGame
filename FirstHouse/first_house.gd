@@ -207,6 +207,7 @@ func _on_entered_micah():
 	emit_signal("phone_time_start")
 	GlobalVars.in_level = true
 	print("level start!")
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#disconnect("_on_entered_micah")
 
 

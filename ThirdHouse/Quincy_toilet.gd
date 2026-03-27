@@ -47,7 +47,7 @@ extends Node3D
 signal distraction
 signal save_time
 @export var flush : AudioStreamPlayer3D
-
+var in_clogg_anim : bool = false
 func _ready() -> void:
 	if Dialogic.VAR.get_variable("Quincy.clogged_toilet") == true:
 		if interactable:
@@ -81,7 +81,7 @@ func _process(delta):
 			#FP_Cam.set_rotation_degrees(mid_angle)
 			FP_Cam.rotation_degrees = current_rot.lerp(mid_angle, 5.0 * delta)
 	
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type:
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == interact_type and in_clogg_anim == false:
 		if Input.is_action_just_pressed("Exit"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Exit_Cam.set_tween_duration(0)
@@ -156,7 +156,7 @@ func _on_interactable_interacted(interactor):
 		#
 		#player.hide()
 		#player.stop_player()
-	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+	if GlobalVars.in_look_screen == false and GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and in_clogg_anim == false:
 		player.hide()
 		player.stop_player()
 		FP_Cam.priority = 30
@@ -179,6 +179,7 @@ func _on_interactable_interacted(interactor):
 
 func _clog_toilet(argument : String):
 	if argument == "clog_time":
+		in_clogg_anim = true
 		player.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		FP_Cam.priority = 0
@@ -203,6 +204,7 @@ func _clog_toilet(argument : String):
 		await get_tree().create_timer(1.2).timeout
 		flush.play()
 		player.start_player()
+		in_clogg_anim = false
 		pass
 	else:
 		Dialogic.signal_event.disconnect(_clog_toilet)

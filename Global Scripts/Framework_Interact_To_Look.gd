@@ -70,7 +70,7 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_exit_pressed():
 	if viewed_object == false and clicked_count == 1:
-		if is_there_thoughts == true:
+		if is_there_thoughts == true and GlobalVars.in_dialogue == false:
 			object_interact.show()
 			object_in_scene.show()
 			GlobalVars.in_dialogue = true
@@ -104,7 +104,7 @@ func _on_timeline_ended():
 func _input(event):
 	if Input.is_action_just_pressed("Exit") and GlobalVars.viewing == viewing:
 		if viewed_object == false and clicked_count == 1:
-			if is_there_thoughts == true:
+			if is_there_thoughts == true and GlobalVars.in_dialogue == false:
 				object_interact.show()
 				object_in_scene.show()
 				GlobalVars.in_dialogue = true
@@ -116,6 +116,7 @@ func _input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				Dialogic.start(dialogue_file)
 			else:
+				print("enter")
 				object_in_scene.show()
 				object_interact.show() # might not need?
 				GlobalVars.set(view_object, true)

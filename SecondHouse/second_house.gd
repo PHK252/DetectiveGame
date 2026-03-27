@@ -198,6 +198,7 @@ func _on_entered_juniper():
 	emit_signal("phone_time_start")
 	music.play()
 	print("level start!")
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 
 func _leave_level():
 	disable_interaction(interactables)
