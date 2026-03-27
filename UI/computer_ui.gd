@@ -121,6 +121,7 @@ func _on_dropdown_2_pressed():
 	$".".hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
+	Home_dropdown_overlay.hide()
 
 
 func _on_dropdown_3_pressed():
@@ -130,6 +131,7 @@ func _on_dropdown_3_pressed():
 	mail.hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
+	Home_dropdown_overlay.hide()
 
 func _on_dropdown_5_pressed():
 	$".".hide()
@@ -138,6 +140,7 @@ func _on_dropdown_5_pressed():
 	mail.hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.Quincy_in_computer = false
+	Home_dropdown_overlay.hide()
 
 func _on_mail_pressed():
 	Home_dropdown_overlay.hide()
