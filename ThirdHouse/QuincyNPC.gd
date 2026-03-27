@@ -883,7 +883,7 @@ func _on_danger_body_exited(body):
 				print("out of danger")
 			else:
 				in_danger = false
-				if catch_possibility == true:
+				if catch_possibility == true and GlobalVars.in_level == true:
 					print("danger resume")
 					emit_signal("time_out_resume")
 					Dialogic.VAR.set_variable("Quincy.needs_distraction", true)

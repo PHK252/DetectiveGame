@@ -320,8 +320,11 @@ func _reset_dialogic():
 		var cur_var = Dialogic.VAR.Quincy.get(variable)
 		if cur_var is int:
 			Dialogic.VAR.Quincy.set(variable, 0)
+			print("Cleared" + variable + ":" + str(Dialogic.VAR.Quincy.get(variable)))
 		if cur_var is bool:
 			Dialogic.VAR.Quincy.set(variable, false)
+			print("Cleared" + variable + ":" + str(Dialogic.VAR.Quincy.get(variable)))
+
 ##Secret Vars
 @onready var has_secret = false
 #Cure

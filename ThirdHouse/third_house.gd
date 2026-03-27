@@ -44,7 +44,6 @@ func _ready():
 	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_timed):
 		Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
 	MusicFades.fade_in_audio() #for reset
-	print(Dialogic.VAR.get_variable("Asked Questions.Micah_viewed_bookmark"), "Micahbookmark")
 	GlobalVars.current_level = "quincy"
 	if Dialogic.VAR.get_variable("Global.went_to_Quincy") == false:
 		Dialogic.VAR.set_variable("Global.went_to_Quincy", true)
@@ -103,6 +102,7 @@ func _ready():
 	await get_tree().process_frame
 	await get_tree().process_frame
 	print(Dialogic.VAR.get_variable("Quincy.is_distracted"), " distracted")
+	print(Dialogic.VAR.get_variable("Quincy.needs_distraction"), " distracted")
 	print(Dialogic.VAR.get_variable("Quincy.caught"), " caught")
 	if interactables[0].monitorable == false:
 		interactables[0].set_deferred("monitorable", true)

@@ -115,6 +115,10 @@ func _on_computer_input_event(viewport, event, shape_idx):
 
 func _on_quincy_caught_in_view():
 	if GlobalVars.in_interaction == "computer": 
+		if GlobalVars.Quincy_in_computer == true:
+			UI.hide()
+			GlobalVars.in_look_screen = false
+			GlobalVars.Quincy_in_computer = false
 		interact_area.hide()
 		Exit_Cam.set_tween_duration(0)
 		FP_Cam.priority = 0
