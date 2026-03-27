@@ -996,6 +996,17 @@ func _on_wine_time_body_exited(body: Node3D) -> void:
 		is_distracted = false
 		is_navigating = true
 		state = FOLLOW
+	#extra gate for wine drink
+	if body.is_in_group("player") and is_drinking == true:
+		quincy_tree.set("parameters/Wine/request", 2)
+		is_drinking = false
+		rotate_number = 0
+		rotate_forced = false
+		wander_choice = 11
+		is_distracted = false
+		is_navigating = true
+		state = FOLLOW
+		 
 
 func _on_wine_time_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and general_distraction == false:
