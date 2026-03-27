@@ -4,6 +4,11 @@ extends Node3D
 @export var alert: Sprite3D
 @export var interaction : Interactable
 @export var is_finished_var : String
+#need cam
+@export var FP_cam : PhantomCamera3D
+@export var Exit_cam : PhantomCamera3D
+@export var cam_anim : AnimationPlayer
+
 #Dialogue Stuff
 @export var dialogue_file: String
 @export var interact_type: String
@@ -17,6 +22,11 @@ func _ready():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
+		if FP_cam:
+			FP_cam.priority = 30
+			Exit_cam.priority = 0 
+			cam_anim.play("Cam_Idle")
+			player.hide()
 		emit_signal("gen_interact")
 		GlobalVars.in_dialogue = true
 		Dialogic.start(dialogue_file)
@@ -32,6 +42,11 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 	player.start_player()
 	GlobalVars.in_interaction = ""
+	if FP_cam:
+		FP_cam.priority = 0
+		Exit_cam.priority = 30 
+		cam_anim.play("RESET")
+		player.show()
 	if interaction:
 		interaction.set_deferred("monitorable", false)
 		interaction.queue_free()

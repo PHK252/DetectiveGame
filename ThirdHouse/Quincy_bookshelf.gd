@@ -235,6 +235,7 @@ func _on_input_event(viewport, event, shape_idx):
 					interact_area.hide()
 					Exit_secret_Cam.set_tween_duration(1)
 					if react == false:
+						GlobalVars.in_dialogue = true
 						var react_dialogue = Dialogic.start(react_file)
 						Dialogic.timeline_ended.connect(_on_reaction_ended)
 						react_dialogue.register_character(load(load_Dalton_dialogue), dalton_marker)

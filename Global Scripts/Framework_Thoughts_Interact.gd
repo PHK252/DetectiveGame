@@ -54,10 +54,12 @@ var kicked = false
 var timed = false
 
 func _ready():
-	if GlobalVars.get(dialogue) == true:
-		dialogue_after = false
-	if GlobalVars.get(view_item) == true:
-		thoughts = true
+	if dialogue:
+		if GlobalVars.get(dialogue) == true:
+			dialogue_after = false
+	if view_item:
+		if GlobalVars.get(view_item) == true:
+			thoughts = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

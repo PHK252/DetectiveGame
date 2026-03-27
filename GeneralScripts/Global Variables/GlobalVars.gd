@@ -34,12 +34,6 @@ signal unpaused
 @onready var time_left : float = 0.0
 @onready var distract_left : float = 0.0
 
-var reg_need : bool
-var book_need : bool
-func _process(delta):
-	reg_need = Dialogic.VAR.get_variable("Quincy.needs_distraction")
-	book_need = Dialogic.VAR.get_variable("Quincy.need_book_distraction")
-
 #camera index for loading
 @onready var cam_index : int = 0
 
@@ -320,10 +314,10 @@ func _reset_dialogic():
 		var cur_var = Dialogic.VAR.Quincy.get(variable)
 		if cur_var is int:
 			Dialogic.VAR.Quincy.set(variable, 0)
-			print("Cleared" + variable + ":" + str(Dialogic.VAR.Quincy.get(variable)))
+			#print("Cleared" + variable + ":" + str(Dialogic.VAR.Quincy.get(variable)))
 		if cur_var is bool:
 			Dialogic.VAR.Quincy.set(variable, false)
-			print("Cleared" + variable + ":" + str(Dialogic.VAR.Quincy.get(variable)))
+			#print("Cleared" + variable + ":" + str(Dialogic.VAR.Quincy.get(variable)))
 
 ##Secret Vars
 @onready var has_secret = false

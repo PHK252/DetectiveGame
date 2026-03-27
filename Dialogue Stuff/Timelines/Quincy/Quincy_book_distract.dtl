@@ -25,6 +25,7 @@ if {Character Aff Points.Theo} > 3:
 	Theo (Call): [shake rate=10.0 level=4 connected=2]Happy to help.[/shake]
 	Theo (Call): [shake rate=10.0 level=4 connected=2]I just hope whatever you found was worth it.[/shake]
 	[signal arg = "end_call"]
+	[wait time="1.0"]
 	Quincy (Smug): Who was that?
 	Dalton (Talk): Chief was asking for a check in.
 	Quincy (Default): Hmm...
@@ -69,6 +70,7 @@ else:
 		Dalton (Resting): I'll see you at the station.
 		Theo (Call): [shake rate=10.0 level=4 connected=2]Huh?[/shake]
 		[signal arg = "end_call"]
+		[wait time="1.0"]
 		set {Quincy.failed_distract} = true
 		set {Quincy.need_book_distraction} = false
 		Quincy (Smug): Who was that?

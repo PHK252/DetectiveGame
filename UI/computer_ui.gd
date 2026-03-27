@@ -73,6 +73,7 @@ func _on_enter_pressed():
 	if password == password_text.text:
 		login.hide()
 		home.show()
+		Dialogic.VAR.set_variable("Quincy.got_computer", true)
 	else:
 		if !$Login/HintText.visible:
 			incorrect.show()
