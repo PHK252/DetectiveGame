@@ -8,14 +8,21 @@ var dragging = false
 var drag_start = Vector2.ZERO
 var cam_pos = Vector2.ZERO
 
+signal zoomed(state: bool)
+
+func _ready():
+	position = Vector2(960,540)
+
 func _input(event):
 	if event.is_action_pressed("zoom_in"):
 		in_zoom = true
 		zoom = Vector2(max_zoom, max_zoom)
+		emit_signal("zoomed", true)
 	if event.is_action_pressed("zoom_out"):
 		in_zoom = false
 		zoom = Vector2(normal, normal)
 		position = Vector2(960,540)
+		emit_signal("zoomed", false)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Drag"):

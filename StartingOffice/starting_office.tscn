@@ -1,4 +1,4 @@
-[gd_scene load_steps=449 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=448 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -152,7 +152,6 @@
 [ext_resource type="Texture2D" uid="uid://xlgwouydh4iv" path="res://StartingOffice/Close Assets/Contact/Contact Intact Back@2x.png" id="140_ma4bn"]
 [ext_resource type="Texture2D" uid="uid://dcg806tia73af" path="res://StartingOffice/Close Assets/Missing/Missing Back Updated@4x.png" id="141_xx6y6"]
 [ext_resource type="Texture2D" uid="uid://c7ws6ygguk8tf" path="res://StartingOffice/Close Assets/Missing/Missing Front Updated@4x.png" id="142_s2xms"]
-[ext_resource type="Texture2D" uid="uid://c8r2lovvflf7x" path="res://StartingOffice/Close Assets/Case File/Case File 1.png" id="146_kp3nm"]
 [ext_resource type="PackedScene" uid="uid://k6f47777dmih" path="res://StartingOffice/OfficeChairReworked.glb" id="147_pjbhs"]
 [ext_resource type="Texture2D" uid="uid://bgb6vmhhpoup3" path="res://UI/Assets/Endings/Quincy Fire@2x.png" id="149_lefkv"]
 [ext_resource type="Texture2D" uid="uid://con6kshvbqa2f" path="res://UI/Assets/Endings/Chief Fire@2x.png" id="150_g24o1"]
@@ -5112,52 +5111,32 @@ billboard = 2
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-3.36499e-09, -5.75171e-08, -2.94529)
-bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
-bones/3/rotation = Quaternion(0.000580958, 0.366377, 0.853241, -0.371145)
-bones/4/rotation = Quaternion(-0.32568, 0.00211714, -0.0347472, 0.944839)
-bones/5/rotation = Quaternion(0.542941, -0.0332903, 0.0629172, 0.836749)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.000580936, 0.366376, 0.853241, 0.371145)
-bones/9/rotation = Quaternion(-0.32568, -0.00211714, 0.0347472, 0.944839)
-bones/10/rotation = Quaternion(0.542941, 0.0332903, -0.0629172, 0.836749)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-3.36499e-09, -1.97933e-07, -2.94529)
-bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0727733, 1.15318e-07, -1.43774e-08, 0.997349)
-bones/16/rotation = Quaternion(0.0113221, 3.74911e-09, 1.27684e-08, 0.999936)
-bones/18/rotation = Quaternion(0.0725691, 0.00868069, -0.0104915, 0.99727)
-bones/20/rotation = Quaternion(0.0725691, -0.00868069, 0.0104916, 0.99727)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.26715, -0.148021, -0.380516, 0.872885)
-bones/23/rotation = Quaternion(-0.00387855, -0.000433892, -0.355914, 0.934511)
-bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.26715, 0.148021, 0.380516, 0.872885)
-bones/27/rotation = Quaternion(-0.00387877, 0.000433897, 0.355915, 0.93451)
-bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
-bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
-bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
-bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.941526, -0.0311821, -2.17919)
-bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
-bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
-bones/33/position = Vector3(-3.36499e-09, -1.17122e-07, -2.94529)
-bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
-bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
-bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
-bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
-bones/36/position = Vector3(-0.941526, -0.0311821, -2.17919)
-bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
-bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
+bones/1/position = Vector3(-3.3164e-09, -5.75171e-08, -2.9464)
+bones/3/rotation = Quaternion(0.000826322, 0.365691, 0.853591, -0.371015)
+bones/4/rotation = Quaternion(-0.324267, 0.0034111, -0.0349392, 0.945314)
+bones/5/rotation = Quaternion(0.542314, -0.0344591, 0.0635893, 0.837057)
+bones/8/rotation = Quaternion(-0.000826289, 0.365691, 0.853591, 0.371015)
+bones/9/rotation = Quaternion(-0.324267, -0.0034111, 0.0349392, 0.945314)
+bones/10/rotation = Quaternion(0.542314, 0.0344591, -0.0635893, 0.837057)
+bones/12/position = Vector3(-3.3164e-09, -2.06384e-07, -2.9464)
+bones/15/rotation = Quaternion(-0.0729763, 1.15322e-07, -1.43534e-08, 0.997334)
+bones/16/rotation = Quaternion(0.0117506, 3.75652e-09, 1.27688e-08, 0.999931)
+bones/18/rotation = Quaternion(0.0717328, 0.00839644, -0.0104788, 0.997334)
+bones/20/rotation = Quaternion(0.0717328, -0.00839644, 0.0104788, 0.997334)
+bones/22/rotation = Quaternion(-0.266974, -0.148032, -0.38084, 0.872796)
+bones/23/rotation = Quaternion(-0.00386768, -0.000434061, -0.354915, 0.934891)
+bones/26/rotation = Quaternion(-0.266974, 0.148032, 0.380839, 0.872796)
+bones/27/rotation = Quaternion(-0.00386788, 0.000434068, 0.354915, 0.93489)
+bones/31/position = Vector3(0.942266, -0.0311821, -2.17941)
+bones/33/position = Vector3(-3.3164e-09, -1.17122e-07, -2.9464)
+bones/36/position = Vector3(-0.942266, -0.0311821, -2.17941)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.608035, -0.0835445, 0.789502, 0.729986, 0.332115, 0.597343, -0.31211, 0.939531, -0.140951, 0.941527, -0.0311795, -2.17915)
+transform = Transform3D(-0.608446, -0.0827049, 0.789274, 0.730115, 0.331424, 0.59757, -0.311006, 0.93985, -0.14127, 0.942265, -0.0311812, -2.17936)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -5278,42 +5257,42 @@ transform = Transform3D(1, 0, 0, 0, 1, -5.45697e-12, 0, 0, 1, 0.108057, 1.46208,
 transform = Transform3D(0.98487, -9.09495e-13, -0.173293, 2.47087e-06, 1, 1.40426e-05, 0.173293, -1.42583e-05, 0.98487, 0.110734, 0.0839252, -0.0822144)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(-3.36499e-09, -5.75171e-08, -2.94529)
+bones/1/position = Vector3(-3.3164e-09, -5.75171e-08, -2.9464)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.000580892, 0.366377, 0.853241, -0.371145)
-bones/4/rotation = Quaternion(-0.32568, 0.00211714, -0.0347472, 0.944839)
-bones/5/rotation = Quaternion(0.542941, -0.0332903, 0.0629172, 0.836749)
+bones/3/rotation = Quaternion(0.000826256, 0.365692, 0.853591, -0.371015)
+bones/4/rotation = Quaternion(-0.324268, 0.0034111, -0.0349392, 0.945314)
+bones/5/rotation = Quaternion(0.542314, -0.0344591, 0.0635894, 0.837057)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.000580851, 0.366377, 0.853241, 0.371145)
-bones/9/rotation = Quaternion(-0.32568, -0.00211714, 0.0347472, 0.944839)
-bones/10/rotation = Quaternion(0.542941, 0.0332903, -0.0629172, 0.836749)
+bones/8/rotation = Quaternion(-0.000826219, 0.365692, 0.853591, 0.371015)
+bones/9/rotation = Quaternion(-0.324268, -0.0034111, 0.0349392, 0.945314)
+bones/10/rotation = Quaternion(0.542314, 0.0344591, -0.0635893, 0.837057)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-3.36499e-09, -2.38028e-07, -2.94529)
+bones/12/position = Vector3(-3.3164e-09, -2.28168e-07, -2.9464)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0727733, 1.15318e-07, -1.43774e-08, 0.997349)
-bones/16/rotation = Quaternion(0.0113221, 3.74911e-09, 1.27684e-08, 0.999936)
+bones/15/rotation = Quaternion(-0.0729763, 1.15322e-07, -1.43534e-08, 0.997334)
+bones/16/rotation = Quaternion(0.0117506, 3.75651e-09, 1.27689e-08, 0.999931)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.500551, 0.0800408, -0.136109, 0.851186)
-bones/18/rotation = Quaternion(0.0725691, 0.0086807, -0.0104915, 0.99727)
+bones/17/rotation = Quaternion(0.499607, 0.07989, -0.136198, 0.85174)
+bones/18/rotation = Quaternion(0.0717328, 0.00839644, -0.0104788, 0.997334)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.548933, -0.0877777, 0.131253, 0.820817)
-bones/20/rotation = Quaternion(0.0725691, -0.00868069, 0.0104916, 0.99727)
+bones/19/rotation = Quaternion(0.547339, -0.0875228, 0.131423, 0.821881)
+bones/20/rotation = Quaternion(0.0717328, -0.00839644, 0.0104788, 0.997334)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.26715, -0.148021, -0.380516, 0.872885)
-bones/23/rotation = Quaternion(-0.00387855, -0.000433882, -0.355914, 0.934511)
+bones/22/rotation = Quaternion(-0.266974, -0.148032, -0.38084, 0.872796)
+bones/23/rotation = Quaternion(-0.00386768, -0.00043406, -0.354915, 0.934891)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.267151, 0.148021, 0.380516, 0.872885)
-bones/27/rotation = Quaternion(-0.00387879, 0.000433872, 0.355914, 0.934511)
+bones/26/rotation = Quaternion(-0.266974, 0.148032, 0.380839, 0.872796)
+bones/27/rotation = Quaternion(-0.00386791, 0.000434053, 0.354915, 0.93489)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.941526, -0.0311821, -2.17919)
-bones/33/position = Vector3(-3.36499e-09, -1.17122e-07, -2.94529)
+bones/31/position = Vector3(0.942266, -0.0311821, -2.17941)
+bones/33/position = Vector3(-3.3164e-09, -1.17122e-07, -2.9464)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.941526, -0.0311821, -2.17919)
+bones/36/position = Vector3(-0.942266, -0.0311821, -2.17941)
 
 [node name="DoggyPartner" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_pjbhs")
@@ -5596,6 +5575,10 @@ shape = SubResource("RectangleShape2D_2gyyf")
 
 [node name="Partner Look" parent="UI" instance=ExtResource("35_id4dn")]
 layer = 0
+visible = false
+
+[node name="SubViewport" parent="UI/Partner Look/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Object Back" parent="UI/Partner Look/SubViewportContainer/SubViewport" index="1"]
 scale = Vector2(0.75, 0.75)
@@ -5696,70 +5679,35 @@ pivot_offset = Vector2(1000, 600.5)
 texture = ExtResource("142_s2xms")
 
 [node name="Case Look" parent="UI" instance=ExtResource("46_s8qk3")]
-visible = false
 pageCount = 4
 
-[node name="Page7" parent="UI/Case Look" index="1"]
-scale = Vector2(0.77, 0.77)
-
-[node name="Page6" parent="UI/Case Look" index="2"]
-scale = Vector2(0.77, 0.77)
-
-[node name="Page5" parent="UI/Case Look" index="3"]
-offset_left = -395.5
-offset_top = -539.5
-offset_right = 605.5
-offset_bottom = 821.5
-scale = Vector2(0.375, 0.375)
-pivot_offset = Vector2(1000, 1360.5)
-texture = ExtResource("146_kp3nm")
-
-[node name="Page4" parent="UI/Case Look" index="4"]
-texture_filter = 2
-offset_left = -500.5
-offset_top = -680.5
-offset_right = 500.5
-offset_bottom = 680.5
+[node name="Page4" parent="UI/Case Look/SubViewportContainer/SubViewport" index="3"]
 scale = Vector2(0.385, 0.385)
 pivot_offset = Vector2(1000, 1360.5)
 texture = ExtResource("135_hxq7d")
 
-[node name="Page3" parent="UI/Case Look" index="5"]
-texture_filter = 2
-offset_left = -1000.0
-offset_top = -1360.5
-offset_right = 1000.0
-offset_bottom = 1360.5
+[node name="Page3" parent="UI/Case Look/SubViewportContainer/SubViewport" index="4"]
 scale = Vector2(0.385, 0.385)
 pivot_offset = Vector2(1000, 1360.5)
 texture = ExtResource("136_pjbhs")
 
-[node name="Page2" parent="UI/Case Look" index="6"]
-texture_filter = 2
-offset_left = -500.5
-offset_top = -680.5
-offset_right = 500.5
-offset_bottom = 680.5
+[node name="Page2" parent="UI/Case Look/SubViewportContainer/SubViewport" index="5"]
+visible = true
 scale = Vector2(0.385, 0.385)
 pivot_offset = Vector2(1000, 1360.5)
 texture = ExtResource("137_algj5")
 
-[node name="Page1" parent="UI/Case Look" index="7"]
-visible = true
-texture_filter = 2
-offset_left = -1000.0
-offset_top = -1360.5
-offset_right = 1000.0
-offset_bottom = 1360.5
+[node name="Page1" parent="UI/Case Look/SubViewportContainer/SubViewport" index="6"]
+visible = false
 scale = Vector2(0.385, 0.385)
 pivot_offset = Vector2(1000, 1360.5)
 texture = ExtResource("138_y5nkm")
 
-[node name="Back" parent="UI/Case Look" index="9"]
+[node name="Back" parent="UI/Case Look" index="3"]
 offset_left = -500.0
 offset_right = -400.0
 
-[node name="Forward" parent="UI/Case Look" index="10"]
+[node name="Forward" parent="UI/Case Look" index="4"]
 offset_left = 400.0
 offset_right = 500.0
 pivot_offset = Vector2(100, 0)
