@@ -754,3 +754,7 @@ func set_achievements(ach_name: String):
 			return
 		Steam.setAchievement(ach_name)
 		print("Unlocked Achievment: ", ach_name)
+
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
+		Dialogic.Inputs.auto_advance.enabled_until_next_event = true

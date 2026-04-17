@@ -43,7 +43,6 @@ func _on_timeline_ended():
 	GlobalVars.in_interaction = ""
 
 
-
 func _on_interactable_body_entered(body):
 	if body.is_in_group("player"):
 		if GlobalVars.interact_tut == false: 

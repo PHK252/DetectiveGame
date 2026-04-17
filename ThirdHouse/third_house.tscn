@@ -22213,7 +22213,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54141, -1.79104, -2.66801)
 cull_mask = 1048559
 
 [node name="Cam_01_faint" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem/CutsceneCams"]
-transform = Transform3D(-0.38105, -0.00218906, 0.924552, -0.0220395, 0.999735, -0.00671643, -0.924291, -0.022936, -0.380997, 0.33565, -1.64082, -2.02924)
+transform = Transform3D(-0.38105, -0.00218907, 0.924552, -0.0220395, 0.999735, -0.00671642, -0.924291, -0.022936, -0.380997, 0.33565, -1.64082, -2.02924)
 cull_mask = 1048559
 
 [node name="Cam_02_faint" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem/CutsceneCams"]
@@ -28446,8 +28446,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11014, 0, -5.04511)
 [connection signal="exit_interact" from="Alcohol/ChocolateBox" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_caught_exit_interact"]
 [connection signal="body_entered" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_danger_body_entered"]
 [connection signal="body_entered" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_choco_entered"]
-[connection signal="body_exited" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_choco_exited"]
 [connection signal="body_exited" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_danger_body_exited"]
+[connection signal="body_exited" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_choco_exited"]
 [connection signal="interacted" from="Alcohol/ChocolateBox/Interactable" to="Alcohol/ChocolateBox" method="_on_interactable_interacted"]
 [connection signal="exit_interact" from="InteractionAreas/OfficeDrawer" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_caught_exit_interact"]
 [connection signal="interacted" from="InteractionAreas/OfficeDrawer/DrawerInteract" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_drawerQ_interacted"]

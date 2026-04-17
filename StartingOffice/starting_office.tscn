@@ -1,4 +1,4 @@
-[gd_scene load_steps=449 format=4 uid="uid://bhetiacuw2egc"]
+[gd_scene load_steps=425 format=4 uid="uid://bhetiacuw2egc"]
 
 [ext_resource type="Script" uid="uid://d1nc0yw5pkc6c" path="res://StartingOffice/starting_office.gd" id="1_aawn4"]
 [ext_resource type="Script" uid="uid://chlfd1bat3ep2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k4f1r"]
@@ -48,11 +48,7 @@
 [ext_resource type="Script" uid="uid://btf8wdgdbgpe6" path="res://StartingOffice/missing_persons.gd" id="38_47f4o"]
 [ext_resource type="PackedScene" uid="uid://bqvssux5m1c" path="res://CharacterStuff/Dalton/Dalton.tscn" id="38_yedfk"]
 [ext_resource type="Script" uid="uid://d27dumh6bdvtm" path="res://GeneralScripts/Settings/office_lights.gd" id="39_i2sk6"]
-[ext_resource type="Texture2D" uid="uid://bbanwvpq6op13" path="res://StartingOffice/Close Assets/Partner Pic/Back.png" id="39_jvkmi"]
-[ext_resource type="Texture2D" uid="uid://dds27tm40u01b" path="res://StartingOffice/Close Assets/Team Pic/Back.png" id="39_ylej0"]
 [ext_resource type="AudioStream" uid="uid://cecqxdho78btf" path="res://Audio/Footsteps/kick_1.wav" id="40_6r5d2"]
-[ext_resource type="Texture2D" uid="uid://fuci00x3likj" path="res://StartingOffice/Close Assets/Team Pic/Team_Pic_Front.png" id="40_7cbpd"]
-[ext_resource type="Texture2D" uid="uid://cu7i65tlm00s1" path="res://StartingOffice/Close Assets/Partner Pic/Front.png" id="40_kcv36"]
 [ext_resource type="Script" uid="uid://bp0yluwwi00if" path="res://StartingOffice/TheoOffice.gd" id="40_uiweq"]
 [ext_resource type="AudioStream" uid="uid://cmhs6dh2xwlus" path="res://Audio/Footsteps/kick_2.wav" id="41_hxqof"]
 [ext_resource type="PackedScene" uid="uid://f38h6xh5eyh4" path="res://CharacterStuff/Theo/TheoFixedAnimations.glb" id="41_yq4sa"]
@@ -63,7 +59,6 @@
 [ext_resource type="AudioStream" uid="uid://bn8cqtnnlhryc" path="res://Audio/Footsteps/kick_7.wav" id="46_huk43"]
 [ext_resource type="PackedScene" uid="uid://djpr0pth7a2wb" path="res://UI/Multipage_Object_Look.tscn" id="46_s8qk3"]
 [ext_resource type="AudioStream" uid="uid://dlrwvjwuqq6uh" path="res://Audio/Footsteps/kick_8.wav" id="47_ovuw1"]
-[ext_resource type="Texture2D" uid="uid://r1oh3q4vff5q" path="res://StartingOffice/Close Assets/Article/Article Back@2x.png" id="47_sqkup"]
 [ext_resource type="Texture2D" uid="uid://skedhpuy05pa" path="res://StartingOffice/Close Assets/Article/Article Front@2x.png" id="48_0swyj"]
 [ext_resource type="AudioStream" uid="uid://dgag7lo4r2dqu" path="res://Audio/Footsteps/kick_9.wav" id="48_b3e2t"]
 [ext_resource type="AudioStream" uid="uid://bocwxc27ohohx" path="res://Audio/Footsteps/kick_10.wav" id="49_a6v1n"]
@@ -138,8 +133,6 @@
 [ext_resource type="Script" uid="uid://02udc7tlpl6h" path="res://StartingOffice/casefile_look.gd" id="118_7cjfq"]
 [ext_resource type="AudioStream" uid="uid://dhoh51dacvr2r" path="res://Audio/ambience_ogg/ACnoise.ogg" id="119_aof2x"]
 [ext_resource type="Script" uid="uid://e1ot3x8gk0g5" path="res://StartingOffice/ending_text_look.gd" id="123_lefkv"]
-[ext_resource type="Texture2D" uid="uid://bosrrrfb2emvk" path="res://StartingOffice/Close Assets/Contact/Contact Ripped Front@2x.png" id="124_fp42n"]
-[ext_resource type="Texture2D" uid="uid://c7ws6ygguk8tf" path="res://StartingOffice/Close Assets/Missing/Missing Front Updated@4x.png" id="127_kjarc"]
 [ext_resource type="Texture2D" uid="uid://b3n05him78b1o" path="res://StartingOffice/Close Assets/Missing/News Front Revised@4x.png" id="129_01533"]
 [ext_resource type="Script" uid="uid://lv63ttb4cy6h" path="res://Global Scripts/set_dialogue_marker.gd" id="133_xye0y"]
 [ext_resource type="PackedScene" uid="uid://d2hmxhs2js55d" path="res://Settings/options_settings.tscn" id="134_58g4l"]
@@ -151,25 +144,8 @@
 [ext_resource type="Texture2D" uid="uid://bxw0ma01afejo" path="res://StartingOffice/Close Assets/Case File/Case File Page 2@2x.png" id="137_algj5"]
 [ext_resource type="Texture2D" uid="uid://f24jxuj6sqyr" path="res://StartingOffice/Close Assets/Case File/Case File Page 1@2x.png" id="138_y5nkm"]
 [ext_resource type="PackedScene" uid="uid://cnu1071bx7xsa" path="res://UI/Pause.tscn" id="139_771f8"]
-[ext_resource type="Texture2D" uid="uid://bgb6vmhhpoup3" path="res://UI/Assets/Endings/Quincy Fire@2x.png" id="139_s2xms"]
-[ext_resource type="Texture2D" uid="uid://db1vjaeolfuwq" path="res://UI/Assets/Endings/Give Skylar Cure P1@2x.png" id="139_tliky"]
-[ext_resource type="Texture2D" uid="uid://con6kshvbqa2f" path="res://UI/Assets/Endings/Chief Fire@2x.png" id="139_xx6y6"]
-[ext_resource type="Texture2D" uid="uid://cips5q30lf7ff" path="res://UI/Assets/Endings/Give Kale Cure P2@2x.png" id="140_5q0fi"]
-[ext_resource type="Texture2D" uid="uid://cti4r1qyqpr7t" path="res://StartingOffice/Close Assets/Contact/Contact Ripped back@2x.png" id="140_kp3nm"]
-[ext_resource type="Texture2D" uid="uid://daihggnsyey2n" path="res://UI/Assets/Endings/Arrested Skylar P2@2x.png" id="140_s2xms"]
-[ext_resource type="Texture2D" uid="uid://cvm00omt876x" path="res://UI/Assets/Endings/Give Kale Cure P1@2x.png" id="141_drd6d"]
-[ext_resource type="Texture2D" uid="uid://dbxfy0j2c440t" path="res://UI/Assets/Endings/Arrested Skylar P1@2x.png" id="141_lefkv"]
-[ext_resource type="Texture2D" uid="uid://xlgwouydh4iv" path="res://StartingOffice/Close Assets/Contact/Contact Intact Back@2x.png" id="142_6je7v"]
-[ext_resource type="Texture2D" uid="uid://blfmqiaumsrv3" path="res://UI/Assets/Endings/Keep confidential P2@2x.png" id="142_g24o1"]
-[ext_resource type="Texture2D" uid="uid://loqsdwdevc5g" path="res://UI/Assets/Endings/Keep confidential P1@2x.png" id="143_jx4vc"]
-[ext_resource type="Texture2D" uid="uid://dcg806tia73af" path="res://StartingOffice/Close Assets/Missing/Missing Back Updated@4x.png" id="143_kp3nm"]
-[ext_resource type="Texture2D" uid="uid://bm1fhl5wrse11" path="res://UI/Assets/Endings/Give Skylar Cure Choco P1@2x.png" id="143_wrcok"]
-[ext_resource type="Texture2D" uid="uid://c14rqgdnkbddg" path="res://UI/Assets/Endings/Give Skylar Cure P2@2x.png" id="144_lbmes"]
-[ext_resource type="Texture2D" uid="uid://djpio67rc4oc8" path="res://UI/Assets/Endings/Give Kale Cure Choco P2@2x.png" id="144_ma4bn"]
-[ext_resource type="Texture2D" uid="uid://b56prxbr0ywht" path="res://UI/Assets/Endings/Give Kale Cure Choco P1@2x.png" id="145_xx6y6"]
 [ext_resource type="Texture2D" uid="uid://c8r2lovvflf7x" path="res://StartingOffice/Close Assets/Case File/Case File 1.png" id="146_kp3nm"]
 [ext_resource type="PackedScene" uid="uid://k6f47777dmih" path="res://StartingOffice/OfficeChairReworked.glb" id="147_pjbhs"]
-[ext_resource type="Texture2D" uid="uid://cn2jem8xecb42" path="res://UI/Assets/Endings/Give Skylar Cure Choco P2@x.png" id="161_kp3nm"]
 [ext_resource type="AudioStream" uid="uid://bgx2moiqayfun" path="res://Audio/masters_ogg/office_master.ogg" id="164_aof2x"]
 [ext_resource type="AudioStream" uid="uid://cga8btwiarkfw" path="res://Audio/masters_ogg/theo_master.ogg" id="165_i2sk6"]
 [ext_resource type="AudioStream" uid="uid://bocstguem2vwf" path="res://Audio/Extras/Door Slam v2.mp3" id="172_7be4p"]
@@ -5108,32 +5084,52 @@ billboard = 2
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-1.4766e-09, -5.75171e-08, -2.98849)
-bones/3/rotation = Quaternion(0.0111413, 0.337078, 0.867348, -0.366009)
-bones/4/rotation = Quaternion(-0.265259, 0.0532813, -0.0394135, 0.961897)
-bones/5/rotation = Quaternion(0.515735, -0.0792118, 0.0879483, 0.848533)
-bones/8/rotation = Quaternion(-0.0111412, 0.337078, 0.867348, 0.366009)
-bones/9/rotation = Quaternion(-0.265259, -0.0532813, 0.0394135, 0.961897)
-bones/10/rotation = Quaternion(0.515735, 0.0792119, -0.0879484, 0.848533)
-bones/12/position = Vector3(-1.4766e-09, -2.9894e-07, -2.98849)
-bones/15/rotation = Quaternion(-0.0806624, 1.15454e-07, -1.3444e-08, 0.996741)
-bones/16/rotation = Quaternion(0.0279635, 4.03623e-09, 1.27832e-08, 0.999609)
-bones/18/rotation = Quaternion(0.0400162, -0.00237446, -0.00999018, 0.999146)
-bones/20/rotation = Quaternion(0.0400163, 0.00237445, 0.00999018, 0.999146)
-bones/22/rotation = Quaternion(-0.260215, -0.148524, -0.394132, 0.868843)
-bones/23/rotation = Quaternion(-0.00342764, -0.000440717, -0.314535, 0.94924)
-bones/26/rotation = Quaternion(-0.260219, 0.148526, 0.39414, 0.868838)
-bones/27/rotation = Quaternion(-0.00342784, 0.000440755, 0.314535, 0.94924)
-bones/31/position = Vector3(0.970285, -0.0311821, -2.18738)
-bones/33/position = Vector3(-1.4766e-09, -1.17122e-07, -2.98849)
-bones/36/position = Vector3(-0.970285, -0.0311821, -2.18738)
+bones/1/position = Vector3(2.92159e-09, -5.39206e-08, -3.00683)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.0165181, 0.322283, 0.87384, -0.363681)
+bones/4/rotation = Quaternion(-0.235015, 0.0755745, -0.0392292, 0.968255)
+bones/5/rotation = Quaternion(0.501949, -0.0990788, 0.0977474, 0.853625)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0165181, 0.322283, 0.87384, 0.363681)
+bones/9/rotation = Quaternion(-0.235015, -0.0755745, 0.0392292, 0.968255)
+bones/10/rotation = Quaternion(0.501949, 0.0990788, -0.0977474, 0.853625)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(2.92159e-09, -2.0952e-07, -3.00683)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0840101, 1.13809e-07, -1.08496e-08, 0.996465)
+bones/16/rotation = Quaternion(0.0350409, 9.1285e-09, 8.09775e-09, 0.999386)
+bones/18/rotation = Quaternion(0.0261795, -0.00706777, -0.0097737, 0.999584)
+bones/20/rotation = Quaternion(0.0261795, 0.00706777, 0.00977372, 0.999584)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.257202, -0.148836, -0.400739, 0.866662)
+bones/23/rotation = Quaternion(-0.0032144, -0.000443631, -0.294967, 0.955502)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.257202, 0.148836, 0.400739, 0.866662)
+bones/27/rotation = Quaternion(-0.00321459, 0.000443621, 0.294967, 0.955502)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.982495, -0.0311821, -2.19085)
+bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
+bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
+bones/33/position = Vector3(2.92159e-09, -1.13525e-07, -3.00683)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
+bones/36/position = Vector3(-0.982495, -0.0311821, -2.19085)
+bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
+bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.62326, -0.0489341, 0.780482, 0.735209, 0.303434, 0.606131, -0.266486, 0.951595, -0.153142, 0.970289, -0.0312067, -2.18729)
+transform = Transform3D(-0.629201, -0.0327606, 0.776552, 0.737606, 0.289817, 0.609871, -0.245037, 0.956521, -0.158188, 0.982493, -0.0311861, -2.19076)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -5254,42 +5250,42 @@ transform = Transform3D(1, 0, 0, 0, 1, -5.45697e-12, 0, 0, 1, 0.108057, 1.46208,
 transform = Transform3D(0.98487, -9.09495e-13, -0.173293, 2.47087e-06, 1, 1.40426e-05, 0.173293, -1.42583e-05, 0.98487, 0.110734, 0.0839252, -0.0822144)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig" index="0"]
-bones/1/position = Vector3(-1.4766e-09, -5.75171e-08, -2.98849)
+bones/1/position = Vector3(2.92159e-09, -5.39206e-08, -3.00683)
 bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
-bones/3/rotation = Quaternion(0.0111413, 0.337078, 0.867348, -0.366009)
-bones/4/rotation = Quaternion(-0.265259, 0.0532813, -0.0394135, 0.961897)
-bones/5/rotation = Quaternion(0.515735, -0.0792119, 0.0879484, 0.848533)
+bones/3/rotation = Quaternion(0.0165181, 0.322283, 0.87384, -0.363681)
+bones/4/rotation = Quaternion(-0.235015, 0.0755745, -0.0392292, 0.968255)
+bones/5/rotation = Quaternion(0.501949, -0.0990788, 0.0977474, 0.853625)
 bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
 bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
-bones/8/rotation = Quaternion(-0.0111413, 0.337078, 0.867348, 0.366009)
-bones/9/rotation = Quaternion(-0.265259, -0.0532813, 0.0394135, 0.961897)
-bones/10/rotation = Quaternion(0.515735, 0.0792119, -0.0879484, 0.848533)
+bones/8/rotation = Quaternion(-0.0165181, 0.322283, 0.87384, 0.363681)
+bones/9/rotation = Quaternion(-0.235015, -0.0755745, 0.0392292, 0.968255)
+bones/10/rotation = Quaternion(0.501949, 0.0990788, -0.0977475, 0.853625)
 bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
-bones/12/position = Vector3(-1.4766e-09, -2.12927e-07, -2.98849)
+bones/12/position = Vector3(2.92159e-09, -2.50597e-07, -3.00683)
 bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
-bones/15/rotation = Quaternion(-0.0806624, 1.15454e-07, -1.3444e-08, 0.996741)
-bones/16/rotation = Quaternion(0.0279635, 4.03623e-09, 1.27832e-08, 0.999609)
+bones/15/rotation = Quaternion(-0.0840101, 1.13809e-07, -1.08496e-08, 0.996465)
+bones/16/rotation = Quaternion(0.0350409, 9.12851e-09, 8.09775e-09, 0.999386)
 bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
-bones/17/rotation = Quaternion(0.463414, 0.0741025, -0.139431, 0.87196)
-bones/18/rotation = Quaternion(0.0400162, -0.00237445, -0.00999019, 0.999146)
+bones/17/rotation = Quaternion(0.447383, 0.0715391, -0.140764, 0.880293)
+bones/18/rotation = Quaternion(0.0261795, -0.00706776, -0.00977372, 0.999584)
 bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
-bones/19/rotation = Quaternion(0.485378, -0.0776149, 0.137507, 0.859928)
-bones/20/rotation = Quaternion(0.0400163, 0.00237445, 0.00999018, 0.999146)
+bones/19/rotation = Quaternion(0.457533, -0.0731624, 0.139927, 0.875061)
+bones/20/rotation = Quaternion(0.0261795, 0.00706777, 0.00977372, 0.999584)
 bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
-bones/22/rotation = Quaternion(-0.260229, -0.148526, -0.394124, 0.868842)
-bones/23/rotation = Quaternion(-0.00342763, -0.000440731, -0.314534, 0.94924)
+bones/22/rotation = Quaternion(-0.257201, -0.148836, -0.400739, 0.866662)
+bones/23/rotation = Quaternion(-0.00321439, -0.000443625, -0.294966, 0.955502)
 bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
 bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
-bones/26/rotation = Quaternion(-0.260219, 0.148526, 0.39414, 0.868838)
-bones/27/rotation = Quaternion(-0.00342784, 0.000440769, 0.314535, 0.94924)
+bones/26/rotation = Quaternion(-0.257202, 0.148836, 0.400739, 0.866662)
+bones/27/rotation = Quaternion(-0.0032146, 0.00044366, 0.294968, 0.955502)
 bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
 bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
 bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
-bones/31/position = Vector3(0.970285, -0.0311821, -2.18738)
-bones/33/position = Vector3(-1.4766e-09, -1.17122e-07, -2.98849)
+bones/31/position = Vector3(0.982495, -0.0311821, -2.19085)
+bones/33/position = Vector3(2.92159e-09, -1.13525e-07, -3.00683)
 bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
 bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
-bones/36/position = Vector3(-0.970285, -0.0311821, -2.18738)
+bones/36/position = Vector3(-0.982495, -0.0311821, -2.19085)
 
 [node name="DoggyPartner" parent="SubViewportContainer/SubViewport/Characters/Path3D/PathFollow3D/CharacterBody3D/TheoFixedAnimations/dogrig/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_pjbhs")
@@ -5574,139 +5570,42 @@ shape = SubResource("RectangleShape2D_2gyyf")
 layer = 0
 visible = false
 
-[node name="Object Back" parent="UI/Partner Look" index="2"]
-offset_left = -500.0
-offset_top = -600.5
-offset_right = 500.0
-offset_bottom = 600.5
-scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(500, 600)
-texture = ExtResource("39_jvkmi")
-
-[node name="Object front" parent="UI/Partner Look" index="3"]
-offset_left = -500.0
-offset_top = -600.5
-offset_right = 500.0
-offset_bottom = 600.5
-scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(500, 600)
-texture = ExtResource("40_kcv36")
+[node name="SubViewport" parent="UI/Partner Look/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="TeamPic Look" parent="UI" instance=ExtResource("35_id4dn")]
 layer = 0
 visible = false
 
-[node name="Object Back" parent="UI/TeamPic Look" index="2"]
-offset_left = -500.0
-offset_top = -300.0
-offset_right = 500.0
-offset_bottom = 300.0
-scale = Vector2(0.6, 0.6)
-pivot_offset = Vector2(1000, 600)
-texture = ExtResource("39_ylej0")
-
-[node name="Object front" parent="UI/TeamPic Look" index="3"]
-visible = false
-offset_left = -500.5
-offset_top = -301.5
-offset_right = 500.5
-offset_bottom = 299.5
-scale = Vector2(0.6, 0.6)
-pivot_offset = Vector2(1000, 600)
-texture = ExtResource("40_7cbpd")
+[node name="SubViewport" parent="UI/TeamPic Look/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="News Look" parent="UI" instance=ExtResource("35_id4dn")]
 layer = 0
 visible = false
 
-[node name="Object Back" parent="UI/News Look" index="2"]
-visible = false
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1250)
-texture = ExtResource("47_sqkup")
-stretch_mode = 2
-
-[node name="Object front" parent="UI/News Look" index="3"]
-offset_left = -501.0
-offset_top = -604.0
-offset_right = 500.0
-offset_bottom = 602.0
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1250)
-texture = ExtResource("48_0swyj")
-stretch_mode = 2
+[node name="SubViewport" parent="UI/News Look/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Contact_Ripped Look" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
-[node name="Object Back" parent="UI/Contact_Ripped Look" index="2"]
-texture_filter = 2
-offset_left = -500.5
-offset_top = -652.5
-offset_right = 500.5
-offset_bottom = 648.5
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("140_kp3nm")
-stretch_mode = 2
-
-[node name="Object front" parent="UI/Contact_Ripped Look" index="3"]
-texture_filter = 2
-offset_left = -500.5
-offset_top = -650.5
-offset_right = 500.5
-offset_bottom = 650.5
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("124_fp42n")
+[node name="SubViewport" parent="UI/Contact_Ripped Look/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Contact Look" parent="UI" instance=ExtResource("35_id4dn")]
 layer = 0
 visible = false
 
-[node name="Object Back" parent="UI/Contact Look" index="2"]
-texture_filter = 2
-offset_left = -502.5
-offset_top = -653.5
-offset_right = 498.5
-offset_bottom = 647.5
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("142_6je7v")
-
-[node name="Object front" parent="UI/Contact Look" index="3"]
-texture_filter = 2
-offset_left = -501.0
-offset_top = -653.0
-offset_right = 500.0
-offset_bottom = 648.0
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("50_53koq")
+[node name="SubViewport" parent="UI/Contact Look/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Missing Look" parent="UI" instance=ExtResource("35_id4dn")]
 layer = 0
 visible = false
 
-[node name="Object Back" parent="UI/Missing Look" index="2"]
-offset_left = -1000.0
-offset_top = -601.0
-offset_right = 1000.0
-offset_bottom = 600.0
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(1000, 600.5)
-texture = ExtResource("143_kp3nm")
-stretch_mode = 2
-
-[node name="Object front" parent="UI/Missing Look" index="3"]
-offset_left = -1001.0
-offset_top = -600.5
-offset_right = 999.0
-offset_bottom = 600.5
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(1000, 600.5)
-texture = ExtResource("127_kjarc")
-stretch_mode = 2
+[node name="SubViewport" parent="UI/Missing Look/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Case Look" parent="UI" instance=ExtResource("46_s8qk3")]
 visible = false
@@ -5781,21 +5680,15 @@ pivot_offset = Vector2(100, 0)
 visible = false
 just_front = true
 
-[node name="Object front" parent="UI/Quincy Fire" index="3"]
-texture_filter = 2
-scale = Vector2(0.385, 0.385)
-pivot_offset = Vector2(1000, 1360)
-texture = ExtResource("139_s2xms")
+[node name="SubViewport" parent="UI/Quincy Fire/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Chief Fire" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 just_front = true
 
-[node name="Object front" parent="UI/Chief Fire" index="3"]
-texture_filter = 2
-scale = Vector2(0.385, 0.385)
-pivot_offset = Vector2(1000, 1360)
-texture = ExtResource("139_xx6y6")
+[node name="SubViewport" parent="UI/Chief Fire/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Dalton\'s Marker" type="Marker2D" parent="UI" node_paths=PackedStringArray("marker", "cam", "body_marker")]
 script = ExtResource("133_xye0y")
@@ -5821,105 +5714,38 @@ hangup = NodePath("../../Phone and Pause Overlay/CanvasLayer/Phone UI/Phone_Soun
 [node name="Kale Cure" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
-[node name="Object Back" parent="UI/Kale Cure" index="2"]
-texture_filter = 2
-offset_left = -500.5
-offset_top = -700.5
-offset_right = 500.5
-offset_bottom = 700.5
-scale = Vector2(0.375, 0.375)
-pivot_offset = Vector2(1000, 1400)
-texture = ExtResource("140_5q0fi")
-
-[node name="Object front" parent="UI/Kale Cure" index="3"]
-texture_filter = 2
-offset_left = -500.5
-offset_top = -700.5
-offset_right = 500.5
-offset_bottom = 700.5
-scale = Vector2(0.375, 0.375)
-pivot_offset = Vector2(1000, 1400)
-texture = ExtResource("141_drd6d")
+[node name="SubViewport" parent="UI/Kale Cure/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Kale Cure Choco" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
-[node name="Object Back" parent="UI/Kale Cure Choco" index="2"]
-visible = false
-texture_filter = 2
-scale = Vector2(0.375, 0.375)
-pivot_offset = Vector2(1000, 1400)
-texture = ExtResource("144_ma4bn")
-
-[node name="Object front" parent="UI/Kale Cure Choco" index="3"]
-texture_filter = 2
-scale = Vector2(0.375, 0.375)
-pivot_offset = Vector2(1000, 1400)
-texture = ExtResource("145_xx6y6")
+[node name="SubViewport" parent="UI/Kale Cure Choco/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Skylar Cure" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
-[node name="Object Back" parent="UI/Skylar Cure" index="2"]
-visible = false
-texture_filter = 2
-scale = Vector2(0.375, 0.375)
-pivot_offset = Vector2(1000, 1400)
-texture = ExtResource("144_lbmes")
-
-[node name="Object front" parent="UI/Skylar Cure" index="3"]
-texture_filter = 2
-scale = Vector2(0.375, 0.375)
-pivot_offset = Vector2(1000, 1400)
-texture = ExtResource("139_tliky")
+[node name="SubViewport" parent="UI/Skylar Cure/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Skylar Cure Choco" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
-[node name="Object Back" parent="UI/Skylar Cure Choco" index="2"]
-texture_filter = 2
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1273)
-texture = ExtResource("161_kp3nm")
-
-[node name="Object front" parent="UI/Skylar Cure Choco" index="3"]
-visible = false
-texture_filter = 2
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1273)
-texture = ExtResource("143_wrcok")
+[node name="SubViewport" parent="UI/Skylar Cure Choco/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Arrest Skylar" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
-[node name="Object Back" parent="UI/Arrest Skylar" index="2"]
-visible = false
-texture_filter = 2
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("140_s2xms")
-
-[node name="Object front" parent="UI/Arrest Skylar" index="3"]
-texture_filter = 2
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("141_lefkv")
+[node name="SubViewport" parent="UI/Arrest Skylar/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Keep Secret" parent="UI" instance=ExtResource("35_id4dn")]
 visible = false
 
-[node name="Object Back" parent="UI/Keep Secret" index="2"]
-visible = false
-texture_filter = 2
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("142_g24o1")
-
-[node name="Object front" parent="UI/Keep Secret" index="3"]
-texture_filter = 2
-scale = Vector2(0.4, 0.4)
-pivot_offset = Vector2(1000, 1300)
-texture = ExtResource("143_jx4vc")
+[node name="SubViewport" parent="UI/Keep Secret/SubViewportContainer" index="0"]
+render_target_update_mode = 0
 
 [node name="Options_Settings" parent="." instance=ExtResource("134_58g4l")]
 visible = false
@@ -6257,39 +6083,21 @@ libraries = {
 [connection signal="_show_tut" from="UI/Partner Look" to="Tutorial" method="_show_tut"]
 [connection signal="paper_sound" from="UI/Partner Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
 [connection signal="visibility_changed" from="UI/Partner Look" to="UI/Partner Look" method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="UI/Partner Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
-[connection signal="pressed" from="UI/Partner Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Partner Look/Exit" to="UI/PartnerPic" method="_on_exit_pressed"]
 [connection signal="_show_tut" from="UI/TeamPic Look" to="Tutorial" method="_show_tut"]
 [connection signal="paper_sound" from="UI/TeamPic Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
 [connection signal="visibility_changed" from="UI/TeamPic Look" to="UI/TeamPic Look" method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="UI/TeamPic Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
-[connection signal="pressed" from="UI/TeamPic Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/TeamPic Look/Exit" to="UI/TeamPic" method="_on_exit_pressed"]
 [connection signal="_show_tut" from="UI/News Look" to="Tutorial" method="_show_tut"]
 [connection signal="paper_sound" from="UI/News Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
 [connection signal="visibility_changed" from="UI/News Look" to="UI/News Look" method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="UI/News Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
-[connection signal="pressed" from="UI/News Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/News Look/Exit" to="UI/News" method="_on_exit_pressed"]
 [connection signal="_show_tut" from="UI/Contact_Ripped Look" to="Tutorial" method="_show_tut"]
 [connection signal="paper_sound" from="UI/Contact_Ripped Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
 [connection signal="visibility_changed" from="UI/Contact_Ripped Look" to="UI/Contact_Ripped Look" method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="UI/Contact_Ripped Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
-[connection signal="pressed" from="UI/Contact_Ripped Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Contact_Ripped Look/Exit" to="UI/Contact" method="_on_exit_pressed"]
 [connection signal="_show_tut" from="UI/Contact Look" to="Tutorial" method="_show_tut"]
 [connection signal="paper_sound" from="UI/Contact Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
 [connection signal="visibility_changed" from="UI/Contact Look" to="UI/Contact Look" method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="UI/Contact Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
-[connection signal="pressed" from="UI/Contact Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Contact Look/Exit" to="UI/Contact" method="_on_exit_pressed"]
 [connection signal="_show_tut" from="UI/Missing Look" to="Tutorial" method="_show_tut"]
 [connection signal="paper_sound" from="UI/Missing Look" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_paper_sound"]
 [connection signal="visibility_changed" from="UI/Missing Look" to="UI/Missing Look" method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="UI/Missing Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
-[connection signal="pressed" from="UI/Missing Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Missing Look/Exit" to="UI/Missing Persons" method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="exit_hiss_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Case Look/Exit" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_exit_pressed"]
@@ -6300,18 +6108,10 @@ libraries = {
 [connection signal="mouse_entered" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_team_pic_mouse_entered"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_forward_pressed"]
 [connection signal="pressed" from="UI/Case Look/Forward" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_arrow_pressed"]
-[connection signal="pressed" from="UI/Quincy Fire/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Chief Fire/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
 [connection signal="Quincy_call_recieve" from="UI/Map" to="Phone and Pause Overlay" method="_on_call_received"]
 [connection signal="_show_tut" from="UI/Map" to="Tutorial" method="_show_tut"]
 [connection signal="visibility_changed" from="UI/Map" to="UI/Map" method="_on_visibility_changed"]
 [connection signal="pressed" from="UI/Map/Exit" to="SubViewportContainer/SubViewport/StartingOffice/corkboard_001" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Kale Cure/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Kale Cure Choco/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Skylar Cure/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Skylar Cure Choco/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Arrest Skylar/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI/Keep Secret/Exit" to="SubViewportContainer/SubViewport/StartingOffice/Exposition" method="_on_exit_pressed"]
 [connection signal="pressed" from="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/pixelation/Pixelation Menu" method="_close_menu"]
 [connection signal="pressed" from="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Screen/Window Menu" method="_close_menu"]
 [connection signal="pressed" from="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Pixel_Res/Resolution/Resolution Menu/VBoxContainer/Main" to="Options_Settings/Pause Menu/AspectRatioContainer/Graphics/VBoxContainer/Screen_Vsync/Vsync/Vsync Menu" method="_close_menu"]
