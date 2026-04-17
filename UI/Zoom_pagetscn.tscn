@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq0a8iupr1d1p"]
+
+[ext_resource type="Script" uid="uid://db2djc0p4c67n" path="res://UI/zoom.gd" id="1_78o5y"]
+[ext_resource type="Texture2D" uid="uid://pwj8f5cia20w" path="res://New Pixel Assets/Juniper's House/Jun Tour Poster.png" id="2_2d2jl"]
+[ext_resource type="Texture2D" uid="uid://rl0a0561d2d8" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Blue.png" id="3_4sljv"]
+
+[node name="Zoom" type="SubViewportContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+position = Vector2(960, 540)
+script = ExtResource("1_78o5y")
+
+[node name="Object Back" type="TextureRect" parent="SubViewport"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -436.5
+offset_right = 300.5
+offset_bottom = 436.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("2_2d2jl")
+
+[node name="Object front" type="TextureRect" parent="SubViewport"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -436.5
+offset_right = 300.5
+offset_bottom = 436.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("3_4sljv")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://22d8wsirr1dd"]
+[gd_scene load_steps=11 format=3 uid="uid://22d8wsirr1dd"]
 
 [ext_resource type="Script" uid="uid://cr2ara2tataqf" path="res://UI/object_look.gd" id="1_vbqem"]
+[ext_resource type="Script" uid="uid://db2djc0p4c67n" path="res://UI/zoom.gd" id="2_jwkcv"]
 [ext_resource type="Texture2D" uid="uid://rl0a0561d2d8" path="res://New Pixel Assets/Juniper's House/Jun Tea Poster Blue.png" id="2_y0pbs"]
 [ext_resource type="Texture2D" uid="uid://pwj8f5cia20w" path="res://New Pixel Assets/Juniper's House/Jun Tour Poster.png" id="3_fr0eo"]
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="4_2uadh"]
@@ -17,8 +18,10 @@ unicode = 113
 [sub_resource type="Shortcut" id="Shortcut_jwkcv"]
 events = [SubResource("InputEventKey_pimcf")]
 
-[node name="ObjectLook" type="CanvasLayer"]
+[node name="ObjectLook" type="CanvasLayer" node_paths=PackedStringArray("front", "back")]
 script = ExtResource("1_vbqem")
+front = NodePath("SubViewportContainer/SubViewport/Object front")
+back = NodePath("SubViewportContainer/SubViewport/Object Back")
 
 [node name="Background2" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
@@ -29,6 +32,56 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_l20xi")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1921, 1081)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(960, 540)
+script = ExtResource("2_jwkcv")
+
+[node name="Object Back" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
+texture_filter = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -436.0
+offset_right = 301.0
+offset_bottom = 437.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("3_fr0eo")
+
+[node name="Object front" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+visible = false
+texture_filter = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -436.0
+offset_right = 301.0
+offset_bottom = 437.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("2_y0pbs")
+
 [node name="Background" type="TextureRect" parent="."]
 visible = false
 modulate = Color(0.219608, 0.27451, 0.207843, 0.329412)
@@ -38,38 +91,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_l20xi")
-
-[node name="Object Back" type="TextureRect" parent="."]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.5
-offset_top = -436.5
-offset_right = 300.5
-offset_bottom = 436.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-texture = ExtResource("3_fr0eo")
-
-[node name="Object front" type="TextureRect" parent="."]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.5
-offset_top = -436.5
-offset_right = 300.5
-offset_bottom = 436.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-texture = ExtResource("2_y0pbs")
 
 [node name="Exit" type="TextureButton" parent="."]
 offset_left = 50.0
@@ -84,6 +105,6 @@ texture_pressed = ExtResource("5_pmhv8")
 texture_hover = ExtResource("5_pmhv8")
 texture_disabled = ExtResource("6_ab2j5")
 
-[connection signal="gui_input" from="Object Back" to="." method="_on_object_back_gui_input"]
-[connection signal="gui_input" from="Object front" to="." method="_on_object_front_gui_input"]
+[connection signal="gui_input" from="SubViewportContainer/SubViewport/Object Back" to="." method="_on_object_back_gui_input"]
+[connection signal="gui_input" from="SubViewportContainer/SubViewport/Object front" to="." method="_on_object_front_gui_input"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -1,9 +1,10 @@
 extends CanvasLayer
 
-@onready var front = $"Object front"
-@onready var back = $"Object Back"
+@export var front : TextureRect
+@export var back : TextureRect
 @export var just_front : bool = false
 @export var show_mouse_exit : bool = false
+
 signal paper_sound
 
 signal _show_tut(tut_type : String)
