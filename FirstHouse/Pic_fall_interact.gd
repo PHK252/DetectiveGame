@@ -30,12 +30,12 @@ func _on_input_event(viewport, event, shape_idx):
 			paper_fall.play("PicFloat")
 			pic_fell = true
 			print("weeeeeeee") 
-			GlobalVars.in_look_screen = true
+			GlobalVars.viewing = "fall"
 			pic_fall_anim.play("PicFalling")
 			await pic_fall_anim.animation_finished
 			GlobalVars.pic_fell = true
 			await get_tree().create_timer(.5).timeout
-			GlobalVars.in_look_screen = false
+			GlobalVars.viewing = ""
 			pic_cam.priority = 0
 			main_cam.priority = 30
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

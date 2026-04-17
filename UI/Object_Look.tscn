@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://22d8wsirr1dd"]
+[gd_scene load_steps=13 format=3 uid="uid://22d8wsirr1dd"]
 
 [ext_resource type="Script" uid="uid://cr2ara2tataqf" path="res://UI/object_look.gd" id="1_vbqem"]
 [ext_resource type="Script" uid="uid://db2djc0p4c67n" path="res://UI/zoom.gd" id="2_jwkcv"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="4_2uadh"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="5_pmhv8"]
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="6_ab2j5"]
+[ext_resource type="Texture2D" uid="uid://mxscck8idwdr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key normal.png" id="8_55a7f"]
+[ext_resource type="Texture2D" uid="uid://64fukljo3wxa" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key.png" id="9_bwpaf"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l20xi"]
 
@@ -44,9 +46,10 @@ handle_input_locally = false
 size = Vector2i(1921, 1081)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("zoom_butt")]
 position = Vector2(960, 540)
 script = ExtResource("2_jwkcv")
+zoom_butt = NodePath("../../../Zoom")
 
 [node name="Object Back" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 visible = false
@@ -105,6 +108,17 @@ texture_pressed = ExtResource("5_pmhv8")
 texture_hover = ExtResource("5_pmhv8")
 texture_disabled = ExtResource("6_ab2j5")
 
+[node name="Zoom" type="TextureButton" parent="."]
+offset_left = 60.0
+offset_top = 928.0
+offset_right = 135.0
+offset_bottom = 1003.0
+toggle_mode = true
+texture_normal = ExtResource("8_55a7f")
+texture_pressed = ExtResource("9_bwpaf")
+texture_hover = ExtResource("9_bwpaf")
+
 [connection signal="gui_input" from="SubViewportContainer/SubViewport/Object Back" to="." method="_on_object_back_gui_input"]
 [connection signal="gui_input" from="SubViewportContainer/SubViewport/Object front" to="." method="_on_object_front_gui_input"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="Zoom" to="SubViewportContainer/SubViewport/Camera2D" method="_on_zoom_toggled"]

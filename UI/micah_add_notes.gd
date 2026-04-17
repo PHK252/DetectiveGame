@@ -12,7 +12,7 @@ extends Control
 
 #All Notes
 var micah_location = "- The victim was at work during the alleged break-in."
-var micah_time_return = "- The victim was at work during the alleged break-in."
+var micah_time_return = "- He returned to his property at around 8 a.m. and promptly fell asleep."
 var micah_sus_low = "- The victim cited no suspicious activity during his shift."
 var micah_sus_high = "- He cited no additional suspicious activity during his shift."
 var micah_theo_asked_dinner = "- Aye! He’s a fellow Timber Grove fan!"
@@ -102,6 +102,7 @@ func hide_notes():
 func _on_case_add_micah_note():
 	if GlobalVars.note_event == "location":
 		_add_note(micah_location.to_upper())
+		print("added location")
 	elif GlobalVars.note_event == "time_return":
 		_add_note(micah_time_return.to_upper())
 	elif GlobalVars.note_event == "suspicious":

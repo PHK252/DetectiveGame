@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cjrv3kmqym4e1"]
+[gd_scene load_steps=36 format=3 uid="uid://cjrv3kmqym4e1"]
 
 [ext_resource type="Script" uid="uid://bxm3brlgnve21" path="res://StartingOffice/scenechange.gd" id="1_n4a1j"]
 [ext_resource type="Texture2D" uid="uid://c748bmbj8e61f" path="res://StartingOffice/Office Map Small.png" id="2_tdlr5"]
@@ -18,25 +18,20 @@
 [ext_resource type="Texture2D" uid="uid://cqlks0vpj6ygi" path="res://UI/Assets/Map/Office Pin Pressed3.png" id="15_qs08e"]
 [ext_resource type="Texture2D" uid="uid://ypcxearxke4a" path="res://UI/Assets/Map/Office Pin Hovered1.png" id="17_poonr"]
 [ext_resource type="Texture2D" uid="uid://bxpueclt77ud8" path="res://UI/Assets/Map/Office Pin Hovered2.png" id="18_cctyf"]
+[ext_resource type="Script" uid="uid://db2djc0p4c67n" path="res://UI/zoom.gd" id="19_7ob01"]
 [ext_resource type="Texture2D" uid="uid://bkvt3v0npsc6k" path="res://UI/Assets/Map/Office Pin Hovered3.png" id="19_sw58j"]
 [ext_resource type="Texture2D" uid="uid://blgdcrq1b3ecx" path="res://UI/Assets/Map/Office Pin Hovered4.png" id="20_7ob01"]
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="21_qs08e"]
+[ext_resource type="Texture2D" uid="uid://mxscck8idwdr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key normal.png" id="22_eaghe"]
 [ext_resource type="Script" uid="uid://d0ei1au8wsu6x" path="res://UI/map_sounds.gd" id="22_qs08e"]
 [ext_resource type="AudioStream" uid="uid://c770dfbuietj7" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/blip_11_alt.wav" id="23_cctyf"]
+[ext_resource type="Texture2D" uid="uid://64fukljo3wxa" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key.png" id="23_urp17"]
 [ext_resource type="AudioStream" uid="uid://bxgutenypbb1a" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/hiss_02.wav" id="24_sw58j"]
 [ext_resource type="AudioStream" uid="uid://csi8w3psh6h8t" path="res://Audio/Clicks_and_Blips (UI_dialogue stuff)/item_blip_1.wav" id="25_sw58j"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1pcwa"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ek0q2"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_xb0rx"]
-device = -1
-keycode = 81
-unicode = 113
-
-[sub_resource type="Shortcut" id="Shortcut_uw31m"]
-events = [SubResource("InputEventKey_xb0rx")]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_b0e11"]
 frames = 4
@@ -72,13 +67,21 @@ frame_2/duration = 0.25
 frame_3/texture = ExtResource("20_7ob01")
 frame_3/duration = 0.25
 
+[sub_resource type="InputEventKey" id="InputEventKey_xb0rx"]
+device = -1
+keycode = 81
+unicode = 113
+
+[sub_resource type="Shortcut" id="Shortcut_uw31m"]
+events = [SubResource("InputEventKey_xb0rx")]
+
 [node name="Map" type="CanvasLayer" node_paths=PackedStringArray("micah", "juniper", "quincy", "office", "secret")]
 script = ExtResource("1_n4a1j")
-micah = NodePath("Micah")
-juniper = NodePath("Juniper")
-quincy = NodePath("Quincy")
-office = NodePath("Office")
-secret = NodePath("Secret")
+micah = NodePath("SubViewportContainer/SubViewport/Micah")
+juniper = NodePath("SubViewportContainer/SubViewport/Juniper")
+quincy = NodePath("SubViewportContainer/SubViewport/Quincy")
+office = NodePath("SubViewportContainer/SubViewport/Office")
+secret = NodePath("SubViewportContainer/SubViewport/Secret")
 
 [node name="Background2" type="TextureRect" parent="."]
 modulate = Color(0.32549, 0.227451, 0.184314, 0.458824)
@@ -99,7 +102,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_ek0q2")
 
-[node name="Map" type="TextureRect" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+offset_right = 1921.0
+offset_bottom = 1081.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1921, 1081)
+render_target_update_mode = 4
+
+[node name="Map" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -114,20 +129,8 @@ grow_vertical = 2
 pivot_offset = Vector2(382.5, 510)
 texture = ExtResource("2_tdlr5")
 
-[node name="Exit" type="TextureButton" parent="."]
-offset_left = 50.0
-offset_top = 30.0
-offset_right = 150.0
-offset_bottom = 130.0
-mouse_default_cursor_shape = 2
-shortcut = SubResource("Shortcut_uw31m")
-shortcut_in_tooltip = false
-texture_normal = ExtResource("3_5gnlj")
-texture_pressed = ExtResource("4_rhcr0")
-texture_hover = ExtResource("4_rhcr0")
-metadata/_edit_use_anchors_ = true
-
-[node name="Micah" type="TextureButton" parent="."]
+[node name="Micah" type="TextureButton" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
 offset_left = 998.0
 offset_top = 868.0
 offset_right = 1028.0
@@ -141,7 +144,8 @@ texture_pressed = ExtResource("6_xb0rx")
 texture_hover = ExtResource("7_uw31m")
 texture_disabled = ExtResource("8_xb0rx")
 
-[node name="Juniper" type="TextureButton" parent="."]
+[node name="Juniper" type="TextureButton" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
 offset_left = 629.0
 offset_top = 574.0
 offset_right = 659.0
@@ -155,7 +159,8 @@ texture_pressed = ExtResource("6_xb0rx")
 texture_hover = ExtResource("7_uw31m")
 texture_disabled = ExtResource("8_xb0rx")
 
-[node name="Quincy" type="TextureButton" parent="."]
+[node name="Quincy" type="TextureButton" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
 offset_left = 1190.0
 offset_top = 49.0
 offset_right = 1224.0
@@ -170,7 +175,8 @@ texture_pressed = ExtResource("6_xb0rx")
 texture_hover = ExtResource("7_uw31m")
 texture_disabled = ExtResource("8_xb0rx")
 
-[node name="Office" type="TextureButton" parent="."]
+[node name="Office" type="TextureButton" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
 offset_left = 860.0
 offset_top = 499.0
 offset_right = 890.0
@@ -184,7 +190,8 @@ texture_pressed = SubResource("AnimatedTexture_c2wqj")
 texture_hover = SubResource("AnimatedTexture_eaghe")
 texture_disabled = ExtResource("13_2byc5")
 
-[node name="Secret" type="TextureButton" parent="."]
+[node name="Secret" type="TextureButton" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
 offset_left = 641.0
 offset_top = 52.0
 offset_right = 671.0
@@ -197,6 +204,35 @@ texture_normal = ExtResource("5_rhcr0")
 texture_pressed = ExtResource("6_xb0rx")
 texture_hover = ExtResource("7_uw31m")
 texture_disabled = ExtResource("8_xb0rx")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("zoom_butt")]
+texture_filter = 1
+position = Vector2(960, 540)
+script = ExtResource("19_7ob01")
+zoom_butt = NodePath("../../../Zoom")
+
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = 50.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 130.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_uw31m")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("3_5gnlj")
+texture_pressed = ExtResource("4_rhcr0")
+texture_hover = ExtResource("4_rhcr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Zoom" type="TextureButton" parent="."]
+offset_left = 51.0
+offset_top = 960.0
+offset_right = 126.0
+offset_bottom = 1035.0
+toggle_mode = true
+texture_normal = ExtResource("22_eaghe")
+texture_pressed = ExtResource("23_urp17")
+texture_hover = ExtResource("23_urp17")
 
 [node name="Micah Label" type="ColorRect" parent="."]
 visible = false
@@ -290,7 +326,7 @@ text = "[center]18’5.0’’N 22’5.18’’W[/center]"
 
 [node name="MapSounds" type="Node" parent="." node_paths=PackedStringArray("buttons", "audio")]
 script = ExtResource("22_qs08e")
-buttons = [NodePath("../Micah"), NodePath("../Juniper"), NodePath("../Quincy"), NodePath("../Office"), NodePath("../Secret")]
+buttons = [NodePath("../SubViewportContainer/SubViewport/Micah"), NodePath("../SubViewportContainer/SubViewport/Juniper"), NodePath("../SubViewportContainer/SubViewport/Quincy"), NodePath("../SubViewportContainer/SubViewport/Office"), NodePath("../SubViewportContainer/SubViewport/Secret")]
 audio = [NodePath("map_select_level"), NodePath("map_hiss"), NodePath("map_exit"), NodePath("map_exit_hiss")]
 
 [node name="map_select_level" type="AudioStreamPlayer" parent="MapSounds"]
@@ -311,20 +347,21 @@ pitch_scale = 0.9
 
 [connection signal="leave_map_sound" from="." to="MapSounds" method="_on_map_leave_map_sound"]
 [connection signal="select_level_sound" from="." to="MapSounds" method="_on_map_select_level_sound"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/Micah" to="." method="_on_micah_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewportContainer/SubViewport/Micah" to="." method="_on_micah_mouse_exited"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Micah" to="." method="_on_firsthouse_button_pressed"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/Juniper" to="." method="_on_juniper_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewportContainer/SubViewport/Juniper" to="." method="_on_juniper_mouse_exited"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Juniper" to="." method="_on_secondhouse_button_pressed"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/Quincy" to="." method="_on_quincy_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewportContainer/SubViewport/Quincy" to="." method="_on_quincy_mouse_exited"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Quincy" to="." method="_on_thirdhouse_button_pressed"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/Office" to="." method="_on_office_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewportContainer/SubViewport/Office" to="." method="_on_office_mouse_exited"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Office" to="." method="_on_office_button_pressed"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/Secret" to="." method="_on_secret_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewportContainer/SubViewport/Secret" to="." method="_on_secret_mouse_exited"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Secret" to="." method="_on_secret_button_pressed"]
 [connection signal="mouse_entered" from="Exit" to="MapSounds" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="mouse_entered" from="Micah" to="." method="_on_micah_mouse_entered"]
-[connection signal="mouse_exited" from="Micah" to="." method="_on_micah_mouse_exited"]
-[connection signal="pressed" from="Micah" to="." method="_on_firsthouse_button_pressed"]
-[connection signal="mouse_entered" from="Juniper" to="." method="_on_juniper_mouse_entered"]
-[connection signal="mouse_exited" from="Juniper" to="." method="_on_juniper_mouse_exited"]
-[connection signal="pressed" from="Juniper" to="." method="_on_secondhouse_button_pressed"]
-[connection signal="mouse_entered" from="Quincy" to="." method="_on_quincy_mouse_entered"]
-[connection signal="mouse_exited" from="Quincy" to="." method="_on_quincy_mouse_exited"]
-[connection signal="pressed" from="Quincy" to="." method="_on_thirdhouse_button_pressed"]
-[connection signal="mouse_entered" from="Office" to="." method="_on_office_mouse_entered"]
-[connection signal="mouse_exited" from="Office" to="." method="_on_office_mouse_exited"]
-[connection signal="pressed" from="Office" to="." method="_on_office_button_pressed"]
-[connection signal="mouse_entered" from="Secret" to="." method="_on_secret_mouse_entered"]
-[connection signal="mouse_exited" from="Secret" to="." method="_on_secret_mouse_exited"]
-[connection signal="pressed" from="Secret" to="." method="_on_secret_button_pressed"]
+[connection signal="toggled" from="Zoom" to="SubViewportContainer/SubViewport/Camera2D" method="_on_zoom_toggled"]

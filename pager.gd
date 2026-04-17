@@ -17,9 +17,9 @@ var exit = InputMap.action_get_events("Exit")
 var disabled = false
 
 func _ready():
-	#hide()
-	#await get_tree().create_timer(2).timeout
-	#show()
+	hide()
+	await get_tree().create_timer(1).timeout
+	show()
 	home.visible = false
 	menu.visible = false
 	messages.visible = false

@@ -1983,6 +1983,7 @@ text = "CLOSED"
 vertical_alignment = 1
 
 [node name="Case" type="Control" parent="NotesScreen"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2584,7 +2585,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "ADD NOTES HERE
 "
@@ -2800,7 +2801,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "ADD NOTES HERE"
 fit_content = true
@@ -2984,7 +2985,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0.584314, 0.580392, 0.529412, 1)
 theme_override_fonts/normal_font = ExtResource("11_0wfhy")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "ADD NOTES HERE"
 fit_content = true

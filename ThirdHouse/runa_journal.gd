@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var forward = $Forward
-@onready var backward = $Backward
+@onready var forward = $SubViewportContainer/SubViewport/Forward
+@onready var backward = $SubViewportContainer/SubViewport/Backward
 @onready var animation_tree = $AnimationTree
 @onready var animation_player = $AnimationPlayer
 @onready var blank_turn_count = 0
@@ -15,9 +15,13 @@ func _ready():
 func _process(delta):
 	if page_count == 0:
 		backward.disabled = true
-		backward.hide()
 	else:
 		backward.disabled = false
+	
+	if page_count == 15:
+		forward.disabled = true
+	else:
+		forward.disabled = false
 
 
 func _on_forward_pressed():
@@ -28,7 +32,10 @@ func _on_forward_pressed():
 	await get_tree().create_timer(.5).timeout
 	animation_tree["parameters/conditions/turn_page_forward"] = false
 	await get_tree().create_timer(.5).timeout
-	forward.show()
+	if page_count == 15:
+		forward.hide()
+	else:
+		forward.show()
 	if page_count != 0:
 		backward.show()
 
@@ -48,13 +55,16 @@ func _on_backward_pressed():
 		#print(blank_turn_count)
 		#print(animation_tree.get_current_node())
 	else: 
-		forward.hide()
 		backward.hide()
+		forward.hide()
 		animation_tree["parameters/conditions/turn_page_backward"] = true
 		await get_tree().create_timer(.5).timeout
 		animation_tree["parameters/conditions/turn_page_backward"] = false
 		await get_tree().create_timer(.5).timeout
-		backward.show()
+		if page_count == 0:
+			backward.hide()
+		else:
+			backward.show()
 		forward.show()
 #
 func _on_animation_tree_animation_started(anim_name):
