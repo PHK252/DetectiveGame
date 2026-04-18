@@ -59,6 +59,8 @@ signal juniper_open_door
 var interaction : bool = false
 var bookshelf := false
 
+var kitchen_cam := false
+
 #sounds and footsteps
 @export var sound_player : AnimationPlayer
 
@@ -114,7 +116,22 @@ func _ready() -> void:
 	#anim_tree.set("parameters/Yawn/request", true)
 	
 func _process(delta: float) -> void:
-
+	if kitchen_cam == true and nav.target_position == player.global_position:
+		kitchen_cam = false
+		_force_wander_kitchen()
+		
+	#if Input.is_action_just_pressed("call"):
+		#wander_rotate = false
+		##emit_signal("collision_danger")
+		#if wander_choice < 3:
+			#var current_anim = one_shots[wander_choice]
+			#anim_tree.set("parameters/" + current_anim + "/request", 2)
+		##set all one shots to abort
+		#is_wandering = false
+		#nav.target_position = player.global_position
+		#is_navigating = true
+		#state = FOLLOW
+		
 	if not is_wandering and case_handling == false:
 		if greeting == true:
 			if bookshelf == false:
@@ -729,3 +746,25 @@ func _on_case_area_jun_body_exited(body: Node3D) -> void:
 		is_navigating = true
 		is_wandering = true
 		state = WANDER
+
+
+func _on_kitchen_cam_became_active() -> void:
+	kitchen_cam = true
+
+func _on_kitchen_cam_became_inactive() -> void:
+	kitchen_cam = false
+	
+func _force_wander_kitchen() -> void:
+	greet_rotation = false
+	
+	if wander_choice < 3:
+		var current_anim = one_shots[wander_choice]
+		anim_tree.set("parameters/" + current_anim + "/request", 2)
+
+	wander_choice = 1
+	wander_rotate = false
+			#if choice > 0:
+	nav.target_position = marker_positions[wander_choice].global_position
+	is_navigating = true
+	is_wandering = true
+	state = WANDER

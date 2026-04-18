@@ -96,7 +96,7 @@ signal block_stairs
 @export var micahsHouse := false
 var adjustment_num := 7
 
-
+var kitchen_cam := false
 
 enum {
 	IDLE, 
@@ -1002,10 +1002,7 @@ func _on_interactable_interacted_cafe(interactor: Interactor) -> void:
 		nav.target_desired_distance = 0.4
 		state = ADJUST
 
-func _on_cam_books_became_active() -> void:
-	#await get_tree().create_timer(1.5).timeout
-	#if entered_junipers:
-	pass
+
 		
 
 func _on_door_point_body_entered(body: Node3D) -> void:
@@ -1429,3 +1426,33 @@ func _on_nogo_theo_bar_body_exited(body: Node3D) -> void:
 			in_kitchen = false
 			is_navigating = true
 			state = FOLLOW
+
+
+func _on_kitchen_cam_became_active() -> void:
+	kitchen_cam = true
+	if stopped_theo_for_tea == false:
+		#print("adjustMiddle")
+		#theo_adjustment = true
+		sofa_scene = true
+		in_kitchen = true
+		nav.target_position = adjustment_list[2].global_position
+		is_navigating = true
+		STOPPING_DISTANCE = 0.0
+		nav.path_desired_distance = 0.2
+		nav.target_desired_distance = 0.4
+		state = ADJUST
+
+func _on_kitchen_cam_became_inactive() -> void:
+	pass
+	#kitchen_cam = false
+	#if stopped_theo_for_tea == false:
+		#emit_signal("look_at_disactivate")
+		#sofa_scene = false
+		#in_kitchen = false 
+
+func _on_cam_books_became_active() -> void:
+	if stopped_theo_for_tea == false and kitchen_cam == true:
+		kitchen_cam = false
+		emit_signal("look_at_disactivate")
+		sofa_scene = false
+		in_kitchen = false 
