@@ -116,8 +116,8 @@
 [ext_resource type="Texture2D" uid="uid://x40pjfxkl1yx" path="res://UI/Assets/Journal/Next Hovered.png" id="111_31bv6"]
 [ext_resource type="Texture2D" uid="uid://cqxlwu25g6cyt" path="res://UI/Assets/Journal/Back Normal.png" id="112_jjlkw"]
 [ext_resource type="Texture2D" uid="uid://bpqp33c00w4vr" path="res://UI/Assets/Journal/Back Hovered.png" id="113_ea8c0"]
-[ext_resource type="Texture2D" uid="uid://mxscck8idwdr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key normal.png" id="117_wr1yl"]
-[ext_resource type="Texture2D" uid="uid://64fukljo3wxa" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key.png" id="118_qynik"]
+[ext_resource type="Texture2D" uid="uid://d2fh15bnbeqrs" path="res://UI/Assets/Zoom_in.png" id="117_jjlkw"]
+[ext_resource type="Texture2D" uid="uid://crsi34tcrj8el" path="res://UI/Assets/Zoom_out.png" id="118_ea8c0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_kbkql"]
 
@@ -1489,14 +1489,14 @@ texture_pressed = ExtResource("111_02h5c")
 texture_hover = ExtResource("111_02h5c")
 
 [node name="Zoom" type="TextureButton" parent="."]
-offset_left = 47.0
-offset_top = 960.0
-offset_right = 122.0
-offset_bottom = 1035.0
+offset_left = 30.0
+offset_top = 950.0
+offset_right = 130.0
+offset_bottom = 1050.0
+mouse_default_cursor_shape = 2
 toggle_mode = true
-texture_normal = ExtResource("117_wr1yl")
-texture_pressed = ExtResource("118_qynik")
-texture_hover = ExtResource("118_qynik")
+texture_normal = ExtResource("117_jjlkw")
+texture_pressed = ExtResource("118_ea8c0")
 
 [connection signal="pressed" from="SubViewportContainer/SubViewport/Forward" to="." method="_on_forward_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/Backward" to="." method="_on_backward_pressed"]

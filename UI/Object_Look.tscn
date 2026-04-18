@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="4_2uadh"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="5_pmhv8"]
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="6_ab2j5"]
-[ext_resource type="Texture2D" uid="uid://mxscck8idwdr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key normal.png" id="8_55a7f"]
-[ext_resource type="Texture2D" uid="uid://64fukljo3wxa" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key.png" id="9_bwpaf"]
+[ext_resource type="Texture2D" uid="uid://d2fh15bnbeqrs" path="res://UI/Assets/Zoom_in.png" id="8_55a7f"]
+[ext_resource type="Texture2D" uid="uid://crsi34tcrj8el" path="res://UI/Assets/Zoom_out.png" id="9_bwpaf"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l20xi"]
 
@@ -109,14 +109,14 @@ texture_hover = ExtResource("5_pmhv8")
 texture_disabled = ExtResource("6_ab2j5")
 
 [node name="Zoom" type="TextureButton" parent="."]
-offset_left = 60.0
-offset_top = 928.0
-offset_right = 135.0
-offset_bottom = 1003.0
+offset_left = 30.0
+offset_top = 950.0
+offset_right = 105.0
+offset_bottom = 1025.0
+mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("8_55a7f")
 texture_pressed = ExtResource("9_bwpaf")
-texture_hover = ExtResource("9_bwpaf")
 
 [connection signal="gui_input" from="SubViewportContainer/SubViewport/Object Back" to="." method="_on_object_back_gui_input"]
 [connection signal="gui_input" from="SubViewportContainer/SubViewport/Object front" to="." method="_on_object_front_gui_input"]

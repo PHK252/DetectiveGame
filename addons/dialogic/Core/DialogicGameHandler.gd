@@ -363,14 +363,14 @@ func load_full_state(state_info:Dictionary) -> void:
 	else:
 		await get_tree().process_frame
 		load_subsystems.call()
-	
-	current_state_info.set("current_timeline", load("res://Dialogue Stuff/Timelines/Beginning/Corkboard_Map.dtl")) 
-	print("timeline", current_state_info.get('current_timeline', null))
+	#Force main menu bug
+	#current_state_info.set("current_timeline", load("res://Dialogue Stuff/Timelines/Beginning/Corkboard_Map.dtl")) 
+	#print("timeline", current_state_info.get('current_timeline', null))
 	if current_state_info.get('current_timeline', null):
-		print("enter null")
+		print("current timline: " + current_state_info.get('current_timeline', null))
 		start_timeline(current_state_info.current_timeline, current_state_info.get('current_event_idx', 0))
 	else:
-		print("enter else")
+		print("current timeline null")
 		end_timeline.call_deferred()
 #endregion
 

@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dh3wkjqenruvw" path="res://UI/Assets/Interactions/Page orange normal.png" id="9_bs7yr"]
 [ext_resource type="Texture2D" uid="uid://chbyulo4lhjyf" path="res://UI/Assets/Interactions/Page orange hover.png" id="11_dbl1n"]
 [ext_resource type="Texture2D" uid="uid://s2fhonvjkl7y" path="res://UI/Assets/Interactions/Page orange disabled.png" id="11_gultu"]
-[ext_resource type="Texture2D" uid="uid://mxscck8idwdr" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key normal.png" id="14_iyiaq"]
-[ext_resource type="Texture2D" uid="uid://64fukljo3wxa" path="res://UI/Assets/Phone/Updated/Notes/Phone Notes Evidenc key.png" id="15_kpilk"]
+[ext_resource type="Texture2D" uid="uid://d2fh15bnbeqrs" path="res://UI/Assets/Zoom_in.png" id="14_iyiaq"]
+[ext_resource type="Texture2D" uid="uid://crsi34tcrj8el" path="res://UI/Assets/Zoom_out.png" id="15_kpilk"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gc5uo"]
 
@@ -51,6 +51,7 @@ offset_right = 1921.0
 offset_bottom = 1081.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1921, 1081)
@@ -239,15 +240,14 @@ texture_disabled = ExtResource("11_gultu")
 flip_h = true
 
 [node name="Zoom" type="TextureButton" parent="."]
-offset_left = 53.0
-offset_top = 966.0
-offset_right = 128.0
-offset_bottom = 1041.0
+offset_left = 30.0
+offset_top = 950.0
+offset_right = 130.0
+offset_bottom = 1050.0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("14_iyiaq")
 texture_pressed = ExtResource("15_kpilk")
-texture_hover = ExtResource("15_kpilk")
 
 [connection signal="zoomed" from="SubViewportContainer/SubViewport/Camera2D" to="." method="_on_camera_2d_zoomed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

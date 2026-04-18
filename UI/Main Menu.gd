@@ -44,8 +44,8 @@ func _ready():
 		continue_new_cont.show()
 	#hopefully helps with the dialogue on main menu bug
 	Dialogic.end_timeline()
-	#Dialogic.clear(1)
-	#Dialogic.start("Empty start")
+	Dialogic.clear(1)
+	Dialogic.start("Empty start")
 		#not needed
 		#brightness technically firing twice bad practice but maybe ok
 		#emit_signal("set_brightness_label", GlobalVars.brightnes)
