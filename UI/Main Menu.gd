@@ -19,9 +19,7 @@ var selected : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#hopefully helps with the dialogue on main menu bug
 	GlobalVars.reset_interaction()
-	Dialogic.clear(1)
 	MusicFades.fade_in_audio()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if AudioServer.is_bus_mute(0) == true:
@@ -40,10 +38,14 @@ func _ready():
 		continue_new_cont.hide()
 	else:
 		SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+		#
 		GlobalVars.from_save_file = true
 		start_butt.hide()
 		continue_new_cont.show()
-		
+	#hopefully helps with the dialogue on main menu bug
+	Dialogic.end_timeline()
+	#Dialogic.clear(1)
+	#Dialogic.start("Empty start")
 		#not needed
 		#brightness technically firing twice bad practice but maybe ok
 		#emit_signal("set_brightness_label", GlobalVars.brightnes)

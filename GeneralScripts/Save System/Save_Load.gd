@@ -54,7 +54,6 @@ func saveSettings(path: String):
 
 func loadSettings(path : String):
 	if FileAccess.file_exists(path):
-		print("saving")
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, GlobalVars.KEY)
 		if file == null:
 			brand_new = true
