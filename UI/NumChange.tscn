@@ -54,6 +54,7 @@ events = [SubResource("InputEventKey_qpsj0")]
 
 [node name="Pos" type="Node2D"]
 script = ExtResource("1_foqkb")
+metadata/_edit_horizontal_guides_ = [148.0]
 
 [node name="0" type="TextureRect" parent="."]
 offset_left = 72.0
@@ -140,9 +141,9 @@ texture_disabled = ExtResource("11_tcpv0")
 
 [node name="Down" type="TextureButton" parent="."]
 offset_left = 72.0
-offset_top = 208.0
+offset_top = 212.0
 offset_right = 137.0
-offset_bottom = 248.0
+offset_bottom = 252.0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_erwu8")
 shortcut_in_tooltip = false
@@ -152,10 +153,10 @@ texture_hover = ExtResource("12_2tgmk")
 texture_disabled = ExtResource("14_jthfh")
 
 [node name="Right" type="TextureButton" parent="."]
-offset_left = 143.0
-offset_top = 143.0
-offset_right = 153.0
-offset_bottom = 158.0
+offset_left = 153.0
+offset_top = 128.0
+offset_right = 173.0
+offset_bottom = 163.0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_b47rx")
 shortcut_in_tooltip = false
@@ -164,10 +165,10 @@ texture_pressed = ExtResource("14_b47rx")
 texture_hover = ExtResource("14_b47rx")
 
 [node name="Left" type="TextureButton" parent="."]
-offset_left = 53.0
-offset_top = 143.0
-offset_right = 68.0
-offset_bottom = 168.0
+offset_left = 37.0
+offset_top = 128.0
+offset_right = 57.0
+offset_bottom = 163.0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_sa6fn")
 shortcut_in_tooltip = false

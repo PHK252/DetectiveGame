@@ -125,7 +125,8 @@ func _open_case():
 
 
 func posChange():
-	switch.play()
+	if switch:
+		switch.play()
 	if posClick == 0:
 		pos1.showArrows()
 		pos2.hideArrows()

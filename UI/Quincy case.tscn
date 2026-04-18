@@ -1,8 +1,8 @@
 [gd_scene load_steps=75 format=3 uid="uid://b3a7fejp4gdt6"]
 
 [ext_resource type="Script" uid="uid://ck8v21bolbd81" path="res://UI/quincy_case.gd" id="1_xhsbu"]
-[ext_resource type="Texture2D" uid="uid://ykqne0r1gdue" path="res://UI/Assets/Quincy Case/Quincy_case_UI.png" id="2_kxnh3"]
-[ext_resource type="Texture2D" uid="uid://dcyilvlkdf75s" path="res://UI/Assets/Quincy Case/Quincy Case.png" id="3_v1fju"]
+[ext_resource type="Texture2D" uid="uid://4xif4rhfdpnj" path="res://UI/Assets/Quincy Case/Quincy_case_UI_outline.png" id="2_4bu4b"]
+[ext_resource type="Texture2D" uid="uid://bqovo0qbtwmq8" path="res://UI/Assets/Quincy Case/Quincy_case.png" id="3_l4c5b"]
 [ext_resource type="FontFile" uid="uid://3ccjbmqoi4bc" path="res://Dialogue Stuff/Fonts/Pixel Font V2.ttf" id="4_4bu4b"]
 [ext_resource type="Texture2D" uid="uid://sae50qbfwclv" path="res://UI/Assets/Quincy Case/Quincy Case One Normal.png" id="5_l4c5b"]
 [ext_resource type="Texture2D" uid="uid://kun06dkkc6hq" path="res://UI/Assets/Quincy Case/Quincy Case One Pressed.png" id="6_oqckw"]
@@ -243,12 +243,12 @@ texture = SubResource("CanvasTexture_4bu4b")
 [node name="QuincyCaseUi" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.392157)
-texture = ExtResource("2_kxnh3")
+texture = ExtResource("2_4bu4b")
 centered = false
 
 [node name="QuincyCase" type="Sprite2D" parent="."]
 position = Vector2(960, 538)
-texture = ExtResource("3_v1fju")
+texture = ExtResource("3_l4c5b")
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
@@ -266,9 +266,9 @@ justification_flags = 129
 
 [node name="1" type="TextureButton" parent="."]
 offset_left = 455.0
-offset_top = 480.0
-offset_right = 510.0
-offset_bottom = 540.0
+offset_top = 375.0
+offset_right = 535.0
+offset_bottom = 465.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_oqckw")
@@ -278,10 +278,10 @@ texture_pressed = ExtResource("6_oqckw")
 texture_hover = ExtResource("5_l4c5b")
 
 [node name="2abc" type="TextureButton" parent="."]
-offset_left = 540.0
-offset_top = 480.0
-offset_right = 595.0
-offset_bottom = 540.0
+offset_left = 565.0
+offset_top = 375.0
+offset_right = 645.0
+offset_bottom = 465.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_acjfw")
@@ -291,10 +291,10 @@ texture_pressed = ExtResource("8_acjfw")
 texture_hover = ExtResource("7_5wwwy")
 
 [node name="3def" type="TextureButton" parent="."]
-offset_left = 625.0
-offset_top = 480.0
-offset_right = 680.0
-offset_bottom = 540.0
+offset_left = 675.0
+offset_top = 375.0
+offset_right = 755.0
+offset_bottom = 465.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_1ijul")
@@ -305,9 +305,9 @@ texture_hover = ExtResource("9_mujld")
 
 [node name="4ghi" type="TextureButton" parent="."]
 offset_left = 455.0
-offset_top = 555.0
-offset_right = 510.0
-offset_bottom = 615.0
+offset_top = 475.0
+offset_right = 535.0
+offset_bottom = 565.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_fbqfa")
@@ -317,10 +317,10 @@ texture_pressed = ExtResource("12_ivoop")
 texture_hover = ExtResource("11_tncqy")
 
 [node name="5jkl" type="TextureButton" parent="."]
-offset_left = 540.0
-offset_top = 555.0
-offset_right = 595.0
-offset_bottom = 615.0
+offset_left = 565.0
+offset_top = 475.0
+offset_right = 645.0
+offset_bottom = 565.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_dtimt")
@@ -331,10 +331,10 @@ texture_hover = ExtResource("13_fbqfa")
 metadata/_edit_use_anchors_ = true
 
 [node name="6mno" type="TextureButton" parent="."]
-offset_left = 625.0
-offset_top = 555.0
-offset_right = 680.0
-offset_bottom = 615.0
+offset_left = 675.0
+offset_top = 475.0
+offset_right = 755.0
+offset_bottom = 565.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_41t5e")
@@ -346,9 +346,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="7pqrs" type="TextureButton" parent="."]
 offset_left = 455.0
-offset_top = 630.0
-offset_right = 510.0
-offset_bottom = 690.0
+offset_top = 575.0
+offset_right = 535.0
+offset_bottom = 665.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_0qss6")
@@ -359,10 +359,10 @@ texture_hover = ExtResource("17_dceih")
 metadata/_edit_use_anchors_ = true
 
 [node name="8tuv" type="TextureButton" parent="."]
-offset_left = 540.0
-offset_top = 630.0
-offset_right = 595.0
-offset_bottom = 690.0
+offset_left = 565.0
+offset_top = 575.0
+offset_right = 645.0
+offset_bottom = 665.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_umg6v")
@@ -373,10 +373,10 @@ texture_hover = ExtResource("19_41t5e")
 metadata/_edit_use_anchors_ = true
 
 [node name="9wxyz" type="TextureButton" parent="."]
-offset_left = 625.0
-offset_top = 630.0
-offset_right = 680.0
-offset_bottom = 690.0
+offset_left = 675.0
+offset_top = 575.0
+offset_right = 755.0
+offset_bottom = 665.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_c7l6c")
@@ -386,9 +386,9 @@ texture_pressed = ExtResource("22_0qss6")
 texture_hover = ExtResource("21_gnfr8")
 
 [node name="0" type="TextureButton" parent="."]
-offset_left = 540.0
-offset_top = 705.0
-offset_right = 595.0
+offset_left = 565.0
+offset_top = 675.0
+offset_right = 645.0
 offset_bottom = 765.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -413,8 +413,8 @@ texture_hover = ExtResource("25_umg6v")
 
 [node name="Back" type="TextureButton" parent="."]
 offset_left = 455.0
-offset_top = 705.0
-offset_right = 510.0
+offset_top = 675.0
+offset_right = 535.0
 offset_bottom = 765.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
@@ -425,9 +425,9 @@ texture_pressed = ExtResource("28_c7l6c")
 texture_hover = ExtResource("27_i0uqv")
 
 [node name="Next" type="TextureButton" parent="."]
-offset_left = 625.0
-offset_top = 705.0
-offset_right = 680.0
+offset_left = 675.0
+offset_top = 675.0
+offset_right = 755.0
 offset_bottom = 765.0
 focus_mode = 0
 mouse_default_cursor_shape = 2

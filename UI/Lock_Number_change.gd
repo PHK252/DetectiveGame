@@ -26,7 +26,8 @@ func _ready():
 
 func _on_up_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-	case_click.play()
+	if case_click:
+		case_click.play()
 	
 	if numClick < 9:
 		numClick = numClick + 1 
@@ -36,6 +37,7 @@ func _on_up_pressed():
 
 func _on_down_pressed():
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if case_click:
 		case_click.play()
 		
 		if numClick > 0:
@@ -43,6 +45,7 @@ func _on_down_pressed():
 		else:
 			numClick = 9
 		numChange()
+
 
 
 func hideArrows():
@@ -195,7 +198,6 @@ func numChange():
 
 
 func _on_right_pressed():
-	
 	if case_ui.posClick < 5:
 		case_ui.posClick = case_ui.posClick + 1 
 		case_ui.posChange()
