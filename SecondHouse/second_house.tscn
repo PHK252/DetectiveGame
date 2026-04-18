@@ -8380,46 +8380,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34812, 0)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Main/CharacterBody3D/DoggyPartner2/dogrig" index="0"]
 bones/1/position = Vector3(4.24249e-10, -5.39206e-08, -2.9497)
-bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
 bones/3/rotation = Quaternion(0.00155659, 0.363652, 0.854628, -0.37063)
 bones/4/rotation = Quaternion(-0.320059, 0.0072523, -0.0355009, 0.946705)
 bones/5/rotation = Quaternion(0.540441, -0.0379275, 0.0655797, 0.837965)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/8/rotation = Quaternion(-0.00155658, 0.363652, 0.854628, 0.37063)
 bones/9/rotation = Quaternion(-0.320059, -0.00725231, 0.0355009, 0.946705)
 bones/10/rotation = Quaternion(0.540441, 0.0379275, -0.0655797, 0.837964)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/12/position = Vector3(4.24249e-10, -2.67331e-07, -2.9497)
-bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
 bones/15/rotation = Quaternion(-0.0735786, 1.13631e-07, -1.20844e-08, 0.997289)
 bones/16/rotation = Quaternion(0.0130216, 8.74883e-09, 8.07961e-09, 0.999915)
-bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
 bones/17/rotation = Quaternion(0.496805, 0.0794418, -0.13646, 0.853377)
 bones/18/rotation = Quaternion(0.0692516, 0.00755318, -0.010441, 0.997516)
-bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
 bones/19/rotation = Quaternion(0.542598, -0.0867647, 0.131925, 0.825019)
 bones/20/rotation = Quaternion(0.0692516, -0.00755317, 0.0104409, 0.997516)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
 bones/22/rotation = Quaternion(-0.26645, -0.148063, -0.381802, 0.87253)
 bones/23/rotation = Quaternion(-0.0038353, -0.000434601, -0.351943, 0.936013)
-bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/26/rotation = Quaternion(-0.26645, 0.148063, 0.381802, 0.87253)
 bones/27/rotation = Quaternion(-0.0038355, 0.000434618, 0.351944, 0.936013)
-bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
-bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
-bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
 bones/31/position = Vector3(0.944461, -0.0311821, -2.18003)
 bones/31/rotation = Quaternion(0.805455, -2.20541e-15, 0.592656, 5.51352e-16)
-bones/32/position = Vector3(1.89213, 0.889777, -4.50176)
 bones/33/position = Vector3(4.2425e-10, -1.13525e-07, -2.9497)
-bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
-bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
 bones/36/position = Vector3(-0.944461, -0.0311821, -2.18003)
 bones/36/rotation = Quaternion(0.805455, 2.20541e-15, -0.592656, 5.51352e-16)
-bones/37/position = Vector3(-1.89213, 0.889777, -4.50176)
 
 [node name="DoggyPartner" parent="SubViewportContainer/SubViewport/Main/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D" index="0"]
 layers = 16384
@@ -8750,44 +8733,24 @@ unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
 bones/1/position = Vector3(4.2425e-10, -5.39206e-08, -2.9497)
-bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
 bones/3/rotation = Quaternion(0.00155666, 0.363652, 0.854628, -0.37063)
 bones/4/rotation = Quaternion(-0.320059, 0.00725231, -0.0355009, 0.946705)
 bones/5/rotation = Quaternion(0.540441, -0.0379275, 0.0655797, 0.837964)
-bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
-bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
 bones/8/rotation = Quaternion(-0.00155664, 0.363652, 0.854628, 0.37063)
 bones/9/rotation = Quaternion(-0.320059, -0.00725231, 0.0355009, 0.946705)
 bones/10/rotation = Quaternion(0.540441, 0.0379275, -0.0655797, 0.837965)
-bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
 bones/12/position = Vector3(4.2425e-10, -2.26353e-07, -2.9497)
-bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
 bones/15/rotation = Quaternion(-0.0735786, 1.13631e-07, -1.20843e-08, 0.997289)
 bones/16/rotation = Quaternion(0.0130216, 8.74883e-09, 8.0796e-09, 0.999915)
 bones/18/rotation = Quaternion(0.0692516, 0.00755318, -0.010441, 0.997516)
 bones/20/rotation = Quaternion(0.0692516, -0.00755318, 0.010441, 0.997516)
-bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
 bones/22/rotation = Quaternion(-0.26645, -0.148063, -0.381802, 0.87253)
 bones/23/rotation = Quaternion(-0.0038353, -0.000434585, -0.351943, 0.936013)
-bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
-bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
 bones/26/rotation = Quaternion(-0.26645, 0.148063, 0.381802, 0.87253)
 bones/27/rotation = Quaternion(-0.00383552, 0.000434581, 0.351944, 0.936013)
-bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
-bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
-bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
-bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
 bones/31/position = Vector3(0.944461, -0.0311821, -2.18003)
-bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
-bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
 bones/33/position = Vector3(4.2425e-10, -1.13525e-07, -2.9497)
-bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
-bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
-bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
-bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
 bones/36/position = Vector3(-0.944461, -0.0311821, -2.18003)
-bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
-bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 layers = 16384
@@ -12302,7 +12265,6 @@ shape = SubResource("BoxShape3D_gftg7")
 
 [node name="Skeleton3D" parent="Characters/Juniper/CharacterBody3D/JcorrectAnims/JuniperArmature" index="0"]
 bones/1/position = Vector3(-1.3269e-23, -0.104876, -2.55685)
-bones/1/rotation = Quaternion(-5.33851e-08, 0.707107, 0.707107, -5.33851e-08)
 bones/2/rotation = Quaternion(0.0872255, 0.0225733, 0.0115112, 0.995866)
 bones/3/rotation = Quaternion(-0.18494, -1.52359e-06, 3.69745e-07, 0.98275)
 bones/4/rotation = Quaternion(0.775421, -0.0771141, 0.0623411, 0.62361)
@@ -12311,31 +12273,14 @@ bones/6/rotation = Quaternion(-0.18494, 1.52454e-06, -3.46487e-07, 0.98275)
 bones/7/rotation = Quaternion(0.775421, 0.077114, -0.0623412, 0.62361)
 bones/8/position = Vector3(0, -0.104876, -2.55685)
 bones/12/rotation = Quaternion(0.0834751, 0, 0, 0.99651)
-bones/13/position = Vector3(0.310232, 1.08506, 0.0632049)
-bones/13/rotation = Quaternion(-2.20637e-08, -1.09647e-08, -0.376974, 0.926224)
-bones/14/rotation = Quaternion(0.520108, -0.0177951, -0.0291989, 0.853416)
-bones/15/position = Vector3(-0.310232, 1.08506, 0.0632049)
-bones/15/rotation = Quaternion(-2.20637e-08, 1.09647e-08, 0.376974, 0.926224)
-bones/16/rotation = Quaternion(0.520108, 0.0177951, 0.0291989, 0.853416)
-bones/17/rotation = Quaternion(-0.122064, -0.00744279, -0.765779, 0.63137)
 bones/18/rotation = Quaternion(-0.335295, -0.0822835, -0.449749, 0.823731)
 bones/19/rotation = Quaternion(0.184198, 0.00027705, -0.0717222, 0.980269)
-bones/20/rotation = Quaternion(-0.0135035, -0.000961486, -0.0240722, 0.999619)
-bones/21/rotation = Quaternion(-0.122064, 0.00744279, 0.765779, 0.63137)
 bones/22/rotation = Quaternion(-0.335296, 0.0822834, 0.449749, 0.82373)
 bones/23/rotation = Quaternion(0.184199, -0.00027707, 0.0717225, 0.980269)
-bones/24/rotation = Quaternion(-0.0135034, 0.000961458, 0.0240722, 0.999619)
-bones/25/position = Vector3(0.351139, -0.145298, -0.0447009)
-bones/26/position = Vector3(-0.351139, -0.145298, -0.0447009)
-bones/26/rotation = Quaternion(-1.74443e-06, 4.55223e-08, 1, -3.56109e-14)
 bones/27/position = Vector3(0.939635, -0.191435, -2.20948)
-bones/27/scale = Vector3(1, 1, 1)
 bones/28/position = Vector3(-0.939634, -0.191435, -2.20948)
-bones/28/scale = Vector3(1, 1, 1)
 bones/29/position = Vector3(1.31344, 0.554072, -3.52012)
-bones/29/rotation = Quaternion(-1.1856e-15, 0.886609, 4.21469e-08, -0.46252)
 bones/30/position = Vector3(-1.31344, 0.554072, -3.52012)
-bones/32/rotation = Quaternion(0, 1, 0, -1.94707e-07)
 
 [node name="Juniper" parent="Characters/Juniper/CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D" index="0"]
 layers = 1024
@@ -12359,19 +12304,6 @@ layers = 1024
 
 [node name="BoneAttachment3D3" parent="Characters/Juniper/CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D" index="3"]
 transform = Transform3D(-0.998716, -0.0189892, 0.0469682, 0.0429519, 0.17425, 0.983764, -0.0268651, 0.984518, -0.17321, -0.288407, -0.104876, -2.31214)
-
-[node name="Skeleton3D" parent="Characters/Juniper/CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain/armature_monocle" index="0"]
-bones/0/rotation = Quaternion(-0.018062, -0.000716911, -0.0184124, 0.999667)
-bones/1/rotation = Quaternion(0.0308618, -0.00217424, 0.0402546, 0.99871)
-bones/2/rotation = Quaternion(0.0840216, -0.00232407, 0.115233, 0.989776)
-bones/3/rotation = Quaternion(0.136988, -0.0022503, 0.184526, 0.973231)
-bones/4/rotation = Quaternion(0.166322, -0.00210143, 0.223311, 0.96045)
-bones/5/rotation = Quaternion(0.173171, -0.00186304, 0.232654, 0.957016)
-bones/6/rotation = Quaternion(0.157861, -0.0013825, 0.212696, 0.964281)
-bones/7/rotation = Quaternion(0.127698, -0.000747615, 0.172503, 0.976696)
-bones/8/rotation = Quaternion(0.0869627, -0.000255703, 0.117597, 0.989246)
-bones/9/rotation = Quaternion(0.0423709, -4.17631e-05, 0.0572983, 0.997458)
-bones/10/position = Vector3(-6.90242, -0.725304, 4.83048)
 
 [node name="Armature_Chain" parent="Characters/Juniper/CharacterBody3D/JcorrectAnims/JuniperArmature/Skeleton3D/BoneAttachment3D3/IdleChain/armature_monocle/Skeleton3D" index="0"]
 layers = 1024
@@ -12926,8 +12858,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883919, 0, -0.439144)
 [connection signal="juniper_wander" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact" to="Characters/Juniper/CharacterBody3D" method="_on_resume_interact_juniper_wander"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/Interactable" to="SubViewportContainer/SubViewport/Main/CharacterBody3D" method="_on_interactable_interacted_Juniper"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/Interactable" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D" method="_on_JHousePic_interacted"]
-[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact" method="_on_house_pic_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact" method="_on_house_pic_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/House interact/Interactable" to="Characters/Juniper/CharacterBody3D" method="_on_house_pic_interacted"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" to="SubViewportContainer/SubViewport/Main/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
@@ -12939,11 +12871,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883919, 0, -0.439144)
 [connection signal="general_interact" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" to="Characters/Juniper/CharacterBody3D" method="_on_resume_interact_general_interact"]
 [connection signal="general_quit" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" to="SubViewportContainer/SubViewport/SpatialSounds" method="_on_cafe_interact_general_quit"]
 [connection signal="juniper_wander" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" to="Characters/Juniper/CharacterBody3D" method="_on_resume_interact_juniper_wander"]
-[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="SubViewportContainer/SubViewport/Main/CharacterBody3D" method="_on_interactable_interacted_cafe"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="SubViewportContainer/SubViewport/Main/CharacterBody3D" method="_on_interactable_interacted_Juniper"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="SubViewportContainer/SubViewport/Main/CharacterBody3D" method="_on_interactable_interacted_cafe"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D" method="_on_CafeJ_interacted"]
-[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" method="_on_cafe_pic_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact" method="_on_cafe_pic_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Cafe Interact/Interactable" to="Characters/Juniper/CharacterBody3D" method="_on_cafe_pic_interacted"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact" to="SubViewportContainer/SubViewport/Main/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
@@ -12960,8 +12892,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883919, 0, -0.439144)
 [connection signal="juniper_wander" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact" to="Characters/Juniper/CharacterBody3D" method="_on_resume_interact_juniper_wander"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact/Interactable" to="SubViewportContainer/SubViewport/Main/CharacterBody3D" method="_on_interactable_interacted_Juniper"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact/Interactable" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D" method="_on_BookJ_interacted"]
-[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact" method="_on_bookshelf_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact" method="_on_bookshelf_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Book Interact/Interactable" to="Characters/Juniper/CharacterBody3D" method="_on_bookshelf_interacted"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" to="SubViewportContainer/SubViewport/Main/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
@@ -12976,8 +12908,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.883919, 0, -0.439144)
 [connection signal="theo_reposition_end" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" to="SubViewportContainer/SubViewport/Main/CharacterBody3D" method="_on_resume_interact_theo_reposition_end"]
 [connection signal="theo_reposition_start" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" to="SubViewportContainer/SubViewport/Main/CharacterBody3D" method="_on_resume_interact_theo_reposition_start"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact/Interactable" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D" method="_on_resumeJ_interacted"]
-[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" method="_on_resumes_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" method="_on_interactable_interacted"]
+[connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact/Interactable" to="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact" method="_on_resumes_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Resume Interact/Interactable" to="Characters/Juniper/CharacterBody3D" method="_on_resumes_interacted"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Case Interact" to="SubViewportContainer/SubViewport/Main/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
 [connection signal="disable_look" from="SubViewportContainer/SubViewport/CameraSystem/InteractionAreas/Case Interact" to="SubViewportContainer/SubViewport/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D/LookAtModifier3D" method="_disactivate_lookAt"]
