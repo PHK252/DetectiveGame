@@ -1,15 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://todl2n23or4m"]
+[gd_scene load_steps=37 format=3 uid="uid://todl2n23or4m"]
 
 [ext_resource type="Script" uid="uid://cf1t8srbdwwty" path="res://UI/controls_exit.gd" id="1_sohyj"]
 [ext_resource type="Texture2D" uid="uid://bbo5a8xafagsh" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal1.png" id="2_urfeb"]
 [ext_resource type="Texture2D" uid="uid://dp4clp4nr26k" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal2.png" id="3_s427r"]
 [ext_resource type="Texture2D" uid="uid://bsuvkl2rdc76p" path="res://UI/Assets/tutorial/Paper/Controls_Exit_normal3.png" id="4_iok3x"]
 [ext_resource type="Texture2D" uid="uid://bwi1rk4c3liau" path="res://UI/Assets/tutorial/Paper/Controls_Exit_hovered.png" id="5_ouscq"]
+[ext_resource type="Texture2D" uid="uid://dqlyy7ewhn5h6" path="res://UI/Assets/tutorial/Paper/Tutorial_Skip_shadow.png" id="10_08f8l"]
+[ext_resource type="Texture2D" uid="uid://bcx6yqif8776g" path="res://UI/Assets/tutorial/Paper/Tutorial_Run_shadow.png" id="12_xu7vx"]
+[ext_resource type="Texture2D" uid="uid://dyh5phfjj7kco" path="res://UI/Assets/tutorial/Paper/Tutorial_Zoom_shadow.png" id="13_jqmcg"]
 [ext_resource type="Texture2D" uid="uid://n21mywrvi7ij" path="res://UI/Assets/Interactions/Back orange normal.png" id="16_sohyj"]
 [ext_resource type="Texture2D" uid="uid://dxfrr333thc3t" path="res://UI/Assets/Interactions/Back orange hovered.png" id="17_3pplw"]
 [ext_resource type="Texture2D" uid="uid://d341pcke8p1jd" path="res://UI/Assets/Interactions/Back orange disabled.png" id="18_i1aip"]
 [ext_resource type="Texture2D" uid="uid://b0ojsgbm4dycv" path="res://UI/Assets/tutorial/Paper/Tutorial_movement_shadow.png" id="22_jqmcg"]
+[ext_resource type="Texture2D" uid="uid://c7qtvrfoqhycc" path="res://UI/Assets/tutorial/Paper/Tutorial_Skip.png" id="22_r5yew"]
 [ext_resource type="Texture2D" uid="uid://c3tihx0kwfte7" path="res://UI/Assets/tutorial/Paper/Tutorial_Run.png" id="23_r5yew"]
+[ext_resource type="Texture2D" uid="uid://be3bakm8ahlbt" path="res://UI/Assets/tutorial/Paper/Tutorial_Zoom.png" id="24_bmdj3"]
 [ext_resource type="Texture2D" uid="uid://cs35orjcyodn6" path="res://UI/Assets/tutorial/Paper/Tutorial_Interact_shadow.png" id="24_xu7vx"]
 [ext_resource type="Texture2D" uid="uid://y3nh4lhiht2w" path="res://UI/Assets/tutorial/Paper/Tutorial_Exit_shadow.png" id="25_bmdj3"]
 [ext_resource type="Texture2D" uid="uid://r3rk22sunnr4" path="res://UI/Assets/tutorial/Paper/Tutorial_Pause_shadow.png" id="26_nf1ak"]
@@ -69,26 +74,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Main Menu/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -228.0
-offset_bottom = -139.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-ratio = 1.77
-alignment_horizontal = 0
-
-[node name="Exit" type="MarginContainer" parent="Main Menu/Panel/AspectRatioContainer"]
+[node name="Exit" type="MarginContainer" parent="Main Menu/Panel"]
 layout_mode = 2
+offset_right = 1888.0
+offset_bottom = 1066.67
 mouse_filter = 2
 theme_override_constants/margin_left = 53
 theme_override_constants/margin_top = 44
 
-[node name="Main_exit_button" type="TextureButton" parent="Main Menu/Panel/AspectRatioContainer/Exit"]
+[node name="Main_exit_button" type="TextureButton" parent="Main Menu/Panel/Exit"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -99,66 +93,97 @@ texture_normal = SubResource("AnimatedTexture_vukbl")
 texture_pressed = ExtResource("5_ouscq")
 texture_hover = ExtResource("5_ouscq")
 
-[node name="Controls" type="MarginContainer" parent="Main Menu/Panel/AspectRatioContainer"]
+[node name="Controls" type="MarginContainer" parent="Main Menu/Panel"]
 layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 mouse_filter = 2
-theme_override_constants/margin_left = 228
-theme_override_constants/margin_top = 179
+theme_override_constants/margin_left = 275
+theme_override_constants/margin_top = 90
 
-[node name="Controls with shadow" type="HBoxContainer" parent="Main Menu/Panel/AspectRatioContainer/Controls"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main Menu/Panel/Controls"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 36
+theme_override_constants/separation = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow"]
+[node name="Controls with shadow" type="HBoxContainer" parent="Main Menu/Panel/Controls/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 72
+theme_override_constants/separation = 30
 
-[node name="Movement" type="TextureRect" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow/VBoxContainer"]
+[node name="Movement" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/Controls with shadow"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
+size_flags_vertical = 4
 texture = ExtResource("22_jqmcg")
 stretch_mode = 2
 
-[node name="Dialogue" type="TextureRect" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/Panel/Controls/VBoxContainer2/Controls with shadow"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+
+[node name="Exit" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/Controls with shadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("25_bmdj3")
+stretch_mode = 2
+
+[node name="Paused" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/Controls with shadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("26_nf1ak")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main Menu/Panel/Controls/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Dialogue" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("27_e4c5h")
 stretch_mode = 2
 
-[node name="Phone" type="TextureRect" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow/VBoxContainer"]
+[node name="Skip" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("28_7cwdk")
+texture = ExtResource("10_08f8l")
 stretch_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+size_flags_horizontal = 0
+theme_override_constants/separation = 15
 
-[node name="Exit" type="TextureRect" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow/VBoxContainer2"]
+[node name="Interact" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("25_bmdj3")
-stretch_mode = 2
-
-[node name="Run" type="TextureRect" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("23_r5yew")
-stretch_mode = 2
-
-[node name="Interact" type="TextureRect" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 texture = ExtResource("24_xu7vx")
 stretch_mode = 2
 
-[node name="Paused" type="TextureRect" parent="Main Menu/Panel/AspectRatioContainer/Controls/Controls with shadow/VBoxContainer2"]
+[node name="Run" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("26_nf1ak")
+size_flags_horizontal = 0
+texture = ExtResource("12_xu7vx")
+stretch_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Main Menu/Panel/Controls/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Zoom" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("13_jqmcg")
+stretch_mode = 2
+
+[node name="Phone" type="TextureRect" parent="Main Menu/Panel/Controls/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("28_7cwdk")
 stretch_mode = 2
 
 [node name="Pause _menu" type="CanvasLayer" parent="."]
@@ -175,26 +200,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Pause _menu/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -228.0
-offset_bottom = -102.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-ratio = 1.77
-alignment_horizontal = 0
-
-[node name="Exit" type="MarginContainer" parent="Pause _menu/Panel/AspectRatioContainer"]
+[node name="Exit" type="MarginContainer" parent="Pause _menu/Panel"]
 layout_mode = 2
+offset_right = 1693.0
+offset_bottom = 956.497
 mouse_filter = 2
 theme_override_constants/margin_left = 53
 theme_override_constants/margin_top = 44
 
-[node name="Exit_button" type="TextureButton" parent="Pause _menu/Panel/AspectRatioContainer/Exit"]
+[node name="Exit_button" type="TextureButton" parent="Pause _menu/Panel/Exit"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -206,66 +220,96 @@ texture_pressed = ExtResource("17_3pplw")
 texture_hover = ExtResource("17_3pplw")
 texture_disabled = ExtResource("18_i1aip")
 
-[node name="Controls" type="MarginContainer" parent="Pause _menu/Panel/AspectRatioContainer"]
-layout_mode = 2
+[node name="Controls" type="MarginContainer" parent="Pause _menu/Panel"]
+offset_right = 1920.0
+offset_bottom = 1080.0
 mouse_filter = 2
-theme_override_constants/margin_left = 228
-theme_override_constants/margin_top = 216
+theme_override_constants/margin_left = 275
+theme_override_constants/margin_top = 90
 
-[node name="Controls" type="HBoxContainer" parent="Pause _menu/Panel/AspectRatioContainer/Controls"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Pause _menu/Panel/Controls"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 36
+theme_override_constants/separation = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls"]
+[node name="Controls with shadow" type="HBoxContainer" parent="Pause _menu/Panel/Controls/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 72
+theme_override_constants/separation = 30
 
-[node name="Movement" type="TextureRect" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls/VBoxContainer"]
+[node name="Movement" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/Controls with shadow"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
+size_flags_vertical = 4
 texture = ExtResource("29_nf1ak")
 stretch_mode = 2
 
-[node name="Dialogue" type="TextureRect" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause _menu/Panel/Controls/VBoxContainer2/Controls with shadow"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+
+[node name="Exit" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/Controls with shadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("32_t84ej")
+stretch_mode = 2
+
+[node name="Paused" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/Controls with shadow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("34_rafrd")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pause _menu/Panel/Controls/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Dialogue" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("30_e4c5h")
 stretch_mode = 2
 
-[node name="Phone" type="TextureRect" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls/VBoxContainer"]
+[node name="Skip" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("31_7cwdk")
+texture = ExtResource("22_r5yew")
 stretch_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+size_flags_horizontal = 0
+theme_override_constants/separation = 15
 
-[node name="Exit" type="TextureRect" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls/VBoxContainer2"]
+[node name="Interact" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("32_t84ej")
-stretch_mode = 2
-
-[node name="Run" type="TextureRect" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("23_r5yew")
-stretch_mode = 2
-
-[node name="Interact" type="TextureRect" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 texture = ExtResource("33_i8i4t")
 stretch_mode = 2
 
-[node name="Paused" type="TextureRect" parent="Pause _menu/Panel/AspectRatioContainer/Controls/Controls/VBoxContainer2"]
+[node name="Run" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("34_rafrd")
+size_flags_horizontal = 0
+texture = ExtResource("23_r5yew")
+stretch_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Pause _menu/Panel/Controls/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Zoom" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("24_bmdj3")
+stretch_mode = 2
+
+[node name="Phone" type="TextureRect" parent="Pause _menu/Panel/Controls/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("31_7cwdk")
 stretch_mode = 2
 
 [node name="Control_Sounds" type="Node" parent="." node_paths=PackedStringArray("audio")]
@@ -292,9 +336,9 @@ bus = &"SFX"
 stream = ExtResource("40_ouscq")
 bus = &"SFX"
 
-[connection signal="mouse_entered" from="Main Menu/Panel/AspectRatioContainer/Exit/Main_exit_button" to="Control_Sounds" method="_on_exit_hover"]
-[connection signal="pressed" from="Main Menu/Panel/AspectRatioContainer/Exit/Main_exit_button" to="." method="_on_main_exit_button_pressed"]
-[connection signal="pressed" from="Main Menu/Panel/AspectRatioContainer/Exit/Main_exit_button" to="Control_Sounds" method="_on_exit_pressed"]
-[connection signal="mouse_entered" from="Pause _menu/Panel/AspectRatioContainer/Exit/Exit_button" to="Control_Sounds" method="_on_exit_hover"]
-[connection signal="pressed" from="Pause _menu/Panel/AspectRatioContainer/Exit/Exit_button" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="Pause _menu/Panel/AspectRatioContainer/Exit/Exit_button" to="Control_Sounds" method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="Main Menu/Panel/Exit/Main_exit_button" to="Control_Sounds" method="_on_exit_hover"]
+[connection signal="pressed" from="Main Menu/Panel/Exit/Main_exit_button" to="." method="_on_main_exit_button_pressed"]
+[connection signal="pressed" from="Main Menu/Panel/Exit/Main_exit_button" to="Control_Sounds" method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="Pause _menu/Panel/Exit/Exit_button" to="Control_Sounds" method="_on_exit_hover"]
+[connection signal="pressed" from="Pause _menu/Panel/Exit/Exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Pause _menu/Panel/Exit/Exit_button" to="Control_Sounds" method="_on_exit_pressed"]
