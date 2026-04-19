@@ -10,11 +10,13 @@ class_name Tutorial
 @export var phone_tut : Node
 @export var flip_tut : Node
 @export var dialogue_tut : Node
-@export var map_tut : Node
+@export var zoom_tut : Node
 
 @onready var timer = $Timer
 @onready var current_tut : Node
 @onready var current_anim : String
+@onready var flip = $Flip/Flip
+@onready var zoom = $Flip/Zoom
 
 var interact = false
 
@@ -47,9 +49,9 @@ func _show_tut(tut_type : String):
 	elif tut_type == "dialogue":
 		current_tut = dialogue_tut
 		current_anim = "Blink Pause"
-	elif tut_type == "map":
-		current_tut = map_tut
-		current_anim = "Blink Map"
+	elif tut_type == "zoom":
+		current_tut = zoom_tut
+		current_anim = "Blink Zoom"
 	else:
 		print_debug("Tutorial Loading Failed")
 		return
@@ -61,17 +63,32 @@ func _handle_tut():
 	animationplayer.play(current_anim)
 	#timer.start()
 	if current_tut == flip_tut:
-		await get_tree().create_timer(.1).timeout
+		await get_tree().process_frame
 	set_process(true)
 
 func _process(delta):
 	#if timer.time_left > 0:
 	if current_tut == flip_tut:
 		#print(current_tut.visible)
-		await get_tree().create_timer(.1).timeout
+		if GlobalVars.map_tut == false:
+			zoom.show()
+		else:
+			zoom.hide()
+		await get_tree().process_frame
 		if Input.is_action_just_pressed("mouse_click"):
 			GlobalVars.flip_tut = true
-			_hide_tut()
+			if GlobalVars.map_tut == false:
+				flip.hide()
+			else:
+				_hide_tut()
+		if GlobalVars.map_tut == false:
+			if Input.is_action_just_pressed("zoom_in"):
+				GlobalVars.map_tut = true
+				if GlobalVars.flip_tut == false:
+					zoom.hide()
+				else:
+					_hide_tut()
+
 		if Input.is_action_just_pressed("Exit"):
 			_hide_tut()
 			#print(GlobalVars.flip_tut)
@@ -98,6 +115,10 @@ func _process(delta):
 	if current_tut == dialogue_tut:
 		if Input.is_action_just_pressed("dialogic_default_action"):
 			GlobalVars.dialogue_tut = true
+			_hide_tut()
+	if current_tut == zoom_tut:
+		if Input.is_action_just_pressed("zoom_in"):
+			GlobalVars.map_tut = true
 			_hide_tut()
 	#else:
 		#if current_tut != flip_tut:

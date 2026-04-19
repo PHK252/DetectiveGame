@@ -7,7 +7,7 @@ extends CanvasLayer
 @export var forward_arr : TextureButton
 
 signal paper_sound
-
+signal _show_tut(tut_type : String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,7 +53,11 @@ func _input(event):
 		GlobalVars.in_look_screen = false
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""
-		
+
+func _on_visibility_changed():
+	if visible == true:
+		if GlobalVars.map_tut == false:
+			emit_signal("_show_tut", "zoom")
 
 func _on_camera_2d_zoomed(state):
 	back_arr.visible = !state

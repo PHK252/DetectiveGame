@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://djiit5o2pgoy7"]
+[gd_scene load_steps=40 format=3 uid="uid://djiit5o2pgoy7"]
 
 [ext_resource type="Script" uid="uid://b40nwl7y7u2wi" path="res://UI/tutorial.gd" id="1_om0r0"]
 [ext_resource type="FontFile" uid="uid://bwwgclqq3mgo" path="res://Dialogue Stuff/Fonts/Default.ttf" id="2_2whfq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dt2pgjcoj4po2" path="res://UI/Assets/tutorial/Notes_shift.png" id="10_fcm1x"]
 [ext_resource type="Texture2D" uid="uid://bfve7ho7jfvh7" path="res://UI/Assets/tutorial/Notes_interact_e.png" id="11_pxagh"]
 [ext_resource type="Texture2D" uid="uid://7i4meclxyb01" path="res://UI/Assets/tutorial/Notes_exit_q_darker.png" id="13_om0r0"]
+[ext_resource type="Texture2D" uid="uid://bsmvumd772dy0" path="res://UI/Assets/tutorial/space.png" id="14_gc8pi"]
 [ext_resource type="Texture2D" uid="uid://cefkmi8nvx7y5" path="res://UI/Assets/tutorial/Notes_dialogue.png" id="14_om0r0"]
 [ext_resource type="Texture2D" uid="uid://cmmchhxdna8h" path="res://UI/Assets/tutorial/Notes_tab_darker.png" id="15_c481p"]
 [ext_resource type="Texture2D" uid="uid://dy7fg7fs132wd" path="res://UI/Assets/tutorial/Notes_click1.png" id="15_na8nk"]
@@ -25,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cqj6k0t3e2d4s" path="res://UI/Assets/tutorial/Notes_click Blank.png" id="21_pwpa5"]
 [ext_resource type="Texture2D" uid="uid://yjesiikkh6m8" path="res://UI/Assets/tutorial/Paper/Flip_tut_bubble.png" id="25_n3cvu"]
 [ext_resource type="Texture2D" uid="uid://dinhg078fq5nu" path="res://UI/Assets/tutorial/Paper/Map_tut_bubble.png" id="26_hey4w"]
+[ext_resource type="Texture2D" uid="uid://d2fh15bnbeqrs" path="res://UI/Assets/Zoom_in.png" id="27_n3cvu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5sc0d"]
 animations = [{
@@ -65,11 +67,11 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flip/TO RUN:modulate")
+tracks/0/path = NodePath("Flip/Flip/TO RUN:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(-0.056, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -77,7 +79,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Flip/Click:frame")
+tracks/1/path = NodePath("Flip/Flip/Click:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -89,7 +91,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Flip/Click:visible")
+tracks/2/path = NodePath("Flip/Flip/Click:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -101,7 +103,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("Flip/TO RUN:visible")
+tracks/3/path = NodePath("Flip/Flip/TO RUN:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -113,7 +115,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Flip/ColorRect:modulate")
+tracks/4/path = NodePath("Flip/Flip/ColorRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -121,6 +123,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Flip/Zoom:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.232198), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_l4ptw"]
@@ -338,7 +352,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Flip/TO RUN:modulate")
+tracks/5/path = NodePath("Flip/Flip/TO RUN:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -350,7 +364,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Flip/Click:frame")
+tracks/6/path = NodePath("Flip/Flip/Click:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -362,7 +376,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Flip/Click:visible")
+tracks/7/path = NodePath("Flip/Flip/Click:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -374,7 +388,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Flip/TO RUN:visible")
+tracks/8/path = NodePath("Flip/Flip/TO RUN:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -386,7 +400,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Flip/ColorRect:modulate")
+tracks/9/path = NodePath("Flip/Flip/ColorRect:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -455,6 +469,47 @@ tracks/14/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Zoom:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Flip/Zoom:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n3cvu"]
+resource_name = "Blink Zoom"
+loop_mode = 2
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Zoom:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.231373)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbvhg"]
 _data = {
@@ -466,10 +521,12 @@ _data = {
 &"Blink Pause": SubResource("Animation_8krtd"),
 &"Blink Phone": SubResource("Animation_cr2mm"),
 &"Blink Run": SubResource("Animation_ttlim"),
+&"Blink Zoom": SubResource("Animation_n3cvu"),
 &"RESET": SubResource("Animation_0g1k3")
 }
 
-[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut", "map_tut")]
+[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("animationplayer", "movement_tut", "run_tut", "interact_tut", "exit_tut", "phone_tut", "flip_tut", "dialogue_tut", "zoom_tut")]
+layer = 2
 visible = false
 script = ExtResource("1_om0r0")
 animationplayer = NodePath("AnimationPlayer")
@@ -480,8 +537,8 @@ exit_tut = NodePath("Exit")
 phone_tut = NodePath("Phone")
 flip_tut = NodePath("Flip")
 dialogue_tut = NodePath("Pause")
-map_tut = NodePath("Map")
-metadata/_edit_horizontal_guides_ = [994.0, 943.0]
+zoom_tut = NodePath("Zoom")
+metadata/_edit_horizontal_guides_ = [994.0, 943.0, 858.0]
 metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Movement" type="Control" parent="."]
@@ -653,23 +710,42 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Space" type="Sprite2D" parent="Pause"]
+position = Vector2(1245.5, 833)
+texture = ExtResource("14_gc8pi")
+
 [node name="Esc" type="Sprite2D" parent="Pause"]
 texture_filter = 1
-position = Vector2(780, 833)
+position = Vector2(448.5, 833)
 texture = ExtResource("14_om0r0")
 
 [node name="TO RUN" type="RichTextLabel" parent="Pause"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 898.0
+offset_left = 567.0
 offset_top = 808.0
-offset_right = 1298.0
+offset_right = 1135.0
 offset_bottom = 879.0
 theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
 theme_override_fonts/normal_font = ExtResource("2_2whfq")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "TO CONTINUE"
+text = "TO CONTINUE OR HOLD"
+fit_content = true
+scroll_active = false
+
+[node name="TO RUN2" type="RichTextLabel" parent="Pause"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1365.0
+offset_top = 807.0
+offset_right = 1575.0
+offset_bottom = 878.0
+theme_override_colors/default_color = Color(0.992157, 0.835294, 0.478431, 1)
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "TO SKIP"
 fit_content = true
 scroll_active = false
 
@@ -722,13 +798,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Click" type="AnimatedSprite2D" parent="Flip"]
+[node name="Flip" type="Control" parent="Flip"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Click" type="AnimatedSprite2D" parent="Flip/Flip"]
 visible = false
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_5sc0d")
 frame = 1
 
-[node name="ColorRect" type="TextureRect" parent="Flip"]
+[node name="ColorRect" type="TextureRect" parent="Flip/Flip"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 737.0
@@ -738,7 +819,7 @@ offset_bottom = 767.0
 mouse_filter = 2
 texture = ExtResource("25_n3cvu")
 
-[node name="TO RUN" type="RichTextLabel" parent="Flip"]
+[node name="TO RUN" type="RichTextLabel" parent="Flip/Flip"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 736.0
@@ -753,6 +834,61 @@ bbcode_enabled = true
 text = "[center]CLICK TO FLIP[/center]"
 fit_content = true
 scroll_active = false
+
+[node name="Zoom" type="Control" parent="Flip"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="Flip/Zoom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = 936.0
+offset_right = 1570.0
+offset_bottom = 1020.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_hey4w")
+
+[node name="TO MAP2" type="RichTextLabel" parent="Flip/Zoom"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = 943.0
+offset_right = 1570.0
+offset_bottom = 1026.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "<-- OR SCROLL TO ZOOM, HOLD MIDDLE MOUSE TO DRAG"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoomIn" type="TextureRect" parent="Flip/Zoom"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 950.0
+offset_right = 130.0
+offset_bottom = 1050.0
+texture = ExtResource("27_n3cvu")
 
 [node name="Map" type="Control" parent="."]
 visible = false
@@ -802,6 +938,61 @@ bbcode_enabled = true
 text = "[center]HEAD TO THE MAP TO CHOOSE YOUR DESTINATION[/center]"
 fit_content = true
 scroll_active = false
+
+[node name="Zoom" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="Zoom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = 936.0
+offset_right = 1570.0
+offset_bottom = 1020.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_hey4w")
+
+[node name="TO MAP2" type="RichTextLabel" parent="Zoom"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = 943.0
+offset_right = 1570.0
+offset_bottom = 1026.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.898039, 0.678431, 0.180392, 1)
+theme_override_fonts/normal_font = ExtResource("2_2whfq")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "<-- OR SCROLL TO ZOOM, HOLD MIDDLE MOUSE TO DRAG"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoomIn" type="TextureRect" parent="Zoom"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 950.0
+offset_right = 130.0
+offset_bottom = 1050.0
+texture = ExtResource("27_n3cvu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

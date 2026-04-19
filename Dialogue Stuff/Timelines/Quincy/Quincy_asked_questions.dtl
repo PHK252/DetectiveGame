@@ -29,7 +29,7 @@ Dalton (Default): Ask about...
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assit, Dectective.
+			Quincy (Smug): Was a pleasure to assit, Detective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -38,7 +38,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assit, Dectective.
+				Quincy (Smug): Was a pleasure to assit, Detective.
 				[end_timeline]
 	- Damage.
 		set {Quincy.num_question_asked} += 1
@@ -55,7 +55,7 @@ Dalton (Default): Ask about...
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assit, Dectective.
+			Quincy (Smug): Was a pleasure to assit, Detective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -64,7 +64,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assit, Dectective.
+				Quincy (Smug): Was a pleasure to assit, Detective.
 				[end_timeline]
 	- Motive.
 		set {Quincy.num_question_asked} += 1
@@ -93,7 +93,7 @@ Dalton (Default): Ask about...
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assist, Dectective.
+			Quincy (Smug): Was a pleasure to assist, Detective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -102,7 +102,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assist, Dectective.
+				Quincy (Smug): Was a pleasure to assist, Detective.
 				[end_timeline]
 	- Back.
 		jump choices
@@ -133,7 +133,7 @@ Dalton (Default): Ask about...
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assist, Dectective.
+			Quincy (Smug): Was a pleasure to assist, Detective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -142,7 +142,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assist, Dectective.
+				Quincy (Smug): Was a pleasure to assist, Detective.
 				[end_timeline]
 	- Micah Procyon.
 		set {Quincy.num_question_asked} += 1
@@ -162,7 +162,7 @@ Dalton (Default): Ask about...
 			set {Quincy.asked_all} = true
 			Dalton (Talk): That's all the questions I have right now.
 			Quincy (Happy): Hm...
-			Quincy (Smug): Was a pleasure to assist, Dectective.
+			Quincy (Smug): Was a pleasure to assist, Detective.
 			[end_timeline]
 		else:
 			Dalton (Default): ...
@@ -171,7 +171,7 @@ Dalton (Default): Ask about...
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
-				Quincy (Smug): Was a pleasure to assist, Dectective.
+				Quincy (Smug): Was a pleasure to assist, Detective.
 				[end_timeline]
 	- Back.
 		jump choices
@@ -206,5 +206,5 @@ Dalton (Default): Ask about...
 	else:
 		Dalton (Talk): That's all for now.
 		Quincy (Happy): Hm...
-		Quincy (Smug): Was a pleasure to assist, Dectective.
+		Quincy (Smug): Was a pleasure to assist, Detective.
 		[end_timeline]

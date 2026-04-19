@@ -46,9 +46,6 @@ func _ready():
 	Dialogic.end_timeline()
 	Dialogic.clear(1)
 	Dialogic.start("Empty start")
-		#not needed
-		#brightness technically firing twice bad practice but maybe ok
-		#emit_signal("set_brightness_label", GlobalVars.brightnes)
 
 func _on_new_window_size():
 	var viewport_size = get_viewport().get_visible_rect().size

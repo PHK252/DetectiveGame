@@ -114,6 +114,7 @@ func _on_exit_pressed():
 			if GlobalVars.intro_dialogue == false and GlobalVars.viewed_case_file == true:
 				if GlobalVars.exit_tut == false and tutorial.visible == true:
 					emit_signal("_hide_tut")
+				await get_tree().create_timer(.1).timeout
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
 				Dialogic.signal_event.connect(enter_Theo)

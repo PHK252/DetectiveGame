@@ -25,7 +25,6 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			return
 		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 func _on_object_front_gui_input(event):
 	if event is InputEventMouseButton:
 		if just_front == false:
@@ -58,7 +57,7 @@ func _on_exit_pressed():
 
 func _on_visibility_changed():
 	if visible == true:
-		if GlobalVars.flip_tut == false:
+		if GlobalVars.flip_tut == false or GlobalVars.map_tut == false:
 			emit_signal("_show_tut", "flip")
 
 

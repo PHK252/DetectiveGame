@@ -44,6 +44,7 @@ func _unhandled_input(event):
 			position.x = 0
 
 func _zoom_in():
+	GlobalVars.map_tut = true
 	in_zoom = true
 	zoom = Vector2(max_zoom, max_zoom)
 	emit_signal("zoomed", true)
