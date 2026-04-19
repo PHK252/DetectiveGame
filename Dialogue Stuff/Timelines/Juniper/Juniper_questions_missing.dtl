@@ -18,10 +18,12 @@ if {Character Aff Points.Juniper} < 0:
 		Dalton (Resting): That's all the questions I have right now.
 		[end_timeline]
 	else:
-		[wait time="0.3"]
 		Dalton (Default): ...
 		- Ask more questions.
-			jump Juniper_questions/questions
+			if {Juniper.asked_missing} == false or {Juniper.asked_time} == false or {Juniper.asked_who} == false:
+				jump Juniper_questions/break
+			else:
+				jump Juniper_questions/questions
 		- Continue investigation.
 			Dalton: That's all the questions I have right now.
 			[end_timeline]
@@ -52,10 +54,12 @@ else:
 		Dalton (Talk): That's all the questions I have right now.
 		[end_timeline]
 	else:
-		[wait time="0.3"]
 		Dalton (Default): ...
 		- Ask more questions.
-			jump Juniper_questions/questions
+			if {Juniper.asked_missing} == false or {Juniper.asked_time} == false or {Juniper.asked_who} == false:
+				jump Juniper_questions/break
+			else:
+				jump Juniper_questions/questions
 		- Continue investigation.
 			Dalton: That's all the questions I have right now.
 			[end_timeline]

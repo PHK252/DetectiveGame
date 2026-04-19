@@ -13,9 +13,9 @@ else:
 set {Asked Questions.Micah_Asked_Night} = true
 label Questions
 Dalton (Default): Ask about...
-- Time of return?
+- Time of return.
 	jump Morning_night_time/
-- Suspicious activity?
+- Suspicious activity.
 	jump Morning_night_sus/
 - Let Theo ask. | [if {Asked Questions.Micah_Morning_enough_Theo} == true] [else="hide"]
 	jump Theo_answer_morning/

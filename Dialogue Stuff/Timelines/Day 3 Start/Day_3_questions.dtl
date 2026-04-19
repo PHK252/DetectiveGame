@@ -1,6 +1,6 @@
 label choices
 Dalton (Default): ...
-- Location on 11/01
+- Location on 11/01.
 	if {Interogation.asked_where} == false:
 		Dalton (Talk): Where were you on the night of 11/01?
 		Skylar (Awkward): I was...
@@ -23,8 +23,10 @@ Dalton (Default): ...
 		Skylar (Talk): Around.
 		Dalton (Awkward): Hmmph.
 		jump choices
-- Relation to victims
-	- Micah 
+- Relation to victims.
+	label victims
+	Dalton (Default): ...
+	- Micah. 
 		if {Interogation.asked_Micah} == false:
 			Dalton (Squint): Do you know Micah Pycron?
 			Skylar (Awkward): y-yes.
@@ -36,13 +38,19 @@ Dalton (Default): ...
 			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
 				jump continue
 			else:
-				jump choices
+				if {Interogation.asked_Quincy} == false or {Interogation.asked_Juniper} == false or {Interogation.asked_Micah} == false:
+					jump victims
+				else:
+					jump choices
 		else:
 			Dalton (Squint): Do you know Micah Pycron?
 			Skylar (Awkward): ...
 			Skylar (Sigh): Just a friend.
-			jump choices
-	- Juniper
+			if {Interogation.asked_Quincy} == false or {Interogation.asked_Juniper} == false or {Interogation.asked_Micah} == false:
+				jump victims
+			else:
+				jump choices
+	- Juniper.
 		if {Interogation.asked_Juniper} == false:
 			Dalton (Talk): Do you know Juniper Hartley?
 			Skylar (Resting): Mm...
@@ -54,13 +62,19 @@ Dalton (Default): ...
 			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
 				jump continue
 			else:
-				jump choices
+				if {Interogation.asked_Quincy} == false or {Interogation.asked_Juniper} == false or {Interogation.asked_Micah} == false:
+					jump victims
+				else:
+					jump choices
 		else:
 			Dalton (Talk): Do you know Juniper Hartley?
 			Skylar (Squint): ...
 			Skylar (Talk): Was my boss. 
-			jump choices
-	- Quincy
+			if {Interogation.asked_Quincy} == false or {Interogation.asked_Juniper} == false or {Interogation.asked_Micah} == false:
+				jump victims
+			else:
+				jump choices
+	- Quincy.
 		if {Interogation.asked_Quincy} == false:
 			Dalton (Resting): Do you know Quincy Leonid?
 			Skylar (Sad): He...
@@ -72,13 +86,19 @@ Dalton (Default): ...
 			if {Interogation.asked_where} == true and {Interogation.asked_Quincy} == true and {Interogation.asked_Juniper} == true and {Interogation.asked_Micah} == true:
 				jump continue
 			else:
-				jump choices
+				if {Interogation.asked_Quincy} == false or {Interogation.asked_Juniper} == false or {Interogation.asked_Micah} == false:
+					jump victims
+				else:
+					jump choices
 		else:
 			Dalton (Resting): Do you know Quincy Leonid?
 			Skylar (Sad): He...
 			Skylar (Talk): ...is the mayor.
-			jump choices
-	- Back
+			if {Interogation.asked_Quincy} == false or {Interogation.asked_Juniper} == false or {Interogation.asked_Micah} == false:
+				jump victims
+			else:
+				jump choices
+	- Back.
 		jump choices
 #- Continue
 label continue

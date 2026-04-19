@@ -286,7 +286,7 @@ Dalton (Default): ...
 				Quincy (Smug): Still the same as always.
 				Dalton (Resting): Hmph.
 				jump Qs
-		- Yesterday.
+		- Ask about yesterday.
 			if {Quincy.ask_yesterday} == false:
 				set {Quincy.ask_yesterday} = true
 				Dalton (Doubt1): Why were you busy yesterday?

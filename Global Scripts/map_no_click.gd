@@ -9,8 +9,7 @@ extends MeshInstance3D
 var is_open: bool = false
 	
 func _ready():
-	#interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Asked Questions.left_Micah"))
-	pass
+	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Asked Questions.left_Micah"))
 
 func _on_interactable_interacted(interactor) -> void:
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.calling == false and GlobalVars.phone_up == false:

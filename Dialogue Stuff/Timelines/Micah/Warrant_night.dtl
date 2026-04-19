@@ -8,10 +8,9 @@ if {Asked Questions.Micah_Asked_Night} == false:
 else:
 	jump Warrant/Questions
 set {Asked Questions.Micah_Asked_Night} = true
-[wait time="0.3"]
 label Questions
 Dalton: ...
-- Time of return?
+- Time of return.
 	jump Warrant_night_time/
-- Suspicious activity?
+- Suspicious activity.
 	jump Warrant_night_sus/

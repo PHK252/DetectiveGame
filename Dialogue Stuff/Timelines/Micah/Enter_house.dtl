@@ -5,7 +5,7 @@ Dalton (Resting): Is anybody home?
 [wait time="1.0"]
 Dalton (Talk): ASPD!
 Dalton (Default): ...
-- Knock Again.
+- Knock again.
 	[signal arg="knock"]
 	[wait time="5.0"]
 	Dalton (Squint): Hello?
@@ -34,7 +34,7 @@ Dalton (Default): ...
 	Dalton (Hmph): ...
 	Theo (Awkward): ...
 	Dalton (Default): ...
-	- Knock Again.
+	- Knock again.
 		set {Character Aff Points.Micah} += 1
 		# #Knock
 		[signal arg="knock"]
@@ -55,9 +55,9 @@ label Micah Open
 Micah (Yawn): ...
 Micah (Stare): Hello?
 Dalton: ...
-- Use Warrant.
+- Use warrant.
 	jump Warrant/
 - Greet Micah.
 	jump Good_morning/
-- Let Theo Answer. | [if {Character Aff Points.Theo} >= 1] [else="hide"]
+- Let Theo answer. | [if {Character Aff Points.Theo} >= 1] [else="hide"]
 	jump Micah_Theo_Answer/

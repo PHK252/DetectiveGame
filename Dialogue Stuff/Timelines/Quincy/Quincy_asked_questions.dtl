@@ -4,6 +4,7 @@ Quincy (Happy): Sure.
 label choices
 Dalton (Default): Ask about...
 - Break-in.
+	label break
 	- Location.
 		set {Quincy.num_question_asked} += 1
 		if {Quincy.asked_location} == false:
@@ -34,7 +35,10 @@ Dalton (Default): Ask about...
 		else:
 			Dalton (Default): ...
 			- Ask more questions.
-				jump choices
+				if {Quincy.asked_location} == false or {Quincy.asked_missing} == false or {Quincy.ask motive} == false:
+					jump break
+				else:
+					jump choices
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
@@ -60,7 +64,10 @@ Dalton (Default): Ask about...
 		else:
 			Dalton (Default): ...
 			- Ask more questions.
-				jump choices
+				if {Quincy.asked_location} == false or {Quincy.asked_missing} == false or {Quincy.ask motive} == false:
+					jump break
+				else:
+					jump choices
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
@@ -98,7 +105,10 @@ Dalton (Default): Ask about...
 		else:
 			Dalton (Default): ...
 			- Ask more questions.
-				jump choices
+				if {Quincy.asked_location} == false or {Quincy.asked_missing} == false or {Quincy.ask motive} == false:
+					jump break
+				else:
+					jump choices
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
@@ -107,6 +117,7 @@ Dalton (Default): Ask about...
 	- Back.
 		jump choices
 - Other victims.
+	label victims
 	Dalton (Default): Show picture of...
 	- Juniper Hartley.
 		set {Quincy.num_question_asked} += 1
@@ -138,7 +149,10 @@ Dalton (Default): Ask about...
 		else:
 			Dalton (Default): ...
 			- Ask more questions.
-				jump choices
+				if {Quincy.asked_Juniper} == false or {Quincy.asked_Micah} == false:
+					jump victims
+				else:
+					jump choices
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...
@@ -167,7 +181,10 @@ Dalton (Default): Ask about...
 		else:
 			Dalton (Default): ...
 			- Ask more questions.
-				jump choices
+				if {Quincy.asked_Juniper} == false or {Quincy.asked_Micah} == false:
+					jump victims
+				else:
+					jump choices
 			- Continue investigation.
 				Dalton (Talk): That's all the questions I have right now.
 				Quincy (Happy): Hm...

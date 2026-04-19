@@ -4,6 +4,7 @@ Micah (Awkward): I guess.
 label choices
 Dalton (Default): Ask about... 
 - Other victims.
+	label victims
 	Dalton (Default): Show picture of... 
 	- Juniper Hartley.
 		label juniper qs
@@ -41,7 +42,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -53,7 +59,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -63,7 +74,12 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump juniper qs
+						elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
@@ -90,7 +106,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -102,7 +123,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -112,7 +138,12 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump juniper qs
+						elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
@@ -163,7 +194,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -175,7 +211,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -185,7 +226,12 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump juniper qs
+						elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
@@ -213,7 +259,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -225,7 +276,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump juniper qs
+								elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -235,7 +291,12 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump juniper qs
+						elif {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
@@ -273,7 +334,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -285,7 +351,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -295,7 +366,12 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump quincy qs
+						elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
@@ -319,7 +395,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -331,7 +412,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -341,7 +427,12 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump quincy qs
+						elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
@@ -383,7 +474,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -395,7 +491,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -405,7 +506,12 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump quincy qs
+						elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
@@ -437,7 +543,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -449,7 +560,12 @@ Dalton (Default): Ask about...
 						else:
 							Dalton (Default): ...
 							- Ask more questions.
-								jump choices
+								if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+									jump quincy qs
+								elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+									jump victims
+								else:
+									jump choices
 							- Continue investigation.
 								Dalton (Resting): That's all the questions I have for now.
 								[end_timeline]
@@ -459,10 +575,17 @@ Dalton (Default): Ask about...
 				else:
 					Dalton: ...
 					- Ask more questions.
-						jump choices
+						if {Asked Questions.Micah_Quincy_Q1} == false or {Asked Questions.Micah_Quincy_Q2} == false:
+							jump quincy qs
+						elif {Asked Questions.Micah_Juniper_Q1} == false or {Asked Questions.Micah_Juniper_Q2} == false:
+							jump victims
+						else:
+							jump choices
 					- Continue investigation.
 						Dalton (Talk): That's all the questions I have for now.
 						[end_timeline]
+	- Back. | [if {Asked Questions.Micah_viewed_ID} == true or {Juniper.found_skylar} == true]
+		jump choices
 - Clyde Procyon. | [if {Asked Questions.Micah_viewed_ID} == true]
 	label Clyde qs
 	if {Character Aff Points.Micah} < 2:
