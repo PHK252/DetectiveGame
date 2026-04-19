@@ -37,7 +37,7 @@ func _ready():
 	interactable.set_deferred("monitorable", Dialogic.VAR.get_variable("Juniper.left_juniper"))
 
 func _on_map_leave_interacted(interactor):
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and GlobalVars.calling == false and GlobalVars.phone_up == false:
 		print("map_interact")
 		open_door.play()
 		emit_signal("theo_repos")
