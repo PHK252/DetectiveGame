@@ -14,7 +14,7 @@ func _ready():
 	_load_streams(stream_array)
 
 func _on_guitar_interact_interacted(interactor):
-	if !playing and !GlobalVars.in_dialogue:
+	if !playing and !GlobalVars.in_dialogue and GlobalVars.phone_up == false:
 		var arr_size = stream_array.size()
 		if arr_size != 0:
 			playing = true

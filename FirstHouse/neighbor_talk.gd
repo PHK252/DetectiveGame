@@ -9,7 +9,7 @@ signal look_at_on
 signal look_at_off
 
 func _on_interactable_interacted(interactor):
-	if GlobalVars.in_dialogue == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.calling == false and GlobalVars.phone_up == false:
 		print("talk")
 		emit_signal("look_at_on")
 		Dialogic.start(dialogue_file)

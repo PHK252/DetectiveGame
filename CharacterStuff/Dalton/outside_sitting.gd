@@ -6,7 +6,7 @@ func _ready():
 	interactable.set_deferred("monitorable", !Dialogic.VAR.get_variable("Quincy.left_quincy"))
 
 func _on_interactable_interacted(interactor):
-	if GlobalVars.in_dialogue == false and Dialogic.VAR.get_variable("Quincy.left_quincy") == false:
+	if GlobalVars.in_dialogue == false and Dialogic.VAR.get_variable("Quincy.left_quincy") == false and GlobalVars.phone_up == false:
 		if GlobalVars.in_level == false:
 			Dialogic.start("Porch_Theo")
 			GlobalVars.in_dialogue = true

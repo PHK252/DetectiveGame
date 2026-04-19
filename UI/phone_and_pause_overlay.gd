@@ -72,16 +72,16 @@ func _on_receiving_call_pressed():
 func _on_call_normal_toggled(toggled_on):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_look_screen == false:
 		if toggled_on == true:
+			InputMap.action_erase_events("Exit")
+			InputMap.action_erase_events("interact")
+			GlobalVars.phone_up = true
 			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				prev_mouse_mode = 2
 			elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 				prev_mouse_mode = 0
 			await get_tree().process_frame
-			InputMap.action_erase_events("Exit")
-			InputMap.action_erase_events("interact")
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			phone_ui.show()
-			GlobalVars.phone_up = true
 			player.stop_player() 
 		else:
 			InputMap.action_add_event("Exit", exit[0])
@@ -187,8 +187,14 @@ func _on_case_added_notes_overlay():
 		phone_visible = true
 	
 
-
-
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		print("interact_double")
+		call_normal.disabled = true
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
+		call_normal.disabled = false
 
 func _on_phone_ui_visibility_changed():
 	if phone_ui.visible == true:

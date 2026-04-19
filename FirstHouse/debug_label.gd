@@ -25,9 +25,9 @@ func _process(delta):
 			##debug_var = i.name
 	##debug_var = GlobalVars.phone_tut
 	debug_var = timer.get_time_left()
-	if distraction_timer:
-		debug_var_1 = distraction_timer.get_time_left()
-	###debug_var = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
+	#if distraction_timer:
+		#debug_var_1 = distraction_timer.get_time_left()
+	debug_var_1 = GlobalVars.in_look_screen
 	debug_var_2 = Dialogic.VAR.get_variable("Character Aff Points.Theo")
 	#debug_var_2 = Dialogic.VAR.get_variable("Quincy.in_bathroom")
 	
@@ -40,6 +40,6 @@ func _process(delta):
 	debug_var_8 = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
 	debug_var_9 = GlobalVars.in_level
 	###debug_var_4 = alert.visible
-	label.text = "Time left: " + str(debug_var) + "\n Distract: " + str(debug_var_1)  + "\nTheo: " + str(debug_var_2) + "\nMicah: " + str(debug_var_3) + "\nJuniper: " + str(debug_var_4) + "\nQuincy: " + str(debug_var_5) + "\nSkylar: " + str(debug_var_6) + "\nIn Level: " + str(debug_var_9) 
+	label.text = "Look Screen: " + str(debug_var_1) #+ "\n Distract: " + str(debug_var_1)  + "\nTheo: " + str(debug_var_2) + "\nMicah: " + str(debug_var_3) + "\nJuniper: " + str(debug_var_4) + "\nQuincy: " + str(debug_var_5) + "\nSkylar: " + str(debug_var_6) + "\nIn Level: " + str(debug_var_9) 
 	##label.text = "Time out:  " + str(debug_var) + "\nDistract time " + str(debug_var_1) + "\nIn Danger: " + str(debug_var_2) + "\nCatch: " + str(debug_var_3
 	#pass

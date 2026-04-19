@@ -28,7 +28,7 @@ signal retarget(target: int)
 func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
-	if GlobalVars.in_dialogue == false and asked == false:
+	if GlobalVars.in_dialogue == false and asked == false and GlobalVars.in_interaction == "" and GlobalVars.phone_up == false:
 		alert.hide()
 		GlobalVars.in_dialogue = true
 		player.stop_player()

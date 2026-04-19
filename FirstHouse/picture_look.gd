@@ -21,7 +21,6 @@ func _on_input_event(viewport, event, shape_idx):
 			pic_look.hide()
 			pic_look_UI.show()
 			GlobalVars.viewing = "pic"
-			GlobalVars.in_look_screen = true
 			GlobalVars.clicked_Micah_pic = GlobalVars.clicked_Micah_pic + 1
 
 func _on_exit_pressed():
