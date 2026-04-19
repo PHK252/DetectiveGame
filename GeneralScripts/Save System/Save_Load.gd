@@ -6,6 +6,7 @@ const SETTING_DIR = "user://savegame/"
 const SAVE_FILE_NAME = "save.json"
 const SETTINGS_FILE = "settings.json"
 
+signal saving
 signal loaded
 signal loaded_settings
 var brand_new : bool
@@ -79,6 +80,7 @@ func loadSettings(path : String):
 		return
 
 func saveGame(path: String, dialogic_save : bool = true):
+	emit_signal("saving")
 	if dialogic_save == true:
 		Dialogic.Save.save()
 	#var file = FileAccess.open(path, FileAccess.WRITE)
