@@ -56,6 +56,7 @@ mouse_filter = 2
 [node name="HBox" type="HBoxContainer" parent="Anchor/Panel"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = -15
 
 [node name="PortraitPanel" type="Panel" parent="Anchor/Panel/HBox"]
 unique_name_in_owner = true
@@ -96,13 +97,14 @@ script = ExtResource("1_4jxq7")
 mode = 1
 container_ids = PackedStringArray("1")
 size_mode = 0
-origin_offset = Vector2(-5, 0)
+origin_offset = Vector2(-15, 0)
 debug_character_portrait = "speaker"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Anchor/Panel/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+theme_override_constants/separation = 0
 
 [node name="HSeparator" type="HSeparator" parent="Anchor/Panel/HBox/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
