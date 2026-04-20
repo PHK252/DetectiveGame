@@ -109,7 +109,7 @@ func  show_closed_case():
 
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Asked Questions.Micah_Asked_Case")
-	print(alert.visible, "alert")
+	GlobalVars.in_look_screen = false
 	if GlobalVars.in_look_screen == false and GlobalVars.in_interaction == "":
 		if GlobalVars.in_dialogue == false:
 			if GlobalVars.opened_micah_case == true:

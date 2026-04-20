@@ -30,10 +30,11 @@ signal disable_look
 func _on_interactable_interacted(interactor):
 	#print(asked)
 	#emit_signal("Dquestion")
-	if GlobalVars.in_dialogue == false:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		if Q_greeting == true:
 			GlobalVars.in_dialogue = true
 			player.stop_player()
+			GlobalVars.in_interaction = "Ask Quincy"
 			alert.hide()
 			emit_signal("enable_look")
 			var ask_victims = Dialogic.start("Quincy_asked_questions")
@@ -53,6 +54,7 @@ func _ready():
 func _on_timeline_ended():
 	#emit_signal("Dstopped")
 	#emit_signal("Tstart")
+	GlobalVars.in_interaction = ""
 	emit_signal("disable_look")
 	player.start_player()
 	alert.hide()
@@ -65,6 +67,7 @@ func _on_greeting_ended():
 	#emit_signal("Tstart")
 	player.start_player()
 	alert.hide()
+	GlobalVars.in_interaction = ""
 	Dialogic.timeline_ended.disconnect(_on_greeting_ended)
 	if Q_greeting == true:
 		emit_signal("finish_greeting")
@@ -114,9 +117,7 @@ func _on_greeting_third_q_dialogue() -> void: # Quincy is greeted outside, Playe
 		player.stop_player()
 		var greeting = Dialogic.start("Quincy_greeting")
 		Dialogic.timeline_ended.connect(_on_greeting_ended)
-		greeting.register_character(load("res://Dialogic Characters/Dalton.dch"), dalton_marker)
-		greeting.register_character(load("res://Dialogic Characters/Theo.dch"), theo_marker)
-		greeting.register_character(load("res://Dialogic Characters/Quincy.dch"), quincy_marker)
+		GlobalVars.in_interaction = "Greet Quincy"
 
 func _on_theo_wander_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and Q_greeting == false:

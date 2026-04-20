@@ -78,6 +78,7 @@ func _on_dialogic_signal(argument: String):
 
 func _on_interactable_interacted(interactor):
 	if just_interacted == false and GlobalVars.in_dialogue == false:
+		GlobalVars.in_look_screen = false
 		emit_signal("general_interaction")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		casefilecam.priority = 5

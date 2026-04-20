@@ -91,6 +91,7 @@ func _process(delta):
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		GlobalVars.in_look_screen = false
 		if cork_cam.priority != 5:
 			emit_signal("general_interaction")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

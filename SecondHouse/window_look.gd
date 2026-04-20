@@ -44,6 +44,7 @@ func _on_timeline_ended():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false:
+		GlobalVars.in_look_screen = false
 		GlobalVars.in_interaction = "window"
 		window_cam.priority = 15
 		main_cam.priority = 0 

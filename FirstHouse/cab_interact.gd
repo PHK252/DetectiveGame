@@ -173,6 +173,7 @@ func _on_thoughts_ended():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		GlobalVars.in_look_screen = false
 		emit_signal("general_interact")
 		cab_area.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

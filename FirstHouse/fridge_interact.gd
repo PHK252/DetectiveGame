@@ -56,6 +56,7 @@ func _process(delta):
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		GlobalVars.in_look_screen = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		GlobalVars.in_interaction = "fridge"
 		fridge_cam.priority = 30

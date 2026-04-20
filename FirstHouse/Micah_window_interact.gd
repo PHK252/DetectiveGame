@@ -101,7 +101,7 @@ func _on_timeline_ended():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		GlobalVars.in_look_screen = false
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
 		FP_Cam.priority = 24

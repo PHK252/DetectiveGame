@@ -121,6 +121,7 @@ func _on_timeline_ended():
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		emit_signal("general_interact")
+		GlobalVars.in_look_screen = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		alert.hide()
 		GlobalVars.in_interaction = interact_type

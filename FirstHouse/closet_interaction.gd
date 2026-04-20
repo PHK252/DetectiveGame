@@ -141,7 +141,7 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	#open_closet_door_1.disabled = false
 	#open_closet_door_2.disabled = false
-	
+	GlobalVars.in_look_screen = false
 	if closet_open == false and interaction_closet == false: 
 		await get_tree().process_frame
 		await get_tree().process_frame

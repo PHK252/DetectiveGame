@@ -52,6 +52,7 @@ func _process(delta):
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		alert.hide()
+		GlobalVars.in_look_screen = false
 		player.stop_player()
 		cam_anim.play("Cam_Idle")
 		FP_Cam.priority = 30

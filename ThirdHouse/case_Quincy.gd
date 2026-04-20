@@ -45,6 +45,7 @@ func _ready():
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Quincy.Quincy_asked_case")
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
+		GlobalVars.in_look_screen = false
 		if GlobalVars.opened_quincy_case == true:
 			GlobalVars.in_interaction = interact_type
 			#print("look " + str(GlobalVars.in_look_screen))

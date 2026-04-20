@@ -22,6 +22,7 @@ func _ready():
 
 func _on_interactable_interacted(interactor):
 	if GlobalVars.in_interaction == "" and GlobalVars.in_dialogue == false:
+		GlobalVars.in_look_screen = false
 		if FP_cam:
 			FP_cam.priority = 30
 			Exit_cam.priority = 0 

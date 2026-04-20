@@ -138,7 +138,7 @@ func _on_interactable_interacted(interactor):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		alert.hide()
 		GlobalVars.in_interaction = interact_type
-		#interact_area.hide()
+		GlobalVars.in_look_screen = false
 		FP_Cam.priority = 30
 		Exit_Cam.priority = 0 
 		cam_anim.play("Cam_Idle")

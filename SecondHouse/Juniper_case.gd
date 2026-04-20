@@ -69,7 +69,7 @@ func _ready():
 
 func _on_interactable_interacted(interactor):
 	var case_asked = Dialogic.VAR.get_variable("Juniper.Juniper_asked_case")
-	print(case_asked)
+	GlobalVars.in_look_screen = false
 	if GlobalVars.in_dialogue == false and GlobalVars.in_look_screen == false and GlobalVars.in_interaction == "" :
 		if case_asked == false:
 			GlobalVars.in_dialogue = true
