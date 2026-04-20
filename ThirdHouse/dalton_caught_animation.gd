@@ -13,9 +13,9 @@ var caught_anim := false
 signal play_anim
 signal clear_evi
 
-#func _input(event):
+func _input(event):
 	#if event is InputEventKey and event.is_pressed():
-		#if event.keycode == KEY_SPACE:
+		#if event.keycode == KEY_P:
 			#_on_quincy_play_caught()
 		#if event.keycode == KEY_P:
 			#Dialogic.VAR.set_variable("Quincy.needs_distraction", true)

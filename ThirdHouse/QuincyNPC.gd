@@ -121,7 +121,7 @@ func _ready() -> void:
 	if GlobalVars.in_level:
 		if GlobalVars.quincy_kicked_out == true or GlobalVars.quincy_time_out == true:
 			GlobalVars.quincy_pos = timeout_pos.position
-	if GlobalVars.from_save_file == true and GlobalVars.Quincy_Dalton_caught == false:
+	if GlobalVars.from_save_file == true: #and GlobalVars.Quincy_Dalton_caught == false:
 		if GlobalVars.in_level == true:
 			greeting = true
 		if Dialogic.VAR.get_variable("Quincy.is_distracted") == true:

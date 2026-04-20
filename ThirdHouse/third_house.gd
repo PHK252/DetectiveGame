@@ -266,9 +266,9 @@ func _on_quincy_entered():
 	timer.start()
 	emit_signal("phone_time_start")
 	print("level start!")
-	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	GlobalVars.in_level = true
 	music.play()
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 	#MusicFades.fade_in_audio() sound better if u just play
 	
 
