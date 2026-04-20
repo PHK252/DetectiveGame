@@ -24,7 +24,7 @@ func _ready():
 
 func _on_map_leave_interacted(interactor):
 	print(GlobalVars.in_interaction)
-	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and main_cam.priority != 30:
+	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "" and main_cam.priority != 30 and GlobalVars.calling == false and GlobalVars.phone_up == false:
 		print("map_interact")
 		emit_signal("general_interaction")
 		#if GlobalVars.map_tut == false and tutorial.visible == true:

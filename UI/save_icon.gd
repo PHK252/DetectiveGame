@@ -12,3 +12,4 @@ func _on_saving():
 	animation_player.play("Saving")
 	await get_tree().create_timer(5.0).timeout
 	hide()
+	animation_player.play("RESET")

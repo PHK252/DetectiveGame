@@ -26,28 +26,29 @@ func _ready() -> void:
 		if Dialogic.VAR.get_variable("Endings.Ending_type") != "":
 			if Dialogic.VAR.get_variable("Endings.Ending_type") != "Quincy fired" and  Dialogic.VAR.get_variable("Endings.Ending_type") != "Chief fired" and Dialogic.VAR.get_variable("Endings.Ending_type") != "Arrested Skylar" and Dialogic.VAR.get_variable("Endings.Ending_type") != "Keep Confidential":
 				clue4 = true
-	if clue1 and clue2 and clue3 and clue4:
-		GlobalVars.clue_progress = 4
-		GlobalVars.set_achievements("ACH_PERFECT")
-	elif clue1 and clue2 and clue3:
-		GlobalVars.clue_progress = 3
-	elif clue1 and clue2:
-		GlobalVars.clue_progress = 2
-	elif clue1:
-		GlobalVars.clue_progress = 1
-	else:
-		GlobalVars.clue_progress = 0
-		return
-	if GlobalVars.clue_progress == 1:
+		if clue1 and clue2 and clue3 and clue4:
+			Dialogic.VAR.set_variable("Global.clue_progress", 4)
+			GlobalVars.set_achievements("ACH_PERFECT")
+		elif clue1 and clue2 and clue3:
+			Dialogic.VAR.set_variable("Global.clue_progress", 3)
+		elif clue1 and clue2:
+			Dialogic.VAR.set_variable("Global.clue_progress", 2)
+		elif clue1:
+			Dialogic.VAR.set_variable("Global.clue_progress", 1)
+		else:
+			Dialogic.VAR.set_variable("Global.clue_progress", 0)
+			return
+	
+	if Dialogic.VAR.get_variable("Global.clue_progress") == 1:
 		clue_1.visible = true
 		pin_1.visible = true
-	elif GlobalVars.clue_progress == 2:
+	elif Dialogic.VAR.get_variable("Global.clue_progress") == 2:
 		thread.visible = true 
 		clue_1.visible = true
 		pin_1.visible = true
 		clue_2.visible = true
 		pin_2.visible = true
-	elif GlobalVars.clue_progress == 3:
+	elif Dialogic.VAR.get_variable("Global.clue_progress") == 3:
 		thread.visible = true 
 		thread_1.visible = true 
 		clue_1.visible = true
@@ -56,7 +57,7 @@ func _ready() -> void:
 		pin_2.visible = true
 		clue_3.visible = true
 		pin_3.visible = true
-	elif GlobalVars.clue_progress == 4:
+	elif Dialogic.VAR.get_variable("Global.clue_progress") == 4:
 		thread.visible = true 
 		thread_1.visible = true 
 		thread_2.visible = true 

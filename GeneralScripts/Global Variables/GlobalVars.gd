@@ -443,7 +443,7 @@ func get_current_level_path(level : String):
 		
 
 var cam_changed = false
-var clue_progress = 0
+#var clue_progress = 0
 var ghost_open = false
 
 func reset_globals():

@@ -42,6 +42,8 @@ func _on_firsthouse_button_pressed() -> void:
 		car_rev.play()
 		hide()
 		await get_tree().create_timer(1.0).timeout
+	else:
+		hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.in_trans = true
 	if GlobalVars.day == 1:
@@ -67,6 +69,8 @@ func _on_secondhouse_button_pressed() -> void:
 		car_rev.play()
 		hide()
 		await get_tree().create_timer(1.0).timeout
+	else:
+		hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.in_trans = true
 	if went_Micah == true or Dialogic.VAR.get_variable("Global.first_house") == "Micah":
@@ -108,6 +112,8 @@ func _on_thirdhouse_button_pressed() -> void:
 			car_rev.play()
 			hide()
 			await get_tree().create_timer(1.0).timeout
+		else:
+			hide()
 		GlobalVars.in_trans = true
 		GlobalVars.in_interaction = ""
 		GlobalVars.viewing = ""
@@ -124,6 +130,8 @@ func _on_office_button_pressed() -> void:
 		car_rev.play()
 		hide()
 		await get_tree().create_timer(1.0).timeout
+	else:
+		hide()
 	GlobalVars.in_trans = true
 	match GlobalVars.day:
 		1: 
@@ -159,6 +167,8 @@ func _on_secret_button_pressed() -> void:
 		car_rev.play()
 		hide()
 		await get_tree().create_timer(2.8).timeout
+	else:
+		hide()
 	GlobalVars.in_look_screen = false
 	GlobalVars.in_interaction = ""
 	GlobalVars.viewing = ""

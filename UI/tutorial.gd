@@ -117,6 +117,8 @@ func _process(delta):
 			GlobalVars.dialogue_tut = true
 			_hide_tut()
 	if current_tut == zoom_tut:
+		if GlobalVars.map_tut == true:
+			_hide_tut()
 		if Input.is_action_just_pressed("zoom_in"):
 			GlobalVars.map_tut = true
 			_hide_tut()

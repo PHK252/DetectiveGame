@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var view_container : SubViewportContainer
 @onready var forward = $SubViewportContainer/SubViewport/Forward
 @onready var backward = $SubViewportContainer/SubViewport/Backward
 @onready var animation_tree = $AnimationTree
@@ -25,6 +26,7 @@ func _process(delta):
 
 
 func _on_forward_pressed():
+	print("flip forward")
 	page_count += 1
 	forward.hide()
 	backward.hide()
@@ -41,7 +43,7 @@ func _on_forward_pressed():
 
 func _on_backward_pressed():
 	page_count -= 1
-
+	print("flip back")
 	if blank_turn_count > 0:
 		forward.hide()
 		backward.hide()
@@ -85,3 +87,10 @@ func _input(event):
 		GlobalVars.in_look_screen = false
 		await get_tree().create_timer(.3).timeout
 		GlobalVars.viewing = ""
+
+
+func _on_visibility_changed():
+	if visible == true:
+		view_container.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		view_container.process_mode = Node.PROCESS_MODE_DISABLED
