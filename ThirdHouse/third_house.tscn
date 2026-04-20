@@ -17030,8 +17030,8 @@ shadow_mesh = SubResource("ArrayMesh_sg08w")
 [sub_resource type="BoxShape3D" id="BoxShape3D_e5jfp"]
 size = Vector3(0.620361, 2.74263, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ov75q"]
-size = Vector3(1.00402, 1.48561, 0.731528)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ec7qg"]
+size = Vector3(1.20138, 0.522825, 0.731528)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pe1ph"]
 _surfaces = [{
@@ -20542,7 +20542,7 @@ armature = NodePath("DaltonStepBack")
 camera = NodePath("../../../CameraSystem/Camera3D")
 idle_time = NodePath("Timer")
 idle_time_2 = NodePath("Idle2")
-force_rotate_list = [NodePath("../../../../../QuincyMarkers/ConversateWine"), NodePath("../../../../../TheoMarkers/T_location"), NodePath("../../../../../QuincyMarkers/BathroomWait"), NodePath("../../../../../QuincyMarkers/Bathroom"), NodePath("../../../../../TheoMarkers/RotationDaltonBathroom"), NodePath("../../../../../QuincyMarkers/LeavePosition"), NodePath("../../../../../QuincyMarkers/RotateMiddle"), NodePath("../../Quincy/Quincy/QuincyMarker"), NodePath("../../../../../TheoMarkers/PokerMarkerQ"), NodePath("../../../../../TheoMarkers/FishTankQ"), NodePath("../../../../../TheoMarkers/ComputerQ"), NodePath("../../../../../TheoMarkers/DeskLowQ"), NodePath("../../../../../TheoMarkers/BathroomQ"), NodePath("../../../../../TheoMarkers/MasterBedQ"), NodePath("../../../../../TheoMarkers/BookShelfQ"), NodePath("../../../../../TheoMarkers/SafeQ"), NodePath("../../../../../TheoMarkers/GuitarMarkerQ"), NodePath("../../../../../TheoMarkers/CaseMarkerQ"), NodePath("../../../../../TheoMarkers/PaintMarkerQ")]
+force_rotate_list = [NodePath("../../../../../QuincyMarkers/ConversateWine"), NodePath("../../../../../TheoMarkers/T_location"), NodePath("../../../../../QuincyMarkers/BathroomWait"), NodePath("../../../../../QuincyMarkers/Bathroom"), NodePath("../../../../../TheoMarkers/RotationDaltonBathroom"), NodePath("../../../../../QuincyMarkers/LeavePosition"), NodePath("../../../../../QuincyMarkers/RotateMiddle"), NodePath("../../Quincy/Quincy/QuincyMarker"), NodePath("../../../../../TheoMarkers/PokerMarkerQ"), NodePath("../../../../../TheoMarkers/FishTankQ"), NodePath("../../../../../TheoMarkers/ComputerQ"), NodePath("../../../../../TheoMarkers/DeskLowQ"), NodePath("../../../../../TheoMarkers/BathroomQ"), NodePath("../../../../../TheoMarkers/MasterBedQ"), NodePath("../../../../../TheoMarkers/BookShelfQ"), NodePath("../../../../../TheoMarkers/SafeQ"), NodePath("../../../../../TheoMarkers/GuitarMarkerQ"), NodePath("../../../../../TheoMarkers/CaseMarkerQ"), NodePath("../../../../../TheoMarkers/PaintMarkerQ"), NodePath("../../../../../QuincyMarkers/WalkTarget_Office"), NodePath("../../../../../QuincyMarkers/WalkTarget_Bar")]
 sound_player = NodePath("../DaltonSoundPlayer2")
 wakeUpMarker = NodePath("../../../../../QuincyMarkers/WakeUpMarker")
 daltonParent = NodePath(".")
@@ -20564,25 +20564,45 @@ billboard = 2
 unique_name_in_owner = false
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig" index="0"]
-bones/1/position = Vector3(-2.81136e-09, -5.75171e-08, -2.95795)
-bones/3/rotation = Quaternion(0.00343848, 0.358407, 0.857253, -0.369661)
-bones/4/rotation = Quaternion(-0.309239, 0.0169237, -0.036763, 0.950123)
-bones/5/rotation = Quaternion(0.535607, -0.0466425, 0.070509, 0.840225)
-bones/8/rotation = Quaternion(-0.00343846, 0.358407, 0.857253, 0.369661)
-bones/9/rotation = Quaternion(-0.309239, -0.0169237, 0.036763, 0.950123)
-bones/10/rotation = Quaternion(0.535607, 0.0466426, -0.070509, 0.840225)
-bones/12/position = Vector3(-2.81136e-09, -2.36039e-07, -2.95795)
-bones/15/rotation = Quaternion(-0.0750866, 1.15359e-07, -1.41039e-08, 0.997177)
-bones/16/rotation = Quaternion(0.0162041, 3.83345e-09, 1.27731e-08, 0.999869)
-bones/18/rotation = Quaternion(0.0630356, 0.0054411, -0.0103459, 0.997943)
-bones/20/rotation = Quaternion(0.0630356, -0.0054411, 0.0103459, 0.997943)
-bones/22/rotation = Quaternion(-0.265134, -0.148147, -0.384273, 0.871832)
-bones/23/rotation = Quaternion(-0.00375268, -0.000435906, -0.344359, 0.938831)
-bones/26/rotation = Quaternion(-0.265134, 0.148147, 0.384273, 0.871832)
-bones/27/rotation = Quaternion(-0.00375287, 0.000435897, 0.34436, 0.93883)
-bones/31/position = Vector3(0.949957, -0.0311821, -2.18159)
-bones/33/position = Vector3(-2.81136e-09, -1.17122e-07, -2.95795)
-bones/36/position = Vector3(-0.949957, -0.0311821, -2.18159)
+bones/1/position = Vector3(-2.76792e-10, -5.75171e-08, -3.01594)
+bones/1/rotation = Quaternion(5.33129e-09, 0.707107, 0.707107, -5.33127e-09)
+bones/3/rotation = Quaternion(0.0194593, 0.31422, 0.87721, -0.362477)
+bones/4/rotation = Quaternion(-0.218558, 0.086736, -0.0384893, 0.971199)
+bones/5/rotation = Quaternion(0.494435, -0.10901, 0.102351, 0.856256)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0194592, 0.31422, 0.87721, 0.362477)
+bones/9/rotation = Quaternion(-0.218558, -0.086736, 0.0384893, 0.971199)
+bones/10/rotation = Quaternion(0.494435, 0.10901, -0.102351, 0.856256)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(-2.76792e-10, -2.71047e-07, -3.01594)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0851535, 1.1518e-07, -1.24615e-08, 0.996368)
+bones/16/rotation = Quaternion(0.0385496, 4.21837e-09, 1.27907e-08, 0.999257)
+bones/18/rotation = Quaternion(0.0193082, -0.00939719, -0.00966547, 0.999723)
+bones/20/rotation = Quaternion(0.0193082, 0.00939719, 0.00966547, 0.999723)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.255686, -0.149017, -0.40422, 0.865462)
+bones/23/rotation = Quaternion(-0.00310303, -0.000445086, -0.284747, 0.958598)
+bones/24/rotation = Quaternion(0.0187947, 0.00442636, -0.00950233, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.255687, 0.149017, 0.404219, 0.865462)
+bones/27/rotation = Quaternion(-0.00310323, 0.000445094, 0.284749, 0.958597)
+bones/28/rotation = Quaternion(0.0187947, -0.0044264, 0.00950234, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.988558, -0.0311821, -2.19258)
+bones/31/rotation = Quaternion(0.805455, 7.10543e-15, 0.592656, 1.17718e-07)
+bones/32/rotation = Quaternion(1.15282e-22, -0.823096, -2.64698e-23, 0.567902)
+bones/33/position = Vector3(-2.76792e-10, -1.17122e-07, -3.01594)
+bones/33/rotation = Quaternion(-0.707107, -1.05879e-22, 0.707107, 0)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/35/rotation = Quaternion(1.65455e-24, 0.999887, 0, 0.0150235)
+bones/36/position = Vector3(-0.988558, -0.0311821, -2.19258)
+bones/36/rotation = Quaternion(0.805455, -7.10543e-15, -0.592656, 1.17718e-07)
+bones/37/rotation = Quaternion(1.15282e-22, 0.823096, 2.64698e-23, 0.567902)
 
 [node name="detective" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="0"]
 layers = 256
@@ -20590,7 +20610,7 @@ mesh = SubResource("ArrayMesh_y3lh2")
 skin = SubResource("Skin_fqgsu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="1"]
-transform = Transform3D(-0.61266, 0.0738369, -0.78689, -0.731464, 0.324122, 0.599921, 0.299345, 0.943129, -0.144568, -0.949951, -0.0311878, -2.18152)
+transform = Transform3D(-0.632011, 0.0243556, -0.774576, -0.739073, 0.281689, 0.6119, 0.233093, 0.959196, -0.16003, -0.98856, -0.032549, -2.1927)
 bone_name = "DEF_Hand.R"
 bone_idx = 28
 
@@ -20601,7 +20621,7 @@ mesh = SubResource("ArrayMesh_mxwhg")
 skeleton = NodePath("")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D" index="2"]
-transform = Transform3D(-0.61266, -0.0738361, 0.78689, 0.731465, 0.324121, 0.599921, -0.299344, 0.943129, -0.144568, 0.94995, -0.0311883, -2.18152)
+transform = Transform3D(-0.632011, -0.0243545, 0.774576, 0.739073, 0.281688, 0.6119, -0.233091, 0.959197, -0.16003, 0.98856, -0.0325491, -2.1927)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -20739,30 +20759,47 @@ timeout_pos = NodePath("../../../../../Theo Timeout")
 quincy_house = true
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D/DoggyPartner2/dogrig" index="0"]
-bones/1/position = Vector3(-2.81136e-09, -5.75171e-08, -2.95795)
+bones/1/position = Vector3(-2.76792e-10, -5.75171e-08, -3.01594)
+bones/1/rotation = Quaternion(5.33128e-09, 0.707107, 0.707107, -5.33128e-09)
 bones/2/rotation = Quaternion(0.0585858, 0.207451, 0.918651, 0.331078)
-bones/3/rotation = Quaternion(0.0034384, 0.358407, 0.857253, -0.369661)
-bones/4/rotation = Quaternion(-0.309239, 0.0169237, -0.0367631, 0.950123)
-bones/5/rotation = Quaternion(0.535607, -0.0466426, 0.070509, 0.840225)
-bones/8/rotation = Quaternion(-0.00343838, 0.358407, 0.857253, 0.369661)
-bones/9/rotation = Quaternion(-0.309239, -0.0169237, 0.0367631, 0.950123)
-bones/10/rotation = Quaternion(0.535607, 0.0466426, -0.070509, 0.840225)
-bones/12/position = Vector3(-2.81136e-09, -2.37724e-07, -2.95795)
-bones/15/rotation = Quaternion(-0.0750866, 1.15359e-07, -1.41039e-08, 0.997177)
-bones/16/rotation = Quaternion(0.0162041, 3.83345e-09, 1.27731e-08, 0.999869)
-bones/17/rotation = Quaternion(0.489762, 0.0783156, -0.137109, 0.857439)
-bones/18/rotation = Quaternion(0.0630356, 0.0054411, -0.0103459, 0.997943)
-bones/19/rotation = Quaternion(0.530636, -0.084852, 0.133163, 0.832762)
-bones/20/rotation = Quaternion(0.0630356, -0.0054411, 0.0103459, 0.997943)
-bones/22/rotation = Quaternion(-0.265133, -0.148147, -0.384273, 0.871832)
-bones/23/rotation = Quaternion(-0.00375265, -0.000435921, -0.344358, 0.938831)
-bones/26/rotation = Quaternion(-0.265134, 0.148147, 0.384273, 0.871832)
-bones/27/rotation = Quaternion(-0.00375287, 0.000435925, 0.344359, 0.93883)
-bones/31/position = Vector3(0.949957, -0.0311821, -2.18159)
+bones/3/rotation = Quaternion(0.0194592, 0.31422, 0.87721, -0.362477)
+bones/4/rotation = Quaternion(-0.218558, 0.086736, -0.0384893, 0.971199)
+bones/5/rotation = Quaternion(0.494435, -0.10901, 0.102351, 0.856256)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853403, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0194592, 0.31422, 0.87721, 0.362477)
+bones/9/rotation = Quaternion(-0.218558, -0.0867361, 0.0384893, 0.971199)
+bones/10/rotation = Quaternion(0.494435, 0.109011, -0.102351, 0.856256)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853403, 0.935923)
+bones/12/position = Vector3(-2.76792e-10, -3.13497e-07, -3.01594)
+bones/12/rotation = Quaternion(-0.457582, 2.02374e-08, 6.30948e-08, 0.889168)
+bones/15/rotation = Quaternion(-0.0851535, 1.1518e-07, -1.24615e-08, 0.996368)
+bones/16/rotation = Quaternion(0.0385496, 4.21837e-09, 1.27907e-08, 0.999257)
+bones/17/position = Vector3(0.306631, 0.989702, 0.1426)
+bones/17/rotation = Quaternion(0.439371, 0.0702579, -0.141408, 0.884319)
+bones/18/rotation = Quaternion(0.0193082, -0.00939719, -0.00966546, 0.999723)
+bones/19/position = Vector3(-0.306631, 0.989702, 0.1426)
+bones/19/rotation = Quaternion(0.443552, -0.0709268, 0.141073, 0.88223)
+bones/20/rotation = Quaternion(0.0193082, 0.0093972, 0.00966546, 0.999723)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.255686, -0.149017, -0.404221, 0.865462)
+bones/23/rotation = Quaternion(-0.00310301, -0.000445047, -0.284746, 0.958598)
+bones/24/rotation = Quaternion(0.0187947, 0.00442641, -0.00950235, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.255687, 0.149017, 0.40422, 0.865462)
+bones/27/rotation = Quaternion(-0.00310321, 0.000445095, 0.284748, 0.958597)
+bones/28/rotation = Quaternion(0.0187947, -0.00442638, 0.00950234, 0.999768)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, 0)
+bones/30/rotation = Quaternion(0, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(0.988558, -0.0311821, -2.19258)
 bones/31/rotation = Quaternion(0.805455, -2.20541e-15, 0.592656, 5.51352e-16)
-bones/33/position = Vector3(-2.81136e-09, -1.17122e-07, -2.95795)
-bones/36/position = Vector3(-0.949957, -0.0311821, -2.18159)
+bones/32/position = Vector3(1.89213, 0.889777, -4.50176)
+bones/33/position = Vector3(-2.76792e-10, -1.17122e-07, -3.01594)
+bones/33/rotation = Quaternion(-0.707107, 0, 0.707107, 0)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 0)
+bones/36/position = Vector3(-0.988558, -0.0311821, -2.19258)
 bones/36/rotation = Quaternion(0.805455, 2.20541e-15, -0.592656, 5.51352e-16)
+bones/37/position = Vector3(-1.89213, 0.889777, -4.50176)
 
 [node name="DoggyPartner" parent="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D" index="0"]
 layers = 256
@@ -20917,28 +20954,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0585327, 0.918076, 0.04263
 shape = SubResource("BoxShape3D_jfd3y")
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig" index="0"]
-bones/1/position = Vector3(-2.81136e-09, -5.75172e-08, -2.95795)
-bones/1/rotation = Quaternion(5.36432e-09, 0.707669, 0.706544, -5.29823e-09)
-bones/3/rotation = Quaternion(0.00369077, 0.357682, 0.857553, -0.369665)
-bones/4/rotation = Quaternion(-0.309291, 0.0169233, -0.0367693, 0.950106)
-bones/5/rotation = Quaternion(0.535724, -0.0466455, 0.0705077, 0.84015)
-bones/8/rotation = Quaternion(-0.00369075, 0.357682, 0.857553, 0.369665)
-bones/9/rotation = Quaternion(-0.309291, -0.0169233, 0.0367693, 0.950106)
-bones/10/rotation = Quaternion(0.535724, 0.0466455, -0.0705077, 0.84015)
-bones/12/position = Vector3(-2.81136e-09, -2.27235e-07, -2.95795)
-bones/12/rotation = Quaternion(-0.458288, 2.03603e-08, 6.30139e-08, 0.888804)
-bones/15/rotation = Quaternion(-0.0781439, 1.17353e-07, -1.2543e-08, 0.996942)
-bones/16/rotation = Quaternion(0.0110255, 7.07138e-09, 1.51867e-08, 0.999939)
-bones/18/rotation = Quaternion(0.0630356, 0.0054411, -0.0103459, 0.997943)
-bones/20/rotation = Quaternion(0.0630356, -0.0054411, 0.0103459, 0.997943)
-bones/22/rotation = Quaternion(-0.263629, -0.145509, -0.380451, 0.874405)
-bones/23/rotation = Quaternion(-0.00378117, -0.000435414, -0.346976, 0.937866)
-bones/26/rotation = Quaternion(-0.263049, 0.146071, 0.380331, 0.874538)
-bones/27/rotation = Quaternion(-0.00378107, 0.000435447, 0.346948, 0.937877)
-bones/31/position = Vector3(0.961576, -0.0328708, -2.18429)
-bones/33/position = Vector3(-2.81136e-09, -1.17122e-07, -2.95795)
-bones/33/rotation = Quaternion(-0.707107, 0.000552967, 0.707107, -0.000552988)
-bones/36/position = Vector3(-0.964347, -0.0303614, -2.18469)
+bones/1/position = Vector3(-2.76792e-10, -5.75182e-08, -3.01594)
+bones/1/rotation = Quaternion(5.40493e-09, 0.708359, 0.705853, -5.25759e-09)
+bones/3/rotation = Quaternion(0.0205282, 0.311149, 0.878298, -0.362432)
+bones/4/rotation = Quaternion(-0.218858, 0.0867299, -0.0385421, 0.97113)
+bones/5/rotation = Quaternion(0.494965, -0.109006, 0.102386, 0.855947)
+bones/6/rotation = Quaternion(0.348201, -0.0522738, -0.00853404, 0.935922)
+bones/7/rotation = Quaternion(-0.0585857, 0.207451, 0.918651, -0.331078)
+bones/8/rotation = Quaternion(-0.0205282, 0.311149, 0.878298, 0.362432)
+bones/9/rotation = Quaternion(-0.218858, -0.0867299, 0.0385421, 0.97113)
+bones/10/rotation = Quaternion(0.494965, 0.109006, -0.102386, 0.855947)
+bones/11/rotation = Quaternion(0.348201, 0.0522738, 0.00853404, 0.935922)
+bones/12/position = Vector3(-2.76792e-10, -1.94524e-07, -3.01594)
+bones/12/rotation = Quaternion(-0.459157, 2.05114e-08, 6.29144e-08, 0.888355)
+bones/15/rotation = Quaternion(-0.0985833, 1.17678e-07, -1.01186e-08, 0.995129)
+bones/16/rotation = Quaternion(0.0153753, 7.69836e-09, 1.28019e-08, 0.999882)
+bones/18/rotation = Quaternion(0.0193082, -0.00939719, -0.00966548, 0.999723)
+bones/20/rotation = Quaternion(0.0193082, 0.00939719, 0.00966547, 0.999723)
+bones/21/rotation = Quaternion(-0.162069, 0.0334445, -0.754767, 0.634777)
+bones/22/rotation = Quaternion(-0.24977, -0.137069, -0.387652, 0.876672)
+bones/23/rotation = Quaternion(-0.0032417, -0.000443192, -0.297473, 0.954724)
+bones/24/rotation = Quaternion(0.0187947, 0.00442638, -0.00950232, 0.999768)
+bones/25/rotation = Quaternion(-0.162069, -0.0334445, 0.754767, 0.634777)
+bones/26/rotation = Quaternion(-0.247212, 0.139384, 0.387506, 0.877096)
+bones/27/rotation = Quaternion(-0.00323194, 0.000443397, 0.29656, 0.955009)
+bones/28/rotation = Quaternion(0.0187947, -0.00442637, 0.00950232, 0.999768)
+bones/29/position = Vector3(0.413815, -0.0328653, -0.364791)
+bones/29/rotation = Quaternion(0.0165934, -8.67362e-19, 0.999862, -5.55111e-17)
+bones/30/rotation = Quaternion(-1.65455e-24, 0.999887, 0, -0.0150235)
+bones/31/position = Vector3(1.03768, -0.0383221, -2.20398)
+bones/33/position = Vector3(-2.76792e-10, -1.17122e-07, -3.01594)
+bones/33/rotation = Quaternion(-0.707105, 0.00145886, 0.707105, -0.00145891)
+bones/34/position = Vector3(-0.413815, -0.0328653, -0.364791)
+bones/34/rotation = Quaternion(-0.0165934, -8.67362e-19, 0.999862, 5.55111e-17)
+bones/36/position = Vector3(-1.0494, -0.0277122, -2.20565)
 
 [node name="quincy" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="0"]
 layers = 256
@@ -20946,16 +20995,21 @@ mesh = SubResource("ArrayMesh_ech3r")
 skin = SubResource("Skin_m6dns")
 
 [node name="TailAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="1"]
-transform = Transform3D(1, -1.30676e-07, -2.15644e-08, 9.33522e-08, 0.579944, 0.814656, -9.39498e-08, -0.814656, 0.579944, -2.81136e-09, -2.27235e-07, -2.95795)
+transform = Transform3D(1, -1.30617e-07, -2.13322e-08, 9.29447e-08, 0.578351, 0.815788, -9.42179e-08, -0.815788, 0.578351, -2.76792e-10, -1.94524e-07, -3.01594)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D/TailAttachment/tailQ/QuincyTail" index="0"]
-bones/1/rotation = Quaternion(-0.156754, 0.0127412, -0.101264, 0.98235)
+bones/0/rotation = Quaternion(0.0367603, 0.00289238, -0.00525729, 0.999306)
+bones/1/rotation = Quaternion(-0.154221, 0.0149057, -0.11274, 0.98147)
+bones/2/rotation = Quaternion(-0.0324854, -0.00840287, 0.100727, 0.994348)
+bones/3/rotation = Quaternion(0.328977, -0.104131, 0.00984383, 0.938528)
+bones/4/rotation = Quaternion(0.192826, -0.0654902, 0.0478505, 0.977875)
+bones/5/rotation = Quaternion(0.0204284, 0.00139657, 0.0583011, 0.998089)
 
 [node name="LighterAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="2"]
-transform = Transform3D(-0.617256, -0.0720434, 0.783457, 0.727096, 0.328158, 0.603028, -0.300542, 0.941871, -0.150175, 0.961555, -0.032803, -2.18423)
+transform = Transform3D(-0.650292, -0.0170128, 0.759494, 0.721678, 0.298428, 0.624597, -0.23728, 0.95428, -0.181787, 1.03768, -0.0405242, -2.20406)
 
 [node name="CigAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="3"]
-transform = Transform3D(-0.617722, 0.0709079, -0.783193, -0.726698, 0.329159, 0.602963, 0.30055, 0.941608, -0.1518, -0.964327, -0.0302947, -2.18462)
+transform = Transform3D(-0.651959, 0.0116773, -0.758164, -0.720497, 0.302049, 0.62422, 0.236292, 0.953221, -0.18851, -1.0494, -0.0299092, -2.2057)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D/CigAttachment" index="1"]
 transform = Transform3D(0.99988, -0.0143464, 0.00570992, 0.014332, 0.999893, 0.00272787, -0.00574854, -0.00264585, 0.999979, 0.093071, 0.202823, -0.101576)
@@ -20964,13 +21018,13 @@ process_material = SubResource("ParticleProcessMaterial_msbxp")
 draw_pass_1 = SubResource("SphereMesh_yclqe")
 
 [node name="CigPackAttachment" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="4"]
-transform = Transform3D(-0.617256, -0.0720434, 0.783457, 0.727096, 0.328158, 0.603028, -0.300542, 0.941871, -0.150175, 0.961555, -0.032803, -2.18423)
+transform = Transform3D(-0.650292, -0.0170128, 0.759494, 0.721678, 0.298428, 0.624597, -0.23728, 0.95428, -0.181787, 1.03768, -0.0405242, -2.20406)
 
 [node name="Skeleton3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D/CigPackAttachment/CigPack/cigOpen" index="1"]
 bones/0/rotation = Quaternion(-6.81321e-08, 5.82077e-10, -9.02219e-10, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="5"]
-transform = Transform3D(-0.617722, 0.0709079, -0.783193, -0.726698, 0.329159, 0.602963, 0.30055, 0.941608, -0.1518, -0.964327, -0.0302947, -2.18462)
+transform = Transform3D(-0.651959, 0.0116773, -0.758164, -0.720497, 0.302049, 0.62422, 0.236292, 0.953221, -0.18851, -1.0494, -0.0299092, -2.2057)
 bone_name = "DEF_Hand.R"
 bone_idx = 28
 
@@ -20979,7 +21033,7 @@ transform = Transform3D(-2.53609, -2.24179, 0.730253, 0.195748, 0.868604, 3.3463
 visible = false
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="6"]
-transform = Transform3D(0.376788, -0.0404047, -0.925418, 0.92443, 0.0798464, 0.3729, 0.0588243, -0.995988, 0.0674365, -1.69712e-07, 0.0289687, -4.80207)
+transform = Transform3D(0.376788, -0.0404047, -0.925418, 0.926104, 0.0369638, 0.375454, 0.0190369, -0.998499, 0.0513465, -1.74852e-07, -0.0300779, -4.85433)
 bone_name = "DEF_Head"
 bone_idx = 16
 
@@ -20996,7 +21050,7 @@ process_material = SubResource("ParticleProcessMaterial_v6j4w")
 draw_pass_1 = SubResource("SphereMesh_agqx1")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="SubViewportContainer/SubViewport/Characters/Quincy/Quincy/QuincyAnims/quincyrig/Skeleton3D" index="7"]
-transform = Transform3D(-0.617256, -0.0720434, 0.783457, 0.727096, 0.328158, 0.603028, -0.300542, 0.941871, -0.150175, 0.961555, -0.032803, -2.18423)
+transform = Transform3D(-0.650292, -0.0170128, 0.759494, 0.721678, 0.298428, 0.624597, -0.23728, 0.95428, -0.181787, 1.03768, -0.0405242, -2.20406)
 bone_name = "DEF_Hand.L"
 bone_idx = 24
 
@@ -21716,7 +21770,9 @@ curve = SubResource("Curve3D_m6dns")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CameraSystem"]
 transform = Transform3D(-0.675916, 0.192343, -0.711427, -2.23517e-07, 0.965186, 0.261028, 0.736977, 0.176407, -0.652483, -21.7472, 5.14641, -11.8067)
+cull_mask = 1048511
 v_offset = 0.12
+projection = 1
 current = true
 size = 11.442
 near = 0.001
@@ -24570,8 +24626,8 @@ shape = SubResource("BoxShape3D_e5jfp")
 transform = Transform3D(1, 0, -3.72529e-08, 0, 0.999999, 0, 5.96046e-08, 0, 1, -6.89831, 1.71071, -1.38968)
 
 [node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/AdditionsMay/BarRenovation/OfficeDoor/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, -2.94875e-13, 0, 1, 6.86109, -0.98148, 1.75617)
-shape = SubResource("BoxShape3D_ov75q")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.10845e-12, 0, 1, 6.9424, -1.04382, 1.75617)
+shape = SubResource("BoxShape3D_ec7qg")
 
 [node name="goldWalls2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/AdditionsMay/BarRenovation"]
 transform = Transform3D(12.671, 0, 0, 0, 0.057, 0, 0, 0, 4.711, 1.496, 0.015, 2.26)
@@ -25013,10 +25069,10 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.182047, 0.035311, -6.18773)
 
 [node name="Skeleton3D" parent="SubViewportContainer/FishAnim/fishanim" index="0"]
-bones/0/position = Vector3(-0.250959, 0.37997, 0.56149)
-bones/0/rotation = Quaternion(-0.404951, -0.0427348, -0.0822328, 0.90963)
-bones/1/position = Vector3(0.40541, 1.29572, -4.26634)
-bones/1/rotation = Quaternion(0.499606, 0.00598081, -3.76343e-09, 0.866232)
+bones/0/position = Vector3(-1.03897, 3.53228, 2.57367)
+bones/0/rotation = Quaternion(-0.996735, -0.00875622, -0.0759743, 0.0259032)
+bones/1/position = Vector3(0.490623, 3.23284, -4.65825)
+bones/1/rotation = Quaternion(-0.993324, -0.0118911, -1.00477e-09, 0.114746)
 
 [node name="AnimationTree" type="AnimationTree" parent="SubViewportContainer/FishAnim"]
 tree_root = SubResource("AnimationNodeStateMachine_urhgi")
@@ -25737,6 +25793,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.969974, -2.91903, -2.52779)
 
 [node name="WaitingDownstairs" type="Marker3D" parent="QuincyMarkers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0263235, -2.87909, -3.60775)
+
+[node name="WalkTarget_Bar" type="Marker3D" parent="QuincyMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289552, -2.87909, -3.74132)
+
+[node name="WalkTarget_Office" type="Marker3D" parent="QuincyMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289552, -2.87909, -6.11434)
 
 [node name="poolRotate" type="Marker3D" parent="QuincyMarkers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.562924, 4.34152, -9.44993)
@@ -28159,6 +28221,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11014, 0, -5.04511)
 [connection signal="time_out_drop_distract" from="." to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_time_out_drop_distract"]
 [connection signal="active_look" from="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
 [connection signal="active_look" from="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D/LookAtModifier3D" method="_activate_lookAt"]
+[connection signal="force_door_close" from="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" to="SubViewportContainer/SubViewport/AdditionsMay/BarRenovation/OfficeDoor" method="_on_dalton_force_door_close"]
 [connection signal="two_target_needed" from="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/DaltonStepBack/DetectiveRig/Skeleton3D/LookAtModifier3D" method="target_change"]
 [connection signal="two_target_needed" from="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" to="SubViewportContainer/SubViewport/Characters/Theo/CharacterBody3D/DoggyPartner2/dogrig/Skeleton3D/LookAtModifier3D" method="target_change"]
 [connection signal="timeout" from="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D/Timer" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_timer_timeout"]
@@ -28286,8 +28349,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11014, 0, -5.04511)
 [connection signal="body_exited" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/wineArea" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_wine_area_body_exited"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_danger_body_exited"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/CameraSystem" method="_on_hall_close_cam_area_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/CameraSystem/CamAreas/MasterCloset" method="_on_hall_close_cam_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/CameraSystem/CamAreas/MasterCloset" method="_on_hall_quincy_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/CameraSystem/CamAreas/MasterCloset" method="_on_hall_close_cam_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/AdditionsMay/doorBathroomReplace" method="_on_hall_close_cam_area_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/AdditionsMay/masterDoorReplace" method="_on_hall_close_cam_area_body_entered"]
 [connection signal="body_exited" from="SubViewportContainer/SubViewport/CameraSystem/CamAreas/HallCloseCamArea" to="SubViewportContainer/SubViewport/CameraSystem/CamAreas/MasterCloset" method="_on_hall_close_cam_area_body_exited"]
@@ -28322,6 +28385,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11014, 0, -5.04511)
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/AdditionsMay/doorBathroomReplace/Interactable" to="SubViewportContainer/SubViewport/AdditionsMay/doorBathroomReplace" method="_on_interactable_body_entered"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/AdditionsMay/doorBathroomReplace/Interactable" to="SubViewportContainer/SubViewport/AdditionsMay/doorBathroomReplace" method="_on_interactable_interacted"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/AdditionsMay/doorBathroomReplace/Bathroom exit" to="SubViewportContainer/SubViewport/AdditionsMay/doorBathroomReplace" method="_on_bathroom_door_body_exited"]
+[connection signal="force_walk_bar" from="SubViewportContainer/SubViewport/AdditionsMay/BarRenovation/OfficeDoor" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_office_door_force_walk_bar"]
+[connection signal="force_walk_office" from="SubViewportContainer/SubViewport/AdditionsMay/BarRenovation/OfficeDoor" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_office_door_force_walk_office"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/AdditionsMay/BarRenovation/OfficeDoor/Interactable" to="SubViewportContainer/SubViewport/AdditionsMay/BarRenovation/OfficeDoor" method="_on_interactable_interacted"]
 [connection signal="interacted" from="SubViewportContainer/SubViewport/AdditionsMay/masterDoorReplace/Interactable" to="SubViewportContainer/SubViewport/AdditionsMay/masterDoorReplace" method="_on_interactable_interacted"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/AdditionsMay/AdjustmentAreas/HallwayCheck" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_hallway_check_body_entered"]
@@ -28397,8 +28462,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11014, 0, -5.04511)
 [connection signal="exit_interact" from="Alcohol/ChocolateBox" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_caught_exit_interact"]
 [connection signal="body_entered" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_danger_body_entered"]
 [connection signal="body_entered" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_choco_entered"]
-[connection signal="body_exited" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_danger_body_exited"]
 [connection signal="body_exited" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_choco_exited"]
+[connection signal="body_exited" from="Alcohol/ChocolateBox/Interactable" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_danger_body_exited"]
 [connection signal="interacted" from="Alcohol/ChocolateBox/Interactable" to="Alcohol/ChocolateBox" method="_on_interactable_interacted"]
 [connection signal="exit_interact" from="InteractionAreas/OfficeDrawer" to="SubViewportContainer/SubViewport/Characters/Quincy/Quincy" method="_on_caught_exit_interact"]
 [connection signal="interacted" from="InteractionAreas/OfficeDrawer/DrawerInteract" to="SubViewportContainer/SubViewport/Characters/Dalton/CharacterBody3D" method="_on_drawerQ_interacted"]

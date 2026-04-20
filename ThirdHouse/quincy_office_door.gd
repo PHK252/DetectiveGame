@@ -43,6 +43,9 @@ var triggered = false
 @export var player_interactor : Interactor
 
 var finished_distract : bool = false
+
+signal force_walk_office
+signal force_walk_bar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -75,6 +78,7 @@ func close() -> void:
 	#animation_tree["parameters/conditions/is_closed"] = false
 	cooldown = false
 	collision.set_deferred("disabled", false)
+	
 
 func _process(delta):
 	var current_rot = FP_Cam.rotation_degrees
@@ -100,10 +104,15 @@ func _process(delta):
 		Dialogic.VAR.set_variable("Quincy.needs_distraction", true)
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
+	#Dialogic.VAR.set_variable("Asked Questions.has_key", true)
 	if GlobalVars.in_dialogue == false and GlobalVars.in_interaction == "":
 		var unlocked = Dialogic.VAR.get_variable("Quincy.unlocked_office")
 		if unlocked == true and (finished_distract == false or (finished_distract == true and entered == true)):
 			if is_open == false and cooldown == false:
+				if entered == false:
+					emit_signal("force_walk_office")
+				else:
+					emit_signal("force_walk_bar")
 				open()
 			else:
 				close()
@@ -148,6 +157,7 @@ func doorOpen(argument: String):
 		key.hide()
 		open()
 		await get_tree().create_timer(2.5).timeout
+		emit_signal("force_walk_office")
 		if interactable.monitorable:
 			interactable.set_deferred("monitorable", false)
 			player_interactor.process_mode = player_interactor.PROCESS_MODE_DISABLED 
@@ -217,7 +227,7 @@ func _on_cue_thoughts_ended():
 	
 
 func _on_office_door_input_event(viewport, event, shape_idx):
-	#var has_key = Dialogic.VAR.get_variable("Asked Questions.has_key")
+	
 	if GlobalVars.in_look_screen == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
@@ -319,3 +329,7 @@ func _on_office_area_q_body_exited(body):
 
 func _on_distraction_time_timeout():
 	finished_distract = true
+
+
+func _on_dalton_force_door_close() -> void:
+	close()

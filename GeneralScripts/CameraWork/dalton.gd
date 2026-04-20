@@ -61,6 +61,7 @@ var walk_number = 2
 
 var number := 0
 
+signal force_door_close
 
 @export var tea_wait_marker : Marker3D
 @export var office_return = false
@@ -1316,3 +1317,49 @@ func _on_090_interacted(interactor: Interactor) -> void:
 	needs_rotation_forced = false
 	number = 0
 	in_control = true
+
+
+func _on_office_door_force_walk_office() -> void:
+	walk_number = 19
+	in_control = false
+	needs_rotation_forced = true
+	number = 19
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	forced_walk = true
+	await get_tree().create_timer(2.0).timeout
+	emit_signal("force_door_close")
+	await get_tree().create_timer(0.5).timeout
+	forced_walk = false
+	walk_number = 2
+	needs_rotation_forced = false
+	number = 0
+	force_rotation = false
+	#emit_signal("force_door_close")
+	await get_tree().create_timer(1.6).timeout
+	in_control = true
+
+func _on_office_door_force_walk_bar() -> void:
+	walk_number = 20
+	in_control = false
+	needs_rotation_forced = true
+	number = 20
+	force_rotation = true
+	await get_tree().create_timer(0.5).timeout
+	needs_rotation_forced = false
+	force_rotation = false
+	forced_walk = true
+	await get_tree().create_timer(2.0).timeout
+	emit_signal("force_door_close")
+	await get_tree().create_timer(0.5).timeout
+	forced_walk = false
+	walk_number = 2
+	needs_rotation_forced = false
+	number = 0
+	force_rotation = false
+	#emit_signal("force_door_close")
+	await get_tree().create_timer(1.6).timeout
+	in_control = true
+	
