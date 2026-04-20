@@ -15,6 +15,9 @@ var triggered = false
 @export var open_sound : AudioStreamPlayer3D
 @export var close_sound : AudioStreamPlayer3D
 
+signal stop_quincy
+signal start_quincy
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -91,8 +94,6 @@ func _on_timeline_ended():
 	GlobalVars.in_dialogue = false
 
 
-
-
 func _on_main_level_end():
 	patio_lock.disabled = true
 
@@ -100,12 +101,14 @@ func _on_main_level_end():
 func _on_patio_entered(body):
 	if body.is_in_group("player") and GlobalVars.in_level == true:
 		if Dialogic.VAR.get_variable("Quincy.in_patio") == false:
+			emit_signal("stop_quincy")
 			Dialogic.VAR.set_variable("Quincy.in_patio", true)
 
 
 func _on_patio_exit(body):
 	if body.is_in_group("player") and GlobalVars.in_level == true:
 		if Dialogic.VAR.get_variable("Quincy.in_patio") == true:
+			emit_signal("start_quincy")
 			Dialogic.VAR.set_variable("Quincy.in_patio", false)
 
 

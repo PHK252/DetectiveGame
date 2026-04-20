@@ -1138,3 +1138,16 @@ func _on_upstairs_wait_q_body_exited(body: Node3D) -> void:
 		special_gate_upstairs = false
 		is_navigating = true
 		state = FOLLOW
+
+
+func _on_patio_door_start_quincy() -> void:
+	if state == IDLE and is_distracted == false and is_navigating == false and greeting == true and general_distraction == false:
+			emit_signal("disable_look")
+			is_navigating = true
+			state = FOLLOW
+
+func _on_patio_door_stop_quincy() -> void:
+	if state == FOLLOW and is_distracted == false and is_navigating and general_distraction == false:
+			emit_signal("enable_look")
+			is_navigating = false
+			state = IDLE
