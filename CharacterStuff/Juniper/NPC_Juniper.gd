@@ -116,6 +116,7 @@ func _ready() -> void:
 	#anim_tree.set("parameters/Yawn/request", true)
 	
 func _process(delta: float) -> void:
+		
 	if kitchen_cam == true and nav.target_position == player.global_position:
 		kitchen_cam = false
 		_force_wander_kitchen()
@@ -768,3 +769,7 @@ func _force_wander_kitchen() -> void:
 	is_navigating = true
 	is_wandering = true
 	state = WANDER
+
+func _on_juniper_corner_catch_body_entered(body: Node3D) -> void:
+	if body.is_in_group("juniper") and kitchen_cam == true:
+		_force_wander_kitchen()
