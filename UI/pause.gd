@@ -17,6 +17,7 @@ func _ready():
 	pass
 
 func _on_save_pressed():
+	GlobalVars.in_trans = true
 	save_time()
 	AudioServer.set_bus_mute(0, true)
 	resume.shortcut = null

@@ -29,10 +29,19 @@ var exit = InputMap.action_get_events("Exit")
 var interact = InputMap.action_get_events("interact")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#call_normal.toggle_on = false
+	#Bandaid to interact fix (hopefully)
+	if interact == null:
+		var new_interact = InputEventKey.new()
+		interact.keycode = KEY_E
+		InputMap.action_add_event("interact", new_interact)
+	if exit == null:
+		var new_exit = InputEventKey.new()
+		new_exit.keycode = KEY_Q
+		InputMap.action_add_event("interact", new_exit)
 	pass
+
 func _process(delta):
-	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "":
+	if GlobalVars.in_dialogue == true or GlobalVars.in_look_screen == true or GlobalVars.in_interaction != "" or GlobalVars.in_trans == true:
 		evidence.modulate.a = 0.365
 		call_normal.disabled = true
 	else:
@@ -72,6 +81,7 @@ func _on_receiving_call_pressed():
 func _on_call_normal_toggled(toggled_on):
 	if GlobalVars.in_dialogue == false and GlobalVars.in_look_screen == false:
 		if toggled_on == true:
+			print("phone_up")
 			InputMap.action_erase_events("Exit")
 			InputMap.action_erase_events("interact")
 			GlobalVars.phone_up = true

@@ -108,6 +108,7 @@ func _activate_tea(argument : String):
 		print("teaaa")
 	else:
 		emit_signal("enable_interaction")
+		SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 		Dialogic.signal_event.disconnect(_activate_tea)
 
 

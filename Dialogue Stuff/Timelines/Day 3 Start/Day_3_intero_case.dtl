@@ -17,6 +17,13 @@ if {Character Aff Points.Theo} < 3:
 	label low_theo continue
 	Dalton (Resting): Look.
 	Dalton (Doubt2): I know you’re hiding something.
+	if {Juniper.has_pie} == true and {Asked Questions.has_hair} == true:
+		Dalton (Squint): We have substantial evidence that you were at two of the crime scenes that night.
+	elif {Juniper.has_pie} == true or {Asked Questions.has_hair} == true:
+		if {Juniper.has_pie} == true:
+			Dalton (Squint): We have substantial evidence that you were at Ms. Hartley's house that night.
+		else:
+			Dalton (Squint): We have substantial evidence that you were at Mr. Procyon's apartment that night.
 	Dalton (Talk): If you confess now, I may be able to negotiate a shorter sentence for you.
 	Skylar (Awkward): ...
 	Dalton (Resting): ...
@@ -83,6 +90,13 @@ else:
 	label high_theo continue
 	Theo (Concerned): Hey...
 	Theo (Awkward): I get that you’re nervous, but...
+	if {Juniper.has_pie} == true and {Asked Questions.has_hair} == true:
+		Theo (Thinking): We have evidence that you were at Ms. Hartley's and Micah's that night.
+	elif {Juniper.has_pie} == true or {Asked Questions.has_hair} == true:
+		if {Juniper.has_pie} == true:
+			Theo (Thinking): We have evidence that you were at Ms. Hartley's house that night.
+		else:
+			Theo (Thinking): We have evidence that you were at Micah's apartment that night.
 	Theo (Talk): If you tell us your side of these events...
 	Dalton (Resting): We may be able to negotiate a shorter sentence for you.
 	Skylar (Awkward): ...
