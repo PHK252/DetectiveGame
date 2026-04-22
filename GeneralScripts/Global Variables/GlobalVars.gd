@@ -697,14 +697,14 @@ func _ready():
 	set_mouse_I_beam()
 	
 	##disable from here 
-	##Steam integration
-	#Steam.steamInit()
-	#isRunning = Steam.isSteamRunning()
-	#
-	#if !isRunning:
-		#printerr("Steam is not running!")
-		#return
-	#print("Steam is running!")
+	#Steam integration
+	Steam.steamInit()
+	isRunning = Steam.isSteamRunning()
+	
+	if !isRunning:
+		printerr("Steam is not running!")
+		return
+	print("Steam is running!")
 	## to here for itch export
 	
 #func emit_phone_call():
@@ -739,11 +739,11 @@ func emit_remove_evidence(char : String, evi : String):
 
 ##disable from here 
 ##Steam integration
-#var APP_ID = "4087290"
-#
-#func _init():
-	#OS.set_environment("SteamAppID", APP_ID)
-	#OS.set_environment("SteamGameID", APP_ID)
+var APP_ID = "4087290"
+
+func _init():
+	OS.set_environment("SteamAppID", APP_ID)
+	OS.set_environment("SteamGameID", APP_ID)
 ## to here for itch export
 
 func set_achievements(ach_name: String):

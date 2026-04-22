@@ -1363,3 +1363,8 @@ func _on_office_door_force_walk_bar() -> void:
 	await get_tree().create_timer(1.6).timeout
 	in_control = true
 	
+
+func _on_character_body_3d_stop_theo_for_tea() -> void:
+	in_control = false
+	await get_tree().create_timer(4.3).timeout
+	in_control = true
