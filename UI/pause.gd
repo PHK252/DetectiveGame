@@ -82,6 +82,11 @@ func _on_controls_show_pause():
 func _on_visibility_changed():
 	if visible == true:
 		print("pause visible")
+		print(GlobalVars.current_level)
+		if GlobalVars.current_level == "micah" or GlobalVars.current_level == "juniper" or GlobalVars.current_level == "quincy" or GlobalVars.current_level == "secret":
+			$VBoxContainer/Restart.visible = true
+		else:
+			$VBoxContainer/Restart.visible = false
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			prev_mouse_mode = 2
 		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
@@ -117,13 +122,36 @@ func _on_visibility_changed():
 				pass
 		if GlobalVars.in_dialogue == true or GlobalVars.in_tea_time == true or time_out == true or kick_out == true or Dialogic.VAR.get_variable("Quincy.is_distracted") == true or GlobalVars.in_animation == true or Dialogic.VAR.get_variable("Quincy.safe_alarm"):
 			$VBoxContainer/Save.disabled = true
+			$VBoxContainer/Restart.disabled = true
 			$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_ARROW
+			$VBoxContainer/Restart.mouse_default_cursor_shape = Control.CURSOR_ARROW
 		else:
 			$VBoxContainer/Save.disabled = false
+			$VBoxContainer/Restart.disabled = false
 			$VBoxContainer/Save.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+			$VBoxContainer/Restart.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 	
 
 func _on_options_exit():
 	pause_buttons.visible = true
 	options.visible = false
+
+
+func _on_restart_pressed():
+	AudioServer.set_bus_mute(0, true)
+	resume.shortcut = null
+	await get_tree().process_frame
+	InputMap.action_add_event("Quit", quit[0])
+	visible = false
+	#GlobalVars.from_save_file = true
+	SaveLoad.loadGame(SaveLoad.SAVE_DIR + SaveLoad.RELOAD_SAVE_NAME, true)
+	await get_tree().process_frame
+	SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+	var level_to_load = GlobalVars.get_current_level_path(GlobalVars.current_level)
+	MusicFades.fade_out_audio()
+	Loading.load_scene(main_scene, level_to_load, "", "", "", false, false, true, true)
+	GlobalVars.reset_interaction()
+	get_tree().paused = false
+	Engine.time_scale = 1
+	await get_tree().create_timer(0.51).timeout

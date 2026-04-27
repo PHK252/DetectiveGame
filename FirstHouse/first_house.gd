@@ -40,6 +40,8 @@ signal phone_down
 signal camera_check 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if AudioServer.is_bus_mute(0) == true:
+		AudioServer.set_bus_mute(0, false)
 	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_kicked):
 		Dialogic.timeline_ended.disconnect(_on_timeline_ended_kicked)
 	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_timed):

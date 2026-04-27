@@ -17,6 +17,8 @@ signal  walk_skylar
 
 
 func _ready():
+	if AudioServer.is_bus_mute(0) == true:
+		AudioServer.set_bus_mute(0, false)
 	case.visible = false
 	case_anim.play("closed")
 	emit_signal("dalton_rotate")

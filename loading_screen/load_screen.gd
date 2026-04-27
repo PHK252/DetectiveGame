@@ -46,7 +46,7 @@ var percent_label : Label
 	#await Signal(animationPlayer, "animation_finished")
 	#self.queue_free()
 
-func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false, dialogic_save : bool = true):
+func load_scene(current_scene, next_scene, type : String, time : String, dialogue : String, glitch_in : bool = false, glitch_out : bool = false, dialogic_save : bool = true, reload : bool = false):
 	#if get_tree().paused == true:
 		#get_tree().paused = false
 	if GlobalVars.from_save_file == false:
@@ -202,6 +202,8 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				if GlobalVars.from_save_file == false:
 					await get_tree().create_timer(.25).timeout
 					SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
+					if !reload:
+						SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.RELOAD_SAVE_NAME, true, true)
 				scene_instance.queue_free()
 				in_loading = false
 				loaded = false

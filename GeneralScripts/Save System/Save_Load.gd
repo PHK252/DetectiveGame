@@ -4,6 +4,7 @@ extends Node
 const SAVE_DIR = "user://savegame/"
 const SETTING_DIR = "user://savegame/"
 const SAVE_FILE_NAME = "save.json"
+const RELOAD_SAVE_NAME = "reload.json"
 const SETTINGS_FILE = "settings.json"
 
 signal saving
@@ -79,10 +80,15 @@ func loadSettings(path : String):
 		printerr("Cannot open non_existent file at %s!" % [path])
 		return
 
-func saveGame(path: String, dialogic_save : bool = true):
-	emit_signal("saving")
+func saveGame(path: String, dialogic_save : bool = true, reload : bool = false):
+	if !reload:
+		emit_signal("saving")
 	if dialogic_save == true:
-		Dialogic.Save.save()
+		if reload:
+			print("reload saved")
+			Dialogic.Save.save("reload") 
+		else:
+			Dialogic.Save.save()
 	#var file = FileAccess.open(path, FileAccess.WRITE)
 	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, GlobalVars.KEY)
 	print(_get_char_pos())
@@ -398,8 +404,11 @@ func _load_char_pos(main_dic : Dictionary):
 		_:
 			return
 	return
-func loadGame(path : String):
-	Dialogic.Save.load()
+func loadGame(path : String, reload : bool = false):
+	if reload:
+		Dialogic.Save.load("reload")
+	else:
+		Dialogic.Save.load()
 	if FileAccess.file_exists(path):
 		#var file = FileAccess.open(path, FileAccess.WRITE)
 		var file = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, GlobalVars.KEY)

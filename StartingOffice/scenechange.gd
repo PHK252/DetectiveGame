@@ -233,6 +233,7 @@ func _on_visibility_changed():
 		#office.button_pressed = false
 		#secret.button_pressed = false
 		_on_check_day()
+		pass
 
 
 func _on_Quincy_call_start_dialogue():

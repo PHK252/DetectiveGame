@@ -41,6 +41,8 @@ signal level_end
 @export var hide_tween : AnimationPlayer
 var mouse_pos
 func _ready():
+	if AudioServer.is_bus_mute(0) == true:
+		AudioServer.set_bus_mute(0, false)
 	if Dialogic.timeline_ended.is_connected(_on_timeline_ended_timed):
 		Dialogic.timeline_ended.disconnect(_on_timeline_ended_timed)
 	MusicFades.fade_in_audio() #for reset

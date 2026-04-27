@@ -676,6 +676,10 @@ func reset_interaction():
 		Juniper_in_case = false
 	if Quincy_in_case:
 		Quincy_in_case = false
+	note_condition = ""
+	note_event = ""
+	note_char = ""
+	
 	
 
 func set_mouse_default():

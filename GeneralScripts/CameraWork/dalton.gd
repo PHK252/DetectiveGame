@@ -89,7 +89,7 @@ func _ready() -> void:
 	if MicahHouse:
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	#if GlobalVars.dalton_pos:
-	print(GlobalVars.from_save_file, " from save")
+	print(GlobalVars.from_save_file, " from save", GlobalVars.dalton_pos)
 	if GlobalVars.from_save_file == true: #and GlobalVars.Quincy_Dalton_caught == false:
 		if GlobalVars.time != "night":
 			global_position = GlobalVars.dalton_pos

@@ -12,5 +12,5 @@ Dalton (Default): Ask about...
 	jump Warrant_property/
 - Motive.
 	jump Warrant_home/
-- Enter apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true and {Asked Questions.finished_location_qs} == true]
+- Enter apartment. | [if {Asked Questions.Micah_Asked_Property} == true and {Asked Questions.Micah_Asked_home} == true and {Asked Questions.Micah_Asked_Night} == true]
 	jump Micah_ask_enter/
