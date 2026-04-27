@@ -22,7 +22,6 @@ func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
 	GlobalVars.in_dialogue = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	print(GlobalVars.viewed_partner, " GlobalVars.viewed_partner")
 	if GlobalVars.exit_tut == false:
 		emit_signal("_show_tut", "exit")
 

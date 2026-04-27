@@ -199,7 +199,6 @@ func _on_case_added_notes_overlay():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		print("interact_double")
 		call_normal.disabled = true
 		await get_tree().process_frame
 		await get_tree().process_frame

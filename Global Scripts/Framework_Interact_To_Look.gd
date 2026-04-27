@@ -116,7 +116,6 @@ func _input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				Dialogic.start(dialogue_file)
 			else:
-				print("enter")
 				object_in_scene.show()
 				object_interact.show() # might not need?
 				GlobalVars.set(view_object, true)
