@@ -201,6 +201,7 @@ func load_scene(current_scene, next_scene, type : String, time : String, dialogu
 				toggle_default(false)
 				if GlobalVars.from_save_file == false:
 					await get_tree().create_timer(.25).timeout
+					print("save from load")
 					SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.SAVE_FILE_NAME)
 					if !reload:
 						SaveLoad.saveGame(SaveLoad.SAVE_DIR + SaveLoad.RELOAD_SAVE_NAME, true, true)

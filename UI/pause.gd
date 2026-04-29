@@ -24,7 +24,7 @@ func _on_save_pressed():
 	await get_tree().process_frame
 	InputMap.action_add_event("Quit", quit[0])
 	visible = false
-	Loading.load_scene(main_scene, GlobalVars.main_menu, "", "", "")
+	Loading.load_scene(main_scene, GlobalVars.main_menu, "", "", "",false, false, true, true)
 	GlobalVars.reset_interaction()
 	get_tree().paused = false
 	Engine.time_scale = 1

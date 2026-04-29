@@ -85,7 +85,7 @@ func saveGame(path: String, dialogic_save : bool = true, reload : bool = false):
 		emit_signal("saving")
 	if dialogic_save == true:
 		if reload:
-			print("reload saved")
+			print("reload saved at ", GlobalVars.current_level)
 			Dialogic.Save.save("reload") 
 		else:
 			Dialogic.Save.save()

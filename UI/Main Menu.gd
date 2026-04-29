@@ -65,6 +65,7 @@ func _on_new_window_size():
 
 
 func _on_quit_pressed():
+	print("quit")
 	get_tree().quit()
 
 

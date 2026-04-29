@@ -34,7 +34,7 @@ func _on_input_event(viewport, event, shape_idx):
 				
 
 func _on_exit_pressed():
-	#print("exit")
+ 	#print("exit")
 	if viewed_object == false and clicked_count == 1:
 		#print("set")
 		GlobalVars.set(view_object, true)

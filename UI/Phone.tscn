@@ -1,4 +1,4 @@
-[gd_scene load_steps=241 format=3 uid="uid://coi3wnw75drw1"]
+[gd_scene load_steps=242 format=3 uid="uid://coi3wnw75drw1"]
 
 [ext_resource type="Script" uid="uid://274glhsv05fn" path="res://UI/Phone_UI.gd" id="1_eli2p"]
 [ext_resource type="Texture2D" uid="uid://bcsbxoua3cpcf" path="res://UI/Assets/Phone/Updated/Phone Frame.png" id="2_vhfwm"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b5l8rsscdog1o" path="res://UI/time.gd" id="12_cs8vq"]
 [ext_resource type="Texture2D" uid="uid://chwmk4ym37t4k" path="res://UI/Assets/Phone/Updated/Home/Phone Notes Button Normal.png" id="12_k8qp8"]
 [ext_resource type="Texture2D" uid="uid://djiexmxvw6q3n" path="res://UI/Assets/Phone/Updated/Gallery/Phone Gallery Battery.png" id="12_qpmkw"]
+[ext_resource type="Script" uid="uid://bm2gd77gdk4f3" path="res://UI/gallery_screen.gd" id="13_5q3dh"]
 [ext_resource type="Texture2D" uid="uid://bombd5fmy4xwy" path="res://UI/Assets/Phone/Updated/Home/Phone Note Button Hovered.png" id="13_ckxde"]
 [ext_resource type="Texture2D" uid="uid://dlon4h2dowtlq" path="res://UI/Assets/Phone/Updated/Home/Phone Call Button Normal.png" id="14_yny11"]
 [ext_resource type="Texture2D" uid="uid://rntra48fe8vj" path="res://UI/Assets/Phone/Updated/Home/Phone Call Button Hovered.png" id="15_4x8ww"]
@@ -623,6 +624,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("13_5q3dh")
 
 [node name="PhoneGallery" type="Sprite2D" parent="GalleryScreen"]
 position = Vector2(960, 513)
@@ -885,6 +887,7 @@ texture_pressed = ExtResource("43_g4h4a")
 texture_hover = ExtResource("43_g4h4a")
 
 [node name="RightHover" type="Area2D" parent="GalleryScreen/ClosePics/Buttons"]
+visible = false
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/ClosePics/Buttons/RightHover"]
@@ -892,6 +895,7 @@ position = Vector2(1157, 537)
 shape = SubResource("RectangleShape2D_ayhbp")
 
 [node name="LeftHover" type="Area2D" parent="GalleryScreen/ClosePics/Buttons"]
+visible = false
 priority = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GalleryScreen/ClosePics/Buttons/LeftHover"]
@@ -3331,6 +3335,7 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="HomeScreen/Phone" to="Phone_Sounds_General" method="_on_phone_hover"]
 [connection signal="pressed" from="HomeScreen/Phone" to="." method="_on_phone_pressed"]
 [connection signal="pressed" from="HomeScreen/Phone" to="Phone_Sounds_General" method="_on_phone_select"]
+[connection signal="visibility_changed" from="GalleryScreen" to="GalleryScreen" method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="GalleryScreen/GalleryList/Pic1" to="Phone_Sounds_General" method="_on_alt_hover_phone"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic1" to="." method="_on_pic_1_pressed"]
 [connection signal="pressed" from="GalleryScreen/GalleryList/Pic1" to="Phone_Sounds_General" method="_on_altClick_phone"]

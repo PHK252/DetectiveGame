@@ -115,6 +115,8 @@ func _on_exit_pressed():
 			if GlobalVars.intro_dialogue == false and GlobalVars.viewed_case_file == true:
 				if GlobalVars.exit_tut == false and tutorial.visible == true:
 					emit_signal("_hide_tut")
+				if GlobalVars.map_tut == false and tutorial.visible == true:
+					emit_signal("_hide_tut")
 				await get_tree().create_timer(.1).timeout
 				GlobalVars.in_dialogue = true
 				Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -122,6 +124,10 @@ func _on_exit_pressed():
 				var layout = Dialogic.start("Day 1 Office timeline")
 				return
 			else:
+				if GlobalVars.exit_tut == false and tutorial.visible == true:
+					emit_signal("_hide_tut")
+				if GlobalVars.map_tut == false and tutorial.visible == true:
+					emit_signal("_hide_tut")
 				player.start_player()
 				alert.show()
 				GlobalVars.in_interaction = ""
@@ -263,12 +269,18 @@ func _input(event):
 				if GlobalVars.intro_dialogue == false and GlobalVars.viewed_case_file == true:
 					if GlobalVars.exit_tut == false and tutorial.visible == true:
 						emit_signal("_hide_tut")
+					if GlobalVars.map_tut == false and tutorial.visible == true:
+						emit_signal("_hide_tut")
 					GlobalVars.in_dialogue = true
 					Dialogic.timeline_ended.connect(_on_timeline_ended)
 					Dialogic.signal_event.connect(enter_Theo)
 					var layout = Dialogic.start("Day 1 Office timeline")
 					return
 				else:
+					if GlobalVars.exit_tut == false and tutorial.visible == true:
+						emit_signal("_hide_tut")
+					if GlobalVars.map_tut == false and tutorial.visible == true:
+						emit_signal("_hide_tut")
 					player.start_player()
 					alert.show()
 					GlobalVars.in_interaction = ""

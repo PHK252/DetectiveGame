@@ -49,7 +49,7 @@ func _input(event):
 			await get_tree().process_frame
 			await get_tree().process_frame
 			InputMap.action_add_event("Quit", pause[0])
-			Loading.load_scene(main, GlobalVars.third_house_path, "","","")
+			Loading.load_scene(main, GlobalVars.third_house_path, "","","", false, false, true, true)
 			player.start_player()
 			pass
 
