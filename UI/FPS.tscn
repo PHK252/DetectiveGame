@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bll1dg2b2fwqi"]
+[gd_scene load_steps=9 format=3 uid="uid://bll1dg2b2fwqi"]
 
 [ext_resource type="Script" uid="uid://3xxygbaffhrv" path="res://UI/fps.gd" id="1_1d060"]
 [ext_resource type="FontFile" uid="uid://bwwgclqq3mgo" path="res://Dialogue Stuff/Fonts/Default.ttf" id="2_1d060"]
 [ext_resource type="Texture2D" uid="uid://canu5cu0rcx66" path="res://UI/Assets/save.png" id="3_deggr"]
 [ext_resource type="Script" uid="uid://bgt5ios42lfha" path="res://UI/save_icon.gd" id="4_a0otd"]
+[ext_resource type="Script" uid="uid://c1wdiv5iae1i5" path="res://UI/hitbug_test_cast.gd" id="5_pmfq0"]
 
 [sub_resource type="Animation" id="Animation_pmfq0"]
 length = 0.001
@@ -70,3 +71,10 @@ script = ExtResource("4_a0otd")
 libraries = {
 &"": SubResource("AnimationLibrary_h4tf3")
 }
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 1)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("5_pmfq0")

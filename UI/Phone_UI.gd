@@ -197,21 +197,17 @@ func _on_pic_7_pressed():
 
 
 func _on_right_hover_mouse_entered():
-	print("entered")
 	if picPlace != 6:
 		gallery_right.show()
 
 func _on_left_hover_mouse_entered():
-	print("entered")
 	if picPlace != 0:
 		gallery_left.show()
 
 func _on_right_hover_mouse_exited():
-	print("exit")
 	gallery_right.hide()
 
 func _on_left_hover_mouse_exited():
-	print("exit")
 	gallery_left.hide()
 
 #Phone 
